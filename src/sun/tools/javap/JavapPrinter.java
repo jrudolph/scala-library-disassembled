@@ -221,7 +221,7 @@ public class JavapPrinter {
 
                 // Print line and local variable attribute information.
                 if (env.showLineAndLocal) {
-                    printLineNumTable(methods[m]);
+                    //printLineNumTable(methods[m]);
                     printLocVarTable(methods[m]);
                     out.println();
                 }
