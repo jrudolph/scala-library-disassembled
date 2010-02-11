@@ -62,6 +62,19 @@ InterfaceMethod	scala/xml/factory/XMLLoader.loadXML:(Lorg/xml/sax/InputSource;Lj
 Asciz	string;
 Asciz	Ljava/lang/String;;
 Asciz	load;
+Asciz	(Lscala/xml/factory/XMLLoader;Ljava/net/URL;)Lscala/xml/Node;;
+Asciz	java/net/URL;
+class	java/net/URL
+Asciz	openStream;
+Asciz	()Ljava/io/InputStream;;
+NameAndType	openStream:()Ljava/io/InputStream;
+Method	java/net/URL.openStream:()Ljava/io/InputStream;
+Asciz	fromInputStream;
+Asciz	(Ljava/io/InputStream;)Lorg/xml/sax/InputSource;;
+NameAndType	fromInputStream:(Ljava/io/InputStream;)Lorg/xml/sax/InputSource;
+Method	scala/xml/Source$.fromInputStream:(Ljava/io/InputStream;)Lorg/xml/sax/InputSource;
+Asciz	url;
+Asciz	Ljava/net/URL;;
 Asciz	(Lscala/xml/factory/XMLLoader;Lorg/xml/sax/InputSource;)Lscala/xml/Node;;
 Asciz	source;
 Asciz	Lorg/xml/sax/InputSource;;
@@ -77,10 +90,6 @@ Method	scala/xml/Source$.fromReader:(Ljava/io/Reader;)Lorg/xml/sax/InputSource;
 Asciz	reader;
 Asciz	Ljava/io/Reader;;
 Asciz	(Lscala/xml/factory/XMLLoader;Ljava/io/InputStream;)Lscala/xml/Node;;
-Asciz	fromInputStream;
-Asciz	(Ljava/io/InputStream;)Lorg/xml/sax/InputSource;;
-NameAndType	fromInputStream:(Ljava/io/InputStream;)Lorg/xml/sax/InputSource;
-Method	scala/xml/Source$.fromInputStream:(Ljava/io/InputStream;)Lorg/xml/sax/InputSource;
 Asciz	is;
 Asciz	Ljava/io/InputStream;;
 Asciz	loadFile;
@@ -201,6 +210,26 @@ public static scala.xml.Node loadString(scala.xml.factory.XMLLoader, java.lang.S
    Start  Length  Slot  Name   Signature
    0      20      0    $this       Lscala/xml/factory/XMLLoader;
    0      20      1    string       Ljava/lang/String;
+
+
+public static scala.xml.Node load(scala.xml.factory.XMLLoader, java.net.URL);
+  Signature: (Lscala/xml/factory/XMLLoader;Ljava/net/URL;)Lscala/xml/Node;
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	aload_0
+	getstatic	Field scala/xml/Source$.MODULE$:Lscala/xml/Source$;
+	aload_1
+	invokevirtual	Method java/net/URL.openStream:()Ljava/io/InputStream;
+	invokevirtual	Method scala/xml/Source$.fromInputStream:(Ljava/io/InputStream;)Lorg/xml/sax/InputSource;
+	aload_0
+	invokeinterface	InterfaceMethod scala/xml/factory/XMLLoader.parser:()Ljavax/xml/parsers/SAXParser;
+	invokeinterface	InterfaceMethod scala/xml/factory/XMLLoader.loadXML:(Lorg/xml/sax/InputSource;Ljavax/xml/parsers/SAXParser;)Lscala/xml/Node;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      23      0    $this       Lscala/xml/factory/XMLLoader;
+   0      23      1    url       Ljava/net/URL;
 
 
 public static scala.xml.Node load(scala.xml.factory.XMLLoader, org.xml.sax.InputSource);
