@@ -3,8 +3,7 @@
 FILENAME=scala-library-$1.jar
 
 rm class -rf
-rm bcode -rf
-mkdir bcode && \
+git rm bcode -rf
 echo $FILENAME > bcode/version &&\
 wget http://scala-tools.org/repo-snapshots/org/scala-lang/scala-library/2.8.0-SNAPSHOT/$FILENAME && \
 unzip $FILENAME -d class && \
