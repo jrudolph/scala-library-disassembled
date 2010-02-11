@@ -161,20 +161,24 @@ Asciz	(Lscala/collection/IterableLike;Ljava/lang/Object;II)V;
 Asciz	scala/runtime/RichInt;
 class	scala/runtime/RichInt
 Method	scala/runtime/RichInt."<init>":(I)V
-Asciz	java/lang/reflect/Array;
-class	java/lang/reflect/Array
-Asciz	getLength;
+Asciz	scala/runtime/ScalaRunTime$;
+class	scala/runtime/ScalaRunTime$
+Asciz	MODULE$;
+Asciz	Lscala/runtime/ScalaRunTime$;;
+NameAndType	MODULE$:Lscala/runtime/ScalaRunTime$;
+Field	scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
+Asciz	array_length;
 Asciz	(Ljava/lang/Object;)I;
-NameAndType	getLength:(Ljava/lang/Object;)I
-Method	java/lang/reflect/Array.getLength:(Ljava/lang/Object;)I
+NameAndType	array_length:(Ljava/lang/Object;)I
+Method	scala/runtime/ScalaRunTime$.array_length:(Ljava/lang/Object;)I
 Asciz	min;
 Asciz	(I)I;
 NameAndType	min:(I)I
 Method	scala/runtime/RichInt.min:(I)I
-Asciz	set;
+Asciz	array_update;
 Asciz	(Ljava/lang/Object;ILjava/lang/Object;)V;
-NameAndType	set:(Ljava/lang/Object;ILjava/lang/Object;)V
-Method	java/lang/reflect/Array.set:(Ljava/lang/Object;ILjava/lang/Object;)V
+NameAndType	array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
+Method	scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
 Asciz	xs;
 Asciz	start;
 Asciz	len;
@@ -637,9 +641,9 @@ l1	aload_3
 public static void copyToArray(scala.collection.IterableLike, java.lang.Object, int, int);
   Signature: (Lscala/collection/IterableLike;Ljava/lang/Object;II)V
   Code:
-   Stack=3, Locals=9, Args_size=4
+   Stack=4, Locals=8, Args_size=4
 	iload_2
-	istore	8
+	istore	7
 	iload_2
 	iload_3
 	iadd
@@ -648,44 +652,44 @@ public static void copyToArray(scala.collection.IterableLike, java.lang.Object, 
 	dup
 	iload	4
 	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
+	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
 	aload_1
-	invokestatic	Method java/lang/reflect/Array.getLength:(Ljava/lang/Object;)I
+	invokevirtual	Method scala/runtime/ScalaRunTime$.array_length:(Ljava/lang/Object;)I
 	invokevirtual	Method scala/runtime/RichInt.min:(I)I
 	istore	5
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
 	astore	6
-l2	iload	8
+l2	iload	7
 	iload	5
 	if_icmpge	l1 // return
 	aload	6
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
 	ifeq	l1 // return
+	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
+	aload_1
+	iload	7
 	aload	6
 	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	astore	7
-	aload_1
-	iload	8
-	aload	7
-	invokestatic	Method java/lang/reflect/Array.set:(Ljava/lang/Object;ILjava/lang/Object;)V
-	iload	8
+	invokevirtual	Method scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
+	iload	7
 	iconst_1
 	iadd
-	istore	8
+	istore	7
 	goto	l2 // iload
 l1	return
   Labels:
-   	l2 = 34 // iload
-   	l1 = 77 // return
+   	l2 = 37 // iload
+   	l1 = 79 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      78      0    $this       Lscala/collection/IterableLike;
-   0      78      1    xs       Ljava/lang/Object;
-   0      78      2    start       I
-   0      78      3    len       I
-   26      52      5    end       I
-   34      44      6    it       Lscala/collection/Iterator;
-   3      75      8    i       I
+   0      80      0    $this       Lscala/collection/IterableLike;
+   0      80      1    xs       Ljava/lang/Object;
+   0      80      2    start       I
+   0      80      3    len       I
+   29      51      5    end       I
+   37      43      6    it       Lscala/collection/Iterator;
+   3      77      7    i       I
 
 
 public static java.lang.Object dropRight(scala.collection.IterableLike, int);

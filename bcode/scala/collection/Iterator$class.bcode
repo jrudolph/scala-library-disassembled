@@ -75,12 +75,10 @@ Asciz	Deprecated;
 Asciz	(Lscala/collection/Iterator;Ljava/lang/Object;I)V;
 Asciz	start;
 Asciz	(Lscala/collection/Iterator;Ljava/lang/Object;II)V;
-Asciz	java/lang/reflect/Array;
-class	java/lang/reflect/Array
-Asciz	set;
+Asciz	array_update;
 Asciz	(Ljava/lang/Object;ILjava/lang/Object;)V;
-NameAndType	set:(Ljava/lang/Object;ILjava/lang/Object;)V
-Method	java/lang/reflect/Array.set:(Ljava/lang/Object;ILjava/lang/Object;)V
+NameAndType	array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
+Method	scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
 Asciz	sz;
 Asciz	i;
 Asciz	counted;
@@ -250,9 +248,6 @@ class	scala/runtime/RichInt
 Asciz	(I)V;
 NameAndType	"<init>":(I)V
 Method	scala/runtime/RichInt."<init>":(I)V
-Asciz	getLength;
-NameAndType	getLength:(Ljava/lang/Object;)I
-Method	java/lang/reflect/Array.getLength:(Ljava/lang/Object;)I
 Asciz	min;
 Asciz	(I)I;
 NameAndType	min:(I)I
@@ -644,40 +639,39 @@ public static void readInto(scala.collection.Iterator, java.lang.Object, int);
 public static void readInto(scala.collection.Iterator, java.lang.Object, int, int);
   Signature: (Lscala/collection/Iterator;Ljava/lang/Object;II)V
   Code:
-   Stack=3, Locals=6, Args_size=4
+   Stack=4, Locals=5, Args_size=4
 	iload_2
-	istore	5
+	istore	4
 l2	aload_0
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
 	ifeq	l1 // return
-	iload	5
+	iload	4
 	iload_2
 	isub
 	iload_3
 	if_icmpge	l1 // return
+	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
+	aload_1
+	iload	4
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	astore	4
-	aload_1
-	iload	5
-	aload	4
-	invokestatic	Method java/lang/reflect/Array.set:(Ljava/lang/Object;ILjava/lang/Object;)V
-	iload	5
+	invokevirtual	Method scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
+	iload	4
 	iconst_1
 	iadd
-	istore	5
+	istore	4
 	goto	l2 // aload_0
 l1	return
   Labels:
    	l2 = 3 // aload_0
-   	l1 = 45 // return
+   	l1 = 44 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      46      0    $this       Lscala/collection/Iterator;
-   0      46      1    xs       Ljava/lang/Object;
-   0      46      2    start       I
-   0      46      3    sz       I
-   3      43      5    i       I
+   0      45      0    $this       Lscala/collection/Iterator;
+   0      45      1    xs       Ljava/lang/Object;
+   0      45      2    start       I
+   0      45      3    sz       I
+   3      42      4    i       I
 
   Deprecated: true
 
@@ -1139,9 +1133,9 @@ public static void copyToArray(scala.collection.Iterator, java.lang.Object, int)
 public static void copyToArray(scala.collection.Iterator, java.lang.Object, int, int);
   Signature: (Lscala/collection/Iterator;Ljava/lang/Object;II)V
   Code:
-   Stack=3, Locals=8, Args_size=4
+   Stack=4, Locals=7, Args_size=4
 	iload_2
-	istore	7
+	istore	6
 	iload_2
 	iload_3
 	iadd
@@ -1150,40 +1144,40 @@ public static void copyToArray(scala.collection.Iterator, java.lang.Object, int,
 	dup
 	iload	4
 	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
+	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
 	aload_1
-	invokestatic	Method java/lang/reflect/Array.getLength:(Ljava/lang/Object;)I
+	invokevirtual	Method scala/runtime/ScalaRunTime$.array_length:(Ljava/lang/Object;)I
 	invokevirtual	Method scala/runtime/RichInt.min:(I)I
 	istore	5
 l2	aload_0
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
 	ifeq	l1 // return
-	iload	7
+	iload	6
 	iload	5
 	if_icmpge	l1 // return
+	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
+	aload_1
+	iload	6
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	astore	6
-	aload_1
-	iload	7
-	aload	6
-	invokestatic	Method java/lang/reflect/Array.set:(Ljava/lang/Object;ILjava/lang/Object;)V
-	iload	7
+	invokevirtual	Method scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
+	iload	6
 	iconst_1
 	iadd
-	istore	7
+	istore	6
 	goto	l2 // aload_0
 l1	return
   Labels:
-   	l2 = 26 // aload_0
-   	l1 = 67 // return
+   	l2 = 29 // aload_0
+   	l1 = 69 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      68      0    $this       Lscala/collection/Iterator;
-   0      68      1    xs       Ljava/lang/Object;
-   0      68      2    start       I
-   0      68      3    len       I
-   26      42      5    end       I
-   3      65      7    i       I
+   0      70      0    $this       Lscala/collection/Iterator;
+   0      70      1    xs       Ljava/lang/Object;
+   0      70      2    start       I
+   0      70      3    len       I
+   29      41      5    end       I
+   3      67      6    i       I
 
 
 public static scala.collection.Iterator patch(scala.collection.Iterator, int, scala.collection.Iterator, int);

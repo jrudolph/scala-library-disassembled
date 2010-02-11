@@ -58,16 +58,20 @@ Asciz	hasNext;
 Asciz	()Z;
 NameAndType	hasNext:()Z
 InterfaceMethod	scala/collection/Iterator.hasNext:()Z
+Asciz	scala/runtime/ScalaRunTime$;
+class	scala/runtime/ScalaRunTime$
+Asciz	MODULE$;
+Asciz	Lscala/runtime/ScalaRunTime$;;
+NameAndType	MODULE$:Lscala/runtime/ScalaRunTime$;
+Field	scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
 Asciz	next;
 Asciz	()Ljava/lang/Object;;
 NameAndType	next:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/Iterator.next:()Ljava/lang/Object;
-Asciz	java/lang/reflect/Array;
-class	java/lang/reflect/Array
-Asciz	set;
+Asciz	array_update;
 Asciz	(Ljava/lang/Object;ILjava/lang/Object;)V;
-NameAndType	set:(Ljava/lang/Object;ILjava/lang/Object;)V
-Method	java/lang/reflect/Array.set:(Ljava/lang/Object;ILjava/lang/Object;)V
+NameAndType	array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
+Method	scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
 Asciz	data;
 Asciz	start;
 Asciz	I;
@@ -138,55 +142,52 @@ public final java.lang.Object apply(java.lang.Object, java.lang.Object, java.lan
 public final int apply(java.lang.Object, int, int);
   Signature: (Ljava/lang/Object;II)I
   Code:
-   Stack=3, Locals=7, Args_size=4
+   Stack=4, Locals=5, Args_size=4
 	iconst_0
-	istore	6
-l2	iload	6
+	istore	4
+l2	iload	4
 	iload_3
 	if_icmpge	l1 // iload
 	aload_0
 	getfield	Field source$1:Lscala/collection/Iterator;
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
 	ifeq	l1 // iload
+	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
+	aload_1
 	iload_2
-	iload	6
+	iload	4
 	iadd
 	aload_0
 	getfield	Field source$1:Lscala/collection/Iterator;
 	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	astore	5
-	istore	4
-	aload_1
+	invokevirtual	Method scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
 	iload	4
-	aload	5
-	invokestatic	Method java/lang/reflect/Array.set:(Ljava/lang/Object;ILjava/lang/Object;)V
-	iload	6
 	iconst_1
 	iadd
-	istore	6
+	istore	4
 	goto	l2 // iload
-l1	iload	6
+l1	iload	4
 	iconst_0
 	if_icmpne	l3 // iload
 	iconst_m1
 	goto	l4 // ireturn
-l3	iload	6
+l3	iload	4
 l4	ireturn
   Labels:
    	l2 = 3 // iload
-   	l1 = 55 // iload
-   	l3 = 65 // iload
-   	l4 = 67 // ireturn
+   	l1 = 50 // iload
+   	l3 = 60 // iload
+   	l4 = 62 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      68      0    this       Lscala/collection/immutable/PagedSeq$$anonfun$fromIterator$1;
-   0      68      1    data       Ljava/lang/Object;
-   0      68      2    start       I
-   0      68      3    len       I
-   3      65      6    i       I
+   0      63      0    this       Lscala/collection/immutable/PagedSeq$$anonfun$fromIterator$1;
+   0      63      1    data       Ljava/lang/Object;
+   0      63      2    start       I
+   0      63      3    len       I
+   3      60      4    i       I
 
   Signature: length = 0x2
-   00 42 
+   00 46 
 
 }
 

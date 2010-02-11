@@ -4,7 +4,7 @@ public final class scala.collection.immutable.List$ extends scala.collection.gen
   Scala: length = 0x
    
   Signature: length = 0x2
-   01 4A 
+   01 48 
   InnerClass: 
    public final $anonfun$break$1=class scala/collection/immutable/List$$anonfun$break$1 of class scala/collection/immutable/List
    public final $anonfun$unzip$1=class scala/collection/immutable/List$$anonfun$unzip$1 of class scala/collection/immutable/List
@@ -217,23 +217,21 @@ Asciz	pos1;
 Asciz	(Ljava/lang/String;C)Lscala/collection/immutable/List<Ljava/lang/String;>;;
 Asciz	fromArray;
 Asciz	(Ljava/lang/Object;II)Lscala/collection/immutable/List;;
-Asciz	java/lang/reflect/Array;
-class	java/lang/reflect/Array
-Asciz	get;
-Asciz	(Ljava/lang/Object;I)Ljava/lang/Object;;
-NameAndType	get:(Ljava/lang/Object;I)Ljava/lang/Object;
-Method	java/lang/reflect/Array.get:(Ljava/lang/Object;I)Ljava/lang/Object;
-Asciz	arr;
-Asciz	start;
-Asciz	len;
-Asciz	i;
-Asciz	res;
-Asciz	<A:Ljava/lang/Object;>([TA;II)Lscala/collection/immutable/List<TA;>;;
 Asciz	scala/runtime/ScalaRunTime$;
 class	scala/runtime/ScalaRunTime$
 Asciz	Lscala/runtime/ScalaRunTime$;;
 NameAndType	MODULE$:Lscala/runtime/ScalaRunTime$;
 Field	scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
+Asciz	array_apply;
+Asciz	(Ljava/lang/Object;I)Ljava/lang/Object;;
+NameAndType	array_apply:(Ljava/lang/Object;I)Ljava/lang/Object;
+Method	scala/runtime/ScalaRunTime$.array_apply:(Ljava/lang/Object;I)Ljava/lang/Object;
+Asciz	arr;
+Asciz	start;
+Asciz	len;
+Asciz	res;
+Asciz	i;
+Asciz	<A:Ljava/lang/Object;>([TA;II)Lscala/collection/immutable/List<TA;>;;
 Asciz	array_length;
 Asciz	(Ljava/lang/Object;)I;
 NameAndType	array_length:(Ljava/lang/Object;)I
@@ -926,45 +924,46 @@ l1	aload_3
 public scala.collection.immutable.List fromArray(java.lang.Object, int, int);
   Signature: (Ljava/lang/Object;II)Lscala/collection/immutable/List;
   Code:
-   Stack=2, Locals=7, Args_size=4
+   Stack=3, Locals=7, Args_size=4
 	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
-	astore	6
+	astore	4
 	iload_2
 	iload_3
 	iadd
-	istore	4
-l2	iload	4
+	istore	5
+l2	iload	5
 	iload_2
 	if_icmple	l1 // aload
-	iload	4
+	iload	5
 	iconst_1
 	isub
-	istore	4
+	istore	5
+	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
 	aload_1
-	iload	4
-	invokestatic	Method java/lang/reflect/Array.get:(Ljava/lang/Object;I)Ljava/lang/Object;
-	astore	5
-	aload	6
-	aload	5
-	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
+	iload	5
+	invokevirtual	Method scala/runtime/ScalaRunTime$.array_apply:(Ljava/lang/Object;I)Ljava/lang/Object;
 	astore	6
+	aload	4
+	aload	6
+	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
+	astore	4
 	goto	l2 // iload
-l1	aload	6
+l1	aload	4
 	areturn
   Labels:
    	l2 = 10 // iload
-   	l1 = 42 // aload
+   	l1 = 45 // aload
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      45      0    this       Lscala/collection/immutable/List$;
-   0      45      1    arr       Ljava/lang/Object;
-   0      45      2    start       I
-   0      45      3    len       I
-   10      34      4    i       I
-   5      39      6    res       Lscala/collection/immutable/List;
+   0      48      0    this       Lscala/collection/immutable/List$;
+   0      48      1    arr       Ljava/lang/Object;
+   0      48      2    start       I
+   0      48      3    len       I
+   5      42      4    res       Lscala/collection/immutable/List;
+   10      37      5    i       I
 
   Signature: length = 0x2
-   00 FFFFFFD2 
+   00 FFFFFFD5 
   Deprecated: true
 
 public scala.collection.immutable.List fromArray(java.lang.Object);
@@ -986,7 +985,7 @@ public scala.collection.immutable.List fromArray(java.lang.Object);
    0      14      1    arr       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 FFFFFFDE 
+   00 FFFFFFDC 
   Deprecated: true
 
 public scala.collection.immutable.List fromIterator(scala.collection.Iterator);
@@ -1003,7 +1002,7 @@ public scala.collection.immutable.List fromIterator(scala.collection.Iterator);
    0      7      1    it       Lscala/collection/Iterator;
 
   Signature: length = 0x2
-   00 FFFFFFE6 
+   00 FFFFFFE4 
   Deprecated: true
 
 public scala.Tuple2 separate(scala.collection.Iterable);
@@ -1029,7 +1028,7 @@ public scala.Tuple2 separate(scala.collection.Iterable);
    0      30      1    es       Lscala/collection/Iterable;
 
   Signature: length = 0x2
-   00 FFFFFFF7 
+   00 FFFFFFF5 
   Deprecated: true
 
 public scala.collection.immutable.List rights(scala.collection.Iterable);
@@ -1051,7 +1050,7 @@ public scala.collection.immutable.List rights(scala.collection.Iterable);
    0      20      1    es       Lscala/collection/Iterable;
 
   Signature: length = 0x2
-   00 FFFFFFFD 
+   00 FFFFFFFB 
   Deprecated: true
 
 public scala.collection.immutable.List lefts(scala.collection.Iterable);
@@ -1073,7 +1072,7 @@ public scala.collection.immutable.List lefts(scala.collection.Iterable);
    0      20      1    es       Lscala/collection/Iterable;
 
   Signature: length = 0x2
-   01 02 
+   01 00 
   Deprecated: true
 
 public scala.Tuple2 unzip(scala.collection.Iterable);
@@ -1099,7 +1098,7 @@ public scala.Tuple2 unzip(scala.collection.Iterable);
    0      30      1    xs       Lscala/collection/Iterable;
 
   Signature: length = 0x2
-   01 07 
+   01 05 
   Deprecated: true
 
 public scala.Tuple2 unzip(scala.collection.immutable.List);
@@ -1161,7 +1160,7 @@ l1	aload_2
    45      51      4    xc       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   01 11 
+   01 0F 
   Deprecated: true
 
 public scala.collection.immutable.List flatten(scala.collection.immutable.List);
@@ -1189,7 +1188,7 @@ public scala.collection.immutable.List flatten(scala.collection.immutable.List);
    8      18      2    b$1       Lscala/collection/mutable/ListBuffer;
 
   Signature: length = 0x2
-   01 1F 
+   01 1D 
   Deprecated: true
 
 public scala.collection.immutable.List make(int, java.lang.Object);
@@ -1229,7 +1228,7 @@ l1	aload_3
    11      25      4    i       I
 
   Signature: length = 0x2
-   01 24 
+   01 22 
   Deprecated: true
 
 public scala.collection.immutable.List range(int, int, scala.Function1);
@@ -1334,7 +1333,7 @@ l8	iload	7
    88      73      8    i       I
 
   Signature: length = 0x2
-   01 40 
+   01 3E 
   Deprecated: true
 
 public scala.collection.immutable.List apply(scala.collection.Seq);
@@ -1351,7 +1350,7 @@ public scala.collection.immutable.List apply(scala.collection.Seq);
    0      7      1    xs       Lscala/collection/Seq;
 
   Signature: length = 0x2
-   01 42 
+   01 40 
 
 public scala.collection.immutable.List empty();
   Signature: ()Lscala/collection/immutable/List;
@@ -1361,7 +1360,7 @@ public scala.collection.immutable.List empty();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 43 
+   01 41 
 
 public scala.collection.mutable.Builder newBuilder();
   Signature: ()Lscala/collection/mutable/Builder;
@@ -1373,7 +1372,7 @@ public scala.collection.mutable.Builder newBuilder();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 46 
+   01 44 
 
 public scala.collection.generic.CanBuildFrom canBuildFrom();
   Signature: ()Lscala/collection/generic/CanBuildFrom;
@@ -1386,7 +1385,7 @@ public scala.collection.generic.CanBuildFrom canBuildFrom();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 49 
+   01 47 
 
 }
 

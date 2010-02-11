@@ -210,16 +210,19 @@ Method	scala/runtime/RichInt."<init>":(I)V
 Asciz	min;
 NameAndType	min:(I)I
 Method	scala/runtime/RichInt.min:(I)I
-Asciz	java/lang/reflect/Array;
-class	java/lang/reflect/Array
-Asciz	getLength;
+Asciz	scala/runtime/ScalaRunTime$;
+class	scala/runtime/ScalaRunTime$
+Asciz	Lscala/runtime/ScalaRunTime$;;
+NameAndType	MODULE$:Lscala/runtime/ScalaRunTime$;
+Field	scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
+Asciz	array_length;
 Asciz	(Ljava/lang/Object;)I;
-NameAndType	getLength:(Ljava/lang/Object;)I
-Method	java/lang/reflect/Array.getLength:(Ljava/lang/Object;)I
-Asciz	set;
+NameAndType	array_length:(Ljava/lang/Object;)I
+Method	scala/runtime/ScalaRunTime$.array_length:(Ljava/lang/Object;)I
+Asciz	array_update;
 Asciz	(Ljava/lang/Object;ILjava/lang/Object;)V;
-NameAndType	set:(Ljava/lang/Object;ILjava/lang/Object;)V
-Method	java/lang/reflect/Array.set:(Ljava/lang/Object;ILjava/lang/Object;)V
+NameAndType	array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
+Method	scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
 Asciz	xs;
 Asciz	sameElements;
 Asciz	(Lscala/collection/IndexedSeqLike;Lscala/collection/Iterable;)Z;
@@ -935,11 +938,11 @@ public static int lengthCompare(scala.collection.IndexedSeqLike, int);
 public static void copyToArray(scala.collection.IndexedSeqLike, java.lang.Object, int, int);
   Signature: (Lscala/collection/IndexedSeqLike;Ljava/lang/Object;II)V
   Code:
-   Stack=3, Locals=10, Args_size=4
+   Stack=5, Locals=9, Args_size=4
 	iconst_0
-	istore	8
+	istore	7
 	iload_2
-	istore	9
+	istore	8
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
 	istore	4
@@ -954,45 +957,45 @@ public static void copyToArray(scala.collection.IndexedSeqLike, java.lang.Object
 	dup
 	iload	5
 	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
+	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
 	aload_1
-	invokestatic	Method java/lang/reflect/Array.getLength:(Ljava/lang/Object;)I
+	invokevirtual	Method scala/runtime/ScalaRunTime$.array_length:(Ljava/lang/Object;)I
 	iload_2
 	isub
 	invokevirtual	Method scala/runtime/RichInt.min:(I)I
 	istore	6
-l2	iload	8
+l2	iload	7
 	iload	6
 	if_icmpge	l1 // return
-	aload_0
-	iload	8
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
-	astore	7
+	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
 	aload_1
-	iload	9
-	aload	7
-	invokestatic	Method java/lang/reflect/Array.set:(Ljava/lang/Object;ILjava/lang/Object;)V
+	iload	8
+	aload_0
+	iload	7
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
+	invokevirtual	Method scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
+	iload	7
+	iconst_1
+	iadd
+	istore	7
 	iload	8
 	iconst_1
 	iadd
 	istore	8
-	iload	9
-	iconst_1
-	iadd
-	istore	9
 	goto	l2 // iload
 l1	return
   Labels:
-   	l2 = 49 // iload
-   	l1 = 89 // return
+   	l2 = 52 // iload
+   	l1 = 91 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      90      0    $this       Lscala/collection/IndexedSeqLike;
-   0      90      1    xs       Ljava/lang/Object;
-   0      90      2    start       I
-   0      90      3    len       I
-   49      41      6    end       I
-   3      87      8    i       I
-   6      84      9    j       I
+   0      92      0    $this       Lscala/collection/IndexedSeqLike;
+   0      92      1    xs       Ljava/lang/Object;
+   0      92      2    start       I
+   0      92      3    len       I
+   52      40      6    end       I
+   3      89      7    i       I
+   6      86      8    j       I
 
 
 public static boolean sameElements(scala.collection.IndexedSeqLike, scala.collection.Iterable);

@@ -59,6 +59,16 @@ Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	v1;
 Asciz	scala/collection/mutable/Publisher;
 class	scala/collection/mutable/Publisher
+Asciz	scala$collection$mutable$Publisher$$suspended;
+Asciz	()Lscala/collection/mutable/HashSet;;
+NameAndType	scala$collection$mutable$Publisher$$suspended:()Lscala/collection/mutable/HashSet;
+InterfaceMethod	scala/collection/mutable/Publisher.scala$collection$mutable$Publisher$$suspended:()Lscala/collection/mutable/HashSet;
+Asciz	scala/collection/mutable/HashSet;
+class	scala/collection/mutable/HashSet
+Asciz	contains;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	contains:(Ljava/lang/Object;)Z
+Method	scala/collection/mutable/HashSet.contains:(Ljava/lang/Object;)Z
 Asciz	scala$collection$mutable$Publisher$$filters;
 Asciz	()Lscala/collection/mutable/HashMap;;
 NameAndType	scala$collection$mutable$Publisher$$filters:()Lscala/collection/mutable/HashMap;
@@ -163,6 +173,12 @@ public final void apply(scala.collection.mutable.Subscriber);
    Stack=5, Locals=2, Args_size=2
 	aload_0
 	getfield	Field $outer:Lscala/collection/mutable/Publisher;
+	invokeinterface	InterfaceMethod scala/collection/mutable/Publisher.scala$collection$mutable$Publisher$$suspended:()Lscala/collection/mutable/HashSet;
+	aload_1
+	invokevirtual	Method scala/collection/mutable/HashSet.contains:(Ljava/lang/Object;)Z
+	ifne	l1 // return
+	aload_0
+	getfield	Field $outer:Lscala/collection/mutable/Publisher;
 	invokeinterface	InterfaceMethod scala/collection/mutable/Publisher.scala$collection$mutable$Publisher$$filters:()Lscala/collection/mutable/HashMap;
 	checkcast	class scala/collection/mutable/MultiMap
 	aload_1
@@ -181,14 +197,14 @@ public final void apply(scala.collection.mutable.Subscriber);
 	invokeinterface	InterfaceMethod scala/collection/mutable/Subscriber.notify:(Ljava/lang/Object;Ljava/lang/Object;)V
 l1	return
   Labels:
-   	l1 = 48 // return
+   	l1 = 64 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      49      0    this       Lscala/collection/mutable/Publisher$$anonfun$publish$1;
-   0      49      1    sub       Lscala/collection/mutable/Subscriber;
+   0      65      0    this       Lscala/collection/mutable/Publisher$$anonfun$publish$1;
+   0      65      1    sub       Lscala/collection/mutable/Subscriber;
 
   Signature: length = 0x2
-   00 4C 
+   00 56 
 
 }
 

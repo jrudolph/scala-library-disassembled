@@ -82,15 +82,18 @@ class	scala/util/control/Breaks
 Asciz	break;
 NameAndType	break:()V
 Method	scala/util/control/Breaks.break:()V
+Asciz	scala/runtime/ScalaRunTime$;
+class	scala/runtime/ScalaRunTime$
+Asciz	Lscala/runtime/ScalaRunTime$;;
+NameAndType	MODULE$:Lscala/runtime/ScalaRunTime$;
+Field	scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
 Asciz	xs$1;
 NameAndType	xs$1:Ljava/lang/Object;
 Field	scala/collection/TraversableLike$$anonfun$copyToArray$1.xs$1:Ljava/lang/Object;
-Asciz	java/lang/reflect/Array;
-class	java/lang/reflect/Array
-Asciz	set;
+Asciz	array_update;
 Asciz	(Ljava/lang/Object;ILjava/lang/Object;)V;
-NameAndType	set:(Ljava/lang/Object;ILjava/lang/Object;)V
-Method	java/lang/reflect/Array.set:(Ljava/lang/Object;ILjava/lang/Object;)V
+NameAndType	array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
+Method	scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
 Asciz	x;
 Asciz	(TA;)V;
 Asciz	Scala;
@@ -163,7 +166,7 @@ public final java.lang.Object apply(java.lang.Object);
 public final void apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
   Code:
-   Stack=3, Locals=4, Args_size=2
+   Stack=4, Locals=2, Args_size=2
 	aload_0
 	getfield	Field $outer:Lscala/collection/TraversableLike$$anonfun$copyToArray$1;
 	getfield	Field scala/collection/TraversableLike$$anonfun$copyToArray$1.i$5:Lscala/runtime/IntRef;
@@ -171,23 +174,20 @@ public final void apply(java.lang.Object);
 	aload_0
 	getfield	Field $outer:Lscala/collection/TraversableLike$$anonfun$copyToArray$1;
 	getfield	Field scala/collection/TraversableLike$$anonfun$copyToArray$1.end$1:I
-	if_icmplt	l1 // aload_0
+	if_icmplt	l1 // getstatic
 	getstatic	Field scala/collection/Traversable$.MODULE$:Lscala/collection/Traversable$;
 	invokevirtual	Method scala/collection/Traversable$.breaks:()Lscala/util/control/Breaks;
 	invokevirtual	Method scala/util/control/Breaks.break:()V
-l1	aload_0
+l1	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
+	aload_0
 	getfield	Field $outer:Lscala/collection/TraversableLike$$anonfun$copyToArray$1;
 	getfield	Field scala/collection/TraversableLike$$anonfun$copyToArray$1.xs$1:Ljava/lang/Object;
 	aload_0
 	getfield	Field $outer:Lscala/collection/TraversableLike$$anonfun$copyToArray$1;
 	getfield	Field scala/collection/TraversableLike$$anonfun$copyToArray$1.i$5:Lscala/runtime/IntRef;
 	getfield	Field scala/runtime/IntRef.elem:I
-	istore_3
-	astore_2
-	aload_2
-	iload_3
 	aload_1
-	invokestatic	Method java/lang/reflect/Array.set:(Ljava/lang/Object;ILjava/lang/Object;)V
+	invokevirtual	Method scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
 	aload_0
 	getfield	Field $outer:Lscala/collection/TraversableLike$$anonfun$copyToArray$1;
 	getfield	Field scala/collection/TraversableLike$$anonfun$copyToArray$1.i$5:Lscala/runtime/IntRef;
@@ -200,14 +200,14 @@ l1	aload_0
 	putfield	Field scala/runtime/IntRef.elem:I
 	return
   Labels:
-   	l1 = 29 // aload_0
+   	l1 = 29 // getstatic
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      77      0    this       Lscala/collection/TraversableLike$$anonfun$copyToArray$1$$anonfun$apply$10;
-   0      77      1    x       Ljava/lang/Object;
+   0      76      0    this       Lscala/collection/TraversableLike$$anonfun$copyToArray$1$$anonfun$apply$10;
+   0      76      1    x       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 54 
+   00 57 
 
 }
 

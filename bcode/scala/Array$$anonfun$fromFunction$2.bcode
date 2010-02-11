@@ -86,6 +86,11 @@ Asciz	newArray;
 Asciz	(I)Ljava/lang/Object;;
 NameAndType	newArray:(I)Ljava/lang/Object;
 InterfaceMethod	scala/reflect/ClassManifest.newArray:(I)Ljava/lang/Object;
+Asciz	scala/runtime/ScalaRunTime$;
+class	scala/runtime/ScalaRunTime$
+Asciz	Lscala/runtime/ScalaRunTime$;;
+NameAndType	MODULE$:Lscala/runtime/ScalaRunTime$;
+Field	scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
 Asciz	scala/Array$$anonfun$fromFunction$1$$anonfun$apply$15;
 class	scala/Array$$anonfun$fromFunction$1$$anonfun$apply$15
 Asciz	(Lscala/Array$$anonfun$fromFunction$1;I)V;
@@ -100,12 +105,10 @@ class	scala/Function2
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 InterfaceMethod	scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-Asciz	java/lang/reflect/Array;
-class	java/lang/reflect/Array
-Asciz	set;
+Asciz	array_update;
 Asciz	(Ljava/lang/Object;ILjava/lang/Object;)V;
-NameAndType	set:(Ljava/lang/Object;ILjava/lang/Object;)V
-Method	java/lang/reflect/Array.set:(Ljava/lang/Object;ILjava/lang/Object;)V
+NameAndType	array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
+Method	scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
 Asciz	[Ljava/lang/Object;;
 class	"[Ljava/lang/Object;"
 Asciz	i$12;
@@ -202,7 +205,7 @@ public final java.lang.Object apply(java.lang.Object);
 public final java.lang.Object[] apply(int);
   Signature: (I)[Ljava/lang/Object;
   Code:
-   Stack=5, Locals=18, Args_size=2
+   Stack=9, Locals=17, Args_size=2
 	new	class scala/Array$$anonfun$fromFunction$2$$anonfun$apply$16
 	dup
 	aload_0
@@ -232,13 +235,16 @@ public final java.lang.Object[] apply(int);
 	aload_2
 	iload_3
 	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.newArray:(I)Ljava/lang/Object;
-	astore	17
+	astore	16
 	iconst_0
-	istore	16
-l4	iload	16
+	istore	15
+l4	iload	15
 	iload_3
 	if_icmpge	l1 // aload
-	iload	16
+	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
+	aload	16
+	iload	15
+	iload	15
 	istore	10
 	new	class scala/Array$$anonfun$fromFunction$1$$anonfun$apply$15
 	dup
@@ -253,13 +259,16 @@ l4	iload	16
 	aload	7
 	iload	8
 	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.newArray:(I)Ljava/lang/Object;
-	astore	15
+	astore	14
 	iconst_0
-	istore	14
-l3	iload	14
+	istore	13
+l3	iload	13
 	iload	8
 	if_icmpge	l2 // aload
-	iload	14
+	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
+	aload	14
+	iload	13
+	iload	13
 	istore	12
 	aload	9
 	iload	10
@@ -269,53 +278,47 @@ l3	iload	14
 	iload	12
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokeinterface	InterfaceMethod scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-	astore	13
-	aload	15
-	iload	14
-	aload	13
-	invokestatic	Method java/lang/reflect/Array.set:(Ljava/lang/Object;ILjava/lang/Object;)V
-	iload	14
+	invokevirtual	Method scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
+	iload	13
 	iconst_1
 	iadd
-	istore	14
+	istore	13
 	goto	l3 // iload
-l2	aload	17
-	iload	16
-	aload	15
-	invokestatic	Method java/lang/reflect/Array.set:(Ljava/lang/Object;ILjava/lang/Object;)V
-	iload	16
+l2	aload	14
+	invokevirtual	Method scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
+	iload	15
 	iconst_1
 	iadd
-	istore	16
+	istore	15
 	goto	l4 // iload
-l1	aload	17
+l1	aload	16
 	checkcast	class "[Ljava/lang/Object;"
 	areturn
   Labels:
    	l4 = 64 // iload
-   	l3 = 108 // iload
-   	l2 = 160 // aload
-   	l1 = 178 // aload
+   	l3 = 115 // iload
+   	l2 = 166 // aload
+   	l1 = 180 // aload
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      184      0    this       Lscala/Array$$anonfun$fromFunction$2;
-   0      184      1    i$12       I
-   64      120      2    evidence$210       Lscala/reflect/ClassManifest;
-   64      120      3    n10       I
-   64      120      4    f0       Lscala/Function1;
-   64      120      5    n2$130       I
-   64      120      6    evidence$22$10       Lscala/reflect/ClassManifest;
-   108      70      7    evidence$211       Lscala/reflect/ClassManifest;
-   108      70      8    n1       I
-   64      120      9    f$50       Lscala/Function2;
-   108      70      10    i$110       I
-   108      52      14    i1       I
-   105      55      15    a1       Ljava/lang/Object;
-   64      116      16    i0       I
-   61      119      17    a0       Ljava/lang/Object;
+   0      186      0    this       Lscala/Array$$anonfun$fromFunction$2;
+   0      186      1    i$12       I
+   64      122      2    evidence$210       Lscala/reflect/ClassManifest;
+   64      122      3    n10       I
+   64      122      4    f0       Lscala/Function1;
+   64      122      5    n2$130       I
+   64      122      6    evidence$22$10       Lscala/reflect/ClassManifest;
+   115      65      7    evidence$211       Lscala/reflect/ClassManifest;
+   115      65      8    n1       I
+   64      122      9    f$50       Lscala/Function2;
+   115      65      10    i$110       I
+   115      53      13    i1       I
+   112      56      14    a1       Ljava/lang/Object;
+   64      118      15    i0       I
+   61      121      16    a0       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 72 
+   00 75 
 
 }
 
