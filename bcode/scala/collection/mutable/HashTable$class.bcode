@@ -70,6 +70,10 @@ Asciz	elemHashCode;
 Asciz	(Lscala/collection/mutable/HashTable;Ljava/lang/Object;)I;
 Asciz	java/lang/Object;
 class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	hashCode;
 NameAndType	hashCode:()I
 Method	java/lang/Object.hashCode:()I
@@ -87,10 +91,6 @@ Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
 NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	key1;
 Asciz	key2;
 Asciz	resize;
@@ -338,15 +338,28 @@ public static final int improve(scala.collection.mutable.HashTable, int);
 public static int elemHashCode(scala.collection.mutable.HashTable, java.lang.Object);
   Signature: (Lscala/collection/mutable/HashTable;Ljava/lang/Object;)I
   Code:
-   Stack=1, Locals=2, Args_size=2
+   Stack=2, Locals=2, Args_size=2
 	aload_1
+	dup
+	pop
+	ifnull	l1 // iconst_0
+	aload_1
+	aconst_null
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l2 // aload_1
+l1	iconst_0
+	goto	l3 // ireturn
+l2	aload_1
 	invokevirtual	Method java/lang/Object.hashCode:()I
-	ireturn
+l3	ireturn
   Labels:
+   	l1 = 14 // iconst_0
+   	l2 = 18 // aload_1
+   	l3 = 22 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      5      0    $this       Lscala/collection/mutable/HashTable;
-   0      5      1    key       Ljava/lang/Object;
+   0      23      0    $this       Lscala/collection/mutable/HashTable;
+   0      23      1    key       Ljava/lang/Object;
 
 
 public static boolean elemEquals(scala.collection.mutable.HashTable, java.lang.Object, java.lang.Object);

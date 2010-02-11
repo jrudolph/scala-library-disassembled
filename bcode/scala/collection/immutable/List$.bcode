@@ -4,7 +4,7 @@ public final class scala.collection.immutable.List$ extends scala.collection.gen
   Scala: length = 0x
    
   Signature: length = 0x2
-   01 3F 
+   01 49 
   InnerClass: 
    public final $anonfun$break$1=class scala/collection/immutable/List$$anonfun$break$1 of class scala/collection/immutable/List
    public final $anonfun$unzip$1=class scala/collection/immutable/List$$anonfun$unzip$1 of class scala/collection/immutable/List
@@ -185,27 +185,37 @@ Asciz	sb;
 Asciz	Lscala/collection/mutable/StringBuilder;;
 Asciz	(Lscala/collection/immutable/List<Ljava/lang/Character;>;)Ljava/lang/String;;
 Asciz	fromString;
-Asciz	(Ljava/lang/String;)Lscala/collection/immutable/List;;
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	augmentString;
-Asciz	(Ljava/lang/String;)Lscala/collection/immutable/StringOps;;
-NameAndType	augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
-Method	scala/Predef$.augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
-InterfaceMethod	scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
-Asciz	str;
-Asciz	Ljava/lang/String;;
-Asciz	(Ljava/lang/String;)Lscala/collection/immutable/List<Ljava/lang/Character;>;;
-Asciz	fromArray;
-Asciz	(Ljava/lang/Object;II)Lscala/collection/immutable/List;;
+Asciz	(Ljava/lang/String;C)Lscala/collection/immutable/List;;
 Asciz	scala/collection/immutable/Nil$;
 class	scala/collection/immutable/Nil$
 Asciz	Lscala/collection/immutable/Nil$;;
 NameAndType	MODULE$:Lscala/collection/immutable/Nil$;
 Field	scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+Asciz	java/lang/String;
+class	java/lang/String
+Asciz	length;
+Asciz	()I;
+NameAndType	length:()I
+Method	java/lang/String.length:()I
+Asciz	lastIndexOf;
+Asciz	(II)I;
+NameAndType	lastIndexOf:(II)I
+Method	java/lang/String.lastIndexOf:(II)I
+Asciz	substring;
+Asciz	(II)Ljava/lang/String;;
+NameAndType	substring:(II)Ljava/lang/String;
+Method	java/lang/String.substring:(II)Ljava/lang/String;
+Asciz	str;
+Asciz	Ljava/lang/String;;
+Asciz	separator;
+Asciz	C;
+Asciz	words;
+Asciz	pos;
+Asciz	I;
+Asciz	pos1;
+Asciz	(Ljava/lang/String;C)Lscala/collection/immutable/List<Ljava/lang/String;>;;
+Asciz	fromArray;
+Asciz	(Ljava/lang/Object;II)Lscala/collection/immutable/List;;
 Asciz	java/lang/reflect/Array;
 class	java/lang/reflect/Array
 Asciz	get;
@@ -214,7 +224,6 @@ NameAndType	get:(Ljava/lang/Object;I)Ljava/lang/Object;
 Method	java/lang/reflect/Array.get:(Ljava/lang/Object;I)Ljava/lang/Object;
 Asciz	arr;
 Asciz	start;
-Asciz	I;
 Asciz	len;
 Asciz	i;
 Asciz	res;
@@ -329,6 +338,7 @@ Asciz	Z;
 Asciz	down;
 Asciz	next;
 Asciz	(IILscala/Function1<Ljava/lang/Integer;Ljava/lang/Integer;>;)Lscala/collection/immutable/List<Ljava/lang/Integer;>;;
+InterfaceMethod	scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
 Asciz	<A:Ljava/lang/Object;>(Lscala/collection/Seq<TA;>;)Lscala/collection/immutable/List<TA;>;;
 Asciz	<A:Ljava/lang/Object;>()Lscala/collection/immutable/List<TA;>;;
 Asciz	newBuilder;
@@ -848,23 +858,61 @@ l1	aload_2
   Signature: length = 0x2
    00 FFFFFFA5 
 
-public scala.collection.immutable.List fromString(java.lang.String);
-  Signature: (Ljava/lang/String;)Lscala/collection/immutable/List;
+public scala.collection.immutable.List fromString(java.lang.String, char);
+  Signature: (Ljava/lang/String;C)Lscala/collection/immutable/List;
   Code:
-   Stack=2, Locals=2, Args_size=2
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+   Stack=4, Locals=7, Args_size=3
+	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+	astore_3
 	aload_1
-	invokevirtual	Method scala/Predef$.augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+	invokevirtual	Method java/lang/String.length:()I
+	istore	4
+l3	iload	4
+	iconst_0
+	if_icmple	l1 // aload_3
+	aload_1
+	iload_2
+	iload	4
+	iconst_1
+	isub
+	invokevirtual	Method java/lang/String.lastIndexOf:(II)I
+	istore	5
+	iload	5
+	iconst_1
+	iadd
+	iload	4
+	if_icmpge	l2 // iload
+	aload_1
+	iload	5
+	iconst_1
+	iadd
+	iload	4
+	invokevirtual	Method java/lang/String.substring:(II)Ljava/lang/String;
+	astore	6
+	aload_3
+	aload	6
+	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
+	astore_3
+l2	iload	5
+	istore	4
+	goto	l3 // iload
+l1	aload_3
 	areturn
   Labels:
+   	l3 = 10 // iload
+   	l2 = 55 // iload
+   	l1 = 62 // aload_3
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      13      0    this       Lscala/collection/immutable/List$;
-   0      13      1    str       Ljava/lang/String;
+   0      64      0    this       Lscala/collection/immutable/List$;
+   0      64      1    str       Ljava/lang/String;
+   0      64      2    separator       C
+   4      59      3    words       Lscala/collection/immutable/List;
+   10      53      4    pos       I
+   27      32      5    pos1       I
 
   Signature: length = 0x2
-   00 FFFFFFB4 
+   00 FFFFFFC3 
 
 public scala.collection.immutable.List fromArray(java.lang.Object, int, int);
   Signature: (Ljava/lang/Object;II)Lscala/collection/immutable/List;
@@ -907,7 +955,7 @@ l1	aload	6
    5      39      6    res       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   00 FFFFFFC8 
+   00 FFFFFFD1 
 
 public scala.collection.immutable.List fromArray(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/List;
@@ -928,7 +976,7 @@ public scala.collection.immutable.List fromArray(java.lang.Object);
    0      14      1    arr       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 FFFFFFD4 
+   00 FFFFFFDD 
 
 public scala.collection.immutable.List fromIterator(scala.collection.Iterator);
   Signature: (Lscala/collection/Iterator;)Lscala/collection/immutable/List;
@@ -944,7 +992,7 @@ public scala.collection.immutable.List fromIterator(scala.collection.Iterator);
    0      7      1    it       Lscala/collection/Iterator;
 
   Signature: length = 0x2
-   00 FFFFFFDC 
+   00 FFFFFFE5 
 
 public scala.Tuple2 separate(scala.collection.Iterable);
   Signature: (Lscala/collection/Iterable;)Lscala/Tuple2;
@@ -969,7 +1017,7 @@ public scala.Tuple2 separate(scala.collection.Iterable);
    0      30      1    es       Lscala/collection/Iterable;
 
   Signature: length = 0x2
-   00 FFFFFFED 
+   00 FFFFFFF6 
 
 public scala.collection.immutable.List rights(scala.collection.Iterable);
   Signature: (Lscala/collection/Iterable;)Lscala/collection/immutable/List;
@@ -990,7 +1038,7 @@ public scala.collection.immutable.List rights(scala.collection.Iterable);
    0      20      1    es       Lscala/collection/Iterable;
 
   Signature: length = 0x2
-   00 FFFFFFF3 
+   00 FFFFFFFC 
 
 public scala.collection.immutable.List lefts(scala.collection.Iterable);
   Signature: (Lscala/collection/Iterable;)Lscala/collection/immutable/List;
@@ -1011,7 +1059,7 @@ public scala.collection.immutable.List lefts(scala.collection.Iterable);
    0      20      1    es       Lscala/collection/Iterable;
 
   Signature: length = 0x2
-   00 FFFFFFF8 
+   01 01 
 
 public scala.Tuple2 unzip(scala.collection.Iterable);
   Signature: (Lscala/collection/Iterable;)Lscala/Tuple2;
@@ -1036,7 +1084,7 @@ public scala.Tuple2 unzip(scala.collection.Iterable);
    0      30      1    xs       Lscala/collection/Iterable;
 
   Signature: length = 0x2
-   00 FFFFFFFD 
+   01 06 
 
 public scala.Tuple2 unzip(scala.collection.immutable.List);
   Signature: (Lscala/collection/immutable/List;)Lscala/Tuple2;
@@ -1097,7 +1145,7 @@ l1	aload_2
    45      51      4    xc       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   01 07 
+   01 10 
 
 public scala.collection.immutable.List flatten(scala.collection.immutable.List);
   Signature: (Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
@@ -1124,7 +1172,7 @@ public scala.collection.immutable.List flatten(scala.collection.immutable.List);
    8      18      2    b$1       Lscala/collection/mutable/ListBuffer;
 
   Signature: length = 0x2
-   01 15 
+   01 1E 
 
 public scala.collection.immutable.List make(int, java.lang.Object);
   Signature: (ILjava/lang/Object;)Lscala/collection/immutable/List;
@@ -1163,7 +1211,7 @@ l1	aload_3
    11      25      4    i       I
 
   Signature: length = 0x2
-   01 1A 
+   01 23 
 
 public scala.collection.immutable.List range(int, int, scala.Function1);
   Signature: (IILscala/Function1;)Lscala/collection/immutable/List;
@@ -1267,7 +1315,7 @@ l8	iload	7
    88      73      8    i       I
 
   Signature: length = 0x2
-   01 36 
+   01 3F 
 
 public scala.collection.immutable.List apply(scala.collection.Seq);
   Signature: (Lscala/collection/Seq;)Lscala/collection/immutable/List;
@@ -1283,7 +1331,7 @@ public scala.collection.immutable.List apply(scala.collection.Seq);
    0      7      1    xs       Lscala/collection/Seq;
 
   Signature: length = 0x2
-   01 37 
+   01 41 
 
 public scala.collection.immutable.List empty();
   Signature: ()Lscala/collection/immutable/List;
@@ -1293,7 +1341,7 @@ public scala.collection.immutable.List empty();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 38 
+   01 42 
 
 public scala.collection.mutable.Builder newBuilder();
   Signature: ()Lscala/collection/mutable/Builder;
@@ -1305,7 +1353,7 @@ public scala.collection.mutable.Builder newBuilder();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 3B 
+   01 45 
 
 public scala.collection.generic.CanBuildFrom canBuildFrom();
   Signature: ()Lscala/collection/generic/CanBuildFrom;
@@ -1318,7 +1366,7 @@ public scala.collection.generic.CanBuildFrom canBuildFrom();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 3E 
+   01 48 
 
 }
 

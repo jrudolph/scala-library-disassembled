@@ -114,6 +114,10 @@ int	10;
 Asciz	h;
 Asciz	elemHashCode;
 Asciz	(Lscala/collection/mutable/FlatHashTable;Ljava/lang/Object;)I;
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	hashCode;
 NameAndType	hashCode:()I
 Method	java/lang/Object.hashCode:()I
@@ -147,7 +151,6 @@ NameAndType	foreach:(Lscala/Function1;)V
 InterfaceMethod	scala/collection/immutable/Range$ByOne.foreach:(Lscala/Function1;)V
 Asciz	growTable;
 Asciz	addEntry;
-Asciz	(Ljava/lang/Object;)Z;
 NameAndType	addEntry:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/collection/mutable/FlatHashTable.addEntry:(Ljava/lang/Object;)Z
 Asciz	oldtable;
@@ -180,9 +183,6 @@ Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
 NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Asciz	equals;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	tableSize;
 NameAndType	tableSize:()I
 InterfaceMethod	scala/collection/mutable/FlatHashTable.tableSize:()I
@@ -516,15 +516,28 @@ public static final int improve(scala.collection.mutable.FlatHashTable, int);
 public static int elemHashCode(scala.collection.mutable.FlatHashTable, java.lang.Object);
   Signature: (Lscala/collection/mutable/FlatHashTable;Ljava/lang/Object;)I
   Code:
-   Stack=1, Locals=2, Args_size=2
+   Stack=2, Locals=2, Args_size=2
 	aload_1
+	dup
+	pop
+	ifnull	l1 // iconst_0
+	aload_1
+	aconst_null
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l2 // aload_1
+l1	iconst_0
+	goto	l3 // ireturn
+l2	aload_1
 	invokevirtual	Method java/lang/Object.hashCode:()I
-	ireturn
+l3	ireturn
   Labels:
+   	l1 = 14 // iconst_0
+   	l2 = 18 // aload_1
+   	l3 = 22 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      5      0    $this       Lscala/collection/mutable/FlatHashTable;
-   0      5      1    elem       Ljava/lang/Object;
+   0      23      0    $this       Lscala/collection/mutable/FlatHashTable;
+   0      23      1    elem       Ljava/lang/Object;
 
 
 private static void checkConsistent(scala.collection.mutable.FlatHashTable);
