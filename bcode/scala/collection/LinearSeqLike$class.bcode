@@ -60,6 +60,9 @@ Asciz	drop;
 Asciz	(I)Lscala/collection/LinearSeqLike;;
 NameAndType	drop:(I)Lscala/collection/LinearSeqLike;
 InterfaceMethod	scala/collection/LinearSeqLike.drop:(I)Lscala/collection/LinearSeqLike;
+Asciz	nonEmpty;
+NameAndType	nonEmpty:()Z
+InterfaceMethod	scala/collection/TraversableLike.nonEmpty:()Z
 Asciz	from;
 Asciz	segmentLength;
 Asciz	isDefinedAt;
@@ -291,22 +294,17 @@ public static int indexWhere(scala.collection.LinearSeqLike, scala.Function1, in
 	iload_2
 	invokeinterface	InterfaceMethod scala/collection/LinearSeqLike.drop:(I)Lscala/collection/LinearSeqLike;
 	astore	4
-l5	aload	4
-	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
-	ifne	l1 // aload
+l3	aload	4
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.nonEmpty:()Z
+	ifeq	l1 // iconst_m1
 	aload_1
 	aload	4
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.head:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 	ifeq	l2 // iload_3
-l1	aload	4
-	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
-	ifeq	l3 // iload_3
-	iconst_m1
-	goto	l4 // ireturn
-l3	iload_3
-l4	ireturn
+	iload_3
+	ireturn
 l2	iload_3
 	iconst_1
 	iadd
@@ -315,20 +313,20 @@ l2	iload_3
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/LinearSeqLike
 	astore	4
-	goto	l5 // aload
+	goto	l3 // aload
+l1	iconst_m1
+	ireturn
   Labels:
-   	l5 = 11 // aload
-   	l1 = 40 // aload
-   	l3 = 54 // iload_3
-   	l4 = 55 // ireturn
-   	l2 = 56 // iload_3
+   	l3 = 11 // aload
+   	l2 = 42 // iload_3
+   	l1 = 61 // iconst_m1
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      75      0    $this       Lscala/collection/LinearSeqLike;
-   0      75      1    p       Lscala/Function1;
-   0      75      2    from       I
-   2      73      3    i       I
-   11      64      4    these       Lscala/collection/LinearSeqLike;
+   0      63      0    $this       Lscala/collection/LinearSeqLike;
+   0      63      1    p       Lscala/Function1;
+   0      63      2    from       I
+   2      60      3    i       I
+   11      51      4    these       Lscala/collection/LinearSeqLike;
 
 
 public static int segmentLength(scala.collection.LinearSeqLike, scala.Function1, int);

@@ -2,7 +2,7 @@ Compiled from "Iterator.scala"
 public class scala.collection.Iterator$Partner$1 extends java.lang.Object implements scala.collection.Iterator,scala.ScalaObject
   SourceFile: "Iterator.scala"
   Signature: length = 0x2
-   01 71 
+   01 FFFFFF81 
   Scala: length = 0x
    
   InnerClass: 
@@ -52,20 +52,38 @@ Asciz	(Lscala/collection/Iterator<TA;>;)V;
 Asciz	Signature;
 Asciz	scala$collection$Iterator$Partner$$$outer;
 Asciz	()Lscala/collection/Iterator;;
-Asciz	next;
-Asciz	()Ljava/lang/Object;;
-NameAndType	scala$collection$Iterator$Partner$$$outer:()Lscala/collection/Iterator;
-Method	scala/collection/Iterator$Partner$1.scala$collection$Iterator$Partner$$$outer:()Lscala/collection/Iterator;
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+Asciz	compareGap;
+Asciz	(Lscala/collection/mutable/Queue;)Z;
+NameAndType	compareGap:(Lscala/collection/mutable/Queue;)Z
+Method	scala/collection/Iterator$Partner$1.compareGap:(Lscala/collection/mutable/Queue;)Z
 Asciz	scala/collection/mutable/Queue;
 class	scala/collection/mutable/Queue
 Asciz	isEmpty;
 Asciz	()Z;
 NameAndType	isEmpty:()Z
 Method	scala/collection/mutable/Queue.isEmpty:()Z
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	other;
+Asciz	Ljava/lang/Object;;
+Asciz	temp2;
+Asciz	hashCode;
+Asciz	()I;
+Asciz	scala/collection/SeqLike;
+class	scala/collection/SeqLike
+NameAndType	hashCode:()I
+InterfaceMethod	scala/collection/SeqLike.hashCode:()I
+Asciz	queue;
+Asciz	(Lscala/collection/mutable/Queue<TA;>;)Z;
+Asciz	next;
+Asciz	()Ljava/lang/Object;;
+NameAndType	scala$collection$Iterator$Partner$$$outer:()Lscala/collection/Iterator;
+Method	scala/collection/Iterator$Partner$1.scala$collection$Iterator$Partner$$$outer:()Lscala/collection/Iterator;
 Asciz	scala/runtime/ObjectRef;
 class	scala/runtime/ObjectRef
 Asciz	elem;
-Asciz	Ljava/lang/Object;;
 NameAndType	elem:Ljava/lang/Object;
 Field	scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 Asciz	scala/collection/Iterator;
@@ -95,7 +113,6 @@ Asciz	hasNext;
 NameAndType	hasNext:()Z
 InterfaceMethod	scala/collection/Iterator.hasNext:()Z
 Asciz	sliding$default$2;
-Asciz	()I;
 Asciz	(Lscala/collection/Iterator;)I;
 NameAndType	sliding$default$2:(Lscala/collection/Iterator;)I
 Method	scala/collection/Iterator$class.sliding$default$2:(Lscala/collection/Iterator;)I
@@ -287,7 +304,6 @@ Asciz	(Lscala/collection/Iterator;Lscala/Function1;)Lscala/Option;;
 NameAndType	find:(Lscala/collection/Iterator;Lscala/Function1;)Lscala/Option;
 Method	scala/collection/Iterator$class.find:(Lscala/collection/Iterator;Lscala/Function1;)Lscala/Option;
 Asciz	contains;
-Asciz	(Ljava/lang/Object;)Z;
 Asciz	(Lscala/collection/Iterator;Ljava/lang/Object;)Z;
 NameAndType	contains:(Lscala/collection/Iterator;Ljava/lang/Object;)Z
 Method	scala/collection/Iterator$class.contains:(Lscala/collection/Iterator;Ljava/lang/Object;)Z
@@ -442,6 +458,77 @@ public scala.collection.Iterator scala$collection$Iterator$Partner$$$outer();
 	areturn
   Labels:
 
+public boolean equals(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Z
+  Code:
+   Stack=2, Locals=3, Args_size=2
+	aload_1
+	instanceof	class scala/collection/Iterator$Partner$1
+	ifeq	l1 // aload_0
+	aload_1
+	checkcast	class scala/collection/Iterator$Partner$1
+	astore_2
+	aload_2
+	aload_0
+	getfield	Field gap$1:Lscala/collection/mutable/Queue;
+	invokespecial	Method compareGap:(Lscala/collection/mutable/Queue;)Z
+	ifeq	l2 // iconst_0
+	aload_0
+	getfield	Field gap$1:Lscala/collection/mutable/Queue;
+	invokevirtual	Method scala/collection/mutable/Queue.isEmpty:()Z
+	ifeq	l2 // iconst_0
+	iconst_1
+	goto	l3 // ireturn
+l2	iconst_0
+	goto	l3 // ireturn
+l1	aload_0
+	aload_1
+	invokespecial	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l3	ireturn
+  Labels:
+   	l2 = 37 // iconst_0
+   	l1 = 41 // aload_0
+   	l3 = 46 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      47      0    this       Lscala/collection/Iterator$Partner$1;
+   0      47      1    other       Ljava/lang/Object;
+   12      29      2    temp2       Lscala/collection/Iterator$Partner$1;
+
+
+public int hashCode();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field gap$1:Lscala/collection/mutable/Queue;
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.hashCode:()I
+	ireturn
+  Labels:
+
+private boolean compareGap(scala.collection.mutable.Queue);
+  Signature: (Lscala/collection/mutable/Queue;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	getfield	Field gap$1:Lscala/collection/mutable/Queue;
+	aload_1
+	if_acmpne	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 12 // iconst_0
+   	l2 = 13 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    this       Lscala/collection/Iterator$Partner$1;
+   0      14      1    queue       Lscala/collection/mutable/Queue;
+
+  Signature: length = 0x2
+   00 42 
+
 public java.lang.Object next();
   Signature: ()Ljava/lang/Object;
   Code:
@@ -504,7 +591,7 @@ l3	aload_1
    49      22      2    e       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 50 
+   00 62 
 
 public boolean hasNext();
   Signature: ()Z
@@ -931,7 +1018,7 @@ public scala.collection.Iterator$GroupedIterator sliding(int, int);
    0      7      2    step       I
 
   Signature: length = 0x2
-   00 FFFFFFD6 
+   00 FFFFFFE7 
 
 public scala.collection.Iterator$GroupedIterator grouped(int);
   Signature: (I)Lscala/collection/Iterator$GroupedIterator;
@@ -948,7 +1035,7 @@ public scala.collection.Iterator$GroupedIterator grouped(int);
    0      6      1    size       I
 
   Signature: length = 0x2
-   00 FFFFFFDD 
+   00 FFFFFFEE 
 
 public scala.collection.BufferedIterator buffered();
   Signature: ()Lscala/collection/BufferedIterator;

@@ -2002,39 +2002,35 @@ public static int indexWhere(scala.collection.SeqLike, scala.Function1, int);
 	iload_2
 	invokeinterface	InterfaceMethod scala/collection/Iterator.drop:(I)Lscala/collection/Iterator;
 	astore	4
-l2	aload	4
+l3	aload	4
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // aload
+	ifeq	l1 // iconst_m1
 	aload_1
 	aload	4
 	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
-	ifne	l1 // aload
+	ifeq	l2 // iload_3
 	iload_3
+	ireturn
+l2	iload_3
 	iconst_1
 	iadd
 	istore_3
-	goto	l2 // aload
-l1	aload	4
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l3 // iconst_m1
-	iload_3
-	goto	l4 // ireturn
-l3	iconst_m1
-l4	ireturn
+	goto	l3 // aload
+l1	iconst_m1
+	ireturn
   Labels:
-   	l2 = 16 // aload
-   	l1 = 52 // aload
-   	l3 = 66 // iconst_m1
-   	l4 = 67 // ireturn
+   	l3 = 16 // aload
+   	l2 = 47 // iload_3
+   	l1 = 54 // iconst_m1
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      68      0    $this       Lscala/collection/SeqLike;
-   0      68      1    p       Lscala/Function1;
-   0      68      2    from       I
-   2      66      3    i       I
-   16      52      4    it       Lscala/collection/Iterator;
+   0      56      0    $this       Lscala/collection/SeqLike;
+   0      56      1    p       Lscala/Function1;
+   0      56      2    from       I
+   2      53      3    i       I
+   16      39      4    it       Lscala/collection/Iterator;
 
 
 public static int indexWhere(scala.collection.SeqLike, scala.Function1);
