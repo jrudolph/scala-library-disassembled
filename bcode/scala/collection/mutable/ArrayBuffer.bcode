@@ -2,7 +2,7 @@ Compiled from "ArrayBuffer.scala"
 public class scala.collection.mutable.ArrayBuffer extends java.lang.Object implements scala.collection.mutable.Buffer,scala.collection.generic.GenericTraversableTemplate,scala.collection.mutable.BufferLike,scala.collection.mutable.IndexedSeqLike,scala.collection.mutable.Builder,scala.collection.mutable.ResizableArray,scala.ScalaObject,java.io.Serializable
   SourceFile: "ArrayBuffer.scala"
   Signature: length = 0x2
-   04 62 
+   04 67 
   ScalaSig: length = 0x4FB
    05 00 FFFFFF81 35 06 04 01 02 00 09 02 0B 41 72 72 61
    79 42 75 66 66 65 72 0A 02 03 04 01 07 6D 75 74
@@ -740,6 +740,11 @@ Asciz	compose;
 Asciz	(Lscala/Function1;Lscala/Function1;)Lscala/Function1;;
 NameAndType	compose:(Lscala/Function1;Lscala/Function1;)Lscala/Function1;
 Method	scala/Function1$class.compose:(Lscala/Function1;Lscala/Function1;)Lscala/Function1;
+Asciz	lift;
+Asciz	()Lscala/Function1;;
+Asciz	(Lscala/PartialFunction;)Lscala/Function1;;
+NameAndType	lift:(Lscala/PartialFunction;)Lscala/Function1;
+Method	scala/PartialFunction$class.lift:(Lscala/PartialFunction;)Lscala/Function1;
 Asciz	(Lscala/PartialFunction;Lscala/Function1;)Lscala/PartialFunction;;
 NameAndType	andThen:(Lscala/PartialFunction;Lscala/Function1;)Lscala/PartialFunction;
 Method	scala/PartialFunction$class.andThen:(Lscala/PartialFunction;Lscala/Function1;)Lscala/PartialFunction;
@@ -898,6 +903,7 @@ Method	scala/collection/SeqLike$class.prefixLength:(Lscala/collection/SeqLike;Ls
 Asciz	(Lscala/collection/SeqLike;I)Z;
 NameAndType	isDefinedAt:(Lscala/collection/SeqLike;I)Z
 Method	scala/collection/SeqLike$class.isDefinedAt:(Lscala/collection/SeqLike;I)Z
+Asciz	idx;
 NameAndType	size:(Lscala/collection/SeqLike;)I
 Method	scala/collection/SeqLike$class.size:(Lscala/collection/SeqLike;)I
 Asciz	(Lscala/collection/Iterator;)Lscala/collection/generic/Growable;;
@@ -1198,7 +1204,6 @@ Asciz	(ILjava/lang/Object;)V;
 Asciz	(Lscala/collection/mutable/ResizableArray;ILjava/lang/Object;)V;
 NameAndType	update:(Lscala/collection/mutable/ResizableArray;ILjava/lang/Object;)V
 Method	scala/collection/mutable/ResizableArray$class.update:(Lscala/collection/mutable/ResizableArray;ILjava/lang/Object;)V
-Asciz	idx;
 Asciz	(Lscala/collection/mutable/ResizableArray;I)Ljava/lang/Object;;
 NameAndType	apply:(Lscala/collection/mutable/ResizableArray;I)Ljava/lang/Object;
 Method	scala/collection/mutable/ResizableArray$class.apply:(Lscala/collection/mutable/ResizableArray;I)Ljava/lang/Object;
@@ -2888,6 +2893,15 @@ public scala.Function1 compose(scala.Function1);
    0      6      1    g       Lscala/Function1;
 
 
+public scala.Function1 lift();
+  Signature: ()Lscala/Function1;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/PartialFunction$class.lift:(Lscala/PartialFunction;)Lscala/Function1;
+	areturn
+  Labels:
+
 public scala.PartialFunction andThen(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/PartialFunction;
   Code:
@@ -3477,7 +3491,7 @@ public boolean isDefinedAt(int);
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      6      0    this       Lscala/collection/mutable/ArrayBuffer;
-   0      6      1    x       I
+   0      6      1    idx       I
 
 
 public int size();
