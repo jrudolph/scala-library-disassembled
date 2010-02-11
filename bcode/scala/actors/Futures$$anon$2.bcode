@@ -27,10 +27,10 @@ Asciz	isSet;
 Asciz	()Z;
 Asciz	scala/actors/Futures$$anon$2;
 class	scala/actors/Futures$$anon$2
-Asciz	value;
+Asciz	fvalue;
 Asciz	()Lscala/Option;;
-NameAndType	value:()Lscala/Option;
-Method	scala/actors/Futures$$anon$2.value:()Lscala/Option;
+NameAndType	fvalue:()Lscala/Option;
+Method	scala/actors/Futures$$anon$2.fvalue:()Lscala/Option;
 Asciz	scala/None$;
 class	scala/None$
 Asciz	MODULE$;
@@ -85,10 +85,10 @@ Asciz	respond;
 Asciz	(Lscala/Function1;)V;
 NameAndType	isSet:()Z
 Method	scala/actors/Futures$$anon$2.isSet:()Z
-Asciz	get;
+Asciz	fvalueTyped;
 Asciz	()Ljava/lang/Object;;
-NameAndType	get:()Ljava/lang/Object;
-Method	scala/Option.get:()Ljava/lang/Object;
+NameAndType	fvalueTyped:()Ljava/lang/Object;
+Method	scala/actors/Futures$$anon$2.fvalueTyped:()Ljava/lang/Object;
 Asciz	scala/Function1;
 class	scala/Function1
 Asciz	apply;
@@ -142,7 +142,7 @@ public boolean isSet();
   Code:
    Stack=6, Locals=2, Args_size=1
 	aload_0
-	invokevirtual	Method value:()Lscala/Option;
+	invokevirtual	Method fvalue:()Lscala/Option;
 	astore_1
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	dup
@@ -214,8 +214,7 @@ public void respond(scala.Function1);
 	ifeq	l1 // aload_0
 	aload_1
 	aload_0
-	invokevirtual	Method value:()Lscala/Option;
-	invokevirtual	Method scala/Option.get:()Ljava/lang/Object;
+	invokevirtual	Method fvalueTyped:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	pop
 	return
@@ -229,11 +228,11 @@ l1	aload_0
 	invokeinterface	InterfaceMethod scala/actors/InputChannel.react:(Lscala/PartialFunction;)Lscala/runtime/Nothing$;
 	athrow
   Labels:
-   	l1 = 22 // aload_0
+   	l1 = 19 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      41      0    this       Lscala/actors/Futures$$anon$2;
-   0      41      1    k$1       Lscala/Function1;
+   0      38      0    this       Lscala/actors/Futures$$anon$2;
+   0      38      1    k$1       Lscala/Function1;
 
   Signature: length = 0x2
    00 5E 
@@ -246,8 +245,7 @@ public java.lang.Object apply();
 	invokevirtual	Method isSet:()Z
 	ifeq	l1 // aload_0
 	aload_0
-	invokevirtual	Method value:()Lscala/Option;
-	invokevirtual	Method scala/Option.get:()Ljava/lang/Object;
+	invokevirtual	Method fvalueTyped:()Ljava/lang/Object;
 	goto	l2 // areturn
 l1	aload_0
 	invokevirtual	Method inputChannel:()Lscala/actors/InputChannel;
@@ -258,8 +256,8 @@ l1	aload_0
 	invokeinterface	InterfaceMethod scala/actors/InputChannel.receive:(Lscala/PartialFunction;)Ljava/lang/Object;
 l2	areturn
   Labels:
-   	l1 = 17 // aload_0
-   	l2 = 34 // areturn
+   	l1 = 14 // aload_0
+   	l2 = 31 // areturn
   Signature: length = 0x2
    00 67 
 

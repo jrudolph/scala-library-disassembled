@@ -2,32 +2,33 @@ Compiled from "Iterator.scala"
 public final class scala.collection.Iterator$$anon$25 extends java.lang.Object implements scala.collection.Iterator
   SourceFile: "Iterator.scala"
   Signature: length = 0x2
-   01 5D 
+   01 66 
   Scala: length = 0x
    
   InnerClass: 
    public final $anon$25=class scala/collection/Iterator$$anon$25 of class scala/collection/Iterator
-   public final WithFilter=class scala/collection/Iterator$WithFilter of class scala/collection/Iterator
    public GroupedIterator=class scala/collection/Iterator$GroupedIterator of class scala/collection/Iterator
   minor version: 0
   major version: 49
   Constant pool:
 Asciz	SourceFile;
 Asciz	Iterator.scala;
-Asciz	self$1;
+Asciz	self$3;
 Asciz	Ljava/lang/Object;;
-Asciz	pf$1;
-Asciz	Lscala/PartialFunction;;
+Asciz	p$3;
+Asciz	Lscala/Function1;;
+Asciz	dropped;
+Asciz	Z;
 Asciz	<init>;
-Asciz	(Lscala/collection/Iterator;Lscala/PartialFunction;Ljava/lang/Object;)V;
+Asciz	(Lscala/collection/Iterator;Lscala/Function1;Ljava/lang/Object;)V;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/collection/Iterator$$anon$25;
 class	scala/collection/Iterator$$anon$25
-NameAndType	pf$1:Lscala/PartialFunction;
-Field	scala/collection/Iterator$$anon$25.pf$1:Lscala/PartialFunction;
-NameAndType	self$1:Ljava/lang/Object;
-Field	scala/collection/Iterator$$anon$25.self$1:Ljava/lang/Object;
+NameAndType	p$3:Lscala/Function1;
+Field	scala/collection/Iterator$$anon$25.p$3:Lscala/Function1;
+NameAndType	self$3:Ljava/lang/Object;
+Field	scala/collection/Iterator$$anon$25.self$3:Ljava/lang/Object;
 Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	()V;
@@ -39,6 +40,8 @@ Asciz	$init$;
 Asciz	(Lscala/collection/Iterator;)V;
 NameAndType	$init$:(Lscala/collection/Iterator;)V
 Method	scala/collection/Iterator$class.$init$:(Lscala/collection/Iterator;)V
+NameAndType	dropped:Z
+Field	scala/collection/Iterator$$anon$25.dropped:Z
 Asciz	this;
 Asciz	Lscala/collection/Iterator$$anon$25;;
 Asciz	$outer;
@@ -55,28 +58,34 @@ Asciz	scala/collection/Iterator;
 class	scala/collection/Iterator
 NameAndType	next:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/Iterator.next:()Ljava/lang/Object;
+Asciz	()TA;;
+Asciz	hasNext;
+Asciz	()Z;
+NameAndType	hasNext:()Z
+InterfaceMethod	scala/collection/Iterator.hasNext:()Z
+NameAndType	dropped:()Z
+Method	scala/collection/Iterator$$anon$25.dropped:()Z
+Asciz	scala/collection/BufferedIterator;
+class	scala/collection/BufferedIterator
+Asciz	head;
+NameAndType	head:()Ljava/lang/Object;
+InterfaceMethod	scala/collection/BufferedIterator.head:()Ljava/lang/Object;
 Asciz	scala/Function1;
 class	scala/Function1
 Asciz	apply;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
 InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-Asciz	()TB;;
-Asciz	hasNext;
-Asciz	()Z;
-NameAndType	hasNext:()Z
-InterfaceMethod	scala/collection/Iterator.hasNext:()Z
-Asciz	scala/collection/BufferedIterator;
-class	scala/collection/BufferedIterator
-Asciz	head;
-NameAndType	head:()Ljava/lang/Object;
-InterfaceMethod	scala/collection/BufferedIterator.head:()Ljava/lang/Object;
-Asciz	scala/PartialFunction;
-class	scala/PartialFunction
-Asciz	isDefinedAt;
+Asciz	scala/runtime/BoxesRunTime;
+class	scala/runtime/BoxesRunTime
+Asciz	unboxToBoolean;
 Asciz	(Ljava/lang/Object;)Z;
-NameAndType	isDefinedAt:(Ljava/lang/Object;)Z
-InterfaceMethod	scala/PartialFunction.isDefinedAt:(Ljava/lang/Object;)Z
+NameAndType	unboxToBoolean:(Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
+Asciz	dropped_$eq;
+Asciz	(Z)V;
+NameAndType	dropped_$eq:(Z)V
+Method	scala/collection/Iterator$$anon$25.dropped_$eq:(Z)V
 Asciz	sliding$default$2;
 Asciz	()I;
 Asciz	(Lscala/collection/Iterator;)I;
@@ -88,6 +97,7 @@ Asciz	(Lscala/collection/Iterator;Ljava/lang/Object;)V;
 NameAndType	readInto:(Lscala/collection/Iterator;Ljava/lang/Object;)V
 Method	scala/collection/Iterator$class.readInto:(Lscala/collection/Iterator;Ljava/lang/Object;)V
 Asciz	xs;
+Asciz	Deprecated;
 Asciz	(Ljava/lang/Object;I)V;
 Asciz	(Lscala/collection/Iterator;Ljava/lang/Object;I)V;
 NameAndType	readInto:(Lscala/collection/Iterator;Ljava/lang/Object;I)V
@@ -114,7 +124,6 @@ Asciz	(Lscala/collection/Iterator;Lscala/Function1;)I;
 NameAndType	findIndexOf:(Lscala/collection/Iterator;Lscala/Function1;)I
 Method	scala/collection/Iterator$class.findIndexOf:(Lscala/collection/Iterator;Lscala/Function1;)I
 Asciz	p;
-Asciz	Lscala/Function1;;
 Asciz	append;
 Asciz	(Lscala/collection/Iterator;)Lscala/collection/Iterator;;
 Asciz	(Lscala/collection/Iterator;Lscala/collection/Iterator;)Lscala/collection/Iterator;;
@@ -322,14 +331,13 @@ Asciz	(Lscala/collection/Iterator;Lscala/PartialFunction;)Lscala/collection/Iter
 NameAndType	partialMap:(Lscala/collection/Iterator;Lscala/PartialFunction;)Lscala/collection/Iterator;
 Method	scala/collection/Iterator$class.partialMap:(Lscala/collection/Iterator;Lscala/PartialFunction;)Lscala/collection/Iterator;
 Asciz	pf;
+Asciz	Lscala/PartialFunction;;
 Asciz	filterNot;
 NameAndType	filterNot:(Lscala/collection/Iterator;Lscala/Function1;)Lscala/collection/Iterator;
 Method	scala/collection/Iterator$class.filterNot:(Lscala/collection/Iterator;Lscala/Function1;)Lscala/collection/Iterator;
 Asciz	withFilter;
-Asciz	(Lscala/Function1;)Lscala/collection/Iterator$WithFilter;;
-Asciz	(Lscala/collection/Iterator;Lscala/Function1;)Lscala/collection/Iterator$WithFilter;;
-NameAndType	withFilter:(Lscala/collection/Iterator;Lscala/Function1;)Lscala/collection/Iterator$WithFilter;
-Method	scala/collection/Iterator$class.withFilter:(Lscala/collection/Iterator;Lscala/Function1;)Lscala/collection/Iterator$WithFilter;
+NameAndType	withFilter:(Lscala/collection/Iterator;Lscala/Function1;)Lscala/collection/Iterator;
+Method	scala/collection/Iterator$class.withFilter:(Lscala/collection/Iterator;Lscala/Function1;)Lscala/collection/Iterator;
 Asciz	filter;
 NameAndType	filter:(Lscala/collection/Iterator;Lscala/Function1;)Lscala/collection/Iterator;
 Method	scala/collection/Iterator$class.filter:(Lscala/collection/Iterator;Lscala/Function1;)Lscala/collection/Iterator;
@@ -360,65 +368,65 @@ Asciz	n;
 Asciz	take;
 NameAndType	take:(Lscala/collection/Iterator;I)Lscala/collection/Iterator;
 Method	scala/collection/Iterator$class.take:(Lscala/collection/Iterator;I)Lscala/collection/Iterator;
-Asciz	Ljava/lang/Object;Lscala/collection/Iterator<TB;>;;
+Asciz	Ljava/lang/Object;Lscala/collection/Iterator<TA;>;;
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	$anon$25;
-Asciz	scala/collection/Iterator$WithFilter;
-class	scala/collection/Iterator$WithFilter
-Asciz	WithFilter;
 Asciz	scala/collection/Iterator$GroupedIterator;
 class	scala/collection/Iterator$GroupedIterator
 Asciz	GroupedIterator;
 
 {
-private final java.lang.Object self$1;
+private final java.lang.Object self$3;
   Signature: Ljava/lang/Object;
 
-private final scala.PartialFunction pf$1;
-  Signature: Lscala/PartialFunction;
+private final scala.Function1 p$3;
+  Signature: Lscala/Function1;
 
-public scala.collection.Iterator$$anon$25(scala.collection.Iterator, scala.PartialFunction, java.lang.Object);
-  Signature: (Lscala/collection/Iterator;Lscala/PartialFunction;Ljava/lang/Object;)V
+private boolean dropped;
+  Signature: Z
+
+public scala.collection.Iterator$$anon$25(scala.collection.Iterator, scala.Function1, java.lang.Object);
+  Signature: (Lscala/collection/Iterator;Lscala/Function1;Ljava/lang/Object;)V
   Code:
    Stack=2, Locals=4, Args_size=4
 	aload_0
 	aload_2
-	putfield	Field pf$1:Lscala/PartialFunction;
+	putfield	Field p$3:Lscala/Function1;
 	aload_0
 	aload_3
-	putfield	Field self$1:Ljava/lang/Object;
+	putfield	Field self$3:Ljava/lang/Object;
 	aload_0
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
 	invokestatic	Method scala/collection/Iterator$class.$init$:(Lscala/collection/Iterator;)V
+	aload_0
+	iconst_0
+	putfield	Field dropped:Z
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      19      0    this       Lscala/collection/Iterator$$anon$25;
-   0      19      1    $outer       Lscala/collection/Iterator;
+   0      24      0    this       Lscala/collection/Iterator$$anon$25;
+   0      24      1    $outer       Lscala/collection/Iterator;
 
   Signature: length = 0x2
-   00 21 
+   00 25 
 
 public java.lang.Object next();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=1, Locals=1, Args_size=1
 	aload_0
 	invokespecial	Method skip:()V
 	aload_0
-	getfield	Field pf$1:Lscala/PartialFunction;
-	aload_0
-	getfield	Field self$1:Ljava/lang/Object;
+	getfield	Field self$3:Ljava/lang/Object;
 	checkcast	class scala/collection/Iterator
 	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	areturn
   Labels:
   Signature: length = 0x2
-   00 32 
+   00 30 
 
 public boolean hasNext();
   Signature: ()Z
@@ -427,7 +435,7 @@ public boolean hasNext();
 	aload_0
 	invokespecial	Method skip:()V
 	aload_0
-	getfield	Field self$1:Ljava/lang/Object;
+	getfield	Field self$3:Ljava/lang/Object;
 	checkcast	class scala/collection/Iterator
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
 	ireturn
@@ -437,29 +445,56 @@ private void skip();
   Signature: ()V
   Code:
    Stack=2, Locals=1, Args_size=1
-l2	aload_0
-	getfield	Field self$1:Ljava/lang/Object;
+	aload_0
+	invokespecial	Method dropped:()Z
+	ifne	l1 // return
+l3	aload_0
+	getfield	Field self$3:Ljava/lang/Object;
 	checkcast	class scala/collection/Iterator
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // return
+	ifeq	l2 // aload_0
 	aload_0
-	getfield	Field pf$1:Lscala/PartialFunction;
+	getfield	Field p$3:Lscala/Function1;
 	aload_0
-	getfield	Field self$1:Ljava/lang/Object;
+	getfield	Field self$3:Ljava/lang/Object;
 	checkcast	class scala/collection/BufferedIterator
 	invokeinterface	InterfaceMethod scala/collection/BufferedIterator.head:()Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/PartialFunction.isDefinedAt:(Ljava/lang/Object;)Z
-	ifne	l1 // return
+	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
+	ifeq	l2 // aload_0
 	aload_0
-	getfield	Field self$1:Ljava/lang/Object;
+	getfield	Field self$3:Ljava/lang/Object;
 	checkcast	class scala/collection/Iterator
 	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
 	pop
-	goto	l2 // aload_0
+	goto	l3 // aload_0
+l2	aload_0
+	iconst_1
+	invokespecial	Method dropped_$eq:(Z)V
 l1	return
   Labels:
-   	l2 = 0 // aload_0
-   	l1 = 55 // return
+   	l3 = 7 // aload_0
+   	l2 = 65 // aload_0
+   	l1 = 70 // return
+
+private void dropped_$eq(boolean);
+  Signature: (Z)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field dropped:Z
+	return
+  Labels:
+
+private boolean dropped();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field dropped:Z
+	ireturn
+  Labels:
 
 public int sliding$default$2();
   Signature: ()I
@@ -484,6 +519,7 @@ public void readInto(java.lang.Object);
    0      6      0    this       Lscala/collection/Iterator$$anon$25;
    0      6      1    xs       Ljava/lang/Object;
 
+  Deprecated: true
 
 public void readInto(java.lang.Object, int);
   Signature: (Ljava/lang/Object;I)V
@@ -501,6 +537,7 @@ public void readInto(java.lang.Object, int);
    0      7      1    xs       Ljava/lang/Object;
    0      7      2    start       I
 
+  Deprecated: true
 
 public void readInto(java.lang.Object, int, int);
   Signature: (Ljava/lang/Object;II)V
@@ -520,6 +557,7 @@ public void readInto(java.lang.Object, int, int);
    0      8      2    start       I
    0      8      3    sz       I
 
+  Deprecated: true
 
 public java.lang.Object counted();
   Signature: ()Ljava/lang/Object;
@@ -529,6 +567,7 @@ public java.lang.Object counted();
 	invokestatic	Method scala/collection/Iterator$class.counted:(Lscala/collection/Iterator;)Ljava/lang/Object;
 	areturn
   Labels:
+  Deprecated: true
 
 public scala.collection.Seq collect();
   Signature: ()Lscala/collection/Seq;
@@ -538,6 +577,7 @@ public scala.collection.Seq collect();
 	invokestatic	Method scala/collection/Iterator$class.collect:(Lscala/collection/Iterator;)Lscala/collection/Seq;
 	areturn
   Labels:
+  Deprecated: true
 
 public int findIndexOf(scala.Function1);
   Signature: (Lscala/Function1;)I
@@ -553,6 +593,7 @@ public int findIndexOf(scala.Function1);
    0      6      0    this       Lscala/collection/Iterator$$anon$25;
    0      6      1    p       Lscala/Function1;
 
+  Deprecated: true
 
 public scala.collection.Iterator append(scala.collection.Iterator);
   Signature: (Lscala/collection/Iterator;)Lscala/collection/Iterator;
@@ -568,6 +609,7 @@ public scala.collection.Iterator append(scala.collection.Iterator);
    0      6      0    this       Lscala/collection/Iterator$$anon$25;
    0      6      1    that       Lscala/collection/Iterator;
 
+  Deprecated: true
 
 public java.lang.String toString();
   Signature: ()Ljava/lang/String;
@@ -836,7 +878,7 @@ public scala.collection.Iterator$GroupedIterator sliding(int, int);
    0      7      2    step       I
 
   Signature: length = 0x2
-   00 FFFFFFC2 
+   00 FFFFFFCC 
 
 public scala.collection.Iterator$GroupedIterator grouped(int);
   Signature: (I)Lscala/collection/Iterator$GroupedIterator;
@@ -853,7 +895,7 @@ public scala.collection.Iterator$GroupedIterator grouped(int);
    0      6      1    size       I
 
   Signature: length = 0x2
-   00 FFFFFFC9 
+   00 FFFFFFD3 
 
 public java.lang.Object buffered();
   Signature: ()Ljava/lang/Object;
@@ -1232,13 +1274,13 @@ public scala.collection.Iterator filterNot(scala.Function1);
    0      6      1    p       Lscala/Function1;
 
 
-public scala.collection.Iterator$WithFilter withFilter(scala.Function1);
-  Signature: (Lscala/Function1;)Lscala/collection/Iterator$WithFilter;
+public scala.collection.Iterator withFilter(scala.Function1);
+  Signature: (Lscala/Function1;)Lscala/collection/Iterator;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	invokestatic	Method scala/collection/Iterator$class.withFilter:(Lscala/collection/Iterator;Lscala/Function1;)Lscala/collection/Iterator$WithFilter;
+	invokestatic	Method scala/collection/Iterator$class.withFilter:(Lscala/collection/Iterator;Lscala/Function1;)Lscala/collection/Iterator;
 	areturn
   Labels:
   LocalVariableTable: 
@@ -1246,8 +1288,6 @@ public scala.collection.Iterator$WithFilter withFilter(scala.Function1);
    0      6      0    this       Lscala/collection/Iterator$$anon$25;
    0      6      1    p       Lscala/Function1;
 
-  Signature: length = 0x2
-   01 3B 
 
 public scala.collection.Iterator filter(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/Iterator;

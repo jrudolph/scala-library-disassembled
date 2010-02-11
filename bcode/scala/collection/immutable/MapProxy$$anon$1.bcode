@@ -2,7 +2,7 @@ Compiled from "MapProxy.scala"
 public final class scala.collection.immutable.MapProxy$$anon$1 extends java.lang.Object implements scala.collection.immutable.MapProxy
   SourceFile: "MapProxy.scala"
   Signature: length = 0x2
-   03 01 
+   03 09 
   Scala: length = 0x
    
   InnerClass: 
@@ -174,6 +174,9 @@ Asciz	elem2;
 Asciz	elems;
 Asciz	Lscala/collection/Seq;;
 Asciz	(Lscala/Tuple2;Lscala/Tuple2;Lscala/collection/Seq;)Lscala/collection/Map;;
+Asciz	kv1;
+Asciz	kv2;
+Asciz	kvs;
 Asciz	$minus;
 Asciz	(Ljava/lang/Object;)Lscala/collection/MapLike;;
 Asciz	(Ljava/lang/Object;)Lscala/collection/immutable/MapProxy;;
@@ -282,6 +285,12 @@ Asciz	()Lscala/collection/mutable/IndexedSeq;;
 Asciz	(Lscala/collection/TraversableLike;)Lscala/collection/mutable/IndexedSeq;;
 NameAndType	toIndexedSeq:(Lscala/collection/TraversableLike;)Lscala/collection/mutable/IndexedSeq;
 Method	scala/collection/TraversableLike$class.toIndexedSeq:(Lscala/collection/TraversableLike;)Lscala/collection/mutable/IndexedSeq;
+Asciz	copyToArray;
+Asciz	(Ljava/lang/Object;)V;
+Asciz	(Lscala/collection/TraversableLike;Ljava/lang/Object;)V;
+NameAndType	copyToArray:(Lscala/collection/TraversableLike;Ljava/lang/Object;)V
+Method	scala/collection/TraversableLike$class.copyToArray:(Lscala/collection/TraversableLike;Ljava/lang/Object;)V
+Asciz	xs;
 Asciz	max;
 Asciz	(Lscala/math/Ordering;)Ljava/lang/Object;;
 Asciz	(Lscala/collection/TraversableLike;Lscala/math/Ordering;)Ljava/lang/Object;;
@@ -326,6 +335,7 @@ Asciz	projection;
 Asciz	(Lscala/collection/IterableLike;)Ljava/lang/Object;;
 NameAndType	projection:(Lscala/collection/IterableLike;)Ljava/lang/Object;
 Method	scala/collection/IterableLike$class.projection:(Lscala/collection/IterableLike;)Ljava/lang/Object;
+Asciz	Deprecated;
 Asciz	firstOption;
 Asciz	()Lscala/Option;;
 Asciz	(Lscala/collection/IterableLike;)Lscala/Option;;
@@ -492,12 +502,10 @@ NameAndType	toArray:(Lscala/collection/TraversableProxyLike;Lscala/reflect/Class
 Method	scala/collection/TraversableProxyLike$class.toArray:(Lscala/collection/TraversableProxyLike;Lscala/reflect/ClassManifest;)Ljava/lang/Object;
 Asciz	evidence$1;
 Asciz	Lscala/reflect/ClassManifest;;
-Asciz	copyToArray;
 Asciz	(Ljava/lang/Object;I)V;
 Asciz	(Lscala/collection/TraversableProxyLike;Ljava/lang/Object;I)V;
 NameAndType	copyToArray:(Lscala/collection/TraversableProxyLike;Ljava/lang/Object;I)V
 Method	scala/collection/TraversableProxyLike$class.copyToArray:(Lscala/collection/TraversableProxyLike;Ljava/lang/Object;I)V
-Asciz	xs;
 Asciz	(Ljava/lang/Object;II)V;
 Asciz	(Lscala/collection/TraversableProxyLike;Ljava/lang/Object;II)V;
 NameAndType	copyToArray:(Lscala/collection/TraversableProxyLike;Ljava/lang/Object;II)V
@@ -997,9 +1005,9 @@ public scala.collection.Map $plus(scala.Tuple2, scala.Tuple2, scala.collection.S
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      10      0    this       Lscala/collection/immutable/MapProxy$$anon$1;
-   0      10      1    elem1       Lscala/Tuple2;
-   0      10      2    elem2       Lscala/Tuple2;
-   0      10      3    elems       Lscala/collection/Seq;
+   0      10      1    kv1       Lscala/Tuple2;
+   0      10      2    kv2       Lscala/Tuple2;
+   0      10      3    kvs       Lscala/collection/Seq;
 
 
 public scala.collection.MapLike $minus(java.lang.Object);
@@ -1232,7 +1240,7 @@ public scala.collection.Map $plus$plus(scala.collection.Traversable);
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      8      0    this       Lscala/collection/immutable/MapProxy$$anon$1;
-   0      8      1    elems       Lscala/collection/Traversable;
+   0      8      1    kvs       Lscala/collection/Traversable;
 
 
 public scala.collection.Map $plus$plus(scala.collection.Iterator);
@@ -1298,7 +1306,7 @@ public scala.collection.immutable.Map self();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 05 
+   01 08 
 
 public scala.collection.TraversableLike$WithFilter withFilter(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/TraversableLike$WithFilter;
@@ -1315,7 +1323,7 @@ public scala.collection.TraversableLike$WithFilter withFilter(scala.Function1);
    0      6      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   01 07 
+   01 0A 
 
 public scala.collection.mutable.IndexedSeq toIndexedSeq();
   Signature: ()Lscala/collection/mutable/IndexedSeq;
@@ -1325,6 +1333,21 @@ public scala.collection.mutable.IndexedSeq toIndexedSeq();
 	invokestatic	Method scala/collection/TraversableLike$class.toIndexedSeq:(Lscala/collection/TraversableLike;)Lscala/collection/mutable/IndexedSeq;
 	areturn
   Labels:
+
+public void copyToArray(java.lang.Object);
+  Signature: (Ljava/lang/Object;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/collection/TraversableLike$class.copyToArray:(Lscala/collection/TraversableLike;Ljava/lang/Object;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/immutable/MapProxy$$anon$1;
+   0      6      1    xs       Ljava/lang/Object;
+
 
 public java.lang.Object max(scala.math.Ordering);
   Signature: (Lscala/math/Ordering;)Ljava/lang/Object;
@@ -1448,6 +1471,7 @@ public java.lang.Object projection();
 	invokestatic	Method scala/collection/IterableLike$class.projection:(Lscala/collection/IterableLike;)Ljava/lang/Object;
 	areturn
   Labels:
+  Deprecated: true
 
 public scala.Option firstOption();
   Signature: ()Lscala/Option;
@@ -1457,6 +1481,7 @@ public scala.Option firstOption();
 	invokestatic	Method scala/collection/IterableLike$class.firstOption:(Lscala/collection/IterableLike;)Lscala/Option;
 	areturn
   Labels:
+  Deprecated: true
 
 public java.lang.Object first();
   Signature: ()Ljava/lang/Object;
@@ -1466,6 +1491,7 @@ public java.lang.Object first();
 	invokestatic	Method scala/collection/IterableLike$class.first:(Lscala/collection/IterableLike;)Ljava/lang/Object;
 	areturn
   Labels:
+  Deprecated: true
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -1490,6 +1516,7 @@ public scala.collection.Iterator elements();
 	invokestatic	Method scala/collection/IterableLike$class.elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
 	areturn
   Labels:
+  Deprecated: true
 
 public scala.collection.Iterable toCollection(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/Iterable;
@@ -1641,6 +1668,7 @@ public java.lang.Object mapElements(scala.Function1);
    0      6      0    this       Lscala/collection/immutable/MapProxy$$anon$1;
    0      6      1    f       Lscala/Function1;
 
+  Deprecated: true
 
 public scala.collection.mutable.Builder newBuilder();
   Signature: ()Lscala/collection/mutable/Builder;
@@ -1667,6 +1695,7 @@ public scala.collection.immutable.Map update(java.lang.Object, java.lang.Object)
    0      7      1    key       Ljava/lang/Object;
    0      7      2    value       Ljava/lang/Object;
 
+  Deprecated: true
 
 public java.lang.Object transform(scala.Function2, scala.collection.generic.CanBuildFrom);
   Signature: (Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;

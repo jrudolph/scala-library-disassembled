@@ -2,7 +2,7 @@ Compiled from "Map.scala"
 public class scala.collection.immutable.Map$Map4 extends java.lang.Object implements scala.collection.immutable.Map,scala.ScalaObject,java.io.Serializable
   SourceFile: "Map.scala"
   Signature: length = 0x2
-   03 14 
+   03 1B 
   Scala: length = 0x
    
   InnerClass: 
@@ -163,9 +163,9 @@ class	scala/collection/immutable/MapLike
 Asciz	(Lscala/Tuple2;Lscala/Tuple2;Lscala/collection/Seq;)Lscala/collection/immutable/Map;;
 NameAndType	$plus:(Lscala/Tuple2;Lscala/Tuple2;Lscala/collection/Seq;)Lscala/collection/immutable/Map;
 InterfaceMethod	scala/collection/immutable/MapLike.$plus:(Lscala/Tuple2;Lscala/Tuple2;Lscala/collection/Seq;)Lscala/collection/immutable/Map;
-Asciz	elem1;
-Asciz	elem2;
-Asciz	elems;
+Asciz	kv1;
+Asciz	kv2;
+Asciz	kvs;
 Asciz	Lscala/collection/Seq;;
 Asciz	$plus$plus;
 Asciz	(Lscala/collection/Traversable;)Lscala/collection/Map;;
@@ -376,11 +376,14 @@ Method	scala/collection/TraversableLike$class.toArray:(Lscala/collection/Travers
 Asciz	evidence$1;
 Asciz	Lscala/reflect/ClassManifest;;
 Asciz	copyToArray;
+Asciz	(Lscala/collection/TraversableLike;Ljava/lang/Object;)V;
+NameAndType	copyToArray:(Lscala/collection/TraversableLike;Ljava/lang/Object;)V
+Method	scala/collection/TraversableLike$class.copyToArray:(Lscala/collection/TraversableLike;Ljava/lang/Object;)V
+Asciz	xs;
 Asciz	(Ljava/lang/Object;I)V;
 Asciz	(Lscala/collection/TraversableLike;Ljava/lang/Object;I)V;
 NameAndType	copyToArray:(Lscala/collection/TraversableLike;Ljava/lang/Object;I)V
 Method	scala/collection/TraversableLike$class.copyToArray:(Lscala/collection/TraversableLike;Ljava/lang/Object;I)V
-Asciz	xs;
 Asciz	copyToBuffer;
 Asciz	(Lscala/collection/mutable/Buffer;)V;
 Asciz	(Lscala/collection/TraversableLike;Lscala/collection/mutable/Buffer;)V;
@@ -548,6 +551,7 @@ Asciz	projection;
 Asciz	(Lscala/collection/IterableLike;)Ljava/lang/Object;;
 NameAndType	projection:(Lscala/collection/IterableLike;)Ljava/lang/Object;
 Method	scala/collection/IterableLike$class.projection:(Lscala/collection/IterableLike;)Ljava/lang/Object;
+Asciz	Deprecated;
 Asciz	firstOption;
 Asciz	(Lscala/collection/IterableLike;)Lscala/Option;;
 NameAndType	firstOption:(Lscala/collection/IterableLike;)Lscala/Option;
@@ -685,10 +689,13 @@ Asciz	(Lscala/collection/Traversable;)Lscala/collection/generic/Subtractable;;
 Asciz	(Lscala/collection/generic/Subtractable;Lscala/collection/Traversable;)Lscala/collection/generic/Subtractable;;
 NameAndType	$minus$minus:(Lscala/collection/generic/Subtractable;Lscala/collection/Traversable;)Lscala/collection/generic/Subtractable;
 Method	scala/collection/generic/Subtractable$class.$minus$minus:(Lscala/collection/generic/Subtractable;Lscala/collection/Traversable;)Lscala/collection/generic/Subtractable;
+Asciz	elems;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Seq;)Lscala/collection/generic/Subtractable;;
 Asciz	(Lscala/collection/generic/Subtractable;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Seq;)Lscala/collection/generic/Subtractable;;
 NameAndType	$minus:(Lscala/collection/generic/Subtractable;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Seq;)Lscala/collection/generic/Subtractable;
 Method	scala/collection/generic/Subtractable$class.$minus:(Lscala/collection/generic/Subtractable;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Seq;)Lscala/collection/generic/Subtractable;
+Asciz	elem1;
+Asciz	elem2;
 Asciz	(Lscala/collection/MapLike;Ljava/lang/Object;)Z;
 NameAndType	equals:(Lscala/collection/MapLike;Ljava/lang/Object;)Z
 Method	scala/collection/MapLike$class.equals:(Lscala/collection/MapLike;Ljava/lang/Object;)Z
@@ -1022,9 +1029,9 @@ public scala.collection.Map $plus(scala.Tuple2, scala.Tuple2, scala.collection.S
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      10      0    this       Lscala/collection/immutable/Map$Map4;
-   0      10      1    elem1       Lscala/Tuple2;
-   0      10      2    elem2       Lscala/Tuple2;
-   0      10      3    elems       Lscala/collection/Seq;
+   0      10      1    kv1       Lscala/Tuple2;
+   0      10      2    kv2       Lscala/Tuple2;
+   0      10      3    kvs       Lscala/collection/Seq;
 
 
 public scala.collection.Map $plus$plus(scala.collection.Traversable);
@@ -1039,7 +1046,7 @@ public scala.collection.Map $plus$plus(scala.collection.Traversable);
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      8      0    this       Lscala/collection/immutable/Map$Map4;
-   0      8      1    elems       Lscala/collection/Traversable;
+   0      8      1    kvs       Lscala/collection/Traversable;
 
 
 public scala.collection.Map $plus$plus(scala.collection.Iterator);
@@ -2078,6 +2085,21 @@ public java.lang.Object toArray(scala.reflect.ClassManifest);
    0      6      1    evidence$1       Lscala/reflect/ClassManifest;
 
 
+public void copyToArray(java.lang.Object);
+  Signature: (Ljava/lang/Object;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/collection/TraversableLike$class.copyToArray:(Lscala/collection/TraversableLike;Ljava/lang/Object;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/immutable/Map$Map4;
+   0      6      1    xs       Ljava/lang/Object;
+
+
 public void copyToArray(java.lang.Object, int);
   Signature: (Ljava/lang/Object;I)V
   Code:
@@ -2605,6 +2627,7 @@ public java.lang.Object projection();
 	invokestatic	Method scala/collection/IterableLike$class.projection:(Lscala/collection/IterableLike;)Ljava/lang/Object;
 	areturn
   Labels:
+  Deprecated: true
 
 public scala.Option firstOption();
   Signature: ()Lscala/Option;
@@ -2614,6 +2637,7 @@ public scala.Option firstOption();
 	invokestatic	Method scala/collection/IterableLike$class.firstOption:(Lscala/collection/IterableLike;)Lscala/Option;
 	areturn
   Labels:
+  Deprecated: true
 
 public java.lang.Object first();
   Signature: ()Ljava/lang/Object;
@@ -2623,6 +2647,7 @@ public java.lang.Object first();
 	invokestatic	Method scala/collection/IterableLike$class.first:(Lscala/collection/IterableLike;)Ljava/lang/Object;
 	areturn
   Labels:
+  Deprecated: true
 
 public scala.collection.IterableView view(int, int);
   Signature: (II)Lscala/collection/IterableView;
@@ -2941,6 +2966,7 @@ public scala.collection.Iterator elements();
 	invokestatic	Method scala/collection/IterableLike$class.elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
 	areturn
   Labels:
+  Deprecated: true
 
 public scala.collection.Iterable toCollection(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/Iterable;
@@ -3155,6 +3181,7 @@ public java.lang.Object mapElements(scala.Function1);
    0      6      0    this       Lscala/collection/immutable/Map$Map4;
    0      6      1    f       Lscala/Function1;
 
+  Deprecated: true
 
 public java.lang.Object mapValues(scala.Function1);
   Signature: (Lscala/Function1;)Ljava/lang/Object;
@@ -3209,6 +3236,7 @@ public scala.collection.Iterator values();
 	invokestatic	Method scala/collection/MapLike$class.values:(Lscala/collection/MapLike;)Lscala/collection/Iterator;
 	areturn
   Labels:
+  Deprecated: true
 
 public scala.collection.Iterator valuesIterator();
   Signature: ()Lscala/collection/Iterator;
@@ -3236,6 +3264,7 @@ public scala.collection.Iterator keys();
 	invokestatic	Method scala/collection/MapLike$class.keys:(Lscala/collection/MapLike;)Lscala/collection/Iterator;
 	areturn
   Labels:
+  Deprecated: true
 
 public scala.collection.Iterator keysIterator();
   Signature: ()Lscala/collection/Iterator;
@@ -3351,6 +3380,7 @@ public scala.collection.immutable.Map update(java.lang.Object, java.lang.Object)
    0      7      1    key       Ljava/lang/Object;
    0      7      2    value       Ljava/lang/Object;
 
+  Deprecated: true
 
 public scala.collection.immutable.MapLike filterNot(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/immutable/MapLike;

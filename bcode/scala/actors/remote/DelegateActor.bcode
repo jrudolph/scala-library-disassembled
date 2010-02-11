@@ -72,7 +72,7 @@ Asciz	Lscala/PartialFunction;;
 Asciz	sendBuffer;
 Asciz	Lscala/collection/mutable/Queue;;
 Asciz	mailbox;
-Asciz	Lscala/actors/MessageQueue;;
+Asciz	Lscala/actors/MQueue;;
 Asciz	senders;
 Asciz	Lscala/collection/immutable/List;;
 Asciz	shouldExit;
@@ -243,10 +243,10 @@ Method	scala/actors/Reactor$class.seq:(Lscala/actors/Reactor;Lscala/Function0;Ls
 Asciz	first;
 Asciz	next;
 Asciz	drainSendBuffer;
-Asciz	(Lscala/actors/MessageQueue;)V;
-Asciz	(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V;
-NameAndType	drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V
-Method	scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V
+Asciz	(Lscala/actors/MQueue;)V;
+Asciz	(Lscala/actors/Reactor;Lscala/actors/MQueue;)V;
+NameAndType	drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MQueue;)V
+Method	scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MQueue;)V
 Asciz	mbox;
 Asciz	receiver;
 Asciz	(Lscala/actors/Reactor;)Lscala/actors/Actor;;
@@ -278,8 +278,8 @@ Asciz	(Lscala/collection/mutable/Queue;)V;
 NameAndType	sendBuffer:Lscala/collection/mutable/Queue;
 Field	scala/actors/remote/DelegateActor.sendBuffer:Lscala/collection/mutable/Queue;
 Asciz	scala$actors$Reactor$_setter_$mailbox_$eq;
-NameAndType	mailbox:Lscala/actors/MessageQueue;
-Field	scala/actors/remote/DelegateActor.mailbox:Lscala/actors/MessageQueue;
+NameAndType	mailbox:Lscala/actors/MQueue;
+Field	scala/actors/remote/DelegateActor.mailbox:Lscala/actors/MQueue;
 Asciz	kill_$eq;
 NameAndType	kill:Lscala/Function0;
 Field	scala/actors/remote/DelegateActor.kill:Lscala/Function0;
@@ -293,12 +293,12 @@ Asciz	(Lscala/PartialFunction;)V;
 NameAndType	continuation:Lscala/PartialFunction;
 Field	scala/actors/remote/DelegateActor.continuation:Lscala/PartialFunction;
 Asciz	()Lscala/collection/mutable/Queue;;
-Asciz	()Lscala/actors/MessageQueue;;
+Asciz	()Lscala/actors/MQueue;;
 Asciz	searchMailbox;
-Asciz	(Lscala/actors/MessageQueue;Lscala/Function1;Z)V;
-Asciz	(Lscala/actors/ReplyReactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V;
-NameAndType	searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V
-Method	scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V
+Asciz	(Lscala/actors/MQueue;Lscala/Function1;Z)V;
+Asciz	(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V;
+NameAndType	searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V
+Method	scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V
 Asciz	startMbox;
 Asciz	handlesMessage;
 Asciz	resumeOnSameThread;
@@ -511,8 +511,8 @@ private volatile scala.PartialFunction continuation;
 private final scala.collection.mutable.Queue sendBuffer;
   Signature: Lscala/collection/mutable/Queue;
 
-private final scala.actors.MessageQueue mailbox;
-  Signature: Lscala/actors/MessageQueue;
+private final scala.actors.MQueue mailbox;
+  Signature: Lscala/actors/MQueue;
 
 private volatile scala.collection.immutable.List senders;
   Signature: Lscala/collection/immutable/List;
@@ -791,19 +791,19 @@ public void seq(scala.Function0, scala.Function0);
    0      7      2    next       Lscala/Function0;
 
 
-public void drainSendBuffer(scala.actors.MessageQueue);
-  Signature: (Lscala/actors/MessageQueue;)V
+public void drainSendBuffer(scala.actors.MQueue);
+  Signature: (Lscala/actors/MQueue;)V
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	invokestatic	Method scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V
+	invokestatic	Method scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MQueue;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      6      0    this       Lscala/actors/remote/DelegateActor;
-   0      6      1    mbox       Lscala/actors/MessageQueue;
+   0      6      1    mbox       Lscala/actors/MQueue;
 
 
 public scala.actors.Actor receiver();
@@ -870,13 +870,13 @@ public void scala$actors$Reactor$_setter_$sendBuffer_$eq(scala.collection.mutabl
 	return
   Labels:
 
-public void scala$actors$Reactor$_setter_$mailbox_$eq(scala.actors.MessageQueue);
-  Signature: (Lscala/actors/MessageQueue;)V
+public void scala$actors$Reactor$_setter_$mailbox_$eq(scala.actors.MQueue);
+  Signature: (Lscala/actors/MQueue;)V
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	putfield	Field mailbox:Lscala/actors/MessageQueue;
+	putfield	Field mailbox:Lscala/actors/MQueue;
 	return
   Labels:
 
@@ -955,30 +955,30 @@ public scala.collection.mutable.Queue sendBuffer();
 	areturn
   Labels:
 
-public scala.actors.MessageQueue mailbox();
-  Signature: ()Lscala/actors/MessageQueue;
+public scala.actors.MQueue mailbox();
+  Signature: ()Lscala/actors/MQueue;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	getfield	Field mailbox:Lscala/actors/MessageQueue;
+	getfield	Field mailbox:Lscala/actors/MQueue;
 	areturn
   Labels:
 
-public void searchMailbox(scala.actors.MessageQueue, scala.Function1, boolean);
-  Signature: (Lscala/actors/MessageQueue;Lscala/Function1;Z)V
+public void searchMailbox(scala.actors.MQueue, scala.Function1, boolean);
+  Signature: (Lscala/actors/MQueue;Lscala/Function1;Z)V
   Code:
    Stack=4, Locals=4, Args_size=4
 	aload_0
 	aload_1
 	aload_2
 	iload_3
-	invokestatic	Method scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V
+	invokestatic	Method scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      8      0    this       Lscala/actors/remote/DelegateActor;
-   0      8      1    startMbox       Lscala/actors/MessageQueue;
+   0      8      1    startMbox       Lscala/actors/MQueue;
    0      8      2    handlesMessage       Lscala/Function1;
    0      8      3    resumeOnSameThread       Z
 

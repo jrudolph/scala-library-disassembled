@@ -57,15 +57,15 @@ Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	scala/actors/Reactor;
 class	scala/actors/Reactor
 Asciz	mailbox;
-Asciz	()Lscala/actors/MessageQueue;;
-NameAndType	mailbox:()Lscala/actors/MessageQueue;
-InterfaceMethod	scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
-Asciz	scala/actors/MessageQueue;
-class	scala/actors/MessageQueue
+Asciz	()Lscala/actors/MQueue;;
+NameAndType	mailbox:()Lscala/actors/MQueue;
+InterfaceMethod	scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
+Asciz	scala/actors/MQueue;
+class	scala/actors/MQueue
 Asciz	append;
 Asciz	(Ljava/lang/Object;Lscala/actors/OutputChannel;)V;
 NameAndType	append:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
-Method	scala/actors/MessageQueue.append:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
+Method	scala/actors/MQueue.append:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
 Asciz	scala/actors/Actor$class;
 class	scala/actors/Actor$class
 Asciz	scala$actors$Actor$$resumeActor;
@@ -153,12 +153,12 @@ public final void apply();
 	monitorenter
 	aload_0
 	getfield	Field $outer:Lscala/actors/Actor;
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	aload_0
 	getfield	Field msg$1:Ljava/lang/Object;
 	aload_0
 	getfield	Field replyTo$1:Lscala/actors/OutputChannel;
-	invokevirtual	Method scala/actors/MessageQueue.append:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
+	invokevirtual	Method scala/actors/MQueue.append:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
 	aload_0
 	getfield	Field $outer:Lscala/actors/Actor;
 	invokestatic	Method scala/actors/Actor$class.scala$actors$Actor$$resumeActor:(Lscala/actors/Actor;)V

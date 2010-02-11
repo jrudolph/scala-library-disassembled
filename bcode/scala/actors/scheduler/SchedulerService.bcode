@@ -116,9 +116,9 @@ class	scala/actors/ActorGC
 Asciz	gc;
 NameAndType	gc:()V
 InterfaceMethod	scala/actors/ActorGC.gc:()V
-Asciz	allTerminated;
-NameAndType	allTerminated:()Z
-InterfaceMethod	scala/actors/ActorGC.allTerminated:()Z
+Asciz	allActorsTerminated;
+NameAndType	allActorsTerminated:()Z
+InterfaceMethod	scala/actors/ActorGC.allActorsTerminated:()Z
 Asciz	scala/actors/Debug$;
 class	scala/actors/Debug$
 Asciz	MODULE$;
@@ -148,6 +148,7 @@ Method	scala/actors/scheduler/SchedulerService."<init>":(Z)V
 Asciz	printActorDump;
 NameAndType	printActorDump:(Lscala/actors/IScheduler;)V
 Method	scala/actors/IScheduler$class.printActorDump:(Lscala/actors/IScheduler;)V
+Asciz	Deprecated;
 Asciz	onLockup;
 Asciz	(ILscala/Function0;)V;
 Asciz	(Lscala/actors/IScheduler;ILscala/Function0;)V;
@@ -174,6 +175,10 @@ NameAndType	executeFromActor:(Lscala/actors/IScheduler;Ljava/lang/Runnable;)V
 Method	scala/actors/IScheduler$class.executeFromActor:(Lscala/actors/IScheduler;Ljava/lang/Runnable;)V
 Asciz	task;
 Asciz	Ljava/lang/Runnable;;
+Asciz	allTerminated;
+Asciz	(Lscala/actors/scheduler/TerminationMonitor;)Z;
+NameAndType	allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+Method	scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
 Asciz	scala$actors$scheduler$TerminationMonitor$_setter_$terminationHandlers_$eq;
 Asciz	(Lscala/collection/mutable/HashMap;)V;
 NameAndType	terminationHandlers:Lscala/collection/mutable/HashMap;
@@ -208,8 +213,8 @@ NameAndType	onTerminate:(Lscala/actors/ActorGC;Lscala/actors/Reactor;Lscala/Func
 Method	scala/actors/ActorGC$class.onTerminate:(Lscala/actors/ActorGC;Lscala/actors/Reactor;Lscala/Function0;)V
 Asciz	f;
 Asciz	(Lscala/actors/ActorGC;)Z;
-NameAndType	allTerminated:(Lscala/actors/ActorGC;)Z
-Method	scala/actors/ActorGC$class.allTerminated:(Lscala/actors/ActorGC;)Z
+NameAndType	allActorsTerminated:(Lscala/actors/ActorGC;)Z
+Method	scala/actors/ActorGC$class.allActorsTerminated:(Lscala/actors/ActorGC;)Z
 Asciz	status;
 NameAndType	status:(Lscala/actors/ActorGC;)V
 Method	scala/actors/ActorGC$class.status:(Lscala/actors/ActorGC;)V
@@ -350,7 +355,7 @@ l3	aload_0
 l1	aload_0
 	invokeinterface	InterfaceMethod scala/actors/ActorGC.gc:()V
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/ActorGC.allTerminated:()Z
+	invokeinterface	InterfaceMethod scala/actors/ActorGC.allActorsTerminated:()Z
 	ifeq	l2 // aload_0
 	new	class scala/actors/scheduler/QuitException
 	dup
@@ -433,6 +438,7 @@ public void printActorDump();
 	invokestatic	Method scala/actors/IScheduler$class.printActorDump:(Lscala/actors/IScheduler;)V
 	return
   Labels:
+  Deprecated: true
 
 public void onLockup(int, scala.Function0);
   Signature: (ILscala/Function0;)V
@@ -450,6 +456,7 @@ public void onLockup(int, scala.Function0);
    0      7      1    millis       I
    0      7      2    handler       Lscala/Function0;
 
+  Deprecated: true
 
 public void onLockup(scala.Function0);
   Signature: (Lscala/Function0;)V
@@ -465,6 +472,7 @@ public void onLockup(scala.Function0);
    0      6      0    this       Lscala/actors/scheduler/SchedulerService;
    0      6      1    handler       Lscala/Function0;
 
+  Deprecated: true
 
 public void tick(scala.actors.Actor);
   Signature: (Lscala/actors/Actor;)V
@@ -480,6 +488,7 @@ public void tick(scala.actors.Actor);
    0      6      0    this       Lscala/actors/scheduler/SchedulerService;
    0      6      1    a       Lscala/actors/Actor;
 
+  Deprecated: true
 
 public void executeFromActor(java.lang.Runnable);
   Signature: (Ljava/lang/Runnable;)V
@@ -495,6 +504,16 @@ public void executeFromActor(java.lang.Runnable);
    0      6      0    this       Lscala/actors/scheduler/SchedulerService;
    0      6      1    task       Ljava/lang/Runnable;
 
+
+public boolean allTerminated();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+	ireturn
+  Labels:
+  Deprecated: true
 
 public void scala$actors$scheduler$TerminationMonitor$_setter_$terminationHandlers_$eq(scala.collection.mutable.HashMap);
   Signature: (Lscala/collection/mutable/HashMap;)V
@@ -609,12 +628,12 @@ public void onTerminate(scala.actors.Reactor, scala.Function0);
    0      7      2    f       Lscala/Function0;
 
 
-public boolean allTerminated();
+public boolean allActorsTerminated();
   Signature: ()Z
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokestatic	Method scala/actors/ActorGC$class.allTerminated:(Lscala/actors/ActorGC;)Z
+	invokestatic	Method scala/actors/ActorGC$class.allActorsTerminated:(Lscala/actors/ActorGC;)Z
 	ireturn
   Labels:
 

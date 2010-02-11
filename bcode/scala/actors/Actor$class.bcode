@@ -352,22 +352,22 @@ Method	scala/actors/Actor$$anonfun$reactWithin$1."<init>":(Lscala/actors/Actor;)
 Asciz	react on channel belonging to other actor;
 String	react on channel belonging to other actor
 Asciz	mailbox;
-Asciz	()Lscala/actors/MessageQueue;;
-NameAndType	mailbox:()Lscala/actors/MessageQueue;
-InterfaceMethod	scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
+Asciz	()Lscala/actors/MQueue;;
+NameAndType	mailbox:()Lscala/actors/MQueue;
+InterfaceMethod	scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 Asciz	drainSendBuffer;
-Asciz	(Lscala/actors/MessageQueue;)V;
-NameAndType	drainSendBuffer:(Lscala/actors/MessageQueue;)V
-InterfaceMethod	scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MessageQueue;)V
+Asciz	(Lscala/actors/MQueue;)V;
+NameAndType	drainSendBuffer:(Lscala/actors/MQueue;)V
+InterfaceMethod	scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
 Asciz	scala/actors/Actor$$anonfun$reactWithin$2;
 class	scala/actors/Actor$$anonfun$reactWithin$2
 Method	scala/actors/Actor$$anonfun$reactWithin$2."<init>":(Lscala/actors/Actor;)V
-Asciz	scala/actors/MessageQueue;
-class	scala/actors/MessageQueue
+Asciz	scala/actors/MQueue;
+class	scala/actors/MQueue
 Asciz	extractFirst;
-Asciz	(Lscala/Function2;)Lscala/actors/MessageQueueElement;;
-NameAndType	extractFirst:(Lscala/Function2;)Lscala/actors/MessageQueueElement;
-Method	scala/actors/MessageQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MessageQueueElement;
+Asciz	(Lscala/Function2;)Lscala/actors/MQueueElement;;
+NameAndType	extractFirst:(Lscala/Function2;)Lscala/actors/MQueueElement;
+Method	scala/actors/MQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MQueueElement;
 Asciz	scala/actors/Actor$$anonfun$7;
 class	scala/actors/Actor$$anonfun$7
 Asciz	(Lscala/actors/Actor;Lscala/PartialFunction;)V;
@@ -445,12 +445,12 @@ NameAndType	MODULE$:Lscala/Predef$;
 Field	scala/Predef$.MODULE$:Lscala/Predef$;
 Asciz	scala/actors/OutputChannel;
 class	scala/actors/OutputChannel
-Asciz	scala/actors/MessageQueueElement;
-class	scala/actors/MessageQueueElement
+Asciz	scala/actors/MQueueElement;
+class	scala/actors/MQueueElement
 Asciz	session;
 Asciz	()Lscala/actors/OutputChannel;;
 NameAndType	session:()Lscala/actors/OutputChannel;
-Method	scala/actors/MessageQueueElement.session:()Lscala/actors/OutputChannel;
+Method	scala/actors/MQueueElement.session:()Lscala/actors/OutputChannel;
 Asciz	[Ljava/lang/Object;;
 class	"[Ljava/lang/Object;"
 Asciz	wrapRefArray;
@@ -464,7 +464,7 @@ Asciz	senders_$eq;
 NameAndType	senders_$eq:(Lscala/collection/immutable/List;)V
 InterfaceMethod	scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
 NameAndType	msg:()Ljava/lang/Object;
-Method	scala/actors/MessageQueueElement.msg:()Ljava/lang/Object;
+Method	scala/actors/MQueueElement.msg:()Ljava/lang/Object;
 Asciz	scala/runtime/BoxedUnit;
 class	scala/runtime/BoxedUnit
 Asciz	UNIT;
@@ -477,7 +477,7 @@ Asciz	f$3;
 Asciz	receiveTimeout;
 Asciz	todo;
 Asciz	qel;
-Asciz	Lscala/actors/MessageQueueElement;;
+Asciz	Lscala/actors/MQueueElement;;
 Asciz	done;
 Asciz	Z;
 Asciz	react;
@@ -489,9 +489,9 @@ Asciz	scala/actors/Actor$$anonfun$react$2;
 class	scala/actors/Actor$$anonfun$react$2
 Method	scala/actors/Actor$$anonfun$react$2."<init>":(Lscala/actors/Actor;Lscala/PartialFunction;)V
 Asciz	searchMailbox;
-Asciz	(Lscala/actors/MessageQueue;Lscala/Function1;Z)V;
-NameAndType	searchMailbox:(Lscala/actors/MessageQueue;Lscala/Function1;Z)V
-InterfaceMethod	scala/actors/ReplyReactor.searchMailbox:(Lscala/actors/MessageQueue;Lscala/Function1;Z)V
+Asciz	(Lscala/actors/MQueue;Lscala/Function1;Z)V;
+NameAndType	searchMailbox:(Lscala/actors/MQueue;Lscala/Function1;Z)V
+InterfaceMethod	scala/actors/ReplyReactor.searchMailbox:(Lscala/actors/MQueue;Lscala/Function1;Z)V
 Asciz	f$4;
 Asciz	receiveWithin;
 Asciz	(Lscala/actors/Actor;JLscala/PartialFunction;)Ljava/lang/Object;;
@@ -1363,17 +1363,17 @@ l5	aload_0
 	athrow
 l6	aload_0
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
-	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MessageQueue;)V
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
 	aload_0
 	monitorexit
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	new	class scala/actors/Actor$$anonfun$reactWithin$2
 	dup
 	aload_0
 	invokespecial	Method scala/actors/Actor$$anonfun$reactWithin$2."<init>":(Lscala/actors/Actor;)V
-	invokevirtual	Method scala/actors/MessageQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MessageQueueElement;
+	invokevirtual	Method scala/actors/MQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MQueueElement;
 	pop
 	new	class scala/actors/Actor$$anonfun$7
 	dup
@@ -1389,13 +1389,13 @@ l13	iload	10
 	invokevirtual	Method scala/actors/Actor$.suspendException:()Lscala/actors/SuspendActorException;
 	athrow
 l7	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	new	class scala/actors/Actor$$anonfun$8
 	dup
 	aload_0
 	aload_3
 	invokespecial	Method scala/actors/Actor$$anonfun$8."<init>":(Lscala/actors/Actor;Lscala/PartialFunction;)V
-	invokevirtual	Method scala/actors/MessageQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MessageQueueElement;
+	invokevirtual	Method scala/actors/MQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MQueueElement;
 	astore	9
 	aload	9
 	ifnonnull	l8 // aload_0
@@ -1452,8 +1452,8 @@ l10	aload_0
 	goto	l11 // aload_0
 l9	aload_0
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
-	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MessageQueue;)V
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
 	new	class scala/actors/Actor$$anonfun$9
 	dup
 	aload_0
@@ -1473,7 +1473,7 @@ l8	aload_0
 	dup
 	iconst_0
 	aload	9
-	invokevirtual	Method scala/actors/MessageQueueElement.session:()Lscala/actors/OutputChannel;
+	invokevirtual	Method scala/actors/MQueueElement.session:()Lscala/actors/OutputChannel;
 	aastore
 	checkcast	class "[Ljava/lang/Object;"
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
@@ -1482,7 +1482,7 @@ l8	aload_0
 	aload_0
 	aload_3
 	aload	9
-	invokevirtual	Method scala/actors/MessageQueueElement.msg:()Ljava/lang/Object;
+	invokevirtual	Method scala/actors/MQueueElement.msg:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/actors/Actor.scheduleActor:(Lscala/PartialFunction;Ljava/lang/Object;)V
 	iconst_1
 	istore	10
@@ -1521,8 +1521,8 @@ l12	pop
    155      242      7    receiveTimeout       Lscala/Function0;
    400      3      7    receiveTimeout       Lscala/Function0;
    332      7      8    todo       Lscala/Function0;
-   190      204      9    qel       Lscala/actors/MessageQueueElement;
-   400      3      9    qel       Lscala/actors/MessageQueueElement;
+   190      204      9    qel       Lscala/actors/MQueueElement;
+   400      3      9    qel       Lscala/actors/MQueueElement;
    158      239      10    done       Z
    400      3      10    done       Z
 
@@ -1584,8 +1584,8 @@ l5	aload_0
 	athrow
 l6	aload_0
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
-	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MessageQueue;)V
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
 	aload_0
 	monitorexit
 	aload_0
@@ -1593,14 +1593,14 @@ l6	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.continuation_$eq:(Lscala/PartialFunction;)V
 	aload_0
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	new	class scala/actors/Actor$$anonfun$react$2
 	dup
 	aload_0
 	aload_1
 	invokespecial	Method scala/actors/Actor$$anonfun$react$2."<init>":(Lscala/actors/Actor;Lscala/PartialFunction;)V
 	iconst_0
-	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.searchMailbox:(Lscala/actors/MessageQueue;Lscala/Function1;Z)V
+	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.searchMailbox:(Lscala/actors/MQueue;Lscala/Function1;Z)V
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	invokevirtual	Method scala/actors/Actor$.suspendException:()Lscala/actors/SuspendActorException;
 	athrow
@@ -1680,17 +1680,17 @@ l5	aload_0
 	athrow
 l6	aload_0
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
-	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MessageQueue;)V
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
 	aload_0
 	monitorexit
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	new	class scala/actors/Actor$$anonfun$receiveWithin$2
 	dup
 	aload_0
 	invokespecial	Method scala/actors/Actor$$anonfun$receiveWithin$2."<init>":(Lscala/actors/Actor;)V
-	invokevirtual	Method scala/actors/MessageQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MessageQueueElement;
+	invokevirtual	Method scala/actors/MQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MQueueElement;
 	pop
 	new	class scala/actors/Actor$$anonfun$2
 	dup
@@ -1720,13 +1720,13 @@ l15	iload	12
 	aload	7
 	areturn
 l7	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	new	class scala/actors/Actor$$anonfun$3
 	dup
 	aload_0
 	aload_3
 	invokespecial	Method scala/actors/Actor$$anonfun$3."<init>":(Lscala/actors/Actor;Lscala/PartialFunction;)V
-	invokevirtual	Method scala/actors/MessageQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MessageQueueElement;
+	invokevirtual	Method scala/actors/MQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MQueueElement;
 	astore	10
 	aload	10
 	ifnonnull	l8 // aload_0
@@ -1784,8 +1784,8 @@ l10	aload_0
 	invokeinterface	InterfaceMethod scala/actors/IScheduler.managedBlock:(Lscala/concurrent/ManagedBlocker;)V
 	aload_0
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
-	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MessageQueue;)V
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
 	new	class scala/actors/Actor$$anonfun$6
 	dup
 	aload_0
@@ -1793,8 +1793,8 @@ l10	aload_0
 	goto	l11 // aload_0
 l9	aload_0
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
-	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MessageQueue;)V
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
 	new	class scala/actors/Actor$$anonfun$4
 	dup
 	aload_0
@@ -1830,12 +1830,12 @@ l14	aload_0
 	new	class scala/Some
 	dup
 	aload	10
-	invokevirtual	Method scala/actors/MessageQueueElement.msg:()Ljava/lang/Object;
+	invokevirtual	Method scala/actors/MQueueElement.msg:()Ljava/lang/Object;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$received_$eq:(Lscala/Option;)V
 	aload_0
 	aload	10
-	invokevirtual	Method scala/actors/MessageQueueElement.session:()Lscala/actors/OutputChannel;
+	invokevirtual	Method scala/actors/MQueueElement.session:()Lscala/actors/OutputChannel;
 	astore	11
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders:()Lscala/collection/immutable/List;
@@ -1887,8 +1887,8 @@ l12	pop
    212      305      8    receiveTimeout       Lscala/Function0;
    520      6      8    receiveTimeout       Lscala/Function0;
    409      7      9    todo       Lscala/Function0;
-   232      282      10    qel       Lscala/actors/MessageQueueElement;
-   520      6      10    qel       Lscala/actors/MessageQueueElement;
+   232      282      10    qel       Lscala/actors/MQueueElement;
+   520      6      10    qel       Lscala/actors/MQueueElement;
    158      53      12    done       Z
    212      305      12    done       Z
    520      6      12    done       Z
@@ -1951,8 +1951,8 @@ l5	aload_0
 	athrow
 l6	aload_0
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
-	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MessageQueue;)V
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
 	aload_0
 	monitorexit
 	iconst_0
@@ -1977,13 +1977,13 @@ l12	iload	8
 	aload	5
 	areturn
 l7	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	new	class scala/actors/Actor$$anonfun$1
 	dup
 	aload_0
 	aload_1
 	invokespecial	Method scala/actors/Actor$$anonfun$1."<init>":(Lscala/actors/Actor;Lscala/PartialFunction;)V
-	invokevirtual	Method scala/actors/MessageQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MessageQueueElement;
+	invokevirtual	Method scala/actors/MQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MQueueElement;
 	astore	6
 	aload	6
 	ifnonnull	l8 // aload_0
@@ -2012,13 +2012,13 @@ l7	aload_0
 	invokeinterface	InterfaceMethod scala/actors/IScheduler.managedBlock:(Lscala/concurrent/ManagedBlocker;)V
 	aload_0
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
-	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MessageQueue;)V
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
 	goto	l10 // aload_0
 l9	aload_0
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MessageQueue;
-	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MessageQueue;)V
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
 l10	aload_0
 	monitorexit
 	goto	l11 // goto
@@ -2026,12 +2026,12 @@ l8	aload_0
 	new	class scala/Some
 	dup
 	aload	6
-	invokevirtual	Method scala/actors/MessageQueueElement.msg:()Ljava/lang/Object;
+	invokevirtual	Method scala/actors/MQueueElement.msg:()Ljava/lang/Object;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$received_$eq:(Lscala/Option;)V
 	aload_0
 	aload	6
-	invokevirtual	Method scala/actors/MessageQueueElement.session:()Lscala/actors/OutputChannel;
+	invokevirtual	Method scala/actors/MQueueElement.session:()Lscala/actors/OutputChannel;
 	astore	7
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders:()Lscala/collection/immutable/List;
@@ -2069,8 +2069,8 @@ l11	goto	l12 // iload
    0      345      0    $this       Lscala/actors/Actor;
    0      345      1    f$1       Lscala/PartialFunction;
    147      31      5    result       Ljava/lang/Object;
-   199      137      6    qel       Lscala/actors/MessageQueueElement;
-   342      3      6    qel       Lscala/actors/MessageQueueElement;
+   199      137      6    qel       Lscala/actors/MQueueElement;
+   342      3      6    qel       Lscala/actors/MQueueElement;
    125      53      8    done       Z
    179      160      8    done       Z
    342      3      8    done       Z

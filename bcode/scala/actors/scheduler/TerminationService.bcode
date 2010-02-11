@@ -103,9 +103,9 @@ class	scala/actors/scheduler/QuitException
 Method	scala/actors/scheduler/QuitException."<init>":()V
 Asciz	scala/actors/scheduler/TerminationMonitor;
 class	scala/actors/scheduler/TerminationMonitor
-Asciz	allTerminated;
-NameAndType	allTerminated:()Z
-InterfaceMethod	scala/actors/scheduler/TerminationMonitor.allTerminated:()Z
+Asciz	allActorsTerminated;
+NameAndType	allActorsTerminated:()Z
+InterfaceMethod	scala/actors/scheduler/TerminationMonitor.allActorsTerminated:()Z
 Asciz	scala/actors/Debug$;
 class	scala/actors/Debug$
 Asciz	MODULE$;
@@ -133,6 +133,7 @@ Method	scala/actors/scheduler/TerminationService.onShutdown:()V
 Asciz	printActorDump;
 NameAndType	printActorDump:(Lscala/actors/IScheduler;)V
 Method	scala/actors/IScheduler$class.printActorDump:(Lscala/actors/IScheduler;)V
+Asciz	Deprecated;
 Asciz	onLockup;
 Asciz	(ILscala/Function0;)V;
 Asciz	(Lscala/actors/IScheduler;ILscala/Function0;)V;
@@ -162,9 +163,12 @@ Asciz	Ljava/lang/Runnable;;
 Asciz	gc;
 NameAndType	gc:(Lscala/actors/scheduler/TerminationMonitor;)V
 Method	scala/actors/scheduler/TerminationMonitor$class.gc:(Lscala/actors/scheduler/TerminationMonitor;)V
+Asciz	allTerminated;
 Asciz	(Lscala/actors/scheduler/TerminationMonitor;)Z;
 NameAndType	allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
 Method	scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+NameAndType	allActorsTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+Method	scala/actors/scheduler/TerminationMonitor$class.allActorsTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
 Asciz	terminated;
 Asciz	(Lscala/actors/Reactor;)V;
 Asciz	(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V;
@@ -306,7 +310,7 @@ l1	aload_0
 	getfield	Field terminate:Z
 	ifeq	l2 // aload_0
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/scheduler/TerminationMonitor.allTerminated:()Z
+	invokeinterface	InterfaceMethod scala/actors/scheduler/TerminationMonitor.allActorsTerminated:()Z
 	ifeq	l2 // aload_0
 	new	class scala/actors/scheduler/QuitException
 	dup
@@ -379,6 +383,7 @@ public void printActorDump();
 	invokestatic	Method scala/actors/IScheduler$class.printActorDump:(Lscala/actors/IScheduler;)V
 	return
   Labels:
+  Deprecated: true
 
 public void onLockup(int, scala.Function0);
   Signature: (ILscala/Function0;)V
@@ -396,6 +401,7 @@ public void onLockup(int, scala.Function0);
    0      7      1    millis       I
    0      7      2    handler       Lscala/Function0;
 
+  Deprecated: true
 
 public void onLockup(scala.Function0);
   Signature: (Lscala/Function0;)V
@@ -411,6 +417,7 @@ public void onLockup(scala.Function0);
    0      6      0    this       Lscala/actors/scheduler/TerminationService;
    0      6      1    handler       Lscala/Function0;
 
+  Deprecated: true
 
 public void tick(scala.actors.Actor);
   Signature: (Lscala/actors/Actor;)V
@@ -426,6 +433,7 @@ public void tick(scala.actors.Actor);
    0      6      0    this       Lscala/actors/scheduler/TerminationService;
    0      6      1    a       Lscala/actors/Actor;
 
+  Deprecated: true
 
 public void executeFromActor(java.lang.Runnable);
   Signature: (Ljava/lang/Runnable;)V
@@ -457,6 +465,16 @@ public boolean allTerminated();
    Stack=1, Locals=1, Args_size=1
 	aload_0
 	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+	ireturn
+  Labels:
+  Deprecated: true
+
+public boolean allActorsTerminated();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.allActorsTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
 	ireturn
   Labels:
 
