@@ -5,6 +5,9 @@ public abstract class scala.collection.IterableLike$class extends java.lang.Obje
    
   InnerClass: 
    public final $anon$1=class scala/collection/IterableLike$$anon$1 of class scala/collection/IterableLike
+   public GroupedIterator=class scala/collection/Iterator$GroupedIterator of class scala/collection/Iterator
+   public final $anonfun$grouped$1=class scala/collection/IterableLike$$anonfun$grouped$1 of class scala/collection/IterableLike
+   public final $anonfun$sliding$1=class scala/collection/IterableLike$$anonfun$sliding$1 of class scala/collection/IterableLike
    public final $anonfun$takeRight$1=class scala/collection/IterableLike$$anonfun$takeRight$1 of class scala/collection/IterableLike
    public final $anonfun$zipWithIndex$1=class scala/collection/IterableLike$$anonfun$zipWithIndex$1 of class scala/collection/IterableLike
   minor version: 0
@@ -212,6 +215,31 @@ Asciz	b$1;
 Asciz	lead$1;
 Asciz	go$1;
 Asciz	Lscala/runtime/BooleanRef;;
+Asciz	sliding;
+Asciz	(Lscala/collection/IterableLike;II)Lscala/collection/Iterator;;
+Asciz	(II)Lscala/collection/Iterator$GroupedIterator;;
+NameAndType	sliding:(II)Lscala/collection/Iterator$GroupedIterator;
+InterfaceMethod	scala/collection/Iterator.sliding:(II)Lscala/collection/Iterator$GroupedIterator;
+Asciz	scala/collection/IterableLike$$anonfun$sliding$1;
+class	scala/collection/IterableLike$$anonfun$sliding$1
+Method	scala/collection/IterableLike$$anonfun$sliding$1."<init>":(Lscala/collection/IterableLike;)V
+Asciz	map;
+Asciz	(Lscala/Function1;)Lscala/collection/Iterator;;
+NameAndType	map:(Lscala/Function1;)Lscala/collection/Iterator;
+InterfaceMethod	scala/collection/Iterator.map:(Lscala/Function1;)Lscala/collection/Iterator;
+Asciz	size;
+Asciz	step;
+Asciz	(Lscala/collection/IterableLike;I)Lscala/collection/Iterator;;
+Asciz	(II)Lscala/collection/Iterator;;
+NameAndType	sliding:(II)Lscala/collection/Iterator;
+InterfaceMethod	scala/collection/IterableLike.sliding:(II)Lscala/collection/Iterator;
+Asciz	grouped;
+Asciz	(I)Lscala/collection/Iterator$GroupedIterator;;
+NameAndType	grouped:(I)Lscala/collection/Iterator$GroupedIterator;
+InterfaceMethod	scala/collection/Iterator.grouped:(I)Lscala/collection/Iterator$GroupedIterator;
+Asciz	scala/collection/IterableLike$$anonfun$grouped$1;
+class	scala/collection/IterableLike$$anonfun$grouped$1
+Method	scala/collection/IterableLike$$anonfun$grouped$1."<init>":(Lscala/collection/IterableLike;)V
 Asciz	takeWhile;
 Asciz	(Lscala/collection/IterableLike;Lscala/Function1;)Ljava/lang/Object;;
 Asciz	scala/Function1;
@@ -280,6 +308,11 @@ class	scala/collection/Iterable
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	$anon$1;
+Asciz	scala/collection/Iterator$GroupedIterator;
+class	scala/collection/Iterator$GroupedIterator
+Asciz	GroupedIterator;
+Asciz	$anonfun$grouped$1;
+Asciz	$anonfun$sliding$1;
 Asciz	$anonfun$takeRight$1;
 Asciz	$anonfun$zipWithIndex$1;
 Asciz	scala/collection/IterableLike$class;
@@ -771,6 +804,66 @@ public static java.lang.Object takeRight(scala.collection.IterableLike, int);
    7      47      2    b$1       Lscala/collection/mutable/Builder;
    20      34      3    lead$1       Lscala/collection/Iterator;
    30      24      4    go$1       Lscala/runtime/BooleanRef;
+
+
+public static scala.collection.Iterator sliding(scala.collection.IterableLike, int, int);
+  Signature: (Lscala/collection/IterableLike;II)Lscala/collection/Iterator;
+  Code:
+   Stack=4, Locals=3, Args_size=3
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
+	iload_1
+	iload_2
+	invokeinterface	InterfaceMethod scala/collection/Iterator.sliding:(II)Lscala/collection/Iterator$GroupedIterator;
+	new	class scala/collection/IterableLike$$anonfun$sliding$1
+	dup
+	aload_0
+	invokespecial	Method scala/collection/IterableLike$$anonfun$sliding$1."<init>":(Lscala/collection/IterableLike;)V
+	invokeinterface	InterfaceMethod scala/collection/Iterator.map:(Lscala/Function1;)Lscala/collection/Iterator;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      27      0    $this       Lscala/collection/IterableLike;
+   0      27      1    size       I
+   0      27      2    step       I
+
+
+public static scala.collection.Iterator sliding(scala.collection.IterableLike, int);
+  Signature: (Lscala/collection/IterableLike;I)Lscala/collection/Iterator;
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	iconst_1
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.sliding:(II)Lscala/collection/Iterator;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    $this       Lscala/collection/IterableLike;
+   0      9      1    size       I
+
+
+public static scala.collection.Iterator grouped(scala.collection.IterableLike, int);
+  Signature: (Lscala/collection/IterableLike;I)Lscala/collection/Iterator;
+  Code:
+   Stack=4, Locals=2, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
+	iload_1
+	invokeinterface	InterfaceMethod scala/collection/Iterator.grouped:(I)Lscala/collection/Iterator$GroupedIterator;
+	new	class scala/collection/IterableLike$$anonfun$grouped$1
+	dup
+	aload_0
+	invokespecial	Method scala/collection/IterableLike$$anonfun$grouped$1."<init>":(Lscala/collection/IterableLike;)V
+	invokeinterface	InterfaceMethod scala/collection/Iterator.map:(Lscala/Function1;)Lscala/collection/Iterator;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      26      0    $this       Lscala/collection/IterableLike;
+   0      26      1    size       I
 
 
 public static java.lang.Object takeWhile(scala.collection.IterableLike, scala.Function1);
