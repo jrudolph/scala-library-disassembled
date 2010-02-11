@@ -1,0 +1,758 @@
+public class scala.actors.threadpool.SynchronousQueue extends scala.actors.threadpool.AbstractQueue implements scala.actors.threadpool.BlockingQueue,java.io.Serializable
+  InnerClass: 
+   #45= #34 of #41; //EmptyIterator=class scala/actors/threadpool/SynchronousQueue$EmptyIterator of class scala/actors/threadpool/SynchronousQueue
+   final #48= #47 of #41; //Node=class scala/actors/threadpool/SynchronousQueue$Node of class scala/actors/threadpool/SynchronousQueue
+   final #49= #11 of #41; //LifoWaitQueue=class scala/actors/threadpool/SynchronousQueue$LifoWaitQueue of class scala/actors/threadpool/SynchronousQueue
+   final #50= #6 of #41; //FifoWaitQueue=class scala/actors/threadpool/SynchronousQueue$FifoWaitQueue of class scala/actors/threadpool/SynchronousQueue
+   abstract #52= #51 of #41; //WaitQueue=class scala/actors/threadpool/SynchronousQueue$WaitQueue of class scala/actors/threadpool/SynchronousQueue
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Method	#41.#101;	//  scala/actors/threadpool/SynchronousQueue."<init>":(Z)V
+const #2 = Method	#42.#102;	//  scala/actors/threadpool/AbstractQueue."<init>":()V
+const #3 = class	#103;	//  scala/actors/threadpool/locks/ReentrantLock
+const #4 = Method	#3.#101;	//  scala/actors/threadpool/locks/ReentrantLock."<init>":(Z)V
+const #5 = Field	#41.#104;	//  scala/actors/threadpool/SynchronousQueue.qlock:Lscala/actors/threadpool/locks/ReentrantLock;
+const #6 = class	#105;	//  scala/actors/threadpool/SynchronousQueue$FifoWaitQueue
+const #7 = Method	#6.#102;	//  scala/actors/threadpool/SynchronousQueue$FifoWaitQueue."<init>":()V
+const #8 = Field	#41.#106;	//  scala/actors/threadpool/SynchronousQueue.waitingProducers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+const #9 = Field	#41.#107;	//  scala/actors/threadpool/SynchronousQueue.waitingConsumers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+const #10 = Method	#3.#102;	//  scala/actors/threadpool/locks/ReentrantLock."<init>":()V
+const #11 = class	#108;	//  scala/actors/threadpool/SynchronousQueue$LifoWaitQueue
+const #12 = Method	#11.#102;	//  scala/actors/threadpool/SynchronousQueue$LifoWaitQueue."<init>":()V
+const #13 = Method	#51.#109;	//  scala/actors/threadpool/SynchronousQueue$WaitQueue.shouldUnlink:(Lscala/actors/threadpool/SynchronousQueue$Node;)Z
+const #14 = Method	#3.#110;	//  scala/actors/threadpool/locks/ReentrantLock.lock:()V
+const #15 = Method	#51.#111;	//  scala/actors/threadpool/SynchronousQueue$WaitQueue.unlink:(Lscala/actors/threadpool/SynchronousQueue$Node;)V
+const #16 = Method	#3.#112;	//  scala/actors/threadpool/locks/ReentrantLock.unlock:()V
+const #17 = class	#113;	//  java/lang/NullPointerException
+const #18 = Method	#17.#102;	//  java/lang/NullPointerException."<init>":()V
+const #19 = Method	#114.#115;	//  java/lang/Thread.interrupted:()Z
+const #20 = class	#116;	//  java/lang/InterruptedException
+const #21 = Method	#20.#102;	//  java/lang/InterruptedException."<init>":()V
+const #22 = Method	#51.#117;	//  scala/actors/threadpool/SynchronousQueue$WaitQueue.deq:()Lscala/actors/threadpool/SynchronousQueue$Node;
+const #23 = Method	#51.#118;	//  scala/actors/threadpool/SynchronousQueue$WaitQueue.enq:(Ljava/lang/Object;)Lscala/actors/threadpool/SynchronousQueue$Node;
+const #24 = Method	#47.#119;	//  scala/actors/threadpool/SynchronousQueue$Node.waitForTake:()V
+const #25 = Method	#41.#120;	//  scala/actors/threadpool/SynchronousQueue.unlinkCancelledProducer:(Lscala/actors/threadpool/SynchronousQueue$Node;)V
+const #26 = Method	#47.#121;	//  scala/actors/threadpool/SynchronousQueue$Node.setItem:(Ljava/lang/Object;)Z
+const #27 = Method	#122.#123;	//  scala/actors/threadpool/TimeUnit.toNanos:(J)J
+const #28 = Method	#47.#124;	//  scala/actors/threadpool/SynchronousQueue$Node.waitForTake:(J)Z
+const #29 = Method	#47.#125;	//  scala/actors/threadpool/SynchronousQueue$Node.waitForPut:()Ljava/lang/Object;
+const #30 = Method	#41.#126;	//  scala/actors/threadpool/SynchronousQueue.unlinkCancelledConsumer:(Lscala/actors/threadpool/SynchronousQueue$Node;)V
+const #31 = Method	#47.#127;	//  scala/actors/threadpool/SynchronousQueue$Node.getItem:()Ljava/lang/Object;
+const #32 = Method	#47.#128;	//  scala/actors/threadpool/SynchronousQueue$Node.waitForPut:(J)Ljava/lang/Object;
+const #33 = InterfaceMethod	#129.#130;	//  java/util/Collection.isEmpty:()Z
+const #34 = class	#131;	//  scala/actors/threadpool/SynchronousQueue$EmptyIterator
+const #35 = Method	#34.#102;	//  scala/actors/threadpool/SynchronousQueue$EmptyIterator."<init>":()V
+const #36 = class	#132;	//  java/lang/Object
+const #37 = class	#133;	//  java/lang/IllegalArgumentException
+const #38 = Method	#37.#102;	//  java/lang/IllegalArgumentException."<init>":()V
+const #39 = Method	#41.#134;	//  scala/actors/threadpool/SynchronousQueue.poll:()Ljava/lang/Object;
+const #40 = InterfaceMethod	#129.#135;	//  java/util/Collection.add:(Ljava/lang/Object;)Z
+const #41 = class	#136;	//  scala/actors/threadpool/SynchronousQueue
+const #42 = class	#137;	//  scala/actors/threadpool/AbstractQueue
+const #43 = class	#138;	//  scala/actors/threadpool/BlockingQueue
+const #44 = class	#139;	//  java/io/Serializable
+const #45 = Asciz	EmptyIterator;
+const #46 = Asciz	InnerClasses;
+const #47 = class	#140;	//  scala/actors/threadpool/SynchronousQueue$Node
+const #48 = Asciz	Node;
+const #49 = Asciz	LifoWaitQueue;
+const #50 = Asciz	FifoWaitQueue;
+const #51 = class	#141;	//  scala/actors/threadpool/SynchronousQueue$WaitQueue
+const #52 = Asciz	WaitQueue;
+const #53 = Asciz	serialVersionUID;
+const #54 = Asciz	J;
+const #55 = Asciz	ConstantValue;
+const #56 = long	-3223113410248163686l;
+const #58 = Asciz	qlock;
+const #59 = Asciz	Lscala/actors/threadpool/locks/ReentrantLock;;
+const #60 = Asciz	waitingProducers;
+const #61 = Asciz	Lscala/actors/threadpool/SynchronousQueue$WaitQueue;;
+const #62 = Asciz	waitingConsumers;
+const #63 = Asciz	<init>;
+const #64 = Asciz	()V;
+const #65 = Asciz	Code;
+const #66 = Asciz	(Z)V;
+const #67 = Asciz	unlinkCancelledConsumer;
+const #68 = Asciz	(Lscala/actors/threadpool/SynchronousQueue$Node;)V;
+const #69 = Asciz	unlinkCancelledProducer;
+const #70 = Asciz	put;
+const #71 = Asciz	(Ljava/lang/Object;)V;
+const #72 = Asciz	Exceptions;
+const #73 = Asciz	offer;
+const #74 = Asciz	(Ljava/lang/Object;JLscala/actors/threadpool/TimeUnit;)Z;
+const #75 = Asciz	take;
+const #76 = Asciz	()Ljava/lang/Object;;
+const #77 = Asciz	poll;
+const #78 = Asciz	(JLscala/actors/threadpool/TimeUnit;)Ljava/lang/Object;;
+const #79 = Asciz	(Ljava/lang/Object;)Z;
+const #80 = Asciz	isEmpty;
+const #81 = Asciz	()Z;
+const #82 = Asciz	size;
+const #83 = Asciz	()I;
+const #84 = Asciz	remainingCapacity;
+const #85 = Asciz	clear;
+const #86 = Asciz	contains;
+const #87 = Asciz	remove;
+const #88 = Asciz	containsAll;
+const #89 = Asciz	(Ljava/util/Collection;)Z;
+const #90 = Asciz	removeAll;
+const #91 = Asciz	retainAll;
+const #92 = Asciz	peek;
+const #93 = Asciz	iterator;
+const #94 = Asciz	()Ljava/util/Iterator;;
+const #95 = Asciz	toArray;
+const #96 = Asciz	()[Ljava/lang/Object;;
+const #97 = Asciz	([Ljava/lang/Object;)[Ljava/lang/Object;;
+const #98 = Asciz	drainTo;
+const #99 = Asciz	(Ljava/util/Collection;)I;
+const #100 = Asciz	(Ljava/util/Collection;I)I;
+const #101 = NameAndType	#63:#66;//  "<init>":(Z)V
+const #102 = NameAndType	#63:#64;//  "<init>":()V
+const #103 = Asciz	scala/actors/threadpool/locks/ReentrantLock;
+const #104 = NameAndType	#58:#59;//  qlock:Lscala/actors/threadpool/locks/ReentrantLock;
+const #105 = Asciz	scala/actors/threadpool/SynchronousQueue$FifoWaitQueue;
+const #106 = NameAndType	#60:#61;//  waitingProducers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+const #107 = NameAndType	#62:#61;//  waitingConsumers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+const #108 = Asciz	scala/actors/threadpool/SynchronousQueue$LifoWaitQueue;
+const #109 = NameAndType	#142:#143;//  shouldUnlink:(Lscala/actors/threadpool/SynchronousQueue$Node;)Z
+const #110 = NameAndType	#144:#64;//  lock:()V
+const #111 = NameAndType	#145:#68;//  unlink:(Lscala/actors/threadpool/SynchronousQueue$Node;)V
+const #112 = NameAndType	#146:#64;//  unlock:()V
+const #113 = Asciz	java/lang/NullPointerException;
+const #114 = class	#147;	//  java/lang/Thread
+const #115 = NameAndType	#148:#81;//  interrupted:()Z
+const #116 = Asciz	java/lang/InterruptedException;
+const #117 = NameAndType	#149:#150;//  deq:()Lscala/actors/threadpool/SynchronousQueue$Node;
+const #118 = NameAndType	#151:#152;//  enq:(Ljava/lang/Object;)Lscala/actors/threadpool/SynchronousQueue$Node;
+const #119 = NameAndType	#153:#64;//  waitForTake:()V
+const #120 = NameAndType	#69:#68;//  unlinkCancelledProducer:(Lscala/actors/threadpool/SynchronousQueue$Node;)V
+const #121 = NameAndType	#154:#79;//  setItem:(Ljava/lang/Object;)Z
+const #122 = class	#155;	//  scala/actors/threadpool/TimeUnit
+const #123 = NameAndType	#156:#157;//  toNanos:(J)J
+const #124 = NameAndType	#153:#158;//  waitForTake:(J)Z
+const #125 = NameAndType	#159:#76;//  waitForPut:()Ljava/lang/Object;
+const #126 = NameAndType	#67:#68;//  unlinkCancelledConsumer:(Lscala/actors/threadpool/SynchronousQueue$Node;)V
+const #127 = NameAndType	#160:#76;//  getItem:()Ljava/lang/Object;
+const #128 = NameAndType	#159:#161;//  waitForPut:(J)Ljava/lang/Object;
+const #129 = class	#162;	//  java/util/Collection
+const #130 = NameAndType	#80:#81;//  isEmpty:()Z
+const #131 = Asciz	scala/actors/threadpool/SynchronousQueue$EmptyIterator;
+const #132 = Asciz	java/lang/Object;
+const #133 = Asciz	java/lang/IllegalArgumentException;
+const #134 = NameAndType	#77:#76;//  poll:()Ljava/lang/Object;
+const #135 = NameAndType	#163:#79;//  add:(Ljava/lang/Object;)Z
+const #136 = Asciz	scala/actors/threadpool/SynchronousQueue;
+const #137 = Asciz	scala/actors/threadpool/AbstractQueue;
+const #138 = Asciz	scala/actors/threadpool/BlockingQueue;
+const #139 = Asciz	java/io/Serializable;
+const #140 = Asciz	scala/actors/threadpool/SynchronousQueue$Node;
+const #141 = Asciz	scala/actors/threadpool/SynchronousQueue$WaitQueue;
+const #142 = Asciz	shouldUnlink;
+const #143 = Asciz	(Lscala/actors/threadpool/SynchronousQueue$Node;)Z;
+const #144 = Asciz	lock;
+const #145 = Asciz	unlink;
+const #146 = Asciz	unlock;
+const #147 = Asciz	java/lang/Thread;
+const #148 = Asciz	interrupted;
+const #149 = Asciz	deq;
+const #150 = Asciz	()Lscala/actors/threadpool/SynchronousQueue$Node;;
+const #151 = Asciz	enq;
+const #152 = Asciz	(Ljava/lang/Object;)Lscala/actors/threadpool/SynchronousQueue$Node;;
+const #153 = Asciz	waitForTake;
+const #154 = Asciz	setItem;
+const #155 = Asciz	scala/actors/threadpool/TimeUnit;
+const #156 = Asciz	toNanos;
+const #157 = Asciz	(J)J;
+const #158 = Asciz	(J)Z;
+const #159 = Asciz	waitForPut;
+const #160 = Asciz	getItem;
+const #161 = Asciz	(J)Ljava/lang/Object;;
+const #162 = Asciz	java/util/Collection;
+const #163 = Asciz	add;
+
+{
+public scala.actors.threadpool.SynchronousQueue();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	iconst_0
+   2:	invokespecial	#1; //Method "<init>":(Z)V
+   5:	return
+
+public scala.actors.threadpool.SynchronousQueue(boolean);
+  Code:
+   Stack=4, Locals=2, Args_size=2
+   0:	aload_0
+   1:	invokespecial	#2; //Method scala/actors/threadpool/AbstractQueue."<init>":()V
+   4:	iload_1
+   5:	ifeq	45
+   8:	aload_0
+   9:	new	#3; //class scala/actors/threadpool/locks/ReentrantLock
+   12:	dup
+   13:	iconst_1
+   14:	invokespecial	#4; //Method scala/actors/threadpool/locks/ReentrantLock."<init>":(Z)V
+   17:	putfield	#5; //Field qlock:Lscala/actors/threadpool/locks/ReentrantLock;
+   20:	aload_0
+   21:	new	#6; //class scala/actors/threadpool/SynchronousQueue$FifoWaitQueue
+   24:	dup
+   25:	invokespecial	#7; //Method scala/actors/threadpool/SynchronousQueue$FifoWaitQueue."<init>":()V
+   28:	putfield	#8; //Field waitingProducers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+   31:	aload_0
+   32:	new	#6; //class scala/actors/threadpool/SynchronousQueue$FifoWaitQueue
+   35:	dup
+   36:	invokespecial	#7; //Method scala/actors/threadpool/SynchronousQueue$FifoWaitQueue."<init>":()V
+   39:	putfield	#9; //Field waitingConsumers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+   42:	goto	78
+   45:	aload_0
+   46:	new	#3; //class scala/actors/threadpool/locks/ReentrantLock
+   49:	dup
+   50:	invokespecial	#10; //Method scala/actors/threadpool/locks/ReentrantLock."<init>":()V
+   53:	putfield	#5; //Field qlock:Lscala/actors/threadpool/locks/ReentrantLock;
+   56:	aload_0
+   57:	new	#11; //class scala/actors/threadpool/SynchronousQueue$LifoWaitQueue
+   60:	dup
+   61:	invokespecial	#12; //Method scala/actors/threadpool/SynchronousQueue$LifoWaitQueue."<init>":()V
+   64:	putfield	#8; //Field waitingProducers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+   67:	aload_0
+   68:	new	#11; //class scala/actors/threadpool/SynchronousQueue$LifoWaitQueue
+   71:	dup
+   72:	invokespecial	#12; //Method scala/actors/threadpool/SynchronousQueue$LifoWaitQueue."<init>":()V
+   75:	putfield	#9; //Field waitingConsumers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+   78:	return
+
+public void put(java.lang.Object)   throws java.lang.InterruptedException;
+  Code:
+   Stack=2, Locals=6, Args_size=2
+   0:	aload_1
+   1:	ifnonnull	12
+   4:	new	#17; //class java/lang/NullPointerException
+   7:	dup
+   8:	invokespecial	#18; //Method java/lang/NullPointerException."<init>":()V
+   11:	athrow
+   12:	aload_0
+   13:	getfield	#5; //Field qlock:Lscala/actors/threadpool/locks/ReentrantLock;
+   16:	astore_2
+   17:	invokestatic	#19; //Method java/lang/Thread.interrupted:()Z
+   20:	ifeq	31
+   23:	new	#20; //class java/lang/InterruptedException
+   26:	dup
+   27:	invokespecial	#21; //Method java/lang/InterruptedException."<init>":()V
+   30:	athrow
+   31:	aload_2
+   32:	invokevirtual	#14; //Method scala/actors/threadpool/locks/ReentrantLock.lock:()V
+   35:	aload_0
+   36:	getfield	#9; //Field waitingConsumers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+   39:	invokevirtual	#22; //Method scala/actors/threadpool/SynchronousQueue$WaitQueue.deq:()Lscala/actors/threadpool/SynchronousQueue$Node;
+   42:	astore_3
+   43:	aload_3
+   44:	ifnonnull	51
+   47:	iconst_1
+   48:	goto	52
+   51:	iconst_0
+   52:	dup
+   53:	istore	4
+   55:	ifeq	67
+   58:	aload_0
+   59:	getfield	#8; //Field waitingProducers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+   62:	aload_1
+   63:	invokevirtual	#23; //Method scala/actors/threadpool/SynchronousQueue$WaitQueue.enq:(Ljava/lang/Object;)Lscala/actors/threadpool/SynchronousQueue$Node;
+   66:	astore_3
+   67:	aload_2
+   68:	invokevirtual	#16; //Method scala/actors/threadpool/locks/ReentrantLock.unlock:()V
+   71:	goto	83
+   74:	astore	5
+   76:	aload_2
+   77:	invokevirtual	#16; //Method scala/actors/threadpool/locks/ReentrantLock.unlock:()V
+   80:	aload	5
+   82:	athrow
+   83:	iload	4
+   85:	ifeq	103
+   88:	aload_3
+   89:	invokevirtual	#24; //Method scala/actors/threadpool/SynchronousQueue$Node.waitForTake:()V
+   92:	return
+   93:	astore	5
+   95:	aload_0
+   96:	aload_3
+   97:	invokespecial	#25; //Method unlinkCancelledProducer:(Lscala/actors/threadpool/SynchronousQueue$Node;)V
+   100:	aload	5
+   102:	athrow
+   103:	aload_3
+   104:	aload_1
+   105:	invokevirtual	#26; //Method scala/actors/threadpool/SynchronousQueue$Node.setItem:(Ljava/lang/Object;)Z
+   108:	ifeq	112
+   111:	return
+   112:	goto	17
+  Exception table:
+   from   to  target type
+    35    67    74   any
+    74    76    74   any
+    88    92    93   Class java/lang/InterruptedException
+
+  Exceptions: 
+   throws java.lang.InterruptedException
+public boolean offer(java.lang.Object, long, scala.actors.threadpool.TimeUnit)   throws java.lang.InterruptedException;
+  Code:
+   Stack=3, Locals=11, Args_size=4
+   0:	aload_1
+   1:	ifnonnull	12
+   4:	new	#17; //class java/lang/NullPointerException
+   7:	dup
+   8:	invokespecial	#18; //Method java/lang/NullPointerException."<init>":()V
+   11:	athrow
+   12:	aload	4
+   14:	lload_2
+   15:	invokevirtual	#27; //Method scala/actors/threadpool/TimeUnit.toNanos:(J)J
+   18:	lstore	5
+   20:	aload_0
+   21:	getfield	#5; //Field qlock:Lscala/actors/threadpool/locks/ReentrantLock;
+   24:	astore	7
+   26:	invokestatic	#19; //Method java/lang/Thread.interrupted:()Z
+   29:	ifeq	40
+   32:	new	#20; //class java/lang/InterruptedException
+   35:	dup
+   36:	invokespecial	#21; //Method java/lang/InterruptedException."<init>":()V
+   39:	athrow
+   40:	aload	7
+   42:	invokevirtual	#14; //Method scala/actors/threadpool/locks/ReentrantLock.lock:()V
+   45:	aload_0
+   46:	getfield	#9; //Field waitingConsumers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+   49:	invokevirtual	#22; //Method scala/actors/threadpool/SynchronousQueue$WaitQueue.deq:()Lscala/actors/threadpool/SynchronousQueue$Node;
+   52:	astore	8
+   54:	aload	8
+   56:	ifnonnull	63
+   59:	iconst_1
+   60:	goto	64
+   63:	iconst_0
+   64:	dup
+   65:	istore	9
+   67:	ifeq	80
+   70:	aload_0
+   71:	getfield	#8; //Field waitingProducers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+   74:	aload_1
+   75:	invokevirtual	#23; //Method scala/actors/threadpool/SynchronousQueue$WaitQueue.enq:(Ljava/lang/Object;)Lscala/actors/threadpool/SynchronousQueue$Node;
+   78:	astore	8
+   80:	aload	7
+   82:	invokevirtual	#16; //Method scala/actors/threadpool/locks/ReentrantLock.unlock:()V
+   85:	goto	98
+   88:	astore	10
+   90:	aload	7
+   92:	invokevirtual	#16; //Method scala/actors/threadpool/locks/ReentrantLock.unlock:()V
+   95:	aload	10
+   97:	athrow
+   98:	iload	9
+   100:	ifeq	137
+   103:	aload	8
+   105:	lload	5
+   107:	invokevirtual	#28; //Method scala/actors/threadpool/SynchronousQueue$Node.waitForTake:(J)Z
+   110:	istore	10
+   112:	iload	10
+   114:	ifne	123
+   117:	aload_0
+   118:	aload	8
+   120:	invokespecial	#25; //Method unlinkCancelledProducer:(Lscala/actors/threadpool/SynchronousQueue$Node;)V
+   123:	iload	10
+   125:	ireturn
+   126:	astore	10
+   128:	aload_0
+   129:	aload	8
+   131:	invokespecial	#25; //Method unlinkCancelledProducer:(Lscala/actors/threadpool/SynchronousQueue$Node;)V
+   134:	aload	10
+   136:	athrow
+   137:	aload	8
+   139:	aload_1
+   140:	invokevirtual	#26; //Method scala/actors/threadpool/SynchronousQueue$Node.setItem:(Ljava/lang/Object;)Z
+   143:	ifeq	148
+   146:	iconst_1
+   147:	ireturn
+   148:	goto	26
+  Exception table:
+   from   to  target type
+    45    80    88   any
+    88    90    88   any
+   103   125   126   Class java/lang/InterruptedException
+
+  Exceptions: 
+   throws java.lang.InterruptedException
+public java.lang.Object take()   throws java.lang.InterruptedException;
+  Code:
+   Stack=2, Locals=5, Args_size=1
+   0:	aload_0
+   1:	getfield	#5; //Field qlock:Lscala/actors/threadpool/locks/ReentrantLock;
+   4:	astore_1
+   5:	invokestatic	#19; //Method java/lang/Thread.interrupted:()Z
+   8:	ifeq	19
+   11:	new	#20; //class java/lang/InterruptedException
+   14:	dup
+   15:	invokespecial	#21; //Method java/lang/InterruptedException."<init>":()V
+   18:	athrow
+   19:	aload_1
+   20:	invokevirtual	#14; //Method scala/actors/threadpool/locks/ReentrantLock.lock:()V
+   23:	aload_0
+   24:	getfield	#8; //Field waitingProducers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+   27:	invokevirtual	#22; //Method scala/actors/threadpool/SynchronousQueue$WaitQueue.deq:()Lscala/actors/threadpool/SynchronousQueue$Node;
+   30:	astore_2
+   31:	aload_2
+   32:	ifnonnull	39
+   35:	iconst_1
+   36:	goto	40
+   39:	iconst_0
+   40:	dup
+   41:	istore_3
+   42:	ifeq	54
+   45:	aload_0
+   46:	getfield	#9; //Field waitingConsumers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+   49:	aconst_null
+   50:	invokevirtual	#23; //Method scala/actors/threadpool/SynchronousQueue$WaitQueue.enq:(Ljava/lang/Object;)Lscala/actors/threadpool/SynchronousQueue$Node;
+   53:	astore_2
+   54:	aload_1
+   55:	invokevirtual	#16; //Method scala/actors/threadpool/locks/ReentrantLock.unlock:()V
+   58:	goto	70
+   61:	astore	4
+   63:	aload_1
+   64:	invokevirtual	#16; //Method scala/actors/threadpool/locks/ReentrantLock.unlock:()V
+   67:	aload	4
+   69:	athrow
+   70:	iload_3
+   71:	ifeq	93
+   74:	aload_2
+   75:	invokevirtual	#29; //Method scala/actors/threadpool/SynchronousQueue$Node.waitForPut:()Ljava/lang/Object;
+   78:	astore	4
+   80:	aload	4
+   82:	areturn
+   83:	astore	4
+   85:	aload_0
+   86:	aload_2
+   87:	invokespecial	#30; //Method unlinkCancelledConsumer:(Lscala/actors/threadpool/SynchronousQueue$Node;)V
+   90:	aload	4
+   92:	athrow
+   93:	aload_2
+   94:	invokevirtual	#31; //Method scala/actors/threadpool/SynchronousQueue$Node.getItem:()Ljava/lang/Object;
+   97:	astore	4
+   99:	aload	4
+   101:	ifnull	107
+   104:	aload	4
+   106:	areturn
+   107:	goto	5
+  Exception table:
+   from   to  target type
+    23    54    61   any
+    61    63    61   any
+    74    82    83   Class java/lang/InterruptedException
+
+  Exceptions: 
+   throws java.lang.InterruptedException
+public java.lang.Object poll(long, scala.actors.threadpool.TimeUnit)   throws java.lang.InterruptedException;
+  Code:
+   Stack=3, Locals=10, Args_size=3
+   0:	aload_3
+   1:	lload_1
+   2:	invokevirtual	#27; //Method scala/actors/threadpool/TimeUnit.toNanos:(J)J
+   5:	lstore	4
+   7:	aload_0
+   8:	getfield	#5; //Field qlock:Lscala/actors/threadpool/locks/ReentrantLock;
+   11:	astore	6
+   13:	invokestatic	#19; //Method java/lang/Thread.interrupted:()Z
+   16:	ifeq	27
+   19:	new	#20; //class java/lang/InterruptedException
+   22:	dup
+   23:	invokespecial	#21; //Method java/lang/InterruptedException."<init>":()V
+   26:	athrow
+   27:	aload	6
+   29:	invokevirtual	#14; //Method scala/actors/threadpool/locks/ReentrantLock.lock:()V
+   32:	aload_0
+   33:	getfield	#8; //Field waitingProducers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+   36:	invokevirtual	#22; //Method scala/actors/threadpool/SynchronousQueue$WaitQueue.deq:()Lscala/actors/threadpool/SynchronousQueue$Node;
+   39:	astore	7
+   41:	aload	7
+   43:	ifnonnull	50
+   46:	iconst_1
+   47:	goto	51
+   50:	iconst_0
+   51:	dup
+   52:	istore	8
+   54:	ifeq	67
+   57:	aload_0
+   58:	getfield	#9; //Field waitingConsumers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+   61:	aconst_null
+   62:	invokevirtual	#23; //Method scala/actors/threadpool/SynchronousQueue$WaitQueue.enq:(Ljava/lang/Object;)Lscala/actors/threadpool/SynchronousQueue$Node;
+   65:	astore	7
+   67:	aload	6
+   69:	invokevirtual	#16; //Method scala/actors/threadpool/locks/ReentrantLock.unlock:()V
+   72:	goto	85
+   75:	astore	9
+   77:	aload	6
+   79:	invokevirtual	#16; //Method scala/actors/threadpool/locks/ReentrantLock.unlock:()V
+   82:	aload	9
+   84:	athrow
+   85:	iload	8
+   87:	ifeq	124
+   90:	aload	7
+   92:	lload	4
+   94:	invokevirtual	#32; //Method scala/actors/threadpool/SynchronousQueue$Node.waitForPut:(J)Ljava/lang/Object;
+   97:	astore	9
+   99:	aload	9
+   101:	ifnonnull	110
+   104:	aload_0
+   105:	aload	7
+   107:	invokespecial	#30; //Method unlinkCancelledConsumer:(Lscala/actors/threadpool/SynchronousQueue$Node;)V
+   110:	aload	9
+   112:	areturn
+   113:	astore	9
+   115:	aload_0
+   116:	aload	7
+   118:	invokespecial	#30; //Method unlinkCancelledConsumer:(Lscala/actors/threadpool/SynchronousQueue$Node;)V
+   121:	aload	9
+   123:	athrow
+   124:	aload	7
+   126:	invokevirtual	#31; //Method scala/actors/threadpool/SynchronousQueue$Node.getItem:()Ljava/lang/Object;
+   129:	astore	9
+   131:	aload	9
+   133:	ifnull	139
+   136:	aload	9
+   138:	areturn
+   139:	goto	13
+  Exception table:
+   from   to  target type
+    32    67    75   any
+    75    77    75   any
+    90   112   113   Class java/lang/InterruptedException
+
+  Exceptions: 
+   throws java.lang.InterruptedException
+public boolean offer(java.lang.Object);
+  Code:
+   Stack=2, Locals=5, Args_size=2
+   0:	aload_1
+   1:	ifnonnull	12
+   4:	new	#17; //class java/lang/NullPointerException
+   7:	dup
+   8:	invokespecial	#18; //Method java/lang/NullPointerException."<init>":()V
+   11:	athrow
+   12:	aload_0
+   13:	getfield	#5; //Field qlock:Lscala/actors/threadpool/locks/ReentrantLock;
+   16:	astore_2
+   17:	aload_2
+   18:	invokevirtual	#14; //Method scala/actors/threadpool/locks/ReentrantLock.lock:()V
+   21:	aload_0
+   22:	getfield	#9; //Field waitingConsumers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+   25:	invokevirtual	#22; //Method scala/actors/threadpool/SynchronousQueue$WaitQueue.deq:()Lscala/actors/threadpool/SynchronousQueue$Node;
+   28:	astore_3
+   29:	aload_2
+   30:	invokevirtual	#16; //Method scala/actors/threadpool/locks/ReentrantLock.unlock:()V
+   33:	goto	45
+   36:	astore	4
+   38:	aload_2
+   39:	invokevirtual	#16; //Method scala/actors/threadpool/locks/ReentrantLock.unlock:()V
+   42:	aload	4
+   44:	athrow
+   45:	aload_3
+   46:	ifnonnull	51
+   49:	iconst_0
+   50:	ireturn
+   51:	aload_3
+   52:	aload_1
+   53:	invokevirtual	#26; //Method scala/actors/threadpool/SynchronousQueue$Node.setItem:(Ljava/lang/Object;)Z
+   56:	ifeq	61
+   59:	iconst_1
+   60:	ireturn
+   61:	goto	17
+  Exception table:
+   from   to  target type
+    21    29    36   any
+    36    38    36   any
+
+public java.lang.Object poll();
+  Code:
+   Stack=1, Locals=4, Args_size=1
+   0:	aload_0
+   1:	getfield	#5; //Field qlock:Lscala/actors/threadpool/locks/ReentrantLock;
+   4:	astore_1
+   5:	aload_1
+   6:	invokevirtual	#14; //Method scala/actors/threadpool/locks/ReentrantLock.lock:()V
+   9:	aload_0
+   10:	getfield	#8; //Field waitingProducers:Lscala/actors/threadpool/SynchronousQueue$WaitQueue;
+   13:	invokevirtual	#22; //Method scala/actors/threadpool/SynchronousQueue$WaitQueue.deq:()Lscala/actors/threadpool/SynchronousQueue$Node;
+   16:	astore_2
+   17:	aload_1
+   18:	invokevirtual	#16; //Method scala/actors/threadpool/locks/ReentrantLock.unlock:()V
+   21:	goto	31
+   24:	astore_3
+   25:	aload_1
+   26:	invokevirtual	#16; //Method scala/actors/threadpool/locks/ReentrantLock.unlock:()V
+   29:	aload_3
+   30:	athrow
+   31:	aload_2
+   32:	ifnonnull	37
+   35:	aconst_null
+   36:	areturn
+   37:	aload_2
+   38:	invokevirtual	#31; //Method scala/actors/threadpool/SynchronousQueue$Node.getItem:()Ljava/lang/Object;
+   41:	astore_3
+   42:	aload_3
+   43:	ifnull	48
+   46:	aload_3
+   47:	areturn
+   48:	goto	5
+  Exception table:
+   from   to  target type
+     9    17    24   any
+    24    25    24   any
+
+public boolean isEmpty();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	iconst_1
+   1:	ireturn
+
+public int size();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	iconst_0
+   1:	ireturn
+
+public int remainingCapacity();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	iconst_0
+   1:	ireturn
+
+public void clear();
+  Code:
+   Stack=0, Locals=1, Args_size=1
+   0:	return
+
+public boolean contains(java.lang.Object);
+  Code:
+   Stack=1, Locals=2, Args_size=2
+   0:	iconst_0
+   1:	ireturn
+
+public boolean remove(java.lang.Object);
+  Code:
+   Stack=1, Locals=2, Args_size=2
+   0:	iconst_0
+   1:	ireturn
+
+public boolean containsAll(java.util.Collection);
+  Code:
+   Stack=1, Locals=2, Args_size=2
+   0:	aload_1
+   1:	invokeinterface	#33,  1; //InterfaceMethod java/util/Collection.isEmpty:()Z
+   6:	ireturn
+
+public boolean removeAll(java.util.Collection);
+  Code:
+   Stack=1, Locals=2, Args_size=2
+   0:	iconst_0
+   1:	ireturn
+
+public boolean retainAll(java.util.Collection);
+  Code:
+   Stack=1, Locals=2, Args_size=2
+   0:	iconst_0
+   1:	ireturn
+
+public java.lang.Object peek();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aconst_null
+   1:	areturn
+
+public java.util.Iterator iterator();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	new	#34; //class scala/actors/threadpool/SynchronousQueue$EmptyIterator
+   3:	dup
+   4:	invokespecial	#35; //Method scala/actors/threadpool/SynchronousQueue$EmptyIterator."<init>":()V
+   7:	areturn
+
+public java.lang.Object[] toArray();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	iconst_0
+   1:	anewarray	#36; //class java/lang/Object
+   4:	areturn
+
+public java.lang.Object[] toArray(java.lang.Object[]);
+  Code:
+   Stack=3, Locals=2, Args_size=2
+   0:	aload_1
+   1:	arraylength
+   2:	ifle	9
+   5:	aload_1
+   6:	iconst_0
+   7:	aconst_null
+   8:	aastore
+   9:	aload_1
+   10:	areturn
+
+public int drainTo(java.util.Collection);
+  Code:
+   Stack=2, Locals=4, Args_size=2
+   0:	aload_1
+   1:	ifnonnull	12
+   4:	new	#17; //class java/lang/NullPointerException
+   7:	dup
+   8:	invokespecial	#18; //Method java/lang/NullPointerException."<init>":()V
+   11:	athrow
+   12:	aload_1
+   13:	aload_0
+   14:	if_acmpne	25
+   17:	new	#37; //class java/lang/IllegalArgumentException
+   20:	dup
+   21:	invokespecial	#38; //Method java/lang/IllegalArgumentException."<init>":()V
+   24:	athrow
+   25:	iconst_0
+   26:	istore_2
+   27:	aload_0
+   28:	invokevirtual	#39; //Method poll:()Ljava/lang/Object;
+   31:	dup
+   32:	astore_3
+   33:	ifnull	50
+   36:	aload_1
+   37:	aload_3
+   38:	invokeinterface	#40,  2; //InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+   43:	pop
+   44:	iinc	2, 1
+   47:	goto	27
+   50:	iload_2
+   51:	ireturn
+
+public int drainTo(java.util.Collection, int);
+  Code:
+   Stack=2, Locals=5, Args_size=3
+   0:	aload_1
+   1:	ifnonnull	12
+   4:	new	#17; //class java/lang/NullPointerException
+   7:	dup
+   8:	invokespecial	#18; //Method java/lang/NullPointerException."<init>":()V
+   11:	athrow
+   12:	aload_1
+   13:	aload_0
+   14:	if_acmpne	25
+   17:	new	#37; //class java/lang/IllegalArgumentException
+   20:	dup
+   21:	invokespecial	#38; //Method java/lang/IllegalArgumentException."<init>":()V
+   24:	athrow
+   25:	iconst_0
+   26:	istore_3
+   27:	iload_3
+   28:	iload_2
+   29:	if_icmpge	57
+   32:	aload_0
+   33:	invokevirtual	#39; //Method poll:()Ljava/lang/Object;
+   36:	dup
+   37:	astore	4
+   39:	ifnull	57
+   42:	aload_1
+   43:	aload	4
+   45:	invokeinterface	#40,  2; //InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+   50:	pop
+   51:	iinc	3, 1
+   54:	goto	27
+   57:	iload_3
+   58:	ireturn
+
+}
+

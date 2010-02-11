@@ -1,0 +1,141 @@
+final class scala.actors.threadpool.SynchronousQueue$LifoWaitQueue extends scala.actors.threadpool.SynchronousQueue$WaitQueue implements java.io.Serializable
+  InnerClass: 
+   final #15= #2 of #30; //Node=class scala/actors/threadpool/SynchronousQueue$Node of class scala/actors/threadpool/SynchronousQueue
+   final #36= #6 of #30; //LifoWaitQueue=class scala/actors/threadpool/SynchronousQueue$LifoWaitQueue of class scala/actors/threadpool/SynchronousQueue
+   abstract #38= #7 of #30; //WaitQueue=class scala/actors/threadpool/SynchronousQueue$WaitQueue of class scala/actors/threadpool/SynchronousQueue
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Method	#7.#29;	//  scala/actors/threadpool/SynchronousQueue$WaitQueue."<init>":()V
+const #2 = class	#31;	//  scala/actors/threadpool/SynchronousQueue$Node
+const #3 = Field	#6.#32;	//  scala/actors/threadpool/SynchronousQueue$LifoWaitQueue.head:Lscala/actors/threadpool/SynchronousQueue$Node;
+const #4 = Method	#2.#33;	//  scala/actors/threadpool/SynchronousQueue$Node."<init>":(Ljava/lang/Object;Lscala/actors/threadpool/SynchronousQueue$Node;)V
+const #5 = Field	#2.#34;	//  scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+const #6 = class	#35;	//  scala/actors/threadpool/SynchronousQueue$LifoWaitQueue
+const #7 = class	#37;	//  scala/actors/threadpool/SynchronousQueue$WaitQueue
+const #8 = class	#39;	//  java/io/Serializable
+const #9 = Asciz	serialVersionUID;
+const #10 = Asciz	J;
+const #11 = Asciz	ConstantValue;
+const #12 = long	-3633113410248163686l;
+const #14 = Asciz	head;
+const #15 = Asciz	Node;
+const #16 = Asciz	InnerClasses;
+const #17 = Asciz	Lscala/actors/threadpool/SynchronousQueue$Node;;
+const #18 = Asciz	<init>;
+const #19 = Asciz	()V;
+const #20 = Asciz	Code;
+const #21 = Asciz	enq;
+const #22 = Asciz	(Ljava/lang/Object;)Lscala/actors/threadpool/SynchronousQueue$Node;;
+const #23 = Asciz	deq;
+const #24 = Asciz	()Lscala/actors/threadpool/SynchronousQueue$Node;;
+const #25 = Asciz	shouldUnlink;
+const #26 = Asciz	(Lscala/actors/threadpool/SynchronousQueue$Node;)Z;
+const #27 = Asciz	unlink;
+const #28 = Asciz	(Lscala/actors/threadpool/SynchronousQueue$Node;)V;
+const #29 = NameAndType	#18:#19;//  "<init>":()V
+const #30 = class	#40;	//  scala/actors/threadpool/SynchronousQueue
+const #31 = Asciz	scala/actors/threadpool/SynchronousQueue$Node;
+const #32 = NameAndType	#14:#17;//  head:Lscala/actors/threadpool/SynchronousQueue$Node;
+const #33 = NameAndType	#18:#41;//  "<init>":(Ljava/lang/Object;Lscala/actors/threadpool/SynchronousQueue$Node;)V
+const #34 = NameAndType	#42:#17;//  next:Lscala/actors/threadpool/SynchronousQueue$Node;
+const #35 = Asciz	scala/actors/threadpool/SynchronousQueue$LifoWaitQueue;
+const #36 = Asciz	LifoWaitQueue;
+const #37 = Asciz	scala/actors/threadpool/SynchronousQueue$WaitQueue;
+const #38 = Asciz	WaitQueue;
+const #39 = Asciz	java/io/Serializable;
+const #40 = Asciz	scala/actors/threadpool/SynchronousQueue;
+const #41 = Asciz	(Ljava/lang/Object;Lscala/actors/threadpool/SynchronousQueue$Node;)V;
+const #42 = Asciz	next;
+
+{
+scala.actors.threadpool.SynchronousQueue$LifoWaitQueue();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokespecial	#1; //Method scala/actors/threadpool/SynchronousQueue$WaitQueue."<init>":()V
+   4:	return
+
+scala.actors.threadpool.SynchronousQueue$Node enq(java.lang.Object);
+  Code:
+   Stack=5, Locals=2, Args_size=2
+   0:	aload_0
+   1:	new	#2; //class scala/actors/threadpool/SynchronousQueue$Node
+   4:	dup
+   5:	aload_1
+   6:	aload_0
+   7:	getfield	#3; //Field head:Lscala/actors/threadpool/SynchronousQueue$Node;
+   10:	invokespecial	#4; //Method scala/actors/threadpool/SynchronousQueue$Node."<init>":(Ljava/lang/Object;Lscala/actors/threadpool/SynchronousQueue$Node;)V
+   13:	dup_x1
+   14:	putfield	#3; //Field head:Lscala/actors/threadpool/SynchronousQueue$Node;
+   17:	areturn
+
+scala.actors.threadpool.SynchronousQueue$Node deq();
+  Code:
+   Stack=2, Locals=2, Args_size=1
+   0:	aload_0
+   1:	getfield	#3; //Field head:Lscala/actors/threadpool/SynchronousQueue$Node;
+   4:	astore_1
+   5:	aload_1
+   6:	ifnull	22
+   9:	aload_0
+   10:	aload_1
+   11:	getfield	#5; //Field scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+   14:	putfield	#3; //Field head:Lscala/actors/threadpool/SynchronousQueue$Node;
+   17:	aload_1
+   18:	aconst_null
+   19:	putfield	#5; //Field scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+   22:	aload_1
+   23:	areturn
+
+boolean shouldUnlink(scala.actors.threadpool.SynchronousQueue$Node);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_1
+   1:	aload_0
+   2:	getfield	#3; //Field head:Lscala/actors/threadpool/SynchronousQueue$Node;
+   5:	if_acmpeq	15
+   8:	aload_1
+   9:	getfield	#5; //Field scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+   12:	ifnull	19
+   15:	iconst_1
+   16:	goto	20
+   19:	iconst_0
+   20:	ireturn
+
+void unlink(scala.actors.threadpool.SynchronousQueue$Node);
+  Code:
+   Stack=2, Locals=5, Args_size=2
+   0:	aload_0
+   1:	getfield	#3; //Field head:Lscala/actors/threadpool/SynchronousQueue$Node;
+   4:	astore_2
+   5:	aconst_null
+   6:	astore_3
+   7:	aload_2
+   8:	ifnull	54
+   11:	aload_2
+   12:	aload_1
+   13:	if_acmpne	44
+   16:	aload_2
+   17:	getfield	#5; //Field scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+   20:	astore	4
+   22:	aload_3
+   23:	ifnonnull	35
+   26:	aload_0
+   27:	aload	4
+   29:	putfield	#3; //Field head:Lscala/actors/threadpool/SynchronousQueue$Node;
+   32:	goto	54
+   35:	aload_3
+   36:	aload	4
+   38:	putfield	#5; //Field scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+   41:	goto	54
+   44:	aload_2
+   45:	astore_3
+   46:	aload_2
+   47:	getfield	#5; //Field scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+   50:	astore_2
+   51:	goto	7
+   54:	return
+
+}
+

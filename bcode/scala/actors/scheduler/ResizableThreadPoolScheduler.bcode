@@ -1,0 +1,1350 @@
+Compiled from "ResizableThreadPoolScheduler.scala"
+public class scala.actors.scheduler.ResizableThreadPoolScheduler extends java.lang.Thread implements scala.actors.IScheduler,scala.actors.scheduler.TerminationMonitor,scala.ScalaObject
+  SourceFile: "ResizableThreadPoolScheduler.scala"
+  ScalaSig: length = 0x6A4
+   05 00 FFFFFF81 59 06 08 01 02 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF80 00 09 02 1C
+   52 65 73 69 7A 61 62 6C 65 54 68 72 65 61 64 50
+   6F 6F 6C 53 63 68 65 64 75 6C 65 72 0A 02 03 04
+   01 09 73 63 68 65 64 75 6C 65 72 0A 02 05 06 01
+   06 61 63 74 6F 72 73 0A 01 07 01 05 73 63 61 6C
+   61 03 00 13 05 00 0A 12 16 1A 10 02 0B 10 0D 01
+   0C 0A 02 0D 0E 01 04 6C 61 6E 67 0A 01 0F 01 04
+   6A 61 76 61 09 02 11 0C 02 06 54 68 72 65 61 64
+   10 02 13 14 0D 01 04 09 02 15 04 02 0A 49 53 63
+   68 65 64 75 6C 65 72 10 02 17 18 0D 01 02 09 02
+   19 02 02 12 54 65 72 6D 69 6E 61 74 69 6F 6E 4D
+   6F 6E 69 74 6F 72 10 02 1B 1C 0D 01 06 09 02 1D
+   06 02 0B 53 63 61 6C 61 4F 62 6A 65 63 74 08 08
+   1F 00 FFFFFF82 FFFFFFC2 FFFFFF80 FFFFFF84 08 20 01 09 74 65 72 6D 69 6E
+   61 74 65 15 01 21 10 02 1B 22 09 02 23 06 02 07
+   42 6F 6F 6C 65 61 6E 08 08 25 00 FFFFFF82 FFFFFF80 FFFFFFA0 FFFFFF80 04
+   21 01 0A 74 65 72 6D 69 6E 61 74 65 20 08 08 27
+   00 FFFFFF82 FFFFFFC2 FFFFFF80 FFFFFF84 08 20 01 06 64 61 65 6D 6F 6E 08
+   08 29 00 FFFFFF82 FFFFFF80 FFFFFFA0 FFFFFF80 04 21 01 07 64 61 65 6D 6F
+   6E 20 08 05 2B 00 FFFFFF84 00 2C 01 06 3C 69 6E 69 74
+   3E 14 03 2D 2E 2F 10 02 17 00 08 05 1F 2A FFFFFFC0 00
+   21 08 05 27 2A FFFFFFC0 00 21 08 07 31 00 FFFFFFC0 FFFFFF80 FFFFFF84 04
+   20 01 0B 74 65 72 6D 69 6E 61 74 69 6E 67 08 07
+   33 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 34 01 0F 74 65 72 6D 69 6E 61
+   74 69 6E 67 5F 24 65 71 14 02 35 38 10 02 1B 36
+   09 02 37 06 02 04 55 6E 69 74 08 07 39 32 FFFFFF81 FFFFFF80
+   FFFFFFC0 00 21 01 03 78 24 31 08 06 3B 00 FFFFFFA0 FFFFFFA0 04 21
+   01 0C 74 65 72 6D 69 6E 61 74 69 6E 67 20 08 07
+   3D 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 20 01 0A 73 75 73 70 65 6E 64
+   69 6E 67 08 07 3F 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 40 01 0E 73 75
+   73 70 65 6E 64 69 6E 67 5F 24 65 71 14 02 35 41
+   08 07 39 3E FFFFFF81 FFFFFF80 FFFFFFC0 00 21 08 06 43 00 FFFFFFA0 FFFFFFA0 04
+   21 01 0B 73 75 73 70 65 6E 64 69 6E 67 20 08 07
+   45 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 46 01 0C 64 72 61 69 6E 65 64
+   54 61 73 6B 73 15 01 47 30 02 48 50 10 03 49 4C
+   4E 0D 01 4A 0A 02 4B 0E 01 04 75 74 69 6C 09 02
+   4D 4A 02 04 4C 69 73 74 10 02 4F 50 0C 00 04 08
+   51 00 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF82 00 52 02 03 5F 24 31 11 02 53
+   56 10 02 1B 54 09 02 55 06 02 07 4E 6F 74 68 69
+   6E 67 10 02 1B 57 09 02 58 06 02 03 41 6E 79 08
+   07 5A 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 5B 01 10 64 72 61 69 6E 65
+   64 54 61 73 6B 73 5F 24 65 71 14 02 35 5C 08 07
+   39 59 FFFFFF81 FFFFFF80 FFFFFFC0 00 5D 30 02 5E 60 10 03 49 4C 5F
+   10 02 4F 60 04 08 51 00 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF82 00 52 08 06
+   62 00 FFFFFFA0 FFFFFFA0 04 63 01 0D 64 72 61 69 6E 65 64 54
+   61 73 6B 73 20 30 02 64 66 10 03 49 4C 65 10 02
+   4F 66 04 08 51 00 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF82 00 52 28 02 61 68
+   10 02 1B 69 09 02 6A 06 02 08 76 6F 6C 61 74 69
+   6C 65 08 07 6C 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 6D 01 08 63 6F 72
+   65 53 69 7A 65 15 01 6E 10 02 1B 6F 09 02 70 06
+   02 03 49 6E 74 08 07 72 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 73 01 0C
+   63 6F 72 65 53 69 7A 65 5F 24 65 71 14 02 35 74
+   08 07 39 71 FFFFFF81 FFFFFF80 FFFFFFC0 00 6E 08 06 76 00 FFFFFFA0 FFFFFFA0 04
+   6E 01 09 63 6F 72 65 53 69 7A 65 20 08 07 78 00
+   FFFFFFC2 FFFFFF80 FFFFFF84 04 6D 01 07 6D 61 78 53 69 7A 65 08 06
+   7A 00 FFFFFFA0 FFFFFF80 04 6E 01 08 6D 61 78 53 69 7A 65 20
+   08 07 7C 00 FFFFFFC2 FFFFFF80 FFFFFF84 04 6D 01 08 6E 75 6D 43 6F
+   72 65 73 08 06 7E 00 FFFFFFA0 FFFFFF80 04 6E 01 09 6E 75 6D
+   43 6F 72 65 73 20 08 08 FFFFFF81 00 00 FFFFFFC2 FFFFFF80 FFFFFF84 08 6D
+   01 0A 43 48 45 43 4B 5F 46 52 45 51 08 07 FFFFFF81 02
+   00 FFFFFFA0 FFFFFF80 04 6E 01 0B 43 48 45 43 4B 5F 46 52 45
+   51 20 06 0A FFFFFF81 04 00 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF80 04 FFFFFF81 05 02 13
+   44 61 65 6D 6F 6E 54 68 72 65 61 64 46 61 63 74
+   6F 72 79 13 07 FFFFFF81 03 FFFFFF81 06 FFFFFF81 09 1A 10 03 0B FFFFFF81
+   07 09 03 FFFFFF81 08 0C 02 06 4F 62 6A 65 63 74 10 04
+   FFFFFF81 0A FFFFFF81 0D 0D 02 FFFFFF81 0B 0A 03 FFFFFF81 0C 04 01 0A 74
+   68 72 65 61 64 70 6F 6F 6C 09 04 FFFFFF81 0E FFFFFF81 0B 02
+   0D 54 68 72 65 61 64 46 61 63 74 6F 72 79 08 07
+   2B FFFFFF81 03 FFFFFF84 00 FFFFFF81 10 14 02 FFFFFF81 11 10 04 FFFFFF81 12 FFFFFF81
+   03 0D 01 00 08 08 FFFFFF81 14 FFFFFF81 03 FFFFFF84 00 FFFFFF81 15 01 09
+   6E 65 77 54 68 72 65 61 64 14 03 0A FFFFFF81 16 08 08
+   FFFFFF81 17 FFFFFF81 13 FFFFFFC0 00 FFFFFF81 18 01 01 72 10 03 0B FFFFFF81 19
+   09 03 FFFFFF81 1A 0C 02 08 52 75 6E 6E 61 62 6C 65 08
+   09 FFFFFF81 1C 00 FFFFFFC2 FFFFFF80 FFFFFF84 04 FFFFFF81 1D 01 09 74 68 72 65
+   61 64 46 61 63 15 02 FFFFFF81 11 08 08 FFFFFF81 1F 00 FFFFFFA0 FFFFFF80
+   04 FFFFFF81 11 01 0A 74 68 72 65 61 64 46 61 63 20 08
+   07 FFFFFF81 21 00 FFFFFF84 04 FFFFFF81 22 01 0B 6D 61 6B 65 4E 65
+   77 50 6F 6F 6C 14 02 FFFFFF81 23 10 04 FFFFFF81 0A FFFFFF81 24 09
+   04 FFFFFF81 25 FFFFFF81 0B 02 12 54 68 72 65 61 64 50 6F 6F
+   6C 45 78 65 63 75 74 6F 72 08 09 FFFFFF81 27 00 FFFFFFC0 FFFFFF80
+   FFFFFF84 04 FFFFFF81 28 01 08 65 78 65 63 75 74 6F 72 15 02
+   FFFFFF81 23 08 09 FFFFFF81 2A 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 FFFFFF81 2B 01 0C 65
+   78 65 63 75 74 6F 72 5F 24 65 71 14 03 35 FFFFFF81 2C
+   08 09 39 FFFFFF81 29 FFFFFF81 FFFFFF80 FFFFFFC0 00 FFFFFF81 23 08 08 FFFFFF81 2E 00
+   FFFFFFA0 FFFFFFA0 04 FFFFFF81 23 01 09 65 78 65 63 75 74 6F 72 20
+   08 06 2B 00 FFFFFF84 00 FFFFFF81 30 14 03 2D FFFFFF81 31 08 07 FFFFFF81
+   32 FFFFFF81 2F FFFFFFC0 00 21 01 01 64 08 06 2B 00 FFFFFF84 00 FFFFFF81
+   34 14 01 2D 08 06 FFFFFF81 36 00 FFFFFF84 04 6D 01 11 6E 75
+   6D 57 6F 72 6B 65 72 73 42 6C 6F 63 6B 65 64 08
+   07 FFFFFF81 38 00 FFFFFF84 20 FFFFFF81 39 01 03 72 75 6E 14 01 35
+   08 07 FFFFFF81 3B 00 FFFFFF84 00 FFFFFF81 3C 01 07 65 78 65 63 75
+   74 65 14 03 35 FFFFFF81 3D 08 08 FFFFFF81 3E FFFFFF81 3A FFFFFFC0 00 FFFFFF81
+   18 01 04 74 61 73 6B 08 07 FFFFFF81 3B 00 FFFFFF84 00 FFFFFF81 40
+   14 03 35 FFFFFF81 41 08 09 FFFFFF81 42 FFFFFF81 3F FFFFFF84 FFFFFFC0 00 FFFFFF81 43
+   01 03 66 75 6E 10 04 1B FFFFFF81 44 35 09 03 FFFFFF81 45 06
+   02 08 3C 62 79 6E 61 6D 65 3E 08 07 FFFFFF81 47 00 FFFFFF84
+   00 FFFFFF81 39 01 08 73 68 75 74 64 6F 77 6E 08 06 FFFFFF81
+   49 00 FFFFFF84 00 20 01 08 69 73 41 63 74 69 76 65 08
+   07 FFFFFF81 4B 00 FFFFFF84 00 FFFFFF81 4C 01 0C 6D 61 6E 61 67 65
+   64 42 6C 6F 63 6B 14 03 35 FFFFFF81 4D 08 08 FFFFFF81 4E FFFFFF81
+   4A FFFFFFC0 00 FFFFFF81 4F 01 07 62 6C 6F 63 6B 65 72 10 04
+   FFFFFF81 50 FFFFFF81 53 0D 02 FFFFFF81 51 0A 03 FFFFFF81 52 06 01 0A 63
+   6F 6E 63 75 72 72 65 6E 74 09 04 FFFFFF81 54 FFFFFF81 51 02
+   0E 4D 61 6E 61 67 65 64 42 6C 6F 63 6B 65 72 08
+   07 FFFFFF81 56 00 FFFFFF84 00 FFFFFF81 39 01 08 73 6E 61 70 73 68
+   6F 74 08 07 FFFFFF81 58 00 FFFFFF84 00 FFFFFF81 39 01 07 72 65 73
+   74 61 72 74 
+  InnerClass: 
+   public final #442= #337 of #36; //State=class java/lang/Thread$State of class java/lang/Thread
+   public final #443= #321 of #209; //Worker=class scala/actors/threadpool/ThreadPoolExecutor$Worker of class scala/actors/threadpool/ThreadPoolExecutor
+   public #444= #376 of #209; //CallerRunsPolicy=class scala/actors/threadpool/ThreadPoolExecutor$CallerRunsPolicy of class scala/actors/threadpool/ThreadPoolExecutor
+   public final #445= #242 of #30; //$anon$1=class scala/actors/scheduler/ResizableThreadPoolScheduler$$anon$1 of class scala/actors/scheduler/ResizableThreadPoolScheduler
+   public #446= #93 of #30; //DaemonThreadFactory=class scala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory of class scala/actors/scheduler/ResizableThreadPoolScheduler
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Asciz	SourceFile;
+const #2 = Asciz	ResizableThreadPoolScheduler.scala;
+const #3 = Asciz	scala$actors$scheduler$TerminationMonitor$$started;
+const #4 = Asciz	Z;
+const #5 = Asciz	terminationHandlers;
+const #6 = Asciz	Lscala/collection/mutable/HashMap;;
+const #7 = Asciz	activeActors;
+const #8 = Asciz	I;
+const #9 = Asciz	executor;
+const #10 = Asciz	Lscala/actors/threadpool/ThreadPoolExecutor;;
+const #11 = Asciz	threadFac;
+const #12 = Asciz	Lscala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory;;
+const #13 = Asciz	CHECK_FREQ;
+const #14 = Asciz	numCores;
+const #15 = Asciz	maxSize;
+const #16 = Asciz	coreSize;
+const #17 = Asciz	drainedTasks;
+const #18 = Asciz	Ljava/util/List;;
+const #19 = Asciz	Ljava/util/List<*>;;
+const #20 = Asciz	Signature;
+const #21 = Asciz	suspending;
+const #22 = Asciz	terminating;
+const #23 = Asciz	daemon;
+const #24 = Asciz	terminate;
+const #25 = Asciz	<init>;
+const #26 = Asciz	(ZZ)V;
+const #27 = Asciz	Code;
+const #28 = Asciz	LineNumberTable;
+const #29 = Asciz	scala/actors/scheduler/ResizableThreadPoolScheduler;
+const #30 = class	#29;	//  scala/actors/scheduler/ResizableThreadPoolScheduler
+const #31 = NameAndType	#24:#4;//  terminate:Z
+const #32 = Field	#30.#31;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.terminate:Z
+const #33 = NameAndType	#23:#4;//  daemon:Z
+const #34 = Field	#30.#33;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.daemon:Z
+const #35 = Asciz	java/lang/Thread;
+const #36 = class	#35;	//  java/lang/Thread
+const #37 = Asciz	()V;
+const #38 = NameAndType	#25:#37;//  "<init>":()V
+const #39 = Method	#36.#38;	//  java/lang/Thread."<init>":()V
+const #40 = Asciz	scala/actors/IScheduler$class;
+const #41 = class	#40;	//  scala/actors/IScheduler$class
+const #42 = Asciz	$init$;
+const #43 = Asciz	(Lscala/actors/IScheduler;)V;
+const #44 = NameAndType	#42:#43;//  $init$:(Lscala/actors/IScheduler;)V
+const #45 = Method	#41.#44;	//  scala/actors/IScheduler$class.$init$:(Lscala/actors/IScheduler;)V
+const #46 = Asciz	scala/actors/scheduler/TerminationMonitor$class;
+const #47 = class	#46;	//  scala/actors/scheduler/TerminationMonitor$class
+const #48 = Asciz	(Lscala/actors/scheduler/TerminationMonitor;)V;
+const #49 = NameAndType	#42:#48;//  $init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+const #50 = Method	#47.#49;	//  scala/actors/scheduler/TerminationMonitor$class.$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+const #51 = Asciz	setDaemon;
+const #52 = Asciz	(Z)V;
+const #53 = NameAndType	#51:#52;//  setDaemon:(Z)V
+const #54 = Method	#30.#53;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.setDaemon:(Z)V
+const #55 = NameAndType	#22:#4;//  terminating:Z
+const #56 = Field	#30.#55;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.terminating:Z
+const #57 = NameAndType	#21:#4;//  suspending:Z
+const #58 = Field	#30.#57;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.suspending:Z
+const #59 = NameAndType	#17:#18;//  drainedTasks:Ljava/util/List;
+const #60 = Field	#30.#59;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.drainedTasks:Ljava/util/List;
+const #61 = Asciz	scala/actors/scheduler/ThreadPoolConfig$;
+const #62 = class	#61;	//  scala/actors/scheduler/ThreadPoolConfig$
+const #63 = Asciz	MODULE$;
+const #64 = Asciz	Lscala/actors/scheduler/ThreadPoolConfig$;;
+const #65 = NameAndType	#63:#64;//  MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
+const #66 = Field	#62.#65;	//  scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
+const #67 = Asciz	corePoolSize;
+const #68 = Asciz	()I;
+const #69 = NameAndType	#67:#68;//  corePoolSize:()I
+const #70 = Method	#62.#69;	//  scala/actors/scheduler/ThreadPoolConfig$.corePoolSize:()I
+const #71 = NameAndType	#16:#8;//  coreSize:I
+const #72 = Field	#30.#71;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.coreSize:I
+const #73 = Asciz	maxPoolSize;
+const #74 = NameAndType	#73:#68;//  maxPoolSize:()I
+const #75 = Method	#62.#74;	//  scala/actors/scheduler/ThreadPoolConfig$.maxPoolSize:()I
+const #76 = NameAndType	#15:#8;//  maxSize:I
+const #77 = Field	#30.#76;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.maxSize:I
+const #78 = Asciz	java/lang/Runtime;
+const #79 = class	#78;	//  java/lang/Runtime
+const #80 = Asciz	getRuntime;
+const #81 = Asciz	()Ljava/lang/Runtime;;
+const #82 = NameAndType	#80:#81;//  getRuntime:()Ljava/lang/Runtime;
+const #83 = Method	#79.#82;	//  java/lang/Runtime.getRuntime:()Ljava/lang/Runtime;
+const #84 = Asciz	availableProcessors;
+const #85 = NameAndType	#84:#68;//  availableProcessors:()I
+const #86 = Method	#79.#85;	//  java/lang/Runtime.availableProcessors:()I
+const #87 = NameAndType	#14:#8;//  numCores:I
+const #88 = Field	#30.#87;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.numCores:I
+const #89 = int	10;
+const #90 = NameAndType	#13:#8;//  CHECK_FREQ:I
+const #91 = Field	#30.#90;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.CHECK_FREQ:I
+const #92 = Asciz	scala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory;
+const #93 = class	#92;	//  scala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory
+const #94 = Asciz	(Lscala/actors/scheduler/ResizableThreadPoolScheduler;)V;
+const #95 = NameAndType	#25:#94;//  "<init>":(Lscala/actors/scheduler/ResizableThreadPoolScheduler;)V
+const #96 = Method	#93.#95;	//  scala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory."<init>":(Lscala/actors/scheduler/ResizableThreadPoolScheduler;)V
+const #97 = NameAndType	#11:#12;//  threadFac:Lscala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory;
+const #98 = Field	#30.#97;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.threadFac:Lscala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory;
+const #99 = Asciz	makeNewPool;
+const #100 = Asciz	()Lscala/actors/threadpool/ThreadPoolExecutor;;
+const #101 = NameAndType	#99:#100;//  makeNewPool:()Lscala/actors/threadpool/ThreadPoolExecutor;
+const #102 = Method	#30.#101;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.makeNewPool:()Lscala/actors/threadpool/ThreadPoolExecutor;
+const #103 = NameAndType	#9:#10;//  executor:Lscala/actors/threadpool/ThreadPoolExecutor;
+const #104 = Field	#30.#103;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.executor:Lscala/actors/threadpool/ThreadPoolExecutor;
+const #105 = Asciz	scala/actors/Debug$;
+const #106 = class	#105;	//  scala/actors/Debug$
+const #107 = Asciz	Lscala/actors/Debug$;;
+const #108 = NameAndType	#63:#107;//  MODULE$:Lscala/actors/Debug$;
+const #109 = Field	#106.#108;	//  scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+const #110 = Asciz	scala/collection/mutable/StringBuilder;
+const #111 = class	#110;	//  scala/collection/mutable/StringBuilder
+const #112 = Method	#111.#38;	//  scala/collection/mutable/StringBuilder."<init>":()V
+const #113 = Asciz	scala/Predef$;
+const #114 = class	#113;	//  scala/Predef$
+const #115 = Asciz	Lscala/Predef$;;
+const #116 = NameAndType	#63:#115;//  MODULE$:Lscala/Predef$;
+const #117 = Field	#114.#116;	//  scala/Predef$.MODULE$:Lscala/Predef$;
+const #118 = Asciz	any2stringadd;
+const #119 = Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
+const #120 = NameAndType	#118:#119;//  any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+const #121 = Method	#114.#120;	//  scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+const #122 = Asciz	: corePoolSize = ;
+const #123 = String	#122;	//  : corePoolSize = 
+const #124 = Asciz	scala/runtime/StringAdd;
+const #125 = class	#124;	//  scala/runtime/StringAdd
+const #126 = Asciz	$plus;
+const #127 = Asciz	(Ljava/lang/String;)Ljava/lang/String;;
+const #128 = NameAndType	#126:#127;//  $plus:(Ljava/lang/String;)Ljava/lang/String;
+const #129 = Method	#125.#128;	//  scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+const #130 = Asciz	append;
+const #131 = Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
+const #132 = NameAndType	#130:#131;//  append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+const #133 = Method	#111.#132;	//  scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+const #134 = NameAndType	#16:#68;//  coreSize:()I
+const #135 = Method	#30.#134;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.coreSize:()I
+const #136 = Asciz	scala/runtime/BoxesRunTime;
+const #137 = class	#136;	//  scala/runtime/BoxesRunTime
+const #138 = Asciz	boxToInteger;
+const #139 = Asciz	(I)Ljava/lang/Integer;;
+const #140 = NameAndType	#138:#139;//  boxToInteger:(I)Ljava/lang/Integer;
+const #141 = Method	#137.#140;	//  scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+const #142 = Asciz	, maxPoolSize = ;
+const #143 = String	#142;	//  , maxPoolSize = 
+const #144 = NameAndType	#15:#68;//  maxSize:()I
+const #145 = Method	#30.#144;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.maxSize:()I
+const #146 = Asciz	toString;
+const #147 = Asciz	()Ljava/lang/String;;
+const #148 = NameAndType	#146:#147;//  toString:()Ljava/lang/String;
+const #149 = Method	#111.#148;	//  scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+const #150 = Asciz	info;
+const #151 = Asciz	(Ljava/lang/String;)V;
+const #152 = NameAndType	#150:#151;//  info:(Ljava/lang/String;)V
+const #153 = Method	#106.#152;	//  scala/actors/Debug$.info:(Ljava/lang/String;)V
+const #154 = Asciz	this;
+const #155 = Asciz	Lscala/actors/scheduler/ResizableThreadPoolScheduler;;
+const #156 = Asciz	LocalVariableTable;
+const #157 = Asciz	liftedTree1$1;
+const #158 = NameAndType	#13:#68;//  CHECK_FREQ:()I
+const #159 = Method	#30.#158;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.CHECK_FREQ:()I
+const #160 = Asciz	wait;
+const #161 = Asciz	(J)V;
+const #162 = NameAndType	#160:#161;//  wait:(J)V
+const #163 = Method	#30.#162;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.wait:(J)V
+const #164 = Asciz	java/lang/InterruptedException;
+const #165 = class	#164;	//  java/lang/InterruptedException
+const #166 = Asciz	restart;
+const #167 = Asciz	()Z;
+const #168 = NameAndType	#21:#167;//  suspending:()Z
+const #169 = Method	#30.#168;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.suspending:()Z
+const #170 = Asciz	isActive;
+const #171 = NameAndType	#170:#167;//  isActive:()Z
+const #172 = Method	#30.#171;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.isActive:()Z
+const #173 = Asciz	scheduler is still active;
+const #174 = String	#173;	//  scheduler is still active
+const #175 = Asciz	java/lang/RuntimeException;
+const #176 = class	#175;	//  java/lang/RuntimeException
+const #177 = NameAndType	#25:#151;//  "<init>":(Ljava/lang/String;)V
+const #178 = Method	#176.#177;	//  java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+const #179 = Asciz	suspending_$eq;
+const #180 = NameAndType	#179:#52;//  suspending_$eq:(Z)V
+const #181 = Method	#30.#180;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.suspending_$eq:(Z)V
+const #182 = Asciz	executor_$eq;
+const #183 = Asciz	(Lscala/actors/threadpool/ThreadPoolExecutor;)V;
+const #184 = NameAndType	#182:#183;//  executor_$eq:(Lscala/actors/threadpool/ThreadPoolExecutor;)V
+const #185 = Method	#30.#184;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.executor_$eq:(Lscala/actors/threadpool/ThreadPoolExecutor;)V
+const #186 = Asciz	()Ljava/util/List;;
+const #187 = NameAndType	#17:#186;//  drainedTasks:()Ljava/util/List;
+const #188 = Method	#30.#187;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.drainedTasks:()Ljava/util/List;
+const #189 = Asciz	java/util/List;
+const #190 = class	#189;	//  java/util/List
+const #191 = Asciz	iterator;
+const #192 = Asciz	()Ljava/util/Iterator;;
+const #193 = NameAndType	#191:#192;//  iterator:()Ljava/util/Iterator;
+const #194 = InterfaceMethod	#190.#193;	//  java/util/List.iterator:()Ljava/util/Iterator;
+const #195 = Asciz	java/util/Iterator;
+const #196 = class	#195;	//  java/util/Iterator
+const #197 = Asciz	hasNext;
+const #198 = NameAndType	#197:#167;//  hasNext:()Z
+const #199 = InterfaceMethod	#196.#198;	//  java/util/Iterator.hasNext:()Z
+const #200 = NameAndType	#9:#100;//  executor:()Lscala/actors/threadpool/ThreadPoolExecutor;
+const #201 = Method	#30.#200;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.executor:()Lscala/actors/threadpool/ThreadPoolExecutor;
+const #202 = Asciz	next;
+const #203 = Asciz	()Ljava/lang/Object;;
+const #204 = NameAndType	#202:#203;//  next:()Ljava/lang/Object;
+const #205 = InterfaceMethod	#196.#204;	//  java/util/Iterator.next:()Ljava/lang/Object;
+const #206 = Asciz	java/lang/Runnable;
+const #207 = class	#206;	//  java/lang/Runnable
+const #208 = Asciz	scala/actors/threadpool/ThreadPoolExecutor;
+const #209 = class	#208;	//  scala/actors/threadpool/ThreadPoolExecutor
+const #210 = Asciz	execute;
+const #211 = Asciz	(Ljava/lang/Runnable;)V;
+const #212 = NameAndType	#210:#211;//  execute:(Ljava/lang/Runnable;)V
+const #213 = Method	#209.#212;	//  scala/actors/threadpool/ThreadPoolExecutor.execute:(Ljava/lang/Runnable;)V
+const #214 = Asciz	start;
+const #215 = NameAndType	#214:#37;//  start:()V
+const #216 = Method	#30.#215;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.start:()V
+const #217 = Asciz	snapshot has not been invoked;
+const #218 = String	#217;	//  snapshot has not been invoked
+const #219 = Asciz	iter;
+const #220 = Asciz	Ljava/util/Iterator;;
+const #221 = Asciz	snapshot;
+const #222 = Asciz	managedBlock;
+const #223 = Asciz	(Lscala/concurrent/ManagedBlocker;)V;
+const #224 = Asciz	scala/concurrent/ManagedBlocker;
+const #225 = class	#224;	//  scala/concurrent/ManagedBlocker
+const #226 = Asciz	block;
+const #227 = NameAndType	#226:#167;//  block:()Z
+const #228 = InterfaceMethod	#225.#227;	//  scala/concurrent/ManagedBlocker.block:()Z
+const #229 = Asciz	blocker;
+const #230 = Asciz	Lscala/concurrent/ManagedBlocker;;
+const #231 = NameAndType	#22:#167;//  terminating:()Z
+const #232 = Method	#30.#231;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.terminating:()Z
+const #233 = Asciz	isShutdown;
+const #234 = NameAndType	#233:#167;//  isShutdown:()Z
+const #235 = Method	#209.#234;	//  scala/actors/threadpool/ThreadPoolExecutor.isShutdown:()Z
+const #236 = Asciz	shutdown;
+const #237 = Asciz	terminating_$eq;
+const #238 = NameAndType	#237:#52;//  terminating_$eq:(Z)V
+const #239 = Method	#30.#238;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.terminating_$eq:(Z)V
+const #240 = Asciz	(Lscala/Function0;)V;
+const #241 = Asciz	scala/actors/scheduler/ResizableThreadPoolScheduler$$anon$1;
+const #242 = class	#241;	//  scala/actors/scheduler/ResizableThreadPoolScheduler$$anon$1
+const #243 = Asciz	(Lscala/actors/scheduler/ResizableThreadPoolScheduler;Lscala/Function0;)V;
+const #244 = NameAndType	#25:#243;//  "<init>":(Lscala/actors/scheduler/ResizableThreadPoolScheduler;Lscala/Function0;)V
+const #245 = Method	#242.#244;	//  scala/actors/scheduler/ResizableThreadPoolScheduler$$anon$1."<init>":(Lscala/actors/scheduler/ResizableThreadPoolScheduler;Lscala/Function0;)V
+const #246 = Asciz	fun$1;
+const #247 = Asciz	Lscala/Function0;;
+const #248 = Asciz	(Lscala/Function0<Ljava/lang/Object;>;)V;
+const #249 = Asciz	task;
+const #250 = Asciz	Ljava/lang/Runnable;;
+const #251 = Asciz	run;
+const #252 = NameAndType	#157:#37;//  liftedTree1$1:()V
+const #253 = Method	#30.#252;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.liftedTree1$1:()V
+const #254 = Asciz	scala/actors/scheduler/QuitException;
+const #255 = class	#254;	//  scala/actors/scheduler/QuitException
+const #256 = Method	#255.#38;	//  scala/actors/scheduler/QuitException."<init>":()V
+const #257 = Asciz	shutdownNow;
+const #258 = NameAndType	#257:#186;//  shutdownNow:()Ljava/util/List;
+const #259 = Method	#209.#258;	//  scala/actors/threadpool/ThreadPoolExecutor.shutdownNow:()Ljava/util/List;
+const #260 = Asciz	drainedTasks_$eq;
+const #261 = Asciz	(Ljava/util/List;)V;
+const #262 = NameAndType	#260:#261;//  drainedTasks_$eq:(Ljava/util/List;)V
+const #263 = Method	#30.#262;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.drainedTasks_$eq:(Ljava/util/List;)V
+const #264 = Asciz	(Ljava/lang/Object;)V;
+const #265 = NameAndType	#25:#264;//  "<init>":(Ljava/lang/Object;)V
+const #266 = Method	#125.#265;	//  scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+const #267 = Asciz	: drained ;
+const #268 = String	#267;	//  : drained 
+const #269 = Asciz	size;
+const #270 = NameAndType	#269:#68;//  size:()I
+const #271 = InterfaceMethod	#190.#270;	//  java/util/List.size:()I
+const #272 = Asciz	 tasks;
+const #273 = String	#272;	//   tasks
+const #274 = Asciz	scala/actors/scheduler/TerminationMonitor;
+const #275 = class	#274;	//  scala/actors/scheduler/TerminationMonitor
+const #276 = Asciz	gc;
+const #277 = NameAndType	#276:#37;//  gc:()V
+const #278 = InterfaceMethod	#275.#277;	//  scala/actors/scheduler/TerminationMonitor.gc:()V
+const #279 = Asciz	numWorkersBlocked;
+const #280 = NameAndType	#279:#68;//  numWorkersBlocked:()I
+const #281 = Method	#30.#280;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.numWorkersBlocked:()I
+const #282 = NameAndType	#14:#68;//  numCores:()I
+const #283 = Method	#30.#282;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.numCores:()I
+const #284 = Asciz	coreSize_$eq;
+const #285 = Asciz	(I)V;
+const #286 = NameAndType	#284:#285;//  coreSize_$eq:(I)V
+const #287 = Method	#30.#286;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.coreSize_$eq:(I)V
+const #288 = Asciz	setCorePoolSize;
+const #289 = NameAndType	#288:#285;//  setCorePoolSize:(I)V
+const #290 = Method	#209.#289;	//  scala/actors/threadpool/ThreadPoolExecutor.setCorePoolSize:(I)V
+const #291 = NameAndType	#24:#167;//  terminate:()Z
+const #292 = Method	#30.#291;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.terminate:()Z
+const #293 = Asciz	allTerminated;
+const #294 = NameAndType	#293:#167;//  allTerminated:()Z
+const #295 = InterfaceMethod	#275.#294;	//  scala/actors/scheduler/TerminationMonitor.allTerminated:()Z
+const #296 = Asciz	getActiveCount;
+const #297 = NameAndType	#296:#68;//  getActiveCount:()I
+const #298 = Method	#209.#297;	//  scala/actors/threadpool/ThreadPoolExecutor.getActiveCount:()I
+const #299 = Asciz	: initiating shutdown...;
+const #300 = String	#299;	//  : initiating shutdown...
+const #301 = NameAndType	#236:#37;//  shutdown:()V
+const #302 = Method	#209.#301;	//  scala/actors/threadpool/ThreadPoolExecutor.shutdown:()V
+const #303 = Asciz	activeBlocked;
+const #304 = Asciz	mainLock;
+const #305 = Asciz	Lscala/actors/threadpool/locks/ReentrantLock;;
+const #306 = NameAndType	#304:#305;//  mainLock:Lscala/actors/threadpool/locks/ReentrantLock;
+const #307 = Field	#209.#306;	//  scala/actors/threadpool/ThreadPoolExecutor.mainLock:Lscala/actors/threadpool/locks/ReentrantLock;
+const #308 = Asciz	scala/actors/threadpool/locks/ReentrantLock;
+const #309 = class	#308;	//  scala/actors/threadpool/locks/ReentrantLock
+const #310 = Asciz	lock;
+const #311 = NameAndType	#310:#37;//  lock:()V
+const #312 = Method	#309.#311;	//  scala/actors/threadpool/locks/ReentrantLock.lock:()V
+const #313 = Asciz	workers;
+const #314 = Asciz	Ljava/util/HashSet;;
+const #315 = NameAndType	#313:#314;//  workers:Ljava/util/HashSet;
+const #316 = Field	#209.#315;	//  scala/actors/threadpool/ThreadPoolExecutor.workers:Ljava/util/HashSet;
+const #317 = Asciz	java/util/HashSet;
+const #318 = class	#317;	//  java/util/HashSet
+const #319 = Method	#318.#193;	//  java/util/HashSet.iterator:()Ljava/util/Iterator;
+const #320 = Asciz	scala/actors/threadpool/ThreadPoolExecutor$Worker;
+const #321 = class	#320;	//  scala/actors/threadpool/ThreadPoolExecutor$Worker
+const #322 = Asciz	tryLock;
+const #323 = NameAndType	#322:#167;//  tryLock:()Z
+const #324 = Method	#321.#323;	//  scala/actors/threadpool/ThreadPoolExecutor$Worker.tryLock:()Z
+const #325 = Asciz	unlock;
+const #326 = NameAndType	#325:#37;//  unlock:()V
+const #327 = Method	#321.#326;	//  scala/actors/threadpool/ThreadPoolExecutor$Worker.unlock:()V
+const #328 = Asciz	thread;
+const #329 = Asciz	Ljava/lang/Thread;;
+const #330 = NameAndType	#328:#329;//  thread:Ljava/lang/Thread;
+const #331 = Field	#321.#330;	//  scala/actors/threadpool/ThreadPoolExecutor$Worker.thread:Ljava/lang/Thread;
+const #332 = Asciz	getState;
+const #333 = Asciz	()Ljava/lang/Thread$State;;
+const #334 = NameAndType	#332:#333;//  getState:()Ljava/lang/Thread$State;
+const #335 = Method	#36.#334;	//  java/lang/Thread.getState:()Ljava/lang/Thread$State;
+const #336 = Asciz	java/lang/Thread$State;
+const #337 = class	#336;	//  java/lang/Thread$State
+const #338 = Asciz	WAITING;
+const #339 = Asciz	Ljava/lang/Thread$State;;
+const #340 = NameAndType	#338:#339;//  WAITING:Ljava/lang/Thread$State;
+const #341 = Field	#337.#340;	//  java/lang/Thread$State.WAITING:Ljava/lang/Thread$State;
+const #342 = Asciz	java/lang/Object;
+const #343 = class	#342;	//  java/lang/Object
+const #344 = Asciz	equals;
+const #345 = Asciz	(Ljava/lang/Object;)Z;
+const #346 = NameAndType	#344:#345;//  equals:(Ljava/lang/Object;)Z
+const #347 = Method	#343.#346;	//  java/lang/Object.equals:(Ljava/lang/Object;)Z
+const #348 = Asciz	TIMED_WAITING;
+const #349 = NameAndType	#348:#339;//  TIMED_WAITING:Ljava/lang/Thread$State;
+const #350 = Field	#337.#349;	//  java/lang/Thread$State.TIMED_WAITING:Ljava/lang/Thread$State;
+const #351 = Method	#309.#326;	//  scala/actors/threadpool/locks/ReentrantLock.unlock:()V
+const #352 = Asciz	numBlocked;
+const #353 = Asciz	w;
+const #354 = Asciz	Lscala/actors/threadpool/ThreadPoolExecutor$Worker;;
+const #355 = Asciz	s;
+const #356 = NameAndType	#25:#52;//  "<init>":(Z)V
+const #357 = Method	#30.#356;	//  scala/actors/scheduler/ResizableThreadPoolScheduler."<init>":(Z)V
+const #358 = NameAndType	#25:#26;//  "<init>":(ZZ)V
+const #359 = Method	#30.#358;	//  scala/actors/scheduler/ResizableThreadPoolScheduler."<init>":(ZZ)V
+const #360 = Asciz	d;
+const #361 = Asciz	scala/actors/threadpool/LinkedBlockingQueue;
+const #362 = class	#361;	//  scala/actors/threadpool/LinkedBlockingQueue
+const #363 = Method	#362.#38;	//  scala/actors/threadpool/LinkedBlockingQueue."<init>":()V
+const #364 = long	60000l;
+const #366 = Asciz	scala/actors/threadpool/TimeUnit;
+const #367 = class	#366;	//  scala/actors/threadpool/TimeUnit
+const #368 = Asciz	MILLISECONDS;
+const #369 = Asciz	Lscala/actors/threadpool/TimeUnit;;
+const #370 = NameAndType	#368:#369;//  MILLISECONDS:Lscala/actors/threadpool/TimeUnit;
+const #371 = Field	#367.#370;	//  scala/actors/threadpool/TimeUnit.MILLISECONDS:Lscala/actors/threadpool/TimeUnit;
+const #372 = Asciz	()Lscala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory;;
+const #373 = NameAndType	#11:#372;//  threadFac:()Lscala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory;
+const #374 = Method	#30.#373;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.threadFac:()Lscala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory;
+const #375 = Asciz	scala/actors/threadpool/ThreadPoolExecutor$CallerRunsPolicy;
+const #376 = class	#375;	//  scala/actors/threadpool/ThreadPoolExecutor$CallerRunsPolicy
+const #377 = Method	#376.#38;	//  scala/actors/threadpool/ThreadPoolExecutor$CallerRunsPolicy."<init>":()V
+const #378 = Asciz	(IIJLscala/actors/threadpool/TimeUnit;Lscala/actors/threadpool/BlockingQueue;Lscala/actors/threadpool/ThreadFactory;Lscala/actors/threadpool/RejectedExecutionHandler;)V;
+const #379 = NameAndType	#25:#378;//  "<init>":(IIJLscala/actors/threadpool/TimeUnit;Lscala/actors/threadpool/BlockingQueue;Lscala/actors/threadpool/ThreadFactory;Lscala/actors/threadpool/RejectedExecutionHandler;)V
+const #380 = Method	#209.#379;	//  scala/actors/threadpool/ThreadPoolExecutor."<init>":(IIJLscala/actors/threadpool/TimeUnit;Lscala/actors/threadpool/BlockingQueue;Lscala/actors/threadpool/ThreadFactory;Lscala/actors/threadpool/RejectedExecutionHandler;)V
+const #381 = Asciz	workQueue;
+const #382 = Asciz	Lscala/actors/threadpool/LinkedBlockingQueue;;
+const #383 = Asciz	(Ljava/util/List<*>;)V;
+const #384 = Asciz	()Ljava/util/List<*>;;
+const #385 = Asciz	printActorDump;
+const #386 = NameAndType	#385:#43;//  printActorDump:(Lscala/actors/IScheduler;)V
+const #387 = Method	#41.#386;	//  scala/actors/IScheduler$class.printActorDump:(Lscala/actors/IScheduler;)V
+const #388 = Asciz	onLockup;
+const #389 = Asciz	(ILscala/Function0;)V;
+const #390 = Asciz	(Lscala/actors/IScheduler;ILscala/Function0;)V;
+const #391 = NameAndType	#388:#390;//  onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
+const #392 = Method	#41.#391;	//  scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
+const #393 = Asciz	millis;
+const #394 = Asciz	handler;
+const #395 = Asciz	(Lscala/actors/IScheduler;Lscala/Function0;)V;
+const #396 = NameAndType	#388:#395;//  onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
+const #397 = Method	#41.#396;	//  scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
+const #398 = Asciz	tick;
+const #399 = Asciz	(Lscala/actors/Actor;)V;
+const #400 = Asciz	(Lscala/actors/IScheduler;Lscala/actors/Actor;)V;
+const #401 = NameAndType	#398:#400;//  tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
+const #402 = Method	#41.#401;	//  scala/actors/IScheduler$class.tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
+const #403 = Asciz	a;
+const #404 = Asciz	Lscala/actors/Actor;;
+const #405 = Asciz	executeFromActor;
+const #406 = Asciz	(Lscala/actors/IScheduler;Ljava/lang/Runnable;)V;
+const #407 = NameAndType	#405:#406;//  executeFromActor:(Lscala/actors/IScheduler;Ljava/lang/Runnable;)V
+const #408 = Method	#41.#407;	//  scala/actors/IScheduler$class.executeFromActor:(Lscala/actors/IScheduler;Ljava/lang/Runnable;)V
+const #409 = NameAndType	#276:#48;//  gc:(Lscala/actors/scheduler/TerminationMonitor;)V
+const #410 = Method	#47.#409;	//  scala/actors/scheduler/TerminationMonitor$class.gc:(Lscala/actors/scheduler/TerminationMonitor;)V
+const #411 = Asciz	(Lscala/actors/scheduler/TerminationMonitor;)Z;
+const #412 = NameAndType	#293:#411;//  allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+const #413 = Method	#47.#412;	//  scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+const #414 = Asciz	terminated;
+const #415 = Asciz	(Lscala/actors/Reactor;)V;
+const #416 = Asciz	(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V;
+const #417 = NameAndType	#414:#416;//  terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+const #418 = Method	#47.#417;	//  scala/actors/scheduler/TerminationMonitor$class.terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+const #419 = Asciz	Lscala/actors/Reactor;;
+const #420 = Asciz	onTerminate;
+const #421 = Asciz	(Lscala/actors/Reactor;Lscala/Function0;)V;
+const #422 = Asciz	(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V;
+const #423 = NameAndType	#420:#422;//  onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+const #424 = Method	#47.#423;	//  scala/actors/scheduler/TerminationMonitor$class.onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+const #425 = Asciz	f;
+const #426 = Asciz	newActor;
+const #427 = NameAndType	#426:#416;//  newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+const #428 = Method	#47.#427;	//  scala/actors/scheduler/TerminationMonitor$class.newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+const #429 = Asciz	scala$actors$scheduler$TerminationMonitor$_setter_$terminationHandlers_$eq;
+const #430 = Asciz	(Lscala/collection/mutable/HashMap;)V;
+const #431 = NameAndType	#5:#6;//  terminationHandlers:Lscala/collection/mutable/HashMap;
+const #432 = Field	#30.#431;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.terminationHandlers:Lscala/collection/mutable/HashMap;
+const #433 = Asciz	scala$actors$scheduler$TerminationMonitor$$started_$eq;
+const #434 = NameAndType	#3:#4;//  scala$actors$scheduler$TerminationMonitor$$started:Z
+const #435 = Field	#30.#434;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.scala$actors$scheduler$TerminationMonitor$$started:Z
+const #436 = Asciz	()Lscala/collection/mutable/HashMap;;
+const #437 = Asciz	activeActors_$eq;
+const #438 = NameAndType	#7:#8;//  activeActors:I
+const #439 = Field	#30.#438;	//  scala/actors/scheduler/ResizableThreadPoolScheduler.activeActors:I
+const #440 = Asciz	ScalaSig;
+const #441 = Asciz	InnerClasses;
+const #442 = Asciz	State;
+const #443 = Asciz	Worker;
+const #444 = Asciz	CallerRunsPolicy;
+const #445 = Asciz	$anon$1;
+const #446 = Asciz	DaemonThreadFactory;
+const #447 = Asciz	scala/actors/IScheduler;
+const #448 = class	#447;	//  scala/actors/IScheduler
+const #449 = Asciz	scala/ScalaObject;
+const #450 = class	#449;	//  scala/ScalaObject
+
+{
+public scala.actors.scheduler.ResizableThreadPoolScheduler(boolean, boolean);
+  Code:
+   Stack=4, Locals=5, Args_size=3
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#32; //Field terminate:Z
+   5:	aload_0
+   6:	iload_2
+   7:	putfield	#34; //Field daemon:Z
+   10:	aload_0
+   11:	invokespecial	#39; //Method java/lang/Thread."<init>":()V
+   14:	aload_0
+   15:	invokestatic	#45; //Method scala/actors/IScheduler$class.$init$:(Lscala/actors/IScheduler;)V
+   18:	aload_0
+   19:	invokestatic	#50; //Method scala/actors/scheduler/TerminationMonitor$class.$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+   22:	aload_0
+   23:	iload_2
+   24:	invokevirtual	#54; //Method setDaemon:(Z)V
+   27:	aload_0
+   28:	iconst_0
+   29:	putfield	#56; //Field terminating:Z
+   32:	aload_0
+   33:	iconst_0
+   34:	putfield	#58; //Field suspending:Z
+   37:	aload_0
+   38:	aconst_null
+   39:	putfield	#60; //Field drainedTasks:Ljava/util/List;
+   42:	aload_0
+   43:	getstatic	#66; //Field scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
+   46:	invokevirtual	#70; //Method scala/actors/scheduler/ThreadPoolConfig$.corePoolSize:()I
+   49:	putfield	#72; //Field coreSize:I
+   52:	aload_0
+   53:	getstatic	#66; //Field scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
+   56:	invokevirtual	#75; //Method scala/actors/scheduler/ThreadPoolConfig$.maxPoolSize:()I
+   59:	putfield	#77; //Field maxSize:I
+   62:	aload_0
+   63:	invokestatic	#83; //Method java/lang/Runtime.getRuntime:()Ljava/lang/Runtime;
+   66:	invokevirtual	#86; //Method java/lang/Runtime.availableProcessors:()I
+   69:	putfield	#88; //Field numCores:I
+   72:	aload_0
+   73:	ldc	#89; //int 10
+   75:	putfield	#91; //Field CHECK_FREQ:I
+   78:	aload_0
+   79:	new	#93; //class scala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory
+   82:	dup
+   83:	aload_0
+   84:	invokespecial	#96; //Method scala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory."<init>":(Lscala/actors/scheduler/ResizableThreadPoolScheduler;)V
+   87:	putfield	#98; //Field threadFac:Lscala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory;
+   90:	aload_0
+   91:	aload_0
+   92:	invokespecial	#102; //Method makeNewPool:()Lscala/actors/threadpool/ThreadPoolExecutor;
+   95:	putfield	#104; //Field executor:Lscala/actors/threadpool/ThreadPoolExecutor;
+   98:	getstatic	#109; //Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+   101:	new	#111; //class scala/collection/mutable/StringBuilder
+   104:	dup
+   105:	invokespecial	#112; //Method scala/collection/mutable/StringBuilder."<init>":()V
+   108:	getstatic	#117; //Field scala/Predef$.MODULE$:Lscala/Predef$;
+   111:	aload_0
+   112:	invokevirtual	#121; //Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+   115:	ldc	#123; //String : corePoolSize = 
+   117:	invokevirtual	#129; //Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+   120:	invokevirtual	#133; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   123:	aload_0
+   124:	invokespecial	#135; //Method coreSize:()I
+   127:	istore_3
+   128:	iload_3
+   129:	invokestatic	#141; //Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+   132:	invokevirtual	#133; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   135:	ldc	#143; //String , maxPoolSize = 
+   137:	invokevirtual	#133; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   140:	aload_0
+   141:	invokespecial	#145; //Method maxSize:()I
+   144:	istore	4
+   146:	iload	4
+   148:	invokestatic	#141; //Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+   151:	invokevirtual	#133; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   154:	invokevirtual	#149; //Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+   157:	invokevirtual	#153; //Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+   160:	return
+  LineNumberTable: 
+   line 29: 0
+   line 30: 5
+   line 29: 10
+   line 33: 22
+   line 36: 27
+   line 38: 32
+   line 43: 37
+   line 46: 42
+   line 47: 52
+   line 48: 62
+   line 50: 72
+   line 59: 78
+   line 73: 90
+   line 75: 98
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      161      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   0      161      1    terminate       Z
+   0      161      2    daemon       Z
+
+
+public void restart();
+  Code:
+   Stack=3, Locals=4, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	pop
+   3:	monitorenter
+   4:	aload_0
+   5:	invokespecial	#169; //Method suspending:()Z
+   8:	ifeq	88
+   11:	aload_0
+   12:	invokevirtual	#172; //Method isActive:()Z
+   15:	ifeq	30
+   18:	ldc	#174; //String scheduler is still active
+   20:	astore_1
+   21:	new	#176; //class java/lang/RuntimeException
+   24:	dup
+   25:	aload_1
+   26:	invokespecial	#178; //Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+   29:	athrow
+   30:	aload_0
+   31:	iconst_0
+   32:	invokespecial	#181; //Method suspending_$eq:(Z)V
+   35:	aload_0
+   36:	aload_0
+   37:	invokespecial	#102; //Method makeNewPool:()Lscala/actors/threadpool/ThreadPoolExecutor;
+   40:	invokespecial	#185; //Method executor_$eq:(Lscala/actors/threadpool/ThreadPoolExecutor;)V
+   43:	aload_0
+   44:	monitorexit
+   45:	aload_0
+   46:	invokespecial	#188; //Method drainedTasks:()Ljava/util/List;
+   49:	invokeinterface	#194,  1; //InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+   54:	astore_2
+   55:	aload_2
+   56:	invokeinterface	#199,  1; //InterfaceMethod java/util/Iterator.hasNext:()Z
+   61:	ifeq	83
+   64:	aload_0
+   65:	invokespecial	#201; //Method executor:()Lscala/actors/threadpool/ThreadPoolExecutor;
+   68:	aload_2
+   69:	invokeinterface	#205,  1; //InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+   74:	checkcast	#207; //class java/lang/Runnable
+   77:	invokevirtual	#213; //Method scala/actors/threadpool/ThreadPoolExecutor.execute:(Ljava/lang/Runnable;)V
+   80:	goto	55
+   83:	aload_0
+   84:	invokevirtual	#216; //Method start:()V
+   87:	return
+   88:	ldc	#218; //String snapshot has not been invoked
+   90:	astore_3
+   91:	new	#176; //class java/lang/RuntimeException
+   94:	dup
+   95:	aload_3
+   96:	invokespecial	#178; //Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+   99:	athrow
+   100:	aload_0
+   101:	monitorexit
+   102:	athrow
+  Exception table:
+   from   to  target type
+     4    45   100   any
+    88   100   100   any
+  LineNumberTable: 
+   line 183: 0
+   line 184: 4
+   line 186: 11
+   line 187: 18
+   line 189: 30
+   line 191: 35
+   line 183: 44
+   line 193: 45
+   line 194: 55
+   line 195: 64
+   line 197: 83
+   line 185: 88
+   line 183: 101
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      103      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   55      32      2    iter       Ljava/util/Iterator;
+
+
+public void snapshot();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	pop
+   3:	monitorenter
+   4:	aload_0
+   5:	iconst_1
+   6:	invokespecial	#181; //Method suspending_$eq:(Z)V
+   9:	aload_0
+   10:	monitorexit
+   11:	return
+   12:	aload_0
+   13:	monitorexit
+   14:	athrow
+  Exception table:
+   from   to  target type
+     4    11    12   any
+  LineNumberTable: 
+   line 175: 0
+   line 176: 4
+   line 175: 10
+
+
+public void managedBlock(scala.concurrent.ManagedBlocker);
+  Code:
+   Stack=1, Locals=2, Args_size=2
+   0:	aload_1
+   1:	invokeinterface	#228,  1; //InterfaceMethod scala/concurrent/ManagedBlocker.block:()Z
+   6:	pop
+   7:	return
+  LineNumberTable: 
+   line 169: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   0      8      1    blocker       Lscala/concurrent/ManagedBlocker;
+
+
+public boolean isActive();
+  Code:
+   Stack=2, Locals=2, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	pop
+   3:	monitorenter
+   4:	aload_0
+   5:	invokespecial	#232; //Method terminating:()Z
+   8:	ifne	32
+   11:	aload_0
+   12:	invokespecial	#201; //Method executor:()Lscala/actors/threadpool/ThreadPoolExecutor;
+   15:	ifnull	32
+   18:	aload_0
+   19:	invokespecial	#201; //Method executor:()Lscala/actors/threadpool/ThreadPoolExecutor;
+   22:	invokevirtual	#235; //Method scala/actors/threadpool/ThreadPoolExecutor.isShutdown:()Z
+   25:	ifne	32
+   28:	iconst_1
+   29:	goto	33
+   32:	iconst_0
+   33:	istore_1
+   34:	aload_0
+   35:	monitorexit
+   36:	iload_1
+   37:	ireturn
+   38:	aload_0
+   39:	monitorexit
+   40:	athrow
+  Exception table:
+   from   to  target type
+     4    36    38   any
+  LineNumberTable: 
+   line 164: 0
+   line 165: 4
+   line 164: 35
+
+
+public void shutdown();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	pop
+   3:	monitorenter
+   4:	aload_0
+   5:	iconst_1
+   6:	invokespecial	#239; //Method terminating_$eq:(Z)V
+   9:	aload_0
+   10:	monitorexit
+   11:	return
+   12:	aload_0
+   13:	monitorexit
+   14:	athrow
+  Exception table:
+   from   to  target type
+     4    11    12   any
+  LineNumberTable: 
+   line 160: 0
+   line 161: 4
+   line 160: 10
+
+
+public void execute(scala.Function0);
+  Code:
+   Stack=5, Locals=2, Args_size=2
+   0:	aload_0
+   1:	invokespecial	#201; //Method executor:()Lscala/actors/threadpool/ThreadPoolExecutor;
+   4:	new	#242; //class scala/actors/scheduler/ResizableThreadPoolScheduler$$anon$1
+   7:	dup
+   8:	aload_0
+   9:	aload_1
+   10:	invokespecial	#245; //Method scala/actors/scheduler/ResizableThreadPoolScheduler$$anon$1."<init>":(Lscala/actors/scheduler/ResizableThreadPoolScheduler;Lscala/Function0;)V
+   13:	invokevirtual	#213; //Method scala/actors/threadpool/ThreadPoolExecutor.execute:(Ljava/lang/Runnable;)V
+   16:	return
+  LineNumberTable: 
+   line 154: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      17      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   0      17      1    fun$1       Lscala/Function0;
+
+  Signature: length = 0x2
+   00 FFFFFFF8 
+
+public void execute(java.lang.Runnable);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	invokespecial	#201; //Method executor:()Lscala/actors/threadpool/ThreadPoolExecutor;
+   4:	aload_1
+   5:	invokevirtual	#213; //Method scala/actors/threadpool/ThreadPoolExecutor.execute:(Ljava/lang/Runnable;)V
+   8:	return
+  LineNumberTable: 
+   line 151: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   0      9      1    task       Ljava/lang/Runnable;
+
+
+public void run();
+  Code:
+   Stack=5, Locals=5, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	pop
+   3:	monitorenter
+   4:	aload_0
+   5:	invokespecial	#253; //Method liftedTree1$1:()V
+   8:	aload_0
+   9:	invokespecial	#232; //Method terminating:()Z
+   12:	ifeq	23
+   15:	new	#255; //class scala/actors/scheduler/QuitException
+   18:	dup
+   19:	invokespecial	#256; //Method scala/actors/scheduler/QuitException."<init>":()V
+   22:	athrow
+   23:	aload_0
+   24:	invokespecial	#169; //Method suspending:()Z
+   27:	ifeq	110
+   30:	aload_0
+   31:	aload_0
+   32:	invokespecial	#201; //Method executor:()Lscala/actors/threadpool/ThreadPoolExecutor;
+   35:	invokevirtual	#259; //Method scala/actors/threadpool/ThreadPoolExecutor.shutdownNow:()Ljava/util/List;
+   38:	invokespecial	#263; //Method drainedTasks_$eq:(Ljava/util/List;)V
+   41:	getstatic	#109; //Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+   44:	new	#111; //class scala/collection/mutable/StringBuilder
+   47:	dup
+   48:	invokespecial	#112; //Method scala/collection/mutable/StringBuilder."<init>":()V
+   51:	new	#125; //class scala/runtime/StringAdd
+   54:	dup
+   55:	aload_0
+   56:	invokespecial	#266; //Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+   59:	ldc_w	#268; //String : drained 
+   62:	invokevirtual	#129; //Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+   65:	invokevirtual	#133; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   68:	aload_0
+   69:	invokespecial	#188; //Method drainedTasks:()Ljava/util/List;
+   72:	invokeinterface	#271,  1; //InterfaceMethod java/util/List.size:()I
+   77:	istore_1
+   78:	iload_1
+   79:	invokestatic	#141; //Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+   82:	invokevirtual	#133; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   85:	ldc_w	#273; //String  tasks
+   88:	invokevirtual	#133; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   91:	invokevirtual	#149; //Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+   94:	invokevirtual	#153; //Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+   97:	aload_0
+   98:	iconst_1
+   99:	invokespecial	#239; //Method terminating_$eq:(Z)V
+   102:	new	#255; //class scala/actors/scheduler/QuitException
+   105:	dup
+   106:	invokespecial	#256; //Method scala/actors/scheduler/QuitException."<init>":()V
+   109:	athrow
+   110:	aload_0
+   111:	invokeinterface	#278,  1; //InterfaceMethod scala/actors/scheduler/TerminationMonitor.gc:()V
+   116:	aload_0
+   117:	invokespecial	#281; //Method numWorkersBlocked:()I
+   120:	istore_2
+   121:	aload_0
+   122:	invokespecial	#135; //Method coreSize:()I
+   125:	iload_2
+   126:	isub
+   127:	aload_0
+   128:	invokespecial	#283; //Method numCores:()I
+   131:	if_icmpge	169
+   134:	aload_0
+   135:	invokespecial	#135; //Method coreSize:()I
+   138:	aload_0
+   139:	invokespecial	#145; //Method maxSize:()I
+   142:	if_icmpge	169
+   145:	aload_0
+   146:	aload_0
+   147:	invokespecial	#283; //Method numCores:()I
+   150:	iload_2
+   151:	iadd
+   152:	invokespecial	#287; //Method coreSize_$eq:(I)V
+   155:	aload_0
+   156:	invokespecial	#201; //Method executor:()Lscala/actors/threadpool/ThreadPoolExecutor;
+   159:	aload_0
+   160:	invokespecial	#135; //Method coreSize:()I
+   163:	invokevirtual	#290; //Method scala/actors/threadpool/ThreadPoolExecutor.setCorePoolSize:(I)V
+   166:	goto	295
+   169:	aload_0
+   170:	invokevirtual	#292; //Method terminate:()Z
+   173:	ifeq	295
+   176:	aload_0
+   177:	invokeinterface	#295,  1; //InterfaceMethod scala/actors/scheduler/TerminationMonitor.allTerminated:()Z
+   182:	ifeq	295
+   185:	aload_0
+   186:	invokespecial	#201; //Method executor:()Lscala/actors/threadpool/ThreadPoolExecutor;
+   189:	invokevirtual	#298; //Method scala/actors/threadpool/ThreadPoolExecutor.getActiveCount:()I
+   192:	iconst_0
+   193:	if_icmpne	292
+   196:	getstatic	#109; //Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+   199:	new	#125; //class scala/runtime/StringAdd
+   202:	dup
+   203:	aload_0
+   204:	invokespecial	#266; //Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+   207:	ldc_w	#300; //String : initiating shutdown...
+   210:	invokevirtual	#129; //Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+   213:	invokevirtual	#153; //Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+   216:	getstatic	#109; //Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+   219:	new	#111; //class scala/collection/mutable/StringBuilder
+   222:	dup
+   223:	invokespecial	#112; //Method scala/collection/mutable/StringBuilder."<init>":()V
+   226:	new	#125; //class scala/runtime/StringAdd
+   229:	dup
+   230:	aload_0
+   231:	invokespecial	#266; //Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+   234:	ldc	#123; //String : corePoolSize = 
+   236:	invokevirtual	#129; //Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+   239:	invokevirtual	#133; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   242:	aload_0
+   243:	invokespecial	#135; //Method coreSize:()I
+   246:	istore_3
+   247:	iload_3
+   248:	invokestatic	#141; //Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+   251:	invokevirtual	#133; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   254:	ldc	#143; //String , maxPoolSize = 
+   256:	invokevirtual	#133; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   259:	aload_0
+   260:	invokespecial	#145; //Method maxSize:()I
+   263:	istore	4
+   265:	iload	4
+   267:	invokestatic	#141; //Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+   270:	invokevirtual	#133; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   273:	invokevirtual	#149; //Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+   276:	invokevirtual	#153; //Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+   279:	aload_0
+   280:	iconst_1
+   281:	invokespecial	#239; //Method terminating_$eq:(Z)V
+   284:	new	#255; //class scala/actors/scheduler/QuitException
+   287:	dup
+   288:	invokespecial	#256; //Method scala/actors/scheduler/QuitException."<init>":()V
+   291:	athrow
+   292:	goto	295
+   295:	aload_0
+   296:	monitorexit
+   297:	goto	0
+   300:	aload_0
+   301:	monitorexit
+   302:	athrow
+   303:	pop
+   304:	aload_0
+   305:	invokespecial	#201; //Method executor:()Lscala/actors/threadpool/ThreadPoolExecutor;
+   308:	invokevirtual	#302; //Method scala/actors/threadpool/ThreadPoolExecutor.shutdown:()V
+   311:	return
+  Exception table:
+   from   to  target type
+     4   300   300   any
+     0   303   303   Class scala/actors/scheduler/QuitException
+
+  LineNumberTable: 
+   line 107: 0
+   line 108: 4
+   line 114: 8
+   line 115: 15
+   line 117: 23
+   line 136: 30
+   line 137: 41
+   line 138: 97
+   line 139: 102
+   line 118: 110
+   line 121: 116
+   line 122: 121
+   line 123: 145
+   line 124: 155
+   line 125: 169
+   line 127: 185
+   line 128: 196
+   line 129: 216
+   line 131: 279
+   line 132: 284
+   line 127: 292
+   line 107: 296
+   line 145: 304
+   line 105: 311
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      312      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   121      174      2    activeBlocked       I
+
+
+public scala.actors.scheduler.ResizableThreadPoolScheduler();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	iconst_0
+   2:	invokespecial	#357; //Method "<init>":(Z)V
+   5:	return
+  LineNumberTable: 
+   line 82: 0
+
+
+public scala.actors.scheduler.ResizableThreadPoolScheduler(boolean);
+  Code:
+   Stack=3, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iconst_1
+   2:	iload_1
+   3:	invokespecial	#359; //Method "<init>":(ZZ)V
+   6:	return
+  LineNumberTable: 
+   line 78: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   0      7      1    d       Z
+
+
+public int CHECK_FREQ();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#91; //Field CHECK_FREQ:I
+   4:	ireturn
+  LineNumberTable: 
+   line 50: 0
+
+
+public boolean daemon();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#34; //Field daemon:Z
+   4:	ireturn
+  LineNumberTable: 
+   line 30: 0
+
+
+public boolean terminate();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#32; //Field terminate:Z
+   4:	ireturn
+  LineNumberTable: 
+   line 29: 0
+
+
+public void printActorDump();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#387; //Method scala/actors/IScheduler$class.printActorDump:(Lscala/actors/IScheduler;)V
+   4:	return
+  LineNumberTable: 
+   line 29: 0
+
+
+public void onLockup(int, scala.Function0);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	iload_1
+   2:	aload_2
+   3:	invokestatic	#392; //Method scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
+   6:	return
+  LineNumberTable: 
+   line 29: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   0      7      1    millis       I
+   0      7      2    handler       Lscala/Function0;
+
+
+public void onLockup(scala.Function0);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#397; //Method scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
+   5:	return
+  LineNumberTable: 
+   line 29: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   0      6      1    handler       Lscala/Function0;
+
+
+public void tick(scala.actors.Actor);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#402; //Method scala/actors/IScheduler$class.tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
+   5:	return
+  LineNumberTable: 
+   line 29: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   0      6      1    a       Lscala/actors/Actor;
+
+
+public void executeFromActor(java.lang.Runnable);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#408; //Method scala/actors/IScheduler$class.executeFromActor:(Lscala/actors/IScheduler;Ljava/lang/Runnable;)V
+   5:	return
+  LineNumberTable: 
+   line 29: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   0      6      1    task       Ljava/lang/Runnable;
+
+
+public void gc();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#410; //Method scala/actors/scheduler/TerminationMonitor$class.gc:(Lscala/actors/scheduler/TerminationMonitor;)V
+   4:	return
+  LineNumberTable: 
+   line 29: 0
+
+
+public boolean allTerminated();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#413; //Method scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+   4:	ireturn
+  LineNumberTable: 
+   line 29: 0
+
+
+public void terminated(scala.actors.Reactor);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#418; //Method scala/actors/scheduler/TerminationMonitor$class.terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+   5:	return
+  LineNumberTable: 
+   line 29: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   0      6      1    a       Lscala/actors/Reactor;
+
+
+public void onTerminate(scala.actors.Reactor, scala.Function0);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#424; //Method scala/actors/scheduler/TerminationMonitor$class.onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+   6:	return
+  LineNumberTable: 
+   line 29: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   0      7      1    a       Lscala/actors/Reactor;
+   0      7      2    f       Lscala/Function0;
+
+
+public void newActor(scala.actors.Reactor);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#428; //Method scala/actors/scheduler/TerminationMonitor$class.newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+   5:	return
+  LineNumberTable: 
+   line 29: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   0      6      1    a       Lscala/actors/Reactor;
+
+
+public void scala$actors$scheduler$TerminationMonitor$_setter_$terminationHandlers_$eq(scala.collection.mutable.HashMap);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#432; //Field terminationHandlers:Lscala/collection/mutable/HashMap;
+   5:	return
+  LineNumberTable: 
+   line 29: 0
+
+
+public final void scala$actors$scheduler$TerminationMonitor$$started_$eq(boolean);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#435; //Field scala$actors$scheduler$TerminationMonitor$$started:Z
+   5:	return
+  LineNumberTable: 
+   line 29: 0
+
+
+public final boolean scala$actors$scheduler$TerminationMonitor$$started();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#435; //Field scala$actors$scheduler$TerminationMonitor$$started:Z
+   4:	ireturn
+  LineNumberTable: 
+   line 29: 0
+
+
+public scala.collection.mutable.HashMap terminationHandlers();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#432; //Field terminationHandlers:Lscala/collection/mutable/HashMap;
+   4:	areturn
+  LineNumberTable: 
+   line 29: 0
+
+
+public void activeActors_$eq(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#439; //Field activeActors:I
+   5:	return
+  LineNumberTable: 
+   line 29: 0
+
+
+public int activeActors();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#439; //Field activeActors:I
+   4:	ireturn
+  LineNumberTable: 
+   line 29: 0
+
+
+}
+

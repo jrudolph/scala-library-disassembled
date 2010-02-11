@@ -1,0 +1,588 @@
+class scala.actors.threadpool.locks.CondVar extends java.lang.Object implements scala.actors.threadpool.locks.Condition,java.io.Serializable
+  InnerClass: 
+   abstract #34= #33 of #29; //ExclusiveLock=class scala/actors/threadpool/locks/CondVar$ExclusiveLock of class scala/actors/threadpool/locks/CondVar
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Method	#30.#58;	//  java/lang/Object."<init>":()V
+const #2 = Field	#29.#59;	//  scala/actors/threadpool/locks/CondVar.lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+const #3 = InterfaceMethod	#33.#60;	//  scala/actors/threadpool/locks/CondVar$ExclusiveLock.getHoldCount:()I
+const #4 = class	#61;	//  java/lang/IllegalMonitorStateException
+const #5 = Method	#4.#58;	//  java/lang/IllegalMonitorStateException."<init>":()V
+const #6 = Method	#62.#63;	//  java/lang/Thread.interrupted:()Z
+const #7 = InterfaceMethod	#33.#64;	//  scala/actors/threadpool/locks/CondVar$ExclusiveLock.unlock:()V
+const #8 = Method	#30.#65;	//  java/lang/Object.wait:()V
+const #9 = class	#66;	//  java/lang/InterruptedException
+const #10 = InterfaceMethod	#33.#67;	//  scala/actors/threadpool/locks/CondVar$ExclusiveLock.lock:()V
+const #11 = Method	#62.#68;	//  java/lang/Thread.currentThread:()Ljava/lang/Thread;
+const #12 = Method	#62.#69;	//  java/lang/Thread.interrupt:()V
+const #13 = Method	#9.#58;	//  java/lang/InterruptedException."<init>":()V
+const #14 = Method	#30.#70;	//  java/lang/Object.notify:()V
+const #15 = Method	#71.#72;	//  scala/actors/threadpool/TimeUnit.toNanos:(J)J
+const #16 = Method	#73.#74;	//  scala/actors/threadpool/helpers/Utils.nanoTime:()J
+const #17 = Field	#71.#75;	//  scala/actors/threadpool/TimeUnit.NANOSECONDS:Lscala/actors/threadpool/TimeUnit;
+const #18 = Method	#71.#76;	//  scala/actors/threadpool/TimeUnit.timedWait:(Ljava/lang/Object;J)V
+const #19 = class	#77;	//  java/lang/NullPointerException
+const #20 = Method	#19.#58;	//  java/lang/NullPointerException."<init>":()V
+const #21 = Method	#78.#79;	//  java/util/Date.getTime:()J
+const #22 = Method	#80.#81;	//  java/lang/System.currentTimeMillis:()J
+const #23 = Method	#30.#82;	//  java/lang/Object.wait:(J)V
+const #24 = InterfaceMethod	#33.#83;	//  scala/actors/threadpool/locks/CondVar$ExclusiveLock.isHeldByCurrentThread:()Z
+const #25 = Method	#30.#84;	//  java/lang/Object.notifyAll:()V
+const #26 = class	#85;	//  java/lang/UnsupportedOperationException
+const #27 = String	#86;	//  Use FAIR version
+const #28 = Method	#26.#87;	//  java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+const #29 = class	#88;	//  scala/actors/threadpool/locks/CondVar
+const #30 = class	#89;	//  java/lang/Object
+const #31 = class	#90;	//  scala/actors/threadpool/locks/Condition
+const #32 = class	#91;	//  java/io/Serializable
+const #33 = class	#92;	//  scala/actors/threadpool/locks/CondVar$ExclusiveLock
+const #34 = Asciz	ExclusiveLock;
+const #35 = Asciz	InnerClasses;
+const #36 = Asciz	lock;
+const #37 = Asciz	Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;;
+const #38 = Asciz	<init>;
+const #39 = Asciz	(Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;)V;
+const #40 = Asciz	Code;
+const #41 = Asciz	awaitUninterruptibly;
+const #42 = Asciz	()V;
+const #43 = Asciz	await;
+const #44 = Asciz	Exceptions;
+const #45 = Asciz	(JLscala/actors/threadpool/TimeUnit;)Z;
+const #46 = Asciz	awaitUntil;
+const #47 = Asciz	(Ljava/util/Date;)Z;
+const #48 = Asciz	signal;
+const #49 = Asciz	signalAll;
+const #50 = Asciz	getLock;
+const #51 = Asciz	()Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;;
+const #52 = Asciz	hasWaiters;
+const #53 = Asciz	()Z;
+const #54 = Asciz	getWaitQueueLength;
+const #55 = Asciz	()I;
+const #56 = Asciz	getWaitingThreads;
+const #57 = Asciz	()Ljava/util/Collection;;
+const #58 = NameAndType	#38:#42;//  "<init>":()V
+const #59 = NameAndType	#36:#37;//  lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+const #60 = NameAndType	#93:#55;//  getHoldCount:()I
+const #61 = Asciz	java/lang/IllegalMonitorStateException;
+const #62 = class	#94;	//  java/lang/Thread
+const #63 = NameAndType	#95:#53;//  interrupted:()Z
+const #64 = NameAndType	#96:#42;//  unlock:()V
+const #65 = NameAndType	#97:#42;//  wait:()V
+const #66 = Asciz	java/lang/InterruptedException;
+const #67 = NameAndType	#36:#42;//  lock:()V
+const #68 = NameAndType	#98:#99;//  currentThread:()Ljava/lang/Thread;
+const #69 = NameAndType	#100:#42;//  interrupt:()V
+const #70 = NameAndType	#101:#42;//  notify:()V
+const #71 = class	#102;	//  scala/actors/threadpool/TimeUnit
+const #72 = NameAndType	#103:#104;//  toNanos:(J)J
+const #73 = class	#105;	//  scala/actors/threadpool/helpers/Utils
+const #74 = NameAndType	#106:#107;//  nanoTime:()J
+const #75 = NameAndType	#108:#109;//  NANOSECONDS:Lscala/actors/threadpool/TimeUnit;
+const #76 = NameAndType	#110:#111;//  timedWait:(Ljava/lang/Object;J)V
+const #77 = Asciz	java/lang/NullPointerException;
+const #78 = class	#112;	//  java/util/Date
+const #79 = NameAndType	#113:#107;//  getTime:()J
+const #80 = class	#114;	//  java/lang/System
+const #81 = NameAndType	#115:#107;//  currentTimeMillis:()J
+const #82 = NameAndType	#97:#116;//  wait:(J)V
+const #83 = NameAndType	#117:#53;//  isHeldByCurrentThread:()Z
+const #84 = NameAndType	#118:#42;//  notifyAll:()V
+const #85 = Asciz	java/lang/UnsupportedOperationException;
+const #86 = Asciz	Use FAIR version;
+const #87 = NameAndType	#38:#119;//  "<init>":(Ljava/lang/String;)V
+const #88 = Asciz	scala/actors/threadpool/locks/CondVar;
+const #89 = Asciz	java/lang/Object;
+const #90 = Asciz	scala/actors/threadpool/locks/Condition;
+const #91 = Asciz	java/io/Serializable;
+const #92 = Asciz	scala/actors/threadpool/locks/CondVar$ExclusiveLock;
+const #93 = Asciz	getHoldCount;
+const #94 = Asciz	java/lang/Thread;
+const #95 = Asciz	interrupted;
+const #96 = Asciz	unlock;
+const #97 = Asciz	wait;
+const #98 = Asciz	currentThread;
+const #99 = Asciz	()Ljava/lang/Thread;;
+const #100 = Asciz	interrupt;
+const #101 = Asciz	notify;
+const #102 = Asciz	scala/actors/threadpool/TimeUnit;
+const #103 = Asciz	toNanos;
+const #104 = Asciz	(J)J;
+const #105 = Asciz	scala/actors/threadpool/helpers/Utils;
+const #106 = Asciz	nanoTime;
+const #107 = Asciz	()J;
+const #108 = Asciz	NANOSECONDS;
+const #109 = Asciz	Lscala/actors/threadpool/TimeUnit;;
+const #110 = Asciz	timedWait;
+const #111 = Asciz	(Ljava/lang/Object;J)V;
+const #112 = Asciz	java/util/Date;
+const #113 = Asciz	getTime;
+const #114 = Asciz	java/lang/System;
+const #115 = Asciz	currentTimeMillis;
+const #116 = Asciz	(J)V;
+const #117 = Asciz	isHeldByCurrentThread;
+const #118 = Asciz	notifyAll;
+const #119 = Asciz	(Ljava/lang/String;)V;
+
+{
+protected final scala.actors.threadpool.locks.CondVar$ExclusiveLock lock;
+
+scala.actors.threadpool.locks.CondVar(scala.actors.threadpool.locks.CondVar$ExclusiveLock);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	invokespecial	#1; //Method java/lang/Object."<init>":()V
+   4:	aload_0
+   5:	aload_1
+   6:	putfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   9:	return
+
+public void awaitUninterruptibly();
+  Code:
+   Stack=2, Locals=8, Args_size=1
+   0:	aload_0
+   1:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   4:	invokeinterface	#3,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.getHoldCount:()I
+   9:	istore_1
+   10:	iload_1
+   11:	ifne	22
+   14:	new	#4; //class java/lang/IllegalMonitorStateException
+   17:	dup
+   18:	invokespecial	#5; //Method java/lang/IllegalMonitorStateException."<init>":()V
+   21:	athrow
+   22:	invokestatic	#6; //Method java/lang/Thread.interrupted:()Z
+   25:	istore_2
+   26:	aload_0
+   27:	dup
+   28:	astore_3
+   29:	monitorenter
+   30:	iload_1
+   31:	istore	4
+   33:	iload	4
+   35:	ifle	53
+   38:	aload_0
+   39:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   42:	invokeinterface	#7,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.unlock:()V
+   47:	iinc	4, -1
+   50:	goto	33
+   53:	aload_0
+   54:	invokevirtual	#8; //Method java/lang/Object.wait:()V
+   57:	goto	64
+   60:	astore	4
+   62:	iconst_1
+   63:	istore_2
+   64:	aload_3
+   65:	monitorexit
+   66:	goto	76
+   69:	astore	5
+   71:	aload_3
+   72:	monitorexit
+   73:	aload	5
+   75:	athrow
+   76:	iload_1
+   77:	istore_3
+   78:	iload_3
+   79:	ifle	97
+   82:	aload_0
+   83:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   86:	invokeinterface	#10,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.lock:()V
+   91:	iinc	3, -1
+   94:	goto	78
+   97:	iload_2
+   98:	ifeq	148
+   101:	invokestatic	#11; //Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   104:	invokevirtual	#12; //Method java/lang/Thread.interrupt:()V
+   107:	goto	148
+   110:	astore	6
+   112:	iload_1
+   113:	istore	7
+   115:	iload	7
+   117:	ifle	135
+   120:	aload_0
+   121:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   124:	invokeinterface	#10,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.lock:()V
+   129:	iinc	7, -1
+   132:	goto	115
+   135:	iload_2
+   136:	ifeq	145
+   139:	invokestatic	#11; //Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   142:	invokevirtual	#12; //Method java/lang/Thread.interrupt:()V
+   145:	aload	6
+   147:	athrow
+   148:	return
+  Exception table:
+   from   to  target type
+    53    57    60   Class java/lang/InterruptedException
+
+    30    66    69   any
+    69    73    69   any
+    26    76   110   any
+   110   112   110   any
+
+public void await()   throws java.lang.InterruptedException;
+  Code:
+   Stack=2, Locals=7, Args_size=1
+   0:	aload_0
+   1:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   4:	invokeinterface	#3,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.getHoldCount:()I
+   9:	istore_1
+   10:	iload_1
+   11:	ifne	22
+   14:	new	#4; //class java/lang/IllegalMonitorStateException
+   17:	dup
+   18:	invokespecial	#5; //Method java/lang/IllegalMonitorStateException."<init>":()V
+   21:	athrow
+   22:	invokestatic	#6; //Method java/lang/Thread.interrupted:()Z
+   25:	ifeq	36
+   28:	new	#9; //class java/lang/InterruptedException
+   31:	dup
+   32:	invokespecial	#13; //Method java/lang/InterruptedException."<init>":()V
+   35:	athrow
+   36:	aload_0
+   37:	dup
+   38:	astore_2
+   39:	monitorenter
+   40:	iload_1
+   41:	istore_3
+   42:	iload_3
+   43:	ifle	61
+   46:	aload_0
+   47:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   50:	invokeinterface	#7,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.unlock:()V
+   55:	iinc	3, -1
+   58:	goto	42
+   61:	aload_0
+   62:	invokevirtual	#8; //Method java/lang/Object.wait:()V
+   65:	goto	75
+   68:	astore_3
+   69:	aload_0
+   70:	invokevirtual	#14; //Method java/lang/Object.notify:()V
+   73:	aload_3
+   74:	athrow
+   75:	aload_2
+   76:	monitorexit
+   77:	goto	87
+   80:	astore	4
+   82:	aload_2
+   83:	monitorexit
+   84:	aload	4
+   86:	athrow
+   87:	iload_1
+   88:	istore_2
+   89:	iload_2
+   90:	ifle	108
+   93:	aload_0
+   94:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   97:	invokeinterface	#10,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.lock:()V
+   102:	iinc	2, -1
+   105:	goto	89
+   108:	goto	139
+   111:	astore	5
+   113:	iload_1
+   114:	istore	6
+   116:	iload	6
+   118:	ifle	136
+   121:	aload_0
+   122:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   125:	invokeinterface	#10,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.lock:()V
+   130:	iinc	6, -1
+   133:	goto	116
+   136:	aload	5
+   138:	athrow
+   139:	return
+  Exception table:
+   from   to  target type
+    61    65    68   Class java/lang/InterruptedException
+
+    40    77    80   any
+    80    84    80   any
+    36    87   111   any
+   111   113   111   any
+  Exceptions: 
+   throws java.lang.InterruptedException
+public boolean await(long, scala.actors.threadpool.TimeUnit)   throws java.lang.InterruptedException;
+  Code:
+   Stack=4, Locals=14, Args_size=3
+   0:	aload_0
+   1:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   4:	invokeinterface	#3,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.getHoldCount:()I
+   9:	istore	4
+   11:	iload	4
+   13:	ifne	24
+   16:	new	#4; //class java/lang/IllegalMonitorStateException
+   19:	dup
+   20:	invokespecial	#5; //Method java/lang/IllegalMonitorStateException."<init>":()V
+   23:	athrow
+   24:	invokestatic	#6; //Method java/lang/Thread.interrupted:()Z
+   27:	ifeq	38
+   30:	new	#9; //class java/lang/InterruptedException
+   33:	dup
+   34:	invokespecial	#13; //Method java/lang/InterruptedException."<init>":()V
+   37:	athrow
+   38:	aload_3
+   39:	lload_1
+   40:	invokevirtual	#15; //Method scala/actors/threadpool/TimeUnit.toNanos:(J)J
+   43:	lstore	5
+   45:	iconst_0
+   46:	istore	7
+   48:	aload_0
+   49:	dup
+   50:	astore	8
+   52:	monitorenter
+   53:	iload	4
+   55:	istore	9
+   57:	iload	9
+   59:	ifle	77
+   62:	aload_0
+   63:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   66:	invokeinterface	#7,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.unlock:()V
+   71:	iinc	9, -1
+   74:	goto	57
+   77:	lload	5
+   79:	lconst_0
+   80:	lcmp
+   81:	ifle	117
+   84:	invokestatic	#16; //Method scala/actors/threadpool/helpers/Utils.nanoTime:()J
+   87:	lstore	9
+   89:	getstatic	#17; //Field scala/actors/threadpool/TimeUnit.NANOSECONDS:Lscala/actors/threadpool/TimeUnit;
+   92:	aload_0
+   93:	lload	5
+   95:	invokevirtual	#18; //Method scala/actors/threadpool/TimeUnit.timedWait:(Ljava/lang/Object;J)V
+   98:	invokestatic	#16; //Method scala/actors/threadpool/helpers/Utils.nanoTime:()J
+   101:	lload	9
+   103:	lsub
+   104:	lload	5
+   106:	lcmp
+   107:	ifge	114
+   110:	iconst_1
+   111:	goto	115
+   114:	iconst_0
+   115:	istore	7
+   117:	goto	129
+   120:	astore	9
+   122:	aload_0
+   123:	invokevirtual	#14; //Method java/lang/Object.notify:()V
+   126:	aload	9
+   128:	athrow
+   129:	aload	8
+   131:	monitorexit
+   132:	goto	143
+   135:	astore	11
+   137:	aload	8
+   139:	monitorexit
+   140:	aload	11
+   142:	athrow
+   143:	iload	4
+   145:	istore	8
+   147:	iload	8
+   149:	ifle	167
+   152:	aload_0
+   153:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   156:	invokeinterface	#10,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.lock:()V
+   161:	iinc	8, -1
+   164:	goto	147
+   167:	goto	199
+   170:	astore	12
+   172:	iload	4
+   174:	istore	13
+   176:	iload	13
+   178:	ifle	196
+   181:	aload_0
+   182:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   185:	invokeinterface	#10,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.lock:()V
+   190:	iinc	13, -1
+   193:	goto	176
+   196:	aload	12
+   198:	athrow
+   199:	iload	7
+   201:	ireturn
+  Exception table:
+   from   to  target type
+    77   117   120   Class java/lang/InterruptedException
+
+    53   132   135   any
+   135   140   135   any
+    48   143   170   any
+   170   172   170   any
+  Exceptions: 
+   throws java.lang.InterruptedException
+public boolean awaitUntil(java.util.Date)   throws java.lang.InterruptedException;
+  Code:
+   Stack=4, Locals=14, Args_size=2
+   0:	aload_1
+   1:	ifnonnull	12
+   4:	new	#19; //class java/lang/NullPointerException
+   7:	dup
+   8:	invokespecial	#20; //Method java/lang/NullPointerException."<init>":()V
+   11:	athrow
+   12:	aload_0
+   13:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   16:	invokeinterface	#3,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.getHoldCount:()I
+   21:	istore_2
+   22:	iload_2
+   23:	ifne	34
+   26:	new	#4; //class java/lang/IllegalMonitorStateException
+   29:	dup
+   30:	invokespecial	#5; //Method java/lang/IllegalMonitorStateException."<init>":()V
+   33:	athrow
+   34:	aload_1
+   35:	invokevirtual	#21; //Method java/util/Date.getTime:()J
+   38:	lstore_3
+   39:	invokestatic	#6; //Method java/lang/Thread.interrupted:()Z
+   42:	ifeq	53
+   45:	new	#9; //class java/lang/InterruptedException
+   48:	dup
+   49:	invokespecial	#13; //Method java/lang/InterruptedException."<init>":()V
+   52:	athrow
+   53:	iconst_0
+   54:	istore	5
+   56:	aload_0
+   57:	dup
+   58:	astore	6
+   60:	monitorenter
+   61:	iload_2
+   62:	istore	7
+   64:	iload	7
+   66:	ifle	84
+   69:	aload_0
+   70:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   73:	invokeinterface	#7,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.unlock:()V
+   78:	iinc	7, -1
+   81:	goto	64
+   84:	invokestatic	#22; //Method java/lang/System.currentTimeMillis:()J
+   87:	lstore	7
+   89:	lload_3
+   90:	lload	7
+   92:	lsub
+   93:	lstore	9
+   95:	lload	9
+   97:	lconst_0
+   98:	lcmp
+   99:	ifle	127
+   102:	aload_0
+   103:	lload	9
+   105:	invokevirtual	#23; //Method java/lang/Object.wait:(J)V
+   108:	invokestatic	#22; //Method java/lang/System.currentTimeMillis:()J
+   111:	lload	7
+   113:	lsub
+   114:	lload	9
+   116:	lcmp
+   117:	ifge	124
+   120:	iconst_1
+   121:	goto	125
+   124:	iconst_0
+   125:	istore	5
+   127:	goto	139
+   130:	astore	7
+   132:	aload_0
+   133:	invokevirtual	#14; //Method java/lang/Object.notify:()V
+   136:	aload	7
+   138:	athrow
+   139:	aload	6
+   141:	monitorexit
+   142:	goto	153
+   145:	astore	11
+   147:	aload	6
+   149:	monitorexit
+   150:	aload	11
+   152:	athrow
+   153:	iload_2
+   154:	istore	6
+   156:	iload	6
+   158:	ifle	176
+   161:	aload_0
+   162:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   165:	invokeinterface	#10,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.lock:()V
+   170:	iinc	6, -1
+   173:	goto	156
+   176:	goto	207
+   179:	astore	12
+   181:	iload_2
+   182:	istore	13
+   184:	iload	13
+   186:	ifle	204
+   189:	aload_0
+   190:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   193:	invokeinterface	#10,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.lock:()V
+   198:	iinc	13, -1
+   201:	goto	184
+   204:	aload	12
+   206:	athrow
+   207:	iload	5
+   209:	ireturn
+  Exception table:
+   from   to  target type
+    84   127   130   Class java/lang/InterruptedException
+
+    61   142   145   any
+   145   150   145   any
+    56   153   179   any
+   179   181   179   any
+  Exceptions: 
+   throws java.lang.InterruptedException
+public synchronized void signal();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   4:	invokeinterface	#24,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.isHeldByCurrentThread:()Z
+   9:	ifne	20
+   12:	new	#4; //class java/lang/IllegalMonitorStateException
+   15:	dup
+   16:	invokespecial	#5; //Method java/lang/IllegalMonitorStateException."<init>":()V
+   19:	athrow
+   20:	aload_0
+   21:	invokevirtual	#14; //Method java/lang/Object.notify:()V
+   24:	return
+
+public synchronized void signalAll();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   4:	invokeinterface	#24,  1; //InterfaceMethod scala/actors/threadpool/locks/CondVar$ExclusiveLock.isHeldByCurrentThread:()Z
+   9:	ifne	20
+   12:	new	#4; //class java/lang/IllegalMonitorStateException
+   15:	dup
+   16:	invokespecial	#5; //Method java/lang/IllegalMonitorStateException."<init>":()V
+   19:	athrow
+   20:	aload_0
+   21:	invokevirtual	#25; //Method java/lang/Object.notifyAll:()V
+   24:	return
+
+protected scala.actors.threadpool.locks.CondVar$ExclusiveLock getLock();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#2; //Field lock:Lscala/actors/threadpool/locks/CondVar$ExclusiveLock;
+   4:	areturn
+
+protected boolean hasWaiters();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	new	#26; //class java/lang/UnsupportedOperationException
+   3:	dup
+   4:	ldc	#27; //String Use FAIR version
+   6:	invokespecial	#28; //Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+   9:	athrow
+
+protected int getWaitQueueLength();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	new	#26; //class java/lang/UnsupportedOperationException
+   3:	dup
+   4:	ldc	#27; //String Use FAIR version
+   6:	invokespecial	#28; //Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+   9:	athrow
+
+protected java.util.Collection getWaitingThreads();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	new	#26; //class java/lang/UnsupportedOperationException
+   3:	dup
+   4:	ldc	#27; //String Use FAIR version
+   6:	invokespecial	#28; //Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+   9:	athrow
+
+}
+

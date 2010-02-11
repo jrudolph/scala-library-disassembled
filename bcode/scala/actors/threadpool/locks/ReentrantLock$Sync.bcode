@@ -1,0 +1,263 @@
+abstract class scala.actors.threadpool.locks.ReentrantLock$Sync extends java.lang.Object implements java.io.Serializable
+  InnerClass: 
+   abstract #64= #13 of #62; //Sync=class scala/actors/threadpool/locks/ReentrantLock$Sync of class scala/actors/threadpool/locks/ReentrantLock
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Method	#14.#50;	//  java/lang/Object."<init>":()V
+const #2 = Field	#13.#51;	//  scala/actors/threadpool/locks/ReentrantLock$Sync.owner_:Ljava/lang/Thread;
+const #3 = Field	#13.#52;	//  scala/actors/threadpool/locks/ReentrantLock$Sync.holds_:I
+const #4 = class	#53;	//  java/lang/Error
+const #5 = String	#54;	//  Maximum lock count exceeded
+const #6 = Method	#4.#55;	//  java/lang/Error."<init>":(Ljava/lang/String;)V
+const #7 = Method	#56.#57;	//  java/lang/Thread.currentThread:()Ljava/lang/Thread;
+const #8 = Method	#13.#58;	//  scala/actors/threadpool/locks/ReentrantLock$Sync.incHolds:()V
+const #9 = Method	#13.#59;	//  scala/actors/threadpool/locks/ReentrantLock$Sync.isHeldByCurrentThread:()Z
+const #10 = class	#60;	//  java/lang/UnsupportedOperationException
+const #11 = String	#61;	//  Use FAIR version
+const #12 = Method	#10.#55;	//  java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+const #13 = class	#63;	//  scala/actors/threadpool/locks/ReentrantLock$Sync
+const #14 = class	#66;	//  java/lang/Object
+const #15 = class	#67;	//  java/io/Serializable
+const #16 = Asciz	serialVersionUID;
+const #17 = Asciz	J;
+const #18 = Asciz	ConstantValue;
+const #19 = long	-5179523762034025860l;
+const #21 = Asciz	owner_;
+const #22 = Asciz	Ljava/lang/Thread;;
+const #23 = Asciz	holds_;
+const #24 = Asciz	I;
+const #25 = Asciz	<init>;
+const #26 = Asciz	()V;
+const #27 = Asciz	Code;
+const #28 = Asciz	lock;
+const #29 = Asciz	lockInterruptibly;
+const #30 = Asciz	Exceptions;
+const #31 = class	#68;	//  java/lang/InterruptedException
+const #32 = Asciz	incHolds;
+const #33 = Asciz	tryLock;
+const #34 = Asciz	()Z;
+const #35 = Asciz	(J)Z;
+const #36 = Asciz	unlock;
+const #37 = Asciz	getHoldCount;
+const #38 = Asciz	()I;
+const #39 = Asciz	isHeldByCurrentThread;
+const #40 = Asciz	isLocked;
+const #41 = Asciz	isFair;
+const #42 = Asciz	getOwner;
+const #43 = Asciz	()Ljava/lang/Thread;;
+const #44 = Asciz	hasQueuedThreads;
+const #45 = Asciz	getQueueLength;
+const #46 = Asciz	getQueuedThreads;
+const #47 = Asciz	()Ljava/util/Collection;;
+const #48 = Asciz	isQueued;
+const #49 = Asciz	(Ljava/lang/Thread;)Z;
+const #50 = NameAndType	#25:#26;//  "<init>":()V
+const #51 = NameAndType	#21:#22;//  owner_:Ljava/lang/Thread;
+const #52 = NameAndType	#23:#24;//  holds_:I
+const #53 = Asciz	java/lang/Error;
+const #54 = Asciz	Maximum lock count exceeded;
+const #55 = NameAndType	#25:#69;//  "<init>":(Ljava/lang/String;)V
+const #56 = class	#70;	//  java/lang/Thread
+const #57 = NameAndType	#71:#43;//  currentThread:()Ljava/lang/Thread;
+const #58 = NameAndType	#32:#26;//  incHolds:()V
+const #59 = NameAndType	#39:#34;//  isHeldByCurrentThread:()Z
+const #60 = Asciz	java/lang/UnsupportedOperationException;
+const #61 = Asciz	Use FAIR version;
+const #62 = class	#72;	//  scala/actors/threadpool/locks/ReentrantLock
+const #63 = Asciz	scala/actors/threadpool/locks/ReentrantLock$Sync;
+const #64 = Asciz	Sync;
+const #65 = Asciz	InnerClasses;
+const #66 = Asciz	java/lang/Object;
+const #67 = Asciz	java/io/Serializable;
+const #68 = Asciz	java/lang/InterruptedException;
+const #69 = Asciz	(Ljava/lang/String;)V;
+const #70 = Asciz	java/lang/Thread;
+const #71 = Asciz	currentThread;
+const #72 = Asciz	scala/actors/threadpool/locks/ReentrantLock;
+
+{
+protected transient java.lang.Thread owner_;
+
+protected transient int holds_;
+
+protected scala.actors.threadpool.locks.ReentrantLock$Sync();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokespecial	#1; //Method java/lang/Object."<init>":()V
+   4:	aload_0
+   5:	aconst_null
+   6:	putfield	#2; //Field owner_:Ljava/lang/Thread;
+   9:	aload_0
+   10:	iconst_0
+   11:	putfield	#3; //Field holds_:I
+   14:	return
+
+public abstract void lock();
+
+public abstract void lockInterruptibly()   throws java.lang.InterruptedException;
+  Exceptions: 
+   throws java.lang.InterruptedException
+final void incHolds();
+  Code:
+   Stack=3, Locals=2, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	getfield	#3; //Field holds_:I
+   5:	iconst_1
+   6:	iadd
+   7:	dup_x1
+   8:	putfield	#3; //Field holds_:I
+   11:	istore_1
+   12:	iload_1
+   13:	ifge	26
+   16:	new	#4; //class java/lang/Error
+   19:	dup
+   20:	ldc	#5; //String Maximum lock count exceeded
+   22:	invokespecial	#6; //Method java/lang/Error."<init>":(Ljava/lang/String;)V
+   25:	athrow
+   26:	aload_0
+   27:	iload_1
+   28:	putfield	#3; //Field holds_:I
+   31:	return
+
+public boolean tryLock();
+  Code:
+   Stack=2, Locals=4, Args_size=1
+   0:	invokestatic	#7; //Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   3:	astore_1
+   4:	aload_0
+   5:	dup
+   6:	astore_2
+   7:	monitorenter
+   8:	aload_0
+   9:	getfield	#2; //Field owner_:Ljava/lang/Thread;
+   12:	ifnonnull	29
+   15:	aload_0
+   16:	aload_1
+   17:	putfield	#2; //Field owner_:Ljava/lang/Thread;
+   20:	aload_0
+   21:	iconst_1
+   22:	putfield	#3; //Field holds_:I
+   25:	iconst_1
+   26:	aload_2
+   27:	monitorexit
+   28:	ireturn
+   29:	aload_1
+   30:	aload_0
+   31:	getfield	#2; //Field owner_:Ljava/lang/Thread;
+   34:	if_acmpne	45
+   37:	aload_0
+   38:	invokevirtual	#8; //Method incHolds:()V
+   41:	iconst_1
+   42:	aload_2
+   43:	monitorexit
+   44:	ireturn
+   45:	aload_2
+   46:	monitorexit
+   47:	goto	55
+   50:	astore_3
+   51:	aload_2
+   52:	monitorexit
+   53:	aload_3
+   54:	athrow
+   55:	iconst_0
+   56:	ireturn
+  Exception table:
+   from   to  target type
+     8    28    50   any
+    29    44    50   any
+    45    47    50   any
+    50    53    50   any
+
+public abstract boolean tryLock(long)   throws java.lang.InterruptedException;
+  Exceptions: 
+   throws java.lang.InterruptedException
+public abstract void unlock();
+
+public synchronized int getHoldCount();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokevirtual	#9; //Method isHeldByCurrentThread:()Z
+   4:	ifeq	14
+   7:	aload_0
+   8:	getfield	#3; //Field holds_:I
+   11:	goto	15
+   14:	iconst_0
+   15:	ireturn
+
+public synchronized boolean isHeldByCurrentThread();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#3; //Field holds_:I
+   4:	ifle	21
+   7:	invokestatic	#7; //Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   10:	aload_0
+   11:	getfield	#2; //Field owner_:Ljava/lang/Thread;
+   14:	if_acmpne	21
+   17:	iconst_1
+   18:	goto	22
+   21:	iconst_0
+   22:	ireturn
+
+public synchronized boolean isLocked();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#2; //Field owner_:Ljava/lang/Thread;
+   4:	ifnull	11
+   7:	iconst_1
+   8:	goto	12
+   11:	iconst_0
+   12:	ireturn
+
+public abstract boolean isFair();
+
+protected synchronized java.lang.Thread getOwner();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#2; //Field owner_:Ljava/lang/Thread;
+   4:	areturn
+
+public boolean hasQueuedThreads();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	new	#10; //class java/lang/UnsupportedOperationException
+   3:	dup
+   4:	ldc	#11; //String Use FAIR version
+   6:	invokespecial	#12; //Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+   9:	athrow
+
+public int getQueueLength();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	new	#10; //class java/lang/UnsupportedOperationException
+   3:	dup
+   4:	ldc	#11; //String Use FAIR version
+   6:	invokespecial	#12; //Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+   9:	athrow
+
+public java.util.Collection getQueuedThreads();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	new	#10; //class java/lang/UnsupportedOperationException
+   3:	dup
+   4:	ldc	#11; //String Use FAIR version
+   6:	invokespecial	#12; //Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+   9:	athrow
+
+public boolean isQueued(java.lang.Thread);
+  Code:
+   Stack=3, Locals=2, Args_size=2
+   0:	new	#10; //class java/lang/UnsupportedOperationException
+   3:	dup
+   4:	ldc	#11; //String Use FAIR version
+   6:	invokespecial	#12; //Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+   9:	athrow
+
+}
+

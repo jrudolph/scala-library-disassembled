@@ -1,0 +1,165 @@
+public abstract class scala.actors.threadpool.AbstractQueue extends scala.actors.threadpool.AbstractCollection implements scala.actors.threadpool.Queue
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Method	#19.#32;	//  scala/actors/threadpool/AbstractCollection."<init>":()V
+const #2 = Method	#18.#33;	//  scala/actors/threadpool/AbstractQueue.offer:(Ljava/lang/Object;)Z
+const #3 = class	#34;	//  java/lang/IllegalStateException
+const #4 = String	#35;	//  Queue full
+const #5 = Method	#3.#36;	//  java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+const #6 = Method	#18.#37;	//  scala/actors/threadpool/AbstractQueue.poll:()Ljava/lang/Object;
+const #7 = class	#38;	//  java/util/NoSuchElementException
+const #8 = Method	#7.#32;	//  java/util/NoSuchElementException."<init>":()V
+const #9 = Method	#18.#39;	//  scala/actors/threadpool/AbstractQueue.peek:()Ljava/lang/Object;
+const #10 = class	#40;	//  java/lang/NullPointerException
+const #11 = Method	#10.#32;	//  java/lang/NullPointerException."<init>":()V
+const #12 = class	#41;	//  java/lang/IllegalArgumentException
+const #13 = Method	#12.#32;	//  java/lang/IllegalArgumentException."<init>":()V
+const #14 = InterfaceMethod	#42.#43;	//  java/util/Collection.iterator:()Ljava/util/Iterator;
+const #15 = InterfaceMethod	#44.#45;	//  java/util/Iterator.hasNext:()Z
+const #16 = InterfaceMethod	#44.#46;	//  java/util/Iterator.next:()Ljava/lang/Object;
+const #17 = Method	#18.#47;	//  scala/actors/threadpool/AbstractQueue.add:(Ljava/lang/Object;)Z
+const #18 = class	#48;	//  scala/actors/threadpool/AbstractQueue
+const #19 = class	#49;	//  scala/actors/threadpool/AbstractCollection
+const #20 = class	#50;	//  scala/actors/threadpool/Queue
+const #21 = Asciz	<init>;
+const #22 = Asciz	()V;
+const #23 = Asciz	Code;
+const #24 = Asciz	add;
+const #25 = Asciz	(Ljava/lang/Object;)Z;
+const #26 = Asciz	remove;
+const #27 = Asciz	()Ljava/lang/Object;;
+const #28 = Asciz	element;
+const #29 = Asciz	clear;
+const #30 = Asciz	addAll;
+const #31 = Asciz	(Ljava/util/Collection;)Z;
+const #32 = NameAndType	#21:#22;//  "<init>":()V
+const #33 = NameAndType	#51:#25;//  offer:(Ljava/lang/Object;)Z
+const #34 = Asciz	java/lang/IllegalStateException;
+const #35 = Asciz	Queue full;
+const #36 = NameAndType	#21:#52;//  "<init>":(Ljava/lang/String;)V
+const #37 = NameAndType	#53:#27;//  poll:()Ljava/lang/Object;
+const #38 = Asciz	java/util/NoSuchElementException;
+const #39 = NameAndType	#54:#27;//  peek:()Ljava/lang/Object;
+const #40 = Asciz	java/lang/NullPointerException;
+const #41 = Asciz	java/lang/IllegalArgumentException;
+const #42 = class	#55;	//  java/util/Collection
+const #43 = NameAndType	#56:#57;//  iterator:()Ljava/util/Iterator;
+const #44 = class	#58;	//  java/util/Iterator
+const #45 = NameAndType	#59:#60;//  hasNext:()Z
+const #46 = NameAndType	#61:#27;//  next:()Ljava/lang/Object;
+const #47 = NameAndType	#24:#25;//  add:(Ljava/lang/Object;)Z
+const #48 = Asciz	scala/actors/threadpool/AbstractQueue;
+const #49 = Asciz	scala/actors/threadpool/AbstractCollection;
+const #50 = Asciz	scala/actors/threadpool/Queue;
+const #51 = Asciz	offer;
+const #52 = Asciz	(Ljava/lang/String;)V;
+const #53 = Asciz	poll;
+const #54 = Asciz	peek;
+const #55 = Asciz	java/util/Collection;
+const #56 = Asciz	iterator;
+const #57 = Asciz	()Ljava/util/Iterator;;
+const #58 = Asciz	java/util/Iterator;
+const #59 = Asciz	hasNext;
+const #60 = Asciz	()Z;
+const #61 = Asciz	next;
+
+{
+protected scala.actors.threadpool.AbstractQueue();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokespecial	#1; //Method scala/actors/threadpool/AbstractCollection."<init>":()V
+   4:	return
+
+public boolean add(java.lang.Object);
+  Code:
+   Stack=3, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokevirtual	#2; //Method offer:(Ljava/lang/Object;)Z
+   5:	ifeq	10
+   8:	iconst_1
+   9:	ireturn
+   10:	new	#3; //class java/lang/IllegalStateException
+   13:	dup
+   14:	ldc	#4; //String Queue full
+   16:	invokespecial	#5; //Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+   19:	athrow
+
+public java.lang.Object remove();
+  Code:
+   Stack=2, Locals=2, Args_size=1
+   0:	aload_0
+   1:	invokevirtual	#6; //Method poll:()Ljava/lang/Object;
+   4:	astore_1
+   5:	aload_1
+   6:	ifnull	11
+   9:	aload_1
+   10:	areturn
+   11:	new	#7; //class java/util/NoSuchElementException
+   14:	dup
+   15:	invokespecial	#8; //Method java/util/NoSuchElementException."<init>":()V
+   18:	athrow
+
+public java.lang.Object element();
+  Code:
+   Stack=2, Locals=2, Args_size=1
+   0:	aload_0
+   1:	invokevirtual	#9; //Method peek:()Ljava/lang/Object;
+   4:	astore_1
+   5:	aload_1
+   6:	ifnull	11
+   9:	aload_1
+   10:	areturn
+   11:	new	#7; //class java/util/NoSuchElementException
+   14:	dup
+   15:	invokespecial	#8; //Method java/util/NoSuchElementException."<init>":()V
+   18:	athrow
+
+public void clear();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokevirtual	#6; //Method poll:()Ljava/lang/Object;
+   4:	ifnull	10
+   7:	goto	0
+   10:	return
+
+public boolean addAll(java.util.Collection);
+  Code:
+   Stack=2, Locals=4, Args_size=2
+   0:	aload_1
+   1:	ifnonnull	12
+   4:	new	#10; //class java/lang/NullPointerException
+   7:	dup
+   8:	invokespecial	#11; //Method java/lang/NullPointerException."<init>":()V
+   11:	athrow
+   12:	aload_1
+   13:	aload_0
+   14:	if_acmpne	25
+   17:	new	#12; //class java/lang/IllegalArgumentException
+   20:	dup
+   21:	invokespecial	#13; //Method java/lang/IllegalArgumentException."<init>":()V
+   24:	athrow
+   25:	iconst_0
+   26:	istore_2
+   27:	aload_1
+   28:	invokeinterface	#14,  1; //InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+   33:	astore_3
+   34:	aload_3
+   35:	invokeinterface	#15,  1; //InterfaceMethod java/util/Iterator.hasNext:()Z
+   40:	ifeq	61
+   43:	aload_0
+   44:	aload_3
+   45:	invokeinterface	#16,  1; //InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+   50:	invokevirtual	#17; //Method add:(Ljava/lang/Object;)Z
+   53:	ifeq	34
+   56:	iconst_1
+   57:	istore_2
+   58:	goto	34
+   61:	iload_2
+   62:	ireturn
+
+}
+

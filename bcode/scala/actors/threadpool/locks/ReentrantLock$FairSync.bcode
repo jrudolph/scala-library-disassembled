@@ -1,0 +1,473 @@
+final class scala.actors.threadpool.locks.ReentrantLock$FairSync extends scala.actors.threadpool.locks.ReentrantLock$Sync implements scala.actors.threadpool.helpers.WaitQueue$QueuedSync
+  InnerClass: 
+   public #44= #11 of #78; //WaitNode=class scala/actors/threadpool/helpers/WaitQueue$WaitNode of class scala/actors/threadpool/helpers/WaitQueue
+   final #101= #30 of #99; //FairSync=class scala/actors/threadpool/locks/ReentrantLock$FairSync of class scala/actors/threadpool/locks/ReentrantLock
+   abstract #103= #31 of #99; //Sync=class scala/actors/threadpool/locks/ReentrantLock$Sync of class scala/actors/threadpool/locks/ReentrantLock
+   public abstract #105= #32 of #78; //QueuedSync=class scala/actors/threadpool/helpers/WaitQueue$QueuedSync of class scala/actors/threadpool/helpers/WaitQueue
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Method	#31.#70;	//  scala/actors/threadpool/locks/ReentrantLock$Sync."<init>":()V
+const #2 = class	#71;	//  scala/actors/threadpool/helpers/FIFOWaitQueue
+const #3 = Method	#2.#70;	//  scala/actors/threadpool/helpers/FIFOWaitQueue."<init>":()V
+const #4 = Field	#30.#72;	//  scala/actors/threadpool/locks/ReentrantLock$FairSync.wq_:Lscala/actors/threadpool/helpers/WaitQueue;
+const #5 = Method	#73.#74;	//  java/lang/Thread.currentThread:()Ljava/lang/Thread;
+const #6 = Field	#30.#75;	//  scala/actors/threadpool/locks/ReentrantLock$FairSync.owner_:Ljava/lang/Thread;
+const #7 = Field	#30.#76;	//  scala/actors/threadpool/locks/ReentrantLock$FairSync.holds_:I
+const #8 = Method	#30.#77;	//  scala/actors/threadpool/locks/ReentrantLock$FairSync.incHolds:()V
+const #9 = Method	#78.#79;	//  scala/actors/threadpool/helpers/WaitQueue.insert:(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)V
+const #10 = Method	#11.#80;	//  scala/actors/threadpool/helpers/WaitQueue$WaitNode.getOwner:()Ljava/lang/Thread;
+const #11 = class	#81;	//  scala/actors/threadpool/helpers/WaitQueue$WaitNode
+const #12 = Method	#11.#70;	//  scala/actors/threadpool/helpers/WaitQueue$WaitNode."<init>":()V
+const #13 = Method	#11.#82;	//  scala/actors/threadpool/helpers/WaitQueue$WaitNode.doWaitUninterruptibly:(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)V
+const #14 = Method	#73.#83;	//  java/lang/Thread.interrupted:()Z
+const #15 = class	#84;	//  java/lang/InterruptedException
+const #16 = Method	#15.#70;	//  java/lang/InterruptedException."<init>":()V
+const #17 = Method	#11.#85;	//  scala/actors/threadpool/helpers/WaitQueue$WaitNode.doWait:(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)V
+const #18 = Method	#11.#86;	//  scala/actors/threadpool/helpers/WaitQueue$WaitNode.doTimedWait:(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;J)Z
+const #19 = class	#87;	//  java/lang/IllegalMonitorStateException
+const #20 = String	#88;	//  Not owner
+const #21 = Method	#19.#89;	//  java/lang/IllegalMonitorStateException."<init>":(Ljava/lang/String;)V
+const #22 = Method	#78.#90;	//  scala/actors/threadpool/helpers/WaitQueue.extract:()Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+const #23 = Method	#30.#91;	//  scala/actors/threadpool/locks/ReentrantLock$FairSync.getSignallee:(Ljava/lang/Thread;)Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+const #24 = Method	#11.#92;	//  scala/actors/threadpool/helpers/WaitQueue$WaitNode.signal:(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)Z
+const #25 = Method	#78.#93;	//  scala/actors/threadpool/helpers/WaitQueue.hasNodes:()Z
+const #26 = Method	#78.#94;	//  scala/actors/threadpool/helpers/WaitQueue.getLength:()I
+const #27 = Method	#78.#95;	//  scala/actors/threadpool/helpers/WaitQueue.getWaitingThreads:()Ljava/util/Collection;
+const #28 = Method	#78.#96;	//  scala/actors/threadpool/helpers/WaitQueue.isWaiting:(Ljava/lang/Thread;)Z
+const #29 = Method	#97.#98;	//  java/io/ObjectInputStream.defaultReadObject:()V
+const #30 = class	#100;	//  scala/actors/threadpool/locks/ReentrantLock$FairSync
+const #31 = class	#102;	//  scala/actors/threadpool/locks/ReentrantLock$Sync
+const #32 = class	#104;	//  scala/actors/threadpool/helpers/WaitQueue$QueuedSync
+const #33 = Asciz	serialVersionUID;
+const #34 = Asciz	J;
+const #35 = Asciz	ConstantValue;
+const #36 = long	-3000897897090466540l;
+const #38 = Asciz	wq_;
+const #39 = Asciz	Lscala/actors/threadpool/helpers/WaitQueue;;
+const #40 = Asciz	<init>;
+const #41 = Asciz	()V;
+const #42 = Asciz	Code;
+const #43 = Asciz	recheck;
+const #44 = Asciz	WaitNode;
+const #45 = Asciz	InnerClasses;
+const #46 = Asciz	(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)Z;
+const #47 = Asciz	takeOver;
+const #48 = Asciz	(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)V;
+const #49 = Asciz	lock;
+const #50 = Asciz	lockInterruptibly;
+const #51 = Asciz	Exceptions;
+const #52 = Asciz	tryLock;
+const #53 = Asciz	(J)Z;
+const #54 = Asciz	getSignallee;
+const #55 = Asciz	(Ljava/lang/Thread;)Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;;
+const #56 = Asciz	unlock;
+const #57 = Asciz	isFair;
+const #58 = Asciz	()Z;
+const #59 = Asciz	hasQueuedThreads;
+const #60 = Asciz	getQueueLength;
+const #61 = Asciz	()I;
+const #62 = Asciz	getQueuedThreads;
+const #63 = Asciz	()Ljava/util/Collection;;
+const #64 = Asciz	isQueued;
+const #65 = Asciz	(Ljava/lang/Thread;)Z;
+const #66 = Asciz	readObject;
+const #67 = Asciz	(Ljava/io/ObjectInputStream;)V;
+const #68 = class	#106;	//  java/io/IOException
+const #69 = class	#107;	//  java/lang/ClassNotFoundException
+const #70 = NameAndType	#40:#41;//  "<init>":()V
+const #71 = Asciz	scala/actors/threadpool/helpers/FIFOWaitQueue;
+const #72 = NameAndType	#38:#39;//  wq_:Lscala/actors/threadpool/helpers/WaitQueue;
+const #73 = class	#108;	//  java/lang/Thread
+const #74 = NameAndType	#109:#110;//  currentThread:()Ljava/lang/Thread;
+const #75 = NameAndType	#111:#112;//  owner_:Ljava/lang/Thread;
+const #76 = NameAndType	#113:#114;//  holds_:I
+const #77 = NameAndType	#115:#41;//  incHolds:()V
+const #78 = class	#116;	//  scala/actors/threadpool/helpers/WaitQueue
+const #79 = NameAndType	#117:#48;//  insert:(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)V
+const #80 = NameAndType	#118:#110;//  getOwner:()Ljava/lang/Thread;
+const #81 = Asciz	scala/actors/threadpool/helpers/WaitQueue$WaitNode;
+const #82 = NameAndType	#119:#120;//  doWaitUninterruptibly:(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)V
+const #83 = NameAndType	#121:#58;//  interrupted:()Z
+const #84 = Asciz	java/lang/InterruptedException;
+const #85 = NameAndType	#122:#120;//  doWait:(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)V
+const #86 = NameAndType	#123:#124;//  doTimedWait:(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;J)Z
+const #87 = Asciz	java/lang/IllegalMonitorStateException;
+const #88 = Asciz	Not owner;
+const #89 = NameAndType	#40:#125;//  "<init>":(Ljava/lang/String;)V
+const #90 = NameAndType	#126:#127;//  extract:()Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+const #91 = NameAndType	#54:#55;//  getSignallee:(Ljava/lang/Thread;)Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+const #92 = NameAndType	#128:#129;//  signal:(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)Z
+const #93 = NameAndType	#130:#58;//  hasNodes:()Z
+const #94 = NameAndType	#131:#61;//  getLength:()I
+const #95 = NameAndType	#132:#63;//  getWaitingThreads:()Ljava/util/Collection;
+const #96 = NameAndType	#133:#65;//  isWaiting:(Ljava/lang/Thread;)Z
+const #97 = class	#134;	//  java/io/ObjectInputStream
+const #98 = NameAndType	#135:#41;//  defaultReadObject:()V
+const #99 = class	#136;	//  scala/actors/threadpool/locks/ReentrantLock
+const #100 = Asciz	scala/actors/threadpool/locks/ReentrantLock$FairSync;
+const #101 = Asciz	FairSync;
+const #102 = Asciz	scala/actors/threadpool/locks/ReentrantLock$Sync;
+const #103 = Asciz	Sync;
+const #104 = Asciz	scala/actors/threadpool/helpers/WaitQueue$QueuedSync;
+const #105 = Asciz	QueuedSync;
+const #106 = Asciz	java/io/IOException;
+const #107 = Asciz	java/lang/ClassNotFoundException;
+const #108 = Asciz	java/lang/Thread;
+const #109 = Asciz	currentThread;
+const #110 = Asciz	()Ljava/lang/Thread;;
+const #111 = Asciz	owner_;
+const #112 = Asciz	Ljava/lang/Thread;;
+const #113 = Asciz	holds_;
+const #114 = Asciz	I;
+const #115 = Asciz	incHolds;
+const #116 = Asciz	scala/actors/threadpool/helpers/WaitQueue;
+const #117 = Asciz	insert;
+const #118 = Asciz	getOwner;
+const #119 = Asciz	doWaitUninterruptibly;
+const #120 = Asciz	(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)V;
+const #121 = Asciz	interrupted;
+const #122 = Asciz	doWait;
+const #123 = Asciz	doTimedWait;
+const #124 = Asciz	(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;J)Z;
+const #125 = Asciz	(Ljava/lang/String;)V;
+const #126 = Asciz	extract;
+const #127 = Asciz	()Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;;
+const #128 = Asciz	signal;
+const #129 = Asciz	(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)Z;
+const #130 = Asciz	hasNodes;
+const #131 = Asciz	getLength;
+const #132 = Asciz	getWaitingThreads;
+const #133 = Asciz	isWaiting;
+const #134 = Asciz	java/io/ObjectInputStream;
+const #135 = Asciz	defaultReadObject;
+const #136 = Asciz	scala/actors/threadpool/locks/ReentrantLock;
+
+{
+scala.actors.threadpool.locks.ReentrantLock$FairSync();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokespecial	#1; //Method scala/actors/threadpool/locks/ReentrantLock$Sync."<init>":()V
+   4:	aload_0
+   5:	new	#2; //class scala/actors/threadpool/helpers/FIFOWaitQueue
+   8:	dup
+   9:	invokespecial	#3; //Method scala/actors/threadpool/helpers/FIFOWaitQueue."<init>":()V
+   12:	putfield	#4; //Field wq_:Lscala/actors/threadpool/helpers/WaitQueue;
+   15:	return
+
+public synchronized boolean recheck(scala.actors.threadpool.helpers.WaitQueue$WaitNode);
+  Code:
+   Stack=2, Locals=3, Args_size=2
+   0:	invokestatic	#5; //Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   3:	astore_2
+   4:	aload_0
+   5:	getfield	#6; //Field owner_:Ljava/lang/Thread;
+   8:	ifnonnull	23
+   11:	aload_0
+   12:	aload_2
+   13:	putfield	#6; //Field owner_:Ljava/lang/Thread;
+   16:	aload_0
+   17:	iconst_1
+   18:	putfield	#7; //Field holds_:I
+   21:	iconst_1
+   22:	ireturn
+   23:	aload_2
+   24:	aload_0
+   25:	getfield	#6; //Field owner_:Ljava/lang/Thread;
+   28:	if_acmpne	37
+   31:	aload_0
+   32:	invokevirtual	#8; //Method incHolds:()V
+   35:	iconst_1
+   36:	ireturn
+   37:	aload_0
+   38:	getfield	#4; //Field wq_:Lscala/actors/threadpool/helpers/WaitQueue;
+   41:	aload_1
+   42:	invokevirtual	#9; //Method scala/actors/threadpool/helpers/WaitQueue.insert:(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)V
+   45:	iconst_0
+   46:	ireturn
+
+public synchronized void takeOver(scala.actors.threadpool.helpers.WaitQueue$WaitNode);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokevirtual	#10; //Method scala/actors/threadpool/helpers/WaitQueue$WaitNode.getOwner:()Ljava/lang/Thread;
+   5:	putfield	#6; //Field owner_:Ljava/lang/Thread;
+   8:	return
+
+public void lock();
+  Code:
+   Stack=2, Locals=4, Args_size=1
+   0:	invokestatic	#5; //Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   3:	astore_1
+   4:	aload_0
+   5:	dup
+   6:	astore_2
+   7:	monitorenter
+   8:	aload_0
+   9:	getfield	#6; //Field owner_:Ljava/lang/Thread;
+   12:	ifnonnull	28
+   15:	aload_0
+   16:	aload_1
+   17:	putfield	#6; //Field owner_:Ljava/lang/Thread;
+   20:	aload_0
+   21:	iconst_1
+   22:	putfield	#7; //Field holds_:I
+   25:	aload_2
+   26:	monitorexit
+   27:	return
+   28:	aload_1
+   29:	aload_0
+   30:	getfield	#6; //Field owner_:Ljava/lang/Thread;
+   33:	if_acmpne	43
+   36:	aload_0
+   37:	invokevirtual	#8; //Method incHolds:()V
+   40:	aload_2
+   41:	monitorexit
+   42:	return
+   43:	aload_2
+   44:	monitorexit
+   45:	goto	53
+   48:	astore_3
+   49:	aload_2
+   50:	monitorexit
+   51:	aload_3
+   52:	athrow
+   53:	new	#11; //class scala/actors/threadpool/helpers/WaitQueue$WaitNode
+   56:	dup
+   57:	invokespecial	#12; //Method scala/actors/threadpool/helpers/WaitQueue$WaitNode."<init>":()V
+   60:	astore_2
+   61:	aload_2
+   62:	aload_0
+   63:	invokevirtual	#13; //Method scala/actors/threadpool/helpers/WaitQueue$WaitNode.doWaitUninterruptibly:(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)V
+   66:	return
+  Exception table:
+   from   to  target type
+     8    27    48   any
+    28    42    48   any
+    43    45    48   any
+    48    51    48   any
+
+public void lockInterruptibly()   throws java.lang.InterruptedException;
+  Code:
+   Stack=2, Locals=4, Args_size=1
+   0:	invokestatic	#14; //Method java/lang/Thread.interrupted:()Z
+   3:	ifeq	14
+   6:	new	#15; //class java/lang/InterruptedException
+   9:	dup
+   10:	invokespecial	#16; //Method java/lang/InterruptedException."<init>":()V
+   13:	athrow
+   14:	invokestatic	#5; //Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   17:	astore_1
+   18:	aload_0
+   19:	dup
+   20:	astore_2
+   21:	monitorenter
+   22:	aload_0
+   23:	getfield	#6; //Field owner_:Ljava/lang/Thread;
+   26:	ifnonnull	42
+   29:	aload_0
+   30:	aload_1
+   31:	putfield	#6; //Field owner_:Ljava/lang/Thread;
+   34:	aload_0
+   35:	iconst_1
+   36:	putfield	#7; //Field holds_:I
+   39:	aload_2
+   40:	monitorexit
+   41:	return
+   42:	aload_1
+   43:	aload_0
+   44:	getfield	#6; //Field owner_:Ljava/lang/Thread;
+   47:	if_acmpne	57
+   50:	aload_0
+   51:	invokevirtual	#8; //Method incHolds:()V
+   54:	aload_2
+   55:	monitorexit
+   56:	return
+   57:	aload_2
+   58:	monitorexit
+   59:	goto	67
+   62:	astore_3
+   63:	aload_2
+   64:	monitorexit
+   65:	aload_3
+   66:	athrow
+   67:	new	#11; //class scala/actors/threadpool/helpers/WaitQueue$WaitNode
+   70:	dup
+   71:	invokespecial	#12; //Method scala/actors/threadpool/helpers/WaitQueue$WaitNode."<init>":()V
+   74:	astore_2
+   75:	aload_2
+   76:	aload_0
+   77:	invokevirtual	#17; //Method scala/actors/threadpool/helpers/WaitQueue$WaitNode.doWait:(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)V
+   80:	return
+  Exception table:
+   from   to  target type
+    22    41    62   any
+    42    56    62   any
+    57    59    62   any
+    62    65    62   any
+  Exceptions: 
+   throws java.lang.InterruptedException
+public boolean tryLock(long)   throws java.lang.InterruptedException;
+  Code:
+   Stack=4, Locals=6, Args_size=2
+   0:	invokestatic	#14; //Method java/lang/Thread.interrupted:()Z
+   3:	ifeq	14
+   6:	new	#15; //class java/lang/InterruptedException
+   9:	dup
+   10:	invokespecial	#16; //Method java/lang/InterruptedException."<init>":()V
+   13:	athrow
+   14:	invokestatic	#5; //Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   17:	astore_3
+   18:	aload_0
+   19:	dup
+   20:	astore	4
+   22:	monitorenter
+   23:	aload_0
+   24:	getfield	#6; //Field owner_:Ljava/lang/Thread;
+   27:	ifnonnull	45
+   30:	aload_0
+   31:	aload_3
+   32:	putfield	#6; //Field owner_:Ljava/lang/Thread;
+   35:	aload_0
+   36:	iconst_1
+   37:	putfield	#7; //Field holds_:I
+   40:	iconst_1
+   41:	aload	4
+   43:	monitorexit
+   44:	ireturn
+   45:	aload_3
+   46:	aload_0
+   47:	getfield	#6; //Field owner_:Ljava/lang/Thread;
+   50:	if_acmpne	62
+   53:	aload_0
+   54:	invokevirtual	#8; //Method incHolds:()V
+   57:	iconst_1
+   58:	aload	4
+   60:	monitorexit
+   61:	ireturn
+   62:	aload	4
+   64:	monitorexit
+   65:	goto	76
+   68:	astore	5
+   70:	aload	4
+   72:	monitorexit
+   73:	aload	5
+   75:	athrow
+   76:	new	#11; //class scala/actors/threadpool/helpers/WaitQueue$WaitNode
+   79:	dup
+   80:	invokespecial	#12; //Method scala/actors/threadpool/helpers/WaitQueue$WaitNode."<init>":()V
+   83:	astore	4
+   85:	aload	4
+   87:	aload_0
+   88:	lload_1
+   89:	invokevirtual	#18; //Method scala/actors/threadpool/helpers/WaitQueue$WaitNode.doTimedWait:(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;J)Z
+   92:	ireturn
+  Exception table:
+   from   to  target type
+    23    44    68   any
+    45    61    68   any
+    62    65    68   any
+    68    73    68   any
+  Exceptions: 
+   throws java.lang.InterruptedException
+protected synchronized scala.actors.threadpool.helpers.WaitQueue$WaitNode getSignallee(java.lang.Thread);
+  Code:
+   Stack=3, Locals=3, Args_size=2
+   0:	aload_1
+   1:	aload_0
+   2:	getfield	#6; //Field owner_:Ljava/lang/Thread;
+   5:	if_acmpeq	18
+   8:	new	#19; //class java/lang/IllegalMonitorStateException
+   11:	dup
+   12:	ldc	#20; //String Not owner
+   14:	invokespecial	#21; //Method java/lang/IllegalMonitorStateException."<init>":(Ljava/lang/String;)V
+   17:	athrow
+   18:	aload_0
+   19:	getfield	#7; //Field holds_:I
+   22:	iconst_2
+   23:	if_icmplt	38
+   26:	aload_0
+   27:	dup
+   28:	getfield	#7; //Field holds_:I
+   31:	iconst_1
+   32:	isub
+   33:	putfield	#7; //Field holds_:I
+   36:	aconst_null
+   37:	areturn
+   38:	aload_0
+   39:	getfield	#4; //Field wq_:Lscala/actors/threadpool/helpers/WaitQueue;
+   42:	invokevirtual	#22; //Method scala/actors/threadpool/helpers/WaitQueue.extract:()Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+   45:	astore_2
+   46:	aload_2
+   47:	ifnonnull	60
+   50:	aload_0
+   51:	aconst_null
+   52:	putfield	#6; //Field owner_:Ljava/lang/Thread;
+   55:	aload_0
+   56:	iconst_0
+   57:	putfield	#7; //Field holds_:I
+   60:	aload_2
+   61:	areturn
+
+public void unlock();
+  Code:
+   Stack=2, Locals=3, Args_size=1
+   0:	invokestatic	#5; //Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   3:	astore_1
+   4:	aload_0
+   5:	aload_1
+   6:	invokevirtual	#23; //Method getSignallee:(Ljava/lang/Thread;)Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+   9:	astore_2
+   10:	aload_2
+   11:	ifnonnull	15
+   14:	return
+   15:	aload_2
+   16:	aload_0
+   17:	invokevirtual	#24; //Method scala/actors/threadpool/helpers/WaitQueue$WaitNode.signal:(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)Z
+   20:	ifeq	24
+   23:	return
+   24:	goto	4
+
+public final boolean isFair();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	iconst_1
+   1:	ireturn
+
+public synchronized boolean hasQueuedThreads();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#4; //Field wq_:Lscala/actors/threadpool/helpers/WaitQueue;
+   4:	invokevirtual	#25; //Method scala/actors/threadpool/helpers/WaitQueue.hasNodes:()Z
+   7:	ireturn
+
+public synchronized int getQueueLength();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#4; //Field wq_:Lscala/actors/threadpool/helpers/WaitQueue;
+   4:	invokevirtual	#26; //Method scala/actors/threadpool/helpers/WaitQueue.getLength:()I
+   7:	ireturn
+
+public synchronized java.util.Collection getQueuedThreads();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#4; //Field wq_:Lscala/actors/threadpool/helpers/WaitQueue;
+   4:	invokevirtual	#27; //Method scala/actors/threadpool/helpers/WaitQueue.getWaitingThreads:()Ljava/util/Collection;
+   7:	areturn
+
+public synchronized boolean isQueued(java.lang.Thread);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	getfield	#4; //Field wq_:Lscala/actors/threadpool/helpers/WaitQueue;
+   4:	aload_1
+   5:	invokevirtual	#28; //Method scala/actors/threadpool/helpers/WaitQueue.isWaiting:(Ljava/lang/Thread;)Z
+   8:	ireturn
+
+}
+
