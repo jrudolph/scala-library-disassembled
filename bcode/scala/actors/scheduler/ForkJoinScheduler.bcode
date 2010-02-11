@@ -1,0 +1,1028 @@
+Compiled from "ForkJoinScheduler.scala"
+public class scala.actors.scheduler.ForkJoinScheduler extends java.lang.Object implements java.lang.Runnable,scala.actors.IScheduler,scala.actors.scheduler.TerminationMonitor,scala.ScalaObject
+  SourceFile: "ForkJoinScheduler.scala"
+  ScalaSig: length = 0x4F5
+   05 00 FFFFFF81 2C 06 08 01 02 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF80 00 09 02 11
+   46 6F 72 6B 4A 6F 69 6E 53 63 68 65 64 75 6C 65
+   72 0A 02 03 04 01 09 73 63 68 65 64 75 6C 65 72
+   0A 02 05 06 01 06 61 63 74 6F 72 73 0A 01 07 01
+   05 73 63 61 6C 61 03 00 13 06 00 0A 12 15 19 1D
+   10 02 0B 10 0D 01 0C 0A 02 0D 0E 01 04 6C 61 6E
+   67 0A 01 0F 01 04 6A 61 76 61 09 02 11 0C 02 06
+   4F 62 6A 65 63 74 10 02 0B 13 09 02 14 0C 02 08
+   52 75 6E 6E 61 62 6C 65 10 02 16 17 0D 01 04 09
+   02 18 04 02 0A 49 53 63 68 65 64 75 6C 65 72 10
+   02 1A 1B 0D 01 02 09 02 1C 02 02 12 54 65 72 6D
+   69 6E 61 74 69 6F 6E 4D 6F 6E 69 74 6F 72 10 02
+   1E 1F 0D 01 06 09 02 20 06 02 0B 53 63 61 6C 61
+   4F 62 6A 65 63 74 08 05 22 00 FFFFFF84 00 23 01 06 3C
+   69 6E 69 74 3E 14 01 24 10 02 1A 00 08 07 26 00
+   FFFFFFC0 FFFFFF80 FFFFFF84 04 27 01 04 70 6F 6F 6C 15 01 28 10 02
+   1A 29 09 02 2A 02 02 15 44 72 61 69 6E 61 62 6C
+   65 46 6F 72 6B 4A 6F 69 6E 50 6F 6F 6C 08 07 2C
+   00 FFFFFFC0 FFFFFF80 FFFFFF84 04 2D 01 08 70 6F 6F 6C 5F 24 65 71
+   14 02 2E 31 10 02 1E 2F 09 02 30 06 02 04 55 6E
+   69 74 08 07 32 2B FFFFFF81 FFFFFF80 FFFFFFC0 00 28 01 03 78 24 31
+   08 06 34 00 FFFFFFA0 FFFFFFA0 04 28 01 05 70 6F 6F 6C 20 08
+   07 36 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 37 01 0B 74 65 72 6D 69 6E
+   61 74 69 6E 67 15 01 38 10 02 1E 39 09 02 3A 06
+   02 07 42 6F 6F 6C 65 61 6E 08 07 3C 00 FFFFFFC0 FFFFFF80 FFFFFF84
+   04 3D 01 0F 74 65 72 6D 69 6E 61 74 69 6E 67 5F
+   24 65 71 14 02 2E 3E 08 07 32 3B FFFFFF81 FFFFFF80 FFFFFFC0 00 38
+   08 06 40 00 FFFFFFA0 FFFFFFA0 04 38 01 0C 74 65 72 6D 69 6E
+   61 74 69 6E 67 20 08 07 42 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 37 01
+   0B 73 6E 61 70 73 68 6F 74 69 6E 67 08 07 44 00
+   FFFFFFC0 FFFFFF80 FFFFFF84 04 45 01 0F 73 6E 61 70 73 68 6F 74 69
+   6E 67 5F 24 65 71 14 02 2E 46 08 07 32 43 FFFFFF81 FFFFFF80
+   FFFFFFC0 00 38 08 06 48 00 FFFFFFA0 FFFFFFA0 04 38 01 0C 73 6E 61
+   70 73 68 6F 74 69 6E 67 20 08 07 4A 00 FFFFFFC0 FFFFFF80 FFFFFF84
+   04 4B 01 0C 64 72 61 69 6E 65 64 54 61 73 6B 73
+   15 01 4C 10 03 4D 50 52 0D 01 4E 0A 02 4F 0E 01
+   04 75 74 69 6C 09 02 51 4E 02 0A 43 6F 6C 6C 65
+   63 74 69 6F 6E 30 02 53 5B 10 03 54 57 59 0D 01
+   55 0A 02 56 04 01 08 66 6F 72 6B 6A 6F 69 6E 09
+   02 58 55 02 0C 46 6F 72 6B 4A 6F 69 6E 54 61 73
+   6B 10 02 5A 5B 0C 00 04 08 5C 00 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF82 00
+   5D 02 03 5F 24 31 11 02 5E 61 10 02 1E 5F 09 02
+   60 06 02 07 4E 6F 74 68 69 6E 67 10 02 1E 62 09
+   02 63 06 02 03 41 6E 79 08 07 65 00 FFFFFFC0 FFFFFF80 FFFFFF84 04
+   66 01 10 64 72 61 69 6E 65 64 54 61 73 6B 73 5F
+   24 65 71 14 02 2E 67 08 07 32 64 FFFFFF81 FFFFFF80 FFFFFFC0 00 68
+   10 03 4D 50 69 30 02 6A 6C 10 03 54 57 6B 10 02
+   5A 6C 04 08 5C 00 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF82 00 5D 08 06 6E 00
+   FFFFFFA0 FFFFFFA0 04 6F 01 0D 64 72 61 69 6E 65 64 54 61 73
+   6B 73 20 10 03 4D 50 70 30 02 71 73 10 03 54 57
+   72 10 02 5A 73 04 08 5C 00 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF82 00 5D 08
+   07 75 00 FFFFFFC2 FFFFFF80 FFFFFF84 04 76 01 0A 43 48 45 43 4B 5F
+   46 52 45 51 15 01 77 10 02 1E 78 09 02 79 06 02
+   03 49 6E 74 08 06 7B 00 FFFFFFA0 FFFFFF80 04 77 01 0B 43 48
+   45 43 4B 5F 46 52 45 51 20 08 05 7D 00 FFFFFF84 04 7E
+   01 0B 6D 61 6B 65 4E 65 77 50 6F 6F 6C 14 01 28
+   08 07 FFFFFF81 00 00 FFFFFF84 00 FFFFFF81 01 01 05 73 74 61 72 74
+   14 01 2E 08 06 FFFFFF81 03 00 FFFFFF84 04 37 01 11 61 6C 6C
+   57 6F 72 6B 65 72 73 42 6C 6F 63 6B 65 64 08 07
+   FFFFFF81 05 00 FFFFFF84 20 FFFFFF81 01 01 03 72 75 6E 08 07 FFFFFF81 07
+   00 FFFFFF84 00 FFFFFF81 08 01 07 65 78 65 63 75 74 65 14 03
+   2E FFFFFF81 09 08 08 FFFFFF81 0A FFFFFF81 06 FFFFFFC0 00 FFFFFF81 0B 01 04 74
+   61 73 6B 10 04 FFFFFF81 0C FFFFFF81 0F 0E 03 1E FFFFFF81 0D 09 03
+   FFFFFF81 0E 06 01 06 50 72 65 64 65 66 09 03 14 FFFFFF81 10
+   0A 03 FFFFFF81 0E 06 08 07 FFFFFF81 12 00 FFFFFF84 00 FFFFFF81 13 01 10
+   65 78 65 63 75 74 65 46 72 6F 6D 41 63 74 6F 72
+   14 03 2E FFFFFF81 14 08 08 FFFFFF81 0A FFFFFF81 11 FFFFFFC0 00 FFFFFF81 0B 08
+   07 FFFFFF81 07 00 FFFFFF84 00 FFFFFF81 16 14 03 2E FFFFFF81 17 08 09 FFFFFF81
+   18 FFFFFF81 15 FFFFFF84 FFFFFFC0 00 FFFFFF81 19 01 03 66 75 6E 10 04 1E
+   FFFFFF81 1A 2E 09 03 FFFFFF81 1B 06 02 08 3C 62 79 6E 61 6D
+   65 3E 08 07 FFFFFF81 1D 00 FFFFFF84 20 FFFFFF81 1E 01 0C 6D 61 6E
+   61 67 65 64 42 6C 6F 63 6B 14 03 2E FFFFFF81 1F 08 08
+   FFFFFF81 20 FFFFFF81 1C FFFFFFC0 00 FFFFFF81 21 01 07 62 6C 6F 63 6B 65
+   72 10 03 16 FFFFFF81 22 09 03 FFFFFF81 23 04 02 0E 4D 61 6E
+   61 67 65 64 42 6C 6F 63 6B 65 72 08 07 FFFFFF81 25 00
+   FFFFFF84 00 FFFFFF81 01 01 08 73 68 75 74 64 6F 77 6E 08 06
+   FFFFFF81 27 00 FFFFFF84 00 37 01 08 69 73 41 63 74 69 76 65
+   08 07 FFFFFF81 29 00 FFFFFF84 00 FFFFFF81 01 01 08 73 6E 61 70 73
+   68 6F 74 08 07 FFFFFF81 2B 00 FFFFFF84 00 FFFFFF81 01 01 07 72 65
+   73 74 61 72 74 
+  InnerClass: 
+   public final #362= #170 of #38; //$anon$1=class scala/actors/scheduler/ForkJoinScheduler$$anon$1 of class scala/actors/scheduler/ForkJoinScheduler
+   public final #363= #158 of #38; //$anon$2=class scala/actors/scheduler/ForkJoinScheduler$$anon$2 of class scala/actors/scheduler/ForkJoinScheduler
+   public abstract #366= #365 of #150; //ManagedBlocker=class scala/actors/forkjoin/ForkJoinPool$ManagedBlocker of class scala/actors/forkjoin/ForkJoinPool
+   public final #367= #299 of #38; //$anonfun$allWorkersBlocked$1=class scala/actors/scheduler/ForkJoinScheduler$$anonfun$allWorkersBlocked$1 of class scala/actors/scheduler/ForkJoinScheduler
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Asciz	SourceFile;
+const #2 = Asciz	ForkJoinScheduler.scala;
+const #3 = Asciz	scala$actors$scheduler$TerminationMonitor$$started;
+const #4 = Asciz	Z;
+const #5 = Asciz	scala$actors$scheduler$TerminationMonitor$$termHandlers;
+const #6 = Asciz	Lscala/collection/mutable/HashMap;;
+const #7 = Asciz	scala$actors$scheduler$TerminationMonitor$$pendingReactions;
+const #8 = Asciz	I;
+const #9 = Asciz	CHECK_FREQ;
+const #10 = Asciz	drainedTasks;
+const #11 = Asciz	Ljava/util/Collection;;
+const #12 = Asciz	Ljava/util/Collection<Lscala/actors/forkjoin/ForkJoinTask<*>;>;;
+const #13 = Asciz	Signature;
+const #14 = Asciz	snapshoting;
+const #15 = Asciz	terminating;
+const #16 = Asciz	pool;
+const #17 = Asciz	Lscala/actors/scheduler/DrainableForkJoinPool;;
+const #18 = Asciz	<init>;
+const #19 = Asciz	()V;
+const #20 = Asciz	Code;
+const #21 = Asciz	LineNumberTable;
+const #22 = Asciz	java/lang/Object;
+const #23 = class	#22;	//  java/lang/Object
+const #24 = NameAndType	#18:#19;//  "<init>":()V
+const #25 = Method	#23.#24;	//  java/lang/Object."<init>":()V
+const #26 = Asciz	scala/actors/IScheduler$class;
+const #27 = class	#26;	//  scala/actors/IScheduler$class
+const #28 = Asciz	$init$;
+const #29 = Asciz	(Lscala/actors/IScheduler;)V;
+const #30 = NameAndType	#28:#29;//  $init$:(Lscala/actors/IScheduler;)V
+const #31 = Method	#27.#30;	//  scala/actors/IScheduler$class.$init$:(Lscala/actors/IScheduler;)V
+const #32 = Asciz	scala/actors/scheduler/TerminationMonitor$class;
+const #33 = class	#32;	//  scala/actors/scheduler/TerminationMonitor$class
+const #34 = Asciz	(Lscala/actors/scheduler/TerminationMonitor;)V;
+const #35 = NameAndType	#28:#34;//  $init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+const #36 = Method	#33.#35;	//  scala/actors/scheduler/TerminationMonitor$class.$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+const #37 = Asciz	scala/actors/scheduler/ForkJoinScheduler;
+const #38 = class	#37;	//  scala/actors/scheduler/ForkJoinScheduler
+const #39 = Asciz	makeNewPool;
+const #40 = Asciz	()Lscala/actors/scheduler/DrainableForkJoinPool;;
+const #41 = NameAndType	#39:#40;//  makeNewPool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+const #42 = Method	#38.#41;	//  scala/actors/scheduler/ForkJoinScheduler.makeNewPool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+const #43 = NameAndType	#16:#17;//  pool:Lscala/actors/scheduler/DrainableForkJoinPool;
+const #44 = Field	#38.#43;	//  scala/actors/scheduler/ForkJoinScheduler.pool:Lscala/actors/scheduler/DrainableForkJoinPool;
+const #45 = NameAndType	#15:#4;//  terminating:Z
+const #46 = Field	#38.#45;	//  scala/actors/scheduler/ForkJoinScheduler.terminating:Z
+const #47 = NameAndType	#14:#4;//  snapshoting:Z
+const #48 = Field	#38.#47;	//  scala/actors/scheduler/ForkJoinScheduler.snapshoting:Z
+const #49 = NameAndType	#10:#11;//  drainedTasks:Ljava/util/Collection;
+const #50 = Field	#38.#49;	//  scala/actors/scheduler/ForkJoinScheduler.drainedTasks:Ljava/util/Collection;
+const #51 = int	10;
+const #52 = NameAndType	#9:#8;//  CHECK_FREQ:I
+const #53 = Field	#38.#52;	//  scala/actors/scheduler/ForkJoinScheduler.CHECK_FREQ:I
+const #54 = Asciz	liftedTree1$1;
+const #55 = Asciz	scala/Predef$;
+const #56 = class	#55;	//  scala/Predef$
+const #57 = Asciz	MODULE$;
+const #58 = Asciz	Lscala/Predef$;;
+const #59 = NameAndType	#57:#58;//  MODULE$:Lscala/Predef$;
+const #60 = Field	#56.#59;	//  scala/Predef$.MODULE$:Lscala/Predef$;
+const #61 = Asciz	()I;
+const #62 = NameAndType	#9:#61;//  CHECK_FREQ:()I
+const #63 = Method	#38.#62;	//  scala/actors/scheduler/ForkJoinScheduler.CHECK_FREQ:()I
+const #64 = Asciz	int2long;
+const #65 = Asciz	(I)J;
+const #66 = NameAndType	#64:#65;//  int2long:(I)J
+const #67 = Method	#56.#66;	//  scala/Predef$.int2long:(I)J
+const #68 = Asciz	wait;
+const #69 = Asciz	(J)V;
+const #70 = NameAndType	#68:#69;//  wait:(J)V
+const #71 = Method	#38.#70;	//  scala/actors/scheduler/ForkJoinScheduler.wait:(J)V
+const #72 = Asciz	java/lang/InterruptedException;
+const #73 = class	#72;	//  java/lang/InterruptedException
+const #74 = Asciz	restart;
+const #75 = Asciz	()Z;
+const #76 = NameAndType	#14:#75;//  snapshoting:()Z
+const #77 = Method	#38.#76;	//  scala/actors/scheduler/ForkJoinScheduler.snapshoting:()Z
+const #78 = Asciz	isActive;
+const #79 = NameAndType	#78:#75;//  isActive:()Z
+const #80 = Method	#38.#79;	//  scala/actors/scheduler/ForkJoinScheduler.isActive:()Z
+const #81 = Asciz	scheduler is still active;
+const #82 = String	#81;	//  scheduler is still active
+const #83 = Asciz	error;
+const #84 = Asciz	(Ljava/lang/String;)Lscala/runtime/Nothing$;;
+const #85 = NameAndType	#83:#84;//  error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+const #86 = Method	#56.#85;	//  scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+const #87 = Asciz	snapshoting_$eq;
+const #88 = Asciz	(Z)V;
+const #89 = NameAndType	#87:#88;//  snapshoting_$eq:(Z)V
+const #90 = Method	#38.#89;	//  scala/actors/scheduler/ForkJoinScheduler.snapshoting_$eq:(Z)V
+const #91 = Asciz	scala/runtime/BoxedUnit;
+const #92 = class	#91;	//  scala/runtime/BoxedUnit
+const #93 = Asciz	UNIT;
+const #94 = Asciz	Lscala/runtime/BoxedUnit;;
+const #95 = NameAndType	#93:#94;//  UNIT:Lscala/runtime/BoxedUnit;
+const #96 = Field	#92.#95;	//  scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+const #97 = Asciz	pool_$eq;
+const #98 = Asciz	(Lscala/actors/scheduler/DrainableForkJoinPool;)V;
+const #99 = NameAndType	#97:#98;//  pool_$eq:(Lscala/actors/scheduler/DrainableForkJoinPool;)V
+const #100 = Method	#38.#99;	//  scala/actors/scheduler/ForkJoinScheduler.pool_$eq:(Lscala/actors/scheduler/DrainableForkJoinPool;)V
+const #101 = Asciz	()Ljava/util/Collection;;
+const #102 = NameAndType	#10:#101;//  drainedTasks:()Ljava/util/Collection;
+const #103 = Method	#38.#102;	//  scala/actors/scheduler/ForkJoinScheduler.drainedTasks:()Ljava/util/Collection;
+const #104 = Asciz	java/util/Collection;
+const #105 = class	#104;	//  java/util/Collection
+const #106 = Asciz	iterator;
+const #107 = Asciz	()Ljava/util/Iterator;;
+const #108 = NameAndType	#106:#107;//  iterator:()Ljava/util/Iterator;
+const #109 = InterfaceMethod	#105.#108;	//  java/util/Collection.iterator:()Ljava/util/Iterator;
+const #110 = Asciz	java/util/Iterator;
+const #111 = class	#110;	//  java/util/Iterator
+const #112 = Asciz	hasNext;
+const #113 = NameAndType	#112:#75;//  hasNext:()Z
+const #114 = InterfaceMethod	#111.#113;	//  java/util/Iterator.hasNext:()Z
+const #115 = NameAndType	#16:#40;//  pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+const #116 = Method	#38.#115;	//  scala/actors/scheduler/ForkJoinScheduler.pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+const #117 = Asciz	next;
+const #118 = Asciz	()Ljava/lang/Object;;
+const #119 = NameAndType	#117:#118;//  next:()Ljava/lang/Object;
+const #120 = InterfaceMethod	#111.#119;	//  java/util/Iterator.next:()Ljava/lang/Object;
+const #121 = Asciz	scala/actors/forkjoin/ForkJoinTask;
+const #122 = class	#121;	//  scala/actors/forkjoin/ForkJoinTask
+const #123 = Asciz	scala/actors/scheduler/DrainableForkJoinPool;
+const #124 = class	#123;	//  scala/actors/scheduler/DrainableForkJoinPool
+const #125 = Asciz	execute;
+const #126 = Asciz	(Lscala/actors/forkjoin/ForkJoinTask;)V;
+const #127 = NameAndType	#125:#126;//  execute:(Lscala/actors/forkjoin/ForkJoinTask;)V
+const #128 = Method	#124.#127;	//  scala/actors/scheduler/DrainableForkJoinPool.execute:(Lscala/actors/forkjoin/ForkJoinTask;)V
+const #129 = Asciz	start;
+const #130 = NameAndType	#129:#19;//  start:()V
+const #131 = Method	#38.#130;	//  scala/actors/scheduler/ForkJoinScheduler.start:()V
+const #132 = Asciz	snapshot has not been invoked;
+const #133 = String	#132;	//  snapshot has not been invoked
+const #134 = Asciz	this;
+const #135 = Asciz	Lscala/actors/scheduler/ForkJoinScheduler;;
+const #136 = Asciz	iter;
+const #137 = Asciz	Ljava/util/Iterator;;
+const #138 = Asciz	LocalVariableTable;
+const #139 = Asciz	snapshot;
+const #140 = Asciz	isShutdown;
+const #141 = NameAndType	#140:#75;//  isShutdown:()Z
+const #142 = Method	#124.#141;	//  scala/actors/scheduler/DrainableForkJoinPool.isShutdown:()Z
+const #143 = Asciz	shutdown;
+const #144 = Asciz	terminating_$eq;
+const #145 = NameAndType	#144:#88;//  terminating_$eq:(Z)V
+const #146 = Method	#38.#145;	//  scala/actors/scheduler/ForkJoinScheduler.terminating_$eq:(Z)V
+const #147 = Asciz	managedBlock;
+const #148 = Asciz	(Lscala/actors/ManagedBlocker;)V;
+const #149 = Asciz	scala/actors/forkjoin/ForkJoinPool;
+const #150 = class	#149;	//  scala/actors/forkjoin/ForkJoinPool
+const #151 = Asciz	(Lscala/actors/forkjoin/ForkJoinPool$ManagedBlocker;Z)V;
+const #152 = NameAndType	#147:#151;//  managedBlock:(Lscala/actors/forkjoin/ForkJoinPool$ManagedBlocker;Z)V
+const #153 = Method	#150.#152;	//  scala/actors/forkjoin/ForkJoinPool.managedBlock:(Lscala/actors/forkjoin/ForkJoinPool$ManagedBlocker;Z)V
+const #154 = Asciz	blocker;
+const #155 = Asciz	Lscala/actors/ManagedBlocker;;
+const #156 = Asciz	(Lscala/Function0;)V;
+const #157 = Asciz	scala/actors/scheduler/ForkJoinScheduler$$anon$2;
+const #158 = class	#157;	//  scala/actors/scheduler/ForkJoinScheduler$$anon$2
+const #159 = Asciz	(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/Function0;)V;
+const #160 = NameAndType	#18:#159;//  "<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/Function0;)V
+const #161 = Method	#158.#160;	//  scala/actors/scheduler/ForkJoinScheduler$$anon$2."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/Function0;)V
+const #162 = Asciz	(Ljava/lang/Runnable;)V;
+const #163 = NameAndType	#125:#162;//  execute:(Ljava/lang/Runnable;)V
+const #164 = Method	#38.#163;	//  scala/actors/scheduler/ForkJoinScheduler.execute:(Ljava/lang/Runnable;)V
+const #165 = Asciz	fun$1;
+const #166 = Asciz	Lscala/Function0;;
+const #167 = Asciz	(Lscala/Function0<Ljava/lang/Object;>;)V;
+const #168 = Asciz	executeFromActor;
+const #169 = Asciz	scala/actors/scheduler/ForkJoinScheduler$$anon$1;
+const #170 = class	#169;	//  scala/actors/scheduler/ForkJoinScheduler$$anon$1
+const #171 = Asciz	(Lscala/actors/scheduler/ForkJoinScheduler;Ljava/lang/Runnable;)V;
+const #172 = NameAndType	#18:#171;//  "<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Ljava/lang/Runnable;)V
+const #173 = Method	#170.#172;	//  scala/actors/scheduler/ForkJoinScheduler$$anon$1."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Ljava/lang/Runnable;)V
+const #174 = Asciz	scala/actors/forkjoin/RecursiveAction;
+const #175 = class	#174;	//  scala/actors/forkjoin/RecursiveAction
+const #176 = Asciz	fork;
+const #177 = NameAndType	#176:#19;//  fork:()V
+const #178 = Method	#175.#177;	//  scala/actors/forkjoin/RecursiveAction.fork:()V
+const #179 = Asciz	task$1;
+const #180 = Asciz	Ljava/lang/Runnable;;
+const #181 = Asciz	recAction;
+const #182 = Asciz	Lscala/actors/forkjoin/RecursiveAction;;
+const #183 = Method	#124.#163;	//  scala/actors/scheduler/DrainableForkJoinPool.execute:(Ljava/lang/Runnable;)V
+const #184 = Asciz	task;
+const #185 = Asciz	run;
+const #186 = NameAndType	#54:#19;//  liftedTree1$1:()V
+const #187 = Method	#38.#186;	//  scala/actors/scheduler/ForkJoinScheduler.liftedTree1$1:()V
+const #188 = NameAndType	#15:#75;//  terminating:()Z
+const #189 = Method	#38.#188;	//  scala/actors/scheduler/ForkJoinScheduler.terminating:()Z
+const #190 = Asciz	scala/actors/scheduler/QuitException;
+const #191 = class	#190;	//  scala/actors/scheduler/QuitException
+const #192 = Method	#191.#24;	//  scala/actors/scheduler/QuitException."<init>":()V
+const #193 = Asciz	scala/actors/scheduler/TerminationMonitor;
+const #194 = class	#193;	//  scala/actors/scheduler/TerminationMonitor
+const #195 = Asciz	allTerminated;
+const #196 = NameAndType	#195:#75;//  allTerminated:()Z
+const #197 = InterfaceMethod	#194.#196;	//  scala/actors/scheduler/TerminationMonitor.allTerminated:()Z
+const #198 = Asciz	isQuiescent;
+const #199 = NameAndType	#198:#75;//  isQuiescent:()Z
+const #200 = Method	#124.#199;	//  scala/actors/scheduler/DrainableForkJoinPool.isQuiescent:()Z
+const #201 = Asciz	java/util/ArrayList;
+const #202 = class	#201;	//  java/util/ArrayList
+const #203 = Method	#202.#24;	//  java/util/ArrayList."<init>":()V
+const #204 = Asciz	drainTasksTo;
+const #205 = Asciz	(Ljava/util/Collection;)I;
+const #206 = NameAndType	#204:#205;//  drainTasksTo:(Ljava/util/Collection;)I
+const #207 = Method	#124.#206;	//  scala/actors/scheduler/DrainableForkJoinPool.drainTasksTo:(Ljava/util/Collection;)I
+const #208 = Asciz	scala/actors/Debug$;
+const #209 = class	#208;	//  scala/actors/Debug$
+const #210 = Asciz	Lscala/actors/Debug$;;
+const #211 = NameAndType	#57:#210;//  MODULE$:Lscala/actors/Debug$;
+const #212 = Field	#209.#211;	//  scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+const #213 = Asciz	scala/collection/mutable/StringBuilder;
+const #214 = class	#213;	//  scala/collection/mutable/StringBuilder
+const #215 = Method	#214.#24;	//  scala/collection/mutable/StringBuilder."<init>":()V
+const #216 = Asciz	any2stringadd;
+const #217 = Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
+const #218 = NameAndType	#216:#217;//  any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+const #219 = Method	#56.#218;	//  scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+const #220 = Asciz	: drained ;
+const #221 = String	#220;	//  : drained 
+const #222 = Asciz	scala/runtime/StringAdd;
+const #223 = class	#222;	//  scala/runtime/StringAdd
+const #224 = Asciz	$plus;
+const #225 = Asciz	(Ljava/lang/String;)Ljava/lang/String;;
+const #226 = NameAndType	#224:#225;//  $plus:(Ljava/lang/String;)Ljava/lang/String;
+const #227 = Method	#223.#226;	//  scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+const #228 = Asciz	append;
+const #229 = Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
+const #230 = NameAndType	#228:#229;//  append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+const #231 = Method	#214.#230;	//  scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+const #232 = Asciz	scala/runtime/BoxesRunTime;
+const #233 = class	#232;	//  scala/runtime/BoxesRunTime
+const #234 = Asciz	boxToInteger;
+const #235 = Asciz	(I)Ljava/lang/Integer;;
+const #236 = NameAndType	#234:#235;//  boxToInteger:(I)Ljava/lang/Integer;
+const #237 = Method	#233.#236;	//  scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+const #238 = Asciz	 tasks;
+const #239 = String	#238;	//   tasks
+const #240 = Asciz	toString;
+const #241 = Asciz	()Ljava/lang/String;;
+const #242 = NameAndType	#240:#241;//  toString:()Ljava/lang/String;
+const #243 = Method	#214.#242;	//  scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+const #244 = Asciz	info;
+const #245 = Asciz	(Ljava/lang/String;)V;
+const #246 = NameAndType	#244:#245;//  info:(Ljava/lang/String;)V
+const #247 = Method	#209.#246;	//  scala/actors/Debug$.info:(Ljava/lang/String;)V
+const #248 = Asciz	drainedTasks_$eq;
+const #249 = Asciz	(Ljava/util/Collection;)V;
+const #250 = NameAndType	#248:#249;//  drainedTasks_$eq:(Ljava/util/Collection;)V
+const #251 = Method	#38.#250;	//  scala/actors/scheduler/ForkJoinScheduler.drainedTasks_$eq:(Ljava/util/Collection;)V
+const #252 = Asciz	getPoolSize;
+const #253 = NameAndType	#252:#61;//  getPoolSize:()I
+const #254 = Method	#124.#253;	//  scala/actors/scheduler/DrainableForkJoinPool.getPoolSize:()I
+const #255 = Asciz	allWorkersBlocked;
+const #256 = NameAndType	#255:#75;//  allWorkersBlocked:()Z
+const #257 = Method	#38.#256;	//  scala/actors/scheduler/ForkJoinScheduler.allWorkersBlocked:()Z
+const #258 = Asciz	scala/actors/scheduler/ThreadPoolConfig$;
+const #259 = class	#258;	//  scala/actors/scheduler/ThreadPoolConfig$
+const #260 = Asciz	Lscala/actors/scheduler/ThreadPoolConfig$;;
+const #261 = NameAndType	#57:#260;//  MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
+const #262 = Field	#259.#261;	//  scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
+const #263 = Asciz	maxPoolSize;
+const #264 = NameAndType	#263:#61;//  maxPoolSize:()I
+const #265 = Method	#259.#264;	//  scala/actors/scheduler/ThreadPoolConfig$.maxPoolSize:()I
+const #266 = Asciz	setParallelism;
+const #267 = Asciz	(I)V;
+const #268 = NameAndType	#266:#267;//  setParallelism:(I)V
+const #269 = Method	#124.#268;	//  scala/actors/scheduler/DrainableForkJoinPool.setParallelism:(I)V
+const #270 = Asciz	: initiating shutdown...;
+const #271 = String	#270;	//  : initiating shutdown...
+const #272 = NameAndType	#143:#19;//  shutdown:()V
+const #273 = Method	#124.#272;	//  scala/actors/scheduler/DrainableForkJoinPool.shutdown:()V
+const #274 = long	10l;
+const #276 = Asciz	java/lang/Thread;
+const #277 = class	#276;	//  java/lang/Thread
+const #278 = Asciz	sleep;
+const #279 = NameAndType	#278:#69;//  sleep:(J)V
+const #280 = Method	#277.#279;	//  java/lang/Thread.sleep:(J)V
+const #281 = Asciz	poolSize;
+const #282 = Asciz	list;
+const #283 = Asciz	Ljava/util/ArrayList;;
+const #284 = Asciz	num;
+const #285 = Asciz	workers;
+const #286 = Asciz	[Lscala/actors/forkjoin/ForkJoinWorkerThread;;
+const #287 = NameAndType	#285:#286;//  workers:[Lscala/actors/forkjoin/ForkJoinWorkerThread;
+const #288 = Field	#150.#287;	//  scala/actors/forkjoin/ForkJoinPool.workers:[Lscala/actors/forkjoin/ForkJoinWorkerThread;
+const #289 = Asciz	scala/runtime/ScalaRunTime$;
+const #290 = class	#289;	//  scala/runtime/ScalaRunTime$
+const #291 = Asciz	Lscala/runtime/ScalaRunTime$;;
+const #292 = NameAndType	#57:#291;//  MODULE$:Lscala/runtime/ScalaRunTime$;
+const #293 = Field	#290.#292;	//  scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
+const #294 = Asciz	boxArray;
+const #295 = Asciz	(Ljava/lang/Object;)Lscala/runtime/BoxedArray;;
+const #296 = NameAndType	#294:#295;//  boxArray:(Ljava/lang/Object;)Lscala/runtime/BoxedArray;
+const #297 = Method	#290.#296;	//  scala/runtime/ScalaRunTime$.boxArray:(Ljava/lang/Object;)Lscala/runtime/BoxedArray;
+const #298 = Asciz	scala/actors/scheduler/ForkJoinScheduler$$anonfun$allWorkersBlocked$1;
+const #299 = class	#298;	//  scala/actors/scheduler/ForkJoinScheduler$$anonfun$allWorkersBlocked$1
+const #300 = Asciz	(Lscala/actors/scheduler/ForkJoinScheduler;)V;
+const #301 = NameAndType	#18:#300;//  "<init>":(Lscala/actors/scheduler/ForkJoinScheduler;)V
+const #302 = Method	#299.#301;	//  scala/actors/scheduler/ForkJoinScheduler$$anonfun$allWorkersBlocked$1."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;)V
+const #303 = Asciz	scala/collection/generic/VectorTemplate;
+const #304 = class	#303;	//  scala/collection/generic/VectorTemplate
+const #305 = Asciz	forall;
+const #306 = Asciz	(Lscala/Function1;)Z;
+const #307 = NameAndType	#305:#306;//  forall:(Lscala/Function1;)Z
+const #308 = InterfaceMethod	#304.#307;	//  scala/collection/generic/VectorTemplate.forall:(Lscala/Function1;)Z
+const #309 = NameAndType	#18:#162;//  "<init>":(Ljava/lang/Runnable;)V
+const #310 = Method	#277.#309;	//  java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+const #311 = Method	#277.#130;	//  java/lang/Thread.start:()V
+const #312 = Method	#124.#24;	//  scala/actors/scheduler/DrainableForkJoinPool."<init>":()V
+const #313 = Asciz	setAsyncMode;
+const #314 = Asciz	(Z)Z;
+const #315 = NameAndType	#313:#314;//  setAsyncMode:(Z)Z
+const #316 = Method	#124.#315;	//  scala/actors/scheduler/DrainableForkJoinPool.setAsyncMode:(Z)Z
+const #317 = Asciz	: parallelism ;
+const #318 = String	#317;	//  : parallelism 
+const #319 = Asciz	getParallelism;
+const #320 = NameAndType	#319:#61;//  getParallelism:()I
+const #321 = Method	#124.#320;	//  scala/actors/scheduler/DrainableForkJoinPool.getParallelism:()I
+const #322 = Asciz	: max pool size ;
+const #323 = String	#322;	//  : max pool size 
+const #324 = Asciz	getMaximumPoolSize;
+const #325 = NameAndType	#324:#61;//  getMaximumPoolSize:()I
+const #326 = Method	#124.#325;	//  scala/actors/scheduler/DrainableForkJoinPool.getMaximumPoolSize:()I
+const #327 = Asciz	p;
+const #328 = Asciz	(Ljava/util/Collection<Lscala/actors/forkjoin/ForkJoinTask<*>;>;)V;
+const #329 = Asciz	()Ljava/util/Collection<Lscala/actors/forkjoin/ForkJoinTask<*>;>;;
+const #330 = Asciz	(Lscala/actors/scheduler/TerminationMonitor;)Z;
+const #331 = NameAndType	#195:#330;//  allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+const #332 = Method	#33.#331;	//  scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+const #333 = Asciz	terminated;
+const #334 = Asciz	(Lscala/actors/Reactor;)V;
+const #335 = Asciz	(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V;
+const #336 = NameAndType	#333:#335;//  terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+const #337 = Method	#33.#336;	//  scala/actors/scheduler/TerminationMonitor$class.terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+const #338 = Asciz	a;
+const #339 = Asciz	Lscala/actors/Reactor;;
+const #340 = Asciz	onTerminate;
+const #341 = Asciz	(Lscala/actors/Reactor;Lscala/Function0;)V;
+const #342 = Asciz	(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V;
+const #343 = NameAndType	#340:#342;//  onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+const #344 = Method	#33.#343;	//  scala/actors/scheduler/TerminationMonitor$class.onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+const #345 = Asciz	f;
+const #346 = Asciz	newActor;
+const #347 = NameAndType	#346:#335;//  newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+const #348 = Method	#33.#347;	//  scala/actors/scheduler/TerminationMonitor$class.newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+const #349 = Asciz	scala$actors$scheduler$TerminationMonitor$_setter_$scala$actors$scheduler$TerminationMonitor$$termHandlers_$eq;
+const #350 = Asciz	(Lscala/collection/mutable/HashMap;)V;
+const #351 = NameAndType	#5:#6;//  scala$actors$scheduler$TerminationMonitor$$termHandlers:Lscala/collection/mutable/HashMap;
+const #352 = Field	#38.#351;	//  scala/actors/scheduler/ForkJoinScheduler.scala$actors$scheduler$TerminationMonitor$$termHandlers:Lscala/collection/mutable/HashMap;
+const #353 = Asciz	scala$actors$scheduler$TerminationMonitor$$started_$eq;
+const #354 = NameAndType	#3:#4;//  scala$actors$scheduler$TerminationMonitor$$started:Z
+const #355 = Field	#38.#354;	//  scala/actors/scheduler/ForkJoinScheduler.scala$actors$scheduler$TerminationMonitor$$started:Z
+const #356 = Asciz	()Lscala/collection/mutable/HashMap;;
+const #357 = Asciz	scala$actors$scheduler$TerminationMonitor$$pendingReactions_$eq;
+const #358 = NameAndType	#7:#8;//  scala$actors$scheduler$TerminationMonitor$$pendingReactions:I
+const #359 = Field	#38.#358;	//  scala/actors/scheduler/ForkJoinScheduler.scala$actors$scheduler$TerminationMonitor$$pendingReactions:I
+const #360 = Asciz	ScalaSig;
+const #361 = Asciz	InnerClasses;
+const #362 = Asciz	$anon$1;
+const #363 = Asciz	$anon$2;
+const #364 = Asciz	scala/actors/forkjoin/ForkJoinPool$ManagedBlocker;
+const #365 = class	#364;	//  scala/actors/forkjoin/ForkJoinPool$ManagedBlocker
+const #366 = Asciz	ManagedBlocker;
+const #367 = Asciz	$anonfun$allWorkersBlocked$1;
+const #368 = Asciz	java/lang/Runnable;
+const #369 = class	#368;	//  java/lang/Runnable
+const #370 = Asciz	scala/actors/IScheduler;
+const #371 = class	#370;	//  scala/actors/IScheduler
+const #372 = Asciz	scala/ScalaObject;
+const #373 = class	#372;	//  scala/ScalaObject
+
+{
+public scala.actors.scheduler.ForkJoinScheduler();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokespecial	#25; //Method java/lang/Object."<init>":()V
+   4:	aload_0
+   5:	invokestatic	#31; //Method scala/actors/IScheduler$class.$init$:(Lscala/actors/IScheduler;)V
+   8:	aload_0
+   9:	invokestatic	#36; //Method scala/actors/scheduler/TerminationMonitor$class.$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+   12:	aload_0
+   13:	aload_0
+   14:	invokespecial	#42; //Method makeNewPool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+   17:	putfield	#44; //Field pool:Lscala/actors/scheduler/DrainableForkJoinPool;
+   20:	aload_0
+   21:	iconst_0
+   22:	putfield	#46; //Field terminating:Z
+   25:	aload_0
+   26:	iconst_0
+   27:	putfield	#48; //Field snapshoting:Z
+   30:	aload_0
+   31:	aconst_null
+   32:	pop
+   33:	aconst_null
+   34:	putfield	#50; //Field drainedTasks:Ljava/util/Collection;
+   37:	aload_0
+   38:	ldc	#51; //int 10
+   40:	putfield	#53; //Field CHECK_FREQ:I
+   43:	return
+  LineNumberTable: 
+   line 13: 0
+   line 15: 12
+   line 16: 20
+   line 17: 25
+   line 18: 30
+   line 20: 37
+
+
+public void restart();
+  Code:
+   Stack=2, Locals=3, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	astore_1
+   3:	monitorenter
+   4:	aload_0
+   5:	invokespecial	#77; //Method snapshoting:()Z
+   8:	ifeq	89
+   11:	aload_0
+   12:	invokevirtual	#80; //Method isActive:()Z
+   15:	ifeq	27
+   18:	getstatic	#60; //Field scala/Predef$.MODULE$:Lscala/Predef$;
+   21:	ldc	#82; //String scheduler is still active
+   23:	invokevirtual	#86; //Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+   26:	athrow
+   27:	aload_0
+   28:	iconst_0
+   29:	invokespecial	#90; //Method snapshoting_$eq:(Z)V
+   32:	getstatic	#96; //Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+   35:	pop
+   36:	aload_1
+   37:	monitorexit
+   38:	aload_0
+   39:	aload_0
+   40:	invokespecial	#42; //Method makeNewPool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+   43:	invokespecial	#100; //Method pool_$eq:(Lscala/actors/scheduler/DrainableForkJoinPool;)V
+   46:	aload_0
+   47:	invokespecial	#103; //Method drainedTasks:()Ljava/util/Collection;
+   50:	invokeinterface	#109,  1; //InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+   55:	astore_2
+   56:	aload_2
+   57:	invokeinterface	#114,  1; //InterfaceMethod java/util/Iterator.hasNext:()Z
+   62:	ifeq	84
+   65:	aload_0
+   66:	invokespecial	#116; //Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+   69:	aload_2
+   70:	invokeinterface	#120,  1; //InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+   75:	checkcast	#122; //class scala/actors/forkjoin/ForkJoinTask
+   78:	invokevirtual	#128; //Method scala/actors/scheduler/DrainableForkJoinPool.execute:(Lscala/actors/forkjoin/ForkJoinTask;)V
+   81:	goto	56
+   84:	aload_0
+   85:	invokevirtual	#131; //Method start:()V
+   88:	return
+   89:	getstatic	#60; //Field scala/Predef$.MODULE$:Lscala/Predef$;
+   92:	ldc	#133; //String snapshot has not been invoked
+   94:	invokevirtual	#86; //Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+   97:	athrow
+   98:	aload_1
+   99:	monitorexit
+   100:	athrow
+  Exception table:
+   from   to  target type
+     4    38    98   any
+    89    98    98   any
+  LineNumberTable: 
+   line 137: 0
+   line 138: 4
+   line 140: 11
+   line 141: 18
+   line 143: 27
+   line 138: 35
+   line 137: 37
+   line 145: 38
+   line 146: 46
+   line 147: 56
+   line 148: 65
+   line 150: 84
+   line 139: 89
+   line 137: 99
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      101      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   56      32      2    iter       Ljava/util/Iterator;
+
+
+public void snapshot();
+  Code:
+   Stack=2, Locals=2, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	astore_1
+   3:	monitorenter
+   4:	aload_0
+   5:	iconst_1
+   6:	invokespecial	#90; //Method snapshoting_$eq:(Z)V
+   9:	getstatic	#96; //Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+   12:	pop
+   13:	aload_1
+   14:	monitorexit
+   15:	return
+   16:	aload_1
+   17:	monitorexit
+   18:	athrow
+  Exception table:
+   from   to  target type
+     4    15    16   any
+  LineNumberTable: 
+   line 129: 0
+   line 130: 4
+   line 129: 14
+
+
+public boolean isActive();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokespecial	#116; //Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+   4:	ifnull	21
+   7:	aload_0
+   8:	invokespecial	#116; //Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+   11:	invokevirtual	#142; //Method scala/actors/scheduler/DrainableForkJoinPool.isShutdown:()Z
+   14:	ifne	21
+   17:	iconst_1
+   18:	goto	22
+   21:	iconst_0
+   22:	ireturn
+  LineNumberTable: 
+   line 124: 0
+
+
+public void shutdown();
+  Code:
+   Stack=2, Locals=2, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	astore_1
+   3:	monitorenter
+   4:	aload_0
+   5:	iconst_1
+   6:	invokespecial	#146; //Method terminating_$eq:(Z)V
+   9:	getstatic	#96; //Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+   12:	pop
+   13:	aload_1
+   14:	monitorexit
+   15:	return
+   16:	aload_1
+   17:	monitorexit
+   18:	athrow
+  Exception table:
+   from   to  target type
+     4    15    16   any
+  LineNumberTable: 
+   line 119: 0
+   line 120: 4
+   line 119: 14
+
+
+public void managedBlock(scala.actors.ManagedBlocker);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_1
+   1:	iconst_1
+   2:	invokestatic	#153; //Method scala/actors/forkjoin/ForkJoinPool.managedBlock:(Lscala/actors/forkjoin/ForkJoinPool$ManagedBlocker;Z)V
+   5:	return
+  LineNumberTable: 
+   line 114: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      6      1    blocker       Lscala/actors/ManagedBlocker;
+
+
+public void execute(scala.Function0);
+  Code:
+   Stack=5, Locals=2, Args_size=2
+   0:	aload_0
+   1:	new	#158; //class scala/actors/scheduler/ForkJoinScheduler$$anon$2
+   4:	dup
+   5:	aload_0
+   6:	aload_1
+   7:	invokespecial	#161; //Method scala/actors/scheduler/ForkJoinScheduler$$anon$2."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/Function0;)V
+   10:	invokevirtual	#164; //Method execute:(Ljava/lang/Runnable;)V
+   13:	return
+  LineNumberTable: 
+   line 109: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      14      1    fun$1       Lscala/Function0;
+
+  Signature: length = 0x2
+   00 FFFFFFA7 
+
+public void executeFromActor(java.lang.Runnable);
+  Code:
+   Stack=4, Locals=3, Args_size=2
+   0:	new	#170; //class scala/actors/scheduler/ForkJoinScheduler$$anon$1
+   3:	dup
+   4:	aload_0
+   5:	aload_1
+   6:	invokespecial	#173; //Method scala/actors/scheduler/ForkJoinScheduler$$anon$1."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Ljava/lang/Runnable;)V
+   9:	astore_2
+   10:	aload_2
+   11:	invokevirtual	#178; //Method scala/actors/forkjoin/RecursiveAction.fork:()V
+   14:	return
+  LineNumberTable: 
+   line 98: 0
+   line 101: 10
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      15      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      15      1    task$1       Ljava/lang/Runnable;
+   10      4      2    recAction       Lscala/actors/forkjoin/RecursiveAction;
+
+
+public void execute(java.lang.Runnable);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	invokespecial	#116; //Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+   4:	aload_1
+   5:	invokevirtual	#183; //Method scala/actors/scheduler/DrainableForkJoinPool.execute:(Ljava/lang/Runnable;)V
+   8:	return
+  LineNumberTable: 
+   line 94: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      9      1    task       Ljava/lang/Runnable;
+
+
+public void run();
+  Code:
+   Stack=4, Locals=6, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	astore_2
+   3:	monitorenter
+   4:	aload_0
+   5:	invokespecial	#187; //Method liftedTree1$1:()V
+   8:	aload_0
+   9:	invokespecial	#189; //Method terminating:()Z
+   12:	ifeq	23
+   15:	new	#191; //class scala/actors/scheduler/QuitException
+   18:	dup
+   19:	invokespecial	#192; //Method scala/actors/scheduler/QuitException."<init>":()V
+   22:	athrow
+   23:	aload_0
+   24:	invokeinterface	#197,  1; //InterfaceMethod scala/actors/scheduler/TerminationMonitor.allTerminated:()Z
+   29:	ifeq	40
+   32:	new	#191; //class scala/actors/scheduler/QuitException
+   35:	dup
+   36:	invokespecial	#192; //Method scala/actors/scheduler/QuitException."<init>":()V
+   39:	athrow
+   40:	aload_0
+   41:	invokespecial	#77; //Method snapshoting:()Z
+   44:	ifeq	141
+   47:	aload_0
+   48:	invokespecial	#116; //Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+   51:	invokevirtual	#200; //Method scala/actors/scheduler/DrainableForkJoinPool.isQuiescent:()Z
+   54:	ifeq	135
+   57:	new	#202; //class java/util/ArrayList
+   60:	dup
+   61:	invokespecial	#203; //Method java/util/ArrayList."<init>":()V
+   64:	astore	4
+   66:	aload_0
+   67:	invokespecial	#116; //Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+   70:	aload	4
+   72:	invokevirtual	#207; //Method scala/actors/scheduler/DrainableForkJoinPool.drainTasksTo:(Ljava/util/Collection;)I
+   75:	istore	5
+   77:	getstatic	#212; //Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+   80:	new	#214; //class scala/collection/mutable/StringBuilder
+   83:	dup
+   84:	invokespecial	#215; //Method scala/collection/mutable/StringBuilder."<init>":()V
+   87:	getstatic	#60; //Field scala/Predef$.MODULE$:Lscala/Predef$;
+   90:	aload_0
+   91:	invokevirtual	#219; //Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+   94:	ldc	#221; //String : drained 
+   96:	invokevirtual	#227; //Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+   99:	invokevirtual	#231; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   102:	iload	5
+   104:	invokestatic	#237; //Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+   107:	invokevirtual	#231; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   110:	ldc	#239; //String  tasks
+   112:	invokevirtual	#231; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   115:	invokevirtual	#243; //Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+   118:	invokevirtual	#247; //Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+   121:	aload_0
+   122:	aload	4
+   124:	invokespecial	#251; //Method drainedTasks_$eq:(Ljava/util/Collection;)V
+   127:	new	#191; //class scala/actors/scheduler/QuitException
+   130:	dup
+   131:	invokespecial	#192; //Method scala/actors/scheduler/QuitException."<init>":()V
+   134:	athrow
+   135:	getstatic	#96; //Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+   138:	goto	185
+   141:	aload_0
+   142:	invokespecial	#116; //Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+   145:	invokevirtual	#254; //Method scala/actors/scheduler/DrainableForkJoinPool.getPoolSize:()I
+   148:	istore_3
+   149:	aload_0
+   150:	invokespecial	#257; //Method allWorkersBlocked:()Z
+   153:	ifeq	182
+   156:	iload_3
+   157:	getstatic	#262; //Field scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
+   160:	invokevirtual	#265; //Method scala/actors/scheduler/ThreadPoolConfig$.maxPoolSize:()I
+   163:	if_icmpge	182
+   166:	aload_0
+   167:	invokespecial	#116; //Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+   170:	iload_3
+   171:	iconst_1
+   172:	iadd
+   173:	invokevirtual	#269; //Method scala/actors/scheduler/DrainableForkJoinPool.setParallelism:(I)V
+   176:	getstatic	#96; //Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+   179:	goto	185
+   182:	getstatic	#96; //Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+   185:	pop
+   186:	aload_2
+   187:	monitorexit
+   188:	goto	0
+   191:	aload_2
+   192:	monitorexit
+   193:	athrow
+   194:	pop
+   195:	getstatic	#212; //Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+   198:	getstatic	#60; //Field scala/Predef$.MODULE$:Lscala/Predef$;
+   201:	aload_0
+   202:	invokevirtual	#219; //Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+   205:	ldc_w	#271; //String : initiating shutdown...
+   208:	invokevirtual	#227; //Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+   211:	invokevirtual	#247; //Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+   214:	aload_0
+   215:	invokespecial	#116; //Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+   218:	invokevirtual	#200; //Method scala/actors/scheduler/DrainableForkJoinPool.isQuiescent:()Z
+   221:	ifeq	232
+   224:	aload_0
+   225:	invokespecial	#116; //Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+   228:	invokevirtual	#273; //Method scala/actors/scheduler/DrainableForkJoinPool.shutdown:()V
+   231:	return
+   232:	ldc2_w	#274; //long 10l
+   235:	invokestatic	#280; //Method java/lang/Thread.sleep:(J)V
+   238:	goto	214
+   241:	astore_1
+   242:	goto	214
+  Exception table:
+   from   to  target type
+     4   191   191   any
+   232   241   241   Class java/lang/InterruptedException
+
+     0   194   194   Class scala/actors/scheduler/QuitException
+
+  LineNumberTable: 
+   line 49: 0
+   line 50: 4
+   line 56: 8
+   line 57: 15
+   line 59: 23
+   line 61: 32
+   line 64: 40
+   line 69: 47
+   line 70: 57
+   line 71: 66
+   line 72: 77
+   line 73: 121
+   line 74: 127
+   line 69: 135
+   line 65: 141
+   line 66: 149
+   line 67: 166
+   line 66: 182
+   line 64: 185
+   line 49: 187
+   line 81: 191
+   line 49: 192
+   line 81: 194
+   line 80: 195
+   line 81: 214
+   line 88: 224
+   line 47: 231
+   line 83: 232
+   line 85: 241
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      245      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   149      36      3    poolSize       I
+   66      69      4    list       Ljava/util/ArrayList;
+   77      58      5    num       I
+
+
+public void start();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	new	#277; //class java/lang/Thread
+   3:	dup
+   4:	aload_0
+   5:	invokespecial	#310; //Method java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+   8:	invokevirtual	#311; //Method java/lang/Thread.start:()V
+   11:	return
+  LineNumberTable: 
+   line 34: 0
+
+
+public boolean allTerminated();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#332; //Method scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+   4:	ireturn
+  LineNumberTable: 
+   line 13: 0
+
+
+public void terminated(scala.actors.Reactor);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#337; //Method scala/actors/scheduler/TerminationMonitor$class.terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+   5:	return
+  LineNumberTable: 
+   line 13: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      6      1    a       Lscala/actors/Reactor;
+
+
+public void onTerminate(scala.actors.Reactor, scala.Function0);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#344; //Method scala/actors/scheduler/TerminationMonitor$class.onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+   6:	return
+  LineNumberTable: 
+   line 13: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      7      1    a       Lscala/actors/Reactor;
+   0      7      2    f       Lscala/Function0;
+
+
+public void newActor(scala.actors.Reactor);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#348; //Method scala/actors/scheduler/TerminationMonitor$class.newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+   5:	return
+  LineNumberTable: 
+   line 13: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      6      1    a       Lscala/actors/Reactor;
+
+
+public void scala$actors$scheduler$TerminationMonitor$_setter_$scala$actors$scheduler$TerminationMonitor$$termHandlers_$eq(scala.collection.mutable.HashMap);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#352; //Field scala$actors$scheduler$TerminationMonitor$$termHandlers:Lscala/collection/mutable/HashMap;
+   5:	return
+  LineNumberTable: 
+   line 13: 0
+
+
+public final void scala$actors$scheduler$TerminationMonitor$$started_$eq(boolean);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#355; //Field scala$actors$scheduler$TerminationMonitor$$started:Z
+   5:	return
+  LineNumberTable: 
+   line 13: 0
+
+
+public final boolean scala$actors$scheduler$TerminationMonitor$$started();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#355; //Field scala$actors$scheduler$TerminationMonitor$$started:Z
+   4:	ireturn
+  LineNumberTable: 
+   line 13: 0
+
+
+public final scala.collection.mutable.HashMap scala$actors$scheduler$TerminationMonitor$$termHandlers();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#352; //Field scala$actors$scheduler$TerminationMonitor$$termHandlers:Lscala/collection/mutable/HashMap;
+   4:	areturn
+  LineNumberTable: 
+   line 13: 0
+
+
+public final void scala$actors$scheduler$TerminationMonitor$$pendingReactions_$eq(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#359; //Field scala$actors$scheduler$TerminationMonitor$$pendingReactions:I
+   5:	return
+  LineNumberTable: 
+   line 13: 0
+
+
+public final int scala$actors$scheduler$TerminationMonitor$$pendingReactions();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#359; //Field scala$actors$scheduler$TerminationMonitor$$pendingReactions:I
+   4:	ireturn
+  LineNumberTable: 
+   line 13: 0
+
+
+}
+

@@ -1,0 +1,1055 @@
+public class scala.actors.FJTaskRunnerGroup extends java.lang.Object implements scala.actors.IFJTaskRunnerGroup
+  InnerClass: 
+   final #82= #32 of #79; //InvokableFJTask=class scala/actors/FJTaskRunnerGroup$InvokableFJTask of class scala/actors/FJTaskRunnerGroup
+   public #166= #27 of #26; //Wrap=class scala/actors/FJTask$Wrap of class scala/actors/FJTask
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Field	#79.#138;	//  scala/actors/FJTaskRunnerGroup.entryQueue:Lscala/actors/LinkedQueue;
+const #2 = Field	#79.#139;	//  scala/actors/FJTaskRunnerGroup.threads:[Lscala/actors/FJTaskRunner;
+const #3 = Method	#13.#140;	//  scala/actors/FJTaskRunner.setSuspending:(Z)V
+const #4 = Method	#13.#141;	//  scala/actors/FJTaskRunner.interrupt:()V
+const #5 = Method	#142.#143;	//  java/lang/Thread.join:()V
+const #6 = Method	#80.#144;	//  java/lang/Object."<init>":()V
+const #7 = class	#145;	//  scala/actors/LinkedQueue
+const #8 = Method	#7.#144;	//  scala/actors/LinkedQueue."<init>":()V
+const #9 = Field	#79.#146;	//  scala/actors/FJTaskRunnerGroup.activeCount:I
+const #10 = Field	#79.#147;	//  scala/actors/FJTaskRunnerGroup.nstarted:I
+const #11 = Field	#79.#148;	//  scala/actors/FJTaskRunnerGroup.initTime:J
+const #12 = Field	#79.#149;	//  scala/actors/FJTaskRunnerGroup.entries:I
+const #13 = class	#150;	//  scala/actors/FJTaskRunner
+const #14 = Method	#79.#151;	//  scala/actors/FJTaskRunnerGroup.initializeThreads:()V
+const #15 = Method	#152.#153;	//  java/lang/System.currentTimeMillis:()J
+const #16 = Method	#13.#154;	//  scala/actors/FJTaskRunner.take:()Lscala/actors/FJTask;
+const #17 = Method	#79.#155;	//  scala/actors/FJTaskRunnerGroup.pollEntryQueue:()Lscala/actors/FJTask;
+const #18 = Method	#26.#156;	//  scala/actors/FJTask.isDone:()Z
+const #19 = Method	#7.#157;	//  scala/actors/LinkedQueue.put:(Ljava/lang/Object;)V
+const #20 = class	#158;	//  java/lang/InterruptedException
+const #21 = Method	#7.#159;	//  scala/actors/LinkedQueue.isEmpty:()Z
+const #22 = Method	#79.#160;	//  scala/actors/FJTaskRunnerGroup.existsTask:()Z
+const #23 = Method	#152.#161;	//  java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+const #24 = Method	#13.#162;	//  scala/actors/FJTaskRunner."<init>":(Lscala/actors/IFJTaskRunnerGroup;)V
+const #25 = Method	#79.#163;	//  scala/actors/FJTaskRunnerGroup.setActive:(Lscala/actors/FJTaskRunner;)V
+const #26 = class	#164;	//  scala/actors/FJTask
+const #27 = class	#165;	//  scala/actors/FJTask$Wrap
+const #28 = Method	#27.#167;	//  scala/actors/FJTask$Wrap."<init>":(Ljava/lang/Runnable;)V
+const #29 = Method	#79.#168;	//  scala/actors/FJTaskRunnerGroup.signalNewTask:()V
+const #30 = Method	#142.#169;	//  java/lang/Thread.currentThread:()Ljava/lang/Thread;
+const #31 = Method	#142.#141;	//  java/lang/Thread.interrupt:()V
+const #32 = class	#170;	//  scala/actors/FJTaskRunnerGroup$InvokableFJTask
+const #33 = Method	#32.#167;	//  scala/actors/FJTaskRunnerGroup$InvokableFJTask."<init>":(Ljava/lang/Runnable;)V
+const #34 = Method	#32.#171;	//  scala/actors/FJTaskRunnerGroup$InvokableFJTask.awaitTermination:()V
+const #35 = Method	#13.#172;	//  scala/actors/FJTaskRunner.setScanPriority:(I)V
+const #36 = Field	#13.#173;	//  scala/actors/FJTaskRunner.active:Z
+const #37 = Method	#13.#174;	//  scala/actors/FJTaskRunner.setPriority:(I)V
+const #38 = Method	#13.#175;	//  scala/actors/FJTaskRunner.setRunPriority:(I)V
+const #39 = double	1000.0d;
+const #41 = Field	#152.#176;	//  java/lang/System.out:Ljava/io/PrintStream;
+const #42 = String	#177;	//  Thread\tQ Cap\tScans\tNew\tRuns\n
+const #43 = Method	#178.#179;	//  java/io/PrintStream.print:(Ljava/lang/String;)V
+const #44 = Field	#13.#180;	//  scala/actors/FJTaskRunner.runs:I
+const #45 = Field	#13.#181;	//  scala/actors/FJTaskRunner.scans:I
+const #46 = Field	#13.#182;	//  scala/actors/FJTaskRunner.steals:I
+const #47 = Method	#79.#183;	//  scala/actors/FJTaskRunnerGroup.getActive:(Lscala/actors/FJTaskRunner;)Z
+const #48 = String	#184;	//  *
+const #49 = String	#185;	//   
+const #50 = class	#186;	//  java/lang/StringBuilder
+const #51 = Method	#50.#144;	//  java/lang/StringBuilder."<init>":()V
+const #52 = String	#187;	//  T
+const #53 = Method	#50.#188;	//  java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+const #54 = Method	#50.#189;	//  java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+const #55 = String	#190;	//  \t
+const #56 = Method	#13.#191;	//  scala/actors/FJTaskRunner.deqSize:()I
+const #57 = String	#192;	//  \n
+const #58 = Method	#50.#193;	//  java/lang/StringBuilder.toString:()Ljava/lang/String;
+const #59 = String	#194;	//  Total\t    \t
+const #60 = Method	#50.#195;	//  java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+const #61 = String	#196;	//  Execute: 
+const #62 = String	#197;	//  \tTime: 
+const #63 = Method	#50.#198;	//  java/lang/StringBuilder.append:(D)Ljava/lang/StringBuilder;
+const #64 = Method	#199.#200;	//  java/lang/Math.round:(D)J
+const #65 = String	#201;	//  \tRate: 
+const #66 = Method	#178.#202;	//  java/io/PrintStream.println:(Ljava/lang/String;)V
+const #67 = Method	#7.#203;	//  scala/actors/LinkedQueue.poll:(J)Ljava/lang/Object;
+const #68 = Method	#13.#204;	//  scala/actors/FJTaskRunner.start:()V
+const #69 = Method	#80.#205;	//  java/lang/Object.notifyAll:()V
+const #70 = Method	#79.#206;	//  scala/actors/FJTaskRunnerGroup.setInactive:(Lscala/actors/FJTaskRunner;)V
+const #71 = Method	#7.#207;	//  scala/actors/LinkedQueue.peek:()Ljava/lang/Object;
+const #72 = Method	#80.#208;	//  java/lang/Object.wait:()V
+const #73 = long	15l;
+const #75 = long	100l;
+const #77 = Method	#80.#209;	//  java/lang/Object.wait:(JI)V
+const #78 = Method	#80.#210;	//  java/lang/Object.notify:()V
+const #79 = class	#211;	//  scala/actors/FJTaskRunnerGroup
+const #80 = class	#212;	//  java/lang/Object
+const #81 = class	#213;	//  scala/actors/IFJTaskRunnerGroup
+const #82 = Asciz	InvokableFJTask;
+const #83 = Asciz	InnerClasses;
+const #84 = Asciz	threads;
+const #85 = Asciz	[Lscala/actors/FJTaskRunner;;
+const #86 = Asciz	entryQueue;
+const #87 = Asciz	Lscala/actors/LinkedQueue;;
+const #88 = Asciz	activeCount;
+const #89 = Asciz	I;
+const #90 = Asciz	nstarted;
+const #91 = Asciz	COLLECT_STATS;
+const #92 = Asciz	Z;
+const #93 = Asciz	ConstantValue;
+const #94 = int	1;
+const #95 = Asciz	initTime;
+const #96 = Asciz	J;
+const #97 = Asciz	entries;
+const #98 = Asciz	DEFAULT_SCAN_PRIORITY;
+const #99 = int	2;
+const #100 = Asciz	SCANS_PER_SLEEP;
+const #101 = Asciz	MAX_SLEEP_TIME;
+const #102 = Asciz	getEntryQueue;
+const #103 = Asciz	()Lscala/actors/LinkedQueue;;
+const #104 = Asciz	Code;
+const #105 = Asciz	snapshot;
+const #106 = Asciz	Exceptions;
+const #107 = Asciz	<init>;
+const #108 = Asciz	(I)V;
+const #109 = Asciz	existsTask;
+const #110 = Asciz	()Z;
+const #111 = Asciz	checkPoolSize;
+const #112 = Asciz	execute;
+const #113 = Asciz	(Ljava/lang/Runnable;)V;
+const #114 = Asciz	executeTask;
+const #115 = Asciz	(Lscala/actors/FJTask;)V;
+const #116 = Asciz	invoke;
+const #117 = Asciz	interruptAll;
+const #118 = Asciz	()V;
+const #119 = Asciz	setScanPriorities;
+const #120 = Asciz	setRunPriorities;
+const #121 = Asciz	size;
+const #122 = Asciz	()I;
+const #123 = Asciz	getActiveCount;
+const #124 = Asciz	stats;
+const #125 = Asciz	getArray;
+const #126 = Asciz	()[Lscala/actors/FJTaskRunner;;
+const #127 = Asciz	pollEntryQueue;
+const #128 = Asciz	()Lscala/actors/FJTask;;
+const #129 = Asciz	getActive;
+const #130 = Asciz	(Lscala/actors/FJTaskRunner;)Z;
+const #131 = Asciz	setActive;
+const #132 = Asciz	(Lscala/actors/FJTaskRunner;)V;
+const #133 = Asciz	setInactive;
+const #134 = Asciz	checkActive;
+const #135 = Asciz	(Lscala/actors/FJTaskRunner;J)V;
+const #136 = Asciz	signalNewTask;
+const #137 = Asciz	initializeThreads;
+const #138 = NameAndType	#86:#87;//  entryQueue:Lscala/actors/LinkedQueue;
+const #139 = NameAndType	#84:#85;//  threads:[Lscala/actors/FJTaskRunner;
+const #140 = NameAndType	#214:#215;//  setSuspending:(Z)V
+const #141 = NameAndType	#216:#118;//  interrupt:()V
+const #142 = class	#217;	//  java/lang/Thread
+const #143 = NameAndType	#218:#118;//  join:()V
+const #144 = NameAndType	#107:#118;//  "<init>":()V
+const #145 = Asciz	scala/actors/LinkedQueue;
+const #146 = NameAndType	#88:#89;//  activeCount:I
+const #147 = NameAndType	#90:#89;//  nstarted:I
+const #148 = NameAndType	#95:#96;//  initTime:J
+const #149 = NameAndType	#97:#89;//  entries:I
+const #150 = Asciz	scala/actors/FJTaskRunner;
+const #151 = NameAndType	#137:#118;//  initializeThreads:()V
+const #152 = class	#219;	//  java/lang/System
+const #153 = NameAndType	#220:#221;//  currentTimeMillis:()J
+const #154 = NameAndType	#222:#128;//  take:()Lscala/actors/FJTask;
+const #155 = NameAndType	#127:#128;//  pollEntryQueue:()Lscala/actors/FJTask;
+const #156 = NameAndType	#223:#110;//  isDone:()Z
+const #157 = NameAndType	#224:#225;//  put:(Ljava/lang/Object;)V
+const #158 = Asciz	java/lang/InterruptedException;
+const #159 = NameAndType	#226:#110;//  isEmpty:()Z
+const #160 = NameAndType	#109:#110;//  existsTask:()Z
+const #161 = NameAndType	#227:#228;//  arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+const #162 = NameAndType	#107:#229;//  "<init>":(Lscala/actors/IFJTaskRunnerGroup;)V
+const #163 = NameAndType	#131:#132;//  setActive:(Lscala/actors/FJTaskRunner;)V
+const #164 = Asciz	scala/actors/FJTask;
+const #165 = Asciz	scala/actors/FJTask$Wrap;
+const #166 = Asciz	Wrap;
+const #167 = NameAndType	#107:#113;//  "<init>":(Ljava/lang/Runnable;)V
+const #168 = NameAndType	#136:#118;//  signalNewTask:()V
+const #169 = NameAndType	#230:#231;//  currentThread:()Ljava/lang/Thread;
+const #170 = Asciz	scala/actors/FJTaskRunnerGroup$InvokableFJTask;
+const #171 = NameAndType	#232:#118;//  awaitTermination:()V
+const #172 = NameAndType	#233:#108;//  setScanPriority:(I)V
+const #173 = NameAndType	#234:#92;//  active:Z
+const #174 = NameAndType	#235:#108;//  setPriority:(I)V
+const #175 = NameAndType	#236:#108;//  setRunPriority:(I)V
+const #176 = NameAndType	#237:#238;//  out:Ljava/io/PrintStream;
+const #177 = Asciz	Thread\tQ Cap\tScans\tNew\tRuns\n;
+const #178 = class	#239;	//  java/io/PrintStream
+const #179 = NameAndType	#240:#241;//  print:(Ljava/lang/String;)V
+const #180 = NameAndType	#242:#89;//  runs:I
+const #181 = NameAndType	#243:#89;//  scans:I
+const #182 = NameAndType	#244:#89;//  steals:I
+const #183 = NameAndType	#129:#130;//  getActive:(Lscala/actors/FJTaskRunner;)Z
+const #184 = Asciz	*;
+const #185 = Asciz	 ;
+const #186 = Asciz	java/lang/StringBuilder;
+const #187 = Asciz	T;
+const #188 = NameAndType	#245:#246;//  append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+const #189 = NameAndType	#245:#247;//  append:(I)Ljava/lang/StringBuilder;
+const #190 = Asciz	\t;
+const #191 = NameAndType	#248:#122;//  deqSize:()I
+const #192 = Asciz	\n;
+const #193 = NameAndType	#249:#250;//  toString:()Ljava/lang/String;
+const #194 = Asciz	Total\t    \t;
+const #195 = NameAndType	#245:#251;//  append:(J)Ljava/lang/StringBuilder;
+const #196 = Asciz	Execute: ;
+const #197 = Asciz	\tTime: ;
+const #198 = NameAndType	#245:#252;//  append:(D)Ljava/lang/StringBuilder;
+const #199 = class	#253;	//  java/lang/Math
+const #200 = NameAndType	#254:#255;//  round:(D)J
+const #201 = Asciz	\tRate: ;
+const #202 = NameAndType	#256:#241;//  println:(Ljava/lang/String;)V
+const #203 = NameAndType	#257:#258;//  poll:(J)Ljava/lang/Object;
+const #204 = NameAndType	#259:#118;//  start:()V
+const #205 = NameAndType	#260:#118;//  notifyAll:()V
+const #206 = NameAndType	#133:#132;//  setInactive:(Lscala/actors/FJTaskRunner;)V
+const #207 = NameAndType	#261:#262;//  peek:()Ljava/lang/Object;
+const #208 = NameAndType	#263:#118;//  wait:()V
+const #209 = NameAndType	#263:#264;//  wait:(JI)V
+const #210 = NameAndType	#265:#118;//  notify:()V
+const #211 = Asciz	scala/actors/FJTaskRunnerGroup;
+const #212 = Asciz	java/lang/Object;
+const #213 = Asciz	scala/actors/IFJTaskRunnerGroup;
+const #214 = Asciz	setSuspending;
+const #215 = Asciz	(Z)V;
+const #216 = Asciz	interrupt;
+const #217 = Asciz	java/lang/Thread;
+const #218 = Asciz	join;
+const #219 = Asciz	java/lang/System;
+const #220 = Asciz	currentTimeMillis;
+const #221 = Asciz	()J;
+const #222 = Asciz	take;
+const #223 = Asciz	isDone;
+const #224 = Asciz	put;
+const #225 = Asciz	(Ljava/lang/Object;)V;
+const #226 = Asciz	isEmpty;
+const #227 = Asciz	arraycopy;
+const #228 = Asciz	(Ljava/lang/Object;ILjava/lang/Object;II)V;
+const #229 = Asciz	(Lscala/actors/IFJTaskRunnerGroup;)V;
+const #230 = Asciz	currentThread;
+const #231 = Asciz	()Ljava/lang/Thread;;
+const #232 = Asciz	awaitTermination;
+const #233 = Asciz	setScanPriority;
+const #234 = Asciz	active;
+const #235 = Asciz	setPriority;
+const #236 = Asciz	setRunPriority;
+const #237 = Asciz	out;
+const #238 = Asciz	Ljava/io/PrintStream;;
+const #239 = Asciz	java/io/PrintStream;
+const #240 = Asciz	print;
+const #241 = Asciz	(Ljava/lang/String;)V;
+const #242 = Asciz	runs;
+const #243 = Asciz	scans;
+const #244 = Asciz	steals;
+const #245 = Asciz	append;
+const #246 = Asciz	(Ljava/lang/String;)Ljava/lang/StringBuilder;;
+const #247 = Asciz	(I)Ljava/lang/StringBuilder;;
+const #248 = Asciz	deqSize;
+const #249 = Asciz	toString;
+const #250 = Asciz	()Ljava/lang/String;;
+const #251 = Asciz	(J)Ljava/lang/StringBuilder;;
+const #252 = Asciz	(D)Ljava/lang/StringBuilder;;
+const #253 = Asciz	java/lang/Math;
+const #254 = Asciz	round;
+const #255 = Asciz	(D)J;
+const #256 = Asciz	println;
+const #257 = Asciz	poll;
+const #258 = Asciz	(J)Ljava/lang/Object;;
+const #259 = Asciz	start;
+const #260 = Asciz	notifyAll;
+const #261 = Asciz	peek;
+const #262 = Asciz	()Ljava/lang/Object;;
+const #263 = Asciz	wait;
+const #264 = Asciz	(JI)V;
+const #265 = Asciz	notify;
+
+{
+scala.actors.FJTaskRunner[] threads;
+
+final scala.actors.LinkedQueue entryQueue;
+
+protected int activeCount;
+
+protected int nstarted;
+
+static final boolean COLLECT_STATS;
+  Constant value: int 1
+long initTime;
+
+int entries;
+
+static final int DEFAULT_SCAN_PRIORITY;
+  Constant value: int 2
+static final long SCANS_PER_SLEEP;
+  Constant value: long 15l
+static final long MAX_SLEEP_TIME;
+  Constant value: long 100l
+public scala.actors.LinkedQueue getEntryQueue();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#1; //Field entryQueue:Lscala/actors/LinkedQueue;
+   4:	areturn
+
+scala.actors.LinkedQueue snapshot()   throws java.lang.InterruptedException;
+  Code:
+   Stack=2, Locals=5, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	astore_1
+   3:	monitorenter
+   4:	iconst_0
+   5:	istore_2
+   6:	iload_2
+   7:	aload_0
+   8:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   11:	arraylength
+   12:	if_icmpge	37
+   15:	aload_0
+   16:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   19:	iload_2
+   20:	aaload
+   21:	astore_3
+   22:	aload_3
+   23:	iconst_1
+   24:	invokevirtual	#3; //Method scala/actors/FJTaskRunner.setSuspending:(Z)V
+   27:	aload_3
+   28:	invokevirtual	#4; //Method scala/actors/FJTaskRunner.interrupt:()V
+   31:	iinc	2, 1
+   34:	goto	6
+   37:	aload_1
+   38:	monitorexit
+   39:	goto	49
+   42:	astore	4
+   44:	aload_1
+   45:	monitorexit
+   46:	aload	4
+   48:	athrow
+   49:	iconst_0
+   50:	istore_1
+   51:	iload_1
+   52:	aload_0
+   53:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   56:	arraylength
+   57:	if_icmpge	77
+   60:	aload_0
+   61:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   64:	iload_1
+   65:	aaload
+   66:	astore_2
+   67:	aload_2
+   68:	invokevirtual	#5; //Method java/lang/Thread.join:()V
+   71:	iinc	1, 1
+   74:	goto	51
+   77:	aload_0
+   78:	getfield	#1; //Field entryQueue:Lscala/actors/LinkedQueue;
+   81:	areturn
+  Exception table:
+   from   to  target type
+     4    39    42   any
+    42    46    42   any
+  Exceptions: 
+   throws java.lang.InterruptedException
+public scala.actors.FJTaskRunnerGroup(int);
+  Code:
+   Stack=3, Locals=2, Args_size=2
+   0:	aload_0
+   1:	invokespecial	#6; //Method java/lang/Object."<init>":()V
+   4:	aload_0
+   5:	new	#7; //class scala/actors/LinkedQueue
+   8:	dup
+   9:	invokespecial	#8; //Method scala/actors/LinkedQueue."<init>":()V
+   12:	putfield	#1; //Field entryQueue:Lscala/actors/LinkedQueue;
+   15:	aload_0
+   16:	iconst_0
+   17:	putfield	#9; //Field activeCount:I
+   20:	aload_0
+   21:	iconst_0
+   22:	putfield	#10; //Field nstarted:I
+   25:	aload_0
+   26:	lconst_0
+   27:	putfield	#11; //Field initTime:J
+   30:	aload_0
+   31:	iconst_0
+   32:	putfield	#12; //Field entries:I
+   35:	aload_0
+   36:	iload_1
+   37:	anewarray	#13; //class scala/actors/FJTaskRunner
+   40:	putfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   43:	aload_0
+   44:	invokevirtual	#14; //Method initializeThreads:()V
+   47:	aload_0
+   48:	invokestatic	#15; //Method java/lang/System.currentTimeMillis:()J
+   51:	putfield	#11; //Field initTime:J
+   54:	return
+
+public boolean existsTask();
+  Code:
+   Stack=2, Locals=6, Args_size=1
+   0:	aconst_null
+   1:	astore_1
+   2:	aload_0
+   3:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   6:	astore_2
+   7:	iconst_0
+   8:	istore_3
+   9:	iconst_0
+   10:	istore	4
+   12:	iload	4
+   14:	aload_2
+   15:	arraylength
+   16:	if_icmpge	59
+   19:	aload_2
+   20:	iload_3
+   21:	aaload
+   22:	astore	5
+   24:	iinc	3, 1
+   27:	iload_3
+   28:	aload_2
+   29:	arraylength
+   30:	if_icmplt	35
+   33:	iconst_0
+   34:	istore_3
+   35:	aload	5
+   37:	ifnull	53
+   40:	aload	5
+   42:	invokevirtual	#16; //Method scala/actors/FJTaskRunner.take:()Lscala/actors/FJTask;
+   45:	astore_1
+   46:	aload_1
+   47:	ifnull	53
+   50:	goto	59
+   53:	iinc	4, 1
+   56:	goto	12
+   59:	aload_1
+   60:	ifnonnull	68
+   63:	aload_0
+   64:	invokevirtual	#17; //Method pollEntryQueue:()Lscala/actors/FJTask;
+   67:	astore_1
+   68:	aload_1
+   69:	ifnull	111
+   72:	aload_1
+   73:	invokevirtual	#18; //Method scala/actors/FJTask.isDone:()Z
+   76:	ifne	111
+   79:	iconst_0
+   80:	istore	4
+   82:	iload	4
+   84:	ifne	109
+   87:	iconst_1
+   88:	istore	4
+   90:	aload_0
+   91:	getfield	#1; //Field entryQueue:Lscala/actors/LinkedQueue;
+   94:	aload_1
+   95:	invokevirtual	#19; //Method scala/actors/LinkedQueue.put:(Ljava/lang/Object;)V
+   98:	goto	82
+   101:	astore	5
+   103:	iconst_0
+   104:	istore	4
+   106:	goto	82
+   109:	iconst_1
+   110:	ireturn
+   111:	iconst_0
+   112:	ireturn
+  Exception table:
+   from   to  target type
+    90    98   101   Class java/lang/InterruptedException
+
+
+public boolean checkPoolSize();
+  Code:
+   Stack=6, Locals=6, Args_size=1
+   0:	aload_0
+   1:	getfield	#1; //Field entryQueue:Lscala/actors/LinkedQueue;
+   4:	invokevirtual	#21; //Method scala/actors/LinkedQueue.isEmpty:()Z
+   7:	ifeq	17
+   10:	aload_0
+   11:	invokevirtual	#22; //Method existsTask:()Z
+   14:	ifeq	92
+   17:	aload_0
+   18:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   21:	arraylength
+   22:	iconst_1
+   23:	iadd
+   24:	istore_1
+   25:	iload_1
+   26:	anewarray	#13; //class scala/actors/FJTaskRunner
+   29:	astore_2
+   30:	aload_0
+   31:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   34:	iconst_0
+   35:	aload_2
+   36:	iconst_0
+   37:	iload_1
+   38:	iconst_1
+   39:	isub
+   40:	invokestatic	#23; //Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+   43:	aload_0
+   44:	dup
+   45:	astore_3
+   46:	monitorenter
+   47:	aload_0
+   48:	aload_2
+   49:	putfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   52:	new	#13; //class scala/actors/FJTaskRunner
+   55:	dup
+   56:	aload_0
+   57:	invokespecial	#24; //Method scala/actors/FJTaskRunner."<init>":(Lscala/actors/IFJTaskRunnerGroup;)V
+   60:	astore	4
+   62:	aload_0
+   63:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   66:	iload_1
+   67:	iconst_1
+   68:	isub
+   69:	aload	4
+   71:	aastore
+   72:	aload_0
+   73:	aload	4
+   75:	invokevirtual	#25; //Method setActive:(Lscala/actors/FJTaskRunner;)V
+   78:	aload_3
+   79:	monitorexit
+   80:	goto	90
+   83:	astore	5
+   85:	aload_3
+   86:	monitorexit
+   87:	aload	5
+   89:	athrow
+   90:	iconst_1
+   91:	ireturn
+   92:	iconst_0
+   93:	ireturn
+  Exception table:
+   from   to  target type
+    47    80    83   any
+    83    87    83   any
+
+public void execute(java.lang.Runnable)   throws java.lang.InterruptedException;
+  Code:
+   Stack=4, Locals=2, Args_size=2
+   0:	aload_1
+   1:	instanceof	#26; //class scala/actors/FJTask
+   4:	ifeq	21
+   7:	aload_0
+   8:	getfield	#1; //Field entryQueue:Lscala/actors/LinkedQueue;
+   11:	aload_1
+   12:	checkcast	#26; //class scala/actors/FJTask
+   15:	invokevirtual	#19; //Method scala/actors/LinkedQueue.put:(Ljava/lang/Object;)V
+   18:	goto	36
+   21:	aload_0
+   22:	getfield	#1; //Field entryQueue:Lscala/actors/LinkedQueue;
+   25:	new	#27; //class scala/actors/FJTask$Wrap
+   28:	dup
+   29:	aload_1
+   30:	invokespecial	#28; //Method scala/actors/FJTask$Wrap."<init>":(Ljava/lang/Runnable;)V
+   33:	invokevirtual	#19; //Method scala/actors/LinkedQueue.put:(Ljava/lang/Object;)V
+   36:	aload_0
+   37:	invokevirtual	#29; //Method signalNewTask:()V
+   40:	return
+  Exceptions: 
+   throws java.lang.InterruptedException
+public void executeTask(scala.actors.FJTask);
+  Code:
+   Stack=2, Locals=3, Args_size=2
+   0:	aload_0
+   1:	getfield	#1; //Field entryQueue:Lscala/actors/LinkedQueue;
+   4:	aload_1
+   5:	invokevirtual	#19; //Method scala/actors/LinkedQueue.put:(Ljava/lang/Object;)V
+   8:	aload_0
+   9:	invokevirtual	#29; //Method signalNewTask:()V
+   12:	goto	22
+   15:	astore_2
+   16:	invokestatic	#30; //Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   19:	invokevirtual	#31; //Method java/lang/Thread.interrupt:()V
+   22:	return
+  Exception table:
+   from   to  target type
+     0    12    15   Class java/lang/InterruptedException
+
+
+public void invoke(java.lang.Runnable)   throws java.lang.InterruptedException;
+  Code:
+   Stack=3, Locals=3, Args_size=2
+   0:	new	#32; //class scala/actors/FJTaskRunnerGroup$InvokableFJTask
+   3:	dup
+   4:	aload_1
+   5:	invokespecial	#33; //Method scala/actors/FJTaskRunnerGroup$InvokableFJTask."<init>":(Ljava/lang/Runnable;)V
+   8:	astore_2
+   9:	aload_0
+   10:	getfield	#1; //Field entryQueue:Lscala/actors/LinkedQueue;
+   13:	aload_2
+   14:	invokevirtual	#19; //Method scala/actors/LinkedQueue.put:(Ljava/lang/Object;)V
+   17:	aload_0
+   18:	invokevirtual	#29; //Method signalNewTask:()V
+   21:	aload_2
+   22:	invokevirtual	#34; //Method scala/actors/FJTaskRunnerGroup$InvokableFJTask.awaitTermination:()V
+   25:	return
+  Exceptions: 
+   throws java.lang.InterruptedException
+public void interruptAll();
+  Code:
+   Stack=2, Locals=5, Args_size=1
+   0:	invokestatic	#30; //Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   3:	astore_1
+   4:	iconst_0
+   5:	istore_2
+   6:	iconst_0
+   7:	istore_3
+   8:	iload_3
+   9:	aload_0
+   10:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   13:	arraylength
+   14:	if_icmpge	47
+   17:	aload_0
+   18:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   21:	iload_3
+   22:	aaload
+   23:	astore	4
+   25:	aload	4
+   27:	aload_1
+   28:	if_acmpne	36
+   31:	iconst_1
+   32:	istore_2
+   33:	goto	41
+   36:	aload	4
+   38:	invokevirtual	#31; //Method java/lang/Thread.interrupt:()V
+   41:	iinc	3, 1
+   44:	goto	8
+   47:	iload_2
+   48:	ifeq	55
+   51:	aload_1
+   52:	invokevirtual	#31; //Method java/lang/Thread.interrupt:()V
+   55:	return
+
+public synchronized void setScanPriorities(int);
+  Code:
+   Stack=2, Locals=4, Args_size=2
+   0:	iconst_0
+   1:	istore_2
+   2:	iload_2
+   3:	aload_0
+   4:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   7:	arraylength
+   8:	if_icmpge	41
+   11:	aload_0
+   12:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   15:	iload_2
+   16:	aaload
+   17:	astore_3
+   18:	aload_3
+   19:	iload_1
+   20:	invokevirtual	#35; //Method scala/actors/FJTaskRunner.setScanPriority:(I)V
+   23:	aload_3
+   24:	getfield	#36; //Field scala/actors/FJTaskRunner.active:Z
+   27:	ifne	35
+   30:	aload_3
+   31:	iload_1
+   32:	invokevirtual	#37; //Method scala/actors/FJTaskRunner.setPriority:(I)V
+   35:	iinc	2, 1
+   38:	goto	2
+   41:	return
+
+public synchronized void setRunPriorities(int);
+  Code:
+   Stack=2, Locals=4, Args_size=2
+   0:	iconst_0
+   1:	istore_2
+   2:	iload_2
+   3:	aload_0
+   4:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   7:	arraylength
+   8:	if_icmpge	41
+   11:	aload_0
+   12:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   15:	iload_2
+   16:	aaload
+   17:	astore_3
+   18:	aload_3
+   19:	iload_1
+   20:	invokevirtual	#38; //Method scala/actors/FJTaskRunner.setRunPriority:(I)V
+   23:	aload_3
+   24:	getfield	#36; //Field scala/actors/FJTaskRunner.active:Z
+   27:	ifeq	35
+   30:	aload_3
+   31:	iload_1
+   32:	invokevirtual	#37; //Method scala/actors/FJTaskRunner.setPriority:(I)V
+   35:	iinc	2, 1
+   38:	goto	2
+   41:	return
+
+public int size();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   4:	arraylength
+   5:	ireturn
+
+public synchronized int getActiveCount();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#9; //Field activeCount:I
+   4:	ireturn
+
+public void stats();
+  Code:
+   Stack=4, Locals=17, Args_size=1
+   0:	invokestatic	#15; //Method java/lang/System.currentTimeMillis:()J
+   3:	aload_0
+   4:	getfield	#11; //Field initTime:J
+   7:	lsub
+   8:	lstore_1
+   9:	lload_1
+   10:	l2d
+   11:	ldc2_w	#39; //double 1000.0d
+   14:	ddiv
+   15:	dstore_3
+   16:	lconst_0
+   17:	lstore	5
+   19:	lconst_0
+   20:	lstore	7
+   22:	lconst_0
+   23:	lstore	9
+   25:	getstatic	#41; //Field java/lang/System.out:Ljava/io/PrintStream;
+   28:	ldc	#42; //String Thread\tQ Cap\tScans\tNew\tRuns\n
+   30:	invokevirtual	#43; //Method java/io/PrintStream.print:(Ljava/lang/String;)V
+   33:	iconst_0
+   34:	istore	11
+   36:	iload	11
+   38:	aload_0
+   39:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   42:	arraylength
+   43:	if_icmpge	203
+   46:	aload_0
+   47:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   50:	iload	11
+   52:	aaload
+   53:	astore	12
+   55:	aload	12
+   57:	getfield	#44; //Field scala/actors/FJTaskRunner.runs:I
+   60:	istore	13
+   62:	lload	5
+   64:	iload	13
+   66:	i2l
+   67:	ladd
+   68:	lstore	5
+   70:	aload	12
+   72:	getfield	#45; //Field scala/actors/FJTaskRunner.scans:I
+   75:	istore	14
+   77:	lload	7
+   79:	iload	14
+   81:	i2l
+   82:	ladd
+   83:	lstore	7
+   85:	aload	12
+   87:	getfield	#46; //Field scala/actors/FJTaskRunner.steals:I
+   90:	istore	15
+   92:	lload	9
+   94:	iload	15
+   96:	i2l
+   97:	ladd
+   98:	lstore	9
+   100:	aload_0
+   101:	aload	12
+   103:	invokevirtual	#47; //Method getActive:(Lscala/actors/FJTaskRunner;)Z
+   106:	ifeq	114
+   109:	ldc	#48; //String *
+   111:	goto	116
+   114:	ldc	#49; //String  
+   116:	astore	16
+   118:	getstatic	#41; //Field java/lang/System.out:Ljava/io/PrintStream;
+   121:	new	#50; //class java/lang/StringBuilder
+   124:	dup
+   125:	invokespecial	#51; //Method java/lang/StringBuilder."<init>":()V
+   128:	ldc	#52; //String T
+   130:	invokevirtual	#53; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   133:	iload	11
+   135:	invokevirtual	#54; //Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+   138:	aload	16
+   140:	invokevirtual	#53; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   143:	ldc	#55; //String \t
+   145:	invokevirtual	#53; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   148:	aload	12
+   150:	invokevirtual	#56; //Method scala/actors/FJTaskRunner.deqSize:()I
+   153:	invokevirtual	#54; //Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+   156:	ldc	#55; //String \t
+   158:	invokevirtual	#53; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   161:	iload	14
+   163:	invokevirtual	#54; //Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+   166:	ldc	#55; //String \t
+   168:	invokevirtual	#53; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   171:	iload	15
+   173:	invokevirtual	#54; //Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+   176:	ldc	#55; //String \t
+   178:	invokevirtual	#53; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   181:	iload	13
+   183:	invokevirtual	#54; //Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+   186:	ldc	#57; //String \n
+   188:	invokevirtual	#53; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   191:	invokevirtual	#58; //Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+   194:	invokevirtual	#43; //Method java/io/PrintStream.print:(Ljava/lang/String;)V
+   197:	iinc	11, 1
+   200:	goto	36
+   203:	getstatic	#41; //Field java/lang/System.out:Ljava/io/PrintStream;
+   206:	new	#50; //class java/lang/StringBuilder
+   209:	dup
+   210:	invokespecial	#51; //Method java/lang/StringBuilder."<init>":()V
+   213:	ldc	#59; //String Total\t    \t
+   215:	invokevirtual	#53; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   218:	lload	7
+   220:	invokevirtual	#60; //Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+   223:	ldc	#55; //String \t
+   225:	invokevirtual	#53; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   228:	lload	9
+   230:	invokevirtual	#60; //Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+   233:	ldc	#55; //String \t
+   235:	invokevirtual	#53; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   238:	lload	5
+   240:	invokevirtual	#60; //Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+   243:	ldc	#57; //String \n
+   245:	invokevirtual	#53; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   248:	invokevirtual	#58; //Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+   251:	invokevirtual	#43; //Method java/io/PrintStream.print:(Ljava/lang/String;)V
+   254:	getstatic	#41; //Field java/lang/System.out:Ljava/io/PrintStream;
+   257:	new	#50; //class java/lang/StringBuilder
+   260:	dup
+   261:	invokespecial	#51; //Method java/lang/StringBuilder."<init>":()V
+   264:	ldc	#61; //String Execute: 
+   266:	invokevirtual	#53; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   269:	aload_0
+   270:	getfield	#12; //Field entries:I
+   273:	invokevirtual	#54; //Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+   276:	invokevirtual	#58; //Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+   279:	invokevirtual	#43; //Method java/io/PrintStream.print:(Ljava/lang/String;)V
+   282:	getstatic	#41; //Field java/lang/System.out:Ljava/io/PrintStream;
+   285:	new	#50; //class java/lang/StringBuilder
+   288:	dup
+   289:	invokespecial	#51; //Method java/lang/StringBuilder."<init>":()V
+   292:	ldc	#62; //String \tTime: 
+   294:	invokevirtual	#53; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   297:	dload_3
+   298:	invokevirtual	#63; //Method java/lang/StringBuilder.append:(D)Ljava/lang/StringBuilder;
+   301:	invokevirtual	#58; //Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+   304:	invokevirtual	#43; //Method java/io/PrintStream.print:(Ljava/lang/String;)V
+   307:	lconst_0
+   308:	lstore	11
+   310:	dload_3
+   311:	dconst_0
+   312:	dcmpl
+   313:	ifeq	326
+   316:	lload	5
+   318:	l2d
+   319:	dload_3
+   320:	ddiv
+   321:	invokestatic	#64; //Method java/lang/Math.round:(D)J
+   324:	lstore	11
+   326:	getstatic	#41; //Field java/lang/System.out:Ljava/io/PrintStream;
+   329:	new	#50; //class java/lang/StringBuilder
+   332:	dup
+   333:	invokespecial	#51; //Method java/lang/StringBuilder."<init>":()V
+   336:	ldc	#65; //String \tRate: 
+   338:	invokevirtual	#53; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   341:	lload	11
+   343:	invokevirtual	#60; //Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+   346:	invokevirtual	#58; //Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+   349:	invokevirtual	#66; //Method java/io/PrintStream.println:(Ljava/lang/String;)V
+   352:	return
+
+public scala.actors.FJTaskRunner[] getArray();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   4:	areturn
+
+public scala.actors.FJTask pollEntryQueue();
+  Code:
+   Stack=3, Locals=2, Args_size=1
+   0:	aload_0
+   1:	getfield	#1; //Field entryQueue:Lscala/actors/LinkedQueue;
+   4:	lconst_0
+   5:	invokevirtual	#67; //Method scala/actors/LinkedQueue.poll:(J)Ljava/lang/Object;
+   8:	checkcast	#26; //class scala/actors/FJTask
+   11:	checkcast	#26; //class scala/actors/FJTask
+   14:	astore_1
+   15:	aload_1
+   16:	areturn
+   17:	astore_1
+   18:	invokestatic	#30; //Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   21:	invokevirtual	#31; //Method java/lang/Thread.interrupt:()V
+   24:	aconst_null
+   25:	areturn
+  Exception table:
+   from   to  target type
+     0    16    17   Class java/lang/InterruptedException
+
+
+protected synchronized boolean getActive(scala.actors.FJTaskRunner);
+  Code:
+   Stack=1, Locals=2, Args_size=2
+   0:	aload_1
+   1:	getfield	#36; //Field scala/actors/FJTaskRunner.active:Z
+   4:	ireturn
+
+public synchronized void setActive(scala.actors.FJTaskRunner);
+  Code:
+   Stack=5, Locals=2, Args_size=2
+   0:	aload_1
+   1:	getfield	#36; //Field scala/actors/FJTaskRunner.active:Z
+   4:	ifne	60
+   7:	aload_1
+   8:	iconst_1
+   9:	putfield	#36; //Field scala/actors/FJTaskRunner.active:Z
+   12:	aload_0
+   13:	dup
+   14:	getfield	#9; //Field activeCount:I
+   17:	iconst_1
+   18:	iadd
+   19:	putfield	#9; //Field activeCount:I
+   22:	aload_0
+   23:	getfield	#10; //Field nstarted:I
+   26:	aload_0
+   27:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   30:	arraylength
+   31:	if_icmpge	56
+   34:	aload_0
+   35:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   38:	aload_0
+   39:	dup
+   40:	getfield	#10; //Field nstarted:I
+   43:	dup_x1
+   44:	iconst_1
+   45:	iadd
+   46:	putfield	#10; //Field nstarted:I
+   49:	aaload
+   50:	invokevirtual	#68; //Method scala/actors/FJTaskRunner.start:()V
+   53:	goto	60
+   56:	aload_0
+   57:	invokevirtual	#69; //Method java/lang/Object.notifyAll:()V
+   60:	return
+
+public synchronized void setInactive(scala.actors.FJTaskRunner);
+  Code:
+   Stack=3, Locals=2, Args_size=2
+   0:	aload_1
+   1:	getfield	#36; //Field scala/actors/FJTaskRunner.active:Z
+   4:	ifeq	22
+   7:	aload_1
+   8:	iconst_0
+   9:	putfield	#36; //Field scala/actors/FJTaskRunner.active:Z
+   12:	aload_0
+   13:	dup
+   14:	getfield	#9; //Field activeCount:I
+   17:	iconst_1
+   18:	isub
+   19:	putfield	#9; //Field activeCount:I
+   22:	return
+
+public synchronized void checkActive(scala.actors.FJTaskRunner, long);
+  Code:
+   Stack=4, Locals=7, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	invokevirtual	#70; //Method setInactive:(Lscala/actors/FJTaskRunner;)V
+   5:	aload_0
+   6:	getfield	#9; //Field activeCount:I
+   9:	ifne	29
+   12:	aload_0
+   13:	getfield	#1; //Field entryQueue:Lscala/actors/LinkedQueue;
+   16:	invokevirtual	#71; //Method scala/actors/LinkedQueue.peek:()Ljava/lang/Object;
+   19:	ifnonnull	29
+   22:	aload_0
+   23:	invokevirtual	#72; //Method java/lang/Object.wait:()V
+   26:	goto	72
+   29:	lload_2
+   30:	ldc2_w	#73; //long 15l
+   33:	ldiv
+   34:	lstore	4
+   36:	lload	4
+   38:	ldc2_w	#75; //long 100l
+   41:	lcmp
+   42:	ifle	50
+   45:	ldc2_w	#75; //long 100l
+   48:	lstore	4
+   50:	lload	4
+   52:	lconst_0
+   53:	lcmp
+   54:	ifne	61
+   57:	iconst_1
+   58:	goto	62
+   61:	iconst_0
+   62:	istore	6
+   64:	aload_0
+   65:	lload	4
+   67:	iload	6
+   69:	invokevirtual	#77; //Method java/lang/Object.wait:(JI)V
+   72:	goto	87
+   75:	astore	4
+   77:	aload_0
+   78:	invokevirtual	#78; //Method java/lang/Object.notify:()V
+   81:	invokestatic	#30; //Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   84:	invokevirtual	#31; //Method java/lang/Thread.interrupt:()V
+   87:	return
+  Exception table:
+   from   to  target type
+     5    72    75   Class java/lang/InterruptedException
+
+
+protected synchronized void signalNewTask();
+  Code:
+   Stack=5, Locals=1, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	getfield	#12; //Field entries:I
+   5:	iconst_1
+   6:	iadd
+   7:	putfield	#12; //Field entries:I
+   10:	aload_0
+   11:	getfield	#10; //Field nstarted:I
+   14:	aload_0
+   15:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   18:	arraylength
+   19:	if_icmpge	44
+   22:	aload_0
+   23:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   26:	aload_0
+   27:	dup
+   28:	getfield	#10; //Field nstarted:I
+   31:	dup_x1
+   32:	iconst_1
+   33:	iadd
+   34:	putfield	#10; //Field nstarted:I
+   37:	aaload
+   38:	invokevirtual	#68; //Method scala/actors/FJTaskRunner.start:()V
+   41:	goto	48
+   44:	aload_0
+   45:	invokevirtual	#78; //Method java/lang/Object.notify:()V
+   48:	return
+
+protected void initializeThreads();
+  Code:
+   Stack=5, Locals=2, Args_size=1
+   0:	iconst_0
+   1:	istore_1
+   2:	iload_1
+   3:	aload_0
+   4:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   7:	arraylength
+   8:	if_icmpge	31
+   11:	aload_0
+   12:	getfield	#2; //Field threads:[Lscala/actors/FJTaskRunner;
+   15:	iload_1
+   16:	new	#13; //class scala/actors/FJTaskRunner
+   19:	dup
+   20:	aload_0
+   21:	invokespecial	#24; //Method scala/actors/FJTaskRunner."<init>":(Lscala/actors/IFJTaskRunnerGroup;)V
+   24:	aastore
+   25:	iinc	1, 1
+   28:	goto	2
+   31:	return
+
+}
+

@@ -1,0 +1,514 @@
+Compiled from "TerminationService.scala"
+public abstract class scala.actors.scheduler.TerminationService extends java.lang.Thread implements scala.actors.IScheduler,scala.actors.scheduler.TerminationMonitor,scala.ScalaObject
+  SourceFile: "TerminationService.scala"
+  ScalaSig: length = 0x211
+   05 00 4C 06 08 01 02 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF81 00 09 02 12 54
+   65 72 6D 69 6E 61 74 69 6F 6E 53 65 72 76 69 63
+   65 0A 02 03 04 01 09 73 63 68 65 64 75 6C 65 72
+   0A 02 05 06 01 06 61 63 74 6F 72 73 0A 01 07 01
+   05 73 63 61 6C 61 03 00 13 05 00 0A 12 16 1A 10
+   02 0B 10 0D 01 0C 0A 02 0D 0E 01 04 6C 61 6E 67
+   0A 01 0F 01 04 6A 61 76 61 09 02 11 0C 02 06 54
+   68 72 65 61 64 10 02 13 14 0D 01 04 09 02 15 04
+   02 0A 49 53 63 68 65 64 75 6C 65 72 10 02 17 18
+   0D 01 02 09 02 19 02 02 12 54 65 72 6D 69 6E 61
+   74 69 6F 6E 4D 6F 6E 69 74 6F 72 10 02 1B 1C 0D
+   01 06 09 02 1D 06 02 0B 53 63 61 6C 61 4F 62 6A
+   65 63 74 08 08 1F 00 FFFFFF82 FFFFFF80 FFFFFFA0 FFFFFF80 04 20 01 09 74
+   65 72 6D 69 6E 61 74 65 10 02 1B 21 09 02 22 06
+   02 07 42 6F 6F 6C 65 61 6E 08 05 24 00 FFFFFF84 00 25
+   01 06 3C 69 6E 69 74 3E 14 02 26 27 10 02 17 00
+   08 05 1F 23 FFFFFFC0 00 20 08 07 29 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 2A
+   01 0B 74 65 72 6D 69 6E 61 74 69 6E 67 15 01 20
+   08 07 2C 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 2D 01 0F 74 65 72 6D 69
+   6E 61 74 69 6E 67 5F 24 65 71 14 02 2E 31 10 02
+   1B 2F 09 02 30 06 02 04 55 6E 69 74 08 07 32 2B
+   FFFFFF81 FFFFFF80 FFFFFFC0 00 20 01 03 78 24 31 08 06 34 00 FFFFFFA0 FFFFFFA0
+   04 20 01 0C 74 65 72 6D 69 6E 61 74 69 6E 67 20
+   08 07 36 00 FFFFFFC2 FFFFFF80 FFFFFF84 08 37 01 0A 43 48 45 43 4B
+   5F 46 52 45 51 15 01 38 10 02 1B 39 09 02 3A 06
+   02 03 49 6E 74 08 06 3C 00 FFFFFFA0 FFFFFF80 04 38 01 0B 43
+   48 45 43 4B 5F 46 52 45 51 20 08 05 3E 00 FFFFFF86 00
+   3F 01 0A 6F 6E 53 68 75 74 64 6F 77 6E 14 01 2E
+   08 05 41 00 FFFFFF84 20 3F 01 03 72 75 6E 08 05 43 00
+   FFFFFF84 00 44 01 07 65 78 65 63 75 74 65 14 02 2E 45
+   08 06 46 42 FFFFFF84 FFFFFFC0 00 47 01 03 66 75 6E 10 03 1B
+   48 2E 09 02 49 06 02 08 3C 62 79 6E 61 6D 65 3E
+   08 05 4B 00 FFFFFF84 00 3F 01 08 73 68 75 74 64 6F 77
+   6E 
+  InnerClass: 
+   public final #168= #77 of #17; //$anon$1=class scala/actors/scheduler/TerminationService$$anon$1 of class scala/actors/scheduler/TerminationService
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Asciz	SourceFile;
+const #2 = Asciz	TerminationService.scala;
+const #3 = Asciz	scala$actors$scheduler$TerminationMonitor$$started;
+const #4 = Asciz	Z;
+const #5 = Asciz	scala$actors$scheduler$TerminationMonitor$$termHandlers;
+const #6 = Asciz	Lscala/collection/mutable/HashMap;;
+const #7 = Asciz	scala$actors$scheduler$TerminationMonitor$$pendingReactions;
+const #8 = Asciz	I;
+const #9 = Asciz	CHECK_FREQ;
+const #10 = Asciz	terminating;
+const #11 = Asciz	terminate;
+const #12 = Asciz	<init>;
+const #13 = Asciz	(Z)V;
+const #14 = Asciz	Code;
+const #15 = Asciz	LineNumberTable;
+const #16 = Asciz	scala/actors/scheduler/TerminationService;
+const #17 = class	#16;	//  scala/actors/scheduler/TerminationService
+const #18 = NameAndType	#11:#4;//  terminate:Z
+const #19 = Field	#17.#18;	//  scala/actors/scheduler/TerminationService.terminate:Z
+const #20 = Asciz	java/lang/Thread;
+const #21 = class	#20;	//  java/lang/Thread
+const #22 = Asciz	()V;
+const #23 = NameAndType	#12:#22;//  "<init>":()V
+const #24 = Method	#21.#23;	//  java/lang/Thread."<init>":()V
+const #25 = Asciz	scala/actors/IScheduler$class;
+const #26 = class	#25;	//  scala/actors/IScheduler$class
+const #27 = Asciz	$init$;
+const #28 = Asciz	(Lscala/actors/IScheduler;)V;
+const #29 = NameAndType	#27:#28;//  $init$:(Lscala/actors/IScheduler;)V
+const #30 = Method	#26.#29;	//  scala/actors/IScheduler$class.$init$:(Lscala/actors/IScheduler;)V
+const #31 = Asciz	scala/actors/scheduler/TerminationMonitor$class;
+const #32 = class	#31;	//  scala/actors/scheduler/TerminationMonitor$class
+const #33 = Asciz	(Lscala/actors/scheduler/TerminationMonitor;)V;
+const #34 = NameAndType	#27:#33;//  $init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+const #35 = Method	#32.#34;	//  scala/actors/scheduler/TerminationMonitor$class.$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+const #36 = NameAndType	#10:#4;//  terminating:Z
+const #37 = Field	#17.#36;	//  scala/actors/scheduler/TerminationService.terminating:Z
+const #38 = int	50;
+const #39 = NameAndType	#9:#8;//  CHECK_FREQ:I
+const #40 = Field	#17.#39;	//  scala/actors/scheduler/TerminationService.CHECK_FREQ:I
+const #41 = Asciz	this;
+const #42 = Asciz	Lscala/actors/scheduler/TerminationService;;
+const #43 = Asciz	LocalVariableTable;
+const #44 = Asciz	liftedTree1$1;
+const #45 = Asciz	scala/Predef$;
+const #46 = class	#45;	//  scala/Predef$
+const #47 = Asciz	MODULE$;
+const #48 = Asciz	Lscala/Predef$;;
+const #49 = NameAndType	#47:#48;//  MODULE$:Lscala/Predef$;
+const #50 = Field	#46.#49;	//  scala/Predef$.MODULE$:Lscala/Predef$;
+const #51 = Asciz	()I;
+const #52 = NameAndType	#9:#51;//  CHECK_FREQ:()I
+const #53 = Method	#17.#52;	//  scala/actors/scheduler/TerminationService.CHECK_FREQ:()I
+const #54 = Asciz	int2long;
+const #55 = Asciz	(I)J;
+const #56 = NameAndType	#54:#55;//  int2long:(I)J
+const #57 = Method	#46.#56;	//  scala/Predef$.int2long:(I)J
+const #58 = Asciz	wait;
+const #59 = Asciz	(J)V;
+const #60 = NameAndType	#58:#59;//  wait:(J)V
+const #61 = Method	#17.#60;	//  scala/actors/scheduler/TerminationService.wait:(J)V
+const #62 = Asciz	java/lang/InterruptedException;
+const #63 = class	#62;	//  java/lang/InterruptedException
+const #64 = Asciz	shutdown;
+const #65 = Asciz	terminating_$eq;
+const #66 = NameAndType	#65:#13;//  terminating_$eq:(Z)V
+const #67 = Method	#17.#66;	//  scala/actors/scheduler/TerminationService.terminating_$eq:(Z)V
+const #68 = Asciz	scala/runtime/BoxedUnit;
+const #69 = class	#68;	//  scala/runtime/BoxedUnit
+const #70 = Asciz	UNIT;
+const #71 = Asciz	Lscala/runtime/BoxedUnit;;
+const #72 = NameAndType	#70:#71;//  UNIT:Lscala/runtime/BoxedUnit;
+const #73 = Field	#69.#72;	//  scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+const #74 = Asciz	execute;
+const #75 = Asciz	(Lscala/Function0;)V;
+const #76 = Asciz	scala/actors/scheduler/TerminationService$$anon$1;
+const #77 = class	#76;	//  scala/actors/scheduler/TerminationService$$anon$1
+const #78 = Asciz	(Lscala/actors/scheduler/TerminationService;Lscala/Function0;)V;
+const #79 = NameAndType	#12:#78;//  "<init>":(Lscala/actors/scheduler/TerminationService;Lscala/Function0;)V
+const #80 = Method	#77.#79;	//  scala/actors/scheduler/TerminationService$$anon$1."<init>":(Lscala/actors/scheduler/TerminationService;Lscala/Function0;)V
+const #81 = Asciz	scala/actors/IScheduler;
+const #82 = class	#81;	//  scala/actors/IScheduler
+const #83 = Asciz	(Ljava/lang/Runnable;)V;
+const #84 = NameAndType	#74:#83;//  execute:(Ljava/lang/Runnable;)V
+const #85 = InterfaceMethod	#82.#84;	//  scala/actors/IScheduler.execute:(Ljava/lang/Runnable;)V
+const #86 = Asciz	fun$1;
+const #87 = Asciz	Lscala/Function0;;
+const #88 = Asciz	(Lscala/Function0<Ljava/lang/Object;>;)V;
+const #89 = Asciz	Signature;
+const #90 = Asciz	run;
+const #91 = NameAndType	#44:#22;//  liftedTree1$1:()V
+const #92 = Method	#17.#91;	//  scala/actors/scheduler/TerminationService.liftedTree1$1:()V
+const #93 = Asciz	()Z;
+const #94 = NameAndType	#10:#93;//  terminating:()Z
+const #95 = Method	#17.#94;	//  scala/actors/scheduler/TerminationService.terminating:()Z
+const #96 = Asciz	scala/actors/scheduler/QuitException;
+const #97 = class	#96;	//  scala/actors/scheduler/QuitException
+const #98 = Method	#97.#23;	//  scala/actors/scheduler/QuitException."<init>":()V
+const #99 = Asciz	scala/actors/scheduler/TerminationMonitor;
+const #100 = class	#99;	//  scala/actors/scheduler/TerminationMonitor
+const #101 = Asciz	allTerminated;
+const #102 = NameAndType	#101:#93;//  allTerminated:()Z
+const #103 = InterfaceMethod	#100.#102;	//  scala/actors/scheduler/TerminationMonitor.allTerminated:()Z
+const #104 = Asciz	scala/actors/Debug$;
+const #105 = class	#104;	//  scala/actors/Debug$
+const #106 = Asciz	Lscala/actors/Debug$;;
+const #107 = NameAndType	#47:#106;//  MODULE$:Lscala/actors/Debug$;
+const #108 = Field	#105.#107;	//  scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+const #109 = Asciz	any2stringadd;
+const #110 = Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
+const #111 = NameAndType	#109:#110;//  any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+const #112 = Method	#46.#111;	//  scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+const #113 = Asciz	: initiating shutdown...;
+const #114 = String	#113;	//  : initiating shutdown...
+const #115 = Asciz	scala/runtime/StringAdd;
+const #116 = class	#115;	//  scala/runtime/StringAdd
+const #117 = Asciz	$plus;
+const #118 = Asciz	(Ljava/lang/String;)Ljava/lang/String;;
+const #119 = NameAndType	#117:#118;//  $plus:(Ljava/lang/String;)Ljava/lang/String;
+const #120 = Method	#116.#119;	//  scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+const #121 = Asciz	info;
+const #122 = Asciz	(Ljava/lang/String;)V;
+const #123 = NameAndType	#121:#122;//  info:(Ljava/lang/String;)V
+const #124 = Method	#105.#123;	//  scala/actors/Debug$.info:(Ljava/lang/String;)V
+const #125 = Asciz	onShutdown;
+const #126 = NameAndType	#125:#22;//  onShutdown:()V
+const #127 = Method	#17.#126;	//  scala/actors/scheduler/TerminationService.onShutdown:()V
+const #128 = Asciz	managedBlock;
+const #129 = Asciz	(Lscala/actors/ManagedBlocker;)V;
+const #130 = Asciz	(Lscala/actors/IScheduler;Lscala/actors/ManagedBlocker;)V;
+const #131 = NameAndType	#128:#130;//  managedBlock:(Lscala/actors/IScheduler;Lscala/actors/ManagedBlocker;)V
+const #132 = Method	#26.#131;	//  scala/actors/IScheduler$class.managedBlock:(Lscala/actors/IScheduler;Lscala/actors/ManagedBlocker;)V
+const #133 = Asciz	blocker;
+const #134 = Asciz	Lscala/actors/ManagedBlocker;;
+const #135 = Asciz	(Lscala/actors/scheduler/TerminationMonitor;)Z;
+const #136 = NameAndType	#101:#135;//  allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+const #137 = Method	#32.#136;	//  scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+const #138 = Asciz	terminated;
+const #139 = Asciz	(Lscala/actors/Reactor;)V;
+const #140 = Asciz	(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V;
+const #141 = NameAndType	#138:#140;//  terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+const #142 = Method	#32.#141;	//  scala/actors/scheduler/TerminationMonitor$class.terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+const #143 = Asciz	a;
+const #144 = Asciz	Lscala/actors/Reactor;;
+const #145 = Asciz	onTerminate;
+const #146 = Asciz	(Lscala/actors/Reactor;Lscala/Function0;)V;
+const #147 = Asciz	(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V;
+const #148 = NameAndType	#145:#147;//  onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+const #149 = Method	#32.#148;	//  scala/actors/scheduler/TerminationMonitor$class.onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+const #150 = Asciz	f;
+const #151 = Asciz	newActor;
+const #152 = NameAndType	#151:#140;//  newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+const #153 = Method	#32.#152;	//  scala/actors/scheduler/TerminationMonitor$class.newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+const #154 = Asciz	scala$actors$scheduler$TerminationMonitor$_setter_$scala$actors$scheduler$TerminationMonitor$$termHandlers_$eq;
+const #155 = Asciz	(Lscala/collection/mutable/HashMap;)V;
+const #156 = NameAndType	#5:#6;//  scala$actors$scheduler$TerminationMonitor$$termHandlers:Lscala/collection/mutable/HashMap;
+const #157 = Field	#17.#156;	//  scala/actors/scheduler/TerminationService.scala$actors$scheduler$TerminationMonitor$$termHandlers:Lscala/collection/mutable/HashMap;
+const #158 = Asciz	scala$actors$scheduler$TerminationMonitor$$started_$eq;
+const #159 = NameAndType	#3:#4;//  scala$actors$scheduler$TerminationMonitor$$started:Z
+const #160 = Field	#17.#159;	//  scala/actors/scheduler/TerminationService.scala$actors$scheduler$TerminationMonitor$$started:Z
+const #161 = Asciz	()Lscala/collection/mutable/HashMap;;
+const #162 = Asciz	scala$actors$scheduler$TerminationMonitor$$pendingReactions_$eq;
+const #163 = Asciz	(I)V;
+const #164 = NameAndType	#7:#8;//  scala$actors$scheduler$TerminationMonitor$$pendingReactions:I
+const #165 = Field	#17.#164;	//  scala/actors/scheduler/TerminationService.scala$actors$scheduler$TerminationMonitor$$pendingReactions:I
+const #166 = Asciz	ScalaSig;
+const #167 = Asciz	InnerClasses;
+const #168 = Asciz	$anon$1;
+const #169 = Asciz	scala/ScalaObject;
+const #170 = class	#169;	//  scala/ScalaObject
+
+{
+public scala.actors.scheduler.TerminationService(boolean);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#19; //Field terminate:Z
+   5:	aload_0
+   6:	invokespecial	#24; //Method java/lang/Thread."<init>":()V
+   9:	aload_0
+   10:	invokestatic	#30; //Method scala/actors/IScheduler$class.$init$:(Lscala/actors/IScheduler;)V
+   13:	aload_0
+   14:	invokestatic	#35; //Method scala/actors/scheduler/TerminationMonitor$class.$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+   17:	aload_0
+   18:	iconst_0
+   19:	putfield	#37; //Field terminating:Z
+   22:	aload_0
+   23:	ldc	#38; //int 50
+   25:	putfield	#40; //Field CHECK_FREQ:I
+   28:	return
+  LineNumberTable: 
+   line 24: 0
+   line 27: 17
+   line 29: 22
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      29      0    this       Lscala/actors/scheduler/TerminationService;
+   0      29      1    terminate       Z
+
+
+public void shutdown();
+  Code:
+   Stack=2, Locals=2, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	astore_1
+   3:	monitorenter
+   4:	aload_0
+   5:	iconst_1
+   6:	invokespecial	#67; //Method terminating_$eq:(Z)V
+   9:	getstatic	#73; //Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+   12:	pop
+   13:	aload_1
+   14:	monitorexit
+   15:	return
+   16:	aload_1
+   17:	monitorexit
+   18:	athrow
+  Exception table:
+   from   to  target type
+     4    15    16   any
+  LineNumberTable: 
+   line 69: 0
+   line 70: 4
+   line 69: 14
+
+
+public void execute(scala.Function0);
+  Code:
+   Stack=5, Locals=2, Args_size=2
+   0:	aload_0
+   1:	new	#77; //class scala/actors/scheduler/TerminationService$$anon$1
+   4:	dup
+   5:	aload_0
+   6:	aload_1
+   7:	invokespecial	#80; //Method scala/actors/scheduler/TerminationService$$anon$1."<init>":(Lscala/actors/scheduler/TerminationService;Lscala/Function0;)V
+   10:	invokeinterface	#85,  2; //InterfaceMethod scala/actors/IScheduler.execute:(Ljava/lang/Runnable;)V
+   15:	return
+  LineNumberTable: 
+   line 63: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      16      0    this       Lscala/actors/scheduler/TerminationService;
+   0      16      1    fun$1       Lscala/Function0;
+
+  Signature: length = 0x2
+   00 58 
+
+public void run();
+  Code:
+   Stack=3, Locals=2, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	astore_1
+   3:	monitorenter
+   4:	aload_0
+   5:	invokespecial	#92; //Method liftedTree1$1:()V
+   8:	aload_0
+   9:	invokespecial	#95; //Method terminating:()Z
+   12:	ifeq	23
+   15:	new	#97; //class scala/actors/scheduler/QuitException
+   18:	dup
+   19:	invokespecial	#98; //Method scala/actors/scheduler/QuitException."<init>":()V
+   22:	athrow
+   23:	aload_0
+   24:	getfield	#19; //Field terminate:Z
+   27:	ifeq	47
+   30:	aload_0
+   31:	invokeinterface	#103,  1; //InterfaceMethod scala/actors/scheduler/TerminationMonitor.allTerminated:()Z
+   36:	ifeq	47
+   39:	new	#97; //class scala/actors/scheduler/QuitException
+   42:	dup
+   43:	invokespecial	#98; //Method scala/actors/scheduler/QuitException."<init>":()V
+   46:	athrow
+   47:	getstatic	#73; //Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+   50:	pop
+   51:	aload_1
+   52:	monitorexit
+   53:	goto	0
+   56:	aload_1
+   57:	monitorexit
+   58:	athrow
+   59:	pop
+   60:	getstatic	#108; //Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+   63:	getstatic	#50; //Field scala/Predef$.MODULE$:Lscala/Predef$;
+   66:	aload_0
+   67:	invokevirtual	#112; //Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+   70:	ldc	#114; //String : initiating shutdown...
+   72:	invokevirtual	#120; //Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+   75:	invokevirtual	#124; //Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+   78:	aload_0
+   79:	invokevirtual	#127; //Method onShutdown:()V
+   82:	return
+  Exception table:
+   from   to  target type
+     4    56    56   any
+     0    59    59   Class scala/actors/scheduler/QuitException
+
+  LineNumberTable: 
+   line 36: 0
+   line 37: 4
+   line 42: 8
+   line 43: 15
+   line 45: 23
+   line 46: 39
+   line 45: 47
+   line 36: 52
+   line 34: 56
+   line 36: 57
+   line 34: 59
+   line 51: 60
+   line 53: 78
+   line 34: 82
+
+
+public abstract void onShutdown();
+
+public int CHECK_FREQ();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#40; //Field CHECK_FREQ:I
+   4:	ireturn
+  LineNumberTable: 
+   line 29: 0
+
+
+public void managedBlock(scala.actors.ManagedBlocker);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#132; //Method scala/actors/IScheduler$class.managedBlock:(Lscala/actors/IScheduler;Lscala/actors/ManagedBlocker;)V
+   5:	return
+  LineNumberTable: 
+   line 24: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/TerminationService;
+   0      6      1    blocker       Lscala/actors/ManagedBlocker;
+
+
+public boolean allTerminated();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#137; //Method scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+   4:	ireturn
+  LineNumberTable: 
+   line 24: 0
+
+
+public void terminated(scala.actors.Reactor);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#142; //Method scala/actors/scheduler/TerminationMonitor$class.terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+   5:	return
+  LineNumberTable: 
+   line 24: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/TerminationService;
+   0      6      1    a       Lscala/actors/Reactor;
+
+
+public void onTerminate(scala.actors.Reactor, scala.Function0);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#149; //Method scala/actors/scheduler/TerminationMonitor$class.onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+   6:	return
+  LineNumberTable: 
+   line 24: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/scheduler/TerminationService;
+   0      7      1    a       Lscala/actors/Reactor;
+   0      7      2    f       Lscala/Function0;
+
+
+public void newActor(scala.actors.Reactor);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#153; //Method scala/actors/scheduler/TerminationMonitor$class.newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+   5:	return
+  LineNumberTable: 
+   line 24: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/TerminationService;
+   0      6      1    a       Lscala/actors/Reactor;
+
+
+public void scala$actors$scheduler$TerminationMonitor$_setter_$scala$actors$scheduler$TerminationMonitor$$termHandlers_$eq(scala.collection.mutable.HashMap);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#157; //Field scala$actors$scheduler$TerminationMonitor$$termHandlers:Lscala/collection/mutable/HashMap;
+   5:	return
+  LineNumberTable: 
+   line 24: 0
+
+
+public final void scala$actors$scheduler$TerminationMonitor$$started_$eq(boolean);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#160; //Field scala$actors$scheduler$TerminationMonitor$$started:Z
+   5:	return
+  LineNumberTable: 
+   line 24: 0
+
+
+public final boolean scala$actors$scheduler$TerminationMonitor$$started();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#160; //Field scala$actors$scheduler$TerminationMonitor$$started:Z
+   4:	ireturn
+  LineNumberTable: 
+   line 24: 0
+
+
+public final scala.collection.mutable.HashMap scala$actors$scheduler$TerminationMonitor$$termHandlers();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#157; //Field scala$actors$scheduler$TerminationMonitor$$termHandlers:Lscala/collection/mutable/HashMap;
+   4:	areturn
+  LineNumberTable: 
+   line 24: 0
+
+
+public final void scala$actors$scheduler$TerminationMonitor$$pendingReactions_$eq(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#165; //Field scala$actors$scheduler$TerminationMonitor$$pendingReactions:I
+   5:	return
+  LineNumberTable: 
+   line 24: 0
+
+
+public final int scala$actors$scheduler$TerminationMonitor$$pendingReactions();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#165; //Field scala$actors$scheduler$TerminationMonitor$$pendingReactions:I
+   4:	ireturn
+  LineNumberTable: 
+   line 24: 0
+
+
+}
+

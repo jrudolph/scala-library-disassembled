@@ -1,0 +1,156 @@
+Compiled from "ExecutorScheduler.scala"
+public abstract class scala.actors.scheduler.ExecutorScheduler$class extends java.lang.Object
+  SourceFile: "ExecutorScheduler.scala"
+  Scala: length = 0x
+   
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Asciz	SourceFile;
+const #2 = Asciz	ExecutorScheduler.scala;
+const #3 = Asciz	$init$;
+const #4 = Asciz	(Lscala/actors/scheduler/ExecutorScheduler;)V;
+const #5 = Asciz	Code;
+const #6 = Asciz	LineNumberTable;
+const #7 = Asciz	$this;
+const #8 = Asciz	Lscala/actors/scheduler/ExecutorScheduler;;
+const #9 = Asciz	LocalVariableTable;
+const #10 = Asciz	isActive;
+const #11 = Asciz	(Lscala/actors/scheduler/ExecutorScheduler;)Z;
+const #12 = Asciz	scala/actors/scheduler/ExecutorScheduler;
+const #13 = class	#12;	//  scala/actors/scheduler/ExecutorScheduler
+const #14 = Asciz	executor;
+const #15 = Asciz	()Ljava/util/concurrent/ExecutorService;;
+const #16 = NameAndType	#14:#15;//  executor:()Ljava/util/concurrent/ExecutorService;
+const #17 = InterfaceMethod	#13.#16;	//  scala/actors/scheduler/ExecutorScheduler.executor:()Ljava/util/concurrent/ExecutorService;
+const #18 = Asciz	java/util/concurrent/ExecutorService;
+const #19 = class	#18;	//  java/util/concurrent/ExecutorService
+const #20 = Asciz	isShutdown;
+const #21 = Asciz	()Z;
+const #22 = NameAndType	#20:#21;//  isShutdown:()Z
+const #23 = InterfaceMethod	#19.#22;	//  java/util/concurrent/ExecutorService.isShutdown:()Z
+const #24 = Asciz	onShutdown;
+const #25 = Asciz	shutdown;
+const #26 = Asciz	()V;
+const #27 = NameAndType	#25:#26;//  shutdown:()V
+const #28 = InterfaceMethod	#19.#27;	//  java/util/concurrent/ExecutorService.shutdown:()V
+const #29 = Asciz	executeFromActor;
+const #30 = Asciz	(Lscala/actors/scheduler/ExecutorScheduler;Ljava/lang/Runnable;)V;
+const #31 = Asciz	execute;
+const #32 = Asciz	(Ljava/lang/Runnable;)V;
+const #33 = NameAndType	#31:#32;//  execute:(Ljava/lang/Runnable;)V
+const #34 = InterfaceMethod	#13.#33;	//  scala/actors/scheduler/ExecutorScheduler.execute:(Ljava/lang/Runnable;)V
+const #35 = Asciz	task;
+const #36 = Asciz	Ljava/lang/Runnable;;
+const #37 = Asciz	java/util/concurrent/Executor;
+const #38 = class	#37;	//  java/util/concurrent/Executor
+const #39 = InterfaceMethod	#38.#33;	//  java/util/concurrent/Executor.execute:(Ljava/lang/Runnable;)V
+const #40 = Asciz	java/lang/Runnable;
+const #41 = class	#40;	//  java/lang/Runnable
+const #42 = Asciz	run;
+const #43 = NameAndType	#42:#26;//  run:()V
+const #44 = InterfaceMethod	#41.#43;	//  java/lang/Runnable.run:()V
+const #45 = Asciz	java/util/concurrent/RejectedExecutionException;
+const #46 = class	#45;	//  java/util/concurrent/RejectedExecutionException
+const #47 = Asciz	Scala;
+const #48 = Asciz	scala/actors/scheduler/ExecutorScheduler$class;
+const #49 = class	#48;	//  scala/actors/scheduler/ExecutorScheduler$class
+const #50 = Asciz	java/lang/Object;
+const #51 = class	#50;	//  java/lang/Object
+
+{
+public static void $init$(scala.actors.scheduler.ExecutorScheduler);
+  Code:
+   Stack=0, Locals=1, Args_size=1
+   0:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    $this       Lscala/actors/scheduler/ExecutorScheduler;
+
+
+public static boolean isActive(scala.actors.scheduler.ExecutorScheduler);
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokeinterface	#17,  1; //InterfaceMethod scala/actors/scheduler/ExecutorScheduler.executor:()Ljava/util/concurrent/ExecutorService;
+   6:	ifnull	27
+   9:	aload_0
+   10:	invokeinterface	#17,  1; //InterfaceMethod scala/actors/scheduler/ExecutorScheduler.executor:()Ljava/util/concurrent/ExecutorService;
+   15:	invokeinterface	#23,  1; //InterfaceMethod java/util/concurrent/ExecutorService.isShutdown:()Z
+   20:	ifne	27
+   23:	iconst_1
+   24:	goto	28
+   27:	iconst_0
+   28:	ireturn
+  LineNumberTable: 
+   line 53: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      29      0    $this       Lscala/actors/scheduler/ExecutorScheduler;
+
+
+public static void onShutdown(scala.actors.scheduler.ExecutorScheduler);
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokeinterface	#17,  1; //InterfaceMethod scala/actors/scheduler/ExecutorScheduler.executor:()Ljava/util/concurrent/ExecutorService;
+   6:	invokeinterface	#28,  1; //InterfaceMethod java/util/concurrent/ExecutorService.shutdown:()V
+   11:	return
+  LineNumberTable: 
+   line 47: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      12      0    $this       Lscala/actors/scheduler/ExecutorScheduler;
+
+
+public static void executeFromActor(scala.actors.scheduler.ExecutorScheduler, java.lang.Runnable);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokeinterface	#34,  2; //InterfaceMethod scala/actors/scheduler/ExecutorScheduler.execute:(Ljava/lang/Runnable;)V
+   7:	return
+  LineNumberTable: 
+   line 41: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    $this       Lscala/actors/scheduler/ExecutorScheduler;
+   0      8      1    task       Ljava/lang/Runnable;
+
+
+public static void execute(scala.actors.scheduler.ExecutorScheduler, java.lang.Runnable);
+  Code:
+   Stack=2, Locals=3, Args_size=2
+   0:	aload_0
+   1:	invokeinterface	#17,  1; //InterfaceMethod scala/actors/scheduler/ExecutorScheduler.executor:()Ljava/util/concurrent/ExecutorService;
+   6:	aload_1
+   7:	invokeinterface	#39,  2; //InterfaceMethod java/util/concurrent/Executor.execute:(Ljava/lang/Runnable;)V
+   12:	goto	22
+   15:	astore_2
+   16:	aload_1
+   17:	invokeinterface	#44,  1; //InterfaceMethod java/lang/Runnable.run:()V
+   22:	return
+  Exception table:
+   from   to  target type
+     0    15    15   Class java/util/concurrent/RejectedExecutionException
+
+  LineNumberTable: 
+   line 32: 0
+   line 34: 15
+   line 36: 16
+   line 31: 22
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      23      0    $this       Lscala/actors/scheduler/ExecutorScheduler;
+   0      23      1    task       Ljava/lang/Runnable;
+
+
+}
+

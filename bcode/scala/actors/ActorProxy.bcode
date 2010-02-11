@@ -1,0 +1,1362 @@
+Compiled from "ActorProxy.scala"
+public class scala.actors.ActorProxy extends java.lang.Object implements scala.actors.Actor,scala.ScalaObject
+  SourceFile: "ActorProxy.scala"
+  ScalaSig: length = 0x14B
+   05 00 37 06 09 01 02 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF80 00 02 06 02 0A
+   41 63 74 6F 72 50 72 6F 78 79 0A 02 03 04 01 06
+   61 63 74 6F 72 73 0A 01 05 01 05 73 63 61 6C 61
+   13 04 00 07 0F 13 10 02 08 0D 0D 01 09 0A 02 0A
+   0B 01 04 6C 61 6E 67 0A 01 0C 01 04 6A 61 76 61
+   09 02 0E 09 02 06 4F 62 6A 65 63 74 10 02 10 11
+   0D 01 02 09 02 12 02 02 05 41 63 74 6F 72 10 02
+   14 15 0D 01 04 09 02 16 04 02 0B 53 63 61 6C 61
+   4F 62 6A 65 63 74 08 08 18 00 FFFFFF82 FFFFFF80 FFFFFFA0 FFFFFF80 04 1A
+   01 01 74 03 00 10 02 08 1B 09 02 1C 09 02 06 54
+   68 72 65 61 64 08 08 1E 00 FFFFFF82 FFFFFFC2 FFFFFF80 FFFFFF84 22 1F 01
+   09 73 63 68 65 64 75 6C 65 72 15 01 20 10 02 10
+   21 09 02 22 02 02 0A 49 53 63 68 65 64 75 6C 65
+   72 08 08 24 00 FFFFFF82 FFFFFF80 FFFFFFA0 FFFFFF80 06 20 01 0A 73 63 68
+   65 64 75 6C 65 72 20 08 05 26 00 FFFFFF84 00 27 01 06
+   3C 69 6E 69 74 3E 14 03 28 29 2A 10 02 10 00 08
+   05 18 25 FFFFFFC0 00 1A 08 05 1E 25 FFFFFFC0 00 20 08 05 2C
+   00 FFFFFF84 00 2D 01 03 61 63 74 14 01 2E 10 02 14 2F
+   09 02 30 04 02 04 55 6E 69 74 08 05 32 00 FFFFFF84 20
+   33 01 04 65 78 69 74 14 01 34 10 02 14 35 09 02
+   36 04 02 07 4E 6F 74 68 69 6E 67 
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Asciz	SourceFile;
+const #2 = Asciz	ActorProxy.scala;
+const #3 = Asciz	exiting;
+const #4 = Asciz	Z;
+const #5 = Asciz	kill;
+const #6 = Asciz	Lscala/Function0;;
+const #7 = Asciz	waitingFor;
+const #8 = Asciz	Lscala/Function1;;
+const #9 = Asciz	waitingForNone;
+const #10 = Asciz	continuation;
+const #11 = Asciz	Lscala/PartialFunction;;
+const #12 = Asciz	sendBuffer;
+const #13 = Asciz	Lscala/collection/mutable/Queue;;
+const #14 = Asciz	mailbox;
+const #15 = Asciz	Lscala/actors/MessageQueue;;
+const #16 = Asciz	senders;
+const #17 = Asciz	Lscala/collection/immutable/List;;
+const #18 = Asciz	shouldExit;
+const #19 = Asciz	exitReason;
+const #20 = Asciz	Ljava/lang/Object;;
+const #21 = Asciz	trapExit;
+const #22 = Asciz	links;
+const #23 = Asciz	scala$actors$Actor$$onTimeout;
+const #24 = Asciz	Lscala/Option;;
+const #25 = Asciz	scala$actors$Actor$$received;
+const #26 = Asciz	scala$actors$Actor$$isSuspended;
+const #27 = Asciz	scheduler;
+const #28 = Asciz	Lscala/actors/IScheduler;;
+const #29 = Asciz	<init>;
+const #30 = Asciz	(Ljava/lang/Thread;Lscala/actors/IScheduler;)V;
+const #31 = Asciz	Code;
+const #32 = Asciz	LineNumberTable;
+const #33 = Asciz	scala/actors/ActorProxy;
+const #34 = class	#33;	//  scala/actors/ActorProxy
+const #35 = NameAndType	#27:#28;//  scheduler:Lscala/actors/IScheduler;
+const #36 = Field	#34.#35;	//  scala/actors/ActorProxy.scheduler:Lscala/actors/IScheduler;
+const #37 = Asciz	java/lang/Object;
+const #38 = class	#37;	//  java/lang/Object
+const #39 = Asciz	()V;
+const #40 = NameAndType	#29:#39;//  "<init>":()V
+const #41 = Method	#38.#40;	//  java/lang/Object."<init>":()V
+const #42 = Asciz	scala/actors/Replyable$class;
+const #43 = class	#42;	//  scala/actors/Replyable$class
+const #44 = Asciz	$init$;
+const #45 = Asciz	(Lscala/actors/Replyable;)V;
+const #46 = NameAndType	#44:#45;//  $init$:(Lscala/actors/Replyable;)V
+const #47 = Method	#43.#46;	//  scala/actors/Replyable$class.$init$:(Lscala/actors/Replyable;)V
+const #48 = Asciz	scala/actors/AbstractActor$class;
+const #49 = class	#48;	//  scala/actors/AbstractActor$class
+const #50 = Asciz	(Lscala/actors/AbstractActor;)V;
+const #51 = NameAndType	#44:#50;//  $init$:(Lscala/actors/AbstractActor;)V
+const #52 = Method	#49.#51;	//  scala/actors/AbstractActor$class.$init$:(Lscala/actors/AbstractActor;)V
+const #53 = Asciz	scala/actors/Reactor$class;
+const #54 = class	#53;	//  scala/actors/Reactor$class
+const #55 = Asciz	(Lscala/actors/Reactor;)V;
+const #56 = NameAndType	#44:#55;//  $init$:(Lscala/actors/Reactor;)V
+const #57 = Method	#54.#56;	//  scala/actors/Reactor$class.$init$:(Lscala/actors/Reactor;)V
+const #58 = Asciz	scala/actors/ReplyReactor$class;
+const #59 = class	#58;	//  scala/actors/ReplyReactor$class
+const #60 = Asciz	(Lscala/actors/ReplyReactor;)V;
+const #61 = NameAndType	#44:#60;//  $init$:(Lscala/actors/ReplyReactor;)V
+const #62 = Method	#59.#61;	//  scala/actors/ReplyReactor$class.$init$:(Lscala/actors/ReplyReactor;)V
+const #63 = Asciz	scala/actors/ReplyableReactor$class;
+const #64 = class	#63;	//  scala/actors/ReplyableReactor$class
+const #65 = Asciz	(Lscala/actors/ReplyableReactor;)V;
+const #66 = NameAndType	#44:#65;//  $init$:(Lscala/actors/ReplyableReactor;)V
+const #67 = Method	#64.#66;	//  scala/actors/ReplyableReactor$class.$init$:(Lscala/actors/ReplyableReactor;)V
+const #68 = Asciz	scala/actors/ReplyableActor$class;
+const #69 = class	#68;	//  scala/actors/ReplyableActor$class
+const #70 = Asciz	(Lscala/actors/ReplyableActor;)V;
+const #71 = NameAndType	#44:#70;//  $init$:(Lscala/actors/ReplyableActor;)V
+const #72 = Method	#69.#71;	//  scala/actors/ReplyableActor$class.$init$:(Lscala/actors/ReplyableActor;)V
+const #73 = Asciz	scala/actors/Actor$class;
+const #74 = class	#73;	//  scala/actors/Actor$class
+const #75 = Asciz	(Lscala/actors/Actor;)V;
+const #76 = NameAndType	#44:#75;//  $init$:(Lscala/actors/Actor;)V
+const #77 = Method	#74.#76;	//  scala/actors/Actor$class.$init$:(Lscala/actors/Actor;)V
+const #78 = Asciz	this;
+const #79 = Asciz	Lscala/actors/ActorProxy;;
+const #80 = Asciz	t;
+const #81 = Asciz	Ljava/lang/Thread;;
+const #82 = Asciz	LocalVariableTable;
+const #83 = Asciz	start;
+const #84 = Asciz	()Lscala/actors/Reactor;;
+const #85 = Asciz	scala/actors/Actor;
+const #86 = class	#85;	//  scala/actors/Actor
+const #87 = Asciz	()Lscala/actors/Actor;;
+const #88 = NameAndType	#83:#87;//  start:()Lscala/actors/Actor;
+const #89 = InterfaceMethod	#86.#88;	//  scala/actors/Actor.start:()Lscala/actors/Actor;
+const #90 = Asciz	$bang$bang;
+const #91 = Asciz	(Ljava/lang/Object;Lscala/PartialFunction;)Lscala/Function0;;
+const #92 = Asciz	scala/actors/ReplyableActor;
+const #93 = class	#92;	//  scala/actors/ReplyableActor
+const #94 = Asciz	(Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;;
+const #95 = NameAndType	#90:#94;//  $bang$bang:(Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;
+const #96 = InterfaceMethod	#93.#95;	//  scala/actors/ReplyableActor.$bang$bang:(Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;
+const #97 = Asciz	msg;
+const #98 = Asciz	f;
+const #99 = Asciz	(Ljava/lang/Object;)Lscala/Function0;;
+const #100 = Asciz	(Ljava/lang/Object;)Lscala/actors/Future;;
+const #101 = NameAndType	#90:#100;//  $bang$bang:(Ljava/lang/Object;)Lscala/actors/Future;
+const #102 = InterfaceMethod	#93.#101;	//  scala/actors/ReplyableActor.$bang$bang:(Ljava/lang/Object;)Lscala/actors/Future;
+const #103 = Asciz	receiver;
+const #104 = Asciz	scala/actors/Reactor;
+const #105 = class	#104;	//  scala/actors/Reactor
+const #106 = NameAndType	#103:#87;//  receiver:()Lscala/actors/Actor;
+const #107 = InterfaceMethod	#105.#106;	//  scala/actors/Reactor.receiver:()Lscala/actors/Actor;
+const #108 = Asciz	exit;
+const #109 = Asciz	()Lscala/runtime/Nothing$;;
+const #110 = Asciz	shouldExit_$eq;
+const #111 = Asciz	(Z)V;
+const #112 = NameAndType	#110:#111;//  shouldExit_$eq:(Z)V
+const #113 = InterfaceMethod	#86.#112;	//  scala/actors/Actor.shouldExit_$eq:(Z)V
+const #114 = Asciz	()Lscala/collection/immutable/List;;
+const #115 = NameAndType	#22:#114;//  links:()Lscala/collection/immutable/List;
+const #116 = InterfaceMethod	#86.#115;	//  scala/actors/Actor.links:()Lscala/collection/immutable/List;
+const #117 = Asciz	scala/collection/generic/IterableTemplate;
+const #118 = class	#117;	//  scala/collection/generic/IterableTemplate
+const #119 = Asciz	isEmpty;
+const #120 = Asciz	()Z;
+const #121 = NameAndType	#119:#120;//  isEmpty:()Z
+const #122 = InterfaceMethod	#118.#121;	//  scala/collection/generic/IterableTemplate.isEmpty:()Z
+const #123 = Asciz	exitLinked;
+const #124 = NameAndType	#123:#39;//  exitLinked:()V
+const #125 = InterfaceMethod	#86.#124;	//  scala/actors/Actor.exitLinked:()V
+const #126 = Asciz	java/lang/InterruptedException;
+const #127 = class	#126;	//  java/lang/InterruptedException
+const #128 = Method	#127.#40;	//  java/lang/InterruptedException."<init>":()V
+const #129 = Asciz	act;
+const #130 = Asciz	()Lscala/actors/IScheduler;;
+const #131 = Asciz	exiting_$eq;
+const #132 = NameAndType	#3:#4;//  exiting:Z
+const #133 = Field	#34.#132;	//  scala/actors/ActorProxy.exiting:Z
+const #134 = Asciz	terminated;
+const #135 = NameAndType	#134:#55;//  terminated:(Lscala/actors/Reactor;)V
+const #136 = Method	#54.#135;	//  scala/actors/Reactor$class.terminated:(Lscala/actors/Reactor;)V
+const #137 = Asciz	seq;
+const #138 = Asciz	(Lscala/Function0;Lscala/Function0;)V;
+const #139 = Asciz	(Lscala/actors/Reactor;Lscala/Function0;Lscala/Function0;)V;
+const #140 = NameAndType	#137:#139;//  seq:(Lscala/actors/Reactor;Lscala/Function0;Lscala/Function0;)V
+const #141 = Method	#54.#140;	//  scala/actors/Reactor$class.seq:(Lscala/actors/Reactor;Lscala/Function0;Lscala/Function0;)V
+const #142 = Asciz	first;
+const #143 = Asciz	next;
+const #144 = Asciz	searchMailbox;
+const #145 = Asciz	(Lscala/actors/MessageQueue;Lscala/Function1;Z)V;
+const #146 = Asciz	(Lscala/actors/Reactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V;
+const #147 = NameAndType	#144:#146;//  searchMailbox:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V
+const #148 = Method	#54.#147;	//  scala/actors/Reactor$class.searchMailbox:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V
+const #149 = Asciz	startMbox;
+const #150 = Asciz	handlesMessage;
+const #151 = Asciz	resumeOnSameThread;
+const #152 = Asciz	drainSendBuffer;
+const #153 = Asciz	(Lscala/actors/MessageQueue;)V;
+const #154 = Asciz	(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V;
+const #155 = NameAndType	#152:#154;//  drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V
+const #156 = Method	#54.#155;	//  scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V
+const #157 = Asciz	mbox;
+const #158 = Asciz	(Lscala/actors/Reactor;)Lscala/actors/Actor;;
+const #159 = NameAndType	#103:#158;//  receiver:(Lscala/actors/Reactor;)Lscala/actors/Actor;
+const #160 = Method	#54.#159;	//  scala/actors/Reactor$class.receiver:(Lscala/actors/Reactor;)Lscala/actors/Actor;
+const #161 = Asciz	send;
+const #162 = Asciz	(Ljava/lang/Object;Lscala/actors/OutputChannel;)V;
+const #163 = Asciz	(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;)V;
+const #164 = NameAndType	#161:#163;//  send:(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;)V
+const #165 = Method	#54.#164;	//  scala/actors/Reactor$class.send:(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;)V
+const #166 = Asciz	replyTo;
+const #167 = Asciz	Lscala/actors/OutputChannel;;
+const #168 = Asciz	mailboxSize;
+const #169 = Asciz	()I;
+const #170 = Asciz	(Lscala/actors/Reactor;)I;
+const #171 = NameAndType	#168:#170;//  mailboxSize:(Lscala/actors/Reactor;)I
+const #172 = Method	#54.#171;	//  scala/actors/Reactor$class.mailboxSize:(Lscala/actors/Reactor;)I
+const #173 = Asciz	exceptionHandler;
+const #174 = Asciz	()Lscala/PartialFunction;;
+const #175 = Asciz	(Lscala/actors/Reactor;)Lscala/PartialFunction;;
+const #176 = NameAndType	#173:#175;//  exceptionHandler:(Lscala/actors/Reactor;)Lscala/PartialFunction;
+const #177 = Method	#54.#176;	//  scala/actors/Reactor$class.exceptionHandler:(Lscala/actors/Reactor;)Lscala/PartialFunction;
+const #178 = Asciz	scala$actors$Reactor$_setter_$waitingForNone_$eq;
+const #179 = Asciz	(Lscala/Function1;)V;
+const #180 = NameAndType	#9:#8;//  waitingForNone:Lscala/Function1;
+const #181 = Field	#34.#180;	//  scala/actors/ActorProxy.waitingForNone:Lscala/Function1;
+const #182 = Asciz	scala$actors$Reactor$_setter_$mailbox_$eq;
+const #183 = NameAndType	#14:#15;//  mailbox:Lscala/actors/MessageQueue;
+const #184 = Field	#34.#183;	//  scala/actors/ActorProxy.mailbox:Lscala/actors/MessageQueue;
+const #185 = Asciz	kill_$eq;
+const #186 = Asciz	(Lscala/Function0;)V;
+const #187 = NameAndType	#5:#6;//  kill:Lscala/Function0;
+const #188 = Field	#34.#187;	//  scala/actors/ActorProxy.kill:Lscala/Function0;
+const #189 = Asciz	()Lscala/Function0;;
+const #190 = Asciz	waitingFor_$eq;
+const #191 = NameAndType	#7:#8;//  waitingFor:Lscala/Function1;
+const #192 = Field	#34.#191;	//  scala/actors/ActorProxy.waitingFor:Lscala/Function1;
+const #193 = Asciz	()Lscala/Function1;;
+const #194 = Asciz	continuation_$eq;
+const #195 = Asciz	(Lscala/PartialFunction;)V;
+const #196 = NameAndType	#10:#11;//  continuation:Lscala/PartialFunction;
+const #197 = Field	#34.#196;	//  scala/actors/ActorProxy.continuation:Lscala/PartialFunction;
+const #198 = Asciz	sendBuffer_$eq;
+const #199 = Asciz	(Lscala/collection/mutable/Queue;)V;
+const #200 = NameAndType	#12:#13;//  sendBuffer:Lscala/collection/mutable/Queue;
+const #201 = Field	#34.#200;	//  scala/actors/ActorProxy.sendBuffer:Lscala/collection/mutable/Queue;
+const #202 = Asciz	()Lscala/collection/mutable/Queue;;
+const #203 = Asciz	()Lscala/actors/MessageQueue;;
+const #204 = Asciz	forward;
+const #205 = Asciz	(Ljava/lang/Object;)V;
+const #206 = Asciz	(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V;
+const #207 = NameAndType	#204:#206;//  forward:(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V
+const #208 = Method	#59.#207;	//  scala/actors/ReplyReactor$class.forward:(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V
+const #209 = Asciz	$bang;
+const #210 = NameAndType	#209:#206;//  $bang:(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V
+const #211 = Method	#59.#210;	//  scala/actors/ReplyReactor$class.$bang:(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V
+const #212 = Asciz	reply;
+const #213 = NameAndType	#212:#206;//  reply:(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V
+const #214 = Method	#59.#213;	//  scala/actors/ReplyReactor$class.reply:(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V
+const #215 = Asciz	sender;
+const #216 = Asciz	()Lscala/actors/OutputChannel;;
+const #217 = Asciz	(Lscala/actors/ReplyReactor;)Lscala/actors/OutputChannel;;
+const #218 = NameAndType	#215:#217;//  sender:(Lscala/actors/ReplyReactor;)Lscala/actors/OutputChannel;
+const #219 = Method	#59.#218;	//  scala/actors/ReplyReactor$class.sender:(Lscala/actors/ReplyReactor;)Lscala/actors/OutputChannel;
+const #220 = Asciz	senders_$eq;
+const #221 = Asciz	(Lscala/collection/immutable/List;)V;
+const #222 = NameAndType	#16:#17;//  senders:Lscala/collection/immutable/List;
+const #223 = Field	#34.#222;	//  scala/actors/ActorProxy.senders:Lscala/collection/immutable/List;
+const #224 = Asciz	(Lscala/actors/ReplyableActor;Ljava/lang/Object;)Lscala/actors/Future;;
+const #225 = NameAndType	#90:#224;//  $bang$bang:(Lscala/actors/ReplyableActor;Ljava/lang/Object;)Lscala/actors/Future;
+const #226 = Method	#69.#225;	//  scala/actors/ReplyableActor$class.$bang$bang:(Lscala/actors/ReplyableActor;Ljava/lang/Object;)Lscala/actors/Future;
+const #227 = Asciz	(Lscala/actors/ReplyableActor;Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;;
+const #228 = NameAndType	#90:#227;//  $bang$bang:(Lscala/actors/ReplyableActor;Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;
+const #229 = Method	#69.#228;	//  scala/actors/ReplyableActor$class.$bang$bang:(Lscala/actors/ReplyableActor;Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;
+const #230 = Asciz	$bang$qmark;
+const #231 = Asciz	(JLjava/lang/Object;)Lscala/Option;;
+const #232 = Asciz	(Lscala/actors/ReplyableActor;JLjava/lang/Object;)Lscala/Option;;
+const #233 = NameAndType	#230:#232;//  $bang$qmark:(Lscala/actors/ReplyableActor;JLjava/lang/Object;)Lscala/Option;
+const #234 = Method	#69.#233;	//  scala/actors/ReplyableActor$class.$bang$qmark:(Lscala/actors/ReplyableActor;JLjava/lang/Object;)Lscala/Option;
+const #235 = Asciz	msec;
+const #236 = Asciz	J;
+const #237 = Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
+const #238 = Asciz	(Lscala/actors/ReplyableActor;Ljava/lang/Object;)Ljava/lang/Object;;
+const #239 = NameAndType	#230:#238;//  $bang$qmark:(Lscala/actors/ReplyableActor;Ljava/lang/Object;)Ljava/lang/Object;
+const #240 = Method	#69.#239;	//  scala/actors/ReplyableActor$class.$bang$qmark:(Lscala/actors/ReplyableActor;Ljava/lang/Object;)Ljava/lang/Object;
+const #241 = Asciz	onTerminate;
+const #242 = Asciz	(Lscala/actors/Actor;Lscala/Function0;)V;
+const #243 = NameAndType	#241:#242;//  onTerminate:(Lscala/actors/Actor;Lscala/Function0;)V
+const #244 = Method	#74.#243;	//  scala/actors/Actor$class.onTerminate:(Lscala/actors/Actor;Lscala/Function0;)V
+const #245 = Asciz	(Lscala/actors/AbstractActor;Ljava/lang/Object;)V;
+const #246 = Asciz	(Lscala/actors/Actor;Lscala/actors/AbstractActor;Ljava/lang/Object;)V;
+const #247 = NameAndType	#108:#246;//  exit:(Lscala/actors/Actor;Lscala/actors/AbstractActor;Ljava/lang/Object;)V
+const #248 = Method	#74.#247;	//  scala/actors/Actor$class.exit:(Lscala/actors/Actor;Lscala/actors/AbstractActor;Ljava/lang/Object;)V
+const #249 = Asciz	from;
+const #250 = Asciz	Lscala/actors/AbstractActor;;
+const #251 = Asciz	reason;
+const #252 = Asciz	(Lscala/actors/Actor;Ljava/lang/Object;)V;
+const #253 = NameAndType	#123:#252;//  exitLinked:(Lscala/actors/Actor;Ljava/lang/Object;)V
+const #254 = Method	#74.#253;	//  scala/actors/Actor$class.exitLinked:(Lscala/actors/Actor;Ljava/lang/Object;)V
+const #255 = NameAndType	#123:#75;//  exitLinked:(Lscala/actors/Actor;)V
+const #256 = Method	#74.#255;	//  scala/actors/Actor$class.exitLinked:(Lscala/actors/Actor;)V
+const #257 = Asciz	(Ljava/lang/Object;)Lscala/runtime/Nothing$;;
+const #258 = Asciz	(Lscala/actors/Actor;Ljava/lang/Object;)Lscala/runtime/Nothing$;;
+const #259 = NameAndType	#108:#258;//  exit:(Lscala/actors/Actor;Ljava/lang/Object;)Lscala/runtime/Nothing$;
+const #260 = Method	#74.#259;	//  scala/actors/Actor$class.exit:(Lscala/actors/Actor;Ljava/lang/Object;)Lscala/runtime/Nothing$;
+const #261 = Asciz	unlinkFrom;
+const #262 = Asciz	(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V;
+const #263 = NameAndType	#261:#262;//  unlinkFrom:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
+const #264 = Method	#74.#263;	//  scala/actors/Actor$class.unlinkFrom:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
+const #265 = Asciz	unlink;
+const #266 = NameAndType	#265:#262;//  unlink:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
+const #267 = Method	#74.#266;	//  scala/actors/Actor$class.unlink:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
+const #268 = Asciz	linkTo;
+const #269 = NameAndType	#268:#262;//  linkTo:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
+const #270 = Method	#74.#269;	//  scala/actors/Actor$class.linkTo:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
+const #271 = Asciz	to;
+const #272 = Asciz	link;
+const #273 = Asciz	(Lscala/Function0;)Lscala/actors/Actor;;
+const #274 = Asciz	(Lscala/actors/Actor;Lscala/Function0;)Lscala/actors/Actor;;
+const #275 = NameAndType	#272:#274;//  link:(Lscala/actors/Actor;Lscala/Function0;)Lscala/actors/Actor;
+const #276 = Method	#74.#275;	//  scala/actors/Actor$class.link:(Lscala/actors/Actor;Lscala/Function0;)Lscala/actors/Actor;
+const #277 = Asciz	body;
+const #278 = Asciz	(Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;;
+const #279 = Asciz	(Lscala/actors/Actor;Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;;
+const #280 = NameAndType	#272:#279;//  link:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;
+const #281 = Method	#74.#280;	//  scala/actors/Actor$class.link:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;
+const #282 = Asciz	(Lscala/actors/Actor;)Lscala/actors/Actor;;
+const #283 = NameAndType	#83:#282;//  start:(Lscala/actors/Actor;)Lscala/actors/Actor;
+const #284 = Method	#74.#283;	//  scala/actors/Actor$class.start:(Lscala/actors/Actor;)Lscala/actors/Actor;
+const #285 = Asciz	scheduleActor;
+const #286 = Asciz	(Lscala/PartialFunction;Ljava/lang/Object;)V;
+const #287 = Asciz	(Lscala/actors/Actor;Lscala/PartialFunction;Ljava/lang/Object;)V;
+const #288 = NameAndType	#285:#287;//  scheduleActor:(Lscala/actors/Actor;Lscala/PartialFunction;Ljava/lang/Object;)V
+const #289 = Method	#74.#288;	//  scala/actors/Actor$class.scheduleActor:(Lscala/actors/Actor;Lscala/PartialFunction;Ljava/lang/Object;)V
+const #290 = Asciz	$qmark;
+const #291 = Asciz	()Ljava/lang/Object;;
+const #292 = Asciz	(Lscala/actors/Actor;)Ljava/lang/Object;;
+const #293 = NameAndType	#290:#292;//  $qmark:(Lscala/actors/Actor;)Ljava/lang/Object;
+const #294 = Method	#74.#293;	//  scala/actors/Actor$class.$qmark:(Lscala/actors/Actor;)Ljava/lang/Object;
+const #295 = Asciz	reactWithin;
+const #296 = Asciz	(JLscala/PartialFunction;)Lscala/runtime/Nothing$;;
+const #297 = Asciz	(Lscala/actors/Actor;JLscala/PartialFunction;)Lscala/runtime/Nothing$;;
+const #298 = NameAndType	#295:#297;//  reactWithin:(Lscala/actors/Actor;JLscala/PartialFunction;)Lscala/runtime/Nothing$;
+const #299 = Method	#74.#298;	//  scala/actors/Actor$class.reactWithin:(Lscala/actors/Actor;JLscala/PartialFunction;)Lscala/runtime/Nothing$;
+const #300 = Asciz	react;
+const #301 = Asciz	(Lscala/PartialFunction;)Lscala/runtime/Nothing$;;
+const #302 = Asciz	(Lscala/actors/Actor;Lscala/PartialFunction;)Lscala/runtime/Nothing$;;
+const #303 = NameAndType	#300:#302;//  react:(Lscala/actors/Actor;Lscala/PartialFunction;)Lscala/runtime/Nothing$;
+const #304 = Method	#74.#303;	//  scala/actors/Actor$class.react:(Lscala/actors/Actor;Lscala/PartialFunction;)Lscala/runtime/Nothing$;
+const #305 = Asciz	receiveWithin;
+const #306 = Asciz	(JLscala/PartialFunction;)Ljava/lang/Object;;
+const #307 = Asciz	(Lscala/actors/Actor;JLscala/PartialFunction;)Ljava/lang/Object;;
+const #308 = NameAndType	#305:#307;//  receiveWithin:(Lscala/actors/Actor;JLscala/PartialFunction;)Ljava/lang/Object;
+const #309 = Method	#74.#308;	//  scala/actors/Actor$class.receiveWithin:(Lscala/actors/Actor;JLscala/PartialFunction;)Ljava/lang/Object;
+const #310 = Asciz	receive;
+const #311 = Asciz	(Lscala/PartialFunction;)Ljava/lang/Object;;
+const #312 = Asciz	(Lscala/actors/Actor;Lscala/PartialFunction;)Ljava/lang/Object;;
+const #313 = NameAndType	#310:#312;//  receive:(Lscala/actors/Actor;Lscala/PartialFunction;)Ljava/lang/Object;
+const #314 = Method	#74.#313;	//  scala/actors/Actor$class.receive:(Lscala/actors/Actor;Lscala/PartialFunction;)Ljava/lang/Object;
+const #315 = Asciz	resumeReceiver;
+const #316 = Asciz	(Lscala/Tuple2;Z)V;
+const #317 = Asciz	(Lscala/actors/Actor;Lscala/Tuple2;Z)V;
+const #318 = NameAndType	#315:#317;//  resumeReceiver:(Lscala/actors/Actor;Lscala/Tuple2;Z)V
+const #319 = Method	#74.#318;	//  scala/actors/Actor$class.resumeReceiver:(Lscala/actors/Actor;Lscala/Tuple2;Z)V
+const #320 = Asciz	item;
+const #321 = Asciz	Lscala/Tuple2;;
+const #322 = Asciz	onSameThread;
+const #323 = Asciz	makeReaction;
+const #324 = Asciz	(Lscala/Function0;)Ljava/lang/Runnable;;
+const #325 = Asciz	(Lscala/actors/Actor;Lscala/Function0;)Ljava/lang/Runnable;;
+const #326 = NameAndType	#323:#325;//  makeReaction:(Lscala/actors/Actor;Lscala/Function0;)Ljava/lang/Runnable;
+const #327 = Method	#74.#326;	//  scala/actors/Actor$class.makeReaction:(Lscala/actors/Actor;Lscala/Function0;)Ljava/lang/Runnable;
+const #328 = Asciz	fun;
+const #329 = NameAndType	#18:#4;//  shouldExit:Z
+const #330 = Field	#34.#329;	//  scala/actors/ActorProxy.shouldExit:Z
+const #331 = Asciz	exitReason_$eq;
+const #332 = NameAndType	#19:#20;//  exitReason:Ljava/lang/Object;
+const #333 = Field	#34.#332;	//  scala/actors/ActorProxy.exitReason:Ljava/lang/Object;
+const #334 = Asciz	trapExit_$eq;
+const #335 = NameAndType	#21:#4;//  trapExit:Z
+const #336 = Field	#34.#335;	//  scala/actors/ActorProxy.trapExit:Z
+const #337 = Asciz	links_$eq;
+const #338 = NameAndType	#22:#17;//  links:Lscala/collection/immutable/List;
+const #339 = Field	#34.#338;	//  scala/actors/ActorProxy.links:Lscala/collection/immutable/List;
+const #340 = Asciz	scala$actors$Actor$$onTimeout_$eq;
+const #341 = Asciz	(Lscala/Option;)V;
+const #342 = NameAndType	#23:#24;//  scala$actors$Actor$$onTimeout:Lscala/Option;
+const #343 = Field	#34.#342;	//  scala/actors/ActorProxy.scala$actors$Actor$$onTimeout:Lscala/Option;
+const #344 = Asciz	()Lscala/Option;;
+const #345 = Asciz	scala$actors$Actor$$received_$eq;
+const #346 = NameAndType	#25:#24;//  scala$actors$Actor$$received:Lscala/Option;
+const #347 = Field	#34.#346;	//  scala/actors/ActorProxy.scala$actors$Actor$$received:Lscala/Option;
+const #348 = Asciz	scala$actors$Actor$$isSuspended_$eq;
+const #349 = NameAndType	#26:#4;//  scala$actors$Actor$$isSuspended:Z
+const #350 = Field	#34.#349;	//  scala/actors/ActorProxy.scala$actors$Actor$$isSuspended:Z
+const #351 = Asciz	ScalaSig;
+const #352 = Asciz	scala/ScalaObject;
+const #353 = class	#352;	//  scala/ScalaObject
+
+{
+public scala.actors.ActorProxy(java.lang.Thread, scala.actors.IScheduler);
+  Code:
+   Stack=2, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_2
+   2:	putfield	#36; //Field scheduler:Lscala/actors/IScheduler;
+   5:	aload_0
+   6:	invokespecial	#41; //Method java/lang/Object."<init>":()V
+   9:	aload_0
+   10:	invokestatic	#47; //Method scala/actors/Replyable$class.$init$:(Lscala/actors/Replyable;)V
+   13:	aload_0
+   14:	invokestatic	#52; //Method scala/actors/AbstractActor$class.$init$:(Lscala/actors/AbstractActor;)V
+   17:	aload_0
+   18:	invokestatic	#57; //Method scala/actors/Reactor$class.$init$:(Lscala/actors/Reactor;)V
+   21:	aload_0
+   22:	invokestatic	#62; //Method scala/actors/ReplyReactor$class.$init$:(Lscala/actors/ReplyReactor;)V
+   25:	aload_0
+   26:	invokestatic	#67; //Method scala/actors/ReplyableReactor$class.$init$:(Lscala/actors/ReplyableReactor;)V
+   29:	aload_0
+   30:	invokestatic	#72; //Method scala/actors/ReplyableActor$class.$init$:(Lscala/actors/ReplyableActor;)V
+   33:	aload_0
+   34:	invokestatic	#77; //Method scala/actors/Actor$class.$init$:(Lscala/actors/Actor;)V
+   37:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      38      0    this       Lscala/actors/ActorProxy;
+   0      38      1    t       Ljava/lang/Thread;
+   0      38      2    scheduler       Lscala/actors/IScheduler;
+
+
+public scala.actors.Reactor start();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokeinterface	#89,  1; //InterfaceMethod scala/actors/Actor.start:()Lscala/actors/Actor;
+   6:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public scala.Function0 $bang$bang(java.lang.Object, scala.PartialFunction);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokeinterface	#96,  3; //InterfaceMethod scala/actors/ReplyableActor.$bang$bang:(Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;
+   8:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/actors/ActorProxy;
+   0      9      1    msg       Ljava/lang/Object;
+   0      9      2    f       Lscala/PartialFunction;
+
+
+public scala.Function0 $bang$bang(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokeinterface	#102,  2; //InterfaceMethod scala/actors/ReplyableActor.$bang$bang:(Ljava/lang/Object;)Lscala/actors/Future;
+   7:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/actors/ActorProxy;
+   0      8      1    msg       Ljava/lang/Object;
+
+
+public scala.actors.Reactor receiver();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokeinterface	#107,  1; //InterfaceMethod scala/actors/Reactor.receiver:()Lscala/actors/Actor;
+   6:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public scala.runtime.Nothing$ exit();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	iconst_0
+   2:	invokeinterface	#113,  2; //InterfaceMethod scala/actors/Actor.shouldExit_$eq:(Z)V
+   7:	aload_0
+   8:	invokeinterface	#116,  1; //InterfaceMethod scala/actors/Actor.links:()Lscala/collection/immutable/List;
+   13:	invokeinterface	#122,  1; //InterfaceMethod scala/collection/generic/IterableTemplate.isEmpty:()Z
+   18:	ifne	27
+   21:	aload_0
+   22:	invokeinterface	#125,  1; //InterfaceMethod scala/actors/Actor.exitLinked:()V
+   27:	new	#127; //class java/lang/InterruptedException
+   30:	dup
+   31:	invokespecial	#128; //Method java/lang/InterruptedException."<init>":()V
+   34:	athrow
+  LineNumberTable: 
+   line 30: 0
+   line 32: 7
+   line 33: 21
+   line 34: 27
+
+
+public void act();
+  Code:
+   Stack=0, Locals=1, Args_size=1
+   0:	return
+  LineNumberTable: 
+   line 24: 0
+
+
+public final scala.actors.IScheduler scheduler();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#36; //Field scheduler:Lscala/actors/IScheduler;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public void exiting_$eq(boolean);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#133; //Field exiting:Z
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public boolean exiting();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#133; //Field exiting:Z
+   4:	ireturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public void terminated();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#136; //Method scala/actors/Reactor$class.terminated:(Lscala/actors/Reactor;)V
+   4:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public void seq(scala.Function0, scala.Function0);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#141; //Method scala/actors/Reactor$class.seq:(Lscala/actors/Reactor;Lscala/Function0;Lscala/Function0;)V
+   6:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/ActorProxy;
+   0      7      1    first       Lscala/Function0;
+   0      7      2    next       Lscala/Function0;
+
+
+public void searchMailbox(scala.actors.MessageQueue, scala.Function1, boolean);
+  Code:
+   Stack=4, Locals=4, Args_size=4
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	iload_3
+   4:	invokestatic	#148; //Method scala/actors/Reactor$class.searchMailbox:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V
+   7:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/actors/ActorProxy;
+   0      8      1    startMbox       Lscala/actors/MessageQueue;
+   0      8      2    handlesMessage       Lscala/Function1;
+   0      8      3    resumeOnSameThread       Z
+
+
+public void drainSendBuffer(scala.actors.MessageQueue);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#156; //Method scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    mbox       Lscala/actors/MessageQueue;
+
+
+public scala.actors.Actor receiver();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#160; //Method scala/actors/Reactor$class.receiver:(Lscala/actors/Reactor;)Lscala/actors/Actor;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public void send(java.lang.Object, scala.actors.OutputChannel);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#165; //Method scala/actors/Reactor$class.send:(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;)V
+   6:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/ActorProxy;
+   0      7      1    msg       Ljava/lang/Object;
+   0      7      2    replyTo       Lscala/actors/OutputChannel;
+
+
+public int mailboxSize();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#172; //Method scala/actors/Reactor$class.mailboxSize:(Lscala/actors/Reactor;)I
+   4:	ireturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public scala.PartialFunction exceptionHandler();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#177; //Method scala/actors/Reactor$class.exceptionHandler:(Lscala/actors/Reactor;)Lscala/PartialFunction;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public void scala$actors$Reactor$_setter_$waitingForNone_$eq(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#181; //Field waitingForNone:Lscala/Function1;
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public void scala$actors$Reactor$_setter_$mailbox_$eq(scala.actors.MessageQueue);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#184; //Field mailbox:Lscala/actors/MessageQueue;
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public void kill_$eq(scala.Function0);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#188; //Field kill:Lscala/Function0;
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public scala.Function0 kill();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#188; //Field kill:Lscala/Function0;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public void waitingFor_$eq(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#192; //Field waitingFor:Lscala/Function1;
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public scala.Function1 waitingFor();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#192; //Field waitingFor:Lscala/Function1;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public scala.Function1 waitingForNone();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#181; //Field waitingForNone:Lscala/Function1;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public void continuation_$eq(scala.PartialFunction);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#197; //Field continuation:Lscala/PartialFunction;
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public scala.PartialFunction continuation();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#197; //Field continuation:Lscala/PartialFunction;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public void sendBuffer_$eq(scala.collection.mutable.Queue);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#201; //Field sendBuffer:Lscala/collection/mutable/Queue;
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public scala.collection.mutable.Queue sendBuffer();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#201; //Field sendBuffer:Lscala/collection/mutable/Queue;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public scala.actors.MessageQueue mailbox();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#184; //Field mailbox:Lscala/actors/MessageQueue;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public void forward(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#208; //Method scala/actors/ReplyReactor$class.forward:(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    msg       Ljava/lang/Object;
+
+
+public void $bang(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#211; //Method scala/actors/ReplyReactor$class.$bang:(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    msg       Ljava/lang/Object;
+
+
+public void reply(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#214; //Method scala/actors/ReplyReactor$class.reply:(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    msg       Ljava/lang/Object;
+
+
+public scala.actors.OutputChannel sender();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#219; //Method scala/actors/ReplyReactor$class.sender:(Lscala/actors/ReplyReactor;)Lscala/actors/OutputChannel;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public void senders_$eq(scala.collection.immutable.List);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#223; //Field senders:Lscala/collection/immutable/List;
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public scala.collection.immutable.List senders();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#223; //Field senders:Lscala/collection/immutable/List;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public scala.actors.Future $bang$bang(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#226; //Method scala/actors/ReplyableActor$class.$bang$bang:(Lscala/actors/ReplyableActor;Ljava/lang/Object;)Lscala/actors/Future;
+   5:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    msg       Ljava/lang/Object;
+
+
+public scala.actors.Future $bang$bang(java.lang.Object, scala.PartialFunction);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#229; //Method scala/actors/ReplyableActor$class.$bang$bang:(Lscala/actors/ReplyableActor;Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;
+   6:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/ActorProxy;
+   0      7      1    msg       Ljava/lang/Object;
+   0      7      2    f       Lscala/PartialFunction;
+
+
+public scala.Option $bang$qmark(long, java.lang.Object);
+  Code:
+   Stack=4, Locals=4, Args_size=3
+   0:	aload_0
+   1:	lload_1
+   2:	aload_3
+   3:	invokestatic	#234; //Method scala/actors/ReplyableActor$class.$bang$qmark:(Lscala/actors/ReplyableActor;JLjava/lang/Object;)Lscala/Option;
+   6:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/ActorProxy;
+   0      7      1    msec       J
+   0      7      3    msg       Ljava/lang/Object;
+
+
+public java.lang.Object $bang$qmark(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#240; //Method scala/actors/ReplyableActor$class.$bang$qmark:(Lscala/actors/ReplyableActor;Ljava/lang/Object;)Ljava/lang/Object;
+   5:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    msg       Ljava/lang/Object;
+
+
+public void onTerminate(scala.Function0);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#244; //Method scala/actors/Actor$class.onTerminate:(Lscala/actors/Actor;Lscala/Function0;)V
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    f       Lscala/Function0;
+
+
+public void exit(scala.actors.AbstractActor, java.lang.Object);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#248; //Method scala/actors/Actor$class.exit:(Lscala/actors/Actor;Lscala/actors/AbstractActor;Ljava/lang/Object;)V
+   6:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/ActorProxy;
+   0      7      1    from       Lscala/actors/AbstractActor;
+   0      7      2    reason       Ljava/lang/Object;
+
+
+public void exitLinked(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#254; //Method scala/actors/Actor$class.exitLinked:(Lscala/actors/Actor;Ljava/lang/Object;)V
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    reason       Ljava/lang/Object;
+
+
+public void exitLinked();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#256; //Method scala/actors/Actor$class.exitLinked:(Lscala/actors/Actor;)V
+   4:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public scala.runtime.Nothing$ exit(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#260; //Method scala/actors/Actor$class.exit:(Lscala/actors/Actor;Ljava/lang/Object;)Lscala/runtime/Nothing$;
+   5:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    reason       Ljava/lang/Object;
+
+
+public void unlinkFrom(scala.actors.AbstractActor);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#264; //Method scala/actors/Actor$class.unlinkFrom:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    from       Lscala/actors/AbstractActor;
+
+
+public void unlink(scala.actors.AbstractActor);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#267; //Method scala/actors/Actor$class.unlink:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    from       Lscala/actors/AbstractActor;
+
+
+public void linkTo(scala.actors.AbstractActor);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#270; //Method scala/actors/Actor$class.linkTo:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    to       Lscala/actors/AbstractActor;
+
+
+public scala.actors.Actor link(scala.Function0);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#276; //Method scala/actors/Actor$class.link:(Lscala/actors/Actor;Lscala/Function0;)Lscala/actors/Actor;
+   5:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    body       Lscala/Function0;
+
+
+public scala.actors.AbstractActor link(scala.actors.AbstractActor);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#281; //Method scala/actors/Actor$class.link:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;
+   5:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    to       Lscala/actors/AbstractActor;
+
+
+public scala.actors.Actor start();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#284; //Method scala/actors/Actor$class.start:(Lscala/actors/Actor;)Lscala/actors/Actor;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public void scheduleActor(scala.PartialFunction, java.lang.Object);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#289; //Method scala/actors/Actor$class.scheduleActor:(Lscala/actors/Actor;Lscala/PartialFunction;Ljava/lang/Object;)V
+   6:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/ActorProxy;
+   0      7      1    f       Lscala/PartialFunction;
+   0      7      2    msg       Ljava/lang/Object;
+
+
+public java.lang.Object $qmark();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#294; //Method scala/actors/Actor$class.$qmark:(Lscala/actors/Actor;)Ljava/lang/Object;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public scala.runtime.Nothing$ reactWithin(long, scala.PartialFunction);
+  Code:
+   Stack=4, Locals=4, Args_size=3
+   0:	aload_0
+   1:	lload_1
+   2:	aload_3
+   3:	invokestatic	#299; //Method scala/actors/Actor$class.reactWithin:(Lscala/actors/Actor;JLscala/PartialFunction;)Lscala/runtime/Nothing$;
+   6:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/ActorProxy;
+   0      7      1    msec       J
+   0      7      3    f       Lscala/PartialFunction;
+
+
+public scala.runtime.Nothing$ react(scala.PartialFunction);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#304; //Method scala/actors/Actor$class.react:(Lscala/actors/Actor;Lscala/PartialFunction;)Lscala/runtime/Nothing$;
+   5:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    f       Lscala/PartialFunction;
+
+
+public java.lang.Object receiveWithin(long, scala.PartialFunction);
+  Code:
+   Stack=4, Locals=4, Args_size=3
+   0:	aload_0
+   1:	lload_1
+   2:	aload_3
+   3:	invokestatic	#309; //Method scala/actors/Actor$class.receiveWithin:(Lscala/actors/Actor;JLscala/PartialFunction;)Ljava/lang/Object;
+   6:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/ActorProxy;
+   0      7      1    msec       J
+   0      7      3    f       Lscala/PartialFunction;
+
+
+public java.lang.Object receive(scala.PartialFunction);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#314; //Method scala/actors/Actor$class.receive:(Lscala/actors/Actor;Lscala/PartialFunction;)Ljava/lang/Object;
+   5:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    f       Lscala/PartialFunction;
+
+
+public void resumeReceiver(scala.Tuple2, boolean);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	iload_2
+   3:	invokestatic	#319; //Method scala/actors/Actor$class.resumeReceiver:(Lscala/actors/Actor;Lscala/Tuple2;Z)V
+   6:	return
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/ActorProxy;
+   0      7      1    item       Lscala/Tuple2;
+   0      7      2    onSameThread       Z
+
+
+public java.lang.Runnable makeReaction(scala.Function0);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#327; //Method scala/actors/Actor$class.makeReaction:(Lscala/actors/Actor;Lscala/Function0;)Ljava/lang/Runnable;
+   5:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ActorProxy;
+   0      6      1    fun       Lscala/Function0;
+
+
+public void shouldExit_$eq(boolean);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#330; //Field shouldExit:Z
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public boolean shouldExit();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#330; //Field shouldExit:Z
+   4:	ireturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public void exitReason_$eq(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#333; //Field exitReason:Ljava/lang/Object;
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public java.lang.Object exitReason();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#333; //Field exitReason:Ljava/lang/Object;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public void trapExit_$eq(boolean);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#336; //Field trapExit:Z
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public boolean trapExit();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#336; //Field trapExit:Z
+   4:	ireturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public void links_$eq(scala.collection.immutable.List);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#339; //Field links:Lscala/collection/immutable/List;
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public scala.collection.immutable.List links();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#339; //Field links:Lscala/collection/immutable/List;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public final void scala$actors$Actor$$onTimeout_$eq(scala.Option);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#343; //Field scala$actors$Actor$$onTimeout:Lscala/Option;
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public final scala.Option scala$actors$Actor$$onTimeout();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#343; //Field scala$actors$Actor$$onTimeout:Lscala/Option;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public final void scala$actors$Actor$$received_$eq(scala.Option);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#347; //Field scala$actors$Actor$$received:Lscala/Option;
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public final scala.Option scala$actors$Actor$$received();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#347; //Field scala$actors$Actor$$received:Lscala/Option;
+   4:	areturn
+  LineNumberTable: 
+   line 22: 0
+
+
+public final void scala$actors$Actor$$isSuspended_$eq(boolean);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#350; //Field scala$actors$Actor$$isSuspended:Z
+   5:	return
+  LineNumberTable: 
+   line 22: 0
+
+
+public final boolean scala$actors$Actor$$isSuspended();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#350; //Field scala$actors$Actor$$isSuspended:Z
+   4:	ireturn
+  LineNumberTable: 
+   line 22: 0
+
+
+}
+

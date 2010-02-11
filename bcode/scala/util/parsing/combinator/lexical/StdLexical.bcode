@@ -1,0 +1,793 @@
+Compiled from "StdLexical.scala"
+public class scala.util.parsing.combinator.lexical.StdLexical extends scala.util.parsing.combinator.lexical.Lexical implements scala.util.parsing.syntax.StdTokens,scala.ScalaObject
+  SourceFile: "StdLexical.scala"
+  ScalaSig: length = 0x3D5
+   05 00 FFFFFF81 1A 06 08 01 02 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF80 00 0D 02 0A
+   53 74 64 4C 65 78 69 63 61 6C 0A 02 03 04 01 07
+   6C 65 78 69 63 61 6C 0A 02 05 06 01 0A 63 6F 6D
+   62 69 6E 61 74 6F 72 0A 02 07 08 01 07 70 61 72
+   73 69 6E 67 0A 02 09 0A 01 04 75 74 69 6C 0A 01
+   0B 01 05 73 63 61 6C 61 03 00 13 04 00 0E 12 18
+   10 02 0F 10 0D 01 02 09 02 11 02 02 07 4C 65 78
+   69 63 61 6C 10 02 13 16 0D 01 14 0A 02 15 06 01
+   06 73 79 6E 74 61 78 09 02 17 14 02 09 53 74 64
+   54 6F 6B 65 6E 73 10 02 19 1A 0D 01 0A 09 02 1B
+   0A 02 0B 53 63 61 6C 61 4F 62 6A 65 63 74 08 05
+   1D 00 FFFFFF84 00 1E 01 06 3C 69 6E 69 74 3E 14 01 1F
+   10 02 0F 00 08 05 21 00 FFFFFF84 00 22 01 05 74 6F 6B
+   65 6E 15 01 23 10 03 24 25 29 0D 01 00 09 02 26
+   27 02 06 50 61 72 73 65 72 09 02 28 04 02 07 50
+   61 72 73 65 72 73 10 02 24 2A 09 02 2B 2C 02 05
+   54 6F 6B 65 6E 09 02 2D 14 02 06 54 6F 6B 65 6E
+   73 08 05 2F 00 FFFFFF84 00 30 01 09 69 64 65 6E 74 43
+   68 61 72 15 01 31 10 03 24 25 32 10 02 24 33 09
+   02 34 35 02 04 45 6C 65 6D 09 02 36 02 02 08 53
+   63 61 6E 6E 65 72 73 08 05 38 00 FFFFFF84 00 39 01 0A
+   77 68 69 74 65 73 70 61 63 65 15 01 3A 10 03 24
+   25 3B 10 02 19 3C 09 02 3D 0A 02 03 41 6E 79 08
+   05 3F 00 FFFFFF84 08 39 01 07 63 6F 6D 6D 65 6E 74 08
+   07 41 00 FFFFFFC2 FFFFFF80 FFFFFF84 00 42 01 08 72 65 73 65 72 76
+   65 64 15 01 43 10 03 44 49 4B 0D 01 45 0A 02 46
+   47 01 07 6D 75 74 61 62 6C 65 0A 02 48 0A 01 0A
+   63 6F 6C 6C 65 63 74 69 6F 6E 09 02 4A 45 02 07
+   48 61 73 68 53 65 74 10 02 4C 4F 0E 02 19 4D 09
+   02 4E 0A 01 06 50 72 65 64 65 66 09 02 50 51 02
+   06 53 74 72 69 6E 67 0A 02 4E 0A 08 06 53 00 FFFFFFA0
+   FFFFFF80 04 43 01 09 72 65 73 65 72 76 65 64 20 08 07
+   55 00 FFFFFFC2 FFFFFF80 FFFFFF84 00 42 01 0A 64 65 6C 69 6D 69 74
+   65 72 73 08 06 57 00 FFFFFFA0 FFFFFF80 04 43 01 0B 64 65 6C
+   69 6D 69 74 65 72 73 20 08 05 59 00 FFFFFF84 08 5A 01
+   0C 70 72 6F 63 65 73 73 49 64 65 6E 74 14 02 5B
+   61 12 03 5C 5E 29 06 08 5D 0C FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF80 00 5B
+   02 0C 3C 72 65 66 69 6E 65 6D 65 6E 74 3E 10 02
+   19 5F 09 02 60 0A 02 07 50 72 6F 64 75 63 74 08
+   05 62 58 FFFFFFC0 00 4B 01 04 6E 61 6D 65 08 08 64 00
+   FFFFFF88 FFFFFFC2 FFFFFF80 FFFFFF84 04 22 01 06 5F 64 65 6C 69 6D 08 08
+   66 00 FFFFFF88 FFFFFF80 FFFFFFA0 FFFFFFA0 04 23 01 07 5F 64 65 6C 69 6D
+   20 08 05 68 00 FFFFFF84 08 22 01 05 64 65 6C 69 6D 08
+   05 6A 00 FFFFFF84 04 6B 01 04 6C 69 66 74 15 02 6C 70
+   14 03 6D FFFFFF81 07 14 02 6E 76 10 02 6F 70 0C 00 04
+   08 71 69 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFFC2 00 72 02 01 54 11 02 73 3B
+   10 02 19 74 09 02 75 0A 02 07 4E 6F 74 68 69 6E
+   67 08 05 77 69 FFFFFFC0 00 78 01 02 78 73 10 05 79 FFFFFF81
+   01 FFFFFF81 04 0E 02 7A 7F 0E 02 7B 7E 0D 01 7C 0A 02
+   7D 0C 01 06 3C 72 6F 6F 74 3E 09 01 0B 09 03 FFFFFF81
+   00 0A 01 07 70 61 63 6B 61 67 65 09 04 FFFFFF81 02 FFFFFF81
+   03 02 04 4C 69 73 74 0A 03 FFFFFF81 00 0A 10 03 19 FFFFFF81
+   05 09 03 FFFFFF81 06 0A 02 04 43 68 61 72 08 07 FFFFFF81 08
+   69 FFFFFFC0 00 FFFFFF81 09 01 01 66 10 05 19 FFFFFF81 0A 4B 6E 09
+   03 FFFFFF81 0B 0A 02 09 46 75 6E 63 74 69 6F 6E 31 08
+   07 FFFFFF81 0D 00 FFFFFF84 04 FFFFFF81 0E 01 05 6C 69 66 74 32 15
+   04 FFFFFF81 0F FFFFFF81 12 14 04 FFFFFF81 10 FFFFFF81 18 14 04 FFFFFF81 11 FFFFFF81
+   13 10 03 6F FFFFFF81 12 04 09 71 FFFFFF81 0C FFFFFF84 FFFFFF80 FFFFFF80 FFFFFFC2 00
+   72 08 08 FFFFFF81 14 FFFFFF81 0C FFFFFFC0 00 FFFFFF81 15 01 01 70 10 06
+   24 FFFFFF81 16 FFFFFF81 04 78 09 03 FFFFFF81 17 27 02 06 24 74 69
+   6C 64 65 08 08 FFFFFF81 08 FFFFFF81 0C FFFFFFC0 00 FFFFFF81 19 10 06 19
+   FFFFFF81 0A 4B FFFFFF81 11 
+  InnerClass: 
+   public abstract #340= #79 of #68; //Parser=class scala/util/parsing/combinator/Parsers$Parser of class scala/util/parsing/combinator/Parsers
+   public #247= #92 of #68; //$tilde=class scala/util/parsing/combinator/Parsers$$tilde of class scala/util/parsing/combinator/Parsers
+   public #331= #230 of #342; //Keyword=class scala/util/parsing/syntax/StdTokens$Keyword of class scala/util/parsing/syntax/StdTokens
+   public #309= #235 of #342; //Identifier=class scala/util/parsing/syntax/StdTokens$Identifier of class scala/util/parsing/syntax/StdTokens
+   public final #343= #286 of #39; //$anonfun$token$3=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$3 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #344= #298 of #39; //$anonfun$token$7=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$7 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #345= #292 of #39; //$anonfun$token$5=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$5 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #346= #280 of #39; //$anonfun$token$1=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$1 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #347= #304 of #39; //$anonfun$token$9=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$9 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #348= #289 of #39; //$anonfun$token$4=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$4 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #349= #301 of #39; //$anonfun$token$8=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$8 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #350= #295 of #39; //$anonfun$token$6=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$6 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #351= #283 of #39; //$anonfun$token$2=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$2 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #352= #175 of #39; //$anonfun$_delim$1=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$_delim$1 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #353= #205 of #39; //$anonfun$_delim$3=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$_delim$3 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #354= #182 of #39; //$anonfun$_delim$2=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$_delim$2 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #355= #307 of #39; //$anonfun$token$10=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$10 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #356= #252 of #39; //$anonfun$comment$2=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$2 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #357= #245 of #39; //$anonfun$comment$1=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$1 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #358= #255 of #39; //$anonfun$comment$3=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$3 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #359= #273 of #39; //$anonfun$identChar$1=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$identChar$1 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #360= #263 of #39; //$anonfun$whitespace$1=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$whitespace$1 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #361= #74 of #39; //$anonfun$parseDelim$1$2=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$parseDelim$1$2 of class scala/util/parsing/combinator/lexical/StdLexical
+   public final #362= #63 of #39; //$anonfun$parseDelim$1$1=class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$parseDelim$1$1 of class scala/util/parsing/combinator/lexical/StdLexical
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Asciz	SourceFile;
+const #2 = Asciz	StdLexical.scala;
+const #3 = Asciz	Identifier$module;
+const #4 = Asciz	Lscala/util/parsing/syntax/StdTokens$Identifier$;;
+const #5 = Asciz	StringLit$module;
+const #6 = Asciz	Lscala/util/parsing/syntax/StdTokens$StringLit$;;
+const #7 = Asciz	NumericLit$module;
+const #8 = Asciz	Lscala/util/parsing/syntax/StdTokens$NumericLit$;;
+const #9 = Asciz	Keyword$module;
+const #10 = Asciz	Lscala/util/parsing/syntax/StdTokens$Keyword$;;
+const #11 = Asciz	bitmap$0;
+const #12 = Asciz	I;
+const #13 = Asciz	_delim;
+const #14 = Asciz	Lscala/util/parsing/combinator/Parsers$Parser;;
+const #15 = Asciz	Lscala/util/parsing/combinator/Parsers$Parser<Lscala/util/parsing/syntax/Tokens$Token;>;;
+const #16 = Asciz	Signature;
+const #17 = Asciz	delimiters;
+const #18 = Asciz	Lscala/collection/mutable/HashSet;;
+const #19 = Asciz	Lscala/collection/mutable/HashSet<Ljava/lang/String;>;;
+const #20 = Asciz	reserved;
+const #21 = Asciz	<init>;
+const #22 = Asciz	()V;
+const #23 = Asciz	Code;
+const #24 = Asciz	LineNumberTable;
+const #25 = Asciz	scala/util/parsing/combinator/lexical/Lexical;
+const #26 = class	#25;	//  scala/util/parsing/combinator/lexical/Lexical
+const #27 = NameAndType	#21:#22;//  "<init>":()V
+const #28 = Method	#26.#27;	//  scala/util/parsing/combinator/lexical/Lexical."<init>":()V
+const #29 = Asciz	scala/util/parsing/syntax/StdTokens$class;
+const #30 = class	#29;	//  scala/util/parsing/syntax/StdTokens$class
+const #31 = Asciz	$init$;
+const #32 = Asciz	(Lscala/util/parsing/syntax/StdTokens;)V;
+const #33 = NameAndType	#31:#32;//  $init$:(Lscala/util/parsing/syntax/StdTokens;)V
+const #34 = Method	#30.#33;	//  scala/util/parsing/syntax/StdTokens$class.$init$:(Lscala/util/parsing/syntax/StdTokens;)V
+const #35 = Asciz	scala/collection/mutable/HashSet;
+const #36 = class	#35;	//  scala/collection/mutable/HashSet
+const #37 = Method	#36.#27;	//  scala/collection/mutable/HashSet."<init>":()V
+const #38 = Asciz	scala/util/parsing/combinator/lexical/StdLexical;
+const #39 = class	#38;	//  scala/util/parsing/combinator/lexical/StdLexical
+const #40 = NameAndType	#20:#18;//  reserved:Lscala/collection/mutable/HashSet;
+const #41 = Field	#39.#40;	//  scala/util/parsing/combinator/lexical/StdLexical.reserved:Lscala/collection/mutable/HashSet;
+const #42 = NameAndType	#17:#18;//  delimiters:Lscala/collection/mutable/HashSet;
+const #43 = Field	#39.#42;	//  scala/util/parsing/combinator/lexical/StdLexical.delimiters:Lscala/collection/mutable/HashSet;
+const #44 = Asciz	parseDelim$1;
+const #45 = Asciz	(Ljava/lang/String;)Lscala/util/parsing/combinator/Parsers$Parser;;
+const #46 = Asciz	scala/Predef$;
+const #47 = class	#46;	//  scala/Predef$
+const #48 = Asciz	MODULE$;
+const #49 = Asciz	Lscala/Predef$;;
+const #50 = NameAndType	#48:#49;//  MODULE$:Lscala/Predef$;
+const #51 = Field	#47.#50;	//  scala/Predef$.MODULE$:Lscala/Predef$;
+const #52 = Asciz	stringWrapper;
+const #53 = Asciz	(Ljava/lang/String;)Lscala/runtime/RichString;;
+const #54 = NameAndType	#52:#53;//  stringWrapper:(Ljava/lang/String;)Lscala/runtime/RichString;
+const #55 = Method	#47.#54;	//  scala/Predef$.stringWrapper:(Ljava/lang/String;)Lscala/runtime/RichString;
+const #56 = Asciz	scala/collection/generic/TraversableTemplate;
+const #57 = class	#56;	//  scala/collection/generic/TraversableTemplate
+const #58 = Asciz	toList;
+const #59 = Asciz	()Lscala/collection/immutable/List;;
+const #60 = NameAndType	#58:#59;//  toList:()Lscala/collection/immutable/List;
+const #61 = InterfaceMethod	#57.#60;	//  scala/collection/generic/TraversableTemplate.toList:()Lscala/collection/immutable/List;
+const #62 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$parseDelim$1$1;
+const #63 = class	#62;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$parseDelim$1$1
+const #64 = Asciz	(Lscala/util/parsing/combinator/lexical/StdLexical;)V;
+const #65 = NameAndType	#21:#64;//  "<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #66 = Method	#63.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$parseDelim$1$1."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #67 = Asciz	scala/util/parsing/combinator/Parsers;
+const #68 = class	#67;	//  scala/util/parsing/combinator/Parsers
+const #69 = Asciz	accept;
+const #70 = Asciz	(Ljava/lang/Object;Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;;
+const #71 = NameAndType	#69:#70;//  accept:(Ljava/lang/Object;Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;
+const #72 = InterfaceMethod	#68.#71;	//  scala/util/parsing/combinator/Parsers.accept:(Ljava/lang/Object;Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;
+const #73 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$parseDelim$1$2;
+const #74 = class	#73;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$parseDelim$1$2
+const #75 = Asciz	(Lscala/util/parsing/combinator/lexical/StdLexical;Ljava/lang/String;)V;
+const #76 = NameAndType	#21:#75;//  "<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;Ljava/lang/String;)V
+const #77 = Method	#74.#76;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$parseDelim$1$2."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;Ljava/lang/String;)V
+const #78 = Asciz	scala/util/parsing/combinator/Parsers$Parser;
+const #79 = class	#78;	//  scala/util/parsing/combinator/Parsers$Parser
+const #80 = Asciz	$up$up;
+const #81 = Asciz	(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;;
+const #82 = NameAndType	#80:#81;//  $up$up:(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;
+const #83 = Method	#79.#82;	//  scala/util/parsing/combinator/Parsers$Parser.$up$up:(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;
+const #84 = Asciz	this;
+const #85 = Asciz	Lscala/util/parsing/combinator/lexical/StdLexical;;
+const #86 = Asciz	s$1;
+const #87 = Asciz	Ljava/lang/String;;
+const #88 = Asciz	LocalVariableTable;
+const #89 = Asciz	lift2;
+const #90 = Asciz	(Lscala/Function1;Lscala/util/parsing/combinator/Parsers$$tilde;)Ljava/lang/Object;;
+const #91 = Asciz	scala/util/parsing/combinator/Parsers$$tilde;
+const #92 = class	#91;	//  scala/util/parsing/combinator/Parsers$$tilde
+const #93 = Asciz	_1;
+const #94 = Asciz	()Ljava/lang/Object;;
+const #95 = NameAndType	#93:#94;//  _1:()Ljava/lang/Object;
+const #96 = Method	#92.#95;	//  scala/util/parsing/combinator/Parsers$$tilde._1:()Ljava/lang/Object;
+const #97 = Asciz	scala/runtime/BoxesRunTime;
+const #98 = class	#97;	//  scala/runtime/BoxesRunTime
+const #99 = Asciz	unboxToChar;
+const #100 = Asciz	(Ljava/lang/Object;)C;
+const #101 = NameAndType	#99:#100;//  unboxToChar:(Ljava/lang/Object;)C
+const #102 = Method	#98.#101;	//  scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
+const #103 = Asciz	_2;
+const #104 = NameAndType	#103:#94;//  _2:()Ljava/lang/Object;
+const #105 = Method	#92.#104;	//  scala/util/parsing/combinator/Parsers$$tilde._2:()Ljava/lang/Object;
+const #106 = Asciz	scala/collection/immutable/List;
+const #107 = class	#106;	//  scala/collection/immutable/List
+const #108 = Asciz	boxToCharacter;
+const #109 = Asciz	(C)Ljava/lang/Character;;
+const #110 = NameAndType	#108:#109;//  boxToCharacter:(C)Ljava/lang/Character;
+const #111 = Method	#98.#110;	//  scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
+const #112 = Asciz	$colon$colon;
+const #113 = Asciz	(Ljava/lang/Object;)Lscala/collection/immutable/List;;
+const #114 = NameAndType	#112:#113;//  $colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
+const #115 = Method	#107.#114;	//  scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
+const #116 = Asciz	lift;
+const #117 = Asciz	(Lscala/Function1;Lscala/collection/immutable/List;)Ljava/lang/Object;;
+const #118 = NameAndType	#116:#117;//  lift:(Lscala/Function1;Lscala/collection/immutable/List;)Ljava/lang/Object;
+const #119 = Method	#39.#118;	//  scala/util/parsing/combinator/lexical/StdLexical.lift:(Lscala/Function1;Lscala/collection/immutable/List;)Ljava/lang/Object;
+const #120 = Asciz	f;
+const #121 = Asciz	Lscala/Function1;;
+const #122 = Asciz	p;
+const #123 = Asciz	Lscala/util/parsing/combinator/Parsers$$tilde;;
+const #124 = Asciz	<T:Ljava/lang/Object;>(Lscala/Function1<Ljava/lang/String;TT;>;Lscala/util/parsing/combinator/Parsers$$tilde<Ljava/lang/Character;Lscala/collection/immutable/List<Ljava/lang/Character;>;>;)TT;;
+const #125 = Asciz	;
+const #126 = String	#125;	//  
+const #127 = Asciz	mkString;
+const #128 = Asciz	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;;
+const #129 = NameAndType	#127:#128;//  mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+const #130 = InterfaceMethod	#57.#129;	//  scala/collection/generic/TraversableTemplate.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+const #131 = Asciz	scala/Function1;
+const #132 = class	#131;	//  scala/Function1
+const #133 = Asciz	apply;
+const #134 = Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
+const #135 = NameAndType	#133:#134;//  apply:(Ljava/lang/Object;)Ljava/lang/Object;
+const #136 = InterfaceMethod	#132.#135;	//  scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+const #137 = Asciz	xs;
+const #138 = Asciz	Lscala/collection/immutable/List;;
+const #139 = Asciz	<T:Ljava/lang/Object;>(Lscala/Function1<Ljava/lang/String;TT;>;Lscala/collection/immutable/List<Ljava/lang/Character;>;)TT;;
+const #140 = Asciz	delim;
+const #141 = Asciz	()Lscala/util/parsing/combinator/Parsers$Parser;;
+const #142 = NameAndType	#13:#141;//  _delim:()Lscala/util/parsing/combinator/Parsers$Parser;
+const #143 = Method	#39.#142;	//  scala/util/parsing/combinator/lexical/StdLexical._delim:()Lscala/util/parsing/combinator/Parsers$Parser;
+const #144 = Asciz	()Lscala/util/parsing/combinator/Parsers$Parser<Lscala/util/parsing/syntax/Tokens$Token;>;;
+const #145 = NameAndType	#11:#12;//  bitmap$0:I
+const #146 = Field	#39.#145;	//  scala/util/parsing/combinator/lexical/StdLexical.bitmap$0:I
+const #147 = Asciz	()Lscala/collection/mutable/HashSet;;
+const #148 = NameAndType	#17:#147;//  delimiters:()Lscala/collection/mutable/HashSet;
+const #149 = Method	#39.#148;	//  scala/util/parsing/combinator/lexical/StdLexical.delimiters:()Lscala/collection/mutable/HashSet;
+const #150 = Asciz	size;
+const #151 = Asciz	()I;
+const #152 = NameAndType	#150:#151;//  size:()I
+const #153 = Method	#36.#152;	//  scala/collection/mutable/HashSet.size:()I
+const #154 = Asciz	java/lang/String;
+const #155 = class	#154;	//  java/lang/String
+const #156 = Asciz	scala/runtime/ScalaRunTime$;
+const #157 = class	#156;	//  scala/runtime/ScalaRunTime$
+const #158 = Asciz	Lscala/runtime/ScalaRunTime$;;
+const #159 = NameAndType	#48:#158;//  MODULE$:Lscala/runtime/ScalaRunTime$;
+const #160 = Field	#157.#159;	//  scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
+const #161 = Asciz	boxArray;
+const #162 = Asciz	(Ljava/lang/Object;)Lscala/runtime/BoxedArray;;
+const #163 = NameAndType	#161:#162;//  boxArray:(Ljava/lang/Object;)Lscala/runtime/BoxedArray;
+const #164 = Method	#157.#163;	//  scala/runtime/ScalaRunTime$.boxArray:(Ljava/lang/Object;)Lscala/runtime/BoxedArray;
+const #165 = Asciz	copyToArray;
+const #166 = Asciz	(Lscala/runtime/BoxedArray;I)V;
+const #167 = NameAndType	#165:#166;//  copyToArray:(Lscala/runtime/BoxedArray;I)V
+const #168 = InterfaceMethod	#57.#167;	//  scala/collection/generic/TraversableTemplate.copyToArray:(Lscala/runtime/BoxedArray;I)V
+const #169 = Asciz	scala/util/Sorting$;
+const #170 = class	#169;	//  scala/util/Sorting$
+const #171 = Asciz	Lscala/util/Sorting$;;
+const #172 = NameAndType	#48:#171;//  MODULE$:Lscala/util/Sorting$;
+const #173 = Field	#170.#172;	//  scala/util/Sorting$.MODULE$:Lscala/util/Sorting$;
+const #174 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$_delim$1;
+const #175 = class	#174;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$_delim$1
+const #176 = Method	#175.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$_delim$1."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #177 = Asciz	quickSort;
+const #178 = Asciz	(Lscala/runtime/BoxedArray;Lscala/Function1;)V;
+const #179 = NameAndType	#177:#178;//  quickSort:(Lscala/runtime/BoxedArray;Lscala/Function1;)V
+const #180 = Method	#170.#179;	//  scala/util/Sorting$.quickSort:(Lscala/runtime/BoxedArray;Lscala/Function1;)V
+const #181 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$_delim$2;
+const #182 = class	#181;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$_delim$2
+const #183 = Method	#182.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$_delim$2."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #184 = Asciz	scala/collection/immutable/List$;
+const #185 = class	#184;	//  scala/collection/immutable/List$
+const #186 = Asciz	Lscala/collection/immutable/List$;;
+const #187 = NameAndType	#48:#186;//  MODULE$:Lscala/collection/immutable/List$;
+const #188 = Field	#185.#187;	//  scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
+const #189 = Asciz	builderFactory;
+const #190 = Asciz	()Lscala/collection/generic/BuilderFactory;;
+const #191 = NameAndType	#189:#190;//  builderFactory:()Lscala/collection/generic/BuilderFactory;
+const #192 = Method	#185.#191;	//  scala/collection/immutable/List$.builderFactory:()Lscala/collection/generic/BuilderFactory;
+const #193 = Asciz	map;
+const #194 = Asciz	(Lscala/Function1;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #195 = NameAndType	#193:#194;//  map:(Lscala/Function1;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #196 = InterfaceMethod	#57.#195;	//  scala/collection/generic/TraversableTemplate.map:(Lscala/Function1;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #197 = Asciz	scala/collection/generic/LinearSequenceTemplate;
+const #198 = class	#197;	//  scala/collection/generic/LinearSequenceTemplate
+const #199 = Asciz	no matching delimiter;
+const #200 = String	#199;	//  no matching delimiter
+const #201 = Asciz	failure;
+const #202 = NameAndType	#201:#45;//  failure:(Ljava/lang/String;)Lscala/util/parsing/combinator/Parsers$Parser;
+const #203 = InterfaceMethod	#68.#202;	//  scala/util/parsing/combinator/Parsers.failure:(Ljava/lang/String;)Lscala/util/parsing/combinator/Parsers$Parser;
+const #204 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$_delim$3;
+const #205 = class	#204;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$_delim$3
+const #206 = Method	#205.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$_delim$3."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #207 = Asciz	foldRight;
+const #208 = Asciz	(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;;
+const #209 = NameAndType	#207:#208;//  foldRight:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+const #210 = InterfaceMethod	#198.#209;	//  scala/collection/generic/LinearSequenceTemplate.foldRight:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+const #211 = NameAndType	#13:#14;//  _delim:Lscala/util/parsing/combinator/Parsers$Parser;
+const #212 = Field	#39.#211;	//  scala/util/parsing/combinator/lexical/StdLexical._delim:Lscala/util/parsing/combinator/Parsers$Parser;
+const #213 = Asciz	scala/runtime/BoxedUnit;
+const #214 = class	#213;	//  scala/runtime/BoxedUnit
+const #215 = Asciz	UNIT;
+const #216 = Asciz	Lscala/runtime/BoxedUnit;;
+const #217 = NameAndType	#215:#216;//  UNIT:Lscala/runtime/BoxedUnit;
+const #218 = Field	#214.#217;	//  scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+const #219 = Asciz	d;
+const #220 = Asciz	[Ljava/lang/String;;
+const #221 = Asciz	processIdent;
+const #222 = Asciz	(Ljava/lang/String;)Lscala/Product;;
+const #223 = NameAndType	#20:#147;//  reserved:()Lscala/collection/mutable/HashSet;
+const #224 = Method	#39.#223;	//  scala/util/parsing/combinator/lexical/StdLexical.reserved:()Lscala/collection/mutable/HashSet;
+const #225 = Asciz	contains;
+const #226 = Asciz	(Ljava/lang/Object;)Z;
+const #227 = NameAndType	#225:#226;//  contains:(Ljava/lang/Object;)Z
+const #228 = Method	#36.#227;	//  scala/collection/mutable/HashSet.contains:(Ljava/lang/Object;)Z
+const #229 = Asciz	scala/util/parsing/syntax/StdTokens$Keyword;
+const #230 = class	#229;	//  scala/util/parsing/syntax/StdTokens$Keyword
+const #231 = Asciz	(Lscala/util/parsing/syntax/StdTokens;Ljava/lang/String;)V;
+const #232 = NameAndType	#21:#231;//  "<init>":(Lscala/util/parsing/syntax/StdTokens;Ljava/lang/String;)V
+const #233 = Method	#230.#232;	//  scala/util/parsing/syntax/StdTokens$Keyword."<init>":(Lscala/util/parsing/syntax/StdTokens;Ljava/lang/String;)V
+const #234 = Asciz	scala/util/parsing/syntax/StdTokens$Identifier;
+const #235 = class	#234;	//  scala/util/parsing/syntax/StdTokens$Identifier
+const #236 = Method	#235.#232;	//  scala/util/parsing/syntax/StdTokens$Identifier."<init>":(Lscala/util/parsing/syntax/StdTokens;Ljava/lang/String;)V
+const #237 = Asciz	name;
+const #238 = Asciz	()Lscala/collection/mutable/HashSet<Ljava/lang/String;>;;
+const #239 = Asciz	comment;
+const #240 = int	42;
+const #241 = Asciz	(Ljava/lang/Object;)Lscala/util/parsing/combinator/Parsers$Parser;;
+const #242 = NameAndType	#69:#241;//  accept:(Ljava/lang/Object;)Lscala/util/parsing/combinator/Parsers$Parser;
+const #243 = InterfaceMethod	#68.#242;	//  scala/util/parsing/combinator/Parsers.accept:(Ljava/lang/Object;)Lscala/util/parsing/combinator/Parsers$Parser;
+const #244 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$1;
+const #245 = class	#244;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$1
+const #246 = Method	#245.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$1."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #247 = Asciz	$tilde;
+const #248 = Asciz	(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;;
+const #249 = NameAndType	#247:#248;//  $tilde:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+const #250 = Method	#79.#249;	//  scala/util/parsing/combinator/Parsers$Parser.$tilde:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+const #251 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$2;
+const #252 = class	#251;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$2
+const #253 = Method	#252.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$2."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #254 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$3;
+const #255 = class	#254;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$3
+const #256 = Method	#255.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$3."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #257 = Asciz	$bar;
+const #258 = NameAndType	#257:#248;//  $bar:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+const #259 = Method	#79.#258;	//  scala/util/parsing/combinator/Parsers$Parser.$bar:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+const #260 = Asciz	()Lscala/util/parsing/combinator/Parsers$Parser<Ljava/lang/Object;>;;
+const #261 = Asciz	whitespace;
+const #262 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$whitespace$1;
+const #263 = class	#262;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$whitespace$1
+const #264 = Method	#263.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$whitespace$1."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #265 = Asciz	rep;
+const #266 = NameAndType	#265:#248;//  rep:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+const #267 = InterfaceMethod	#68.#266;	//  scala/util/parsing/combinator/Parsers.rep:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+const #268 = Asciz	identChar;
+const #269 = Asciz	letter;
+const #270 = NameAndType	#269:#141;//  letter:()Lscala/util/parsing/combinator/Parsers$Parser;
+const #271 = Method	#39.#270;	//  scala/util/parsing/combinator/lexical/StdLexical.letter:()Lscala/util/parsing/combinator/Parsers$Parser;
+const #272 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$identChar$1;
+const #273 = class	#272;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$identChar$1
+const #274 = Method	#273.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$identChar$1."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #275 = Asciz	()Lscala/util/parsing/combinator/Parsers$Parser<Ljava/lang/Character;>;;
+const #276 = Asciz	token;
+const #277 = NameAndType	#268:#141;//  identChar:()Lscala/util/parsing/combinator/Parsers$Parser;
+const #278 = Method	#39.#277;	//  scala/util/parsing/combinator/lexical/StdLexical.identChar:()Lscala/util/parsing/combinator/Parsers$Parser;
+const #279 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$1;
+const #280 = class	#279;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$1
+const #281 = Method	#280.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$1."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #282 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$2;
+const #283 = class	#282;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$2
+const #284 = Method	#283.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$2."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #285 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$3;
+const #286 = class	#285;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$3
+const #287 = Method	#286.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$3."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #288 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$4;
+const #289 = class	#288;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$4
+const #290 = Method	#289.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$4."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #291 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$5;
+const #292 = class	#291;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$5
+const #293 = Method	#292.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$5."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #294 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$6;
+const #295 = class	#294;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$6
+const #296 = Method	#295.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$6."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #297 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$7;
+const #298 = class	#297;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$7
+const #299 = Method	#298.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$7."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #300 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$8;
+const #301 = class	#300;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$8
+const #302 = Method	#301.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$8."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #303 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$9;
+const #304 = class	#303;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$9
+const #305 = Method	#304.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$9."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #306 = Asciz	scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$10;
+const #307 = class	#306;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$10
+const #308 = Method	#307.#65;	//  scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$10."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+const #309 = Asciz	Identifier;
+const #310 = Asciz	()Lscala/util/parsing/syntax/StdTokens$Identifier$;;
+const #311 = NameAndType	#3:#4;//  Identifier$module:Lscala/util/parsing/syntax/StdTokens$Identifier$;
+const #312 = Field	#39.#311;	//  scala/util/parsing/combinator/lexical/StdLexical.Identifier$module:Lscala/util/parsing/syntax/StdTokens$Identifier$;
+const #313 = Asciz	scala/util/parsing/syntax/StdTokens$Identifier$;
+const #314 = class	#313;	//  scala/util/parsing/syntax/StdTokens$Identifier$
+const #315 = NameAndType	#21:#32;//  "<init>":(Lscala/util/parsing/syntax/StdTokens;)V
+const #316 = Method	#314.#315;	//  scala/util/parsing/syntax/StdTokens$Identifier$."<init>":(Lscala/util/parsing/syntax/StdTokens;)V
+const #317 = Asciz	StringLit;
+const #318 = Asciz	()Lscala/util/parsing/syntax/StdTokens$StringLit$;;
+const #319 = NameAndType	#5:#6;//  StringLit$module:Lscala/util/parsing/syntax/StdTokens$StringLit$;
+const #320 = Field	#39.#319;	//  scala/util/parsing/combinator/lexical/StdLexical.StringLit$module:Lscala/util/parsing/syntax/StdTokens$StringLit$;
+const #321 = Asciz	scala/util/parsing/syntax/StdTokens$StringLit$;
+const #322 = class	#321;	//  scala/util/parsing/syntax/StdTokens$StringLit$
+const #323 = Method	#322.#315;	//  scala/util/parsing/syntax/StdTokens$StringLit$."<init>":(Lscala/util/parsing/syntax/StdTokens;)V
+const #324 = Asciz	NumericLit;
+const #325 = Asciz	()Lscala/util/parsing/syntax/StdTokens$NumericLit$;;
+const #326 = NameAndType	#7:#8;//  NumericLit$module:Lscala/util/parsing/syntax/StdTokens$NumericLit$;
+const #327 = Field	#39.#326;	//  scala/util/parsing/combinator/lexical/StdLexical.NumericLit$module:Lscala/util/parsing/syntax/StdTokens$NumericLit$;
+const #328 = Asciz	scala/util/parsing/syntax/StdTokens$NumericLit$;
+const #329 = class	#328;	//  scala/util/parsing/syntax/StdTokens$NumericLit$
+const #330 = Method	#329.#315;	//  scala/util/parsing/syntax/StdTokens$NumericLit$."<init>":(Lscala/util/parsing/syntax/StdTokens;)V
+const #331 = Asciz	Keyword;
+const #332 = Asciz	()Lscala/util/parsing/syntax/StdTokens$Keyword$;;
+const #333 = NameAndType	#9:#10;//  Keyword$module:Lscala/util/parsing/syntax/StdTokens$Keyword$;
+const #334 = Field	#39.#333;	//  scala/util/parsing/combinator/lexical/StdLexical.Keyword$module:Lscala/util/parsing/syntax/StdTokens$Keyword$;
+const #335 = Asciz	scala/util/parsing/syntax/StdTokens$Keyword$;
+const #336 = class	#335;	//  scala/util/parsing/syntax/StdTokens$Keyword$
+const #337 = Method	#336.#315;	//  scala/util/parsing/syntax/StdTokens$Keyword$."<init>":(Lscala/util/parsing/syntax/StdTokens;)V
+const #338 = Asciz	ScalaSig;
+const #339 = Asciz	InnerClasses;
+const #340 = Asciz	Parser;
+const #341 = Asciz	scala/util/parsing/syntax/StdTokens;
+const #342 = class	#341;	//  scala/util/parsing/syntax/StdTokens
+const #343 = Asciz	$anonfun$token$3;
+const #344 = Asciz	$anonfun$token$7;
+const #345 = Asciz	$anonfun$token$5;
+const #346 = Asciz	$anonfun$token$1;
+const #347 = Asciz	$anonfun$token$9;
+const #348 = Asciz	$anonfun$token$4;
+const #349 = Asciz	$anonfun$token$8;
+const #350 = Asciz	$anonfun$token$6;
+const #351 = Asciz	$anonfun$token$2;
+const #352 = Asciz	$anonfun$_delim$1;
+const #353 = Asciz	$anonfun$_delim$3;
+const #354 = Asciz	$anonfun$_delim$2;
+const #355 = Asciz	$anonfun$token$10;
+const #356 = Asciz	$anonfun$comment$2;
+const #357 = Asciz	$anonfun$comment$1;
+const #358 = Asciz	$anonfun$comment$3;
+const #359 = Asciz	$anonfun$identChar$1;
+const #360 = Asciz	$anonfun$whitespace$1;
+const #361 = Asciz	$anonfun$parseDelim$1$2;
+const #362 = Asciz	$anonfun$parseDelim$1$1;
+const #363 = Asciz	scala/ScalaObject;
+const #364 = class	#363;	//  scala/ScalaObject
+
+{
+public volatile int bitmap$0;
+
+public scala.util.parsing.combinator.lexical.StdLexical();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokespecial	#28; //Method scala/util/parsing/combinator/lexical/Lexical."<init>":()V
+   4:	aload_0
+   5:	invokestatic	#34; //Method scala/util/parsing/syntax/StdTokens$class.$init$:(Lscala/util/parsing/syntax/StdTokens;)V
+   8:	aload_0
+   9:	new	#36; //class scala/collection/mutable/HashSet
+   12:	dup
+   13:	invokespecial	#37; //Method scala/collection/mutable/HashSet."<init>":()V
+   16:	putfield	#41; //Field reserved:Lscala/collection/mutable/HashSet;
+   19:	aload_0
+   20:	new	#36; //class scala/collection/mutable/HashSet
+   23:	dup
+   24:	invokespecial	#37; //Method scala/collection/mutable/HashSet."<init>":()V
+   27:	putfield	#43; //Field delimiters:Lscala/collection/mutable/HashSet;
+   30:	return
+  LineNumberTable: 
+   line 36: 0
+   line 67: 8
+   line 70: 19
+
+
+public final scala.util.parsing.combinator.Parsers$Parser parseDelim$1(java.lang.String);
+  Code:
+   Stack=5, Locals=2, Args_size=2
+   0:	aload_0
+   1:	getstatic	#51; //Field scala/Predef$.MODULE$:Lscala/Predef$;
+   4:	aload_1
+   5:	invokevirtual	#55; //Method scala/Predef$.stringWrapper:(Ljava/lang/String;)Lscala/runtime/RichString;
+   8:	invokeinterface	#61,  1; //InterfaceMethod scala/collection/generic/TraversableTemplate.toList:()Lscala/collection/immutable/List;
+   13:	new	#63; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$parseDelim$1$1
+   16:	dup
+   17:	aload_0
+   18:	invokespecial	#66; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$parseDelim$1$1."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   21:	invokeinterface	#72,  3; //InterfaceMethod scala/util/parsing/combinator/Parsers.accept:(Ljava/lang/Object;Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;
+   26:	new	#74; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$parseDelim$1$2
+   29:	dup
+   30:	aload_0
+   31:	aload_1
+   32:	invokespecial	#77; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$parseDelim$1$2."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;Ljava/lang/String;)V
+   35:	invokevirtual	#83; //Method scala/util/parsing/combinator/Parsers$Parser.$up$up:(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;
+   38:	areturn
+  LineNumberTable: 
+   line 79: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      39      0    this       Lscala/util/parsing/combinator/lexical/StdLexical;
+   0      39      1    s$1       Ljava/lang/String;
+
+
+public scala.util.parsing.combinator.Parsers$Parser delim();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokespecial	#143; //Method _delim:()Lscala/util/parsing/combinator/Parsers$Parser;
+   4:	areturn
+  LineNumberTable: 
+   line 86: 0
+
+  Signature: length = 0x2
+   00 FFFFFF90 
+
+public scala.Product processIdent(java.lang.String);
+  Code:
+   Stack=4, Locals=2, Args_size=2
+   0:	aload_0
+   1:	invokevirtual	#224; //Method reserved:()Lscala/collection/mutable/HashSet;
+   4:	aload_1
+   5:	invokevirtual	#228; //Method scala/collection/mutable/HashSet.contains:(Ljava/lang/Object;)Z
+   8:	ifeq	23
+   11:	new	#230; //class scala/util/parsing/syntax/StdTokens$Keyword
+   14:	dup
+   15:	aload_0
+   16:	aload_1
+   17:	invokespecial	#233; //Method scala/util/parsing/syntax/StdTokens$Keyword."<init>":(Lscala/util/parsing/syntax/StdTokens;Ljava/lang/String;)V
+   20:	goto	32
+   23:	new	#235; //class scala/util/parsing/syntax/StdTokens$Identifier
+   26:	dup
+   27:	aload_0
+   28:	aload_1
+   29:	invokespecial	#236; //Method scala/util/parsing/syntax/StdTokens$Identifier."<init>":(Lscala/util/parsing/syntax/StdTokens;Ljava/lang/String;)V
+   32:	areturn
+  LineNumberTable: 
+   line 73: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      33      0    this       Lscala/util/parsing/combinator/lexical/StdLexical;
+   0      33      1    name       Ljava/lang/String;
+
+
+public scala.collection.mutable.HashSet delimiters();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#43; //Field delimiters:Lscala/collection/mutable/HashSet;
+   4:	areturn
+  LineNumberTable: 
+   line 70: 0
+
+  Signature: length = 0x2
+   00 FFFFFFEE 
+
+public scala.collection.mutable.HashSet reserved();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#41; //Field reserved:Lscala/collection/mutable/HashSet;
+   4:	areturn
+  LineNumberTable: 
+   line 67: 0
+
+  Signature: length = 0x2
+   00 FFFFFFEE 
+
+public scala.util.parsing.combinator.Parsers$Parser comment();
+  Code:
+   Stack=4, Locals=1, Args_size=1
+   0:	aload_0
+   1:	ldc	#240; //int 42
+   3:	invokestatic	#111; //Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
+   6:	invokeinterface	#243,  2; //InterfaceMethod scala/util/parsing/combinator/Parsers.accept:(Ljava/lang/Object;)Lscala/util/parsing/combinator/Parsers$Parser;
+   11:	new	#245; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$1
+   14:	dup
+   15:	aload_0
+   16:	invokespecial	#246; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$1."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   19:	invokevirtual	#250; //Method scala/util/parsing/combinator/Parsers$Parser.$tilde:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+   22:	new	#252; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$2
+   25:	dup
+   26:	aload_0
+   27:	invokespecial	#253; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$2."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   30:	invokevirtual	#83; //Method scala/util/parsing/combinator/Parsers$Parser.$up$up:(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;
+   33:	new	#255; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$3
+   36:	dup
+   37:	aload_0
+   38:	invokespecial	#256; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$comment$3."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   41:	invokevirtual	#259; //Method scala/util/parsing/combinator/Parsers$Parser.$bar:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+   44:	areturn
+  LineNumberTable: 
+   line 62: 0
+   line 63: 33
+
+  Signature: length = 0x2
+   01 04 
+
+public scala.util.parsing.combinator.Parsers$Parser whitespace();
+  Code:
+   Stack=4, Locals=1, Args_size=1
+   0:	aload_0
+   1:	new	#263; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$whitespace$1
+   4:	dup
+   5:	aload_0
+   6:	invokespecial	#264; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$whitespace$1."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   9:	invokeinterface	#267,  2; //InterfaceMethod scala/util/parsing/combinator/Parsers.rep:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+   14:	areturn
+  LineNumberTable: 
+   line 54: 0
+   line 58: 1
+   line 54: 9
+
+  Signature: length = 0x2
+   01 04 
+
+public scala.util.parsing.combinator.Parsers$Parser identChar();
+  Code:
+   Stack=4, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokevirtual	#271; //Method letter:()Lscala/util/parsing/combinator/Parsers$Parser;
+   4:	new	#273; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$identChar$1
+   7:	dup
+   8:	aload_0
+   9:	invokespecial	#274; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$identChar$1."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   12:	invokevirtual	#259; //Method scala/util/parsing/combinator/Parsers$Parser.$bar:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+   15:	areturn
+  LineNumberTable: 
+   line 51: 0
+
+  Signature: length = 0x2
+   01 13 
+
+public scala.util.parsing.combinator.Parsers$Parser token();
+  Code:
+   Stack=4, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokevirtual	#278; //Method identChar:()Lscala/util/parsing/combinator/Parsers$Parser;
+   4:	new	#280; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$1
+   7:	dup
+   8:	aload_0
+   9:	invokespecial	#281; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$1."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   12:	invokevirtual	#250; //Method scala/util/parsing/combinator/Parsers$Parser.$tilde:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+   15:	new	#283; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$2
+   18:	dup
+   19:	aload_0
+   20:	invokespecial	#284; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$2."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   23:	invokevirtual	#83; //Method scala/util/parsing/combinator/Parsers$Parser.$up$up:(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;
+   26:	new	#286; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$3
+   29:	dup
+   30:	aload_0
+   31:	invokespecial	#287; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$3."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   34:	invokevirtual	#259; //Method scala/util/parsing/combinator/Parsers$Parser.$bar:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+   37:	new	#289; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$4
+   40:	dup
+   41:	aload_0
+   42:	invokespecial	#290; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$4."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   45:	invokevirtual	#259; //Method scala/util/parsing/combinator/Parsers$Parser.$bar:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+   48:	new	#292; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$5
+   51:	dup
+   52:	aload_0
+   53:	invokespecial	#293; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$5."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   56:	invokevirtual	#259; //Method scala/util/parsing/combinator/Parsers$Parser.$bar:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+   59:	new	#295; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$6
+   62:	dup
+   63:	aload_0
+   64:	invokespecial	#296; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$6."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   67:	invokevirtual	#259; //Method scala/util/parsing/combinator/Parsers$Parser.$bar:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+   70:	new	#298; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$7
+   73:	dup
+   74:	aload_0
+   75:	invokespecial	#299; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$7."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   78:	invokevirtual	#259; //Method scala/util/parsing/combinator/Parsers$Parser.$bar:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+   81:	new	#301; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$8
+   84:	dup
+   85:	aload_0
+   86:	invokespecial	#302; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$8."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   89:	invokevirtual	#259; //Method scala/util/parsing/combinator/Parsers$Parser.$bar:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+   92:	new	#304; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$9
+   95:	dup
+   96:	aload_0
+   97:	invokespecial	#305; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$9."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   100:	invokevirtual	#259; //Method scala/util/parsing/combinator/Parsers$Parser.$bar:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+   103:	new	#307; //class scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$10
+   106:	dup
+   107:	aload_0
+   108:	invokespecial	#308; //Method scala/util/parsing/combinator/lexical/StdLexical$$anonfun$token$10."<init>":(Lscala/util/parsing/combinator/lexical/StdLexical;)V
+   111:	invokevirtual	#259; //Method scala/util/parsing/combinator/Parsers$Parser.$bar:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
+   114:	areturn
+  LineNumberTable: 
+   line 39: 0
+   line 40: 26
+   line 41: 37
+   line 42: 48
+   line 43: 59
+   line 44: 70
+   line 45: 81
+   line 46: 92
+   line 47: 103
+
+  Signature: length = 0x2
+   00 FFFFFF90 
+
+public final scala.util.parsing.syntax.StdTokens$Identifier$ Identifier();
+  Code:
+   Stack=4, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#312; //Field Identifier$module:Lscala/util/parsing/syntax/StdTokens$Identifier$;
+   4:	ifnonnull	19
+   7:	aload_0
+   8:	new	#314; //class scala/util/parsing/syntax/StdTokens$Identifier$
+   11:	dup
+   12:	aload_0
+   13:	invokespecial	#316; //Method scala/util/parsing/syntax/StdTokens$Identifier$."<init>":(Lscala/util/parsing/syntax/StdTokens;)V
+   16:	putfield	#312; //Field Identifier$module:Lscala/util/parsing/syntax/StdTokens$Identifier$;
+   19:	aload_0
+   20:	getfield	#312; //Field Identifier$module:Lscala/util/parsing/syntax/StdTokens$Identifier$;
+   23:	areturn
+  LineNumberTable: 
+   line 36: 0
+
+
+public final scala.util.parsing.syntax.StdTokens$StringLit$ StringLit();
+  Code:
+   Stack=4, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#320; //Field StringLit$module:Lscala/util/parsing/syntax/StdTokens$StringLit$;
+   4:	ifnonnull	19
+   7:	aload_0
+   8:	new	#322; //class scala/util/parsing/syntax/StdTokens$StringLit$
+   11:	dup
+   12:	aload_0
+   13:	invokespecial	#323; //Method scala/util/parsing/syntax/StdTokens$StringLit$."<init>":(Lscala/util/parsing/syntax/StdTokens;)V
+   16:	putfield	#320; //Field StringLit$module:Lscala/util/parsing/syntax/StdTokens$StringLit$;
+   19:	aload_0
+   20:	getfield	#320; //Field StringLit$module:Lscala/util/parsing/syntax/StdTokens$StringLit$;
+   23:	areturn
+  LineNumberTable: 
+   line 36: 0
+
+
+public final scala.util.parsing.syntax.StdTokens$NumericLit$ NumericLit();
+  Code:
+   Stack=4, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#327; //Field NumericLit$module:Lscala/util/parsing/syntax/StdTokens$NumericLit$;
+   4:	ifnonnull	19
+   7:	aload_0
+   8:	new	#329; //class scala/util/parsing/syntax/StdTokens$NumericLit$
+   11:	dup
+   12:	aload_0
+   13:	invokespecial	#330; //Method scala/util/parsing/syntax/StdTokens$NumericLit$."<init>":(Lscala/util/parsing/syntax/StdTokens;)V
+   16:	putfield	#327; //Field NumericLit$module:Lscala/util/parsing/syntax/StdTokens$NumericLit$;
+   19:	aload_0
+   20:	getfield	#327; //Field NumericLit$module:Lscala/util/parsing/syntax/StdTokens$NumericLit$;
+   23:	areturn
+  LineNumberTable: 
+   line 36: 0
+
+
+public final scala.util.parsing.syntax.StdTokens$Keyword$ Keyword();
+  Code:
+   Stack=4, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#334; //Field Keyword$module:Lscala/util/parsing/syntax/StdTokens$Keyword$;
+   4:	ifnonnull	19
+   7:	aload_0
+   8:	new	#336; //class scala/util/parsing/syntax/StdTokens$Keyword$
+   11:	dup
+   12:	aload_0
+   13:	invokespecial	#337; //Method scala/util/parsing/syntax/StdTokens$Keyword$."<init>":(Lscala/util/parsing/syntax/StdTokens;)V
+   16:	putfield	#334; //Field Keyword$module:Lscala/util/parsing/syntax/StdTokens$Keyword$;
+   19:	aload_0
+   20:	getfield	#334; //Field Keyword$module:Lscala/util/parsing/syntax/StdTokens$Keyword$;
+   23:	areturn
+  LineNumberTable: 
+   line 36: 0
+
+
+}
+

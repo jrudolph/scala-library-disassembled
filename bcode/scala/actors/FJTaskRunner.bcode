@@ -1,0 +1,1467 @@
+public class scala.actors.FJTaskRunner extends java.lang.Thread
+  InnerClass: 
+   final #74= #36 of #72; //VolatileTaskRef=class scala/actors/FJTaskRunner$VolatileTaskRef of class scala/actors/FJTaskRunner
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Method	#73.#134;	//  java/lang/Thread."<init>":()V
+const #2 = Method	#36.#135;	//  scala/actors/FJTaskRunner$VolatileTaskRef.newArray:(I)[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+const #3 = Field	#72.#136;	//  scala/actors/FJTaskRunner.deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+const #4 = Field	#72.#137;	//  scala/actors/FJTaskRunner.top:I
+const #5 = Field	#72.#138;	//  scala/actors/FJTaskRunner.base:I
+const #6 = class	#139;	//  java/lang/Object
+const #7 = Method	#6.#134;	//  java/lang/Object."<init>":()V
+const #8 = Field	#72.#140;	//  scala/actors/FJTaskRunner.barrier:Ljava/lang/Object;
+const #9 = Field	#72.#141;	//  scala/actors/FJTaskRunner.active:Z
+const #10 = Field	#72.#142;	//  scala/actors/FJTaskRunner.scanPriority:I
+const #11 = Field	#72.#143;	//  scala/actors/FJTaskRunner.runs:I
+const #12 = Field	#72.#144;	//  scala/actors/FJTaskRunner.scans:I
+const #13 = Field	#72.#145;	//  scala/actors/FJTaskRunner.steals:I
+const #14 = Field	#72.#146;	//  scala/actors/FJTaskRunner.suspending:Z
+const #15 = Field	#72.#147;	//  scala/actors/FJTaskRunner.group:Lscala/actors/IFJTaskRunnerGroup;
+const #16 = class	#148;	//  java/util/Random
+const #17 = Method	#149.#150;	//  java/lang/System.identityHashCode:(Ljava/lang/Object;)I
+const #18 = Method	#16.#151;	//  java/util/Random."<init>":(J)V
+const #19 = Field	#72.#152;	//  scala/actors/FJTaskRunner.victimRNG:Ljava/util/Random;
+const #20 = Method	#72.#153;	//  scala/actors/FJTaskRunner.getPriority:()I
+const #21 = Field	#72.#154;	//  scala/actors/FJTaskRunner.runPriority:I
+const #22 = Method	#72.#155;	//  scala/actors/FJTaskRunner.setDaemon:(Z)V
+const #23 = Method	#36.#156;	//  scala/actors/FJTaskRunner$VolatileTaskRef.put:(Lscala/actors/FJTask;)V
+const #24 = Method	#72.#157;	//  scala/actors/FJTaskRunner.slowPush:(Lscala/actors/FJTask;)V
+const #25 = Method	#72.#158;	//  scala/actors/FJTaskRunner.checkOverflow:()V
+const #26 = Method	#72.#159;	//  scala/actors/FJTaskRunner.push:(Lscala/actors/FJTask;)V
+const #27 = Method	#36.#160;	//  scala/actors/FJTaskRunner$VolatileTaskRef.take:()Lscala/actors/FJTask;
+const #28 = Method	#72.#161;	//  scala/actors/FJTaskRunner.confirmPop:(I)Lscala/actors/FJTask;
+const #29 = Method	#72.#162;	//  scala/actors/FJTaskRunner.confirmTake:(I)Lscala/actors/FJTask;
+const #30 = Method	#36.#163;	//  scala/actors/FJTaskRunner$VolatileTaskRef.get:()Lscala/actors/FJTask;
+const #31 = Field	#36.#164;	//  scala/actors/FJTaskRunner$VolatileTaskRef.ref:Lscala/actors/FJTask;
+const #32 = int	1073741824;
+const #33 = class	#165;	//  java/lang/Error
+const #34 = String	#166;	//  FJTask queue maximum capacity exceeded
+const #35 = Method	#33.#167;	//  java/lang/Error."<init>":(Ljava/lang/String;)V
+const #36 = class	#168;	//  scala/actors/FJTaskRunner$VolatileTaskRef
+const #37 = Method	#36.#134;	//  scala/actors/FJTaskRunner$VolatileTaskRef."<init>":()V
+const #38 = InterfaceMethod	#169.#170;	//  scala/actors/IFJTaskRunnerGroup.getArray:()[Lscala/actors/FJTaskRunner;
+const #39 = Method	#16.#171;	//  java/util/Random.nextInt:(I)I
+const #40 = Method	#172.#173;	//  scala/actors/FJTask.isDone:()Z
+const #41 = Method	#72.#160;	//  scala/actors/FJTaskRunner.take:()Lscala/actors/FJTask;
+const #42 = Method	#72.#174;	//  scala/actors/FJTaskRunner.isInterrupted:()Z
+const #43 = Method	#72.#175;	//  scala/actors/FJTaskRunner.setPriority:(I)V
+const #44 = Method	#72.#176;	//  scala/actors/FJTaskRunner.yield:()V
+const #45 = InterfaceMethod	#169.#177;	//  scala/actors/IFJTaskRunnerGroup.pollEntryQueue:()Lscala/actors/FJTask;
+const #46 = Method	#172.#178;	//  scala/actors/FJTask.run:()V
+const #47 = Method	#172.#179;	//  scala/actors/FJTask.setDone:()V
+const #48 = InterfaceMethod	#169.#180;	//  scala/actors/IFJTaskRunnerGroup.setActive:(Lscala/actors/FJTaskRunner;)V
+const #49 = long	15l;
+const #51 = InterfaceMethod	#169.#181;	//  scala/actors/IFJTaskRunnerGroup.checkActive:(Lscala/actors/FJTaskRunner;J)V
+const #52 = Method	#72.#182;	//  scala/actors/FJTaskRunner.interrupted:()Z
+const #53 = Method	#72.#183;	//  scala/actors/FJTaskRunner.pop:()Lscala/actors/FJTask;
+const #54 = Method	#72.#184;	//  scala/actors/FJTaskRunner.scanWhileIdling:()V
+const #55 = InterfaceMethod	#169.#185;	//  scala/actors/IFJTaskRunnerGroup.getEntryQueue:()Lscala/actors/LinkedQueue;
+const #56 = Method	#186.#187;	//  scala/actors/LinkedQueue.put:(Ljava/lang/Object;)V
+const #57 = class	#188;	//  java/lang/InterruptedException
+const #58 = Field	#149.#189;	//  java/lang/System.err:Ljava/io/PrintStream;
+const #59 = class	#190;	//  java/lang/StringBuilder
+const #60 = Method	#59.#134;	//  java/lang/StringBuilder."<init>":()V
+const #61 = String	#191;	//  Suspend: when transferring task to entryQueue: 
+const #62 = Method	#59.#192;	//  java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+const #63 = Method	#59.#193;	//  java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+const #64 = Method	#59.#194;	//  java/lang/StringBuilder.toString:()Ljava/lang/String;
+const #65 = Method	#195.#196;	//  java/io/PrintStream.println:(Ljava/lang/String;)V
+const #66 = InterfaceMethod	#169.#197;	//  scala/actors/IFJTaskRunnerGroup.setInactive:(Lscala/actors/FJTaskRunner;)V
+const #67 = Method	#72.#198;	//  scala/actors/FJTaskRunner.scan:(Lscala/actors/FJTask;)V
+const #68 = Method	#72.#199;	//  scala/actors/FJTaskRunner.slowCoInvoke:(Lscala/actors/FJTask;Lscala/actors/FJTask;)V
+const #69 = Method	#172.#200;	//  scala/actors/FJTask.invoke:(Lscala/actors/FJTask;)V
+const #70 = Method	#72.#201;	//  scala/actors/FJTaskRunner.taskJoin:(Lscala/actors/FJTask;)V
+const #71 = Method	#72.#202;	//  scala/actors/FJTaskRunner.slowCoInvoke:([Lscala/actors/FJTask;)V
+const #72 = class	#203;	//  scala/actors/FJTaskRunner
+const #73 = class	#204;	//  java/lang/Thread
+const #74 = Asciz	VolatileTaskRef;
+const #75 = Asciz	InnerClasses;
+const #76 = Asciz	group;
+const #77 = Asciz	Lscala/actors/IFJTaskRunnerGroup;;
+const #78 = Asciz	INITIAL_CAPACITY;
+const #79 = Asciz	I;
+const #80 = Asciz	ConstantValue;
+const #81 = int	4096;
+const #82 = Asciz	MAX_CAPACITY;
+const #83 = Asciz	deq;
+const #84 = Asciz	[Lscala/actors/FJTaskRunner$VolatileTaskRef;;
+const #85 = Asciz	top;
+const #86 = Asciz	base;
+const #87 = Asciz	barrier;
+const #88 = Asciz	Ljava/lang/Object;;
+const #89 = Asciz	active;
+const #90 = Asciz	Z;
+const #91 = Asciz	victimRNG;
+const #92 = Asciz	Ljava/util/Random;;
+const #93 = Asciz	scanPriority;
+const #94 = Asciz	runPriority;
+const #95 = Asciz	COLLECT_STATS;
+const #96 = int	1;
+const #97 = Asciz	runs;
+const #98 = Asciz	scans;
+const #99 = Asciz	steals;
+const #100 = Asciz	suspending;
+const #101 = Asciz	<init>;
+const #102 = Asciz	(Lscala/actors/IFJTaskRunnerGroup;)V;
+const #103 = Asciz	Code;
+const #104 = Asciz	getGroup;
+const #105 = Asciz	()Lscala/actors/IFJTaskRunnerGroup;;
+const #106 = Asciz	deqSize;
+const #107 = Asciz	()I;
+const #108 = Asciz	setScanPriority;
+const #109 = Asciz	(I)V;
+const #110 = Asciz	setRunPriority;
+const #111 = Asciz	setSuspending;
+const #112 = Asciz	(Z)V;
+const #113 = Asciz	push;
+const #114 = Asciz	(Lscala/actors/FJTask;)V;
+const #115 = Asciz	slowPush;
+const #116 = Asciz	put;
+const #117 = Asciz	pop;
+const #118 = Asciz	()Lscala/actors/FJTask;;
+const #119 = Asciz	confirmPop;
+const #120 = Asciz	(I)Lscala/actors/FJTask;;
+const #121 = Asciz	take;
+const #122 = Asciz	confirmTake;
+const #123 = Asciz	checkOverflow;
+const #124 = Asciz	()V;
+const #125 = Asciz	scan;
+const #126 = Asciz	scanWhileIdling;
+const #127 = Asciz	run;
+const #128 = Asciz	taskYield;
+const #129 = Asciz	taskJoin;
+const #130 = Asciz	coInvoke;
+const #131 = Asciz	(Lscala/actors/FJTask;Lscala/actors/FJTask;)V;
+const #132 = Asciz	slowCoInvoke;
+const #133 = Asciz	([Lscala/actors/FJTask;)V;
+const #134 = NameAndType	#101:#124;//  "<init>":()V
+const #135 = NameAndType	#205:#206;//  newArray:(I)[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+const #136 = NameAndType	#83:#84;//  deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+const #137 = NameAndType	#85:#79;//  top:I
+const #138 = NameAndType	#86:#79;//  base:I
+const #139 = Asciz	java/lang/Object;
+const #140 = NameAndType	#87:#88;//  barrier:Ljava/lang/Object;
+const #141 = NameAndType	#89:#90;//  active:Z
+const #142 = NameAndType	#93:#79;//  scanPriority:I
+const #143 = NameAndType	#97:#79;//  runs:I
+const #144 = NameAndType	#98:#79;//  scans:I
+const #145 = NameAndType	#99:#79;//  steals:I
+const #146 = NameAndType	#100:#90;//  suspending:Z
+const #147 = NameAndType	#76:#77;//  group:Lscala/actors/IFJTaskRunnerGroup;
+const #148 = Asciz	java/util/Random;
+const #149 = class	#207;	//  java/lang/System
+const #150 = NameAndType	#208:#209;//  identityHashCode:(Ljava/lang/Object;)I
+const #151 = NameAndType	#101:#210;//  "<init>":(J)V
+const #152 = NameAndType	#91:#92;//  victimRNG:Ljava/util/Random;
+const #153 = NameAndType	#211:#107;//  getPriority:()I
+const #154 = NameAndType	#94:#79;//  runPriority:I
+const #155 = NameAndType	#212:#112;//  setDaemon:(Z)V
+const #156 = NameAndType	#116:#114;//  put:(Lscala/actors/FJTask;)V
+const #157 = NameAndType	#115:#114;//  slowPush:(Lscala/actors/FJTask;)V
+const #158 = NameAndType	#123:#124;//  checkOverflow:()V
+const #159 = NameAndType	#113:#114;//  push:(Lscala/actors/FJTask;)V
+const #160 = NameAndType	#121:#118;//  take:()Lscala/actors/FJTask;
+const #161 = NameAndType	#119:#120;//  confirmPop:(I)Lscala/actors/FJTask;
+const #162 = NameAndType	#122:#120;//  confirmTake:(I)Lscala/actors/FJTask;
+const #163 = NameAndType	#213:#118;//  get:()Lscala/actors/FJTask;
+const #164 = NameAndType	#214:#215;//  ref:Lscala/actors/FJTask;
+const #165 = Asciz	java/lang/Error;
+const #166 = Asciz	FJTask queue maximum capacity exceeded;
+const #167 = NameAndType	#101:#216;//  "<init>":(Ljava/lang/String;)V
+const #168 = Asciz	scala/actors/FJTaskRunner$VolatileTaskRef;
+const #169 = class	#217;	//  scala/actors/IFJTaskRunnerGroup
+const #170 = NameAndType	#218:#219;//  getArray:()[Lscala/actors/FJTaskRunner;
+const #171 = NameAndType	#220:#221;//  nextInt:(I)I
+const #172 = class	#222;	//  scala/actors/FJTask
+const #173 = NameAndType	#223:#224;//  isDone:()Z
+const #174 = NameAndType	#225:#224;//  isInterrupted:()Z
+const #175 = NameAndType	#226:#109;//  setPriority:(I)V
+const #176 = NameAndType	#227:#124;//  yield:()V
+const #177 = NameAndType	#228:#118;//  pollEntryQueue:()Lscala/actors/FJTask;
+const #178 = NameAndType	#127:#124;//  run:()V
+const #179 = NameAndType	#229:#124;//  setDone:()V
+const #180 = NameAndType	#230:#231;//  setActive:(Lscala/actors/FJTaskRunner;)V
+const #181 = NameAndType	#232:#233;//  checkActive:(Lscala/actors/FJTaskRunner;J)V
+const #182 = NameAndType	#234:#224;//  interrupted:()Z
+const #183 = NameAndType	#117:#118;//  pop:()Lscala/actors/FJTask;
+const #184 = NameAndType	#126:#124;//  scanWhileIdling:()V
+const #185 = NameAndType	#235:#236;//  getEntryQueue:()Lscala/actors/LinkedQueue;
+const #186 = class	#237;	//  scala/actors/LinkedQueue
+const #187 = NameAndType	#116:#238;//  put:(Ljava/lang/Object;)V
+const #188 = Asciz	java/lang/InterruptedException;
+const #189 = NameAndType	#239:#240;//  err:Ljava/io/PrintStream;
+const #190 = Asciz	java/lang/StringBuilder;
+const #191 = Asciz	Suspend: when transferring task to entryQueue: ;
+const #192 = NameAndType	#241:#242;//  append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+const #193 = NameAndType	#241:#243;//  append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+const #194 = NameAndType	#244:#245;//  toString:()Ljava/lang/String;
+const #195 = class	#246;	//  java/io/PrintStream
+const #196 = NameAndType	#247:#216;//  println:(Ljava/lang/String;)V
+const #197 = NameAndType	#248:#231;//  setInactive:(Lscala/actors/FJTaskRunner;)V
+const #198 = NameAndType	#125:#114;//  scan:(Lscala/actors/FJTask;)V
+const #199 = NameAndType	#132:#131;//  slowCoInvoke:(Lscala/actors/FJTask;Lscala/actors/FJTask;)V
+const #200 = NameAndType	#249:#114;//  invoke:(Lscala/actors/FJTask;)V
+const #201 = NameAndType	#129:#114;//  taskJoin:(Lscala/actors/FJTask;)V
+const #202 = NameAndType	#132:#133;//  slowCoInvoke:([Lscala/actors/FJTask;)V
+const #203 = Asciz	scala/actors/FJTaskRunner;
+const #204 = Asciz	java/lang/Thread;
+const #205 = Asciz	newArray;
+const #206 = Asciz	(I)[Lscala/actors/FJTaskRunner$VolatileTaskRef;;
+const #207 = Asciz	java/lang/System;
+const #208 = Asciz	identityHashCode;
+const #209 = Asciz	(Ljava/lang/Object;)I;
+const #210 = Asciz	(J)V;
+const #211 = Asciz	getPriority;
+const #212 = Asciz	setDaemon;
+const #213 = Asciz	get;
+const #214 = Asciz	ref;
+const #215 = Asciz	Lscala/actors/FJTask;;
+const #216 = Asciz	(Ljava/lang/String;)V;
+const #217 = Asciz	scala/actors/IFJTaskRunnerGroup;
+const #218 = Asciz	getArray;
+const #219 = Asciz	()[Lscala/actors/FJTaskRunner;;
+const #220 = Asciz	nextInt;
+const #221 = Asciz	(I)I;
+const #222 = Asciz	scala/actors/FJTask;
+const #223 = Asciz	isDone;
+const #224 = Asciz	()Z;
+const #225 = Asciz	isInterrupted;
+const #226 = Asciz	setPriority;
+const #227 = Asciz	yield;
+const #228 = Asciz	pollEntryQueue;
+const #229 = Asciz	setDone;
+const #230 = Asciz	setActive;
+const #231 = Asciz	(Lscala/actors/FJTaskRunner;)V;
+const #232 = Asciz	checkActive;
+const #233 = Asciz	(Lscala/actors/FJTaskRunner;J)V;
+const #234 = Asciz	interrupted;
+const #235 = Asciz	getEntryQueue;
+const #236 = Asciz	()Lscala/actors/LinkedQueue;;
+const #237 = Asciz	scala/actors/LinkedQueue;
+const #238 = Asciz	(Ljava/lang/Object;)V;
+const #239 = Asciz	err;
+const #240 = Asciz	Ljava/io/PrintStream;;
+const #241 = Asciz	append;
+const #242 = Asciz	(Ljava/lang/String;)Ljava/lang/StringBuilder;;
+const #243 = Asciz	(Ljava/lang/Object;)Ljava/lang/StringBuilder;;
+const #244 = Asciz	toString;
+const #245 = Asciz	()Ljava/lang/String;;
+const #246 = Asciz	java/io/PrintStream;
+const #247 = Asciz	println;
+const #248 = Asciz	setInactive;
+const #249 = Asciz	invoke;
+
+{
+protected final scala.actors.IFJTaskRunnerGroup group;
+
+protected static final int INITIAL_CAPACITY;
+  Constant value: int 4096
+protected static final int MAX_CAPACITY;
+  Constant value: int 1073741824
+protected scala.actors.FJTaskRunner$VolatileTaskRef[] deq;
+
+protected volatile int top;
+
+protected volatile int base;
+
+protected final java.lang.Object barrier;
+
+public boolean active;
+
+protected final java.util.Random victimRNG;
+
+protected int scanPriority;
+
+protected int runPriority;
+
+static final boolean COLLECT_STATS;
+  Constant value: int 1
+protected int runs;
+
+protected int scans;
+
+protected int steals;
+
+protected boolean suspending;
+
+public scala.actors.FJTaskRunner(scala.actors.IFJTaskRunnerGroup);
+  Code:
+   Stack=5, Locals=2, Args_size=2
+   0:	aload_0
+   1:	invokespecial	#1; //Method java/lang/Thread."<init>":()V
+   4:	aload_0
+   5:	sipush	4096
+   8:	invokestatic	#2; //Method scala/actors/FJTaskRunner$VolatileTaskRef.newArray:(I)[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   11:	putfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   14:	aload_0
+   15:	iconst_0
+   16:	putfield	#4; //Field top:I
+   19:	aload_0
+   20:	iconst_0
+   21:	putfield	#5; //Field base:I
+   24:	aload_0
+   25:	new	#6; //class java/lang/Object
+   28:	dup
+   29:	invokespecial	#7; //Method java/lang/Object."<init>":()V
+   32:	putfield	#8; //Field barrier:Ljava/lang/Object;
+   35:	aload_0
+   36:	iconst_0
+   37:	putfield	#9; //Field active:Z
+   40:	aload_0
+   41:	iconst_2
+   42:	putfield	#10; //Field scanPriority:I
+   45:	aload_0
+   46:	iconst_0
+   47:	putfield	#11; //Field runs:I
+   50:	aload_0
+   51:	iconst_0
+   52:	putfield	#12; //Field scans:I
+   55:	aload_0
+   56:	iconst_0
+   57:	putfield	#13; //Field steals:I
+   60:	aload_0
+   61:	iconst_0
+   62:	putfield	#14; //Field suspending:Z
+   65:	aload_0
+   66:	aload_1
+   67:	putfield	#15; //Field group:Lscala/actors/IFJTaskRunnerGroup;
+   70:	aload_0
+   71:	new	#16; //class java/util/Random
+   74:	dup
+   75:	aload_0
+   76:	invokestatic	#17; //Method java/lang/System.identityHashCode:(Ljava/lang/Object;)I
+   79:	i2l
+   80:	invokespecial	#18; //Method java/util/Random."<init>":(J)V
+   83:	putfield	#19; //Field victimRNG:Ljava/util/Random;
+   86:	aload_0
+   87:	aload_0
+   88:	invokevirtual	#20; //Method getPriority:()I
+   91:	putfield	#21; //Field runPriority:I
+   94:	aload_0
+   95:	iconst_1
+   96:	invokevirtual	#22; //Method setDaemon:(Z)V
+   99:	return
+
+protected final scala.actors.IFJTaskRunnerGroup getGroup();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#15; //Field group:Lscala/actors/IFJTaskRunnerGroup;
+   4:	areturn
+
+protected int deqSize();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   4:	arraylength
+   5:	ireturn
+
+protected void setScanPriority(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#10; //Field scanPriority:I
+   5:	return
+
+protected void setRunPriority(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#21; //Field runPriority:I
+   5:	return
+
+synchronized void setSuspending(boolean);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#14; //Field suspending:Z
+   5:	return
+
+public final void push(scala.actors.FJTask);
+  Code:
+   Stack=4, Locals=3, Args_size=2
+   0:	aload_0
+   1:	getfield	#4; //Field top:I
+   4:	istore_2
+   5:	iload_2
+   6:	aload_0
+   7:	getfield	#5; //Field base:I
+   10:	aload_0
+   11:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   14:	arraylength
+   15:	iconst_1
+   16:	isub
+   17:	iand
+   18:	aload_0
+   19:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   22:	arraylength
+   23:	iadd
+   24:	if_icmpge	55
+   27:	aload_0
+   28:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   31:	iload_2
+   32:	aload_0
+   33:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   36:	arraylength
+   37:	iconst_1
+   38:	isub
+   39:	iand
+   40:	aaload
+   41:	aload_1
+   42:	invokevirtual	#23; //Method scala/actors/FJTaskRunner$VolatileTaskRef.put:(Lscala/actors/FJTask;)V
+   45:	aload_0
+   46:	iload_2
+   47:	iconst_1
+   48:	iadd
+   49:	putfield	#4; //Field top:I
+   52:	goto	60
+   55:	aload_0
+   56:	aload_1
+   57:	invokevirtual	#24; //Method slowPush:(Lscala/actors/FJTask;)V
+   60:	return
+
+protected synchronized void slowPush(scala.actors.FJTask);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	invokevirtual	#25; //Method checkOverflow:()V
+   4:	aload_0
+   5:	aload_1
+   6:	invokevirtual	#26; //Method push:(Lscala/actors/FJTask;)V
+   9:	return
+
+protected final synchronized void put(scala.actors.FJTask);
+  Code:
+   Stack=3, Locals=5, Args_size=2
+   0:	aload_0
+   1:	getfield	#5; //Field base:I
+   4:	iconst_1
+   5:	isub
+   6:	istore_2
+   7:	aload_0
+   8:	getfield	#4; //Field top:I
+   11:	iload_2
+   12:	aload_0
+   13:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   16:	arraylength
+   17:	iadd
+   18:	if_icmpge	88
+   21:	iload_2
+   22:	aload_0
+   23:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   26:	arraylength
+   27:	iconst_1
+   28:	isub
+   29:	iand
+   30:	istore_3
+   31:	aload_0
+   32:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   35:	iload_3
+   36:	aaload
+   37:	aload_1
+   38:	invokevirtual	#23; //Method scala/actors/FJTaskRunner$VolatileTaskRef.put:(Lscala/actors/FJTask;)V
+   41:	aload_0
+   42:	iload_3
+   43:	putfield	#5; //Field base:I
+   46:	iload_2
+   47:	iload_3
+   48:	if_icmpeq	87
+   51:	aload_0
+   52:	getfield	#4; //Field top:I
+   55:	aload_0
+   56:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   59:	arraylength
+   60:	iconst_1
+   61:	isub
+   62:	iand
+   63:	istore	4
+   65:	iload	4
+   67:	iload_3
+   68:	if_icmpge	81
+   71:	iload	4
+   73:	aload_0
+   74:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   77:	arraylength
+   78:	iadd
+   79:	istore	4
+   81:	aload_0
+   82:	iload	4
+   84:	putfield	#4; //Field top:I
+   87:	return
+   88:	aload_0
+   89:	invokevirtual	#25; //Method checkOverflow:()V
+   92:	goto	0
+
+protected final scala.actors.FJTask pop();
+  Code:
+   Stack=4, Locals=2, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	getfield	#4; //Field top:I
+   5:	iconst_1
+   6:	isub
+   7:	dup_x1
+   8:	putfield	#4; //Field top:I
+   11:	istore_1
+   12:	aload_0
+   13:	getfield	#5; //Field base:I
+   16:	iconst_1
+   17:	iadd
+   18:	iload_1
+   19:	if_icmpge	40
+   22:	aload_0
+   23:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   26:	iload_1
+   27:	aload_0
+   28:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   31:	arraylength
+   32:	iconst_1
+   33:	isub
+   34:	iand
+   35:	aaload
+   36:	invokevirtual	#27; //Method scala/actors/FJTaskRunner$VolatileTaskRef.take:()Lscala/actors/FJTask;
+   39:	areturn
+   40:	aload_0
+   41:	iload_1
+   42:	invokevirtual	#28; //Method confirmPop:(I)Lscala/actors/FJTask;
+   45:	areturn
+
+protected final synchronized scala.actors.FJTask confirmPop(int);
+  Code:
+   Stack=4, Locals=2, Args_size=2
+   0:	aload_0
+   1:	getfield	#5; //Field base:I
+   4:	iload_1
+   5:	if_icmpgt	26
+   8:	aload_0
+   9:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   12:	iload_1
+   13:	aload_0
+   14:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   17:	arraylength
+   18:	iconst_1
+   19:	isub
+   20:	iand
+   21:	aaload
+   22:	invokevirtual	#27; //Method scala/actors/FJTaskRunner$VolatileTaskRef.take:()Lscala/actors/FJTask;
+   25:	areturn
+   26:	aload_0
+   27:	aload_0
+   28:	iconst_0
+   29:	dup_x1
+   30:	putfield	#5; //Field base:I
+   33:	putfield	#4; //Field top:I
+   36:	aconst_null
+   37:	areturn
+
+protected final synchronized scala.actors.FJTask take();
+  Code:
+   Stack=4, Locals=2, Args_size=1
+   0:	aload_0
+   1:	dup
+   2:	getfield	#5; //Field base:I
+   5:	dup_x1
+   6:	iconst_1
+   7:	iadd
+   8:	putfield	#5; //Field base:I
+   11:	istore_1
+   12:	iload_1
+   13:	aload_0
+   14:	getfield	#4; //Field top:I
+   17:	if_icmpge	26
+   20:	aload_0
+   21:	iload_1
+   22:	invokevirtual	#29; //Method confirmTake:(I)Lscala/actors/FJTask;
+   25:	areturn
+   26:	aload_0
+   27:	iload_1
+   28:	putfield	#5; //Field base:I
+   31:	aconst_null
+   32:	areturn
+
+protected scala.actors.FJTask confirmTake(int);
+  Code:
+   Stack=4, Locals=4, Args_size=2
+   0:	aload_0
+   1:	getfield	#8; //Field barrier:Ljava/lang/Object;
+   4:	dup
+   5:	astore_2
+   6:	monitorenter
+   7:	iload_1
+   8:	aload_0
+   9:	getfield	#4; //Field top:I
+   12:	if_icmpge	35
+   15:	aload_0
+   16:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   19:	iload_1
+   20:	aload_0
+   21:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   24:	arraylength
+   25:	iconst_1
+   26:	isub
+   27:	iand
+   28:	aaload
+   29:	invokevirtual	#30; //Method scala/actors/FJTaskRunner$VolatileTaskRef.get:()Lscala/actors/FJTask;
+   32:	aload_2
+   33:	monitorexit
+   34:	areturn
+   35:	aload_0
+   36:	iload_1
+   37:	putfield	#5; //Field base:I
+   40:	aconst_null
+   41:	aload_2
+   42:	monitorexit
+   43:	areturn
+   44:	astore_3
+   45:	aload_2
+   46:	monitorexit
+   47:	aload_3
+   48:	athrow
+  Exception table:
+   from   to  target type
+     7    34    44   any
+    35    43    44   any
+    44    47    44   any
+
+protected void checkOverflow();
+  Code:
+   Stack=6, Locals=8, Args_size=1
+   0:	aload_0
+   1:	getfield	#4; //Field top:I
+   4:	istore_1
+   5:	aload_0
+   6:	getfield	#5; //Field base:I
+   9:	istore_2
+   10:	iload_1
+   11:	iload_2
+   12:	isub
+   13:	aload_0
+   14:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   17:	arraylength
+   18:	iconst_1
+   19:	isub
+   20:	if_icmpge	128
+   23:	iload_2
+   24:	aload_0
+   25:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   28:	arraylength
+   29:	iconst_1
+   30:	isub
+   31:	iand
+   32:	istore_3
+   33:	aload_0
+   34:	getfield	#4; //Field top:I
+   37:	aload_0
+   38:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   41:	arraylength
+   42:	iconst_1
+   43:	isub
+   44:	iand
+   45:	istore	4
+   47:	iload	4
+   49:	iload_3
+   50:	if_icmpge	63
+   53:	iload	4
+   55:	aload_0
+   56:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   59:	arraylength
+   60:	iadd
+   61:	istore	4
+   63:	aload_0
+   64:	iload	4
+   66:	putfield	#4; //Field top:I
+   69:	aload_0
+   70:	iload_3
+   71:	putfield	#5; //Field base:I
+   74:	iload_3
+   75:	istore	5
+   77:	iload	5
+   79:	iload	4
+   81:	if_icmpeq	125
+   84:	aload_0
+   85:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   88:	iload	5
+   90:	aaload
+   91:	getfield	#31; //Field scala/actors/FJTaskRunner$VolatileTaskRef.ref:Lscala/actors/FJTask;
+   94:	ifnull	125
+   97:	aload_0
+   98:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   101:	iload	5
+   103:	aaload
+   104:	aconst_null
+   105:	putfield	#31; //Field scala/actors/FJTaskRunner$VolatileTaskRef.ref:Lscala/actors/FJTask;
+   108:	iload	5
+   110:	iconst_1
+   111:	isub
+   112:	aload_0
+   113:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   116:	arraylength
+   117:	iconst_1
+   118:	isub
+   119:	iand
+   120:	istore	5
+   122:	goto	77
+   125:	goto	249
+   128:	iload_1
+   129:	iload_2
+   130:	isub
+   131:	istore_3
+   132:	aload_0
+   133:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   136:	arraylength
+   137:	istore	4
+   139:	iload	4
+   141:	iconst_2
+   142:	imul
+   143:	istore	5
+   145:	iload	5
+   147:	ldc	#32; //int 1073741824
+   149:	if_icmplt	162
+   152:	new	#33; //class java/lang/Error
+   155:	dup
+   156:	ldc	#34; //String FJTask queue maximum capacity exceeded
+   158:	invokespecial	#35; //Method java/lang/Error."<init>":(Ljava/lang/String;)V
+   161:	athrow
+   162:	iload	5
+   164:	anewarray	#36; //class scala/actors/FJTaskRunner$VolatileTaskRef
+   167:	astore	6
+   169:	iconst_0
+   170:	istore	7
+   172:	iload	7
+   174:	iload	4
+   176:	if_icmpge	204
+   179:	aload	6
+   181:	iload	7
+   183:	aload_0
+   184:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   187:	iload_2
+   188:	iinc	2, 1
+   191:	iload	4
+   193:	iconst_1
+   194:	isub
+   195:	iand
+   196:	aaload
+   197:	aastore
+   198:	iinc	7, 1
+   201:	goto	172
+   204:	iload	4
+   206:	istore	7
+   208:	iload	7
+   210:	iload	5
+   212:	if_icmpge	233
+   215:	aload	6
+   217:	iload	7
+   219:	new	#36; //class scala/actors/FJTaskRunner$VolatileTaskRef
+   222:	dup
+   223:	invokespecial	#37; //Method scala/actors/FJTaskRunner$VolatileTaskRef."<init>":()V
+   226:	aastore
+   227:	iinc	7, 1
+   230:	goto	208
+   233:	aload_0
+   234:	aload	6
+   236:	putfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   239:	aload_0
+   240:	iconst_0
+   241:	putfield	#5; //Field base:I
+   244:	aload_0
+   245:	iload_3
+   246:	putfield	#4; //Field top:I
+   249:	return
+
+protected void scan(scala.actors.FJTask);
+  Code:
+   Stack=3, Locals=8, Args_size=2
+   0:	aconst_null
+   1:	astore_2
+   2:	iconst_0
+   3:	istore_3
+   4:	aload_0
+   5:	getfield	#15; //Field group:Lscala/actors/IFJTaskRunnerGroup;
+   8:	invokeinterface	#38,  1; //InterfaceMethod scala/actors/IFJTaskRunnerGroup.getArray:()[Lscala/actors/FJTaskRunner;
+   13:	astore	4
+   15:	aload_0
+   16:	getfield	#19; //Field victimRNG:Ljava/util/Random;
+   19:	aload	4
+   21:	arraylength
+   22:	invokevirtual	#39; //Method java/util/Random.nextInt:(I)I
+   25:	istore	5
+   27:	iconst_0
+   28:	istore	6
+   30:	iload	6
+   32:	aload	4
+   34:	arraylength
+   35:	if_icmpge	153
+   38:	aload	4
+   40:	iload	5
+   42:	aaload
+   43:	astore	7
+   45:	iinc	5, 1
+   48:	iload	5
+   50:	aload	4
+   52:	arraylength
+   53:	if_icmplt	59
+   56:	iconst_0
+   57:	istore	5
+   59:	aload	7
+   61:	ifnull	147
+   64:	aload	7
+   66:	aload_0
+   67:	if_acmpeq	147
+   70:	aload_1
+   71:	ifnull	84
+   74:	aload_1
+   75:	invokevirtual	#40; //Method scala/actors/FJTask.isDone:()Z
+   78:	ifeq	84
+   81:	goto	153
+   84:	aload_0
+   85:	dup
+   86:	getfield	#12; //Field scans:I
+   89:	iconst_1
+   90:	iadd
+   91:	putfield	#12; //Field scans:I
+   94:	aload	7
+   96:	invokevirtual	#41; //Method take:()Lscala/actors/FJTask;
+   99:	astore_2
+   100:	aload_2
+   101:	ifnull	117
+   104:	aload_0
+   105:	dup
+   106:	getfield	#13; //Field steals:I
+   109:	iconst_1
+   110:	iadd
+   111:	putfield	#13; //Field steals:I
+   114:	goto	153
+   117:	aload_0
+   118:	invokevirtual	#42; //Method isInterrupted:()Z
+   121:	ifeq	127
+   124:	goto	153
+   127:	iload_3
+   128:	ifne	144
+   131:	iconst_1
+   132:	istore_3
+   133:	aload_0
+   134:	aload_0
+   135:	getfield	#10; //Field scanPriority:I
+   138:	invokevirtual	#43; //Method setPriority:(I)V
+   141:	goto	147
+   144:	invokestatic	#44; //Method yield:()V
+   147:	iinc	6, 1
+   150:	goto	30
+   153:	aload_2
+   154:	ifnonnull	191
+   157:	aload_0
+   158:	dup
+   159:	getfield	#12; //Field scans:I
+   162:	iconst_1
+   163:	iadd
+   164:	putfield	#12; //Field scans:I
+   167:	aload_0
+   168:	getfield	#15; //Field group:Lscala/actors/IFJTaskRunnerGroup;
+   171:	invokeinterface	#45,  1; //InterfaceMethod scala/actors/IFJTaskRunnerGroup.pollEntryQueue:()Lscala/actors/FJTask;
+   176:	astore_2
+   177:	aload_2
+   178:	ifnull	191
+   181:	aload_0
+   182:	dup
+   183:	getfield	#13; //Field steals:I
+   186:	iconst_1
+   187:	iadd
+   188:	putfield	#13; //Field steals:I
+   191:	iload_3
+   192:	ifeq	203
+   195:	aload_0
+   196:	aload_0
+   197:	getfield	#21; //Field runPriority:I
+   200:	invokevirtual	#43; //Method setPriority:(I)V
+   203:	aload_2
+   204:	ifnull	232
+   207:	aload_2
+   208:	invokevirtual	#40; //Method scala/actors/FJTask.isDone:()Z
+   211:	ifne	232
+   214:	aload_0
+   215:	dup
+   216:	getfield	#11; //Field runs:I
+   219:	iconst_1
+   220:	iadd
+   221:	putfield	#11; //Field runs:I
+   224:	aload_2
+   225:	invokevirtual	#46; //Method scala/actors/FJTask.run:()V
+   228:	aload_2
+   229:	invokevirtual	#47; //Method scala/actors/FJTask.setDone:()V
+   232:	return
+
+protected void scanWhileIdling();
+  Code:
+   Stack=4, Locals=9, Args_size=1
+   0:	aconst_null
+   1:	astore_1
+   2:	iconst_0
+   3:	istore_2
+   4:	lconst_0
+   5:	lstore_3
+   6:	aload_0
+   7:	getfield	#15; //Field group:Lscala/actors/IFJTaskRunnerGroup;
+   10:	invokeinterface	#38,  1; //InterfaceMethod scala/actors/IFJTaskRunnerGroup.getArray:()[Lscala/actors/FJTaskRunner;
+   15:	astore	5
+   17:	aload_0
+   18:	getfield	#19; //Field victimRNG:Ljava/util/Random;
+   21:	aload	5
+   23:	arraylength
+   24:	invokevirtual	#39; //Method java/util/Random.nextInt:(I)I
+   27:	istore	6
+   29:	iconst_0
+   30:	istore	7
+   32:	iload	7
+   34:	aload	5
+   36:	arraylength
+   37:	if_icmpge	133
+   40:	aload	5
+   42:	iload	6
+   44:	aaload
+   45:	astore	8
+   47:	iinc	6, 1
+   50:	iload	6
+   52:	aload	5
+   54:	arraylength
+   55:	if_icmplt	61
+   58:	iconst_0
+   59:	istore	6
+   61:	aload	8
+   63:	ifnull	127
+   66:	aload	8
+   68:	aload_0
+   69:	if_acmpeq	127
+   72:	aload_0
+   73:	dup
+   74:	getfield	#12; //Field scans:I
+   77:	iconst_1
+   78:	iadd
+   79:	putfield	#12; //Field scans:I
+   82:	aload	8
+   84:	invokevirtual	#41; //Method take:()Lscala/actors/FJTask;
+   87:	astore_1
+   88:	aload_1
+   89:	ifnull	127
+   92:	aload_0
+   93:	dup
+   94:	getfield	#13; //Field steals:I
+   97:	iconst_1
+   98:	iadd
+   99:	putfield	#13; //Field steals:I
+   102:	iload_2
+   103:	ifeq	114
+   106:	aload_0
+   107:	aload_0
+   108:	getfield	#21; //Field runPriority:I
+   111:	invokevirtual	#43; //Method setPriority:(I)V
+   114:	aload_0
+   115:	getfield	#15; //Field group:Lscala/actors/IFJTaskRunnerGroup;
+   118:	aload_0
+   119:	invokeinterface	#48,  2; //InterfaceMethod scala/actors/IFJTaskRunnerGroup.setActive:(Lscala/actors/FJTaskRunner;)V
+   124:	goto	133
+   127:	iinc	7, 1
+   130:	goto	32
+   133:	aload_1
+   134:	ifnonnull	255
+   137:	aload_0
+   138:	invokevirtual	#42; //Method isInterrupted:()Z
+   141:	ifeq	145
+   144:	return
+   145:	aload_0
+   146:	dup
+   147:	getfield	#12; //Field scans:I
+   150:	iconst_1
+   151:	iadd
+   152:	putfield	#12; //Field scans:I
+   155:	aload_0
+   156:	getfield	#15; //Field group:Lscala/actors/IFJTaskRunnerGroup;
+   159:	invokeinterface	#45,  1; //InterfaceMethod scala/actors/IFJTaskRunnerGroup.pollEntryQueue:()Lscala/actors/FJTask;
+   164:	astore_1
+   165:	aload_1
+   166:	ifnull	204
+   169:	aload_0
+   170:	dup
+   171:	getfield	#13; //Field steals:I
+   174:	iconst_1
+   175:	iadd
+   176:	putfield	#13; //Field steals:I
+   179:	iload_2
+   180:	ifeq	191
+   183:	aload_0
+   184:	aload_0
+   185:	getfield	#21; //Field runPriority:I
+   188:	invokevirtual	#43; //Method setPriority:(I)V
+   191:	aload_0
+   192:	getfield	#15; //Field group:Lscala/actors/IFJTaskRunnerGroup;
+   195:	aload_0
+   196:	invokeinterface	#48,  2; //InterfaceMethod scala/actors/IFJTaskRunnerGroup.setActive:(Lscala/actors/FJTaskRunner;)V
+   201:	goto	255
+   204:	lload_3
+   205:	lconst_1
+   206:	ladd
+   207:	lstore_3
+   208:	lload_3
+   209:	ldc2_w	#49; //long 15l
+   212:	lcmp
+   213:	iflt	235
+   216:	aload_0
+   217:	getfield	#15; //Field group:Lscala/actors/IFJTaskRunnerGroup;
+   220:	aload_0
+   221:	lload_3
+   222:	invokeinterface	#51,  4; //InterfaceMethod scala/actors/IFJTaskRunnerGroup.checkActive:(Lscala/actors/FJTaskRunner;J)V
+   227:	aload_0
+   228:	invokevirtual	#42; //Method isInterrupted:()Z
+   231:	ifeq	255
+   234:	return
+   235:	iload_2
+   236:	ifne	252
+   239:	iconst_1
+   240:	istore_2
+   241:	aload_0
+   242:	aload_0
+   243:	getfield	#10; //Field scanPriority:I
+   246:	invokevirtual	#43; //Method setPriority:(I)V
+   249:	goto	255
+   252:	invokestatic	#44; //Method yield:()V
+   255:	aload_1
+   256:	ifnull	29
+   259:	aload_1
+   260:	invokevirtual	#40; //Method scala/actors/FJTask.isDone:()Z
+   263:	ifne	284
+   266:	aload_0
+   267:	dup
+   268:	getfield	#11; //Field runs:I
+   271:	iconst_1
+   272:	iadd
+   273:	putfield	#11; //Field runs:I
+   276:	aload_1
+   277:	invokevirtual	#46; //Method scala/actors/FJTask.run:()V
+   280:	aload_1
+   281:	invokevirtual	#47; //Method scala/actors/FJTask.setDone:()V
+   284:	return
+
+public void run();
+  Code:
+   Stack=3, Locals=8, Args_size=1
+   0:	invokestatic	#52; //Method interrupted:()Z
+   3:	ifne	50
+   6:	aload_0
+   7:	invokevirtual	#53; //Method pop:()Lscala/actors/FJTask;
+   10:	astore_1
+   11:	aload_1
+   12:	ifnull	43
+   15:	aload_1
+   16:	invokevirtual	#40; //Method scala/actors/FJTask.isDone:()Z
+   19:	ifne	47
+   22:	aload_0
+   23:	dup
+   24:	getfield	#11; //Field runs:I
+   27:	iconst_1
+   28:	iadd
+   29:	putfield	#11; //Field runs:I
+   32:	aload_1
+   33:	invokevirtual	#46; //Method scala/actors/FJTask.run:()V
+   36:	aload_1
+   37:	invokevirtual	#47; //Method scala/actors/FJTask.setDone:()V
+   40:	goto	47
+   43:	aload_0
+   44:	invokevirtual	#54; //Method scanWhileIdling:()V
+   47:	goto	0
+   50:	aload_0
+   51:	getfield	#14; //Field suspending:Z
+   54:	ifeq	170
+   57:	aload_0
+   58:	dup
+   59:	astore_1
+   60:	monitorenter
+   61:	iconst_0
+   62:	istore_2
+   63:	iload_2
+   64:	aload_0
+   65:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   68:	arraylength
+   69:	if_icmpge	158
+   72:	aload_0
+   73:	getfield	#15; //Field group:Lscala/actors/IFJTaskRunnerGroup;
+   76:	dup
+   77:	astore_3
+   78:	monitorenter
+   79:	aload_0
+   80:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   83:	iload_2
+   84:	aaload
+   85:	invokevirtual	#27; //Method scala/actors/FJTaskRunner$VolatileTaskRef.take:()Lscala/actors/FJTask;
+   88:	astore	4
+   90:	aload	4
+   92:	ifnull	109
+   95:	aload_0
+   96:	getfield	#15; //Field group:Lscala/actors/IFJTaskRunnerGroup;
+   99:	invokeinterface	#55,  1; //InterfaceMethod scala/actors/IFJTaskRunnerGroup.getEntryQueue:()Lscala/actors/LinkedQueue;
+   104:	aload	4
+   106:	invokevirtual	#56; //Method scala/actors/LinkedQueue.put:(Ljava/lang/Object;)V
+   109:	goto	140
+   112:	astore	4
+   114:	getstatic	#58; //Field java/lang/System.err:Ljava/io/PrintStream;
+   117:	new	#59; //class java/lang/StringBuilder
+   120:	dup
+   121:	invokespecial	#60; //Method java/lang/StringBuilder."<init>":()V
+   124:	ldc	#61; //String Suspend: when transferring task to entryQueue: 
+   126:	invokevirtual	#62; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   129:	aload	4
+   131:	invokevirtual	#63; //Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+   134:	invokevirtual	#64; //Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+   137:	invokevirtual	#65; //Method java/io/PrintStream.println:(Ljava/lang/String;)V
+   140:	aload_3
+   141:	monitorexit
+   142:	goto	152
+   145:	astore	5
+   147:	aload_3
+   148:	monitorexit
+   149:	aload	5
+   151:	athrow
+   152:	iinc	2, 1
+   155:	goto	63
+   158:	aload_1
+   159:	monitorexit
+   160:	goto	170
+   163:	astore	6
+   165:	aload_1
+   166:	monitorexit
+   167:	aload	6
+   169:	athrow
+   170:	aload_0
+   171:	getfield	#15; //Field group:Lscala/actors/IFJTaskRunnerGroup;
+   174:	aload_0
+   175:	invokeinterface	#66,  2; //InterfaceMethod scala/actors/IFJTaskRunnerGroup.setInactive:(Lscala/actors/FJTaskRunner;)V
+   180:	goto	198
+   183:	astore	7
+   185:	aload_0
+   186:	getfield	#15; //Field group:Lscala/actors/IFJTaskRunnerGroup;
+   189:	aload_0
+   190:	invokeinterface	#66,  2; //InterfaceMethod scala/actors/IFJTaskRunnerGroup.setInactive:(Lscala/actors/FJTaskRunner;)V
+   195:	aload	7
+   197:	athrow
+   198:	return
+  Exception table:
+   from   to  target type
+    79   109   112   Class java/lang/InterruptedException
+
+    79   142   145   any
+   145   149   145   any
+    61   160   163   any
+   163   167   163   any
+     0   170   183   any
+   183   185   183   any
+
+protected final void taskYield();
+  Code:
+   Stack=3, Locals=2, Args_size=1
+   0:	aload_0
+   1:	invokevirtual	#53; //Method pop:()Lscala/actors/FJTask;
+   4:	astore_1
+   5:	aload_1
+   6:	ifnull	37
+   9:	aload_1
+   10:	invokevirtual	#40; //Method scala/actors/FJTask.isDone:()Z
+   13:	ifne	42
+   16:	aload_0
+   17:	dup
+   18:	getfield	#11; //Field runs:I
+   21:	iconst_1
+   22:	iadd
+   23:	putfield	#11; //Field runs:I
+   26:	aload_1
+   27:	invokevirtual	#46; //Method scala/actors/FJTask.run:()V
+   30:	aload_1
+   31:	invokevirtual	#47; //Method scala/actors/FJTask.setDone:()V
+   34:	goto	42
+   37:	aload_0
+   38:	aconst_null
+   39:	invokevirtual	#67; //Method scan:(Lscala/actors/FJTask;)V
+   42:	return
+
+protected final void taskJoin(scala.actors.FJTask);
+  Code:
+   Stack=3, Locals=3, Args_size=2
+   0:	aload_1
+   1:	invokevirtual	#40; //Method scala/actors/FJTask.isDone:()Z
+   4:	ifne	55
+   7:	aload_0
+   8:	invokevirtual	#53; //Method pop:()Lscala/actors/FJTask;
+   11:	astore_2
+   12:	aload_2
+   13:	ifnull	47
+   16:	aload_2
+   17:	invokevirtual	#40; //Method scala/actors/FJTask.isDone:()Z
+   20:	ifne	52
+   23:	aload_0
+   24:	dup
+   25:	getfield	#11; //Field runs:I
+   28:	iconst_1
+   29:	iadd
+   30:	putfield	#11; //Field runs:I
+   33:	aload_2
+   34:	invokevirtual	#46; //Method scala/actors/FJTask.run:()V
+   37:	aload_2
+   38:	invokevirtual	#47; //Method scala/actors/FJTask.setDone:()V
+   41:	aload_2
+   42:	aload_1
+   43:	if_acmpne	52
+   46:	return
+   47:	aload_0
+   48:	aload_1
+   49:	invokevirtual	#67; //Method scan:(Lscala/actors/FJTask;)V
+   52:	goto	0
+   55:	return
+
+protected final void coInvoke(scala.actors.FJTask, scala.actors.FJTask);
+  Code:
+   Stack=4, Locals=5, Args_size=3
+   0:	aload_0
+   1:	getfield	#4; //Field top:I
+   4:	istore_3
+   5:	iload_3
+   6:	aload_0
+   7:	getfield	#5; //Field base:I
+   10:	aload_0
+   11:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   14:	arraylength
+   15:	iconst_1
+   16:	isub
+   17:	iand
+   18:	aload_0
+   19:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   22:	arraylength
+   23:	iadd
+   24:	if_icmpge	138
+   27:	aload_0
+   28:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   31:	iload_3
+   32:	aload_0
+   33:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   36:	arraylength
+   37:	iconst_1
+   38:	isub
+   39:	iand
+   40:	aaload
+   41:	aload_1
+   42:	invokevirtual	#23; //Method scala/actors/FJTaskRunner$VolatileTaskRef.put:(Lscala/actors/FJTask;)V
+   45:	aload_0
+   46:	iload_3
+   47:	iconst_1
+   48:	iadd
+   49:	putfield	#4; //Field top:I
+   52:	aload_2
+   53:	invokevirtual	#40; //Method scala/actors/FJTask.isDone:()Z
+   56:	ifne	77
+   59:	aload_0
+   60:	dup
+   61:	getfield	#11; //Field runs:I
+   64:	iconst_1
+   65:	iadd
+   66:	putfield	#11; //Field runs:I
+   69:	aload_2
+   70:	invokevirtual	#46; //Method scala/actors/FJTask.run:()V
+   73:	aload_2
+   74:	invokevirtual	#47; //Method scala/actors/FJTask.setDone:()V
+   77:	aload_1
+   78:	invokevirtual	#40; //Method scala/actors/FJTask.isDone:()Z
+   81:	ifne	144
+   84:	aload_0
+   85:	invokevirtual	#53; //Method pop:()Lscala/actors/FJTask;
+   88:	astore	4
+   90:	aload	4
+   92:	ifnull	130
+   95:	aload	4
+   97:	invokevirtual	#40; //Method scala/actors/FJTask.isDone:()Z
+   100:	ifne	135
+   103:	aload_0
+   104:	dup
+   105:	getfield	#11; //Field runs:I
+   108:	iconst_1
+   109:	iadd
+   110:	putfield	#11; //Field runs:I
+   113:	aload	4
+   115:	invokevirtual	#46; //Method scala/actors/FJTask.run:()V
+   118:	aload	4
+   120:	invokevirtual	#47; //Method scala/actors/FJTask.setDone:()V
+   123:	aload	4
+   125:	aload_1
+   126:	if_acmpne	135
+   129:	return
+   130:	aload_0
+   131:	aload_1
+   132:	invokevirtual	#67; //Method scan:(Lscala/actors/FJTask;)V
+   135:	goto	77
+   138:	aload_0
+   139:	aload_1
+   140:	aload_2
+   141:	invokevirtual	#68; //Method slowCoInvoke:(Lscala/actors/FJTask;Lscala/actors/FJTask;)V
+   144:	return
+
+protected void slowCoInvoke(scala.actors.FJTask, scala.actors.FJTask);
+  Code:
+   Stack=2, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	invokevirtual	#26; //Method push:(Lscala/actors/FJTask;)V
+   5:	aload_2
+   6:	invokestatic	#69; //Method scala/actors/FJTask.invoke:(Lscala/actors/FJTask;)V
+   9:	aload_0
+   10:	aload_1
+   11:	invokevirtual	#70; //Method taskJoin:(Lscala/actors/FJTask;)V
+   14:	return
+
+protected final void coInvoke(scala.actors.FJTask[]);
+  Code:
+   Stack=4, Locals=8, Args_size=2
+   0:	aload_1
+   1:	arraylength
+   2:	iconst_1
+   3:	isub
+   4:	istore_2
+   5:	aload_0
+   6:	getfield	#4; //Field top:I
+   9:	istore_3
+   10:	iload_2
+   11:	iflt	198
+   14:	iload_3
+   15:	iload_2
+   16:	iadd
+   17:	aload_0
+   18:	getfield	#5; //Field base:I
+   21:	aload_0
+   22:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   25:	arraylength
+   26:	iconst_1
+   27:	isub
+   28:	iand
+   29:	aload_0
+   30:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   33:	arraylength
+   34:	iadd
+   35:	if_icmpge	198
+   38:	iconst_0
+   39:	istore	4
+   41:	iload	4
+   43:	iload_2
+   44:	if_icmpge	82
+   47:	aload_0
+   48:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   51:	iload_3
+   52:	iinc	3, 1
+   55:	aload_0
+   56:	getfield	#3; //Field deq:[Lscala/actors/FJTaskRunner$VolatileTaskRef;
+   59:	arraylength
+   60:	iconst_1
+   61:	isub
+   62:	iand
+   63:	aaload
+   64:	aload_1
+   65:	iload	4
+   67:	aaload
+   68:	invokevirtual	#23; //Method scala/actors/FJTaskRunner$VolatileTaskRef.put:(Lscala/actors/FJTask;)V
+   71:	aload_0
+   72:	iload_3
+   73:	putfield	#4; //Field top:I
+   76:	iinc	4, 1
+   79:	goto	41
+   82:	aload_1
+   83:	iload_2
+   84:	aaload
+   85:	astore	4
+   87:	aload	4
+   89:	invokevirtual	#40; //Method scala/actors/FJTask.isDone:()Z
+   92:	ifne	115
+   95:	aload_0
+   96:	dup
+   97:	getfield	#11; //Field runs:I
+   100:	iconst_1
+   101:	iadd
+   102:	putfield	#11; //Field runs:I
+   105:	aload	4
+   107:	invokevirtual	#46; //Method scala/actors/FJTask.run:()V
+   110:	aload	4
+   112:	invokevirtual	#47; //Method scala/actors/FJTask.setDone:()V
+   115:	iconst_0
+   116:	istore	5
+   118:	iload	5
+   120:	iload_2
+   121:	if_icmpge	195
+   124:	aload_1
+   125:	iload	5
+   127:	aaload
+   128:	astore	6
+   130:	aload	6
+   132:	invokevirtual	#40; //Method scala/actors/FJTask.isDone:()Z
+   135:	ifne	189
+   138:	aload_0
+   139:	invokevirtual	#53; //Method pop:()Lscala/actors/FJTask;
+   142:	astore	7
+   144:	aload	7
+   146:	ifnull	180
+   149:	aload	7
+   151:	invokevirtual	#40; //Method scala/actors/FJTask.isDone:()Z
+   154:	ifne	186
+   157:	aload_0
+   158:	dup
+   159:	getfield	#11; //Field runs:I
+   162:	iconst_1
+   163:	iadd
+   164:	putfield	#11; //Field runs:I
+   167:	aload	7
+   169:	invokevirtual	#46; //Method scala/actors/FJTask.run:()V
+   172:	aload	7
+   174:	invokevirtual	#47; //Method scala/actors/FJTask.setDone:()V
+   177:	goto	186
+   180:	aload_0
+   181:	aload	6
+   183:	invokevirtual	#67; //Method scan:(Lscala/actors/FJTask;)V
+   186:	goto	130
+   189:	iinc	5, 1
+   192:	goto	118
+   195:	goto	203
+   198:	aload_0
+   199:	aload_1
+   200:	invokevirtual	#71; //Method slowCoInvoke:([Lscala/actors/FJTask;)V
+   203:	return
+
+protected void slowCoInvoke(scala.actors.FJTask[]);
+  Code:
+   Stack=3, Locals=3, Args_size=2
+   0:	iconst_0
+   1:	istore_2
+   2:	iload_2
+   3:	aload_1
+   4:	arraylength
+   5:	if_icmpge	21
+   8:	aload_0
+   9:	aload_1
+   10:	iload_2
+   11:	aaload
+   12:	invokevirtual	#26; //Method push:(Lscala/actors/FJTask;)V
+   15:	iinc	2, 1
+   18:	goto	2
+   21:	iconst_0
+   22:	istore_2
+   23:	iload_2
+   24:	aload_1
+   25:	arraylength
+   26:	if_icmpge	42
+   29:	aload_0
+   30:	aload_1
+   31:	iload_2
+   32:	aaload
+   33:	invokevirtual	#70; //Method taskJoin:(Lscala/actors/FJTask;)V
+   36:	iinc	2, 1
+   39:	goto	23
+   42:	return
+
+}
+

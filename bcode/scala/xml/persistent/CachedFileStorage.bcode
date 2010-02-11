@@ -1,0 +1,639 @@
+Compiled from "CachedFileStorage.scala"
+public abstract class scala.xml.persistent.CachedFileStorage extends java.lang.Thread implements scala.util.logging.Logged,scala.ScalaObject
+  SourceFile: "CachedFileStorage.scala"
+  ScalaSig: length = 0x312
+   05 00 7D 06 08 01 02 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF81 00 09 02 11 43
+   61 63 68 65 64 46 69 6C 65 53 74 6F 72 61 67 65
+   0A 02 03 04 01 0A 70 65 72 73 69 73 74 65 6E 74
+   0A 02 05 06 01 03 78 6D 6C 0A 01 07 01 05 73 63
+   61 6C 61 03 00 13 04 00 0A 12 1A 10 02 0B 10 0D
+   01 0C 0A 02 0D 0E 01 04 6C 61 6E 67 0A 01 0F 01
+   04 6A 61 76 61 09 02 11 0C 02 06 54 68 72 65 61
+   64 10 02 13 18 0D 01 14 0A 02 15 16 01 07 6C 6F
+   67 67 69 6E 67 0A 02 17 06 01 04 75 74 69 6C 09
+   02 19 14 02 06 4C 6F 67 67 65 64 10 02 1B 1C 0D
+   01 06 09 02 1D 06 02 0B 53 63 61 6C 61 4F 62 6A
+   65 63 74 08 08 1F 00 FFFFFF82 FFFFFFC2 FFFFFF80 FFFFFF84 04 20 01 05 66
+   69 6C 65 31 15 01 21 10 02 22 25 0D 01 23 0A 02
+   24 0E 01 02 69 6F 09 02 26 23 02 04 46 69 6C 65
+   08 08 28 00 FFFFFF82 FFFFFF80 FFFFFFA0 FFFFFF80 04 21 01 06 66 69 6C 65
+   31 20 08 05 2A 00 FFFFFF84 00 2B 01 06 3C 69 6E 69 74
+   3E 14 02 2C 2E 10 02 2D 00 0D 01 02 08 05 1F 29
+   FFFFFFC0 00 21 08 07 30 00 FFFFFFC2 FFFFFF80 FFFFFF84 04 20 01 05 66 69
+   6C 65 32 08 06 32 00 FFFFFFA0 FFFFFF80 04 21 01 06 66 69 6C
+   65 32 20 08 07 34 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 20 01 07 74 68
+   65 46 69 6C 65 08 07 36 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 37 01 0B
+   74 68 65 46 69 6C 65 5F 24 65 71 14 02 38 3B 10
+   02 1B 39 09 02 3A 06 02 04 55 6E 69 74 08 07 3C
+   35 FFFFFF81 FFFFFF80 FFFFFFC0 00 21 01 03 78 24 31 08 06 3E 00 FFFFFFA0
+   FFFFFFA0 04 21 01 08 74 68 65 46 69 6C 65 20 08 05 40
+   00 FFFFFF84 04 41 01 06 73 77 69 74 63 68 15 01 38 08
+   07 43 00 FFFFFFC0 FFFFFF80 FFFFFF84 08 44 01 05 64 69 72 74 79 15
+   01 45 10 02 1B 46 09 02 47 06 02 07 42 6F 6F 6C
+   65 61 6E 08 07 49 00 FFFFFFC0 FFFFFF80 FFFFFF84 08 4A 01 09 64 69
+   72 74 79 5F 24 65 71 14 02 38 4B 08 07 3C 48 FFFFFF81
+   FFFFFF80 FFFFFFC0 00 45 08 06 4D 00 FFFFFFA0 FFFFFFA0 04 45 01 06 64 69
+   72 74 79 20 08 07 4F 00 FFFFFFC2 FFFFFF80 FFFFFF84 08 50 01 08 69
+   6E 74 65 72 76 61 6C 15 01 51 10 02 1B 52 09 02
+   53 06 02 03 49 6E 74 08 06 55 00 FFFFFFA0 FFFFFF80 04 51 01
+   09 69 6E 74 65 72 76 61 6C 20 08 05 57 00 FFFFFF84 08
+   58 01 0C 69 6E 69 74 69 61 6C 4E 6F 64 65 73 15
+   01 59 10 03 5A 62 65 0E 02 5B 60 0E 02 5C 5F 0D
+   01 5D 0A 02 5E 08 01 06 3C 72 6F 6F 74 3E 09 01
+   07 09 02 61 06 01 07 70 61 63 6B 61 67 65 09 02
+   63 64 02 08 49 74 65 72 61 74 6F 72 0A 02 61 06
+   10 02 66 67 0D 01 04 09 02 68 04 02 04 4E 6F 64
+   65 08 05 6A 00 FFFFFF86 00 58 01 05 6E 6F 64 65 73 08
+   05 6C 00 FFFFFF86 00 6D 01 08 24 70 6C 75 73 24 65 71
+   14 02 38 6E 08 05 6F 6B FFFFFFC0 00 65 01 01 65 08 05
+   71 00 FFFFFF86 00 72 01 09 24 6D 69 6E 75 73 24 65 71
+   14 02 38 73 08 05 6F 70 FFFFFFC0 00 65 08 05 75 00 FFFFFF84
+   04 58 01 04 6C 6F 61 64 08 05 77 00 FFFFFF84 04 41 01
+   04 73 61 76 65 08 05 79 00 FFFFFF84 20 7A 01 03 72 75
+   6E 14 01 38 08 05 7C 00 FFFFFF84 00 41 01 05 66 6C 75
+   73 68 
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Asciz	SourceFile;
+const #2 = Asciz	CachedFileStorage.scala;
+const #3 = Asciz	interval;
+const #4 = Asciz	I;
+const #5 = Asciz	dirty;
+const #6 = Asciz	Z;
+const #7 = Asciz	theFile;
+const #8 = Asciz	Ljava/io/File;;
+const #9 = Asciz	file2;
+const #10 = Asciz	file1;
+const #11 = Asciz	<init>;
+const #12 = Asciz	(Ljava/io/File;)V;
+const #13 = Asciz	Code;
+const #14 = Asciz	LineNumberTable;
+const #15 = Asciz	scala/xml/persistent/CachedFileStorage;
+const #16 = class	#15;	//  scala/xml/persistent/CachedFileStorage
+const #17 = NameAndType	#10:#8;//  file1:Ljava/io/File;
+const #18 = Field	#16.#17;	//  scala/xml/persistent/CachedFileStorage.file1:Ljava/io/File;
+const #19 = Asciz	java/lang/Thread;
+const #20 = class	#19;	//  java/lang/Thread
+const #21 = Asciz	()V;
+const #22 = NameAndType	#11:#21;//  "<init>":()V
+const #23 = Method	#20.#22;	//  java/lang/Thread."<init>":()V
+const #24 = Asciz	scala/util/logging/Logged$class;
+const #25 = class	#24;	//  scala/util/logging/Logged$class
+const #26 = Asciz	$init$;
+const #27 = Asciz	(Lscala/util/logging/Logged;)V;
+const #28 = NameAndType	#26:#27;//  $init$:(Lscala/util/logging/Logged;)V
+const #29 = Method	#25.#28;	//  scala/util/logging/Logged$class.$init$:(Lscala/util/logging/Logged;)V
+const #30 = Asciz	java/io/File;
+const #31 = class	#30;	//  java/io/File
+const #32 = Asciz	getParent;
+const #33 = Asciz	()Ljava/lang/String;;
+const #34 = NameAndType	#32:#33;//  getParent:()Ljava/lang/String;
+const #35 = Method	#31.#34;	//  java/io/File.getParent:()Ljava/lang/String;
+const #36 = Asciz	scala/collection/mutable/StringBuilder;
+const #37 = class	#36;	//  scala/collection/mutable/StringBuilder
+const #38 = Method	#37.#22;	//  scala/collection/mutable/StringBuilder."<init>":()V
+const #39 = Asciz	getName;
+const #40 = NameAndType	#39:#33;//  getName:()Ljava/lang/String;
+const #41 = Method	#31.#40;	//  java/io/File.getName:()Ljava/lang/String;
+const #42 = Asciz	append;
+const #43 = Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
+const #44 = NameAndType	#42:#43;//  append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+const #45 = Method	#37.#44;	//  scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+const #46 = Asciz	$;
+const #47 = String	#46;	//  $
+const #48 = Asciz	toString;
+const #49 = NameAndType	#48:#33;//  toString:()Ljava/lang/String;
+const #50 = Method	#37.#49;	//  scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+const #51 = Asciz	(Ljava/lang/String;Ljava/lang/String;)V;
+const #52 = NameAndType	#11:#51;//  "<init>":(Ljava/lang/String;Ljava/lang/String;)V
+const #53 = Method	#31.#52;	//  java/io/File."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+const #54 = NameAndType	#9:#8;//  file2:Ljava/io/File;
+const #55 = Field	#16.#54;	//  scala/xml/persistent/CachedFileStorage.file2:Ljava/io/File;
+const #56 = NameAndType	#7:#8;//  theFile:Ljava/io/File;
+const #57 = Field	#16.#56;	//  scala/xml/persistent/CachedFileStorage.theFile:Ljava/io/File;
+const #58 = NameAndType	#5:#6;//  dirty:Z
+const #59 = Field	#16.#58;	//  scala/xml/persistent/CachedFileStorage.dirty:Z
+const #60 = int	1000;
+const #61 = NameAndType	#3:#4;//  interval:I
+const #62 = Field	#16.#61;	//  scala/xml/persistent/CachedFileStorage.interval:I
+const #63 = Asciz	this;
+const #64 = Asciz	Lscala/xml/persistent/CachedFileStorage;;
+const #65 = Asciz	LocalVariableTable;
+const #66 = Asciz	gd1$1;
+const #67 = Asciz	()Z;
+const #68 = Asciz	()Ljava/io/File;;
+const #69 = NameAndType	#10:#68;//  file1:()Ljava/io/File;
+const #70 = Method	#16.#69;	//  scala/xml/persistent/CachedFileStorage.file1:()Ljava/io/File;
+const #71 = Asciz	lastModified;
+const #72 = Asciz	()J;
+const #73 = NameAndType	#71:#72;//  lastModified:()J
+const #74 = Method	#31.#73;	//  java/io/File.lastModified:()J
+const #75 = NameAndType	#9:#68;//  file2:()Ljava/io/File;
+const #76 = Method	#16.#75;	//  scala/xml/persistent/CachedFileStorage.file2:()Ljava/io/File;
+const #77 = Asciz	flush;
+const #78 = Asciz	dirty_$eq;
+const #79 = Asciz	(Z)V;
+const #80 = NameAndType	#78:#79;//  dirty_$eq:(Z)V
+const #81 = Method	#16.#80;	//  scala/xml/persistent/CachedFileStorage.dirty_$eq:(Z)V
+const #82 = Asciz	save;
+const #83 = NameAndType	#82:#21;//  save:()V
+const #84 = Method	#16.#83;	//  scala/xml/persistent/CachedFileStorage.save:()V
+const #85 = Asciz	run;
+const #86 = Asciz	[run]\nstarting storage thread, checking every ;
+const #87 = String	#86;	//  [run]\nstarting storage thread, checking every 
+const #88 = Asciz	()I;
+const #89 = NameAndType	#3:#88;//  interval:()I
+const #90 = Method	#16.#89;	//  scala/xml/persistent/CachedFileStorage.interval:()I
+const #91 = Asciz	scala/runtime/BoxesRunTime;
+const #92 = class	#91;	//  scala/runtime/BoxesRunTime
+const #93 = Asciz	boxToInteger;
+const #94 = Asciz	(I)Ljava/lang/Integer;;
+const #95 = NameAndType	#93:#94;//  boxToInteger:(I)Ljava/lang/Integer;
+const #96 = Method	#92.#95;	//  scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+const #97 = Asciz	 ms;
+const #98 = String	#97;	//   ms
+const #99 = Asciz	scala/util/logging/Logged;
+const #100 = class	#99;	//  scala/util/logging/Logged
+const #101 = Asciz	log;
+const #102 = Asciz	(Ljava/lang/String;)V;
+const #103 = NameAndType	#101:#102;//  log:(Ljava/lang/String;)V
+const #104 = InterfaceMethod	#100.#103;	//  scala/util/logging/Logged.log:(Ljava/lang/String;)V
+const #105 = Asciz	scala/Predef$;
+const #106 = class	#105;	//  scala/Predef$
+const #107 = Asciz	MODULE$;
+const #108 = Asciz	Lscala/Predef$;;
+const #109 = NameAndType	#107:#108;//  MODULE$:Lscala/Predef$;
+const #110 = Field	#106.#109;	//  scala/Predef$.MODULE$:Lscala/Predef$;
+const #111 = Asciz	int2long;
+const #112 = Asciz	(I)J;
+const #113 = NameAndType	#111:#112;//  int2long:(I)J
+const #114 = Method	#106.#113;	//  scala/Predef$.int2long:(I)J
+const #115 = Asciz	sleep;
+const #116 = Asciz	(J)V;
+const #117 = NameAndType	#115:#116;//  sleep:(J)V
+const #118 = Method	#20.#117;	//  java/lang/Thread.sleep:(J)V
+const #119 = NameAndType	#5:#67;//  dirty:()Z
+const #120 = Method	#16.#119;	//  scala/xml/persistent/CachedFileStorage.dirty:()Z
+const #121 = Asciz	[save]\ndeleting ;
+const #122 = String	#121;	//  [save]\ndeleting 
+const #123 = NameAndType	#7:#68;//  theFile:()Ljava/io/File;
+const #124 = Method	#16.#123;	//  scala/xml/persistent/CachedFileStorage.theFile:()Ljava/io/File;
+const #125 = Asciz	delete;
+const #126 = NameAndType	#125:#67;//  delete:()Z
+const #127 = Method	#31.#126;	//  java/io/File.delete:()Z
+const #128 = Asciz	creating new ;
+const #129 = String	#128;	//  creating new 
+const #130 = Asciz	createNewFile;
+const #131 = NameAndType	#130:#67;//  createNewFile:()Z
+const #132 = Method	#31.#131;	//  java/io/File.createNewFile:()Z
+const #133 = Asciz	java/io/FileOutputStream;
+const #134 = class	#133;	//  java/io/FileOutputStream
+const #135 = NameAndType	#11:#12;//  "<init>":(Ljava/io/File;)V
+const #136 = Method	#134.#135;	//  java/io/FileOutputStream."<init>":(Ljava/io/File;)V
+const #137 = Asciz	getChannel;
+const #138 = Asciz	()Ljava/nio/channels/FileChannel;;
+const #139 = NameAndType	#137:#138;//  getChannel:()Ljava/nio/channels/FileChannel;
+const #140 = Method	#134.#139;	//  java/io/FileOutputStream.getChannel:()Ljava/nio/channels/FileChannel;
+const #141 = Asciz	scala/xml/Elem;
+const #142 = class	#141;	//  scala/xml/Elem
+const #143 = Asciz	nodes;
+const #144 = String	#143;	//  nodes
+const #145 = Asciz	scala/xml/Null$;
+const #146 = class	#145;	//  scala/xml/Null$
+const #147 = Asciz	Lscala/xml/Null$;;
+const #148 = NameAndType	#107:#147;//  MODULE$:Lscala/xml/Null$;
+const #149 = Field	#146.#148;	//  scala/xml/Null$.MODULE$:Lscala/xml/Null$;
+const #150 = Asciz	$scope;
+const #151 = Asciz	()Lscala/xml/TopScope$;;
+const #152 = NameAndType	#150:#151;//  $scope:()Lscala/xml/TopScope$;
+const #153 = Method	#106.#152;	//  scala/Predef$.$scope:()Lscala/xml/TopScope$;
+const #154 = Asciz	scala/xml/NodeBuffer;
+const #155 = class	#154;	//  scala/xml/NodeBuffer
+const #156 = Method	#155.#22;	//  scala/xml/NodeBuffer."<init>":()V
+const #157 = Asciz	()Lscala/collection/Iterator;;
+const #158 = NameAndType	#143:#157;//  nodes:()Lscala/collection/Iterator;
+const #159 = Method	#16.#158;	//  scala/xml/persistent/CachedFileStorage.nodes:()Lscala/collection/Iterator;
+const #160 = Asciz	scala/collection/Iterator;
+const #161 = class	#160;	//  scala/collection/Iterator
+const #162 = Asciz	toList;
+const #163 = Asciz	()Lscala/collection/immutable/List;;
+const #164 = NameAndType	#162:#163;//  toList:()Lscala/collection/immutable/List;
+const #165 = InterfaceMethod	#161.#164;	//  scala/collection/Iterator.toList:()Lscala/collection/immutable/List;
+const #166 = Asciz	$amp$plus;
+const #167 = Asciz	(Ljava/lang/Object;)Lscala/xml/NodeBuffer;;
+const #168 = NameAndType	#166:#167;//  $amp$plus:(Ljava/lang/Object;)Lscala/xml/NodeBuffer;
+const #169 = Method	#155.#168;	//  scala/xml/NodeBuffer.$amp$plus:(Ljava/lang/Object;)Lscala/xml/NodeBuffer;
+const #170 = Asciz	(Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Sequence;)V;
+const #171 = NameAndType	#11:#170;//  "<init>":(Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Sequence;)V
+const #172 = Method	#142.#171;	//  scala/xml/Elem."<init>":(Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Sequence;)V
+const #173 = Asciz	utf-8;
+const #174 = String	#173;	//  utf-8
+const #175 = Asciz	java/nio/channels/Channels;
+const #176 = class	#175;	//  java/nio/channels/Channels
+const #177 = Asciz	newWriter;
+const #178 = Asciz	(Ljava/nio/channels/WritableByteChannel;Ljava/lang/String;)Ljava/io/Writer;;
+const #179 = NameAndType	#177:#178;//  newWriter:(Ljava/nio/channels/WritableByteChannel;Ljava/lang/String;)Ljava/io/Writer;
+const #180 = Method	#176.#179;	//  java/nio/channels/Channels.newWriter:(Ljava/nio/channels/WritableByteChannel;Ljava/lang/String;)Ljava/io/Writer;
+const #181 = Asciz	scala/xml/XML$;
+const #182 = class	#181;	//  scala/xml/XML$
+const #183 = Asciz	Lscala/xml/XML$;;
+const #184 = NameAndType	#107:#183;//  MODULE$:Lscala/xml/XML$;
+const #185 = Field	#182.#184;	//  scala/xml/XML$.MODULE$:Lscala/xml/XML$;
+const #186 = Asciz	write;
+const #187 = Asciz	(Ljava/io/Writer;Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;)V;
+const #188 = NameAndType	#186:#187;//  write:(Ljava/io/Writer;Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;)V
+const #189 = Method	#182.#188;	//  scala/xml/XML$.write:(Ljava/io/Writer;Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;)V
+const #190 = Asciz	writing to ;
+const #191 = String	#190;	//  writing to 
+const #192 = Asciz	java/io/Writer;
+const #193 = class	#192;	//  java/io/Writer
+const #194 = Asciz	close;
+const #195 = NameAndType	#194:#21;//  close:()V
+const #196 = Method	#193.#195;	//  java/io/Writer.close:()V
+const #197 = Asciz	java/nio/channels/FileChannel;
+const #198 = class	#197;	//  java/nio/channels/FileChannel
+const #199 = Method	#198.#195;	//  java/nio/channels/FileChannel.close:()V
+const #200 = Method	#134.#195;	//  java/io/FileOutputStream.close:()V
+const #201 = Asciz	switch;
+const #202 = NameAndType	#201:#21;//  switch:()V
+const #203 = Method	#16.#202;	//  scala/xml/persistent/CachedFileStorage.switch:()V
+const #204 = Asciz	[save done];
+const #205 = String	#204;	//  [save done]
+const #206 = Asciz	fos;
+const #207 = Asciz	Ljava/io/FileOutputStream;;
+const #208 = Asciz	c;
+const #209 = Asciz	Ljava/nio/channels/FileChannel;;
+const #210 = Asciz	storageNode;
+const #211 = Asciz	Lscala/xml/Elem;;
+const #212 = Asciz	$buf;
+const #213 = Asciz	Lscala/xml/NodeBuffer;;
+const #214 = Asciz	w;
+const #215 = Asciz	Ljava/io/Writer;;
+const #216 = Asciz	load;
+const #217 = Asciz	[load]\nloading ;
+const #218 = String	#217;	//  [load]\nloading 
+const #219 = Asciz	scala/io/Source$;
+const #220 = class	#219;	//  scala/io/Source$
+const #221 = Asciz	Lscala/io/Source$;;
+const #222 = NameAndType	#107:#221;//  MODULE$:Lscala/io/Source$;
+const #223 = Field	#220.#222;	//  scala/io/Source$.MODULE$:Lscala/io/Source$;
+const #224 = Asciz	fromFile$default$2;
+const #225 = NameAndType	#224:#88;//  fromFile$default$2:()I
+const #226 = Method	#220.#225;	//  scala/io/Source$.fromFile$default$2:()I
+const #227 = Asciz	fromFile$default$3;
+const #228 = Asciz	(Ljava/io/File;I)Lscala/io/Codec;;
+const #229 = NameAndType	#227:#228;//  fromFile$default$3:(Ljava/io/File;I)Lscala/io/Codec;
+const #230 = Method	#220.#229;	//  scala/io/Source$.fromFile$default$3:(Ljava/io/File;I)Lscala/io/Codec;
+const #231 = Asciz	fromFile;
+const #232 = Asciz	(Ljava/io/File;ILscala/io/Codec;)Lscala/io/Source;;
+const #233 = NameAndType	#231:#232;//  fromFile:(Ljava/io/File;ILscala/io/Codec;)Lscala/io/Source;
+const #234 = Method	#220.#233;	//  scala/io/Source$.fromFile:(Ljava/io/File;ILscala/io/Codec;)Lscala/io/Source;
+const #235 = Asciz	parsing ;
+const #236 = String	#235;	//  parsing 
+const #237 = Asciz	scala/xml/parsing/ConstructingParser$;
+const #238 = class	#237;	//  scala/xml/parsing/ConstructingParser$
+const #239 = Asciz	Lscala/xml/parsing/ConstructingParser$;;
+const #240 = NameAndType	#107:#239;//  MODULE$:Lscala/xml/parsing/ConstructingParser$;
+const #241 = Field	#238.#240;	//  scala/xml/parsing/ConstructingParser$.MODULE$:Lscala/xml/parsing/ConstructingParser$;
+const #242 = Asciz	fromSource;
+const #243 = Asciz	(Lscala/io/Source;Z)Lscala/xml/parsing/ConstructingParser;;
+const #244 = NameAndType	#242:#243;//  fromSource:(Lscala/io/Source;Z)Lscala/xml/parsing/ConstructingParser;
+const #245 = Method	#238.#244;	//  scala/xml/parsing/ConstructingParser$.fromSource:(Lscala/io/Source;Z)Lscala/xml/parsing/ConstructingParser;
+const #246 = Asciz	scala/xml/parsing/MarkupParser;
+const #247 = class	#246;	//  scala/xml/parsing/MarkupParser
+const #248 = Asciz	document;
+const #249 = Asciz	()Lscala/xml/Document;;
+const #250 = NameAndType	#248:#249;//  document:()Lscala/xml/Document;
+const #251 = InterfaceMethod	#247.#250;	//  scala/xml/parsing/MarkupParser.document:()Lscala/xml/Document;
+const #252 = Asciz	scala/xml/Document;
+const #253 = class	#252;	//  scala/xml/Document
+const #254 = Asciz	docElem;
+const #255 = Asciz	()Lscala/xml/Node;;
+const #256 = NameAndType	#254:#255;//  docElem:()Lscala/xml/Node;
+const #257 = Method	#253.#256;	//  scala/xml/Document.docElem:()Lscala/xml/Node;
+const #258 = Asciz	scala/xml/Node;
+const #259 = class	#258;	//  scala/xml/Node
+const #260 = Asciz	apply;
+const #261 = Asciz	(I)Lscala/xml/Node;;
+const #262 = NameAndType	#260:#261;//  apply:(I)Lscala/xml/Node;
+const #263 = Method	#259.#262;	//  scala/xml/Node.apply:(I)Lscala/xml/Node;
+const #264 = Asciz	[load done];
+const #265 = String	#264;	//  [load done]
+const #266 = Asciz	child;
+const #267 = Asciz	()Lscala/collection/Sequence;;
+const #268 = NameAndType	#266:#267;//  child:()Lscala/collection/Sequence;
+const #269 = Method	#259.#268;	//  scala/xml/Node.child:()Lscala/collection/Sequence;
+const #270 = Asciz	scala/collection/generic/IterableTemplate;
+const #271 = class	#270;	//  scala/collection/generic/IterableTemplate
+const #272 = Asciz	iterator;
+const #273 = NameAndType	#272:#157;//  iterator:()Lscala/collection/Iterator;
+const #274 = InterfaceMethod	#271.#273;	//  scala/collection/generic/IterableTemplate.iterator:()Lscala/collection/Iterator;
+const #275 = Asciz	src;
+const #276 = Asciz	Lscala/io/Source;;
+const #277 = Asciz	x$1;
+const #278 = Asciz	x$2;
+const #279 = Asciz	x$3;
+const #280 = Asciz	Lscala/io/Codec;;
+const #281 = Asciz	res;
+const #282 = Asciz	Lscala/xml/Node;;
+const #283 = Asciz	()Lscala/collection/Iterator<Lscala/xml/Node;>;;
+const #284 = Asciz	Signature;
+const #285 = Asciz	$minus$eq;
+const #286 = Asciz	(Lscala/xml/Node;)V;
+const #287 = Asciz	$plus$eq;
+const #288 = Asciz	initialNodes;
+const #289 = Asciz	exists;
+const #290 = NameAndType	#289:#67;//  exists:()Z
+const #291 = Method	#31.#290;	//  java/io/File.exists:()Z
+const #292 = Asciz	boxToBoolean;
+const #293 = Asciz	(Z)Ljava/lang/Boolean;;
+const #294 = NameAndType	#292:#293;//  boxToBoolean:(Z)Ljava/lang/Boolean;
+const #295 = Method	#92.#294;	//  scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+const #296 = Asciz	equals;
+const #297 = Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
+const #298 = NameAndType	#296:#297;//  equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+const #299 = Method	#92.#298;	//  scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+const #300 = Asciz	theFile_$eq;
+const #301 = NameAndType	#300:#12;//  theFile_$eq:(Ljava/io/File;)V
+const #302 = Method	#16.#301;	//  scala/xml/persistent/CachedFileStorage.theFile_$eq:(Ljava/io/File;)V
+const #303 = Asciz	scala/package$;
+const #304 = class	#303;	//  scala/package$
+const #305 = Asciz	Lscala/package$;;
+const #306 = NameAndType	#107:#305;//  MODULE$:Lscala/package$;
+const #307 = Field	#304.#306;	//  scala/package$.MODULE$:Lscala/package$;
+const #308 = Asciz	Iterator;
+const #309 = Asciz	()Lscala/collection/Iterator$;;
+const #310 = NameAndType	#308:#309;//  Iterator:()Lscala/collection/Iterator$;
+const #311 = Method	#304.#310;	//  scala/package$.Iterator:()Lscala/collection/Iterator$;
+const #312 = Asciz	scala/collection/Iterator$;
+const #313 = class	#312;	//  scala/collection/Iterator$
+const #314 = Asciz	empty;
+const #315 = Asciz	()Ljava/lang/Object;;
+const #316 = NameAndType	#314:#315;//  empty:()Ljava/lang/Object;
+const #317 = Method	#313.#316;	//  scala/collection/Iterator$.empty:()Ljava/lang/Object;
+const #318 = NameAndType	#66:#67;//  gd1$1:()Z
+const #319 = Method	#16.#318;	//  scala/xml/persistent/CachedFileStorage.gd1$1:()Z
+const #320 = NameAndType	#216:#157;//  load:()Lscala/collection/Iterator;
+const #321 = Method	#16.#320;	//  scala/xml/persistent/CachedFileStorage.load:()Lscala/collection/Iterator;
+const #322 = Asciz	tp1;
+const #323 = Asciz	tp2;
+const #324 = Asciz	java/lang/Object;
+const #325 = class	#324;	//  java/lang/Object
+const #326 = Asciz	(Ljava/lang/Object;)Z;
+const #327 = NameAndType	#296:#326;//  equals:(Ljava/lang/Object;)Z
+const #328 = Method	#325.#327;	//  java/lang/Object.equals:(Ljava/lang/Object;)Z
+const #329 = Asciz	(Lscala/util/logging/Logged;Ljava/lang/String;)V;
+const #330 = NameAndType	#101:#329;//  log:(Lscala/util/logging/Logged;Ljava/lang/String;)V
+const #331 = Method	#25.#330;	//  scala/util/logging/Logged$class.log:(Lscala/util/logging/Logged;Ljava/lang/String;)V
+const #332 = Asciz	msg;
+const #333 = Asciz	Ljava/lang/String;;
+const #334 = Asciz	ScalaSig;
+const #335 = Asciz	scala/ScalaObject;
+const #336 = class	#335;	//  scala/ScalaObject
+
+{
+public scala.xml.persistent.CachedFileStorage(java.io.File);
+  Code:
+   Stack=6, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#18; //Field file1:Ljava/io/File;
+   5:	aload_0
+   6:	invokespecial	#23; //Method java/lang/Thread."<init>":()V
+   9:	aload_0
+   10:	invokestatic	#29; //Method scala/util/logging/Logged$class.$init$:(Lscala/util/logging/Logged;)V
+   13:	aload_0
+   14:	new	#31; //class java/io/File
+   17:	dup
+   18:	aload_1
+   19:	invokevirtual	#35; //Method java/io/File.getParent:()Ljava/lang/String;
+   22:	new	#37; //class scala/collection/mutable/StringBuilder
+   25:	dup
+   26:	invokespecial	#38; //Method scala/collection/mutable/StringBuilder."<init>":()V
+   29:	aload_1
+   30:	invokevirtual	#41; //Method java/io/File.getName:()Ljava/lang/String;
+   33:	invokevirtual	#45; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   36:	ldc	#47; //String $
+   38:	invokevirtual	#45; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   41:	invokevirtual	#50; //Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+   44:	invokespecial	#53; //Method java/io/File."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+   47:	putfield	#55; //Field file2:Ljava/io/File;
+   50:	aload_0
+   51:	aconst_null
+   52:	pop
+   53:	aconst_null
+   54:	putfield	#57; //Field theFile:Ljava/io/File;
+   57:	aload_0
+   58:	iconst_0
+   59:	putfield	#59; //Field dirty:Z
+   62:	aload_0
+   63:	ldc	#60; //int 1000
+   65:	putfield	#62; //Field interval:I
+   68:	return
+  LineNumberTable: 
+   line 28: 0
+   line 31: 13
+   line 35: 50
+   line 40: 57
+   line 43: 62
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      69      0    this       Lscala/xml/persistent/CachedFileStorage;
+   0      69      1    file1       Ljava/io/File;
+
+
+public void flush();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	iconst_1
+   2:	invokevirtual	#81; //Method dirty_$eq:(Z)V
+   5:	aload_0
+   6:	invokespecial	#84; //Method save:()V
+   9:	return
+  LineNumberTable: 
+   line 120: 0
+   line 121: 5
+
+
+public void run();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	aload_0
+   1:	new	#37; //class scala/collection/mutable/StringBuilder
+   4:	dup
+   5:	invokespecial	#38; //Method scala/collection/mutable/StringBuilder."<init>":()V
+   8:	ldc	#87; //String [run]\nstarting storage thread, checking every 
+   10:	invokevirtual	#45; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   13:	aload_0
+   14:	invokevirtual	#90; //Method interval:()I
+   17:	invokestatic	#96; //Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+   20:	invokevirtual	#45; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   23:	ldc	#98; //String  ms
+   25:	invokevirtual	#45; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   28:	invokevirtual	#50; //Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+   31:	invokeinterface	#104,  2; //InterfaceMethod scala/util/logging/Logged.log:(Ljava/lang/String;)V
+   36:	getstatic	#110; //Field scala/Predef$.MODULE$:Lscala/Predef$;
+   39:	aload_0
+   40:	invokevirtual	#90; //Method interval:()I
+   43:	invokevirtual	#114; //Method scala/Predef$.int2long:(I)J
+   46:	invokestatic	#118; //Method java/lang/Thread.sleep:(J)V
+   49:	aload_0
+   50:	invokespecial	#84; //Method save:()V
+   53:	goto	36
+  LineNumberTable: 
+   line 111: 0
+   line 113: 36
+   line 114: 49
+   line 112: 53
+
+
+public abstract void $minus$eq(scala.xml.Node);
+
+public abstract void $plus$eq(scala.xml.Node);
+
+public abstract scala.collection.Iterator nodes();
+  Signature: length = 0x2
+   01 1B 
+
+public scala.collection.Iterator initialNodes();
+  Code:
+   Stack=2, Locals=3, Args_size=1
+   0:	aload_0
+   1:	invokespecial	#70; //Method file1:()Ljava/io/File;
+   4:	invokevirtual	#291; //Method java/io/File.exists:()Z
+   7:	istore_1
+   8:	aload_0
+   9:	invokespecial	#76; //Method file2:()Ljava/io/File;
+   12:	invokevirtual	#291; //Method java/io/File.exists:()Z
+   15:	istore_2
+   16:	iload_1
+   17:	invokestatic	#295; //Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+   20:	iconst_0
+   21:	invokestatic	#295; //Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+   24:	invokestatic	#299; //Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+   27:	ifeq	67
+   30:	iload_2
+   31:	invokestatic	#295; //Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+   34:	iconst_0
+   35:	invokestatic	#295; //Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+   38:	invokestatic	#299; //Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+   41:	ifeq	132
+   44:	aload_0
+   45:	aload_0
+   46:	invokespecial	#70; //Method file1:()Ljava/io/File;
+   49:	invokespecial	#302; //Method theFile_$eq:(Ljava/io/File;)V
+   52:	getstatic	#307; //Field scala/package$.MODULE$:Lscala/package$;
+   55:	invokevirtual	#311; //Method scala/package$.Iterator:()Lscala/collection/Iterator$;
+   58:	invokevirtual	#317; //Method scala/collection/Iterator$.empty:()Ljava/lang/Object;
+   61:	checkcast	#161; //class scala/collection/Iterator
+   64:	goto	144
+   67:	iload_1
+   68:	invokestatic	#295; //Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+   71:	iconst_1
+   72:	invokestatic	#295; //Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+   75:	invokestatic	#299; //Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+   78:	ifeq	132
+   81:	iload_2
+   82:	invokestatic	#295; //Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+   85:	iconst_1
+   86:	invokestatic	#295; //Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+   89:	invokestatic	#299; //Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+   92:	ifeq	117
+   95:	aload_0
+   96:	invokespecial	#319; //Method gd1$1:()Z
+   99:	ifeq	117
+   102:	aload_0
+   103:	aload_0
+   104:	invokespecial	#76; //Method file2:()Ljava/io/File;
+   107:	invokespecial	#302; //Method theFile_$eq:(Ljava/io/File;)V
+   110:	aload_0
+   111:	invokespecial	#321; //Method load:()Lscala/collection/Iterator;
+   114:	goto	144
+   117:	aload_0
+   118:	aload_0
+   119:	invokespecial	#70; //Method file1:()Ljava/io/File;
+   122:	invokespecial	#302; //Method theFile_$eq:(Ljava/io/File;)V
+   125:	aload_0
+   126:	invokespecial	#321; //Method load:()Lscala/collection/Iterator;
+   129:	goto	144
+   132:	aload_0
+   133:	aload_0
+   134:	invokespecial	#76; //Method file2:()Ljava/io/File;
+   137:	invokespecial	#302; //Method theFile_$eq:(Ljava/io/File;)V
+   140:	aload_0
+   141:	invokespecial	#321; //Method load:()Lscala/collection/Iterator;
+   144:	areturn
+  LineNumberTable: 
+   line 48: 0
+   line 50: 44
+   line 51: 52
+   line 48: 67
+   line 53: 102
+   line 54: 110
+   line 56: 117
+   line 57: 125
+   line 59: 132
+   line 60: 140
+   line 48: 144
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      145      0    this       Lscala/xml/persistent/CachedFileStorage;
+   8      137      1    tp1       Z
+   16      129      2    tp2       Z
+
+  Signature: length = 0x2
+   01 1B 
+
+public int interval();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#62; //Field interval:I
+   4:	ireturn
+  LineNumberTable: 
+   line 43: 0
+
+
+public void dirty_$eq(boolean);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#59; //Field dirty:Z
+   5:	return
+  LineNumberTable: 
+   line 40: 0
+
+
+public boolean dirty();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#59; //Field dirty:Z
+   4:	ireturn
+  LineNumberTable: 
+   line 40: 0
+
+
+public void log(java.lang.String);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#331; //Method scala/util/logging/Logged$class.log:(Lscala/util/logging/Logged;Ljava/lang/String;)V
+   5:	return
+  LineNumberTable: 
+   line 28: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/persistent/CachedFileStorage;
+   0      6      1    msg       Ljava/lang/String;
+
+
+}
+

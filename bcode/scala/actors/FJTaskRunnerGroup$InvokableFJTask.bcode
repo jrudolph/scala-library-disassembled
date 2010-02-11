@@ -1,0 +1,125 @@
+public final class scala.actors.FJTaskRunnerGroup$InvokableFJTask extends scala.actors.FJTask
+  InnerClass: 
+   final #37= #10 of #35; //InvokableFJTask=class scala/actors/FJTaskRunnerGroup$InvokableFJTask of class scala/actors/FJTaskRunnerGroup
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Method	#4.#24;	//  scala/actors/FJTask."<init>":()V
+const #2 = Field	#10.#25;	//  scala/actors/FJTaskRunnerGroup$InvokableFJTask.terminated:Z
+const #3 = Field	#10.#26;	//  scala/actors/FJTaskRunnerGroup$InvokableFJTask.wrapped:Ljava/lang/Runnable;
+const #4 = class	#27;	//  scala/actors/FJTask
+const #5 = Method	#4.#28;	//  scala/actors/FJTask.invoke:(Lscala/actors/FJTask;)V
+const #6 = InterfaceMethod	#29.#30;	//  java/lang/Runnable.run:()V
+const #7 = Method	#10.#31;	//  scala/actors/FJTaskRunnerGroup$InvokableFJTask.setTerminated:()V
+const #8 = Method	#32.#33;	//  java/lang/Object.notifyAll:()V
+const #9 = Method	#32.#34;	//  java/lang/Object.wait:()V
+const #10 = class	#36;	//  scala/actors/FJTaskRunnerGroup$InvokableFJTask
+const #11 = Asciz	wrapped;
+const #12 = Asciz	Ljava/lang/Runnable;;
+const #13 = Asciz	terminated;
+const #14 = Asciz	Z;
+const #15 = Asciz	<init>;
+const #16 = Asciz	(Ljava/lang/Runnable;)V;
+const #17 = Asciz	Code;
+const #18 = Asciz	run;
+const #19 = Asciz	()V;
+const #20 = Asciz	setTerminated;
+const #21 = Asciz	awaitTermination;
+const #22 = Asciz	Exceptions;
+const #23 = class	#39;	//  java/lang/InterruptedException
+const #24 = NameAndType	#15:#19;//  "<init>":()V
+const #25 = NameAndType	#13:#14;//  terminated:Z
+const #26 = NameAndType	#11:#12;//  wrapped:Ljava/lang/Runnable;
+const #27 = Asciz	scala/actors/FJTask;
+const #28 = NameAndType	#40:#41;//  invoke:(Lscala/actors/FJTask;)V
+const #29 = class	#42;	//  java/lang/Runnable
+const #30 = NameAndType	#18:#19;//  run:()V
+const #31 = NameAndType	#20:#19;//  setTerminated:()V
+const #32 = class	#43;	//  java/lang/Object
+const #33 = NameAndType	#44:#19;//  notifyAll:()V
+const #34 = NameAndType	#45:#19;//  wait:()V
+const #35 = class	#46;	//  scala/actors/FJTaskRunnerGroup
+const #36 = Asciz	scala/actors/FJTaskRunnerGroup$InvokableFJTask;
+const #37 = Asciz	InvokableFJTask;
+const #38 = Asciz	InnerClasses;
+const #39 = Asciz	java/lang/InterruptedException;
+const #40 = Asciz	invoke;
+const #41 = Asciz	(Lscala/actors/FJTask;)V;
+const #42 = Asciz	java/lang/Runnable;
+const #43 = Asciz	java/lang/Object;
+const #44 = Asciz	notifyAll;
+const #45 = Asciz	wait;
+const #46 = Asciz	scala/actors/FJTaskRunnerGroup;
+
+{
+protected final java.lang.Runnable wrapped;
+
+protected boolean terminated;
+
+protected scala.actors.FJTaskRunnerGroup$InvokableFJTask(java.lang.Runnable);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	invokespecial	#1; //Method scala/actors/FJTask."<init>":()V
+   4:	aload_0
+   5:	iconst_0
+   6:	putfield	#2; //Field terminated:Z
+   9:	aload_0
+   10:	aload_1
+   11:	putfield	#3; //Field wrapped:Ljava/lang/Runnable;
+   14:	return
+
+public void run();
+  Code:
+   Stack=1, Locals=2, Args_size=1
+   0:	aload_0
+   1:	getfield	#3; //Field wrapped:Ljava/lang/Runnable;
+   4:	instanceof	#4; //class scala/actors/FJTask
+   7:	ifeq	26
+   10:	aload_0
+   11:	getfield	#3; //Field wrapped:Ljava/lang/Runnable;
+   14:	checkcast	#4; //class scala/actors/FJTask
+   17:	checkcast	#4; //class scala/actors/FJTask
+   20:	invokestatic	#5; //Method scala/actors/FJTask.invoke:(Lscala/actors/FJTask;)V
+   23:	goto	35
+   26:	aload_0
+   27:	getfield	#3; //Field wrapped:Ljava/lang/Runnable;
+   30:	invokeinterface	#6,  1; //InterfaceMethod java/lang/Runnable.run:()V
+   35:	aload_0
+   36:	invokevirtual	#7; //Method setTerminated:()V
+   39:	goto	49
+   42:	astore_1
+   43:	aload_0
+   44:	invokevirtual	#7; //Method setTerminated:()V
+   47:	aload_1
+   48:	athrow
+   49:	return
+  Exception table:
+   from   to  target type
+     0    35    42   any
+    42    43    42   any
+
+protected synchronized void setTerminated();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	iconst_1
+   2:	putfield	#2; //Field terminated:Z
+   5:	aload_0
+   6:	invokevirtual	#8; //Method java/lang/Object.notifyAll:()V
+   9:	return
+
+protected synchronized void awaitTermination()   throws java.lang.InterruptedException;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#2; //Field terminated:Z
+   4:	ifne	14
+   7:	aload_0
+   8:	invokevirtual	#9; //Method java/lang/Object.wait:()V
+   11:	goto	0
+   14:	return
+  Exceptions: 
+   throws java.lang.InterruptedException
+}
+

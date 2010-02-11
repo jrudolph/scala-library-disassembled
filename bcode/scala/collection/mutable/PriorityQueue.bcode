@@ -1,0 +1,4151 @@
+Compiled from "PriorityQueue.scala"
+public class scala.collection.mutable.PriorityQueue extends java.lang.Object implements scala.collection.mutable.ResizableArray,scala.collection.generic.Addable,scala.collection.generic.Growable,scala.collection.generic.Cloneable,scala.ScalaObject,java.io.Serializable,java.lang.Cloneable
+  SourceFile: "PriorityQueue.scala"
+  Signature: length = 0x2
+   03 FFFFFFB9 
+  ScalaSig: length = 0x56D
+   05 00 FFFFFF81 59 06 04 01 02 00 09 02 0D 50 72 69 6F
+   72 69 74 79 51 75 65 75 65 0A 02 03 04 01 07 6D
+   75 74 61 62 6C 65 0A 02 05 06 01 0A 63 6F 6C 6C
+   65 63 74 69 6F 6E 0A 01 07 01 05 73 63 61 6C 61
+   03 00 15 02 0A 19 13 07 00 0B 13 23 2A 2D 30 10
+   02 0C 11 0D 01 0D 0A 02 0E 0F 01 04 6C 61 6E 67
+   0A 01 10 01 04 6A 61 76 61 09 02 12 0D 02 06 4F
+   62 6A 65 63 74 10 03 14 15 17 0D 01 02 09 02 16
+   02 02 0E 52 65 73 69 7A 61 62 6C 65 41 72 72 61
+   79 10 02 18 19 0C 00 04 08 1A 00 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFFC2 00
+   1B 02 01 41 11 02 1C 20 10 02 1D 1E 0D 01 06 09
+   02 1F 06 02 07 4E 6F 74 68 69 6E 67 10 02 1D 21
+   09 02 22 06 02 03 41 6E 79 10 04 24 27 17 29 0D
+   01 25 0A 02 26 04 01 07 67 65 6E 65 72 69 63 09
+   02 28 25 02 07 41 64 64 61 62 6C 65 10 03 14 00
+   17 10 03 24 2B 17 09 02 2C 25 02 08 47 72 6F 77
+   61 62 6C 65 10 03 24 2E 29 09 02 2F 25 02 09 43
+   6C 6F 6E 65 61 62 6C 65 10 02 1D 31 09 02 32 06
+   02 0B 53 63 61 6C 61 4F 62 6A 65 63 74 08 08 34
+   00 FFFFFF82 FFFFFF80 FFFFFFA0 FFFFFF80 05 35 01 03 6F 72 64 10 03 1D 36
+   17 09 02 37 06 02 08 4F 72 64 65 72 69 6E 67 08
+   05 39 00 FFFFFF84 00 3A 01 06 3C 69 6E 69 74 3E 14 01
+   3B 16 02 29 3C 08 05 34 38 FFFFFFC0 01 35 08 05 3E 00
+   FFFFFF84 20 3F 01 06 6C 65 6E 67 74 68 15 01 40 10 02
+   1D 41 09 02 42 06 02 03 49 6E 74 08 05 44 00 FFFFFF84
+   20 45 01 07 69 73 45 6D 70 74 79 15 01 46 10 02
+   1D 47 09 02 48 06 02 07 42 6F 6F 6C 65 61 6E 08
+   05 4A 00 FFFFFF84 28 4B 01 0E 74 68 69 73 43 6F 6C 6C
+   65 63 74 69 6F 6E 15 01 29 08 05 4D 00 FFFFFF84 20 4E
+   01 07 66 6F 72 65 61 63 68 15 02 4F 59 14 02 50
+   53 10 02 1D 51 09 02 52 06 02 04 55 6E 69 74 08
+   05 54 4C FFFFFFC0 00 55 01 01 66 10 04 1D 56 17 58 09
+   02 57 06 02 09 46 75 6E 63 74 69 6F 6E 31 10 02
+   18 59 04 08 5A 4C FFFFFF84 FFFFFF80 FFFFFF80 FFFFFFC2 00 1B 02 01 55 08
+   05 5C 00 FFFFFF84 04 5D 01 03 74 6F 41 14 02 17 5E 08
+   05 5F 5B FFFFFFC0 00 60 01 01 78 10 02 1D 61 09 02 62
+   06 02 06 41 6E 79 52 65 66 08 05 64 00 FFFFFF84 08 65
+   01 05 66 69 78 55 70 14 03 50 66 6B 08 05 67 63
+   FFFFFFC0 00 68 01 02 61 73 10 03 1D 69 60 09 02 6A 06
+   02 05 41 72 72 61 79 08 05 6C 63 FFFFFFC0 00 40 01 01
+   6D 08 05 6E 00 FFFFFF84 08 6F 01 07 66 69 78 44 6F 77
+   6E 14 04 50 70 71 72 08 05 67 6D FFFFFFC0 00 68 08 05
+   6C 6D FFFFFFC0 00 40 08 05 73 6D FFFFFFC0 00 40 01 01 6E 08
+   05 75 00 FFFFFF84 00 76 01 08 24 70 6C 75 73 24 65 71
+   14 02 77 78 0D 01 00 08 05 79 74 FFFFFFC0 00 17 01 04
+   65 6C 65 6D 08 05 7B 00 FFFFFF84 00 7C 01 05 24 70 6C
+   75 73 14 02 29 7D 08 05 79 7A FFFFFFC0 00 17 08 05 7B
+   00 FFFFFF84 20 7F 14 07 29 FFFFFF81 00 FFFFFF81 02 FFFFFF81 04 08 06 FFFFFF81
+   01 7E FFFFFFC0 00 17 01 05 65 6C 65 6D 31 08 06 FFFFFF81 03
+   7E FFFFFFC0 00 17 01 05 65 6C 65 6D 32 08 07 FFFFFF81 05 7E
+   FFFFFFC0 00 FFFFFF81 06 01 05 65 6C 65 6D 73 10 04 1D FFFFFF81 07
+   17 09 03 FFFFFF81 08 06 02 0A 3C 72 65 70 65 61 74 65
+   64 3E 08 07 FFFFFF81 0A 00 FFFFFF84 00 FFFFFF81 0B 01 0A 24 70 6C
+   75 73 24 70 6C 75 73 14 03 29 FFFFFF81 0C 08 08 FFFFFF81 05
+   FFFFFF81 09 FFFFFFC0 00 FFFFFF81 0D 10 04 14 FFFFFF81 0E 17 09 03 FFFFFF81 0F
+   02 02 0B 54 72 61 76 65 72 73 61 62 6C 65 08 07
+   FFFFFF81 0A 00 FFFFFF84 20 FFFFFF81 11 14 03 29 FFFFFF81 12 08 08 FFFFFF81 13
+   FFFFFF81 10 FFFFFFC0 00 FFFFFF81 14 01 04 69 74 65 72 10 05 FFFFFF81 15
+   FFFFFF81 1D 17 0E 04 FFFFFF81 16 FFFFFF81 1B 0E 04 FFFFFF81 17 FFFFFF81 1A 0D
+   02 FFFFFF81 18 0A 03 FFFFFF81 19 08 01 06 3C 72 6F 6F 74 3E
+   09 01 07 09 03 FFFFFF81 1C 06 01 07 70 61 63 6B 61 67
+   65 09 04 FFFFFF81 1E FFFFFF81 1F 02 08 49 74 65 72 61 74 6F
+   72 0A 03 FFFFFF81 1C 06 08 07 FFFFFF81 21 00 FFFFFF84 00 FFFFFF81 22 01
+   07 65 6E 71 75 65 75 65 14 03 50 FFFFFF81 23 08 08 FFFFFF81
+   05 FFFFFF81 20 FFFFFFC0 00 FFFFFF81 06 08 07 FFFFFF81 25 00 FFFFFF84 00 FFFFFF81 26
+   01 07 64 65 71 75 65 75 65 14 01 17 08 07 FFFFFF81 28
+   00 FFFFFF84 00 FFFFFF81 29 01 03 6D 61 78 15 01 17 08 07 FFFFFF81
+   2B 00 FFFFFF84 00 FFFFFF81 2C 01 05 63 6C 65 61 72 14 01 50
+   08 07 FFFFFF81 2E 00 FFFFFF84 20 FFFFFF81 2F 01 08 69 74 65 72 61
+   74 6F 72 15 02 FFFFFF81 14 08 07 FFFFFF81 31 00 FFFFFF84 20 FFFFFF81 32
+   01 06 65 71 75 61 6C 73 14 03 46 FFFFFF81 33 08 07 FFFFFF81
+   34 FFFFFF81 30 FFFFFFC0 00 20 01 03 6F 62 6A 08 07 FFFFFF81 36 00
+   FFFFFF84 20 FFFFFF81 37 01 08 68 61 73 68 43 6F 64 65 14 01
+   40 08 07 FFFFFF81 39 00 FFFFFF84 00 FFFFFF81 3A 01 07 74 6F 51 75
+   65 75 65 15 02 FFFFFF81 3B 10 04 14 FFFFFF81 3C 17 09 03 FFFFFF81
+   3D 02 02 05 51 75 65 75 65 08 07 FFFFFF81 3F 00 FFFFFF84 20
+   FFFFFF81 40 01 08 74 6F 53 74 72 69 6E 67 14 02 FFFFFF81 41
+   10 04 FFFFFF81 42 FFFFFF81 45 0E 03 1D FFFFFF81 43 09 03 FFFFFF81 44 06
+   01 06 50 72 65 64 65 66 09 04 FFFFFF81 46 FFFFFF81 47 02 06
+   53 74 72 69 6E 67 0A 03 FFFFFF81 44 06 08 07 FFFFFF81 49 00
+   FFFFFF84 20 FFFFFF81 4A 01 06 74 6F 4C 69 73 74 15 02 FFFFFF81 4B
+   10 05 FFFFFF81 15 FFFFFF81 4C 17 09 04 FFFFFF81 4D FFFFFF81 1F 02 04 4C
+   69 73 74 08 07 FFFFFF81 4F 00 FFFFFF84 20 FFFFFF81 50 01 05 63 6C
+   6F 6E 65 14 01 29 28 03 00 FFFFFF81 52 10 03 1D FFFFFF81 53
+   09 03 FFFFFF81 54 06 02 09 63 6C 6F 6E 65 61 62 6C 65
+   28 03 00 FFFFFF81 56 10 03 1D FFFFFF81 57 09 03 FFFFFF81 58 06 02
+   0C 73 65 72 69 61 6C 69 7A 61 62 6C 65 
+  InnerClass: 
+   public #956= #386 of #380; //Ops=class scala/Ordering$Ops of class scala/Ordering
+   public final #957= #330 of #16; //$anon$1=class scala/collection/mutable/PriorityQueue$$anon$1 of class scala/collection/mutable/PriorityQueue
+   public final #958= #318 of #16; //$anonfun$equals$1=class scala/collection/mutable/PriorityQueue$$anonfun$equals$1 of class scala/collection/mutable/PriorityQueue
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Asciz	SourceFile;
+const #2 = Asciz	PriorityQueue.scala;
+const #3 = Asciz	size0;
+const #4 = Asciz	I;
+const #5 = Asciz	array;
+const #6 = Asciz	[Ljava/lang/Object;;
+const #7 = Asciz	ord;
+const #8 = Asciz	Lscala/Ordering;;
+const #9 = Asciz	Lscala/Ordering<TA;>;;
+const #10 = Asciz	Signature;
+const #11 = Asciz	<init>;
+const #12 = Asciz	(Lscala/Ordering;)V;
+const #13 = Asciz	Code;
+const #14 = Asciz	LineNumberTable;
+const #15 = Asciz	scala/collection/mutable/PriorityQueue;
+const #16 = class	#15;	//  scala/collection/mutable/PriorityQueue
+const #17 = NameAndType	#7:#8;//  ord:Lscala/Ordering;
+const #18 = Field	#16.#17;	//  scala/collection/mutable/PriorityQueue.ord:Lscala/Ordering;
+const #19 = Asciz	java/lang/Object;
+const #20 = class	#19;	//  java/lang/Object
+const #21 = Asciz	()V;
+const #22 = NameAndType	#11:#21;//  "<init>":()V
+const #23 = Method	#20.#22;	//  java/lang/Object."<init>":()V
+const #24 = Asciz	scala/collection/generic/TraversableTemplate$class;
+const #25 = class	#24;	//  scala/collection/generic/TraversableTemplate$class
+const #26 = Asciz	$init$;
+const #27 = Asciz	(Lscala/collection/generic/TraversableTemplate;)V;
+const #28 = NameAndType	#26:#27;//  $init$:(Lscala/collection/generic/TraversableTemplate;)V
+const #29 = Method	#25.#28;	//  scala/collection/generic/TraversableTemplate$class.$init$:(Lscala/collection/generic/TraversableTemplate;)V
+const #30 = Asciz	scala/collection/generic/TraversableClass$class;
+const #31 = class	#30;	//  scala/collection/generic/TraversableClass$class
+const #32 = Asciz	(Lscala/collection/generic/TraversableClass;)V;
+const #33 = NameAndType	#26:#32;//  $init$:(Lscala/collection/generic/TraversableClass;)V
+const #34 = Method	#31.#33;	//  scala/collection/generic/TraversableClass$class.$init$:(Lscala/collection/generic/TraversableClass;)V
+const #35 = Asciz	scala/collection/Traversable$class;
+const #36 = class	#35;	//  scala/collection/Traversable$class
+const #37 = Asciz	(Lscala/collection/Traversable;)V;
+const #38 = NameAndType	#26:#37;//  $init$:(Lscala/collection/Traversable;)V
+const #39 = Method	#36.#38;	//  scala/collection/Traversable$class.$init$:(Lscala/collection/Traversable;)V
+const #40 = Asciz	scala/collection/mutable/Traversable$class;
+const #41 = class	#40;	//  scala/collection/mutable/Traversable$class
+const #42 = Asciz	(Lscala/collection/mutable/Traversable;)V;
+const #43 = NameAndType	#26:#42;//  $init$:(Lscala/collection/mutable/Traversable;)V
+const #44 = Method	#41.#43;	//  scala/collection/mutable/Traversable$class.$init$:(Lscala/collection/mutable/Traversable;)V
+const #45 = Asciz	scala/collection/generic/IterableTemplate$class;
+const #46 = class	#45;	//  scala/collection/generic/IterableTemplate$class
+const #47 = Asciz	(Lscala/collection/generic/IterableTemplate;)V;
+const #48 = NameAndType	#26:#47;//  $init$:(Lscala/collection/generic/IterableTemplate;)V
+const #49 = Method	#46.#48;	//  scala/collection/generic/IterableTemplate$class.$init$:(Lscala/collection/generic/IterableTemplate;)V
+const #50 = Asciz	scala/collection/Iterable$class;
+const #51 = class	#50;	//  scala/collection/Iterable$class
+const #52 = Asciz	(Lscala/collection/Iterable;)V;
+const #53 = NameAndType	#26:#52;//  $init$:(Lscala/collection/Iterable;)V
+const #54 = Method	#51.#53;	//  scala/collection/Iterable$class.$init$:(Lscala/collection/Iterable;)V
+const #55 = Asciz	scala/collection/mutable/Iterable$class;
+const #56 = class	#55;	//  scala/collection/mutable/Iterable$class
+const #57 = Asciz	(Lscala/collection/mutable/Iterable;)V;
+const #58 = NameAndType	#26:#57;//  $init$:(Lscala/collection/mutable/Iterable;)V
+const #59 = Method	#56.#58;	//  scala/collection/mutable/Iterable$class.$init$:(Lscala/collection/mutable/Iterable;)V
+const #60 = Asciz	scala/Function1$class;
+const #61 = class	#60;	//  scala/Function1$class
+const #62 = Asciz	(Lscala/Function1;)V;
+const #63 = NameAndType	#26:#62;//  $init$:(Lscala/Function1;)V
+const #64 = Method	#61.#63;	//  scala/Function1$class.$init$:(Lscala/Function1;)V
+const #65 = Asciz	scala/PartialFunction$class;
+const #66 = class	#65;	//  scala/PartialFunction$class
+const #67 = Asciz	(Lscala/PartialFunction;)V;
+const #68 = NameAndType	#26:#67;//  $init$:(Lscala/PartialFunction;)V
+const #69 = Method	#66.#68;	//  scala/PartialFunction$class.$init$:(Lscala/PartialFunction;)V
+const #70 = Asciz	scala/collection/generic/SequenceTemplate$class;
+const #71 = class	#70;	//  scala/collection/generic/SequenceTemplate$class
+const #72 = Asciz	(Lscala/collection/generic/SequenceTemplate;)V;
+const #73 = NameAndType	#26:#72;//  $init$:(Lscala/collection/generic/SequenceTemplate;)V
+const #74 = Method	#71.#73;	//  scala/collection/generic/SequenceTemplate$class.$init$:(Lscala/collection/generic/SequenceTemplate;)V
+const #75 = Asciz	scala/collection/Sequence$class;
+const #76 = class	#75;	//  scala/collection/Sequence$class
+const #77 = Asciz	(Lscala/collection/Sequence;)V;
+const #78 = NameAndType	#26:#77;//  $init$:(Lscala/collection/Sequence;)V
+const #79 = Method	#76.#78;	//  scala/collection/Sequence$class.$init$:(Lscala/collection/Sequence;)V
+const #80 = Asciz	scala/Unhashable$class;
+const #81 = class	#80;	//  scala/Unhashable$class
+const #82 = Asciz	(Lscala/Unhashable;)V;
+const #83 = NameAndType	#26:#82;//  $init$:(Lscala/Unhashable;)V
+const #84 = Method	#81.#83;	//  scala/Unhashable$class.$init$:(Lscala/Unhashable;)V
+const #85 = Asciz	scala/collection/mutable/Sequence$class;
+const #86 = class	#85;	//  scala/collection/mutable/Sequence$class
+const #87 = Asciz	(Lscala/collection/mutable/Sequence;)V;
+const #88 = NameAndType	#26:#87;//  $init$:(Lscala/collection/mutable/Sequence;)V
+const #89 = Method	#86.#88;	//  scala/collection/mutable/Sequence$class.$init$:(Lscala/collection/mutable/Sequence;)V
+const #90 = Asciz	scala/collection/generic/VectorTemplate$class;
+const #91 = class	#90;	//  scala/collection/generic/VectorTemplate$class
+const #92 = Asciz	(Lscala/collection/generic/VectorTemplate;)V;
+const #93 = NameAndType	#26:#92;//  $init$:(Lscala/collection/generic/VectorTemplate;)V
+const #94 = Method	#91.#93;	//  scala/collection/generic/VectorTemplate$class.$init$:(Lscala/collection/generic/VectorTemplate;)V
+const #95 = Asciz	scala/collection/Vector$class;
+const #96 = class	#95;	//  scala/collection/Vector$class
+const #97 = Asciz	(Lscala/collection/Vector;)V;
+const #98 = NameAndType	#26:#97;//  $init$:(Lscala/collection/Vector;)V
+const #99 = Method	#96.#98;	//  scala/collection/Vector$class.$init$:(Lscala/collection/Vector;)V
+const #100 = Asciz	scala/collection/generic/MutableVectorTemplate$class;
+const #101 = class	#100;	//  scala/collection/generic/MutableVectorTemplate$class
+const #102 = Asciz	(Lscala/collection/generic/MutableVectorTemplate;)V;
+const #103 = NameAndType	#26:#102;//  $init$:(Lscala/collection/generic/MutableVectorTemplate;)V
+const #104 = Method	#101.#103;	//  scala/collection/generic/MutableVectorTemplate$class.$init$:(Lscala/collection/generic/MutableVectorTemplate;)V
+const #105 = Asciz	scala/collection/mutable/Vector$class;
+const #106 = class	#105;	//  scala/collection/mutable/Vector$class
+const #107 = Asciz	(Lscala/collection/mutable/Vector;)V;
+const #108 = NameAndType	#26:#107;//  $init$:(Lscala/collection/mutable/Vector;)V
+const #109 = Method	#106.#108;	//  scala/collection/mutable/Vector$class.$init$:(Lscala/collection/mutable/Vector;)V
+const #110 = Asciz	scala/collection/mutable/ResizableArray$class;
+const #111 = class	#110;	//  scala/collection/mutable/ResizableArray$class
+const #112 = Asciz	(Lscala/collection/mutable/ResizableArray;)V;
+const #113 = NameAndType	#26:#112;//  $init$:(Lscala/collection/mutable/ResizableArray;)V
+const #114 = Method	#111.#113;	//  scala/collection/mutable/ResizableArray$class.$init$:(Lscala/collection/mutable/ResizableArray;)V
+const #115 = Asciz	scala/collection/generic/Addable$class;
+const #116 = class	#115;	//  scala/collection/generic/Addable$class
+const #117 = Asciz	(Lscala/collection/generic/Addable;)V;
+const #118 = NameAndType	#26:#117;//  $init$:(Lscala/collection/generic/Addable;)V
+const #119 = Method	#116.#118;	//  scala/collection/generic/Addable$class.$init$:(Lscala/collection/generic/Addable;)V
+const #120 = Asciz	scala/collection/generic/Growable$class;
+const #121 = class	#120;	//  scala/collection/generic/Growable$class
+const #122 = Asciz	(Lscala/collection/generic/Growable;)V;
+const #123 = NameAndType	#26:#122;//  $init$:(Lscala/collection/generic/Growable;)V
+const #124 = Method	#121.#123;	//  scala/collection/generic/Growable$class.$init$:(Lscala/collection/generic/Growable;)V
+const #125 = Asciz	scala/collection/generic/Cloneable$class;
+const #126 = class	#125;	//  scala/collection/generic/Cloneable$class
+const #127 = Asciz	(Lscala/collection/generic/Cloneable;)V;
+const #128 = NameAndType	#26:#127;//  $init$:(Lscala/collection/generic/Cloneable;)V
+const #129 = Method	#126.#128;	//  scala/collection/generic/Cloneable$class.$init$:(Lscala/collection/generic/Cloneable;)V
+const #130 = Asciz	scala/collection/mutable/ResizableArray;
+const #131 = class	#130;	//  scala/collection/mutable/ResizableArray
+const #132 = Asciz	()I;
+const #133 = NameAndType	#3:#132;//  size0:()I
+const #134 = InterfaceMethod	#131.#133;	//  scala/collection/mutable/ResizableArray.size0:()I
+const #135 = Asciz	size0_$eq;
+const #136 = Asciz	(I)V;
+const #137 = NameAndType	#135:#136;//  size0_$eq:(I)V
+const #138 = InterfaceMethod	#131.#137;	//  scala/collection/mutable/ResizableArray.size0_$eq:(I)V
+const #139 = Asciz	this;
+const #140 = Asciz	Lscala/collection/mutable/PriorityQueue;;
+const #141 = Asciz	LocalVariableTable;
+const #142 = Asciz	(Lscala/Ordering<TA;>;)V;
+const #143 = Asciz	thisCollection;
+const #144 = Asciz	()Lscala/collection/generic/TraversableTemplate;;
+const #145 = Asciz	()Lscala/collection/mutable/PriorityQueue;;
+const #146 = NameAndType	#143:#145;//  thisCollection:()Lscala/collection/mutable/PriorityQueue;
+const #147 = Method	#16.#146;	//  scala/collection/mutable/PriorityQueue.thisCollection:()Lscala/collection/mutable/PriorityQueue;
+const #148 = Asciz	()Lscala/collection/generic/Addable;;
+const #149 = Asciz	$plus$eq;
+const #150 = Asciz	(Ljava/lang/Object;)Lscala/collection/generic/Growable;;
+const #151 = Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/PriorityQueue;;
+const #152 = NameAndType	#149:#151;//  $plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/PriorityQueue;
+const #153 = Method	#16.#152;	//  scala/collection/mutable/PriorityQueue.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/PriorityQueue;
+const #154 = Asciz	elem;
+const #155 = Asciz	Ljava/lang/Object;;
+const #156 = Asciz	$plus;
+const #157 = Asciz	(Ljava/lang/Object;)Lscala/collection/generic/Addable;;
+const #158 = NameAndType	#156:#151;//  $plus:(Ljava/lang/Object;)Lscala/collection/mutable/PriorityQueue;
+const #159 = Method	#16.#158;	//  scala/collection/mutable/PriorityQueue.$plus:(Ljava/lang/Object;)Lscala/collection/mutable/PriorityQueue;
+const #160 = Asciz	(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Sequence;)Lscala/collection/generic/Addable;;
+const #161 = Asciz	(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Sequence;)Lscala/collection/mutable/PriorityQueue;;
+const #162 = NameAndType	#156:#161;//  $plus:(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Sequence;)Lscala/collection/mutable/PriorityQueue;
+const #163 = Method	#16.#162;	//  scala/collection/mutable/PriorityQueue.$plus:(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Sequence;)Lscala/collection/mutable/PriorityQueue;
+const #164 = Asciz	elem1;
+const #165 = Asciz	elem2;
+const #166 = Asciz	elems;
+const #167 = Asciz	Lscala/collection/Sequence;;
+const #168 = Asciz	$plus$plus;
+const #169 = Asciz	(Lscala/collection/Iterator;)Lscala/collection/generic/Addable;;
+const #170 = Asciz	(Lscala/collection/Iterator;)Lscala/collection/mutable/PriorityQueue;;
+const #171 = NameAndType	#168:#170;//  $plus$plus:(Lscala/collection/Iterator;)Lscala/collection/mutable/PriorityQueue;
+const #172 = Method	#16.#171;	//  scala/collection/mutable/PriorityQueue.$plus$plus:(Lscala/collection/Iterator;)Lscala/collection/mutable/PriorityQueue;
+const #173 = Asciz	iter;
+const #174 = Asciz	Lscala/collection/Iterator;;
+const #175 = Asciz	clone;
+const #176 = Asciz	()Ljava/lang/Object;;
+const #177 = NameAndType	#175:#145;//  clone:()Lscala/collection/mutable/PriorityQueue;
+const #178 = Method	#16.#177;	//  scala/collection/mutable/PriorityQueue.clone:()Lscala/collection/mutable/PriorityQueue;
+const #179 = Asciz	apply;
+const #180 = Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
+const #181 = Asciz	scala/runtime/BoxesRunTime;
+const #182 = class	#181;	//  scala/runtime/BoxesRunTime
+const #183 = Asciz	unboxToInt;
+const #184 = Asciz	(Ljava/lang/Object;)I;
+const #185 = NameAndType	#183:#184;//  unboxToInt:(Ljava/lang/Object;)I
+const #186 = Method	#182.#185;	//  scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
+const #187 = Asciz	(I)Ljava/lang/Object;;
+const #188 = NameAndType	#179:#187;//  apply:(I)Ljava/lang/Object;
+const #189 = InterfaceMethod	#131.#188;	//  scala/collection/mutable/ResizableArray.apply:(I)Ljava/lang/Object;
+const #190 = Asciz	v1;
+const #191 = Asciz	view;
+const #192 = Asciz	(II)Lscala/collection/generic/VectorView;;
+const #193 = Asciz	scala/collection/generic/MutableVectorTemplate;
+const #194 = class	#193;	//  scala/collection/generic/MutableVectorTemplate
+const #195 = Asciz	(II)Lscala/collection/generic/MutableVectorView;;
+const #196 = NameAndType	#191:#195;//  view:(II)Lscala/collection/generic/MutableVectorView;
+const #197 = InterfaceMethod	#194.#196;	//  scala/collection/generic/MutableVectorTemplate.view:(II)Lscala/collection/generic/MutableVectorView;
+const #198 = Asciz	from;
+const #199 = Asciz	until;
+const #200 = Asciz	(II)Lscala/collection/generic/SequenceView;;
+const #201 = Asciz	(II)Lscala/collection/generic/IterableView;;
+const #202 = Asciz	(II)Lscala/collection/generic/TraversableView;;
+const #203 = Asciz	slice;
+const #204 = Asciz	(II)Lscala/collection/generic/TraversableTemplate;;
+const #205 = Asciz	scala/collection/generic/VectorTemplate;
+const #206 = class	#205;	//  scala/collection/generic/VectorTemplate
+const #207 = Asciz	(II)Lscala/collection/generic/VectorTemplate;;
+const #208 = NameAndType	#203:#207;//  slice:(II)Lscala/collection/generic/VectorTemplate;
+const #209 = InterfaceMethod	#206.#208;	//  scala/collection/generic/VectorTemplate.slice:(II)Lscala/collection/generic/VectorTemplate;
+const #210 = Asciz	tail;
+const #211 = Asciz	()Lscala/collection/generic/VectorTemplate;;
+const #212 = NameAndType	#210:#211;//  tail:()Lscala/collection/generic/VectorTemplate;
+const #213 = InterfaceMethod	#206.#212;	//  scala/collection/generic/VectorTemplate.tail:()Lscala/collection/generic/VectorTemplate;
+const #214 = Asciz	init;
+const #215 = NameAndType	#214:#211;//  init:()Lscala/collection/generic/VectorTemplate;
+const #216 = InterfaceMethod	#206.#215;	//  scala/collection/generic/VectorTemplate.init:()Lscala/collection/generic/VectorTemplate;
+const #217 = Asciz	take;
+const #218 = Asciz	(I)Lscala/collection/generic/TraversableTemplate;;
+const #219 = Asciz	(I)Lscala/collection/generic/VectorTemplate;;
+const #220 = NameAndType	#217:#219;//  take:(I)Lscala/collection/generic/VectorTemplate;
+const #221 = InterfaceMethod	#206.#220;	//  scala/collection/generic/VectorTemplate.take:(I)Lscala/collection/generic/VectorTemplate;
+const #222 = Asciz	n;
+const #223 = Asciz	drop;
+const #224 = NameAndType	#223:#219;//  drop:(I)Lscala/collection/generic/VectorTemplate;
+const #225 = InterfaceMethod	#206.#224;	//  scala/collection/generic/VectorTemplate.drop:(I)Lscala/collection/generic/VectorTemplate;
+const #226 = Asciz	takeRight;
+const #227 = Asciz	(I)Lscala/collection/generic/IterableTemplate;;
+const #228 = NameAndType	#226:#219;//  takeRight:(I)Lscala/collection/generic/VectorTemplate;
+const #229 = InterfaceMethod	#206.#228;	//  scala/collection/generic/VectorTemplate.takeRight:(I)Lscala/collection/generic/VectorTemplate;
+const #230 = Asciz	dropRight;
+const #231 = NameAndType	#230:#219;//  dropRight:(I)Lscala/collection/generic/VectorTemplate;
+const #232 = InterfaceMethod	#206.#231;	//  scala/collection/generic/VectorTemplate.dropRight:(I)Lscala/collection/generic/VectorTemplate;
+const #233 = Asciz	takeWhile;
+const #234 = Asciz	(Lscala/Function1;)Lscala/collection/generic/TraversableTemplate;;
+const #235 = Asciz	(Lscala/Function1;)Lscala/collection/generic/VectorTemplate;;
+const #236 = NameAndType	#233:#235;//  takeWhile:(Lscala/Function1;)Lscala/collection/generic/VectorTemplate;
+const #237 = InterfaceMethod	#206.#236;	//  scala/collection/generic/VectorTemplate.takeWhile:(Lscala/Function1;)Lscala/collection/generic/VectorTemplate;
+const #238 = Asciz	p;
+const #239 = Asciz	Lscala/Function1;;
+const #240 = Asciz	dropWhile;
+const #241 = NameAndType	#240:#235;//  dropWhile:(Lscala/Function1;)Lscala/collection/generic/VectorTemplate;
+const #242 = InterfaceMethod	#206.#241;	//  scala/collection/generic/VectorTemplate.dropWhile:(Lscala/Function1;)Lscala/collection/generic/VectorTemplate;
+const #243 = Asciz	reverse;
+const #244 = Asciz	()Lscala/collection/generic/IterableTemplate;;
+const #245 = NameAndType	#243:#211;//  reverse:()Lscala/collection/generic/VectorTemplate;
+const #246 = InterfaceMethod	#206.#245;	//  scala/collection/generic/VectorTemplate.reverse:()Lscala/collection/generic/VectorTemplate;
+const #247 = Asciz	isDefinedAt;
+const #248 = Asciz	(Ljava/lang/Object;)Z;
+const #249 = Asciz	scala/collection/generic/SequenceTemplate;
+const #250 = class	#249;	//  scala/collection/generic/SequenceTemplate
+const #251 = Asciz	(I)Z;
+const #252 = NameAndType	#247:#251;//  isDefinedAt:(I)Z
+const #253 = InterfaceMethod	#250.#252;	//  scala/collection/generic/SequenceTemplate.isDefinedAt:(I)Z
+const #254 = Asciz	x;
+const #255 = Asciz	andThen;
+const #256 = Asciz	(Lscala/Function1;)Lscala/Function1;;
+const #257 = Asciz	scala/PartialFunction;
+const #258 = class	#257;	//  scala/PartialFunction
+const #259 = Asciz	(Lscala/Function1;)Lscala/PartialFunction;;
+const #260 = NameAndType	#255:#259;//  andThen:(Lscala/Function1;)Lscala/PartialFunction;
+const #261 = InterfaceMethod	#258.#260;	//  scala/PartialFunction.andThen:(Lscala/Function1;)Lscala/PartialFunction;
+const #262 = Asciz	g;
+const #263 = NameAndType	#11:#12;//  "<init>":(Lscala/Ordering;)V
+const #264 = Method	#16.#263;	//  scala/collection/mutable/PriorityQueue."<init>":(Lscala/Ordering;)V
+const #265 = Asciz	iterator;
+const #266 = Asciz	()Lscala/collection/Iterator;;
+const #267 = NameAndType	#265:#266;//  iterator:()Lscala/collection/Iterator;
+const #268 = Method	#16.#267;	//  scala/collection/mutable/PriorityQueue.iterator:()Lscala/collection/Iterator;
+const #269 = Asciz	scala/collection/generic/Growable;
+const #270 = class	#269;	//  scala/collection/generic/Growable
+const #271 = Asciz	$plus$plus$eq;
+const #272 = Asciz	(Lscala/collection/Iterator;)Lscala/collection/generic/Growable;;
+const #273 = NameAndType	#271:#272;//  $plus$plus$eq:(Lscala/collection/Iterator;)Lscala/collection/generic/Growable;
+const #274 = InterfaceMethod	#270.#273;	//  scala/collection/generic/Growable.$plus$plus$eq:(Lscala/collection/Iterator;)Lscala/collection/generic/Growable;
+const #275 = Asciz	()Lscala/collection/mutable/PriorityQueue<TA;>;;
+const #276 = Asciz	toList;
+const #277 = Asciz	()Lscala/collection/immutable/List;;
+const #278 = Asciz	scala/collection/Iterator;
+const #279 = class	#278;	//  scala/collection/Iterator
+const #280 = NameAndType	#276:#277;//  toList:()Lscala/collection/immutable/List;
+const #281 = InterfaceMethod	#279.#280;	//  scala/collection/Iterator.toList:()Lscala/collection/immutable/List;
+const #282 = Asciz	()Lscala/collection/immutable/List<TA;>;;
+const #283 = Asciz	toString;
+const #284 = Asciz	()Ljava/lang/String;;
+const #285 = Method	#16.#280;	//  scala/collection/mutable/PriorityQueue.toList:()Lscala/collection/immutable/List;
+const #286 = Asciz	PriorityQueue(;
+const #287 = String	#286;	//  PriorityQueue(
+const #288 = Asciz	, ;
+const #289 = String	#288;	//  , 
+const #290 = Asciz	);
+const #291 = String	#290;	//  )
+const #292 = Asciz	scala/collection/generic/TraversableTemplate;
+const #293 = class	#292;	//  scala/collection/generic/TraversableTemplate
+const #294 = Asciz	mkString;
+const #295 = Asciz	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;;
+const #296 = NameAndType	#294:#295;//  mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+const #297 = InterfaceMethod	#293.#296;	//  scala/collection/generic/TraversableTemplate.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+const #298 = Asciz	toQueue;
+const #299 = Asciz	()Lscala/collection/mutable/Queue;;
+const #300 = Asciz	scala/collection/mutable/Queue;
+const #301 = class	#300;	//  scala/collection/mutable/Queue
+const #302 = Method	#301.#22;	//  scala/collection/mutable/Queue."<init>":()V
+const #303 = Asciz	()Lscala/collection/mutable/Queue<TA;>;;
+const #304 = Asciz	hashCode;
+const #305 = Asciz	java/lang/UnsupportedOperationException;
+const #306 = class	#305;	//  java/lang/UnsupportedOperationException
+const #307 = Asciz	unsuitable as hash key;
+const #308 = String	#307;	//  unsuitable as hash key
+const #309 = Asciz	(Ljava/lang/String;)V;
+const #310 = NameAndType	#11:#309;//  "<init>":(Ljava/lang/String;)V
+const #311 = Method	#306.#310;	//  java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+const #312 = Asciz	equals;
+const #313 = Asciz	zip;
+const #314 = Asciz	(Lscala/collection/Iterator;)Ljava/lang/Object;;
+const #315 = NameAndType	#313:#314;//  zip:(Lscala/collection/Iterator;)Ljava/lang/Object;
+const #316 = InterfaceMethod	#279.#315;	//  scala/collection/Iterator.zip:(Lscala/collection/Iterator;)Ljava/lang/Object;
+const #317 = Asciz	scala/collection/mutable/PriorityQueue$$anonfun$equals$1;
+const #318 = class	#317;	//  scala/collection/mutable/PriorityQueue$$anonfun$equals$1
+const #319 = Asciz	(Lscala/collection/mutable/PriorityQueue;)V;
+const #320 = NameAndType	#11:#319;//  "<init>":(Lscala/collection/mutable/PriorityQueue;)V
+const #321 = Method	#318.#320;	//  scala/collection/mutable/PriorityQueue$$anonfun$equals$1."<init>":(Lscala/collection/mutable/PriorityQueue;)V
+const #322 = Asciz	forall;
+const #323 = Asciz	(Lscala/Function1;)Z;
+const #324 = NameAndType	#322:#323;//  forall:(Lscala/Function1;)Z
+const #325 = InterfaceMethod	#279.#324;	//  scala/collection/Iterator.forall:(Lscala/Function1;)Z
+const #326 = Asciz	obj;
+const #327 = Asciz	temp4;
+const #328 = Asciz	temp5;
+const #329 = Asciz	scala/collection/mutable/PriorityQueue$$anon$1;
+const #330 = class	#329;	//  scala/collection/mutable/PriorityQueue$$anon$1
+const #331 = Method	#330.#320;	//  scala/collection/mutable/PriorityQueue$$anon$1."<init>":(Lscala/collection/mutable/PriorityQueue;)V
+const #332 = Asciz	()Lscala/collection/Iterator<TA;>;;
+const #333 = Asciz	clear;
+const #334 = Asciz	max;
+const #335 = Asciz	()[Ljava/lang/Object;;
+const #336 = NameAndType	#5:#335;//  array:()[Ljava/lang/Object;
+const #337 = InterfaceMethod	#131.#336;	//  scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
+const #338 = Asciz	scala$collection$mutable$PriorityQueue$$toA;
+const #339 = NameAndType	#338:#180;//  scala$collection$mutable$PriorityQueue$$toA:(Ljava/lang/Object;)Ljava/lang/Object;
+const #340 = Method	#16.#339;	//  scala/collection/mutable/PriorityQueue.scala$collection$mutable$PriorityQueue$$toA:(Ljava/lang/Object;)Ljava/lang/Object;
+const #341 = Asciz	java/util/NoSuchElementException;
+const #342 = class	#341;	//  java/util/NoSuchElementException
+const #343 = Asciz	queue is empty;
+const #344 = String	#343;	//  queue is empty
+const #345 = Method	#342.#310;	//  java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
+const #346 = Asciz	()TA;;
+const #347 = Asciz	dequeue;
+const #348 = Asciz	swap;
+const #349 = Asciz	(II)V;
+const #350 = NameAndType	#348:#349;//  swap:(II)V
+const #351 = InterfaceMethod	#131.#350;	//  scala/collection/mutable/ResizableArray.swap:(II)V
+const #352 = Asciz	fixDown;
+const #353 = Asciz	([Ljava/lang/Object;II)V;
+const #354 = NameAndType	#352:#353;//  fixDown:([Ljava/lang/Object;II)V
+const #355 = Method	#16.#354;	//  scala/collection/mutable/PriorityQueue.fixDown:([Ljava/lang/Object;II)V
+const #356 = Asciz	no element to remove from heap;
+const #357 = String	#356;	//  no element to remove from heap
+const #358 = Asciz	enqueue;
+const #359 = Asciz	(Lscala/collection/Traversable;)Lscala/collection/generic/Growable;;
+const #360 = NameAndType	#271:#359;//  $plus$plus$eq:(Lscala/collection/Traversable;)Lscala/collection/generic/Growable;
+const #361 = InterfaceMethod	#270.#360;	//  scala/collection/generic/Growable.$plus$plus$eq:(Lscala/collection/Traversable;)Lscala/collection/generic/Growable;
+const #362 = Asciz	(Lscala/collection/Sequence<TA;>;)V;
+const #363 = Asciz	(Lscala/collection/Iterator<TA;>;)Lscala/collection/mutable/PriorityQueue<TA;>;;
+const #364 = Asciz	(Lscala/collection/mutable/Traversable;)Lscala/collection/mutable/PriorityQueue;;
+const #365 = Asciz	Lscala/collection/mutable/Traversable;;
+const #366 = Asciz	(Lscala/collection/mutable/Traversable<TA;>;)Lscala/collection/mutable/PriorityQueue<TA;>;;
+const #367 = Asciz	(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Sequence;)Lscala/collection/generic/Growable;;
+const #368 = NameAndType	#149:#367;//  $plus$eq:(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Sequence;)Lscala/collection/generic/Growable;
+const #369 = InterfaceMethod	#270.#368;	//  scala/collection/generic/Growable.$plus$eq:(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Sequence;)Lscala/collection/generic/Growable;
+const #370 = Asciz	(TA;TA;Lscala/collection/Sequence<TA;>;)Lscala/collection/mutable/PriorityQueue<TA;>;;
+const #371 = Asciz	(TA;)Lscala/collection/mutable/PriorityQueue<TA;>;;
+const #372 = Asciz	ensureSize;
+const #373 = NameAndType	#372:#136;//  ensureSize:(I)V
+const #374 = InterfaceMethod	#131.#373;	//  scala/collection/mutable/ResizableArray.ensureSize:(I)V
+const #375 = Asciz	fixUp;
+const #376 = Asciz	([Ljava/lang/Object;I)V;
+const #377 = NameAndType	#375:#376;//  fixUp:([Ljava/lang/Object;I)V
+const #378 = Method	#16.#377;	//  scala/collection/mutable/PriorityQueue.fixUp:([Ljava/lang/Object;I)V
+const #379 = Asciz	scala/Ordering;
+const #380 = class	#379;	//  scala/Ordering
+const #381 = Asciz	mkOrderingOps;
+const #382 = Asciz	(Ljava/lang/Object;)Lscala/Ordering$Ops;;
+const #383 = NameAndType	#381:#382;//  mkOrderingOps:(Ljava/lang/Object;)Lscala/Ordering$Ops;
+const #384 = InterfaceMethod	#380.#383;	//  scala/Ordering.mkOrderingOps:(Ljava/lang/Object;)Lscala/Ordering$Ops;
+const #385 = Asciz	scala/Ordering$Ops;
+const #386 = class	#385;	//  scala/Ordering$Ops
+const #387 = Asciz	$less;
+const #388 = NameAndType	#387:#248;//  $less:(Ljava/lang/Object;)Z
+const #389 = Method	#386.#388;	//  scala/Ordering$Ops.$less:(Ljava/lang/Object;)Z
+const #390 = Asciz	$greater$eq;
+const #391 = NameAndType	#390:#248;//  $greater$eq:(Ljava/lang/Object;)Z
+const #392 = Method	#386.#391;	//  scala/Ordering$Ops.$greater$eq:(Ljava/lang/Object;)Z
+const #393 = Asciz	as;
+const #394 = Asciz	m;
+const #395 = Asciz	k;
+const #396 = Asciz	j;
+const #397 = Asciz	h;
+const #398 = Asciz	foreach;
+const #399 = Asciz	size;
+const #400 = NameAndType	#399:#132;//  size:()I
+const #401 = InterfaceMethod	#250.#400;	//  scala/collection/generic/SequenceTemplate.size:()I
+const #402 = Asciz	scala/Function1;
+const #403 = class	#402;	//  scala/Function1
+const #404 = NameAndType	#179:#180;//  apply:(Ljava/lang/Object;)Ljava/lang/Object;
+const #405 = InterfaceMethod	#403.#404;	//  scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+const #406 = Asciz	f;
+const #407 = Asciz	i;
+const #408 = Asciz	<U:Ljava/lang/Object;>(Lscala/Function1<TA;TU;>;)V;
+const #409 = Asciz	isEmpty;
+const #410 = Asciz	()Z;
+const #411 = Asciz	length;
+const #412 = Asciz	(Lscala/collection/mutable/ResizableArray;)I;
+const #413 = NameAndType	#411:#412;//  length:(Lscala/collection/mutable/ResizableArray;)I
+const #414 = Method	#111.#413;	//  scala/collection/mutable/ResizableArray$class.length:(Lscala/collection/mutable/ResizableArray;)I
+const #415 = Asciz	stringPrefix;
+const #416 = Asciz	(Lscala/collection/generic/TraversableTemplate;)Ljava/lang/String;;
+const #417 = NameAndType	#415:#416;//  stringPrefix:(Lscala/collection/generic/TraversableTemplate;)Ljava/lang/String;
+const #418 = Method	#25.#417;	//  scala/collection/generic/TraversableTemplate$class.stringPrefix:(Lscala/collection/generic/TraversableTemplate;)Ljava/lang/String;
+const #419 = Asciz	addString;
+const #420 = Asciz	(Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;;
+const #421 = Asciz	(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;;
+const #422 = NameAndType	#419:#421;//  addString:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
+const #423 = Method	#25.#422;	//  scala/collection/generic/TraversableTemplate$class.addString:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
+const #424 = Asciz	b;
+const #425 = Asciz	Lscala/collection/mutable/StringBuilder;;
+const #426 = Asciz	(Lscala/collection/mutable/StringBuilder;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;;
+const #427 = Asciz	(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;;
+const #428 = NameAndType	#419:#427;//  addString:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
+const #429 = Method	#25.#428;	//  scala/collection/generic/TraversableTemplate$class.addString:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
+const #430 = Asciz	sep;
+const #431 = Asciz	Ljava/lang/String;;
+const #432 = Asciz	(Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;;
+const #433 = Asciz	(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;;
+const #434 = NameAndType	#419:#433;//  addString:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
+const #435 = Method	#25.#434;	//  scala/collection/generic/TraversableTemplate$class.addString:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
+const #436 = Asciz	start;
+const #437 = Asciz	end;
+const #438 = NameAndType	#294:#416;//  mkString:(Lscala/collection/generic/TraversableTemplate;)Ljava/lang/String;
+const #439 = Method	#25.#438;	//  scala/collection/generic/TraversableTemplate$class.mkString:(Lscala/collection/generic/TraversableTemplate;)Ljava/lang/String;
+const #440 = Asciz	(Ljava/lang/String;)Ljava/lang/String;;
+const #441 = Asciz	(Lscala/collection/generic/TraversableTemplate;Ljava/lang/String;)Ljava/lang/String;;
+const #442 = NameAndType	#294:#441;//  mkString:(Lscala/collection/generic/TraversableTemplate;Ljava/lang/String;)Ljava/lang/String;
+const #443 = Method	#25.#442;	//  scala/collection/generic/TraversableTemplate$class.mkString:(Lscala/collection/generic/TraversableTemplate;Ljava/lang/String;)Ljava/lang/String;
+const #444 = Asciz	(Lscala/collection/generic/TraversableTemplate;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;;
+const #445 = NameAndType	#294:#444;//  mkString:(Lscala/collection/generic/TraversableTemplate;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+const #446 = Method	#25.#445;	//  scala/collection/generic/TraversableTemplate$class.mkString:(Lscala/collection/generic/TraversableTemplate;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+const #447 = Asciz	toSet;
+const #448 = Asciz	()Lscala/collection/immutable/Set;;
+const #449 = Asciz	(Lscala/collection/generic/TraversableTemplate;)Lscala/collection/immutable/Set;;
+const #450 = NameAndType	#447:#449;//  toSet:(Lscala/collection/generic/TraversableTemplate;)Lscala/collection/immutable/Set;
+const #451 = Method	#25.#450;	//  scala/collection/generic/TraversableTemplate$class.toSet:(Lscala/collection/generic/TraversableTemplate;)Lscala/collection/immutable/Set;
+const #452 = Asciz	toArray;
+const #453 = Asciz	()Lscala/runtime/BoxedArray;;
+const #454 = Asciz	(Lscala/collection/generic/TraversableTemplate;)Lscala/runtime/BoxedArray;;
+const #455 = NameAndType	#452:#454;//  toArray:(Lscala/collection/generic/TraversableTemplate;)Lscala/runtime/BoxedArray;
+const #456 = Method	#25.#455;	//  scala/collection/generic/TraversableTemplate$class.toArray:(Lscala/collection/generic/TraversableTemplate;)Lscala/runtime/BoxedArray;
+const #457 = Asciz	copyToBuffer;
+const #458 = Asciz	(Lscala/collection/mutable/Buffer;)V;
+const #459 = Asciz	(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/Buffer;)V;
+const #460 = NameAndType	#457:#459;//  copyToBuffer:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/Buffer;)V
+const #461 = Method	#25.#460;	//  scala/collection/generic/TraversableTemplate$class.copyToBuffer:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/Buffer;)V
+const #462 = Asciz	dest;
+const #463 = Asciz	Lscala/collection/mutable/Buffer;;
+const #464 = Asciz	lastOption;
+const #465 = Asciz	()Lscala/Option;;
+const #466 = Asciz	(Lscala/collection/generic/TraversableTemplate;)Lscala/Option;;
+const #467 = NameAndType	#464:#466;//  lastOption:(Lscala/collection/generic/TraversableTemplate;)Lscala/Option;
+const #468 = Method	#25.#467;	//  scala/collection/generic/TraversableTemplate$class.lastOption:(Lscala/collection/generic/TraversableTemplate;)Lscala/Option;
+const #469 = Asciz	headOption;
+const #470 = NameAndType	#469:#466;//  headOption:(Lscala/collection/generic/TraversableTemplate;)Lscala/Option;
+const #471 = Method	#25.#470;	//  scala/collection/generic/TraversableTemplate$class.headOption:(Lscala/collection/generic/TraversableTemplate;)Lscala/Option;
+const #472 = Asciz	reduceRightOption;
+const #473 = Asciz	(Lscala/Function2;)Lscala/Option;;
+const #474 = Asciz	(Lscala/collection/generic/TraversableTemplate;Lscala/Function2;)Lscala/Option;;
+const #475 = NameAndType	#472:#474;//  reduceRightOption:(Lscala/collection/generic/TraversableTemplate;Lscala/Function2;)Lscala/Option;
+const #476 = Method	#25.#475;	//  scala/collection/generic/TraversableTemplate$class.reduceRightOption:(Lscala/collection/generic/TraversableTemplate;Lscala/Function2;)Lscala/Option;
+const #477 = Asciz	op;
+const #478 = Asciz	Lscala/Function2;;
+const #479 = Asciz	reduceLeftOption;
+const #480 = NameAndType	#479:#474;//  reduceLeftOption:(Lscala/collection/generic/TraversableTemplate;Lscala/Function2;)Lscala/Option;
+const #481 = Method	#25.#480;	//  scala/collection/generic/TraversableTemplate$class.reduceLeftOption:(Lscala/collection/generic/TraversableTemplate;Lscala/Function2;)Lscala/Option;
+const #482 = Asciz	$colon$bslash;
+const #483 = Asciz	(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;;
+const #484 = Asciz	(Lscala/collection/generic/TraversableTemplate;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;;
+const #485 = NameAndType	#482:#484;//  $colon$bslash:(Lscala/collection/generic/TraversableTemplate;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+const #486 = Method	#25.#485;	//  scala/collection/generic/TraversableTemplate$class.$colon$bslash:(Lscala/collection/generic/TraversableTemplate;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+const #487 = Asciz	z;
+const #488 = Asciz	$div$colon;
+const #489 = NameAndType	#488:#484;//  $div$colon:(Lscala/collection/generic/TraversableTemplate;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+const #490 = Method	#25.#489;	//  scala/collection/generic/TraversableTemplate$class.$div$colon:(Lscala/collection/generic/TraversableTemplate;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+const #491 = Asciz	count;
+const #492 = Asciz	(Lscala/Function1;)I;
+const #493 = Asciz	(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)I;
+const #494 = NameAndType	#491:#493;//  count:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)I
+const #495 = Method	#25.#494;	//  scala/collection/generic/TraversableTemplate$class.count:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)I
+const #496 = Asciz	groupBy;
+const #497 = Asciz	(Lscala/Function1;)Lscala/collection/Map;;
+const #498 = Asciz	(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/collection/Map;;
+const #499 = NameAndType	#496:#498;//  groupBy:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/collection/Map;
+const #500 = Method	#25.#499;	//  scala/collection/generic/TraversableTemplate$class.groupBy:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/collection/Map;
+const #501 = Asciz	partition;
+const #502 = Asciz	(Lscala/Function1;)Lscala/Tuple2;;
+const #503 = Asciz	(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/Tuple2;;
+const #504 = NameAndType	#501:#503;//  partition:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/Tuple2;
+const #505 = Method	#25.#504;	//  scala/collection/generic/TraversableTemplate$class.partition:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/Tuple2;
+const #506 = Asciz	remove;
+const #507 = Asciz	(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/collection/generic/TraversableTemplate;;
+const #508 = NameAndType	#506:#507;//  remove:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/collection/generic/TraversableTemplate;
+const #509 = Method	#25.#508;	//  scala/collection/generic/TraversableTemplate$class.remove:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/collection/generic/TraversableTemplate;
+const #510 = Asciz	filterNot;
+const #511 = NameAndType	#510:#507;//  filterNot:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/collection/generic/TraversableTemplate;
+const #512 = Method	#25.#511;	//  scala/collection/generic/TraversableTemplate$class.filterNot:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/collection/generic/TraversableTemplate;
+const #513 = Asciz	filterMap;
+const #514 = Asciz	(Lscala/PartialFunction;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #515 = Asciz	(Lscala/collection/generic/TraversableTemplate;Lscala/PartialFunction;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #516 = NameAndType	#513:#515;//  filterMap:(Lscala/collection/generic/TraversableTemplate;Lscala/PartialFunction;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #517 = Method	#25.#516;	//  scala/collection/generic/TraversableTemplate$class.filterMap:(Lscala/collection/generic/TraversableTemplate;Lscala/PartialFunction;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #518 = Asciz	pf;
+const #519 = Asciz	Lscala/PartialFunction;;
+const #520 = Asciz	bf;
+const #521 = Asciz	Lscala/collection/generic/BuilderFactory;;
+const #522 = Asciz	filter;
+const #523 = NameAndType	#522:#507;//  filter:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/collection/generic/TraversableTemplate;
+const #524 = Method	#25.#523;	//  scala/collection/generic/TraversableTemplate$class.filter:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/collection/generic/TraversableTemplate;
+const #525 = Asciz	flatMap;
+const #526 = Asciz	(Lscala/Function1;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #527 = Asciz	(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #528 = NameAndType	#525:#527;//  flatMap:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #529 = Method	#25.#528;	//  scala/collection/generic/TraversableTemplate$class.flatMap:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #530 = Asciz	map;
+const #531 = NameAndType	#530:#527;//  map:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #532 = Method	#25.#531;	//  scala/collection/generic/TraversableTemplate$class.map:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #533 = Asciz	(Lscala/collection/Iterator;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #534 = Asciz	(Lscala/collection/generic/TraversableTemplate;Lscala/collection/Iterator;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #535 = NameAndType	#168:#534;//  $plus$plus:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/Iterator;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #536 = Method	#25.#535;	//  scala/collection/generic/TraversableTemplate$class.$plus$plus:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/Iterator;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #537 = Asciz	that;
+const #538 = Asciz	(Lscala/collection/Traversable;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #539 = Asciz	(Lscala/collection/generic/TraversableTemplate;Lscala/collection/Traversable;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #540 = NameAndType	#168:#539;//  $plus$plus:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/Traversable;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #541 = Method	#25.#540;	//  scala/collection/generic/TraversableTemplate$class.$plus$plus:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/Traversable;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #542 = Asciz	Lscala/collection/Traversable;;
+const #543 = Asciz	hasDefiniteSize;
+const #544 = Asciz	(Lscala/collection/generic/TraversableTemplate;)Z;
+const #545 = NameAndType	#543:#544;//  hasDefiniteSize:(Lscala/collection/generic/TraversableTemplate;)Z
+const #546 = Method	#25.#545;	//  scala/collection/generic/TraversableTemplate$class.hasDefiniteSize:(Lscala/collection/generic/TraversableTemplate;)Z
+const #547 = Asciz	nonEmpty;
+const #548 = NameAndType	#547:#544;//  nonEmpty:(Lscala/collection/generic/TraversableTemplate;)Z
+const #549 = Method	#25.#548;	//  scala/collection/generic/TraversableTemplate$class.nonEmpty:(Lscala/collection/generic/TraversableTemplate;)Z
+const #550 = Asciz	transpose;
+const #551 = Asciz	(Lscala/Function1;)Lscala/collection/Traversable;;
+const #552 = Asciz	(Lscala/collection/generic/TraversableClass;Lscala/Function1;)Lscala/collection/Traversable;;
+const #553 = NameAndType	#550:#552;//  transpose:(Lscala/collection/generic/TraversableClass;Lscala/Function1;)Lscala/collection/Traversable;
+const #554 = Method	#31.#553;	//  scala/collection/generic/TraversableClass$class.transpose:(Lscala/collection/generic/TraversableClass;Lscala/Function1;)Lscala/collection/Traversable;
+const #555 = Asciz	toTraversable;
+const #556 = Asciz	flatten;
+const #557 = NameAndType	#556:#552;//  flatten:(Lscala/collection/generic/TraversableClass;Lscala/Function1;)Lscala/collection/Traversable;
+const #558 = Method	#31.#557;	//  scala/collection/generic/TraversableClass$class.flatten:(Lscala/collection/generic/TraversableClass;Lscala/Function1;)Lscala/collection/Traversable;
+const #559 = Asciz	unzip;
+const #560 = Asciz	(Lscala/collection/generic/TraversableClass;Lscala/Function1;)Lscala/Tuple2;;
+const #561 = NameAndType	#559:#560;//  unzip:(Lscala/collection/generic/TraversableClass;Lscala/Function1;)Lscala/Tuple2;
+const #562 = Method	#31.#561;	//  scala/collection/generic/TraversableClass$class.unzip:(Lscala/collection/generic/TraversableClass;Lscala/Function1;)Lscala/Tuple2;
+const #563 = Asciz	toPair;
+const #564 = Asciz	genericBuilder;
+const #565 = Asciz	()Lscala/collection/generic/Builder;;
+const #566 = Asciz	(Lscala/collection/generic/TraversableClass;)Lscala/collection/generic/Builder;;
+const #567 = NameAndType	#564:#566;//  genericBuilder:(Lscala/collection/generic/TraversableClass;)Lscala/collection/generic/Builder;
+const #568 = Method	#31.#567;	//  scala/collection/generic/TraversableClass$class.genericBuilder:(Lscala/collection/generic/TraversableClass;)Lscala/collection/generic/Builder;
+const #569 = Asciz	newBuilder;
+const #570 = NameAndType	#569:#566;//  newBuilder:(Lscala/collection/generic/TraversableClass;)Lscala/collection/generic/Builder;
+const #571 = Method	#31.#570;	//  scala/collection/generic/TraversableClass$class.newBuilder:(Lscala/collection/generic/TraversableClass;)Lscala/collection/generic/Builder;
+const #572 = Asciz	toSeq;
+const #573 = Asciz	()Lscala/collection/Sequence;;
+const #574 = Asciz	(Lscala/collection/generic/IterableTemplate;)Lscala/collection/Sequence;;
+const #575 = NameAndType	#572:#574;//  toSeq:(Lscala/collection/generic/IterableTemplate;)Lscala/collection/Sequence;
+const #576 = Method	#46.#575;	//  scala/collection/generic/IterableTemplate$class.toSeq:(Lscala/collection/generic/IterableTemplate;)Lscala/collection/Sequence;
+const #577 = Asciz	firstOption;
+const #578 = Asciz	(Lscala/collection/generic/IterableTemplate;)Lscala/Option;;
+const #579 = NameAndType	#577:#578;//  firstOption:(Lscala/collection/generic/IterableTemplate;)Lscala/Option;
+const #580 = Method	#46.#579;	//  scala/collection/generic/IterableTemplate$class.firstOption:(Lscala/collection/generic/IterableTemplate;)Lscala/Option;
+const #581 = Asciz	first;
+const #582 = Asciz	(Lscala/collection/generic/IterableTemplate;)Ljava/lang/Object;;
+const #583 = NameAndType	#581:#582;//  first:(Lscala/collection/generic/IterableTemplate;)Ljava/lang/Object;
+const #584 = Method	#46.#583;	//  scala/collection/generic/IterableTemplate$class.first:(Lscala/collection/generic/IterableTemplate;)Ljava/lang/Object;
+const #585 = Asciz	toStream;
+const #586 = Asciz	()Lscala/collection/immutable/Stream;;
+const #587 = Asciz	(Lscala/collection/generic/IterableTemplate;)Lscala/collection/immutable/Stream;;
+const #588 = NameAndType	#585:#587;//  toStream:(Lscala/collection/generic/IterableTemplate;)Lscala/collection/immutable/Stream;
+const #589 = Method	#46.#588;	//  scala/collection/generic/IterableTemplate$class.toStream:(Lscala/collection/generic/IterableTemplate;)Lscala/collection/immutable/Stream;
+const #590 = Asciz	toIterable;
+const #591 = Asciz	()Lscala/collection/Iterable;;
+const #592 = Asciz	(Lscala/collection/generic/IterableTemplate;)Lscala/collection/Iterable;;
+const #593 = NameAndType	#590:#592;//  toIterable:(Lscala/collection/generic/IterableTemplate;)Lscala/collection/Iterable;
+const #594 = Method	#46.#593;	//  scala/collection/generic/IterableTemplate$class.toIterable:(Lscala/collection/generic/IterableTemplate;)Lscala/collection/Iterable;
+const #595 = Asciz	elements;
+const #596 = Asciz	(Lscala/collection/generic/IterableTemplate;)Lscala/collection/Iterator;;
+const #597 = NameAndType	#595:#596;//  elements:(Lscala/collection/generic/IterableTemplate;)Lscala/collection/Iterator;
+const #598 = Method	#46.#597;	//  scala/collection/generic/IterableTemplate$class.elements:(Lscala/collection/generic/IterableTemplate;)Lscala/collection/Iterator;
+const #599 = Asciz	compose;
+const #600 = Asciz	(Lscala/Function1;Lscala/Function1;)Lscala/Function1;;
+const #601 = NameAndType	#599:#600;//  compose:(Lscala/Function1;Lscala/Function1;)Lscala/Function1;
+const #602 = Method	#61.#601;	//  scala/Function1$class.compose:(Lscala/Function1;Lscala/Function1;)Lscala/Function1;
+const #603 = Asciz	(Lscala/PartialFunction;Lscala/Function1;)Lscala/PartialFunction;;
+const #604 = NameAndType	#255:#603;//  andThen:(Lscala/PartialFunction;Lscala/Function1;)Lscala/PartialFunction;
+const #605 = Method	#66.#604;	//  scala/PartialFunction$class.andThen:(Lscala/PartialFunction;Lscala/Function1;)Lscala/PartialFunction;
+const #606 = Asciz	orElse;
+const #607 = Asciz	(Lscala/PartialFunction;)Lscala/PartialFunction;;
+const #608 = Asciz	(Lscala/PartialFunction;Lscala/PartialFunction;)Lscala/PartialFunction;;
+const #609 = NameAndType	#606:#608;//  orElse:(Lscala/PartialFunction;Lscala/PartialFunction;)Lscala/PartialFunction;
+const #610 = Method	#66.#609;	//  scala/PartialFunction$class.orElse:(Lscala/PartialFunction;Lscala/PartialFunction;)Lscala/PartialFunction;
+const #611 = Asciz	projection;
+const #612 = Asciz	(Lscala/collection/generic/SequenceTemplate;)Ljava/lang/Object;;
+const #613 = NameAndType	#611:#612;//  projection:(Lscala/collection/generic/SequenceTemplate;)Ljava/lang/Object;
+const #614 = Method	#71.#613;	//  scala/collection/generic/SequenceTemplate$class.projection:(Lscala/collection/generic/SequenceTemplate;)Ljava/lang/Object;
+const #615 = Asciz	containsSlice;
+const #616 = Asciz	(Lscala/collection/Sequence;)Z;
+const #617 = Asciz	(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Z;
+const #618 = NameAndType	#615:#617;//  containsSlice:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Z
+const #619 = Method	#71.#618;	//  scala/collection/generic/SequenceTemplate$class.containsSlice:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Z
+const #620 = Asciz	equalsWith;
+const #621 = Asciz	(Lscala/collection/Sequence;Lscala/Function2;)Z;
+const #622 = Asciz	(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Lscala/Function2;)Z;
+const #623 = NameAndType	#620:#622;//  equalsWith:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Lscala/Function2;)Z
+const #624 = Method	#71.#623;	//  scala/collection/generic/SequenceTemplate$class.equalsWith:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Lscala/Function2;)Z
+const #625 = Asciz	(I)Lscala/collection/Sequence;;
+const #626 = Asciz	(Lscala/collection/generic/SequenceTemplate;I)Lscala/collection/Sequence;;
+const #627 = NameAndType	#203:#626;//  slice:(Lscala/collection/generic/SequenceTemplate;I)Lscala/collection/Sequence;
+const #628 = Method	#71.#627;	//  scala/collection/generic/SequenceTemplate$class.slice:(Lscala/collection/generic/SequenceTemplate;I)Lscala/collection/Sequence;
+const #629 = Asciz	findLastIndexOf;
+const #630 = Asciz	(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I;
+const #631 = NameAndType	#629:#630;//  findLastIndexOf:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+const #632 = Method	#71.#631;	//  scala/collection/generic/SequenceTemplate$class.findLastIndexOf:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+const #633 = Asciz	indices;
+const #634 = Asciz	()Lscala/Range;;
+const #635 = Asciz	(Lscala/collection/generic/SequenceTemplate;)Lscala/Range;;
+const #636 = NameAndType	#633:#635;//  indices:(Lscala/collection/generic/SequenceTemplate;)Lscala/Range;
+const #637 = Method	#71.#636;	//  scala/collection/generic/SequenceTemplate$class.indices:(Lscala/collection/generic/SequenceTemplate;)Lscala/Range;
+const #638 = Asciz	toSequence;
+const #639 = Asciz	(Lscala/collection/generic/SequenceTemplate;)Lscala/collection/Sequence;;
+const #640 = NameAndType	#638:#639;//  toSequence:(Lscala/collection/generic/SequenceTemplate;)Lscala/collection/Sequence;
+const #641 = Method	#71.#640;	//  scala/collection/generic/SequenceTemplate$class.toSequence:(Lscala/collection/generic/SequenceTemplate;)Lscala/collection/Sequence;
+const #642 = Asciz	padTo;
+const #643 = Asciz	(ILjava/lang/Object;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #644 = Asciz	(Lscala/collection/generic/SequenceTemplate;ILjava/lang/Object;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #645 = NameAndType	#642:#644;//  padTo:(Lscala/collection/generic/SequenceTemplate;ILjava/lang/Object;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #646 = Method	#71.#645;	//  scala/collection/generic/SequenceTemplate$class.padTo:(Lscala/collection/generic/SequenceTemplate;ILjava/lang/Object;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #647 = Asciz	len;
+const #648 = Asciz	patch;
+const #649 = Asciz	(ILscala/collection/Sequence;ILscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #650 = Asciz	(Lscala/collection/generic/SequenceTemplate;ILscala/collection/Sequence;ILscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #651 = NameAndType	#648:#650;//  patch:(Lscala/collection/generic/SequenceTemplate;ILscala/collection/Sequence;ILscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #652 = Method	#71.#651;	//  scala/collection/generic/SequenceTemplate$class.patch:(Lscala/collection/generic/SequenceTemplate;ILscala/collection/Sequence;ILscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #653 = Asciz	replaced;
+const #654 = Asciz	removeDuplicates;
+const #655 = Asciz	(Lscala/collection/generic/SequenceTemplate;)Lscala/collection/generic/IterableTemplate;;
+const #656 = NameAndType	#654:#655;//  removeDuplicates:(Lscala/collection/generic/SequenceTemplate;)Lscala/collection/generic/IterableTemplate;
+const #657 = Method	#71.#656;	//  scala/collection/generic/SequenceTemplate$class.removeDuplicates:(Lscala/collection/generic/SequenceTemplate;)Lscala/collection/generic/IterableTemplate;
+const #658 = Asciz	intersect;
+const #659 = Asciz	(Lscala/collection/Sequence;)Lscala/collection/generic/IterableTemplate;;
+const #660 = Asciz	(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Lscala/collection/generic/IterableTemplate;;
+const #661 = NameAndType	#658:#660;//  intersect:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Lscala/collection/generic/IterableTemplate;
+const #662 = Method	#71.#661;	//  scala/collection/generic/SequenceTemplate$class.intersect:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Lscala/collection/generic/IterableTemplate;
+const #663 = Asciz	diff;
+const #664 = NameAndType	#663:#660;//  diff:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Lscala/collection/generic/IterableTemplate;
+const #665 = Method	#71.#664;	//  scala/collection/generic/SequenceTemplate$class.diff:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Lscala/collection/generic/IterableTemplate;
+const #666 = Asciz	union;
+const #667 = Asciz	(Lscala/collection/Sequence;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #668 = Asciz	(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #669 = NameAndType	#666:#668;//  union:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #670 = Method	#71.#669;	//  scala/collection/generic/SequenceTemplate$class.union:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #671 = Asciz	contains;
+const #672 = Asciz	(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;)Z;
+const #673 = NameAndType	#671:#672;//  contains:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;)Z
+const #674 = Method	#71.#673;	//  scala/collection/generic/SequenceTemplate$class.contains:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;)Z
+const #675 = Asciz	lastIndexOfSeq;
+const #676 = Asciz	(Lscala/collection/Sequence;I)I;
+const #677 = Asciz	(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;I)I;
+const #678 = NameAndType	#675:#677;//  lastIndexOfSeq:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;I)I
+const #679 = Method	#71.#678;	//  scala/collection/generic/SequenceTemplate$class.lastIndexOfSeq:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;I)I
+const #680 = Asciz	fromIndex;
+const #681 = Asciz	(Lscala/collection/Sequence;)I;
+const #682 = Asciz	(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)I;
+const #683 = NameAndType	#675:#682;//  lastIndexOfSeq:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)I
+const #684 = Method	#71.#683;	//  scala/collection/generic/SequenceTemplate$class.lastIndexOfSeq:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)I
+const #685 = Asciz	indexOfSeq;
+const #686 = NameAndType	#685:#677;//  indexOfSeq:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;I)I
+const #687 = Method	#71.#686;	//  scala/collection/generic/SequenceTemplate$class.indexOfSeq:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;I)I
+const #688 = NameAndType	#685:#682;//  indexOfSeq:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)I
+const #689 = Method	#71.#688;	//  scala/collection/generic/SequenceTemplate$class.indexOfSeq:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)I
+const #690 = Asciz	startsWith;
+const #691 = NameAndType	#690:#617;//  startsWith:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Z
+const #692 = Method	#71.#691;	//  scala/collection/generic/SequenceTemplate$class.startsWith:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Z
+const #693 = Asciz	reversedElements;
+const #694 = Asciz	(Lscala/collection/generic/SequenceTemplate;)Lscala/collection/Iterator;;
+const #695 = NameAndType	#693:#694;//  reversedElements:(Lscala/collection/generic/SequenceTemplate;)Lscala/collection/Iterator;
+const #696 = Method	#71.#695;	//  scala/collection/generic/SequenceTemplate$class.reversedElements:(Lscala/collection/generic/SequenceTemplate;)Lscala/collection/Iterator;
+const #697 = Asciz	lastIndexWhere;
+const #698 = NameAndType	#697:#630;//  lastIndexWhere:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+const #699 = Method	#71.#698;	//  scala/collection/generic/SequenceTemplate$class.lastIndexWhere:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+const #700 = Asciz	lastIndexOf;
+const #701 = Asciz	(Ljava/lang/Object;I)I;
+const #702 = Asciz	(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;I)I;
+const #703 = NameAndType	#700:#702;//  lastIndexOf:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;I)I
+const #704 = Method	#71.#703;	//  scala/collection/generic/SequenceTemplate$class.lastIndexOf:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;I)I
+const #705 = Asciz	(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;)I;
+const #706 = NameAndType	#700:#705;//  lastIndexOf:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;)I
+const #707 = Method	#71.#706;	//  scala/collection/generic/SequenceTemplate$class.lastIndexOf:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;)I
+const #708 = Asciz	indexOf;
+const #709 = NameAndType	#708:#702;//  indexOf:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;I)I
+const #710 = Method	#71.#709;	//  scala/collection/generic/SequenceTemplate$class.indexOf:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;I)I
+const #711 = NameAndType	#708:#705;//  indexOf:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;)I
+const #712 = Method	#71.#711;	//  scala/collection/generic/SequenceTemplate$class.indexOf:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;)I
+const #713 = Asciz	findIndexOf;
+const #714 = NameAndType	#713:#630;//  findIndexOf:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+const #715 = Method	#71.#714;	//  scala/collection/generic/SequenceTemplate$class.findIndexOf:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+const #716 = Asciz	indexWhere;
+const #717 = NameAndType	#716:#630;//  indexWhere:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+const #718 = Method	#71.#717;	//  scala/collection/generic/SequenceTemplate$class.indexWhere:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+const #719 = Asciz	prefixLength;
+const #720 = NameAndType	#719:#630;//  prefixLength:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+const #721 = Method	#71.#720;	//  scala/collection/generic/SequenceTemplate$class.prefixLength:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+const #722 = Asciz	zipAll;
+const #723 = Asciz	(Lscala/collection/Sequence;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #724 = Asciz	(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #725 = NameAndType	#722:#724;//  zipAll:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #726 = Method	#71.#725;	//  scala/collection/generic/SequenceTemplate$class.zipAll:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #727 = Asciz	thisElem;
+const #728 = Asciz	thatElem;
+const #729 = Asciz	(Lscala/collection/generic/SequenceTemplate;I)Z;
+const #730 = NameAndType	#247:#729;//  isDefinedAt:(Lscala/collection/generic/SequenceTemplate;I)Z
+const #731 = Method	#71.#730;	//  scala/collection/generic/SequenceTemplate$class.isDefinedAt:(Lscala/collection/generic/SequenceTemplate;I)Z
+const #732 = Asciz	(Lscala/collection/generic/SequenceTemplate;)I;
+const #733 = NameAndType	#399:#732;//  size:(Lscala/collection/generic/SequenceTemplate;)I
+const #734 = Method	#71.#733;	//  scala/collection/generic/SequenceTemplate$class.size:(Lscala/collection/generic/SequenceTemplate;)I
+const #735 = Asciz	identityHashCode;
+const #736 = Asciz	(Lscala/Unhashable;)I;
+const #737 = NameAndType	#735:#736;//  identityHashCode:(Lscala/Unhashable;)I
+const #738 = Method	#81.#737;	//  scala/Unhashable$class.identityHashCode:(Lscala/Unhashable;)I
+const #739 = Asciz	scala$Unhashable$$super$hashCode;
+const #740 = NameAndType	#304:#132;//  hashCode:()I
+const #741 = Method	#20.#740;	//  java/lang/Object.hashCode:()I
+const #742 = Asciz	endsWith;
+const #743 = Asciz	(Lscala/collection/generic/VectorTemplate;Lscala/collection/Sequence;)Z;
+const #744 = NameAndType	#742:#743;//  endsWith:(Lscala/collection/generic/VectorTemplate;Lscala/collection/Sequence;)Z
+const #745 = Method	#91.#744;	//  scala/collection/generic/VectorTemplate$class.endsWith:(Lscala/collection/generic/VectorTemplate;Lscala/collection/Sequence;)Z
+const #746 = Asciz	(Lscala/collection/Sequence;I)Z;
+const #747 = Asciz	(Lscala/collection/generic/VectorTemplate;Lscala/collection/Sequence;I)Z;
+const #748 = NameAndType	#690:#747;//  startsWith:(Lscala/collection/generic/VectorTemplate;Lscala/collection/Sequence;I)Z
+const #749 = Method	#91.#748;	//  scala/collection/generic/VectorTemplate$class.startsWith:(Lscala/collection/generic/VectorTemplate;Lscala/collection/Sequence;I)Z
+const #750 = Asciz	offset;
+const #751 = Asciz	reverseIterator;
+const #752 = Asciz	(Lscala/collection/generic/VectorTemplate;)Lscala/collection/Iterator;;
+const #753 = NameAndType	#751:#752;//  reverseIterator:(Lscala/collection/generic/VectorTemplate;)Lscala/collection/Iterator;
+const #754 = Method	#91.#753;	//  scala/collection/generic/VectorTemplate$class.reverseIterator:(Lscala/collection/generic/VectorTemplate;)Lscala/collection/Iterator;
+const #755 = Asciz	(Lscala/collection/generic/VectorTemplate;)Lscala/collection/generic/VectorTemplate;;
+const #756 = NameAndType	#243:#755;//  reverse:(Lscala/collection/generic/VectorTemplate;)Lscala/collection/generic/VectorTemplate;
+const #757 = Method	#91.#756;	//  scala/collection/generic/VectorTemplate$class.reverse:(Lscala/collection/generic/VectorTemplate;)Lscala/collection/generic/VectorTemplate;
+const #758 = Asciz	(Lscala/Function1;I)I;
+const #759 = Asciz	(Lscala/collection/generic/VectorTemplate;Lscala/Function1;I)I;
+const #760 = NameAndType	#697:#759;//  lastIndexWhere:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;I)I
+const #761 = Method	#91.#760;	//  scala/collection/generic/VectorTemplate$class.lastIndexWhere:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;I)I
+const #762 = NameAndType	#716:#759;//  indexWhere:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;I)I
+const #763 = Method	#91.#762;	//  scala/collection/generic/VectorTemplate$class.indexWhere:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;I)I
+const #764 = Asciz	segmentLength;
+const #765 = NameAndType	#764:#759;//  segmentLength:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;I)I
+const #766 = Method	#91.#765;	//  scala/collection/generic/VectorTemplate$class.segmentLength:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;I)I
+const #767 = Asciz	lengthCompare;
+const #768 = Asciz	(I)I;
+const #769 = Asciz	(Lscala/collection/generic/VectorTemplate;I)I;
+const #770 = NameAndType	#767:#769;//  lengthCompare:(Lscala/collection/generic/VectorTemplate;I)I
+const #771 = Method	#91.#770;	//  scala/collection/generic/VectorTemplate$class.lengthCompare:(Lscala/collection/generic/VectorTemplate;I)I
+const #772 = Asciz	copyToArray;
+const #773 = Asciz	(Lscala/runtime/BoxedArray;II)V;
+const #774 = Asciz	(Lscala/collection/generic/VectorTemplate;Lscala/runtime/BoxedArray;II)V;
+const #775 = NameAndType	#772:#774;//  copyToArray:(Lscala/collection/generic/VectorTemplate;Lscala/runtime/BoxedArray;II)V
+const #776 = Method	#91.#775;	//  scala/collection/generic/VectorTemplate$class.copyToArray:(Lscala/collection/generic/VectorTemplate;Lscala/runtime/BoxedArray;II)V
+const #777 = Asciz	xs;
+const #778 = Asciz	Lscala/runtime/BoxedArray;;
+const #779 = Asciz	sameElements;
+const #780 = Asciz	(Lscala/collection/Iterable;)Z;
+const #781 = Asciz	(Lscala/collection/generic/VectorTemplate;Lscala/collection/Iterable;)Z;
+const #782 = NameAndType	#779:#781;//  sameElements:(Lscala/collection/generic/VectorTemplate;Lscala/collection/Iterable;)Z
+const #783 = Method	#91.#782;	//  scala/collection/generic/VectorTemplate$class.sameElements:(Lscala/collection/generic/VectorTemplate;Lscala/collection/Iterable;)Z
+const #784 = Asciz	Lscala/collection/Iterable;;
+const #785 = Asciz	span;
+const #786 = Asciz	(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/Tuple2;;
+const #787 = NameAndType	#785:#786;//  span:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/Tuple2;
+const #788 = Method	#91.#787;	//  scala/collection/generic/VectorTemplate$class.span:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/Tuple2;
+const #789 = Asciz	(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/collection/generic/VectorTemplate;;
+const #790 = NameAndType	#240:#789;//  dropWhile:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/collection/generic/VectorTemplate;
+const #791 = Method	#91.#790;	//  scala/collection/generic/VectorTemplate$class.dropWhile:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/collection/generic/VectorTemplate;
+const #792 = NameAndType	#233:#789;//  takeWhile:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/collection/generic/VectorTemplate;
+const #793 = Method	#91.#792;	//  scala/collection/generic/VectorTemplate$class.takeWhile:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/collection/generic/VectorTemplate;
+const #794 = Asciz	splitAt;
+const #795 = Asciz	(I)Lscala/Tuple2;;
+const #796 = Asciz	(Lscala/collection/generic/VectorTemplate;I)Lscala/Tuple2;;
+const #797 = NameAndType	#794:#796;//  splitAt:(Lscala/collection/generic/VectorTemplate;I)Lscala/Tuple2;
+const #798 = Method	#91.#797;	//  scala/collection/generic/VectorTemplate$class.splitAt:(Lscala/collection/generic/VectorTemplate;I)Lscala/Tuple2;
+const #799 = Asciz	(Lscala/collection/generic/VectorTemplate;I)Lscala/collection/generic/VectorTemplate;;
+const #800 = NameAndType	#230:#799;//  dropRight:(Lscala/collection/generic/VectorTemplate;I)Lscala/collection/generic/VectorTemplate;
+const #801 = Method	#91.#800;	//  scala/collection/generic/VectorTemplate$class.dropRight:(Lscala/collection/generic/VectorTemplate;I)Lscala/collection/generic/VectorTemplate;
+const #802 = NameAndType	#226:#799;//  takeRight:(Lscala/collection/generic/VectorTemplate;I)Lscala/collection/generic/VectorTemplate;
+const #803 = Method	#91.#802;	//  scala/collection/generic/VectorTemplate$class.takeRight:(Lscala/collection/generic/VectorTemplate;I)Lscala/collection/generic/VectorTemplate;
+const #804 = NameAndType	#223:#799;//  drop:(Lscala/collection/generic/VectorTemplate;I)Lscala/collection/generic/VectorTemplate;
+const #805 = Method	#91.#804;	//  scala/collection/generic/VectorTemplate$class.drop:(Lscala/collection/generic/VectorTemplate;I)Lscala/collection/generic/VectorTemplate;
+const #806 = NameAndType	#217:#799;//  take:(Lscala/collection/generic/VectorTemplate;I)Lscala/collection/generic/VectorTemplate;
+const #807 = Method	#91.#806;	//  scala/collection/generic/VectorTemplate$class.take:(Lscala/collection/generic/VectorTemplate;I)Lscala/collection/generic/VectorTemplate;
+const #808 = NameAndType	#214:#755;//  init:(Lscala/collection/generic/VectorTemplate;)Lscala/collection/generic/VectorTemplate;
+const #809 = Method	#91.#808;	//  scala/collection/generic/VectorTemplate$class.init:(Lscala/collection/generic/VectorTemplate;)Lscala/collection/generic/VectorTemplate;
+const #810 = Asciz	last;
+const #811 = Asciz	(Lscala/collection/generic/VectorTemplate;)Ljava/lang/Object;;
+const #812 = NameAndType	#810:#811;//  last:(Lscala/collection/generic/VectorTemplate;)Ljava/lang/Object;
+const #813 = Method	#91.#812;	//  scala/collection/generic/VectorTemplate$class.last:(Lscala/collection/generic/VectorTemplate;)Ljava/lang/Object;
+const #814 = NameAndType	#210:#755;//  tail:(Lscala/collection/generic/VectorTemplate;)Lscala/collection/generic/VectorTemplate;
+const #815 = Method	#91.#814;	//  scala/collection/generic/VectorTemplate$class.tail:(Lscala/collection/generic/VectorTemplate;)Lscala/collection/generic/VectorTemplate;
+const #816 = Asciz	head;
+const #817 = NameAndType	#816:#811;//  head:(Lscala/collection/generic/VectorTemplate;)Ljava/lang/Object;
+const #818 = Method	#91.#817;	//  scala/collection/generic/VectorTemplate$class.head:(Lscala/collection/generic/VectorTemplate;)Ljava/lang/Object;
+const #819 = Asciz	(Lscala/collection/generic/VectorTemplate;II)Lscala/collection/generic/VectorTemplate;;
+const #820 = NameAndType	#203:#819;//  slice:(Lscala/collection/generic/VectorTemplate;II)Lscala/collection/generic/VectorTemplate;
+const #821 = Method	#91.#820;	//  scala/collection/generic/VectorTemplate$class.slice:(Lscala/collection/generic/VectorTemplate;II)Lscala/collection/generic/VectorTemplate;
+const #822 = Asciz	zipWithIndex;
+const #823 = Asciz	(Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #824 = Asciz	(Lscala/collection/generic/VectorTemplate;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #825 = NameAndType	#822:#824;//  zipWithIndex:(Lscala/collection/generic/VectorTemplate;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #826 = Method	#91.#825;	//  scala/collection/generic/VectorTemplate$class.zipWithIndex:(Lscala/collection/generic/VectorTemplate;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #827 = Asciz	(Lscala/collection/generic/VectorTemplate;Lscala/collection/Sequence;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;;
+const #828 = NameAndType	#313:#827;//  zip:(Lscala/collection/generic/VectorTemplate;Lscala/collection/Sequence;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #829 = Method	#91.#828;	//  scala/collection/generic/VectorTemplate$class.zip:(Lscala/collection/generic/VectorTemplate;Lscala/collection/Sequence;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #830 = Asciz	reduceRight;
+const #831 = Asciz	(Lscala/Function2;)Ljava/lang/Object;;
+const #832 = Asciz	(Lscala/collection/generic/VectorTemplate;Lscala/Function2;)Ljava/lang/Object;;
+const #833 = NameAndType	#830:#832;//  reduceRight:(Lscala/collection/generic/VectorTemplate;Lscala/Function2;)Ljava/lang/Object;
+const #834 = Method	#91.#833;	//  scala/collection/generic/VectorTemplate$class.reduceRight:(Lscala/collection/generic/VectorTemplate;Lscala/Function2;)Ljava/lang/Object;
+const #835 = Asciz	reduceLeft;
+const #836 = NameAndType	#835:#832;//  reduceLeft:(Lscala/collection/generic/VectorTemplate;Lscala/Function2;)Ljava/lang/Object;
+const #837 = Method	#91.#836;	//  scala/collection/generic/VectorTemplate$class.reduceLeft:(Lscala/collection/generic/VectorTemplate;Lscala/Function2;)Ljava/lang/Object;
+const #838 = Asciz	foldRight;
+const #839 = Asciz	(Lscala/collection/generic/VectorTemplate;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;;
+const #840 = NameAndType	#838:#839;//  foldRight:(Lscala/collection/generic/VectorTemplate;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+const #841 = Method	#91.#840;	//  scala/collection/generic/VectorTemplate$class.foldRight:(Lscala/collection/generic/VectorTemplate;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+const #842 = Asciz	foldLeft;
+const #843 = NameAndType	#842:#839;//  foldLeft:(Lscala/collection/generic/VectorTemplate;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+const #844 = Method	#91.#843;	//  scala/collection/generic/VectorTemplate$class.foldLeft:(Lscala/collection/generic/VectorTemplate;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+const #845 = Asciz	find;
+const #846 = Asciz	(Lscala/Function1;)Lscala/Option;;
+const #847 = Asciz	(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/Option;;
+const #848 = NameAndType	#845:#847;//  find:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/Option;
+const #849 = Method	#91.#848;	//  scala/collection/generic/VectorTemplate$class.find:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/Option;
+const #850 = Asciz	exists;
+const #851 = Asciz	(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Z;
+const #852 = NameAndType	#850:#851;//  exists:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Z
+const #853 = Method	#91.#852;	//  scala/collection/generic/VectorTemplate$class.exists:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Z
+const #854 = NameAndType	#322:#851;//  forall:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Z
+const #855 = Method	#91.#854;	//  scala/collection/generic/VectorTemplate$class.forall:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Z
+const #856 = Asciz	scala$collection$generic$VectorTemplate$$super$equals;
+const #857 = NameAndType	#312:#672;//  equals:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;)Z
+const #858 = Method	#71.#857;	//  scala/collection/generic/SequenceTemplate$class.equals:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;)Z
+const #859 = Asciz	scala$collection$generic$VectorTemplate$$super$endsWith;
+const #860 = NameAndType	#742:#617;//  endsWith:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Z
+const #861 = Method	#71.#860;	//  scala/collection/generic/SequenceTemplate$class.endsWith:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Z
+const #862 = Asciz	scala$collection$generic$VectorTemplate$$super$sameElements;
+const #863 = Asciz	(Lscala/collection/generic/IterableTemplate;Lscala/collection/Iterable;)Z;
+const #864 = NameAndType	#779:#863;//  sameElements:(Lscala/collection/generic/IterableTemplate;Lscala/collection/Iterable;)Z
+const #865 = Method	#46.#864;	//  scala/collection/generic/IterableTemplate$class.sameElements:(Lscala/collection/generic/IterableTemplate;Lscala/collection/Iterable;)Z
+const #866 = Asciz	scala$collection$generic$VectorTemplate$$super$init;
+const #867 = Asciz	(Lscala/collection/generic/TraversableTemplate;)Lscala/collection/generic/TraversableTemplate;;
+const #868 = NameAndType	#214:#867;//  init:(Lscala/collection/generic/TraversableTemplate;)Lscala/collection/generic/TraversableTemplate;
+const #869 = Method	#25.#868;	//  scala/collection/generic/TraversableTemplate$class.init:(Lscala/collection/generic/TraversableTemplate;)Lscala/collection/generic/TraversableTemplate;
+const #870 = Asciz	scala$collection$generic$VectorTemplate$$super$last;
+const #871 = Asciz	(Lscala/collection/generic/TraversableTemplate;)Ljava/lang/Object;;
+const #872 = NameAndType	#810:#871;//  last:(Lscala/collection/generic/TraversableTemplate;)Ljava/lang/Object;
+const #873 = Method	#25.#872;	//  scala/collection/generic/TraversableTemplate$class.last:(Lscala/collection/generic/TraversableTemplate;)Ljava/lang/Object;
+const #874 = Asciz	scala$collection$generic$VectorTemplate$$super$head;
+const #875 = NameAndType	#816:#582;//  head:(Lscala/collection/generic/IterableTemplate;)Ljava/lang/Object;
+const #876 = Method	#46.#875;	//  scala/collection/generic/IterableTemplate$class.head:(Lscala/collection/generic/IterableTemplate;)Ljava/lang/Object;
+const #877 = Asciz	scala$collection$generic$VectorTemplate$$super$zip;
+const #878 = NameAndType	#313:#668;//  zip:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #879 = Method	#71.#878;	//  scala/collection/generic/SequenceTemplate$class.zip:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+const #880 = Asciz	scala$collection$generic$VectorTemplate$$super$reduceRight;
+const #881 = Asciz	(Lscala/collection/generic/IterableTemplate;Lscala/Function2;)Ljava/lang/Object;;
+const #882 = NameAndType	#830:#881;//  reduceRight:(Lscala/collection/generic/IterableTemplate;Lscala/Function2;)Ljava/lang/Object;
+const #883 = Method	#46.#882;	//  scala/collection/generic/IterableTemplate$class.reduceRight:(Lscala/collection/generic/IterableTemplate;Lscala/Function2;)Ljava/lang/Object;
+const #884 = Asciz	scala$collection$generic$VectorTemplate$$super$reduceLeft;
+const #885 = Asciz	(Lscala/collection/generic/TraversableTemplate;Lscala/Function2;)Ljava/lang/Object;;
+const #886 = NameAndType	#835:#885;//  reduceLeft:(Lscala/collection/generic/TraversableTemplate;Lscala/Function2;)Ljava/lang/Object;
+const #887 = Method	#25.#886;	//  scala/collection/generic/TraversableTemplate$class.reduceLeft:(Lscala/collection/generic/TraversableTemplate;Lscala/Function2;)Ljava/lang/Object;
+const #888 = Asciz	(Lscala/collection/generic/MutableVectorTemplate;II)Lscala/collection/generic/MutableVectorView;;
+const #889 = NameAndType	#191:#888;//  view:(Lscala/collection/generic/MutableVectorTemplate;II)Lscala/collection/generic/MutableVectorView;
+const #890 = Method	#101.#889;	//  scala/collection/generic/MutableVectorTemplate$class.view:(Lscala/collection/generic/MutableVectorTemplate;II)Lscala/collection/generic/MutableVectorView;
+const #891 = Asciz	(Lscala/collection/generic/MutableVectorTemplate;)Ljava/lang/Object;;
+const #892 = NameAndType	#191:#891;//  view:(Lscala/collection/generic/MutableVectorTemplate;)Ljava/lang/Object;
+const #893 = Method	#101.#892;	//  scala/collection/generic/MutableVectorTemplate$class.view:(Lscala/collection/generic/MutableVectorTemplate;)Ljava/lang/Object;
+const #894 = Asciz	copy;
+const #895 = Asciz	(III)V;
+const #896 = Asciz	(Lscala/collection/mutable/ResizableArray;III)V;
+const #897 = NameAndType	#894:#896;//  copy:(Lscala/collection/mutable/ResizableArray;III)V
+const #898 = Method	#111.#897;	//  scala/collection/mutable/ResizableArray$class.copy:(Lscala/collection/mutable/ResizableArray;III)V
+const #899 = Asciz	(Lscala/collection/mutable/ResizableArray;II)V;
+const #900 = NameAndType	#348:#899;//  swap:(Lscala/collection/mutable/ResizableArray;II)V
+const #901 = Method	#111.#900;	//  scala/collection/mutable/ResizableArray$class.swap:(Lscala/collection/mutable/ResizableArray;II)V
+const #902 = Asciz	a;
+const #903 = Asciz	(Lscala/collection/mutable/ResizableArray;I)V;
+const #904 = NameAndType	#372:#903;//  ensureSize:(Lscala/collection/mutable/ResizableArray;I)V
+const #905 = Method	#111.#904;	//  scala/collection/mutable/ResizableArray$class.ensureSize:(Lscala/collection/mutable/ResizableArray;I)V
+const #906 = Asciz	reduceToSize;
+const #907 = NameAndType	#906:#903;//  reduceToSize:(Lscala/collection/mutable/ResizableArray;I)V
+const #908 = Method	#111.#907;	//  scala/collection/mutable/ResizableArray$class.reduceToSize:(Lscala/collection/mutable/ResizableArray;I)V
+const #909 = Asciz	sz;
+const #910 = Asciz	(Lscala/runtime/BoxedArray;I)V;
+const #911 = Asciz	(Lscala/collection/mutable/ResizableArray;Lscala/runtime/BoxedArray;I)V;
+const #912 = NameAndType	#772:#911;//  copyToArray:(Lscala/collection/mutable/ResizableArray;Lscala/runtime/BoxedArray;I)V
+const #913 = Method	#111.#912;	//  scala/collection/mutable/ResizableArray$class.copyToArray:(Lscala/collection/mutable/ResizableArray;Lscala/runtime/BoxedArray;I)V
+const #914 = Asciz	update;
+const #915 = Asciz	(ILjava/lang/Object;)V;
+const #916 = Asciz	(Lscala/collection/mutable/ResizableArray;ILjava/lang/Object;)V;
+const #917 = NameAndType	#914:#916;//  update:(Lscala/collection/mutable/ResizableArray;ILjava/lang/Object;)V
+const #918 = Method	#111.#917;	//  scala/collection/mutable/ResizableArray$class.update:(Lscala/collection/mutable/ResizableArray;ILjava/lang/Object;)V
+const #919 = Asciz	idx;
+const #920 = Asciz	(Lscala/collection/mutable/ResizableArray;I)Ljava/lang/Object;;
+const #921 = NameAndType	#179:#920;//  apply:(Lscala/collection/mutable/ResizableArray;I)Ljava/lang/Object;
+const #922 = Method	#111.#921;	//  scala/collection/mutable/ResizableArray$class.apply:(Lscala/collection/mutable/ResizableArray;I)Ljava/lang/Object;
+const #923 = Asciz	initialSize;
+const #924 = NameAndType	#923:#412;//  initialSize:(Lscala/collection/mutable/ResizableArray;)I
+const #925 = Method	#111.#924;	//  scala/collection/mutable/ResizableArray$class.initialSize:(Lscala/collection/mutable/ResizableArray;)I
+const #926 = Asciz	companion;
+const #927 = Asciz	()Lscala/collection/generic/Companion;;
+const #928 = Asciz	(Lscala/collection/mutable/ResizableArray;)Lscala/collection/generic/Companion;;
+const #929 = NameAndType	#926:#928;//  companion:(Lscala/collection/mutable/ResizableArray;)Lscala/collection/generic/Companion;
+const #930 = Method	#111.#929;	//  scala/collection/mutable/ResizableArray$class.companion:(Lscala/collection/mutable/ResizableArray;)Lscala/collection/generic/Companion;
+const #931 = NameAndType	#3:#4;//  size0:I
+const #932 = Field	#16.#931;	//  scala/collection/mutable/PriorityQueue.size0:I
+const #933 = Asciz	array_$eq;
+const #934 = Asciz	([Ljava/lang/Object;)V;
+const #935 = NameAndType	#5:#6;//  array:[Ljava/lang/Object;
+const #936 = Field	#16.#935;	//  scala/collection/mutable/PriorityQueue.array:[Ljava/lang/Object;
+const #937 = Asciz	(Lscala/collection/Traversable;)Lscala/collection/generic/Addable;;
+const #938 = Asciz	(Lscala/collection/generic/Addable;Lscala/collection/Traversable;)Lscala/collection/generic/Addable;;
+const #939 = NameAndType	#168:#938;//  $plus$plus:(Lscala/collection/generic/Addable;Lscala/collection/Traversable;)Lscala/collection/generic/Addable;
+const #940 = Method	#116.#939;	//  scala/collection/generic/Addable$class.$plus$plus:(Lscala/collection/generic/Addable;Lscala/collection/Traversable;)Lscala/collection/generic/Addable;
+const #941 = Asciz	(Lscala/collection/generic/Growable;Lscala/collection/Traversable;)Lscala/collection/generic/Growable;;
+const #942 = NameAndType	#271:#941;//  $plus$plus$eq:(Lscala/collection/generic/Growable;Lscala/collection/Traversable;)Lscala/collection/generic/Growable;
+const #943 = Method	#121.#942;	//  scala/collection/generic/Growable$class.$plus$plus$eq:(Lscala/collection/generic/Growable;Lscala/collection/Traversable;)Lscala/collection/generic/Growable;
+const #944 = Asciz	(Lscala/collection/generic/Growable;Lscala/collection/Iterator;)Lscala/collection/generic/Growable;;
+const #945 = NameAndType	#271:#944;//  $plus$plus$eq:(Lscala/collection/generic/Growable;Lscala/collection/Iterator;)Lscala/collection/generic/Growable;
+const #946 = Method	#121.#945;	//  scala/collection/generic/Growable$class.$plus$plus$eq:(Lscala/collection/generic/Growable;Lscala/collection/Iterator;)Lscala/collection/generic/Growable;
+const #947 = Asciz	(Lscala/collection/generic/Growable;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Sequence;)Lscala/collection/generic/Growable;;
+const #948 = NameAndType	#149:#947;//  $plus$eq:(Lscala/collection/generic/Growable;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Sequence;)Lscala/collection/generic/Growable;
+const #949 = Method	#121.#948;	//  scala/collection/generic/Growable$class.$plus$eq:(Lscala/collection/generic/Growable;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Sequence;)Lscala/collection/generic/Growable;
+const #950 = Asciz	scala$collection$generic$Cloneable$$super$clone;
+const #951 = NameAndType	#175:#176;//  clone:()Ljava/lang/Object;
+const #952 = Method	#20.#951;	//  java/lang/Object.clone:()Ljava/lang/Object;
+const #953 = Asciz	<A:Ljava/lang/Object;>Ljava/lang/Object;Lscala/collection/mutable/ResizableArray<TA;>;Lscala/collection/generic/Addable<TA;Lscala/collection/mutable/PriorityQueue<TA;>;>;Lscala/collection/generic/Growable<TA;>;Lscala/collection/generic/Cloneable<Lscala/collection/mutable/PriorityQueue<TA;>;>;Lscala/ScalaObject;;
+const #954 = Asciz	ScalaSig;
+const #955 = Asciz	InnerClasses;
+const #956 = Asciz	Ops;
+const #957 = Asciz	$anon$1;
+const #958 = Asciz	$anonfun$equals$1;
+const #959 = Asciz	scala/collection/generic/Addable;
+const #960 = class	#959;	//  scala/collection/generic/Addable
+const #961 = Asciz	scala/collection/generic/Cloneable;
+const #962 = class	#961;	//  scala/collection/generic/Cloneable
+const #963 = Asciz	scala/ScalaObject;
+const #964 = class	#963;	//  scala/ScalaObject
+const #965 = Asciz	java/io/Serializable;
+const #966 = class	#965;	//  java/io/Serializable
+const #967 = Asciz	java/lang/Cloneable;
+const #968 = class	#967;	//  java/lang/Cloneable
+
+{
+public scala.collection.mutable.PriorityQueue(scala.Ordering);
+  Code:
+   Stack=3, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#18; //Field ord:Lscala/Ordering;
+   5:	aload_0
+   6:	invokespecial	#23; //Method java/lang/Object."<init>":()V
+   9:	aload_0
+   10:	invokestatic	#29; //Method scala/collection/generic/TraversableTemplate$class.$init$:(Lscala/collection/generic/TraversableTemplate;)V
+   13:	aload_0
+   14:	invokestatic	#34; //Method scala/collection/generic/TraversableClass$class.$init$:(Lscala/collection/generic/TraversableClass;)V
+   17:	aload_0
+   18:	invokestatic	#39; //Method scala/collection/Traversable$class.$init$:(Lscala/collection/Traversable;)V
+   21:	aload_0
+   22:	invokestatic	#44; //Method scala/collection/mutable/Traversable$class.$init$:(Lscala/collection/mutable/Traversable;)V
+   25:	aload_0
+   26:	invokestatic	#49; //Method scala/collection/generic/IterableTemplate$class.$init$:(Lscala/collection/generic/IterableTemplate;)V
+   29:	aload_0
+   30:	invokestatic	#54; //Method scala/collection/Iterable$class.$init$:(Lscala/collection/Iterable;)V
+   33:	aload_0
+   34:	invokestatic	#59; //Method scala/collection/mutable/Iterable$class.$init$:(Lscala/collection/mutable/Iterable;)V
+   37:	aload_0
+   38:	invokestatic	#64; //Method scala/Function1$class.$init$:(Lscala/Function1;)V
+   41:	aload_0
+   42:	invokestatic	#69; //Method scala/PartialFunction$class.$init$:(Lscala/PartialFunction;)V
+   45:	aload_0
+   46:	invokestatic	#74; //Method scala/collection/generic/SequenceTemplate$class.$init$:(Lscala/collection/generic/SequenceTemplate;)V
+   49:	aload_0
+   50:	invokestatic	#79; //Method scala/collection/Sequence$class.$init$:(Lscala/collection/Sequence;)V
+   53:	aload_0
+   54:	invokestatic	#84; //Method scala/Unhashable$class.$init$:(Lscala/Unhashable;)V
+   57:	aload_0
+   58:	invokestatic	#89; //Method scala/collection/mutable/Sequence$class.$init$:(Lscala/collection/mutable/Sequence;)V
+   61:	aload_0
+   62:	invokestatic	#94; //Method scala/collection/generic/VectorTemplate$class.$init$:(Lscala/collection/generic/VectorTemplate;)V
+   65:	aload_0
+   66:	invokestatic	#99; //Method scala/collection/Vector$class.$init$:(Lscala/collection/Vector;)V
+   69:	aload_0
+   70:	invokestatic	#104; //Method scala/collection/generic/MutableVectorTemplate$class.$init$:(Lscala/collection/generic/MutableVectorTemplate;)V
+   73:	aload_0
+   74:	invokestatic	#109; //Method scala/collection/mutable/Vector$class.$init$:(Lscala/collection/mutable/Vector;)V
+   77:	aload_0
+   78:	invokestatic	#114; //Method scala/collection/mutable/ResizableArray$class.$init$:(Lscala/collection/mutable/ResizableArray;)V
+   81:	aload_0
+   82:	invokestatic	#119; //Method scala/collection/generic/Addable$class.$init$:(Lscala/collection/generic/Addable;)V
+   85:	aload_0
+   86:	invokestatic	#124; //Method scala/collection/generic/Growable$class.$init$:(Lscala/collection/generic/Growable;)V
+   89:	aload_0
+   90:	invokestatic	#129; //Method scala/collection/generic/Cloneable$class.$init$:(Lscala/collection/generic/Cloneable;)V
+   93:	aload_0
+   94:	aload_0
+   95:	invokeinterface	#134,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
+   100:	iconst_1
+   101:	iadd
+   102:	invokeinterface	#138,  2; //InterfaceMethod scala/collection/mutable/ResizableArray.size0_$eq:(I)V
+   107:	return
+  LineNumberTable: 
+   line 26: 0
+   line 34: 93
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      108      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      108      1    ord       Lscala/Ordering;
+
+  Signature: length = 0x2
+   00 FFFFFF8E 
+
+public scala.collection.generic.TraversableTemplate thisCollection();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokevirtual	#147; //Method thisCollection:()Lscala/collection/mutable/PriorityQueue;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.generic.Addable thisCollection();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokevirtual	#147; //Method thisCollection:()Lscala/collection/mutable/PriorityQueue;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.generic.Growable $plus$eq(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokevirtual	#153; //Method $plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/PriorityQueue;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    elem       Ljava/lang/Object;
+
+
+public scala.collection.generic.Addable $plus(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokevirtual	#159; //Method $plus:(Ljava/lang/Object;)Lscala/collection/mutable/PriorityQueue;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    elem       Ljava/lang/Object;
+
+
+public scala.collection.generic.Addable $plus(java.lang.Object, java.lang.Object, scala.collection.Sequence);
+  Code:
+   Stack=4, Locals=4, Args_size=4
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	aload_3
+   4:	invokevirtual	#163; //Method $plus:(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Sequence;)Lscala/collection/mutable/PriorityQueue;
+   7:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      8      1    elem1       Ljava/lang/Object;
+   0      8      2    elem2       Ljava/lang/Object;
+   0      8      3    elems       Lscala/collection/Sequence;
+
+
+public scala.collection.generic.Addable $plus$plus(scala.collection.Iterator);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokevirtual	#172; //Method $plus$plus:(Lscala/collection/Iterator;)Lscala/collection/mutable/PriorityQueue;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    iter       Lscala/collection/Iterator;
+
+
+public java.lang.Object clone();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokevirtual	#178; //Method clone:()Lscala/collection/mutable/PriorityQueue;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public java.lang.Object apply(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#186; //Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
+   5:	invokeinterface	#189,  2; //InterfaceMethod scala/collection/mutable/ResizableArray.apply:(I)Ljava/lang/Object;
+   10:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      11      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      11      1    v1       Ljava/lang/Object;
+
+
+public scala.collection.generic.VectorView view(int, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	iload_1
+   2:	iload_2
+   3:	invokeinterface	#197,  3; //InterfaceMethod scala/collection/generic/MutableVectorTemplate.view:(II)Lscala/collection/generic/MutableVectorView;
+   8:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      9      1    from       I
+   0      9      2    until       I
+
+
+public scala.collection.generic.SequenceView view(int, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	iload_1
+   2:	iload_2
+   3:	invokeinterface	#197,  3; //InterfaceMethod scala/collection/generic/MutableVectorTemplate.view:(II)Lscala/collection/generic/MutableVectorView;
+   8:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      9      1    from       I
+   0      9      2    until       I
+
+
+public scala.collection.generic.IterableView view(int, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	iload_1
+   2:	iload_2
+   3:	invokeinterface	#197,  3; //InterfaceMethod scala/collection/generic/MutableVectorTemplate.view:(II)Lscala/collection/generic/MutableVectorView;
+   8:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      9      1    from       I
+   0      9      2    until       I
+
+
+public scala.collection.generic.TraversableView view(int, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	iload_1
+   2:	iload_2
+   3:	invokeinterface	#197,  3; //InterfaceMethod scala/collection/generic/MutableVectorTemplate.view:(II)Lscala/collection/generic/MutableVectorView;
+   8:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      9      1    from       I
+   0      9      2    until       I
+
+
+public scala.collection.generic.TraversableTemplate slice(int, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	iload_1
+   2:	iload_2
+   3:	invokeinterface	#209,  3; //InterfaceMethod scala/collection/generic/VectorTemplate.slice:(II)Lscala/collection/generic/VectorTemplate;
+   8:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      9      1    from       I
+   0      9      2    until       I
+
+
+public scala.collection.generic.TraversableTemplate tail();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokeinterface	#213,  1; //InterfaceMethod scala/collection/generic/VectorTemplate.tail:()Lscala/collection/generic/VectorTemplate;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.generic.TraversableTemplate init();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokeinterface	#216,  1; //InterfaceMethod scala/collection/generic/VectorTemplate.init:()Lscala/collection/generic/VectorTemplate;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.generic.TraversableTemplate take(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokeinterface	#221,  2; //InterfaceMethod scala/collection/generic/VectorTemplate.take:(I)Lscala/collection/generic/VectorTemplate;
+   7:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      8      1    n       I
+
+
+public scala.collection.generic.TraversableTemplate drop(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokeinterface	#225,  2; //InterfaceMethod scala/collection/generic/VectorTemplate.drop:(I)Lscala/collection/generic/VectorTemplate;
+   7:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      8      1    n       I
+
+
+public scala.collection.generic.IterableTemplate takeRight(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokeinterface	#229,  2; //InterfaceMethod scala/collection/generic/VectorTemplate.takeRight:(I)Lscala/collection/generic/VectorTemplate;
+   7:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      8      1    n       I
+
+
+public scala.collection.generic.IterableTemplate dropRight(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokeinterface	#232,  2; //InterfaceMethod scala/collection/generic/VectorTemplate.dropRight:(I)Lscala/collection/generic/VectorTemplate;
+   7:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      8      1    n       I
+
+
+public scala.collection.generic.TraversableTemplate takeWhile(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokeinterface	#237,  2; //InterfaceMethod scala/collection/generic/VectorTemplate.takeWhile:(Lscala/Function1;)Lscala/collection/generic/VectorTemplate;
+   7:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      8      1    p       Lscala/Function1;
+
+
+public scala.collection.generic.TraversableTemplate dropWhile(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokeinterface	#242,  2; //InterfaceMethod scala/collection/generic/VectorTemplate.dropWhile:(Lscala/Function1;)Lscala/collection/generic/VectorTemplate;
+   7:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      8      1    p       Lscala/Function1;
+
+
+public scala.collection.generic.IterableTemplate reverse();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokeinterface	#246,  1; //InterfaceMethod scala/collection/generic/VectorTemplate.reverse:()Lscala/collection/generic/VectorTemplate;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public boolean isDefinedAt(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#186; //Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
+   5:	invokeinterface	#253,  2; //InterfaceMethod scala/collection/generic/SequenceTemplate.isDefinedAt:(I)Z
+   10:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      11      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      11      1    x       Ljava/lang/Object;
+
+
+public scala.Function1 andThen(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokeinterface	#261,  2; //InterfaceMethod scala/PartialFunction.andThen:(Lscala/Function1;)Lscala/PartialFunction;
+   7:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      8      1    g       Lscala/Function1;
+
+
+public scala.collection.mutable.PriorityQueue clone();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	new	#16; //class scala/collection/mutable/PriorityQueue
+   3:	dup
+   4:	aload_0
+   5:	getfield	#18; //Field ord:Lscala/Ordering;
+   8:	invokespecial	#264; //Method "<init>":(Lscala/Ordering;)V
+   11:	aload_0
+   12:	invokevirtual	#268; //Method iterator:()Lscala/collection/Iterator;
+   15:	invokeinterface	#274,  2; //InterfaceMethod scala/collection/generic/Growable.$plus$plus$eq:(Lscala/collection/Iterator;)Lscala/collection/generic/Growable;
+   20:	checkcast	#16; //class scala/collection/mutable/PriorityQueue
+   23:	areturn
+  LineNumberTable: 
+   line 191: 0
+
+  Signature: length = 0x2
+   01 13 
+
+public scala.collection.immutable.List toList();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokevirtual	#268; //Method iterator:()Lscala/collection/Iterator;
+   4:	invokeinterface	#281,  1; //InterfaceMethod scala/collection/Iterator.toList:()Lscala/collection/immutable/List;
+   9:	areturn
+  LineNumberTable: 
+   line 185: 0
+
+  Signature: length = 0x2
+   01 1A 
+
+public java.lang.String toString();
+  Code:
+   Stack=4, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokevirtual	#285; //Method toList:()Lscala/collection/immutable/List;
+   4:	ldc_w	#287; //String PriorityQueue(
+   7:	ldc_w	#289; //String , 
+   10:	ldc_w	#291; //String )
+   13:	invokeinterface	#297,  4; //InterfaceMethod scala/collection/generic/TraversableTemplate.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+   18:	areturn
+  LineNumberTable: 
+   line 184: 0
+
+
+public scala.collection.mutable.Queue toQueue();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	new	#301; //class scala/collection/mutable/Queue
+   3:	dup
+   4:	invokespecial	#302; //Method scala/collection/mutable/Queue."<init>":()V
+   7:	aload_0
+   8:	invokevirtual	#268; //Method iterator:()Lscala/collection/Iterator;
+   11:	invokeinterface	#274,  2; //InterfaceMethod scala/collection/generic/Growable.$plus$plus$eq:(Lscala/collection/Iterator;)Lscala/collection/generic/Growable;
+   16:	checkcast	#301; //class scala/collection/mutable/Queue
+   19:	areturn
+  LineNumberTable: 
+   line 178: 0
+
+  Signature: length = 0x2
+   01 2F 
+
+public int hashCode();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	new	#306; //class java/lang/UnsupportedOperationException
+   3:	dup
+   4:	ldc_w	#308; //String unsuitable as hash key
+   7:	invokespecial	#311; //Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+   10:	athrow
+  LineNumberTable: 
+   line 174: 0
+
+
+public boolean equals(java.lang.Object);
+  Code:
+   Stack=4, Locals=4, Args_size=2
+   0:	aload_1
+   1:	astore_2
+   2:	aload_2
+   3:	instanceof	#16; //class scala/collection/mutable/PriorityQueue
+   6:	ifeq	46
+   9:	aload_2
+   10:	checkcast	#16; //class scala/collection/mutable/PriorityQueue
+   13:	astore_3
+   14:	aload_0
+   15:	invokevirtual	#268; //Method iterator:()Lscala/collection/Iterator;
+   18:	aload_3
+   19:	invokevirtual	#268; //Method iterator:()Lscala/collection/Iterator;
+   22:	invokeinterface	#316,  2; //InterfaceMethod scala/collection/Iterator.zip:(Lscala/collection/Iterator;)Ljava/lang/Object;
+   27:	checkcast	#279; //class scala/collection/Iterator
+   30:	new	#318; //class scala/collection/mutable/PriorityQueue$$anonfun$equals$1
+   33:	dup
+   34:	aload_0
+   35:	invokespecial	#321; //Method scala/collection/mutable/PriorityQueue$$anonfun$equals$1."<init>":(Lscala/collection/mutable/PriorityQueue;)V
+   38:	invokeinterface	#325,  2; //InterfaceMethod scala/collection/Iterator.forall:(Lscala/Function1;)Z
+   43:	goto	47
+   46:	iconst_0
+   47:	ireturn
+  LineNumberTable: 
+   line 163: 0
+   line 164: 14
+   line 165: 46
+   line 163: 47
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      48      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      48      1    obj       Ljava/lang/Object;
+   2      46      2    temp4       Ljava/lang/Object;
+   14      29      3    temp5       Lscala/collection/mutable/PriorityQueue;
+
+
+public scala.collection.Iterator iterator();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	new	#330; //class scala/collection/mutable/PriorityQueue$$anon$1
+   3:	dup
+   4:	aload_0
+   5:	invokespecial	#331; //Method scala/collection/mutable/PriorityQueue$$anon$1."<init>":(Lscala/collection/mutable/PriorityQueue;)V
+   8:	areturn
+  LineNumberTable: 
+   line 145: 0
+
+  Signature: length = 0x2
+   01 4C 
+
+public void clear();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	iconst_1
+   2:	invokeinterface	#138,  2; //InterfaceMethod scala/collection/mutable/ResizableArray.size0_$eq:(I)V
+   7:	return
+  LineNumberTable: 
+   line 138: 0
+
+
+public java.lang.Object max();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokeinterface	#134,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
+   6:	iconst_1
+   7:	if_icmple	23
+   10:	aload_0
+   11:	aload_0
+   12:	invokeinterface	#337,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
+   17:	iconst_1
+   18:	aaload
+   19:	invokevirtual	#340; //Method scala$collection$mutable$PriorityQueue$$toA:(Ljava/lang/Object;)Ljava/lang/Object;
+   22:	areturn
+   23:	new	#342; //class java/util/NoSuchElementException
+   26:	dup
+   27:	ldc_w	#344; //String queue is empty
+   30:	invokespecial	#345; //Method java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
+   33:	athrow
+  LineNumberTable: 
+   line 133: 0
+
+  Signature: length = 0x2
+   01 5A 
+
+public java.lang.Object dequeue();
+  Code:
+   Stack=5, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokeinterface	#134,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
+   6:	iconst_1
+   7:	if_icmple	74
+   10:	aload_0
+   11:	aload_0
+   12:	invokeinterface	#134,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
+   17:	iconst_1
+   18:	isub
+   19:	invokeinterface	#138,  2; //InterfaceMethod scala/collection/mutable/ResizableArray.size0_$eq:(I)V
+   24:	aload_0
+   25:	iconst_1
+   26:	aload_0
+   27:	invokeinterface	#134,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
+   32:	invokeinterface	#351,  3; //InterfaceMethod scala/collection/mutable/ResizableArray.swap:(II)V
+   37:	aload_0
+   38:	aload_0
+   39:	invokeinterface	#337,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
+   44:	iconst_1
+   45:	aload_0
+   46:	invokeinterface	#134,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
+   51:	iconst_1
+   52:	isub
+   53:	invokevirtual	#355; //Method fixDown:([Ljava/lang/Object;II)V
+   56:	aload_0
+   57:	aload_0
+   58:	invokeinterface	#337,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
+   63:	aload_0
+   64:	invokeinterface	#134,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
+   69:	aaload
+   70:	invokevirtual	#340; //Method scala$collection$mutable$PriorityQueue$$toA:(Ljava/lang/Object;)Ljava/lang/Object;
+   73:	areturn
+   74:	new	#342; //class java/util/NoSuchElementException
+   77:	dup
+   78:	ldc_w	#357; //String no element to remove from heap
+   81:	invokespecial	#345; //Method java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
+   84:	athrow
+  LineNumberTable: 
+   line 120: 0
+   line 121: 10
+   line 122: 24
+   line 123: 37
+   line 124: 56
+   line 120: 73
+   line 126: 74
+
+  Signature: length = 0x2
+   01 5A 
+
+public void enqueue(scala.collection.Sequence);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokeinterface	#361,  2; //InterfaceMethod scala/collection/generic/Growable.$plus$plus$eq:(Lscala/collection/Traversable;)Lscala/collection/generic/Growable;
+   7:	pop
+   8:	return
+  LineNumberTable: 
+   line 111: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      9      1    elems       Lscala/collection/Sequence;
+
+  Signature: length = 0x2
+   01 6A 
+
+public scala.collection.mutable.PriorityQueue $plus$plus(scala.collection.Iterator);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	invokevirtual	#178; //Method clone:()Lscala/collection/mutable/PriorityQueue;
+   4:	aload_1
+   5:	invokeinterface	#274,  2; //InterfaceMethod scala/collection/generic/Growable.$plus$plus$eq:(Lscala/collection/Iterator;)Lscala/collection/generic/Growable;
+   10:	checkcast	#16; //class scala/collection/mutable/PriorityQueue
+   13:	areturn
+  LineNumberTable: 
+   line 105: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      14      1    iter       Lscala/collection/Iterator;
+
+  Signature: length = 0x2
+   01 6B 
+
+public scala.collection.mutable.PriorityQueue $plus$plus(scala.collection.mutable.Traversable);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	invokevirtual	#178; //Method clone:()Lscala/collection/mutable/PriorityQueue;
+   4:	aload_1
+   5:	invokeinterface	#361,  2; //InterfaceMethod scala/collection/generic/Growable.$plus$plus$eq:(Lscala/collection/Traversable;)Lscala/collection/generic/Growable;
+   10:	checkcast	#16; //class scala/collection/mutable/PriorityQueue
+   13:	areturn
+  LineNumberTable: 
+   line 99: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      14      1    elems       Lscala/collection/mutable/Traversable;
+
+  Signature: length = 0x2
+   01 6E 
+
+public scala.collection.mutable.PriorityQueue $plus(java.lang.Object, java.lang.Object, scala.collection.Sequence);
+  Code:
+   Stack=4, Locals=4, Args_size=4
+   0:	aload_0
+   1:	invokevirtual	#178; //Method clone:()Lscala/collection/mutable/PriorityQueue;
+   4:	aload_1
+   5:	aload_2
+   6:	aload_3
+   7:	invokeinterface	#369,  4; //InterfaceMethod scala/collection/generic/Growable.$plus$eq:(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Sequence;)Lscala/collection/generic/Growable;
+   12:	checkcast	#16; //class scala/collection/mutable/PriorityQueue
+   15:	areturn
+  LineNumberTable: 
+   line 92: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      16      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      16      1    elem1       Ljava/lang/Object;
+   0      16      2    elem2       Ljava/lang/Object;
+   0      16      3    elems       Lscala/collection/Sequence;
+
+  Signature: length = 0x2
+   01 72 
+
+public scala.collection.mutable.PriorityQueue $plus(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	invokevirtual	#178; //Method clone:()Lscala/collection/mutable/PriorityQueue;
+   4:	aload_1
+   5:	invokevirtual	#153; //Method $plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/PriorityQueue;
+   8:	areturn
+  LineNumberTable: 
+   line 85: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      9      1    elem       Ljava/lang/Object;
+
+  Signature: length = 0x2
+   01 73 
+
+public scala.collection.mutable.PriorityQueue $plus$eq(java.lang.Object);
+  Code:
+   Stack=3, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_0
+   2:	invokeinterface	#134,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
+   7:	iconst_1
+   8:	iadd
+   9:	invokeinterface	#374,  2; //InterfaceMethod scala/collection/mutable/ResizableArray.ensureSize:(I)V
+   14:	aload_0
+   15:	invokeinterface	#337,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
+   20:	aload_0
+   21:	invokeinterface	#134,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
+   26:	aload_1
+   27:	aastore
+   28:	aload_0
+   29:	aload_0
+   30:	invokeinterface	#337,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
+   35:	aload_0
+   36:	invokeinterface	#134,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
+   41:	invokevirtual	#378; //Method fixUp:([Ljava/lang/Object;I)V
+   44:	aload_0
+   45:	aload_0
+   46:	invokeinterface	#134,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
+   51:	iconst_1
+   52:	iadd
+   53:	invokeinterface	#138,  2; //InterfaceMethod scala/collection/mutable/ResizableArray.size0_$eq:(I)V
+   58:	aload_0
+   59:	areturn
+  LineNumberTable: 
+   line 78: 0
+   line 79: 14
+   line 80: 28
+   line 81: 44
+   line 82: 58
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      60      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      60      1    elem       Ljava/lang/Object;
+
+  Signature: length = 0x2
+   01 73 
+
+public void fixDown(java.lang.Object[], int, int);
+  Code:
+   Stack=5, Locals=7, Args_size=4
+   0:	iload_2
+   1:	istore	4
+   3:	iload_3
+   4:	iconst_2
+   5:	iload	4
+   7:	imul
+   8:	if_icmplt	121
+   11:	iconst_2
+   12:	iload	4
+   14:	imul
+   15:	istore	5
+   17:	iload	5
+   19:	iload_3
+   20:	if_icmpge	62
+   23:	aload_0
+   24:	getfield	#18; //Field ord:Lscala/Ordering;
+   27:	aload_0
+   28:	aload_1
+   29:	iload	5
+   31:	aaload
+   32:	invokevirtual	#340; //Method scala$collection$mutable$PriorityQueue$$toA:(Ljava/lang/Object;)Ljava/lang/Object;
+   35:	invokeinterface	#384,  2; //InterfaceMethod scala/Ordering.mkOrderingOps:(Ljava/lang/Object;)Lscala/Ordering$Ops;
+   40:	aload_0
+   41:	aload_1
+   42:	iload	5
+   44:	iconst_1
+   45:	iadd
+   46:	aaload
+   47:	invokevirtual	#340; //Method scala$collection$mutable$PriorityQueue$$toA:(Ljava/lang/Object;)Ljava/lang/Object;
+   50:	invokevirtual	#389; //Method scala/Ordering$Ops.$less:(Ljava/lang/Object;)Z
+   53:	ifeq	62
+   56:	iload	5
+   58:	iconst_1
+   59:	iadd
+   60:	istore	5
+   62:	aload_0
+   63:	getfield	#18; //Field ord:Lscala/Ordering;
+   66:	aload_0
+   67:	aload_1
+   68:	iload	4
+   70:	aaload
+   71:	invokevirtual	#340; //Method scala$collection$mutable$PriorityQueue$$toA:(Ljava/lang/Object;)Ljava/lang/Object;
+   74:	invokeinterface	#384,  2; //InterfaceMethod scala/Ordering.mkOrderingOps:(Ljava/lang/Object;)Lscala/Ordering$Ops;
+   79:	aload_0
+   80:	aload_1
+   81:	iload	5
+   83:	aaload
+   84:	invokevirtual	#340; //Method scala$collection$mutable$PriorityQueue$$toA:(Ljava/lang/Object;)Ljava/lang/Object;
+   87:	invokevirtual	#392; //Method scala/Ordering$Ops.$greater$eq:(Ljava/lang/Object;)Z
+   90:	ifeq	94
+   93:	return
+   94:	aload_1
+   95:	iload	4
+   97:	aaload
+   98:	astore	6
+   100:	aload_1
+   101:	iload	4
+   103:	aload_1
+   104:	iload	5
+   106:	aaload
+   107:	aastore
+   108:	aload_1
+   109:	iload	5
+   111:	aload	6
+   113:	aastore
+   114:	iload	5
+   116:	istore	4
+   118:	goto	3
+   121:	return
+  LineNumberTable: 
+   line 57: 0
+   line 58: 3
+   line 59: 11
+   line 60: 17
+   line 61: 56
+   line 62: 62
+   line 63: 93
+   line 65: 94
+   line 66: 100
+   line 67: 108
+   line 68: 114
+   line 56: 121
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      122      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      122      1    as       [Ljava/lang/Object;
+   0      122      2    m       I
+   0      122      3    n       I
+   3      119      4    k       I
+   17      104      5    j       I
+   100      18      6    h       Ljava/lang/Object;
+
+
+public void fixUp(java.lang.Object[], int);
+  Code:
+   Stack=5, Locals=4, Args_size=3
+   0:	iload_2
+   1:	istore_3
+   2:	iload_3
+   3:	iconst_1
+   4:	if_icmple	55
+   7:	aload_0
+   8:	getfield	#18; //Field ord:Lscala/Ordering;
+   11:	aload_0
+   12:	aload_1
+   13:	iload_3
+   14:	iconst_2
+   15:	idiv
+   16:	aaload
+   17:	invokevirtual	#340; //Method scala$collection$mutable$PriorityQueue$$toA:(Ljava/lang/Object;)Ljava/lang/Object;
+   20:	invokeinterface	#384,  2; //InterfaceMethod scala/Ordering.mkOrderingOps:(Ljava/lang/Object;)Lscala/Ordering$Ops;
+   25:	aload_0
+   26:	aload_1
+   27:	iload_3
+   28:	aaload
+   29:	invokevirtual	#340; //Method scala$collection$mutable$PriorityQueue$$toA:(Ljava/lang/Object;)Ljava/lang/Object;
+   32:	invokevirtual	#389; //Method scala/Ordering$Ops.$less:(Ljava/lang/Object;)Z
+   35:	ifeq	55
+   38:	aload_0
+   39:	iload_3
+   40:	iload_3
+   41:	iconst_2
+   42:	idiv
+   43:	invokeinterface	#351,  3; //InterfaceMethod scala/collection/mutable/ResizableArray.swap:(II)V
+   48:	iload_3
+   49:	iconst_2
+   50:	idiv
+   51:	istore_3
+   52:	goto	2
+   55:	return
+  LineNumberTable: 
+   line 50: 0
+   line 51: 2
+   line 52: 38
+   line 53: 48
+   line 51: 52
+   line 49: 55
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      56      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      56      1    as       [Ljava/lang/Object;
+   0      56      2    m       I
+   2      54      3    k       I
+
+
+public final java.lang.Object scala$collection$mutable$PriorityQueue$$toA(java.lang.Object);
+  Code:
+   Stack=1, Locals=2, Args_size=2
+   0:	aload_1
+   1:	areturn
+  LineNumberTable: 
+   line 48: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      2      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      2      1    x       Ljava/lang/Object;
+
+
+public void foreach(scala.Function1);
+  Code:
+   Stack=4, Locals=3, Args_size=2
+   0:	iconst_1
+   1:	istore_2
+   2:	iload_2
+   3:	aload_0
+   4:	invokeinterface	#401,  1; //InterfaceMethod scala/collection/generic/SequenceTemplate.size:()I
+   9:	if_icmpge	38
+   12:	aload_1
+   13:	aload_0
+   14:	aload_0
+   15:	invokeinterface	#337,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
+   20:	iload_2
+   21:	aaload
+   22:	invokevirtual	#340; //Method scala$collection$mutable$PriorityQueue$$toA:(Ljava/lang/Object;)Ljava/lang/Object;
+   25:	invokeinterface	#405,  2; //InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+   30:	pop
+   31:	iload_2
+   32:	iconst_1
+   33:	iadd
+   34:	istore_2
+   35:	goto	2
+   38:	return
+  LineNumberTable: 
+   line 41: 0
+   line 42: 2
+   line 43: 12
+   line 44: 31
+   line 42: 35
+   line 40: 38
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      39      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      39      1    f       Lscala/Function1;
+   2      37      2    i       I
+
+  Signature: length = 0x2
+   01 FFFFFF98 
+
+public scala.collection.mutable.PriorityQueue thisCollection();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	areturn
+  LineNumberTable: 
+   line 37: 0
+
+  Signature: length = 0x2
+   01 13 
+
+public boolean isEmpty();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokeinterface	#134,  1; //InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
+   6:	iconst_2
+   7:	if_icmpge	14
+   10:	iconst_1
+   11:	goto	15
+   14:	iconst_0
+   15:	ireturn
+  LineNumberTable: 
+   line 36: 0
+
+
+public int length();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#414; //Method scala/collection/mutable/ResizableArray$class.length:(Lscala/collection/mutable/ResizableArray;)I
+   4:	iconst_1
+   5:	isub
+   6:	ireturn
+  LineNumberTable: 
+   line 35: 0
+
+
+public java.lang.String stringPrefix();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#418; //Method scala/collection/generic/TraversableTemplate$class.stringPrefix:(Lscala/collection/generic/TraversableTemplate;)Ljava/lang/String;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.mutable.StringBuilder addString(scala.collection.mutable.StringBuilder);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#423; //Method scala/collection/generic/TraversableTemplate$class.addString:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    b       Lscala/collection/mutable/StringBuilder;
+
+
+public scala.collection.mutable.StringBuilder addString(scala.collection.mutable.StringBuilder, java.lang.String);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#429; //Method scala/collection/generic/TraversableTemplate$class.addString:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    b       Lscala/collection/mutable/StringBuilder;
+   0      7      2    sep       Ljava/lang/String;
+
+
+public scala.collection.mutable.StringBuilder addString(scala.collection.mutable.StringBuilder, java.lang.String, java.lang.String, java.lang.String);
+  Code:
+   Stack=5, Locals=5, Args_size=5
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	aload_3
+   4:	aload	4
+   6:	invokestatic	#435; //Method scala/collection/generic/TraversableTemplate$class.addString:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
+   9:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      10      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      10      1    b       Lscala/collection/mutable/StringBuilder;
+   0      10      2    start       Ljava/lang/String;
+   0      10      3    sep       Ljava/lang/String;
+   0      10      4    end       Ljava/lang/String;
+
+
+public java.lang.String mkString();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#439; //Method scala/collection/generic/TraversableTemplate$class.mkString:(Lscala/collection/generic/TraversableTemplate;)Ljava/lang/String;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public java.lang.String mkString(java.lang.String);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#443; //Method scala/collection/generic/TraversableTemplate$class.mkString:(Lscala/collection/generic/TraversableTemplate;Ljava/lang/String;)Ljava/lang/String;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    sep       Ljava/lang/String;
+
+
+public java.lang.String mkString(java.lang.String, java.lang.String, java.lang.String);
+  Code:
+   Stack=4, Locals=4, Args_size=4
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	aload_3
+   4:	invokestatic	#446; //Method scala/collection/generic/TraversableTemplate$class.mkString:(Lscala/collection/generic/TraversableTemplate;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+   7:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      8      1    start       Ljava/lang/String;
+   0      8      2    sep       Ljava/lang/String;
+   0      8      3    end       Ljava/lang/String;
+
+
+public scala.collection.immutable.Set toSet();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#451; //Method scala/collection/generic/TraversableTemplate$class.toSet:(Lscala/collection/generic/TraversableTemplate;)Lscala/collection/immutable/Set;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.runtime.BoxedArray toArray();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#456; //Method scala/collection/generic/TraversableTemplate$class.toArray:(Lscala/collection/generic/TraversableTemplate;)Lscala/runtime/BoxedArray;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public void copyToBuffer(scala.collection.mutable.Buffer);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#461; //Method scala/collection/generic/TraversableTemplate$class.copyToBuffer:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/mutable/Buffer;)V
+   5:	return
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    dest       Lscala/collection/mutable/Buffer;
+
+
+public scala.Option lastOption();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#468; //Method scala/collection/generic/TraversableTemplate$class.lastOption:(Lscala/collection/generic/TraversableTemplate;)Lscala/Option;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.Option headOption();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#471; //Method scala/collection/generic/TraversableTemplate$class.headOption:(Lscala/collection/generic/TraversableTemplate;)Lscala/Option;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.Option reduceRightOption(scala.Function2);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#476; //Method scala/collection/generic/TraversableTemplate$class.reduceRightOption:(Lscala/collection/generic/TraversableTemplate;Lscala/Function2;)Lscala/Option;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    op       Lscala/Function2;
+
+
+public scala.Option reduceLeftOption(scala.Function2);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#481; //Method scala/collection/generic/TraversableTemplate$class.reduceLeftOption:(Lscala/collection/generic/TraversableTemplate;Lscala/Function2;)Lscala/Option;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    op       Lscala/Function2;
+
+
+public java.lang.Object $colon$bslash(java.lang.Object, scala.Function2);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#486; //Method scala/collection/generic/TraversableTemplate$class.$colon$bslash:(Lscala/collection/generic/TraversableTemplate;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    z       Ljava/lang/Object;
+   0      7      2    op       Lscala/Function2;
+
+
+public java.lang.Object $div$colon(java.lang.Object, scala.Function2);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#490; //Method scala/collection/generic/TraversableTemplate$class.$div$colon:(Lscala/collection/generic/TraversableTemplate;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    z       Ljava/lang/Object;
+   0      7      2    op       Lscala/Function2;
+
+
+public int count(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#495; //Method scala/collection/generic/TraversableTemplate$class.count:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)I
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public scala.collection.Map groupBy(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#500; //Method scala/collection/generic/TraversableTemplate$class.groupBy:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/collection/Map;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    f       Lscala/Function1;
+
+
+public scala.Tuple2 partition(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#505; //Method scala/collection/generic/TraversableTemplate$class.partition:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/Tuple2;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public scala.collection.generic.TraversableTemplate remove(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#509; //Method scala/collection/generic/TraversableTemplate$class.remove:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/collection/generic/TraversableTemplate;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public scala.collection.generic.TraversableTemplate filterNot(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#512; //Method scala/collection/generic/TraversableTemplate$class.filterNot:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/collection/generic/TraversableTemplate;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public java.lang.Object filterMap(scala.PartialFunction, scala.collection.generic.BuilderFactory);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#517; //Method scala/collection/generic/TraversableTemplate$class.filterMap:(Lscala/collection/generic/TraversableTemplate;Lscala/PartialFunction;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    pf       Lscala/PartialFunction;
+   0      7      2    bf       Lscala/collection/generic/BuilderFactory;
+
+
+public scala.collection.generic.TraversableTemplate filter(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#524; //Method scala/collection/generic/TraversableTemplate$class.filter:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;)Lscala/collection/generic/TraversableTemplate;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public java.lang.Object flatMap(scala.Function1, scala.collection.generic.BuilderFactory);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#529; //Method scala/collection/generic/TraversableTemplate$class.flatMap:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    f       Lscala/Function1;
+   0      7      2    bf       Lscala/collection/generic/BuilderFactory;
+
+
+public java.lang.Object map(scala.Function1, scala.collection.generic.BuilderFactory);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#532; //Method scala/collection/generic/TraversableTemplate$class.map:(Lscala/collection/generic/TraversableTemplate;Lscala/Function1;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    f       Lscala/Function1;
+   0      7      2    bf       Lscala/collection/generic/BuilderFactory;
+
+
+public java.lang.Object $plus$plus(scala.collection.Iterator, scala.collection.generic.BuilderFactory);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#536; //Method scala/collection/generic/TraversableTemplate$class.$plus$plus:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/Iterator;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    that       Lscala/collection/Iterator;
+   0      7      2    bf       Lscala/collection/generic/BuilderFactory;
+
+
+public java.lang.Object $plus$plus(scala.collection.Traversable, scala.collection.generic.BuilderFactory);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#541; //Method scala/collection/generic/TraversableTemplate$class.$plus$plus:(Lscala/collection/generic/TraversableTemplate;Lscala/collection/Traversable;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    that       Lscala/collection/Traversable;
+   0      7      2    bf       Lscala/collection/generic/BuilderFactory;
+
+
+public boolean hasDefiniteSize();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#546; //Method scala/collection/generic/TraversableTemplate$class.hasDefiniteSize:(Lscala/collection/generic/TraversableTemplate;)Z
+   4:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public boolean nonEmpty();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#549; //Method scala/collection/generic/TraversableTemplate$class.nonEmpty:(Lscala/collection/generic/TraversableTemplate;)Z
+   4:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.Traversable transpose(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#554; //Method scala/collection/generic/TraversableClass$class.transpose:(Lscala/collection/generic/TraversableClass;Lscala/Function1;)Lscala/collection/Traversable;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    toTraversable       Lscala/Function1;
+
+
+public scala.collection.Traversable flatten(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#558; //Method scala/collection/generic/TraversableClass$class.flatten:(Lscala/collection/generic/TraversableClass;Lscala/Function1;)Lscala/collection/Traversable;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    toTraversable       Lscala/Function1;
+
+
+public scala.Tuple2 unzip(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#562; //Method scala/collection/generic/TraversableClass$class.unzip:(Lscala/collection/generic/TraversableClass;Lscala/Function1;)Lscala/Tuple2;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    toPair       Lscala/Function1;
+
+
+public scala.collection.generic.Builder genericBuilder();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#568; //Method scala/collection/generic/TraversableClass$class.genericBuilder:(Lscala/collection/generic/TraversableClass;)Lscala/collection/generic/Builder;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.generic.Builder newBuilder();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#571; //Method scala/collection/generic/TraversableClass$class.newBuilder:(Lscala/collection/generic/TraversableClass;)Lscala/collection/generic/Builder;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.Sequence toSeq();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#576; //Method scala/collection/generic/IterableTemplate$class.toSeq:(Lscala/collection/generic/IterableTemplate;)Lscala/collection/Sequence;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.Option firstOption();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#580; //Method scala/collection/generic/IterableTemplate$class.firstOption:(Lscala/collection/generic/IterableTemplate;)Lscala/Option;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public java.lang.Object first();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#584; //Method scala/collection/generic/IterableTemplate$class.first:(Lscala/collection/generic/IterableTemplate;)Ljava/lang/Object;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.immutable.Stream toStream();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#589; //Method scala/collection/generic/IterableTemplate$class.toStream:(Lscala/collection/generic/IterableTemplate;)Lscala/collection/immutable/Stream;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.Iterable toIterable();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#594; //Method scala/collection/generic/IterableTemplate$class.toIterable:(Lscala/collection/generic/IterableTemplate;)Lscala/collection/Iterable;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.Iterator elements();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#598; //Method scala/collection/generic/IterableTemplate$class.elements:(Lscala/collection/generic/IterableTemplate;)Lscala/collection/Iterator;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.Function1 compose(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#602; //Method scala/Function1$class.compose:(Lscala/Function1;Lscala/Function1;)Lscala/Function1;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    g       Lscala/Function1;
+
+
+public scala.PartialFunction andThen(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#605; //Method scala/PartialFunction$class.andThen:(Lscala/PartialFunction;Lscala/Function1;)Lscala/PartialFunction;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    k       Lscala/Function1;
+
+
+public scala.PartialFunction orElse(scala.PartialFunction);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#610; //Method scala/PartialFunction$class.orElse:(Lscala/PartialFunction;Lscala/PartialFunction;)Lscala/PartialFunction;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    that       Lscala/PartialFunction;
+
+
+public java.lang.Object projection();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#614; //Method scala/collection/generic/SequenceTemplate$class.projection:(Lscala/collection/generic/SequenceTemplate;)Ljava/lang/Object;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public boolean containsSlice(scala.collection.Sequence);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#619; //Method scala/collection/generic/SequenceTemplate$class.containsSlice:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Z
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    that       Lscala/collection/Sequence;
+
+
+public boolean equalsWith(scala.collection.Sequence, scala.Function2);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#624; //Method scala/collection/generic/SequenceTemplate$class.equalsWith:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Lscala/Function2;)Z
+   6:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    that       Lscala/collection/Sequence;
+   0      7      2    f       Lscala/Function2;
+
+
+public scala.collection.Sequence slice(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokestatic	#628; //Method scala/collection/generic/SequenceTemplate$class.slice:(Lscala/collection/generic/SequenceTemplate;I)Lscala/collection/Sequence;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    from       I
+
+
+public int findLastIndexOf(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#632; //Method scala/collection/generic/SequenceTemplate$class.findLastIndexOf:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public scala.Range indices();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#637; //Method scala/collection/generic/SequenceTemplate$class.indices:(Lscala/collection/generic/SequenceTemplate;)Lscala/Range;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.Sequence toSequence();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#641; //Method scala/collection/generic/SequenceTemplate$class.toSequence:(Lscala/collection/generic/SequenceTemplate;)Lscala/collection/Sequence;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public java.lang.Object padTo(int, java.lang.Object, scala.collection.generic.BuilderFactory);
+  Code:
+   Stack=4, Locals=4, Args_size=4
+   0:	aload_0
+   1:	iload_1
+   2:	aload_2
+   3:	aload_3
+   4:	invokestatic	#646; //Method scala/collection/generic/SequenceTemplate$class.padTo:(Lscala/collection/generic/SequenceTemplate;ILjava/lang/Object;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+   7:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      8      1    len       I
+   0      8      2    elem       Ljava/lang/Object;
+   0      8      3    bf       Lscala/collection/generic/BuilderFactory;
+
+
+public java.lang.Object patch(int, scala.collection.Sequence, int, scala.collection.generic.BuilderFactory);
+  Code:
+   Stack=5, Locals=5, Args_size=5
+   0:	aload_0
+   1:	iload_1
+   2:	aload_2
+   3:	iload_3
+   4:	aload	4
+   6:	invokestatic	#652; //Method scala/collection/generic/SequenceTemplate$class.patch:(Lscala/collection/generic/SequenceTemplate;ILscala/collection/Sequence;ILscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+   9:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      10      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      10      1    from       I
+   0      10      2    patch       Lscala/collection/Sequence;
+   0      10      3    replaced       I
+   0      10      4    bf       Lscala/collection/generic/BuilderFactory;
+
+
+public scala.collection.generic.IterableTemplate removeDuplicates();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#657; //Method scala/collection/generic/SequenceTemplate$class.removeDuplicates:(Lscala/collection/generic/SequenceTemplate;)Lscala/collection/generic/IterableTemplate;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.generic.IterableTemplate intersect(scala.collection.Sequence);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#662; //Method scala/collection/generic/SequenceTemplate$class.intersect:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Lscala/collection/generic/IterableTemplate;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    that       Lscala/collection/Sequence;
+
+
+public scala.collection.generic.IterableTemplate diff(scala.collection.Sequence);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#665; //Method scala/collection/generic/SequenceTemplate$class.diff:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Lscala/collection/generic/IterableTemplate;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    that       Lscala/collection/Sequence;
+
+
+public java.lang.Object union(scala.collection.Sequence, scala.collection.generic.BuilderFactory);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#670; //Method scala/collection/generic/SequenceTemplate$class.union:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    that       Lscala/collection/Sequence;
+   0      7      2    bf       Lscala/collection/generic/BuilderFactory;
+
+
+public boolean contains(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#674; //Method scala/collection/generic/SequenceTemplate$class.contains:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;)Z
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    elem       Ljava/lang/Object;
+
+
+public int lastIndexOfSeq(scala.collection.Sequence, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	iload_2
+   3:	invokestatic	#679; //Method scala/collection/generic/SequenceTemplate$class.lastIndexOfSeq:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;I)I
+   6:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    that       Lscala/collection/Sequence;
+   0      7      2    fromIndex       I
+
+
+public int lastIndexOfSeq(scala.collection.Sequence);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#684; //Method scala/collection/generic/SequenceTemplate$class.lastIndexOfSeq:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)I
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    that       Lscala/collection/Sequence;
+
+
+public int indexOfSeq(scala.collection.Sequence, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	iload_2
+   3:	invokestatic	#687; //Method scala/collection/generic/SequenceTemplate$class.indexOfSeq:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;I)I
+   6:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    that       Lscala/collection/Sequence;
+   0      7      2    fromIndex       I
+
+
+public int indexOfSeq(scala.collection.Sequence);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#689; //Method scala/collection/generic/SequenceTemplate$class.indexOfSeq:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)I
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    that       Lscala/collection/Sequence;
+
+
+public boolean startsWith(scala.collection.Sequence);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#692; //Method scala/collection/generic/SequenceTemplate$class.startsWith:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Z
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    that       Lscala/collection/Sequence;
+
+
+public scala.collection.Iterator reversedElements();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#696; //Method scala/collection/generic/SequenceTemplate$class.reversedElements:(Lscala/collection/generic/SequenceTemplate;)Lscala/collection/Iterator;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public int lastIndexWhere(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#699; //Method scala/collection/generic/SequenceTemplate$class.lastIndexWhere:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public int lastIndexOf(java.lang.Object, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	iload_2
+   3:	invokestatic	#704; //Method scala/collection/generic/SequenceTemplate$class.lastIndexOf:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;I)I
+   6:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    elem       Ljava/lang/Object;
+   0      7      2    end       I
+
+
+public int lastIndexOf(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#707; //Method scala/collection/generic/SequenceTemplate$class.lastIndexOf:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;)I
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    elem       Ljava/lang/Object;
+
+
+public int indexOf(java.lang.Object, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	iload_2
+   3:	invokestatic	#710; //Method scala/collection/generic/SequenceTemplate$class.indexOf:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;I)I
+   6:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    elem       Ljava/lang/Object;
+   0      7      2    from       I
+
+
+public int indexOf(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#712; //Method scala/collection/generic/SequenceTemplate$class.indexOf:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;)I
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    elem       Ljava/lang/Object;
+
+
+public int findIndexOf(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#715; //Method scala/collection/generic/SequenceTemplate$class.findIndexOf:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public int indexWhere(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#718; //Method scala/collection/generic/SequenceTemplate$class.indexWhere:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public int prefixLength(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#721; //Method scala/collection/generic/SequenceTemplate$class.prefixLength:(Lscala/collection/generic/SequenceTemplate;Lscala/Function1;)I
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public java.lang.Object zipAll(scala.collection.Sequence, java.lang.Object, java.lang.Object, scala.collection.generic.BuilderFactory);
+  Code:
+   Stack=5, Locals=5, Args_size=5
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	aload_3
+   4:	aload	4
+   6:	invokestatic	#726; //Method scala/collection/generic/SequenceTemplate$class.zipAll:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+   9:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      10      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      10      1    that       Lscala/collection/Sequence;
+   0      10      2    thisElem       Ljava/lang/Object;
+   0      10      3    thatElem       Ljava/lang/Object;
+   0      10      4    bf       Lscala/collection/generic/BuilderFactory;
+
+
+public boolean isDefinedAt(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokestatic	#731; //Method scala/collection/generic/SequenceTemplate$class.isDefinedAt:(Lscala/collection/generic/SequenceTemplate;I)Z
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    x       I
+
+
+public int size();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#734; //Method scala/collection/generic/SequenceTemplate$class.size:(Lscala/collection/generic/SequenceTemplate;)I
+   4:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public int identityHashCode();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#738; //Method scala/Unhashable$class.identityHashCode:(Lscala/Unhashable;)I
+   4:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public final int scala$Unhashable$$super$hashCode();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokespecial	#741; //Method java/lang/Object.hashCode:()I
+   4:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public boolean endsWith(scala.collection.Sequence);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#745; //Method scala/collection/generic/VectorTemplate$class.endsWith:(Lscala/collection/generic/VectorTemplate;Lscala/collection/Sequence;)Z
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    that       Lscala/collection/Sequence;
+
+
+public boolean startsWith(scala.collection.Sequence, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	iload_2
+   3:	invokestatic	#749; //Method scala/collection/generic/VectorTemplate$class.startsWith:(Lscala/collection/generic/VectorTemplate;Lscala/collection/Sequence;I)Z
+   6:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    that       Lscala/collection/Sequence;
+   0      7      2    offset       I
+
+
+public scala.collection.Iterator reverseIterator();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#754; //Method scala/collection/generic/VectorTemplate$class.reverseIterator:(Lscala/collection/generic/VectorTemplate;)Lscala/collection/Iterator;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.generic.VectorTemplate reverse();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#757; //Method scala/collection/generic/VectorTemplate$class.reverse:(Lscala/collection/generic/VectorTemplate;)Lscala/collection/generic/VectorTemplate;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public int lastIndexWhere(scala.Function1, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	iload_2
+   3:	invokestatic	#761; //Method scala/collection/generic/VectorTemplate$class.lastIndexWhere:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;I)I
+   6:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    p       Lscala/Function1;
+   0      7      2    end       I
+
+
+public int indexWhere(scala.Function1, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	iload_2
+   3:	invokestatic	#763; //Method scala/collection/generic/VectorTemplate$class.indexWhere:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;I)I
+   6:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    p       Lscala/Function1;
+   0      7      2    from       I
+
+
+public int segmentLength(scala.Function1, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	iload_2
+   3:	invokestatic	#766; //Method scala/collection/generic/VectorTemplate$class.segmentLength:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;I)I
+   6:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    p       Lscala/Function1;
+   0      7      2    from       I
+
+
+public int lengthCompare(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokestatic	#771; //Method scala/collection/generic/VectorTemplate$class.lengthCompare:(Lscala/collection/generic/VectorTemplate;I)I
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    len       I
+
+
+public void copyToArray(scala.runtime.BoxedArray, int, int);
+  Code:
+   Stack=4, Locals=4, Args_size=4
+   0:	aload_0
+   1:	aload_1
+   2:	iload_2
+   3:	iload_3
+   4:	invokestatic	#776; //Method scala/collection/generic/VectorTemplate$class.copyToArray:(Lscala/collection/generic/VectorTemplate;Lscala/runtime/BoxedArray;II)V
+   7:	return
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      8      1    xs       Lscala/runtime/BoxedArray;
+   0      8      2    start       I
+   0      8      3    len       I
+
+
+public boolean sameElements(scala.collection.Iterable);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#783; //Method scala/collection/generic/VectorTemplate$class.sameElements:(Lscala/collection/generic/VectorTemplate;Lscala/collection/Iterable;)Z
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    that       Lscala/collection/Iterable;
+
+
+public scala.Tuple2 span(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#788; //Method scala/collection/generic/VectorTemplate$class.span:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/Tuple2;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public scala.collection.generic.VectorTemplate dropWhile(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#791; //Method scala/collection/generic/VectorTemplate$class.dropWhile:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/collection/generic/VectorTemplate;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public scala.collection.generic.VectorTemplate takeWhile(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#793; //Method scala/collection/generic/VectorTemplate$class.takeWhile:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/collection/generic/VectorTemplate;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public scala.Tuple2 splitAt(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokestatic	#798; //Method scala/collection/generic/VectorTemplate$class.splitAt:(Lscala/collection/generic/VectorTemplate;I)Lscala/Tuple2;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    n       I
+
+
+public scala.collection.generic.VectorTemplate dropRight(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokestatic	#801; //Method scala/collection/generic/VectorTemplate$class.dropRight:(Lscala/collection/generic/VectorTemplate;I)Lscala/collection/generic/VectorTemplate;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    n       I
+
+
+public scala.collection.generic.VectorTemplate takeRight(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokestatic	#803; //Method scala/collection/generic/VectorTemplate$class.takeRight:(Lscala/collection/generic/VectorTemplate;I)Lscala/collection/generic/VectorTemplate;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    n       I
+
+
+public scala.collection.generic.VectorTemplate drop(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokestatic	#805; //Method scala/collection/generic/VectorTemplate$class.drop:(Lscala/collection/generic/VectorTemplate;I)Lscala/collection/generic/VectorTemplate;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    n       I
+
+
+public scala.collection.generic.VectorTemplate take(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokestatic	#807; //Method scala/collection/generic/VectorTemplate$class.take:(Lscala/collection/generic/VectorTemplate;I)Lscala/collection/generic/VectorTemplate;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    n       I
+
+
+public scala.collection.generic.VectorTemplate init();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#809; //Method scala/collection/generic/VectorTemplate$class.init:(Lscala/collection/generic/VectorTemplate;)Lscala/collection/generic/VectorTemplate;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public java.lang.Object last();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#813; //Method scala/collection/generic/VectorTemplate$class.last:(Lscala/collection/generic/VectorTemplate;)Ljava/lang/Object;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.generic.VectorTemplate tail();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#815; //Method scala/collection/generic/VectorTemplate$class.tail:(Lscala/collection/generic/VectorTemplate;)Lscala/collection/generic/VectorTemplate;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public java.lang.Object head();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#818; //Method scala/collection/generic/VectorTemplate$class.head:(Lscala/collection/generic/VectorTemplate;)Ljava/lang/Object;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.generic.VectorTemplate slice(int, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	iload_1
+   2:	iload_2
+   3:	invokestatic	#821; //Method scala/collection/generic/VectorTemplate$class.slice:(Lscala/collection/generic/VectorTemplate;II)Lscala/collection/generic/VectorTemplate;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    from       I
+   0      7      2    until       I
+
+
+public java.lang.Object zipWithIndex(scala.collection.generic.BuilderFactory);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#826; //Method scala/collection/generic/VectorTemplate$class.zipWithIndex:(Lscala/collection/generic/VectorTemplate;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    bf       Lscala/collection/generic/BuilderFactory;
+
+
+public java.lang.Object zip(scala.collection.Sequence, scala.collection.generic.BuilderFactory);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#829; //Method scala/collection/generic/VectorTemplate$class.zip:(Lscala/collection/generic/VectorTemplate;Lscala/collection/Sequence;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    that       Lscala/collection/Sequence;
+   0      7      2    bf       Lscala/collection/generic/BuilderFactory;
+
+
+public java.lang.Object reduceRight(scala.Function2);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#834; //Method scala/collection/generic/VectorTemplate$class.reduceRight:(Lscala/collection/generic/VectorTemplate;Lscala/Function2;)Ljava/lang/Object;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    op       Lscala/Function2;
+
+
+public java.lang.Object reduceLeft(scala.Function2);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#837; //Method scala/collection/generic/VectorTemplate$class.reduceLeft:(Lscala/collection/generic/VectorTemplate;Lscala/Function2;)Ljava/lang/Object;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    op       Lscala/Function2;
+
+
+public java.lang.Object foldRight(java.lang.Object, scala.Function2);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#841; //Method scala/collection/generic/VectorTemplate$class.foldRight:(Lscala/collection/generic/VectorTemplate;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    z       Ljava/lang/Object;
+   0      7      2    op       Lscala/Function2;
+
+
+public java.lang.Object foldLeft(java.lang.Object, scala.Function2);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#844; //Method scala/collection/generic/VectorTemplate$class.foldLeft:(Lscala/collection/generic/VectorTemplate;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    z       Ljava/lang/Object;
+   0      7      2    op       Lscala/Function2;
+
+
+public scala.Option find(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#849; //Method scala/collection/generic/VectorTemplate$class.find:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Lscala/Option;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public boolean exists(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#853; //Method scala/collection/generic/VectorTemplate$class.exists:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Z
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public boolean forall(scala.Function1);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#855; //Method scala/collection/generic/VectorTemplate$class.forall:(Lscala/collection/generic/VectorTemplate;Lscala/Function1;)Z
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    p       Lscala/Function1;
+
+
+public final boolean scala$collection$generic$VectorTemplate$$super$equals(java.lang.Object);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#858; //Method scala/collection/generic/SequenceTemplate$class.equals:(Lscala/collection/generic/SequenceTemplate;Ljava/lang/Object;)Z
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    that       Ljava/lang/Object;
+
+
+public final boolean scala$collection$generic$VectorTemplate$$super$endsWith(scala.collection.Sequence);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#861; //Method scala/collection/generic/SequenceTemplate$class.endsWith:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;)Z
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    that       Lscala/collection/Sequence;
+
+
+public final boolean scala$collection$generic$VectorTemplate$$super$sameElements(scala.collection.Iterable);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#865; //Method scala/collection/generic/IterableTemplate$class.sameElements:(Lscala/collection/generic/IterableTemplate;Lscala/collection/Iterable;)Z
+   5:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    that       Lscala/collection/Iterable;
+
+
+public final scala.collection.generic.VectorTemplate scala$collection$generic$VectorTemplate$$super$init();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#869; //Method scala/collection/generic/TraversableTemplate$class.init:(Lscala/collection/generic/TraversableTemplate;)Lscala/collection/generic/TraversableTemplate;
+   4:	checkcast	#206; //class scala/collection/generic/VectorTemplate
+   7:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public final java.lang.Object scala$collection$generic$VectorTemplate$$super$last();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#873; //Method scala/collection/generic/TraversableTemplate$class.last:(Lscala/collection/generic/TraversableTemplate;)Ljava/lang/Object;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public final java.lang.Object scala$collection$generic$VectorTemplate$$super$head();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#876; //Method scala/collection/generic/IterableTemplate$class.head:(Lscala/collection/generic/IterableTemplate;)Ljava/lang/Object;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public final java.lang.Object scala$collection$generic$VectorTemplate$$super$zip(scala.collection.Sequence, scala.collection.generic.BuilderFactory);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	invokestatic	#879; //Method scala/collection/generic/SequenceTemplate$class.zip:(Lscala/collection/generic/SequenceTemplate;Lscala/collection/Sequence;Lscala/collection/generic/BuilderFactory;)Ljava/lang/Object;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    that       Lscala/collection/Sequence;
+   0      7      2    bf       Lscala/collection/generic/BuilderFactory;
+
+
+public final java.lang.Object scala$collection$generic$VectorTemplate$$super$reduceRight(scala.Function2);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#883; //Method scala/collection/generic/IterableTemplate$class.reduceRight:(Lscala/collection/generic/IterableTemplate;Lscala/Function2;)Ljava/lang/Object;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    op       Lscala/Function2;
+
+
+public final java.lang.Object scala$collection$generic$VectorTemplate$$super$reduceLeft(scala.Function2);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#887; //Method scala/collection/generic/TraversableTemplate$class.reduceLeft:(Lscala/collection/generic/TraversableTemplate;Lscala/Function2;)Ljava/lang/Object;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    op       Lscala/Function2;
+
+
+public scala.collection.generic.MutableVectorView view(int, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	iload_1
+   2:	iload_2
+   3:	invokestatic	#890; //Method scala/collection/generic/MutableVectorTemplate$class.view:(Lscala/collection/generic/MutableVectorTemplate;II)Lscala/collection/generic/MutableVectorView;
+   6:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    from       I
+   0      7      2    until       I
+
+
+public java.lang.Object view();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#893; //Method scala/collection/generic/MutableVectorTemplate$class.view:(Lscala/collection/generic/MutableVectorTemplate;)Ljava/lang/Object;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public void copy(int, int, int);
+  Code:
+   Stack=4, Locals=4, Args_size=4
+   0:	aload_0
+   1:	iload_1
+   2:	iload_2
+   3:	iload_3
+   4:	invokestatic	#898; //Method scala/collection/mutable/ResizableArray$class.copy:(Lscala/collection/mutable/ResizableArray;III)V
+   7:	return
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      8      1    m       I
+   0      8      2    n       I
+   0      8      3    len       I
+
+
+public void swap(int, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	iload_1
+   2:	iload_2
+   3:	invokestatic	#901; //Method scala/collection/mutable/ResizableArray$class.swap:(Lscala/collection/mutable/ResizableArray;II)V
+   6:	return
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    a       I
+   0      7      2    b       I
+
+
+public void ensureSize(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokestatic	#905; //Method scala/collection/mutable/ResizableArray$class.ensureSize:(Lscala/collection/mutable/ResizableArray;I)V
+   5:	return
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    n       I
+
+
+public void reduceToSize(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokestatic	#908; //Method scala/collection/mutable/ResizableArray$class.reduceToSize:(Lscala/collection/mutable/ResizableArray;I)V
+   5:	return
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    sz       I
+
+
+public void copyToArray(scala.runtime.BoxedArray, int);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	aload_1
+   2:	iload_2
+   3:	invokestatic	#913; //Method scala/collection/mutable/ResizableArray$class.copyToArray:(Lscala/collection/mutable/ResizableArray;Lscala/runtime/BoxedArray;I)V
+   6:	return
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    xs       Lscala/runtime/BoxedArray;
+   0      7      2    start       I
+
+
+public void update(int, java.lang.Object);
+  Code:
+   Stack=3, Locals=3, Args_size=3
+   0:	aload_0
+   1:	iload_1
+   2:	aload_2
+   3:	invokestatic	#918; //Method scala/collection/mutable/ResizableArray$class.update:(Lscala/collection/mutable/ResizableArray;ILjava/lang/Object;)V
+   6:	return
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      7      1    idx       I
+   0      7      2    elem       Ljava/lang/Object;
+
+
+public java.lang.Object apply(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	invokestatic	#922; //Method scala/collection/mutable/ResizableArray$class.apply:(Lscala/collection/mutable/ResizableArray;I)Ljava/lang/Object;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    idx       I
+
+
+public int initialSize();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#925; //Method scala/collection/mutable/ResizableArray$class.initialSize:(Lscala/collection/mutable/ResizableArray;)I
+   4:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.generic.Companion companion();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokestatic	#930; //Method scala/collection/mutable/ResizableArray$class.companion:(Lscala/collection/mutable/ResizableArray;)Lscala/collection/generic/Companion;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public void size0_$eq(int);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	iload_1
+   2:	putfield	#932; //Field size0:I
+   5:	return
+  LineNumberTable: 
+   line 26: 0
+
+
+public int size0();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#932; //Field size0:I
+   4:	ireturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public void array_$eq(java.lang.Object[]);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#936; //Field array:[Ljava/lang/Object;
+   5:	return
+  LineNumberTable: 
+   line 26: 0
+
+
+public java.lang.Object[] array();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#936; //Field array:[Ljava/lang/Object;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+public scala.collection.generic.Addable $plus$plus(scala.collection.Traversable);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#940; //Method scala/collection/generic/Addable$class.$plus$plus:(Lscala/collection/generic/Addable;Lscala/collection/Traversable;)Lscala/collection/generic/Addable;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    elems       Lscala/collection/Traversable;
+
+
+public scala.collection.generic.Growable $plus$plus$eq(scala.collection.Traversable);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#943; //Method scala/collection/generic/Growable$class.$plus$plus$eq:(Lscala/collection/generic/Growable;Lscala/collection/Traversable;)Lscala/collection/generic/Growable;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    iter       Lscala/collection/Traversable;
+
+
+public scala.collection.generic.Growable $plus$plus$eq(scala.collection.Iterator);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#946; //Method scala/collection/generic/Growable$class.$plus$plus$eq:(Lscala/collection/generic/Growable;Lscala/collection/Iterator;)Lscala/collection/generic/Growable;
+   5:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    iter       Lscala/collection/Iterator;
+
+
+public scala.collection.generic.Growable $plus$eq(java.lang.Object, java.lang.Object, scala.collection.Sequence);
+  Code:
+   Stack=4, Locals=4, Args_size=4
+   0:	aload_0
+   1:	aload_1
+   2:	aload_2
+   3:	aload_3
+   4:	invokestatic	#949; //Method scala/collection/generic/Growable$class.$plus$eq:(Lscala/collection/generic/Growable;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Sequence;)Lscala/collection/generic/Growable;
+   7:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      8      1    elem1       Ljava/lang/Object;
+   0      8      2    elem2       Ljava/lang/Object;
+   0      8      3    elems       Lscala/collection/Sequence;
+
+
+public final java.lang.Object scala$collection$generic$Cloneable$$super$clone();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokespecial	#952; //Method java/lang/Object.clone:()Ljava/lang/Object;
+   4:	areturn
+  LineNumberTable: 
+   line 26: 0
+
+
+}
+

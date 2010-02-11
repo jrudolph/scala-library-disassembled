@@ -1,0 +1,906 @@
+Compiled from "MarkupHandler.scala"
+public abstract class scala.xml.parsing.MarkupHandler extends java.lang.Object implements scala.util.logging.Logged,scala.ScalaObject
+  SourceFile: "MarkupHandler.scala"
+  ScalaSig: length = 0x726
+   05 00 FFFFFF81 77 06 08 01 02 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF81 00 09 02 0D
+   4D 61 72 6B 75 70 48 61 6E 64 6C 65 72 0A 02 03
+   04 01 07 70 61 72 73 69 6E 67 0A 02 05 06 01 03
+   78 6D 6C 0A 01 07 01 05 73 63 61 6C 61 03 00 13
+   04 00 0A 12 1A 10 02 0B 10 0D 01 0C 0A 02 0D 0E
+   01 04 6C 61 6E 67 0A 01 0F 01 04 6A 61 76 61 09
+   02 11 0C 02 06 4F 62 6A 65 63 74 10 02 13 18 0D
+   01 14 0A 02 15 16 01 07 6C 6F 67 67 69 6E 67 0A
+   02 17 06 01 04 75 74 69 6C 09 02 19 14 02 06 4C
+   6F 67 67 65 64 10 02 1B 1C 0D 01 06 09 02 1D 06
+   02 0B 53 63 61 6C 61 4F 62 6A 65 63 74 08 05 1F
+   00 FFFFFF84 00 20 01 06 3C 69 6E 69 74 3E 14 01 21 10
+   02 22 00 0D 01 02 08 07 24 00 FFFFFFC2 FFFFFF80 FFFFFF84 00 25 01
+   0C 69 73 56 61 6C 69 64 61 74 69 6E 67 15 01 26
+   10 02 1B 27 09 02 28 06 02 07 42 6F 6F 6C 65 61
+   6E 08 06 2A 00 FFFFFFA0 FFFFFF80 04 26 01 0D 69 73 56 61 6C
+   69 64 61 74 69 6E 67 20 08 07 2C 00 FFFFFFC0 FFFFFF80 FFFFFF84 00
+   2D 01 05 64 65 63 6C 73 15 01 2E 10 03 2F 37 3A
+   0E 02 30 35 0E 02 31 34 0D 01 32 0A 02 33 08 01
+   06 3C 72 6F 6F 74 3E 09 01 07 09 02 36 06 01 07
+   70 61 63 6B 61 67 65 09 02 38 39 02 04 4C 69 73
+   74 0A 02 36 06 10 02 3B 3E 0D 01 3C 0A 02 3D 04
+   01 03 64 74 64 09 02 3F 3C 02 04 44 65 63 6C 08
+   07 41 00 FFFFFFC0 FFFFFF80 FFFFFF84 00 42 01 09 64 65 63 6C 73 5F
+   24 65 71 14 02 43 46 10 02 1B 44 09 02 45 06 02
+   04 55 6E 69 74 08 07 47 40 FFFFFF81 FFFFFF80 FFFFFFC0 00 2E 01 03
+   78 24 31 08 06 49 00 FFFFFFA0 FFFFFFA0 04 2E 01 06 64 65 63
+   6C 73 20 08 07 4B 00 FFFFFFC0 FFFFFF80 FFFFFF84 00 4C 01 03 65 6E
+   74 15 01 4D 10 04 4E 53 55 5C 0D 01 4F 0A 02 50
+   51 01 07 6D 75 74 61 62 6C 65 0A 02 52 06 01 0A
+   63 6F 6C 6C 65 63 74 69 6F 6E 09 02 54 4F 02 03
+   4D 61 70 10 02 56 59 0E 02 1B 57 09 02 58 06 01
+   06 50 72 65 64 65 66 09 02 5A 5B 02 06 53 74 72
+   69 6E 67 0A 02 58 06 10 02 3B 5D 09 02 5E 3C 02
+   0A 45 6E 74 69 74 79 44 65 63 6C 08 07 60 00 FFFFFFC0
+   FFFFFF80 FFFFFF84 00 61 01 07 65 6E 74 5F 24 65 71 14 02 43
+   62 08 07 47 5F FFFFFF81 FFFFFF80 FFFFFFC0 00 4D 08 06 64 00 FFFFFFA0 FFFFFFA0
+   04 4D 01 04 65 6E 74 20 08 05 66 00 FFFFFF84 00 67 01
+   0E 6C 6F 6F 6B 75 70 45 6C 65 6D 44 65 63 6C 14
+   02 68 6B 10 02 3B 69 09 02 6A 3C 02 08 45 6C 65
+   6D 44 65 63 6C 08 05 6C 65 FFFFFFC0 00 55 01 05 4C 61
+   62 65 6C 08 05 6E 00 FFFFFF84 00 6F 01 0F 72 65 70 6C
+   61 63 65 6D 65 6E 74 54 65 78 74 14 02 70 76 10
+   02 71 74 0D 01 72 0A 02 73 06 01 02 69 6F 09 02
+   75 72 02 06 53 6F 75 72 63 65 08 05 77 6D FFFFFFC0 00
+   55 01 0A 65 6E 74 69 74 79 4E 61 6D 65 08 05 79
+   00 FFFFFF84 00 7A 01 06 65 6E 64 44 54 44 14 02 43 7B
+   08 05 7C 78 FFFFFFC0 00 55 01 01 6E 08 05 7E 00 FFFFFF84 00
+   7F 01 09 65 6C 65 6D 53 74 61 72 74 14 0B 43 FFFFFF81
+   00 FFFFFF81 05 FFFFFF81 07 FFFFFF81 09 FFFFFF81 0F 08 07 FFFFFF81 01 7D FFFFFFC0 00
+   FFFFFF81 02 01 03 70 6F 73 10 03 1B FFFFFF81 03 09 03 FFFFFF81 04
+   06 02 03 49 6E 74 08 06 FFFFFF81 06 7D FFFFFFC0 00 55 01 03
+   70 72 65 08 06 FFFFFF81 08 7D FFFFFFC0 00 55 01 05 6C 61 62
+   65 6C 08 07 FFFFFF81 0A 7D FFFFFFC0 00 FFFFFF81 0B 01 05 61 74 74
+   72 73 10 04 FFFFFF81 0C FFFFFF81 0D 0D 01 04 09 03 FFFFFF81 0E 04
+   02 08 4D 65 74 61 44 61 74 61 08 07 FFFFFF81 10 7D FFFFFFC0
+   00 FFFFFF81 11 01 05 73 63 6F 70 65 10 04 FFFFFF81 0C FFFFFF81 12
+   09 03 FFFFFF81 13 04 02 10 4E 61 6D 65 73 70 61 63 65
+   42 69 6E 64 69 6E 67 08 07 FFFFFF81 15 00 FFFFFF84 00 FFFFFF81 16
+   01 07 65 6C 65 6D 45 6E 64 14 07 43 FFFFFF81 17 FFFFFF81 18
+   FFFFFF81 19 08 08 FFFFFF81 01 FFFFFF81 14 FFFFFFC0 00 FFFFFF81 02 08 07 FFFFFF81 06
+   FFFFFF81 14 FFFFFFC0 00 55 08 07 FFFFFF81 08 FFFFFF81 14 FFFFFFC0 00 55 08 07
+   FFFFFF81 1B 00 FFFFFF86 00 FFFFFF81 1C 01 04 65 6C 65 6D 14 0E FFFFFF81
+   1D FFFFFF81 20 FFFFFF81 21 FFFFFF81 22 FFFFFF81 23 FFFFFF81 24 FFFFFF81 25 10 04 FFFFFF81
+   0C FFFFFF81 1E 09 03 FFFFFF81 1F 04 02 07 4E 6F 64 65 53 65
+   71 08 08 FFFFFF81 01 FFFFFF81 1A FFFFFFC0 00 FFFFFF81 02 08 07 FFFFFF81 06 FFFFFF81
+   1A FFFFFFC0 00 55 08 07 FFFFFF81 08 FFFFFF81 1A FFFFFFC0 00 55 08 08 FFFFFF81
+   0A FFFFFF81 1A FFFFFFC0 00 FFFFFF81 0B 08 08 FFFFFF81 10 FFFFFF81 1A FFFFFFC0 00 FFFFFF81
+   11 08 08 FFFFFF81 26 FFFFFF81 1A FFFFFFC0 00 FFFFFF81 1D 01 04 61 72 67
+   73 08 07 FFFFFF81 28 00 FFFFFF86 00 FFFFFF81 29 01 09 70 72 6F 63
+   49 6E 73 74 72 14 08 FFFFFF81 1D FFFFFF81 2A FFFFFF81 2B FFFFFF81 2D 08
+   08 FFFFFF81 01 FFFFFF81 27 FFFFFFC0 00 FFFFFF81 02 08 07 FFFFFF81 2C FFFFFF81 27 FFFFFFC0
+   00 55 01 06 74 61 72 67 65 74 08 07 FFFFFF81 2E FFFFFF81 27
+   FFFFFFC0 00 55 01 03 74 78 74 08 07 FFFFFF81 30 00 FFFFFF86 00 FFFFFF81
+   31 01 07 63 6F 6D 6D 65 6E 74 14 06 FFFFFF81 1D FFFFFF81 32
+   FFFFFF81 33 08 08 FFFFFF81 01 FFFFFF81 2F FFFFFFC0 00 FFFFFF81 02 08 07 FFFFFF81 30
+   FFFFFF81 2F FFFFFFC0 00 55 08 07 FFFFFF81 35 00 FFFFFF86 00 FFFFFF81 36 01 09
+   65 6E 74 69 74 79 52 65 66 14 06 FFFFFF81 1D FFFFFF81 37 FFFFFF81
+   38 08 08 FFFFFF81 01 FFFFFF81 34 FFFFFFC0 00 FFFFFF81 02 08 06 7C FFFFFF81 34
+   FFFFFFC0 00 55 08 07 FFFFFF81 3A 00 FFFFFF86 00 FFFFFF81 3B 01 04 74 65
+   78 74 14 06 FFFFFF81 1D FFFFFF81 3C FFFFFF81 3D 08 08 FFFFFF81 01 FFFFFF81 39
+   FFFFFFC0 00 FFFFFF81 02 08 07 FFFFFF81 2E FFFFFF81 39 FFFFFFC0 00 55 08 07 FFFFFF81
+   3F 00 FFFFFF84 00 FFFFFF81 40 01 08 65 6C 65 6D 44 65 63 6C
+   14 05 43 FFFFFF81 41 FFFFFF81 42 08 06 7C FFFFFF81 3E FFFFFFC0 00 55 08
+   07 FFFFFF81 43 FFFFFF81 3E FFFFFFC0 00 55 01 05 63 6D 73 74 72 08
+   07 FFFFFF81 45 00 FFFFFF84 00 FFFFFF81 46 01 0B 61 74 74 4C 69 73
+   74 44 65 63 6C 14 05 43 FFFFFF81 47 FFFFFF81 49 08 07 FFFFFF81 48
+   FFFFFF81 44 FFFFFFC0 00 55 01 04 6E 61 6D 65 08 08 FFFFFF81 4A FFFFFF81
+   44 FFFFFFC0 00 FFFFFF81 4B 01 07 61 74 74 4C 69 73 74 10 04
+   2F 37 FFFFFF81 4C 10 03 3B FFFFFF81 4D 09 03 FFFFFF81 4E 3C 02 08
+   41 74 74 72 44 65 63 6C 08 07 FFFFFF81 50 00 FFFFFF84 00 FFFFFF81
+   51 01 13 70 61 72 61 6D 65 74 65 72 45 6E 74 69
+   74 79 44 65 63 6C 14 05 43 FFFFFF81 52 FFFFFF81 53 08 07 FFFFFF81
+   48 FFFFFF81 4F FFFFFFC0 00 55 08 08 FFFFFF81 54 FFFFFF81 4F FFFFFFC0 00 FFFFFF81 55
+   01 04 65 64 65 66 10 03 3B FFFFFF81 56 09 03 FFFFFF81 57 3C
+   02 09 45 6E 74 69 74 79 44 65 66 08 07 FFFFFF81 59 00
+   FFFFFF84 00 FFFFFF81 5A 01 10 70 61 72 73 65 64 45 6E 74 69
+   74 79 44 65 63 6C 14 05 43 FFFFFF81 5B FFFFFF81 5C 08 07 FFFFFF81
+   48 FFFFFF81 58 FFFFFFC0 00 55 08 08 FFFFFF81 54 FFFFFF81 58 FFFFFFC0 00 FFFFFF81 55
+   08 07 FFFFFF81 5E 00 FFFFFF84 00 FFFFFF81 5F 01 12 75 6E 70 61 72
+   73 65 64 45 6E 74 69 74 79 44 65 63 6C 14 07 43
+   FFFFFF81 60 FFFFFF81 61 FFFFFF81 66 08 07 FFFFFF81 48 FFFFFF81 5D FFFFFFC0 00 55 08
+   08 FFFFFF81 62 FFFFFF81 5D FFFFFFC0 00 FFFFFF81 63 01 05 65 78 74 49 44
+   10 03 3B FFFFFF81 64 09 03 FFFFFF81 65 3C 02 0A 45 78 74 65
+   72 6E 61 6C 49 44 08 07 FFFFFF81 67 FFFFFF81 5D FFFFFFC0 00 55 01
+   05 6E 6F 74 61 74 08 07 FFFFFF81 69 00 FFFFFF84 00 FFFFFF81 6A 01
+   0C 6E 6F 74 61 74 69 6F 6E 44 65 63 6C 14 05 43
+   FFFFFF81 6B FFFFFF81 6C 08 07 FFFFFF81 67 FFFFFF81 68 FFFFFFC0 00 55 08 08 FFFFFF81
+   62 FFFFFF81 68 FFFFFFC0 00 FFFFFF81 63 08 07 FFFFFF81 6E 00 FFFFFF84 00 FFFFFF81 6F
+   01 0B 70 65 52 65 66 65 72 65 6E 63 65 14 03 43
+   FFFFFF81 70 08 07 FFFFFF81 48 FFFFFF81 6D FFFFFFC0 00 55 08 07 FFFFFF81 72 00
+   FFFFFF86 00 FFFFFF81 73 01 11 72 65 70 6F 72 74 53 79 6E 74
+   61 78 45 72 72 6F 72 14 05 43 FFFFFF81 74 FFFFFF81 75 08 08
+   FFFFFF81 01 FFFFFF81 71 FFFFFFC0 00 FFFFFF81 02 08 07 FFFFFF81 76 FFFFFF81 71 FFFFFFC0 00
+   55 01 03 73 74 72 
+  minor version: 0
+  major version: 49
+  Constant pool:
+const #1 = Asciz	SourceFile;
+const #2 = Asciz	MarkupHandler.scala;
+const #3 = Asciz	ent;
+const #4 = Asciz	Lscala/collection/mutable/Map;;
+const #5 = Asciz	Lscala/collection/mutable/Map<Ljava/lang/String;Lscala/xml/dtd/EntityDecl;>;;
+const #6 = Asciz	Signature;
+const #7 = Asciz	decls;
+const #8 = Asciz	Lscala/collection/immutable/List;;
+const #9 = Asciz	Lscala/collection/immutable/List<Lscala/xml/dtd/Decl;>;;
+const #10 = Asciz	isValidating;
+const #11 = Asciz	Z;
+const #12 = Asciz	<init>;
+const #13 = Asciz	()V;
+const #14 = Asciz	Code;
+const #15 = Asciz	LineNumberTable;
+const #16 = Asciz	java/lang/Object;
+const #17 = class	#16;	//  java/lang/Object
+const #18 = NameAndType	#12:#13;//  "<init>":()V
+const #19 = Method	#17.#18;	//  java/lang/Object."<init>":()V
+const #20 = Asciz	scala/util/logging/Logged$class;
+const #21 = class	#20;	//  scala/util/logging/Logged$class
+const #22 = Asciz	$init$;
+const #23 = Asciz	(Lscala/util/logging/Logged;)V;
+const #24 = NameAndType	#22:#23;//  $init$:(Lscala/util/logging/Logged;)V
+const #25 = Method	#21.#24;	//  scala/util/logging/Logged$class.$init$:(Lscala/util/logging/Logged;)V
+const #26 = Asciz	scala/xml/parsing/MarkupHandler;
+const #27 = class	#26;	//  scala/xml/parsing/MarkupHandler
+const #28 = NameAndType	#10:#11;//  isValidating:Z
+const #29 = Field	#27.#28;	//  scala/xml/parsing/MarkupHandler.isValidating:Z
+const #30 = Asciz	scala/collection/immutable/Nil$;
+const #31 = class	#30;	//  scala/collection/immutable/Nil$
+const #32 = Asciz	MODULE$;
+const #33 = Asciz	Lscala/collection/immutable/Nil$;;
+const #34 = NameAndType	#32:#33;//  MODULE$:Lscala/collection/immutable/Nil$;
+const #35 = Field	#31.#34;	//  scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+const #36 = NameAndType	#7:#8;//  decls:Lscala/collection/immutable/List;
+const #37 = Field	#27.#36;	//  scala/xml/parsing/MarkupHandler.decls:Lscala/collection/immutable/List;
+const #38 = Asciz	scala/collection/mutable/HashMap;
+const #39 = class	#38;	//  scala/collection/mutable/HashMap
+const #40 = Method	#39.#18;	//  scala/collection/mutable/HashMap."<init>":()V
+const #41 = NameAndType	#3:#4;//  ent:Lscala/collection/mutable/Map;
+const #42 = Field	#27.#41;	//  scala/xml/parsing/MarkupHandler.ent:Lscala/collection/mutable/Map;
+const #43 = Asciz	gd2$1;
+const #44 = Asciz	()Z;
+const #45 = NameAndType	#10:#44;//  isValidating:()Z
+const #46 = Method	#27.#45;	//  scala/xml/parsing/MarkupHandler.isValidating:()Z
+const #47 = Asciz	gd1$1;
+const #48 = Asciz	lookup$1;
+const #49 = Asciz	(Lscala/collection/immutable/List;Ljava/lang/String;)Lscala/xml/dtd/ElemDecl;;
+const #50 = Asciz	scala/collection/immutable/$colon$colon;
+const #51 = class	#50;	//  scala/collection/immutable/$colon$colon
+const #52 = Asciz	hd$1;
+const #53 = Asciz	()Ljava/lang/Object;;
+const #54 = NameAndType	#52:#53;//  hd$1:()Ljava/lang/Object;
+const #55 = Method	#51.#54;	//  scala/collection/immutable/$colon$colon.hd$1:()Ljava/lang/Object;
+const #56 = Asciz	scala/xml/dtd/Decl;
+const #57 = class	#56;	//  scala/xml/dtd/Decl
+const #58 = Asciz	tl$1;
+const #59 = Asciz	()Lscala/collection/immutable/List;;
+const #60 = NameAndType	#58:#59;//  tl$1:()Lscala/collection/immutable/List;
+const #61 = Method	#51.#60;	//  scala/collection/immutable/$colon$colon.tl$1:()Lscala/collection/immutable/List;
+const #62 = Asciz	scala/xml/dtd/ElemDecl;
+const #63 = class	#62;	//  scala/xml/dtd/ElemDecl
+const #64 = Asciz	name;
+const #65 = Asciz	()Ljava/lang/String;;
+const #66 = NameAndType	#64:#65;//  name:()Ljava/lang/String;
+const #67 = Method	#63.#66;	//  scala/xml/dtd/ElemDecl.name:()Ljava/lang/String;
+const #68 = Asciz	equals;
+const #69 = Asciz	(Ljava/lang/Object;)Z;
+const #70 = NameAndType	#68:#69;//  equals:(Ljava/lang/Object;)Z
+const #71 = Method	#17.#70;	//  java/lang/Object.equals:(Ljava/lang/Object;)Z
+const #72 = Asciz	java/lang/String;
+const #73 = class	#72;	//  java/lang/String
+const #74 = Asciz	this;
+const #75 = Asciz	Lscala/xml/parsing/MarkupHandler;;
+const #76 = Asciz	xs;
+const #77 = Asciz	temp1;
+const #78 = Asciz	temp2;
+const #79 = Asciz	Lscala/collection/immutable/$colon$colon;;
+const #80 = Asciz	temp3;
+const #81 = Asciz	Lscala/xml/dtd/Decl;;
+const #82 = Asciz	temp4;
+const #83 = Asciz	temp5;
+const #84 = Asciz	Lscala/xml/dtd/ElemDecl;;
+const #85 = Asciz	temp6;
+const #86 = Asciz	Ljava/lang/String;;
+const #87 = Asciz	zs;
+const #88 = Asciz	LocalVariableTable;
+const #89 = Asciz	reportSyntaxError;
+const #90 = Asciz	(ILjava/lang/String;)V;
+const #91 = Asciz	peReference;
+const #92 = Asciz	(Ljava/lang/String;)V;
+const #93 = Asciz	scala/xml/dtd/PEReference;
+const #94 = class	#93;	//  scala/xml/dtd/PEReference
+const #95 = NameAndType	#12:#92;//  "<init>":(Ljava/lang/String;)V
+const #96 = Method	#94.#95;	//  scala/xml/dtd/PEReference."<init>":(Ljava/lang/String;)V
+const #97 = NameAndType	#7:#59;//  decls:()Lscala/collection/immutable/List;
+const #98 = Method	#27.#97;	//  scala/xml/parsing/MarkupHandler.decls:()Lscala/collection/immutable/List;
+const #99 = Asciz	scala/collection/immutable/List;
+const #100 = class	#99;	//  scala/collection/immutable/List
+const #101 = Asciz	$colon$colon;
+const #102 = Asciz	(Ljava/lang/Object;)Lscala/collection/immutable/List;;
+const #103 = NameAndType	#101:#102;//  $colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
+const #104 = Method	#100.#103;	//  scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
+const #105 = Asciz	decls_$eq;
+const #106 = Asciz	(Lscala/collection/immutable/List;)V;
+const #107 = NameAndType	#105:#106;//  decls_$eq:(Lscala/collection/immutable/List;)V
+const #108 = Method	#27.#107;	//  scala/xml/parsing/MarkupHandler.decls_$eq:(Lscala/collection/immutable/List;)V
+const #109 = Asciz	notationDecl;
+const #110 = Asciz	(Ljava/lang/String;Lscala/xml/dtd/ExternalID;)V;
+const #111 = Asciz	notat;
+const #112 = Asciz	extID;
+const #113 = Asciz	Lscala/xml/dtd/ExternalID;;
+const #114 = Asciz	unparsedEntityDecl;
+const #115 = Asciz	(Ljava/lang/String;Lscala/xml/dtd/ExternalID;Ljava/lang/String;)V;
+const #116 = Asciz	parsedEntityDecl;
+const #117 = Asciz	(Ljava/lang/String;Lscala/xml/dtd/EntityDef;)V;
+const #118 = Asciz	scala/xml/dtd/ExtDef;
+const #119 = class	#118;	//  scala/xml/dtd/ExtDef
+const #120 = NameAndType	#43:#44;//  gd2$1:()Z
+const #121 = Method	#27.#120;	//  scala/xml/parsing/MarkupHandler.gd2$1:()Z
+const #122 = Asciz	scala/xml/dtd/ParsedEntityDecl;
+const #123 = class	#122;	//  scala/xml/dtd/ParsedEntityDecl
+const #124 = NameAndType	#12:#117;//  "<init>":(Ljava/lang/String;Lscala/xml/dtd/EntityDef;)V
+const #125 = Method	#123.#124;	//  scala/xml/dtd/ParsedEntityDecl."<init>":(Ljava/lang/String;Lscala/xml/dtd/EntityDef;)V
+const #126 = Asciz	()Lscala/collection/mutable/Map;;
+const #127 = NameAndType	#3:#126;//  ent:()Lscala/collection/mutable/Map;
+const #128 = Method	#27.#127;	//  scala/xml/parsing/MarkupHandler.ent:()Lscala/collection/mutable/Map;
+const #129 = Asciz	scala/collection/generic/MutableMapTemplate;
+const #130 = class	#129;	//  scala/collection/generic/MutableMapTemplate
+const #131 = Asciz	update;
+const #132 = Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
+const #133 = NameAndType	#131:#132;//  update:(Ljava/lang/Object;Ljava/lang/Object;)V
+const #134 = InterfaceMethod	#130.#133;	//  scala/collection/generic/MutableMapTemplate.update:(Ljava/lang/Object;Ljava/lang/Object;)V
+const #135 = Asciz	edef;
+const #136 = Asciz	Lscala/xml/dtd/EntityDef;;
+const #137 = Asciz	temp26;
+const #138 = Asciz	y;
+const #139 = Asciz	Lscala/xml/dtd/ParsedEntityDecl;;
+const #140 = Asciz	parameterEntityDecl;
+const #141 = NameAndType	#47:#44;//  gd1$1:()Z
+const #142 = Method	#27.#141;	//  scala/xml/parsing/MarkupHandler.gd1$1:()Z
+const #143 = Asciz	scala/xml/dtd/ParameterEntityDecl;
+const #144 = class	#143;	//  scala/xml/dtd/ParameterEntityDecl
+const #145 = Method	#144.#124;	//  scala/xml/dtd/ParameterEntityDecl."<init>":(Ljava/lang/String;Lscala/xml/dtd/EntityDef;)V
+const #146 = Asciz	temp23;
+const #147 = Asciz	Lscala/xml/dtd/ParameterEntityDecl;;
+const #148 = Asciz	attListDecl;
+const #149 = Asciz	(Ljava/lang/String;Lscala/collection/immutable/List;)V;
+const #150 = Asciz	attList;
+const #151 = Asciz	(Ljava/lang/String;Lscala/collection/immutable/List<Lscala/xml/dtd/AttrDecl;>;)V;
+const #152 = Asciz	elemDecl;
+const #153 = Asciz	(Ljava/lang/String;Ljava/lang/String;)V;
+const #154 = Asciz	n;
+const #155 = Asciz	cmstr;
+const #156 = Asciz	text;
+const #157 = Asciz	(ILjava/lang/String;)Lscala/xml/NodeSeq;;
+const #158 = Asciz	entityRef;
+const #159 = Asciz	comment;
+const #160 = Asciz	procInstr;
+const #161 = Asciz	(ILjava/lang/String;Ljava/lang/String;)Lscala/xml/NodeSeq;;
+const #162 = Asciz	elem;
+const #163 = Asciz	(ILjava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/xml/NodeSeq;)Lscala/xml/NodeSeq;;
+const #164 = Asciz	elemEnd;
+const #165 = Asciz	(ILjava/lang/String;Ljava/lang/String;)V;
+const #166 = Asciz	pos;
+const #167 = Asciz	I;
+const #168 = Asciz	pre;
+const #169 = Asciz	label;
+const #170 = Asciz	elemStart;
+const #171 = Asciz	(ILjava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;)V;
+const #172 = Asciz	attrs;
+const #173 = Asciz	Lscala/xml/MetaData;;
+const #174 = Asciz	scope;
+const #175 = Asciz	Lscala/xml/NamespaceBinding;;
+const #176 = Asciz	endDTD;
+const #177 = Asciz	replacementText;
+const #178 = Asciz	(Ljava/lang/String;)Lscala/io/Source;;
+const #179 = Asciz	scala/collection/generic/MapTemplate;
+const #180 = class	#179;	//  scala/collection/generic/MapTemplate
+const #181 = Asciz	get;
+const #182 = Asciz	(Ljava/lang/Object;)Lscala/Option;;
+const #183 = NameAndType	#181:#182;//  get:(Ljava/lang/Object;)Lscala/Option;
+const #184 = InterfaceMethod	#180.#183;	//  scala/collection/generic/MapTemplate.get:(Ljava/lang/Object;)Lscala/Option;
+const #185 = Asciz	scala/Some;
+const #186 = class	#185;	//  scala/Some
+const #187 = Asciz	x;
+const #188 = NameAndType	#187:#53;//  x:()Ljava/lang/Object;
+const #189 = Method	#186.#188;	//  scala/Some.x:()Ljava/lang/Object;
+const #190 = Asciz	scala/xml/dtd/EntityDecl;
+const #191 = class	#190;	//  scala/xml/dtd/EntityDecl
+const #192 = Asciz	entdef;
+const #193 = Asciz	()Lscala/xml/dtd/EntityDef;;
+const #194 = NameAndType	#192:#193;//  entdef:()Lscala/xml/dtd/EntityDef;
+const #195 = Method	#123.#194;	//  scala/xml/dtd/ParsedEntityDecl.entdef:()Lscala/xml/dtd/EntityDef;
+const #196 = Asciz	scala/xml/dtd/IntDef;
+const #197 = class	#196;	//  scala/xml/dtd/IntDef
+const #198 = Asciz	value;
+const #199 = NameAndType	#198:#65;//  value:()Ljava/lang/String;
+const #200 = Method	#197.#199;	//  scala/xml/dtd/IntDef.value:()Ljava/lang/String;
+const #201 = Asciz	scala/io/Source$;
+const #202 = class	#201;	//  scala/io/Source$
+const #203 = Asciz	Lscala/io/Source$;;
+const #204 = NameAndType	#32:#203;//  MODULE$:Lscala/io/Source$;
+const #205 = Field	#202.#204;	//  scala/io/Source$.MODULE$:Lscala/io/Source$;
+const #206 = Asciz	fromString;
+const #207 = NameAndType	#206:#178;//  fromString:(Ljava/lang/String;)Lscala/io/Source;
+const #208 = Method	#202.#207;	//  scala/io/Source$.fromString:(Ljava/lang/String;)Lscala/io/Source;
+const #209 = Method	#144.#194;	//  scala/xml/dtd/ParameterEntityDecl.entdef:()Lscala/xml/dtd/EntityDef;
+const #210 = Asciz	scala/collection/mutable/StringBuilder;
+const #211 = class	#210;	//  scala/collection/mutable/StringBuilder
+const #212 = Method	#211.#18;	//  scala/collection/mutable/StringBuilder."<init>":()V
+const #213 = Asciz	 ;
+const #214 = String	#213;	//   
+const #215 = Asciz	append;
+const #216 = Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
+const #217 = NameAndType	#215:#216;//  append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+const #218 = Method	#211.#217;	//  scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+const #219 = Asciz	toString;
+const #220 = NameAndType	#219:#65;//  toString:()Ljava/lang/String;
+const #221 = Method	#211.#220;	//  scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+const #222 = Asciz	<!-- ;
+const #223 = String	#222;	//  <!-- 
+const #224 = Asciz	; -->;
+const #225 = String	#224;	//  ; -->
+const #226 = Asciz	scala/None$;
+const #227 = class	#226;	//  scala/None$
+const #228 = Asciz	Lscala/None$;;
+const #229 = NameAndType	#32:#228;//  MODULE$:Lscala/None$;
+const #230 = Field	#227.#229;	//  scala/None$.MODULE$:Lscala/None$;
+const #231 = Asciz	<!-- unknown entity ;
+const #232 = String	#231;	//  <!-- unknown entity 
+const #233 = Asciz	scala/MatchError;
+const #234 = class	#233;	//  scala/MatchError
+const #235 = Asciz	scala/Option;
+const #236 = class	#235;	//  scala/Option
+const #237 = Method	#236.#220;	//  scala/Option.toString:()Ljava/lang/String;
+const #238 = Method	#234.#95;	//  scala/MatchError."<init>":(Ljava/lang/String;)V
+const #239 = Asciz	entityName;
+const #240 = Asciz	temp9;
+const #241 = Asciz	Lscala/Option;;
+const #242 = Asciz	temp10;
+const #243 = Asciz	Lscala/Some;;
+const #244 = Asciz	temp11;
+const #245 = Asciz	Lscala/xml/dtd/EntityDecl;;
+const #246 = Asciz	temp12;
+const #247 = Asciz	temp14;
+const #248 = Asciz	temp15;
+const #249 = Asciz	Lscala/xml/dtd/IntDef;;
+const #250 = Asciz	temp16;
+const #251 = Asciz	temp17;
+const #252 = Asciz	temp19;
+const #253 = Asciz	temp20;
+const #254 = Asciz	temp21;
+const #255 = Asciz	lookupElemDecl;
+const #256 = Asciz	(Ljava/lang/String;)Lscala/xml/dtd/ElemDecl;;
+const #257 = NameAndType	#48:#49;//  lookup$1:(Lscala/collection/immutable/List;Ljava/lang/String;)Lscala/xml/dtd/ElemDecl;
+const #258 = Method	#27.#257;	//  scala/xml/parsing/MarkupHandler.lookup$1:(Lscala/collection/immutable/List;Ljava/lang/String;)Lscala/xml/dtd/ElemDecl;
+const #259 = Asciz	Label$1;
+const #260 = Asciz	ent_$eq;
+const #261 = Asciz	(Lscala/collection/mutable/Map;)V;
+const #262 = Asciz	(Lscala/collection/mutable/Map<Ljava/lang/String;Lscala/xml/dtd/EntityDecl;>;)V;
+const #263 = Asciz	()Lscala/collection/mutable/Map<Ljava/lang/String;Lscala/xml/dtd/EntityDecl;>;;
+const #264 = Asciz	(Lscala/collection/immutable/List<Lscala/xml/dtd/Decl;>;)V;
+const #265 = Asciz	()Lscala/collection/immutable/List<Lscala/xml/dtd/Decl;>;;
+const #266 = Asciz	log;
+const #267 = Asciz	(Lscala/util/logging/Logged;Ljava/lang/String;)V;
+const #268 = NameAndType	#266:#267;//  log:(Lscala/util/logging/Logged;Ljava/lang/String;)V
+const #269 = Method	#21.#268;	//  scala/util/logging/Logged$class.log:(Lscala/util/logging/Logged;Ljava/lang/String;)V
+const #270 = Asciz	msg;
+const #271 = Asciz	ScalaSig;
+const #272 = Asciz	scala/util/logging/Logged;
+const #273 = class	#272;	//  scala/util/logging/Logged
+const #274 = Asciz	scala/ScalaObject;
+const #275 = class	#274;	//  scala/ScalaObject
+
+{
+public scala.xml.parsing.MarkupHandler();
+  Code:
+   Stack=3, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokespecial	#19; //Method java/lang/Object."<init>":()V
+   4:	aload_0
+   5:	invokestatic	#25; //Method scala/util/logging/Logged$class.$init$:(Lscala/util/logging/Logged;)V
+   8:	aload_0
+   9:	iconst_0
+   10:	putfield	#29; //Field isValidating:Z
+   13:	aload_0
+   14:	getstatic	#35; //Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+   17:	putfield	#37; //Field decls:Lscala/collection/immutable/List;
+   20:	aload_0
+   21:	new	#39; //class scala/collection/mutable/HashMap
+   24:	dup
+   25:	invokespecial	#40; //Method scala/collection/mutable/HashMap."<init>":()V
+   28:	putfield	#42; //Field ent:Lscala/collection/mutable/Map;
+   31:	return
+  LineNumberTable: 
+   line 29: 0
+   line 35: 8
+   line 37: 13
+   line 39: 20
+
+
+public abstract void reportSyntaxError(int, java.lang.String);
+
+public void peReference(java.lang.String);
+  Code:
+   Stack=4, Locals=3, Args_size=2
+   0:	aload_0
+   1:	new	#94; //class scala/xml/dtd/PEReference
+   4:	dup
+   5:	aload_1
+   6:	invokespecial	#96; //Method scala/xml/dtd/PEReference."<init>":(Ljava/lang/String;)V
+   9:	astore_2
+   10:	aload_0
+   11:	invokevirtual	#98; //Method decls:()Lscala/collection/immutable/List;
+   14:	aload_2
+   15:	invokevirtual	#104; //Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
+   18:	invokevirtual	#108; //Method decls_$eq:(Lscala/collection/immutable/List;)V
+   21:	return
+  LineNumberTable: 
+   line 154: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      22      0    this       Lscala/xml/parsing/MarkupHandler;
+   0      22      1    name       Ljava/lang/String;
+
+
+public void notationDecl(java.lang.String, scala.xml.dtd.ExternalID);
+  Code:
+   Stack=0, Locals=3, Args_size=3
+   0:	return
+  LineNumberTable: 
+   line 152: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    this       Lscala/xml/parsing/MarkupHandler;
+   0      1      1    notat       Ljava/lang/String;
+   0      1      2    extID       Lscala/xml/dtd/ExternalID;
+
+
+public void unparsedEntityDecl(java.lang.String, scala.xml.dtd.ExternalID, java.lang.String);
+  Code:
+   Stack=0, Locals=4, Args_size=4
+   0:	return
+  LineNumberTable: 
+   line 150: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    this       Lscala/xml/parsing/MarkupHandler;
+   0      1      1    name       Ljava/lang/String;
+   0      1      2    extID       Lscala/xml/dtd/ExternalID;
+   0      1      3    notat       Ljava/lang/String;
+
+
+public void parsedEntityDecl(java.lang.String, scala.xml.dtd.EntityDef);
+  Code:
+   Stack=4, Locals=6, Args_size=3
+   0:	aload_2
+   1:	astore_3
+   2:	aload_3
+   3:	instanceof	#119; //class scala/xml/dtd/ExtDef
+   6:	ifeq	16
+   9:	aload_0
+   10:	invokespecial	#121; //Method gd2$1:()Z
+   13:	ifne	56
+   16:	new	#123; //class scala/xml/dtd/ParsedEntityDecl
+   19:	dup
+   20:	aload_1
+   21:	aload_2
+   22:	invokespecial	#125; //Method scala/xml/dtd/ParsedEntityDecl."<init>":(Ljava/lang/String;Lscala/xml/dtd/EntityDef;)V
+   25:	astore	4
+   27:	aload_0
+   28:	aload	4
+   30:	astore	5
+   32:	aload_0
+   33:	invokevirtual	#98; //Method decls:()Lscala/collection/immutable/List;
+   36:	aload	5
+   38:	invokevirtual	#104; //Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
+   41:	invokevirtual	#108; //Method decls_$eq:(Lscala/collection/immutable/List;)V
+   44:	aload_0
+   45:	invokevirtual	#128; //Method ent:()Lscala/collection/mutable/Map;
+   48:	aload_1
+   49:	aload	4
+   51:	invokeinterface	#134,  3; //InterfaceMethod scala/collection/generic/MutableMapTemplate.update:(Ljava/lang/Object;Ljava/lang/Object;)V
+   56:	return
+  LineNumberTable: 
+   line 140: 0
+   line 144: 16
+   line 145: 27
+   line 146: 44
+   line 140: 56
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      57      0    this       Lscala/xml/parsing/MarkupHandler;
+   0      57      1    name       Ljava/lang/String;
+   0      57      2    edef       Lscala/xml/dtd/EntityDef;
+   2      55      3    temp26       Lscala/xml/dtd/EntityDef;
+   27      29      4    y       Lscala/xml/dtd/ParsedEntityDecl;
+
+
+public void parameterEntityDecl(java.lang.String, scala.xml.dtd.EntityDef);
+  Code:
+   Stack=4, Locals=6, Args_size=3
+   0:	aload_2
+   1:	astore_3
+   2:	aload_3
+   3:	instanceof	#119; //class scala/xml/dtd/ExtDef
+   6:	ifeq	16
+   9:	aload_0
+   10:	invokespecial	#142; //Method gd1$1:()Z
+   13:	ifne	56
+   16:	new	#144; //class scala/xml/dtd/ParameterEntityDecl
+   19:	dup
+   20:	aload_1
+   21:	aload_2
+   22:	invokespecial	#145; //Method scala/xml/dtd/ParameterEntityDecl."<init>":(Ljava/lang/String;Lscala/xml/dtd/EntityDef;)V
+   25:	astore	4
+   27:	aload_0
+   28:	aload	4
+   30:	astore	5
+   32:	aload_0
+   33:	invokevirtual	#98; //Method decls:()Lscala/collection/immutable/List;
+   36:	aload	5
+   38:	invokevirtual	#104; //Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
+   41:	invokevirtual	#108; //Method decls_$eq:(Lscala/collection/immutable/List;)V
+   44:	aload_0
+   45:	invokevirtual	#128; //Method ent:()Lscala/collection/mutable/Map;
+   48:	aload_1
+   49:	aload	4
+   51:	invokeinterface	#134,  3; //InterfaceMethod scala/collection/generic/MutableMapTemplate.update:(Ljava/lang/Object;Ljava/lang/Object;)V
+   56:	return
+  LineNumberTable: 
+   line 129: 0
+   line 133: 16
+   line 134: 27
+   line 135: 44
+   line 129: 56
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      57      0    this       Lscala/xml/parsing/MarkupHandler;
+   0      57      1    name       Ljava/lang/String;
+   0      57      2    edef       Lscala/xml/dtd/EntityDef;
+   2      55      3    temp23       Lscala/xml/dtd/EntityDef;
+   27      29      4    y       Lscala/xml/dtd/ParameterEntityDecl;
+
+
+public void attListDecl(java.lang.String, scala.collection.immutable.List);
+  Code:
+   Stack=0, Locals=3, Args_size=3
+   0:	return
+  LineNumberTable: 
+   line 125: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    this       Lscala/xml/parsing/MarkupHandler;
+   0      1      1    name       Ljava/lang/String;
+   0      1      2    attList       Lscala/collection/immutable/List;
+
+  Signature: length = 0x2
+   00 FFFFFF97 
+
+public void elemDecl(java.lang.String, java.lang.String);
+  Code:
+   Stack=0, Locals=3, Args_size=3
+   0:	return
+  LineNumberTable: 
+   line 123: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    this       Lscala/xml/parsing/MarkupHandler;
+   0      1      1    n       Ljava/lang/String;
+   0      1      2    cmstr       Ljava/lang/String;
+
+
+public abstract scala.xml.NodeSeq text(int, java.lang.String);
+
+public abstract scala.xml.NodeSeq entityRef(int, java.lang.String);
+
+public abstract scala.xml.NodeSeq comment(int, java.lang.String);
+
+public abstract scala.xml.NodeSeq procInstr(int, java.lang.String, java.lang.String);
+
+public abstract scala.xml.NodeSeq elem(int, java.lang.String, java.lang.String, scala.xml.MetaData, scala.xml.NamespaceBinding, scala.xml.NodeSeq);
+
+public void elemEnd(int, java.lang.String, java.lang.String);
+  Code:
+   Stack=0, Locals=4, Args_size=4
+   0:	return
+  LineNumberTable: 
+   line 81: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    this       Lscala/xml/parsing/MarkupHandler;
+   0      1      1    pos       I
+   0      1      2    pre       Ljava/lang/String;
+   0      1      3    label       Ljava/lang/String;
+
+
+public void elemStart(int, java.lang.String, java.lang.String, scala.xml.MetaData, scala.xml.NamespaceBinding);
+  Code:
+   Stack=0, Locals=6, Args_size=6
+   0:	return
+  LineNumberTable: 
+   line 72: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    this       Lscala/xml/parsing/MarkupHandler;
+   0      1      1    pos       I
+   0      1      2    pre       Ljava/lang/String;
+   0      1      3    label       Ljava/lang/String;
+   0      1      4    attrs       Lscala/xml/MetaData;
+   0      1      5    scope       Lscala/xml/NamespaceBinding;
+
+
+public void endDTD(java.lang.String);
+  Code:
+   Stack=0, Locals=2, Args_size=2
+   0:	return
+  LineNumberTable: 
+   line 63: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    this       Lscala/xml/parsing/MarkupHandler;
+   0      1      1    n       Ljava/lang/String;
+
+
+public scala.io.Source replacementText(java.lang.String);
+  Code:
+   Stack=3, Locals=14, Args_size=2
+   0:	aload_0
+   1:	invokevirtual	#128; //Method ent:()Lscala/collection/mutable/Map;
+   4:	aload_1
+   5:	invokeinterface	#184,  2; //InterfaceMethod scala/collection/generic/MapTemplate.get:(Ljava/lang/Object;)Lscala/Option;
+   10:	astore_2
+   11:	aload_2
+   12:	instanceof	#186; //class scala/Some
+   15:	ifeq	198
+   18:	aload_2
+   19:	checkcast	#186; //class scala/Some
+   22:	astore_3
+   23:	aload_3
+   24:	invokevirtual	#189; //Method scala/Some.x:()Ljava/lang/Object;
+   27:	checkcast	#191; //class scala/xml/dtd/EntityDecl
+   30:	astore	4
+   32:	aload	4
+   34:	instanceof	#123; //class scala/xml/dtd/ParsedEntityDecl
+   37:	ifeq	87
+   40:	aload	4
+   42:	checkcast	#123; //class scala/xml/dtd/ParsedEntityDecl
+   45:	astore	5
+   47:	aload	5
+   49:	invokevirtual	#195; //Method scala/xml/dtd/ParsedEntityDecl.entdef:()Lscala/xml/dtd/EntityDef;
+   52:	astore	6
+   54:	aload	6
+   56:	instanceof	#197; //class scala/xml/dtd/IntDef
+   59:	ifeq	165
+   62:	aload	6
+   64:	checkcast	#197; //class scala/xml/dtd/IntDef
+   67:	astore	7
+   69:	aload	7
+   71:	invokevirtual	#200; //Method scala/xml/dtd/IntDef.value:()Ljava/lang/String;
+   74:	astore	8
+   76:	getstatic	#205; //Field scala/io/Source$.MODULE$:Lscala/io/Source$;
+   79:	aload	8
+   81:	invokevirtual	#208; //Method scala/io/Source$.fromString:(Ljava/lang/String;)Lscala/io/Source;
+   84:	goto	262
+   87:	aload	4
+   89:	instanceof	#144; //class scala/xml/dtd/ParameterEntityDecl
+   92:	ifeq	165
+   95:	aload	4
+   97:	checkcast	#144; //class scala/xml/dtd/ParameterEntityDecl
+   100:	astore	9
+   102:	aload	9
+   104:	invokevirtual	#209; //Method scala/xml/dtd/ParameterEntityDecl.entdef:()Lscala/xml/dtd/EntityDef;
+   107:	astore	10
+   109:	aload	10
+   111:	instanceof	#197; //class scala/xml/dtd/IntDef
+   114:	ifeq	165
+   117:	aload	10
+   119:	checkcast	#197; //class scala/xml/dtd/IntDef
+   122:	astore	11
+   124:	aload	11
+   126:	invokevirtual	#200; //Method scala/xml/dtd/IntDef.value:()Ljava/lang/String;
+   129:	astore	12
+   131:	getstatic	#205; //Field scala/io/Source$.MODULE$:Lscala/io/Source$;
+   134:	new	#211; //class scala/collection/mutable/StringBuilder
+   137:	dup
+   138:	invokespecial	#212; //Method scala/collection/mutable/StringBuilder."<init>":()V
+   141:	ldc	#214; //String  
+   143:	invokevirtual	#218; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   146:	aload	12
+   148:	invokevirtual	#218; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   151:	ldc	#214; //String  
+   153:	invokevirtual	#218; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   156:	invokevirtual	#221; //Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+   159:	invokevirtual	#208; //Method scala/io/Source$.fromString:(Ljava/lang/String;)Lscala/io/Source;
+   162:	goto	262
+   165:	getstatic	#205; //Field scala/io/Source$.MODULE$:Lscala/io/Source$;
+   168:	new	#211; //class scala/collection/mutable/StringBuilder
+   171:	dup
+   172:	invokespecial	#212; //Method scala/collection/mutable/StringBuilder."<init>":()V
+   175:	ldc	#223; //String <!-- 
+   177:	invokevirtual	#218; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   180:	aload_1
+   181:	invokevirtual	#218; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   184:	ldc	#225; //String ; -->
+   186:	invokevirtual	#218; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   189:	invokevirtual	#221; //Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+   192:	invokevirtual	#208; //Method scala/io/Source$.fromString:(Ljava/lang/String;)Lscala/io/Source;
+   195:	goto	262
+   198:	getstatic	#230; //Field scala/None$.MODULE$:Lscala/None$;
+   201:	aload_2
+   202:	astore	13
+   204:	dup
+   205:	ifnonnull	217
+   208:	pop
+   209:	aload	13
+   211:	ifnull	225
+   214:	goto	263
+   217:	aload	13
+   219:	invokevirtual	#71; //Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+   222:	ifeq	263
+   225:	aload_2
+   226:	instanceof	#227; //class scala/None$
+   229:	ifeq	263
+   232:	getstatic	#205; //Field scala/io/Source$.MODULE$:Lscala/io/Source$;
+   235:	new	#211; //class scala/collection/mutable/StringBuilder
+   238:	dup
+   239:	invokespecial	#212; //Method scala/collection/mutable/StringBuilder."<init>":()V
+   242:	ldc	#232; //String <!-- unknown entity 
+   244:	invokevirtual	#218; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   247:	aload_1
+   248:	invokevirtual	#218; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   251:	ldc	#225; //String ; -->
+   253:	invokevirtual	#218; //Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+   256:	invokevirtual	#221; //Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+   259:	invokevirtual	#208; //Method scala/io/Source$.fromString:(Ljava/lang/String;)Lscala/io/Source;
+   262:	areturn
+   263:	new	#234; //class scala/MatchError
+   266:	dup
+   267:	aload_2
+   268:	invokevirtual	#237; //Method scala/Option.toString:()Ljava/lang/String;
+   271:	invokespecial	#238; //Method scala/MatchError."<init>":(Ljava/lang/String;)V
+   274:	athrow
+  LineNumberTable: 
+   line 50: 0
+   line 52: 76
+   line 51: 79
+   line 52: 81
+   line 50: 87
+   line 54: 131
+   line 53: 146
+   line 54: 151
+   line 56: 165
+   line 50: 198
+   line 58: 232
+   line 50: 262
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      275      0    this       Lscala/xml/parsing/MarkupHandler;
+   0      275      1    entityName       Ljava/lang/String;
+   11      264      2    temp9       Lscala/Option;
+   23      175      3    temp10       Lscala/Some;
+   32      166      4    temp11       Lscala/xml/dtd/EntityDecl;
+   47      40      5    temp12       Lscala/xml/dtd/ParsedEntityDecl;
+   165      33      5    temp12       Lscala/xml/dtd/ParsedEntityDecl;
+   54      33      6    temp14       Lscala/xml/dtd/EntityDef;
+   165      33      6    temp14       Lscala/xml/dtd/EntityDef;
+   69      15      7    temp15       Lscala/xml/dtd/IntDef;
+   76      8      8    temp16       Ljava/lang/String;
+   102      63      9    temp17       Lscala/xml/dtd/ParameterEntityDecl;
+   109      56      10    temp19       Lscala/xml/dtd/EntityDef;
+   124      38      11    temp20       Lscala/xml/dtd/IntDef;
+   131      31      12    temp21       Ljava/lang/String;
+
+
+public scala.xml.dtd.ElemDecl lookupElemDecl(java.lang.String);
+  Code:
+   Stack=3, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_0
+   2:	invokevirtual	#98; //Method decls:()Lscala/collection/immutable/List;
+   5:	aload_1
+   6:	invokespecial	#258; //Method lookup$1:(Lscala/collection/immutable/List;Ljava/lang/String;)Lscala/xml/dtd/ElemDecl;
+   9:	areturn
+  LineNumberTable: 
+   line 47: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      10      0    this       Lscala/xml/parsing/MarkupHandler;
+   0      10      1    Label$1       Ljava/lang/String;
+
+
+public void ent_$eq(scala.collection.mutable.Map);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#42; //Field ent:Lscala/collection/mutable/Map;
+   5:	return
+  LineNumberTable: 
+   line 39: 0
+
+  Signature: length = 0x2
+   01 06 
+
+public scala.collection.mutable.Map ent();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#42; //Field ent:Lscala/collection/mutable/Map;
+   4:	areturn
+  LineNumberTable: 
+   line 39: 0
+
+  Signature: length = 0x2
+   01 07 
+
+public void decls_$eq(scala.collection.immutable.List);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	putfield	#37; //Field decls:Lscala/collection/immutable/List;
+   5:	return
+  LineNumberTable: 
+   line 37: 0
+
+  Signature: length = 0x2
+   01 08 
+
+public scala.collection.immutable.List decls();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#37; //Field decls:Lscala/collection/immutable/List;
+   4:	areturn
+  LineNumberTable: 
+   line 37: 0
+
+  Signature: length = 0x2
+   01 09 
+
+public boolean isValidating();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#29; //Field isValidating:Z
+   4:	ireturn
+  LineNumberTable: 
+   line 35: 0
+
+
+public void log(java.lang.String);
+  Code:
+   Stack=2, Locals=2, Args_size=2
+   0:	aload_0
+   1:	aload_1
+   2:	invokestatic	#269; //Method scala/util/logging/Logged$class.log:(Lscala/util/logging/Logged;Ljava/lang/String;)V
+   5:	return
+  LineNumberTable: 
+   line 29: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/parsing/MarkupHandler;
+   0      6      1    msg       Ljava/lang/String;
+
+
+}
+
