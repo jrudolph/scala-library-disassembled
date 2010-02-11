@@ -84,6 +84,17 @@ Asciz	$minus$eq;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/SetLike;;
 NameAndType	$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/SetLike;
 InterfaceMethod	scala/collection/mutable/SetLike.$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/SetLike;
+Asciz	scala/collection/SetLike;
+class	scala/collection/SetLike
+Asciz	isEmpty;
+Asciz	()Z;
+NameAndType	isEmpty:()Z
+InterfaceMethod	scala/collection/SetLike.isEmpty:()Z
+Asciz	scala/collection/mutable/MapLike;
+class	scala/collection/mutable/MapLike
+Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/MapLike;;
+NameAndType	$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/MapLike;
+InterfaceMethod	scala/collection/mutable/MapLike.$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/MapLike;
 Asciz	value;
 Asciz	temp7;
 Asciz	temp8;
@@ -98,8 +109,6 @@ InterfaceMethod	scala/collection/mutable/MultiMap.makeSet:()Lscala/collection/mu
 Asciz	$plus$eq;
 NameAndType	$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/SetLike;
 InterfaceMethod	scala/collection/mutable/SetLike.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/SetLike;
-Asciz	scala/collection/mutable/MapLike;
-class	scala/collection/mutable/MapLike
 Asciz	update;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
 NameAndType	update:(Ljava/lang/Object;Ljava/lang/Object;)V
@@ -249,6 +258,15 @@ l3	aload	5
 	aload	4
 	aload_2
 	invokeinterface	InterfaceMethod scala/collection/mutable/SetLike.$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/SetLike;
+	pop
+	aload	4
+	invokeinterface	InterfaceMethod scala/collection/SetLike.isEmpty:()Z
+	ifeq	l8 // getstatic
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/mutable/MapLike.$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/MapLike;
+	goto	l5 // pop
+l8	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 l5	pop
 	aload_0
 	areturn
@@ -269,20 +287,21 @@ l6	new	class scala/MatchError
    	l2 = 33 // iconst_1
    	l4 = 43 // new
    	l3 = 56 // aload
-   	l5 = 91 // pop
-   	l7 = 94 // new
-   	l6 = 107 // new
+   	l8 = 112 // getstatic
+   	l5 = 115 // pop
+   	l7 = 118 // new
+   	l6 = 131 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      120      0    $this       Lscala/collection/mutable/MultiMap;
-   0      120      1    key       Ljava/lang/Object;
-   0      120      2    value       Ljava/lang/Object;
-   70      21      3    temp7       Lscala/Some;
-   94      13      3    temp7       Lscala/Some;
-   79      12      4    temp8       Lscala/collection/mutable/Set;
-   94      13      4    temp8       Lscala/collection/mutable/Set;
-   9      83      5    temp5       Lscala/Option;
-   94      26      5    temp5       Lscala/Option;
+   0      144      0    $this       Lscala/collection/mutable/MultiMap;
+   0      144      1    key       Ljava/lang/Object;
+   0      144      2    value       Ljava/lang/Object;
+   70      45      3    temp7       Lscala/Some;
+   118      13      3    temp7       Lscala/Some;
+   79      36      4    temp8       Lscala/collection/mutable/Set;
+   118      13      4    temp8       Lscala/collection/mutable/Set;
+   9      107      5    temp5       Lscala/Option;
+   118      26      5    temp5       Lscala/Option;
 
 
 public static scala.collection.mutable.MultiMap addBinding(scala.collection.mutable.MultiMap, java.lang.Object, java.lang.Object);
