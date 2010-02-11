@@ -2,7 +2,7 @@ Compiled from "WeakReference.scala"
 public class scala.ref.WeakReference extends java.lang.Object implements scala.ref.ReferenceWrapper,scala.ScalaObject
   SourceFile: "WeakReference.scala"
   Signature: length = 0x2
-   00 78 
+   00 6C 
   ScalaSig: length = 0x1AE
    05 00 46 06 04 01 02 00 07 02 0D 57 65 61 6B 52
    65 66 65 72 65 6E 63 65 0A 02 03 04 01 03 72 65
@@ -70,30 +70,15 @@ class	scala/ref/ReferenceWrapper$class
 Asciz	(Lscala/ref/ReferenceWrapper;)V;
 NameAndType	$init$:(Lscala/ref/ReferenceWrapper;)V
 Method	scala/ref/ReferenceWrapper$class.$init$:(Lscala/ref/ReferenceWrapper;)V
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
-Asciz	java/lang/ref/WeakReference;
-class	java/lang/ref/WeakReference
-Asciz	(Ljava/lang/Object;)V;
-NameAndType	"<init>":(Ljava/lang/Object;)V
-Method	java/lang/ref/WeakReference."<init>":(Ljava/lang/Object;)V
-Asciz	scala/ref/ReferenceQueue;
-class	scala/ref/ReferenceQueue
-Asciz	()Ljava/lang/ref/ReferenceQueue;;
-NameAndType	underlying:()Ljava/lang/ref/ReferenceQueue;
-Method	scala/ref/ReferenceQueue.underlying:()Ljava/lang/ref/ReferenceQueue;
-Asciz	(Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V;
-NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
-Method	java/lang/ref/WeakReference."<init>":(Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
+Asciz	scala/ref/WeakReferenceWithWrapper;
+class	scala/ref/WeakReferenceWithWrapper
+Asciz	(Ljava/lang/Object;Lscala/ref/ReferenceQueue;Lscala/ref/WeakReference;)V;
+NameAndType	"<init>":(Ljava/lang/Object;Lscala/ref/ReferenceQueue;Lscala/ref/WeakReference;)V
+Method	scala/ref/WeakReferenceWithWrapper."<init>":(Ljava/lang/Object;Lscala/ref/ReferenceQueue;Lscala/ref/WeakReference;)V
 Asciz	scala/ref/WeakReference;
 class	scala/ref/WeakReference
 NameAndType	underlying:Ljava/lang/ref/WeakReference;
 Field	scala/ref/WeakReference.underlying:Ljava/lang/ref/WeakReference;
-Asciz	register;
-NameAndType	register:(Lscala/ref/ReferenceWrapper;)V
-Method	scala/ref/ReferenceQueue.register:(Lscala/ref/ReferenceWrapper;)V
 Asciz	this;
 Asciz	Lscala/ref/WeakReference;;
 Asciz	value;
@@ -113,6 +98,7 @@ class	scala/ref/ReferenceWrapper
 NameAndType	self:()Ljava/lang/ref/Reference;
 InterfaceMethod	scala/ref/ReferenceWrapper.self:()Ljava/lang/ref/Reference;
 Asciz	()Ljava/lang/ref/WeakReference<+TT;>;;
+Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;Lscala/ref/ReferenceQueue;)V
 Method	scala/ref/WeakReference."<init>":(Ljava/lang/Object;Lscala/ref/ReferenceQueue;)V
 Asciz	(TT;)V;
@@ -121,6 +107,8 @@ Asciz	()Ljava/lang/String;;
 Asciz	(Lscala/Proxy;)Ljava/lang/String;;
 NameAndType	toString:(Lscala/Proxy;)Ljava/lang/String;
 Method	scala/Proxy$class.toString:(Lscala/Proxy;)Ljava/lang/String;
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
 Asciz	(Lscala/Proxy;Ljava/lang/Object;)Z;
 NameAndType	equals:(Lscala/Proxy;Ljava/lang/Object;)Z
 Method	scala/Proxy$class.equals:(Lscala/Proxy;Ljava/lang/Object;)Z
@@ -167,7 +155,7 @@ private final java.lang.ref.WeakReference underlying;
 public scala.ref.WeakReference(java.lang.Object, scala.ref.ReferenceQueue);
   Signature: (Ljava/lang/Object;Lscala/ref/ReferenceQueue;)V
   Code:
-   Stack=5, Locals=3, Args_size=3
+   Stack=6, Locals=3, Args_size=3
 	aload_0
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
@@ -179,51 +167,23 @@ public scala.ref.WeakReference(java.lang.Object, scala.ref.ReferenceQueue);
 	aload_0
 	invokestatic	Method scala/ref/ReferenceWrapper$class.$init$:(Lscala/ref/ReferenceWrapper;)V
 	aload_0
-	aload_2
-	dup
-	pop
-	ifnull	l1 // new
-	aload_2
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // new
-l1	new	class java/lang/ref/WeakReference
+	new	class scala/ref/WeakReferenceWithWrapper
 	dup
 	aload_1
-	invokespecial	Method java/lang/ref/WeakReference."<init>":(Ljava/lang/Object;)V
-	goto	l3 // putfield
-l2	new	class java/lang/ref/WeakReference
-	dup
-	aload_1
-	aload_2
-	invokevirtual	Method scala/ref/ReferenceQueue.underlying:()Ljava/lang/ref/ReferenceQueue;
-	invokespecial	Method java/lang/ref/WeakReference."<init>":(Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
-l3	putfield	Field underlying:Ljava/lang/ref/WeakReference;
-	aload_2
-	dup
-	pop
-	ifnull	l4 // return
-	aload_2
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifne	l4 // return
 	aload_2
 	aload_0
-	invokevirtual	Method scala/ref/ReferenceQueue.register:(Lscala/ref/ReferenceWrapper;)V
-l4	return
+	invokespecial	Method scala/ref/WeakReferenceWithWrapper."<init>":(Ljava/lang/Object;Lscala/ref/ReferenceQueue;Lscala/ref/WeakReference;)V
+	putfield	Field underlying:Ljava/lang/ref/WeakReference;
+	return
   Labels:
-   	l1 = 35 // new
-   	l2 = 46 // new
-   	l3 = 58 // putfield
-   	l4 = 80 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      81      0    this       Lscala/ref/WeakReference;
-   0      81      1    value       Ljava/lang/Object;
-   0      81      2    queue       Lscala/ref/ReferenceQueue;
+   0      35      0    this       Lscala/ref/WeakReference;
+   0      35      1    value       Ljava/lang/Object;
+   0      35      2    queue       Lscala/ref/ReferenceQueue;
 
   Signature: length = 0x2
-   00 44 
+   00 35 
 
 public java.lang.ref.Reference underlying();
   Signature: ()Ljava/lang/ref/Reference;
@@ -252,7 +212,7 @@ public java.lang.ref.WeakReference underlying();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 4F 
+   00 40 
 
 public scala.ref.WeakReference(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
@@ -270,7 +230,7 @@ public scala.ref.WeakReference(java.lang.Object);
    0      7      1    value       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 52 
+   00 44 
 
 public java.lang.String toString();
   Signature: ()Ljava/lang/String;

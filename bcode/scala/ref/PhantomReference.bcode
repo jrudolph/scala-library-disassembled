@@ -2,7 +2,7 @@ Compiled from "PhantomReference.scala"
 public class scala.ref.PhantomReference extends java.lang.Object implements scala.ref.ReferenceWrapper,scala.ScalaObject
   SourceFile: "PhantomReference.scala"
   Signature: length = 0x2
-   00 70 
+   00 68 
   ScalaSig: length = 0x19F
    05 00 43 06 04 01 02 00 07 02 10 50 68 61 6E 74
    6F 6D 52 65 66 65 72 65 6E 63 65 0A 02 03 04 01
@@ -69,23 +69,15 @@ class	scala/ref/ReferenceWrapper$class
 Asciz	(Lscala/ref/ReferenceWrapper;)V;
 NameAndType	$init$:(Lscala/ref/ReferenceWrapper;)V
 Method	scala/ref/ReferenceWrapper$class.$init$:(Lscala/ref/ReferenceWrapper;)V
-Asciz	java/lang/ref/PhantomReference;
-class	java/lang/ref/PhantomReference
-Asciz	scala/ref/ReferenceQueue;
-class	scala/ref/ReferenceQueue
-Asciz	()Ljava/lang/ref/ReferenceQueue;;
-NameAndType	underlying:()Ljava/lang/ref/ReferenceQueue;
-Method	scala/ref/ReferenceQueue.underlying:()Ljava/lang/ref/ReferenceQueue;
-Asciz	(Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V;
-NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
-Method	java/lang/ref/PhantomReference."<init>":(Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
+Asciz	scala/ref/PhantomReferenceWithWrapper;
+class	scala/ref/PhantomReferenceWithWrapper
+Asciz	(Ljava/lang/Object;Lscala/ref/ReferenceQueue;Lscala/ref/PhantomReference;)V;
+NameAndType	"<init>":(Ljava/lang/Object;Lscala/ref/ReferenceQueue;Lscala/ref/PhantomReference;)V
+Method	scala/ref/PhantomReferenceWithWrapper."<init>":(Ljava/lang/Object;Lscala/ref/ReferenceQueue;Lscala/ref/PhantomReference;)V
 Asciz	scala/ref/PhantomReference;
 class	scala/ref/PhantomReference
 NameAndType	underlying:Ljava/lang/ref/PhantomReference;
 Field	scala/ref/PhantomReference.underlying:Ljava/lang/ref/PhantomReference;
-Asciz	register;
-NameAndType	register:(Lscala/ref/ReferenceWrapper;)V
-Method	scala/ref/ReferenceQueue.register:(Lscala/ref/ReferenceWrapper;)V
 Asciz	this;
 Asciz	Lscala/ref/PhantomReference;;
 Asciz	value;
@@ -158,7 +150,7 @@ private final java.lang.ref.PhantomReference underlying;
 public scala.ref.PhantomReference(java.lang.Object, scala.ref.ReferenceQueue);
   Signature: (Ljava/lang/Object;Lscala/ref/ReferenceQueue;)V
   Code:
-   Stack=5, Locals=3, Args_size=3
+   Stack=6, Locals=3, Args_size=3
 	aload_0
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
@@ -170,26 +162,23 @@ public scala.ref.PhantomReference(java.lang.Object, scala.ref.ReferenceQueue);
 	aload_0
 	invokestatic	Method scala/ref/ReferenceWrapper$class.$init$:(Lscala/ref/ReferenceWrapper;)V
 	aload_0
-	new	class java/lang/ref/PhantomReference
+	new	class scala/ref/PhantomReferenceWithWrapper
 	dup
 	aload_1
 	aload_2
-	invokevirtual	Method scala/ref/ReferenceQueue.underlying:()Ljava/lang/ref/ReferenceQueue;
-	invokespecial	Method java/lang/ref/PhantomReference."<init>":(Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
-	putfield	Field underlying:Ljava/lang/ref/PhantomReference;
-	aload_2
 	aload_0
-	invokevirtual	Method scala/ref/ReferenceQueue.register:(Lscala/ref/ReferenceWrapper;)V
+	invokespecial	Method scala/ref/PhantomReferenceWithWrapper."<init>":(Ljava/lang/Object;Lscala/ref/ReferenceQueue;Lscala/ref/PhantomReference;)V
+	putfield	Field underlying:Ljava/lang/ref/PhantomReference;
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      42      0    this       Lscala/ref/PhantomReference;
-   0      42      1    value       Ljava/lang/Object;
-   0      42      2    queue       Lscala/ref/ReferenceQueue;
+   0      35      0    this       Lscala/ref/PhantomReference;
+   0      35      1    value       Ljava/lang/Object;
+   0      35      2    queue       Lscala/ref/ReferenceQueue;
 
   Signature: length = 0x2
-   00 3D 
+   00 35 
 
 public java.lang.ref.Reference underlying();
   Signature: ()Ljava/lang/ref/Reference;
@@ -218,7 +207,7 @@ public java.lang.ref.PhantomReference underlying();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 48 
+   00 40 
 
 public java.lang.String toString();
   Signature: ()Ljava/lang/String;
