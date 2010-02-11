@@ -90,15 +90,6 @@ Asciz	isDefinedAt;
 Asciz	(Ljava/lang/Object;)Z;
 Asciz	scala/actors/remote/Apply0;
 class	scala/actors/remote/Apply0
-Asciz	scala/MatchError;
-class	scala/MatchError
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
-NameAndType	toString:()Ljava/lang/String;
-Method	java/lang/Object.toString:()Ljava/lang/String;
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	scala/actors/remote/LocalApply0;
 class	scala/actors/remote/LocalApply0
 Asciz	scala/actors/remote/SendTo;
@@ -175,6 +166,7 @@ Asciz	()Lscala/Symbol;;
 NameAndType	session:()Lscala/Symbol;
 Method	scala/actors/remote/SendTo.session:()Lscala/Symbol;
 Asciz	name;
+Asciz	()Ljava/lang/String;;
 NameAndType	name:()Ljava/lang/String;
 Method	scala/Symbol.name:()Ljava/lang/String;
 Asciz	scala/actors/OutputChannel;
@@ -218,9 +210,6 @@ Asciz	$plus$eq;
 Asciz	(Lscala/Tuple2;)Lscala/collection/mutable/HashMap;;
 NameAndType	$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/HashMap;
 Method	scala/collection/mutable/HashMap.$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/HashMap;
-Asciz	scala/Option;
-class	scala/Option
-Method	scala/Option.toString:()Ljava/lang/String;
 Asciz	scala/Some;
 class	scala/Some
 Asciz	x;
@@ -233,6 +222,16 @@ Method	scala/collection/mutable/HashMap.$minus$eq:(Ljava/lang/Object;)Lscala/col
 Asciz	$bang;
 NameAndType	$bang:(Ljava/lang/Object;)V
 InterfaceMethod	scala/actors/OutputChannel.$bang:(Ljava/lang/Object;)V
+Asciz	scala/MatchError;
+class	scala/MatchError
+Asciz	scala/Option;
+class	scala/Option
+Asciz	toString;
+NameAndType	toString:()Ljava/lang/String;
+Method	scala/Option.toString:()Ljava/lang/String;
+Asciz	(Ljava/lang/String;)V;
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	protected$exit;
 Asciz	(Lscala/actors/remote/DelegateActor;)Lscala/runtime/Nothing$;;
 NameAndType	protected$exit:(Lscala/actors/remote/DelegateActor;)Lscala/runtime/Nothing$;
@@ -298,6 +297,7 @@ Asciz	newName;
 Asciz	(Ljava/lang/String;)Lscala/Symbol;;
 NameAndType	newName:(Ljava/lang/String;)Lscala/Symbol;
 Method	scala/actors/remote/FreshNameCreator$.newName:(Ljava/lang/String;)Lscala/Symbol;
+Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	temp14;
 Asciz	Lscala/actors/remote/Apply0;;
 Asciz	temp15;
@@ -444,122 +444,54 @@ public scala.Function1 andThen(scala.Function1);
 public final boolean isDefinedAt(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=2, Locals=2, Args_size=2
 	aload_1
 	instanceof	class scala/actors/remote/Apply0
 	ifeq	l1 // aload_1
 	iconst_1
-	ifeq	l2 // new
-	iconst_1
-	goto	l3 // ireturn
-l2	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // ireturn
 l1	aload_1
 	instanceof	class scala/actors/remote/LocalApply0
-	ifeq	l4 // aload_1
+	ifeq	l3 // aload_1
 	iconst_1
-	ifeq	l5 // new
-	iconst_1
-	goto	l3 // ireturn
-l5	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l4	aload_1
+	goto	l2 // ireturn
+l3	aload_1
 	instanceof	class scala/actors/remote/SendTo
-	ifeq	l6 // getstatic
+	ifeq	l4 // getstatic
 	iconst_1
-	ifeq	l7 // new
-	iconst_1
-	goto	l3 // ireturn
-l7	new	class scala/MatchError
+	goto	l2 // ireturn
+l4	getstatic	Field scala/actors/remote/Terminate$.MODULE$:Lscala/actors/remote/Terminate$;
 	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	getstatic	Field scala/actors/remote/Terminate$.MODULE$:Lscala/actors/remote/Terminate$;
-	dup
-	ifnonnull	l8 // aload_1
+	ifnonnull	l5 // aload_1
 	pop
 	aload_1
-	ifnull	l9 // aload_1
-	goto	l10 // aload_1
-l8	aload_1
+	ifnull	l6 // aload_1
+	goto	l7 // aload_1
+l5	aload_1
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l10 // aload_1
-l9	aload_1
+	ifeq	l7 // aload_1
+l6	aload_1
 	instanceof	class scala/actors/remote/Terminate$
-	ifeq	l10 // aload_1
+	ifeq	l7 // aload_1
 	iconst_1
-	ifeq	l11 // new
-	iconst_1
-	goto	l3 // ireturn
-l11	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l10	aload_1
+	goto	l2 // ireturn
+l7	aload_1
 	instanceof	class scala/actors/$bang
-	ifeq	l12 // aload_1
+	ifeq	l8 // aload_1
 	iconst_1
-	ifeq	l13 // new
-	iconst_1
-	goto	l3 // ireturn
-l13	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l12	aload_1
+	goto	l2 // ireturn
+l8	aload_1
 	instanceof	class java/lang/Object
-	ifeq	l14 // iconst_1
-	iconst_1
-	ifeq	l15 // new
-	iconst_1
-	goto	l3 // ireturn
-l15	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l14	iconst_1
-	ifeq	l16 // new
-	iconst_0
-l3	ireturn
-l16	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+l2	ireturn
   Labels:
-   	l2 = 15 // new
-   	l1 = 27 // aload_1
-   	l5 = 42 // new
-   	l4 = 54 // aload_1
-   	l7 = 69 // new
-   	l6 = 81 // getstatic
-   	l8 = 96 // aload_1
-   	l9 = 103 // aload_1
-   	l11 = 118 // new
-   	l10 = 130 // aload_1
-   	l13 = 145 // new
-   	l12 = 157 // aload_1
-   	l15 = 172 // new
-   	l14 = 184 // iconst_1
-   	l3 = 189 // ireturn
-   	l16 = 190 // new
+   	l1 = 11 // aload_1
+   	l3 = 22 // aload_1
+   	l4 = 33 // getstatic
+   	l5 = 48 // aload_1
+   	l6 = 55 // aload_1
+   	l7 = 66 // aload_1
+   	l8 = 77 // aload_1
+   	l2 = 81 // ireturn
 
 public final void apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
@@ -574,8 +506,6 @@ public final void apply(java.lang.Object);
 	aload_2
 	invokevirtual	Method scala/actors/remote/Apply0.rfun:()Lscala/Function2;
 	astore	6
-	iconst_1
-	ifeq	l2 // new
 	aload_0
 	getfield	Field $outer:Lscala/actors/remote/DelegateActor$$anonfun$act$1;
 	astore_3
@@ -603,16 +533,10 @@ public final void apply(java.lang.Object);
 	invokevirtual	Method scala/actors/remote/DelegateActor.protected$sender:(Lscala/actors/remote/DelegateActor;)Lscala/actors/OutputChannel;
 	aload	6
 	invokevirtual	Method scala/actors/remote/NetKernel.remoteApply:(Lscala/actors/remote/Node;Lscala/Symbol;Lscala/actors/OutputChannel;Lscala/Function2;)V
-	goto	l3 // return
-l2	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // return
 l1	aload_1
 	instanceof	class scala/actors/remote/LocalApply0
-	ifeq	l4 // aload_1
+	ifeq	l3 // aload_1
 	aload_1
 	checkcast	class scala/actors/remote/LocalApply0
 	astore	7
@@ -622,8 +546,6 @@ l1	aload_1
 	aload	7
 	invokevirtual	Method scala/actors/remote/LocalApply0.a:()Lscala/actors/AbstractActor;
 	astore	9
-	iconst_1
-	ifeq	l5 // new
 	aload	8
 	aload	9
 	aload_0
@@ -632,16 +554,10 @@ l1	aload_1
 	getfield	Field scala/actors/remote/DelegateActor.scala$actors$remote$DelegateActor$$creator:Lscala/actors/remote/Proxy;
 	invokeinterface	InterfaceMethod scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 	pop
-	goto	l3 // return
-l5	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l4	aload_1
+	goto	l2 // return
+l3	aload_1
 	instanceof	class scala/actors/remote/SendTo
-	ifeq	l6 // getstatic
+	ifeq	l4 // getstatic
 	aload_1
 	checkcast	class scala/actors/remote/SendTo
 	astore	10
@@ -654,29 +570,27 @@ l4	aload_1
 	aload	10
 	invokevirtual	Method scala/actors/remote/SendTo.session:()Lscala/Symbol;
 	astore	15
-	iconst_1
-	ifeq	l7 // new
 	aload	15
 	invokevirtual	Method scala/Symbol.name:()Ljava/lang/String;
 	ldc	String nosession
 	astore	11
 	dup
-	ifnonnull	l8 // aload
+	ifnonnull	l5 // aload
 	pop
 	aload	11
-	ifnull	l9 // aload
-	goto	l10 // aload_0
-l8	aload	11
+	ifnull	l6 // aload
+	goto	l7 // aload_0
+l5	aload	11
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l10 // aload_0
-l9	aload	12
+	ifeq	l7 // aload_0
+l6	aload	12
 	aload	17
 	aload_0
 	getfield	Field $outer:Lscala/actors/remote/DelegateActor$$anonfun$act$1;
 	invokevirtual	Method scala/actors/remote/DelegateActor$$anonfun$act$1.scala$actors$remote$DelegateActor$$anonfun$$$outer:()Lscala/actors/remote/DelegateActor;
 	invokeinterface	InterfaceMethod scala/actors/OutputChannel.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
-	goto	l3 // return
-l10	aload_0
+	goto	l2 // return
+l7	aload_0
 	getfield	Field $outer:Lscala/actors/remote/DelegateActor$$anonfun$act$1;
 	invokevirtual	Method scala/actors/remote/DelegateActor$$anonfun$act$1.scala$actors$remote$DelegateActor$$anonfun$$$outer:()Lscala/actors/remote/DelegateActor;
 	invokevirtual	Method scala/actors/remote/DelegateActor.channelMap:()Lscala/collection/mutable/HashMap;
@@ -685,17 +599,15 @@ l10	aload_0
 	astore	18
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	dup
-	ifnonnull	l11 // aload
+	ifnonnull	l8 // aload
 	pop
 	aload	18
-	ifnull	l12 // iconst_1
-	goto	l13 // aload
-l11	aload	18
+	ifnull	l9 // new
+	goto	l10 // aload
+l8	aload	18
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l13 // aload
-l12	iconst_1
-	ifeq	l14 // new
-	new	class scala/actors/Channel
+	ifeq	l10 // aload
+l9	new	class scala/actors/Channel
 	dup
 	aload_0
 	getfield	Field $outer:Lscala/actors/remote/DelegateActor$$anonfun$act$1;
@@ -716,16 +628,10 @@ l12	iconst_1
 	aload	17
 	aload	13
 	invokeinterface	InterfaceMethod scala/actors/OutputChannel.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
-	goto	l3 // return
-l14	new	class scala/MatchError
-	dup
-	aload	18
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l13	aload	18
+	goto	l2 // return
+l10	aload	18
 	instanceof	class scala/Some
-	ifeq	l15 // new
+	ifeq	l11 // new
 	aload	18
 	checkcast	class scala/Some
 	astore	14
@@ -733,8 +639,6 @@ l13	aload	18
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/actors/OutputChannel
 	astore	16
-	iconst_1
-	ifeq	l16 // new
 	aload_0
 	getfield	Field $outer:Lscala/actors/remote/DelegateActor$$anonfun$act$1;
 	invokevirtual	Method scala/actors/remote/DelegateActor$$anonfun$act$1.scala$actors$remote$DelegateActor$$anonfun$$$outer:()Lscala/actors/remote/DelegateActor;
@@ -745,40 +649,26 @@ l13	aload	18
 	aload	16
 	aload	17
 	invokeinterface	InterfaceMethod scala/actors/OutputChannel.$bang:(Ljava/lang/Object;)V
-	goto	l3 // return
-l16	new	class scala/MatchError
+	goto	l2 // return
+l11	new	class scala/MatchError
 	dup
 	aload	18
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
-l15	new	class scala/MatchError
+l4	getstatic	Field scala/actors/remote/Terminate$.MODULE$:Lscala/actors/remote/Terminate$;
 	dup
-	aload	18
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l7	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	getstatic	Field scala/actors/remote/Terminate$.MODULE$:Lscala/actors/remote/Terminate$;
-	dup
-	ifnonnull	l17 // aload_1
+	ifnonnull	l12 // aload_1
 	pop
 	aload_1
-	ifnull	l18 // aload_1
-	goto	l19 // aload_1
-l17	aload_1
+	ifnull	l13 // aload_1
+	goto	l14 // aload_1
+l12	aload_1
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l19 // aload_1
-l18	aload_1
+	ifeq	l14 // aload_1
+l13	aload_1
 	instanceof	class scala/actors/remote/Terminate$
-	ifeq	l19 // aload_1
-	iconst_1
-	ifeq	l20 // new
+	ifeq	l14 // aload_1
 	aload_0
 	getfield	Field $outer:Lscala/actors/remote/DelegateActor$$anonfun$act$1;
 	invokevirtual	Method scala/actors/remote/DelegateActor$$anonfun$act$1.scala$actors$remote$DelegateActor$$anonfun$$$outer:()Lscala/actors/remote/DelegateActor;
@@ -787,15 +677,9 @@ l18	aload_1
 	invokevirtual	Method scala/actors/remote/DelegateActor$$anonfun$act$1.scala$actors$remote$DelegateActor$$anonfun$$$outer:()Lscala/actors/remote/DelegateActor;
 	invokevirtual	Method scala/actors/remote/DelegateActor.protected$exit:(Lscala/actors/remote/DelegateActor;)Lscala/runtime/Nothing$;
 	athrow
-l20	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l19	aload_1
+l14	aload_1
 	instanceof	class scala/actors/$bang
-	ifeq	l21 // aload_1
+	ifeq	l15 // aload_1
 	aload_1
 	checkcast	class scala/actors/$bang
 	astore	19
@@ -805,8 +689,6 @@ l19	aload_1
 	aload	19
 	invokevirtual	Method scala/actors/$bang.msg:()Ljava/lang/Object;
 	astore	21
-	iconst_1
-	ifeq	l22 // new
 	aload_0
 	getfield	Field $outer:Lscala/actors/remote/DelegateActor$$anonfun$act$1;
 	invokevirtual	Method scala/actors/remote/DelegateActor$$anonfun$act$1.scala$actors$remote$DelegateActor$$anonfun$$$outer:()Lscala/actors/remote/DelegateActor;
@@ -816,7 +698,7 @@ l19	aload_1
 	astore	25
 	aload	25
 	instanceof	class scala/Some
-	ifeq	l23 // getstatic
+	ifeq	l16 // getstatic
 	aload	25
 	checkcast	class scala/Some
 	astore	20
@@ -824,8 +706,6 @@ l19	aload_1
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/Symbol
 	astore	22
-	iconst_1
-	ifeq	l24 // new
 	aload_0
 	getfield	Field $outer:Lscala/actors/remote/DelegateActor$$anonfun$act$1;
 	invokevirtual	Method scala/actors/remote/DelegateActor$$anonfun$act$1.scala$actors$remote$DelegateActor$$anonfun$$$outer:()Lscala/actors/remote/DelegateActor;
@@ -855,26 +735,18 @@ l19	aload_1
 	aload	21
 	aload	22
 	invokevirtual	Method scala/actors/remote/NetKernel.forward:(Lscala/actors/OutputChannel;Lscala/actors/remote/Node;Lscala/Symbol;Ljava/lang/Object;Lscala/Symbol;)V
-	goto	l3 // return
-l24	new	class scala/MatchError
+	goto	l2 // return
+l16	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	dup
-	aload	25
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l23	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	dup
-	ifnonnull	l25 // aload
+	ifnonnull	l17 // aload
 	pop
 	aload	25
-	ifnull	l26 // iconst_1
-	goto	l27 // new
-l25	aload	25
+	ifnull	l18 // getstatic
+	goto	l19 // new
+l17	aload	25
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l27 // new
-l26	iconst_1
-	ifeq	l28 // new
-	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+	ifeq	l19 // new
+l18	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -893,30 +765,16 @@ l26	iconst_1
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
-	goto	l3 // return
-l28	new	class scala/MatchError
+	goto	l2 // return
+l19	new	class scala/MatchError
 	dup
 	aload	25
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
-l27	new	class scala/MatchError
-	dup
-	aload	25
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l22	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l21	aload_1
+l15	aload_1
 	instanceof	class java/lang/Object
-	ifeq	l29 // new
-	iconst_1
-	ifeq	l30 // new
+	ifeq	l20 // new
 	aload_0
 	getfield	Field $outer:Lscala/actors/remote/DelegateActor$$anonfun$act$1;
 	invokevirtual	Method scala/actors/remote/DelegateActor$$anonfun$act$1.scala$actors$remote$DelegateActor$$anonfun$$$outer:()Lscala/actors/remote/DelegateActor;
@@ -928,7 +786,7 @@ l21	aload_1
 	invokevirtual	Method java/lang/Class.toString:()Ljava/lang/String;
 	ldc_w	String Channel
 	invokevirtual	Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
-	ifeq	l31 // aload_0
+	ifeq	l21 // aload_0
 	getstatic	Field scala/actors/remote/FreshNameCreator$.MODULE$:Lscala/actors/remote/FreshNameCreator$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
@@ -991,8 +849,8 @@ l21	aload_1
 	aload_1
 	aload	27
 	invokevirtual	Method scala/actors/remote/NetKernel.forward:(Lscala/actors/OutputChannel;Lscala/actors/remote/Node;Lscala/Symbol;Ljava/lang/Object;Lscala/Symbol;)V
-	goto	l3 // return
-l31	aload_0
+	goto	l2 // return
+l21	aload_0
 	getfield	Field $outer:Lscala/actors/remote/DelegateActor$$anonfun$act$1;
 	invokevirtual	Method scala/actors/remote/DelegateActor$$anonfun$act$1.scala$actors$remote$DelegateActor$$anonfun$$$outer:()Lscala/actors/remote/DelegateActor;
 	getfield	Field scala/actors/remote/DelegateActor.scala$actors$remote$DelegateActor$$kernel:Lscala/actors/remote/NetKernel;
@@ -1015,74 +873,58 @@ l31	aload_0
 	getstatic	Field symbol$1:Lscala/Symbol;
 	checkcast	class scala/Symbol
 	invokevirtual	Method scala/actors/remote/NetKernel.forward:(Lscala/actors/OutputChannel;Lscala/actors/remote/Node;Lscala/Symbol;Ljava/lang/Object;Lscala/Symbol;)V
-l3	return
-l30	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l29	new	class scala/MatchError
+l2	return
+l20	new	class scala/MatchError
 	dup
 	aload_1
 	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l2 = 87 // new
-   	l1 = 99 // aload_1
-   	l5 = 153 // new
-   	l4 = 165 // aload_1
-   	l8 = 225 // aload
-   	l9 = 233 // aload
-   	l10 = 252 // aload_0
-   	l11 = 285 // aload
-   	l12 = 293 // iconst_1
-   	l14 = 351 // new
-   	l13 = 364 // aload
-   	l16 = 421 // new
-   	l15 = 434 // new
-   	l7 = 447 // new
-   	l6 = 459 // getstatic
-   	l17 = 474 // aload_1
-   	l18 = 481 // aload_1
-   	l20 = 510 // new
-   	l19 = 522 // aload_1
-   	l24 = 672 // new
-   	l23 = 685 // getstatic
-   	l25 = 701 // aload
-   	l26 = 709 // iconst_1
-   	l28 = 763 // new
-   	l27 = 776 // new
-   	l22 = 789 // new
-   	l21 = 801 // aload_1
-   	l31 = 1000 // aload_0
-   	l3 = 1057 // return
-   	l30 = 1058 // new
-   	l29 = 1070 // new
+   	l1 = 83 // aload_1
+   	l3 = 133 // aload_1
+   	l5 = 189 // aload
+   	l6 = 197 // aload
+   	l7 = 216 // aload_0
+   	l8 = 249 // aload
+   	l9 = 257 // new
+   	l10 = 311 // aload
+   	l11 = 364 // new
+   	l4 = 377 // getstatic
+   	l12 = 392 // aload_1
+   	l13 = 399 // aload_1
+   	l14 = 424 // aload_1
+   	l16 = 566 // getstatic
+   	l17 = 582 // aload
+   	l18 = 590 // getstatic
+   	l19 = 640 // new
+   	l15 = 653 // aload_1
+   	l21 = 848 // aload_0
+   	l2 = 905 // return
+   	l20 = 906 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      1082      0    this       Lscala/actors/remote/DelegateActor$$anonfun$act$1$$anonfun$apply$1;
-   12      87      2    temp14       Lscala/actors/remote/Apply0;
-   18      81      6    temp15       Lscala/Function2;
-   112      53      7    temp16       Lscala/actors/remote/LocalApply0;
-   119      46      8    temp17       Lscala/Function2;
-   126      39      9    temp18       Lscala/actors/AbstractActor;
-   178      281      10    temp19       Lscala/actors/remote/SendTo;
-   185      274      12    temp20       Lscala/actors/OutputChannel;
-   313      35      13    replyCh       Lscala/actors/Channel;
-   379      55      14    temp7       Lscala/Some;
-   199      260      15    temp22       Lscala/Symbol;
-   389      45      16    temp8       Lscala/actors/OutputChannel;
-   192      267      17    temp21       Ljava/lang/Object;
-   269      178      18    temp5       Lscala/Option;
-   535      266      19    temp24       Lscala/actors/$bang;
-   585      100      20    temp10       Lscala/Some;
-   549      252      21    temp26       Ljava/lang/Object;
-   595      90      22    temp11       Lscala/Symbol;
-   542      259      24    temp25       Lscala/actors/Channel;
-   570      219      25    temp9       Lscala/Option;
-   905      92      27    fresh       Lscala/Symbol;
+   0      918      0    this       Lscala/actors/remote/DelegateActor$$anonfun$act$1$$anonfun$apply$1;
+   12      68      2    temp14       Lscala/actors/remote/Apply0;
+   18      62      6    temp15       Lscala/Function2;
+   96      34      7    temp16       Lscala/actors/remote/LocalApply0;
+   103      27      8    temp17       Lscala/Function2;
+   110      20      9    temp18       Lscala/actors/AbstractActor;
+   146      231      10    temp19       Lscala/actors/remote/SendTo;
+   153      224      12    temp20       Lscala/actors/OutputChannel;
+   273      35      13    replyCh       Lscala/actors/Channel;
+   326      35      14    temp7       Lscala/Some;
+   167      210      15    temp22       Lscala/Symbol;
+   336      25      16    temp8       Lscala/actors/OutputChannel;
+   160      217      17    temp21       Ljava/lang/Object;
+   233      144      18    temp5       Lscala/Option;
+   437      216      19    temp24       Lscala/actors/$bang;
+   483      80      20    temp10       Lscala/Some;
+   451      202      21    temp26       Ljava/lang/Object;
+   493      70      22    temp11       Lscala/Symbol;
+   444      209      24    temp25       Lscala/actors/Channel;
+   468      185      25    temp9       Lscala/Option;
+   753      92      27    fresh       Lscala/Symbol;
 
 
 public scala.Function1 compose(scala.Function1);

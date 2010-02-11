@@ -2,7 +2,7 @@ Compiled from "FactoryAdapter.scala"
 public abstract class scala.xml.parsing.FactoryAdapter extends org.xml.sax.helpers.DefaultHandler implements scala.xml.factory.XMLLoader,scala.ScalaObject
   SourceFile: "FactoryAdapter.scala"
   Signature: length = 0x2
-   01 FFFFFFBF 
+   01 FFFFFFBD 
   ScalaSig: length = 0x709
    05 00 FFFFFF81 6B 06 08 01 02 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF81 00 09 02 0E
    46 61 63 74 6F 72 79 41 64 61 70 74 65 72 0A 02
@@ -119,6 +119,7 @@ public abstract class scala.xml.parsing.FactoryAdapter extends org.xml.sax.helpe
    08 07 FFFFFF81 2F FFFFFF81 66 FFFFFFC0 00 57 
   InnerClass: 
    public abstract ByOne=class scala/collection/immutable/Range$ByOne of class scala/collection/immutable/Range
+   public final $anon$2=class scala/collection/immutable/Range$$anon$2 of class scala/collection/immutable/Range
    public ofChar=class scala/collection/mutable/ArrayOps$ofChar of class scala/collection/mutable/ArrayOps
    public final $anon$13=class scala/collection/Iterator$$anon$13 of class scala/collection/Iterator
    public final $anonfun$2=class scala/xml/parsing/FactoryAdapter$$anonfun$2 of class scala/xml/parsing/FactoryAdapter
@@ -371,29 +372,27 @@ Field	scala/xml/Null$.MODULE$:Lscala/xml/Null$;
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/runtime/ObjectRef."<init>":(Ljava/lang/Object;)V
+Asciz	isEmpty;
+NameAndType	isEmpty:()Z
+Method	scala/collection/mutable/Stack.isEmpty:()Z
+Asciz	scala/xml/TopScope$;
+class	scala/xml/TopScope$
+Asciz	Lscala/xml/TopScope$;;
+NameAndType	MODULE$:Lscala/xml/TopScope$;
+Field	scala/xml/TopScope$.MODULE$:Lscala/xml/TopScope$;
 Asciz	top;
 NameAndType	top:()Ljava/lang/Object;
 Method	scala/collection/mutable/Stack.top:()Ljava/lang/Object;
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	intWrapper;
-Asciz	(I)Lscala/runtime/RichInt;;
-NameAndType	intWrapper:(I)Lscala/runtime/RichInt;
-Method	scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 Asciz	org/xml/sax/Attributes;
 class	org/xml/sax/Attributes
 Asciz	getLength;
 NameAndType	getLength:()I
 InterfaceMethod	org/xml/sax/Attributes.getLength:()I
-Asciz	scala/runtime/RichInt;
-class	scala/runtime/RichInt
-Asciz	until;
-Asciz	(I)Lscala/collection/immutable/Range$ByOne;;
-NameAndType	until:(I)Lscala/collection/immutable/Range$ByOne;
-Method	scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
+Asciz	scala/collection/immutable/Range$$anon$2;
+class	scala/collection/immutable/Range$$anon$2
+Asciz	(II)V;
+NameAndType	"<init>":(II)V
+Method	scala/collection/immutable/Range$$anon$2."<init>":(II)V
 Asciz	scala/xml/parsing/FactoryAdapter$$anonfun$startElement$1;
 class	scala/xml/parsing/FactoryAdapter$$anonfun$startElement$1
 Asciz	(Lscala/xml/parsing/FactoryAdapter;Lorg/xml/sax/Attributes;Lscala/runtime/ObjectRef;Lscala/runtime/ObjectRef;)V;
@@ -411,9 +410,9 @@ NameAndType	elem:Ljava/lang/Object;
 Field	scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 Asciz	attributes$1;
 Asciz	Lorg/xml/sax/Attributes;;
-Asciz	m$1;
-Asciz	Lscala/runtime/ObjectRef;;
 Asciz	scpe$1;
+Asciz	Lscala/runtime/ObjectRef;;
+Asciz	m$1;
 int	58;
 Asciz	indexOf;
 Asciz	(I)I;
@@ -580,6 +579,7 @@ Asciz	InnerClasses;
 Asciz	scala/collection/immutable/Range;
 class	scala/collection/immutable/Range
 Asciz	ByOne;
+Asciz	$anon$2;
 Asciz	scala/collection/mutable/ArrayOps;
 class	scala/collection/mutable/ArrayOps
 Asciz	ofChar;
@@ -747,8 +747,6 @@ public void endElement(java.lang.String, java.lang.String, java.lang.String);
 	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
 	checkcast	class java/lang/String
 	astore	8
-	iconst_1
-	ifeq	l2 // new
 	new	class scala/Tuple2
 	dup
 	aload	7
@@ -794,27 +792,21 @@ public void endElement(java.lang.String, java.lang.String, java.lang.String);
 	invokevirtual	Method curTag:()Ljava/lang/String;
 	dup
 	astore	15
-	ifnull	l3 // iconst_0
+	ifnull	l2 // iconst_0
 	aload	15
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifne	l3 // iconst_0
+	ifne	l2 // iconst_0
 	aload_0
 	aload_0
 	invokevirtual	Method curTag:()Ljava/lang/String;
 	invokevirtual	Method nodeContainsText:(Ljava/lang/String;)Z
-	ifeq	l3 // iconst_0
+	ifeq	l2 // iconst_0
 	iconst_1
-	goto	l4 // invokevirtual
-l3	iconst_0
-l4	invokevirtual	Method capture_$eq:(Z)V
+	goto	l3 // invokevirtual
+l2	iconst_0
+l3	invokevirtual	Method capture_$eq:(Z)V
 	return
-l2	new	class scala/MatchError
-	dup
-	aload	16
-	invokevirtual	Method scala/Tuple2.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
 l1	new	class scala/MatchError
 	dup
 	aload	16
@@ -822,29 +814,26 @@ l1	new	class scala/MatchError
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l3 = 224 // iconst_0
-   	l4 = 225 // invokevirtual
-   	l2 = 229 // new
-   	l1 = 242 // new
+   	l2 = 220 // iconst_0
+   	l3 = 221 // invokevirtual
+   	l1 = 225 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      255      0    this       Lscala/xml/parsing/FactoryAdapter;
-   0      255      1    uri       Ljava/lang/String;
-   0      255      2    _localName       Ljava/lang/String;
-   0      255      3    qname       Ljava/lang/String;
-   86      114      7    temp5       Ljava/lang/String;
-   229      13      7    temp5       Ljava/lang/String;
-   96      104      8    temp6       Ljava/lang/String;
-   229      13      8    temp6       Ljava/lang/String;
-   123      105      10    pre       Ljava/lang/String;
-   133      95      11    localName       Ljava/lang/String;
-   16      212      12    metaData       Lscala/xml/MetaData;
-   229      26      12    metaData       Lscala/xml/MetaData;
-   145      83      13    scp       Lscala/xml/NamespaceBinding;
-   64      164      14    v       Lscala/collection/immutable/List;
-   229      26      14    v       Lscala/collection/immutable/List;
-   71      129      16    temp4       Lscala/Tuple2;
-   229      26      16    temp4       Lscala/Tuple2;
+   0      238      0    this       Lscala/xml/parsing/FactoryAdapter;
+   0      238      1    uri       Ljava/lang/String;
+   0      238      2    _localName       Ljava/lang/String;
+   0      238      3    qname       Ljava/lang/String;
+   86      21      7    temp5       Ljava/lang/String;
+   96      11      8    temp6       Ljava/lang/String;
+   119      105      10    pre       Ljava/lang/String;
+   129      95      11    localName       Ljava/lang/String;
+   16      208      12    metaData       Lscala/xml/MetaData;
+   225      13      12    metaData       Lscala/xml/MetaData;
+   141      83      13    scp       Lscala/xml/NamespaceBinding;
+   64      160      14    v       Lscala/collection/immutable/List;
+   225      13      14    v       Lscala/collection/immutable/List;
+   71      125      16    temp4       Lscala/Tuple2;
+   225      13      16    temp4       Lscala/Tuple2;
 
 
 public void captureText();
@@ -888,7 +877,7 @@ l2	pop
 public void startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes);
   Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/xml/sax/Attributes;)V
   Code:
-   Stack=7, Locals=8, Args_size=5
+   Stack=7, Locals=10, Args_size=5
 	aload_0
 	invokevirtual	Method captureText:()V
 	aload_0
@@ -920,55 +909,67 @@ public void startElement(java.lang.String, java.lang.String, java.lang.String, o
 	dup
 	getstatic	Field scala/xml/Null$.MODULE$:Lscala/xml/Null$;
 	invokespecial	Method scala/runtime/ObjectRef."<init>":(Ljava/lang/Object;)V
-	astore	6
+	astore	9
 	new	class scala/runtime/ObjectRef
 	dup
 	aload_0
 	invokevirtual	Method scopeStack:()Lscala/collection/mutable/Stack;
+	invokevirtual	Method scala/collection/mutable/Stack.isEmpty:()Z
+	ifeq	l1 // aload_0
+	getstatic	Field scala/xml/TopScope$.MODULE$:Lscala/xml/TopScope$;
+	goto	l2 // invokespecial
+l1	aload_0
+	invokevirtual	Method scopeStack:()Lscala/collection/mutable/Stack;
 	invokevirtual	Method scala/collection/mutable/Stack.top:()Ljava/lang/Object;
 	checkcast	class scala/xml/NamespaceBinding
-	invokespecial	Method scala/runtime/ObjectRef."<init>":(Ljava/lang/Object;)V
-	astore	7
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	iconst_0
-	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
+l2	invokespecial	Method scala/runtime/ObjectRef."<init>":(Ljava/lang/Object;)V
+	astore	8
 	aload	4
 	invokeinterface	InterfaceMethod org/xml/sax/Attributes.getLength:()I
-	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
+	istore	7
+	iconst_0
+	istore	6
+	new	class scala/collection/immutable/Range$$anon$2
+	dup
+	iload	6
+	iload	7
+	invokespecial	Method scala/collection/immutable/Range$$anon$2."<init>":(II)V
 	new	class scala/xml/parsing/FactoryAdapter$$anonfun$startElement$1
 	dup
 	aload_0
 	aload	4
-	aload	6
-	aload	7
+	aload	9
+	aload	8
 	invokespecial	Method scala/xml/parsing/FactoryAdapter$$anonfun$startElement$1."<init>":(Lscala/xml/parsing/FactoryAdapter;Lorg/xml/sax/Attributes;Lscala/runtime/ObjectRef;Lscala/runtime/ObjectRef;)V
 	invokeinterface	InterfaceMethod scala/collection/immutable/Range$ByOne.foreach:(Lscala/Function1;)V
 	aload_0
 	invokevirtual	Method scopeStack:()Lscala/collection/mutable/Stack;
-	aload	7
+	aload	8
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class scala/xml/NamespaceBinding
 	invokevirtual	Method scala/collection/mutable/Stack.push:(Ljava/lang/Object;)Lscala/collection/mutable/Stack;
 	pop
 	aload_0
 	invokevirtual	Method attribStack:()Lscala/collection/mutable/Stack;
-	aload	6
+	aload	9
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class scala/xml/MetaData
 	invokevirtual	Method scala/collection/mutable/Stack.push:(Ljava/lang/Object;)Lscala/collection/mutable/Stack;
 	pop
 	return
   Labels:
+   	l1 = 85 // aload_0
+   	l2 = 95 // invokespecial
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      153      0    this       Lscala/xml/parsing/FactoryAdapter;
-   0      153      1    uri       Ljava/lang/String;
-   0      153      2    _localName       Ljava/lang/String;
-   0      153      3    qname       Ljava/lang/String;
-   0      153      4    attributes$1       Lorg/xml/sax/Attributes;
-   34      118      5    localName       Ljava/lang/String;
-   65      87      6    m$1       Lscala/runtime/ObjectRef;
-   84      68      7    scpe$1       Lscala/runtime/ObjectRef;
+   0      175      0    this       Lscala/xml/parsing/FactoryAdapter;
+   0      175      1    uri       Ljava/lang/String;
+   0      175      2    _localName       Ljava/lang/String;
+   0      175      3    qname       Ljava/lang/String;
+   0      175      4    attributes$1       Lorg/xml/sax/Attributes;
+   34      140      5    localName       Ljava/lang/String;
+   100      74      8    scpe$1       Lscala/runtime/ObjectRef;
+   65      109      9    m$1       Lscala/runtime/ObjectRef;
 
 
 public final scala.Tuple2 scala$xml$parsing$FactoryAdapter$$splitName(java.lang.String);
@@ -1111,7 +1112,7 @@ public boolean normalizeWhitespace();
 public abstract scala.collection.Seq createProcInstr(java.lang.String, java.lang.String);
   Signature: (Ljava/lang/String;Ljava/lang/String;)Lscala/collection/Seq;
   Signature: length = 0x2
-   01 6F 
+   01 6D 
 
 public abstract scala.xml.Text createText(java.lang.String);
   Signature: (Ljava/lang/String;)Lscala/xml/Text;
@@ -1119,7 +1120,7 @@ public abstract scala.xml.Text createText(java.lang.String);
 public abstract scala.xml.Node createNode(java.lang.String, java.lang.String, scala.xml.MetaData, scala.xml.NamespaceBinding, scala.collection.immutable.List);
   Signature: (Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/immutable/List;)Lscala/xml/Node;
   Signature: length = 0x2
-   01 70 
+   01 6E 
 
 public abstract boolean nodeContainsText(java.lang.String);
   Signature: (Ljava/lang/String;)Z
@@ -1172,7 +1173,7 @@ public void scopeStack_$eq(scala.collection.mutable.Stack);
 	return
   Labels:
   Signature: length = 0x2
-   01 73 
+   01 71 
 
 public scala.collection.mutable.Stack scopeStack();
   Signature: ()Lscala/collection/mutable/Stack;
@@ -1183,7 +1184,7 @@ public scala.collection.mutable.Stack scopeStack();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 74 
+   01 72 
 
 public scala.collection.mutable.Stack tagStack();
   Signature: ()Lscala/collection/mutable/Stack;
@@ -1194,7 +1195,7 @@ public scala.collection.mutable.Stack tagStack();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 75 
+   01 73 
 
 public scala.collection.mutable.Stack hStack();
   Signature: ()Lscala/collection/mutable/Stack;
@@ -1205,7 +1206,7 @@ public scala.collection.mutable.Stack hStack();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 76 
+   01 74 
 
 public scala.collection.mutable.Stack attribStack();
   Signature: ()Lscala/collection/mutable/Stack;
@@ -1216,7 +1217,7 @@ public scala.collection.mutable.Stack attribStack();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 77 
+   01 75 
 
 public scala.collection.mutable.StringBuilder buffer();
   Signature: ()Lscala/collection/mutable/StringBuilder;

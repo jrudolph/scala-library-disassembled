@@ -280,13 +280,6 @@ class	scala/actors/AbstractActor
 Asciz	(Lscala/Function2;Lscala/actors/AbstractActor;)V;
 NameAndType	"<init>":(Lscala/Function2;Lscala/actors/AbstractActor;)V
 Method	scala/actors/remote/LocalApply0."<init>":(Lscala/Function2;Lscala/actors/AbstractActor;)V
-Asciz	scala/MatchError;
-class	scala/MatchError
-Asciz	scala/Option;
-class	scala/Option
-Method	scala/Option.toString:()Ljava/lang/String;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	scala/None$;
 class	scala/None$
 Asciz	Lscala/None$;;
@@ -298,7 +291,13 @@ NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	: lost message;
 String	: lost message
-Method	java/lang/Object.toString:()Ljava/lang/String;
+Asciz	scala/MatchError;
+class	scala/MatchError
+Asciz	scala/Option;
+class	scala/Option
+Method	scala/Option.toString:()Ljava/lang/String;
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	scala/actors/remote/NamedSend;
 class	scala/actors/remote/NamedSend
 Method	scala/actors/remote/NamedSend.senderLoc:()Lscala/actors/remote/Locator;
@@ -321,6 +320,7 @@ Asciz	any2stringadd;
 Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
 NameAndType	any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
 Method	scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	senderNode;
 Asciz	Lscala/actors/remote/Node;;
 Asciz	temp52;
@@ -630,8 +630,6 @@ public void processMsg(scala.actors.remote.Node, java.lang.Object);
 	aload_3
 	invokevirtual	Method scala/actors/remote/RemoteApply0.rfun:()Lscala/Function2;
 	astore	8
-	iconst_1
-	ifeq	l2 // new
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
@@ -655,7 +653,7 @@ public void processMsg(scala.actors.remote.Node, java.lang.Object);
 	astore	10
 	aload	10
 	instanceof	class scala/Some
-	ifeq	l3 // getstatic
+	ifeq	l2 // getstatic
 	aload	10
 	checkcast	class scala/Some
 	astore	5
@@ -663,8 +661,6 @@ public void processMsg(scala.actors.remote.Node, java.lang.Object);
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/actors/OutputChannel
 	astore	9
-	iconst_1
-	ifeq	l4 // new
 	aload_0
 	aload	6
 	invokevirtual	Method scala/actors/remote/Locator.node:()Lscala/actors/remote/Node;
@@ -681,26 +677,18 @@ public void processMsg(scala.actors.remote.Node, java.lang.Object);
 	invokespecial	Method scala/actors/remote/LocalApply0."<init>":(Lscala/Function2;Lscala/actors/AbstractActor;)V
 	aconst_null
 	invokevirtual	Method scala/actors/remote/Proxy.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
-	goto	l5 // goto
-l4	new	class scala/MatchError
+	goto	l3 // goto
+l2	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	dup
-	aload	10
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l3	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	dup
-	ifnonnull	l6 // aload
+	ifnonnull	l4 // aload
 	pop
 	aload	10
-	ifnull	l7 // iconst_1
-	goto	l8 // new
-l6	aload	10
+	ifnull	l5 // getstatic
+	goto	l6 // new
+l4	aload	10
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l8 // new
-l7	iconst_1
-	ifeq	l9 // new
-	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+	ifeq	l6 // new
+l5	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/runtime/StringAdd
 	dup
 	aload_0
@@ -708,28 +696,16 @@ l7	iconst_1
 	ldc	String : lost message
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
-l5	goto	l10 // aload_0
-l9	new	class scala/MatchError
+l3	goto	l7 // aload_0
+l6	new	class scala/MatchError
 	dup
 	aload	10
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l8	new	class scala/MatchError
-	dup
-	aload	10
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l2	new	class scala/MatchError
-	dup
-	aload_2
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
 l1	aload_2
 	instanceof	class scala/actors/remote/NamedSend
-	ifeq	l11 // new
+	ifeq	l8 // new
 	aload_2
 	checkcast	class scala/actors/remote/NamedSend
 	astore	11
@@ -745,8 +721,6 @@ l1	aload_2
 	aload	11
 	invokevirtual	Method scala/actors/remote/NamedSend.session:()Lscala/Symbol;
 	astore	16
-	iconst_1
-	ifeq	l12 // new
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
@@ -770,7 +744,7 @@ l1	aload_2
 	astore	18
 	aload	18
 	instanceof	class scala/Some
-	ifeq	l13 // getstatic
+	ifeq	l9 // getstatic
 	aload	18
 	checkcast	class scala/Some
 	astore	13
@@ -778,62 +752,40 @@ l1	aload_2
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/actors/OutputChannel
 	astore	17
-	iconst_1
-	ifeq	l14 // new
 	aload_0
 	aload	14
 	aload	15
 	aload	16
 	aload	17
 	invokespecial	Method liftedTree1$1:(Lscala/actors/remote/Locator;[BLscala/Symbol;Lscala/actors/OutputChannel;)V
-	goto	l10 // aload_0
-l14	new	class scala/MatchError
+	goto	l7 // aload_0
+l9	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	dup
-	aload	18
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l13	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	dup
-	ifnonnull	l15 // aload
+	ifnonnull	l10 // aload
 	pop
 	aload	18
-	ifnull	l16 // iconst_1
-	goto	l17 // new
-l15	aload	18
+	ifnull	l11 // getstatic
+	goto	l12 // new
+l10	aload	18
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l17 // new
-l16	iconst_1
-	ifeq	l18 // new
-	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+	ifeq	l12 // new
+l11	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
 	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
 	ldc	String : lost message
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
-l10	aload_0
+l7	aload_0
 	monitorexit
 	return
-l18	new	class scala/MatchError
-	dup
-	aload	18
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l17	new	class scala/MatchError
-	dup
-	aload	18
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
 l12	new	class scala/MatchError
 	dup
-	aload_2
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
+	aload	18
+	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
-l11	new	class scala/MatchError
+l8	new	class scala/MatchError
 	dup
 	aload_2
 	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
@@ -843,55 +795,53 @@ l11	new	class scala/MatchError
 	monitorexit
 	athrow
   Labels:
-   	l4 = 156 // new
-   	l3 = 169 // getstatic
-   	l6 = 185 // aload
-   	l7 = 193 // iconst_1
-   	l5 = 216 // goto
-   	l9 = 219 // new
-   	l8 = 232 // new
-   	l2 = 245 // new
-   	l1 = 257 // aload_2
-   	l14 = 397 // new
-   	l13 = 410 // getstatic
-   	l15 = 426 // aload
-   	l16 = 434 // iconst_1
-   	l10 = 456 // aload_0
-   	l18 = 459 // new
-   	l17 = 472 // new
-   	l12 = 485 // new
-   	l11 = 497 // new
+   	l2 = 148 // getstatic
+   	l4 = 164 // aload
+   	l5 = 172 // getstatic
+   	l3 = 191 // goto
+   	l6 = 194 // new
+   	l1 = 207 // aload_2
+   	l9 = 339 // getstatic
+   	l10 = 355 // aload
+   	l11 = 363 // getstatic
+   	l7 = 381 // aload_0
+   	l12 = 384 // new
+   	l8 = 397 // new
   Exception table:
    from   to  target type
-     4   458   509   any
-   459   509   509   any
+     4   383   409   any
+   384   409   409   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      512      0    this       Lscala/actors/remote/NetKernel;
-   0      512      1    senderNode       Lscala/actors/remote/Node;
-   0      512      2    msg       Ljava/lang/Object;
-   16      241      3    temp52       Lscala/actors/remote/RemoteApply0;
-   28      229      4    temp54       Lscala/actors/remote/Locator;
-   103      66      5    temp44       Lscala/Some;
-   22      235      6    temp53       Lscala/actors/remote/Locator;
-   133      20      7    senderProxy       Lscala/actors/remote/Proxy;
-   34      223      8    temp55       Lscala/Function2;
-   113      56      9    temp45       Lscala/actors/OutputChannel;
-   88      157      10    temp43       Lscala/Option;
-   270      186      11    temp56       Lscala/actors/remote/NamedSend;
-   459      38      11    temp56       Lscala/actors/remote/NamedSend;
-   284      172      12    temp58       Lscala/actors/remote/Locator;
-   459      38      12    temp58       Lscala/actors/remote/Locator;
-   368      42      13    temp48       Lscala/Some;
-   277      179      14    temp57       Lscala/actors/remote/Locator;
-   459      38      14    temp57       Lscala/actors/remote/Locator;
-   291      165      15    temp59       [B
-   459      38      15    temp59       [B
-   298      158      16    temp60       Lscala/Symbol;
-   459      38      16    temp60       Lscala/Symbol;
-   378      32      17    temp49       Lscala/actors/OutputChannel;
-   353      103      18    temp47       Lscala/Option;
-   459      26      18    temp47       Lscala/Option;
+   0      412      0    this       Lscala/actors/remote/NetKernel;
+   0      412      1    senderNode       Lscala/actors/remote/Node;
+   0      412      2    msg       Ljava/lang/Object;
+   16      175      3    temp52       Lscala/actors/remote/RemoteApply0;
+   194      13      3    temp52       Lscala/actors/remote/RemoteApply0;
+   28      163      4    temp54       Lscala/actors/remote/Locator;
+   194      13      4    temp54       Lscala/actors/remote/Locator;
+   99      46      5    temp44       Lscala/Some;
+   22      169      6    temp53       Lscala/actors/remote/Locator;
+   194      13      6    temp53       Lscala/actors/remote/Locator;
+   125      20      7    senderProxy       Lscala/actors/remote/Proxy;
+   34      157      8    temp55       Lscala/Function2;
+   194      13      8    temp55       Lscala/Function2;
+   109      36      9    temp45       Lscala/actors/OutputChannel;
+   84      123      10    temp43       Lscala/Option;
+   220      161      11    temp56       Lscala/actors/remote/NamedSend;
+   384      13      11    temp56       Lscala/actors/remote/NamedSend;
+   234      147      12    temp58       Lscala/actors/remote/Locator;
+   384      13      12    temp58       Lscala/actors/remote/Locator;
+   314      22      13    temp48       Lscala/Some;
+   227      154      14    temp57       Lscala/actors/remote/Locator;
+   384      13      14    temp57       Lscala/actors/remote/Locator;
+   241      140      15    temp59       [B
+   384      13      15    temp59       [B
+   248      133      16    temp60       Lscala/Symbol;
+   384      13      16    temp60       Lscala/Symbol;
+   324      12      17    temp49       Lscala/actors/OutputChannel;
+   299      82      18    temp47       Lscala/Option;
+   384      13      18    temp47       Lscala/Option;
 
 
 public void registerProxy(scala.actors.remote.Node, scala.Symbol, scala.actors.remote.Proxy);
@@ -915,29 +865,19 @@ public void registerProxy(scala.actors.remote.Node, scala.Symbol, scala.actors.r
 	aload	4
 	instanceof	class scala/Some
 	ifeq	l1 // getstatic
-	iconst_1
-	ifeq	l2 // new
 	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	goto	l3 // pop
-l2	new	class scala/MatchError
-	dup
-	aload	4
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // pop
 l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	dup
-	ifnonnull	l4 // aload
+	ifnonnull	l3 // aload
 	pop
 	aload	4
-	ifnull	l5 // iconst_1
-	goto	l6 // new
-l4	aload	4
+	ifnull	l4 // aload_0
+	goto	l5 // new
+l3	aload	4
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l6 // new
-l5	iconst_1
-	ifeq	l7 // new
-	aload_0
+	ifeq	l5 // new
+l4	aload_0
 	invokevirtual	Method proxies:()Lscala/collection/mutable/HashMap;
 	getstatic	Field scala/Predef$Pair$.MODULE$:Lscala/Predef$Pair$;
 	new	class scala/Tuple2
@@ -948,17 +888,11 @@ l5	iconst_1
 	aload_3
 	invokevirtual	Method scala/Predef$Pair$.apply:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/Tuple2;
 	invokevirtual	Method scala/collection/mutable/HashMap.$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/HashMap;
-l3	pop
+l2	pop
 	aload	5
 	monitorexit
 	return
-l7	new	class scala/MatchError
-	dup
-	aload	4
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	new	class scala/MatchError
+l5	new	class scala/MatchError
 	dup
 	aload	4
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
@@ -968,25 +902,23 @@ l6	new	class scala/MatchError
 	monitorexit
 	athrow
   Labels:
-   	l2 = 44 // new
-   	l1 = 57 // getstatic
-   	l4 = 73 // aload
-   	l5 = 81 // iconst_1
-   	l3 = 108 // pop
-   	l7 = 113 // new
-   	l6 = 126 // new
+   	l1 = 40 // getstatic
+   	l3 = 56 // aload
+   	l4 = 64 // aload_0
+   	l2 = 87 // pop
+   	l5 = 92 // new
   Exception table:
    from   to  target type
-     8   112   139   any
-   113   139   139   any
+     8    91   105   any
+    92   105   105   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      143      0    this       Lscala/actors/remote/NetKernel;
-   0      143      1    senderNode       Lscala/actors/remote/Node;
-   0      143      2    senderName       Lscala/Symbol;
-   0      143      3    p       Lscala/actors/remote/Proxy;
-   26      83      4    temp39       Lscala/Option;
-   113      26      4    temp39       Lscala/Option;
+   0      109      0    this       Lscala/actors/remote/NetKernel;
+   0      109      1    senderNode       Lscala/actors/remote/Node;
+   0      109      2    senderName       Lscala/Symbol;
+   0      109      3    p       Lscala/actors/remote/Proxy;
+   26      62      4    temp39       Lscala/Option;
+   92      13      4    temp39       Lscala/Option;
 
 
 public scala.actors.remote.Proxy getOrCreateProxy(scala.actors.remote.Node, scala.Symbol);
@@ -1017,43 +949,27 @@ public scala.actors.remote.Proxy getOrCreateProxy(scala.actors.remote.Node, scal
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/actors/remote/Proxy
 	astore	4
-	iconst_1
-	ifeq	l2 // new
 	aload	4
-	goto	l3 // aload
-l2	new	class scala/MatchError
-	dup
-	aload	5
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // aload
 l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	dup
-	ifnonnull	l4 // aload
+	ifnonnull	l3 // aload
 	pop
 	aload	5
-	ifnull	l5 // iconst_1
-	goto	l6 // new
-l4	aload	5
+	ifnull	l4 // aload_0
+	goto	l5 // new
+l3	aload	5
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l6 // new
-l5	iconst_1
-	ifeq	l7 // new
-	aload_0
+	ifeq	l5 // new
+l4	aload_0
 	aload_1
 	aload_2
 	invokevirtual	Method createProxy:(Lscala/actors/remote/Node;Lscala/Symbol;)Lscala/actors/remote/Proxy;
-l3	aload	6
+l2	aload	6
 	monitorexit
 	checkcast	class scala/actors/remote/Proxy
 	areturn
-l7	new	class scala/MatchError
-	dup
-	aload	5
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	new	class scala/MatchError
+l5	new	class scala/MatchError
 	dup
 	aload	5
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
@@ -1063,26 +979,24 @@ l6	new	class scala/MatchError
 	monitorexit
 	athrow
   Labels:
-   	l2 = 58 // new
-   	l1 = 71 // getstatic
-   	l4 = 87 // aload
-   	l5 = 95 // iconst_1
-   	l3 = 105 // aload
-   	l7 = 112 // new
-   	l6 = 125 // new
+   	l1 = 54 // getstatic
+   	l3 = 70 // aload
+   	l4 = 78 // aload_0
+   	l2 = 84 // aload
+   	l5 = 91 // new
   Exception table:
    from   to  target type
-     8   108   138   any
-   112   138   138   any
+     8    87   104   any
+    91   104   104   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      142      0    this       Lscala/actors/remote/NetKernel;
-   0      142      1    senderNode       Lscala/actors/remote/Node;
-   0      142      2    senderName       Lscala/Symbol;
-   40      31      3    temp36       Lscala/Some;
-   49      22      4    temp37       Lscala/actors/remote/Proxy;
-   26      82      5    temp35       Lscala/Option;
-   112      26      5    temp35       Lscala/Option;
+   0      108      0    this       Lscala/actors/remote/NetKernel;
+   0      108      1    senderNode       Lscala/actors/remote/Node;
+   0      108      2    senderName       Lscala/Symbol;
+   40      11      3    temp36       Lscala/Some;
+   49      2      4    temp37       Lscala/actors/remote/Proxy;
+   26      61      5    temp35       Lscala/Option;
+   91      13      5    temp35       Lscala/Option;
 
 
 public scala.collection.mutable.HashMap proxies();
@@ -1292,14 +1206,12 @@ public scala.Symbol getOrCreateName(scala.actors.OutputChannel);
 	ifnonnull	l1 // aload
 	pop
 	aload	5
-	ifnull	l2 // iconst_1
+	ifnull	l2 // getstatic
 	goto	l3 // aload
 l1	aload	5
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload
-l2	iconst_1
-	ifeq	l4 // new
-	getstatic	Field scala/actors/remote/FreshNameCreator$.MODULE$:Lscala/actors/remote/FreshNameCreator$;
+l2	getstatic	Field scala/actors/remote/FreshNameCreator$.MODULE$:Lscala/actors/remote/FreshNameCreator$;
 	ldc_w	String remotesender
 	invokevirtual	Method scala/actors/remote/FreshNameCreator$.newName:(Ljava/lang/String;)Lscala/Symbol;
 	astore_2
@@ -1308,16 +1220,10 @@ l2	iconst_1
 	aload_1
 	invokevirtual	Method register:(Lscala/Symbol;Lscala/actors/OutputChannel;)V
 	aload_2
-	goto	l5 // areturn
-l4	new	class scala/MatchError
-	dup
-	aload	5
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l4 // areturn
 l3	aload	5
 	instanceof	class scala/Some
-	ifeq	l6 // new
+	ifeq	l5 // new
 	aload	5
 	checkcast	class scala/Some
 	astore_3
@@ -1325,17 +1231,9 @@ l3	aload	5
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/Symbol
 	astore	4
-	iconst_1
-	ifeq	l7 // new
 	aload	4
-l5	areturn
-l7	new	class scala/MatchError
-	dup
-	aload	5
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	new	class scala/MatchError
+l4	areturn
+l5	new	class scala/MatchError
 	dup
 	aload	5
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
@@ -1343,22 +1241,18 @@ l6	new	class scala/MatchError
 	athrow
   Labels:
    	l1 = 26 // aload
-   	l2 = 34 // iconst_1
-   	l4 = 58 // new
-   	l3 = 71 // aload
-   	l5 = 100 // areturn
-   	l7 = 101 // new
-   	l6 = 114 // new
+   	l2 = 34 // getstatic
+   	l3 = 54 // aload
+   	l4 = 79 // areturn
+   	l5 = 80 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      127      0    this       Lscala/actors/remote/NetKernel;
-   0      127      1    from       Lscala/actors/OutputChannel;
-   48      7      2    freshName       Lscala/Symbol;
-   85      15      3    temp33       Lscala/Some;
-   101      13      3    temp33       Lscala/Some;
-   94      6      4    temp34       Lscala/Symbol;
-   101      13      4    temp34       Lscala/Symbol;
-   10      117      5    temp31       Lscala/Option;
+   0      93      0    this       Lscala/actors/remote/NetKernel;
+   0      93      1    from       Lscala/actors/OutputChannel;
+   44      7      2    freshName       Lscala/Symbol;
+   68      11      3    temp33       Lscala/Some;
+   77      2      4    temp34       Lscala/Symbol;
+   10      83      5    temp31       Lscala/Option;
 
   Signature: length = 0x2
    01 67 

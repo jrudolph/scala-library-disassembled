@@ -2,7 +2,7 @@ Compiled from "Parsers.scala"
 public final class scala.util.parsing.combinator.Parsers$$anon$2 extends scala.util.parsing.combinator.Parsers$Parser
   SourceFile: "Parsers.scala"
   Signature: length = 0x2
-   00 6A 
+   00 5F 
   Scala: length = 0x
    
   InnerClass: 
@@ -100,24 +100,13 @@ String	end of input expected
 Asciz	(Lscala/util/parsing/combinator/Parsers;Ljava/lang/String;Lscala/util/parsing/input/Reader;)V;
 NameAndType	"<init>":(Lscala/util/parsing/combinator/Parsers;Ljava/lang/String;Lscala/util/parsing/input/Reader;)V
 Method	scala/util/parsing/combinator/Parsers$Failure."<init>":(Lscala/util/parsing/combinator/Parsers;Ljava/lang/String;Lscala/util/parsing/input/Reader;)V
-Asciz	scala/MatchError;
-class	scala/MatchError
-Asciz	scala/util/parsing/combinator/Parsers$ParseResult;
-class	scala/util/parsing/combinator/Parsers$ParseResult
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
-NameAndType	toString:()Ljava/lang/String;
-Method	scala/util/parsing/combinator/Parsers$ParseResult.toString:()Ljava/lang/String;
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	in;
 Asciz	Lscala/util/parsing/input/Reader;;
+Asciz	temp100;
+Asciz	Lscala/util/parsing/combinator/Parsers$ParseResult;;
 Asciz	temp101;
 Asciz	Lscala/util/parsing/combinator/Parsers$Success;;
 Asciz	temp103;
-Asciz	temp100;
-Asciz	Lscala/util/parsing/combinator/Parsers$ParseResult;;
 Asciz	(Lscala/util/parsing/input/Reader<Ljava/lang/Object;>;)Lscala/util/parsing/combinator/Parsers$ParseResult<TT;>;;
 Asciz	Signature;
 Asciz	Lscala/util/parsing/combinator/Parsers$Parser<TT;>;;
@@ -128,6 +117,8 @@ Asciz	Failure;
 Asciz	Success;
 Asciz	$anon$2;
 Asciz	NoSuccess;
+Asciz	scala/util/parsing/combinator/Parsers$ParseResult;
+class	scala/util/parsing/combinator/Parsers$ParseResult
 Asciz	ParseResult;
 
 {
@@ -192,90 +183,72 @@ public scala.util.parsing.combinator.Parsers$ParseResult apply(scala.util.parsin
 	getfield	Field p$1:Lscala/util/parsing/combinator/Parsers$Parser;
 	aload_1
 	invokevirtual	Method scala/util/parsing/combinator/Parsers$Parser.apply:(Lscala/util/parsing/input/Reader;)Lscala/util/parsing/combinator/Parsers$ParseResult;
-	astore	5
-	aload	5
-	instanceof	class scala/util/parsing/combinator/Parsers$Success
-	ifeq	l1 // iconst_1
-	aload	5
-	checkcast	class scala/util/parsing/combinator/Parsers$Success
 	astore_2
 	aload_2
-	invokevirtual	Method scala/util/parsing/combinator/Parsers$Success.next:()Lscala/util/parsing/input/Reader;
-	astore	4
-	iconst_1
-	ifeq	l2 // new
-	aload	4
-	invokevirtual	Method scala/util/parsing/input/Reader.atEnd:()Z
-	ifeq	l3 // aload_0
+	instanceof	class scala/util/parsing/combinator/Parsers$Success
+	ifeq	l1 // aload_0
 	aload_2
-	goto	l4 // areturn
-l3	aload_0
+	checkcast	class scala/util/parsing/combinator/Parsers$Success
+	astore_3
+	aload_3
+	invokevirtual	Method scala/util/parsing/combinator/Parsers$Success.next:()Lscala/util/parsing/input/Reader;
+	astore	5
+	aload	5
+	invokevirtual	Method scala/util/parsing/input/Reader.atEnd:()Z
+	ifeq	l2 // aload_0
+	aload_3
+	goto	l3 // areturn
+l2	aload_0
 	getfield	Field $outer:Lscala/util/parsing/combinator/Parsers;
 	invokeinterface	InterfaceMethod scala/util/parsing/combinator/Parsers.lastNoSuccess:()Lscala/util/parsing/combinator/Parsers$NoSuccess;
 	dup
-	astore_3
-	ifnull	l5 // new
-	aload_3
+	astore	4
+	ifnull	l4 // new
+	aload	4
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifne	l5 // new
+	ifne	l4 // new
 	aload_0
 	getfield	Field $outer:Lscala/util/parsing/combinator/Parsers;
 	invokeinterface	InterfaceMethod scala/util/parsing/combinator/Parsers.lastNoSuccess:()Lscala/util/parsing/combinator/Parsers$NoSuccess;
 	invokevirtual	Method scala/util/parsing/combinator/Parsers$NoSuccess.next:()Lscala/util/parsing/input/Reader;
 	invokevirtual	Method scala/util/parsing/input/Reader.pos:()Lscala/util/parsing/input/Position;
-	aload	4
+	aload	5
 	invokevirtual	Method scala/util/parsing/input/Reader.pos:()Lscala/util/parsing/input/Position;
 	invokeinterface	InterfaceMethod scala/util/parsing/input/Position.$less:(Lscala/util/parsing/input/Position;)Z
-	ifeq	l6 // aload_0
-l5	new	class scala/util/parsing/combinator/Parsers$Failure
+	ifeq	l5 // aload_0
+l4	new	class scala/util/parsing/combinator/Parsers$Failure
 	dup
 	aload_0
 	getfield	Field $outer:Lscala/util/parsing/combinator/Parsers;
 	ldc	String end of input expected
-	aload	4
+	aload	5
 	invokespecial	Method scala/util/parsing/combinator/Parsers$Failure."<init>":(Lscala/util/parsing/combinator/Parsers;Ljava/lang/String;Lscala/util/parsing/input/Reader;)V
-	goto	l4 // areturn
-l6	aload_0
+	goto	l3 // areturn
+l5	aload_0
 	getfield	Field $outer:Lscala/util/parsing/combinator/Parsers;
 	invokeinterface	InterfaceMethod scala/util/parsing/combinator/Parsers.lastNoSuccess:()Lscala/util/parsing/combinator/Parsers$NoSuccess;
-	goto	l4 // areturn
-l2	new	class scala/MatchError
-	dup
-	aload	5
-	invokevirtual	Method scala/util/parsing/combinator/Parsers$ParseResult.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l1	iconst_1
-	ifeq	l7 // new
-	aload_0
+	goto	l3 // areturn
+l1	aload_0
 	getfield	Field $outer:Lscala/util/parsing/combinator/Parsers;
 	invokeinterface	InterfaceMethod scala/util/parsing/combinator/Parsers.lastNoSuccess:()Lscala/util/parsing/combinator/Parsers$NoSuccess;
-l4	areturn
-l7	new	class scala/MatchError
-	dup
-	aload	5
-	invokevirtual	Method scala/util/parsing/combinator/Parsers$ParseResult.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+l3	areturn
   Labels:
-   	l3 = 46 // aload_0
-   	l5 = 96 // new
-   	l6 = 114 // aload_0
-   	l2 = 126 // new
-   	l1 = 139 // iconst_1
-   	l4 = 152 // areturn
-   	l7 = 153 // new
+   	l2 = 39 // aload_0
+   	l4 = 91 // new
+   	l5 = 109 // aload_0
+   	l1 = 121 // aload_0
+   	l3 = 130 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      166      0    this       Lscala/util/parsing/combinator/Parsers$$anon$2;
-   0      166      1    in       Lscala/util/parsing/input/Reader;
-   24      115      2    temp101       Lscala/util/parsing/combinator/Parsers$Success;
-   30      109      4    temp103       Lscala/util/parsing/input/Reader;
-   10      156      5    temp100       Lscala/util/parsing/combinator/Parsers$ParseResult;
+   0      131      0    this       Lscala/util/parsing/combinator/Parsers$$anon$2;
+   0      131      1    in       Lscala/util/parsing/input/Reader;
+   9      122      2    temp100       Lscala/util/parsing/combinator/Parsers$ParseResult;
+   21      100      3    temp101       Lscala/util/parsing/combinator/Parsers$Success;
+   27      94      5    temp103       Lscala/util/parsing/input/Reader;
 
   Signature: length = 0x2
-   00 68 
+   00 5D 
 
 }
 

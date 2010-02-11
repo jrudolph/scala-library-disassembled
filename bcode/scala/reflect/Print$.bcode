@@ -4,7 +4,7 @@ public final class scala.reflect.Print$ extends java.lang.Object implements scal
   Scala: length = 0x
    
   Signature: length = 0x2
-   02 07 
+   01 FFFFFFFF 
   InnerClass: 
    public final $anon$1=class scala/Predef$$anon$1 of class scala/Predef
    public final $anonfun$1=class scala/reflect/Print$$anonfun$1 of class scala/reflect/Print
@@ -58,17 +58,6 @@ NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	NoPrefix;
 String	NoPrefix
-Asciz	scala/MatchError;
-class	scala/MatchError
-Asciz	scala/reflect/Type;
-class	scala/reflect/Type
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
-NameAndType	toString:()Ljava/lang/String;
-Method	scala/reflect/Type.toString:()Ljava/lang/String;
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	scala/reflect/NoType$;
 class	scala/reflect/NoType$
 Asciz	Lscala/reflect/NoType$;;
@@ -79,6 +68,7 @@ String	NoType
 Asciz	scala/reflect/NamedType;
 class	scala/reflect/NamedType
 Asciz	fullname;
+Asciz	()Ljava/lang/String;;
 NameAndType	fullname:()Ljava/lang/String;
 Method	scala/reflect/NamedType.fullname:()Ljava/lang/String;
 Asciz	scala/collection/mutable/StringBuilder;
@@ -92,6 +82,8 @@ NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 Asciz	);
 String	)
+Asciz	toString;
+NameAndType	toString:()Ljava/lang/String;
 Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 Asciz	scala/reflect/PrefixedType;
 class	scala/reflect/PrefixedType
@@ -265,9 +257,6 @@ Asciz	substring;
 Asciz	(I)Ljava/lang/String;;
 NameAndType	substring:(I)Ljava/lang/String;
 Method	java/lang/String.substring:(I)Ljava/lang/String;
-Asciz	scala/reflect/Symbol;
-class	scala/reflect/Symbol
-Method	scala/reflect/Symbol.toString:()Ljava/lang/String;
 Asciz	scala/reflect/Method;
 class	scala/reflect/Method
 Method	scala/reflect/Method.fullname:()Ljava/lang/String;
@@ -328,9 +317,6 @@ Asciz	(Lscala/reflect/Tree;)Ljava/lang/String;;
 Asciz	scala/reflect/Ident;
 class	scala/reflect/Ident
 Method	scala/reflect/Ident.sym:()Lscala/reflect/Symbol;
-Asciz	scala/reflect/Tree;
-class	scala/reflect/Tree
-Method	scala/reflect/Tree.toString:()Ljava/lang/String;
 Asciz	scala/reflect/Select;
 class	scala/reflect/Select
 Asciz	qual;
@@ -385,6 +371,8 @@ class	scala/Predef$
 Asciz	Lscala/Predef$;;
 NameAndType	MODULE$:Lscala/Predef$;
 Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	scala/reflect/Tree;
+class	scala/reflect/Tree
 Asciz	[Ljava/lang/Object;;
 class	"[Ljava/lang/Object;"
 Asciz	wrapRefArray;
@@ -509,6 +497,10 @@ Asciz	scala/reflect/Code;
 class	scala/reflect/Code
 NameAndType	tree:()Lscala/reflect/Tree;
 Method	scala/reflect/Code.tree:()Lscala/reflect/Tree;
+Asciz	scala/reflect/Symbol;
+class	scala/reflect/Symbol
+Asciz	scala/reflect/Type;
+class	scala/reflect/Type
 Asciz	UnknownAny;
 String	UnknownAny
 Asciz	any;
@@ -597,52 +589,34 @@ public java.lang.String apply(scala.reflect.Type);
 	ifnonnull	l1 // aload_1
 	pop
 	aload_1
-	ifnull	l2 // iconst_1
+	ifnull	l2 // ldc
 	goto	l3 // getstatic
 l1	aload_1
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // getstatic
-l2	iconst_1
-	ifeq	l4 // new
-	ldc	String NoPrefix
-	goto	l5 // areturn
-l4	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Type.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+l2	ldc	String NoPrefix
+	goto	l4 // areturn
 l3	getstatic	Field scala/reflect/NoType$.MODULE$:Lscala/reflect/NoType$;
 	dup
-	ifnonnull	l6 // aload_1
+	ifnonnull	l5 // aload_1
 	pop
 	aload_1
-	ifnull	l7 // iconst_1
-	goto	l8 // aload_1
-l6	aload_1
+	ifnull	l6 // ldc
+	goto	l7 // aload_1
+l5	aload_1
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l8 // aload_1
-l7	iconst_1
-	ifeq	l9 // new
-	ldc	String NoType
-	goto	l5 // areturn
-l9	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Type.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l8	aload_1
+	ifeq	l7 // aload_1
+l6	ldc	String NoType
+	goto	l4 // areturn
+l7	aload_1
 	instanceof	class scala/reflect/NamedType
-	ifeq	l10 // aload_1
+	ifeq	l8 // aload_1
 	aload_1
 	checkcast	class scala/reflect/NamedType
 	astore_2
 	aload_2
 	invokevirtual	Method scala/reflect/NamedType.fullname:()Ljava/lang/String;
 	astore_3
-	iconst_1
-	ifeq	l11 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -653,16 +627,10 @@ l8	aload_1
 	ldc	String )
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l5 // areturn
-l11	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Type.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l10	aload_1
+	goto	l4 // areturn
+l8	aload_1
 	instanceof	class scala/reflect/PrefixedType
-	ifeq	l12 // aload_1
+	ifeq	l9 // aload_1
 	aload_1
 	checkcast	class scala/reflect/PrefixedType
 	astore	4
@@ -672,8 +640,6 @@ l10	aload_1
 	aload	4
 	invokevirtual	Method scala/reflect/PrefixedType.sym:()Lscala/reflect/Symbol;
 	astore	6
-	iconst_1
-	ifeq	l13 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -692,16 +658,10 @@ l10	aload_1
 	ldc	String )
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l5 // areturn
-l13	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Type.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l12	aload_1
+	goto	l4 // areturn
+l9	aload_1
 	instanceof	class scala/reflect/SingleType
-	ifeq	l14 // aload_1
+	ifeq	l10 // aload_1
 	aload_1
 	checkcast	class scala/reflect/SingleType
 	astore	7
@@ -711,8 +671,6 @@ l12	aload_1
 	aload	7
 	invokevirtual	Method scala/reflect/SingleType.sym:()Lscala/reflect/Symbol;
 	astore	9
-	iconst_1
-	ifeq	l15 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -731,24 +689,16 @@ l12	aload_1
 	ldc	String )
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l5 // areturn
-l15	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Type.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l14	aload_1
+	goto	l4 // areturn
+l10	aload_1
 	instanceof	class scala/reflect/ThisType
-	ifeq	l16 // aload_1
+	ifeq	l11 // aload_1
 	aload_1
 	checkcast	class scala/reflect/ThisType
 	astore	10
 	aload	10
 	invokevirtual	Method scala/reflect/ThisType.clazz:()Lscala/reflect/Symbol;
 	astore	11
-	iconst_1
-	ifeq	l17 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -761,16 +711,10 @@ l14	aload_1
 	ldc	String .this.type)
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l5 // areturn
-l17	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Type.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l16	aload_1
+	goto	l4 // areturn
+l11	aload_1
 	instanceof	class scala/reflect/AppliedType
-	ifeq	l18 // aload_1
+	ifeq	l12 // aload_1
 	aload_1
 	checkcast	class scala/reflect/AppliedType
 	astore	12
@@ -780,8 +724,6 @@ l16	aload_1
 	aload	12
 	invokevirtual	Method scala/reflect/AppliedType.args:()Lscala/collection/immutable/List;
 	astore	14
-	iconst_1
-	ifeq	l19 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -805,16 +747,10 @@ l16	aload_1
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l5 // areturn
-l19	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Type.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l18	aload_1
+	goto	l4 // areturn
+l12	aload_1
 	instanceof	class scala/reflect/TypeBounds
-	ifeq	l20 // aload_1
+	ifeq	l13 // aload_1
 	aload_1
 	checkcast	class scala/reflect/TypeBounds
 	astore	16
@@ -824,8 +760,6 @@ l18	aload_1
 	aload	16
 	invokevirtual	Method scala/reflect/TypeBounds.hi:()Lscala/reflect/Type;
 	astore	18
-	iconst_1
-	ifeq	l21 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -844,16 +778,10 @@ l18	aload_1
 	ldc	String ]
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l5 // areturn
-l21	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Type.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l20	aload_1
+	goto	l4 // areturn
+l13	aload_1
 	instanceof	class scala/reflect/MethodType
-	ifeq	l22 // aload_1
+	ifeq	l14 // aload_1
 	aload_1
 	checkcast	class scala/reflect/MethodType
 	astore	19
@@ -863,8 +791,6 @@ l20	aload_1
 	aload	19
 	invokevirtual	Method scala/reflect/MethodType.restpe:()Lscala/reflect/Type;
 	astore	22
-	iconst_1
-	ifeq	l23 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -890,16 +816,10 @@ l20	aload_1
 	invokevirtual	Method apply:(Lscala/reflect/Type;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l5 // areturn
-l23	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Type.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l22	aload_1
+	goto	l4 // areturn
+l14	aload_1
 	instanceof	class scala/reflect/PolyType
-	ifeq	l24 // iconst_1
+	ifeq	l15 // ldc
 	aload_1
 	checkcast	class scala/reflect/PolyType
 	astore	23
@@ -912,8 +832,6 @@ l22	aload_1
 	aload	23
 	invokevirtual	Method scala/reflect/PolyType.resultType:()Lscala/reflect/Type;
 	astore	28
-	iconst_1
-	ifeq	l25 // new
 	new	class scala/Tuple2
 	dup
 	aload	24
@@ -957,78 +875,53 @@ l22	aload_1
 	invokevirtual	Method apply:(Lscala/reflect/Type;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l5 // areturn
-l25	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Type.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l24	iconst_1
-	ifeq	l26 // new
-	ldc	String ???
-l5	areturn
-l26	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Type.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l4 // areturn
+l15	ldc	String ???
+l4	areturn
   Labels:
    	l1 = 15 // aload_1
-   	l2 = 22 // iconst_1
-   	l4 = 31 // new
-   	l3 = 43 // getstatic
-   	l6 = 58 // aload_1
-   	l7 = 65 // iconst_1
-   	l9 = 74 // new
-   	l8 = 86 // aload_1
-   	l11 = 134 // new
-   	l10 = 146 // aload_1
-   	l13 = 223 // new
-   	l12 = 235 // aload_1
-   	l15 = 312 // new
-   	l14 = 324 // aload_1
-   	l17 = 380 // new
-   	l16 = 392 // aload_1
-   	l19 = 484 // new
-   	l18 = 496 // aload_1
-   	l21 = 573 // new
-   	l20 = 585 // aload_1
-   	l23 = 682 // new
-   	l22 = 694 // aload_1
-   	l25 = 843 // new
-   	l24 = 855 // iconst_1
-   	l5 = 861 // areturn
-   	l26 = 862 // new
+   	l2 = 22 // ldc
+   	l3 = 27 // getstatic
+   	l5 = 42 // aload_1
+   	l6 = 49 // ldc
+   	l7 = 54 // aload_1
+   	l8 = 98 // aload_1
+   	l9 = 171 // aload_1
+   	l10 = 244 // aload_1
+   	l11 = 296 // aload_1
+   	l12 = 384 // aload_1
+   	l13 = 457 // aload_1
+   	l14 = 550 // aload_1
+   	l15 = 695 // ldc
+   	l4 = 697 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      874      0    this       Lscala/reflect/Print$;
-   0      874      1    datatype       Lscala/reflect/Type;
-   98      48      2    temp74       Lscala/reflect/NamedType;
-   103      43      3    temp75       Ljava/lang/String;
-   159      76      4    temp76       Lscala/reflect/PrefixedType;
-   166      69      5    temp77       Lscala/reflect/Type;
-   173      62      6    temp78       Lscala/reflect/Symbol;
-   248      76      7    temp79       Lscala/reflect/SingleType;
-   255      69      8    temp80       Lscala/reflect/Type;
-   262      62      9    temp81       Lscala/reflect/Symbol;
-   337      55      10    temp82       Lscala/reflect/ThisType;
-   344      48      11    temp83       Lscala/reflect/Symbol;
-   405      91      12    temp84       Lscala/reflect/AppliedType;
-   412      84      13    temp85       Lscala/reflect/Type;
-   419      77      14    temp86       Lscala/collection/immutable/List;
-   509      76      16    temp87       Lscala/reflect/TypeBounds;
-   516      69      17    temp88       Lscala/reflect/Type;
-   523      62      18    temp89       Lscala/reflect/Type;
-   598      96      19    temp90       Lscala/reflect/MethodType;
-   605      89      20    temp91       Lscala/collection/immutable/List;
-   612      82      22    temp92       Lscala/reflect/Type;
-   707      148      23    temp93       Lscala/reflect/PolyType;
-   714      141      24    temp94       Lscala/collection/immutable/List;
-   721      134      25    temp95       Lscala/collection/immutable/List;
-   800      40      27    z       Lscala/collection/immutable/List;
-   728      127      28    temp96       Lscala/reflect/Type;
+   0      698      0    this       Lscala/reflect/Print$;
+   0      698      1    datatype       Lscala/reflect/Type;
+   66      29      2    temp74       Lscala/reflect/NamedType;
+   71      24      3    temp75       Ljava/lang/String;
+   111      57      4    temp76       Lscala/reflect/PrefixedType;
+   118      50      5    temp77       Lscala/reflect/Type;
+   125      43      6    temp78       Lscala/reflect/Symbol;
+   184      57      7    temp79       Lscala/reflect/SingleType;
+   191      50      8    temp80       Lscala/reflect/Type;
+   198      43      9    temp81       Lscala/reflect/Symbol;
+   257      36      10    temp82       Lscala/reflect/ThisType;
+   264      29      11    temp83       Lscala/reflect/Symbol;
+   309      72      12    temp84       Lscala/reflect/AppliedType;
+   316      65      13    temp85       Lscala/reflect/Type;
+   323      58      14    temp86       Lscala/collection/immutable/List;
+   397      57      16    temp87       Lscala/reflect/TypeBounds;
+   404      50      17    temp88       Lscala/reflect/Type;
+   411      43      18    temp89       Lscala/reflect/Type;
+   470      77      19    temp90       Lscala/reflect/MethodType;
+   477      70      20    temp91       Lscala/collection/immutable/List;
+   484      63      22    temp92       Lscala/reflect/Type;
+   563      129      23    temp93       Lscala/reflect/PolyType;
+   570      122      24    temp94       Lscala/collection/immutable/List;
+   577      115      25    temp95       Lscala/collection/immutable/List;
+   652      40      27    z       Lscala/collection/immutable/List;
+   584      108      28    temp96       Lscala/reflect/Type;
 
 
 public java.lang.String apply(scala.reflect.Symbol);
@@ -1044,8 +937,6 @@ public java.lang.String apply(scala.reflect.Symbol);
 	aload_2
 	invokevirtual	Method scala/reflect/Class.fullname:()Ljava/lang/String;
 	astore_3
-	iconst_1
-	ifeq	l2 // new
 	aload_3
 	aload_3
 	ldc	int 46
@@ -1053,24 +944,16 @@ public java.lang.String apply(scala.reflect.Symbol);
 	iconst_1
 	iadd
 	invokevirtual	Method java/lang/String.substring:(I)Ljava/lang/String;
-	goto	l3 // areturn
-l2	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Symbol.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // areturn
 l1	aload_1
 	instanceof	class scala/reflect/Method
-	ifeq	l4 // aload_1
+	ifeq	l3 // aload_1
 	aload_1
 	checkcast	class scala/reflect/Method
 	astore	4
 	aload	4
 	invokevirtual	Method scala/reflect/Method.fullname:()Ljava/lang/String;
 	astore	5
-	iconst_1
-	ifeq	l5 // new
 	aload	5
 	aload	5
 	ldc	int 46
@@ -1078,24 +961,16 @@ l1	aload_1
 	iconst_1
 	iadd
 	invokevirtual	Method java/lang/String.substring:(I)Ljava/lang/String;
-	goto	l3 // areturn
-l5	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Symbol.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l4	aload_1
+	goto	l2 // areturn
+l3	aload_1
 	instanceof	class scala/reflect/Field
-	ifeq	l6 // aload_1
+	ifeq	l4 // aload_1
 	aload_1
 	checkcast	class scala/reflect/Field
 	astore	6
 	aload	6
 	invokevirtual	Method scala/reflect/Field.fullname:()Ljava/lang/String;
 	astore	7
-	iconst_1
-	ifeq	l7 // new
 	aload	7
 	aload	7
 	ldc	int 46
@@ -1103,24 +978,16 @@ l4	aload_1
 	iconst_1
 	iadd
 	invokevirtual	Method java/lang/String.substring:(I)Ljava/lang/String;
-	goto	l3 // areturn
-l7	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Symbol.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	aload_1
+	goto	l2 // areturn
+l4	aload_1
 	instanceof	class scala/reflect/TypeField
-	ifeq	l8 // aload_1
+	ifeq	l5 // aload_1
 	aload_1
 	checkcast	class scala/reflect/TypeField
 	astore	8
 	aload	8
 	invokevirtual	Method scala/reflect/TypeField.fullname:()Ljava/lang/String;
 	astore	9
-	iconst_1
-	ifeq	l9 // new
 	aload	9
 	aload	9
 	ldc	int 46
@@ -1128,24 +995,16 @@ l6	aload_1
 	iconst_1
 	iadd
 	invokevirtual	Method java/lang/String.substring:(I)Ljava/lang/String;
-	goto	l3 // areturn
-l9	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Symbol.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l8	aload_1
+	goto	l2 // areturn
+l5	aload_1
 	instanceof	class scala/reflect/LocalValue
-	ifeq	l10 // aload_1
+	ifeq	l6 // aload_1
 	aload_1
 	checkcast	class scala/reflect/LocalValue
 	astore	10
 	aload	10
 	invokevirtual	Method scala/reflect/LocalValue.name:()Ljava/lang/String;
 	astore	11
-	iconst_1
-	ifeq	l11 // new
 	aload	11
 	aload	11
 	ldc	int 46
@@ -1153,24 +1012,16 @@ l8	aload_1
 	iconst_1
 	iadd
 	invokevirtual	Method java/lang/String.substring:(I)Ljava/lang/String;
-	goto	l3 // areturn
-l11	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Symbol.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l10	aload_1
+	goto	l2 // areturn
+l6	aload_1
 	instanceof	class scala/reflect/LocalMethod
-	ifeq	l12 // getstatic
+	ifeq	l7 // getstatic
 	aload_1
 	checkcast	class scala/reflect/LocalMethod
 	astore	12
 	aload	12
 	invokevirtual	Method scala/reflect/LocalMethod.name:()Ljava/lang/String;
 	astore	13
-	iconst_1
-	ifeq	l13 // new
 	aload	13
 	aload	13
 	ldc	int 46
@@ -1178,125 +1029,77 @@ l10	aload_1
 	iconst_1
 	iadd
 	invokevirtual	Method java/lang/String.substring:(I)Ljava/lang/String;
-	goto	l3 // areturn
-l13	new	class scala/MatchError
+	goto	l2 // areturn
+l7	getstatic	Field scala/reflect/NoSymbol$.MODULE$:Lscala/reflect/NoSymbol$;
 	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Symbol.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l12	getstatic	Field scala/reflect/NoSymbol$.MODULE$:Lscala/reflect/NoSymbol$;
-	dup
-	ifnonnull	l14 // aload_1
+	ifnonnull	l8 // aload_1
 	pop
 	aload_1
-	ifnull	l15 // iconst_1
-	goto	l16 // getstatic
-l14	aload_1
+	ifnull	l9 // ldc_w
+	goto	l10 // getstatic
+l8	aload_1
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l16 // getstatic
-l15	iconst_1
-	ifeq	l17 // new
-	ldc_w	String NoSymbol
-	goto	l3 // areturn
-l17	new	class scala/MatchError
+	ifeq	l10 // getstatic
+l9	ldc_w	String NoSymbol
+	goto	l2 // areturn
+l10	getstatic	Field scala/reflect/RootSymbol$.MODULE$:Lscala/reflect/RootSymbol$;
 	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Symbol.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l16	getstatic	Field scala/reflect/RootSymbol$.MODULE$:Lscala/reflect/RootSymbol$;
-	dup
-	ifnonnull	l18 // aload_1
+	ifnonnull	l11 // aload_1
 	pop
 	aload_1
-	ifnull	l19 // iconst_1
-	goto	l20 // aload_1
-l18	aload_1
+	ifnull	l12 // ldc_w
+	goto	l13 // aload_1
+l11	aload_1
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l20 // aload_1
-l19	iconst_1
-	ifeq	l21 // new
-	ldc_w	String RootSymbol
-	goto	l3 // areturn
-l21	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Symbol.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l20	aload_1
+	ifeq	l13 // aload_1
+l12	ldc_w	String RootSymbol
+	goto	l2 // areturn
+l13	aload_1
 	instanceof	class scala/reflect/LabelSymbol
-	ifeq	l22 // iconst_1
+	ifeq	l14 // ldc
 	aload_1
 	checkcast	class scala/reflect/LabelSymbol
 	astore	14
 	aload	14
 	invokevirtual	Method scala/reflect/LabelSymbol.name:()Ljava/lang/String;
 	astore	15
-	iconst_1
-	ifeq	l23 // new
 	aload	15
-	goto	l3 // areturn
-l23	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Symbol.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l22	iconst_1
-	ifeq	l24 // new
-	ldc	String ???
-l3	areturn
-l24	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Symbol.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // areturn
+l14	ldc	String ???
+l2	areturn
   Labels:
-   	l2 = 36 // new
-   	l1 = 48 // aload_1
-   	l5 = 89 // new
-   	l4 = 101 // aload_1
-   	l7 = 142 // new
-   	l6 = 154 // aload_1
-   	l9 = 195 // new
-   	l8 = 207 // aload_1
-   	l11 = 248 // new
-   	l10 = 260 // aload_1
-   	l13 = 301 // new
-   	l12 = 313 // getstatic
-   	l14 = 328 // aload_1
-   	l15 = 335 // iconst_1
-   	l17 = 345 // new
-   	l16 = 357 // getstatic
-   	l18 = 372 // aload_1
-   	l19 = 379 // iconst_1
-   	l21 = 389 // new
-   	l20 = 401 // aload_1
-   	l23 = 430 // new
-   	l22 = 442 // iconst_1
-   	l3 = 448 // areturn
-   	l24 = 449 // new
+   	l1 = 32 // aload_1
+   	l3 = 69 // aload_1
+   	l4 = 106 // aload_1
+   	l5 = 143 // aload_1
+   	l6 = 180 // aload_1
+   	l7 = 217 // getstatic
+   	l8 = 232 // aload_1
+   	l9 = 239 // ldc_w
+   	l10 = 245 // getstatic
+   	l11 = 260 // aload_1
+   	l12 = 267 // ldc_w
+   	l13 = 273 // aload_1
+   	l14 = 298 // ldc
+   	l2 = 300 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      461      0    this       Lscala/reflect/Print$;
-   0      461      1    symbol       Lscala/reflect/Symbol;
-   12      36      2    temp45       Lscala/reflect/Class;
-   17      31      3    temp46       Ljava/lang/String;
-   61      40      4    temp47       Lscala/reflect/Method;
-   68      33      5    temp48       Ljava/lang/String;
-   114      40      6    temp50       Lscala/reflect/Field;
-   121      33      7    temp51       Ljava/lang/String;
-   167      40      8    temp53       Lscala/reflect/TypeField;
-   174      33      9    temp54       Ljava/lang/String;
-   220      40      10    temp56       Lscala/reflect/LocalValue;
-   227      33      11    temp58       Ljava/lang/String;
-   273      40      12    temp60       Lscala/reflect/LocalMethod;
-   280      33      13    temp62       Ljava/lang/String;
-   414      28      14    temp66       Lscala/reflect/LabelSymbol;
-   421      21      15    temp67       Ljava/lang/String;
+   0      301      0    this       Lscala/reflect/Print$;
+   0      301      1    symbol       Lscala/reflect/Symbol;
+   12      17      2    temp45       Lscala/reflect/Class;
+   17      12      3    temp46       Ljava/lang/String;
+   45      21      4    temp47       Lscala/reflect/Method;
+   52      14      5    temp48       Ljava/lang/String;
+   82      21      6    temp50       Lscala/reflect/Field;
+   89      14      7    temp51       Ljava/lang/String;
+   119      21      8    temp53       Lscala/reflect/TypeField;
+   126      14      9    temp54       Ljava/lang/String;
+   156      21      10    temp56       Lscala/reflect/LocalValue;
+   163      14      11    temp58       Ljava/lang/String;
+   193      21      12    temp60       Lscala/reflect/LocalMethod;
+   200      14      13    temp62       Ljava/lang/String;
+   286      9      14    temp66       Lscala/reflect/LabelSymbol;
+   293      2      15    temp67       Ljava/lang/String;
 
 
 public java.lang.String apply(scala.reflect.Tree);
@@ -1312,21 +1115,13 @@ public java.lang.String apply(scala.reflect.Tree);
 	aload_2
 	invokevirtual	Method scala/reflect/Ident.sym:()Lscala/reflect/Symbol;
 	astore_3
-	iconst_1
-	ifeq	l2 // new
 	aload_0
 	aload_3
 	invokevirtual	Method apply:(Lscala/reflect/Symbol;)Ljava/lang/String;
-	goto	l3 // areturn
-l2	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // areturn
 l1	aload_1
 	instanceof	class scala/reflect/Select
-	ifeq	l4 // aload_1
+	ifeq	l3 // aload_1
 	aload_1
 	checkcast	class scala/reflect/Select
 	astore	4
@@ -1336,8 +1131,6 @@ l1	aload_1
 	aload	4
 	invokevirtual	Method scala/reflect/Select.sym:()Lscala/reflect/Symbol;
 	astore	6
-	iconst_1
-	ifeq	l5 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -1352,32 +1145,22 @@ l1	aload_1
 	invokevirtual	Method apply:(Lscala/reflect/Symbol;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l3 // areturn
-l5	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l4	aload_1
+	goto	l2 // areturn
+l3	aload_1
 	instanceof	class scala/reflect/Literal
-	ifeq	l6 // aload_1
+	ifeq	l4 // aload_1
 	aload_1
 	checkcast	class scala/reflect/Literal
 	astore	7
 	aload	7
 	invokevirtual	Method scala/reflect/Literal.value:()Ljava/lang/Object;
 	astore	9
-	iconst_1
-	ifeq	l7 // new
 	aload	9
 	instanceof	class java/lang/String
-	ifeq	l8 // iconst_1
+	ifeq	l5 // aload
 	aload	9
 	checkcast	class java/lang/String
 	astore	8
-	iconst_1
-	ifeq	l9 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -1388,33 +1171,13 @@ l4	aload_1
 	ldc_w	String \"
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l3 // areturn
-l9	new	class scala/MatchError
-	dup
-	aload	9
+	goto	l2 // areturn
+l5	aload	9
 	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l8	iconst_1
-	ifeq	l10 // new
-	aload	9
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	goto	l3 // areturn
-l10	new	class scala/MatchError
-	dup
-	aload	9
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l7	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	aload_1
+	goto	l2 // areturn
+l4	aload_1
 	instanceof	class scala/reflect/Apply
-	ifeq	l11 // aload_1
+	ifeq	l6 // aload_1
 	aload_1
 	checkcast	class scala/reflect/Apply
 	astore	10
@@ -1424,8 +1187,6 @@ l6	aload_1
 	aload	10
 	invokevirtual	Method scala/reflect/Apply.args:()Lscala/collection/immutable/List;
 	astore	12
-	iconst_1
-	ifeq	l12 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -1449,16 +1210,10 @@ l6	aload_1
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l3 // areturn
-l12	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l11	aload_1
+	goto	l2 // areturn
+l6	aload_1
 	instanceof	class scala/reflect/TypeApply
-	ifeq	l13 // aload_1
+	ifeq	l7 // aload_1
 	aload_1
 	checkcast	class scala/reflect/TypeApply
 	astore	14
@@ -1468,8 +1223,6 @@ l11	aload_1
 	aload	14
 	invokevirtual	Method scala/reflect/TypeApply.args:()Lscala/collection/immutable/List;
 	astore	16
-	iconst_1
-	ifeq	l14 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -1493,16 +1246,10 @@ l11	aload_1
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l3 // areturn
-l14	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l13	aload_1
+	goto	l2 // areturn
+l7	aload_1
 	instanceof	class scala/reflect/Function
-	ifeq	l15 // aload_1
+	ifeq	l8 // aload_1
 	aload_1
 	checkcast	class scala/reflect/Function
 	astore	18
@@ -1512,8 +1259,6 @@ l13	aload_1
 	aload	18
 	invokevirtual	Method scala/reflect/Function.body:()Lscala/reflect/Tree;
 	astore	21
-	iconst_1
-	ifeq	l16 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -1539,24 +1284,16 @@ l13	aload_1
 	invokevirtual	Method apply:(Lscala/reflect/Tree;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l3 // areturn
-l16	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l15	aload_1
+	goto	l2 // areturn
+l8	aload_1
 	instanceof	class scala/reflect/This
-	ifeq	l17 // aload_1
+	ifeq	l9 // aload_1
 	aload_1
 	checkcast	class scala/reflect/This
 	astore	22
 	aload	22
 	invokevirtual	Method scala/reflect/This.sym:()Lscala/reflect/Symbol;
 	astore	23
-	iconst_1
-	ifeq	l18 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -1567,16 +1304,10 @@ l15	aload_1
 	ldc_w	String .this
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l3 // areturn
-l18	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l17	aload_1
+	goto	l2 // areturn
+l9	aload_1
 	instanceof	class scala/reflect/Block
-	ifeq	l19 // aload_1
+	ifeq	l10 // aload_1
 	aload_1
 	checkcast	class scala/reflect/Block
 	astore	24
@@ -1586,8 +1317,6 @@ l17	aload_1
 	aload	24
 	invokevirtual	Method scala/reflect/Block.expr:()Lscala/reflect/Tree;
 	astore	25
-	iconst_1
-	ifeq	l20 // new
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_1
 	anewarray	class scala/reflect/Tree
@@ -1611,24 +1340,16 @@ l17	aload_1
 	ldc_w	String ;\n
 	ldc_w	String \n}
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-	goto	l3 // areturn
-l20	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l19	aload_1
+	goto	l2 // areturn
+l10	aload_1
 	instanceof	class scala/reflect/New
-	ifeq	l21 // aload_1
+	ifeq	l11 // aload_1
 	aload_1
 	checkcast	class scala/reflect/New
 	astore	28
 	aload	28
 	invokevirtual	Method scala/reflect/New.sym:()Lscala/reflect/Tree;
 	astore	29
-	iconst_1
-	ifeq	l22 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -1639,16 +1360,10 @@ l19	aload_1
 	invokevirtual	Method apply:(Lscala/reflect/Tree;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l3 // areturn
-l22	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l21	aload_1
+	goto	l2 // areturn
+l11	aload_1
 	instanceof	class scala/reflect/If
-	ifeq	l23 // aload_1
+	ifeq	l12 // aload_1
 	aload_1
 	checkcast	class scala/reflect/If
 	astore	30
@@ -1661,8 +1376,6 @@ l21	aload_1
 	aload	30
 	invokevirtual	Method scala/reflect/If.falseCase:()Lscala/reflect/Tree;
 	astore	33
-	iconst_1
-	ifeq	l24 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -1685,16 +1398,10 @@ l21	aload_1
 	invokevirtual	Method apply:(Lscala/reflect/Tree;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l3 // areturn
-l24	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l23	aload_1
+	goto	l2 // areturn
+l12	aload_1
 	instanceof	class scala/reflect/Assign
-	ifeq	l25 // aload_1
+	ifeq	l13 // aload_1
 	aload_1
 	checkcast	class scala/reflect/Assign
 	astore	34
@@ -1705,11 +1412,9 @@ l23	aload_1
 	invokevirtual	Method scala/reflect/Assign.source:()Lscala/reflect/Tree;
 	astore	36
 	aload	35
-	ifnull	l26 // iconst_1
+	ifnull	l14 // ldc
 	aload	36
-	ifnull	l27 // iconst_1
-	iconst_1
-	ifeq	l28 // new
+	ifnull	l15 // ldc
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -1724,36 +1429,14 @@ l23	aload_1
 	invokevirtual	Method apply:(Lscala/reflect/Tree;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l3 // areturn
-l28	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l27	iconst_1
-	ifeq	l29 // new
-	ldc	String ???
-	goto	l3 // areturn
-l29	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l26	iconst_1
-	ifeq	l30 // new
-	ldc	String ???
-	goto	l3 // areturn
-l30	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l25	aload_1
+	goto	l2 // areturn
+l15	ldc	String ???
+	goto	l2 // areturn
+l14	ldc	String ???
+	goto	l2 // areturn
+l13	aload_1
 	instanceof	class scala/reflect/Target
-	ifeq	l31 // aload_1
+	ifeq	l16 // aload_1
 	aload_1
 	checkcast	class scala/reflect/Target
 	astore	37
@@ -1763,8 +1446,6 @@ l25	aload_1
 	aload	37
 	invokevirtual	Method scala/reflect/Target.body:()Lscala/reflect/Tree;
 	astore	39
-	iconst_1
-	ifeq	l32 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -1783,24 +1464,16 @@ l25	aload_1
 	ldc_w	String \n}
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l3 // areturn
-l32	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l31	aload_1
+	goto	l2 // areturn
+l16	aload_1
 	instanceof	class scala/reflect/Goto
-	ifeq	l33 // iconst_1
+	ifeq	l17 // ldc
 	aload_1
 	checkcast	class scala/reflect/Goto
 	astore	40
 	aload	40
 	invokevirtual	Method scala/reflect/Goto.target:()Lscala/reflect/LabelSymbol;
 	astore	41
-	iconst_1
-	ifeq	l34 // new
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -1811,207 +1484,130 @@ l31	aload_1
 	invokevirtual	Method apply:(Lscala/reflect/Symbol;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	goto	l3 // areturn
-l34	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l33	iconst_1
-	ifeq	l35 // new
-	ldc	String ???
-l3	areturn
-l35	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method scala/reflect/Tree.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // areturn
+l17	ldc	String ???
+l2	areturn
   Labels:
-   	l2 = 29 // new
-   	l1 = 41 // aload_1
-   	l5 = 108 // new
-   	l4 = 120 // aload_1
-   	l9 = 193 // new
-   	l8 = 206 // iconst_1
-   	l10 = 218 // new
-   	l7 = 231 // new
-   	l6 = 243 // aload_1
-   	l12 = 335 // new
-   	l11 = 347 // aload_1
-   	l14 = 439 // new
-   	l13 = 451 // aload_1
-   	l16 = 548 // new
-   	l15 = 560 // aload_1
-   	l18 = 612 // new
-   	l17 = 624 // aload_1
-   	l20 = 719 // new
-   	l19 = 731 // aload_1
-   	l22 = 783 // new
-   	l21 = 795 // aload_1
-   	l24 = 891 // new
-   	l23 = 903 // aload_1
-   	l28 = 981 // new
-   	l27 = 993 // iconst_1
-   	l29 = 1002 // new
-   	l26 = 1014 // iconst_1
-   	l30 = 1023 // new
-   	l25 = 1035 // aload_1
-   	l32 = 1115 // new
-   	l31 = 1127 // aload_1
-   	l34 = 1179 // new
-   	l33 = 1191 // iconst_1
-   	l3 = 1197 // areturn
-   	l35 = 1198 // new
+   	l1 = 25 // aload_1
+   	l3 = 88 // aload_1
+   	l5 = 153 // aload
+   	l4 = 161 // aload_1
+   	l6 = 249 // aload_1
+   	l7 = 337 // aload_1
+   	l8 = 430 // aload_1
+   	l9 = 478 // aload_1
+   	l10 = 569 // aload_1
+   	l11 = 617 // aload_1
+   	l12 = 709 // aload_1
+   	l15 = 783 // ldc
+   	l14 = 788 // ldc
+   	l13 = 793 // aload_1
+   	l16 = 869 // aload_1
+   	l17 = 917 // ldc
+   	l2 = 919 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      1210      0    this       Lscala/reflect/Print$;
-   0      1210      1    tree       Lscala/reflect/Tree;
-   12      29      2    temp9       Lscala/reflect/Ident;
-   17      24      3    temp10       Lscala/reflect/Symbol;
-   54      66      4    temp11       Lscala/reflect/Select;
-   61      59      5    temp12       Lscala/reflect/Tree;
-   68      52      6    temp13       Lscala/reflect/Symbol;
-   133      110      7    temp14       Lscala/reflect/Literal;
-   159      47      8    temp7       Ljava/lang/String;
-   140      103      9    temp15       Ljava/lang/Object;
-   256      91      10    temp16       Lscala/reflect/Apply;
-   263      84      11    temp17       Lscala/reflect/Tree;
-   270      77      12    temp18       Lscala/collection/immutable/List;
-   360      91      14    temp19       Lscala/reflect/TypeApply;
-   367      84      15    temp20       Lscala/reflect/Tree;
-   374      77      16    temp21       Lscala/collection/immutable/List;
-   464      96      18    temp22       Lscala/reflect/Function;
-   471      89      19    temp23       Lscala/collection/immutable/List;
-   478      82      21    temp24       Lscala/reflect/Tree;
-   573      51      22    temp25       Lscala/reflect/This;
-   580      44      23    temp26       Lscala/reflect/Symbol;
-   637      94      24    temp27       Lscala/reflect/Block;
-   651      80      25    temp29       Lscala/reflect/Tree;
-   644      87      27    temp28       Lscala/collection/immutable/List;
-   744      51      28    temp30       Lscala/reflect/New;
-   751      44      29    temp31       Lscala/reflect/Tree;
-   808      95      30    temp32       Lscala/reflect/If;
-   815      88      31    temp33       Lscala/reflect/Tree;
-   822      81      32    temp34       Lscala/reflect/Tree;
-   829      74      33    temp35       Lscala/reflect/Tree;
-   916      119      34    temp36       Lscala/reflect/Assign;
-   923      112      35    temp37       Lscala/reflect/Tree;
-   930      105      36    temp38       Lscala/reflect/Tree;
-   1048      79      37    temp39       Lscala/reflect/Target;
-   1055      72      38    temp40       Lscala/reflect/LabelSymbol;
-   1062      65      39    temp41       Lscala/reflect/Tree;
-   1140      51      40    temp42       Lscala/reflect/Goto;
-   1147      44      41    temp43       Lscala/reflect/LabelSymbol;
+   0      920      0    this       Lscala/reflect/Print$;
+   0      920      1    tree       Lscala/reflect/Tree;
+   12      10      2    temp9       Lscala/reflect/Ident;
+   17      5      3    temp10       Lscala/reflect/Symbol;
+   38      47      4    temp11       Lscala/reflect/Select;
+   45      40      5    temp12       Lscala/reflect/Tree;
+   52      33      6    temp13       Lscala/reflect/Symbol;
+   101      60      7    temp14       Lscala/reflect/Literal;
+   123      27      8    temp7       Ljava/lang/String;
+   108      53      9    temp15       Ljava/lang/Object;
+   174      72      10    temp16       Lscala/reflect/Apply;
+   181      65      11    temp17       Lscala/reflect/Tree;
+   188      58      12    temp18       Lscala/collection/immutable/List;
+   262      72      14    temp19       Lscala/reflect/TypeApply;
+   269      65      15    temp20       Lscala/reflect/Tree;
+   276      58      16    temp21       Lscala/collection/immutable/List;
+   350      77      18    temp22       Lscala/reflect/Function;
+   357      70      19    temp23       Lscala/collection/immutable/List;
+   364      63      21    temp24       Lscala/reflect/Tree;
+   443      32      22    temp25       Lscala/reflect/This;
+   450      25      23    temp26       Lscala/reflect/Symbol;
+   491      75      24    temp27       Lscala/reflect/Block;
+   505      61      25    temp29       Lscala/reflect/Tree;
+   498      68      27    temp28       Lscala/collection/immutable/List;
+   582      32      28    temp30       Lscala/reflect/New;
+   589      25      29    temp31       Lscala/reflect/Tree;
+   630      76      30    temp32       Lscala/reflect/If;
+   637      69      31    temp33       Lscala/reflect/Tree;
+   644      62      32    temp34       Lscala/reflect/Tree;
+   651      55      33    temp35       Lscala/reflect/Tree;
+   722      71      34    temp36       Lscala/reflect/Assign;
+   729      64      35    temp37       Lscala/reflect/Tree;
+   736      57      36    temp38       Lscala/reflect/Tree;
+   806      60      37    temp39       Lscala/reflect/Target;
+   813      53      38    temp40       Lscala/reflect/LabelSymbol;
+   820      46      39    temp41       Lscala/reflect/Tree;
+   882      32      40    temp42       Lscala/reflect/Goto;
+   889      25      41    temp43       Lscala/reflect/LabelSymbol;
 
 
 public java.lang.String apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/String;
   Code:
-   Stack=3, Locals=6, Args_size=2
+   Stack=2, Locals=6, Args_size=2
 	aload_1
 	instanceof	class scala/reflect/Code
 	ifeq	l1 // aload_1
 	aload_1
 	checkcast	class scala/reflect/Code
 	astore_2
-	iconst_1
-	ifeq	l2 // new
 	aload_0
 	aload_2
 	invokevirtual	Method scala/reflect/Code.tree:()Lscala/reflect/Tree;
 	invokevirtual	Method apply:(Lscala/reflect/Tree;)Ljava/lang/String;
-	goto	l3 // areturn
-l2	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // areturn
 l1	aload_1
 	instanceof	class scala/reflect/Tree
-	ifeq	l4 // aload_1
+	ifeq	l3 // aload_1
 	aload_1
 	checkcast	class scala/reflect/Tree
 	astore_3
-	iconst_1
-	ifeq	l5 // new
 	aload_0
 	aload_3
 	invokevirtual	Method apply:(Lscala/reflect/Tree;)Ljava/lang/String;
-	goto	l3 // areturn
-l5	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l4	aload_1
+	goto	l2 // areturn
+l3	aload_1
 	instanceof	class scala/reflect/Symbol
-	ifeq	l6 // aload_1
+	ifeq	l4 // aload_1
 	aload_1
 	checkcast	class scala/reflect/Symbol
 	astore	4
-	iconst_1
-	ifeq	l7 // new
 	aload_0
 	aload	4
 	invokevirtual	Method apply:(Lscala/reflect/Symbol;)Ljava/lang/String;
-	goto	l3 // areturn
-l7	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	aload_1
+	goto	l2 // areturn
+l4	aload_1
 	instanceof	class scala/reflect/Type
-	ifeq	l8 // iconst_1
+	ifeq	l5 // ldc_w
 	aload_1
 	checkcast	class scala/reflect/Type
 	astore	5
-	iconst_1
-	ifeq	l9 // new
 	aload_0
 	aload	5
 	invokevirtual	Method apply:(Lscala/reflect/Type;)Ljava/lang/String;
-	goto	l3 // areturn
-l9	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l8	iconst_1
-	ifeq	l10 // new
-	ldc_w	String UnknownAny
-l3	areturn
-l10	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // areturn
+l5	ldc_w	String UnknownAny
+l2	areturn
   Labels:
-   	l2 = 27 // new
-   	l1 = 39 // aload_1
-   	l5 = 63 // new
-   	l4 = 75 // aload_1
-   	l7 = 101 // new
-   	l6 = 113 // aload_1
-   	l9 = 139 // new
-   	l8 = 151 // iconst_1
-   	l3 = 158 // areturn
-   	l10 = 159 // new
+   	l1 = 23 // aload_1
+   	l3 = 43 // aload_1
+   	l4 = 65 // aload_1
+   	l5 = 87 // ldc_w
+   	l2 = 90 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      171      0    this       Lscala/reflect/Print$;
-   0      171      1    any       Ljava/lang/Object;
-   12      27      2    temp2       Lscala/reflect/Code;
-   51      24      3    temp3       Lscala/reflect/Tree;
-   88      25      4    temp4       Lscala/reflect/Symbol;
-   126      25      5    temp5       Lscala/reflect/Type;
+   0      91      0    this       Lscala/reflect/Print$;
+   0      91      1    any       Ljava/lang/Object;
+   12      8      2    temp2       Lscala/reflect/Code;
+   35      5      3    temp3       Lscala/reflect/Tree;
+   56      6      4    temp4       Lscala/reflect/Symbol;
+   78      6      5    temp5       Lscala/reflect/Type;
 
 
 public scala.Function1 andThen(scala.Function1);

@@ -75,17 +75,6 @@ Asciz	$minus$eq;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/HashMap;;
 NameAndType	$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/HashMap;
 Method	scala/collection/mutable/HashMap.$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/HashMap;
-Asciz	scala/MatchError;
-class	scala/MatchError
-Asciz	scala/Option;
-class	scala/Option
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
-NameAndType	toString:()Ljava/lang/String;
-Method	scala/Option.toString:()Ljava/lang/String;
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	scala/None$;
 class	scala/None$
 Asciz	MODULE$;
@@ -105,6 +94,17 @@ Method	scala/actors/scheduler/TerminationMonitor$$anonfun$1."<init>":(Lscala/act
 Asciz	apply;
 NameAndType	apply:()Ljava/lang/Object;
 InterfaceMethod	scala/Function0.apply:()Ljava/lang/Object;
+Asciz	scala/MatchError;
+class	scala/MatchError
+Asciz	scala/Option;
+class	scala/Option
+Asciz	toString;
+Asciz	()Ljava/lang/String;;
+NameAndType	toString:()Ljava/lang/String;
+Method	scala/Option.toString:()Ljava/lang/String;
+Asciz	(Ljava/lang/String;)V;
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	a;
 Asciz	Lscala/actors/Reactor;;
 Asciz	temp2;
@@ -248,38 +248,28 @@ public static void terminated(scala.actors.scheduler.TerminationMonitor, scala.a
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/Function0
 	astore_3
-	iconst_1
-	ifeq	l2 // new
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/scheduler/TerminationMonitor.terminationHandlers:()Lscala/collection/mutable/HashMap;
 	aload_1
 	invokevirtual	Method scala/collection/mutable/HashMap.$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/HashMap;
 	pop
 	aload_3
-	goto	l3 // aload_0
-l2	new	class scala/MatchError
-	dup
-	aload	5
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // aload_0
 l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	dup
-	ifnonnull	l4 // aload
+	ifnonnull	l3 // aload
 	pop
 	aload	5
-	ifnull	l5 // iconst_1
-	goto	l6 // new
-l4	aload	5
+	ifnull	l4 // new
+	goto	l5 // new
+l3	aload	5
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l6 // new
-l5	iconst_1
-	ifeq	l7 // new
-	new	class scala/actors/scheduler/TerminationMonitor$$anonfun$1
+	ifeq	l5 // new
+l4	new	class scala/actors/scheduler/TerminationMonitor$$anonfun$1
 	dup
 	aload_0
 	invokespecial	Method scala/actors/scheduler/TerminationMonitor$$anonfun$1."<init>":(Lscala/actors/scheduler/TerminationMonitor;)V
-l3	aload_0
+l2	aload_0
 	monitorexit
 	checkcast	class scala/Function0
 	astore	4
@@ -299,13 +289,7 @@ l3	aload_0
 	aload_0
 	monitorexit
 	return
-l7	new	class scala/MatchError
-	dup
-	aload	5
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	new	class scala/MatchError
+l5	new	class scala/MatchError
 	dup
 	aload	5
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
@@ -318,28 +302,26 @@ l6	new	class scala/MatchError
 	monitorexit
 	athrow
   Labels:
-   	l2 = 57 // new
-   	l1 = 70 // getstatic
-   	l4 = 86 // aload
-   	l5 = 94 // iconst_1
-   	l3 = 106 // aload_0
-   	l7 = 142 // new
-   	l6 = 155 // new
+   	l1 = 53 // getstatic
+   	l3 = 69 // aload
+   	l4 = 77 // new
+   	l2 = 85 // aload_0
+   	l5 = 121 // new
   Exception table:
    from   to  target type
-   125   141   171   any
-     4   108   168   any
-   142   168   168   any
+   104   120   137   any
+     4    87   134   any
+   121   134   134   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      174      0    $this       Lscala/actors/scheduler/TerminationMonitor;
-   0      174      1    a       Lscala/actors/Reactor;
-   30      40      2    temp2       Lscala/Some;
-   38      32      3    temp3       Lscala/Function0;
-   113      29      4    todo       Lscala/Function0;
-   171      3      4    todo       Lscala/Function0;
-   16      92      5    temp1       Lscala/Option;
-   142      26      5    temp1       Lscala/Option;
+   0      140      0    $this       Lscala/actors/scheduler/TerminationMonitor;
+   0      140      1    a       Lscala/actors/Reactor;
+   30      20      2    temp2       Lscala/Some;
+   38      12      3    temp3       Lscala/Function0;
+   92      29      4    todo       Lscala/Function0;
+   137      3      4    todo       Lscala/Function0;
+   16      71      5    temp1       Lscala/Option;
+   121      13      5    temp1       Lscala/Option;
 
 
 public static void onTerminate(scala.actors.scheduler.TerminationMonitor, scala.actors.Reactor, scala.Function0);

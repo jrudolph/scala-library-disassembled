@@ -84,17 +84,6 @@ Asciz	equals;
 Asciz	(Ljava/lang/Object;)Z;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
-Asciz	scala/MatchError;
-class	scala/MatchError
-Asciz	scala/Option;
-class	scala/Option
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
-NameAndType	toString:()Ljava/lang/String;
-Method	scala/Option.toString:()Ljava/lang/String;
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	scala/Some;
 class	scala/Some
 Asciz	x;
@@ -111,6 +100,17 @@ Asciz	length;
 Asciz	()I;
 NameAndType	length:()I
 InterfaceMethod	scala/collection/SeqLike.length:()I
+Asciz	scala/MatchError;
+class	scala/MatchError
+Asciz	scala/Option;
+class	scala/Option
+Asciz	toString;
+Asciz	()Ljava/lang/String;;
+NameAndType	toString:()Ljava/lang/String;
+Method	scala/Option.toString:()Ljava/lang/String;
+Asciz	(Ljava/lang/String;)V;
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	this;
 Asciz	source;
 Asciz	Lscala/collection/Seq;;
@@ -155,7 +155,6 @@ NameAndType	apply:(I)Ljava/lang/Object;
 InterfaceMethod	scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
 NameAndType	indexOf:(Ljava/lang/Object;)I
 InterfaceMethod	scala/collection/SeqLike.indexOf:(Ljava/lang/Object;)I
-Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	java/lang/Number;
 class	java/lang/Number
 Asciz	java/lang/Character;
@@ -308,24 +307,16 @@ public int lastIndexOf(scala.collection.Seq, int, int, scala.collection.Seq, int
 	ifnonnull	l1 // aload
 	pop
 	aload	12
-	ifnull	l2 // iconst_1
+	ifnull	l2 // iconst_m1
 	goto	l3 // aload
 l1	aload	12
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload
-l2	iconst_1
-	ifeq	l4 // new
-	iconst_m1
-	goto	l5 // ireturn
-l4	new	class scala/MatchError
-	dup
-	aload	12
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+l2	iconst_m1
+	goto	l4 // ireturn
 l3	aload	12
 	instanceof	class scala/Some
-	ifeq	l6 // new
+	ifeq	l5 // new
 	aload	12
 	checkcast	class scala/Some
 	astore	8
@@ -333,8 +324,6 @@ l3	aload	12
 	getfield	Field scala/Some.x:Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	istore	11
-	iconst_1
-	ifeq	l7 // new
 	aload	9
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
 	aload	10
@@ -344,14 +333,8 @@ l3	aload	12
 	isub
 	iload_2
 	iadd
-l5	ireturn
-l7	new	class scala/MatchError
-	dup
-	aload	12
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	new	class scala/MatchError
+l4	ireturn
+l5	new	class scala/MatchError
 	dup
 	aload	12
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
@@ -359,29 +342,25 @@ l6	new	class scala/MatchError
 	athrow
   Labels:
    	l1 = 81 // aload
-   	l2 = 89 // iconst_1
-   	l4 = 97 // new
-   	l3 = 110 // aload
-   	l5 = 159 // ireturn
-   	l7 = 160 // new
-   	l6 = 173 // new
+   	l2 = 89 // iconst_m1
+   	l3 = 93 // aload
+   	l4 = 138 // ireturn
+   	l5 = 139 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      186      0    this       Lscala/collection/SeqLike$;
-   0      186      1    source       Lscala/collection/Seq;
-   0      186      2    sourceOffset       I
-   0      186      3    sourceCount       I
-   0      186      4    target       Lscala/collection/Seq;
-   0      186      5    targetOffset       I
-   0      186      6    targetCount       I
-   0      186      7    fromIndex       I
-   125      34      8    temp8       Lscala/Some;
-   160      13      8    temp8       Lscala/Some;
-   31      155      9    src       Lscala/collection/Seq;
-   55      131      10    tgt       Lscala/collection/Seq;
-   135      24      11    temp9       I
-   160      13      11    temp9       I
-   65      121      12    temp6       Lscala/Option;
+   0      152      0    this       Lscala/collection/SeqLike$;
+   0      152      1    source       Lscala/collection/Seq;
+   0      152      2    sourceOffset       I
+   0      152      3    sourceCount       I
+   0      152      4    target       Lscala/collection/Seq;
+   0      152      5    targetOffset       I
+   0      152      6    targetCount       I
+   0      152      7    fromIndex       I
+   108      30      8    temp8       Lscala/Some;
+   31      121      9    src       Lscala/collection/Seq;
+   55      97      10    tgt       Lscala/collection/Seq;
+   118      20      11    temp9       I
+   65      87      12    temp6       Lscala/Option;
 
   Signature: length = 0x2
    00 69 
@@ -411,24 +390,16 @@ public int indexOf(scala.collection.Seq, int, int, scala.collection.Seq, int, in
 	ifnonnull	l1 // aload
 	pop
 	aload	10
-	ifnull	l2 // iconst_1
+	ifnull	l2 // iconst_m1
 	goto	l3 // aload
 l1	aload	10
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload
-l2	iconst_1
-	ifeq	l4 // new
-	iconst_m1
-	goto	l5 // ireturn
-l4	new	class scala/MatchError
-	dup
-	aload	10
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+l2	iconst_m1
+	goto	l4 // ireturn
 l3	aload	10
 	instanceof	class scala/Some
-	ifeq	l6 // new
+	ifeq	l5 // new
 	aload	10
 	checkcast	class scala/Some
 	astore	8
@@ -436,19 +407,11 @@ l3	aload	10
 	getfield	Field scala/Some.x:Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	istore	9
-	iconst_1
-	ifeq	l7 // new
 	iload	9
 	iload	7
 	iadd
-l5	ireturn
-l7	new	class scala/MatchError
-	dup
-	aload	10
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	new	class scala/MatchError
+l4	ireturn
+l5	new	class scala/MatchError
 	dup
 	aload	10
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
@@ -456,27 +419,23 @@ l6	new	class scala/MatchError
 	athrow
   Labels:
    	l1 = 57 // aload
-   	l2 = 65 // iconst_1
-   	l4 = 73 // new
-   	l3 = 86 // aload
-   	l5 = 120 // ireturn
-   	l7 = 121 // new
-   	l6 = 134 // new
+   	l2 = 65 // iconst_m1
+   	l3 = 69 // aload
+   	l4 = 99 // ireturn
+   	l5 = 100 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      147      0    this       Lscala/collection/SeqLike$;
-   0      147      1    source       Lscala/collection/Seq;
-   0      147      2    sourceOffset       I
-   0      147      3    sourceCount       I
-   0      147      4    target       Lscala/collection/Seq;
-   0      147      5    targetOffset       I
-   0      147      6    targetCount       I
-   0      147      7    fromIndex       I
-   101      19      8    temp4       Lscala/Some;
-   121      13      8    temp4       Lscala/Some;
-   111      9      9    temp5       I
-   121      13      9    temp5       I
-   41      106      10    temp2       Lscala/Option;
+   0      113      0    this       Lscala/collection/SeqLike$;
+   0      113      1    source       Lscala/collection/Seq;
+   0      113      2    sourceOffset       I
+   0      113      3    sourceCount       I
+   0      113      4    target       Lscala/collection/Seq;
+   0      113      5    targetOffset       I
+   0      113      6    targetCount       I
+   0      113      7    fromIndex       I
+   84      15      8    temp4       Lscala/Some;
+   94      5      9    temp5       I
+   41      72      10    temp2       Lscala/Option;
 
   Signature: length = 0x2
    00 69 
@@ -510,33 +469,15 @@ l1	aload_2
 	istore	4
 	iload	4
 	iconst_m1
-	if_icmpne	l3 // iconst_1
-	iconst_1
-	ifeq	l4 // new
+	if_icmpne	l3 // new
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	goto	l5 // areturn
-l4	new	class scala/MatchError
-	dup
-	iload	4
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l3	iconst_1
-	ifeq	l6 // new
-	new	class scala/Some
+	goto	l4 // areturn
+l3	new	class scala/Some
 	dup
 	iload	4
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-l5	areturn
-l6	new	class scala/MatchError
-	dup
-	iload	4
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+l4	areturn
 l2	aload_2
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
 	newarray int
@@ -553,10 +494,10 @@ l2	aload_2
 	iconst_1
 	iconst_0
 	iastore
-l14	iload	8
+l12	iload	8
 	aload_2
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	if_icmpge	l7 // new
+	if_icmpge	l5 // new
 	aload_2
 	iload	8
 	iconst_1
@@ -569,27 +510,27 @@ l14	iload	8
 	astore	5
 	aload	5
 	aload	6
-	if_acmpne	l8 // aload
+	if_acmpne	l6 // aload
 	iconst_1
-	goto	l9 // ifeq
-l8	aload	5
-	ifnonnull	l10 // aload
+	goto	l7 // ifeq
+l6	aload	5
+	ifnonnull	l8 // aload
 	iconst_0
-	goto	l9 // ifeq
-l10	aload	5
+	goto	l7 // ifeq
+l8	aload	5
 	instanceof	class java/lang/Number
-	ifne	l11 // aload
+	ifne	l9 // aload
 	aload	5
 	instanceof	class java/lang/Character
-	ifeq	l12 // aload
-l11	aload	5
+	ifeq	l10 // aload
+l9	aload	5
 	aload	6
 	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l9 // ifeq
-l12	aload	5
+	goto	l7 // ifeq
+l10	aload	5
 	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l9	ifeq	l13 // iload
+l7	ifeq	l11 // iload
 	aload	13
 	iload	8
 	iload	7
@@ -604,16 +545,16 @@ l9	ifeq	l13 // iload
 	iconst_1
 	iadd
 	istore	7
-	goto	l14 // iload
-l13	iload	7
+	goto	l12 // iload
+l11	iload	7
 	iconst_0
-	if_icmple	l15 // aload
+	if_icmple	l13 // aload
 	aload	13
 	iload	7
 	iaload
 	istore	7
-	goto	l14 // iload
-l15	aload	13
+	goto	l12 // iload
+l13	aload	13
 	iload	8
 	iconst_0
 	iastore
@@ -621,8 +562,8 @@ l15	aload	13
 	iconst_1
 	iadd
 	istore	8
-	goto	l14 // iload
-l7	new	class scala/runtime/IntRef
+	goto	l12 // iload
+l5	new	class scala/runtime/IntRef
 	dup
 	iconst_0
 	invokespecial	Method scala/runtime/IntRef."<init>":(I)V
@@ -632,13 +573,13 @@ l7	new	class scala/runtime/IntRef
 	iconst_0
 	invokespecial	Method scala/runtime/IntRef."<init>":(I)V
 	astore	14
-l23	aload_0
+l21	aload_0
 	aload	12
 	aload	14
 	invokespecial	Method mi$1:(Lscala/runtime/IntRef;Lscala/runtime/IntRef;)I
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	if_icmpge	l16 // getstatic
+	if_icmpge	l14 // getstatic
 	aload_2
 	aload	14
 	getfield	Field scala/runtime/IntRef.elem:I
@@ -653,27 +594,27 @@ l23	aload_0
 	astore	9
 	aload	9
 	aload	10
-	if_acmpne	l17 // aload
+	if_acmpne	l15 // aload
 	iconst_1
-	goto	l18 // ifeq
-l17	aload	9
-	ifnonnull	l19 // aload
+	goto	l16 // ifeq
+l15	aload	9
+	ifnonnull	l17 // aload
 	iconst_0
-	goto	l18 // ifeq
-l19	aload	9
+	goto	l16 // ifeq
+l17	aload	9
 	instanceof	class java/lang/Number
-	ifne	l20 // aload
+	ifne	l18 // aload
 	aload	9
 	instanceof	class java/lang/Character
-	ifeq	l21 // aload
-l20	aload	9
+	ifeq	l19 // aload
+l18	aload	9
 	aload	10
 	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l18 // ifeq
-l21	aload	9
+	goto	l16 // ifeq
+l19	aload	9
 	aload	10
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l18	ifeq	l22 // aload
+l16	ifeq	l20 // aload
 	aload	14
 	aload	14
 	getfield	Field scala/runtime/IntRef.elem:I
@@ -684,7 +625,7 @@ l18	ifeq	l22 // aload
 	getfield	Field scala/runtime/IntRef.elem:I
 	aload_2
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	if_icmpne	l23 // aload_0
+	if_icmpne	l21 // aload_0
 	new	class scala/Some
 	dup
 	aload	12
@@ -694,7 +635,7 @@ l18	ifeq	l22 // aload
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	areturn
-l22	aload	12
+l20	aload	12
 	aload_0
 	aload	12
 	aload	14
@@ -708,58 +649,56 @@ l22	aload	12
 	aload	14
 	getfield	Field scala/runtime/IntRef.elem:I
 	iconst_0
-	if_icmple	l23 // aload_0
+	if_icmple	l21 // aload_0
 	aload	14
 	aload	13
 	aload	14
 	getfield	Field scala/runtime/IntRef.elem:I
 	iaload
 	putfield	Field scala/runtime/IntRef.elem:I
-	goto	l23 // aload_0
-l16	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l21 // aload_0
+l14	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	areturn
   Labels:
    	l1 = 23 // aload_2
-   	l4 = 72 // new
-   	l3 = 88 // iconst_1
-   	l5 = 104 // areturn
-   	l6 = 105 // new
-   	l2 = 121 // aload_2
-   	l14 = 147 // iload
-   	l8 = 191 // aload
-   	l10 = 200 // aload
-   	l11 = 216 // aload
-   	l12 = 226 // aload
-   	l9 = 233 // ifeq
-   	l13 = 260 // iload
-   	l15 = 276 // aload
-   	l7 = 291 // new
-   	l23 = 311 // aload_0
-   	l17 = 368 // aload
-   	l19 = 377 // aload
-   	l20 = 393 // aload
-   	l21 = 403 // aload
-   	l18 = 410 // ifeq
-   	l22 = 459 // aload
-   	l16 = 506 // getstatic
+   	l3 = 68 // new
+   	l4 = 80 // areturn
+   	l2 = 81 // aload_2
+   	l12 = 107 // iload
+   	l6 = 151 // aload
+   	l8 = 160 // aload
+   	l9 = 176 // aload
+   	l10 = 186 // aload
+   	l7 = 193 // ifeq
+   	l11 = 220 // iload
+   	l13 = 236 // aload
+   	l5 = 251 // new
+   	l21 = 271 // aload_0
+   	l15 = 328 // aload
+   	l17 = 337 // aload
+   	l18 = 353 // aload
+   	l19 = 363 // aload
+   	l16 = 370 // ifeq
+   	l20 = 419 // aload
+   	l14 = 466 // getstatic
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      510      0    this       Lscala/collection/SeqLike$;
-   0      510      1    S       Lscala/collection/Seq;
-   0      510      2    W       Lscala/collection/Seq;
-   56      65      4    temp1       I
-   187      49      5    x0       Ljava/lang/Object;
-   187      49      6    y0       Ljava/lang/Object;
-   137      154      7    cnd       I
-   134      157      8    pos       I
-   364      49      9    x1       Ljava/lang/Object;
-   364      49      10    y1       Ljava/lang/Object;
-   301      208      12    m$1       Lscala/runtime/IntRef;
-   131      160      13    arr       [I
-   311      198      14    i$1       Lscala/runtime/IntRef;
+   0      470      0    this       Lscala/collection/SeqLike$;
+   0      470      1    S       Lscala/collection/Seq;
+   0      470      2    W       Lscala/collection/Seq;
+   56      25      4    temp1       I
+   147      49      5    x0       Ljava/lang/Object;
+   147      49      6    y0       Ljava/lang/Object;
+   97      154      7    cnd       I
+   94      157      8    pos       I
+   324      49      9    x1       Ljava/lang/Object;
+   324      49      10    y1       Ljava/lang/Object;
+   261      208      12    m$1       Lscala/runtime/IntRef;
+   91      160      13    arr       [I
+   271      198      14    i$1       Lscala/runtime/IntRef;
 
   Signature: length = 0x2
-   00 FFFFFFA0 
+   00 FFFFFF9F 
 
 }
 

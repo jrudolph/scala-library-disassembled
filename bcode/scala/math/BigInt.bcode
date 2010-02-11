@@ -488,14 +488,6 @@ Asciz	()Z;
 Asciz	(Ljava/lang/Object;)Z;
 NameAndType	equals:(Lscala/math/BigInt;)Z
 Method	scala/math/BigInt.equals:(Lscala/math/BigInt;)Z
-Asciz	scala/MatchError;
-class	scala/MatchError
-Asciz	java/lang/Object;
-class	java/lang/Object
-Method	java/lang/Object.toString:()Ljava/lang/String;
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	scala/math/BigDecimal;
 class	scala/math/BigDecimal
 Asciz	toBigIntExact;
@@ -1627,26 +1619,16 @@ public boolean equals(java.lang.Object);
 	aload_1
 	checkcast	class scala/math/BigInt
 	astore_2
-	iconst_1
-	ifeq	l2 // new
 	aload_0
 	aload_2
 	invokevirtual	Method equals:(Lscala/math/BigInt;)Z
-	goto	l3 // ireturn
-l2	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // ireturn
 l1	aload_1
 	instanceof	class scala/math/BigDecimal
-	ifeq	l4 // iconst_1
+	ifeq	l3 // aload_0
 	aload_1
 	checkcast	class scala/math/BigDecimal
 	astore_3
-	iconst_1
-	ifeq	l5 // new
 	aload_3
 	invokevirtual	Method scala/math/BigDecimal.toBigIntExact:()Lscala/Option;
 	new	class scala/math/BigInt$$anonfun$equals$1
@@ -1654,38 +1636,21 @@ l1	aload_1
 	aload_0
 	invokespecial	Method scala/math/BigInt$$anonfun$equals$1."<init>":(Lscala/math/BigInt;)V
 	invokevirtual	Method scala/Option.exists:(Lscala/Function1;)Z
-	goto	l3 // ireturn
-l5	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l4	iconst_1
-	ifeq	l6 // new
-	aload_0
+	goto	l2 // ireturn
+l3	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.unifiedPrimitiveEquals:(Ljava/lang/Object;)Z
-l3	ireturn
-l6	new	class scala/MatchError
-	dup
-	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+l2	ireturn
   Labels:
-   	l2 = 24 // new
-   	l1 = 36 // aload_1
-   	l5 = 70 // new
-   	l4 = 82 // iconst_1
-   	l3 = 93 // ireturn
-   	l6 = 94 // new
+   	l1 = 20 // aload_1
+   	l3 = 50 // aload_0
+   	l2 = 57 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      106      0    this       Lscala/math/BigInt;
-   0      106      1    that       Ljava/lang/Object;
-   12      24      2    temp2       Lscala/math/BigInt;
-   48      34      3    temp3       Lscala/math/BigDecimal;
+   0      58      0    this       Lscala/math/BigInt;
+   0      58      1    that       Ljava/lang/Object;
+   12      5      2    temp2       Lscala/math/BigInt;
+   32      15      3    temp3       Lscala/math/BigDecimal;
 
 
 public int hashCode();

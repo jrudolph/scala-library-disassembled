@@ -2,7 +2,7 @@ Compiled from "Exception.scala"
 public class scala.util.control.Exception$Catch extends java.lang.Object implements scala.util.control.Exception$Described,scala.ScalaObject
   SourceFile: "Exception.scala"
   Signature: length = 0x2
-   00 FFFFFFD5 
+   00 FFFFFFD2 
   Scala: length = 0x
    
   InnerClass: 
@@ -151,6 +151,14 @@ Method	scala/util/control/Exception$Finally."<init>":(Lscala/Function0;)V
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/Some."<init>":(Ljava/lang/Object;)V
+Asciz	x;
+Asciz	Ljava/lang/Object;;
+NameAndType	x:Ljava/lang/Object;
+Field	scala/Some.x:Ljava/lang/Object;
+Asciz	and;
+Asciz	(Lscala/Function0;)Lscala/util/control/Exception$Finally;;
+NameAndType	and:(Lscala/Function0;)Lscala/util/control/Exception$Finally;
+Method	scala/util/control/Exception$Finally.and:(Lscala/Function0;)Lscala/util/control/Exception$Finally;
 Asciz	scala/MatchError;
 class	scala/MatchError
 Asciz	toString;
@@ -160,14 +168,6 @@ Method	scala/Option.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	scala/MatchError."<init>":(Ljava/lang/String;)V
-Asciz	x;
-Asciz	Ljava/lang/Object;;
-NameAndType	x:Ljava/lang/Object;
-Field	scala/Some.x:Ljava/lang/Object;
-Asciz	and;
-Asciz	(Lscala/Function0;)Lscala/util/control/Exception$Finally;;
-NameAndType	and:(Lscala/Function0;)Lscala/util/control/Exception$Finally;
-Method	scala/util/control/Exception$Finally.and:(Lscala/Function0;)Lscala/util/control/Exception$Finally;
 Asciz	body;
 Asciz	temp8;
 Asciz	Lscala/Some;;
@@ -194,9 +194,6 @@ class	scala/Function1
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
 InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-Asciz	java/lang/Throwable;
-class	java/lang/Throwable
-Method	java/lang/Throwable.toString:()Ljava/lang/String;
 Asciz	exceptionResult1;
 Asciz	<U:Ljava/lang/Object;>(Lscala/Function0<TU;>;)TU;;
 Asciz	or;
@@ -419,14 +416,12 @@ public scala.util.control.Exception$Catch andFinally(scala.Function0);
 	ifnonnull	l1 // aload
 	pop
 	aload	4
-	ifnull	l2 // iconst_1
+	ifnull	l2 // new
 	goto	l3 // aload
 l1	aload	4
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload
-l2	iconst_1
-	ifeq	l4 // new
-	new	class scala/util/control/Exception$Catch
+l2	new	class scala/util/control/Exception$Catch
 	dup
 	aload_0
 	invokevirtual	Method pf:()Lscala/PartialFunction;
@@ -438,16 +433,10 @@ l2	iconst_1
 	invokespecial	Method scala/util/control/Exception$Finally."<init>":(Lscala/Function0;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	invokespecial	Method "<init>":(Lscala/PartialFunction;Lscala/Option;)V
-	goto	l5 // areturn
-l4	new	class scala/MatchError
-	dup
-	aload	4
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l4 // areturn
 l3	aload	4
 	instanceof	class scala/Some
-	ifeq	l6 // new
+	ifeq	l5 // new
 	aload	4
 	checkcast	class scala/Some
 	astore_2
@@ -455,8 +444,6 @@ l3	aload	4
 	getfield	Field scala/Some.x:Ljava/lang/Object;
 	checkcast	class scala/util/control/Exception$Finally
 	astore_3
-	iconst_1
-	ifeq	l7 // new
 	new	class scala/util/control/Exception$Catch
 	dup
 	aload_0
@@ -468,14 +455,8 @@ l3	aload	4
 	invokevirtual	Method scala/util/control/Exception$Finally.and:(Lscala/Function0;)Lscala/util/control/Exception$Finally;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	invokespecial	Method "<init>":(Lscala/PartialFunction;Lscala/Option;)V
-l5	areturn
-l7	new	class scala/MatchError
-	dup
-	aload	4
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	new	class scala/MatchError
+l4	areturn
+l5	new	class scala/MatchError
 	dup
 	aload	4
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
@@ -483,21 +464,17 @@ l6	new	class scala/MatchError
 	athrow
   Labels:
    	l1 = 22 // aload
-   	l2 = 30 // iconst_1
-   	l4 = 63 // new
-   	l3 = 76 // aload
-   	l5 = 125 // areturn
-   	l7 = 126 // new
-   	l6 = 139 // new
+   	l2 = 30 // new
+   	l3 = 59 // aload
+   	l4 = 104 // areturn
+   	l5 = 105 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      152      0    this       Lscala/util/control/Exception$Catch;
-   0      152      1    body       Lscala/Function0;
-   90      35      2    temp8       Lscala/Some;
-   126      13      2    temp8       Lscala/Some;
-   98      27      3    temp9       Lscala/util/control/Exception$Finally;
-   126      13      3    temp9       Lscala/util/control/Exception$Finally;
-   6      146      4    temp6       Lscala/Option;
+   0      118      0    this       Lscala/util/control/Exception$Catch;
+   0      118      1    body       Lscala/Function0;
+   73      31      2    temp8       Lscala/Some;
+   81      23      3    temp9       Lscala/util/control/Exception$Finally;
+   6      112      4    temp6       Lscala/Option;
 
   Signature: length = 0x2
    00 FFFFFF9D 
@@ -522,7 +499,7 @@ public java.lang.Object apply(scala.Function0);
 	aload_0
 	aload_3
 	invokespecial	Method gd3$1:(Ljava/lang/Throwable;)Z
-	ifeq	l2 // iconst_1
+	ifeq	l2 // aload_3
 	aload_0
 	invokevirtual	Method pf:()Lscala/PartialFunction;
 	aload_3
@@ -538,15 +515,7 @@ public java.lang.Object apply(scala.Function0);
 	pop
 l1	aload_2
 	areturn
-l2	iconst_1
-	ifeq	l3 // new
-	aload_3
-	athrow
-l3	new	class scala/MatchError
-	dup
-	aload_3
-	invokevirtual	Method java/lang/Throwable.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
+l2	aload_3
 	athrow
 	astore	4
 	aload_0
@@ -561,23 +530,22 @@ l3	new	class scala/MatchError
 	athrow
   Labels:
    	l1 = 62 // aload_2
-   	l2 = 64 // iconst_1
-   	l3 = 70 // new
+   	l2 = 64 // aload_3
   Exception table:
    from   to  target type
      0     7    26   any
-     0     7    82   any
-    26    46    82   any
-    64    82    82   any
+     0     7    66   any
+    26    46    66   any
+    64    66    66   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      103      0    this       Lscala/util/control/Exception$Catch;
-   0      103      1    body       Lscala/Function0;
+   0      87      0    this       Lscala/util/control/Exception$Catch;
+   0      87      1    body       Lscala/Function0;
    0      63      2    exceptionResult1       Ljava/lang/Object;
-   64      39      2    exceptionResult1       Ljava/lang/Object;
+   64      23      2    exceptionResult1       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 FFFFFFB5 
+   00 FFFFFFB2 
 
 public scala.util.control.Exception$Catch or(scala.util.control.Exception$Catch);
   Signature: (Lscala/util/control/Exception$Catch;)Lscala/util/control/Exception$Catch;
@@ -595,7 +563,7 @@ public scala.util.control.Exception$Catch or(scala.util.control.Exception$Catch)
    0      9      1    other       Lscala/util/control/Exception$Catch;
 
   Signature: length = 0x2
-   00 FFFFFFBC 
+   00 FFFFFFB9 
 
 public scala.util.control.Exception$Catch or(scala.PartialFunction);
   Signature: (Lscala/PartialFunction;)Lscala/util/control/Exception$Catch;
@@ -618,7 +586,7 @@ public scala.util.control.Exception$Catch or(scala.PartialFunction);
    0      22      1    pf2       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFFC1 
+   00 FFFFFFBE 
 
 public java.lang.String name();
   Signature: ()Ljava/lang/String;
@@ -645,7 +613,7 @@ public scala.util.control.Exception$Catch(scala.PartialFunction);
    0      9      1    pf       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFFC3 
+   00 FFFFFFC0 
 
 public scala.Option fin();
   Signature: ()Lscala/Option;
@@ -656,7 +624,7 @@ public scala.Option fin();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFC4 
+   00 FFFFFFC1 
 
 public scala.PartialFunction pf();
   Signature: ()Lscala/PartialFunction;
@@ -667,7 +635,7 @@ public scala.PartialFunction pf();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFC5 
+   00 FFFFFFC2 
 
 public java.lang.String toString();
   Signature: ()Ljava/lang/String;

@@ -128,17 +128,6 @@ Asciz	$colon$colon$colon;
 Asciz	(Lscala/collection/immutable/List;)Lscala/collection/immutable/List;;
 NameAndType	$colon$colon$colon:(Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
 Method	scala/collection/immutable/List.$colon$colon$colon:(Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
-Asciz	scala/MatchError;
-class	scala/MatchError
-Asciz	scala/collection/SeqLike;
-class	scala/collection/SeqLike
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
-NameAndType	toString:()Ljava/lang/String;
-InterfaceMethod	scala/collection/SeqLike.toString:()Ljava/lang/String;
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	scala/collection/immutable/$colon$colon;
 class	scala/collection/immutable/$colon$colon
 Asciz	scala$collection$immutable$$colon$colon$$hd;
@@ -164,9 +153,6 @@ Asciz	$colon$colon;
 Asciz	(Ljava/lang/Object;)Lscala/collection/immutable/List;;
 NameAndType	$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 Method	scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
-Asciz	scala/Option;
-class	scala/Option
-Method	scala/Option.toString:()Ljava/lang/String;
 Asciz	scala/Some;
 class	scala/Some
 Asciz	x;
@@ -192,6 +178,20 @@ Asciz	set;
 Asciz	(Lscala/Function0;)V;
 NameAndType	set:(Lscala/Function0;)V
 Method	scala/concurrent/pilib$Sum.set:(Lscala/Function0;)V
+Asciz	scala/MatchError;
+class	scala/MatchError
+Asciz	scala/Option;
+class	scala/Option
+Asciz	toString;
+Asciz	()Ljava/lang/String;;
+NameAndType	toString:()Ljava/lang/String;
+Method	scala/Option.toString:()Ljava/lang/String;
+Asciz	(Ljava/lang/String;)V;
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	scala/MatchError."<init>":(Ljava/lang/String;)V
+Asciz	scala/collection/SeqLike;
+class	scala/collection/SeqLike
+InterfaceMethod	scala/collection/SeqLike.toString:()Ljava/lang/String;
 Asciz	s1;
 Asciz	ss;
 Asciz	temp41;
@@ -209,12 +209,6 @@ Asciz	temp43;
 Asciz	temp32;
 Asciz	Lscala/Option;;
 Asciz	(Lscala/concurrent/pilib$Sum;Lscala/collection/immutable/List<Lscala/concurrent/pilib$Sum;>;)Lscala/collection/immutable/List<Lscala/concurrent/pilib$Sum;>;;
-Asciz	scala/Tuple2;
-class	scala/Tuple2
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
-NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-Method	scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-Method	scala/Tuple2.toString:()Ljava/lang/String;
 Asciz	scala/concurrent/pilib$UGP;
 class	scala/concurrent/pilib$UGP
 Asciz	n;
@@ -253,6 +247,12 @@ Method	scala/Tuple3."<init>":(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Obj
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/Some."<init>":(Ljava/lang/Object;)V
+Asciz	scala/Tuple2;
+class	scala/Tuple2
+Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
+NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+Method	scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+Method	scala/Tuple2.toString:()Ljava/lang/String;
 Asciz	gs1;
 Asciz	gs2;
 Asciz	temp18;
@@ -414,14 +414,12 @@ private scala.collection.immutable.List compare(scala.concurrent.pilib$Sum, scal
 	ifnonnull	l1 // aload_2
 	pop
 	aload_2
-	ifnull	l2 // iconst_1
+	ifnull	l2 // getstatic
 	goto	l3 // aload_2
 l1	aload_2
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload_2
-l2	iconst_1
-	ifeq	l4 // new
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+l2	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_1
 	anewarray	class scala/concurrent/pilib$Sum
 	dup
@@ -435,16 +433,10 @@ l2	iconst_1
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
 	aload_2
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon$colon:(Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
-	goto	l5 // areturn
-l4	new	class scala/MatchError
-	dup
-	aload_2
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l4 // areturn
 l3	aload_2
 	instanceof	class scala/collection/immutable/$colon$colon
-	ifeq	l6 // new
+	ifeq	l5 // new
 	aload_2
 	checkcast	class scala/collection/immutable/$colon$colon
 	astore	4
@@ -455,8 +447,6 @@ l3	aload_2
 	aload	4
 	getfield	Field scala/collection/immutable/$colon$colon.tl:Lscala/collection/immutable/List;
 	astore	11
-	iconst_1
-	ifeq	l7 // new
 	aload_0
 	aload_1
 	invokevirtual	Method scala/concurrent/pilib$Sum.gs:()Lscala/collection/immutable/List;
@@ -466,32 +456,24 @@ l3	aload_2
 	astore	12
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	dup
-	ifnonnull	l8 // aload
+	ifnonnull	l6 // aload
 	pop
 	aload	12
-	ifnull	l9 // iconst_1
-	goto	l10 // aload
-l8	aload	12
+	ifnull	l7 // aload_0
+	goto	l8 // aload
+l6	aload	12
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l10 // aload
-l9	iconst_1
-	ifeq	l11 // new
-	aload_0
+	ifeq	l8 // aload
+l7	aload_0
 	aload_1
 	aload	11
 	invokespecial	Method compare:(Lscala/concurrent/pilib$Sum;Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
 	aload	9
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
-	goto	l5 // areturn
-l11	new	class scala/MatchError
-	dup
-	aload	12
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l10	aload	12
+	goto	l4 // areturn
+l8	aload	12
 	instanceof	class scala/Some
-	ifeq	l12 // new
+	ifeq	l9 // new
 	aload	12
 	checkcast	class scala/Some
 	astore	5
@@ -500,7 +482,7 @@ l10	aload	12
 	checkcast	class scala/Tuple3
 	astore	6
 	aload	6
-	ifnull	l13 // new
+	ifnull	l10 // new
 	aload	6
 	invokevirtual	Method scala/Tuple3._1:()Ljava/lang/Object;
 	checkcast	class scala/Function0
@@ -513,8 +495,6 @@ l10	aload	12
 	invokevirtual	Method scala/Tuple3._3:()Ljava/lang/Object;
 	checkcast	class scala/Function0
 	astore	10
-	iconst_1
-	ifeq	l14 // new
 	aload	7
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
 	pop
@@ -525,32 +505,20 @@ l10	aload	12
 	aload	10
 	invokevirtual	Method scala/concurrent/pilib$Sum.set:(Lscala/Function0;)V
 	aload	11
-l5	areturn
-l14	new	class scala/MatchError
+l4	areturn
+l10	new	class scala/MatchError
 	dup
 	aload	12
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
-l13	new	class scala/MatchError
+l9	new	class scala/MatchError
 	dup
 	aload	12
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
-l12	new	class scala/MatchError
-	dup
-	aload	12
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l7	new	class scala/MatchError
-	dup
-	aload_2
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	new	class scala/MatchError
+l5	new	class scala/MatchError
 	dup
 	aload_2
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.toString:()Ljava/lang/String;
@@ -558,42 +526,35 @@ l6	new	class scala/MatchError
 	athrow
   Labels:
    	l1 = 15 // aload_2
-   	l2 = 22 // iconst_1
-   	l4 = 57 // new
-   	l3 = 71 // aload_2
-   	l8 = 136 // aload
-   	l9 = 144 // iconst_1
-   	l11 = 163 // new
-   	l10 = 176 // aload
-   	l5 = 263 // areturn
-   	l14 = 264 // new
-   	l13 = 277 // new
-   	l12 = 290 // new
-   	l7 = 303 // new
-   	l6 = 317 // new
+   	l2 = 22 // getstatic
+   	l3 = 53 // aload_2
+   	l6 = 114 // aload
+   	l7 = 122 // aload_0
+   	l8 = 137 // aload
+   	l4 = 220 // areturn
+   	l10 = 221 // new
+   	l9 = 234 // new
+   	l5 = 247 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      331      0    this       Lscala/concurrent/pilib$;
-   0      331      1    s1       Lscala/concurrent/pilib$Sum;
-   0      331      2    ss       Lscala/collection/immutable/List;
-   84      179      4    temp41       Lscala/collection/immutable/$colon$colon;
-   264      53      4    temp41       Lscala/collection/immutable/$colon$colon;
-   191      72      5    temp34       Lscala/Some;
-   264      26      5    temp34       Lscala/Some;
-   201      62      6    temp35       Lscala/Tuple3;
-   264      26      6    temp35       Lscala/Tuple3;
-   216      47      7    temp36       Lscala/Function0;
-   264      13      7    temp36       Lscala/Function0;
-   226      37      8    temp37       Lscala/Function0;
-   264      13      8    temp37       Lscala/Function0;
-   94      169      9    temp42       Lscala/concurrent/pilib$Sum;
-   264      53      9    temp42       Lscala/concurrent/pilib$Sum;
-   236      27      10    temp38       Lscala/Function0;
-   264      13      10    temp38       Lscala/Function0;
-   101      162      11    temp43       Lscala/collection/immutable/List;
-   264      53      11    temp43       Lscala/collection/immutable/List;
-   120      143      12    temp32       Lscala/Option;
-   264      39      12    temp32       Lscala/Option;
+   0      261      0    this       Lscala/concurrent/pilib$;
+   0      261      1    s1       Lscala/concurrent/pilib$Sum;
+   0      261      2    ss       Lscala/collection/immutable/List;
+   66      154      4    temp41       Lscala/collection/immutable/$colon$colon;
+   221      26      4    temp41       Lscala/collection/immutable/$colon$colon;
+   152      68      5    temp34       Lscala/Some;
+   221      13      5    temp34       Lscala/Some;
+   162      58      6    temp35       Lscala/Tuple3;
+   221      13      6    temp35       Lscala/Tuple3;
+   177      43      7    temp36       Lscala/Function0;
+   187      33      8    temp37       Lscala/Function0;
+   76      144      9    temp42       Lscala/concurrent/pilib$Sum;
+   221      26      9    temp42       Lscala/concurrent/pilib$Sum;
+   197      23      10    temp38       Lscala/Function0;
+   83      137      11    temp43       Lscala/collection/immutable/List;
+   221      26      11    temp43       Lscala/collection/immutable/List;
+   98      122      12    temp32       Lscala/Option;
+   221      26      12    temp32       Lscala/Option;
 
   Signature: length = 0x2
    00 FFFFFFBD 
@@ -602,57 +563,33 @@ private scala.Option matches(scala.collection.immutable.List, scala.collection.i
   Signature: (Lscala/collection/immutable/List;Lscala/collection/immutable/List;)Lscala/Option;
   Code:
    Stack=10, Locals=20, Args_size=3
-l24	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+l20	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 	dup
 	ifnonnull	l1 // aload_1
 	pop
 	aload_1
-	ifnull	l2 // iconst_1
+	ifnull	l2 // getstatic
 	goto	l3 // getstatic
 l1	aload_1
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // getstatic
-l2	iconst_1
-	ifeq	l4 // new
-	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	goto	l5 // areturn
-l4	new	class scala/MatchError
-	dup
-	new	class scala/Tuple2
-	dup
-	aload_1
-	aload_2
-	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-	invokevirtual	Method scala/Tuple2.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+l2	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l4 // areturn
 l3	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 	dup
-	ifnonnull	l6 // aload_2
+	ifnonnull	l5 // aload_2
 	pop
 	aload_2
-	ifnull	l7 // iconst_1
-	goto	l8 // aload_2
-l6	aload_2
+	ifnull	l6 // getstatic
+	goto	l7 // aload_2
+l5	aload_2
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l8 // aload_2
-l7	iconst_1
-	ifeq	l9 // new
-	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	goto	l5 // areturn
-l9	new	class scala/MatchError
-	dup
-	new	class scala/Tuple2
-	dup
-	aload_1
-	aload_2
-	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-	invokevirtual	Method scala/Tuple2.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l8	aload_2
+	ifeq	l7 // aload_2
+l6	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l4 // areturn
+l7	aload_2
 	instanceof	class scala/collection/immutable/$colon$colon
-	ifeq	l10 // new
+	ifeq	l8 // new
 	aload_2
 	checkcast	class scala/collection/immutable/$colon$colon
 	astore_3
@@ -664,7 +601,7 @@ l8	aload_2
 	getfield	Field scala/collection/immutable/$colon$colon.tl:Lscala/collection/immutable/List;
 	astore	15
 	aload	4
-	ifnull	l11 // new
+	ifnull	l9 // new
 	aload	4
 	invokevirtual	Method scala/concurrent/pilib$UGP.n:()Lscala/concurrent/pilib$UChan;
 	astore	7
@@ -679,7 +616,7 @@ l8	aload_2
 	astore	14
 	aload_1
 	instanceof	class scala/collection/immutable/$colon$colon
-	ifeq	l12 // new
+	ifeq	l10 // new
 	aload_1
 	checkcast	class scala/collection/immutable/$colon$colon
 	astore	5
@@ -691,7 +628,7 @@ l8	aload_2
 	getfield	Field scala/collection/immutable/$colon$colon.tl:Lscala/collection/immutable/List;
 	astore	16
 	aload	6
-	ifnull	l13 // new
+	ifnull	l11 // new
 	aload	6
 	invokevirtual	Method scala/concurrent/pilib$UGP.n:()Lscala/concurrent/pilib$UChan;
 	astore	9
@@ -704,25 +641,23 @@ l8	aload_2
 	aload	6
 	invokevirtual	Method scala/concurrent/pilib$UGP.c:()Lscala/Function1;
 	astore	11
-	iconst_1
-	ifeq	l14 // new
 	aload	9
 	dup
-	ifnonnull	l15 // aload
+	ifnonnull	l12 // aload
 	pop
 	aload	7
-	ifnull	l16 // iload
-	goto	l17 // aload_0
-l15	aload	7
+	ifnull	l13 // iload
+	goto	l14 // aload_0
+l12	aload	7
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l17 // aload_0
-l16	iload	10
+	ifeq	l14 // aload_0
+l13	iload	10
 	iload	8
-	ifeq	l18 // iconst_1
+	ifeq	l15 // iconst_1
 	iconst_0
-	goto	l19 // if_icmpne
-l18	iconst_1
-l19	if_icmpne	l17 // aload_0
+	goto	l16 // if_icmpne
+l15	iconst_1
+l16	if_icmpne	l14 // aload_0
 	new	class scala/Some
 	dup
 	new	class scala/Tuple3
@@ -746,36 +681,28 @@ l19	if_icmpne	l17 // aload_0
 	invokespecial	Method scala/concurrent/pilib$$anonfun$matches$3."<init>":(Ljava/lang/Object;Lscala/Function1;)V
 	invokespecial	Method scala/Tuple3."<init>":(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	goto	l5 // areturn
-l17	aload_0
+	goto	l4 // areturn
+l14	aload_0
 	aload_1
 	aload	15
 	invokespecial	Method matches:(Lscala/collection/immutable/List;Lscala/collection/immutable/List;)Lscala/Option;
 	astore	19
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	dup
-	ifnonnull	l20 // aload
+	ifnonnull	l17 // aload
 	pop
 	aload	19
-	ifnull	l21 // iconst_1
-	goto	l22 // aload
-l20	aload	19
+	ifnull	l18 // aload
+	goto	l19 // aload
+l17	aload	19
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l22 // aload
-l21	iconst_1
-	ifeq	l23 // new
-	aload	16
+	ifeq	l19 // aload
+l18	aload	16
 	astore_1
-	goto	l24 // getstatic
-l23	new	class scala/MatchError
-	dup
-	aload	19
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l22	aload	19
+	goto	l20 // getstatic
+l19	aload	19
 	instanceof	class scala/Some
-	ifeq	l25 // new
+	ifeq	l21 // new
 	aload	19
 	checkcast	class scala/Some
 	astore	17
@@ -783,53 +710,15 @@ l22	aload	19
 	getfield	Field scala/Some.x:Ljava/lang/Object;
 	checkcast	class scala/Tuple3
 	astore	18
-	iconst_1
-	ifeq	l26 // new
 	new	class scala/Some
 	dup
 	aload	18
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-l5	areturn
-l26	new	class scala/MatchError
+l4	areturn
+l21	new	class scala/MatchError
 	dup
 	aload	19
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l25	new	class scala/MatchError
-	dup
-	aload	19
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l14	new	class scala/MatchError
-	dup
-	new	class scala/Tuple2
-	dup
-	aload_1
-	aload_2
-	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-	invokevirtual	Method scala/Tuple2.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l13	new	class scala/MatchError
-	dup
-	new	class scala/Tuple2
-	dup
-	aload_1
-	aload_2
-	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-	invokevirtual	Method scala/Tuple2.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l12	new	class scala/MatchError
-	dup
-	new	class scala/Tuple2
-	dup
-	aload_1
-	aload_2
-	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-	invokevirtual	Method scala/Tuple2.toString:()Ljava/lang/String;
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
 l11	new	class scala/MatchError
@@ -852,72 +741,85 @@ l10	new	class scala/MatchError
 	invokevirtual	Method scala/Tuple2.toString:()Ljava/lang/String;
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
+l9	new	class scala/MatchError
+	dup
+	new	class scala/Tuple2
+	dup
+	aload_1
+	aload_2
+	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+	invokevirtual	Method scala/Tuple2.toString:()Ljava/lang/String;
+	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
+	athrow
+l8	new	class scala/MatchError
+	dup
+	new	class scala/Tuple2
+	dup
+	aload_1
+	aload_2
+	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+	invokevirtual	Method scala/Tuple2.toString:()Ljava/lang/String;
+	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
+	athrow
   Labels:
-   	l24 = 0 // getstatic
+   	l20 = 0 // getstatic
    	l1 = 15 // aload_1
-   	l2 = 22 // iconst_1
-   	l4 = 32 // new
-   	l3 = 52 // getstatic
-   	l6 = 67 // aload_2
-   	l7 = 74 // iconst_1
-   	l9 = 84 // new
-   	l8 = 104 // aload_2
-   	l15 = 246 // aload
-   	l16 = 254 // iload
-   	l18 = 265 // iconst_1
-   	l19 = 266 // if_icmpne
-   	l17 = 323 // aload_0
-   	l20 = 348 // aload
-   	l21 = 356 // iconst_1
-   	l23 = 366 // new
-   	l22 = 379 // aload
-   	l5 = 417 // areturn
-   	l26 = 418 // new
-   	l25 = 431 // new
-   	l14 = 444 // new
-   	l13 = 464 // new
-   	l12 = 484 // new
-   	l11 = 504 // new
-   	l10 = 524 // new
+   	l2 = 22 // getstatic
+   	l3 = 28 // getstatic
+   	l5 = 43 // aload_2
+   	l6 = 50 // getstatic
+   	l7 = 56 // aload_2
+   	l12 = 194 // aload
+   	l13 = 202 // iload
+   	l15 = 213 // iconst_1
+   	l16 = 214 // if_icmpne
+   	l14 = 271 // aload_0
+   	l17 = 296 // aload
+   	l18 = 304 // aload
+   	l19 = 310 // aload
+   	l4 = 344 // areturn
+   	l21 = 345 // new
+   	l11 = 358 // new
+   	l10 = 378 // new
+   	l9 = 398 // new
+   	l8 = 418 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      544      0    this       Lscala/concurrent/pilib$;
-   0      544      1    gs1       Lscala/collection/immutable/List;
-   0      544      2    gs2       Lscala/collection/immutable/List;
-   116      301      3    temp18       Lscala/collection/immutable/$colon$colon;
-   418      106      3    temp18       Lscala/collection/immutable/$colon$colon;
-   125      292      4    temp19       Lscala/concurrent/pilib$UGP;
-   418      106      4    temp19       Lscala/concurrent/pilib$UGP;
-   177      240      5    temp25       Lscala/collection/immutable/$colon$colon;
-   418      66      5    temp25       Lscala/collection/immutable/$colon$colon;
-   187      230      6    temp26       Lscala/concurrent/pilib$UGP;
-   418      66      6    temp26       Lscala/concurrent/pilib$UGP;
-   143      274      7    temp21       Lscala/concurrent/pilib$UChan;
-   418      86      7    temp21       Lscala/concurrent/pilib$UChan;
-   150      267      8    temp22       Z
-   418      86      8    temp22       Z
-   206      211      9    temp28       Lscala/concurrent/pilib$UChan;
-   418      46      9    temp28       Lscala/concurrent/pilib$UChan;
-   213      204      10    temp29       Z
-   418      46      10    temp29       Z
-   227      190      11    temp31       Lscala/Function1;
-   418      46      11    temp31       Lscala/Function1;
-   157      260      12    temp23       Ljava/lang/Object;
-   418      86      12    temp23       Ljava/lang/Object;
-   220      197      13    temp30       Ljava/lang/Object;
-   418      46      13    temp30       Ljava/lang/Object;
-   164      253      14    temp24       Lscala/Function1;
-   418      86      14    temp24       Lscala/Function1;
-   131      286      15    temp20       Lscala/collection/immutable/List;
-   418      106      15    temp20       Lscala/collection/immutable/List;
-   194      223      16    temp27       Lscala/collection/immutable/List;
-   418      66      16    temp27       Lscala/collection/immutable/List;
-   394      23      17    temp14       Lscala/Some;
-   418      13      17    temp14       Lscala/Some;
-   404      13      18    temp15       Lscala/Tuple3;
-   418      13      18    temp15       Lscala/Tuple3;
-   332      85      19    temp12       Lscala/Option;
-   418      26      19    temp12       Lscala/Option;
+   0      438      0    this       Lscala/concurrent/pilib$;
+   0      438      1    gs1       Lscala/collection/immutable/List;
+   0      438      2    gs2       Lscala/collection/immutable/List;
+   68      276      3    temp18       Lscala/collection/immutable/$colon$colon;
+   345      73      3    temp18       Lscala/collection/immutable/$colon$colon;
+   77      267      4    temp19       Lscala/concurrent/pilib$UGP;
+   345      73      4    temp19       Lscala/concurrent/pilib$UGP;
+   129      215      5    temp25       Lscala/collection/immutable/$colon$colon;
+   345      33      5    temp25       Lscala/collection/immutable/$colon$colon;
+   139      205      6    temp26       Lscala/concurrent/pilib$UGP;
+   345      33      6    temp26       Lscala/concurrent/pilib$UGP;
+   95      249      7    temp21       Lscala/concurrent/pilib$UChan;
+   345      53      7    temp21       Lscala/concurrent/pilib$UChan;
+   102      242      8    temp22       Z
+   345      53      8    temp22       Z
+   158      186      9    temp28       Lscala/concurrent/pilib$UChan;
+   345      13      9    temp28       Lscala/concurrent/pilib$UChan;
+   165      179      10    temp29       Z
+   345      13      10    temp29       Z
+   179      165      11    temp31       Lscala/Function1;
+   345      13      11    temp31       Lscala/Function1;
+   109      235      12    temp23       Ljava/lang/Object;
+   345      53      12    temp23       Ljava/lang/Object;
+   172      172      13    temp30       Ljava/lang/Object;
+   345      13      13    temp30       Ljava/lang/Object;
+   116      228      14    temp24       Lscala/Function1;
+   345      53      14    temp24       Lscala/Function1;
+   83      261      15    temp20       Lscala/collection/immutable/List;
+   345      73      15    temp20       Lscala/collection/immutable/List;
+   146      198      16    temp27       Lscala/collection/immutable/List;
+   345      33      16    temp27       Lscala/collection/immutable/List;
+   325      19      17    temp14       Lscala/Some;
+   335      9      18    temp15       Lscala/Tuple3;
+   280      64      19    temp12       Lscala/Option;
+   345      13      19    temp12       Lscala/Option;
 
   Signature: length = 0x2
    01 01 

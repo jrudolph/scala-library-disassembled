@@ -80,14 +80,6 @@ Asciz	default;
 Asciz	()Ljava/lang/String;;
 NameAndType	default:()Ljava/lang/String;
 Method	scala/xml/include/sax/EncodingHeuristics$EncodingNames$.default:()Ljava/lang/String;
-Asciz	scala/MatchError;
-class	scala/MatchError
-Asciz	scala/Option;
-class	scala/Option
-Asciz	toString;
-NameAndType	toString:()Ljava/lang/String;
-Method	scala/Option.toString:()Ljava/lang/String;
-Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	scala/Some;
 class	scala/Some
 Asciz	x;
@@ -108,6 +100,14 @@ Asciz	apply;
 Asciz	(I)Ljava/lang/Object;;
 NameAndType	apply:(I)Ljava/lang/Object;
 InterfaceMethod	scala/collection/LinearSeqLike.apply:(I)Ljava/lang/Object;
+Asciz	scala/MatchError;
+class	scala/MatchError
+Asciz	scala/Option;
+class	scala/Option
+Asciz	toString;
+NameAndType	toString:()Ljava/lang/String;
+Method	scala/Option.toString:()Ljava/lang/String;
+Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	this;
 Asciz	data;
 Asciz	[B;
@@ -175,7 +175,6 @@ Method	scala/Tuple4._4:()Ljava/lang/Object;
 Asciz	_1;
 NameAndType	_1:()Ljava/lang/Object;
 Method	scala/Tuple4._1:()Ljava/lang/Object;
-Method	scala/Tuple4.toString:()Ljava/lang/String;
 int	254;
 Asciz	littleUCS4;
 NameAndType	littleUCS4:()Ljava/lang/String;
@@ -213,14 +212,14 @@ Asciz	Ljava/io/InputStream;;
 Asciz	temp3;
 Asciz	temp4;
 Asciz	temp5;
+Asciz	bytes;
+Asciz	Lscala/Tuple4;;
 Asciz	bytesToRead$1;
 Asciz	temp16;
 Asciz	temp17;
 Asciz	temp18;
 Asciz	ret$1;
 Asciz	Lscala/runtime/ObjectRef;;
-Asciz	bytes;
-Asciz	Lscala/Tuple4;;
 Asciz	InnerClasses;
 Asciz	Match;
 Asciz	MatchData;
@@ -293,25 +292,17 @@ private final java.lang.String readASCIIEncoding$1(java.io.InputStream, int);
 	ifnonnull	l1 // aload
 	pop
 	aload	10
-	ifnull	l2 // iconst_1
+	ifnull	l2 // getstatic
 	goto	l3 // aload
 l1	aload	10
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload
-l2	iconst_1
-	ifeq	l4 // new
-	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
+l2	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.default:()Ljava/lang/String;
-	goto	l5 // areturn
-l4	new	class scala/MatchError
-	dup
-	aload	10
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l4 // areturn
 l3	aload	10
 	instanceof	class scala/Some
-	ifeq	l6 // new
+	ifeq	l5 // new
 	aload	10
 	checkcast	class scala/Some
 	astore	8
@@ -319,21 +310,13 @@ l3	aload	10
 	getfield	Field scala/Some.x:Ljava/lang/Object;
 	checkcast	class scala/util/matching/Regex$Match
 	astore	9
-	iconst_1
-	ifeq	l7 // new
 	aload	9
 	invokeinterface	InterfaceMethod scala/util/matching/Regex$MatchData.subgroups:()Lscala/collection/immutable/List;
 	iconst_0
 	invokeinterface	InterfaceMethod scala/collection/LinearSeqLike.apply:(I)Ljava/lang/Object;
 	checkcast	class java/lang/String
-l5	areturn
-l7	new	class scala/MatchError
-	dup
-	aload	10
-	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	new	class scala/MatchError
+l4	areturn
+l5	new	class scala/MatchError
 	dup
 	aload	10
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
@@ -341,24 +324,20 @@ l6	new	class scala/MatchError
 	athrow
   Labels:
    	l1 = 77 // aload
-   	l2 = 85 // iconst_1
-   	l4 = 98 // new
-   	l3 = 111 // aload
-   	l5 = 156 // areturn
-   	l7 = 157 // new
-   	l6 = 170 // new
+   	l2 = 85 // getstatic
+   	l3 = 94 // aload
+   	l4 = 135 // areturn
+   	l5 = 136 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      183      0    this       Lscala/xml/include/sax/EncodingHeuristics$;
-   6      177      3    data       [B
-   17      166      4    length       I
-   52      131      6    regexp       Lscala/util/matching/Regex;
-   32      151      7    declaration       Ljava/lang/String;
-   126      30      8    temp12       Lscala/Some;
-   157      13      8    temp12       Lscala/Some;
-   136      20      9    temp13       Lscala/util/matching/Regex$Match;
-   157      13      9    temp13       Lscala/util/matching/Regex$Match;
-   61      122      10    temp10       Lscala/Option;
+   0      149      0    this       Lscala/xml/include/sax/EncodingHeuristics$;
+   6      143      3    data       [B
+   17      132      4    length       I
+   52      97      6    regexp       Lscala/util/matching/Regex;
+   32      117      7    declaration       Ljava/lang/String;
+   109      26      8    temp12       Lscala/Some;
+   119      16      9    temp13       Lscala/util/matching/Regex$Match;
+   61      88      10    temp10       Lscala/Option;
 
 
 private final java.lang.String resetAndRet$1(java.io.InputStream, scala.runtime.ObjectRef);
@@ -381,11 +360,11 @@ public java.lang.String readEncodingFromStream(java.io.InputStream);
 	dup
 	aconst_null
 	invokespecial	Method scala/runtime/ObjectRef."<init>":(Ljava/lang/Object;)V
-	astore	14
+	astore	15
 	ldc	int 1024
-	istore	10
+	istore	11
 	aload_1
-	iload	10
+	iload	11
 	invokevirtual	Method java/io/InputStream.mark:(I)V
 	new	class scala/Tuple4
 	dup
@@ -410,635 +389,266 @@ public java.lang.String readEncodingFromStream(java.io.InputStream);
 	iload	5
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokespecial	Method scala/Tuple4."<init>":(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
-	astore	15
-	aload	14
+	astore	10
 	aload	15
-	ifnull	l1 // iconst_1
-	aload	15
+	aload	10
+	ifnull	l1 // aconst_null
+	aload	10
 	invokevirtual	Method scala/Tuple4._2:()Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	istore	6
-	aload	15
+	aload	10
 	invokevirtual	Method scala/Tuple4._3:()Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	istore	7
-	aload	15
+	aload	10
 	invokevirtual	Method scala/Tuple4._4:()Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	istore	8
-	aload	15
+	aload	10
 	invokevirtual	Method scala/Tuple4._1:()Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	lookupswitch{ //4
-		0: 456;
-		239: 395;
-		254: 286;
-		255: 177;
+		0: 269;
+		239: 242;
+		254: 201;
+		255: 160;
 		default: 156 }
-	iconst_1
-	ifeq	l2 // new
 	aconst_null
-	goto	l3 // putfield
-l2	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // putfield
 	iload	6
 	ldc	int 254
-	if_icmpne	l4 // iconst_1
+	if_icmpne	l3 // aconst_null
 	iload	7
 	iconst_0
-	if_icmpne	l5 // iconst_1
+	if_icmpne	l4 // getstatic
 	iload	8
 	iconst_0
-	if_icmpne	l6 // iconst_1
-	iconst_1
-	ifeq	l7 // new
+	if_icmpne	l4 // getstatic
 	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.littleUCS4:()Ljava/lang/String;
-	goto	l3 // putfield
-l7	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l6	iconst_1
-	ifne	l8 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l5	iconst_1
-	ifeq	l9 // new
-l8	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
+	goto	l2 // putfield
+l4	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.littleUTF16:()Ljava/lang/String;
-	goto	l3 // putfield
-l9	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l4	iconst_1
-	ifeq	l10 // new
-	aconst_null
-	goto	l3 // putfield
-l10	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // putfield
+l3	aconst_null
+	goto	l2 // putfield
 	iload	6
 	ldc	int 255
-	if_icmpne	l11 // iconst_1
+	if_icmpne	l5 // aconst_null
 	iload	7
 	iconst_0
-	if_icmpne	l12 // iconst_1
+	if_icmpne	l6 // getstatic
 	iload	8
 	iconst_0
-	if_icmpne	l13 // iconst_1
-	iconst_1
-	ifeq	l14 // new
+	if_icmpne	l6 // getstatic
 	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.unusualUCS4:()Ljava/lang/String;
-	goto	l3 // putfield
-l14	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l13	iconst_1
-	ifne	l15 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l12	iconst_1
-	ifeq	l16 // new
-l15	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
+	goto	l2 // putfield
+l6	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.bigUTF16:()Ljava/lang/String;
-	goto	l3 // putfield
-l16	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l11	iconst_1
-	ifeq	l17 // new
-	aconst_null
-	goto	l3 // putfield
-l17	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // putfield
+l5	aconst_null
+	goto	l2 // putfield
 	iload	6
 	ldc	int 187
-	if_icmpne	l18 // iconst_1
+	if_icmpne	l7 // aconst_null
 	iload	7
 	ldc	int 191
-	if_icmpne	l18 // iconst_1
-	iconst_1
-	ifeq	l19 // new
+	if_icmpne	l7 // aconst_null
 	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.utf8:()Ljava/lang/String;
-	goto	l3 // putfield
-l19	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l18	iconst_1
-	ifeq	l20 // new
-	aconst_null
-	goto	l3 // putfield
-l20	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // putfield
+l7	aconst_null
+	goto	l2 // putfield
 	iload	6
 	iconst_0
-	if_icmpne	l21 // iconst_1
+	if_icmpne	l8 // aconst_null
 	iload	7
 	tableswitch{ //254 to 255
-		254: 563;
-		255: 509;
-		default: 488 }
-	iconst_1
-	ifeq	l22 // new
+		254: 324;
+		255: 304;
+		default: 300 }
 	aconst_null
-	goto	l3 // putfield
-l22	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // putfield
 	iload	8
 	ldc	int 254
-	if_icmpne	l23 // iconst_1
-	iconst_1
-	ifeq	l24 // new
+	if_icmpne	l9 // aconst_null
 	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.unusualUCS4:()Ljava/lang/String;
-	goto	l3 // putfield
-l24	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l23	iconst_1
-	ifeq	l25 // new
-	aconst_null
-	goto	l3 // putfield
-l25	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l2 // putfield
+l9	aconst_null
+	goto	l2 // putfield
 	iload	8
 	ldc	int 255
-	if_icmpne	l26 // iconst_1
-	iconst_1
-	ifeq	l27 // new
+	if_icmpne	l10 // aconst_null
 	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.bigUCS4:()Ljava/lang/String;
-	goto	l3 // putfield
-l27	new	class scala/MatchError
-	dup
+	goto	l2 // putfield
+l10	aconst_null
+	goto	l2 // putfield
+l8	aconst_null
+	goto	l2 // putfield
+l1	aconst_null
+l2	putfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l26	iconst_1
-	ifeq	l28 // new
-	aconst_null
-	goto	l3 // putfield
-l28	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l21	iconst_1
-	ifeq	l29 // new
-	aconst_null
-	goto	l3 // putfield
-l29	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l1	iconst_1
-	ifeq	l30 // new
-	aconst_null
-l3	putfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
-	aload	14
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class java/lang/String
 	dup
 	astore	9
-	ifnull	l31 // aload
+	ifnull	l11 // aload
 	aload	9
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l32 // aload_0
-l31	aload	14
-	aload	15
-	ifnull	l33 // iconst_1
-	aload	15
+	ifeq	l12 // aload_0
+l11	aload	15
+	aload	10
+	ifnull	l13 // getstatic
+	aload	10
 	invokevirtual	Method scala/Tuple4._2:()Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-	istore	11
-	aload	15
+	istore	12
+	aload	10
 	invokevirtual	Method scala/Tuple4._3:()Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-	istore	12
-	aload	15
+	istore	13
+	aload	10
 	invokevirtual	Method scala/Tuple4._4:()Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-	istore	13
-	aload	15
+	istore	14
+	aload	10
 	invokevirtual	Method scala/Tuple4._1:()Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	lookupswitch{ //3
-		0: 1095;
-		60: 846;
-		76: 765;
-		default: 748 }
-	iconst_1
-	ifne	l34 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-	iload	11
-	ldc	int 111
-	if_icmpne	l35 // iconst_1
+		0: 598;
+		60: 486;
+		76: 456;
+		default: 743 }
 	iload	12
-	ldc	int 167
-	if_icmpne	l35 // iconst_1
+	ldc	int 111
+	if_icmpne	l13 // getstatic
 	iload	13
+	ldc	int 167
+	if_icmpne	l13 // getstatic
+	iload	14
 	ldc	int 148
-	if_icmpne	l36 // iconst_1
-	iconst_1
-	ifeq	l37 // new
+	if_icmpne	l13 // getstatic
 	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.utf8:()Ljava/lang/String;
-	goto	l38 // putfield
-l37	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l36	iconst_1
-	ifne	l34 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l35	iconst_1
-	ifne	l34 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-	iload	11
-	lookupswitch{ //2
-		0: 951;
-		63: 893;
-		default: 876 }
-	iconst_1
-	ifne	l34 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l14 // putfield
 	iload	12
-	ldc	int 120
-	if_icmpne	l39 // iconst_1
+	lookupswitch{ //2
+		0: 540;
+		63: 516;
+		default: 743 }
 	iload	13
+	ldc	int 120
+	if_icmpne	l13 // getstatic
+	iload	14
 	ldc	int 109
-	if_icmpne	l39 // iconst_1
-	iconst_1
-	ifeq	l40 // new
+	if_icmpne	l13 // getstatic
 	aload_0
 	aload_1
-	iload	10
+	iload	11
 	invokespecial	Method readASCIIEncoding$1:(Ljava/io/InputStream;I)Ljava/lang/String;
-	goto	l38 // putfield
-l40	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l39	iconst_1
-	ifne	l34 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-	iload	12
-	lookupswitch{ //2
-		0: 1046;
-		63: 997;
-		default: 980 }
-	iconst_1
-	ifne	l34 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l14 // putfield
 	iload	13
+	lookupswitch{ //2
+		0: 583;
+		63: 568;
+		default: 743 }
+	iload	14
 	iconst_0
-	if_icmpne	l41 // iconst_1
-	iconst_1
-	ifeq	l42 // new
+	if_icmpne	l13 // getstatic
 	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.littleUTF16:()Ljava/lang/String;
-	goto	l38 // putfield
-l42	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l41	iconst_1
-	ifne	l34 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-	iload	13
+	goto	l14 // putfield
+	iload	14
 	iconst_0
-	if_icmpne	l43 // iconst_1
-	iconst_1
-	ifeq	l44 // new
+	if_icmpne	l13 // getstatic
 	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.littleUCS4:()Ljava/lang/String;
-	goto	l38 // putfield
-l44	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l43	iconst_1
-	ifne	l34 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-	iload	11
-	lookupswitch{ //2
-		0: 1262;
-		60: 1141;
-		default: 1124 }
-	iconst_1
-	ifne	l34 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
+	goto	l14 // putfield
 	iload	12
-	iconst_0
-	if_icmpne	l45 // iconst_1
-	iload	13
 	lookupswitch{ //2
-		0: 1219;
-		63: 1193;
-		default: 1176 }
-	iconst_1
-	ifne	l34 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-	iconst_1
-	ifeq	l46 // new
+		0: 682;
+		60: 628;
+		default: 743 }
+	iload	13
+	iconst_0
+	if_icmpne	l13 // getstatic
+	iload	14
+	lookupswitch{ //2
+		0: 673;
+		63: 664;
+		default: 743 }
 	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.bigUTF16:()Ljava/lang/String;
-	goto	l38 // putfield
-l46	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-	iconst_1
-	ifeq	l47 // new
+	goto	l14 // putfield
 	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.unusualUCS4:()Ljava/lang/String;
-	goto	l38 // putfield
-l47	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l45	iconst_1
-	ifne	l34 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-	iload	12
+	goto	l14 // putfield
+	iload	13
 	lookupswitch{ //2
-		0: 1358;
-		60: 1309;
-		default: 1292 }
-	iconst_1
-	ifne	l34 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-	iload	13
+		0: 727;
+		60: 712;
+		default: 743 }
+	iload	14
 	iconst_0
-	if_icmpne	l48 // iconst_1
-	iconst_1
-	ifeq	l49 // new
+	if_icmpne	l13 // getstatic
 	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.unusualUCS4:()Ljava/lang/String;
-	goto	l38 // putfield
-l49	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l48	iconst_1
-	ifne	l34 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-	iload	13
+	goto	l14 // putfield
+	iload	14
 	ldc	int 60
-	if_icmpne	l50 // iconst_1
-	iconst_1
-	ifeq	l51 // new
+	if_icmpne	l13 // getstatic
 	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.bigUCS4:()Ljava/lang/String;
-	goto	l38 // putfield
-l51	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l50	iconst_1
-	ifne	l34 // getstatic
-	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l33	iconst_1
-	ifeq	l52 // new
-l34	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
+	goto	l14 // putfield
+l13	getstatic	Field scala/xml/include/sax/EncodingHeuristics$EncodingNames$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$EncodingNames$;
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$EncodingNames$.utf8:()Ljava/lang/String;
-l38	putfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
+l14	putfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	aload_0
 	aload_1
-	aload	14
+	aload	15
 	invokespecial	Method resetAndRet$1:(Ljava/io/InputStream;Lscala/runtime/ObjectRef;)Ljava/lang/String;
 	areturn
-l52	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-l32	aload_0
+l12	aload_0
 	aload_1
-	aload	14
+	aload	15
 	invokespecial	Method resetAndRet$1:(Ljava/io/InputStream;Lscala/runtime/ObjectRef;)Ljava/lang/String;
 	areturn
-l30	new	class scala/MatchError
-	dup
-	aload	15
-	invokevirtual	Method scala/Tuple4.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
   Labels:
-   	l2 = 164 // new
-   	l7 = 209 // new
-   	l6 = 222 // iconst_1
-   	l5 = 239 // iconst_1
-   	l8 = 243 // getstatic
-   	l9 = 252 // new
-   	l4 = 265 // iconst_1
-   	l10 = 273 // new
-   	l14 = 318 // new
-   	l13 = 331 // iconst_1
-   	l12 = 348 // iconst_1
-   	l15 = 352 // getstatic
-   	l16 = 361 // new
-   	l11 = 374 // iconst_1
-   	l17 = 382 // new
-   	l19 = 422 // new
-   	l18 = 435 // iconst_1
-   	l20 = 443 // new
-   	l22 = 496 // new
-   	l24 = 529 // new
-   	l23 = 542 // iconst_1
-   	l25 = 550 // new
-   	l27 = 583 // new
-   	l26 = 596 // iconst_1
-   	l28 = 604 // new
-   	l21 = 617 // iconst_1
-   	l29 = 625 // new
-   	l1 = 638 // iconst_1
-   	l3 = 643 // putfield
-   	l31 = 669 // aload
-   	l37 = 799 // new
-   	l36 = 812 // iconst_1
-   	l35 = 829 // iconst_1
-   	l40 = 921 // new
-   	l39 = 934 // iconst_1
-   	l42 = 1016 // new
-   	l41 = 1029 // iconst_1
-   	l44 = 1065 // new
-   	l43 = 1078 // iconst_1
-   	l46 = 1206 // new
-   	l47 = 1232 // new
-   	l45 = 1245 // iconst_1
-   	l49 = 1328 // new
-   	l48 = 1341 // iconst_1
-   	l51 = 1378 // new
-   	l50 = 1391 // iconst_1
-   	l33 = 1408 // iconst_1
-   	l34 = 1412 // getstatic
-   	l38 = 1418 // putfield
-   	l52 = 1429 // new
-   	l32 = 1442 // aload_0
-   	l30 = 1450 // new
+   	l4 = 188 // getstatic
+   	l3 = 197 // aconst_null
+   	l6 = 229 // getstatic
+   	l5 = 238 // aconst_null
+   	l7 = 265 // aconst_null
+   	l9 = 320 // aconst_null
+   	l10 = 340 // aconst_null
+   	l8 = 344 // aconst_null
+   	l1 = 348 // aconst_null
+   	l2 = 349 // putfield
+   	l11 = 375 // aload
+   	l13 = 743 // getstatic
+   	l14 = 749 // putfield
+   	l12 = 760 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      1463      0    this       Lscala/xml/include/sax/EncodingHeuristics$;
-   0      1463      1    in$1       Ljava/io/InputStream;
-   86      552      6    temp3       I
-   96      542      7    temp4       I
-   106      532      8    temp5       I
-   14      1414      10    bytesToRead$1       I
-   1429      34      10    bytesToRead$1       I
-   686      722      11    temp16       I
-   1412      6      11    temp16       I
-   696      712      12    temp17       I
-   1412      6      12    temp17       I
-   706      702      13    temp18       I
-   1412      6      13    temp18       I
-   10      1418      14    ret$1       Lscala/runtime/ObjectRef;
-   1429      34      14    ret$1       Lscala/runtime/ObjectRef;
-   69      1359      15    bytes       Lscala/Tuple4;
-   1429      34      15    bytes       Lscala/Tuple4;
+   0      768      0    this       Lscala/xml/include/sax/EncodingHeuristics$;
+   0      768      1    in$1       Ljava/io/InputStream;
+   86      262      6    temp3       I
+   96      252      7    temp4       I
+   106      242      8    temp5       I
+   69      690      10    bytes       Lscala/Tuple4;
+   760      8      10    bytes       Lscala/Tuple4;
+   14      745      11    bytesToRead$1       I
+   760      8      11    bytesToRead$1       I
+   392      357      12    temp16       I
+   402      347      13    temp17       I
+   412      337      14    temp18       I
+   10      749      15    ret$1       Lscala/runtime/ObjectRef;
+   760      8      15    ret$1       Lscala/runtime/ObjectRef;
 
 
 }
