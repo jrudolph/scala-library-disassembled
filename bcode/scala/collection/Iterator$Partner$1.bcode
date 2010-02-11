@@ -532,7 +532,7 @@ l2	ireturn
 public java.lang.Object next();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=6, Locals=3, Args_size=1
+   Stack=6, Locals=4, Args_size=1
 	aload_0
 	invokevirtual	Method scala$collection$Iterator$Partner$$$outer:()Lscala/collection/Iterator;
 	dup
@@ -555,7 +555,7 @@ l1	aload_0
 	aload_0
 	invokevirtual	Method scala$collection$Iterator$Partner$$$outer:()Lscala/collection/Iterator;
 	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	astore_2
+	astore_3
 	aload_0
 	getfield	Field gap$1:Lscala/collection/mutable/Queue;
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
@@ -563,17 +563,19 @@ l1	aload_0
 	anewarray	class java/lang/Object
 	dup
 	iconst_0
-	aload_2
+	aload_3
 	aastore
 	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 	invokevirtual	Method scala/collection/mutable/Queue.enqueue:(Lscala/collection/Seq;)V
-	aload_2
-	goto	l3 // aload_1
+	aload_3
+	goto	l3 // astore_2
 l2	aload_0
 	getfield	Field gap$1:Lscala/collection/mutable/Queue;
 	invokevirtual	Method scala/collection/mutable/Queue.dequeue:()Ljava/lang/Object;
-l3	aload_1
+l3	astore_2
+	aload_1
 	monitorexit
+	aload_2
 	areturn
 	aload_1
 	monitorexit
@@ -581,14 +583,14 @@ l3	aload_1
   Labels:
    	l1 = 25 // aload_0
    	l2 = 74 // aload_0
-   	l3 = 81 // aload_1
+   	l3 = 81 // astore_2
   Exception table:
    from   to  target type
-     7    83    84   any
+     7    84    86   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      87      0    this       Lscala/collection/Iterator$Partner$1;
-   49      22      2    e       Ljava/lang/Object;
+   0      89      0    this       Lscala/collection/Iterator$Partner$1;
+   49      22      3    e       Ljava/lang/Object;
 
   Signature: length = 0x2
    00 62 
@@ -600,7 +602,7 @@ public boolean hasNext();
 	aload_0
 	invokevirtual	Method scala$collection$Iterator$Partner$$$outer:()Lscala/collection/Iterator;
 	dup
-	astore_1
+	astore_2
 	monitorenter
 	aload_0
 	aload_0
@@ -617,21 +619,21 @@ l1	aload_0
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
 	ifeq	l3 // iconst_0
 l2	iconst_1
-	goto	l4 // istore_2
+	goto	l4 // istore_1
 l3	iconst_0
-l4	istore_2
-	aload_1
+l4	istore_1
+	aload_2
 	monitorexit
-	iload_2
+	iload_1
 	ireturn
-	aload_1
+	aload_2
 	monitorexit
 	athrow
   Labels:
    	l1 = 31 // aload_0
    	l2 = 43 // iconst_1
    	l3 = 47 // iconst_0
-   	l4 = 48 // istore_2
+   	l4 = 48 // istore_1
   Exception table:
    from   to  target type
      7    51    53   any

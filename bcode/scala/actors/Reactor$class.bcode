@@ -661,7 +661,7 @@ l5	goto	l6 // iload
    	l5 = 129 // goto
   Exception table:
    from   to  target type
-    51   101   132   any
+    51    98   132   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      135      0    $this       Lscala/actors/Reactor;
@@ -806,7 +806,7 @@ public static scala.Function0 startSearch(scala.actors.Reactor, java.lang.Object
 public static void send(scala.actors.Reactor, java.lang.Object, scala.actors.OutputChannel);
   Signature: (Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;)V
   Code:
-   Stack=4, Locals=5, Args_size=3
+   Stack=4, Locals=6, Args_size=3
 	aload_0
 	dup
 	pop
@@ -828,7 +828,7 @@ public static void send(scala.actors.Reactor, java.lang.Object, scala.actors.Out
 	aload_2
 	aload_3
 	invokeinterface	InterfaceMethod scala/actors/Reactor.startSearch:(Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/PartialFunction;)Lscala/Function0;
-	goto	l2 // aload_0
+	goto	l2 // astore
 l1	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.sendBuffer:()Lscala/actors/MQueue;
 	aload_1
@@ -838,11 +838,13 @@ l1	aload_0
 	dup
 	aload_0
 	invokespecial	Method scala/actors/Reactor$$anonfun$1."<init>":(Lscala/actors/Reactor;)V
-l2	aload_0
+l2	astore	4
+	aload_0
 	monitorexit
-	checkcast	class scala/Function0
-	astore	4
 	aload	4
+	checkcast	class scala/Function0
+	astore	5
+	aload	5
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
 	pop
 	return
@@ -851,17 +853,17 @@ l2	aload_0
 	athrow
   Labels:
    	l1 = 50 // aload_0
-   	l2 = 69 // aload_0
+   	l2 = 69 // astore
   Exception table:
    from   to  target type
-     4    71    85   any
+     4    73    89   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      88      0    $this       Lscala/actors/Reactor;
-   0      88      1    msg       Ljava/lang/Object;
-   0      88      2    replyTo       Lscala/actors/OutputChannel;
+   0      92      0    $this       Lscala/actors/Reactor;
+   0      92      1    msg       Ljava/lang/Object;
+   0      92      2    replyTo       Lscala/actors/OutputChannel;
    26      21      3    savedWaitingFor       Lscala/PartialFunction;
-   76      8      4    todo       Lscala/Function0;
+   80      8      5    todo       Lscala/Function0;
 
 
 public static int mailboxSize(scala.actors.Reactor);

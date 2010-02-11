@@ -172,7 +172,7 @@ public static void terminated(scala.actors.scheduler.DelegatingScheduler, scala.
 public static void newActor(scala.actors.scheduler.DelegatingScheduler, scala.actors.Reactor);
   Signature: (Lscala/actors/scheduler/DelegatingScheduler;Lscala/actors/Reactor;)V
   Code:
-   Stack=2, Locals=6, Args_size=2
+   Stack=2, Locals=7, Args_size=2
 	aload_0
 	dup
 	pop
@@ -185,7 +185,7 @@ public static void newActor(scala.actors.scheduler.DelegatingScheduler, scala.ac
 l1	aload_0
 	invokeinterface	InterfaceMethod scala/actors/scheduler/DelegatingScheduler.sched:()Lscala/actors/IScheduler;
 	dup
-	astore	5
+	astore	6
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/scheduler/DelegatingScheduler.sched:()Lscala/actors/IScheduler;
@@ -199,16 +199,18 @@ l1	aload_0
 	istore_2
 	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
-	goto	l4 // aload
+	goto	l4 // astore
 l3	iconst_1
 	istore_3
 	iload_3
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
-l4	aload	5
+l4	astore	4
+	aload	6
 	monitorexit
+	aload	4
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
-l2	istore	4
-	iload	4
+l2	istore	5
+	iload	5
 	ifeq	l5 // aload_0
 	aload_0
 	aload_0
@@ -222,7 +224,7 @@ l2	istore	4
 l5	aload_0
 	monitorexit
 	return
-	aload	5
+	aload	6
 	monitorexit
 	athrow
 	aload_0
@@ -231,19 +233,19 @@ l5	aload_0
   Labels:
    	l1 = 17 // aload_0
    	l3 = 62 // iconst_1
-   	l4 = 68 // aload
-   	l2 = 74 // istore
-   	l5 = 108 // aload_0
+   	l4 = 68 // astore
+   	l2 = 78 // istore
+   	l5 = 112 // aload_0
   Exception table:
    from   to  target type
-    27    71   111   any
-     4   110   115   any
-   111   115   115   any
+    27    73   115   any
+     4   114   119   any
+   115   119   119   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      118      0    $this       Lscala/actors/scheduler/DelegatingScheduler;
-   0      118      1    actor       Lscala/actors/Reactor;
-   76      32      4    createNew       Z
+   0      122      0    $this       Lscala/actors/scheduler/DelegatingScheduler;
+   0      122      1    actor       Lscala/actors/Reactor;
+   80      32      5    createNew       Z
 
 
 public static void shutdown(scala.actors.scheduler.DelegatingScheduler);
@@ -370,7 +372,7 @@ public static final void impl_$eq(scala.actors.scheduler.DelegatingScheduler, sc
 public static final scala.actors.IScheduler impl(scala.actors.scheduler.DelegatingScheduler);
   Signature: (Lscala/actors/scheduler/DelegatingScheduler;)Lscala/actors/IScheduler;
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=2, Locals=2, Args_size=1
 	aload_0
 	dup
 	pop
@@ -388,8 +390,10 @@ l1	aload_0
 	invokeinterface	InterfaceMethod scala/actors/scheduler/DelegatingScheduler.sched_$eq:(Lscala/actors/IScheduler;)V
 l2	aload_0
 	invokeinterface	InterfaceMethod scala/actors/scheduler/DelegatingScheduler.sched:()Lscala/actors/IScheduler;
+	astore_1
 	aload_0
 	monitorexit
+	aload_1
 	checkcast	class scala/actors/IScheduler
 	areturn
 	aload_0
@@ -400,10 +404,10 @@ l2	aload_0
    	l2 = 39 // aload_0
   Exception table:
    from   to  target type
-     4    47    51   any
+     4    48    53   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      54      0    $this       Lscala/actors/scheduler/DelegatingScheduler;
+   0      56      0    $this       Lscala/actors/scheduler/DelegatingScheduler;
 
 
 }

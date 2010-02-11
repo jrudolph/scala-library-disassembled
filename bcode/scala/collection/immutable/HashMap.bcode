@@ -1869,7 +1869,7 @@ public final java.lang.Object scala$collection$immutable$HashMap$$getValue(scala
 public scala.collection.Iterator iterator();
   Signature: ()Lscala/collection/Iterator;
   Code:
-   Stack=4, Locals=1, Args_size=1
+   Stack=4, Locals=2, Args_size=1
 	aload_0
 	dup
 	pop
@@ -1883,8 +1883,10 @@ public scala.collection.Iterator iterator();
 	aload_0
 	invokespecial	Method scala/collection/immutable/HashMap$$anonfun$iterator$1."<init>":(Lscala/collection/immutable/HashMap;)V
 	invokeinterface	InterfaceMethod scala/collection/Iterator.map:(Lscala/Function1;)Lscala/collection/Iterator;
+	astore_1
 	aload_0
 	monitorexit
+	aload_1
 	checkcast	class scala/collection/Iterator
 	areturn
 	aload_0
@@ -1893,7 +1895,7 @@ public scala.collection.Iterator iterator();
   Labels:
   Exception table:
    from   to  target type
-     4    29    33   any
+     4    30    35   any
   Signature: length = 0x2
    01 FFFFFF87 
 
@@ -1975,7 +1977,7 @@ l2	iload_2
 public scala.collection.immutable.HashMap $minus(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/HashMap;
   Code:
-   Stack=5, Locals=3, Args_size=2
+   Stack=5, Locals=4, Args_size=2
 	aload_0
 	dup
 	pop
@@ -1996,7 +1998,7 @@ public scala.collection.immutable.HashMap $minus(java.lang.Object);
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // aload_0
 l1	aload_0
-	goto	l3 // aload_0
+	goto	l3 // astore_3
 l2	aload_0
 	aload_1
 	new	class scala/Some
@@ -2013,8 +2015,10 @@ l2	aload_0
 	pop
 	aload_0
 	invokevirtual	Method later:()Lscala/collection/immutable/HashMap;
-l3	aload_0
+l3	astore_3
+	aload_0
 	monitorexit
+	aload_3
 	checkcast	class scala/collection/immutable/HashMap
 	areturn
 	aload_0
@@ -2023,15 +2027,15 @@ l3	aload_0
   Labels:
    	l1 = 33 // aload_0
    	l2 = 37 // aload_0
-   	l3 = 69 // aload_0
+   	l3 = 69 // astore_3
   Exception table:
    from   to  target type
-     4    71    75   any
+     4    72    77   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      78      0    this       Lscala/collection/immutable/HashMap;
-   0      78      1    key       Ljava/lang/Object;
-   19      52      2    e       Lscala/collection/mutable/DefaultEntry;
+   0      80      0    this       Lscala/collection/immutable/HashMap;
+   0      80      1    key       Ljava/lang/Object;
+   19      53      2    e       Lscala/collection/mutable/DefaultEntry;
 
   Signature: length = 0x2
    01 FFFFFF92 
@@ -2085,7 +2089,7 @@ public scala.collection.immutable.HashMap $plus(scala.Tuple2);
 public scala.collection.immutable.HashMap updated(java.lang.Object, java.lang.Object);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/HashMap;
   Code:
-   Stack=5, Locals=4, Args_size=3
+   Stack=5, Locals=5, Args_size=3
 	aload_0
 	dup
 	pop
@@ -2133,8 +2137,10 @@ l2	aload_0
 	putfield	Field scala/collection/mutable/DefaultEntry.value:Ljava/lang/Object;
 l3	aload_0
 	invokevirtual	Method later:()Lscala/collection/immutable/HashMap;
+	astore	4
 	aload_0
 	monitorexit
+	aload	4
 	checkcast	class scala/collection/immutable/HashMap
 	areturn
 	aload_0
@@ -2146,12 +2152,12 @@ l3	aload_0
    	l3 = 85 // aload_0
   Exception table:
    from   to  target type
-     4    91    95   any
+     4    93    99   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      98      0    this       Lscala/collection/immutable/HashMap;
-   0      98      1    key       Ljava/lang/Object;
-   0      98      2    value       Ljava/lang/Object;
+   0      102      0    this       Lscala/collection/immutable/HashMap;
+   0      102      1    key       Ljava/lang/Object;
+   0      102      2    value       Ljava/lang/Object;
    19      70      3    e       Lscala/collection/mutable/DefaultEntry;
 
   Signature: length = 0x2
@@ -2160,16 +2166,16 @@ l3	aload_0
 public scala.Option get(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/Option;
   Code:
-   Stack=3, Locals=7, Args_size=2
+   Stack=3, Locals=8, Args_size=2
 	aload_0
 	dup
 	pop
 	monitorenter
 	aload_0
-	astore	6
+	astore	7
 	iconst_0
-	istore	5
-l13	aload	6
+	istore	6
+l13	aload	7
 	invokevirtual	Method later:()Lscala/collection/immutable/HashMap;
 	dup
 	astore_2
@@ -2178,14 +2184,14 @@ l13	aload	6
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // aload
-l1	iload	5
+l1	iload	6
 	aload_0
 	invokespecial	Method logLimit:()I
 	if_icmple	l3 // aload
 	aload_0
-	aload	6
+	aload	7
 	invokespecial	Method makeCopy:(Lscala/collection/immutable/HashMap;)V
-l3	aload	6
+l3	aload	7
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.findEntry:(Ljava/lang/Object;)Lscala/collection/mutable/HashEntry;
 	checkcast	class scala/collection/mutable/DefaultEntry
@@ -2199,21 +2205,23 @@ l3	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l5 // new
 l4	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	goto	l6 // aload_0
+	goto	l6 // astore
 l5	new	class scala/Some
 	dup
 	aload_3
 	getfield	Field scala/collection/mutable/DefaultEntry.value:Ljava/lang/Object;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-l6	aload_0
+l6	astore	4
+	aload_0
 	monitorexit
+	aload	4
 	checkcast	class scala/Option
 	areturn
-l2	aload	6
+l2	aload	7
 	invokevirtual	Method oldKey:()Ljava/lang/Object;
-	astore	4
+	astore	5
 	aload_1
-	aload	4
+	aload	5
 	if_acmpne	l7 // aload_1
 	iconst_1
 	goto	l8 // ifeq
@@ -2228,25 +2236,25 @@ l9	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l11 // aload_1
 l10	aload_1
-	aload	4
+	aload	5
 	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
 	goto	l8 // ifeq
 l11	aload_1
-	aload	4
+	aload	5
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 l8	ifeq	l12 // iload
-	aload	6
+	aload	7
 	invokevirtual	Method oldValue:()Lscala/Option;
 	aload_0
 	monitorexit
 	areturn
-l12	iload	5
+l12	iload	6
 	iconst_1
 	iadd
-	istore	5
-	aload	6
+	istore	6
+	aload	7
 	invokevirtual	Method later:()Lscala/collection/immutable/HashMap;
-	astore	6
+	astore	7
 	goto	l13 // aload
 	aload_0
 	monitorexit
@@ -2257,28 +2265,28 @@ l12	iload	5
    	l3 = 43 // aload
    	l4 = 69 // getstatic
    	l5 = 75 // new
-   	l6 = 86 // aload_0
-   	l2 = 92 // aload
-   	l7 = 109 // aload_1
-   	l9 = 117 // aload_1
-   	l10 = 131 // aload_1
-   	l11 = 140 // aload_1
-   	l8 = 146 // ifeq
-   	l12 = 157 // iload
+   	l6 = 86 // astore
+   	l2 = 96 // aload
+   	l7 = 113 // aload_1
+   	l9 = 121 // aload_1
+   	l10 = 135 // aload_1
+   	l11 = 144 // aload_1
+   	l8 = 150 // ifeq
+   	l12 = 161 // iload
   Exception table:
    from   to  target type
-     4    88   173   any
-    92   173   173   any
+     4    90   177   any
+    96   177   177   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      176      0    this       Lscala/collection/immutable/HashMap;
-   0      176      1    key       Ljava/lang/Object;
-   55      33      3    e       Lscala/collection/mutable/DefaultEntry;
-   99      47      4    y0       Ljava/lang/Object;
-   10      78      5    cnt       I
-   92      81      5    cnt       I
-   7      81      6    m       Lscala/collection/immutable/HashMap;
-   92      81      6    m       Lscala/collection/immutable/HashMap;
+   0      180      0    this       Lscala/collection/immutable/HashMap;
+   0      180      1    key       Ljava/lang/Object;
+   55      35      3    e       Lscala/collection/mutable/DefaultEntry;
+   103      47      5    y0       Ljava/lang/Object;
+   10      80      6    cnt       I
+   96      81      6    cnt       I
+   7      83      7    m       Lscala/collection/immutable/HashMap;
+   96      81      7    m       Lscala/collection/immutable/HashMap;
 
   Signature: length = 0x2
    01 FFFFFFBB 

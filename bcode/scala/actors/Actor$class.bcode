@@ -1094,8 +1094,8 @@ public static scala.actors.Actor start(scala.actors.Actor);
 	invokespecial	Method scala/actors/Reaction."<init>":(Lscala/actors/Actor;)V
 	invokeinterface	InterfaceMethod scala/actors/IScheduler.execute:(Ljava/lang/Runnable;)V
 	aload_0
-	aload_0
 	monitorexit
+	aload_0
 	checkcast	class scala/actors/Actor
 	areturn
 	aload_0
@@ -1104,7 +1104,7 @@ public static scala.actors.Actor start(scala.actors.Actor);
   Labels:
   Exception table:
    from   to  target type
-     4    61    65   any
+     4    60    65   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      68      0    $this       Lscala/actors/Actor;
@@ -1212,7 +1212,7 @@ public static java.lang.Object $qmark(scala.actors.Actor);
 public static scala.runtime.Nothing$ reactWithin(scala.actors.Actor, long, scala.PartialFunction);
   Signature: (Lscala/actors/Actor;JLscala/PartialFunction;)Lscala/runtime/Nothing$;
   Code:
-   Stack=7, Locals=11, Args_size=3
+   Stack=7, Locals=12, Args_size=3
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scheduler:()Lscala/actors/IScheduler;
@@ -1280,8 +1280,8 @@ l6	aload_0
 	invokespecial	Method scala/actors/Actor$$anonfun$6."<init>":(Lscala/actors/Actor;Lscala/PartialFunction;)V
 	astore	7
 	iconst_0
-	istore	10
-l13	iload	10
+	istore	11
+l13	iload	11
 	ifeq	l7 // aload_0
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	invokevirtual	Method scala/actors/Actor$.suspendException:()Lscala/actors/SuspendActorException;
@@ -1294,8 +1294,8 @@ l7	aload_0
 	aload_3
 	invokespecial	Method scala/actors/Actor$$anonfun$7."<init>":(Lscala/actors/Actor;Lscala/PartialFunction;)V
 	invokevirtual	Method scala/actors/MQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MQueueElement;
-	astore	9
-	aload	9
+	astore	10
+	aload	10
 	ifnonnull	l8 // aload_0
 	aload_0
 	dup
@@ -1310,9 +1310,9 @@ l7	aload_0
 	lcmp
 	ifne	l10 // aload_0
 	iconst_1
-	istore	10
+	istore	11
 	aload	7
-	goto	l11 // aload_0
+	goto	l11 // astore
 l10	aload_0
 	aload_3
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor_$eq:(Lscala/PartialFunction;)V
@@ -1335,12 +1335,12 @@ l10	aload_0
 	lload_1
 	invokevirtual	Method java/util/Timer.schedule:(Ljava/util/TimerTask;J)V
 	iconst_1
-	istore	10
+	istore	11
 	new	class scala/actors/Actor$$anonfun$9
 	dup
 	aload_0
 	invokespecial	Method scala/actors/Actor$$anonfun$9."<init>":(Lscala/actors/Actor;)V
-	goto	l11 // aload_0
+	goto	l11 // astore
 l9	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
@@ -1349,11 +1349,13 @@ l9	aload_0
 	dup
 	aload_0
 	invokespecial	Method scala/actors/Actor$$anonfun$8."<init>":(Lscala/actors/Actor;)V
-l11	aload_0
+l11	astore	8
+	aload_0
 	monitorexit
-	checkcast	class scala/Function0
-	astore	8
 	aload	8
+	checkcast	class scala/Function0
+	astore	9
+	aload	9
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
 	goto	l12 // pop
 l8	aload_0
@@ -1363,7 +1365,7 @@ l8	aload_0
 	anewarray	class scala/actors/OutputChannel
 	dup
 	iconst_0
-	aload	9
+	aload	10
 	invokevirtual	Method scala/actors/MQueueElement.session:()Lscala/actors/OutputChannel;
 	aastore
 	checkcast	class "[Ljava/lang/Object;"
@@ -1372,11 +1374,11 @@ l8	aload_0
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
 	aload_0
 	aload_3
-	aload	9
+	aload	10
 	invokevirtual	Method scala/actors/MQueueElement.msg:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/actors/Actor.scheduleActor:(Lscala/PartialFunction;Ljava/lang/Object;)V
 	iconst_1
-	istore	10
+	istore	11
 	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 l12	pop
 	goto	l13 // iload
@@ -1397,25 +1399,25 @@ l12	pop
    	l7 = 161 // aload_0
    	l10 = 216 // aload_0
    	l9 = 281 // aload_0
-   	l11 = 301 // aload_0
-   	l8 = 318 // aload_0
-   	l12 = 369 // pop
+   	l11 = 301 // astore
+   	l8 = 322 // aload_0
+   	l12 = 373 // pop
   Exception table:
    from   to  target type
-   190   303   376   any
-    87   117   373   any
+   190   305   380   any
+    87   117   377   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      379      0    $this       Lscala/actors/Actor;
-   0      379      1    msec       J
-   0      379      3    f$3       Lscala/PartialFunction;
-   146      227      7    receiveTimeout       Lscala/Function0;
-   376      3      7    receiveTimeout       Lscala/Function0;
-   308      7      8    todo       Lscala/Function0;
-   181      189      9    qel       Lscala/actors/MQueueElement;
-   376      3      9    qel       Lscala/actors/MQueueElement;
-   149      224      10    done       Z
-   376      3      10    done       Z
+   0      383      0    $this       Lscala/actors/Actor;
+   0      383      1    msec       J
+   0      383      3    f$3       Lscala/PartialFunction;
+   146      231      7    receiveTimeout       Lscala/Function0;
+   380      3      7    receiveTimeout       Lscala/Function0;
+   312      7      9    todo       Lscala/Function0;
+   181      193      10    qel       Lscala/actors/MQueueElement;
+   380      3      10    qel       Lscala/actors/MQueueElement;
+   149      228      11    done       Z
+   380      3      11    done       Z
 
 
 public static scala.runtime.Nothing$ react(scala.actors.Actor, scala.PartialFunction);
@@ -1505,7 +1507,7 @@ l6	aload_0
 public static java.lang.Object receiveWithin(scala.actors.Actor, long, scala.PartialFunction);
   Signature: (Lscala/actors/Actor;JLscala/PartialFunction;)Ljava/lang/Object;
   Code:
-   Stack=7, Locals=13, Args_size=3
+   Stack=7, Locals=14, Args_size=3
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scheduler:()Lscala/actors/IScheduler;
@@ -1573,8 +1575,8 @@ l6	aload_0
 	invokespecial	Method scala/actors/Actor$$anonfun$2."<init>":(Lscala/actors/Actor;Lscala/PartialFunction;)V
 	astore	8
 	iconst_0
-	istore	12
-l15	iload	12
+	istore	13
+l15	iload	13
 	ifeq	l7 // aload_0
 	aload_3
 	aload_0
@@ -1601,8 +1603,8 @@ l7	aload_0
 	aload_3
 	invokespecial	Method scala/actors/Actor$$anonfun$3."<init>":(Lscala/actors/Actor;Lscala/PartialFunction;)V
 	invokevirtual	Method scala/actors/MQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MQueueElement;
-	astore	10
-	aload	10
+	astore	11
+	aload	11
 	ifnonnull	l8 // aload_0
 	aload_0
 	dup
@@ -1617,9 +1619,9 @@ l7	aload_0
 	lcmp
 	ifne	l10 // aload_0
 	iconst_1
-	istore	12
+	istore	13
 	aload	8
-	goto	l11 // aload_0
+	goto	l11 // astore
 l10	aload_0
 	aload_3
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor_$eq:(Lscala/PartialFunction;)V
@@ -1660,7 +1662,7 @@ l10	aload_0
 	dup
 	aload_0
 	invokespecial	Method scala/actors/Actor$$anonfun$5."<init>":(Lscala/actors/Actor;)V
-	goto	l11 // aload_0
+	goto	l11 // astore
 l9	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
@@ -1669,11 +1671,13 @@ l9	aload_0
 	dup
 	aload_0
 	invokespecial	Method scala/actors/Actor$$anonfun$4."<init>":(Lscala/actors/Actor;)V
-l11	aload_0
+l11	astore	9
+	aload_0
 	monitorexit
-	checkcast	class scala/Function0
-	astore	9
 	aload	9
+	checkcast	class scala/Function0
+	astore	10
+	aload	10
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
 	goto	l12 // pop
 l8	aload_0
@@ -1699,21 +1703,21 @@ l14	aload_0
 	aload_0
 	new	class scala/Some
 	dup
-	aload	10
+	aload	11
 	invokevirtual	Method scala/actors/MQueueElement.msg:()Ljava/lang/Object;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$received_$eq:(Lscala/Option;)V
 	aload_0
-	aload	10
+	aload	11
 	invokevirtual	Method scala/actors/MQueueElement.session:()Lscala/actors/OutputChannel;
-	astore	11
+	astore	12
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders:()Lscala/collection/immutable/List;
-	aload	11
+	aload	12
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
 	iconst_1
-	istore	12
+	istore	13
 	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 l12	pop
 	goto	l15 // iload
@@ -1737,31 +1741,31 @@ l12	pop
    	l7 = 203 // aload_0
    	l10 = 258 // aload_0
    	l9 = 365 // aload_0
-   	l11 = 385 // aload_0
-   	l8 = 402 // aload_0
-   	l13 = 421 // aload_0
-   	l14 = 446 // aload_0
-   	l12 = 496 // pop
+   	l11 = 385 // astore
+   	l8 = 406 // aload_0
+   	l13 = 425 // aload_0
+   	l14 = 450 // aload_0
+   	l12 = 500 // pop
   Exception table:
    from   to  target type
-   406   448   506   any
-   232   387   503   any
-    87   117   500   any
+   410   452   510   any
+   232   389   507   any
+    87   117   504   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      509      0    $this       Lscala/actors/Actor;
-   0      509      1    msec       J
-   0      509      3    f$2       Lscala/PartialFunction;
+   0      513      0    $this       Lscala/actors/Actor;
+   0      513      1    msec       J
+   0      513      3    f$2       Lscala/PartialFunction;
    171      31      7    result       Ljava/lang/Object;
    146      56      8    receiveTimeout       Lscala/Function0;
-   203      297      8    receiveTimeout       Lscala/Function0;
-   503      6      8    receiveTimeout       Lscala/Function0;
-   392      7      9    todo       Lscala/Function0;
-   223      274      10    qel       Lscala/actors/MQueueElement;
-   503      6      10    qel       Lscala/actors/MQueueElement;
-   149      53      12    done       Z
-   203      297      12    done       Z
-   503      6      12    done       Z
+   203      301      8    receiveTimeout       Lscala/Function0;
+   507      6      8    receiveTimeout       Lscala/Function0;
+   396      7      10    todo       Lscala/Function0;
+   223      278      11    qel       Lscala/actors/MQueueElement;
+   507      6      11    qel       Lscala/actors/MQueueElement;
+   149      53      13    done       Z
+   203      301      13    done       Z
+   507      6      13    done       Z
 
 
 public static java.lang.Object receive(scala.actors.Actor, scala.PartialFunction);
@@ -1923,7 +1927,7 @@ l11	goto	l12 // iload
    	l11 = 319 // goto
   Exception table:
    from   to  target type
-   199   274   325   any
+   199   271   325   any
     83   113   322   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
