@@ -52,6 +52,10 @@ object RecursiveJavaP {
     def javap(className: String, outName: String) {
       import _root_.sun.tools.javap.{Main => JavaP}
 
+      val dir = new File(outName).getParentFile
+      if (!dir.exists)
+        dir.mkdirs
+
       val writer = new PrintWriter(new FileWriter(outName))
 
       val jp = new JavaP(writer)
@@ -62,7 +66,7 @@ object RecursiveJavaP {
     }
 
     for ((className, classFile) <- findAllClasses(classDir)(classDir)) {
-      val outName = classFile.getCanonicalPath.replaceAll("\\.class", ".bcode")
+      val outName = classFile.getCanonicalPath.replaceAll("/class/","/bcode/").replaceAll("\\.class", ".bcode")
       println("Analyzing "+className)
       javap(className, outName)
     }
