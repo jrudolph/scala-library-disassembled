@@ -434,7 +434,7 @@ public class JavapPrinter {
 
         case opc_anewarray: {
             int index =  getUShort(pc+1);
-            out.print("\t#"+index+"; //");
+            out.print("\t");
             PrintConstant(index);
             return 3;
         }
@@ -449,7 +449,7 @@ public class JavapPrinter {
 
         case opc_ldc: {
             int index = getUbyte(pc+1);
-            out.print("\t#"+index+"; //");
+            out.print("\t");
             PrintConstant(index);
             return 2;
         }
@@ -463,21 +463,21 @@ public class JavapPrinter {
         case opc_invokespecial:
         case opc_invokestatic: {
             int index = getUShort(pc+1);
-            out.print("\t#"+index+"; //");
+            out.print("\t");
             PrintConstant(index);
             return 3;
         }
 
         case opc_invokeinterface: {
             int index = getUShort(pc+1), nargs=getUbyte(pc+3);
-            out.print("\t#"+index+",  "+nargs+"; //");
+            out.print("\t");
             PrintConstant(index);
             return 5;
         }
 
         case opc_multianewarray: {
             int index = getUShort(pc+1), dimensions=getUbyte(pc+3);
-            out.print("\t#"+index+",  "+dimensions+"; //");
+            out.print("\t");
             PrintConstant(index);
             return 4;
         }
@@ -710,7 +710,7 @@ public class JavapPrinter {
         int cpx = 1 ;
 
         while (cpx < cls.getCpoolCount()) {
-            out.print("const #"+cpx+" = ");
+            //out.print("const #"+cpx+" = ");
             cpx+=PrintlnConstantEntry(cpx);
         }
         out.println();
@@ -744,15 +744,15 @@ public class JavapPrinter {
         switch (tag) {
         case CONSTANT_CLASS:
         case CONSTANT_STRING:
-            out.println("#"+(((CPX)x).cpx)+";\t//  "+str);
+            out.println(str);
             break;
         case CONSTANT_FIELD:
         case CONSTANT_METHOD:
         case CONSTANT_INTERFACEMETHOD:
-            out.println("#"+((CPX2)x).cpx1+".#"+((CPX2)x).cpx2+";\t//  "+str);
+            out.println(str);
             break;
         case CONSTANT_NAMEANDTYPE:
-            out.println("#"+((CPX2)x).cpx1+":#"+((CPX2)x).cpx2+";//  "+str);
+            out.println(str);
             break;
         case CONSTANT_LONG:
         case CONSTANT_DOUBLE:
