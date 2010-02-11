@@ -14,31 +14,32 @@ Asciz	BitSet.scala;
 Asciz	elems1;
 Asciz	J;
 Asciz	elems0;
-Asciz	<init>;
-Asciz	(JJ)V;
+Asciz	()J;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/collection/immutable/BitSet$BitSet2;
 class	scala/collection/immutable/BitSet$BitSet2
 NameAndType	elems0:J
 Field	scala/collection/immutable/BitSet$BitSet2.elems0:J
+Asciz	nwords;
+Asciz	()I;
+Asciz	word;
+Asciz	(I)J;
+NameAndType	elems0:()J
+Method	scala/collection/immutable/BitSet$BitSet2.elems0:()J
 NameAndType	elems1:J
 Field	scala/collection/immutable/BitSet$BitSet2.elems1:J
-Asciz	scala/collection/immutable/BitSet;
-class	scala/collection/immutable/BitSet
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	scala/collection/immutable/BitSet."<init>":()V
 Asciz	this;
 Asciz	Lscala/collection/immutable/BitSet$BitSet2;;
+Asciz	idx;
+Asciz	I;
 Asciz	LocalVariableTable;
 Asciz	updateWord;
 Asciz	(IJ)Lscala/collection/immutable/BitSet;;
+Asciz	<init>;
+Asciz	(JJ)V;
 NameAndType	"<init>":(JJ)V
 Method	scala/collection/immutable/BitSet$BitSet2."<init>":(JJ)V
-Asciz	()J;
-NameAndType	elems0:()J
-Method	scala/collection/immutable/BitSet$BitSet2.elems0:()J
 Asciz	scala/collection/BitSetLike$;
 class	scala/collection/BitSetLike$
 Asciz	MODULE$;
@@ -57,7 +58,6 @@ Method	scala/Predef$.wrapLongArray:([J)Lscala/collection/mutable/WrappedArray;
 Asciz	scala/collection/SeqLike;
 class	scala/collection/SeqLike
 Asciz	length;
-Asciz	()I;
 NameAndType	length:()I
 InterfaceMethod	scala/collection/SeqLike.length:()I
 Asciz	scala/runtime/IntRef;
@@ -90,16 +90,16 @@ Asciz	fromArray;
 Asciz	([J)Lscala/collection/immutable/BitSet;;
 NameAndType	fromArray:([J)Lscala/collection/immutable/BitSet;
 Method	scala/collection/immutable/BitSet$BitSet2.fromArray:([J)Lscala/collection/immutable/BitSet;
-Asciz	idx;
-Asciz	I;
 Asciz	w;
 Asciz	i$70;
 Asciz	Lscala/runtime/IntRef;;
 Asciz	array$70;
 Asciz	[J;
-Asciz	word;
-Asciz	(I)J;
-Asciz	nwords;
+Asciz	scala/collection/immutable/BitSet;
+class	scala/collection/immutable/BitSet
+Asciz	()V;
+NameAndType	"<init>":()V
+Method	scala/collection/immutable/BitSet."<init>":()V
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	BitSet2;
@@ -116,25 +116,49 @@ private final long elems1;
 private final long elems0;
   Signature: J
 
-public scala.collection.immutable.BitSet$BitSet2(long, long);
-  Signature: (JJ)V
+public long elems0();
+  Signature: ()J
   Code:
-   Stack=3, Locals=5, Args_size=3
+   Stack=2, Locals=1, Args_size=1
 	aload_0
-	lload_1
-	putfield	Field elems0:J
-	aload_0
-	lload_3
-	putfield	Field elems1:J
-	aload_0
-	invokespecial	Method scala/collection/immutable/BitSet."<init>":()V
-	return
+	getfield	Field elems0:J
+	lreturn
   Labels:
+
+public int nwords();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	iconst_2
+	ireturn
+  Labels:
+
+public long word(int);
+  Signature: (I)J
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	iload_1
+	iconst_0
+	if_icmpne	l1 // iload_1
+	aload_0
+	invokevirtual	Method elems0:()J
+	goto	l2 // lreturn
+l1	iload_1
+	iconst_1
+	if_icmpne	l3 // lconst_0
+	aload_0
+	getfield	Field elems1:J
+	goto	l2 // lreturn
+l3	lconst_0
+l2	lreturn
+  Labels:
+   	l1 = 12 // iload_1
+   	l3 = 24 // lconst_0
+   	l2 = 25 // lreturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      15      0    this       Lscala/collection/immutable/BitSet$BitSet2;
-   0      15      1    elems0       J
-   0      15      3    elems1       J
+   0      26      0    this       Lscala/collection/immutable/BitSet$BitSet2;
+   0      26      1    idx       I
 
 
 public scala.collection.immutable.BitSet updateWord(int, long);
@@ -218,50 +242,26 @@ l2	areturn
    81      41      8    array$70       [J
 
 
-public long word(int);
-  Signature: (I)J
+public scala.collection.immutable.BitSet$BitSet2(long, long);
+  Signature: (JJ)V
   Code:
-   Stack=2, Locals=2, Args_size=2
-	iload_1
-	iconst_0
-	if_icmpne	l1 // iload_1
+   Stack=3, Locals=5, Args_size=3
 	aload_0
-	invokevirtual	Method elems0:()J
-	goto	l2 // lreturn
-l1	iload_1
-	iconst_1
-	if_icmpne	l3 // lconst_0
+	lload_1
+	putfield	Field elems0:J
 	aload_0
-	getfield	Field elems1:J
-	goto	l2 // lreturn
-l3	lconst_0
-l2	lreturn
+	lload_3
+	putfield	Field elems1:J
+	aload_0
+	invokespecial	Method scala/collection/immutable/BitSet."<init>":()V
+	return
   Labels:
-   	l1 = 12 // iload_1
-   	l3 = 24 // lconst_0
-   	l2 = 25 // lreturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      26      0    this       Lscala/collection/immutable/BitSet$BitSet2;
-   0      26      1    idx       I
+   0      15      0    this       Lscala/collection/immutable/BitSet$BitSet2;
+   0      15      1    elems0       J
+   0      15      3    elems1       J
 
-
-public int nwords();
-  Signature: ()I
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	iconst_2
-	ireturn
-  Labels:
-
-public long elems0();
-  Signature: ()J
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	getfield	Field elems0:J
-	lreturn
-  Labels:
 
 }
 

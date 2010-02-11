@@ -17,36 +17,40 @@ Asciz	receiver;
 Asciz	Lscala/PartialFunction;;
 Asciz	Lscala/PartialFunction<Ljava/lang/Object;TA;>;;
 Asciz	Signature;
-Asciz	<init>;
-Asciz	(Lscala/concurrent/MailBox;Lscala/PartialFunction;)V;
+Asciz	isDefinedAt;
+Asciz	(Ljava/lang/Object;)Z;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/concurrent/MailBox$Receiver;
 class	scala/concurrent/MailBox$Receiver
 NameAndType	receiver:Lscala/PartialFunction;
 Field	scala/concurrent/MailBox$Receiver.receiver:Lscala/PartialFunction;
-Asciz	scala/concurrent/MailBox$PreReceiver;
-class	scala/concurrent/MailBox$PreReceiver
-Asciz	(Lscala/concurrent/MailBox;)V;
-NameAndType	"<init>":(Lscala/concurrent/MailBox;)V
-Method	scala/concurrent/MailBox$PreReceiver."<init>":(Lscala/concurrent/MailBox;)V
+Asciz	scala/PartialFunction;
+class	scala/PartialFunction
+NameAndType	isDefinedAt:(Ljava/lang/Object;)Z
+InterfaceMethod	scala/PartialFunction.isDefinedAt:(Ljava/lang/Object;)Z
 Asciz	this;
 Asciz	Lscala/concurrent/MailBox$Receiver;;
-Asciz	$outer;
-Asciz	Lscala/concurrent/MailBox;;
-Asciz	LocalVariableTable;
-Asciz	(Lscala/concurrent/MailBox;Lscala/PartialFunction<Ljava/lang/Object;TA;>;)V;
-Asciz	scala$concurrent$MailBox$Receiver$$$outer;
-Asciz	()Lscala/concurrent/MailBox;;
-NameAndType	$outer:Lscala/concurrent/MailBox;
-Field	scala/concurrent/MailBox$PreReceiver.$outer:Lscala/concurrent/MailBox;
-Asciz	receiveWithin;
-Asciz	(J)Ljava/lang/Object;;
 Asciz	msg;
+Asciz	Ljava/lang/Object;;
+Asciz	LocalVariableTable;
+Asciz	receive;
 Asciz	()Ljava/lang/Object;;
 NameAndType	msg:()Ljava/lang/Object;
 Method	scala/concurrent/MailBox$Receiver.msg:()Ljava/lang/Object;
 Asciz	wait;
+Asciz	()V;
+NameAndType	wait:()V
+Method	scala/concurrent/MailBox$Receiver.wait:()V
+Asciz	scala/Function1;
+class	scala/Function1
+Asciz	apply;
+Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
+NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
+InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+Asciz	()TA;;
+Asciz	receiveWithin;
+Asciz	(J)Ljava/lang/Object;;
 Asciz	(J)V;
 NameAndType	wait:(J)V
 Method	scala/concurrent/MailBox$Receiver.wait:(J)V
@@ -56,27 +60,23 @@ Asciz	MODULE$;
 Asciz	Lscala/concurrent/TIMEOUT$;;
 NameAndType	MODULE$:Lscala/concurrent/TIMEOUT$;
 Field	scala/concurrent/TIMEOUT$.MODULE$:Lscala/concurrent/TIMEOUT$;
-Asciz	scala/Function1;
-class	scala/Function1
-Asciz	apply;
-Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
-NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
-InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 Asciz	msec;
 Asciz	J;
 Asciz	(J)TA;;
-Asciz	receive;
-Asciz	()V;
-NameAndType	wait:()V
-Method	scala/concurrent/MailBox$Receiver.wait:()V
-Asciz	()TA;;
-Asciz	isDefinedAt;
-Asciz	(Ljava/lang/Object;)Z;
-Asciz	scala/PartialFunction;
-class	scala/PartialFunction
-NameAndType	isDefinedAt:(Ljava/lang/Object;)Z
-InterfaceMethod	scala/PartialFunction.isDefinedAt:(Ljava/lang/Object;)Z
-Asciz	Ljava/lang/Object;;
+Asciz	scala$concurrent$MailBox$Receiver$$$outer;
+Asciz	()Lscala/concurrent/MailBox;;
+Asciz	scala/concurrent/MailBox$PreReceiver;
+class	scala/concurrent/MailBox$PreReceiver
+Asciz	$outer;
+Asciz	Lscala/concurrent/MailBox;;
+NameAndType	$outer:Lscala/concurrent/MailBox;
+Field	scala/concurrent/MailBox$PreReceiver.$outer:Lscala/concurrent/MailBox;
+Asciz	<init>;
+Asciz	(Lscala/concurrent/MailBox;Lscala/PartialFunction;)V;
+Asciz	(Lscala/concurrent/MailBox;)V;
+NameAndType	"<init>":(Lscala/concurrent/MailBox;)V
+Method	scala/concurrent/MailBox$PreReceiver."<init>":(Lscala/concurrent/MailBox;)V
+Asciz	(Lscala/concurrent/MailBox;Lscala/PartialFunction<Ljava/lang/Object;TA;>;)V;
 Asciz	<A:Ljava/lang/Object;>Lscala/concurrent/MailBox$PreReceiver;Lscala/ScalaObject;;
 Asciz	Scala;
 Asciz	InnerClasses;
@@ -93,35 +93,57 @@ private final scala.PartialFunction receiver;
   Signature: length = 0x2
    00 05 
 
-public scala.concurrent.MailBox$Receiver(scala.concurrent.MailBox, scala.PartialFunction);
-  Signature: (Lscala/concurrent/MailBox;Lscala/PartialFunction;)V
+public boolean isDefinedAt(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=3, Args_size=3
+   Stack=2, Locals=2, Args_size=2
 	aload_0
-	aload_2
-	putfield	Field receiver:Lscala/PartialFunction;
-	aload_0
+	getfield	Field receiver:Lscala/PartialFunction;
 	aload_1
-	invokespecial	Method scala/concurrent/MailBox$PreReceiver."<init>":(Lscala/concurrent/MailBox;)V
-	return
+	invokeinterface	InterfaceMethod scala/PartialFunction.isDefinedAt:(Ljava/lang/Object;)Z
+	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      11      0    this       Lscala/concurrent/MailBox$Receiver;
-   0      11      1    $outer       Lscala/concurrent/MailBox;
-   0      11      2    receiver       Lscala/PartialFunction;
+   0      11      1    msg       Ljava/lang/Object;
 
-  Signature: length = 0x2
-   00 19 
 
-public scala.concurrent.MailBox scala$concurrent$MailBox$Receiver$$$outer();
-  Signature: ()Lscala/concurrent/MailBox;
+public java.lang.Object receive();
+  Signature: ()Ljava/lang/Object;
   Code:
-   Stack=1, Locals=1, Args_size=1
+   Stack=2, Locals=2, Args_size=1
 	aload_0
-	getfield	Field scala/concurrent/MailBox$PreReceiver.$outer:Lscala/concurrent/MailBox;
+	dup
+	pop
+	monitorenter
+l2	aload_0
+	invokevirtual	Method msg:()Ljava/lang/Object;
+	ifnonnull	l1 // aload_0
+	aload_0
+	invokevirtual	Method wait:()V
+	goto	l2 // aload_0
+l1	aload_0
+	getfield	Field receiver:Lscala/PartialFunction;
+	aload_0
+	invokevirtual	Method msg:()Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+	astore_1
+	aload_0
+	monitorexit
+	aload_1
 	areturn
+	aload_0
+	monitorexit
+	athrow
   Labels:
+   	l2 = 4 // aload_0
+   	l1 = 18 // aload_0
+  Exception table:
+   from   to  target type
+     4    34    36   any
+  Signature: length = 0x2
+   00 26 
 
 public java.lang.Object receiveWithin(long);
   Signature: (J)Ljava/lang/Object;
@@ -168,59 +190,37 @@ l3	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Lja
    0      50      1    msec       J
 
   Signature: length = 0x2
-   00 36 
+   00 34 
 
-public java.lang.Object receive();
-  Signature: ()Ljava/lang/Object;
+public scala.concurrent.MailBox scala$concurrent$MailBox$Receiver$$$outer();
+  Signature: ()Lscala/concurrent/MailBox;
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=1, Locals=1, Args_size=1
 	aload_0
-	dup
-	pop
-	monitorenter
-l2	aload_0
-	invokevirtual	Method msg:()Ljava/lang/Object;
-	ifnonnull	l1 // aload_0
-	aload_0
-	invokevirtual	Method wait:()V
-	goto	l2 // aload_0
-l1	aload_0
-	getfield	Field receiver:Lscala/PartialFunction;
-	aload_0
-	invokevirtual	Method msg:()Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	astore_1
-	aload_0
-	monitorexit
-	aload_1
+	getfield	Field scala/concurrent/MailBox$PreReceiver.$outer:Lscala/concurrent/MailBox;
 	areturn
-	aload_0
-	monitorexit
-	athrow
   Labels:
-   	l2 = 4 // aload_0
-   	l1 = 18 // aload_0
-  Exception table:
-   from   to  target type
-     4    34    36   any
-  Signature: length = 0x2
-   00 3B 
 
-public boolean isDefinedAt(java.lang.Object);
-  Signature: (Ljava/lang/Object;)Z
+public scala.concurrent.MailBox$Receiver(scala.concurrent.MailBox, scala.PartialFunction);
+  Signature: (Lscala/concurrent/MailBox;Lscala/PartialFunction;)V
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=3
 	aload_0
-	getfield	Field receiver:Lscala/PartialFunction;
+	aload_2
+	putfield	Field receiver:Lscala/PartialFunction;
+	aload_0
 	aload_1
-	invokeinterface	InterfaceMethod scala/PartialFunction.isDefinedAt:(Ljava/lang/Object;)Z
-	ireturn
+	invokespecial	Method scala/concurrent/MailBox$PreReceiver."<init>":(Lscala/concurrent/MailBox;)V
+	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      11      0    this       Lscala/concurrent/MailBox$Receiver;
-   0      11      1    msg       Ljava/lang/Object;
+   0      11      1    $outer       Lscala/concurrent/MailBox;
+   0      11      2    receiver       Lscala/PartialFunction;
 
+  Signature: length = 0x2
+   00 42 
 
 }
 

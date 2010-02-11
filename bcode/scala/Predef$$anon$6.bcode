@@ -12,21 +12,23 @@ Asciz	SourceFile;
 Asciz	Predef.scala;
 Asciz	xs$1;
 Asciz	[C;
-Asciz	<init>;
-Asciz	([C)V;
+Asciz	length;
+Asciz	()I;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/Predef$$anon$6;
 class	scala/Predef$$anon$6
 NameAndType	xs$1:[C
 Field	scala/Predef$$anon$6.xs$1:[C
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	java/lang/Object."<init>":()V
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
+Asciz	charAt;
+Asciz	(I)C;
+Asciz	this;
+Asciz	Lscala/Predef$$anon$6;;
+Asciz	index;
+Asciz	I;
+Asciz	LocalVariableTable;
+Asciz	subSequence;
+Asciz	(II)Ljava/lang/CharSequence;;
 Asciz	scala/Predef$;
 class	scala/Predef$
 Asciz	MODULE$;
@@ -37,16 +39,6 @@ Asciz	charArrayOps;
 Asciz	([C)Lscala/collection/mutable/ArrayOps;;
 NameAndType	charArrayOps:([C)Lscala/collection/mutable/ArrayOps;
 Method	scala/Predef$.charArrayOps:([C)Lscala/collection/mutable/ArrayOps;
-Asciz	;
-String	
-Asciz	scala/collection/TraversableLike;
-class	scala/collection/TraversableLike
-Asciz	mkString;
-Asciz	(Ljava/lang/String;)Ljava/lang/String;;
-NameAndType	mkString:(Ljava/lang/String;)Ljava/lang/String;
-InterfaceMethod	scala/collection/TraversableLike.mkString:(Ljava/lang/String;)Ljava/lang/String;
-Asciz	subSequence;
-Asciz	(II)Ljava/lang/CharSequence;;
 Asciz	scala/collection/IndexedSeqLike;
 class	scala/collection/IndexedSeqLike
 Asciz	slice;
@@ -58,17 +50,25 @@ Asciz	arrayToCharSequence;
 Asciz	([C)Ljava/lang/CharSequence;;
 NameAndType	arrayToCharSequence:([C)Ljava/lang/CharSequence;
 Method	scala/Predef$.arrayToCharSequence:([C)Ljava/lang/CharSequence;
-Asciz	this;
-Asciz	Lscala/Predef$$anon$6;;
 Asciz	start;
-Asciz	I;
 Asciz	end;
-Asciz	LocalVariableTable;
-Asciz	charAt;
-Asciz	(I)C;
-Asciz	index;
-Asciz	length;
-Asciz	()I;
+Asciz	toString;
+Asciz	()Ljava/lang/String;;
+Asciz	;
+String	
+Asciz	scala/collection/TraversableLike;
+class	scala/collection/TraversableLike
+Asciz	mkString;
+Asciz	(Ljava/lang/String;)Ljava/lang/String;;
+NameAndType	mkString:(Ljava/lang/String;)Ljava/lang/String;
+InterfaceMethod	scala/collection/TraversableLike.mkString:(Ljava/lang/String;)Ljava/lang/String;
+Asciz	<init>;
+Asciz	([C)V;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	()V;
+NameAndType	"<init>":()V
+Method	java/lang/Object."<init>":()V
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	scala/Predef;
@@ -81,30 +81,31 @@ class	java/lang/CharSequence
 private final char[] xs$1;
   Signature: [C
 
-public scala.Predef$$anon$6(char[]);
-  Signature: ([C)V
+public int length();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field xs$1:[C
+	arraylength
+	ireturn
+  Labels:
+
+public char charAt(int);
+  Signature: (I)C
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	aload_1
-	putfield	Field xs$1:[C
-	aload_0
-	invokespecial	Method java/lang/Object."<init>":()V
-	return
-  Labels:
-
-public java.lang.String toString();
-  Signature: ()Ljava/lang/String;
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	aload_0
 	getfield	Field xs$1:[C
-	invokevirtual	Method scala/Predef$.charArrayOps:([C)Lscala/collection/mutable/ArrayOps;
-	ldc	String 
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.mkString:(Ljava/lang/String;)Ljava/lang/String;
-	areturn
+	iload_1
+	caload
+	ireturn
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/Predef$$anon$6;
+   0      7      1    index       I
+
 
 public java.lang.CharSequence subSequence(int, int);
   Signature: (II)Ljava/lang/CharSequence;
@@ -129,30 +130,29 @@ public java.lang.CharSequence subSequence(int, int);
    0      27      2    end       I
 
 
-public char charAt(int);
-  Signature: (I)C
+public java.lang.String toString();
+  Signature: ()Ljava/lang/String;
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	aload_0
+	getfield	Field xs$1:[C
+	invokevirtual	Method scala/Predef$.charArrayOps:([C)Lscala/collection/mutable/ArrayOps;
+	ldc	String 
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.mkString:(Ljava/lang/String;)Ljava/lang/String;
+	areturn
+  Labels:
+
+public scala.Predef$$anon$6(char[]);
+  Signature: ([C)V
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	getfield	Field xs$1:[C
-	iload_1
-	caload
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      7      0    this       Lscala/Predef$$anon$6;
-   0      7      1    index       I
-
-
-public int length();
-  Signature: ()I
-  Code:
-   Stack=1, Locals=1, Args_size=1
+	aload_1
+	putfield	Field xs$1:[C
 	aload_0
-	getfield	Field xs$1:[C
-	arraylength
-	ireturn
+	invokespecial	Method java/lang/Object."<init>":()V
+	return
   Labels:
 
 }

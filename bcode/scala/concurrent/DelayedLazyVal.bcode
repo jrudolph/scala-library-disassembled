@@ -52,14 +52,29 @@ Asciz	scala$concurrent$DelayedLazyVal$$body;
 Asciz	Lscala/Function0;;
 Asciz	f;
 Asciz	Lscala/Function0<TT;>;;
-Asciz	<init>;
-Asciz	(Lscala/Function0;Lscala/Function0;)V;
+Asciz	()Ljava/lang/Object;;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/concurrent/DelayedLazyVal;
 class	scala/concurrent/DelayedLazyVal
+NameAndType	bitmap$0:I
+Field	scala/concurrent/DelayedLazyVal.bitmap$0:I
 NameAndType	f:Lscala/Function0;
 Field	scala/concurrent/DelayedLazyVal.f:Lscala/Function0;
+Asciz	scala/Function0;
+class	scala/Function0
+Asciz	apply;
+NameAndType	apply:()Ljava/lang/Object;
+InterfaceMethod	scala/Function0.apply:()Ljava/lang/Object;
+NameAndType	complete:Ljava/lang/Object;
+Field	scala/concurrent/DelayedLazyVal.complete:Ljava/lang/Object;
+Asciz	()TT;;
+NameAndType	scala$concurrent$DelayedLazyVal$$isDone:Z
+Field	scala/concurrent/DelayedLazyVal.scala$concurrent$DelayedLazyVal$$isDone:Z
+NameAndType	complete:()Ljava/lang/Object;
+Method	scala/concurrent/DelayedLazyVal.complete:()Ljava/lang/Object;
+Asciz	<init>;
+Asciz	(Lscala/Function0;Lscala/Function0;)V;
 NameAndType	scala$concurrent$DelayedLazyVal$$body:Lscala/Function0;
 Field	scala/concurrent/DelayedLazyVal.scala$concurrent$DelayedLazyVal$$body:Lscala/Function0;
 Asciz	java/lang/Object;
@@ -67,8 +82,6 @@ class	java/lang/Object
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	java/lang/Object."<init>":()V
-NameAndType	scala$concurrent$DelayedLazyVal$$isDone:Z
-Field	scala/concurrent/DelayedLazyVal.scala$concurrent$DelayedLazyVal$$isDone:Z
 Asciz	scala/concurrent/DelayedLazyVal$$anonfun$1;
 class	scala/concurrent/DelayedLazyVal$$anonfun$1
 Asciz	(Lscala/concurrent/DelayedLazyVal;)V;
@@ -104,19 +117,6 @@ Asciz	x$2;
 Asciz	Lscala/concurrent/FutureTaskRunner;;
 Asciz	LocalVariableTable;
 Asciz	(Lscala/Function0<TT;>;Lscala/Function0<Ljava/lang/Object;>;)V;
-Asciz	apply;
-Asciz	()Ljava/lang/Object;;
-NameAndType	complete:()Ljava/lang/Object;
-Method	scala/concurrent/DelayedLazyVal.complete:()Ljava/lang/Object;
-Asciz	scala/Function0;
-class	scala/Function0
-NameAndType	apply:()Ljava/lang/Object;
-InterfaceMethod	scala/Function0.apply:()Ljava/lang/Object;
-Asciz	()TT;;
-NameAndType	bitmap$0:I
-Field	scala/concurrent/DelayedLazyVal.bitmap$0:I
-NameAndType	complete:Ljava/lang/Object;
-Field	scala/concurrent/DelayedLazyVal.complete:Ljava/lang/Object;
 Asciz	<T:Ljava/lang/Object;>Ljava/lang/Object;Lscala/ScalaObject;;
 Asciz	ScalaSig;
 Asciz	InnerClasses;
@@ -145,6 +145,74 @@ private final scala.Function0 f;
   Signature: Lscala/Function0;
   Signature: length = 0x2
    00 0E 
+
+private java.lang.Object complete();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	aload_0
+	getfield	Field bitmap$0:I
+	iconst_1
+	iand
+	iconst_0
+	if_icmpne	l1 // aload_0
+	aload_0
+	dup
+	pop
+	monitorenter
+	aload_0
+	getfield	Field bitmap$0:I
+	iconst_1
+	iand
+	iconst_0
+	if_icmpne	l2 // aload_0
+	aload_0
+	aload_0
+	getfield	Field f:Lscala/Function0;
+	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
+	putfield	Field complete:Ljava/lang/Object;
+	aload_0
+	aload_0
+	getfield	Field bitmap$0:I
+	iconst_1
+	ior
+	putfield	Field bitmap$0:I
+l2	aload_0
+	monitorexit
+l1	aload_0
+	getfield	Field complete:Ljava/lang/Object;
+	areturn
+	aload_0
+	monitorexit
+	athrow
+  Labels:
+   	l2 = 47 // aload_0
+   	l1 = 49 // aload_0
+  Exception table:
+   from   to  target type
+    14    49    54   any
+  Signature: length = 0x2
+   00 1F 
+
+public java.lang.Object apply();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field scala$concurrent$DelayedLazyVal$$isDone:Z
+	ifeq	l1 // aload_0
+	aload_0
+	invokespecial	Method complete:()Ljava/lang/Object;
+	goto	l2 // areturn
+l1	aload_0
+	getfield	Field f:Lscala/Function0;
+	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
+l2	areturn
+  Labels:
+   	l1 = 14 // aload_0
+   	l2 = 23 // areturn
+  Signature: length = 0x2
+   00 1F 
 
 public scala.concurrent.DelayedLazyVal(scala.Function0, scala.Function0);
   Signature: (Lscala/Function0;Lscala/Function0;)V
@@ -194,75 +262,7 @@ public scala.concurrent.DelayedLazyVal(scala.Function0, scala.Function0);
    45      18      4    x$2       Lscala/concurrent/FutureTaskRunner;
 
   Signature: length = 0x2
-   00 42 
-
-public java.lang.Object apply();
-  Signature: ()Ljava/lang/Object;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field scala$concurrent$DelayedLazyVal$$isDone:Z
-	ifeq	l1 // aload_0
-	aload_0
-	invokespecial	Method complete:()Ljava/lang/Object;
-	goto	l2 // areturn
-l1	aload_0
-	getfield	Field f:Lscala/Function0;
-	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
-l2	areturn
-  Labels:
-   	l1 = 14 // aload_0
-   	l2 = 23 // areturn
-  Signature: length = 0x2
-   00 4B 
-
-private java.lang.Object complete();
-  Signature: ()Ljava/lang/Object;
-  Code:
-   Stack=3, Locals=1, Args_size=1
-	aload_0
-	getfield	Field bitmap$0:I
-	iconst_1
-	iand
-	iconst_0
-	if_icmpne	l1 // aload_0
-	aload_0
-	dup
-	pop
-	monitorenter
-	aload_0
-	getfield	Field bitmap$0:I
-	iconst_1
-	iand
-	iconst_0
-	if_icmpne	l2 // aload_0
-	aload_0
-	aload_0
-	getfield	Field f:Lscala/Function0;
-	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
-	putfield	Field complete:Ljava/lang/Object;
-	aload_0
-	aload_0
-	getfield	Field bitmap$0:I
-	iconst_1
-	ior
-	putfield	Field bitmap$0:I
-l2	aload_0
-	monitorexit
-l1	aload_0
-	getfield	Field complete:Ljava/lang/Object;
-	areturn
-	aload_0
-	monitorexit
-	athrow
-  Labels:
-   	l2 = 47 // aload_0
-   	l1 = 49 // aload_0
-  Exception table:
-   from   to  target type
-    14    49    54   any
-  Signature: length = 0x2
-   00 4B 
+   00 4F 
 
 }
 

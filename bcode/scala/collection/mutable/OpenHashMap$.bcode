@@ -29,33 +29,12 @@ class	scala/collection/mutable/OpenHashMap$
 Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/collection/mutable/OpenHashMap$."<init>":()V
-Asciz	LineNumberTable;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Method	java/lang/Object."<init>":()V
-NameAndType	MODULE$:Lscala/collection/mutable/OpenHashMap$;
-Field	scala/collection/mutable/OpenHashMap$.MODULE$:Lscala/collection/mutable/OpenHashMap$;
-Asciz	nextPowerOfTwo;
-Asciz	(I)I;
-Asciz	highestOneBit;
-NameAndType	highestOneBit:(I)I
-Method	scala/collection/mutable/OpenHashMap$.highestOneBit:(I)I
-Asciz	this;
-Asciz	i;
-Asciz	I;
-Asciz	LocalVariableTable;
-int	8;
-int	16;
-Asciz	j;
-Asciz	empty;
-Asciz	()Lscala/collection/mutable/OpenHashMap;;
-Asciz	scala/collection/mutable/OpenHashMap;
-class	scala/collection/mutable/OpenHashMap
-Method	scala/collection/mutable/OpenHashMap."<init>":()V
-Asciz	<K:Ljava/lang/Object;V:Ljava/lang/Object;>()Lscala/collection/mutable/OpenHashMap<TK;TV;>;;
-Asciz	Signature;
 Asciz	apply;
 Asciz	(Lscala/collection/Seq;)Lscala/collection/mutable/OpenHashMap;;
+Asciz	scala/collection/mutable/OpenHashMap;
+class	scala/collection/mutable/OpenHashMap
+Asciz	LineNumberTable;
+Method	scala/collection/mutable/OpenHashMap."<init>":()V
 Asciz	scala/collection/mutable/OpenHashMap$$anonfun$apply$1;
 class	scala/collection/mutable/OpenHashMap$$anonfun$apply$1
 Asciz	(Lscala/collection/mutable/OpenHashMap;)V;
@@ -67,11 +46,32 @@ Asciz	foreach;
 Asciz	(Lscala/Function1;)V;
 NameAndType	foreach:(Lscala/Function1;)V
 InterfaceMethod	scala/collection/IterableLike.foreach:(Lscala/Function1;)V
+Asciz	this;
 Asciz	elems;
 Asciz	Lscala/collection/Seq;;
 Asciz	dict$1;
 Asciz	Lscala/collection/mutable/OpenHashMap;;
+Asciz	LocalVariableTable;
 Asciz	<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Lscala/collection/Seq<Lscala/Tuple2<TK;TV;>;>;)Lscala/collection/mutable/OpenHashMap<TK;TV;>;;
+Asciz	Signature;
+Asciz	empty;
+Asciz	()Lscala/collection/mutable/OpenHashMap;;
+Asciz	<K:Ljava/lang/Object;V:Ljava/lang/Object;>()Lscala/collection/mutable/OpenHashMap<TK;TV;>;;
+Asciz	highestOneBit;
+Asciz	(I)I;
+int	8;
+int	16;
+Asciz	j;
+Asciz	I;
+Asciz	i;
+Asciz	nextPowerOfTwo;
+NameAndType	highestOneBit:(I)I
+Method	scala/collection/mutable/OpenHashMap$.highestOneBit:(I)I
+Asciz	java/lang/Object;
+class	java/lang/Object
+Method	java/lang/Object."<init>":()V
+NameAndType	MODULE$:Lscala/collection/mutable/OpenHashMap$;
+Field	scala/collection/mutable/OpenHashMap$.MODULE$:Lscala/collection/mutable/OpenHashMap$;
 Asciz	InnerClasses;
 Asciz	scala/collection/mutable/OpenHashMap$$anon$1;
 class	scala/collection/mutable/OpenHashMap$$anon$1
@@ -114,33 +114,43 @@ public static {};
 	return
   Labels:
 
-private scala.collection.mutable.OpenHashMap$();
-  Signature: ()V
+public scala.collection.mutable.OpenHashMap apply(scala.collection.Seq);
+  Signature: (Lscala/collection/Seq;)Lscala/collection/mutable/OpenHashMap;
   Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokespecial	Method java/lang/Object."<init>":()V
-	aload_0
-	putstatic	Field MODULE$:Lscala/collection/mutable/OpenHashMap$;
-	return
-  Labels:
-
-public int nextPowerOfTwo(int);
-  Signature: (I)I
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	iload_1
-	invokevirtual	Method highestOneBit:(I)I
-	iconst_1
-	ishl
-	ireturn
+   Stack=4, Locals=3, Args_size=2
+	new	class scala/collection/mutable/OpenHashMap
+	dup
+	invokespecial	Method scala/collection/mutable/OpenHashMap."<init>":()V
+	astore_2
+	aload_1
+	new	class scala/collection/mutable/OpenHashMap$$anonfun$apply$1
+	dup
+	aload_2
+	invokespecial	Method scala/collection/mutable/OpenHashMap$$anonfun$apply$1."<init>":(Lscala/collection/mutable/OpenHashMap;)V
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.foreach:(Lscala/Function1;)V
+	aload_2
+	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      8      0    this       Lscala/collection/mutable/OpenHashMap$;
-   0      8      1    i       I
+   0      24      0    this       Lscala/collection/mutable/OpenHashMap$;
+   0      24      1    elems       Lscala/collection/Seq;
+   8      15      2    dict$1       Lscala/collection/mutable/OpenHashMap;
 
+  Signature: length = 0x2
+   00 25 
+
+public scala.collection.mutable.OpenHashMap empty();
+  Signature: ()Lscala/collection/mutable/OpenHashMap;
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	new	class scala/collection/mutable/OpenHashMap
+	dup
+	invokespecial	Method scala/collection/mutable/OpenHashMap."<init>":()V
+	areturn
+  Labels:
+  Signature: length = 0x2
+   00 29 
 
 public int highestOneBit(int);
   Signature: (I)I
@@ -190,43 +200,33 @@ public int highestOneBit(int);
    0      37      2    i       I
 
 
-public scala.collection.mutable.OpenHashMap empty();
-  Signature: ()Lscala/collection/mutable/OpenHashMap;
+public int nextPowerOfTwo(int);
+  Signature: (I)I
   Code:
-   Stack=2, Locals=1, Args_size=1
-	new	class scala/collection/mutable/OpenHashMap
-	dup
-	invokespecial	Method scala/collection/mutable/OpenHashMap."<init>":()V
-	areturn
-  Labels:
-  Signature: length = 0x2
-   00 25 
-
-public scala.collection.mutable.OpenHashMap apply(scala.collection.Seq);
-  Signature: (Lscala/collection/Seq;)Lscala/collection/mutable/OpenHashMap;
-  Code:
-   Stack=4, Locals=3, Args_size=2
-	new	class scala/collection/mutable/OpenHashMap
-	dup
-	invokespecial	Method scala/collection/mutable/OpenHashMap."<init>":()V
-	astore_2
-	aload_1
-	new	class scala/collection/mutable/OpenHashMap$$anonfun$apply$1
-	dup
-	aload_2
-	invokespecial	Method scala/collection/mutable/OpenHashMap$$anonfun$apply$1."<init>":(Lscala/collection/mutable/OpenHashMap;)V
-	invokeinterface	InterfaceMethod scala/collection/IterableLike.foreach:(Lscala/Function1;)V
-	aload_2
-	areturn
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokevirtual	Method highestOneBit:(I)I
+	iconst_1
+	ishl
+	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      24      0    this       Lscala/collection/mutable/OpenHashMap$;
-   0      24      1    elems       Lscala/collection/Seq;
-   8      15      2    dict$1       Lscala/collection/mutable/OpenHashMap;
+   0      8      0    this       Lscala/collection/mutable/OpenHashMap$;
+   0      8      1    i       I
 
-  Signature: length = 0x2
-   00 38 
+
+private scala.collection.mutable.OpenHashMap$();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	putstatic	Field MODULE$:Lscala/collection/mutable/OpenHashMap$;
+	return
+  Labels:
 
 }
 

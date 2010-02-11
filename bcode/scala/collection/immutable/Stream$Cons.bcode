@@ -32,42 +32,42 @@ Asciz	Lscala/Function0<Lscala/collection/immutable/Stream<TA;>;>;;
 Asciz	hd;
 Asciz	Ljava/lang/Object;;
 Asciz	TA;;
-Asciz	<init>;
-Asciz	(Ljava/lang/Object;Lscala/Function0;)V;
+Asciz	isEmpty;
+Asciz	()Z;
 Asciz	LineNumberTable;
+Asciz	head;
+Asciz	()Ljava/lang/Object;;
 NameAndType	hd:Ljava/lang/Object;
 Field	scala/collection/immutable/Stream$Cons.hd:Ljava/lang/Object;
+Asciz	()TA;;
+Asciz	tailDefined;
+NameAndType	tlVal:Lscala/collection/immutable/Stream;
+Field	scala/collection/immutable/Stream$Cons.tlVal:Lscala/collection/immutable/Stream;
+Asciz	tail;
+Asciz	()Lscala/collection/immutable/Stream;;
+NameAndType	tailDefined:()Z
+Method	scala/collection/immutable/Stream$Cons.tailDefined:()Z
 NameAndType	tl:Lscala/Function0;
 Field	scala/collection/immutable/Stream$Cons.tl:Lscala/Function0;
+Asciz	scala/Function0;
+class	scala/Function0
+Asciz	apply;
+NameAndType	apply:()Ljava/lang/Object;
+InterfaceMethod	scala/Function0.apply:()Ljava/lang/Object;
 Asciz	scala/collection/immutable/Stream;
 class	scala/collection/immutable/Stream
+Asciz	()Lscala/collection/immutable/Stream<TA;>;;
+Asciz	()Lscala/collection/LinearSeqLike;;
+NameAndType	tail:()Lscala/collection/immutable/Stream;
+Method	scala/collection/immutable/Stream$Cons.tail:()Lscala/collection/immutable/Stream;
+Asciz	<init>;
+Asciz	(Ljava/lang/Object;Lscala/Function0;)V;
 NameAndType	"<init>":()V
 Method	scala/collection/immutable/Stream."<init>":()V
 Asciz	this;
 Asciz	Lscala/collection/immutable/Stream$Cons;;
 Asciz	LocalVariableTable;
 Asciz	(TA;Lscala/Function0<Lscala/collection/immutable/Stream<TA;>;>;)V;
-Asciz	tail;
-Asciz	()Ljava/lang/Object;;
-Asciz	()Lscala/collection/immutable/Stream;;
-NameAndType	tail:()Lscala/collection/immutable/Stream;
-Method	scala/collection/immutable/Stream$Cons.tail:()Lscala/collection/immutable/Stream;
-Asciz	()Lscala/collection/LinearSeqLike;;
-Asciz	tailDefined;
-Asciz	()Z;
-NameAndType	tailDefined:()Z
-Method	scala/collection/immutable/Stream$Cons.tailDefined:()Z
-Asciz	scala/Function0;
-class	scala/Function0
-Asciz	apply;
-NameAndType	apply:()Ljava/lang/Object;
-InterfaceMethod	scala/Function0.apply:()Ljava/lang/Object;
-NameAndType	tlVal:Lscala/collection/immutable/Stream;
-Field	scala/collection/immutable/Stream$Cons.tlVal:Lscala/collection/immutable/Stream;
-Asciz	()Lscala/collection/immutable/Stream<TA;>;;
-Asciz	head;
-Asciz	()TA;;
-Asciz	isEmpty;
 Asciz	<A:Ljava/lang/Object;>Lscala/collection/immutable/Stream<TA;>;Lscala/ScalaObject;;
 Asciz	Scala;
 Asciz	InnerClasses;
@@ -105,6 +105,79 @@ public static {};
 	return
   Labels:
 
+public boolean isEmpty();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	iconst_0
+	ireturn
+  Labels:
+
+public java.lang.Object head();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field hd:Ljava/lang/Object;
+	areturn
+  Labels:
+  Signature: length = 0x2
+   00 1F 
+
+public boolean tailDefined();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field tlVal:Lscala/collection/immutable/Stream;
+	ifnull	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 11 // iconst_0
+   	l2 = 12 // ireturn
+
+public scala.collection.immutable.Stream tail();
+  Signature: ()Lscala/collection/immutable/Stream;
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method tailDefined:()Z
+	ifne	l1 // aload_0
+	aload_0
+	aload_0
+	getfield	Field tl:Lscala/Function0;
+	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
+	checkcast	class scala/collection/immutable/Stream
+	putfield	Field tlVal:Lscala/collection/immutable/Stream;
+l1	aload_0
+	getfield	Field tlVal:Lscala/collection/immutable/Stream;
+	areturn
+  Labels:
+   	l1 = 23 // aload_0
+  Signature: length = 0x2
+   00 30 
+
+public scala.collection.LinearSeqLike tail();
+  Signature: ()Lscala/collection/LinearSeqLike;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method tail:()Lscala/collection/immutable/Stream;
+	areturn
+  Labels:
+
+public java.lang.Object tail();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method tail:()Lscala/collection/immutable/Stream;
+	areturn
+  Labels:
+
 public scala.collection.immutable.Stream$Cons(java.lang.Object, scala.Function0);
   Signature: (Ljava/lang/Object;Lscala/Function0;)V
   Code:
@@ -126,80 +199,7 @@ public scala.collection.immutable.Stream$Cons(java.lang.Object, scala.Function0)
    0      15      2    tl       Lscala/Function0;
 
   Signature: length = 0x2
-   00 26 
-
-public java.lang.Object tail();
-  Signature: ()Ljava/lang/Object;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method tail:()Lscala/collection/immutable/Stream;
-	areturn
-  Labels:
-
-public scala.collection.LinearSeqLike tail();
-  Signature: ()Lscala/collection/LinearSeqLike;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method tail:()Lscala/collection/immutable/Stream;
-	areturn
-  Labels:
-
-public scala.collection.immutable.Stream tail();
-  Signature: ()Lscala/collection/immutable/Stream;
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method tailDefined:()Z
-	ifne	l1 // aload_0
-	aload_0
-	aload_0
-	getfield	Field tl:Lscala/Function0;
-	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
-	checkcast	class scala/collection/immutable/Stream
-	putfield	Field tlVal:Lscala/collection/immutable/Stream;
-l1	aload_0
-	getfield	Field tlVal:Lscala/collection/immutable/Stream;
-	areturn
-  Labels:
-   	l1 = 23 // aload_0
-  Signature: length = 0x2
-   00 38 
-
-public boolean tailDefined();
-  Signature: ()Z
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field tlVal:Lscala/collection/immutable/Stream;
-	ifnull	l1 // iconst_0
-	iconst_1
-	goto	l2 // ireturn
-l1	iconst_0
-l2	ireturn
-  Labels:
-   	l1 = 11 // iconst_0
-   	l2 = 12 // ireturn
-
-public java.lang.Object head();
-  Signature: ()Ljava/lang/Object;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field hd:Ljava/lang/Object;
-	areturn
-  Labels:
-  Signature: length = 0x2
-   00 3A 
-
-public boolean isEmpty();
-  Signature: ()Z
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	iconst_0
-	ireturn
-  Labels:
+   00 3B 
 
 }
 

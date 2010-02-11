@@ -11,27 +11,39 @@ public abstract class scala.collection.SeqViewLike$DroppedWhile$class extends ja
   Constant pool:
 Asciz	SourceFile;
 Asciz	SeqViewLike.scala;
-Asciz	$init$;
-Asciz	(Lscala/collection/SeqViewLike$DroppedWhile;)V;
+Asciz	start;
+Asciz	(Lscala/collection/SeqViewLike$DroppedWhile;)I;
 Asciz	Code;
 Asciz	LineNumberTable;
-Asciz	$this;
-Asciz	Lscala/collection/SeqViewLike$DroppedWhile;;
-Asciz	LocalVariableTable;
-Asciz	apply;
-Asciz	(Lscala/collection/SeqViewLike$DroppedWhile;I)Ljava/lang/Object;;
 Asciz	scala/collection/SeqViewLike$DroppedWhile;
 class	scala/collection/SeqViewLike$DroppedWhile
 Asciz	scala$collection$SeqViewLike$DroppedWhile$$$outer;
 Asciz	()Lscala/collection/SeqViewLike;;
 NameAndType	scala$collection$SeqViewLike$DroppedWhile$$$outer:()Lscala/collection/SeqViewLike;
 InterfaceMethod	scala/collection/SeqViewLike$DroppedWhile.scala$collection$SeqViewLike$DroppedWhile$$$outer:()Lscala/collection/SeqViewLike;
-Asciz	start;
-Asciz	()I;
-NameAndType	start:()I
-InterfaceMethod	scala/collection/SeqViewLike$DroppedWhile.start:()I
+Asciz	scala/collection/TraversableViewLike$DroppedWhile;
+class	scala/collection/TraversableViewLike$DroppedWhile
+Asciz	pred;
+Asciz	()Lscala/Function1;;
+NameAndType	pred:()Lscala/Function1;
+InterfaceMethod	scala/collection/TraversableViewLike$DroppedWhile.pred:()Lscala/Function1;
 Asciz	scala/collection/SeqLike;
 class	scala/collection/SeqLike
+Asciz	prefixLength;
+Asciz	(Lscala/Function1;)I;
+NameAndType	prefixLength:(Lscala/Function1;)I
+InterfaceMethod	scala/collection/SeqLike.prefixLength:(Lscala/Function1;)I
+Asciz	$this;
+Asciz	Lscala/collection/SeqViewLike$DroppedWhile;;
+Asciz	LocalVariableTable;
+Asciz	length;
+Asciz	()I;
+NameAndType	length:()I
+InterfaceMethod	scala/collection/SeqLike.length:()I
+NameAndType	start:()I
+InterfaceMethod	scala/collection/SeqViewLike$DroppedWhile.start:()I
+Asciz	apply;
+Asciz	(Lscala/collection/SeqViewLike$DroppedWhile;I)Ljava/lang/Object;;
 Asciz	(I)Ljava/lang/Object;;
 NameAndType	apply:(I)Ljava/lang/Object;
 InterfaceMethod	scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
@@ -55,20 +67,8 @@ NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 Asciz	idx;
 Asciz	I;
-Asciz	length;
-Asciz	(Lscala/collection/SeqViewLike$DroppedWhile;)I;
-NameAndType	length:()I
-InterfaceMethod	scala/collection/SeqLike.length:()I
-Asciz	scala/collection/TraversableViewLike$DroppedWhile;
-class	scala/collection/TraversableViewLike$DroppedWhile
-Asciz	pred;
-Asciz	()Lscala/Function1;;
-NameAndType	pred:()Lscala/Function1;
-InterfaceMethod	scala/collection/TraversableViewLike$DroppedWhile.pred:()Lscala/Function1;
-Asciz	prefixLength;
-Asciz	(Lscala/Function1;)I;
-NameAndType	prefixLength:(Lscala/Function1;)I
-InterfaceMethod	scala/collection/SeqLike.prefixLength:(Lscala/Function1;)I
+Asciz	$init$;
+Asciz	(Lscala/collection/SeqViewLike$DroppedWhile;)V;
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	scala/collection/SeqViewLike;
@@ -80,15 +80,37 @@ Asciz	scala/collection/SeqViewLike$DroppedWhile$class;
 class	scala/collection/SeqViewLike$DroppedWhile$class
 
 {
-public static void $init$(scala.collection.SeqViewLike$DroppedWhile);
-  Signature: (Lscala/collection/SeqViewLike$DroppedWhile;)V
+public static int start(scala.collection.SeqViewLike$DroppedWhile);
+  Signature: (Lscala/collection/SeqViewLike$DroppedWhile;)I
   Code:
-   Stack=0, Locals=1, Args_size=1
-	return
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$DroppedWhile.scala$collection$SeqViewLike$DroppedWhile$$$outer:()Lscala/collection/SeqViewLike;
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/TraversableViewLike$DroppedWhile.pred:()Lscala/Function1;
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.prefixLength:(Lscala/Function1;)I
+	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      1      0    $this       Lscala/collection/SeqViewLike$DroppedWhile;
+   0      18      0    $this       Lscala/collection/SeqViewLike$DroppedWhile;
+
+
+public static int length(scala.collection.SeqViewLike$DroppedWhile);
+  Signature: (Lscala/collection/SeqViewLike$DroppedWhile;)I
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$DroppedWhile.scala$collection$SeqViewLike$DroppedWhile$$$outer:()Lscala/collection/SeqViewLike;
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$DroppedWhile.start:()I
+	isub
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      19      0    $this       Lscala/collection/SeqViewLike$DroppedWhile;
 
 
 public static java.lang.Object apply(scala.collection.SeqViewLike$DroppedWhile, int);
@@ -121,37 +143,15 @@ l1	new	class java/lang/IndexOutOfBoundsException
    0      40      1    idx       I
 
 
-public static int length(scala.collection.SeqViewLike$DroppedWhile);
-  Signature: (Lscala/collection/SeqViewLike$DroppedWhile;)I
+public static void $init$(scala.collection.SeqViewLike$DroppedWhile);
+  Signature: (Lscala/collection/SeqViewLike$DroppedWhile;)V
   Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$DroppedWhile.scala$collection$SeqViewLike$DroppedWhile$$$outer:()Lscala/collection/SeqViewLike;
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$DroppedWhile.start:()I
-	isub
-	ireturn
+   Stack=0, Locals=1, Args_size=1
+	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      19      0    $this       Lscala/collection/SeqViewLike$DroppedWhile;
-
-
-public static int start(scala.collection.SeqViewLike$DroppedWhile);
-  Signature: (Lscala/collection/SeqViewLike$DroppedWhile;)I
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$DroppedWhile.scala$collection$SeqViewLike$DroppedWhile$$$outer:()Lscala/collection/SeqViewLike;
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableViewLike$DroppedWhile.pred:()Lscala/Function1;
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.prefixLength:(Lscala/Function1;)I
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      18      0    $this       Lscala/collection/SeqViewLike$DroppedWhile;
+   0      1      0    $this       Lscala/collection/SeqViewLike$DroppedWhile;
 
 
 }

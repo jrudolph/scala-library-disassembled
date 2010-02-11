@@ -13,15 +13,10 @@ public abstract class scala.collection.SeqViewLike$FlatMapped$class extends java
   Constant pool:
 Asciz	SourceFile;
 Asciz	SeqViewLike.scala;
-Asciz	$init$;
-Asciz	(Lscala/collection/SeqViewLike$FlatMapped;)V;
+Asciz	index;
+Asciz	(Lscala/collection/SeqViewLike$FlatMapped;)[I;
 Asciz	Code;
 Asciz	LineNumberTable;
-Asciz	$this;
-Asciz	Lscala/collection/SeqViewLike$FlatMapped;;
-Asciz	LocalVariableTable;
-Asciz	apply;
-Asciz	(Lscala/collection/SeqViewLike$FlatMapped;I)Ljava/lang/Object;;
 Asciz	scala/collection/SeqViewLike$FlatMapped;
 class	scala/collection/SeqViewLike$FlatMapped
 Asciz	scala$collection$SeqViewLike$FlatMapped$$$outer;
@@ -34,43 +29,6 @@ Asciz	length;
 Asciz	()I;
 NameAndType	length:()I
 InterfaceMethod	scala/collection/SeqLike.length:()I
-Asciz	findRow;
-Asciz	(III)I;
-NameAndType	findRow:(III)I
-InterfaceMethod	scala/collection/SeqViewLike$FlatMapped.findRow:(III)I
-Asciz	scala/collection/TraversableViewLike$FlatMapped;
-class	scala/collection/TraversableViewLike$FlatMapped
-Asciz	mapping;
-Asciz	()Lscala/Function1;;
-NameAndType	mapping:()Lscala/Function1;
-InterfaceMethod	scala/collection/TraversableViewLike$FlatMapped.mapping:()Lscala/Function1;
-Asciz	(I)Ljava/lang/Object;;
-NameAndType	apply:(I)Ljava/lang/Object;
-InterfaceMethod	scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
-Asciz	scala/Function1;
-class	scala/Function1
-Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
-NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
-InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-Asciz	scala/collection/TraversableLike;
-class	scala/collection/TraversableLike
-Asciz	toSeq;
-Asciz	()Lscala/collection/Seq;;
-NameAndType	toSeq:()Lscala/collection/Seq;
-InterfaceMethod	scala/collection/TraversableLike.toSeq:()Lscala/collection/Seq;
-Asciz	index;
-Asciz	()[I;
-NameAndType	index:()[I
-InterfaceMethod	scala/collection/SeqViewLike$FlatMapped.index:()[I
-Asciz	idx;
-Asciz	I;
-Asciz	row;
-Asciz	(Lscala/collection/SeqViewLike$FlatMapped;)I;
-Asciz	(Lscala/collection/SeqViewLike$FlatMapped;III)I;
-Asciz	lo;
-Asciz	hi;
-Asciz	mid;
-Asciz	(Lscala/collection/SeqViewLike$FlatMapped;)[I;
 Asciz	scala/Predef$;
 class	scala/Predef$
 Asciz	MODULE$;
@@ -99,8 +57,50 @@ Asciz	foreach;
 Asciz	(Lscala/Function1;)V;
 NameAndType	foreach:(Lscala/Function1;)V
 InterfaceMethod	scala/collection/immutable/Range$ByOne.foreach:(Lscala/Function1;)V
+Asciz	$this;
+Asciz	Lscala/collection/SeqViewLike$FlatMapped;;
 Asciz	index$1;
 Asciz	[I;
+Asciz	LocalVariableTable;
+Asciz	findRow;
+Asciz	(Lscala/collection/SeqViewLike$FlatMapped;III)I;
+Asciz	()[I;
+NameAndType	index:()[I
+InterfaceMethod	scala/collection/SeqViewLike$FlatMapped.index:()[I
+Asciz	(III)I;
+NameAndType	findRow:(III)I
+InterfaceMethod	scala/collection/SeqViewLike$FlatMapped.findRow:(III)I
+Asciz	idx;
+Asciz	I;
+Asciz	lo;
+Asciz	hi;
+Asciz	mid;
+Asciz	(Lscala/collection/SeqViewLike$FlatMapped;)I;
+Asciz	apply;
+Asciz	(Lscala/collection/SeqViewLike$FlatMapped;I)Ljava/lang/Object;;
+Asciz	scala/collection/TraversableViewLike$FlatMapped;
+class	scala/collection/TraversableViewLike$FlatMapped
+Asciz	mapping;
+Asciz	()Lscala/Function1;;
+NameAndType	mapping:()Lscala/Function1;
+InterfaceMethod	scala/collection/TraversableViewLike$FlatMapped.mapping:()Lscala/Function1;
+Asciz	(I)Ljava/lang/Object;;
+NameAndType	apply:(I)Ljava/lang/Object;
+InterfaceMethod	scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
+Asciz	scala/Function1;
+class	scala/Function1
+Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
+NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
+InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+Asciz	scala/collection/TraversableLike;
+class	scala/collection/TraversableLike
+Asciz	toSeq;
+Asciz	()Lscala/collection/Seq;;
+NameAndType	toSeq:()Lscala/collection/Seq;
+InterfaceMethod	scala/collection/TraversableLike.toSeq:()Lscala/collection/Seq;
+Asciz	row;
+Asciz	$init$;
+Asciz	(Lscala/collection/SeqViewLike$FlatMapped;)V;
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	scala/collection/immutable/Range;
@@ -118,71 +118,41 @@ Asciz	java/lang/Object;
 class	java/lang/Object
 
 {
-public static void $init$(scala.collection.SeqViewLike$FlatMapped);
-  Signature: (Lscala/collection/SeqViewLike$FlatMapped;)V
+public static int[] index(scala.collection.SeqViewLike$FlatMapped);
+  Signature: (Lscala/collection/SeqViewLike$FlatMapped;)[I
   Code:
-   Stack=0, Locals=1, Args_size=1
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      1      0    $this       Lscala/collection/SeqViewLike$FlatMapped;
-
-
-public static java.lang.Object apply(scala.collection.SeqViewLike$FlatMapped, int);
-  Signature: (Lscala/collection/SeqViewLike$FlatMapped;I)Ljava/lang/Object;
-  Code:
-   Stack=5, Locals=3, Args_size=2
-	aload_0
-	iload_1
-	iconst_0
+   Stack=5, Locals=2, Args_size=1
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$FlatMapped.scala$collection$SeqViewLike$FlatMapped$$$outer:()Lscala/collection/SeqViewLike;
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
 	iconst_1
-	isub
-	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$FlatMapped.findRow:(III)I
-	istore_2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableViewLike$FlatMapped.mapping:()Lscala/Function1;
+	iadd
+	newarray int
+	astore_1
+	aload_1
+	iconst_0
+	iconst_0
+	iastore
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iconst_0
+	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$FlatMapped.scala$collection$SeqViewLike$FlatMapped$$$outer:()Lscala/collection/SeqViewLike;
-	iload_2
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	checkcast	class scala/collection/TraversableLike
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toSeq:()Lscala/collection/Seq;
-	iload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
+	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
+	new	class scala/collection/SeqViewLike$FlatMapped$$anonfun$index$1
+	dup
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$FlatMapped.index:()[I
-	iload_2
-	iaload
-	isub
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
+	aload_1
+	invokespecial	Method scala/collection/SeqViewLike$FlatMapped$$anonfun$index$1."<init>":(Lscala/collection/SeqViewLike$FlatMapped;[I)V
+	invokeinterface	InterfaceMethod scala/collection/immutable/Range$ByOne.foreach:(Lscala/Function1;)V
+	aload_1
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      69      0    $this       Lscala/collection/SeqViewLike$FlatMapped;
-   0      69      1    idx       I
-   22      46      2    row       I
-
-
-public static int length(scala.collection.SeqViewLike$FlatMapped);
-  Signature: (Lscala/collection/SeqViewLike$FlatMapped;)I
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$FlatMapped.index:()[I
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$FlatMapped.scala$collection$SeqViewLike$FlatMapped$$$outer:()Lscala/collection/SeqViewLike;
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	iaload
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      19      0    $this       Lscala/collection/SeqViewLike$FlatMapped;
+   0      57      0    $this       Lscala/collection/SeqViewLike$FlatMapped;
+   16      40      1    index$1       [I
 
 
 public static int findRow(scala.collection.SeqViewLike$FlatMapped, int, int, int);
@@ -240,41 +210,71 @@ l2	ireturn
    7      61      4    mid       I
 
 
-public static int[] index(scala.collection.SeqViewLike$FlatMapped);
-  Signature: (Lscala/collection/SeqViewLike$FlatMapped;)[I
+public static int length(scala.collection.SeqViewLike$FlatMapped);
+  Signature: (Lscala/collection/SeqViewLike$FlatMapped;)I
   Code:
-   Stack=5, Locals=2, Args_size=1
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$FlatMapped.index:()[I
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$FlatMapped.scala$collection$SeqViewLike$FlatMapped$$$outer:()Lscala/collection/SeqViewLike;
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
+	iaload
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      19      0    $this       Lscala/collection/SeqViewLike$FlatMapped;
+
+
+public static java.lang.Object apply(scala.collection.SeqViewLike$FlatMapped, int);
+  Signature: (Lscala/collection/SeqViewLike$FlatMapped;I)Ljava/lang/Object;
+  Code:
+   Stack=5, Locals=3, Args_size=2
+	aload_0
+	iload_1
+	iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$FlatMapped.scala$collection$SeqViewLike$FlatMapped$$$outer:()Lscala/collection/SeqViewLike;
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
 	iconst_1
-	iadd
-	newarray int
-	astore_1
-	aload_1
-	iconst_0
-	iconst_0
-	iastore
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	iconst_0
-	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
+	isub
+	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$FlatMapped.findRow:(III)I
+	istore_2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/TraversableViewLike$FlatMapped.mapping:()Lscala/Function1;
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$FlatMapped.scala$collection$SeqViewLike$FlatMapped$$$outer:()Lscala/collection/SeqViewLike;
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
-	new	class scala/collection/SeqViewLike$FlatMapped$$anonfun$index$1
-	dup
+	iload_2
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+	checkcast	class scala/collection/TraversableLike
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toSeq:()Lscala/collection/Seq;
+	iload_1
 	aload_0
-	aload_1
-	invokespecial	Method scala/collection/SeqViewLike$FlatMapped$$anonfun$index$1."<init>":(Lscala/collection/SeqViewLike$FlatMapped;[I)V
-	invokeinterface	InterfaceMethod scala/collection/immutable/Range$ByOne.foreach:(Lscala/Function1;)V
-	aload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$FlatMapped.index:()[I
+	iload_2
+	iaload
+	isub
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      57      0    $this       Lscala/collection/SeqViewLike$FlatMapped;
-   16      40      1    index$1       [I
+   0      69      0    $this       Lscala/collection/SeqViewLike$FlatMapped;
+   0      69      1    idx       I
+   22      46      2    row       I
+
+
+public static void $init$(scala.collection.SeqViewLike$FlatMapped);
+  Signature: (Lscala/collection/SeqViewLike$FlatMapped;)V
+  Code:
+   Stack=0, Locals=1, Args_size=1
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    $this       Lscala/collection/SeqViewLike$FlatMapped;
 
 
 }

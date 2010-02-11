@@ -25,12 +25,16 @@ class	scala/collection/immutable/IndexedSeq$
 Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/collection/immutable/IndexedSeq$."<init>":()V
+Asciz	canBuildFrom;
+Asciz	()Lscala/collection/generic/CanBuildFrom;;
+Asciz	scala/collection/generic/TraversableFactory$GenericCanBuildFrom;
+class	scala/collection/generic/TraversableFactory$GenericCanBuildFrom
 Asciz	LineNumberTable;
-Asciz	scala/collection/generic/SeqFactory;
-class	scala/collection/generic/SeqFactory
-Method	scala/collection/generic/SeqFactory."<init>":()V
-NameAndType	MODULE$:Lscala/collection/immutable/IndexedSeq$;
-Field	scala/collection/immutable/IndexedSeq$.MODULE$:Lscala/collection/immutable/IndexedSeq$;
+Asciz	(Lscala/collection/generic/TraversableFactory;)V;
+NameAndType	"<init>":(Lscala/collection/generic/TraversableFactory;)V
+Method	scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
+Asciz	<A:Ljava/lang/Object;>()Lscala/collection/generic/CanBuildFrom<Lscala/collection/immutable/IndexedSeq<*>;TA;Lscala/collection/immutable/IndexedSeq<TA;>;>;;
+Asciz	Signature;
 Asciz	newBuilder;
 Asciz	()Lscala/collection/mutable/Builder;;
 Asciz	scala/collection/mutable/ArrayBuffer;
@@ -46,15 +50,11 @@ Asciz	(Lscala/Function1;)Lscala/collection/mutable/Builder;;
 NameAndType	mapResult:(Lscala/Function1;)Lscala/collection/mutable/Builder;
 InterfaceMethod	scala/collection/mutable/Builder.mapResult:(Lscala/Function1;)Lscala/collection/mutable/Builder;
 Asciz	<A:Ljava/lang/Object;>()Lscala/collection/mutable/Builder<TA;Lscala/collection/immutable/IndexedSeq<TA;>;>;;
-Asciz	Signature;
-Asciz	canBuildFrom;
-Asciz	()Lscala/collection/generic/CanBuildFrom;;
-Asciz	scala/collection/generic/TraversableFactory$GenericCanBuildFrom;
-class	scala/collection/generic/TraversableFactory$GenericCanBuildFrom
-Asciz	(Lscala/collection/generic/TraversableFactory;)V;
-NameAndType	"<init>":(Lscala/collection/generic/TraversableFactory;)V
-Method	scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
-Asciz	<A:Ljava/lang/Object;>()Lscala/collection/generic/CanBuildFrom<Lscala/collection/immutable/IndexedSeq<*>;TA;Lscala/collection/immutable/IndexedSeq<TA;>;>;;
+Asciz	scala/collection/generic/SeqFactory;
+class	scala/collection/generic/SeqFactory
+Method	scala/collection/generic/SeqFactory."<init>":()V
+NameAndType	MODULE$:Lscala/collection/immutable/IndexedSeq$;
+Field	scala/collection/immutable/IndexedSeq$.MODULE$:Lscala/collection/immutable/IndexedSeq$;
 Asciz	Lscala/collection/generic/SeqFactory<Lscala/collection/immutable/IndexedSeq;>;Lscala/ScalaObject;;
 Asciz	InnerClasses;
 Asciz	scala/collection/immutable/IndexedSeq$Impl;
@@ -82,16 +82,18 @@ public static {};
 	return
   Labels:
 
-private scala.collection.immutable.IndexedSeq$();
-  Signature: ()V
+public scala.collection.generic.CanBuildFrom canBuildFrom();
+  Signature: ()Lscala/collection/generic/CanBuildFrom;
   Code:
-   Stack=1, Locals=1, Args_size=1
+   Stack=3, Locals=1, Args_size=1
+	new	class scala/collection/generic/TraversableFactory$GenericCanBuildFrom
+	dup
 	aload_0
-	invokespecial	Method scala/collection/generic/SeqFactory."<init>":()V
-	aload_0
-	putstatic	Field MODULE$:Lscala/collection/immutable/IndexedSeq$;
-	return
+	invokespecial	Method scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
+	areturn
   Labels:
+  Signature: length = 0x2
+   00 16 
 
 public scala.collection.mutable.Builder newBuilder();
   Signature: ()Lscala/collection/mutable/Builder;
@@ -107,20 +109,18 @@ public scala.collection.mutable.Builder newBuilder();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 22 
+   00 26 
 
-public scala.collection.generic.CanBuildFrom canBuildFrom();
-  Signature: ()Lscala/collection/generic/CanBuildFrom;
+private scala.collection.immutable.IndexedSeq$();
+  Signature: ()V
   Code:
-   Stack=3, Locals=1, Args_size=1
-	new	class scala/collection/generic/TraversableFactory$GenericCanBuildFrom
-	dup
+   Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokespecial	Method scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
-	areturn
+	invokespecial	Method scala/collection/generic/SeqFactory."<init>":()V
+	aload_0
+	putstatic	Field MODULE$:Lscala/collection/immutable/IndexedSeq$;
+	return
   Labels:
-  Signature: length = 0x2
-   00 2B 
 
 }
 

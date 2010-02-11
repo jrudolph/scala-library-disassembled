@@ -73,42 +73,45 @@ Asciz	lev;
 Asciz	I;
 Asciz	tag;
 Asciz	Ljava/lang/String;;
-Asciz	<init>;
-Asciz	(Ljava/lang/String;)V;
+Asciz	()I;
 Asciz	LineNumberTable;
 Asciz	scala/actors/Debug;
 class	scala/actors/Debug
-NameAndType	tag:Ljava/lang/String;
-Field	scala/actors/Debug.tag:Ljava/lang/String;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	java/lang/Object."<init>":()V
 NameAndType	lev:I
 Field	scala/actors/Debug.lev:I
+Asciz	lev_$eq;
+Asciz	(I)V;
+Asciz	level;
+NameAndType	lev:()I
+Method	scala/actors/Debug.lev:()I
+Asciz	level_$eq;
+NameAndType	lev_$eq:(I)V
+Method	scala/actors/Debug.lev_$eq:(I)V
 Asciz	this;
 Asciz	Lscala/actors/Debug;;
 Asciz	LocalVariableTable;
-Asciz	error;
-Asciz	()I;
-NameAndType	lev:()I
-Method	scala/actors/Debug.lev:()I
+Asciz	info;
+Asciz	(Ljava/lang/String;)V;
 Asciz	java/lang/System;
 class	java/lang/System
-Asciz	err;
+Asciz	out;
 Asciz	Ljava/io/PrintStream;;
-NameAndType	err:Ljava/io/PrintStream;
-Field	java/lang/System.err:Ljava/io/PrintStream;
+NameAndType	out:Ljava/io/PrintStream;
+Field	java/lang/System.out:Ljava/io/PrintStream;
 Asciz	scala/collection/mutable/StringBuilder;
 class	scala/collection/mutable/StringBuilder
+Asciz	<init>;
+Asciz	()V;
+NameAndType	"<init>":()V
 Method	scala/collection/mutable/StringBuilder."<init>":()V
+NameAndType	tag:Ljava/lang/String;
+Field	scala/actors/Debug.tag:Ljava/lang/String;
 Asciz	append;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
 NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-Asciz	 (erro): ;
-String	 (erro): 
+Asciz	 (info): ;
+String	 (info): 
 Asciz	toString;
 Asciz	()Ljava/lang/String;;
 NameAndType	toString:()Ljava/lang/String;
@@ -120,20 +123,17 @@ NameAndType	println:(Ljava/lang/String;)V
 Method	java/io/PrintStream.println:(Ljava/lang/String;)V
 Asciz	s;
 Asciz	warning;
+Asciz	err;
+NameAndType	err:Ljava/io/PrintStream;
+Field	java/lang/System.err:Ljava/io/PrintStream;
 Asciz	 (warn): ;
 String	 (warn): 
-Asciz	info;
-Asciz	out;
-NameAndType	out:Ljava/io/PrintStream;
-Field	java/lang/System.out:Ljava/io/PrintStream;
-Asciz	 (info): ;
-String	 (info): 
-Asciz	level_$eq;
-Asciz	(I)V;
-Asciz	lev_$eq;
-NameAndType	lev_$eq:(I)V
-Method	scala/actors/Debug.lev_$eq:(I)V
-Asciz	level;
+Asciz	error;
+Asciz	 (erro): ;
+String	 (erro): 
+Asciz	java/lang/Object;
+class	java/lang/Object
+Method	java/lang/Object."<init>":()V
 Asciz	ScalaSig;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
@@ -181,42 +181,65 @@ public static final void doInfo(scala.Function0);
   Signature: length = 0x2
    00 0E 
 
-public scala.actors.Debug(java.lang.String);
-  Signature: (Ljava/lang/String;)V
+private int lev();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field lev:I
+	ireturn
+  Labels:
+
+private void lev_$eq(int);
+  Signature: (I)V
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	aload_1
-	putfield	Field tag:Ljava/lang/String;
-	aload_0
-	invokespecial	Method java/lang/Object."<init>":()V
-	aload_0
-	iconst_2
+	iload_1
 	putfield	Field lev:I
+	return
+  Labels:
+
+public int level();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method lev:()I
+	ireturn
+  Labels:
+
+public void level_$eq(int);
+  Signature: (I)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokespecial	Method lev_$eq:(I)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      15      0    this       Lscala/actors/Debug;
-   0      15      1    tag       Ljava/lang/String;
+   0      6      0    this       Lscala/actors/Debug;
+   0      6      1    lev       I
 
 
-public void error(java.lang.String);
+public void info(java.lang.String);
   Signature: (Ljava/lang/String;)V
   Code:
    Stack=3, Locals=2, Args_size=2
 	aload_0
 	invokespecial	Method lev:()I
-	iconst_0
+	iconst_2
 	if_icmple	l1 // return
-	getstatic	Field java/lang/System.err:Ljava/io/PrintStream;
+	getstatic	Field java/lang/System.out:Ljava/io/PrintStream;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	aload_0
 	getfield	Field tag:Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	ldc	String  (erro): 
+	ldc	String  (info): 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_1
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
@@ -261,22 +284,22 @@ l1	return
    0      41      1    s       Ljava/lang/String;
 
 
-public void info(java.lang.String);
+public void error(java.lang.String);
   Signature: (Ljava/lang/String;)V
   Code:
    Stack=3, Locals=2, Args_size=2
 	aload_0
 	invokespecial	Method lev:()I
-	iconst_2
+	iconst_0
 	if_icmple	l1 // return
-	getstatic	Field java/lang/System.out:Ljava/io/PrintStream;
+	getstatic	Field java/lang/System.err:Ljava/io/PrintStream;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	aload_0
 	getfield	Field tag:Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	ldc	String  (info): 
+	ldc	String  (erro): 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_1
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
@@ -291,48 +314,25 @@ l1	return
    0      41      1    s       Ljava/lang/String;
 
 
-public void level_$eq(int);
-  Signature: (I)V
+public scala.actors.Debug(java.lang.String);
+  Signature: (Ljava/lang/String;)V
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	iload_1
-	invokespecial	Method lev_$eq:(I)V
+	aload_1
+	putfield	Field tag:Ljava/lang/String;
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	iconst_2
+	putfield	Field lev:I
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      6      0    this       Lscala/actors/Debug;
-   0      6      1    lev       I
+   0      15      0    this       Lscala/actors/Debug;
+   0      15      1    tag       Ljava/lang/String;
 
-
-public int level();
-  Signature: ()I
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokespecial	Method lev:()I
-	ireturn
-  Labels:
-
-private void lev_$eq(int);
-  Signature: (I)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	iload_1
-	putfield	Field lev:I
-	return
-  Labels:
-
-private int lev();
-  Signature: ()I
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field lev:I
-	ireturn
-  Labels:
 
 }
 

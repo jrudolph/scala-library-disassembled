@@ -17,32 +17,19 @@ Asciz	task$2;
 Asciz	Lscala/Function0;;
 Asciz	$outer;
 Asciz	Lscala/concurrent/ThreadRunner;;
-Asciz	<init>;
-Asciz	(Lscala/concurrent/ThreadRunner;Lscala/Function0;Lscala/concurrent/SyncVar;)V;
+Asciz	run;
+Asciz	()V;
 Asciz	Code;
 Asciz	LineNumberTable;
-Asciz	java/lang/NullPointerException;
-class	java/lang/NullPointerException
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	java/lang/NullPointerException."<init>":()V
 Asciz	scala/concurrent/ThreadRunner$$anon$2;
 class	scala/concurrent/ThreadRunner$$anon$2
-NameAndType	$outer:Lscala/concurrent/ThreadRunner;
-Field	scala/concurrent/ThreadRunner$$anon$2.$outer:Lscala/concurrent/ThreadRunner;
-NameAndType	task$2:Lscala/Function0;
-Field	scala/concurrent/ThreadRunner$$anon$2.task$2:Lscala/Function0;
 NameAndType	result$1:Lscala/concurrent/SyncVar;
 Field	scala/concurrent/ThreadRunner$$anon$2.result$1:Lscala/concurrent/SyncVar;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Method	java/lang/Object."<init>":()V
-Asciz	this;
-Asciz	Lscala/concurrent/ThreadRunner$$anon$2;;
-Asciz	LocalVariableTable;
-Asciz	run;
+NameAndType	$outer:Lscala/concurrent/ThreadRunner;
+Field	scala/concurrent/ThreadRunner$$anon$2.$outer:Lscala/concurrent/ThreadRunner;
 Asciz	scala/concurrent/ThreadRunner$$anon$2$$anonfun$run$2;
 class	scala/concurrent/ThreadRunner$$anon$2$$anonfun$run$2
+Asciz	<init>;
 Asciz	(Lscala/concurrent/ThreadRunner$$anon$2;)V;
 NameAndType	"<init>":(Lscala/concurrent/ThreadRunner$$anon$2;)V
 Method	scala/concurrent/ThreadRunner$$anon$2$$anonfun$run$2."<init>":(Lscala/concurrent/ThreadRunner$$anon$2;)V
@@ -58,6 +45,19 @@ Asciz	set;
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	set:(Ljava/lang/Object;)V
 Method	scala/concurrent/SyncVar.set:(Ljava/lang/Object;)V
+Asciz	(Lscala/concurrent/ThreadRunner;Lscala/Function0;Lscala/concurrent/SyncVar;)V;
+Asciz	java/lang/NullPointerException;
+class	java/lang/NullPointerException
+NameAndType	"<init>":()V
+Method	java/lang/NullPointerException."<init>":()V
+NameAndType	task$2:Lscala/Function0;
+Field	scala/concurrent/ThreadRunner$$anon$2.task$2:Lscala/Function0;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Method	java/lang/Object."<init>":()V
+Asciz	this;
+Asciz	Lscala/concurrent/ThreadRunner$$anon$2;;
+Asciz	LocalVariableTable;
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	scala/concurrent/ThreadRunner;
@@ -76,6 +76,23 @@ public final scala.Function0 task$2;
 
 private final scala.concurrent.ThreadRunner $outer;
   Signature: Lscala/concurrent/ThreadRunner;
+
+public void run();
+  Signature: ()V
+  Code:
+   Stack=5, Locals=1, Args_size=1
+	aload_0
+	getfield	Field result$1:Lscala/concurrent/SyncVar;
+	aload_0
+	getfield	Field $outer:Lscala/concurrent/ThreadRunner;
+	new	class scala/concurrent/ThreadRunner$$anon$2$$anonfun$run$2
+	dup
+	aload_0
+	invokespecial	Method scala/concurrent/ThreadRunner$$anon$2$$anonfun$run$2."<init>":(Lscala/concurrent/ThreadRunner$$anon$2;)V
+	invokeinterface	InterfaceMethod scala/concurrent/TaskRunner.tryCatch:(Lscala/Function0;)Lscala/Either;
+	invokevirtual	Method scala/concurrent/SyncVar.set:(Ljava/lang/Object;)V
+	return
+  Labels:
 
 public scala.concurrent.ThreadRunner$$anon$2(scala.concurrent.ThreadRunner, scala.Function0, scala.concurrent.SyncVar);
   Signature: (Lscala/concurrent/ThreadRunner;Lscala/Function0;Lscala/concurrent/SyncVar;)V
@@ -106,23 +123,6 @@ l1	aload_0
    0      32      0    this       Lscala/concurrent/ThreadRunner$$anon$2;
    0      32      1    $outer       Lscala/concurrent/ThreadRunner;
 
-
-public void run();
-  Signature: ()V
-  Code:
-   Stack=5, Locals=1, Args_size=1
-	aload_0
-	getfield	Field result$1:Lscala/concurrent/SyncVar;
-	aload_0
-	getfield	Field $outer:Lscala/concurrent/ThreadRunner;
-	new	class scala/concurrent/ThreadRunner$$anon$2$$anonfun$run$2
-	dup
-	aload_0
-	invokespecial	Method scala/concurrent/ThreadRunner$$anon$2$$anonfun$run$2."<init>":(Lscala/concurrent/ThreadRunner$$anon$2;)V
-	invokeinterface	InterfaceMethod scala/concurrent/TaskRunner.tryCatch:(Lscala/Function0;)Lscala/Either;
-	invokevirtual	Method scala/concurrent/SyncVar.set:(Ljava/lang/Object;)V
-	return
-  Labels:
 
 }
 

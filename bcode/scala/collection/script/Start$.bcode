@@ -19,22 +19,25 @@ class	scala/collection/script/Start$
 Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/collection/script/Start$."<init>":()V
+Asciz	productIterator;
+Asciz	()Lscala/collection/Iterator;;
 Asciz	LineNumberTable;
-Asciz	scala/collection/script/Location;
-class	scala/collection/script/Location
-Method	scala/collection/script/Location."<init>":()V
-NameAndType	MODULE$:Lscala/collection/script/Start$;
-Field	scala/collection/script/Start$.MODULE$:Lscala/collection/script/Start$;
 Asciz	scala/Product$class;
 class	scala/Product$class
-Asciz	$init$;
-Asciz	(Lscala/Product;)V;
-NameAndType	$init$:(Lscala/Product;)V
-Method	scala/Product$class.$init$:(Lscala/Product;)V
-Asciz	readResolve;
-Asciz	()Ljava/lang/Object;;
-Asciz	canEqual;
-Asciz	(Ljava/lang/Object;)Z;
+Asciz	(Lscala/Product;)Lscala/collection/Iterator;;
+NameAndType	productIterator:(Lscala/Product;)Lscala/collection/Iterator;
+Method	scala/Product$class.productIterator:(Lscala/Product;)Lscala/collection/Iterator;
+Asciz	productElements;
+NameAndType	productElements:(Lscala/Product;)Lscala/collection/Iterator;
+Method	scala/Product$class.productElements:(Lscala/Product;)Lscala/collection/Iterator;
+Asciz	Deprecated;
+Asciz	toString;
+Asciz	()Ljava/lang/String;;
+Asciz	Start;
+String	Start
+Asciz	productPrefix;
+Asciz	productArity;
+Asciz	()I;
 Asciz	productElement;
 Asciz	(I)Ljava/lang/Object;;
 Asciz	java/lang/IndexOutOfBoundsException;
@@ -47,27 +50,24 @@ NameAndType	boxToInteger:(I)Ljava/lang/Integer;
 Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 Asciz	java/lang/Object;
 class	java/lang/Object
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
 NameAndType	toString:()Ljava/lang/String;
 Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
-Asciz	productArity;
-Asciz	()I;
-Asciz	productPrefix;
-Asciz	Start;
-String	Start
-Asciz	productElements;
-Asciz	()Lscala/collection/Iterator;;
-Asciz	(Lscala/Product;)Lscala/collection/Iterator;;
-NameAndType	productElements:(Lscala/Product;)Lscala/collection/Iterator;
-Method	scala/Product$class.productElements:(Lscala/Product;)Lscala/collection/Iterator;
-Asciz	Deprecated;
-Asciz	productIterator;
-NameAndType	productIterator:(Lscala/Product;)Lscala/collection/Iterator;
-Method	scala/Product$class.productIterator:(Lscala/Product;)Lscala/collection/Iterator;
+Asciz	canEqual;
+Asciz	(Ljava/lang/Object;)Z;
+Asciz	readResolve;
+Asciz	()Ljava/lang/Object;;
+NameAndType	MODULE$:Lscala/collection/script/Start$;
+Field	scala/collection/script/Start$.MODULE$:Lscala/collection/script/Start$;
+Asciz	scala/collection/script/Location;
+class	scala/collection/script/Location
+Method	scala/collection/script/Location."<init>":()V
+Asciz	$init$;
+Asciz	(Lscala/Product;)V;
+NameAndType	$init$:(Lscala/Product;)V
+Method	scala/Product$class.$init$:(Lscala/Product;)V
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 Asciz	scala/Product;
@@ -88,33 +88,46 @@ public static {};
 	return
   Labels:
 
-private scala.collection.script.Start$();
-  Signature: ()V
+public scala.collection.Iterator productIterator();
+  Signature: ()Lscala/collection/Iterator;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokespecial	Method scala/collection/script/Location."<init>":()V
-	aload_0
-	putstatic	Field MODULE$:Lscala/collection/script/Start$;
-	aload_0
-	invokestatic	Method scala/Product$class.$init$:(Lscala/Product;)V
-	return
-  Labels:
-
-public java.lang.Object readResolve();
-  Signature: ()Ljava/lang/Object;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	getstatic	Field MODULE$:Lscala/collection/script/Start$;
+	invokestatic	Method scala/Product$class.productIterator:(Lscala/Product;)Lscala/collection/Iterator;
 	areturn
   Labels:
 
-public boolean canEqual(java.lang.Object);
-  Signature: (Ljava/lang/Object;)Z
+public scala.collection.Iterator productElements();
+  Signature: ()Lscala/collection/Iterator;
   Code:
-   Stack=1, Locals=2, Args_size=2
-	aload_1
-	instanceof	class scala/collection/script/Start$
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/Product$class.productElements:(Lscala/Product;)Lscala/collection/Iterator;
+	areturn
+  Labels:
+  Deprecated: true
+
+public final java.lang.String toString();
+  Signature: ()Ljava/lang/String;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	ldc	String Start
+	areturn
+  Labels:
+
+public java.lang.String productPrefix();
+  Signature: ()Ljava/lang/String;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	ldc	String Start
+	areturn
+  Labels:
+
+public int productArity();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	iconst_0
 	ireturn
   Labels:
 
@@ -131,47 +144,34 @@ public java.lang.Object productElement(int);
 	athrow
   Labels:
 
-public int productArity();
-  Signature: ()I
+public boolean canEqual(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=1, Locals=1, Args_size=1
-	iconst_0
+   Stack=1, Locals=2, Args_size=2
+	aload_1
+	instanceof	class scala/collection/script/Start$
 	ireturn
   Labels:
 
-public java.lang.String productPrefix();
-  Signature: ()Ljava/lang/String;
+public java.lang.Object readResolve();
+  Signature: ()Ljava/lang/Object;
   Code:
    Stack=1, Locals=1, Args_size=1
-	ldc	String Start
+	getstatic	Field MODULE$:Lscala/collection/script/Start$;
 	areturn
   Labels:
 
-public final java.lang.String toString();
-  Signature: ()Ljava/lang/String;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	ldc	String Start
-	areturn
-  Labels:
-
-public scala.collection.Iterator productElements();
-  Signature: ()Lscala/collection/Iterator;
+private scala.collection.script.Start$();
+  Signature: ()V
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokestatic	Method scala/Product$class.productElements:(Lscala/Product;)Lscala/collection/Iterator;
-	areturn
-  Labels:
-  Deprecated: true
-
-public scala.collection.Iterator productIterator();
-  Signature: ()Lscala/collection/Iterator;
-  Code:
-   Stack=1, Locals=1, Args_size=1
+	invokespecial	Method scala/collection/script/Location."<init>":()V
 	aload_0
-	invokestatic	Method scala/Product$class.productIterator:(Lscala/Product;)Lscala/collection/Iterator;
-	areturn
+	putstatic	Field MODULE$:Lscala/collection/script/Start$;
+	aload_0
+	invokestatic	Method scala/Product$class.$init$:(Lscala/Product;)V
+	return
   Labels:
 
 }

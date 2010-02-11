@@ -19,12 +19,43 @@ class	scala/util/Marshal$
 Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/util/Marshal$."<init>":()V
+Asciz	dump;
+Asciz	(Ljava/lang/Object;Lscala/reflect/ClassManifest;)[B;
+Asciz	java/io/ByteArrayOutputStream;
+class	java/io/ByteArrayOutputStream
 Asciz	LineNumberTable;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Method	java/lang/Object."<init>":()V
-NameAndType	MODULE$:Lscala/util/Marshal$;
-Field	scala/util/Marshal$.MODULE$:Lscala/util/Marshal$;
+int	512;
+Asciz	(I)V;
+NameAndType	"<init>":(I)V
+Method	java/io/ByteArrayOutputStream."<init>":(I)V
+Asciz	java/io/ObjectOutputStream;
+class	java/io/ObjectOutputStream
+Asciz	(Ljava/io/OutputStream;)V;
+NameAndType	"<init>":(Ljava/io/OutputStream;)V
+Method	java/io/ObjectOutputStream."<init>":(Ljava/io/OutputStream;)V
+Asciz	writeObject;
+Asciz	(Ljava/lang/Object;)V;
+NameAndType	writeObject:(Ljava/lang/Object;)V
+Method	java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
+Asciz	close;
+NameAndType	close:()V
+Method	java/io/ObjectOutputStream.close:()V
+Asciz	toByteArray;
+Asciz	()[B;
+NameAndType	toByteArray:()[B
+Method	java/io/ByteArrayOutputStream.toByteArray:()[B
+Asciz	this;
+Asciz	o;
+Asciz	Ljava/lang/Object;;
+Asciz	m;
+Asciz	Lscala/reflect/ClassManifest;;
+Asciz	ba;
+Asciz	Ljava/io/ByteArrayOutputStream;;
+Asciz	out;
+Asciz	Ljava/io/ObjectOutputStream;;
+Asciz	LocalVariableTable;
+Asciz	<A:Ljava/lang/Object;>(TA;Lscala/reflect/ClassManifest<TA;>;)[B;
+Asciz	Signature;
 Asciz	load;
 Asciz	([BLscala/reflect/ClassManifest;)Ljava/lang/Object;;
 Asciz	java/io/ObjectInputStream;
@@ -47,8 +78,6 @@ Asciz	$less$colon$less;
 Asciz	(Lscala/reflect/ClassManifest;)Z;
 NameAndType	$less$colon$less:(Lscala/reflect/ClassManifest;)Z
 InterfaceMethod	scala/reflect/ClassManifest.$less$colon$less:(Lscala/reflect/ClassManifest;)Z
-Asciz	close;
-NameAndType	close:()V
 Method	java/io/ObjectInputStream.close:()V
 Asciz	java/lang/ClassCastException;
 class	java/lang/ClassCastException
@@ -70,52 +99,23 @@ Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/ClassCastException."<init>":(Ljava/lang/String;)V
-Asciz	this;
 Asciz	buffer;
 Asciz	[B;
 Asciz	expected;
-Asciz	Lscala/reflect/ClassManifest;;
 Asciz	in;
 Asciz	Ljava/io/ObjectInputStream;;
 Asciz	found;
-Asciz	o;
-Asciz	Ljava/lang/Object;;
-Asciz	LocalVariableTable;
 Asciz	<A:Ljava/lang/Object;>([BLscala/reflect/ClassManifest<TA;>;)TA;;
-Asciz	Signature;
 Asciz	java/io/IOException;
 class	java/io/IOException
 Asciz	java/lang/ClassNotFoundException;
 class	java/lang/ClassNotFoundException
 Asciz	Exceptions;
-Asciz	dump;
-Asciz	(Ljava/lang/Object;Lscala/reflect/ClassManifest;)[B;
-Asciz	java/io/ByteArrayOutputStream;
-class	java/io/ByteArrayOutputStream
-int	512;
-Asciz	(I)V;
-NameAndType	"<init>":(I)V
-Method	java/io/ByteArrayOutputStream."<init>":(I)V
-Asciz	java/io/ObjectOutputStream;
-class	java/io/ObjectOutputStream
-Asciz	(Ljava/io/OutputStream;)V;
-NameAndType	"<init>":(Ljava/io/OutputStream;)V
-Method	java/io/ObjectOutputStream."<init>":(Ljava/io/OutputStream;)V
-Asciz	writeObject;
-Asciz	(Ljava/lang/Object;)V;
-NameAndType	writeObject:(Ljava/lang/Object;)V
-Method	java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
-Method	java/io/ObjectOutputStream.close:()V
-Asciz	toByteArray;
-Asciz	()[B;
-NameAndType	toByteArray:()[B
-Method	java/io/ByteArrayOutputStream.toByteArray:()[B
-Asciz	m;
-Asciz	ba;
-Asciz	Ljava/io/ByteArrayOutputStream;;
-Asciz	out;
-Asciz	Ljava/io/ObjectOutputStream;;
-Asciz	<A:Ljava/lang/Object;>(TA;Lscala/reflect/ClassManifest<TA;>;)[B;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Method	java/lang/Object."<init>":()V
+NameAndType	MODULE$:Lscala/util/Marshal$;
+Field	scala/util/Marshal$.MODULE$:Lscala/util/Marshal$;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -132,16 +132,42 @@ public static {};
 	return
   Labels:
 
-private scala.util.Marshal$();
-  Signature: ()V
+public byte[] dump(java.lang.Object, scala.reflect.ClassManifest);
+  Signature: (Ljava/lang/Object;Lscala/reflect/ClassManifest;)[B
   Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokespecial	Method java/lang/Object."<init>":()V
-	aload_0
-	putstatic	Field MODULE$:Lscala/util/Marshal$;
-	return
+   Stack=3, Locals=5, Args_size=3
+	new	class java/io/ByteArrayOutputStream
+	dup
+	ldc	int 512
+	invokespecial	Method java/io/ByteArrayOutputStream."<init>":(I)V
+	astore_3
+	new	class java/io/ObjectOutputStream
+	dup
+	aload_3
+	invokespecial	Method java/io/ObjectOutputStream."<init>":(Ljava/io/OutputStream;)V
+	astore	4
+	aload	4
+	aload_2
+	invokevirtual	Method java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
+	aload	4
+	aload_1
+	invokevirtual	Method java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
+	aload	4
+	invokevirtual	Method java/io/ObjectOutputStream.close:()V
+	aload_3
+	invokevirtual	Method java/io/ByteArrayOutputStream.toByteArray:()[B
+	areturn
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      42      0    this       Lscala/util/Marshal$;
+   0      42      1    o       Ljava/lang/Object;
+   0      42      2    m       Lscala/reflect/ClassManifest;
+   10      31      3    ba       Ljava/io/ByteArrayOutputStream;
+   20      21      4    out       Ljava/io/ObjectOutputStream;
+
+  Signature: length = 0x2
+   00 31 
 
 public java.lang.Object load(byte[], scala.reflect.ClassManifest)   throws java.io.IOException, java.lang.ClassCastException, java.lang.ClassNotFoundException;
   Signature: ([BLscala/reflect/ClassManifest;)Ljava/lang/Object;
@@ -200,45 +226,19 @@ l1	aload_3
    42      6      5    o       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 4C 
+   00 64 
   Exceptions: 
    throws java.io.IOException, java.lang.ClassCastException, java.lang.ClassNotFoundException
-public byte[] dump(java.lang.Object, scala.reflect.ClassManifest);
-  Signature: (Ljava/lang/Object;Lscala/reflect/ClassManifest;)[B
+private scala.util.Marshal$();
+  Signature: ()V
   Code:
-   Stack=3, Locals=5, Args_size=3
-	new	class java/io/ByteArrayOutputStream
-	dup
-	ldc	int 512
-	invokespecial	Method java/io/ByteArrayOutputStream."<init>":(I)V
-	astore_3
-	new	class java/io/ObjectOutputStream
-	dup
-	aload_3
-	invokespecial	Method java/io/ObjectOutputStream."<init>":(Ljava/io/OutputStream;)V
-	astore	4
-	aload	4
-	aload_2
-	invokevirtual	Method java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
-	aload	4
-	aload_1
-	invokevirtual	Method java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
-	aload	4
-	invokevirtual	Method java/io/ObjectOutputStream.close:()V
-	aload_3
-	invokevirtual	Method java/io/ByteArrayOutputStream.toByteArray:()[B
-	areturn
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	putstatic	Field MODULE$:Lscala/util/Marshal$;
+	return
   Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      42      0    this       Lscala/util/Marshal$;
-   0      42      1    o       Ljava/lang/Object;
-   0      42      2    m       Lscala/reflect/ClassManifest;
-   10      31      3    ba       Ljava/io/ByteArrayOutputStream;
-   20      21      4    out       Ljava/io/ObjectOutputStream;
-
-  Signature: length = 0x2
-   00 6E 
 
 }
 

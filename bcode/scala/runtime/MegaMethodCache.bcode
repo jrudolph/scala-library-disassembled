@@ -47,8 +47,8 @@ Asciz	[Ljava/lang/Class<*>;;
 Asciz	Signature;
 Asciz	forName;
 Asciz	Ljava/lang/String;;
-Asciz	<init>;
-Asciz	(Ljava/lang/String;[Ljava/lang/Class;)V;
+Asciz	find;
+Asciz	(Ljava/lang/Class;)Ljava/lang/reflect/Method;;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/runtime/MegaMethodCache;
@@ -57,31 +57,31 @@ NameAndType	forName:Ljava/lang/String;
 Field	scala/runtime/MegaMethodCache.forName:Ljava/lang/String;
 NameAndType	forParameterTypes:[Ljava/lang/Class;
 Field	scala/runtime/MegaMethodCache.forParameterTypes:[Ljava/lang/Class;
-Asciz	scala/runtime/MethodCache;
-class	scala/runtime/MethodCache
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	scala/runtime/MethodCache."<init>":()V
-Asciz	this;
-Asciz	Lscala/runtime/MegaMethodCache;;
-Asciz	LocalVariableTable;
-Asciz	(Ljava/lang/String;[Ljava/lang/Class<*>;)V;
-Asciz	add;
-Asciz	(Ljava/lang/Class;Ljava/lang/reflect/Method;)Lscala/runtime/MethodCache;;
-Asciz	forReceiver;
-Asciz	Ljava/lang/Class;;
-Asciz	forMethod;
-Asciz	Ljava/lang/reflect/Method;;
-Asciz	(Ljava/lang/Class<*>;Ljava/lang/reflect/Method;)Lscala/runtime/MethodCache;;
-Asciz	find;
-Asciz	(Ljava/lang/Class;)Ljava/lang/reflect/Method;;
 Asciz	java/lang/Class;
 class	java/lang/Class
 Asciz	getMethod;
 Asciz	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;;
 NameAndType	getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
 Method	java/lang/Class.getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+Asciz	this;
+Asciz	Lscala/runtime/MegaMethodCache;;
+Asciz	forReceiver;
+Asciz	Ljava/lang/Class;;
+Asciz	LocalVariableTable;
 Asciz	(Ljava/lang/Class<*>;)Ljava/lang/reflect/Method;;
+Asciz	add;
+Asciz	(Ljava/lang/Class;Ljava/lang/reflect/Method;)Lscala/runtime/MethodCache;;
+Asciz	forMethod;
+Asciz	Ljava/lang/reflect/Method;;
+Asciz	(Ljava/lang/Class<*>;Ljava/lang/reflect/Method;)Lscala/runtime/MethodCache;;
+Asciz	<init>;
+Asciz	(Ljava/lang/String;[Ljava/lang/Class;)V;
+Asciz	scala/runtime/MethodCache;
+class	scala/runtime/MethodCache
+Asciz	()V;
+NameAndType	"<init>":()V
+Method	scala/runtime/MethodCache."<init>":()V
+Asciz	(Ljava/lang/String;[Ljava/lang/Class<*>;)V;
 Asciz	ScalaSig;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
@@ -94,6 +94,42 @@ private final java.lang.Class[] forParameterTypes;
 
 private final java.lang.String forName;
   Signature: Ljava/lang/String;
+
+public java.lang.reflect.Method find(java.lang.Class);
+  Signature: (Ljava/lang/Class;)Ljava/lang/reflect/Method;
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	aload_1
+	aload_0
+	getfield	Field forName:Ljava/lang/String;
+	aload_0
+	getfield	Field forParameterTypes:[Ljava/lang/Class;
+	invokevirtual	Method java/lang/Class.getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      13      0    this       Lscala/runtime/MegaMethodCache;
+   0      13      1    forReceiver       Ljava/lang/Class;
+
+  Signature: length = 0x2
+   00 1E 
+
+public scala.runtime.MethodCache add(java.lang.Class, java.lang.reflect.Method);
+  Signature: (Ljava/lang/Class;Ljava/lang/reflect/Method;)Lscala/runtime/MethodCache;
+  Code:
+   Stack=1, Locals=3, Args_size=3
+	aload_0
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      2      0    this       Lscala/runtime/MegaMethodCache;
+   0      2      1    forReceiver       Ljava/lang/Class;
+   0      2      2    forMethod       Ljava/lang/reflect/Method;
+
+  Signature: length = 0x2
+   00 23 
 
 public scala.runtime.MegaMethodCache(java.lang.String, java.lang.Class[]);
   Signature: (Ljava/lang/String;[Ljava/lang/Class;)V
@@ -114,42 +150,6 @@ public scala.runtime.MegaMethodCache(java.lang.String, java.lang.Class[]);
    0      15      0    this       Lscala/runtime/MegaMethodCache;
    0      15      1    forName       Ljava/lang/String;
    0      15      2    forParameterTypes       [Ljava/lang/Class;
-
-  Signature: length = 0x2
-   00 1B 
-
-public scala.runtime.MethodCache add(java.lang.Class, java.lang.reflect.Method);
-  Signature: (Ljava/lang/Class;Ljava/lang/reflect/Method;)Lscala/runtime/MethodCache;
-  Code:
-   Stack=1, Locals=3, Args_size=3
-	aload_0
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      2      0    this       Lscala/runtime/MegaMethodCache;
-   0      2      1    forReceiver       Ljava/lang/Class;
-   0      2      2    forMethod       Ljava/lang/reflect/Method;
-
-  Signature: length = 0x2
-   00 22 
-
-public java.lang.reflect.Method find(java.lang.Class);
-  Signature: (Ljava/lang/Class;)Ljava/lang/reflect/Method;
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	aload_1
-	aload_0
-	getfield	Field forName:Ljava/lang/String;
-	aload_0
-	getfield	Field forParameterTypes:[Ljava/lang/Class;
-	invokevirtual	Method java/lang/Class.getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      13      0    this       Lscala/runtime/MegaMethodCache;
-   0      13      1    forReceiver       Ljava/lang/Class;
 
   Signature: length = 0x2
    00 2B 

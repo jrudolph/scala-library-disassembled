@@ -17,28 +17,35 @@ Asciz	Ljava/lang/Object;;
 Asciz	key$1;
 Asciz	$outer;
 Asciz	Lscala/collection/mutable/ObservableMap;;
-Asciz	<init>;
-Asciz	(Lscala/collection/mutable/ObservableMap;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V;
+Asciz	undo;
+Asciz	()V;
 Asciz	Code;
 Asciz	LineNumberTable;
-Asciz	java/lang/NullPointerException;
-class	java/lang/NullPointerException
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	java/lang/NullPointerException."<init>":()V
 Asciz	scala/collection/mutable/ObservableMap$$anon$2;
 class	scala/collection/mutable/ObservableMap$$anon$2
 NameAndType	$outer:Lscala/collection/mutable/ObservableMap;
 Field	scala/collection/mutable/ObservableMap$$anon$2.$outer:Lscala/collection/mutable/ObservableMap;
+Asciz	scala/Tuple2;
+class	scala/Tuple2
 NameAndType	key$1:Ljava/lang/Object;
 Field	scala/collection/mutable/ObservableMap$$anon$2.key$1:Ljava/lang/Object;
 NameAndType	old$1:Ljava/lang/Object;
 Field	scala/collection/mutable/ObservableMap$$anon$2.old$1:Ljava/lang/Object;
-Asciz	scala/Tuple2;
-class	scala/Tuple2
+Asciz	<init>;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Method	scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+Asciz	scala/collection/mutable/ObservableMap;
+class	scala/collection/mutable/ObservableMap
+Asciz	$plus$eq;
+Asciz	(Lscala/Tuple2;)Lscala/collection/mutable/ObservableMap;;
+NameAndType	$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/ObservableMap;
+InterfaceMethod	scala/collection/mutable/ObservableMap.$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/ObservableMap;
+Asciz	(Lscala/collection/mutable/ObservableMap;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V;
+Asciz	java/lang/NullPointerException;
+class	java/lang/NullPointerException
+NameAndType	"<init>":()V
+Method	java/lang/NullPointerException."<init>":()V
 Asciz	scala/collection/script/Update;
 class	scala/collection/script/Update
 Asciz	(Ljava/lang/Object;)V;
@@ -49,13 +56,6 @@ Asciz	Lscala/collection/mutable/ObservableMap$$anon$2;;
 Asciz	LocalVariableTable;
 Asciz	(Lscala/collection/mutable/ObservableMap<TA;TB;>;)V;
 Asciz	Signature;
-Asciz	undo;
-Asciz	scala/collection/mutable/ObservableMap;
-class	scala/collection/mutable/ObservableMap
-Asciz	$plus$eq;
-Asciz	(Lscala/Tuple2;)Lscala/collection/mutable/ObservableMap;;
-NameAndType	$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/ObservableMap;
-InterfaceMethod	scala/collection/mutable/ObservableMap.$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/ObservableMap;
 Asciz	Lscala/collection/script/Update<Lscala/Tuple2<TA;TB;>;>;Lscala/collection/mutable/Undoable;;
 Asciz	Scala;
 Asciz	InnerClasses;
@@ -72,6 +72,24 @@ private final java.lang.Object key$1;
 
 private final scala.collection.mutable.ObservableMap $outer;
   Signature: Lscala/collection/mutable/ObservableMap;
+
+public void undo();
+  Signature: ()V
+  Code:
+   Stack=5, Locals=1, Args_size=1
+	aload_0
+	getfield	Field $outer:Lscala/collection/mutable/ObservableMap;
+	new	class scala/Tuple2
+	dup
+	aload_0
+	getfield	Field key$1:Ljava/lang/Object;
+	aload_0
+	getfield	Field old$1:Ljava/lang/Object;
+	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+	invokeinterface	InterfaceMethod scala/collection/mutable/ObservableMap.$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/ObservableMap;
+	pop
+	return
+  Labels:
 
 public scala.collection.mutable.ObservableMap$$anon$2(scala.collection.mutable.ObservableMap, java.lang.Object, java.lang.Object, java.lang.Object);
   Signature: (Lscala/collection/mutable/ObservableMap;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
@@ -108,25 +126,7 @@ l1	aload_0
    0      42      1    $outer       Lscala/collection/mutable/ObservableMap;
 
   Signature: length = 0x2
-   00 26 
-
-public void undo();
-  Signature: ()V
-  Code:
-   Stack=5, Locals=1, Args_size=1
-	aload_0
-	getfield	Field $outer:Lscala/collection/mutable/ObservableMap;
-	new	class scala/Tuple2
-	dup
-	aload_0
-	getfield	Field key$1:Ljava/lang/Object;
-	aload_0
-	getfield	Field old$1:Ljava/lang/Object;
-	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-	invokeinterface	InterfaceMethod scala/collection/mutable/ObservableMap.$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/ObservableMap;
-	pop
-	return
-  Labels:
+   00 2D 
 
 }
 

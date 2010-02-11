@@ -25,17 +25,19 @@ NameAndType	"<init>":()V
 Method	scala/collection/Traversable$."<init>":()V
 Asciz	breaks;
 Asciz	Lscala/util/control/Breaks;;
+Asciz	()Lscala/util/control/Breaks;;
 Asciz	LineNumberTable;
-Asciz	scala/collection/generic/TraversableFactory;
-class	scala/collection/generic/TraversableFactory
-Method	scala/collection/generic/TraversableFactory."<init>":()V
-NameAndType	MODULE$:Lscala/collection/Traversable$;
-Field	scala/collection/Traversable$.MODULE$:Lscala/collection/Traversable$;
-Asciz	scala/util/control/Breaks;
-class	scala/util/control/Breaks
-Method	scala/util/control/Breaks."<init>":()V
 NameAndType	breaks:Lscala/util/control/Breaks;
 Field	scala/collection/Traversable$.breaks:Lscala/util/control/Breaks;
+Asciz	canBuildFrom;
+Asciz	()Lscala/collection/generic/CanBuildFrom;;
+Asciz	scala/collection/generic/TraversableFactory$GenericCanBuildFrom;
+class	scala/collection/generic/TraversableFactory$GenericCanBuildFrom
+Asciz	(Lscala/collection/generic/TraversableFactory;)V;
+NameAndType	"<init>":(Lscala/collection/generic/TraversableFactory;)V
+Method	scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
+Asciz	<A:Ljava/lang/Object;>()Lscala/collection/generic/CanBuildFrom<Lscala/collection/Traversable<*>;TA;Lscala/collection/Traversable<TA;>;>;;
+Asciz	Signature;
 Asciz	newBuilder;
 Asciz	()Lscala/collection/mutable/Builder;;
 Asciz	scala/collection/immutable/Traversable$;
@@ -46,16 +48,14 @@ Field	scala/collection/immutable/Traversable$.MODULE$:Lscala/collection/immutabl
 NameAndType	newBuilder:()Lscala/collection/mutable/Builder;
 Method	scala/collection/immutable/Traversable$.newBuilder:()Lscala/collection/mutable/Builder;
 Asciz	<A:Ljava/lang/Object;>()Lscala/collection/mutable/Builder<TA;Lscala/collection/Traversable<TA;>;>;;
-Asciz	Signature;
-Asciz	canBuildFrom;
-Asciz	()Lscala/collection/generic/CanBuildFrom;;
-Asciz	scala/collection/generic/TraversableFactory$GenericCanBuildFrom;
-class	scala/collection/generic/TraversableFactory$GenericCanBuildFrom
-Asciz	(Lscala/collection/generic/TraversableFactory;)V;
-NameAndType	"<init>":(Lscala/collection/generic/TraversableFactory;)V
-Method	scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
-Asciz	<A:Ljava/lang/Object;>()Lscala/collection/generic/CanBuildFrom<Lscala/collection/Traversable<*>;TA;Lscala/collection/Traversable<TA;>;>;;
-Asciz	()Lscala/util/control/Breaks;;
+Asciz	scala/collection/generic/TraversableFactory;
+class	scala/collection/generic/TraversableFactory
+Method	scala/collection/generic/TraversableFactory."<init>":()V
+NameAndType	MODULE$:Lscala/collection/Traversable$;
+Field	scala/collection/Traversable$.MODULE$:Lscala/collection/Traversable$;
+Asciz	scala/util/control/Breaks;
+class	scala/util/control/Breaks
+Method	scala/util/control/Breaks."<init>":()V
 Asciz	Lscala/collection/generic/TraversableFactory<Lscala/collection/Traversable;>;Lscala/ScalaObject;;
 Asciz	InnerClasses;
 Asciz	GenericCanBuildFrom;
@@ -78,6 +78,39 @@ public static {};
 	return
   Labels:
 
+public scala.util.control.Breaks breaks();
+  Signature: ()Lscala/util/control/Breaks;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field breaks:Lscala/util/control/Breaks;
+	areturn
+  Labels:
+
+public scala.collection.generic.CanBuildFrom canBuildFrom();
+  Signature: ()Lscala/collection/generic/CanBuildFrom;
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	new	class scala/collection/generic/TraversableFactory$GenericCanBuildFrom
+	dup
+	aload_0
+	invokespecial	Method scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
+	areturn
+  Labels:
+  Signature: length = 0x2
+   00 1B 
+
+public scala.collection.mutable.Builder newBuilder();
+  Signature: ()Lscala/collection/mutable/Builder;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	getstatic	Field scala/collection/immutable/Traversable$.MODULE$:Lscala/collection/immutable/Traversable$;
+	invokevirtual	Method scala/collection/immutable/Traversable$.newBuilder:()Lscala/collection/mutable/Builder;
+	areturn
+  Labels:
+  Signature: length = 0x2
+   00 26 
+
 private scala.collection.Traversable$();
   Signature: ()V
   Code:
@@ -92,39 +125,6 @@ private scala.collection.Traversable$();
 	invokespecial	Method scala/util/control/Breaks."<init>":()V
 	putfield	Field breaks:Lscala/util/control/Breaks;
 	return
-  Labels:
-
-public scala.collection.mutable.Builder newBuilder();
-  Signature: ()Lscala/collection/mutable/Builder;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	getstatic	Field scala/collection/immutable/Traversable$.MODULE$:Lscala/collection/immutable/Traversable$;
-	invokevirtual	Method scala/collection/immutable/Traversable$.newBuilder:()Lscala/collection/mutable/Builder;
-	areturn
-  Labels:
-  Signature: length = 0x2
-   00 24 
-
-public scala.collection.generic.CanBuildFrom canBuildFrom();
-  Signature: ()Lscala/collection/generic/CanBuildFrom;
-  Code:
-   Stack=3, Locals=1, Args_size=1
-	new	class scala/collection/generic/TraversableFactory$GenericCanBuildFrom
-	dup
-	aload_0
-	invokespecial	Method scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
-	areturn
-  Labels:
-  Signature: length = 0x2
-   00 2D 
-
-public scala.util.control.Breaks breaks();
-  Signature: ()Lscala/util/control/Breaks;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field breaks:Lscala/util/control/Breaks;
-	areturn
   Labels:
 
 }

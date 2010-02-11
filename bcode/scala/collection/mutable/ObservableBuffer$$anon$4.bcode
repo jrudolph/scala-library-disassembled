@@ -18,23 +18,42 @@ Asciz	n$2;
 Asciz	I;
 Asciz	$outer;
 Asciz	Lscala/collection/mutable/ObservableBuffer;;
-Asciz	<init>;
-Asciz	(Lscala/collection/mutable/ObservableBuffer;ILjava/lang/Object;)V;
+Asciz	undo;
+Asciz	()V;
 Asciz	Code;
 Asciz	LineNumberTable;
-Asciz	java/lang/NullPointerException;
-class	java/lang/NullPointerException
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	java/lang/NullPointerException."<init>":()V
 Asciz	scala/collection/mutable/ObservableBuffer$$anon$4;
 class	scala/collection/mutable/ObservableBuffer$$anon$4
 NameAndType	$outer:Lscala/collection/mutable/ObservableBuffer;
 Field	scala/collection/mutable/ObservableBuffer$$anon$4.$outer:Lscala/collection/mutable/ObservableBuffer;
 NameAndType	n$2:I
 Field	scala/collection/mutable/ObservableBuffer$$anon$4.n$2:I
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	MODULE$;
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	java/lang/Object;
+class	java/lang/Object
 NameAndType	oldelement$2:Ljava/lang/Object;
 Field	scala/collection/mutable/ObservableBuffer$$anon$4.oldelement$2:Ljava/lang/Object;
+Asciz	genericWrapArray;
+Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
+NameAndType	genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+Method	scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+Asciz	scala/collection/mutable/BufferLike;
+class	scala/collection/mutable/BufferLike
+Asciz	insert;
+Asciz	(ILscala/collection/Seq;)V;
+NameAndType	insert:(ILscala/collection/Seq;)V
+InterfaceMethod	scala/collection/mutable/BufferLike.insert:(ILscala/collection/Seq;)V
+Asciz	<init>;
+Asciz	(Lscala/collection/mutable/ObservableBuffer;ILjava/lang/Object;)V;
+Asciz	java/lang/NullPointerException;
+class	java/lang/NullPointerException
+NameAndType	"<init>":()V
+Method	java/lang/NullPointerException."<init>":()V
 Asciz	scala/collection/script/Index;
 class	scala/collection/script/Index
 Asciz	(I)V;
@@ -50,25 +69,6 @@ Asciz	Lscala/collection/mutable/ObservableBuffer$$anon$4;;
 Asciz	LocalVariableTable;
 Asciz	(Lscala/collection/mutable/ObservableBuffer<TA;>;)V;
 Asciz	Signature;
-Asciz	undo;
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	MODULE$;
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	genericWrapArray;
-Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
-NameAndType	genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-Method	scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-Asciz	scala/collection/mutable/BufferLike;
-class	scala/collection/mutable/BufferLike
-Asciz	insert;
-Asciz	(ILscala/collection/Seq;)V;
-NameAndType	insert:(ILscala/collection/Seq;)V
-InterfaceMethod	scala/collection/mutable/BufferLike.insert:(ILscala/collection/Seq;)V
 Asciz	Lscala/collection/script/Remove<TA;>;Lscala/collection/mutable/Undoable;;
 Asciz	Scala;
 Asciz	InnerClasses;
@@ -87,6 +87,27 @@ private final int n$2;
 
 private final scala.collection.mutable.ObservableBuffer $outer;
   Signature: Lscala/collection/mutable/ObservableBuffer;
+
+public void undo();
+  Signature: ()V
+  Code:
+   Stack=7, Locals=1, Args_size=1
+	aload_0
+	getfield	Field $outer:Lscala/collection/mutable/ObservableBuffer;
+	aload_0
+	getfield	Field n$2:I
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iconst_1
+	anewarray	class java/lang/Object
+	dup
+	iconst_0
+	aload_0
+	getfield	Field oldelement$2:Ljava/lang/Object;
+	aastore
+	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.insert:(ILscala/collection/Seq;)V
+	return
+  Labels:
 
 public scala.collection.mutable.ObservableBuffer$$anon$4(scala.collection.mutable.ObservableBuffer, int, java.lang.Object);
   Signature: (Lscala/collection/mutable/ObservableBuffer;ILjava/lang/Object;)V
@@ -123,28 +144,7 @@ l1	aload_0
    0      41      1    $outer       Lscala/collection/mutable/ObservableBuffer;
 
   Signature: length = 0x2
-   00 27 
-
-public void undo();
-  Signature: ()V
-  Code:
-   Stack=7, Locals=1, Args_size=1
-	aload_0
-	getfield	Field $outer:Lscala/collection/mutable/ObservableBuffer;
-	aload_0
-	getfield	Field n$2:I
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	iconst_1
-	anewarray	class java/lang/Object
-	dup
-	iconst_0
-	aload_0
-	getfield	Field oldelement$2:Ljava/lang/Object;
-	aastore
-	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.insert:(ILscala/collection/Seq;)V
-	return
-  Labels:
+   00 3A 
 
 }
 

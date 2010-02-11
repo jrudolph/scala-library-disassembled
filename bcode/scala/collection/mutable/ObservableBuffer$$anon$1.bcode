@@ -14,19 +14,26 @@ Asciz	SourceFile;
 Asciz	ObservableBuffer.scala;
 Asciz	$outer;
 Asciz	Lscala/collection/mutable/ObservableBuffer;;
-Asciz	<init>;
-Asciz	(Lscala/collection/mutable/ObservableBuffer;Ljava/lang/Object;)V;
+Asciz	undo;
+Asciz	()V;
 Asciz	Code;
 Asciz	LineNumberTable;
-Asciz	java/lang/NullPointerException;
-class	java/lang/NullPointerException
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	java/lang/NullPointerException."<init>":()V
 Asciz	scala/collection/mutable/ObservableBuffer$$anon$1;
 class	scala/collection/mutable/ObservableBuffer$$anon$1
 NameAndType	$outer:Lscala/collection/mutable/ObservableBuffer;
 Field	scala/collection/mutable/ObservableBuffer$$anon$1.$outer:Lscala/collection/mutable/ObservableBuffer;
+Asciz	scala/collection/mutable/BufferLike;
+class	scala/collection/mutable/BufferLike
+Asciz	trimEnd;
+Asciz	(I)V;
+NameAndType	trimEnd:(I)V
+InterfaceMethod	scala/collection/mutable/BufferLike.trimEnd:(I)V
+Asciz	<init>;
+Asciz	(Lscala/collection/mutable/ObservableBuffer;Ljava/lang/Object;)V;
+Asciz	java/lang/NullPointerException;
+class	java/lang/NullPointerException
+NameAndType	"<init>":()V
+Method	java/lang/NullPointerException."<init>":()V
 Asciz	scala/collection/script/End$;
 class	scala/collection/script/End$
 Asciz	MODULE$;
@@ -43,13 +50,6 @@ Asciz	Lscala/collection/mutable/ObservableBuffer$$anon$1;;
 Asciz	LocalVariableTable;
 Asciz	(Lscala/collection/mutable/ObservableBuffer<TA;>;)V;
 Asciz	Signature;
-Asciz	undo;
-Asciz	scala/collection/mutable/BufferLike;
-class	scala/collection/mutable/BufferLike
-Asciz	trimEnd;
-Asciz	(I)V;
-NameAndType	trimEnd:(I)V
-InterfaceMethod	scala/collection/mutable/BufferLike.trimEnd:(I)V
 Asciz	Lscala/collection/script/Include<TA;>;Lscala/collection/mutable/Undoable;;
 Asciz	Scala;
 Asciz	InnerClasses;
@@ -62,6 +62,17 @@ class	scala/collection/mutable/Undoable
 {
 private final scala.collection.mutable.ObservableBuffer $outer;
   Signature: Lscala/collection/mutable/ObservableBuffer;
+
+public void undo();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	getfield	Field $outer:Lscala/collection/mutable/ObservableBuffer;
+	iconst_1
+	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.trimEnd:(I)V
+	return
+  Labels:
 
 public scala.collection.mutable.ObservableBuffer$$anon$1(scala.collection.mutable.ObservableBuffer, java.lang.Object);
   Signature: (Lscala/collection/mutable/ObservableBuffer;Ljava/lang/Object;)V
@@ -89,18 +100,7 @@ l1	aload_0
    0      26      1    $outer       Lscala/collection/mutable/ObservableBuffer;
 
   Signature: length = 0x2
-   00 20 
-
-public void undo();
-  Signature: ()V
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	getfield	Field $outer:Lscala/collection/mutable/ObservableBuffer;
-	iconst_1
-	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.trimEnd:(I)V
-	return
-  Labels:
+   00 27 
 
 }
 

@@ -58,32 +58,18 @@ NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
 Method	scala/Symbol$.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 Asciz	name;
 Asciz	Ljava/lang/String;;
-Asciz	<init>;
-Asciz	(Ljava/lang/String;)V;
+Asciz	()Ljava/lang/String;;
 Asciz	LineNumberTable;
 Asciz	scala/Symbol;
 class	scala/Symbol
 NameAndType	name:Ljava/lang/String;
 Field	scala/Symbol.name:Ljava/lang/String;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	java/lang/Object."<init>":()V
-Asciz	this;
-Asciz	Lscala/Symbol;;
-Asciz	LocalVariableTable;
-Asciz	readResolve;
-Asciz	()Ljava/lang/Object;;
-Asciz	()Ljava/lang/String;;
-NameAndType	name:()Ljava/lang/String;
-Method	scala/Symbol.name:()Ljava/lang/String;
-Asciz	java/io/ObjectStreamException;
-class	java/io/ObjectStreamException
-Asciz	Exceptions;
 Asciz	toString;
 Asciz	scala/collection/mutable/StringBuilder;
 class	scala/collection/mutable/StringBuilder
+Asciz	<init>;
+Asciz	()V;
+NameAndType	"<init>":()V
 Method	scala/collection/mutable/StringBuilder."<init>":()V
 Asciz	';
 String	'
@@ -91,8 +77,22 @@ Asciz	append;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
 NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+NameAndType	name:()Ljava/lang/String;
+Method	scala/Symbol.name:()Ljava/lang/String;
 NameAndType	toString:()Ljava/lang/String;
 Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+Asciz	readResolve;
+Asciz	()Ljava/lang/Object;;
+Asciz	java/io/ObjectStreamException;
+class	java/io/ObjectStreamException
+Asciz	Exceptions;
+Asciz	(Ljava/lang/String;)V;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Method	java/lang/Object."<init>":()V
+Asciz	this;
+Asciz	Lscala/Symbol;;
+Asciz	LocalVariableTable;
 Asciz	ScalaSig;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
@@ -125,35 +125,15 @@ public static final java.lang.Object apply(java.lang.Object);
 	areturn
   Labels:
 
-public scala.Symbol(java.lang.String);
-  Signature: (Ljava/lang/String;)V
+public java.lang.String name();
+  Signature: ()Ljava/lang/String;
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=1, Locals=1, Args_size=1
 	aload_0
-	aload_1
-	putfield	Field name:Ljava/lang/String;
-	aload_0
-	invokespecial	Method java/lang/Object."<init>":()V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      10      0    this       Lscala/Symbol;
-   0      10      1    name       Ljava/lang/String;
-
-
-private java.lang.Object readResolve()   throws java.io.ObjectStreamException;
-  Signature: ()Ljava/lang/Object;
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	getstatic	Field scala/Symbol$.MODULE$:Lscala/Symbol$;
-	aload_0
-	invokevirtual	Method name:()Ljava/lang/String;
-	invokevirtual	Method scala/Symbol$.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+	getfield	Field name:Ljava/lang/String;
 	areturn
   Labels:
-  Exceptions: 
-   throws java.io.ObjectStreamException
+
 public java.lang.String toString();
   Signature: ()Ljava/lang/String;
   Code:
@@ -170,14 +150,34 @@ public java.lang.String toString();
 	areturn
   Labels:
 
-public java.lang.String name();
-  Signature: ()Ljava/lang/String;
+private java.lang.Object readResolve()   throws java.io.ObjectStreamException;
+  Signature: ()Ljava/lang/Object;
   Code:
-   Stack=1, Locals=1, Args_size=1
+   Stack=2, Locals=1, Args_size=1
+	getstatic	Field scala/Symbol$.MODULE$:Lscala/Symbol$;
 	aload_0
-	getfield	Field name:Ljava/lang/String;
+	invokevirtual	Method name:()Ljava/lang/String;
+	invokevirtual	Method scala/Symbol$.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	areturn
   Labels:
+  Exceptions: 
+   throws java.io.ObjectStreamException
+public scala.Symbol(java.lang.String);
+  Signature: (Ljava/lang/String;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field name:Ljava/lang/String;
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      10      0    this       Lscala/Symbol;
+   0      10      1    name       Ljava/lang/String;
+
 
 }
 

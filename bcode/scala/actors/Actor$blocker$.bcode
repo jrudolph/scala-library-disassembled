@@ -11,38 +11,38 @@ Asciz	Actor.scala;
 Asciz	Scala;
 Asciz	$outer;
 Asciz	Lscala/actors/Actor;;
-Asciz	<init>;
-Asciz	(Lscala/actors/Actor;)V;
+Asciz	block;
+Asciz	()Z;
 Asciz	Code;
 Asciz	LineNumberTable;
+Asciz	scala/actors/Actor$blocker$;
+class	scala/actors/Actor$blocker$
+NameAndType	$outer:Lscala/actors/Actor;
+Field	scala/actors/Actor$blocker$.$outer:Lscala/actors/Actor;
+Asciz	scala/actors/Actor$class;
+class	scala/actors/Actor$class
+Asciz	scala$actors$Actor$$suspendActor;
+Asciz	(Lscala/actors/Actor;)V;
+NameAndType	scala$actors$Actor$$suspendActor:(Lscala/actors/Actor;)V
+Method	scala/actors/Actor$class.scala$actors$Actor$$suspendActor:(Lscala/actors/Actor;)V
+Asciz	isReleasable;
+Asciz	scala/actors/Actor;
+class	scala/actors/Actor
+Asciz	scala$actors$Actor$$isSuspended;
+NameAndType	scala$actors$Actor$$isSuspended:()Z
+InterfaceMethod	scala/actors/Actor.scala$actors$Actor$$isSuspended:()Z
+Asciz	<init>;
 Asciz	java/lang/NullPointerException;
 class	java/lang/NullPointerException
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	java/lang/NullPointerException."<init>":()V
-Asciz	scala/actors/Actor$blocker$;
-class	scala/actors/Actor$blocker$
-NameAndType	$outer:Lscala/actors/Actor;
-Field	scala/actors/Actor$blocker$.$outer:Lscala/actors/Actor;
 Asciz	java/lang/Object;
 class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 Asciz	this;
 Asciz	Lscala/actors/Actor$blocker$;;
 Asciz	LocalVariableTable;
-Asciz	isReleasable;
-Asciz	()Z;
-Asciz	scala/actors/Actor;
-class	scala/actors/Actor
-Asciz	scala$actors$Actor$$isSuspended;
-NameAndType	scala$actors$Actor$$isSuspended:()Z
-InterfaceMethod	scala/actors/Actor.scala$actors$Actor$$isSuspended:()Z
-Asciz	block;
-Asciz	scala/actors/Actor$class;
-class	scala/actors/Actor$class
-Asciz	scala$actors$Actor$$suspendActor;
-NameAndType	scala$actors$Actor$$suspendActor:(Lscala/actors/Actor;)V
-Method	scala/actors/Actor$class.scala$actors$Actor$$suspendActor:(Lscala/actors/Actor;)V
 Asciz	scala/concurrent/ManagedBlocker;
 class	scala/concurrent/ManagedBlocker
 Asciz	scala/ScalaObject;
@@ -51,6 +51,33 @@ class	scala/ScalaObject
 {
 private final scala.actors.Actor $outer;
   Signature: Lscala/actors/Actor;
+
+public boolean block();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field $outer:Lscala/actors/Actor;
+	invokestatic	Method scala/actors/Actor$class.scala$actors$Actor$$suspendActor:(Lscala/actors/Actor;)V
+	iconst_1
+	ireturn
+  Labels:
+
+public boolean isReleasable();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field $outer:Lscala/actors/Actor;
+	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$isSuspended:()Z
+	ifeq	l1 // iconst_1
+	iconst_0
+	goto	l2 // ireturn
+l1	iconst_1
+l2	ireturn
+  Labels:
+   	l1 = 16 // iconst_1
+   	l2 = 17 // ireturn
 
 public scala.actors.Actor$blocker$(scala.actors.Actor);
   Signature: (Lscala/actors/Actor;)V
@@ -75,33 +102,6 @@ l1	aload_0
    0      22      0    this       Lscala/actors/Actor$blocker$;
    0      22      1    $outer       Lscala/actors/Actor;
 
-
-public boolean isReleasable();
-  Signature: ()Z
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field $outer:Lscala/actors/Actor;
-	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$isSuspended:()Z
-	ifeq	l1 // iconst_1
-	iconst_0
-	goto	l2 // ireturn
-l1	iconst_1
-l2	ireturn
-  Labels:
-   	l1 = 16 // iconst_1
-   	l2 = 17 // ireturn
-
-public boolean block();
-  Signature: ()Z
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field $outer:Lscala/actors/Actor;
-	invokestatic	Method scala/actors/Actor$class.scala$actors$Actor$$suspendActor:(Lscala/actors/Actor;)V
-	iconst_1
-	ireturn
-  Labels:
 
 }
 

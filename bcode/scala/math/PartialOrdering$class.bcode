@@ -10,38 +10,38 @@ public abstract class scala.math.PartialOrdering$class extends java.lang.Object
   Constant pool:
 Asciz	SourceFile;
 Asciz	PartialOrdering.scala;
-Asciz	$init$;
-Asciz	(Lscala/math/PartialOrdering;)V;
+Asciz	gteq;
+Asciz	(Lscala/math/PartialOrdering;Ljava/lang/Object;Ljava/lang/Object;)Z;
 Asciz	Code;
 Asciz	LineNumberTable;
-Asciz	$this;
-Asciz	Lscala/math/PartialOrdering;;
-Asciz	LocalVariableTable;
-Asciz	reverse;
-Asciz	(Lscala/math/PartialOrdering;)Lscala/math/PartialOrdering;;
-Asciz	scala/math/PartialOrdering$$anon$1;
-class	scala/math/PartialOrdering$$anon$1
-Asciz	<init>;
-NameAndType	"<init>":(Lscala/math/PartialOrdering;)V
-Method	scala/math/PartialOrdering$$anon$1."<init>":(Lscala/math/PartialOrdering;)V
-Asciz	equiv;
-Asciz	(Lscala/math/PartialOrdering;Ljava/lang/Object;Ljava/lang/Object;)Z;
 Asciz	scala/math/PartialOrdering;
 class	scala/math/PartialOrdering
 Asciz	lteq;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
 NameAndType	lteq:(Ljava/lang/Object;Ljava/lang/Object;)Z
 InterfaceMethod	scala/math/PartialOrdering.lteq:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	$this;
+Asciz	Lscala/math/PartialOrdering;;
 Asciz	x;
 Asciz	Ljava/lang/Object;;
 Asciz	y;
-Asciz	gt;
-Asciz	gteq;
-NameAndType	gteq:(Ljava/lang/Object;Ljava/lang/Object;)Z
-InterfaceMethod	scala/math/PartialOrdering.gteq:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	LocalVariableTable;
+Asciz	lt;
+Asciz	equiv;
 NameAndType	equiv:(Ljava/lang/Object;Ljava/lang/Object;)Z
 InterfaceMethod	scala/math/PartialOrdering.equiv:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Asciz	lt;
+Asciz	gt;
+NameAndType	gteq:(Ljava/lang/Object;Ljava/lang/Object;)Z
+InterfaceMethod	scala/math/PartialOrdering.gteq:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	reverse;
+Asciz	(Lscala/math/PartialOrdering;)Lscala/math/PartialOrdering;;
+Asciz	scala/math/PartialOrdering$$anon$1;
+class	scala/math/PartialOrdering$$anon$1
+Asciz	<init>;
+Asciz	(Lscala/math/PartialOrdering;)V;
+NameAndType	"<init>":(Lscala/math/PartialOrdering;)V
+Method	scala/math/PartialOrdering$$anon$1."<init>":(Lscala/math/PartialOrdering;)V
+Asciz	$init$;
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	$anon$1;
@@ -51,33 +51,24 @@ Asciz	java/lang/Object;
 class	java/lang/Object
 
 {
-public static void $init$(scala.math.PartialOrdering);
-  Signature: (Lscala/math/PartialOrdering;)V
+public static boolean gteq(scala.math.PartialOrdering, java.lang.Object, java.lang.Object);
+  Signature: (Lscala/math/PartialOrdering;Ljava/lang/Object;Ljava/lang/Object;)Z
   Code:
-   Stack=0, Locals=1, Args_size=1
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      1      0    $this       Lscala/math/PartialOrdering;
-
-
-public static scala.math.PartialOrdering reverse(scala.math.PartialOrdering);
-  Signature: (Lscala/math/PartialOrdering;)Lscala/math/PartialOrdering;
-  Code:
-   Stack=3, Locals=1, Args_size=1
-	new	class scala/math/PartialOrdering$$anon$1
-	dup
+   Stack=3, Locals=3, Args_size=3
 	aload_0
-	invokespecial	Method scala/math/PartialOrdering$$anon$1."<init>":(Lscala/math/PartialOrdering;)V
-	areturn
+	aload_2
+	aload_1
+	invokeinterface	InterfaceMethod scala/math/PartialOrdering.lteq:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      9      0    $this       Lscala/math/PartialOrdering;
+   0      9      1    x       Ljava/lang/Object;
+   0      9      2    y       Ljava/lang/Object;
 
 
-public static boolean equiv(scala.math.PartialOrdering, java.lang.Object, java.lang.Object);
+public static boolean lt(scala.math.PartialOrdering, java.lang.Object, java.lang.Object);
   Signature: (Lscala/math/PartialOrdering;Ljava/lang/Object;Ljava/lang/Object;)Z
   Code:
    Stack=3, Locals=3, Args_size=3
@@ -87,10 +78,10 @@ public static boolean equiv(scala.math.PartialOrdering, java.lang.Object, java.l
 	invokeinterface	InterfaceMethod scala/math/PartialOrdering.lteq:(Ljava/lang/Object;Ljava/lang/Object;)Z
 	ifeq	l1 // iconst_0
 	aload_0
-	aload_2
 	aload_1
-	invokeinterface	InterfaceMethod scala/math/PartialOrdering.lteq:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l1 // iconst_0
+	aload_2
+	invokeinterface	InterfaceMethod scala/math/PartialOrdering.equiv:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifne	l1 // iconst_0
 	iconst_1
 	goto	l2 // ireturn
 l1	iconst_0
@@ -133,7 +124,7 @@ l2	ireturn
    0      28      2    y       Ljava/lang/Object;
 
 
-public static boolean lt(scala.math.PartialOrdering, java.lang.Object, java.lang.Object);
+public static boolean equiv(scala.math.PartialOrdering, java.lang.Object, java.lang.Object);
   Signature: (Lscala/math/PartialOrdering;Ljava/lang/Object;Ljava/lang/Object;)Z
   Code:
    Stack=3, Locals=3, Args_size=3
@@ -143,10 +134,10 @@ public static boolean lt(scala.math.PartialOrdering, java.lang.Object, java.lang
 	invokeinterface	InterfaceMethod scala/math/PartialOrdering.lteq:(Ljava/lang/Object;Ljava/lang/Object;)Z
 	ifeq	l1 // iconst_0
 	aload_0
-	aload_1
 	aload_2
-	invokeinterface	InterfaceMethod scala/math/PartialOrdering.equiv:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifne	l1 // iconst_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/math/PartialOrdering.lteq:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l1 // iconst_0
 	iconst_1
 	goto	l2 // ireturn
 l1	iconst_0
@@ -161,21 +152,30 @@ l2	ireturn
    0      28      2    y       Ljava/lang/Object;
 
 
-public static boolean gteq(scala.math.PartialOrdering, java.lang.Object, java.lang.Object);
-  Signature: (Lscala/math/PartialOrdering;Ljava/lang/Object;Ljava/lang/Object;)Z
+public static scala.math.PartialOrdering reverse(scala.math.PartialOrdering);
+  Signature: (Lscala/math/PartialOrdering;)Lscala/math/PartialOrdering;
   Code:
-   Stack=3, Locals=3, Args_size=3
+   Stack=3, Locals=1, Args_size=1
+	new	class scala/math/PartialOrdering$$anon$1
+	dup
 	aload_0
-	aload_2
-	aload_1
-	invokeinterface	InterfaceMethod scala/math/PartialOrdering.lteq:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ireturn
+	invokespecial	Method scala/math/PartialOrdering$$anon$1."<init>":(Lscala/math/PartialOrdering;)V
+	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      9      0    $this       Lscala/math/PartialOrdering;
-   0      9      1    x       Ljava/lang/Object;
-   0      9      2    y       Ljava/lang/Object;
+
+
+public static void $init$(scala.math.PartialOrdering);
+  Signature: (Lscala/math/PartialOrdering;)V
+  Code:
+   Stack=0, Locals=1, Args_size=1
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    $this       Lscala/math/PartialOrdering;
 
 
 }

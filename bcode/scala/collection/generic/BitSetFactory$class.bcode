@@ -11,30 +11,31 @@ public abstract class scala.collection.generic.BitSetFactory$class extends java.
   Constant pool:
 Asciz	SourceFile;
 Asciz	BitSetFactory.scala;
-Asciz	$init$;
-Asciz	(Lscala/collection/generic/BitSetFactory;)V;
+Asciz	newBuilder;
+Asciz	(Lscala/collection/generic/BitSetFactory;)Lscala/collection/mutable/Builder;;
 Asciz	Code;
+Asciz	scala/collection/mutable/AddingBuilder;
+class	scala/collection/mutable/AddingBuilder
 Asciz	LineNumberTable;
-Asciz	$this;
-Asciz	Lscala/collection/generic/BitSetFactory;;
-Asciz	LocalVariableTable;
-Asciz	bitsetCanBuildFrom;
-Asciz	(Lscala/collection/generic/BitSetFactory;)Lscala/collection/generic/CanBuildFrom;;
-Asciz	scala/collection/generic/BitSetFactory$$anon$1;
-class	scala/collection/generic/BitSetFactory$$anon$1
-Asciz	<init>;
-NameAndType	"<init>":(Lscala/collection/generic/BitSetFactory;)V
-Method	scala/collection/generic/BitSetFactory$$anon$1."<init>":(Lscala/collection/generic/BitSetFactory;)V
-Asciz	apply;
-Asciz	(Lscala/collection/generic/BitSetFactory;Lscala/collection/Seq;)Lscala/collection/BitSet;;
 Asciz	scala/collection/generic/BitSetFactory;
 class	scala/collection/generic/BitSetFactory
 Asciz	empty;
 Asciz	()Lscala/collection/BitSet;;
 NameAndType	empty:()Lscala/collection/BitSet;
 InterfaceMethod	scala/collection/generic/BitSetFactory.empty:()Lscala/collection/BitSet;
+Asciz	<init>;
+Asciz	(Lscala/collection/generic/Addable;)V;
+NameAndType	"<init>":(Lscala/collection/generic/Addable;)V
+Method	scala/collection/mutable/AddingBuilder."<init>":(Lscala/collection/generic/Addable;)V
+Asciz	$this;
+Asciz	Lscala/collection/generic/BitSetFactory;;
+Asciz	LocalVariableTable;
+Asciz	apply;
+Asciz	(Lscala/collection/generic/BitSetFactory;Lscala/collection/Seq;)Lscala/collection/BitSet;;
 Asciz	scala/collection/generic/BitSetFactory$$anonfun$apply$1;
 class	scala/collection/generic/BitSetFactory$$anonfun$apply$1
+Asciz	(Lscala/collection/generic/BitSetFactory;)V;
+NameAndType	"<init>":(Lscala/collection/generic/BitSetFactory;)V
 Method	scala/collection/generic/BitSetFactory$$anonfun$apply$1."<init>":(Lscala/collection/generic/BitSetFactory;)V
 Asciz	scala/collection/TraversableLike;
 class	scala/collection/TraversableLike
@@ -46,13 +47,12 @@ Asciz	scala/collection/BitSet;
 class	scala/collection/BitSet
 Asciz	elems;
 Asciz	Lscala/collection/Seq;;
-Asciz	newBuilder;
-Asciz	(Lscala/collection/generic/BitSetFactory;)Lscala/collection/mutable/Builder;;
-Asciz	scala/collection/mutable/AddingBuilder;
-class	scala/collection/mutable/AddingBuilder
-Asciz	(Lscala/collection/generic/Addable;)V;
-NameAndType	"<init>":(Lscala/collection/generic/Addable;)V
-Method	scala/collection/mutable/AddingBuilder."<init>":(Lscala/collection/generic/Addable;)V
+Asciz	bitsetCanBuildFrom;
+Asciz	(Lscala/collection/generic/BitSetFactory;)Lscala/collection/generic/CanBuildFrom;;
+Asciz	scala/collection/generic/BitSetFactory$$anon$1;
+class	scala/collection/generic/BitSetFactory$$anon$1
+Method	scala/collection/generic/BitSetFactory$$anon$1."<init>":(Lscala/collection/generic/BitSetFactory;)V
+Asciz	$init$;
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	$anon$1;
@@ -63,30 +63,20 @@ Asciz	java/lang/Object;
 class	java/lang/Object
 
 {
-public static void $init$(scala.collection.generic.BitSetFactory);
-  Signature: (Lscala/collection/generic/BitSetFactory;)V
-  Code:
-   Stack=0, Locals=1, Args_size=1
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      1      0    $this       Lscala/collection/generic/BitSetFactory;
-
-
-public static scala.collection.generic.CanBuildFrom bitsetCanBuildFrom(scala.collection.generic.BitSetFactory);
-  Signature: (Lscala/collection/generic/BitSetFactory;)Lscala/collection/generic/CanBuildFrom;
+public static scala.collection.mutable.Builder newBuilder(scala.collection.generic.BitSetFactory);
+  Signature: (Lscala/collection/generic/BitSetFactory;)Lscala/collection/mutable/Builder;
   Code:
    Stack=3, Locals=1, Args_size=1
-	new	class scala/collection/generic/BitSetFactory$$anon$1
+	new	class scala/collection/mutable/AddingBuilder
 	dup
 	aload_0
-	invokespecial	Method scala/collection/generic/BitSetFactory$$anon$1."<init>":(Lscala/collection/generic/BitSetFactory;)V
+	invokeinterface	InterfaceMethod scala/collection/generic/BitSetFactory.empty:()Lscala/collection/BitSet;
+	invokespecial	Method scala/collection/mutable/AddingBuilder."<init>":(Lscala/collection/generic/Addable;)V
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      9      0    $this       Lscala/collection/generic/BitSetFactory;
+   0      14      0    $this       Lscala/collection/generic/BitSetFactory;
 
 
 public static scala.collection.BitSet apply(scala.collection.generic.BitSetFactory, scala.collection.Seq);
@@ -112,20 +102,30 @@ public static scala.collection.BitSet apply(scala.collection.generic.BitSetFacto
    0      26      1    elems       Lscala/collection/Seq;
 
 
-public static scala.collection.mutable.Builder newBuilder(scala.collection.generic.BitSetFactory);
-  Signature: (Lscala/collection/generic/BitSetFactory;)Lscala/collection/mutable/Builder;
+public static scala.collection.generic.CanBuildFrom bitsetCanBuildFrom(scala.collection.generic.BitSetFactory);
+  Signature: (Lscala/collection/generic/BitSetFactory;)Lscala/collection/generic/CanBuildFrom;
   Code:
    Stack=3, Locals=1, Args_size=1
-	new	class scala/collection/mutable/AddingBuilder
+	new	class scala/collection/generic/BitSetFactory$$anon$1
 	dup
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/generic/BitSetFactory.empty:()Lscala/collection/BitSet;
-	invokespecial	Method scala/collection/mutable/AddingBuilder."<init>":(Lscala/collection/generic/Addable;)V
+	invokespecial	Method scala/collection/generic/BitSetFactory$$anon$1."<init>":(Lscala/collection/generic/BitSetFactory;)V
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      14      0    $this       Lscala/collection/generic/BitSetFactory;
+   0      9      0    $this       Lscala/collection/generic/BitSetFactory;
+
+
+public static void $init$(scala.collection.generic.BitSetFactory);
+  Signature: (Lscala/collection/generic/BitSetFactory;)V
+  Code:
+   Stack=0, Locals=1, Args_size=1
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    $this       Lscala/collection/generic/BitSetFactory;
 
 
 }

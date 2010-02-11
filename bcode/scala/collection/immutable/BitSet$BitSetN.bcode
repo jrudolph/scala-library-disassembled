@@ -12,21 +12,25 @@ Asciz	SourceFile;
 Asciz	BitSet.scala;
 Asciz	elems;
 Asciz	[J;
-Asciz	<init>;
-Asciz	([J)V;
+Asciz	()[J;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/collection/immutable/BitSet$BitSetN;
 class	scala/collection/immutable/BitSet$BitSetN
 NameAndType	elems:[J
 Field	scala/collection/immutable/BitSet$BitSetN.elems:[J
-Asciz	scala/collection/immutable/BitSet;
-class	scala/collection/immutable/BitSet
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	scala/collection/immutable/BitSet."<init>":()V
+Asciz	nwords;
+Asciz	()I;
+NameAndType	elems:()[J
+Method	scala/collection/immutable/BitSet$BitSetN.elems:()[J
+Asciz	word;
+Asciz	(I)J;
+NameAndType	nwords:()I
+Method	scala/collection/immutable/BitSet$BitSetN.nwords:()I
 Asciz	this;
 Asciz	Lscala/collection/immutable/BitSet$BitSetN;;
+Asciz	idx;
+Asciz	I;
 Asciz	LocalVariableTable;
 Asciz	updateWord;
 Asciz	(IJ)Lscala/collection/immutable/BitSet;;
@@ -36,9 +40,6 @@ Asciz	MODULE$;
 Asciz	Lscala/collection/BitSetLike$;;
 NameAndType	MODULE$:Lscala/collection/BitSetLike$;
 Field	scala/collection/BitSetLike$.MODULE$:Lscala/collection/BitSetLike$;
-Asciz	()[J;
-NameAndType	elems:()[J
-Method	scala/collection/immutable/BitSet$BitSetN.elems:()[J
 Asciz	updateArray;
 Asciz	([JIJ)[J;
 NameAndType	updateArray:([JIJ)[J
@@ -47,16 +48,15 @@ Asciz	fromArray;
 Asciz	([J)Lscala/collection/immutable/BitSet;;
 NameAndType	fromArray:([J)Lscala/collection/immutable/BitSet;
 Method	scala/collection/immutable/BitSet$BitSetN.fromArray:([J)Lscala/collection/immutable/BitSet;
-Asciz	idx;
-Asciz	I;
 Asciz	w;
 Asciz	J;
-Asciz	word;
-Asciz	(I)J;
-Asciz	nwords;
-Asciz	()I;
-NameAndType	nwords:()I
-Method	scala/collection/immutable/BitSet$BitSetN.nwords:()I
+Asciz	<init>;
+Asciz	([J)V;
+Asciz	scala/collection/immutable/BitSet;
+class	scala/collection/immutable/BitSet
+Asciz	()V;
+NameAndType	"<init>":()V
+Method	scala/collection/immutable/BitSet."<init>":()V
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	BitSetN;
@@ -67,43 +67,24 @@ class	scala/ScalaObject
 private final long[] elems;
   Signature: [J
 
-public scala.collection.immutable.BitSet$BitSetN(long[]);
-  Signature: ([J)V
+public long[] elems();
+  Signature: ()[J
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=1, Locals=1, Args_size=1
 	aload_0
-	aload_1
-	putfield	Field elems:[J
-	aload_0
-	invokespecial	Method scala/collection/immutable/BitSet."<init>":()V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      10      0    this       Lscala/collection/immutable/BitSet$BitSetN;
-   0      10      1    elems       [J
-
-
-public scala.collection.immutable.BitSet updateWord(int, long);
-  Signature: (IJ)Lscala/collection/immutable/BitSet;
-  Code:
-   Stack=6, Locals=4, Args_size=3
-	aload_0
-	getstatic	Field scala/collection/BitSetLike$.MODULE$:Lscala/collection/BitSetLike$;
-	aload_0
-	invokevirtual	Method elems:()[J
-	iload_1
-	lload_2
-	invokevirtual	Method scala/collection/BitSetLike$.updateArray:([JIJ)[J
-	invokevirtual	Method fromArray:([J)Lscala/collection/immutable/BitSet;
+	getfield	Field elems:[J
 	areturn
   Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      17      0    this       Lscala/collection/immutable/BitSet$BitSetN;
-   0      17      1    idx       I
-   0      17      2    w       J
 
+public int nwords();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method elems:()[J
+	arraylength
+	ireturn
+  Labels:
 
 public long word(int);
   Signature: (I)J
@@ -129,24 +110,43 @@ l2	lreturn
    0      19      1    idx       I
 
 
-public int nwords();
-  Signature: ()I
+public scala.collection.immutable.BitSet updateWord(int, long);
+  Signature: (IJ)Lscala/collection/immutable/BitSet;
   Code:
-   Stack=1, Locals=1, Args_size=1
+   Stack=6, Locals=4, Args_size=3
+	aload_0
+	getstatic	Field scala/collection/BitSetLike$.MODULE$:Lscala/collection/BitSetLike$;
 	aload_0
 	invokevirtual	Method elems:()[J
-	arraylength
-	ireturn
-  Labels:
-
-public long[] elems();
-  Signature: ()[J
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field elems:[J
+	iload_1
+	lload_2
+	invokevirtual	Method scala/collection/BitSetLike$.updateArray:([JIJ)[J
+	invokevirtual	Method fromArray:([J)Lscala/collection/immutable/BitSet;
 	areturn
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      17      0    this       Lscala/collection/immutable/BitSet$BitSetN;
+   0      17      1    idx       I
+   0      17      2    w       J
+
+
+public scala.collection.immutable.BitSet$BitSetN(long[]);
+  Signature: ([J)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field elems:[J
+	aload_0
+	invokespecial	Method scala/collection/immutable/BitSet."<init>":()V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      10      0    this       Lscala/collection/immutable/BitSet$BitSetN;
+   0      10      1    elems       [J
+
 
 }
 

@@ -29,7 +29,26 @@ NameAndType	"<init>":()V
 Method	scala/collection/immutable/Set$."<init>":()V
 Asciz	hashSeed;
 Asciz	I;
+Asciz	canBuildFrom;
+Asciz	()Lscala/collection/generic/CanBuildFrom;;
 Asciz	LineNumberTable;
+Asciz	setCanBuildFrom;
+NameAndType	setCanBuildFrom:()Lscala/collection/generic/CanBuildFrom;
+Method	scala/collection/immutable/Set$.setCanBuildFrom:()Lscala/collection/generic/CanBuildFrom;
+Asciz	<A:Ljava/lang/Object;>()Lscala/collection/generic/CanBuildFrom<Lscala/collection/immutable/Set<*>;TA;Lscala/collection/immutable/Set<TA;>;>;;
+Asciz	Signature;
+Asciz	empty;
+Asciz	()Lscala/collection/immutable/Set;;
+Asciz	scala/collection/immutable/Set$EmptySet;
+class	scala/collection/immutable/Set$EmptySet
+Method	scala/collection/immutable/Set$EmptySet."<init>":()V
+Asciz	<A:Ljava/lang/Object;>()Lscala/collection/immutable/Set<TA;>;;
+Asciz	()I;
+NameAndType	hashSeed:I
+Field	scala/collection/immutable/Set$.hashSeed:I
+Asciz	()Lscala/collection/Traversable;;
+NameAndType	empty:()Lscala/collection/immutable/Set;
+Method	scala/collection/immutable/Set$.empty:()Lscala/collection/immutable/Set;
 Asciz	scala/collection/generic/SetFactory;
 class	scala/collection/generic/SetFactory
 Method	scala/collection/generic/SetFactory."<init>":()V
@@ -40,27 +59,8 @@ String	Set
 Asciz	java/lang/String;
 class	java/lang/String
 Asciz	hashCode;
-Asciz	()I;
 NameAndType	hashCode:()I
 Method	java/lang/String.hashCode:()I
-NameAndType	hashSeed:I
-Field	scala/collection/immutable/Set$.hashSeed:I
-Asciz	empty;
-Asciz	()Lscala/collection/Traversable;;
-Asciz	()Lscala/collection/immutable/Set;;
-NameAndType	empty:()Lscala/collection/immutable/Set;
-Method	scala/collection/immutable/Set$.empty:()Lscala/collection/immutable/Set;
-Asciz	scala/collection/immutable/Set$EmptySet;
-class	scala/collection/immutable/Set$EmptySet
-Method	scala/collection/immutable/Set$EmptySet."<init>":()V
-Asciz	<A:Ljava/lang/Object;>()Lscala/collection/immutable/Set<TA;>;;
-Asciz	Signature;
-Asciz	canBuildFrom;
-Asciz	()Lscala/collection/generic/CanBuildFrom;;
-Asciz	setCanBuildFrom;
-NameAndType	setCanBuildFrom:()Lscala/collection/generic/CanBuildFrom;
-Method	scala/collection/immutable/Set$.setCanBuildFrom:()Lscala/collection/generic/CanBuildFrom;
-Asciz	<A:Ljava/lang/Object;>()Lscala/collection/generic/CanBuildFrom<Lscala/collection/immutable/Set<*>;TA;Lscala/collection/immutable/Set<TA;>;>;;
 Asciz	Lscala/collection/generic/SetFactory<Lscala/collection/immutable/Set;>;Lscala/ScalaObject;;
 Asciz	InnerClasses;
 Asciz	scala/collection/immutable/Set$Set4;
@@ -97,6 +97,47 @@ public static {};
 	return
   Labels:
 
+public scala.collection.generic.CanBuildFrom canBuildFrom();
+  Signature: ()Lscala/collection/generic/CanBuildFrom;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method setCanBuildFrom:()Lscala/collection/generic/CanBuildFrom;
+	areturn
+  Labels:
+  Signature: length = 0x2
+   00 16 
+
+public scala.collection.immutable.Set empty();
+  Signature: ()Lscala/collection/immutable/Set;
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	new	class scala/collection/immutable/Set$EmptySet
+	dup
+	invokespecial	Method scala/collection/immutable/Set$EmptySet."<init>":()V
+	areturn
+  Labels:
+  Signature: length = 0x2
+   00 1D 
+
+private int hashSeed();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field hashSeed:I
+	ireturn
+  Labels:
+
+public scala.collection.Traversable empty();
+  Signature: ()Lscala/collection/Traversable;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method empty:()Lscala/collection/immutable/Set;
+	areturn
+  Labels:
+
 private scala.collection.immutable.Set$();
   Signature: ()V
   Code:
@@ -111,47 +152,6 @@ private scala.collection.immutable.Set$();
 	putfield	Field hashSeed:I
 	return
   Labels:
-
-public scala.collection.Traversable empty();
-  Signature: ()Lscala/collection/Traversable;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method empty:()Lscala/collection/immutable/Set;
-	areturn
-  Labels:
-
-private int hashSeed();
-  Signature: ()I
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field hashSeed:I
-	ireturn
-  Labels:
-
-public scala.collection.immutable.Set empty();
-  Signature: ()Lscala/collection/immutable/Set;
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	new	class scala/collection/immutable/Set$EmptySet
-	dup
-	invokespecial	Method scala/collection/immutable/Set$EmptySet."<init>":()V
-	areturn
-  Labels:
-  Signature: length = 0x2
-   00 28 
-
-public scala.collection.generic.CanBuildFrom canBuildFrom();
-  Signature: ()Lscala/collection/generic/CanBuildFrom;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method setCanBuildFrom:()Lscala/collection/generic/CanBuildFrom;
-	areturn
-  Labels:
-  Signature: length = 0x2
-   00 2F 
 
 }
 

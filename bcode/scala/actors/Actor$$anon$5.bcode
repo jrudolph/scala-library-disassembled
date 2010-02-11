@@ -12,24 +12,14 @@ Asciz	SourceFile;
 Asciz	Actor.scala;
 Asciz	thisActor$1;
 Asciz	Lscala/actors/Actor;;
-Asciz	<init>;
-Asciz	(Lscala/actors/Actor;Lscala/actors/Actor;)V;
+Asciz	run;
+Asciz	()V;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/actors/Actor$$anon$5;
 class	scala/actors/Actor$$anon$5
 NameAndType	thisActor$1:Lscala/actors/Actor;
 Field	scala/actors/Actor$$anon$5.thisActor$1:Lscala/actors/Actor;
-Asciz	java/util/TimerTask;
-class	java/util/TimerTask
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	java/util/TimerTask."<init>":()V
-Asciz	this;
-Asciz	Lscala/actors/Actor$$anon$5;;
-Asciz	$outer;
-Asciz	LocalVariableTable;
-Asciz	run;
 Asciz	scala/actors/TIMEOUT$;
 class	scala/actors/TIMEOUT$
 Asciz	MODULE$;
@@ -42,6 +32,16 @@ Asciz	send;
 Asciz	(Ljava/lang/Object;Lscala/actors/OutputChannel;)V;
 NameAndType	send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
 InterfaceMethod	scala/actors/Reactor.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
+Asciz	<init>;
+Asciz	(Lscala/actors/Actor;Lscala/actors/Actor;)V;
+Asciz	java/util/TimerTask;
+class	java/util/TimerTask
+NameAndType	"<init>":()V
+Method	java/util/TimerTask."<init>":()V
+Asciz	this;
+Asciz	Lscala/actors/Actor$$anon$5;;
+Asciz	$outer;
+Asciz	LocalVariableTable;
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	scala/actors/Actor;
@@ -51,6 +51,19 @@ Asciz	$anon$5;
 {
 private final scala.actors.Actor thisActor$1;
   Signature: Lscala/actors/Actor;
+
+public void run();
+  Signature: ()V
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	aload_0
+	getfield	Field thisActor$1:Lscala/actors/Actor;
+	getstatic	Field scala/actors/TIMEOUT$.MODULE$:Lscala/actors/TIMEOUT$;
+	aload_0
+	getfield	Field thisActor$1:Lscala/actors/Actor;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
+	return
+  Labels:
 
 public scala.actors.Actor$$anon$5(scala.actors.Actor, scala.actors.Actor);
   Signature: (Lscala/actors/Actor;Lscala/actors/Actor;)V
@@ -68,19 +81,6 @@ public scala.actors.Actor$$anon$5(scala.actors.Actor, scala.actors.Actor);
    0      10      0    this       Lscala/actors/Actor$$anon$5;
    0      10      1    $outer       Lscala/actors/Actor;
 
-
-public void run();
-  Signature: ()V
-  Code:
-   Stack=3, Locals=1, Args_size=1
-	aload_0
-	getfield	Field thisActor$1:Lscala/actors/Actor;
-	getstatic	Field scala/actors/TIMEOUT$.MODULE$:Lscala/actors/TIMEOUT$;
-	aload_0
-	getfield	Field thisActor$1:Lscala/actors/Actor;
-	invokeinterface	InterfaceMethod scala/actors/Reactor.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
-	return
-  Labels:
 
 }
 

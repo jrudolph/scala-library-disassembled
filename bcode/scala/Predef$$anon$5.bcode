@@ -12,29 +12,35 @@ Asciz	SourceFile;
 Asciz	Predef.scala;
 Asciz	xs$2;
 Asciz	Lscala/collection/IndexedSeq;;
-Asciz	<init>;
-Asciz	(Lscala/collection/IndexedSeq;)V;
+Asciz	length;
+Asciz	()I;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/Predef$$anon$5;
 class	scala/Predef$$anon$5
 NameAndType	xs$2:Lscala/collection/IndexedSeq;
 Field	scala/Predef$$anon$5.xs$2:Lscala/collection/IndexedSeq;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	java/lang/Object."<init>":()V
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
-Asciz	;
-String	
-Asciz	scala/collection/TraversableLike;
-class	scala/collection/TraversableLike
-Asciz	mkString;
-Asciz	(Ljava/lang/String;)Ljava/lang/String;;
-NameAndType	mkString:(Ljava/lang/String;)Ljava/lang/String;
-InterfaceMethod	scala/collection/TraversableLike.mkString:(Ljava/lang/String;)Ljava/lang/String;
+Asciz	scala/collection/SeqLike;
+class	scala/collection/SeqLike
+NameAndType	length:()I
+InterfaceMethod	scala/collection/SeqLike.length:()I
+Asciz	charAt;
+Asciz	(I)C;
+Asciz	apply;
+Asciz	(I)Ljava/lang/Object;;
+NameAndType	apply:(I)Ljava/lang/Object;
+InterfaceMethod	scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
+Asciz	scala/runtime/BoxesRunTime;
+class	scala/runtime/BoxesRunTime
+Asciz	unboxToChar;
+Asciz	(Ljava/lang/Object;)C;
+NameAndType	unboxToChar:(Ljava/lang/Object;)C
+Method	scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
+Asciz	this;
+Asciz	Lscala/Predef$$anon$5;;
+Asciz	index;
+Asciz	I;
+Asciz	LocalVariableTable;
 Asciz	subSequence;
 Asciz	(II)Ljava/lang/CharSequence;;
 Asciz	scala/Predef$;
@@ -55,31 +61,25 @@ Asciz	seqToCharSequence;
 Asciz	(Lscala/collection/IndexedSeq;)Ljava/lang/CharSequence;;
 NameAndType	seqToCharSequence:(Lscala/collection/IndexedSeq;)Ljava/lang/CharSequence;
 Method	scala/Predef$.seqToCharSequence:(Lscala/collection/IndexedSeq;)Ljava/lang/CharSequence;
-Asciz	this;
-Asciz	Lscala/Predef$$anon$5;;
 Asciz	start;
-Asciz	I;
 Asciz	end;
-Asciz	LocalVariableTable;
-Asciz	charAt;
-Asciz	(I)C;
-Asciz	scala/collection/SeqLike;
-class	scala/collection/SeqLike
-Asciz	apply;
-Asciz	(I)Ljava/lang/Object;;
-NameAndType	apply:(I)Ljava/lang/Object;
-InterfaceMethod	scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
-Asciz	scala/runtime/BoxesRunTime;
-class	scala/runtime/BoxesRunTime
-Asciz	unboxToChar;
-Asciz	(Ljava/lang/Object;)C;
-NameAndType	unboxToChar:(Ljava/lang/Object;)C
-Method	scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
-Asciz	index;
-Asciz	length;
-Asciz	()I;
-NameAndType	length:()I
-InterfaceMethod	scala/collection/SeqLike.length:()I
+Asciz	toString;
+Asciz	()Ljava/lang/String;;
+Asciz	;
+String	
+Asciz	scala/collection/TraversableLike;
+class	scala/collection/TraversableLike
+Asciz	mkString;
+Asciz	(Ljava/lang/String;)Ljava/lang/String;;
+NameAndType	mkString:(Ljava/lang/String;)Ljava/lang/String;
+InterfaceMethod	scala/collection/TraversableLike.mkString:(Ljava/lang/String;)Ljava/lang/String;
+Asciz	<init>;
+Asciz	(Lscala/collection/IndexedSeq;)V;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	()V;
+NameAndType	"<init>":()V
+Method	java/lang/Object."<init>":()V
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	scala/Predef;
@@ -92,28 +92,32 @@ class	java/lang/CharSequence
 private final scala.collection.IndexedSeq xs$2;
   Signature: Lscala/collection/IndexedSeq;
 
-public scala.Predef$$anon$5(scala.collection.IndexedSeq);
-  Signature: (Lscala/collection/IndexedSeq;)V
+public int length();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field xs$2:Lscala/collection/IndexedSeq;
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
+	ireturn
+  Labels:
+
+public char charAt(int);
+  Signature: (I)C
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	aload_1
-	putfield	Field xs$2:Lscala/collection/IndexedSeq;
-	aload_0
-	invokespecial	Method java/lang/Object."<init>":()V
-	return
-  Labels:
-
-public java.lang.String toString();
-  Signature: ()Ljava/lang/String;
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
 	getfield	Field xs$2:Lscala/collection/IndexedSeq;
-	ldc	String 
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.mkString:(Ljava/lang/String;)Ljava/lang/String;
-	areturn
+	iload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
+	ireturn
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    this       Lscala/Predef$$anon$5;
+   0      14      1    index       I
+
 
 public java.lang.CharSequence subSequence(int, int);
   Signature: (II)Ljava/lang/CharSequence;
@@ -136,31 +140,27 @@ public java.lang.CharSequence subSequence(int, int);
    0      21      2    end       I
 
 
-public char charAt(int);
-  Signature: (I)C
+public java.lang.String toString();
+  Signature: ()Ljava/lang/String;
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	getfield	Field xs$2:Lscala/collection/IndexedSeq;
+	ldc	String 
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.mkString:(Ljava/lang/String;)Ljava/lang/String;
+	areturn
+  Labels:
+
+public scala.Predef$$anon$5(scala.collection.IndexedSeq);
+  Signature: (Lscala/collection/IndexedSeq;)V
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	getfield	Field xs$2:Lscala/collection/IndexedSeq;
-	iload_1
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      14      0    this       Lscala/Predef$$anon$5;
-   0      14      1    index       I
-
-
-public int length();
-  Signature: ()I
-  Code:
-   Stack=1, Locals=1, Args_size=1
+	aload_1
+	putfield	Field xs$2:Lscala/collection/IndexedSeq;
 	aload_0
-	getfield	Field xs$2:Lscala/collection/IndexedSeq;
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	ireturn
+	invokespecial	Method java/lang/Object."<init>":()V
+	return
   Labels:
 
 }

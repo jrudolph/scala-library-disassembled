@@ -6,6 +6,7 @@ public final class scala.None$ extends scala.Option implements scala.ScalaObject
   Signature: length = 0x2
    00 3B 
   InnerClass: 
+   public WithFilter=class scala/Option$WithFilter of class scala/Option
    public abstract $less$colon$less=class scala/Predef$$less$colon$less of class scala/Predef
   minor version: 0
   major version: 49
@@ -23,20 +24,25 @@ class	scala/None$
 Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/None$."<init>":()V
+Asciz	isEmpty;
+Asciz	()Z;
 Asciz	LineNumberTable;
-Asciz	scala/Option;
-class	scala/Option
-Method	scala/Option."<init>":()V
-NameAndType	MODULE$:Lscala/None$;
-Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	get;
-Asciz	()Ljava/lang/Object;;
 Asciz	()Lscala/runtime/Nothing$;;
-NameAndType	get:()Lscala/runtime/Nothing$;
-Method	scala/None$.get:()Lscala/runtime/Nothing$;
-Asciz	readResolve;
-Asciz	canEqual;
-Asciz	(Ljava/lang/Object;)Z;
+Asciz	java/util/NoSuchElementException;
+class	java/util/NoSuchElementException
+Asciz	None.get;
+String	None.get
+Asciz	(Ljava/lang/String;)V;
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
+Asciz	toString;
+Asciz	()Ljava/lang/String;;
+Asciz	None;
+String	None
+Asciz	productPrefix;
+Asciz	productArity;
+Asciz	()I;
 Asciz	productElement;
 Asciz	(I)Ljava/lang/Object;;
 Asciz	java/lang/IndexOutOfBoundsException;
@@ -49,28 +55,26 @@ NameAndType	boxToInteger:(I)Ljava/lang/Integer;
 Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 Asciz	java/lang/Object;
 class	java/lang/Object
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
 NameAndType	toString:()Ljava/lang/String;
 Method	java/lang/Object.toString:()Ljava/lang/String;
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
-Asciz	productArity;
-Asciz	()I;
-Asciz	productPrefix;
-Asciz	None;
-String	None
-Asciz	java/util/NoSuchElementException;
-class	java/util/NoSuchElementException
-Asciz	None.get;
-String	None.get
-Method	java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
-Asciz	isEmpty;
-Asciz	()Z;
+Asciz	canEqual;
+Asciz	(Ljava/lang/Object;)Z;
+Asciz	readResolve;
+Asciz	()Ljava/lang/Object;;
+NameAndType	MODULE$:Lscala/None$;
+Field	scala/None$.MODULE$:Lscala/None$;
+NameAndType	get:()Lscala/runtime/Nothing$;
+Method	scala/None$.get:()Lscala/runtime/Nothing$;
+Asciz	scala/Option;
+class	scala/Option
+Method	scala/Option."<init>":()V
 Asciz	Lscala/Option<Lscala/runtime/Nothing$;>;Lscala/ScalaObject;Lscala/Product;;
 Asciz	Signature;
 Asciz	InnerClasses;
+Asciz	scala/Option$WithFilter;
+class	scala/Option$WithFilter
+Asciz	WithFilter;
 Asciz	scala/Predef$$less$colon$less;
 class	scala/Predef$$less$colon$less
 Asciz	scala/Predef;
@@ -96,40 +100,46 @@ public static {};
 	return
   Labels:
 
-private scala.None$();
-  Signature: ()V
+public boolean isEmpty();
+  Signature: ()Z
   Code:
    Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokespecial	Method scala/Option."<init>":()V
-	aload_0
-	putstatic	Field MODULE$:Lscala/None$;
-	return
+	iconst_1
+	ireturn
   Labels:
 
-public java.lang.Object get();
-  Signature: ()Ljava/lang/Object;
+public scala.runtime.Nothing$ get();
+  Signature: ()Lscala/runtime/Nothing$;
   Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method get:()Lscala/runtime/Nothing$;
+   Stack=3, Locals=1, Args_size=1
+	new	class java/util/NoSuchElementException
+	dup
+	ldc	String None.get
+	invokespecial	Method java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
 
-public java.lang.Object readResolve();
-  Signature: ()Ljava/lang/Object;
+public final java.lang.String toString();
+  Signature: ()Ljava/lang/String;
   Code:
    Stack=1, Locals=1, Args_size=1
-	getstatic	Field MODULE$:Lscala/None$;
+	ldc	String None
 	areturn
   Labels:
 
-public boolean canEqual(java.lang.Object);
-  Signature: (Ljava/lang/Object;)Z
+public java.lang.String productPrefix();
+  Signature: ()Ljava/lang/String;
   Code:
-   Stack=1, Locals=2, Args_size=2
-	aload_1
-	instanceof	class scala/None$
+   Stack=1, Locals=1, Args_size=1
+	ldc	String None
+	areturn
+  Labels:
+
+public int productArity();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	iconst_0
 	ireturn
   Labels:
 
@@ -146,47 +156,41 @@ public java.lang.Object productElement(int);
 	athrow
   Labels:
 
-public int productArity();
-  Signature: ()I
+public boolean canEqual(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=1, Locals=1, Args_size=1
-	iconst_0
+   Stack=1, Locals=2, Args_size=2
+	aload_1
+	instanceof	class scala/None$
 	ireturn
   Labels:
 
-public java.lang.String productPrefix();
-  Signature: ()Ljava/lang/String;
+public java.lang.Object readResolve();
+  Signature: ()Ljava/lang/Object;
   Code:
    Stack=1, Locals=1, Args_size=1
-	ldc	String None
+	getstatic	Field MODULE$:Lscala/None$;
 	areturn
   Labels:
 
-public final java.lang.String toString();
-  Signature: ()Ljava/lang/String;
+public java.lang.Object get();
+  Signature: ()Ljava/lang/Object;
   Code:
    Stack=1, Locals=1, Args_size=1
-	ldc	String None
-	areturn
-  Labels:
-
-public scala.runtime.Nothing$ get();
-  Signature: ()Lscala/runtime/Nothing$;
-  Code:
-   Stack=3, Locals=1, Args_size=1
-	new	class java/util/NoSuchElementException
-	dup
-	ldc	String None.get
-	invokespecial	Method java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
+	aload_0
+	invokevirtual	Method get:()Lscala/runtime/Nothing$;
 	athrow
   Labels:
 
-public boolean isEmpty();
-  Signature: ()Z
+private scala.None$();
+  Signature: ()V
   Code:
    Stack=1, Locals=1, Args_size=1
-	iconst_1
-	ireturn
+	aload_0
+	invokespecial	Method scala/Option."<init>":()V
+	aload_0
+	putstatic	Field MODULE$:Lscala/None$;
+	return
   Labels:
 
 }

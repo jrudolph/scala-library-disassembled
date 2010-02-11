@@ -68,8 +68,10 @@ Asciz	scala$io$BufferedSource$$codec;
 Asciz	Lscala/io/Codec;;
 Asciz	inputStream;
 Asciz	Ljava/io/InputStream;;
-Asciz	<init>;
-Asciz	(Ljava/io/InputStream;Lscala/io/Codec;)V;
+Asciz	reader;
+Asciz	()Ljava/io/InputStreamReader;;
+Asciz	java/io/InputStreamReader;
+class	java/io/InputStreamReader
 Asciz	LineNumberTable;
 Asciz	scala/io/BufferedSource;
 class	scala/io/BufferedSource
@@ -77,13 +79,44 @@ NameAndType	inputStream:Ljava/io/InputStream;
 Field	scala/io/BufferedSource.inputStream:Ljava/io/InputStream;
 NameAndType	scala$io$BufferedSource$$codec:Lscala/io/Codec;
 Field	scala/io/BufferedSource.scala$io$BufferedSource$$codec:Lscala/io/Codec;
+Asciz	scala/io/Codec;
+class	scala/io/Codec
+Asciz	decoder;
+Asciz	()Ljava/nio/charset/CharsetDecoder;;
+NameAndType	decoder:()Ljava/nio/charset/CharsetDecoder;
+Method	scala/io/Codec.decoder:()Ljava/nio/charset/CharsetDecoder;
+Asciz	<init>;
+Asciz	(Ljava/io/InputStream;Ljava/nio/charset/CharsetDecoder;)V;
+NameAndType	"<init>":(Ljava/io/InputStream;Ljava/nio/charset/CharsetDecoder;)V
+Method	java/io/InputStreamReader."<init>":(Ljava/io/InputStream;Ljava/nio/charset/CharsetDecoder;)V
+Asciz	bufferedReader;
+Asciz	()Ljava/io/BufferedReader;;
+Asciz	java/io/BufferedReader;
+class	java/io/BufferedReader
+NameAndType	reader:()Ljava/io/InputStreamReader;
+Method	scala/io/BufferedSource.reader:()Ljava/io/InputStreamReader;
+Asciz	scala/io/Source$;
+class	scala/io/Source$
+Asciz	Lscala/io/Source$;;
+NameAndType	MODULE$:Lscala/io/Source$;
+Field	scala/io/Source$.MODULE$:Lscala/io/Source$;
+Asciz	DefaultBufSize;
+Asciz	()I;
+NameAndType	DefaultBufSize:()I
+Method	scala/io/Source$.DefaultBufSize:()I
+Asciz	(Ljava/io/Reader;I)V;
+NameAndType	"<init>":(Ljava/io/Reader;I)V
+Method	java/io/BufferedReader."<init>":(Ljava/io/Reader;I)V
+Asciz	()Lscala/collection/Iterator;;
+NameAndType	iter:Lscala/collection/Iterator;
+Field	scala/io/BufferedSource.iter:Lscala/collection/Iterator;
+Asciz	()Lscala/collection/Iterator<Ljava/lang/Character;>;;
+Asciz	(Ljava/io/InputStream;Lscala/io/Codec;)V;
 Asciz	scala/io/Source;
 class	scala/io/Source
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	scala/io/Source."<init>":()V
-Asciz	bufferedReader;
-Asciz	()Ljava/io/BufferedReader;;
 NameAndType	bufferedReader:()Ljava/io/BufferedReader;
 Method	scala/io/BufferedSource.bufferedReader:()Ljava/io/BufferedReader;
 Asciz	scala/package$;
@@ -123,45 +156,12 @@ Method	scala/io/BufferedSource$$anonfun$3."<init>":(Lscala/io/BufferedSource;)V
 Asciz	map;
 NameAndType	map:(Lscala/Function1;)Lscala/collection/Iterator;
 InterfaceMethod	scala/collection/Iterator.map:(Lscala/Function1;)Lscala/collection/Iterator;
-NameAndType	iter:Lscala/collection/Iterator;
-Field	scala/io/BufferedSource.iter:Lscala/collection/Iterator;
 Asciz	this;
 Asciz	Lscala/io/BufferedSource;;
 Asciz	codec;
 Asciz	reader$1;
 Asciz	Ljava/io/BufferedReader;;
 Asciz	LocalVariableTable;
-Asciz	()Lscala/collection/Iterator;;
-Asciz	()Lscala/collection/Iterator<Ljava/lang/Character;>;;
-Asciz	java/io/BufferedReader;
-class	java/io/BufferedReader
-Asciz	reader;
-Asciz	()Ljava/io/InputStreamReader;;
-NameAndType	reader:()Ljava/io/InputStreamReader;
-Method	scala/io/BufferedSource.reader:()Ljava/io/InputStreamReader;
-Asciz	scala/io/Source$;
-class	scala/io/Source$
-Asciz	Lscala/io/Source$;;
-NameAndType	MODULE$:Lscala/io/Source$;
-Field	scala/io/Source$.MODULE$:Lscala/io/Source$;
-Asciz	DefaultBufSize;
-Asciz	()I;
-NameAndType	DefaultBufSize:()I
-Method	scala/io/Source$.DefaultBufSize:()I
-Asciz	(Ljava/io/Reader;I)V;
-NameAndType	"<init>":(Ljava/io/Reader;I)V
-Method	java/io/BufferedReader."<init>":(Ljava/io/Reader;I)V
-Asciz	java/io/InputStreamReader;
-class	java/io/InputStreamReader
-Asciz	scala/io/Codec;
-class	scala/io/Codec
-Asciz	decoder;
-Asciz	()Ljava/nio/charset/CharsetDecoder;;
-NameAndType	decoder:()Ljava/nio/charset/CharsetDecoder;
-Method	scala/io/Codec.decoder:()Ljava/nio/charset/CharsetDecoder;
-Asciz	(Ljava/io/InputStream;Ljava/nio/charset/CharsetDecoder;)V;
-NameAndType	"<init>":(Ljava/io/InputStream;Ljava/nio/charset/CharsetDecoder;)V
-Method	java/io/InputStreamReader."<init>":(Ljava/io/InputStream;Ljava/nio/charset/CharsetDecoder;)V
 Asciz	ScalaSig;
 Asciz	InnerClasses;
 Asciz	$anonfun$3;
@@ -191,6 +191,46 @@ public static final scala.io.Codec init$default$2(java.io.InputStream);
 	invokevirtual	Method scala/io/BufferedSource$.init$default$2:(Ljava/io/InputStream;)Lscala/io/Codec;
 	areturn
   Labels:
+
+public java.io.InputStreamReader reader();
+  Signature: ()Ljava/io/InputStreamReader;
+  Code:
+   Stack=4, Locals=1, Args_size=1
+	new	class java/io/InputStreamReader
+	dup
+	aload_0
+	getfield	Field inputStream:Ljava/io/InputStream;
+	aload_0
+	getfield	Field scala$io$BufferedSource$$codec:Lscala/io/Codec;
+	invokevirtual	Method scala/io/Codec.decoder:()Ljava/nio/charset/CharsetDecoder;
+	invokespecial	Method java/io/InputStreamReader."<init>":(Ljava/io/InputStream;Ljava/nio/charset/CharsetDecoder;)V
+	areturn
+  Labels:
+
+public java.io.BufferedReader bufferedReader();
+  Signature: ()Ljava/io/BufferedReader;
+  Code:
+   Stack=4, Locals=1, Args_size=1
+	new	class java/io/BufferedReader
+	dup
+	aload_0
+	invokevirtual	Method reader:()Ljava/io/InputStreamReader;
+	getstatic	Field scala/io/Source$.MODULE$:Lscala/io/Source$;
+	invokevirtual	Method scala/io/Source$.DefaultBufSize:()I
+	invokespecial	Method java/io/BufferedReader."<init>":(Ljava/io/Reader;I)V
+	areturn
+  Labels:
+
+public scala.collection.Iterator iter();
+  Signature: ()Lscala/collection/Iterator;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field iter:Lscala/collection/Iterator;
+	areturn
+  Labels:
+  Signature: length = 0x2
+   00 40 
 
 public scala.io.BufferedSource(java.io.InputStream, scala.io.Codec);
   Signature: (Ljava/io/InputStream;Lscala/io/Codec;)V
@@ -236,46 +276,6 @@ public scala.io.BufferedSource(java.io.InputStream, scala.io.Codec);
    0      68      2    codec       Lscala/io/Codec;
    20      44      3    reader$1       Ljava/io/BufferedReader;
 
-
-public scala.collection.Iterator iter();
-  Signature: ()Lscala/collection/Iterator;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field iter:Lscala/collection/Iterator;
-	areturn
-  Labels:
-  Signature: length = 0x2
-   00 56 
-
-public java.io.BufferedReader bufferedReader();
-  Signature: ()Ljava/io/BufferedReader;
-  Code:
-   Stack=4, Locals=1, Args_size=1
-	new	class java/io/BufferedReader
-	dup
-	aload_0
-	invokevirtual	Method reader:()Ljava/io/InputStreamReader;
-	getstatic	Field scala/io/Source$.MODULE$:Lscala/io/Source$;
-	invokevirtual	Method scala/io/Source$.DefaultBufSize:()I
-	invokespecial	Method java/io/BufferedReader."<init>":(Ljava/io/Reader;I)V
-	areturn
-  Labels:
-
-public java.io.InputStreamReader reader();
-  Signature: ()Ljava/io/InputStreamReader;
-  Code:
-   Stack=4, Locals=1, Args_size=1
-	new	class java/io/InputStreamReader
-	dup
-	aload_0
-	getfield	Field inputStream:Ljava/io/InputStream;
-	aload_0
-	getfield	Field scala$io$BufferedSource$$codec:Lscala/io/Codec;
-	invokevirtual	Method scala/io/Codec.decoder:()Ljava/nio/charset/CharsetDecoder;
-	invokespecial	Method java/io/InputStreamReader."<init>":(Ljava/io/InputStream;Ljava/nio/charset/CharsetDecoder;)V
-	areturn
-  Labels:
 
 }
 

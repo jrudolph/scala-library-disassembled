@@ -91,9 +91,9 @@ public class scala.actors.scheduler.ForkJoinScheduler extends java.lang.Object i
    08 73 6E 61 70 73 68 6F 74 08 07 FFFFFF81 39 00 FFFFFF84 00
    FFFFFF81 16 01 07 72 65 73 74 61 72 74 
   InnerClass: 
-   public final $anon$1=class scala/actors/scheduler/ForkJoinScheduler$$anon$1 of class scala/actors/scheduler/ForkJoinScheduler
-   public final $anon$2=class scala/actors/scheduler/ForkJoinScheduler$$anon$2 of class scala/actors/scheduler/ForkJoinScheduler
    public final $anon$3=class scala/actors/scheduler/ForkJoinScheduler$$anon$3 of class scala/actors/scheduler/ForkJoinScheduler
+   public final $anon$2=class scala/actors/scheduler/ForkJoinScheduler$$anon$2 of class scala/actors/scheduler/ForkJoinScheduler
+   public final $anon$1=class scala/actors/scheduler/ForkJoinScheduler$$anon$1 of class scala/actors/scheduler/ForkJoinScheduler
    public abstract ManagedBlocker=class scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker of class scala/concurrent/forkjoin/ForkJoinPool
   minor version: 0
   major version: 49
@@ -118,120 +118,309 @@ Asciz	Lscala/actors/scheduler/DrainableForkJoinPool;;
 Asciz	daemon;
 Asciz	maxSize;
 Asciz	initCoreSize;
-Asciz	<init>;
-Asciz	(IIZ)V;
+Asciz	()I;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/actors/scheduler/ForkJoinScheduler;
 class	scala/actors/scheduler/ForkJoinScheduler
+NameAndType	activeActors:I
+Field	scala/actors/scheduler/ForkJoinScheduler.activeActors:I
+Asciz	activeActors_$eq;
+Asciz	(I)V;
+Asciz	()Lscala/collection/mutable/HashMap;;
+NameAndType	terminationHandlers:Lscala/collection/mutable/HashMap;
+Field	scala/actors/scheduler/ForkJoinScheduler.terminationHandlers:Lscala/collection/mutable/HashMap;
+Asciz	()Z;
+NameAndType	scala$actors$scheduler$TerminationMonitor$$started:Z
+Field	scala/actors/scheduler/ForkJoinScheduler.scala$actors$scheduler$TerminationMonitor$$started:Z
+Asciz	scala$actors$scheduler$TerminationMonitor$$started_$eq;
+Asciz	(Z)V;
+Asciz	scala$actors$scheduler$TerminationMonitor$_setter_$terminationHandlers_$eq;
+Asciz	(Lscala/collection/mutable/HashMap;)V;
+Asciz	newActor;
+Asciz	(Lscala/actors/Reactor;)V;
+Asciz	scala/actors/scheduler/TerminationMonitor$class;
+class	scala/actors/scheduler/TerminationMonitor$class
+Asciz	(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V;
+NameAndType	newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+Method	scala/actors/scheduler/TerminationMonitor$class.newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+Asciz	this;
+Asciz	Lscala/actors/scheduler/ForkJoinScheduler;;
+Asciz	a;
+Asciz	Lscala/actors/Reactor;;
+Asciz	LocalVariableTable;
+Asciz	onTerminate;
+Asciz	(Lscala/actors/Reactor;Lscala/Function0;)V;
+Asciz	(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V;
+NameAndType	onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+Method	scala/actors/scheduler/TerminationMonitor$class.onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+Asciz	f;
+Asciz	Lscala/Function0;;
+Asciz	terminated;
+NameAndType	terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+Method	scala/actors/scheduler/TerminationMonitor$class.terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+Asciz	allActorsTerminated;
+Asciz	(Lscala/actors/scheduler/TerminationMonitor;)Z;
+NameAndType	allActorsTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+Method	scala/actors/scheduler/TerminationMonitor$class.allActorsTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+Asciz	allTerminated;
+NameAndType	allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+Method	scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+Asciz	Deprecated;
+Asciz	gc;
+Asciz	()V;
+Asciz	(Lscala/actors/scheduler/TerminationMonitor;)V;
+NameAndType	gc:(Lscala/actors/scheduler/TerminationMonitor;)V
+Method	scala/actors/scheduler/TerminationMonitor$class.gc:(Lscala/actors/scheduler/TerminationMonitor;)V
+Asciz	tick;
+Asciz	(Lscala/actors/Actor;)V;
+Asciz	scala/actors/IScheduler$class;
+class	scala/actors/IScheduler$class
+Asciz	(Lscala/actors/IScheduler;Lscala/actors/Actor;)V;
+NameAndType	tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
+Method	scala/actors/IScheduler$class.tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
+Asciz	Lscala/actors/Actor;;
+Asciz	onLockup;
+Asciz	(Lscala/Function0;)V;
+Asciz	(Lscala/actors/IScheduler;Lscala/Function0;)V;
+NameAndType	onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
+Method	scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
+Asciz	handler;
+Asciz	(ILscala/Function0;)V;
+Asciz	(Lscala/actors/IScheduler;ILscala/Function0;)V;
+NameAndType	onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
+Method	scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
+Asciz	millis;
+Asciz	printActorDump;
+Asciz	(Lscala/actors/IScheduler;)V;
+NameAndType	printActorDump:(Lscala/actors/IScheduler;)V
+Method	scala/actors/IScheduler$class.printActorDump:(Lscala/actors/IScheduler;)V
 NameAndType	initCoreSize:I
 Field	scala/actors/scheduler/ForkJoinScheduler.initCoreSize:I
 NameAndType	maxSize:I
 Field	scala/actors/scheduler/ForkJoinScheduler.maxSize:I
-NameAndType	daemon:Z
-Field	scala/actors/scheduler/ForkJoinScheduler.daemon:Z
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	java/lang/Object."<init>":()V
-Asciz	scala/actors/IScheduler$class;
-class	scala/actors/IScheduler$class
-Asciz	$init$;
-Asciz	(Lscala/actors/IScheduler;)V;
-NameAndType	$init$:(Lscala/actors/IScheduler;)V
-Method	scala/actors/IScheduler$class.$init$:(Lscala/actors/IScheduler;)V
-Asciz	scala/actors/scheduler/TerminationMonitor$class;
-class	scala/actors/scheduler/TerminationMonitor$class
-Asciz	(Lscala/actors/scheduler/TerminationMonitor;)V;
-NameAndType	$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
-Method	scala/actors/scheduler/TerminationMonitor$class.$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
-Asciz	makeNewPool;
 Asciz	()Lscala/actors/scheduler/DrainableForkJoinPool;;
-NameAndType	makeNewPool:()Lscala/actors/scheduler/DrainableForkJoinPool;
-Method	scala/actors/scheduler/ForkJoinScheduler.makeNewPool:()Lscala/actors/scheduler/DrainableForkJoinPool;
 NameAndType	pool:Lscala/actors/scheduler/DrainableForkJoinPool;
 Field	scala/actors/scheduler/ForkJoinScheduler.pool:Lscala/actors/scheduler/DrainableForkJoinPool;
-NameAndType	terminating:Z
-Field	scala/actors/scheduler/ForkJoinScheduler.terminating:Z
-NameAndType	snapshoting:Z
-Field	scala/actors/scheduler/ForkJoinScheduler.snapshoting:Z
-NameAndType	drainedTasks:Ljava/util/Collection;
-Field	scala/actors/scheduler/ForkJoinScheduler.drainedTasks:Ljava/util/Collection;
-int	10;
-NameAndType	CHECK_FREQ:I
-Field	scala/actors/scheduler/ForkJoinScheduler.CHECK_FREQ:I
-Asciz	this;
-Asciz	Lscala/actors/scheduler/ForkJoinScheduler;;
-Asciz	LocalVariableTable;
-Asciz	liftedTree1$1;
-Asciz	()I;
-NameAndType	CHECK_FREQ:()I
-Method	scala/actors/scheduler/ForkJoinScheduler.CHECK_FREQ:()I
-Asciz	wait;
-Asciz	(J)V;
-NameAndType	wait:(J)V
-Method	scala/actors/scheduler/ForkJoinScheduler.wait:(J)V
-Asciz	java/lang/InterruptedException;
-class	java/lang/InterruptedException
-Asciz	restart;
-Asciz	()Z;
-NameAndType	snapshoting:()Z
-Method	scala/actors/scheduler/ForkJoinScheduler.snapshoting:()Z
-Asciz	isActive;
-NameAndType	isActive:()Z
-Method	scala/actors/scheduler/ForkJoinScheduler.isActive:()Z
-Asciz	scheduler is still active;
-String	scheduler is still active
-Asciz	java/lang/RuntimeException;
-class	java/lang/RuntimeException
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
-Asciz	snapshoting_$eq;
-Asciz	(Z)V;
-NameAndType	snapshoting_$eq:(Z)V
-Method	scala/actors/scheduler/ForkJoinScheduler.snapshoting_$eq:(Z)V
 Asciz	pool_$eq;
 Asciz	(Lscala/actors/scheduler/DrainableForkJoinPool;)V;
-NameAndType	pool_$eq:(Lscala/actors/scheduler/DrainableForkJoinPool;)V
-Method	scala/actors/scheduler/ForkJoinScheduler.pool_$eq:(Lscala/actors/scheduler/DrainableForkJoinPool;)V
+NameAndType	terminating:Z
+Field	scala/actors/scheduler/ForkJoinScheduler.terminating:Z
+Asciz	terminating_$eq;
+NameAndType	snapshoting:Z
+Field	scala/actors/scheduler/ForkJoinScheduler.snapshoting:Z
+Asciz	snapshoting_$eq;
 Asciz	()Ljava/util/Collection;;
-NameAndType	drainedTasks:()Ljava/util/Collection;
-Method	scala/actors/scheduler/ForkJoinScheduler.drainedTasks:()Ljava/util/Collection;
-Asciz	java/util/Collection;
-class	java/util/Collection
-Asciz	iterator;
-Asciz	()Ljava/util/Iterator;;
-NameAndType	iterator:()Ljava/util/Iterator;
-InterfaceMethod	java/util/Collection.iterator:()Ljava/util/Iterator;
-Asciz	java/util/Iterator;
-class	java/util/Iterator
-Asciz	hasNext;
-NameAndType	hasNext:()Z
-InterfaceMethod	java/util/Iterator.hasNext:()Z
-NameAndType	pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
-Method	scala/actors/scheduler/ForkJoinScheduler.pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
-Asciz	next;
-Asciz	()Ljava/lang/Object;;
-NameAndType	next:()Ljava/lang/Object;
-InterfaceMethod	java/util/Iterator.next:()Ljava/lang/Object;
-Asciz	scala/concurrent/forkjoin/ForkJoinTask;
-class	scala/concurrent/forkjoin/ForkJoinTask
+NameAndType	drainedTasks:Ljava/util/Collection;
+Field	scala/actors/scheduler/ForkJoinScheduler.drainedTasks:Ljava/util/Collection;
+Asciz	()Ljava/util/Collection<Lscala/concurrent/forkjoin/ForkJoinTask<*>;>;;
+Asciz	drainedTasks_$eq;
+Asciz	(Ljava/util/Collection;)V;
+Asciz	(Ljava/util/Collection<Lscala/concurrent/forkjoin/ForkJoinTask<*>;>;)V;
+NameAndType	CHECK_FREQ:I
+Field	scala/actors/scheduler/ForkJoinScheduler.CHECK_FREQ:I
+Asciz	<init>;
+Asciz	scala/actors/scheduler/ThreadPoolConfig$;
+class	scala/actors/scheduler/ThreadPoolConfig$
+Asciz	MODULE$;
+Asciz	Lscala/actors/scheduler/ThreadPoolConfig$;;
+NameAndType	MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
+Field	scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
+Asciz	corePoolSize;
+NameAndType	corePoolSize:()I
+Method	scala/actors/scheduler/ThreadPoolConfig$.corePoolSize:()I
+Asciz	maxPoolSize;
+NameAndType	maxPoolSize:()I
+Method	scala/actors/scheduler/ThreadPoolConfig$.maxPoolSize:()I
+Asciz	(IIZ)V;
+NameAndType	"<init>":(IIZ)V
+Method	scala/actors/scheduler/ForkJoinScheduler."<init>":(IIZ)V
+Asciz	d;
+NameAndType	"<init>":(Z)V
+Method	scala/actors/scheduler/ForkJoinScheduler."<init>":(Z)V
+Asciz	makeNewPool;
 Asciz	scala/actors/scheduler/DrainableForkJoinPool;
 class	scala/actors/scheduler/DrainableForkJoinPool
-Asciz	execute;
-Asciz	(Lscala/concurrent/forkjoin/ForkJoinTask;)V;
-NameAndType	execute:(Lscala/concurrent/forkjoin/ForkJoinTask;)V
-Method	scala/actors/scheduler/DrainableForkJoinPool.execute:(Lscala/concurrent/forkjoin/ForkJoinTask;)V
+NameAndType	"<init>":()V
+Method	scala/actors/scheduler/DrainableForkJoinPool."<init>":()V
+Asciz	setAsyncMode;
+Asciz	(Z)Z;
+NameAndType	setAsyncMode:(Z)Z
+Method	scala/actors/scheduler/DrainableForkJoinPool.setAsyncMode:(Z)Z
+NameAndType	initCoreSize:()I
+Method	scala/actors/scheduler/ForkJoinScheduler.initCoreSize:()I
+Asciz	setParallelism;
+NameAndType	setParallelism:(I)V
+Method	scala/actors/scheduler/DrainableForkJoinPool.setParallelism:(I)V
+NameAndType	maxSize:()I
+Method	scala/actors/scheduler/ForkJoinScheduler.maxSize:()I
+Asciz	setMaximumPoolSize;
+NameAndType	setMaximumPoolSize:(I)V
+Method	scala/actors/scheduler/DrainableForkJoinPool.setMaximumPoolSize:(I)V
+Asciz	scala/actors/Debug$;
+class	scala/actors/Debug$
+Asciz	Lscala/actors/Debug$;;
+NameAndType	MODULE$:Lscala/actors/Debug$;
+Field	scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+Asciz	scala/collection/mutable/StringBuilder;
+class	scala/collection/mutable/StringBuilder
+Method	scala/collection/mutable/StringBuilder."<init>":()V
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	any2stringadd;
+Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
+NameAndType	any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+Method	scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+Asciz	: parallelism ;
+String	: parallelism 
+Asciz	scala/runtime/StringAdd;
+class	scala/runtime/StringAdd
+Asciz	$plus;
+Asciz	(Ljava/lang/String;)Ljava/lang/String;;
+NameAndType	$plus:(Ljava/lang/String;)Ljava/lang/String;
+Method	scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+Asciz	append;
+Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
+NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+Asciz	getParallelism;
+NameAndType	getParallelism:()I
+Method	scala/actors/scheduler/DrainableForkJoinPool.getParallelism:()I
+Asciz	scala/runtime/BoxesRunTime;
+class	scala/runtime/BoxesRunTime
+Asciz	boxToInteger;
+Asciz	(I)Ljava/lang/Integer;;
+NameAndType	boxToInteger:(I)Ljava/lang/Integer;
+Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+Asciz	toString;
+Asciz	()Ljava/lang/String;;
+NameAndType	toString:()Ljava/lang/String;
+Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+Asciz	info;
+Asciz	(Ljava/lang/String;)V;
+NameAndType	info:(Ljava/lang/String;)V
+Method	scala/actors/Debug$.info:(Ljava/lang/String;)V
+Asciz	: max pool size ;
+String	: max pool size 
+Asciz	getMaximumPoolSize;
+NameAndType	getMaximumPoolSize:()I
+Method	scala/actors/scheduler/DrainableForkJoinPool.getMaximumPoolSize:()I
+Asciz	p;
 Asciz	start;
+Asciz	java/lang/Thread;
+class	java/lang/Thread
+Asciz	(Ljava/lang/Runnable;)V;
+NameAndType	"<init>":(Ljava/lang/Runnable;)V
+Method	java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+NameAndType	daemon:Z
+Field	scala/actors/scheduler/ForkJoinScheduler.daemon:Z
+Asciz	setDaemon;
+NameAndType	setDaemon:(Z)V
+Method	java/lang/Thread.setDaemon:(Z)V
+Asciz	ForkJoinScheduler;
+String	ForkJoinScheduler
+Asciz	setName;
+NameAndType	setName:(Ljava/lang/String;)V
+Method	java/lang/Thread.setName:(Ljava/lang/String;)V
 NameAndType	start:()V
-Method	scala/actors/scheduler/ForkJoinScheduler.start:()V
-Asciz	snapshot has not been invoked;
-String	snapshot has not been invoked
-Asciz	iter;
-Asciz	Ljava/util/Iterator;;
-Asciz	snapshot;
+Method	java/lang/Thread.start:()V
+Asciz	(Ljava/lang/Object;)V;
+NameAndType	"<init>":(Ljava/lang/Object;)V
+Method	scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+Asciz	: could not create scheduler thread: ;
+String	: could not create scheduler thread: 
+Asciz	java/lang/Exception;
+class	java/lang/Exception
+Asciz	t;
+Asciz	Ljava/lang/Thread;;
+Asciz	run;
+Asciz	liftedTree1$1;
+NameAndType	liftedTree1$1:()V
+Method	scala/actors/scheduler/ForkJoinScheduler.liftedTree1$1:()V
+NameAndType	terminating:()Z
+Method	scala/actors/scheduler/ForkJoinScheduler.terminating:()Z
+Asciz	scala/actors/scheduler/QuitException;
+class	scala/actors/scheduler/QuitException
+Method	scala/actors/scheduler/QuitException."<init>":()V
+Asciz	scala/actors/scheduler/TerminationMonitor;
+class	scala/actors/scheduler/TerminationMonitor
+NameAndType	allActorsTerminated:()Z
+InterfaceMethod	scala/actors/scheduler/TerminationMonitor.allActorsTerminated:()Z
+Asciz	: all actors terminated;
+String	: all actors terminated
+NameAndType	terminating_$eq:(Z)V
+Method	scala/actors/scheduler/ForkJoinScheduler.terminating_$eq:(Z)V
+NameAndType	snapshoting:()Z
+Method	scala/actors/scheduler/ForkJoinScheduler.snapshoting:()Z
+NameAndType	pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+Method	scala/actors/scheduler/ForkJoinScheduler.pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+Asciz	isQuiescent;
+NameAndType	isQuiescent:()Z
+Method	scala/actors/scheduler/DrainableForkJoinPool.isQuiescent:()Z
+Asciz	java/util/ArrayList;
+class	java/util/ArrayList
+Method	java/util/ArrayList."<init>":()V
+Asciz	drainTasksTo;
+Asciz	(Ljava/util/Collection;)I;
+NameAndType	drainTasksTo:(Ljava/util/Collection;)I
+Method	scala/actors/scheduler/DrainableForkJoinPool.drainTasksTo:(Ljava/util/Collection;)I
+Asciz	: drained ;
+String	: drained 
+Asciz	 tasks;
+String	 tasks
+NameAndType	drainedTasks_$eq:(Ljava/util/Collection;)V
+Method	scala/actors/scheduler/ForkJoinScheduler.drainedTasks_$eq:(Ljava/util/Collection;)V
+NameAndType	gc:()V
+InterfaceMethod	scala/actors/scheduler/TerminationMonitor.gc:()V
+Asciz	: initiating shutdown...;
+String	: initiating shutdown...
+Asciz	shutdown;
+NameAndType	shutdown:()V
+Method	scala/actors/scheduler/DrainableForkJoinPool.shutdown:()V
+long	10l;
+Asciz	sleep;
+Asciz	(J)V;
+NameAndType	sleep:(J)V
+Method	java/lang/Thread.sleep:(J)V
+Asciz	java/lang/InterruptedException;
+class	java/lang/InterruptedException
+Asciz	num;
+Asciz	list;
+Asciz	Ljava/util/ArrayList;;
+Asciz	execute;
+NameAndType	execute:(Ljava/lang/Runnable;)V
+Method	scala/actors/scheduler/DrainableForkJoinPool.execute:(Ljava/lang/Runnable;)V
+Asciz	task;
+Asciz	Ljava/lang/Runnable;;
+Asciz	executeFromActor;
+Asciz	scala/actors/scheduler/ForkJoinScheduler$$anon$1;
+class	scala/actors/scheduler/ForkJoinScheduler$$anon$1
+Asciz	(Lscala/actors/scheduler/ForkJoinScheduler;Ljava/lang/Runnable;)V;
+NameAndType	"<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Ljava/lang/Runnable;)V
+Method	scala/actors/scheduler/ForkJoinScheduler$$anon$1."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Ljava/lang/Runnable;)V
+Asciz	scala/concurrent/forkjoin/RecursiveAction;
+class	scala/concurrent/forkjoin/RecursiveAction
+Asciz	fork;
+NameAndType	fork:()V
+Method	scala/concurrent/forkjoin/RecursiveAction.fork:()V
+Asciz	task$1;
+Asciz	recAction;
+Asciz	Lscala/concurrent/forkjoin/RecursiveAction;;
+Asciz	scala/actors/scheduler/ForkJoinScheduler$$anon$2;
+class	scala/actors/scheduler/ForkJoinScheduler$$anon$2
+Asciz	(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/Function0;)V;
+NameAndType	"<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/Function0;)V
+Method	scala/actors/scheduler/ForkJoinScheduler$$anon$2."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/Function0;)V
+Method	scala/actors/scheduler/ForkJoinScheduler.execute:(Ljava/lang/Runnable;)V
+Asciz	fun$1;
+Asciz	(Lscala/Function0<Ljava/lang/Object;>;)V;
+Asciz	isActive;
+Asciz	isShutdown;
+NameAndType	isShutdown:()Z
+Method	scala/actors/scheduler/DrainableForkJoinPool.isShutdown:()Z
 Asciz	managedBlock;
 Asciz	(Lscala/concurrent/ManagedBlocker;)V;
 Asciz	scala/actors/scheduler/ForkJoinScheduler$$anon$3;
@@ -246,257 +435,68 @@ NameAndType	managedBlock:(Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker
 Method	scala/concurrent/forkjoin/ForkJoinPool.managedBlock:(Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;Z)V
 Asciz	blocker$1;
 Asciz	Lscala/concurrent/ManagedBlocker;;
-NameAndType	terminating:()Z
-Method	scala/actors/scheduler/ForkJoinScheduler.terminating:()Z
-Asciz	isShutdown;
-NameAndType	isShutdown:()Z
-Method	scala/actors/scheduler/DrainableForkJoinPool.isShutdown:()Z
-Asciz	shutdown;
-Asciz	terminating_$eq;
-NameAndType	terminating_$eq:(Z)V
-Method	scala/actors/scheduler/ForkJoinScheduler.terminating_$eq:(Z)V
-Asciz	(Lscala/Function0;)V;
-Asciz	scala/actors/scheduler/ForkJoinScheduler$$anon$2;
-class	scala/actors/scheduler/ForkJoinScheduler$$anon$2
-Asciz	(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/Function0;)V;
-NameAndType	"<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/Function0;)V
-Method	scala/actors/scheduler/ForkJoinScheduler$$anon$2."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/Function0;)V
-Asciz	(Ljava/lang/Runnable;)V;
-NameAndType	execute:(Ljava/lang/Runnable;)V
-Method	scala/actors/scheduler/ForkJoinScheduler.execute:(Ljava/lang/Runnable;)V
-Asciz	fun$1;
-Asciz	Lscala/Function0;;
-Asciz	(Lscala/Function0<Ljava/lang/Object;>;)V;
-Asciz	executeFromActor;
-Asciz	scala/actors/scheduler/ForkJoinScheduler$$anon$1;
-class	scala/actors/scheduler/ForkJoinScheduler$$anon$1
-Asciz	(Lscala/actors/scheduler/ForkJoinScheduler;Ljava/lang/Runnable;)V;
-NameAndType	"<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Ljava/lang/Runnable;)V
-Method	scala/actors/scheduler/ForkJoinScheduler$$anon$1."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Ljava/lang/Runnable;)V
-Asciz	scala/concurrent/forkjoin/RecursiveAction;
-class	scala/concurrent/forkjoin/RecursiveAction
-Asciz	fork;
-NameAndType	fork:()V
-Method	scala/concurrent/forkjoin/RecursiveAction.fork:()V
-Asciz	task$1;
-Asciz	Ljava/lang/Runnable;;
-Asciz	recAction;
-Asciz	Lscala/concurrent/forkjoin/RecursiveAction;;
-Method	scala/actors/scheduler/DrainableForkJoinPool.execute:(Ljava/lang/Runnable;)V
-Asciz	task;
-Asciz	run;
-NameAndType	liftedTree1$1:()V
-Method	scala/actors/scheduler/ForkJoinScheduler.liftedTree1$1:()V
-Asciz	scala/actors/scheduler/QuitException;
-class	scala/actors/scheduler/QuitException
-Method	scala/actors/scheduler/QuitException."<init>":()V
-Asciz	scala/actors/scheduler/TerminationMonitor;
-class	scala/actors/scheduler/TerminationMonitor
-Asciz	allActorsTerminated;
-NameAndType	allActorsTerminated:()Z
-InterfaceMethod	scala/actors/scheduler/TerminationMonitor.allActorsTerminated:()Z
-Asciz	scala/actors/Debug$;
-class	scala/actors/Debug$
-Asciz	MODULE$;
-Asciz	Lscala/actors/Debug$;;
-NameAndType	MODULE$:Lscala/actors/Debug$;
-Field	scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
-Asciz	scala/runtime/StringAdd;
-class	scala/runtime/StringAdd
-Asciz	(Ljava/lang/Object;)V;
-NameAndType	"<init>":(Ljava/lang/Object;)V
-Method	scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
-Asciz	: all actors terminated;
-String	: all actors terminated
-Asciz	$plus;
-Asciz	(Ljava/lang/String;)Ljava/lang/String;;
-NameAndType	$plus:(Ljava/lang/String;)Ljava/lang/String;
-Method	scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
-Asciz	info;
-NameAndType	info:(Ljava/lang/String;)V
-Method	scala/actors/Debug$.info:(Ljava/lang/String;)V
-Asciz	isQuiescent;
-NameAndType	isQuiescent:()Z
-Method	scala/actors/scheduler/DrainableForkJoinPool.isQuiescent:()Z
-Asciz	java/util/ArrayList;
-class	java/util/ArrayList
-Method	java/util/ArrayList."<init>":()V
-Asciz	drainTasksTo;
-Asciz	(Ljava/util/Collection;)I;
-NameAndType	drainTasksTo:(Ljava/util/Collection;)I
-Method	scala/actors/scheduler/DrainableForkJoinPool.drainTasksTo:(Ljava/util/Collection;)I
-Asciz	scala/collection/mutable/StringBuilder;
-class	scala/collection/mutable/StringBuilder
-Method	scala/collection/mutable/StringBuilder."<init>":()V
-Asciz	: drained ;
-String	: drained 
-Asciz	append;
-Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
-NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-Asciz	scala/runtime/BoxesRunTime;
-class	scala/runtime/BoxesRunTime
-Asciz	boxToInteger;
-Asciz	(I)Ljava/lang/Integer;;
-NameAndType	boxToInteger:(I)Ljava/lang/Integer;
-Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-Asciz	 tasks;
-String	 tasks
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
-NameAndType	toString:()Ljava/lang/String;
-Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-Asciz	drainedTasks_$eq;
-Asciz	(Ljava/util/Collection;)V;
-NameAndType	drainedTasks_$eq:(Ljava/util/Collection;)V
-Method	scala/actors/scheduler/ForkJoinScheduler.drainedTasks_$eq:(Ljava/util/Collection;)V
-Asciz	gc;
-NameAndType	gc:()V
-InterfaceMethod	scala/actors/scheduler/TerminationMonitor.gc:()V
-Asciz	: initiating shutdown...;
-String	: initiating shutdown...
-NameAndType	shutdown:()V
-Method	scala/actors/scheduler/DrainableForkJoinPool.shutdown:()V
-long	10l;
-Asciz	java/lang/Thread;
-class	java/lang/Thread
-Asciz	sleep;
-NameAndType	sleep:(J)V
-Method	java/lang/Thread.sleep:(J)V
-Asciz	num;
-Asciz	list;
-Asciz	Ljava/util/ArrayList;;
-NameAndType	"<init>":(Ljava/lang/Runnable;)V
-Method	java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
-Asciz	setDaemon;
-NameAndType	setDaemon:(Z)V
-Method	java/lang/Thread.setDaemon:(Z)V
-Asciz	ForkJoinScheduler;
-String	ForkJoinScheduler
-Asciz	setName;
-NameAndType	setName:(Ljava/lang/String;)V
-Method	java/lang/Thread.setName:(Ljava/lang/String;)V
-Method	java/lang/Thread.start:()V
-Asciz	: could not create scheduler thread: ;
-String	: could not create scheduler thread: 
-Asciz	java/lang/Exception;
-class	java/lang/Exception
-Asciz	t;
-Asciz	Ljava/lang/Thread;;
-Method	scala/actors/scheduler/DrainableForkJoinPool."<init>":()V
-Asciz	setAsyncMode;
-Asciz	(Z)Z;
-NameAndType	setAsyncMode:(Z)Z
-Method	scala/actors/scheduler/DrainableForkJoinPool.setAsyncMode:(Z)Z
-NameAndType	initCoreSize:()I
-Method	scala/actors/scheduler/ForkJoinScheduler.initCoreSize:()I
-Asciz	setParallelism;
-Asciz	(I)V;
-NameAndType	setParallelism:(I)V
-Method	scala/actors/scheduler/DrainableForkJoinPool.setParallelism:(I)V
-NameAndType	maxSize:()I
-Method	scala/actors/scheduler/ForkJoinScheduler.maxSize:()I
-Asciz	setMaximumPoolSize;
-NameAndType	setMaximumPoolSize:(I)V
-Method	scala/actors/scheduler/DrainableForkJoinPool.setMaximumPoolSize:(I)V
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	any2stringadd;
-Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
-NameAndType	any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
-Method	scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
-Asciz	: parallelism ;
-String	: parallelism 
-Asciz	getParallelism;
-NameAndType	getParallelism:()I
-Method	scala/actors/scheduler/DrainableForkJoinPool.getParallelism:()I
-Asciz	: max pool size ;
-String	: max pool size 
-Asciz	getMaximumPoolSize;
-NameAndType	getMaximumPoolSize:()I
-Method	scala/actors/scheduler/DrainableForkJoinPool.getMaximumPoolSize:()I
-Asciz	p;
-NameAndType	"<init>":(Z)V
-Method	scala/actors/scheduler/ForkJoinScheduler."<init>":(Z)V
-Asciz	scala/actors/scheduler/ThreadPoolConfig$;
-class	scala/actors/scheduler/ThreadPoolConfig$
-Asciz	Lscala/actors/scheduler/ThreadPoolConfig$;;
-NameAndType	MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
-Field	scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
-Asciz	corePoolSize;
-NameAndType	corePoolSize:()I
-Method	scala/actors/scheduler/ThreadPoolConfig$.corePoolSize:()I
-Asciz	maxPoolSize;
-NameAndType	maxPoolSize:()I
-Method	scala/actors/scheduler/ThreadPoolConfig$.maxPoolSize:()I
-NameAndType	"<init>":(IIZ)V
-Method	scala/actors/scheduler/ForkJoinScheduler."<init>":(IIZ)V
-Asciz	d;
-Asciz	(Ljava/util/Collection<Lscala/concurrent/forkjoin/ForkJoinTask<*>;>;)V;
-Asciz	()Ljava/util/Collection<Lscala/concurrent/forkjoin/ForkJoinTask<*>;>;;
-Asciz	printActorDump;
-NameAndType	printActorDump:(Lscala/actors/IScheduler;)V
-Method	scala/actors/IScheduler$class.printActorDump:(Lscala/actors/IScheduler;)V
-Asciz	Deprecated;
-Asciz	onLockup;
-Asciz	(ILscala/Function0;)V;
-Asciz	(Lscala/actors/IScheduler;ILscala/Function0;)V;
-NameAndType	onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
-Method	scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
-Asciz	millis;
-Asciz	handler;
-Asciz	(Lscala/actors/IScheduler;Lscala/Function0;)V;
-NameAndType	onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
-Method	scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
-Asciz	tick;
-Asciz	(Lscala/actors/Actor;)V;
-Asciz	(Lscala/actors/IScheduler;Lscala/actors/Actor;)V;
-NameAndType	tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
-Method	scala/actors/IScheduler$class.tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
-Asciz	a;
-Asciz	Lscala/actors/Actor;;
-NameAndType	gc:(Lscala/actors/scheduler/TerminationMonitor;)V
-Method	scala/actors/scheduler/TerminationMonitor$class.gc:(Lscala/actors/scheduler/TerminationMonitor;)V
-Asciz	allTerminated;
-Asciz	(Lscala/actors/scheduler/TerminationMonitor;)Z;
-NameAndType	allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
-Method	scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
-NameAndType	allActorsTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
-Method	scala/actors/scheduler/TerminationMonitor$class.allActorsTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
-Asciz	terminated;
-Asciz	(Lscala/actors/Reactor;)V;
-Asciz	(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V;
-NameAndType	terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
-Method	scala/actors/scheduler/TerminationMonitor$class.terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
-Asciz	Lscala/actors/Reactor;;
-Asciz	onTerminate;
-Asciz	(Lscala/actors/Reactor;Lscala/Function0;)V;
-Asciz	(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V;
-NameAndType	onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
-Method	scala/actors/scheduler/TerminationMonitor$class.onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
-Asciz	f;
-Asciz	newActor;
-NameAndType	newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
-Method	scala/actors/scheduler/TerminationMonitor$class.newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
-Asciz	scala$actors$scheduler$TerminationMonitor$_setter_$terminationHandlers_$eq;
-Asciz	(Lscala/collection/mutable/HashMap;)V;
-NameAndType	terminationHandlers:Lscala/collection/mutable/HashMap;
-Field	scala/actors/scheduler/ForkJoinScheduler.terminationHandlers:Lscala/collection/mutable/HashMap;
-Asciz	scala$actors$scheduler$TerminationMonitor$$started_$eq;
-NameAndType	scala$actors$scheduler$TerminationMonitor$$started:Z
-Field	scala/actors/scheduler/ForkJoinScheduler.scala$actors$scheduler$TerminationMonitor$$started:Z
-Asciz	()Lscala/collection/mutable/HashMap;;
-Asciz	activeActors_$eq;
-NameAndType	activeActors:I
-Field	scala/actors/scheduler/ForkJoinScheduler.activeActors:I
+Asciz	snapshot;
+NameAndType	snapshoting_$eq:(Z)V
+Method	scala/actors/scheduler/ForkJoinScheduler.snapshoting_$eq:(Z)V
+Asciz	restart;
+NameAndType	isActive:()Z
+Method	scala/actors/scheduler/ForkJoinScheduler.isActive:()Z
+Asciz	scheduler is still active;
+String	scheduler is still active
+Asciz	java/lang/RuntimeException;
+class	java/lang/RuntimeException
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+NameAndType	makeNewPool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+Method	scala/actors/scheduler/ForkJoinScheduler.makeNewPool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+NameAndType	pool_$eq:(Lscala/actors/scheduler/DrainableForkJoinPool;)V
+Method	scala/actors/scheduler/ForkJoinScheduler.pool_$eq:(Lscala/actors/scheduler/DrainableForkJoinPool;)V
+NameAndType	drainedTasks:()Ljava/util/Collection;
+Method	scala/actors/scheduler/ForkJoinScheduler.drainedTasks:()Ljava/util/Collection;
+Asciz	java/util/Collection;
+class	java/util/Collection
+Asciz	iterator;
+Asciz	()Ljava/util/Iterator;;
+NameAndType	iterator:()Ljava/util/Iterator;
+InterfaceMethod	java/util/Collection.iterator:()Ljava/util/Iterator;
+Asciz	java/util/Iterator;
+class	java/util/Iterator
+Asciz	hasNext;
+NameAndType	hasNext:()Z
+InterfaceMethod	java/util/Iterator.hasNext:()Z
+Asciz	next;
+Asciz	()Ljava/lang/Object;;
+NameAndType	next:()Ljava/lang/Object;
+InterfaceMethod	java/util/Iterator.next:()Ljava/lang/Object;
+Asciz	scala/concurrent/forkjoin/ForkJoinTask;
+class	scala/concurrent/forkjoin/ForkJoinTask
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinTask;)V;
+NameAndType	execute:(Lscala/concurrent/forkjoin/ForkJoinTask;)V
+Method	scala/actors/scheduler/DrainableForkJoinPool.execute:(Lscala/concurrent/forkjoin/ForkJoinTask;)V
+Method	scala/actors/scheduler/ForkJoinScheduler.start:()V
+Asciz	snapshot has not been invoked;
+String	snapshot has not been invoked
+Asciz	iter;
+Asciz	Ljava/util/Iterator;;
+NameAndType	CHECK_FREQ:()I
+Method	scala/actors/scheduler/ForkJoinScheduler.CHECK_FREQ:()I
+Asciz	wait;
+NameAndType	wait:(J)V
+Method	scala/actors/scheduler/ForkJoinScheduler.wait:(J)V
+Asciz	java/lang/Object;
+class	java/lang/Object
+Method	java/lang/Object."<init>":()V
+Asciz	$init$;
+NameAndType	$init$:(Lscala/actors/IScheduler;)V
+Method	scala/actors/IScheduler$class.$init$:(Lscala/actors/IScheduler;)V
+NameAndType	$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+Method	scala/actors/scheduler/TerminationMonitor$class.$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+int	10;
 Asciz	ScalaSig;
 Asciz	InnerClasses;
-Asciz	$anon$1;
-Asciz	$anon$2;
 Asciz	$anon$3;
+Asciz	$anon$2;
+Asciz	$anon$1;
 Asciz	scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;
 class	scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker
 Asciz	ManagedBlocker;
@@ -543,297 +543,445 @@ private final int maxSize;
 private final int initCoreSize;
   Signature: I
 
-public scala.actors.scheduler.ForkJoinScheduler(int, int, boolean);
-  Signature: (IIZ)V
+public int activeActors();
+  Signature: ()I
   Code:
-   Stack=2, Locals=4, Args_size=4
+   Stack=1, Locals=1, Args_size=1
 	aload_0
-	iload_1
-	putfield	Field initCoreSize:I
-	aload_0
-	iload_2
-	putfield	Field maxSize:I
-	aload_0
-	iload_3
-	putfield	Field daemon:Z
-	aload_0
-	invokespecial	Method java/lang/Object."<init>":()V
-	aload_0
-	invokestatic	Method scala/actors/IScheduler$class.$init$:(Lscala/actors/IScheduler;)V
-	aload_0
-	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
-	aload_0
-	aload_0
-	invokespecial	Method makeNewPool:()Lscala/actors/scheduler/DrainableForkJoinPool;
-	putfield	Field pool:Lscala/actors/scheduler/DrainableForkJoinPool;
-	aload_0
-	iconst_0
-	putfield	Field terminating:Z
-	aload_0
-	iconst_0
-	putfield	Field snapshoting:Z
-	aload_0
-	aconst_null
-	putfield	Field drainedTasks:Ljava/util/Collection;
-	aload_0
-	ldc	int 10
-	putfield	Field CHECK_FREQ:I
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      57      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   0      57      1    initCoreSize       I
-   0      57      2    maxSize       I
-   0      57      3    daemon       Z
-
-
-private final void liftedTree1$1();
-  Signature: ()V
-  Code:
-   Stack=3, Locals=1, Args_size=1
-	aload_0
-	aload_0
-	invokevirtual	Method CHECK_FREQ:()I
-	i2l
-	invokevirtual	Method wait:(J)V
-	goto	l1 // return
-	pop
-l1	return
-  Labels:
-   	l1 = 13 // return
-  Exception table:
-   from   to  target type
-     0    12    12   Class java/lang/InterruptedException
-
-
-public void restart();
-  Signature: ()V
-  Code:
-   Stack=3, Locals=4, Args_size=1
-	aload_0
-	dup
-	pop
-	monitorenter
-	aload_0
-	invokespecial	Method snapshoting:()Z
-	ifeq	l1 // ldc
-	aload_0
-	invokevirtual	Method isActive:()Z
-	ifeq	l2 // aload_0
-	ldc	String scheduler is still active
-	astore_1
-	new	class java/lang/RuntimeException
-	dup
-	aload_1
-	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
-	athrow
-l2	aload_0
-	iconst_0
-	invokespecial	Method snapshoting_$eq:(Z)V
-	aload_0
-	aload_0
-	invokespecial	Method makeNewPool:()Lscala/actors/scheduler/DrainableForkJoinPool;
-	invokespecial	Method pool_$eq:(Lscala/actors/scheduler/DrainableForkJoinPool;)V
-	aload_0
-	monitorexit
-	aload_0
-	invokespecial	Method drainedTasks:()Ljava/util/Collection;
-	invokeinterface	InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
-	astore_2
-l4	aload_2
-	invokeinterface	InterfaceMethod java/util/Iterator.hasNext:()Z
-	ifeq	l3 // aload_0
-	aload_0
-	invokespecial	Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
-	aload_2
-	invokeinterface	InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
-	checkcast	class scala/concurrent/forkjoin/ForkJoinTask
-	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.execute:(Lscala/concurrent/forkjoin/ForkJoinTask;)V
-	goto	l4 // aload_2
-l3	aload_0
-	invokevirtual	Method start:()V
-	return
-l1	ldc	String snapshot has not been invoked
-	astore_3
-	new	class java/lang/RuntimeException
-	dup
-	aload_3
-	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
-	athrow
-	aload_0
-	monitorexit
-	athrow
-  Labels:
-   	l2 = 30 // aload_0
-   	l4 = 55 // aload_2
-   	l3 = 83 // aload_0
-   	l1 = 88 // ldc
-  Exception table:
-   from   to  target type
-     4    45   100   any
-    88   100   100   any
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      103      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   55      32      2    iter       Ljava/util/Iterator;
-
-
-public void snapshot();
-  Signature: ()V
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	dup
-	pop
-	monitorenter
-	aload_0
-	iconst_1
-	invokespecial	Method snapshoting_$eq:(Z)V
-	aload_0
-	monitorexit
-	return
-	aload_0
-	monitorexit
-	athrow
-  Labels:
-  Exception table:
-   from   to  target type
-     4    11    12   any
-
-public void managedBlock(scala.concurrent.ManagedBlocker);
-  Signature: (Lscala/concurrent/ManagedBlocker;)V
-  Code:
-   Stack=4, Locals=2, Args_size=2
-	new	class scala/actors/scheduler/ForkJoinScheduler$$anon$3
-	dup
-	aload_0
-	aload_1
-	invokespecial	Method scala/actors/scheduler/ForkJoinScheduler$$anon$3."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/concurrent/ManagedBlocker;)V
-	iconst_1
-	invokestatic	Method scala/concurrent/forkjoin/ForkJoinPool.managedBlock:(Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;Z)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      14      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   0      14      1    blocker$1       Lscala/concurrent/ManagedBlocker;
-
-
-public boolean isActive();
-  Signature: ()Z
-  Code:
-   Stack=2, Locals=2, Args_size=1
-	aload_0
-	dup
-	pop
-	monitorenter
-	aload_0
-	invokespecial	Method terminating:()Z
-	ifne	l1 // iconst_0
-	aload_0
-	invokespecial	Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
-	ifnull	l1 // iconst_0
-	aload_0
-	invokespecial	Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
-	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.isShutdown:()Z
-	ifne	l1 // iconst_0
-	iconst_1
-	goto	l2 // istore_1
-l1	iconst_0
-l2	istore_1
-	aload_0
-	monitorexit
-	iload_1
+	getfield	Field activeActors:I
 	ireturn
-	aload_0
-	monitorexit
-	athrow
   Labels:
-   	l1 = 32 // iconst_0
-   	l2 = 33 // istore_1
-  Exception table:
-   from   to  target type
-     4    36    38   any
 
-public void shutdown();
-  Signature: ()V
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	dup
-	pop
-	monitorenter
-	aload_0
-	iconst_1
-	invokespecial	Method terminating_$eq:(Z)V
-	aload_0
-	monitorexit
-	return
-	aload_0
-	monitorexit
-	athrow
-  Labels:
-  Exception table:
-   from   to  target type
-     4    11    12   any
-
-public void execute(scala.Function0);
-  Signature: (Lscala/Function0;)V
-  Code:
-   Stack=5, Locals=2, Args_size=2
-	aload_0
-	new	class scala/actors/scheduler/ForkJoinScheduler$$anon$2
-	dup
-	aload_0
-	aload_1
-	invokespecial	Method scala/actors/scheduler/ForkJoinScheduler$$anon$2."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/Function0;)V
-	invokevirtual	Method execute:(Ljava/lang/Runnable;)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      14      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   0      14      1    fun$1       Lscala/Function0;
-
-  Signature: length = 0x2
-   00 FFFFFFA9 
-
-public void executeFromActor(java.lang.Runnable);
-  Signature: (Ljava/lang/Runnable;)V
-  Code:
-   Stack=4, Locals=3, Args_size=2
-	new	class scala/actors/scheduler/ForkJoinScheduler$$anon$1
-	dup
-	aload_0
-	aload_1
-	invokespecial	Method scala/actors/scheduler/ForkJoinScheduler$$anon$1."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Ljava/lang/Runnable;)V
-	astore_2
-	aload_2
-	invokevirtual	Method scala/concurrent/forkjoin/RecursiveAction.fork:()V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      15      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   0      15      1    task$1       Ljava/lang/Runnable;
-   10      4      2    recAction       Lscala/concurrent/forkjoin/RecursiveAction;
-
-
-public void execute(java.lang.Runnable);
-  Signature: (Ljava/lang/Runnable;)V
+public void activeActors_$eq(int);
+  Signature: (I)V
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	invokespecial	Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+	iload_1
+	putfield	Field activeActors:I
+	return
+  Labels:
+
+public scala.collection.mutable.HashMap terminationHandlers();
+  Signature: ()Lscala/collection/mutable/HashMap;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field terminationHandlers:Lscala/collection/mutable/HashMap;
+	areturn
+  Labels:
+
+public final boolean scala$actors$scheduler$TerminationMonitor$$started();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field scala$actors$scheduler$TerminationMonitor$$started:Z
+	ireturn
+  Labels:
+
+public final void scala$actors$scheduler$TerminationMonitor$$started_$eq(boolean);
+  Signature: (Z)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field scala$actors$scheduler$TerminationMonitor$$started:Z
+	return
+  Labels:
+
+public void scala$actors$scheduler$TerminationMonitor$_setter_$terminationHandlers_$eq(scala.collection.mutable.HashMap);
+  Signature: (Lscala/collection/mutable/HashMap;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
 	aload_1
-	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.execute:(Ljava/lang/Runnable;)V
+	putfield	Field terminationHandlers:Lscala/collection/mutable/HashMap;
+	return
+  Labels:
+
+public void newActor(scala.actors.Reactor);
+  Signature: (Lscala/actors/Reactor;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      9      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   0      9      1    task       Ljava/lang/Runnable;
+   0      6      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      6      1    a       Lscala/actors/Reactor;
+
+
+public void onTerminate(scala.actors.Reactor, scala.Function0);
+  Signature: (Lscala/actors/Reactor;Lscala/Function0;)V
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	aload_1
+	aload_2
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      7      1    a       Lscala/actors/Reactor;
+   0      7      2    f       Lscala/Function0;
+
+
+public void terminated(scala.actors.Reactor);
+  Signature: (Lscala/actors/Reactor;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      6      1    a       Lscala/actors/Reactor;
+
+
+public boolean allActorsTerminated();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.allActorsTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+	ireturn
+  Labels:
+
+public boolean allTerminated();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+	ireturn
+  Labels:
+  Deprecated: true
+
+public void gc();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.gc:(Lscala/actors/scheduler/TerminationMonitor;)V
+	return
+  Labels:
+
+public void tick(scala.actors.Actor);
+  Signature: (Lscala/actors/Actor;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/IScheduler$class.tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      6      1    a       Lscala/actors/Actor;
+
+  Deprecated: true
+
+public void onLockup(scala.Function0);
+  Signature: (Lscala/Function0;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      6      1    handler       Lscala/Function0;
+
+  Deprecated: true
+
+public void onLockup(int, scala.Function0);
+  Signature: (ILscala/Function0;)V
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	iload_1
+	aload_2
+	invokestatic	Method scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      7      1    millis       I
+   0      7      2    handler       Lscala/Function0;
+
+  Deprecated: true
+
+public void printActorDump();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/IScheduler$class.printActorDump:(Lscala/actors/IScheduler;)V
+	return
+  Labels:
+  Deprecated: true
+
+public int initCoreSize();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field initCoreSize:I
+	ireturn
+  Labels:
+
+public int maxSize();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field maxSize:I
+	ireturn
+  Labels:
+
+private scala.actors.scheduler.DrainableForkJoinPool pool();
+  Signature: ()Lscala/actors/scheduler/DrainableForkJoinPool;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field pool:Lscala/actors/scheduler/DrainableForkJoinPool;
+	areturn
+  Labels:
+
+private void pool_$eq(scala.actors.scheduler.DrainableForkJoinPool);
+  Signature: (Lscala/actors/scheduler/DrainableForkJoinPool;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field pool:Lscala/actors/scheduler/DrainableForkJoinPool;
+	return
+  Labels:
+
+private boolean terminating();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field terminating:Z
+	ireturn
+  Labels:
+
+private void terminating_$eq(boolean);
+  Signature: (Z)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field terminating:Z
+	return
+  Labels:
+
+private boolean snapshoting();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field snapshoting:Z
+	ireturn
+  Labels:
+
+private void snapshoting_$eq(boolean);
+  Signature: (Z)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field snapshoting:Z
+	return
+  Labels:
+
+private java.util.Collection drainedTasks();
+  Signature: ()Ljava/util/Collection;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field drainedTasks:Ljava/util/Collection;
+	areturn
+  Labels:
+  Signature: length = 0x2
+   00 74 
+
+private void drainedTasks_$eq(java.util.Collection);
+  Signature: (Ljava/util/Collection;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field drainedTasks:Ljava/util/Collection;
+	return
+  Labels:
+  Signature: length = 0x2
+   00 77 
+
+public int CHECK_FREQ();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field CHECK_FREQ:I
+	ireturn
+  Labels:
+
+public scala.actors.scheduler.ForkJoinScheduler(boolean);
+  Signature: (Z)V
+  Code:
+   Stack=4, Locals=2, Args_size=2
+	aload_0
+	getstatic	Field scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
+	invokevirtual	Method scala/actors/scheduler/ThreadPoolConfig$.corePoolSize:()I
+	getstatic	Field scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
+	invokevirtual	Method scala/actors/scheduler/ThreadPoolConfig$.maxPoolSize:()I
+	iload_1
+	invokespecial	Method "<init>":(IIZ)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      18      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      18      1    d       Z
+
+
+public scala.actors.scheduler.ForkJoinScheduler();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	iconst_0
+	invokespecial	Method "<init>":(Z)V
+	return
+  Labels:
+
+private scala.actors.scheduler.DrainableForkJoinPool makeNewPool();
+  Signature: ()Lscala/actors/scheduler/DrainableForkJoinPool;
+  Code:
+   Stack=4, Locals=4, Args_size=1
+	new	class scala/actors/scheduler/DrainableForkJoinPool
+	dup
+	invokespecial	Method scala/actors/scheduler/DrainableForkJoinPool."<init>":()V
+	astore_1
+	aload_1
+	iconst_1
+	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.setAsyncMode:(Z)Z
+	pop
+	aload_1
+	aload_0
+	invokevirtual	Method initCoreSize:()I
+	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.setParallelism:(I)V
+	aload_1
+	aload_0
+	invokevirtual	Method maxSize:()I
+	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.setMaximumPoolSize:(I)V
+	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	aload_0
+	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	ldc	String : parallelism 
+	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	aload_1
+	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.getParallelism:()I
+	istore_2
+	iload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	aload_0
+	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	ldc	String : max pool size 
+	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	aload_1
+	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.getMaximumPoolSize:()I
+	istore_3
+	iload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+	aload_1
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      118      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   8      109      1    p       Lscala/actors/scheduler/DrainableForkJoinPool;
+
+
+public void start();
+  Signature: ()V
+  Code:
+   Stack=5, Locals=3, Args_size=1
+	new	class java/lang/Thread
+	dup
+	aload_0
+	invokespecial	Method java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+	astore_1
+	aload_1
+	aload_0
+	getfield	Field daemon:Z
+	invokevirtual	Method java/lang/Thread.setDaemon:(Z)V
+	aload_1
+	ldc	String ForkJoinScheduler
+	invokevirtual	Method java/lang/Thread.setName:(Ljava/lang/String;)V
+	aload_1
+	invokevirtual	Method java/lang/Thread.start:()V
+	goto	l1 // return
+	astore_2
+	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	new	class scala/runtime/StringAdd
+	dup
+	aload_0
+	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+	ldc	String : could not create scheduler thread: 
+	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	aload_2
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+l1	return
+  Labels:
+   	l1 = 67 // return
+  Exception table:
+   from   to  target type
+     0    30    30   Class java/lang/Exception
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      68      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   9      18      1    t       Ljava/lang/Thread;
 
 
 public void run();
@@ -895,13 +1043,13 @@ l2	aload_0
 	dup
 	aload_0
 	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
-	ldc	String : drained 
+	ldc_w	String : drained 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	ldc	String  tasks
+	ldc_w	String  tasks
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
@@ -950,465 +1098,317 @@ l7	ldc2_w	long 10l
    	l6 = 0 // aload_0
    	l1 = 23 // aload_0
    	l2 = 64 // aload_0
-   	l4 = 160 // goto
-   	l3 = 163 // aload_0
-   	l5 = 169 // aload_0
-   	l8 = 198 // aload_0
-   	l7 = 216 // ldc2_w
+   	l4 = 162 // goto
+   	l3 = 165 // aload_0
+   	l5 = 171 // aload_0
+   	l8 = 200 // aload_0
+   	l7 = 218 // ldc2_w
   Exception table:
    from   to  target type
-     4   174   174   any
-   216   225   225   Class java/lang/InterruptedException
+     4   176   176   any
+   218   227   227   Class java/lang/InterruptedException
 
-     0   177   177   Class scala/actors/scheduler/QuitException
+     0   179   179   Class scala/actors/scheduler/QuitException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      229      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   98      62      1    num       I
-   89      71      2    list       Ljava/util/ArrayList;
+   0      231      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   98      64      1    num       I
+   89      73      2    list       Ljava/util/ArrayList;
 
 
-public void start();
-  Signature: ()V
+public void execute(java.lang.Runnable);
+  Signature: (Ljava/lang/Runnable;)V
   Code:
-   Stack=5, Locals=3, Args_size=1
-	new	class java/lang/Thread
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	invokespecial	Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+	aload_1
+	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.execute:(Ljava/lang/Runnable;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      9      1    task       Ljava/lang/Runnable;
+
+
+public void executeFromActor(java.lang.Runnable);
+  Signature: (Ljava/lang/Runnable;)V
+  Code:
+   Stack=4, Locals=3, Args_size=2
+	new	class scala/actors/scheduler/ForkJoinScheduler$$anon$1
 	dup
 	aload_0
-	invokespecial	Method java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
-	astore_1
 	aload_1
-	aload_0
-	getfield	Field daemon:Z
-	invokevirtual	Method java/lang/Thread.setDaemon:(Z)V
-	aload_1
-	ldc_w	String ForkJoinScheduler
-	invokevirtual	Method java/lang/Thread.setName:(Ljava/lang/String;)V
-	aload_1
-	invokevirtual	Method java/lang/Thread.start:()V
-	goto	l1 // return
+	invokespecial	Method scala/actors/scheduler/ForkJoinScheduler$$anon$1."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Ljava/lang/Runnable;)V
 	astore_2
-	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
-	new	class scala/collection/mutable/StringBuilder
-	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	new	class scala/runtime/StringAdd
-	dup
-	aload_0
-	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
-	ldc_w	String : could not create scheduler thread: 
-	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_2
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
-l1	return
+	invokevirtual	Method scala/concurrent/forkjoin/RecursiveAction.fork:()V
+	return
   Labels:
-   	l1 = 69 // return
-  Exception table:
-   from   to  target type
-     0    31    31   Class java/lang/Exception
-
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      70      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   9      19      1    t       Ljava/lang/Thread;
+   0      15      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      15      1    task$1       Ljava/lang/Runnable;
+   10      4      2    recAction       Lscala/concurrent/forkjoin/RecursiveAction;
 
 
-private scala.actors.scheduler.DrainableForkJoinPool makeNewPool();
-  Signature: ()Lscala/actors/scheduler/DrainableForkJoinPool;
+public void execute(scala.Function0);
+  Signature: (Lscala/Function0;)V
   Code:
-   Stack=4, Locals=4, Args_size=1
-	new	class scala/actors/scheduler/DrainableForkJoinPool
+   Stack=5, Locals=2, Args_size=2
+	aload_0
+	new	class scala/actors/scheduler/ForkJoinScheduler$$anon$2
 	dup
-	invokespecial	Method scala/actors/scheduler/DrainableForkJoinPool."<init>":()V
-	astore_1
-	aload_1
-	iconst_1
-	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.setAsyncMode:(Z)Z
-	pop
-	aload_1
 	aload_0
-	invokevirtual	Method initCoreSize:()I
-	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.setParallelism:(I)V
 	aload_1
-	aload_0
-	invokevirtual	Method maxSize:()I
-	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.setMaximumPoolSize:(I)V
-	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
-	new	class scala/collection/mutable/StringBuilder
-	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	aload_0
-	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
-	ldc_w	String : parallelism 
-	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload_1
-	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.getParallelism:()I
-	istore_2
-	iload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
-	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
-	new	class scala/collection/mutable/StringBuilder
-	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	aload_0
-	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
-	ldc_w	String : max pool size 
-	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload_1
-	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.getMaximumPoolSize:()I
-	istore_3
-	iload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
-	aload_1
-	areturn
+	invokespecial	Method scala/actors/scheduler/ForkJoinScheduler$$anon$2."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/Function0;)V
+	invokevirtual	Method execute:(Ljava/lang/Runnable;)V
+	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      120      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   8      111      1    p       Lscala/actors/scheduler/DrainableForkJoinPool;
+   0      14      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      14      1    fun$1       Lscala/Function0;
 
+  Signature: length = 0x2
+   01 40 
 
-public scala.actors.scheduler.ForkJoinScheduler();
+public void shutdown();
   Signature: ()V
   Code:
    Stack=2, Locals=1, Args_size=1
 	aload_0
-	iconst_0
-	invokespecial	Method "<init>":(Z)V
+	dup
+	pop
+	monitorenter
+	aload_0
+	iconst_1
+	invokespecial	Method terminating_$eq:(Z)V
+	aload_0
+	monitorexit
 	return
+	aload_0
+	monitorexit
+	athrow
   Labels:
+  Exception table:
+   from   to  target type
+     4    11    12   any
 
-public scala.actors.scheduler.ForkJoinScheduler(boolean);
-  Signature: (Z)V
+public boolean isActive();
+  Signature: ()Z
+  Code:
+   Stack=2, Locals=2, Args_size=1
+	aload_0
+	dup
+	pop
+	monitorenter
+	aload_0
+	invokespecial	Method terminating:()Z
+	ifne	l1 // iconst_0
+	aload_0
+	invokespecial	Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+	ifnull	l1 // iconst_0
+	aload_0
+	invokespecial	Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.isShutdown:()Z
+	ifne	l1 // iconst_0
+	iconst_1
+	goto	l2 // istore_1
+l1	iconst_0
+l2	istore_1
+	aload_0
+	monitorexit
+	iload_1
+	ireturn
+	aload_0
+	monitorexit
+	athrow
+  Labels:
+   	l1 = 32 // iconst_0
+   	l2 = 33 // istore_1
+  Exception table:
+   from   to  target type
+     4    36    38   any
+
+public void managedBlock(scala.concurrent.ManagedBlocker);
+  Signature: (Lscala/concurrent/ManagedBlocker;)V
   Code:
    Stack=4, Locals=2, Args_size=2
+	new	class scala/actors/scheduler/ForkJoinScheduler$$anon$3
+	dup
 	aload_0
-	getstatic	Field scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
-	invokevirtual	Method scala/actors/scheduler/ThreadPoolConfig$.corePoolSize:()I
-	getstatic	Field scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
-	invokevirtual	Method scala/actors/scheduler/ThreadPoolConfig$.maxPoolSize:()I
-	iload_1
-	invokespecial	Method "<init>":(IIZ)V
+	aload_1
+	invokespecial	Method scala/actors/scheduler/ForkJoinScheduler$$anon$3."<init>":(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/concurrent/ManagedBlocker;)V
+	iconst_1
+	invokestatic	Method scala/concurrent/forkjoin/ForkJoinPool.managedBlock:(Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;Z)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      18      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   0      18      1    d       Z
+   0      14      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      14      1    blocker$1       Lscala/concurrent/ManagedBlocker;
 
 
-public int CHECK_FREQ();
-  Signature: ()I
+public void snapshot();
+  Signature: ()V
   Code:
-   Stack=1, Locals=1, Args_size=1
+   Stack=2, Locals=1, Args_size=1
 	aload_0
-	getfield	Field CHECK_FREQ:I
-	ireturn
-  Labels:
-
-private void drainedTasks_$eq(java.util.Collection);
-  Signature: (Ljava/util/Collection;)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
+	dup
+	pop
+	monitorenter
 	aload_0
-	aload_1
-	putfield	Field drainedTasks:Ljava/util/Collection;
+	iconst_1
+	invokespecial	Method snapshoting_$eq:(Z)V
+	aload_0
+	monitorexit
 	return
-  Labels:
-  Signature: length = 0x2
-   01 53 
-
-private java.util.Collection drainedTasks();
-  Signature: ()Ljava/util/Collection;
-  Code:
-   Stack=1, Locals=1, Args_size=1
 	aload_0
-	getfield	Field drainedTasks:Ljava/util/Collection;
-	areturn
+	monitorexit
+	athrow
   Labels:
-  Signature: length = 0x2
-   01 54 
+  Exception table:
+   from   to  target type
+     4    11    12   any
 
-private void snapshoting_$eq(boolean);
-  Signature: (Z)V
+public void restart();
+  Signature: ()V
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=3, Locals=4, Args_size=1
+	aload_0
+	dup
+	pop
+	monitorenter
+	aload_0
+	invokespecial	Method snapshoting:()Z
+	ifeq	l1 // ldc_w
+	aload_0
+	invokevirtual	Method isActive:()Z
+	ifeq	l2 // aload_0
+	ldc_w	String scheduler is still active
+	astore_1
+	new	class java/lang/RuntimeException
+	dup
+	aload_1
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+	athrow
+l2	aload_0
+	iconst_0
+	invokespecial	Method snapshoting_$eq:(Z)V
+	aload_0
+	aload_0
+	invokespecial	Method makeNewPool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+	invokespecial	Method pool_$eq:(Lscala/actors/scheduler/DrainableForkJoinPool;)V
+	aload_0
+	monitorexit
+	aload_0
+	invokespecial	Method drainedTasks:()Ljava/util/Collection;
+	invokeinterface	InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+	astore_2
+l4	aload_2
+	invokeinterface	InterfaceMethod java/util/Iterator.hasNext:()Z
+	ifeq	l3 // aload_0
+	aload_0
+	invokespecial	Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
+	aload_2
+	invokeinterface	InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+	checkcast	class scala/concurrent/forkjoin/ForkJoinTask
+	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.execute:(Lscala/concurrent/forkjoin/ForkJoinTask;)V
+	goto	l4 // aload_2
+l3	aload_0
+	invokevirtual	Method start:()V
+	return
+l1	ldc_w	String snapshot has not been invoked
+	astore_3
+	new	class java/lang/RuntimeException
+	dup
+	aload_3
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+	athrow
+	aload_0
+	monitorexit
+	athrow
+  Labels:
+   	l2 = 31 // aload_0
+   	l4 = 56 // aload_2
+   	l3 = 84 // aload_0
+   	l1 = 89 // ldc_w
+  Exception table:
+   from   to  target type
+     4    46   102   any
+    89   102   102   any
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      105      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   56      32      2    iter       Ljava/util/Iterator;
+
+
+private final void liftedTree1$1();
+  Signature: ()V
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	aload_0
+	aload_0
+	invokevirtual	Method CHECK_FREQ:()I
+	i2l
+	invokevirtual	Method wait:(J)V
+	goto	l1 // return
+	pop
+l1	return
+  Labels:
+   	l1 = 13 // return
+  Exception table:
+   from   to  target type
+     0    12    12   Class java/lang/InterruptedException
+
+
+public scala.actors.scheduler.ForkJoinScheduler(int, int, boolean);
+  Signature: (IIZ)V
+  Code:
+   Stack=2, Locals=4, Args_size=4
 	aload_0
 	iload_1
-	putfield	Field snapshoting:Z
-	return
-  Labels:
-
-private boolean snapshoting();
-  Signature: ()Z
-  Code:
-   Stack=1, Locals=1, Args_size=1
+	putfield	Field initCoreSize:I
 	aload_0
-	getfield	Field snapshoting:Z
-	ireturn
-  Labels:
-
-private void terminating_$eq(boolean);
-  Signature: (Z)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
+	iload_2
+	putfield	Field maxSize:I
 	aload_0
-	iload_1
-	putfield	Field terminating:Z
-	return
-  Labels:
-
-private boolean terminating();
-  Signature: ()Z
-  Code:
-   Stack=1, Locals=1, Args_size=1
+	iload_3
+	putfield	Field daemon:Z
 	aload_0
-	getfield	Field terminating:Z
-	ireturn
-  Labels:
-
-private void pool_$eq(scala.actors.scheduler.DrainableForkJoinPool);
-  Signature: (Lscala/actors/scheduler/DrainableForkJoinPool;)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
+	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
-	aload_1
+	invokestatic	Method scala/actors/IScheduler$class.$init$:(Lscala/actors/IScheduler;)V
+	aload_0
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+	aload_0
+	aload_0
+	invokespecial	Method makeNewPool:()Lscala/actors/scheduler/DrainableForkJoinPool;
 	putfield	Field pool:Lscala/actors/scheduler/DrainableForkJoinPool;
-	return
-  Labels:
-
-private scala.actors.scheduler.DrainableForkJoinPool pool();
-  Signature: ()Lscala/actors/scheduler/DrainableForkJoinPool;
-  Code:
-   Stack=1, Locals=1, Args_size=1
 	aload_0
-	getfield	Field pool:Lscala/actors/scheduler/DrainableForkJoinPool;
-	areturn
-  Labels:
-
-public int maxSize();
-  Signature: ()I
-  Code:
-   Stack=1, Locals=1, Args_size=1
+	iconst_0
+	putfield	Field terminating:Z
 	aload_0
-	getfield	Field maxSize:I
-	ireturn
-  Labels:
-
-public int initCoreSize();
-  Signature: ()I
-  Code:
-   Stack=1, Locals=1, Args_size=1
+	iconst_0
+	putfield	Field snapshoting:Z
 	aload_0
-	getfield	Field initCoreSize:I
-	ireturn
-  Labels:
-
-public void printActorDump();
-  Signature: ()V
-  Code:
-   Stack=1, Locals=1, Args_size=1
+	aconst_null
+	putfield	Field drainedTasks:Ljava/util/Collection;
 	aload_0
-	invokestatic	Method scala/actors/IScheduler$class.printActorDump:(Lscala/actors/IScheduler;)V
-	return
-  Labels:
-  Deprecated: true
-
-public void onLockup(int, scala.Function0);
-  Signature: (ILscala/Function0;)V
-  Code:
-   Stack=3, Locals=3, Args_size=3
-	aload_0
-	iload_1
-	aload_2
-	invokestatic	Method scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
+	ldc_w	int 10
+	putfield	Field CHECK_FREQ:I
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      7      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   0      7      1    millis       I
-   0      7      2    handler       Lscala/Function0;
+   0      58      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      58      1    initCoreSize       I
+   0      58      2    maxSize       I
+   0      58      3    daemon       Z
 
-  Deprecated: true
-
-public void onLockup(scala.Function0);
-  Signature: (Lscala/Function0;)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	invokestatic	Method scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      6      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   0      6      1    handler       Lscala/Function0;
-
-  Deprecated: true
-
-public void tick(scala.actors.Actor);
-  Signature: (Lscala/actors/Actor;)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	invokestatic	Method scala/actors/IScheduler$class.tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      6      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   0      6      1    a       Lscala/actors/Actor;
-
-  Deprecated: true
-
-public void gc();
-  Signature: ()V
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.gc:(Lscala/actors/scheduler/TerminationMonitor;)V
-	return
-  Labels:
-
-public boolean allTerminated();
-  Signature: ()Z
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
-	ireturn
-  Labels:
-  Deprecated: true
-
-public boolean allActorsTerminated();
-  Signature: ()Z
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.allActorsTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
-	ireturn
-  Labels:
-
-public void terminated(scala.actors.Reactor);
-  Signature: (Lscala/actors/Reactor;)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      6      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   0      6      1    a       Lscala/actors/Reactor;
-
-
-public void onTerminate(scala.actors.Reactor, scala.Function0);
-  Signature: (Lscala/actors/Reactor;Lscala/Function0;)V
-  Code:
-   Stack=3, Locals=3, Args_size=3
-	aload_0
-	aload_1
-	aload_2
-	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      7      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   0      7      1    a       Lscala/actors/Reactor;
-   0      7      2    f       Lscala/Function0;
-
-
-public void newActor(scala.actors.Reactor);
-  Signature: (Lscala/actors/Reactor;)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      6      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   0      6      1    a       Lscala/actors/Reactor;
-
-
-public void scala$actors$scheduler$TerminationMonitor$_setter_$terminationHandlers_$eq(scala.collection.mutable.HashMap);
-  Signature: (Lscala/collection/mutable/HashMap;)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	putfield	Field terminationHandlers:Lscala/collection/mutable/HashMap;
-	return
-  Labels:
-
-public final void scala$actors$scheduler$TerminationMonitor$$started_$eq(boolean);
-  Signature: (Z)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	iload_1
-	putfield	Field scala$actors$scheduler$TerminationMonitor$$started:Z
-	return
-  Labels:
-
-public final boolean scala$actors$scheduler$TerminationMonitor$$started();
-  Signature: ()Z
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field scala$actors$scheduler$TerminationMonitor$$started:Z
-	ireturn
-  Labels:
-
-public scala.collection.mutable.HashMap terminationHandlers();
-  Signature: ()Lscala/collection/mutable/HashMap;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field terminationHandlers:Lscala/collection/mutable/HashMap;
-	areturn
-  Labels:
-
-public void activeActors_$eq(int);
-  Signature: (I)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	iload_1
-	putfield	Field activeActors:I
-	return
-  Labels:
-
-public int activeActors();
-  Signature: ()I
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field activeActors:I
-	ireturn
-  Labels:
 
 }
 

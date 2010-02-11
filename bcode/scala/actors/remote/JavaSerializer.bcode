@@ -33,23 +33,40 @@ Asciz	SourceFile;
 Asciz	JavaSerializer.scala;
 Asciz	cl;
 Asciz	Ljava/lang/ClassLoader;;
-Asciz	<init>;
-Asciz	(Lscala/actors/remote/Service;Ljava/lang/ClassLoader;)V;
+Asciz	serialize;
+Asciz	(Ljava/lang/Object;)[B;
 Asciz	Code;
+Asciz	java/io/ByteArrayOutputStream;
+class	java/io/ByteArrayOutputStream
 Asciz	LineNumberTable;
-Asciz	scala/actors/remote/JavaSerializer;
-class	scala/actors/remote/JavaSerializer
-NameAndType	cl:Ljava/lang/ClassLoader;
-Field	scala/actors/remote/JavaSerializer.cl:Ljava/lang/ClassLoader;
-Asciz	scala/actors/remote/Serializer;
-class	scala/actors/remote/Serializer
-Asciz	(Lscala/actors/remote/Service;)V;
-NameAndType	"<init>":(Lscala/actors/remote/Service;)V
-Method	scala/actors/remote/Serializer."<init>":(Lscala/actors/remote/Service;)V
+Asciz	<init>;
+Asciz	()V;
+NameAndType	"<init>":()V
+Method	java/io/ByteArrayOutputStream."<init>":()V
+Asciz	java/io/ObjectOutputStream;
+class	java/io/ObjectOutputStream
+Asciz	(Ljava/io/OutputStream;)V;
+NameAndType	"<init>":(Ljava/io/OutputStream;)V
+Method	java/io/ObjectOutputStream."<init>":(Ljava/io/OutputStream;)V
+Asciz	writeObject;
+Asciz	(Ljava/lang/Object;)V;
+NameAndType	writeObject:(Ljava/lang/Object;)V
+Method	java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
+Asciz	flush;
+NameAndType	flush:()V
+Method	java/io/ObjectOutputStream.flush:()V
+Asciz	toByteArray;
+Asciz	()[B;
+NameAndType	toByteArray:()[B
+Method	java/io/ByteArrayOutputStream.toByteArray:()[B
 Asciz	this;
 Asciz	Lscala/actors/remote/JavaSerializer;;
-Asciz	serv;
-Asciz	Lscala/actors/remote/Service;;
+Asciz	o;
+Asciz	Ljava/lang/Object;;
+Asciz	bos;
+Asciz	Ljava/io/ByteArrayOutputStream;;
+Asciz	out;
+Asciz	Ljava/io/ObjectOutputStream;;
 Asciz	LocalVariableTable;
 Asciz	deserialize;
 Asciz	([B)Ljava/lang/Object;;
@@ -58,6 +75,10 @@ class	java/io/ByteArrayInputStream
 Asciz	([B)V;
 NameAndType	"<init>":([B)V
 Method	java/io/ByteArrayInputStream."<init>":([B)V
+Asciz	scala/actors/remote/JavaSerializer;
+class	scala/actors/remote/JavaSerializer
+NameAndType	cl:Ljava/lang/ClassLoader;
+Field	scala/actors/remote/JavaSerializer.cl:Ljava/lang/ClassLoader;
 Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	equals;
@@ -84,35 +105,14 @@ Asciz	bis;
 Asciz	Ljava/io/ByteArrayInputStream;;
 Asciz	in;
 Asciz	Ljava/io/ObjectInputStream;;
-Asciz	serialize;
-Asciz	(Ljava/lang/Object;)[B;
-Asciz	java/io/ByteArrayOutputStream;
-class	java/io/ByteArrayOutputStream
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	java/io/ByteArrayOutputStream."<init>":()V
-Asciz	java/io/ObjectOutputStream;
-class	java/io/ObjectOutputStream
-Asciz	(Ljava/io/OutputStream;)V;
-NameAndType	"<init>":(Ljava/io/OutputStream;)V
-Method	java/io/ObjectOutputStream."<init>":(Ljava/io/OutputStream;)V
-Asciz	writeObject;
-Asciz	(Ljava/lang/Object;)V;
-NameAndType	writeObject:(Ljava/lang/Object;)V
-Method	java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
-Asciz	flush;
-NameAndType	flush:()V
-Method	java/io/ObjectOutputStream.flush:()V
-Asciz	toByteArray;
-Asciz	()[B;
-NameAndType	toByteArray:()[B
-Method	java/io/ByteArrayOutputStream.toByteArray:()[B
-Asciz	o;
-Asciz	Ljava/lang/Object;;
-Asciz	bos;
-Asciz	Ljava/io/ByteArrayOutputStream;;
-Asciz	out;
-Asciz	Ljava/io/ObjectOutputStream;;
+Asciz	(Lscala/actors/remote/Service;Ljava/lang/ClassLoader;)V;
+Asciz	scala/actors/remote/Serializer;
+class	scala/actors/remote/Serializer
+Asciz	(Lscala/actors/remote/Service;)V;
+NameAndType	"<init>":(Lscala/actors/remote/Service;)V
+Method	scala/actors/remote/Serializer."<init>":(Lscala/actors/remote/Service;)V
+Asciz	serv;
+Asciz	Lscala/actors/remote/Service;;
 Asciz	ScalaSig;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
@@ -121,23 +121,34 @@ class	scala/ScalaObject
 private final java.lang.ClassLoader cl;
   Signature: Ljava/lang/ClassLoader;
 
-public scala.actors.remote.JavaSerializer(scala.actors.remote.Service, java.lang.ClassLoader);
-  Signature: (Lscala/actors/remote/Service;Ljava/lang/ClassLoader;)V
+public byte[] serialize(java.lang.Object);
+  Signature: (Ljava/lang/Object;)[B
   Code:
-   Stack=2, Locals=3, Args_size=3
-	aload_0
+   Stack=3, Locals=4, Args_size=2
+	new	class java/io/ByteArrayOutputStream
+	dup
+	invokespecial	Method java/io/ByteArrayOutputStream."<init>":()V
+	astore_2
+	new	class java/io/ObjectOutputStream
+	dup
 	aload_2
-	putfield	Field cl:Ljava/lang/ClassLoader;
-	aload_0
+	invokespecial	Method java/io/ObjectOutputStream."<init>":(Ljava/io/OutputStream;)V
+	astore_3
+	aload_3
 	aload_1
-	invokespecial	Method scala/actors/remote/Serializer."<init>":(Lscala/actors/remote/Service;)V
-	return
+	invokevirtual	Method java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
+	aload_3
+	invokevirtual	Method java/io/ObjectOutputStream.flush:()V
+	aload_2
+	invokevirtual	Method java/io/ByteArrayOutputStream.toByteArray:()[B
+	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      11      0    this       Lscala/actors/remote/JavaSerializer;
-   0      11      1    serv       Lscala/actors/remote/Service;
-   0      11      2    cl       Ljava/lang/ClassLoader;
+   0      31      0    this       Lscala/actors/remote/JavaSerializer;
+   0      31      1    o       Ljava/lang/Object;
+   8      22      2    bos       Ljava/io/ByteArrayOutputStream;
+   17      13      3    out       Ljava/io/ObjectOutputStream;
 
 
 public java.lang.Object deserialize(byte[]);
@@ -185,34 +196,23 @@ l3	astore_3
    52      4      3    in       Ljava/io/ObjectInputStream;
 
 
-public byte[] serialize(java.lang.Object);
-  Signature: (Ljava/lang/Object;)[B
+public scala.actors.remote.JavaSerializer(scala.actors.remote.Service, java.lang.ClassLoader);
+  Signature: (Lscala/actors/remote/Service;Ljava/lang/ClassLoader;)V
   Code:
-   Stack=3, Locals=4, Args_size=2
-	new	class java/io/ByteArrayOutputStream
-	dup
-	invokespecial	Method java/io/ByteArrayOutputStream."<init>":()V
-	astore_2
-	new	class java/io/ObjectOutputStream
-	dup
+   Stack=2, Locals=3, Args_size=3
+	aload_0
 	aload_2
-	invokespecial	Method java/io/ObjectOutputStream."<init>":(Ljava/io/OutputStream;)V
-	astore_3
-	aload_3
+	putfield	Field cl:Ljava/lang/ClassLoader;
+	aload_0
 	aload_1
-	invokevirtual	Method java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
-	aload_3
-	invokevirtual	Method java/io/ObjectOutputStream.flush:()V
-	aload_2
-	invokevirtual	Method java/io/ByteArrayOutputStream.toByteArray:()[B
-	areturn
+	invokespecial	Method scala/actors/remote/Serializer."<init>":(Lscala/actors/remote/Service;)V
+	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      31      0    this       Lscala/actors/remote/JavaSerializer;
-   0      31      1    o       Ljava/lang/Object;
-   8      22      2    bos       Ljava/io/ByteArrayOutputStream;
-   17      13      3    out       Ljava/io/ObjectOutputStream;
+   0      11      0    this       Lscala/actors/remote/JavaSerializer;
+   0      11      1    serv       Lscala/actors/remote/Service;
+   0      11      2    cl       Ljava/lang/ClassLoader;
 
 
 }

@@ -21,34 +21,22 @@ class	scala/Symbol$
 Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/Symbol$."<init>":()V
-Asciz	LineNumberTable;
-Asciz	scala/UniquenessCache;
-class	scala/UniquenessCache
-Method	scala/UniquenessCache."<init>":()V
-NameAndType	MODULE$:Lscala/Symbol$;
-Field	scala/Symbol$.MODULE$:Lscala/Symbol$;
 Asciz	valueFromKey;
-Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
-Asciz	java/lang/String;
-class	java/lang/String
 Asciz	(Ljava/lang/String;)Lscala/Symbol;;
-NameAndType	valueFromKey:(Ljava/lang/String;)Lscala/Symbol;
-Method	scala/Symbol$.valueFromKey:(Ljava/lang/String;)Lscala/Symbol;
-Asciz	this;
-Asciz	k;
-Asciz	Ljava/lang/Object;;
-Asciz	LocalVariableTable;
-Asciz	keyFromValue;
-Asciz	(Ljava/lang/Object;)Lscala/Option;;
 Asciz	scala/Symbol;
 class	scala/Symbol
+Asciz	LineNumberTable;
+Asciz	(Ljava/lang/String;)V;
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	scala/Symbol."<init>":(Ljava/lang/String;)V
+Asciz	this;
+Asciz	name;
+Asciz	Ljava/lang/String;;
+Asciz	LocalVariableTable;
+Asciz	keyFromValue;
 Asciz	(Lscala/Symbol;)Lscala/Option;;
-NameAndType	keyFromValue:(Lscala/Symbol;)Lscala/Option;
-Method	scala/Symbol$.keyFromValue:(Lscala/Symbol;)Lscala/Option;
-Asciz	v;
 Asciz	scala/Some;
 class	scala/Some
-Asciz	name;
 Asciz	()Ljava/lang/String;;
 NameAndType	name:()Ljava/lang/String;
 Method	scala/Symbol.name:()Ljava/lang/String;
@@ -59,10 +47,22 @@ Asciz	sym;
 Asciz	Lscala/Symbol;;
 Asciz	(Lscala/Symbol;)Lscala/Option<Ljava/lang/String;>;;
 Asciz	Signature;
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	scala/Symbol."<init>":(Ljava/lang/String;)V
-Asciz	Ljava/lang/String;;
+Asciz	(Ljava/lang/Object;)Lscala/Option;;
+NameAndType	keyFromValue:(Lscala/Symbol;)Lscala/Option;
+Method	scala/Symbol$.keyFromValue:(Lscala/Symbol;)Lscala/Option;
+Asciz	v;
+Asciz	Ljava/lang/Object;;
+Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
+Asciz	java/lang/String;
+class	java/lang/String
+NameAndType	valueFromKey:(Ljava/lang/String;)Lscala/Symbol;
+Method	scala/Symbol$.valueFromKey:(Ljava/lang/String;)Lscala/Symbol;
+Asciz	k;
+Asciz	scala/UniquenessCache;
+class	scala/UniquenessCache
+Method	scala/UniquenessCache."<init>":()V
+NameAndType	MODULE$:Lscala/Symbol$;
+Field	scala/Symbol$.MODULE$:Lscala/Symbol$;
 Asciz	Lscala/UniquenessCache<Ljava/lang/String;Lscala/Symbol;>;Lscala/ScalaObject;;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
@@ -80,47 +80,20 @@ public static {};
 	return
   Labels:
 
-private scala.Symbol$();
-  Signature: ()V
+public scala.Symbol valueFromKey(java.lang.String);
+  Signature: (Ljava/lang/String;)Lscala/Symbol;
   Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokespecial	Method scala/UniquenessCache."<init>":()V
-	aload_0
-	putstatic	Field MODULE$:Lscala/Symbol$;
-	return
-  Labels:
-
-public java.lang.Object valueFromKey(java.lang.Object);
-  Signature: (Ljava/lang/Object;)Ljava/lang/Object;
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
+   Stack=3, Locals=2, Args_size=2
+	new	class scala/Symbol
+	dup
 	aload_1
-	checkcast	class java/lang/String
-	invokevirtual	Method valueFromKey:(Ljava/lang/String;)Lscala/Symbol;
+	invokespecial	Method scala/Symbol."<init>":(Ljava/lang/String;)V
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      9      0    this       Lscala/Symbol$;
-   0      9      1    k       Ljava/lang/Object;
-
-
-public scala.Option keyFromValue(java.lang.Object);
-  Signature: (Ljava/lang/Object;)Lscala/Option;
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	checkcast	class scala/Symbol
-	invokevirtual	Method keyFromValue:(Lscala/Symbol;)Lscala/Option;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      9      0    this       Lscala/Symbol$;
-   0      9      1    v       Ljava/lang/Object;
+   0      9      1    name       Ljava/lang/String;
 
 
 public scala.Option keyFromValue(scala.Symbol);
@@ -140,23 +113,50 @@ public scala.Option keyFromValue(scala.Symbol);
    0      12      1    sym       Lscala/Symbol;
 
   Signature: length = 0x2
-   00 32 
+   00 26 
 
-public scala.Symbol valueFromKey(java.lang.String);
-  Signature: (Ljava/lang/String;)Lscala/Symbol;
+public scala.Option keyFromValue(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Lscala/Option;
   Code:
-   Stack=3, Locals=2, Args_size=2
-	new	class scala/Symbol
-	dup
+   Stack=2, Locals=2, Args_size=2
+	aload_0
 	aload_1
-	invokespecial	Method scala/Symbol."<init>":(Ljava/lang/String;)V
+	checkcast	class scala/Symbol
+	invokevirtual	Method keyFromValue:(Lscala/Symbol;)Lscala/Option;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      9      0    this       Lscala/Symbol$;
-   0      9      1    name       Ljava/lang/String;
+   0      9      1    v       Ljava/lang/Object;
 
+
+public java.lang.Object valueFromKey(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Ljava/lang/Object;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	checkcast	class java/lang/String
+	invokevirtual	Method valueFromKey:(Ljava/lang/String;)Lscala/Symbol;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/Symbol$;
+   0      9      1    k       Ljava/lang/Object;
+
+
+private scala.Symbol$();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method scala/UniquenessCache."<init>":()V
+	aload_0
+	putstatic	Field MODULE$:Lscala/Symbol$;
+	return
+  Labels:
 
 }
 

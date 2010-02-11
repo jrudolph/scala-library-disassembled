@@ -23,28 +23,38 @@ class	scala/PartialFunction$
 Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/PartialFunction$."<init>":()V
+Asciz	cond;
+Asciz	(Ljava/lang/Object;Lscala/PartialFunction;)Z;
 Asciz	LineNumberTable;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Method	java/lang/Object."<init>":()V
-NameAndType	MODULE$:Lscala/PartialFunction$;
-Field	scala/PartialFunction$.MODULE$:Lscala/PartialFunction$;
-Asciz	condOpt;
-Asciz	(Ljava/lang/Object;Lscala/PartialFunction;)Lscala/Option;;
 Asciz	scala/PartialFunction;
 class	scala/PartialFunction
 Asciz	isDefinedAt;
 Asciz	(Ljava/lang/Object;)Z;
 NameAndType	isDefinedAt:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/PartialFunction.isDefinedAt:(Ljava/lang/Object;)Z
-Asciz	scala/Some;
-class	scala/Some
 Asciz	scala/Function1;
 class	scala/Function1
 Asciz	apply;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
 InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+Asciz	scala/runtime/BoxesRunTime;
+class	scala/runtime/BoxesRunTime
+Asciz	unboxToBoolean;
+NameAndType	unboxToBoolean:(Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
+Asciz	this;
+Asciz	x;
+Asciz	Ljava/lang/Object;;
+Asciz	pf;
+Asciz	Lscala/PartialFunction;;
+Asciz	LocalVariableTable;
+Asciz	<T:Ljava/lang/Object;>(TT;Lscala/PartialFunction<TT;Ljava/lang/Boolean;>;)Z;
+Asciz	Signature;
+Asciz	condOpt;
+Asciz	(Ljava/lang/Object;Lscala/PartialFunction;)Lscala/Option;;
+Asciz	scala/Some;
+class	scala/Some
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/Some."<init>":(Ljava/lang/Object;)V
@@ -53,22 +63,12 @@ class	scala/None$
 Asciz	Lscala/None$;;
 NameAndType	MODULE$:Lscala/None$;
 Field	scala/None$.MODULE$:Lscala/None$;
-Asciz	this;
-Asciz	x;
-Asciz	Ljava/lang/Object;;
-Asciz	pf;
-Asciz	Lscala/PartialFunction;;
-Asciz	LocalVariableTable;
 Asciz	<T:Ljava/lang/Object;U:Ljava/lang/Object;>(TT;Lscala/PartialFunction<TT;TU;>;)Lscala/Option<TU;>;;
-Asciz	Signature;
-Asciz	cond;
-Asciz	(Ljava/lang/Object;Lscala/PartialFunction;)Z;
-Asciz	scala/runtime/BoxesRunTime;
-class	scala/runtime/BoxesRunTime
-Asciz	unboxToBoolean;
-NameAndType	unboxToBoolean:(Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
-Asciz	<T:Ljava/lang/Object;>(TT;Lscala/PartialFunction<TT;Ljava/lang/Boolean;>;)Z;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Method	java/lang/Object."<init>":()V
+NameAndType	MODULE$:Lscala/PartialFunction$;
+Field	scala/PartialFunction$.MODULE$:Lscala/PartialFunction$;
 Asciz	InnerClasses;
 Asciz	scala/PartialFunction$$anon$2;
 class	scala/PartialFunction$$anon$2
@@ -94,46 +94,6 @@ public static {};
 	invokespecial	Method "<init>":()V
 	return
   Labels:
-
-private scala.PartialFunction$();
-  Signature: ()V
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokespecial	Method java/lang/Object."<init>":()V
-	aload_0
-	putstatic	Field MODULE$:Lscala/PartialFunction$;
-	return
-  Labels:
-
-public scala.Option condOpt(java.lang.Object, scala.PartialFunction);
-  Signature: (Ljava/lang/Object;Lscala/PartialFunction;)Lscala/Option;
-  Code:
-   Stack=4, Locals=3, Args_size=3
-	aload_2
-	aload_1
-	invokeinterface	InterfaceMethod scala/PartialFunction.isDefinedAt:(Ljava/lang/Object;)Z
-	ifeq	l1 // getstatic
-	new	class scala/Some
-	dup
-	aload_2
-	aload_1
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	goto	l2 // areturn
-l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-l2	areturn
-  Labels:
-   	l1 = 27 // getstatic
-   	l2 = 30 // areturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      31      0    this       Lscala/PartialFunction$;
-   0      31      1    x       Ljava/lang/Object;
-   0      31      2    pf       Lscala/PartialFunction;
-
-  Signature: length = 0x2
-   00 32 
 
 public boolean cond(java.lang.Object, scala.PartialFunction);
   Signature: (Ljava/lang/Object;Lscala/PartialFunction;)Z
@@ -162,7 +122,47 @@ l2	ireturn
    0      29      2    pf       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 3B 
+   00 28 
+
+public scala.Option condOpt(java.lang.Object, scala.PartialFunction);
+  Signature: (Ljava/lang/Object;Lscala/PartialFunction;)Lscala/Option;
+  Code:
+   Stack=4, Locals=3, Args_size=3
+	aload_2
+	aload_1
+	invokeinterface	InterfaceMethod scala/PartialFunction.isDefinedAt:(Ljava/lang/Object;)Z
+	ifeq	l1 // getstatic
+	new	class scala/Some
+	dup
+	aload_2
+	aload_1
+	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
+	goto	l2 // areturn
+l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+l2	areturn
+  Labels:
+   	l1 = 27 // getstatic
+   	l2 = 30 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      31      0    this       Lscala/PartialFunction$;
+   0      31      1    x       Ljava/lang/Object;
+   0      31      2    pf       Lscala/PartialFunction;
+
+  Signature: length = 0x2
+   00 36 
+
+private scala.PartialFunction$();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	putstatic	Field MODULE$:Lscala/PartialFunction$;
+	return
+  Labels:
 
 }
 
