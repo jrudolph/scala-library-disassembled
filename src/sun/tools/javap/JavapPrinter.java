@@ -679,14 +679,7 @@ public class JavapPrinter {
                     String[] accflags = innerClasses[i].getAccess();
                     if(checkAccess(accflags)){
                         printAccess(accflags);
-                        if (innerClasses[i].inner_name_index!=0) {
-                            out.print("#"+innerClasses[i].inner_name_index+"= ");
-                        }
-                        out.print("#"+innerClasses[i].inner_class_info_index);
-                        if (innerClasses[i].outer_class_info_index!=0) {
-                            out.print(" of #"+innerClasses[i].outer_class_info_index);
-                        }
-                        out.print("; //");
+                        
                         if (innerClasses[i].inner_name_index!=0) {
                             out.print(cls.getName(innerClasses[i].inner_name_index)+"=");
                         }
