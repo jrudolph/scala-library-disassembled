@@ -70,33 +70,33 @@ const #57 = Asciz	elemHashCode;
 const #58 = Asciz	(Lscala/collection/mutable/HashTable;Ljava/lang/Object;)I;
 const #59 = Asciz	java/lang/Object;
 const #60 = class	#59;	//  java/lang/Object
-const #61 = Asciz	hashCode;
-const #62 = NameAndType	#61:#10;//  hashCode:()I
-const #63 = Method	#60.#62;	//  java/lang/Object.hashCode:()I
-const #64 = Asciz	key;
-const #65 = Asciz	Ljava/lang/Object;;
-const #66 = Asciz	elemEquals;
-const #67 = Asciz	(Lscala/collection/mutable/HashTable;Ljava/lang/Object;Ljava/lang/Object;)Z;
-const #68 = Asciz	java/lang/Number;
-const #69 = class	#68;	//  java/lang/Number
-const #70 = Asciz	java/lang/Character;
-const #71 = class	#70;	//  java/lang/Character
-const #72 = Asciz	scala/runtime/BoxesRunTime;
-const #73 = class	#72;	//  scala/runtime/BoxesRunTime
-const #74 = Asciz	equals2;
-const #75 = Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-const #76 = NameAndType	#74:#75;//  equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-const #77 = Method	#73.#76;	//  scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-const #78 = Asciz	equals;
-const #79 = Asciz	(Ljava/lang/Object;)Z;
-const #80 = NameAndType	#78:#79;//  equals:(Ljava/lang/Object;)Z
-const #81 = Method	#60.#80;	//  java/lang/Object.equals:(Ljava/lang/Object;)Z
+const #61 = Asciz	equals;
+const #62 = Asciz	(Ljava/lang/Object;)Z;
+const #63 = NameAndType	#61:#62;//  equals:(Ljava/lang/Object;)Z
+const #64 = Method	#60.#63;	//  java/lang/Object.equals:(Ljava/lang/Object;)Z
+const #65 = Asciz	hashCode;
+const #66 = NameAndType	#65:#10;//  hashCode:()I
+const #67 = Method	#60.#66;	//  java/lang/Object.hashCode:()I
+const #68 = Asciz	key;
+const #69 = Asciz	Ljava/lang/Object;;
+const #70 = Asciz	elemEquals;
+const #71 = Asciz	(Lscala/collection/mutable/HashTable;Ljava/lang/Object;Ljava/lang/Object;)Z;
+const #72 = Asciz	java/lang/Number;
+const #73 = class	#72;	//  java/lang/Number
+const #74 = Asciz	java/lang/Character;
+const #75 = class	#74;	//  java/lang/Character
+const #76 = Asciz	scala/runtime/BoxesRunTime;
+const #77 = class	#76;	//  scala/runtime/BoxesRunTime
+const #78 = Asciz	equals2;
+const #79 = Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
+const #80 = NameAndType	#78:#79;//  equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+const #81 = Method	#77.#80;	//  scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
 const #82 = Asciz	key1;
 const #83 = Asciz	key2;
 const #84 = Asciz	resize;
 const #85 = Asciz	(Lscala/collection/mutable/HashTable;I)V;
 const #86 = Asciz	()Ljava/lang/Object;;
-const #87 = NameAndType	#64:#86;//  key:()Ljava/lang/Object;
+const #87 = NameAndType	#68:#86;//  key:()Ljava/lang/Object;
 const #88 = InterfaceMethod	#24.#87;	//  scala/collection/mutable/HashEntry.key:()Ljava/lang/Object;
 const #89 = Asciz	(Ljava/lang/Object;)I;
 const #90 = NameAndType	#57:#89;//  elemHashCode:(Ljava/lang/Object;)I
@@ -149,7 +149,7 @@ const #137 = NameAndType	#136:#4;//  "<init>":(Lscala/collection/mutable/HashTab
 const #138 = Method	#135.#137;	//  scala/collection/mutable/HashTable$$anon$1."<init>":(Lscala/collection/mutable/HashTable;)V
 const #139 = Asciz	removeEntry;
 const #140 = Asciz	(Lscala/collection/mutable/HashTable;Ljava/lang/Object;)Lscala/collection/mutable/HashEntry;;
-const #141 = NameAndType	#66:#75;//  elemEquals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+const #141 = NameAndType	#70:#79;//  elemEquals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 const #142 = InterfaceMethod	#8.#141;	//  scala/collection/mutable/HashTable.elemEquals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 const #143 = Asciz	tableSize;
 const #144 = NameAndType	#143:#10;//  tableSize:()I
@@ -346,17 +346,27 @@ public static final int improve(scala.collection.mutable.HashTable, int);
 
 public static int elemHashCode(scala.collection.mutable.HashTable, java.lang.Object);
   Code:
-   Stack=1, Locals=2, Args_size=2
+   Stack=2, Locals=2, Args_size=2
    0:	aload_1
-   1:	invokevirtual	#63; //Method java/lang/Object.hashCode:()I
-   4:	ireturn
+   1:	dup
+   2:	pop
+   3:	ifnull	14
+   6:	aload_1
+   7:	aconst_null
+   8:	invokevirtual	#64; //Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+   11:	ifeq	18
+   14:	iconst_0
+   15:	goto	22
+   18:	aload_1
+   19:	invokevirtual	#67; //Method java/lang/Object.hashCode:()I
+   22:	ireturn
   LineNumberTable: 
    line 230: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      5      0    $this       Lscala/collection/mutable/HashTable;
-   0      5      1    key       Ljava/lang/Object;
+   0      23      0    $this       Lscala/collection/mutable/HashTable;
+   0      23      1    key       Ljava/lang/Object;
 
 
 public static boolean elemEquals(scala.collection.mutable.HashTable, java.lang.Object, java.lang.Object);
@@ -372,18 +382,18 @@ public static boolean elemEquals(scala.collection.mutable.HashTable, java.lang.O
    13:	iconst_0
    14:	goto	44
    17:	aload_1
-   18:	instanceof	#69; //class java/lang/Number
+   18:	instanceof	#73; //class java/lang/Number
    21:	ifne	31
    24:	aload_1
-   25:	instanceof	#71; //class java/lang/Character
+   25:	instanceof	#75; //class java/lang/Character
    28:	ifeq	39
    31:	aload_1
    32:	aload_2
-   33:	invokestatic	#77; //Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+   33:	invokestatic	#81; //Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
    36:	goto	44
    39:	aload_1
    40:	aload_2
-   41:	invokevirtual	#81; //Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+   41:	invokevirtual	#64; //Method java/lang/Object.equals:(Ljava/lang/Object;)Z
    44:	ifeq	51
    47:	iconst_1
    48:	goto	52
@@ -503,7 +513,7 @@ public static scala.collection.mutable.HashEntry removeEntry(scala.collection.mu
    26:	ifnull	146
    29:	aload_3
    30:	aconst_null
-   31:	invokevirtual	#81; //Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+   31:	invokevirtual	#64; //Method java/lang/Object.equals:(Ljava/lang/Object;)Z
    34:	ifne	146
    37:	aload_0
    38:	aload_3
@@ -536,7 +546,7 @@ public static scala.collection.mutable.HashEntry removeEntry(scala.collection.mu
    101:	ifnull	130
    104:	aload	4
    106:	aconst_null
-   107:	invokevirtual	#81; //Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+   107:	invokevirtual	#64; //Method java/lang/Object.equals:(Ljava/lang/Object;)Z
    110:	ifne	130
    113:	aload_0
    114:	aload	4
@@ -550,7 +560,7 @@ public static scala.collection.mutable.HashEntry removeEntry(scala.collection.mu
    134:	ifnull	146
    137:	aload	4
    139:	aconst_null
-   140:	invokevirtual	#81; //Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+   140:	invokevirtual	#64; //Method java/lang/Object.equals:(Ljava/lang/Object;)Z
    143:	ifeq	148
    146:	aconst_null
    147:	areturn
@@ -679,7 +689,7 @@ public static scala.collection.mutable.HashEntry findEntry(scala.collection.muta
    26:	ifnull	53
    29:	aload_3
    30:	aconst_null
-   31:	invokevirtual	#81; //Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+   31:	invokevirtual	#64; //Method java/lang/Object.equals:(Ljava/lang/Object;)Z
    34:	ifne	53
    37:	aload_0
    38:	aload_3
