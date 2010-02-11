@@ -122,16 +122,28 @@ Asciz	(Ljava/lang/String;)Lscala/math/BigDecimal;;
 NameAndType	apply:(Ljava/lang/String;Ljava/math/MathContext;)Lscala/math/BigDecimal;
 Method	scala/math/BigDecimal$.apply:(Ljava/lang/String;Ljava/math/MathContext;)Lscala/math/BigDecimal;
 Asciz	([CLjava/math/MathContext;)Lscala/math/BigDecimal;;
-Asciz	toString;
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	charArrayOps;
+Asciz	([C)Lscala/collection/mutable/ArrayOps;;
+NameAndType	charArrayOps:([C)Lscala/collection/mutable/ArrayOps;
+Method	scala/Predef$.charArrayOps:([C)Lscala/collection/mutable/ArrayOps;
+Asciz	scala/collection/TraversableLike;
+class	scala/collection/TraversableLike
+Asciz	mkString;
 Asciz	()Ljava/lang/String;;
-NameAndType	toString:()Ljava/lang/String;
-Method	java/lang/Object.toString:()Ljava/lang/String;
+NameAndType	mkString:()Ljava/lang/String;
+InterfaceMethod	scala/collection/TraversableLike.mkString:()Ljava/lang/String;
 Asciz	[C;
 Asciz	([C)Lscala/math/BigDecimal;;
 NameAndType	apply:([CLjava/math/MathContext;)Lscala/math/BigDecimal;
 Method	scala/math/BigDecimal$.apply:([CLjava/math/MathContext;)Lscala/math/BigDecimal;
 Asciz	java/lang/Double;
 class	java/lang/Double
+Asciz	toString;
 Asciz	(D)Ljava/lang/String;;
 NameAndType	toString:(D)Ljava/lang/String;
 Method	java/lang/Double.toString:(D)Ljava/lang/String;
@@ -453,8 +465,10 @@ public scala.math.BigDecimal apply(char[], java.math.MathContext);
 	dup
 	new	class java/math/BigDecimal
 	dup
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_1
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
+	invokevirtual	Method scala/Predef$.charArrayOps:([C)Lscala/collection/mutable/ArrayOps;
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.mkString:()Ljava/lang/String;
 	aload_2
 	invokespecial	Method java/math/BigDecimal."<init>":(Ljava/lang/String;Ljava/math/MathContext;)V
 	aload_2
@@ -463,9 +477,9 @@ public scala.math.BigDecimal apply(char[], java.math.MathContext);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      21      0    this       Lscala/math/BigDecimal$;
-   0      21      1    x       [C
-   0      21      2    mc       Ljava/math/MathContext;
+   0      29      0    this       Lscala/math/BigDecimal$;
+   0      29      1    x       [C
+   0      29      2    mc       Ljava/math/MathContext;
 
 
 public scala.math.BigDecimal apply(char[]);

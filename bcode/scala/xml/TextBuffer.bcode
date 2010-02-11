@@ -181,17 +181,17 @@ public scala.collection.Seq toText();
 	invokevirtual	Method sb:()Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method java/lang/String.trim:()Ljava/lang/String;
-	astore_2
-	aload_2
-	ldc	String 
 	astore_1
-	dup
-	ifnonnull	l1 // aload_1
-	pop
 	aload_1
+	ldc	String 
+	astore_2
+	dup
+	ifnonnull	l1 // aload_2
+	pop
+	aload_2
 	ifnull	l2 // getstatic
 	goto	l3 // getstatic
-l1	aload_1
+l1	aload_2
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // getstatic
 l2	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
@@ -204,7 +204,7 @@ l3	getstatic	Field scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
 	iconst_0
 	new	class scala/xml/Text
 	dup
-	aload_2
+	aload_1
 	invokespecial	Method scala/xml/Text."<init>":(Ljava/lang/String;)V
 	aastore
 	checkcast	class "[Ljava/lang/Object;"
@@ -213,14 +213,14 @@ l3	getstatic	Field scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
 	checkcast	class scala/collection/Seq
 l4	areturn
   Labels:
-   	l1 = 27 // aload_1
+   	l1 = 27 // aload_2
    	l2 = 34 // getstatic
    	l3 = 40 // getstatic
    	l4 = 73 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      74      0    this       Lscala/xml/TextBuffer;
-   11      63      2    temp1       Ljava/lang/String;
+   11      63      1    temp1       Ljava/lang/String;
 
   Signature: length = 0x2
    00 57 

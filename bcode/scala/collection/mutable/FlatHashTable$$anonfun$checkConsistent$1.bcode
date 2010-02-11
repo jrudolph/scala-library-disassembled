@@ -4,6 +4,7 @@ public final class scala.collection.mutable.FlatHashTable$$anonfun$checkConsiste
   Scala: length = 0x
    
   InnerClass: 
+   public ofRef=class scala/collection/mutable/ArrayOps$ofRef of class scala/collection/mutable/ArrayOps
    public final $anonfun$checkConsistent$1=class scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1 of class scala/collection/mutable/FlatHashTable
    public final $anonfun$apply$1=class scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1$$anonfun$apply$1 of class scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1
   minor version: 0
@@ -96,10 +97,19 @@ NameAndType	append:(I)Lscala/collection/mutable/StringBuilder;
 Method	scala/collection/mutable/StringBuilder.append:(I)Lscala/collection/mutable/StringBuilder;
 Asciz	 ;
 String	 
-Asciz	toString;
+Asciz	scala/collection/mutable/ArrayOps$ofRef;
+class	scala/collection/mutable/ArrayOps$ofRef
+Asciz	([Ljava/lang/Object;)V;
+NameAndType	"<init>":([Ljava/lang/Object;)V
+Method	scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
+Asciz	scala/collection/TraversableLike;
+class	scala/collection/TraversableLike
+Asciz	mkString;
 Asciz	()Ljava/lang/String;;
+NameAndType	mkString:()Ljava/lang/String;
+InterfaceMethod	scala/collection/TraversableLike.mkString:()Ljava/lang/String;
+Asciz	toString;
 NameAndType	toString:()Ljava/lang/String;
-Method	java/lang/Object.toString:()Ljava/lang/String;
 Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
@@ -110,6 +120,9 @@ Asciz	assertion0;
 Asciz	Z;
 Asciz	Scala;
 Asciz	InnerClasses;
+Asciz	scala/collection/mutable/ArrayOps;
+class	scala/collection/mutable/ArrayOps
+Asciz	ofRef;
 Asciz	$anonfun$checkConsistent$1;
 Asciz	$anonfun$apply$1;
 Asciz	java/io/Serializable;
@@ -186,7 +199,7 @@ public scala.collection.mutable.FlatHashTable scala$collection$mutable$FlatHashT
 public final void apply(int);
   Signature: (I)V
   Code:
-   Stack=6, Locals=6, Args_size=2
+   Stack=7, Locals=7, Args_size=2
 	aload_0
 	getfield	Field $outer:Lscala/collection/mutable/FlatHashTable;
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
@@ -248,7 +261,12 @@ l2	new	class java/lang/AssertionError
 	aload	5
 	getfield	Field $outer:Lscala/collection/mutable/FlatHashTable;
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
+	astore	6
+	new	class scala/collection/mutable/ArrayOps$ofRef
+	dup
+	aload	6
+	invokespecial	Method scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.mkString:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
@@ -260,10 +278,10 @@ l2	new	class java/lang/AssertionError
    	l2 = 64 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      151      0    this       Lscala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1;
-   0      151      1    i$1       I
+   0      164      0    this       Lscala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1;
+   0      164      1    i$1       I
    63      0      3    assertion0       Z
-   64      87      3    assertion0       Z
+   64      100      3    assertion0       Z
 
 
 }

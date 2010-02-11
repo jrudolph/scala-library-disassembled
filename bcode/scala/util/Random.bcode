@@ -144,6 +144,12 @@ NameAndType	_2:()Ljava/lang/Object;
 Method	scala/Tuple2._2:()Ljava/lang/Object;
 Asciz	java/lang/String;
 class	java/lang/String
+Asciz	scala/Array$;
+class	scala/Array$
+Asciz	MODULE$;
+Asciz	Lscala/Array$;;
+NameAndType	MODULE$:Lscala/Array$;
+Field	scala/Array$.MODULE$:Lscala/Array$;
 Asciz	scala/util/Random$$anonfun$nextASCIIString$1;
 class	scala/util/Random$$anonfun$nextASCIIString$1
 Asciz	(Lscala/util/Random;II)V;
@@ -151,7 +157,6 @@ NameAndType	"<init>":(Lscala/util/Random;II)V
 Method	scala/util/Random$$anonfun$nextASCIIString$1."<init>":(Lscala/util/Random;II)V
 Asciz	scala/reflect/Manifest$;
 class	scala/reflect/Manifest$
-Asciz	MODULE$;
 Asciz	Lscala/reflect/Manifest$;;
 NameAndType	MODULE$:Lscala/reflect/Manifest$;
 Field	scala/reflect/Manifest$.MODULE$:Lscala/reflect/Manifest$;
@@ -159,25 +164,10 @@ Asciz	Byte;
 Asciz	()Lscala/reflect/AnyValManifest;;
 NameAndType	Byte:()Lscala/reflect/AnyValManifest;
 Method	scala/reflect/Manifest$.Byte:()Lscala/reflect/AnyValManifest;
-Asciz	scala/reflect/ClassManifest;
-class	scala/reflect/ClassManifest
-Asciz	newArrayBuilder;
-Asciz	()Lscala/collection/mutable/ArrayBuilder;;
-NameAndType	newArrayBuilder:()Lscala/collection/mutable/ArrayBuilder;
-InterfaceMethod	scala/reflect/ClassManifest.newArrayBuilder:()Lscala/collection/mutable/ArrayBuilder;
-Asciz	boxToByte;
-Asciz	(B)Ljava/lang/Byte;;
-NameAndType	boxToByte:(B)Ljava/lang/Byte;
-Method	scala/runtime/BoxesRunTime.boxToByte:(B)Ljava/lang/Byte;
-Asciz	scala/collection/mutable/Builder;
-class	scala/collection/mutable/Builder
-Asciz	$plus$eq;
-Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/Builder;;
-NameAndType	$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
-InterfaceMethod	scala/collection/mutable/Builder.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
-Asciz	result;
-NameAndType	result:()Ljava/lang/Object;
-InterfaceMethod	scala/collection/mutable/Builder.result:()Ljava/lang/Object;
+Asciz	fill;
+Asciz	(ILscala/Function0;Lscala/reflect/ClassManifest;)Ljava/lang/Object;;
+NameAndType	fill:(ILscala/Function0;Lscala/reflect/ClassManifest;)Ljava/lang/Object;
+Method	scala/Array$.fill:(ILscala/Function0;Lscala/reflect/ClassManifest;)Ljava/lang/Object;
 Asciz	[B;
 class	"[B"
 Asciz	ASCII;
@@ -188,13 +178,8 @@ Method	java/lang/String."<init>":([BLjava/lang/String;)V
 Asciz	length;
 Asciz	tp1;
 Asciz	tp2;
-Asciz	evidence$90;
-Asciz	Lscala/reflect/ClassManifest;;
 Asciz	min$1;
 Asciz	max$1;
-Asciz	i0;
-Asciz	b0;
-Asciz	Lscala/collection/mutable/ArrayBuilder;;
 Asciz	nextString;
 Asciz	scala/collection/immutable/List$;
 class	scala/collection/immutable/List$
@@ -206,7 +191,6 @@ class	scala/util/Random$$anonfun$nextString$1
 Asciz	(Lscala/util/Random;)V;
 NameAndType	"<init>":(Lscala/util/Random;)V
 Method	scala/util/Random$$anonfun$nextString$1."<init>":(Lscala/util/Random;)V
-Asciz	fill;
 Asciz	(ILscala/Function0;)Lscala/collection/Traversable;;
 NameAndType	fill:(ILscala/Function0;)Lscala/collection/Traversable;
 Method	scala/collection/immutable/List$.fill:(ILscala/Function0;)Lscala/collection/Traversable;
@@ -341,7 +325,7 @@ public void setSeed(long);
 public java.lang.String nextASCIIString(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=6, Locals=14, Args_size=2
+   Stack=9, Locals=7, Args_size=2
 	ldc	int 33
 	istore_2
 	ldc	int 126
@@ -357,79 +341,37 @@ public java.lang.String nextASCIIString(int);
 	aload	4
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-	istore	6
+	istore	5
 	aload	4
 	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-	istore	7
+	istore	6
 	new	class java/lang/String
 	dup
+	getstatic	Field scala/Array$.MODULE$:Lscala/Array$;
+	iload_1
 	new	class scala/util/Random$$anonfun$nextASCIIString$1
 	dup
-	pop
 	aload_0
+	iload	5
 	iload	6
-	iload	7
 	invokespecial	Method scala/util/Random$$anonfun$nextASCIIString$1."<init>":(Lscala/util/Random;II)V
 	getstatic	Field scala/reflect/Manifest$.MODULE$:Lscala/reflect/Manifest$;
 	invokevirtual	Method scala/reflect/Manifest$.Byte:()Lscala/reflect/AnyValManifest;
-	astore	5
-	aload	5
-	checkcast	class scala/reflect/ClassManifest
-	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.newArrayBuilder:()Lscala/collection/mutable/ArrayBuilder;
-	astore	13
-	iconst_0
-	istore	12
-l2	iload	12
-	iload_1
-	if_icmpge	l1 // aload
-	aload	13
-	aload_0
-	iload	6
-	iload	7
-	istore	9
-	istore	10
-	astore	8
-	aload	8
-	iload	9
-	iload	10
-	isub
-	invokevirtual	Method nextInt:(I)I
-	iload	10
-	iadd
-	i2b
-	istore	11
-	iload	11
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToByte:(B)Ljava/lang/Byte;
-	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
-	pop
-	iload	12
-	iconst_1
-	iadd
-	istore	12
-	goto	l2 // iload
-l1	aload	13
-	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.result:()Ljava/lang/Object;
+	invokevirtual	Method scala/Array$.fill:(ILscala/Function0;Lscala/reflect/ClassManifest;)Ljava/lang/Object;
 	checkcast	class "[B"
 	ldc	String ASCII
 	invokespecial	Method java/lang/String."<init>":([BLjava/lang/String;)V
 	areturn
   Labels:
-   	l2 = 83 // iload
-   	l1 = 138 // aload
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      154      0    this       Lscala/util/Random;
-   0      154      1    length       I
+   0      81      0    this       Lscala/util/Random;
+   0      81      1    length       I
    3      18      2    tp1       I
-   83      71      2    tp1       I
    6      15      3    tp2       I
-   83      71      3    tp2       I
-   83      71      5    evidence$90       Lscala/reflect/ClassManifest;
-   33      120      6    min$1       I
-   43      110      7    max$1       I
-   83      62      12    i0       I
-   80      65      13    b0       Lscala/collection/mutable/ArrayBuilder;
+   33      47      5    min$1       I
+   43      37      6    max$1       I
 
 
 public java.lang.String nextString(int);
