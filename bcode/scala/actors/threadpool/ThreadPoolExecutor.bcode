@@ -1170,9 +1170,9 @@ public void setCorePoolSize(int);
    35:	if_icmple	45
    38:	aload_0
    39:	invokespecial	#107; //Method interruptIdleWorkers:()V
-   42:	goto	94
+   42:	goto	95
    45:	iload_2
-   46:	ifle	94
+   46:	ifle	95
    49:	iload_2
    50:	aload_0
    51:	getfield	#13; //Field workQueue:Lscala/actors/threadpool/BlockingQueue;
@@ -1180,19 +1180,22 @@ public void setCorePoolSize(int);
    59:	invokestatic	#115; //Method java/lang/Math.min:(II)I
    62:	istore_3
    63:	iload_3
-   64:	iinc	3, -1
-   67:	ifle	94
-   70:	aload_0
-   71:	aconst_null
-   72:	iconst_1
-   73:	invokespecial	#67; //Method addWorker:(Ljava/lang/Runnable;Z)Z
-   76:	ifeq	94
-   79:	aload_0
-   80:	getfield	#13; //Field workQueue:Lscala/actors/threadpool/BlockingQueue;
-   83:	invokeinterface	#14,  1; //InterfaceMethod scala/actors/threadpool/BlockingQueue.isEmpty:()Z
-   88:	ifeq	63
-   91:	goto	94
-   94:	return
+   64:	dup
+   65:	iconst_1
+   66:	isub
+   67:	istore_3
+   68:	ifle	95
+   71:	aload_0
+   72:	aconst_null
+   73:	iconst_1
+   74:	invokespecial	#67; //Method addWorker:(Ljava/lang/Runnable;Z)Z
+   77:	ifeq	95
+   80:	aload_0
+   81:	getfield	#13; //Field workQueue:Lscala/actors/threadpool/BlockingQueue;
+   84:	invokeinterface	#14,  1; //InterfaceMethod scala/actors/threadpool/BlockingQueue.isEmpty:()Z
+   89:	ifeq	63
+   92:	goto	95
+   95:	return
 
 public int getCorePoolSize();
   Code:
