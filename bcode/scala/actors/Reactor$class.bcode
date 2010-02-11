@@ -653,7 +653,7 @@ public static void searchMailbox(scala.actors.Reactor, scala.actors.MQueue, scal
 	astore	4
 	iconst_0
 	istore	6
-l7	iload	6
+l6	iload	6
 	ifeq	l1 // aload
 	return
 l1	aload	4
@@ -687,9 +687,9 @@ l2	aload	5
 	aload_0
 	aload_2
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor_$eq:(Lscala/Function1;)V
-	iconst_1
-	istore	6
-	goto	l5 // aload_0
+	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
+	invokevirtual	Method scala/actors/Actor$.suspendException:()Lscala/actors/SuspendActorException;
+	athrow
 l4	new	class scala/actors/MQueue
 	dup
 	ldc	String Temp
@@ -698,9 +698,9 @@ l4	new	class scala/actors/MQueue
 	aload_0
 	aload	4
 	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
-l5	aload_0
+	aload_0
 	monitorexit
-	goto	l6 // goto
+	goto	l5 // goto
 l3	aload_0
 	new	class scala/Tuple2
 	dup
@@ -713,31 +713,30 @@ l3	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.resumeReceiver:(Lscala/Tuple2;Z)V
 	iconst_1
 	istore	6
-l6	goto	l7 // iload
+l5	goto	l6 // iload
 	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l7 = 6 // iload
+   	l6 = 6 // iload
    	l1 = 12 // aload
    	l2 = 52 // aload
-   	l4 = 86 // new
-   	l5 = 105 // aload_0
-   	l3 = 110 // aload_0
-   	l6 = 137 // goto
+   	l4 = 87 // new
+   	l3 = 111 // aload_0
+   	l5 = 138 // goto
   Exception table:
    from   to  target type
-    61   110   140   any
+    61   111   141   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      143      0    $this       Lscala/actors/Reactor;
-   0      143      1    startMbox       Lscala/actors/MQueue;
-   0      143      2    handlesMessage$1       Lscala/Function1;
-   0      143      3    resumeOnSameThread       Z
-   3      140      4    tmpMbox       Lscala/actors/MQueue;
-   28      109      5    qel       Lscala/actors/MQueueElement;
-   140      3      5    qel       Lscala/actors/MQueueElement;
-   6      137      6    done       Z
+   0      144      0    $this       Lscala/actors/Reactor;
+   0      144      1    startMbox       Lscala/actors/MQueue;
+   0      144      2    handlesMessage$1       Lscala/Function1;
+   0      144      3    resumeOnSameThread       Z
+   3      141      4    tmpMbox       Lscala/actors/MQueue;
+   28      110      5    qel       Lscala/actors/MQueueElement;
+   141      3      5    qel       Lscala/actors/MQueueElement;
+   6      138      6    done       Z
 
 
 public static void drainSendBuffer(scala.actors.Reactor, scala.actors.MQueue);
@@ -829,22 +828,23 @@ public static void resumeReceiver(scala.actors.Reactor, scala.Tuple2, boolean);
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	pop
-	goto	l2 // return
+	return
 l1	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.continuation:()Lscala/PartialFunction;
 	aload_1
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduleActor:(Lscala/PartialFunction;Ljava/lang/Object;)V
-l2	return
+	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
+	invokevirtual	Method scala/actors/Actor$.suspendException:()Lscala/actors/SuspendActorException;
+	athrow
   Labels:
-   	l1 = 23 // aload_0
-   	l2 = 39 // return
+   	l1 = 21 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      40      0    $this       Lscala/actors/Reactor;
-   0      40      1    item       Lscala/Tuple2;
-   0      40      2    onSameThread       Z
+   0      44      0    $this       Lscala/actors/Reactor;
+   0      44      1    item       Lscala/Tuple2;
+   0      44      2    onSameThread       Z
 
 
 public static java.lang.Runnable makeReaction(scala.actors.Reactor, scala.Function0);
