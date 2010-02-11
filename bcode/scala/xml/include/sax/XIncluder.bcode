@@ -346,12 +346,12 @@ Method	scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
 Asciz	scala/xml/Utility$$anonfun$escape$2;
 class	scala/xml/Utility$$anonfun$escape$2
 Method	scala/xml/Utility$$anonfun$escape$2."<init>":()V
-Asciz	scala/collection/IndexedSeqLike;
-class	scala/collection/IndexedSeqLike
+Asciz	scala/collection/IndexedSeqLike$class;
+class	scala/collection/IndexedSeqLike$class
 Asciz	foldLeft;
-Asciz	(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;;
-NameAndType	foldLeft:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-InterfaceMethod	scala/collection/IndexedSeqLike.foldLeft:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+Asciz	(Lscala/collection/IndexedSeqLike;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;;
+NameAndType	foldLeft:(Lscala/collection/IndexedSeqLike;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+Method	scala/collection/IndexedSeqLike$class.foldLeft:(Lscala/collection/IndexedSeqLike;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
 Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 Asciz	';
 String	'
@@ -932,7 +932,7 @@ public void endElement(java.lang.String, java.lang.String, java.lang.String);
 public void startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes);
   Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/xml/sax/Attributes;)V
   Code:
-   Stack=5, Locals=11, Args_size=5
+   Stack=4, Locals=13, Args_size=5
 	aload_0
 	invokevirtual	Method out:()Ljava/io/OutputStreamWriter;
 	new	class scala/collection/mutable/StringBuilder
@@ -945,8 +945,8 @@ public void startElement(java.lang.String, java.lang.String, java.lang.String, o
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method java/io/OutputStreamWriter.write:(Ljava/lang/String;)V
 	iconst_0
-	istore	9
-l2	iload	9
+	istore	11
+l2	iload	11
 	aload	4
 	invokeinterface	InterfaceMethod org/xml/sax/Attributes.getLength:()I
 	if_icmpge	l1 // aload_0
@@ -957,7 +957,7 @@ l2	iload	9
 	aload_0
 	invokevirtual	Method out:()Ljava/io/OutputStreamWriter;
 	aload	4
-	iload	9
+	iload	11
 	invokeinterface	InterfaceMethod org/xml/sax/Attributes.getQName:(I)Ljava/lang/String;
 	invokevirtual	Method java/io/OutputStreamWriter.write:(Ljava/lang/String;)V
 	aload_0
@@ -965,7 +965,7 @@ l2	iload	9
 	ldc	String ='
 	invokevirtual	Method java/io/OutputStreamWriter.write:(Ljava/lang/String;)V
 	aload	4
-	iload	9
+	iload	11
 	invokeinterface	InterfaceMethod org/xml/sax/Attributes.getValue:(I)Ljava/lang/String;
 	astore	5
 	aload_0
@@ -978,63 +978,67 @@ l2	iload	9
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	astore	8
-	aload	8
+	astore	10
+	aload	10
 	checkcast	class scala/collection/mutable/StringBuilder
-	astore	7
+	astore	8
 	aload	5
 	astore	6
 	new	class scala/collection/immutable/StringOps
 	dup
 	aload	6
 	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
-	aload	7
 	new	class scala/xml/Utility$$anonfun$escape$2
 	dup
 	invokespecial	Method scala/xml/Utility$$anonfun$escape$2."<init>":()V
-	invokeinterface	InterfaceMethod scala/collection/IndexedSeqLike.foldLeft:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-	pop
+	astore	9
+	astore	7
+	aload	7
 	aload	8
+	aload	9
+	invokestatic	Method scala/collection/IndexedSeqLike$class.foldLeft:(Lscala/collection/IndexedSeqLike;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+	pop
+	aload	10
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method java/io/OutputStreamWriter.write:(Ljava/lang/String;)V
 	aload_0
 	invokevirtual	Method out:()Ljava/io/OutputStreamWriter;
 	ldc	String '
 	invokevirtual	Method java/io/OutputStreamWriter.write:(Ljava/lang/String;)V
-	iload	9
+	iload	11
 	iconst_1
 	iadd
-	istore	9
+	istore	11
 	goto	l2 // iload
 l1	aload_0
 	invokevirtual	Method out:()Ljava/io/OutputStreamWriter;
 	ldc	String >
 	invokevirtual	Method java/io/OutputStreamWriter.write:(Ljava/lang/String;)V
 	return
-	astore	10
+	astore	12
 	new	class org/xml/sax/SAXException
 	dup
 	ldc	String Write failed
-	aload	10
+	aload	12
 	invokespecial	Method org/xml/sax/SAXException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
 	athrow
   Labels:
    	l2 = 29 // iload
-   	l1 = 170 // aload_0
+   	l1 = 176 // aload_0
   Exception table:
    from   to  target type
-     0   179   180   Class java/io/IOException
+     0   185   186   Class java/io/IOException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      194      0    this       Lscala/xml/include/sax/XIncluder;
-   0      194      1    namespaceURI       Ljava/lang/String;
-   0      194      2    localName       Ljava/lang/String;
-   0      194      3    qualifiedName       Ljava/lang/String;
-   0      194      4    atts       Lorg/xml/sax/Attributes;
-   86      81      5    value       Ljava/lang/String;
-   109      40      8    sb00       Lscala/collection/mutable/StringBuilder;
-   29      150      9    i       I
+   0      200      0    this       Lscala/xml/include/sax/XIncluder;
+   0      200      1    namespaceURI       Ljava/lang/String;
+   0      200      2    localName       Ljava/lang/String;
+   0      200      3    qualifiedName       Ljava/lang/String;
+   0      200      4    atts       Lorg/xml/sax/Attributes;
+   86      87      5    value       Ljava/lang/String;
+   109      46      10    sb00       Lscala/collection/mutable/StringBuilder;
+   29      156      11    i       I
 
 
 public void endPrefixMapping(java.lang.String);

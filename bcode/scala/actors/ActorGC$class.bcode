@@ -4,7 +4,7 @@ public abstract class scala.actors.ActorGC$class extends java.lang.Object
   Scala: length = 0x
    
   InnerClass: 
-   public ArrowAssoc=class scala/Predef$ArrowAssoc of class scala/Predef
+   public final ArrowAssoc=class scala/Predef$ArrowAssoc of class scala/Predef
    public final $anonfun$terminated$1=class scala/actors/ActorGC$$anonfun$terminated$1 of class scala/actors/ActorGC
   minor version: 0
   major version: 49
@@ -146,10 +146,12 @@ class	scala/Predef$ArrowAssoc
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/Predef$ArrowAssoc."<init>":(Ljava/lang/Object;)V
-Asciz	$minus$greater;
-Asciz	(Ljava/lang/Object;)Lscala/Tuple2;;
-NameAndType	$minus$greater:(Ljava/lang/Object;)Lscala/Tuple2;
-Method	scala/Predef$ArrowAssoc.$minus$greater:(Ljava/lang/Object;)Lscala/Tuple2;
+Asciz	scala/Tuple2;
+class	scala/Tuple2
+Method	scala/Predef$ArrowAssoc.x:()Ljava/lang/Object;
+Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
+NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+Method	scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Asciz	scala/collection/mutable/HashMap;
 class	scala/collection/mutable/HashMap
 Asciz	$plus$eq;
@@ -159,6 +161,8 @@ Method	scala/collection/mutable/HashMap.$plus$eq:(Lscala/Tuple2;)Lscala/collecti
 Asciz	a;
 Asciz	f;
 Asciz	Lscala/Function0;;
+Asciz	$inlThis1;
+Asciz	Ljava/lang/Object;;
 Asciz	allActorsTerminated;
 Asciz	(Lscala/actors/ActorGC;)Z;
 Asciz	status;
@@ -421,7 +425,7 @@ l5	new	class scala/MatchError
 public static void onTerminate(scala.actors.ActorGC, scala.actors.Reactor, scala.Function0);
   Signature: (Lscala/actors/ActorGC;Lscala/actors/Reactor;Lscala/Function0;)V
   Code:
-   Stack=4, Locals=3, Args_size=3
+   Stack=5, Locals=4, Args_size=3
 	aload_0
 	dup
 	pop
@@ -432,8 +436,13 @@ public static void onTerminate(scala.actors.ActorGC, scala.actors.Reactor, scala
 	dup
 	aload_1
 	invokespecial	Method scala/Predef$ArrowAssoc."<init>":(Ljava/lang/Object;)V
+	astore_3
+	new	class scala/Tuple2
+	dup
+	aload_3
+	invokevirtual	Method scala/Predef$ArrowAssoc.x:()Ljava/lang/Object;
 	aload_2
-	invokevirtual	Method scala/Predef$ArrowAssoc.$minus$greater:(Ljava/lang/Object;)Lscala/Tuple2;
+	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	invokevirtual	Method scala/collection/mutable/HashMap.$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/HashMap;
 	pop
 	aload_0
@@ -445,12 +454,13 @@ public static void onTerminate(scala.actors.ActorGC, scala.actors.Reactor, scala
   Labels:
   Exception table:
    from   to  target type
-     4    28    29   any
+     4    37    38   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      32      0    $this       Lscala/actors/ActorGC;
-   0      32      1    a       Lscala/actors/Reactor;
-   0      32      2    f       Lscala/Function0;
+   0      41      0    $this       Lscala/actors/ActorGC;
+   0      41      1    a       Lscala/actors/Reactor;
+   0      41      2    f       Lscala/Function0;
+   19      18      3    $inlThis1       Ljava/lang/Object;
 
 
 public static boolean allActorsTerminated(scala.actors.ActorGC);

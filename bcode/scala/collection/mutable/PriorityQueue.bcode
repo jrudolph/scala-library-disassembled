@@ -2,7 +2,7 @@ Compiled from "PriorityQueue.scala"
 public class scala.collection.mutable.PriorityQueue extends java.lang.Object implements scala.collection.mutable.Seq,scala.collection.SeqLike,scala.collection.generic.Addable,scala.collection.generic.Growable,scala.collection.mutable.Cloneable,scala.collection.mutable.Builder,scala.ScalaObject,java.io.Serializable,java.lang.Cloneable
   SourceFile: "PriorityQueue.scala"
   Signature: length = 0x2
-   03 FFFFFFC2 
+   03 FFFFFFD2 
   ScalaSig: length = 0x7B9
    05 00 FFFFFF82 25 06 04 01 02 00 09 02 0D 50 72 69 6F
    72 69 74 79 51 75 65 75 65 0A 02 03 04 01 07 6D
@@ -31,7 +31,7 @@ public class scala.collection.mutable.PriorityQueue extends java.lang.Object imp
    07 70 61 63 6B 61 67 65 09 02 46 47 02 08 4F 72
    64 65 72 69 6E 67 0A 02 44 06 08 05 49 00 FFFFFF84 00
    4A 01 06 3C 69 6E 69 74 3E 14 01 4B 16 02 27 4C
-   08 05 3B 48 FFFFFFC0 01 3C 06 04 4E 00 04 4F 02 14 52
+   08 05 3B 48 FFFFFFC0 01 3C 06 04 4E 00 06 4F 02 14 52
    65 73 69 7A 61 62 6C 65 41 72 72 61 79 41 63 63
    65 73 73 15 02 50 55 13 04 4D 0B 51 37 10 03 14
    52 54 09 02 53 02 02 0E 52 65 73 69 7A 61 62 6C
@@ -134,9 +134,10 @@ public class scala.collection.mutable.PriorityQueue extends java.lang.Object imp
    public final $anon$2=class scala/collection/mutable/PriorityQueue$$anon$2 of class scala/collection/mutable/PriorityQueue
    public final $anon$1=class scala/collection/mutable/PriorityQueue$$anon$1 of class scala/collection/mutable/PriorityQueue
    public final $anon$3=class scala/collection/mutable/PriorityQueue$$anon$3 of class scala/collection/mutable/PriorityQueue
+   public abstract $less$colon$less=class scala/Predef$$less$colon$less of class scala/Predef
    public WithFilter=class scala/collection/TraversableLike$WithFilter of class scala/collection/TraversableLike
    public final $anonfun$reverse$1=class scala/collection/mutable/PriorityQueue$$anonfun$reverse$1 of class scala/collection/mutable/PriorityQueue
-   public ResizableArrayAccess=class scala/collection/mutable/PriorityQueue$ResizableArrayAccess of class scala/collection/mutable/PriorityQueue
+   public final ResizableArrayAccess=class scala/collection/mutable/PriorityQueue$ResizableArrayAccess of class scala/collection/mutable/PriorityQueue
   minor version: 0
   major version: 49
   Constant pool:
@@ -465,11 +466,17 @@ class	scala/collection/mutable/PriorityQueue$$anon$2
 Method	scala/collection/mutable/PriorityQueue$$anon$2."<init>":(Lscala/collection/mutable/PriorityQueue;)V
 Asciz	()Lscala/collection/Iterator<TA;>;;
 Asciz	clear;
+Asciz	size0_$eq;
+NameAndType	size0_$eq:(I)V
+InterfaceMethod	scala/collection/mutable/ResizableArray.size0_$eq:(I)V
 Asciz	max;
-Asciz	p_array;
+Asciz	size0;
+NameAndType	size0:()I
+InterfaceMethod	scala/collection/mutable/ResizableArray.size0:()I
+Asciz	array;
 Asciz	()[Ljava/lang/Object;;
-NameAndType	p_array:()[Ljava/lang/Object;
-Method	scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_array:()[Ljava/lang/Object;
+NameAndType	array:()[Ljava/lang/Object;
+InterfaceMethod	scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
 Asciz	java/util/NoSuchElementException;
 class	java/util/NoSuchElementException
 Asciz	queue is empty;
@@ -477,10 +484,12 @@ String	queue is empty
 Method	java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
 Asciz	()TA;;
 Asciz	dequeue;
-Asciz	p_swap;
-Asciz	(II)V;
-NameAndType	p_swap:(II)V
-Method	scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_swap:(II)V
+Asciz	scala/collection/mutable/ResizableArray$class;
+class	scala/collection/mutable/ResizableArray$class
+Asciz	swap;
+Asciz	(Lscala/collection/mutable/ResizableArray;II)V;
+NameAndType	swap:(Lscala/collection/mutable/ResizableArray;II)V
+Method	scala/collection/mutable/ResizableArray$class.swap:(Lscala/collection/mutable/ResizableArray;II)V
 Asciz	fixDown;
 Asciz	([Ljava/lang/Object;II)V;
 NameAndType	fixDown:([Ljava/lang/Object;II)V
@@ -499,9 +508,10 @@ NameAndType	$plus$eq:(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Seq;
 InterfaceMethod	scala/collection/generic/Growable.$plus$eq:(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Seq;)Lscala/collection/generic/Growable;
 Asciz	(TA;TA;Lscala/collection/Seq<TA;>;)Lscala/collection/mutable/PriorityQueue<TA;>;;
 Asciz	(TA;)Lscala/collection/mutable/PriorityQueue<TA;>;;
-Asciz	p_ensureSize;
-NameAndType	p_ensureSize:(I)V
-Method	scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_ensureSize:(I)V
+Asciz	ensureSize;
+Asciz	(Lscala/collection/mutable/ResizableArray;I)V;
+NameAndType	ensureSize:(Lscala/collection/mutable/ResizableArray;I)V
+Method	scala/collection/mutable/ResizableArray$class.ensureSize:(Lscala/collection/mutable/ResizableArray;I)V
 Asciz	fixUp;
 Asciz	([Ljava/lang/Object;I)V;
 NameAndType	fixUp:([Ljava/lang/Object;I)V
@@ -601,6 +611,13 @@ Method	scala/collection/TraversableLike$class.mkString:(Lscala/collection/Traver
 Asciz	(Lscala/collection/TraversableLike;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;;
 NameAndType	mkString:(Lscala/collection/TraversableLike;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 Method	scala/collection/TraversableLike$class.mkString:(Lscala/collection/TraversableLike;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+Asciz	toMap;
+Asciz	(Lscala/Predef$$less$colon$less;)Lscala/collection/immutable/Map;;
+Asciz	(Lscala/collection/TraversableLike;Lscala/Predef$$less$colon$less;)Lscala/collection/immutable/Map;;
+NameAndType	toMap:(Lscala/collection/TraversableLike;Lscala/Predef$$less$colon$less;)Lscala/collection/immutable/Map;
+Method	scala/collection/TraversableLike$class.toMap:(Lscala/collection/TraversableLike;Lscala/Predef$$less$colon$less;)Lscala/collection/immutable/Map;
+Asciz	ev;
+Asciz	Lscala/Predef$$less$colon$less;;
 Asciz	toSet;
 Asciz	()Lscala/collection/immutable/Set;;
 Asciz	(Lscala/collection/TraversableLike;)Lscala/collection/immutable/Set;;
@@ -1111,6 +1128,11 @@ Asciz	Ops;
 Asciz	$anon$2;
 Asciz	$anon$1;
 Asciz	$anon$3;
+Asciz	scala/Predef$$less$colon$less;
+class	scala/Predef$$less$colon$less
+Asciz	scala/Predef;
+class	scala/Predef
+Asciz	$less$colon$less;
 Asciz	scala/collection/TraversableLike$WithFilter;
 class	scala/collection/TraversableLike$WithFilter
 Asciz	WithFilter;
@@ -1640,30 +1662,42 @@ public scala.collection.Iterator iterator();
 public void clear();
   Signature: ()V
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=2, Locals=3, Args_size=1
 	aload_0
-	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
+	getfield	Field scala$collection$mutable$PriorityQueue$$resarr:Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
 	iconst_1
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0_$eq:(I)V
+	istore_2
+	astore_1
+	aload_1
+	iload_2
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0_$eq:(I)V
 	return
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      15      0    this       Lscala/collection/mutable/PriorityQueue;
+
 
 public java.lang.Object max();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=1
+   Stack=3, Locals=4, Args_size=1
 	aload_0
 	getfield	Field scala$collection$mutable$PriorityQueue$$resarr:Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0:()I
+	astore_1
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
 	iconst_1
 	if_icmple	l1 // new
 	aload_0
 	getfield	Field scala$collection$mutable$PriorityQueue$$resarr:Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_array:()[Ljava/lang/Object;
+	astore_2
+	aload_2
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
 	iconst_1
 	aaload
-	astore_1
-	aload_1
+	astore_3
+	aload_3
 	areturn
 l1	new	class java/util/NoSuchElementException
 	dup
@@ -1671,58 +1705,82 @@ l1	new	class java/util/NoSuchElementException
 	invokespecial	Method java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 23 // new
+   	l1 = 31 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      34      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      42      0    this       Lscala/collection/mutable/PriorityQueue;
 
   Signature: length = 0x2
-   01 50 
+   01 56 
 
 public java.lang.Object dequeue();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=5, Locals=2, Args_size=1
+   Stack=5, Locals=14, Args_size=1
 	aload_0
 	getfield	Field scala$collection$mutable$PriorityQueue$$resarr:Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0:()I
+	astore_1
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
 	iconst_1
 	if_icmple	l1 // new
 	aload_0
 	getfield	Field scala$collection$mutable$PriorityQueue$$resarr:Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
 	aload_0
 	getfield	Field scala$collection$mutable$PriorityQueue$$resarr:Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0:()I
+	astore_2
+	aload_2
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
 	iconst_1
 	isub
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0_$eq:(I)V
+	istore	4
+	astore_3
+	aload_3
+	iload	4
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0_$eq:(I)V
 	aload_0
 	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
 	iconst_1
 	aload_0
 	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0:()I
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_swap:(II)V
+	astore	5
+	aload	5
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
+	istore	8
+	istore	7
+	astore	6
+	aload	6
+	iload	7
+	iload	8
+	invokestatic	Method scala/collection/mutable/ResizableArray$class.swap:(Lscala/collection/mutable/ResizableArray;II)V
 	aload_0
 	aload_0
 	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_array:()[Ljava/lang/Object;
+	astore	9
+	aload	9
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
 	iconst_1
 	aload_0
 	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0:()I
+	astore	10
+	aload	10
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
 	iconst_1
 	isub
 	invokevirtual	Method fixDown:([Ljava/lang/Object;II)V
 	aload_0
 	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_array:()[Ljava/lang/Object;
+	astore	11
+	aload	11
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
 	aload_0
 	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0:()I
+	astore	12
+	aload	12
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
 	aaload
-	astore_1
-	aload_1
+	astore	13
+	aload	13
 	areturn
 l1	new	class java/util/NoSuchElementException
 	dup
@@ -1730,13 +1788,13 @@ l1	new	class java/util/NoSuchElementException
 	invokespecial	Method java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 81 // new
+   	l1 = 141 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      92      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      152      0    this       Lscala/collection/mutable/PriorityQueue;
 
   Signature: length = 0x2
-   01 50 
+   01 56 
 
 public void enqueue(scala.collection.Seq);
   Signature: (Lscala/collection/Seq;)V
@@ -1754,7 +1812,7 @@ public void enqueue(scala.collection.Seq);
    0      9      1    elems       Lscala/collection/Seq;
 
   Signature: length = 0x2
-   01 60 
+   01 68 
 
 public scala.collection.mutable.PriorityQueue $plus$plus(scala.collection.Iterator);
   Signature: (Lscala/collection/Iterator;)Lscala/collection/mutable/PriorityQueue;
@@ -1773,7 +1831,7 @@ public scala.collection.mutable.PriorityQueue $plus$plus(scala.collection.Iterat
    0      14      1    iter       Lscala/collection/Iterator;
 
   Signature: length = 0x2
-   01 61 
+   01 69 
 
 public scala.collection.mutable.PriorityQueue $plus$plus(scala.collection.Traversable);
   Signature: (Lscala/collection/Traversable;)Lscala/collection/mutable/PriorityQueue;
@@ -1792,7 +1850,7 @@ public scala.collection.mutable.PriorityQueue $plus$plus(scala.collection.Traver
    0      14      1    elems       Lscala/collection/Traversable;
 
   Signature: length = 0x2
-   01 62 
+   01 6A 
 
 public scala.collection.mutable.PriorityQueue $plus(java.lang.Object, java.lang.Object, scala.collection.Seq);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Seq;)Lscala/collection/mutable/PriorityQueue;
@@ -1815,7 +1873,7 @@ public scala.collection.mutable.PriorityQueue $plus(java.lang.Object, java.lang.
    0      16      3    elems       Lscala/collection/Seq;
 
   Signature: length = 0x2
-   01 66 
+   01 6E 
 
 public scala.collection.mutable.PriorityQueue $plus(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/mutable/PriorityQueue;
@@ -1833,54 +1891,74 @@ public scala.collection.mutable.PriorityQueue $plus(java.lang.Object);
    0      9      1    elem       Ljava/lang/Object;
 
   Signature: length = 0x2
-   01 67 
+   01 6F 
 
 public scala.collection.mutable.PriorityQueue $plus$eq(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/mutable/PriorityQueue;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=12, Args_size=2
 	aload_0
-	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
+	getfield	Field scala$collection$mutable$PriorityQueue$$resarr:Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
 	aload_0
-	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0:()I
+	getfield	Field scala$collection$mutable$PriorityQueue$$resarr:Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
+	astore_2
+	aload_2
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
 	iconst_1
 	iadd
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_ensureSize:(I)V
+	istore	4
+	astore_3
+	aload_3
+	iload	4
+	invokestatic	Method scala/collection/mutable/ResizableArray$class.ensureSize:(Lscala/collection/mutable/ResizableArray;I)V
+	aload_0
+	getfield	Field scala$collection$mutable$PriorityQueue$$resarr:Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
+	astore	5
+	aload	5
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
 	aload_0
 	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_array:()[Ljava/lang/Object;
-	aload_0
-	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0:()I
+	astore	6
+	aload	6
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
 	aload_1
 	aastore
 	aload_0
 	aload_0
 	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_array:()[Ljava/lang/Object;
+	astore	7
+	aload	7
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
 	aload_0
 	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0:()I
+	astore	8
+	aload	8
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
 	invokevirtual	Method fixUp:([Ljava/lang/Object;I)V
 	aload_0
 	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
 	aload_0
 	invokevirtual	Method scala$collection$mutable$PriorityQueue$$resarr:()Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0:()I
+	astore	9
+	aload	9
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
 	iconst_1
 	iadd
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0_$eq:(I)V
+	istore	11
+	astore	10
+	aload	10
+	iload	11
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0_$eq:(I)V
 	aload_0
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      68      0    this       Lscala/collection/mutable/PriorityQueue;
-   0      68      1    elem       Ljava/lang/Object;
+   0      118      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      118      1    elem       Ljava/lang/Object;
 
   Signature: length = 0x2
-   01 67 
+   01 6F 
 
 public void fixDown(java.lang.Object[], int, int);
   Signature: ([Ljava/lang/Object;II)V
@@ -1974,16 +2052,16 @@ l1	return
 public void fixUp(java.lang.Object[], int);
   Signature: ([Ljava/lang/Object;I)V
   Code:
-   Stack=4, Locals=6, Args_size=3
+   Stack=4, Locals=8, Args_size=3
 	iload_2
-	istore	5
-l2	iload	5
+	istore	7
+l2	iload	7
 	iconst_1
 	if_icmple	l1 // return
 	aload_0
 	getfield	Field scala$collection$mutable$PriorityQueue$$ord:Lscala/math/Ordering;
 	aload_1
-	iload	5
+	iload	7
 	iconst_2
 	idiv
 	aaload
@@ -1991,7 +2069,7 @@ l2	iload	5
 	aload_3
 	invokeinterface	InterfaceMethod scala/math/Ordering.mkOrderingOps:(Ljava/lang/Object;)Lscala/math/Ordering$Ops;
 	aload_1
-	iload	5
+	iload	7
 	aaload
 	astore	4
 	aload	4
@@ -1999,26 +2077,30 @@ l2	iload	5
 	ifeq	l1 // return
 	aload_0
 	getfield	Field scala$collection$mutable$PriorityQueue$$resarr:Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	iload	5
-	iload	5
+	iload	7
 	iconst_2
 	idiv
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_swap:(II)V
-	iload	5
+	istore	6
+	astore	5
+	aload	5
+	iload	7
+	iload	6
+	invokestatic	Method scala/collection/mutable/ResizableArray$class.swap:(Lscala/collection/mutable/ResizableArray;II)V
+	iload	7
 	iconst_2
 	idiv
-	istore	5
+	istore	7
 	goto	l2 // iload
 l1	return
   Labels:
    	l2 = 3 // iload
-   	l1 = 62 // return
+   	l1 = 70 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      63      0    this       Lscala/collection/mutable/PriorityQueue;
-   0      63      1    as       [Ljava/lang/Object;
-   0      63      2    m       I
-   3      60      5    k       I
+   0      71      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      71      1    as       [Ljava/lang/Object;
+   0      71      2    m       I
+   3      68      7    k       I
 
 
 public final java.lang.Object scala$collection$mutable$PriorityQueue$$toA(java.lang.Object);
@@ -2096,7 +2178,7 @@ l3	aload	4
    39      22      4    curr       Ljava/lang/Object;
 
   Signature: length = 0x2
-   01 FFFFFF95 
+   01 FFFFFF9E 
 
 public void update(int, java.lang.Object);
   Signature: (ILjava/lang/Object;)V
@@ -2161,46 +2243,50 @@ l3	return
    55      24      5    curr       Ljava/lang/Object;
 
   Signature: length = 0x2
-   01 FFFFFF9F 
+   01 FFFFFFA8 
 
 public void foreach(scala.Function1);
   Signature: (Lscala/Function1;)V
   Code:
-   Stack=3, Locals=4, Args_size=2
+   Stack=3, Locals=6, Args_size=2
 	iconst_1
-	istore_3
-l2	iload_3
+	istore	5
+l2	iload	5
 	aload_0
 	getfield	Field scala$collection$mutable$PriorityQueue$$resarr:Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0:()I
+	astore_2
+	aload_2
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
 	if_icmpge	l1 // return
 	aload_1
 	aload_0
 	getfield	Field scala$collection$mutable$PriorityQueue$$resarr:Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_array:()[Ljava/lang/Object;
-	iload_3
+	astore_3
+	aload_3
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
+	iload	5
 	aaload
-	astore_2
-	aload_2
+	astore	4
+	aload	4
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	pop
-	iload_3
+	iload	5
 	iconst_1
 	iadd
-	istore_3
-	goto	l2 // iload_3
+	istore	5
+	goto	l2 // iload
 l1	return
   Labels:
-   	l2 = 2 // iload_3
-   	l1 = 38 // return
+   	l2 = 3 // iload
+   	l1 = 53 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      39      0    this       Lscala/collection/mutable/PriorityQueue;
-   0      39      1    f       Lscala/Function1;
-   2      37      3    i       I
+   0      54      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      54      1    f       Lscala/Function1;
+   3      51      5    i       I
 
   Signature: length = 0x2
-   01 FFFFFFA5 
+   01 FFFFFFAE 
 
 public scala.collection.mutable.PriorityQueue repr();
   Signature: ()Lscala/collection/mutable/PriorityQueue;
@@ -2215,10 +2301,12 @@ public scala.collection.mutable.PriorityQueue repr();
 public boolean isEmpty();
   Signature: ()Z
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=2, Locals=2, Args_size=1
 	aload_0
 	getfield	Field scala$collection$mutable$PriorityQueue$$resarr:Lscala/collection/mutable/PriorityQueue$ResizableArrayAccess;
-	invokevirtual	Method scala/collection/mutable/PriorityQueue$ResizableArrayAccess.p_size0:()I
+	astore_1
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
 	iconst_2
 	if_icmpge	l1 // iconst_0
 	iconst_1
@@ -2226,8 +2314,12 @@ public boolean isEmpty();
 l1	iconst_0
 l2	ireturn
   Labels:
-   	l1 = 15 // iconst_0
-   	l2 = 16 // ireturn
+   	l1 = 19 // iconst_0
+   	l2 = 20 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      21      0    this       Lscala/collection/mutable/PriorityQueue;
+
 
 public int size();
   Signature: ()I
@@ -2288,7 +2380,7 @@ public scala.collection.TraversableLike$WithFilter withFilter(scala.Function1);
    0      6      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   01 FFFFFFA9 
+   01 FFFFFFB2 
 
 public java.lang.String stringPrefix();
   Signature: ()Ljava/lang/String;
@@ -2393,6 +2485,21 @@ public java.lang.String mkString(java.lang.String, java.lang.String, java.lang.S
    0      8      1    start       Ljava/lang/String;
    0      8      2    sep       Ljava/lang/String;
    0      8      3    end       Ljava/lang/String;
+
+
+public scala.collection.immutable.Map toMap(scala.Predef$$less$colon$less);
+  Signature: (Lscala/Predef$$less$colon$less;)Lscala/collection/immutable/Map;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/collection/TraversableLike$class.toMap:(Lscala/collection/TraversableLike;Lscala/Predef$$less$colon$less;)Lscala/collection/immutable/Map;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/mutable/PriorityQueue;
+   0      6      1    ev       Lscala/Predef$$less$colon$less;
 
 
 public scala.collection.immutable.Set toSet();

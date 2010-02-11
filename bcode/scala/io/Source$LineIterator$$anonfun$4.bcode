@@ -85,11 +85,11 @@ class	scala/collection/immutable/StringOps
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
-Asciz	scala/collection/immutable/StringLike;
-class	scala/collection/immutable/StringLike
-Asciz	(I)C;
-NameAndType	apply:(I)C
-InterfaceMethod	scala/collection/immutable/StringLike.apply:(I)C
+Asciz	scala/collection/immutable/StringLike$class;
+class	scala/collection/immutable/StringLike$class
+Asciz	(Lscala/collection/immutable/StringLike;I)C;
+NameAndType	apply:(Lscala/collection/immutable/StringLike;I)C
+Method	scala/collection/immutable/StringLike$class.apply:(Lscala/collection/immutable/StringLike;I)C
 Asciz	next;
 NameAndType	next:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/Iterator.next:()Ljava/lang/Object;
@@ -179,7 +179,7 @@ public final java.lang.Object apply(java.lang.Object);
 public final boolean apply(char);
   Signature: (C)Z
   Code:
-   Stack=4, Locals=4, Args_size=2
+   Stack=4, Locals=6, Args_size=2
 	iload_1
 	aload_0
 	getfield	Field firstCh$1:C
@@ -203,13 +203,17 @@ public final boolean apply(char);
 	aload_2
 	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
 	iconst_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/StringLike.apply:(I)C
+	istore	4
+	astore_3
+	aload_3
+	iload	4
+	invokestatic	Method scala/collection/immutable/StringLike$class.apply:(Lscala/collection/immutable/StringLike;I)C
 	if_icmpne	l2 // iconst_0
 	iconst_1
-	goto	l3 // istore_3
+	goto	l3 // istore
 l2	iconst_0
-l3	istore_3
-	iload_3
+l3	istore	5
+	iload	5
 	ifeq	l4 // getstatic
 	aload_0
 	getfield	Field $outer:Lscala/io/Source$LineIterator;
@@ -218,24 +222,24 @@ l3	istore_3
 	goto	l5 // pop
 l4	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 l5	pop
-	iload_3
+	iload	5
 	ifeq	l1 // iconst_0
 	iconst_1
 	goto	l6 // ireturn
 l1	iconst_0
 l6	ireturn
   Labels:
-   	l2 = 67 // iconst_0
-   	l3 = 68 // istore_3
-   	l4 = 88 // getstatic
-   	l5 = 91 // pop
-   	l1 = 100 // iconst_0
-   	l6 = 101 // ireturn
+   	l2 = 71 // iconst_0
+   	l3 = 72 // istore
+   	l4 = 94 // getstatic
+   	l5 = 97 // pop
+   	l1 = 107 // iconst_0
+   	l6 = 108 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      102      0    this       Lscala/io/Source$LineIterator$$anonfun$4;
-   0      102      1    ch       C
-   69      24      3    res       Z
+   0      109      0    this       Lscala/io/Source$LineIterator$$anonfun$4;
+   0      109      1    ch       C
+   74      26      5    res       Z
 
 
 }

@@ -81,30 +81,30 @@ Asciz	idx;
 Asciz	I;
 Asciz	length;
 Asciz	(Lscala/collection/IndexedSeqViewLike$Zipped;)I;
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	MODULE$;
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	scala/collection/TraversableLike;
+class	scala/collection/TraversableLike
+Asciz	hasDefiniteSize;
+Asciz	()Z;
+NameAndType	hasDefiniteSize:()Z
+InterfaceMethod	scala/collection/TraversableLike.hasDefiniteSize:()Z
 Asciz	()I;
 NameAndType	length:()I
 InterfaceMethod	scala/collection/SeqLike.length:()I
-Asciz	intWrapper;
-Asciz	(I)Lscala/runtime/RichInt;;
-NameAndType	intWrapper:(I)Lscala/runtime/RichInt;
-Method	scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
-Asciz	scala/collection/TraversableLike;
-class	scala/collection/TraversableLike
+Asciz	scala/runtime/RichInt;
+class	scala/runtime/RichInt
+Asciz	(I)V;
+NameAndType	"<init>":(I)V
+Method	scala/runtime/RichInt."<init>":(I)V
 Asciz	size;
 NameAndType	size:()I
 InterfaceMethod	scala/collection/TraversableLike.size:()I
-Asciz	scala/runtime/RichInt;
-class	scala/runtime/RichInt
 Asciz	min;
 Asciz	(I)I;
 NameAndType	min:(I)I
 Method	scala/runtime/RichInt.min:(I)I
+Asciz	take;
+NameAndType	take:(I)Ljava/lang/Object;
+InterfaceMethod	scala/collection/IterableLike.take:(I)Ljava/lang/Object;
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	Zipped;
@@ -174,21 +174,39 @@ public static scala.Tuple2 apply(scala.collection.IndexedSeqViewLike$Zipped, int
 public static int length(scala.collection.IndexedSeqViewLike$Zipped);
   Signature: (Lscala/collection/IndexedSeqViewLike$Zipped;)I
   Code:
-   Stack=2, Locals=1, Args_size=1
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+   Stack=3, Locals=2, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/IndexedSeqViewLike$Zipped.other:()Lscala/collection/Iterable;
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.hasDefiniteSize:()Z
+	ifeq	l1 // aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/IndexedSeqViewLike$Zipped.scala$collection$IndexedSeqViewLike$Zipped$$$outer:()Lscala/collection/IndexedSeqViewLike;
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
+	istore_1
+	new	class scala/runtime/RichInt
+	dup
+	iload_1
+	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/IndexedSeqViewLike$Zipped.other:()Lscala/collection/Iterable;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.size:()I
 	invokevirtual	Method scala/runtime/RichInt.min:(I)I
-	ireturn
+	goto	l2 // ireturn
+l1	aload_0
+	invokeinterface	InterfaceMethod scala/collection/IndexedSeqViewLike$Zipped.other:()Lscala/collection/Iterable;
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/IndexedSeqViewLike$Zipped.scala$collection$IndexedSeqViewLike$Zipped$$$outer:()Lscala/collection/IndexedSeqViewLike;
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.take:(I)Ljava/lang/Object;
+	checkcast	class scala/collection/TraversableLike
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.size:()I
+l2	ireturn
   Labels:
+   	l1 = 51 // aload_0
+   	l2 = 81 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      32      0    $this       Lscala/collection/IndexedSeqViewLike$Zipped;
+   0      82      0    $this       Lscala/collection/IndexedSeqViewLike$Zipped;
 
 
 }

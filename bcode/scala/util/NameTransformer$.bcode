@@ -244,12 +244,12 @@ Asciz	genericWrapArray;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
 NameAndType	genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 Method	scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-Asciz	scala/collection/immutable/StringLike;
-class	scala/collection/immutable/StringLike
+Asciz	scala/collection/immutable/StringLike$class;
+class	scala/collection/immutable/StringLike$class
 Asciz	format;
-Asciz	(Lscala/collection/Seq;)Ljava/lang/String;;
-NameAndType	format:(Lscala/collection/Seq;)Ljava/lang/String;
-InterfaceMethod	scala/collection/immutable/StringLike.format:(Lscala/collection/Seq;)Ljava/lang/String;
+Asciz	(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;;
+NameAndType	format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
+Method	scala/collection/immutable/StringLike$class.format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
 Asciz	(CLjava/lang/String;Lscala/util/NameTransformer$OpCodes;)V;
 NameAndType	"<init>":(CLjava/lang/String;Lscala/util/NameTransformer$OpCodes;)V
 Method	scala/util/NameTransformer$OpCodes."<init>":(CLjava/lang/String;Lscala/util/NameTransformer$OpCodes;)V
@@ -644,19 +644,19 @@ l17	areturn
 public java.lang.String encode(java.lang.String);
   Signature: (Ljava/lang/String;)Ljava/lang/String;
   Code:
-   Stack=7, Locals=8, Args_size=2
+   Stack=7, Locals=10, Args_size=2
 	aconst_null
-	astore	7
+	astore	9
 	aload_1
 	invokevirtual	Method java/lang/String.length:()I
 	istore_2
 	iconst_0
-	istore	6
-l10	iload	6
+	istore	8
+l10	iload	8
 	iload_2
 	if_icmpge	l1 // aload
 	aload_1
-	iload	6
+	iload	8
 	invokevirtual	Method java/lang/String.charAt:(I)C
 	istore	4
 	iload	4
@@ -668,22 +668,22 @@ l10	iload	6
 	iload	4
 	aaload
 	ifnull	l2 // iload
-	aload	7
+	aload	9
 	ifnonnull	l3 // getstatic
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	astore	7
-	aload	7
+	astore	9
+	aload	9
 	aload_1
 	iconst_0
-	iload	6
+	iload	8
 	invokevirtual	Method java/lang/String.substring:(II)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 	goto	l4 // pop
 l3	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 l4	pop
-	aload	7
+	aload	9
 	aload_0
 	invokespecial	Method op2code:()[Ljava/lang/String;
 	iload	4
@@ -693,30 +693,30 @@ l4	pop
 l2	iload	4
 	invokestatic	Method java/lang/Character.isJavaIdentifierPart:(C)Z
 	ifeq	l6 // aload
-	aload	7
+	aload	9
 	ifnull	l7 // getstatic
-	aload	7
+	aload	9
 	iload	4
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(C)Lscala/collection/mutable/StringBuilder;
 	goto	l5 // pop
 l7	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 	goto	l5 // pop
-l6	aload	7
+l6	aload	9
 	ifnonnull	l8 // getstatic
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	astore	7
-	aload	7
+	astore	9
+	aload	9
 	aload_1
 	iconst_0
-	iload	6
+	iload	8
 	invokevirtual	Method java/lang/String.substring:(II)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 	goto	l9 // pop
 l8	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 l9	pop
-	aload	7
+	aload	9
 	ldc	String $u%04X
 	astore_3
 	new	class scala/collection/immutable/StringOps
@@ -734,19 +734,23 @@ l9	pop
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	aastore
 	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	invokeinterface	InterfaceMethod scala/collection/immutable/StringLike.format:(Lscala/collection/Seq;)Ljava/lang/String;
+	astore	7
+	astore	6
+	aload	6
+	aload	7
+	invokestatic	Method scala/collection/immutable/StringLike$class.format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 l5	pop
-	iload	6
+	iload	8
 	iconst_1
 	iadd
-	istore	6
+	istore	8
 	goto	l10 // iload
-l1	aload	7
+l1	aload	9
 	ifnonnull	l11 // aload
 	aload_1
 	goto	l12 // areturn
-l11	aload	7
+l11	aload	9
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 l12	areturn
   Labels:
@@ -758,18 +762,18 @@ l12	areturn
    	l6 = 121 // aload
    	l8 = 150 // getstatic
    	l9 = 153 // pop
-   	l5 = 197 // pop
-   	l1 = 207 // aload
-   	l11 = 216 // aload
-   	l12 = 221 // areturn
+   	l5 = 203 // pop
+   	l1 = 213 // aload
+   	l11 = 222 // aload
+   	l12 = 227 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      222      0    this       Lscala/util/NameTransformer$;
-   0      222      1    name       Ljava/lang/String;
-   8      214      2    len       I
-   25      179      4    c       C
-   11      211      6    i       I
-   3      219      7    buf       Lscala/collection/mutable/StringBuilder;
+   0      228      0    this       Lscala/util/NameTransformer$;
+   0      228      1    name       Ljava/lang/String;
+   8      220      2    len       I
+   25      185      4    c       C
+   11      217      8    i       I
+   3      225      9    buf       Lscala/collection/mutable/StringBuilder;
 
 
 private void enterOp(char, java.lang.String);

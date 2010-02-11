@@ -136,11 +136,12 @@ Asciz	boxToCharacter;
 Asciz	(C)Ljava/lang/Character;;
 NameAndType	boxToCharacter:(C)Ljava/lang/Character;
 Method	scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
-Asciz	scala/collection/SeqLike;
-class	scala/collection/SeqLike
+Asciz	scala/collection/SeqLike$class;
+class	scala/collection/SeqLike$class
 Asciz	contains;
-NameAndType	contains:(Ljava/lang/Object;)Z
-InterfaceMethod	scala/collection/SeqLike.contains:(Ljava/lang/Object;)Z
+Asciz	(Lscala/collection/SeqLike;Ljava/lang/Object;)Z;
+NameAndType	contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
+Method	scala/collection/SeqLike$class.contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 int	39;
 Asciz	(C)Lscala/collection/mutable/StringBuilder;;
 NameAndType	append:(C)Lscala/collection/mutable/StringBuilder;
@@ -382,7 +383,7 @@ l3	areturn
 public java.lang.String quoted(java.lang.String);
   Signature: (Ljava/lang/String;)Ljava/lang/String;
   Code:
-   Stack=3, Locals=4, Args_size=2
+   Stack=3, Locals=6, Args_size=2
 	new	class scala/collection/immutable/StringOps
 	dup
 	aload_1
@@ -391,32 +392,36 @@ public java.lang.String quoted(java.lang.String);
 	istore_2
 	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.contains:(Ljava/lang/Object;)Z
+	astore	4
+	astore_3
+	aload_3
+	aload	4
+	invokestatic	Method scala/collection/SeqLike$class.contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 	ifeq	l1 // ldc
 	ldc	int 39
-	goto	l2 // istore_3
+	goto	l2 // istore
 l1	ldc	int 34
-l2	istore_3
+l2	istore	5
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	iload_3
+	iload	5
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(C)Lscala/collection/mutable/StringBuilder;
 	aload_1
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	iload_3
+	iload	5
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	areturn
   Labels:
-   	l1 = 28 // ldc
-   	l2 = 30 // istore_3
+   	l1 = 32 // ldc
+   	l2 = 34 // istore
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      57      0    this       Lscala/xml/dtd/ExternalID;
-   0      57      1    s       Ljava/lang/String;
-   31      25      3    c       C
+   0      64      0    this       Lscala/xml/dtd/ExternalID;
+   0      64      1    s       Ljava/lang/String;
+   36      27      5    c       C
 
 
 public boolean checkPubID(java.lang.String);

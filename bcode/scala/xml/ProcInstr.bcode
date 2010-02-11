@@ -199,12 +199,12 @@ class	scala/Predef$
 Asciz	Lscala/Predef$;;
 NameAndType	MODULE$:Lscala/Predef$;
 Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	scala/collection/IndexedSeqLike;
-class	scala/collection/IndexedSeqLike
+Asciz	scala/collection/IndexedSeqLike$class;
+class	scala/collection/IndexedSeqLike$class
 Asciz	isEmpty;
-Asciz	()Z;
-NameAndType	isEmpty:()Z
-InterfaceMethod	scala/collection/IndexedSeqLike.isEmpty:()Z
+Asciz	(Lscala/collection/IndexedSeqLike;)Z;
+NameAndType	isEmpty:(Lscala/collection/IndexedSeqLike;)Z
+Method	scala/collection/IndexedSeqLike$class.isEmpty:(Lscala/collection/IndexedSeqLike;)Z
 Asciz	;
 String	
 Asciz	 ;
@@ -213,12 +213,12 @@ Asciz	genericWrapArray;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
 NameAndType	genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 Method	scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-Asciz	scala/collection/immutable/StringLike;
-class	scala/collection/immutable/StringLike
+Asciz	scala/collection/immutable/StringLike$class;
+class	scala/collection/immutable/StringLike$class
 Asciz	format;
-Asciz	(Lscala/collection/Seq;)Ljava/lang/String;;
-NameAndType	format:(Lscala/collection/Seq;)Ljava/lang/String;
-InterfaceMethod	scala/collection/immutable/StringLike.format:(Lscala/collection/Seq;)Ljava/lang/String;
+Asciz	(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;;
+NameAndType	format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
+Method	scala/collection/immutable/StringLike$class.format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
 Asciz	(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;;
 NameAndType	append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
@@ -229,6 +229,7 @@ Asciz	label;
 Asciz	#PI;
 String	#PI
 Asciz	doTransform;
+Asciz	()Z;
 Asciz	doCollectNamespaces;
 Asciz	copy$default$1;
 Asciz	copy$default$2;
@@ -421,7 +422,7 @@ public scala.xml.ProcInstr copy(java.lang.String, java.lang.String);
 public scala.collection.mutable.StringBuilder buildString(scala.collection.mutable.StringBuilder);
   Signature: (Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
   Code:
-   Stack=9, Locals=4, Args_size=2
+   Stack=9, Locals=7, Args_size=2
 	aload_1
 	ldc	String <?%s%s?>
 	astore_2
@@ -446,7 +447,9 @@ public scala.collection.mutable.StringBuilder buildString(scala.collection.mutab
 	dup
 	aload_3
 	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
-	invokeinterface	InterfaceMethod scala/collection/IndexedSeqLike.isEmpty:()Z
+	astore	4
+	aload	4
+	invokestatic	Method scala/collection/IndexedSeqLike$class.isEmpty:(Lscala/collection/IndexedSeqLike;)Z
 	ifeq	l1 // new
 	ldc	String 
 	goto	l2 // aastore
@@ -461,16 +464,20 @@ l1	new	class scala/collection/mutable/StringBuilder
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 l2	aastore
 	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	invokeinterface	InterfaceMethod scala/collection/immutable/StringLike.format:(Lscala/collection/Seq;)Ljava/lang/String;
+	astore	6
+	astore	5
+	aload	5
+	aload	6
+	invokestatic	Method scala/collection/immutable/StringLike$class.format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 	areturn
   Labels:
-   	l1 = 54 // new
-   	l2 = 76 // aastore
+   	l1 = 56 // new
+   	l2 = 78 // aastore
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      89      0    this       Lscala/xml/ProcInstr;
-   0      89      1    sb       Lscala/collection/mutable/StringBuilder;
+   0      97      0    this       Lscala/xml/ProcInstr;
+   0      97      1    sb       Lscala/collection/mutable/StringBuilder;
 
 
 public java.lang.String text();

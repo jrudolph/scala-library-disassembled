@@ -43,12 +43,12 @@ class	scala/collection/immutable/StringOps
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
-Asciz	scala/collection/immutable/StringLike;
-class	scala/collection/immutable/StringLike
+Asciz	scala/collection/immutable/StringLike$class;
+class	scala/collection/immutable/StringLike$class
 Asciz	toInt;
-Asciz	()I;
-NameAndType	toInt:()I
-InterfaceMethod	scala/collection/immutable/StringLike.toInt:()I
+Asciz	(Lscala/collection/immutable/StringLike;)I;
+NameAndType	toInt:(Lscala/collection/immutable/StringLike;)I
+Method	scala/collection/immutable/StringLike$class.toInt:(Lscala/collection/immutable/StringLike;)I
 Asciz	prefix;
 Asciz	()Ljava/lang/String;;
 NameAndType	prefix:()Ljava/lang/String;
@@ -173,7 +173,7 @@ public static void $init$(scala.testing.Benchmark);
 public static void main(scala.testing.Benchmark, java.lang.String[]);
   Signature: (Lscala/testing/Benchmark;[Ljava/lang/String;)V
   Code:
-   Stack=5, Locals=11, Args_size=2
+   Stack=5, Locals=13, Args_size=2
 	aload_1
 	arraylength
 	iconst_0
@@ -182,7 +182,7 @@ public static void main(scala.testing.Benchmark, java.lang.String[]);
 	dup
 	getstatic	Field java/lang/System.out:Ljava/io/PrintStream;
 	invokespecial	Method java/io/OutputStreamWriter."<init>":(Ljava/io/OutputStream;)V
-	astore	4
+	astore	6
 	aload_1
 	arraylength
 	iconst_1
@@ -196,9 +196,11 @@ public static void main(scala.testing.Benchmark, java.lang.String[]);
 	dup
 	aload_2
 	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
-	invokeinterface	InterfaceMethod scala/collection/immutable/StringLike.toInt:()I
+	astore_3
+	aload_3
+	invokestatic	Method scala/collection/immutable/StringLike$class.toInt:(Lscala/collection/immutable/StringLike;)I
 	invokeinterface	InterfaceMethod scala/testing/Benchmark.multiplier_$eq:(I)V
-l2	aload	4
+l2	aload	6
 	aload_0
 	invokeinterface	InterfaceMethod scala/testing/Benchmark.prefix:()Ljava/lang/String;
 	invokevirtual	Method java/io/OutputStreamWriter.write:(Ljava/lang/String;)V
@@ -206,35 +208,29 @@ l2	aload	4
 	aload_1
 	iconst_0
 	aaload
-	astore_3
+	astore	4
 	new	class scala/collection/immutable/StringOps
 	dup
-	aload_3
+	aload	4
 	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
-	invokeinterface	InterfaceMethod scala/collection/immutable/StringLike.toInt:()I
+	astore	5
+	aload	5
+	invokestatic	Method scala/collection/immutable/StringLike$class.toInt:(Lscala/collection/immutable/StringLike;)I
 	invokeinterface	InterfaceMethod scala/testing/Benchmark.runBenchmark:(I)Lscala/collection/immutable/List;
 	new	class scala/testing/Benchmark$$anonfun$main$1
 	dup
 	aload_0
-	aload	4
+	aload	6
 	invokespecial	Method scala/testing/Benchmark$$anonfun$main$1."<init>":(Lscala/testing/Benchmark;Ljava/io/OutputStreamWriter;)V
 	invokeinterface	InterfaceMethod scala/collection/LinearSeqLike.foreach:(Lscala/Function1;)V
-	aload	4
+	aload	6
 	getstatic	Field scala/compat/Platform$.MODULE$:Lscala/compat/Platform$;
 	invokevirtual	Method scala/compat/Platform$.EOL:()Ljava/lang/String;
 	invokevirtual	Method java/io/OutputStreamWriter.write:(Ljava/lang/String;)V
-	aload	4
+	aload	6
 	invokevirtual	Method java/io/OutputStreamWriter.flush:()V
 	goto	l3 // return
 l1	ldc	String Usage: scala benchmarks.program <runs> 
-	astore	6
-	getstatic	Field scala/Console$.MODULE$:Lscala/Console$;
-	astore	5
-	aload	5
-	invokevirtual	Method scala/Console$.out:()Ljava/io/PrintStream;
-	aload	6
-	invokevirtual	Method java/io/PrintStream.println:(Ljava/lang/Object;)V
-	ldc	String    or: scala benchmarks.program <runs> <multiplier>
 	astore	8
 	getstatic	Field scala/Console$.MODULE$:Lscala/Console$;
 	astore	7
@@ -242,7 +238,7 @@ l1	ldc	String Usage: scala benchmarks.program <runs>
 	invokevirtual	Method scala/Console$.out:()Ljava/io/PrintStream;
 	aload	8
 	invokevirtual	Method java/io/PrintStream.println:(Ljava/lang/Object;)V
-	ldc	String \n    The benchmark is run <runs> times, forcing a garbage collection between runs. The optional\n    <multiplier> causes the benchmark to be repeated <multiplier> times, each time for <runs>\n    executions.\n      
+	ldc	String    or: scala benchmarks.program <runs> <multiplier>
 	astore	10
 	getstatic	Field scala/Console$.MODULE$:Lscala/Console$;
 	astore	9
@@ -250,16 +246,24 @@ l1	ldc	String Usage: scala benchmarks.program <runs>
 	invokevirtual	Method scala/Console$.out:()Ljava/io/PrintStream;
 	aload	10
 	invokevirtual	Method java/io/PrintStream.println:(Ljava/lang/Object;)V
+	ldc	String \n    The benchmark is run <runs> times, forcing a garbage collection between runs. The optional\n    <multiplier> causes the benchmark to be repeated <multiplier> times, each time for <runs>\n    executions.\n      
+	astore	12
+	getstatic	Field scala/Console$.MODULE$:Lscala/Console$;
+	astore	11
+	aload	11
+	invokevirtual	Method scala/Console$.out:()Ljava/io/PrintStream;
+	aload	12
+	invokevirtual	Method java/io/PrintStream.println:(Ljava/lang/Object;)V
 l3	return
   Labels:
    	l2 = 47 // aload
-   	l1 = 115 // ldc
-   	l3 = 172 // return
+   	l1 = 119 // ldc
+   	l3 = 176 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      173      0    $this       Lscala/testing/Benchmark;
-   0      173      1    args       [Ljava/lang/String;
-   18      94      4    logFile$1       Ljava/io/OutputStreamWriter;
+   0      177      0    $this       Lscala/testing/Benchmark;
+   0      177      1    args       [Ljava/lang/String;
+   18      98      6    logFile$1       Ljava/io/OutputStreamWriter;
 
 
 public static java.lang.String prefix(scala.testing.Benchmark);

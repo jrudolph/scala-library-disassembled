@@ -43,12 +43,12 @@ Asciz	boxToCharacter;
 Asciz	(C)Ljava/lang/Character;;
 NameAndType	boxToCharacter:(C)Ljava/lang/Character;
 Method	scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
-Asciz	scala/collection/SeqLike;
-class	scala/collection/SeqLike
+Asciz	scala/collection/SeqLike$class;
+class	scala/collection/SeqLike$class
 Asciz	contains;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	contains:(Ljava/lang/Object;)Z
-InterfaceMethod	scala/collection/SeqLike.contains:(Ljava/lang/Object;)Z
+Asciz	(Lscala/collection/SeqLike;Ljava/lang/Object;)Z;
+NameAndType	contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
+Method	scala/collection/SeqLike$class.contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 Asciz	c;
 Asciz	C;
 Asciz	checkPubID;
@@ -141,16 +141,29 @@ Asciz	-\()+,./:=?;!*#@$_%;
 String	-\()+,./:=?;!*#@$_%
 Asciz	ch;
 Asciz	isName;
-InterfaceMethod	scala/collection/IndexedSeqLike.head:()Ljava/lang/Object;
+Asciz	scala/collection/TraversableLike$class;
+class	scala/collection/TraversableLike$class
+Asciz	(Lscala/collection/TraversableLike;)Z;
+NameAndType	nonEmpty:(Lscala/collection/TraversableLike;)Z
+Method	scala/collection/TraversableLike$class.nonEmpty:(Lscala/collection/TraversableLike;)Z
+Asciz	scala/collection/IndexedSeqLike$class;
+class	scala/collection/IndexedSeqLike$class
+Asciz	(Lscala/collection/IndexedSeqLike;)Ljava/lang/Object;;
+NameAndType	head:(Lscala/collection/IndexedSeqLike;)Ljava/lang/Object;
+Method	scala/collection/IndexedSeqLike$class.head:(Lscala/collection/IndexedSeqLike;)Ljava/lang/Object;
 Asciz	isNameStart;
 NameAndType	isNameStart:(C)Z
 InterfaceMethod	scala/xml/parsing/TokenTests.isNameStart:(C)Z
-InterfaceMethod	scala/collection/IndexedSeqLike.tail:()Ljava/lang/Object;
+NameAndType	tail:(Lscala/collection/IndexedSeqLike;)Ljava/lang/Object;
+Method	scala/collection/IndexedSeqLike$class.tail:(Lscala/collection/IndexedSeqLike;)Ljava/lang/Object;
 Asciz	java/lang/String;
 class	java/lang/String
 Asciz	scala/xml/parsing/TokenTests$$anonfun$isName$1;
 class	scala/xml/parsing/TokenTests$$anonfun$isName$1
 Method	scala/xml/parsing/TokenTests$$anonfun$isName$1."<init>":(Lscala/xml/parsing/TokenTests;)V
+Asciz	(Lscala/collection/IndexedSeqLike;Lscala/Function1;)Z;
+NameAndType	forall:(Lscala/collection/IndexedSeqLike;Lscala/Function1;)Z
+Method	scala/collection/IndexedSeqLike$class.forall:(Lscala/collection/IndexedSeqLike;Lscala/Function1;)Z
 Asciz	java/lang/Character;
 class	java/lang/Character
 Asciz	getType;
@@ -201,7 +214,7 @@ public static void $init$(scala.xml.parsing.TokenTests);
 public static final boolean charOK$1(scala.xml.parsing.TokenTests, char);
   Signature: (Lscala/xml/parsing/TokenTests;C)Z
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=5, Args_size=2
 	aload_0
 	iload_1
 	invokeinterface	InterfaceMethod scala/xml/parsing/TokenTests.isAlphaDigit:(C)Z
@@ -214,20 +227,24 @@ public static final boolean charOK$1(scala.xml.parsing.TokenTests, char);
 	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
 	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.contains:(Ljava/lang/Object;)Z
+	astore	4
+	astore_3
+	aload_3
+	aload	4
+	invokestatic	Method scala/collection/SeqLike$class.contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 	ifeq	l2 // iconst_0
 l1	iconst_1
 	goto	l3 // ireturn
 l2	iconst_0
 l3	ireturn
   Labels:
-   	l1 = 33 // iconst_1
-   	l2 = 37 // iconst_0
-   	l3 = 38 // ireturn
+   	l1 = 37 // iconst_1
+   	l2 = 41 // iconst_0
+   	l3 = 42 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      39      0    $this       Lscala/xml/parsing/TokenTests;
-   0      39      1    c       C
+   0      43      0    $this       Lscala/xml/parsing/TokenTests;
+   0      43      1    c       C
 
 
 public static boolean checkPubID(scala.xml.parsing.TokenTests, java.lang.String);
@@ -320,7 +337,7 @@ l2	ireturn
 public static boolean isPubIDChar(scala.xml.parsing.TokenTests, char);
   Signature: (Lscala/xml/parsing/TokenTests;C)Z
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=5, Args_size=2
 	aload_0
 	iload_1
 	invokeinterface	InterfaceMethod scala/xml/parsing/TokenTests.isAlphaDigit:(C)Z
@@ -340,7 +357,11 @@ l2	ldc	String -\()+,./:=?;!*#@$_%
 	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
 	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.contains:(Ljava/lang/Object;)Z
+	astore	4
+	astore_3
+	aload_3
+	aload	4
+	invokestatic	Method scala/collection/SeqLike$class.contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 l1	iconst_1
 	goto	l4 // ireturn
@@ -348,31 +369,35 @@ l3	iconst_0
 l4	ireturn
   Labels:
    	l2 = 26 // ldc
-   	l1 = 49 // iconst_1
-   	l3 = 53 // iconst_0
-   	l4 = 54 // ireturn
+   	l1 = 53 // iconst_1
+   	l3 = 57 // iconst_0
+   	l4 = 58 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      55      0    $this       Lscala/xml/parsing/TokenTests;
-   0      55      1    ch       C
+   0      59      0    $this       Lscala/xml/parsing/TokenTests;
+   0      59      1    ch       C
 
 
 public static boolean isName(scala.xml.parsing.TokenTests, java.lang.String);
   Signature: (Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=4, Locals=7, Args_size=2
 	new	class scala/collection/immutable/StringOps
 	dup
 	aload_1
 	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.nonEmpty:()Z
+	astore_2
+	aload_2
+	invokestatic	Method scala/collection/TraversableLike$class.nonEmpty:(Lscala/collection/TraversableLike;)Z
 	ifeq	l1 // iconst_0
 	aload_0
 	new	class scala/collection/immutable/StringOps
 	dup
 	aload_1
 	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
-	invokeinterface	InterfaceMethod scala/collection/IndexedSeqLike.head:()Ljava/lang/Object;
+	astore_3
+	aload_3
+	invokestatic	Method scala/collection/IndexedSeqLike$class.head:(Lscala/collection/IndexedSeqLike;)Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
 	invokeinterface	InterfaceMethod scala/xml/parsing/TokenTests.isNameStart:(C)Z
 	ifeq	l1 // iconst_0
@@ -381,26 +406,32 @@ public static boolean isName(scala.xml.parsing.TokenTests, java.lang.String);
 	dup
 	aload_1
 	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
-	invokeinterface	InterfaceMethod scala/collection/IndexedSeqLike.tail:()Ljava/lang/Object;
+	astore	4
+	aload	4
+	invokestatic	Method scala/collection/IndexedSeqLike$class.tail:(Lscala/collection/IndexedSeqLike;)Ljava/lang/Object;
 	checkcast	class java/lang/String
 	invokevirtual	Method scala/Predef$.augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
 	new	class scala/xml/parsing/TokenTests$$anonfun$isName$1
 	dup
 	aload_0
 	invokespecial	Method scala/xml/parsing/TokenTests$$anonfun$isName$1."<init>":(Lscala/xml/parsing/TokenTests;)V
-	invokeinterface	InterfaceMethod scala/collection/IndexedSeqLike.forall:(Lscala/Function1;)Z
+	astore	6
+	astore	5
+	aload	5
+	aload	6
+	invokestatic	Method scala/collection/IndexedSeqLike$class.forall:(Lscala/collection/IndexedSeqLike;Lscala/Function1;)Z
 	ifeq	l1 // iconst_0
 	iconst_1
 	goto	l2 // ireturn
 l1	iconst_0
 l2	ireturn
   Labels:
-   	l1 = 83 // iconst_0
-   	l2 = 84 // ireturn
+   	l1 = 91 // iconst_0
+   	l2 = 92 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      85      0    $this       Lscala/xml/parsing/TokenTests;
-   0      85      1    s       Ljava/lang/String;
+   0      93      0    $this       Lscala/xml/parsing/TokenTests;
+   0      93      1    s       Ljava/lang/String;
 
 
 public static boolean isNameStart(scala.xml.parsing.TokenTests, char);
@@ -449,7 +480,7 @@ l2	ireturn
 public static boolean isNameChar(scala.xml.parsing.TokenTests, char);
   Signature: (Lscala/xml/parsing/TokenTests;C)Z
   Code:
-   Stack=3, Locals=4, Args_size=2
+   Stack=3, Locals=6, Args_size=2
 	aload_0
 	iload_1
 	invokeinterface	InterfaceMethod scala/xml/parsing/TokenTests.isNameStart:(C)Z
@@ -460,12 +491,12 @@ public static boolean isNameChar(scala.xml.parsing.TokenTests, char);
 	istore_2
 	iload_2
 	tableswitch{ //4 to 9
-		4: 95;
+		4: 101;
 		5: 56;
-		6: 91;
-		7: 87;
-		8: 83;
-		9: 79;
+		6: 97;
+		7: 93;
+		8: 89;
+		9: 85;
 		default: 56 }
 	ldc	String .-:
 	astore_3
@@ -475,7 +506,11 @@ public static boolean isNameChar(scala.xml.parsing.TokenTests, char);
 	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
 	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.contains:(Ljava/lang/Object;)Z
+	astore	5
+	astore	4
+	aload	4
+	aload	5
+	invokestatic	Method scala/collection/SeqLike$class.contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 	goto	l2 // ifeq
 	iconst_1
 	goto	l2 // ifeq
@@ -492,15 +527,15 @@ l1	iconst_1
 l3	iconst_0
 l4	ireturn
   Labels:
-   	l2 = 96 // ifeq
-   	l1 = 99 // iconst_1
-   	l3 = 103 // iconst_0
-   	l4 = 104 // ireturn
+   	l2 = 102 // ifeq
+   	l1 = 105 // iconst_1
+   	l3 = 109 // iconst_0
+   	l4 = 110 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      105      0    $this       Lscala/xml/parsing/TokenTests;
-   0      105      1    ch       C
-   16      83      2    temp2       B
+   0      111      0    $this       Lscala/xml/parsing/TokenTests;
+   0      111      1    ch       C
+   16      89      2    temp2       B
 
 
 public static boolean isAlphaDigit(scala.xml.parsing.TokenTests, char);

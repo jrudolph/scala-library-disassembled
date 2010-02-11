@@ -84,12 +84,12 @@ Asciz	genericWrapArray;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
 NameAndType	genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 Method	scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-Asciz	scala/collection/immutable/StringLike;
-class	scala/collection/immutable/StringLike
+Asciz	scala/collection/immutable/StringLike$class;
+class	scala/collection/immutable/StringLike$class
 Asciz	format;
-Asciz	(Lscala/collection/Seq;)Ljava/lang/String;;
-NameAndType	format:(Lscala/collection/Seq;)Ljava/lang/String;
-InterfaceMethod	scala/collection/immutable/StringLike.format:(Lscala/collection/Seq;)Ljava/lang/String;
+Asciz	(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;;
+NameAndType	format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
+Method	scala/collection/immutable/StringLike$class.format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
 Asciz	scala/collection/mutable/StringBuilder;
 class	scala/collection/mutable/StringBuilder
 Asciz	append;
@@ -183,7 +183,7 @@ public final java.lang.Object apply(java.lang.Object);
 public final java.lang.Object apply(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=8, Locals=5, Args_size=2
+   Stack=8, Locals=9, Args_size=2
 	aload_0
 	getfield	Field sb$1:Lscala/collection/mutable/StringBuilder;
 	ldc	String %d->%s\n
@@ -209,7 +209,11 @@ public final java.lang.Object apply(int);
 	aaload
 	aastore
 	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	invokeinterface	InterfaceMethod scala/collection/immutable/StringLike.format:(Lscala/collection/Seq;)Ljava/lang/String;
+	astore	4
+	astore_3
+	aload_3
+	aload	4
+	invokestatic	Method scala/collection/immutable/StringLike$class.format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 	pop
 	iload_1
@@ -221,10 +225,10 @@ public final java.lang.Object apply(int);
 	aload_0
 	getfield	Field sb$1:Lscala/collection/mutable/StringBuilder;
 	ldc	String _>%s\n
-	astore_3
+	astore	5
 	new	class scala/collection/immutable/StringOps
 	dup
-	aload_3
+	aload	5
 	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_1
@@ -236,23 +240,27 @@ public final java.lang.Object apply(int);
 	invokevirtual	Method scala/util/automata/DetWordAutom.default:()[I
 	iload_1
 	iaload
-	istore	4
-	iload	4
+	istore	6
+	iload	6
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	aastore
 	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	invokeinterface	InterfaceMethod scala/collection/immutable/StringLike.format:(Lscala/collection/Seq;)Ljava/lang/String;
+	astore	8
+	astore	7
+	aload	7
+	aload	8
+	invokestatic	Method scala/collection/immutable/StringLike$class.format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 	goto	l2 // areturn
 l1	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 l2	areturn
   Labels:
-   	l1 = 120 // getstatic
-   	l2 = 123 // areturn
+   	l1 = 132 // getstatic
+   	l2 = 135 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      124      0    this       Lscala/util/automata/DetWordAutom$$anonfun$toString$1;
-   0      124      1    i       I
+   0      136      0    this       Lscala/util/automata/DetWordAutom$$anonfun$toString$1;
+   0      136      1    i       I
 
 
 }

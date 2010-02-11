@@ -223,12 +223,12 @@ Asciz	genericWrapArray;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
 NameAndType	genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 Method	scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-Asciz	scala/collection/immutable/StringLike;
-class	scala/collection/immutable/StringLike
+Asciz	scala/collection/immutable/StringLike$class;
+class	scala/collection/immutable/StringLike$class
 Asciz	format;
-Asciz	(Lscala/collection/Seq;)Ljava/lang/String;;
-NameAndType	format:(Lscala/collection/Seq;)Ljava/lang/String;
-InterfaceMethod	scala/collection/immutable/StringLike.format:(Lscala/collection/Seq;)Ljava/lang/String;
+Asciz	(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;;
+NameAndType	format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
+Method	scala/collection/immutable/StringLike$class.format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
 Asciz	(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;;
 NameAndType	append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
@@ -560,7 +560,7 @@ public scala.xml.NamespaceBinding copy(java.lang.String, java.lang.String, scala
 public void buildString(scala.collection.mutable.StringBuilder, scala.xml.NamespaceBinding);
   Signature: (Lscala/collection/mutable/StringBuilder;Lscala/xml/NamespaceBinding;)V
   Code:
-   Stack=7, Locals=7, Args_size=3
+   Stack=7, Locals=9, Args_size=3
 	aload_0
 	aload_2
 	if_acmpne	l1 // ldc
@@ -614,12 +614,16 @@ l6	aload_0
 	invokevirtual	Method uri:()Ljava/lang/String;
 l7	aastore
 	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	invokeinterface	InterfaceMethod scala/collection/immutable/StringLike.format:(Lscala/collection/Seq;)Ljava/lang/String;
+	astore	7
 	astore	6
+	aload	6
+	aload	7
+	invokestatic	Method scala/collection/immutable/StringLike$class.format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
+	astore	8
 	aload_0
 	invokevirtual	Method parent:()Lscala/xml/NamespaceBinding;
 	aload_1
-	aload	6
+	aload	8
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 	aload_2
 	invokevirtual	Method buildString:(Lscala/collection/mutable/StringBuilder;Lscala/xml/NamespaceBinding;)V
@@ -634,10 +638,10 @@ l7	aastore
    	l7 = 103 // aastore
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      129      0    this       Lscala/xml/NamespaceBinding;
-   0      129      1    sb       Lscala/collection/mutable/StringBuilder;
-   0      129      2    stop       Lscala/xml/NamespaceBinding;
-   114      14      6    s       Ljava/lang/String;
+   0      135      0    this       Lscala/xml/NamespaceBinding;
+   0      135      1    sb       Lscala/collection/mutable/StringBuilder;
+   0      135      2    stop       Lscala/xml/NamespaceBinding;
+   120      14      8    s       Ljava/lang/String;
 
 
 public java.lang.String buildString(scala.xml.NamespaceBinding);
