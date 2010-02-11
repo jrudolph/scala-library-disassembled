@@ -266,8 +266,8 @@ public class JavapPrinter {
                 for(int c = 0; c < codeattrs.size(); c++){
                     String codeattrname = ((AttrData)codeattrs.elementAt(c)).getAttrName();
                     if(codeattrname.equals("LineNumberTable")){
-                        printLineNumTable(method);
-                    }else if(codeattrname.equals("LocalVariableTable")){
+                        ; // don't printLineNumTable(method);
+                    } else if(codeattrname.equals("LocalVariableTable")){
                         printLocVarTable(method);
                     }else if(codeattrname.equals("StackMapTable")) {
                         // Java SE JSR 202 stack map tables
