@@ -25,7 +25,7 @@ const #13 = Asciz	Lscala/PartialFunction;;
 const #14 = Asciz	sendBuffer;
 const #15 = Asciz	Lscala/collection/mutable/Queue;;
 const #16 = Asciz	mailbox;
-const #17 = Asciz	Lscala/actors/MessageQueue;;
+const #17 = Asciz	Lscala/actors/MQueue;;
 const #18 = Asciz	senders;
 const #19 = Asciz	Lscala/collection/immutable/List;;
 const #20 = Asciz	shouldExit;
@@ -145,10 +145,10 @@ const #133 = Method	#55.#132;	//  scala/actors/Reactor$class.seq:(Lscala/actors/
 const #134 = Asciz	first;
 const #135 = Asciz	next;
 const #136 = Asciz	drainSendBuffer;
-const #137 = Asciz	(Lscala/actors/MessageQueue;)V;
-const #138 = Asciz	(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V;
-const #139 = NameAndType	#136:#138;//  drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V
-const #140 = Method	#55.#139;	//  scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V
+const #137 = Asciz	(Lscala/actors/MQueue;)V;
+const #138 = Asciz	(Lscala/actors/Reactor;Lscala/actors/MQueue;)V;
+const #139 = NameAndType	#136:#138;//  drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MQueue;)V
+const #140 = Method	#55.#139;	//  scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MQueue;)V
 const #141 = Asciz	mbox;
 const #142 = Asciz	receiver;
 const #143 = Asciz	(Lscala/actors/Reactor;)Lscala/actors/Actor;;
@@ -180,8 +180,8 @@ const #168 = Asciz	(Lscala/collection/mutable/Queue;)V;
 const #169 = NameAndType	#14:#15;//  sendBuffer:Lscala/collection/mutable/Queue;
 const #170 = Field	#35.#169;	//  scala/actors/Futures$$anon$1.sendBuffer:Lscala/collection/mutable/Queue;
 const #171 = Asciz	scala$actors$Reactor$_setter_$mailbox_$eq;
-const #172 = NameAndType	#16:#17;//  mailbox:Lscala/actors/MessageQueue;
-const #173 = Field	#35.#172;	//  scala/actors/Futures$$anon$1.mailbox:Lscala/actors/MessageQueue;
+const #172 = NameAndType	#16:#17;//  mailbox:Lscala/actors/MQueue;
+const #173 = Field	#35.#172;	//  scala/actors/Futures$$anon$1.mailbox:Lscala/actors/MQueue;
 const #174 = Asciz	kill_$eq;
 const #175 = NameAndType	#7:#8;//  kill:Lscala/Function0;
 const #176 = Field	#35.#175;	//  scala/actors/Futures$$anon$1.kill:Lscala/Function0;
@@ -195,12 +195,12 @@ const #183 = Asciz	(Lscala/PartialFunction;)V;
 const #184 = NameAndType	#12:#13;//  continuation:Lscala/PartialFunction;
 const #185 = Field	#35.#184;	//  scala/actors/Futures$$anon$1.continuation:Lscala/PartialFunction;
 const #186 = Asciz	()Lscala/collection/mutable/Queue;;
-const #187 = Asciz	()Lscala/actors/MessageQueue;;
+const #187 = Asciz	()Lscala/actors/MQueue;;
 const #188 = Asciz	searchMailbox;
-const #189 = Asciz	(Lscala/actors/MessageQueue;Lscala/Function1;Z)V;
-const #190 = Asciz	(Lscala/actors/ReplyReactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V;
-const #191 = NameAndType	#188:#190;//  searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V
-const #192 = Method	#65.#191;	//  scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V
+const #189 = Asciz	(Lscala/actors/MQueue;Lscala/Function1;Z)V;
+const #190 = Asciz	(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V;
+const #191 = NameAndType	#188:#190;//  searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V
+const #192 = Method	#65.#191;	//  scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V
 const #193 = Asciz	startMbox;
 const #194 = Asciz	handlesMessage;
 const #195 = Asciz	resumeOnSameThread;
@@ -422,7 +422,7 @@ public scala.actors.Futures$$anon$1(scala.Function0);
    38:	invokestatic	#81; //Method scala/actors/DaemonActor$class.$init$:(Lscala/actors/DaemonActor;)V
    41:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.actors.Reactor start();
@@ -432,7 +432,7 @@ public scala.actors.Reactor start();
    1:	invokeinterface	#88,  1; //InterfaceMethod scala/actors/Actor.start:()Lscala/actors/Actor;
    6:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.Function0 $bang$bang(java.lang.Object, scala.PartialFunction);
@@ -444,7 +444,7 @@ public scala.Function0 $bang$bang(java.lang.Object, scala.PartialFunction);
    3:	invokeinterface	#95,  3; //InterfaceMethod scala/actors/ReplyableActor.$bang$bang:(Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;
    8:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -461,7 +461,7 @@ public scala.Function0 $bang$bang(java.lang.Object);
    2:	invokeinterface	#104,  2; //InterfaceMethod scala/actors/ReplyableActor.$bang$bang:(Ljava/lang/Object;)Lscala/actors/Future;
    7:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -480,7 +480,7 @@ public void act();
    11:	invokevirtual	#120; //Method scala/actors/Actor$.react:(Lscala/PartialFunction;)Lscala/runtime/Nothing$;
    14:	athrow
   LineNumberTable: 
-   line 47: 0
+   line 53: 0
 
 
 public void exiting_$eq(boolean);
@@ -491,7 +491,7 @@ public void exiting_$eq(boolean);
    2:	putfield	#124; //Field exiting:Z
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public boolean exiting();
@@ -501,7 +501,7 @@ public boolean exiting();
    1:	getfield	#124; //Field exiting:Z
    4:	ireturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public void terminated();
@@ -511,7 +511,7 @@ public void terminated();
    1:	invokestatic	#128; //Method scala/actors/Reactor$class.terminated:(Lscala/actors/Reactor;)V
    4:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public void seq(scala.Function0, scala.Function0);
@@ -523,7 +523,7 @@ public void seq(scala.Function0, scala.Function0);
    3:	invokestatic	#133; //Method scala/actors/Reactor$class.seq:(Lscala/actors/Reactor;Lscala/Function0;Lscala/Function0;)V
    6:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -532,20 +532,20 @@ public void seq(scala.Function0, scala.Function0);
    0      7      2    next       Lscala/Function0;
 
 
-public void drainSendBuffer(scala.actors.MessageQueue);
+public void drainSendBuffer(scala.actors.MQueue);
   Code:
    Stack=2, Locals=2, Args_size=2
    0:	aload_0
    1:	aload_1
-   2:	invokestatic	#140; //Method scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V
+   2:	invokestatic	#140; //Method scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MQueue;)V
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      6      0    this       Lscala/actors/Futures$$anon$1;
-   0      6      1    mbox       Lscala/actors/MessageQueue;
+   0      6      1    mbox       Lscala/actors/MQueue;
 
 
 public scala.actors.Actor receiver();
@@ -555,7 +555,7 @@ public scala.actors.Actor receiver();
    1:	invokestatic	#145; //Method scala/actors/Reactor$class.receiver:(Lscala/actors/Reactor;)Lscala/actors/Actor;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public void send(java.lang.Object, scala.actors.OutputChannel);
@@ -567,7 +567,7 @@ public void send(java.lang.Object, scala.actors.OutputChannel);
    3:	invokestatic	#150; //Method scala/actors/Reactor$class.send:(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;)V
    6:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -583,7 +583,7 @@ public int mailboxSize();
    1:	invokestatic	#157; //Method scala/actors/Reactor$class.mailboxSize:(Lscala/actors/Reactor;)I
    4:	ireturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.PartialFunction exceptionHandler();
@@ -593,7 +593,7 @@ public scala.PartialFunction exceptionHandler();
    1:	invokestatic	#162; //Method scala/actors/Reactor$class.exceptionHandler:(Lscala/actors/Reactor;)Lscala/PartialFunction;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public void scala$actors$Reactor$_setter_$waitingForNone_$eq(scala.Function1);
@@ -604,7 +604,7 @@ public void scala$actors$Reactor$_setter_$waitingForNone_$eq(scala.Function1);
    2:	putfield	#166; //Field waitingForNone:Lscala/Function1;
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public void scala$actors$Reactor$_setter_$sendBuffer_$eq(scala.collection.mutable.Queue);
@@ -615,18 +615,18 @@ public void scala$actors$Reactor$_setter_$sendBuffer_$eq(scala.collection.mutabl
    2:	putfield	#170; //Field sendBuffer:Lscala/collection/mutable/Queue;
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
-public void scala$actors$Reactor$_setter_$mailbox_$eq(scala.actors.MessageQueue);
+public void scala$actors$Reactor$_setter_$mailbox_$eq(scala.actors.MQueue);
   Code:
    Stack=2, Locals=2, Args_size=2
    0:	aload_0
    1:	aload_1
-   2:	putfield	#173; //Field mailbox:Lscala/actors/MessageQueue;
+   2:	putfield	#173; //Field mailbox:Lscala/actors/MQueue;
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public void kill_$eq(scala.Function0);
@@ -637,7 +637,7 @@ public void kill_$eq(scala.Function0);
    2:	putfield	#176; //Field kill:Lscala/Function0;
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.Function0 kill();
@@ -647,7 +647,7 @@ public scala.Function0 kill();
    1:	getfield	#176; //Field kill:Lscala/Function0;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public void waitingFor_$eq(scala.Function1);
@@ -658,7 +658,7 @@ public void waitingFor_$eq(scala.Function1);
    2:	putfield	#180; //Field waitingFor:Lscala/Function1;
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.Function1 waitingFor();
@@ -668,7 +668,7 @@ public scala.Function1 waitingFor();
    1:	getfield	#180; //Field waitingFor:Lscala/Function1;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.Function1 waitingForNone();
@@ -678,7 +678,7 @@ public scala.Function1 waitingForNone();
    1:	getfield	#166; //Field waitingForNone:Lscala/Function1;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public void continuation_$eq(scala.PartialFunction);
@@ -689,7 +689,7 @@ public void continuation_$eq(scala.PartialFunction);
    2:	putfield	#185; //Field continuation:Lscala/PartialFunction;
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.PartialFunction continuation();
@@ -699,7 +699,7 @@ public scala.PartialFunction continuation();
    1:	getfield	#185; //Field continuation:Lscala/PartialFunction;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.collection.mutable.Queue sendBuffer();
@@ -709,35 +709,35 @@ public scala.collection.mutable.Queue sendBuffer();
    1:	getfield	#170; //Field sendBuffer:Lscala/collection/mutable/Queue;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
-public scala.actors.MessageQueue mailbox();
+public scala.actors.MQueue mailbox();
   Code:
    Stack=1, Locals=1, Args_size=1
    0:	aload_0
-   1:	getfield	#173; //Field mailbox:Lscala/actors/MessageQueue;
+   1:	getfield	#173; //Field mailbox:Lscala/actors/MQueue;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
-public void searchMailbox(scala.actors.MessageQueue, scala.Function1, boolean);
+public void searchMailbox(scala.actors.MQueue, scala.Function1, boolean);
   Code:
    Stack=4, Locals=4, Args_size=4
    0:	aload_0
    1:	aload_1
    2:	aload_2
    3:	iload_3
-   4:	invokestatic	#192; //Method scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V
+   4:	invokestatic	#192; //Method scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V
    7:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      8      0    this       Lscala/actors/Futures$$anon$1;
-   0      8      1    startMbox       Lscala/actors/MessageQueue;
+   0      8      1    startMbox       Lscala/actors/MQueue;
    0      8      2    handlesMessage       Lscala/Function1;
    0      8      3    resumeOnSameThread       Z
 
@@ -750,7 +750,7 @@ public void forward(java.lang.Object);
    2:	invokestatic	#200; //Method scala/actors/ReplyReactor$class.forward:(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -766,7 +766,7 @@ public void $bang(java.lang.Object);
    2:	invokestatic	#203; //Method scala/actors/ReplyReactor$class.$bang:(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -782,7 +782,7 @@ public void reply(java.lang.Object);
    2:	invokestatic	#206; //Method scala/actors/ReplyReactor$class.reply:(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -797,7 +797,7 @@ public scala.actors.OutputChannel sender();
    1:	invokestatic	#211; //Method scala/actors/ReplyReactor$class.sender:(Lscala/actors/ReplyReactor;)Lscala/actors/OutputChannel;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public void senders_$eq(scala.collection.immutable.List);
@@ -808,7 +808,7 @@ public void senders_$eq(scala.collection.immutable.List);
    2:	putfield	#215; //Field senders:Lscala/collection/immutable/List;
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.collection.immutable.List senders();
@@ -818,7 +818,7 @@ public scala.collection.immutable.List senders();
    1:	getfield	#215; //Field senders:Lscala/collection/immutable/List;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.actors.Future $bang$bang(java.lang.Object);
@@ -829,7 +829,7 @@ public scala.actors.Future $bang$bang(java.lang.Object);
    2:	invokestatic	#219; //Method scala/actors/ReplyableActor$class.$bang$bang:(Lscala/actors/ReplyableActor;Ljava/lang/Object;)Lscala/actors/Future;
    5:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -846,7 +846,7 @@ public scala.actors.Future $bang$bang(java.lang.Object, scala.PartialFunction);
    3:	invokestatic	#222; //Method scala/actors/ReplyableActor$class.$bang$bang:(Lscala/actors/ReplyableActor;Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;
    6:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -864,7 +864,7 @@ public scala.Option $bang$qmark(long, java.lang.Object);
    3:	invokestatic	#227; //Method scala/actors/ReplyableActor$class.$bang$qmark:(Lscala/actors/ReplyableActor;JLjava/lang/Object;)Lscala/Option;
    6:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -881,7 +881,7 @@ public java.lang.Object $bang$qmark(java.lang.Object);
    2:	invokestatic	#233; //Method scala/actors/ReplyableActor$class.$bang$qmark:(Lscala/actors/ReplyableActor;Ljava/lang/Object;)Ljava/lang/Object;
    5:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -897,7 +897,7 @@ public void onTerminate(scala.Function0);
    2:	invokestatic	#237; //Method scala/actors/Actor$class.onTerminate:(Lscala/actors/Actor;Lscala/Function0;)V
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -914,7 +914,7 @@ public void exit(scala.actors.AbstractActor, java.lang.Object);
    3:	invokestatic	#242; //Method scala/actors/Actor$class.exit:(Lscala/actors/Actor;Lscala/actors/AbstractActor;Ljava/lang/Object;)V
    6:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -931,7 +931,7 @@ public void exitLinked(java.lang.Object);
    2:	invokestatic	#249; //Method scala/actors/Actor$class.exitLinked:(Lscala/actors/Actor;Ljava/lang/Object;)V
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -946,7 +946,7 @@ public void exitLinked();
    1:	invokestatic	#251; //Method scala/actors/Actor$class.exitLinked:(Lscala/actors/Actor;)V
    4:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.runtime.Nothing$ exit();
@@ -956,7 +956,7 @@ public scala.runtime.Nothing$ exit();
    1:	invokestatic	#255; //Method scala/actors/Actor$class.exit:(Lscala/actors/Actor;)Lscala/runtime/Nothing$;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.runtime.Nothing$ exit(java.lang.Object);
@@ -967,7 +967,7 @@ public scala.runtime.Nothing$ exit(java.lang.Object);
    2:	invokestatic	#259; //Method scala/actors/Actor$class.exit:(Lscala/actors/Actor;Ljava/lang/Object;)Lscala/runtime/Nothing$;
    5:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -983,7 +983,7 @@ public void unlinkFrom(scala.actors.AbstractActor);
    2:	invokestatic	#263; //Method scala/actors/Actor$class.unlinkFrom:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -999,7 +999,7 @@ public void unlink(scala.actors.AbstractActor);
    2:	invokestatic	#266; //Method scala/actors/Actor$class.unlink:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -1015,7 +1015,7 @@ public void linkTo(scala.actors.AbstractActor);
    2:	invokestatic	#269; //Method scala/actors/Actor$class.linkTo:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -1031,7 +1031,7 @@ public scala.actors.Actor link(scala.Function0);
    2:	invokestatic	#275; //Method scala/actors/Actor$class.link:(Lscala/actors/Actor;Lscala/Function0;)Lscala/actors/Actor;
    5:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -1047,7 +1047,7 @@ public scala.actors.AbstractActor link(scala.actors.AbstractActor);
    2:	invokestatic	#280; //Method scala/actors/Actor$class.link:(Lscala/actors/Actor;Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;
    5:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -1062,7 +1062,7 @@ public scala.actors.Actor start();
    1:	invokestatic	#283; //Method scala/actors/Actor$class.start:(Lscala/actors/Actor;)Lscala/actors/Actor;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public void scheduleActor(scala.PartialFunction, java.lang.Object);
@@ -1074,7 +1074,7 @@ public void scheduleActor(scala.PartialFunction, java.lang.Object);
    3:	invokestatic	#288; //Method scala/actors/Actor$class.scheduleActor:(Lscala/actors/Actor;Lscala/PartialFunction;Ljava/lang/Object;)V
    6:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -1090,7 +1090,7 @@ public java.lang.Object $qmark();
    1:	invokestatic	#293; //Method scala/actors/Actor$class.$qmark:(Lscala/actors/Actor;)Ljava/lang/Object;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.runtime.Nothing$ reactWithin(long, scala.PartialFunction);
@@ -1102,7 +1102,7 @@ public scala.runtime.Nothing$ reactWithin(long, scala.PartialFunction);
    3:	invokestatic	#298; //Method scala/actors/Actor$class.reactWithin:(Lscala/actors/Actor;JLscala/PartialFunction;)Lscala/runtime/Nothing$;
    6:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -1119,7 +1119,7 @@ public scala.runtime.Nothing$ react(scala.PartialFunction);
    2:	invokestatic	#301; //Method scala/actors/Actor$class.react:(Lscala/actors/Actor;Lscala/PartialFunction;)Lscala/runtime/Nothing$;
    5:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -1136,7 +1136,7 @@ public java.lang.Object receiveWithin(long, scala.PartialFunction);
    3:	invokestatic	#306; //Method scala/actors/Actor$class.receiveWithin:(Lscala/actors/Actor;JLscala/PartialFunction;)Ljava/lang/Object;
    6:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -1153,7 +1153,7 @@ public java.lang.Object receive(scala.PartialFunction);
    2:	invokestatic	#311; //Method scala/actors/Actor$class.receive:(Lscala/actors/Actor;Lscala/PartialFunction;)Ljava/lang/Object;
    5:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -1170,7 +1170,7 @@ public void resumeReceiver(scala.Tuple2, boolean);
    3:	invokestatic	#316; //Method scala/actors/Actor$class.resumeReceiver:(Lscala/actors/Actor;Lscala/Tuple2;Z)V
    6:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -1187,7 +1187,7 @@ public java.lang.Runnable makeReaction(scala.Function0);
    2:	invokestatic	#324; //Method scala/actors/Actor$class.makeReaction:(Lscala/actors/Actor;Lscala/Function0;)Ljava/lang/Runnable;
    5:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -1205,7 +1205,7 @@ public scala.Function0 startSearch(java.lang.Object, scala.actors.OutputChannel,
    4:	invokestatic	#330; //Method scala/actors/Actor$class.startSearch:(Lscala/actors/Actor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/Function1;)Lscala/Function0;
    7:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -1224,7 +1224,7 @@ public final void scala$actors$Actor$$super$resumeReceiver(scala.Tuple2, boolean
    3:	invokestatic	#335; //Method scala/actors/ReplyReactor$class.resumeReceiver:(Lscala/actors/ReplyReactor;Lscala/Tuple2;Z)V
    6:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -1243,7 +1243,7 @@ public final scala.Function0 scala$actors$Actor$$super$startSearch(java.lang.Obj
    4:	invokestatic	#339; //Method scala/actors/Reactor$class.startSearch:(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/Function1;)Lscala/Function0;
    7:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -1261,7 +1261,7 @@ public void shouldExit_$eq(boolean);
    2:	putfield	#342; //Field shouldExit:Z
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public boolean shouldExit();
@@ -1271,7 +1271,7 @@ public boolean shouldExit();
    1:	getfield	#342; //Field shouldExit:Z
    4:	ireturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public void exitReason_$eq(java.lang.Object);
@@ -1282,7 +1282,7 @@ public void exitReason_$eq(java.lang.Object);
    2:	putfield	#345; //Field exitReason:Ljava/lang/Object;
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public java.lang.Object exitReason();
@@ -1292,7 +1292,7 @@ public java.lang.Object exitReason();
    1:	getfield	#345; //Field exitReason:Ljava/lang/Object;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public void trapExit_$eq(boolean);
@@ -1303,7 +1303,7 @@ public void trapExit_$eq(boolean);
    2:	putfield	#348; //Field trapExit:Z
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public boolean trapExit();
@@ -1313,7 +1313,7 @@ public boolean trapExit();
    1:	getfield	#348; //Field trapExit:Z
    4:	ireturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public void links_$eq(scala.collection.immutable.List);
@@ -1324,7 +1324,7 @@ public void links_$eq(scala.collection.immutable.List);
    2:	putfield	#351; //Field links:Lscala/collection/immutable/List;
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.collection.immutable.List links();
@@ -1334,7 +1334,7 @@ public scala.collection.immutable.List links();
    1:	getfield	#351; //Field links:Lscala/collection/immutable/List;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public final scala.actors.Actor$blocker$ scala$actors$Actor$$blocker();
@@ -1353,7 +1353,7 @@ public final scala.actors.Actor$blocker$ scala$actors$Actor$$blocker();
    20:	getfield	#355; //Field scala$actors$Actor$$blocker$module:Lscala/actors/Actor$blocker$;
    23:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public final void scala$actors$Actor$$onTimeout_$eq(scala.Option);
@@ -1364,7 +1364,7 @@ public final void scala$actors$Actor$$onTimeout_$eq(scala.Option);
    2:	putfield	#363; //Field scala$actors$Actor$$onTimeout:Lscala/Option;
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public final scala.Option scala$actors$Actor$$onTimeout();
@@ -1374,7 +1374,7 @@ public final scala.Option scala$actors$Actor$$onTimeout();
    1:	getfield	#363; //Field scala$actors$Actor$$onTimeout:Lscala/Option;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public final void scala$actors$Actor$$received_$eq(scala.Option);
@@ -1385,7 +1385,7 @@ public final void scala$actors$Actor$$received_$eq(scala.Option);
    2:	putfield	#367; //Field scala$actors$Actor$$received:Lscala/Option;
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public final scala.Option scala$actors$Actor$$received();
@@ -1395,7 +1395,7 @@ public final scala.Option scala$actors$Actor$$received();
    1:	getfield	#367; //Field scala$actors$Actor$$received:Lscala/Option;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public final void scala$actors$Actor$$isSuspended_$eq(boolean);
@@ -1406,7 +1406,7 @@ public final void scala$actors$Actor$$isSuspended_$eq(boolean);
    2:	putfield	#370; //Field scala$actors$Actor$$isSuspended:Z
    5:	return
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public final boolean scala$actors$Actor$$isSuspended();
@@ -1416,7 +1416,7 @@ public final boolean scala$actors$Actor$$isSuspended();
    1:	getfield	#370; //Field scala$actors$Actor$$isSuspended:Z
    4:	ireturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 public scala.actors.IScheduler scheduler();
@@ -1426,7 +1426,7 @@ public scala.actors.IScheduler scheduler();
    1:	invokestatic	#375; //Method scala/actors/DaemonActor$class.scheduler:(Lscala/actors/DaemonActor;)Lscala/actors/IScheduler;
    4:	areturn
   LineNumberTable: 
-   line 45: 0
+   line 51: 0
 
 
 }

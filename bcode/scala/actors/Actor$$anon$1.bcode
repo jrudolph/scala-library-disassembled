@@ -24,7 +24,7 @@ const #13 = Asciz	Lscala/PartialFunction;;
 const #14 = Asciz	sendBuffer;
 const #15 = Asciz	Lscala/collection/mutable/Queue;;
 const #16 = Asciz	mailbox;
-const #17 = Asciz	Lscala/actors/MessageQueue;;
+const #17 = Asciz	Lscala/actors/MQueue;;
 const #18 = Asciz	senders;
 const #19 = Asciz	Lscala/collection/immutable/List;;
 const #20 = Asciz	shouldExit;
@@ -144,10 +144,10 @@ const #133 = Method	#57.#132;	//  scala/actors/Reactor$class.seq:(Lscala/actors/
 const #134 = Asciz	first;
 const #135 = Asciz	next;
 const #136 = Asciz	drainSendBuffer;
-const #137 = Asciz	(Lscala/actors/MessageQueue;)V;
-const #138 = Asciz	(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V;
-const #139 = NameAndType	#136:#138;//  drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V
-const #140 = Method	#57.#139;	//  scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V
+const #137 = Asciz	(Lscala/actors/MQueue;)V;
+const #138 = Asciz	(Lscala/actors/Reactor;Lscala/actors/MQueue;)V;
+const #139 = NameAndType	#136:#138;//  drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MQueue;)V
+const #140 = Method	#57.#139;	//  scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MQueue;)V
 const #141 = Asciz	mbox;
 const #142 = Asciz	receiver;
 const #143 = Asciz	(Lscala/actors/Reactor;)Lscala/actors/Actor;;
@@ -179,8 +179,8 @@ const #168 = Asciz	(Lscala/collection/mutable/Queue;)V;
 const #169 = NameAndType	#14:#15;//  sendBuffer:Lscala/collection/mutable/Queue;
 const #170 = Field	#37.#169;	//  scala/actors/Actor$$anon$1.sendBuffer:Lscala/collection/mutable/Queue;
 const #171 = Asciz	scala$actors$Reactor$_setter_$mailbox_$eq;
-const #172 = NameAndType	#16:#17;//  mailbox:Lscala/actors/MessageQueue;
-const #173 = Field	#37.#172;	//  scala/actors/Actor$$anon$1.mailbox:Lscala/actors/MessageQueue;
+const #172 = NameAndType	#16:#17;//  mailbox:Lscala/actors/MQueue;
+const #173 = Field	#37.#172;	//  scala/actors/Actor$$anon$1.mailbox:Lscala/actors/MQueue;
 const #174 = Asciz	kill_$eq;
 const #175 = NameAndType	#7:#8;//  kill:Lscala/Function0;
 const #176 = Field	#37.#175;	//  scala/actors/Actor$$anon$1.kill:Lscala/Function0;
@@ -194,12 +194,12 @@ const #183 = Asciz	(Lscala/PartialFunction;)V;
 const #184 = NameAndType	#12:#13;//  continuation:Lscala/PartialFunction;
 const #185 = Field	#37.#184;	//  scala/actors/Actor$$anon$1.continuation:Lscala/PartialFunction;
 const #186 = Asciz	()Lscala/collection/mutable/Queue;;
-const #187 = Asciz	()Lscala/actors/MessageQueue;;
+const #187 = Asciz	()Lscala/actors/MQueue;;
 const #188 = Asciz	searchMailbox;
-const #189 = Asciz	(Lscala/actors/MessageQueue;Lscala/Function1;Z)V;
-const #190 = Asciz	(Lscala/actors/ReplyReactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V;
-const #191 = NameAndType	#188:#190;//  searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V
-const #192 = Method	#67.#191;	//  scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V
+const #189 = Asciz	(Lscala/actors/MQueue;Lscala/Function1;Z)V;
+const #190 = Asciz	(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V;
+const #191 = NameAndType	#188:#190;//  searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V
+const #192 = Method	#67.#191;	//  scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V
 const #193 = Asciz	startMbox;
 const #194 = Asciz	handlesMessage;
 const #195 = Asciz	resumeOnSameThread;
@@ -531,12 +531,12 @@ public void seq(scala.Function0, scala.Function0);
    0      7      2    next       Lscala/Function0;
 
 
-public void drainSendBuffer(scala.actors.MessageQueue);
+public void drainSendBuffer(scala.actors.MQueue);
   Code:
    Stack=2, Locals=2, Args_size=2
    0:	aload_0
    1:	aload_1
-   2:	invokestatic	#140; //Method scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MessageQueue;)V
+   2:	invokestatic	#140; //Method scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MQueue;)V
    5:	return
   LineNumberTable: 
    line 107: 0
@@ -544,7 +544,7 @@ public void drainSendBuffer(scala.actors.MessageQueue);
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      6      0    this       Lscala/actors/Actor$$anon$1;
-   0      6      1    mbox       Lscala/actors/MessageQueue;
+   0      6      1    mbox       Lscala/actors/MQueue;
 
 
 public scala.actors.Actor receiver();
@@ -617,12 +617,12 @@ public void scala$actors$Reactor$_setter_$sendBuffer_$eq(scala.collection.mutabl
    line 107: 0
 
 
-public void scala$actors$Reactor$_setter_$mailbox_$eq(scala.actors.MessageQueue);
+public void scala$actors$Reactor$_setter_$mailbox_$eq(scala.actors.MQueue);
   Code:
    Stack=2, Locals=2, Args_size=2
    0:	aload_0
    1:	aload_1
-   2:	putfield	#173; //Field mailbox:Lscala/actors/MessageQueue;
+   2:	putfield	#173; //Field mailbox:Lscala/actors/MQueue;
    5:	return
   LineNumberTable: 
    line 107: 0
@@ -711,24 +711,24 @@ public scala.collection.mutable.Queue sendBuffer();
    line 107: 0
 
 
-public scala.actors.MessageQueue mailbox();
+public scala.actors.MQueue mailbox();
   Code:
    Stack=1, Locals=1, Args_size=1
    0:	aload_0
-   1:	getfield	#173; //Field mailbox:Lscala/actors/MessageQueue;
+   1:	getfield	#173; //Field mailbox:Lscala/actors/MQueue;
    4:	areturn
   LineNumberTable: 
    line 107: 0
 
 
-public void searchMailbox(scala.actors.MessageQueue, scala.Function1, boolean);
+public void searchMailbox(scala.actors.MQueue, scala.Function1, boolean);
   Code:
    Stack=4, Locals=4, Args_size=4
    0:	aload_0
    1:	aload_1
    2:	aload_2
    3:	iload_3
-   4:	invokestatic	#192; //Method scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MessageQueue;Lscala/Function1;Z)V
+   4:	invokestatic	#192; //Method scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V
    7:	return
   LineNumberTable: 
    line 107: 0
@@ -736,7 +736,7 @@ public void searchMailbox(scala.actors.MessageQueue, scala.Function1, boolean);
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      8      0    this       Lscala/actors/Actor$$anon$1;
-   0      8      1    startMbox       Lscala/actors/MessageQueue;
+   0      8      1    startMbox       Lscala/actors/MQueue;
    0      8      2    handlesMessage       Lscala/Function1;
    0      8      3    resumeOnSameThread       Z
 
