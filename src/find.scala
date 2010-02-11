@@ -47,7 +47,7 @@ object RecursiveJavaP {
 
   def main(args: Array[String]) {
     val classDir = new File("class")
-    val cmdBase: List[String] = List("-v", "-classpath", classDir.getCanonicalPath)
+    val cmdBase: List[String] = List("-v", "-private", "-s", "-classpath", classDir.getCanonicalPath)
 
     def javap(className: String, outName: String) {
       import _root_.sun.tools.javap.{Main => JavaP}
