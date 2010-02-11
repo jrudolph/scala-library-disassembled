@@ -148,15 +148,24 @@ class	scala/actors/Actor$$anon$7
 Asciz	(Lscala/Function0;)V;
 NameAndType	"<init>":(Lscala/Function0;)V
 Method	scala/actors/Actor$$anon$7."<init>":(Lscala/Function0;)V
-Asciz	scala/actors/Actor$Body;
-class	scala/actors/Actor$Body
 Asciz	scala/actors/Actor$$anonfun$loopWhile$1;
 class	scala/actors/Actor$$anonfun$loopWhile$1
 NameAndType	"<init>":(Lscala/Function0;Lscala/Function0;)V
 Method	scala/actors/Actor$$anonfun$loopWhile$1."<init>":(Lscala/Function0;Lscala/Function0;)V
-Asciz	andThen;
-NameAndType	andThen:(Lscala/Function0;)V
-InterfaceMethod	scala/actors/Actor$Body.andThen:(Lscala/Function0;)V
+Asciz	scala/actors/Scheduler$;
+class	scala/actors/Scheduler$
+Asciz	Lscala/actors/Scheduler$;;
+NameAndType	MODULE$:Lscala/actors/Scheduler$;
+Field	scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
+Asciz	rawSelf;
+Asciz	(Lscala/actors/IScheduler;)Lscala/actors/Reactor;;
+NameAndType	rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
+Method	scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
+Asciz	scala/actors/Reactor;
+class	scala/actors/Reactor
+Asciz	seq;
+NameAndType	seq:(Lscala/Function0;Lscala/Function0;)V
+InterfaceMethod	scala/actors/Reactor.seq:(Lscala/Function0;Lscala/Function0;)V
 Asciz	cond$1;
 Asciz	body$5;
 Asciz	(Lscala/Function0<Ljava/lang/Boolean;>;Lscala/Function0<Ljava/lang/Object;>;)V;
@@ -167,7 +176,7 @@ Method	scala/actors/Actor$$anonfun$loop$1."<init>":(Lscala/Function0;)V
 Asciz	body$4;
 Asciz	(Lscala/Function0<Ljava/lang/Object;>;)V;
 Asciz	mkBody;
-Asciz	(Lscala/Function0;)Ljava/lang/Object;;
+Asciz	(Lscala/Function0;)Lscala/actors/Actor$Body;;
 Asciz	body$3;
 Asciz	<a:Ljava/lang/Object;>(Lscala/Function0<Ta;>;)Ljava/lang/Object;;
 Asciz	respondOn;
@@ -182,12 +191,9 @@ Asciz	Lscala/Function1;;
 Asciz	<A:Ljava/lang/Object;B:Ljava/lang/Object;>(Lscala/Function1<Lscala/PartialFunction<TA;Ljava/lang/Object;>;Lscala/runtime/Nothing$;>;)Lscala/Function1<Lscala/PartialFunction<TA;TB;>;Lscala/Responder<TB;>;>;;
 Asciz	mailboxSize;
 Asciz	()I;
-Asciz	rawSelf;
 Asciz	()Lscala/actors/Reactor;;
 NameAndType	rawSelf:()Lscala/actors/Reactor;
 Method	scala/actors/Actor$.rawSelf:()Lscala/actors/Reactor;
-Asciz	scala/actors/Reactor;
-class	scala/actors/Reactor
 NameAndType	mailboxSize:()I
 InterfaceMethod	scala/actors/Reactor.mailboxSize:()I
 Asciz	reply;
@@ -283,22 +289,14 @@ Asciz	(Ljava/lang/Thread;Lscala/actors/IScheduler;)V;
 NameAndType	"<init>":(Ljava/lang/Thread;Lscala/actors/IScheduler;)V
 Method	scala/actors/ActorProxy."<init>":(Ljava/lang/Thread;Lscala/actors/IScheduler;)V
 Asciz	Lscala/actors/Reactor;;
-Asciz	scala/actors/Scheduler$;
-class	scala/actors/Scheduler$
-Asciz	Lscala/actors/Scheduler$;;
-NameAndType	MODULE$:Lscala/actors/Scheduler$;
-Field	scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
 Asciz	scheduler;
 NameAndType	scheduler:()Lscala/actors/IScheduler;
 InterfaceMethod	scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
 Asciz	s;
-Asciz	(Lscala/actors/IScheduler;)Lscala/actors/Reactor;;
 Asciz	sched;
 Asciz	Lscala/actors/IScheduler;;
 Asciz	r;
 Asciz	Lscala/actors/ActorProxy;;
-NameAndType	rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
-Method	scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
 Asciz	(Lscala/actors/IScheduler;)Lscala/actors/Actor;;
 NameAndType	self:(Lscala/actors/IScheduler;)Lscala/actors/Actor;
 Method	scala/actors/Actor$.self:(Lscala/actors/IScheduler;)Lscala/actors/Actor;
@@ -306,6 +304,8 @@ Asciz	()Lscala/actors/SuspendActorException;;
 Asciz	()Ljava/util/Timer;;
 Asciz	()Ljava/lang/ThreadLocal<Lscala/actors/Reactor;>;;
 Asciz	InnerClasses;
+Asciz	scala/actors/Actor$Body;
+class	scala/actors/Actor$Body
 Asciz	Body;
 Asciz	scala/actors/Actor$$anon$3;
 class	scala/actors/Actor$$anon$3
@@ -547,64 +547,80 @@ public scala.actors.AbstractActor link(scala.actors.AbstractActor);
 public void loopWhile(scala.Function0, scala.Function0);
   Signature: (Lscala/Function0;Lscala/Function0;)V
   Code:
-   Stack=5, Locals=3, Args_size=3
+   Stack=4, Locals=5, Args_size=3
 	aload_1
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 	ifeq	l1 // new
 	new	class scala/actors/Actor$$anon$7
 	dup
+	pop
 	aload_2
 	invokespecial	Method scala/actors/Actor$$anon$7."<init>":(Lscala/Function0;)V
-	checkcast	class scala/actors/Actor$Body
 	new	class scala/actors/Actor$$anonfun$loopWhile$1
 	dup
 	aload_1
 	aload_2
 	invokespecial	Method scala/actors/Actor$$anonfun$loopWhile$1."<init>":(Lscala/Function0;Lscala/Function0;)V
-	invokeinterface	InterfaceMethod scala/actors/Actor$Body.andThen:(Lscala/Function0;)V
+	astore	4
+	getstatic	Field MODULE$:Lscala/actors/Actor$;
+	astore_3
+	aload_3
+	getstatic	Field scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
+	invokevirtual	Method rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
+	aload_2
+	aload	4
+	invokeinterface	InterfaceMethod scala/actors/Reactor.seq:(Lscala/Function0;Lscala/Function0;)V
 	return
 l1	new	class scala/actors/KillActorException
 	dup
 	invokespecial	Method scala/actors/KillActorException."<init>":()V
 	athrow
   Labels:
-   	l1 = 38 // new
+   	l1 = 52 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      46      0    this       Lscala/actors/Actor$;
-   0      46      1    cond$1       Lscala/Function0;
-   0      46      2    body$5       Lscala/Function0;
+   0      60      0    this       Lscala/actors/Actor$;
+   0      60      1    cond$1       Lscala/Function0;
+   0      60      2    body$5       Lscala/Function0;
 
   Signature: length = 0x2
-   00 73 
+   00 7C 
 
 public void loop(scala.Function0);
   Signature: (Lscala/Function0;)V
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=3, Locals=4, Args_size=2
 	new	class scala/actors/Actor$$anon$7
 	dup
+	pop
 	aload_1
 	invokespecial	Method scala/actors/Actor$$anon$7."<init>":(Lscala/Function0;)V
-	checkcast	class scala/actors/Actor$Body
 	new	class scala/actors/Actor$$anonfun$loop$1
 	dup
 	aload_1
 	invokespecial	Method scala/actors/Actor$$anonfun$loop$1."<init>":(Lscala/Function0;)V
-	invokeinterface	InterfaceMethod scala/actors/Actor$Body.andThen:(Lscala/Function0;)V
+	astore_3
+	getstatic	Field MODULE$:Lscala/actors/Actor$;
+	astore_2
+	aload_2
+	getstatic	Field scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
+	invokevirtual	Method rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
+	aload_1
+	aload_3
+	invokeinterface	InterfaceMethod scala/actors/Reactor.seq:(Lscala/Function0;Lscala/Function0;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      25      0    this       Lscala/actors/Actor$;
-   0      25      1    body$4       Lscala/Function0;
+   0      37      0    this       Lscala/actors/Actor$;
+   0      37      1    body$4       Lscala/Function0;
 
   Signature: length = 0x2
-   00 79 
+   00 FFFFFF82 
 
-public java.lang.Object mkBody(scala.Function0);
-  Signature: (Lscala/Function0;)Ljava/lang/Object;
+public scala.actors.Actor$Body mkBody(scala.Function0);
+  Signature: (Lscala/Function0;)Lscala/actors/Actor$Body;
   Code:
    Stack=3, Locals=2, Args_size=2
 	new	class scala/actors/Actor$$anon$7
@@ -619,7 +635,7 @@ public java.lang.Object mkBody(scala.Function0);
    0      9      1    body$3       Lscala/Function0;
 
   Signature: length = 0x2
-   00 7D 
+   00 FFFFFF86 
 
 public scala.Function1 respondOn(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Function1;
@@ -637,7 +653,7 @@ public scala.Function1 respondOn(scala.Function1);
    0      9      1    fun$1       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFF87 
+   00 FFFFFF90 
 
 public int mailboxSize();
   Signature: ()I
@@ -689,7 +705,7 @@ public scala.actors.OutputChannel sender();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFA3 
+   00 FFFFFFA9 
 
 public scala.runtime.Nothing$ eventloop(scala.PartialFunction);
   Signature: (Lscala/PartialFunction;)Lscala/runtime/Nothing$;
@@ -712,7 +728,7 @@ public scala.runtime.Nothing$ eventloop(scala.PartialFunction);
    0      22      1    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFFB0 
+   00 FFFFFFB6 
 
 public scala.runtime.Nothing$ reactWithin(long, scala.PartialFunction);
   Signature: (JLscala/PartialFunction;)Lscala/runtime/Nothing$;
@@ -732,7 +748,7 @@ public scala.runtime.Nothing$ reactWithin(long, scala.PartialFunction);
    0      12      3    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFFB7 
+   00 FFFFFFBD 
 
 public scala.runtime.Nothing$ react(scala.PartialFunction);
   Signature: (Lscala/PartialFunction;)Lscala/runtime/Nothing$;
@@ -750,7 +766,7 @@ public scala.runtime.Nothing$ react(scala.PartialFunction);
    0      11      1    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFFB0 
+   00 FFFFFFB6 
 
 public java.lang.Object receiveWithin(long, scala.PartialFunction);
   Signature: (JLscala/PartialFunction;)Ljava/lang/Object;
@@ -770,7 +786,7 @@ public java.lang.Object receiveWithin(long, scala.PartialFunction);
    0      12      3    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFFBC 
+   00 FFFFFFC2 
 
 public java.lang.Object receive(scala.PartialFunction);
   Signature: (Lscala/PartialFunction;)Ljava/lang/Object;
@@ -788,7 +804,7 @@ public java.lang.Object receive(scala.PartialFunction);
    0      11      1    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFFC1 
+   00 FFFFFFC7 
 
 public java.lang.Object $qmark();
   Signature: ()Ljava/lang/Object;
@@ -810,21 +826,19 @@ public scala.actors.Actor reactor(scala.Function0);
 	invokespecial	Method scala/actors/Actor$$anon$2."<init>":(Lscala/Function0;)V
 	astore_2
 	aload_2
-	checkcast	class scala/actors/Actor
 	invokeinterface	InterfaceMethod scala/actors/Actor.start:()Lscala/actors/Actor;
 	pop
 	aload_2
-	checkcast	class scala/actors/Actor
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      24      0    this       Lscala/actors/Actor$;
-   0      24      1    body$2       Lscala/Function0;
-   9      14      2    a       Ljava/lang/Object;
+   0      18      0    this       Lscala/actors/Actor$;
+   0      18      1    body$2       Lscala/Function0;
+   9      8      2    a       Lscala/actors/Actor;
 
   Signature: length = 0x2
-   00 FFFFFFCE 
+   00 FFFFFFD4 
 
 public scala.actors.Actor actor(scala.Function0);
   Signature: (Lscala/Function0;)Lscala/actors/Actor;
@@ -836,18 +850,16 @@ public scala.actors.Actor actor(scala.Function0);
 	invokespecial	Method scala/actors/Actor$$anon$1."<init>":(Lscala/Function0;)V
 	astore_2
 	aload_2
-	checkcast	class scala/actors/Actor
 	invokeinterface	InterfaceMethod scala/actors/Actor.start:()Lscala/actors/Actor;
 	pop
 	aload_2
-	checkcast	class scala/actors/Actor
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      24      0    this       Lscala/actors/Actor$;
-   0      24      1    body$1       Lscala/Function0;
-   9      14      2    a       Ljava/lang/Object;
+   0      18      0    this       Lscala/actors/Actor$;
+   0      18      1    body$1       Lscala/Function0;
+   9      8      2    a       Lscala/actors/Actor;
 
   Signature: length = 0x2
    00 4F 
@@ -1019,7 +1031,7 @@ public java.lang.ThreadLocal tl();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 04 
+   01 02 
 
 }
 

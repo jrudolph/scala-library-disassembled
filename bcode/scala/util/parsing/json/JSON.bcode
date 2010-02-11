@@ -44,6 +44,7 @@ public final class scala.util.parsing.json.JSON extends java.lang.Object
   InnerClass: 
    public abstract Parser=class scala/util/parsing/combinator/Parsers$Parser of class scala/util/parsing/combinator/Parsers
    public abstract NoSuccess=class scala/util/parsing/combinator/Parsers$NoSuccess of class scala/util/parsing/combinator/Parsers
+   public abstract OnceParser=class scala/util/parsing/combinator/Parsers$OnceParser of class scala/util/parsing/combinator/Parsers
    public final $anonfun$resolveType$2=class scala/util/parsing/json/JSON$$anonfun$resolveType$2 of class scala/util/parsing/json/JSON
    public final $anonfun$resolveType$1=class scala/util/parsing/json/JSON$$anonfun$resolveType$1 of class scala/util/parsing/json/JSON
   minor version: 0
@@ -182,10 +183,11 @@ Asciz	commit;
 NameAndType	commit:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
 Method	scala/util/parsing/json/JSON$.commit:(Lscala/Function0;)Lscala/util/parsing/combinator/Parsers$Parser;
 Asciz	OnceParser;
-Asciz	(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;;
-NameAndType	OnceParser:(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;
-Method	scala/util/parsing/json/JSON$.OnceParser:(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;
+Asciz	(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$OnceParser;;
+NameAndType	OnceParser:(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$OnceParser;
+Method	scala/util/parsing/json/JSON$.OnceParser:(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$OnceParser;
 Asciz	Parser;
+Asciz	(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;;
 NameAndType	Parser:(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;
 Method	scala/util/parsing/json/JSON$.Parser:(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;
 Asciz	lastNoSuccess_$eq;
@@ -272,6 +274,8 @@ class	scala/util/parsing/combinator/Parsers
 Asciz	scala/util/parsing/combinator/Parsers$NoSuccess;
 class	scala/util/parsing/combinator/Parsers$NoSuccess
 Asciz	NoSuccess;
+Asciz	scala/util/parsing/combinator/Parsers$OnceParser;
+class	scala/util/parsing/combinator/Parsers$OnceParser
 Asciz	scala/util/parsing/json/JSON$$anonfun$resolveType$2;
 class	scala/util/parsing/json/JSON$$anonfun$resolveType$2
 Asciz	scala/util/parsing/json/JSON;
@@ -662,13 +666,13 @@ public static final scala.util.parsing.combinator.Parsers$Parser commit(scala.Fu
 	areturn
   Labels:
 
-public static final scala.util.parsing.combinator.Parsers$Parser OnceParser(scala.Function1);
-  Signature: (Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;
+public static final scala.util.parsing.combinator.Parsers$OnceParser OnceParser(scala.Function1);
+  Signature: (Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$OnceParser;
   Code:
    Stack=2, Locals=1, Args_size=1
 	getstatic	Field scala/util/parsing/json/JSON$.MODULE$:Lscala/util/parsing/json/JSON$;
 	aload_0
-	invokevirtual	Method scala/util/parsing/json/JSON$.OnceParser:(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$Parser;
+	invokevirtual	Method scala/util/parsing/json/JSON$.OnceParser:(Lscala/Function1;)Lscala/util/parsing/combinator/Parsers$OnceParser;
 	areturn
   Labels:
 
@@ -807,7 +811,7 @@ public static final scala.util.parsing.combinator.Parsers$Parser number();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFBC 
+   00 FFFFFFBD 
 
 public static final scala.util.parsing.combinator.Parsers$Parser stringVal();
   Signature: ()Lscala/util/parsing/combinator/Parsers$Parser;
@@ -818,7 +822,7 @@ public static final scala.util.parsing.combinator.Parsers$Parser stringVal();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFC0 
+   00 FFFFFFC1 
 
 public static final scala.util.parsing.combinator.Parsers$Parser value();
   Signature: ()Lscala/util/parsing/combinator/Parsers$Parser;
@@ -829,7 +833,7 @@ public static final scala.util.parsing.combinator.Parsers$Parser value();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFBC 
+   00 FFFFFFBD 
 
 public static final scala.util.parsing.combinator.Parsers$Parser objEntry();
   Signature: ()Lscala/util/parsing/combinator/Parsers$Parser;
@@ -840,7 +844,7 @@ public static final scala.util.parsing.combinator.Parsers$Parser objEntry();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFC7 
+   00 FFFFFFC8 
 
 public static final scala.util.parsing.combinator.Parsers$Parser jsonArray();
   Signature: ()Lscala/util/parsing/combinator/Parsers$Parser;
@@ -851,7 +855,7 @@ public static final scala.util.parsing.combinator.Parsers$Parser jsonArray();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFCB 
+   00 FFFFFFCC 
 
 public static final scala.util.parsing.combinator.Parsers$Parser jsonObj();
   Signature: ()Lscala/util/parsing/combinator/Parsers$Parser;
@@ -862,7 +866,7 @@ public static final scala.util.parsing.combinator.Parsers$Parser jsonObj();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFCF 
+   00 FFFFFFD0 
 
 public static final scala.util.parsing.combinator.Parsers$Parser root();
   Signature: ()Lscala/util/parsing/combinator/Parsers$Parser;
@@ -873,7 +877,7 @@ public static final scala.util.parsing.combinator.Parsers$Parser root();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFCB 
+   00 FFFFFFCC 
 
 public static final scala.util.parsing.json.Lexer lexical();
   Signature: ()Lscala/util/parsing/json/Lexer;

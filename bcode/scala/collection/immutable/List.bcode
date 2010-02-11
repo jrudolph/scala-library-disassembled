@@ -2,7 +2,7 @@ Compiled from "List.scala"
 public abstract class scala.collection.immutable.List extends java.lang.Object implements scala.collection.immutable.LinearSeq,scala.Product,scala.collection.generic.GenericTraversableTemplate,scala.collection.LinearSeqLike,scala.ScalaObject
   SourceFile: "List.scala"
   Signature: length = 0x2
-   04 50 
+   04 58 
   ScalaSig: length = 0x1443
    05 00 FFFFFF84 6E 06 05 01 02 FFFFFF81 10 09 02 04 4C 69 73
    74 0A 02 03 04 01 09 69 6D 6D 75 74 61 62 6C 65
@@ -811,11 +811,19 @@ NameAndType	isDefinedAt:(I)Z
 InterfaceMethod	scala/collection/LinearSeqLike.isDefinedAt:(I)Z
 Asciz	x;
 Asciz	view;
+Asciz	()Lscala/collection/IterableView;;
+Asciz	()Lscala/collection/SeqView;;
+NameAndType	view:()Lscala/collection/SeqView;
+InterfaceMethod	scala/collection/SeqLike.view:()Lscala/collection/SeqView;
+Asciz	()Lscala/collection/TraversableView;;
 Asciz	(II)Lscala/collection/IterableView;;
 Asciz	(II)Lscala/collection/SeqView;;
 NameAndType	view:(II)Lscala/collection/SeqView;
 InterfaceMethod	scala/collection/SeqLike.view:(II)Lscala/collection/SeqView;
 Asciz	(II)Lscala/collection/TraversableView;;
+Asciz	projection;
+NameAndType	projection:()Lscala/collection/SeqView;
+InterfaceMethod	scala/collection/SeqLike.projection:()Lscala/collection/SeqView;
 Asciz	andThen;
 Asciz	(Lscala/Function1;)Lscala/Function1;;
 Asciz	scala/PartialFunction;
@@ -1183,10 +1191,9 @@ Asciz	(Lscala/PartialFunction;)Lscala/PartialFunction;;
 Asciz	(Lscala/PartialFunction;Lscala/PartialFunction;)Lscala/PartialFunction;;
 NameAndType	orElse:(Lscala/PartialFunction;Lscala/PartialFunction;)Lscala/PartialFunction;
 Method	scala/PartialFunction$class.orElse:(Lscala/PartialFunction;Lscala/PartialFunction;)Lscala/PartialFunction;
-Asciz	projection;
-Asciz	(Lscala/collection/SeqLike;)Ljava/lang/Object;;
-NameAndType	projection:(Lscala/collection/SeqLike;)Ljava/lang/Object;
-Method	scala/collection/SeqLike$class.projection:(Lscala/collection/SeqLike;)Ljava/lang/Object;
+Asciz	(Lscala/collection/SeqLike;)Lscala/collection/SeqView;;
+NameAndType	projection:(Lscala/collection/SeqLike;)Lscala/collection/SeqView;
+Method	scala/collection/SeqLike$class.projection:(Lscala/collection/SeqLike;)Lscala/collection/SeqView;
 Asciz	equalsWith;
 Asciz	(Lscala/collection/Seq;Lscala/Function2;)Z;
 Asciz	(Lscala/collection/SeqLike;Lscala/collection/Seq;Lscala/Function2;)Z;
@@ -1212,8 +1219,8 @@ Method	scala/collection/SeqLike$class.hashCode:(Lscala/collection/SeqLike;)I
 Asciz	(Lscala/collection/SeqLike;II)Lscala/collection/SeqView;;
 NameAndType	view:(Lscala/collection/SeqLike;II)Lscala/collection/SeqView;
 Method	scala/collection/SeqLike$class.view:(Lscala/collection/SeqLike;II)Lscala/collection/SeqView;
-NameAndType	view:(Lscala/collection/SeqLike;)Ljava/lang/Object;
-Method	scala/collection/SeqLike$class.view:(Lscala/collection/SeqLike;)Ljava/lang/Object;
+NameAndType	view:(Lscala/collection/SeqLike;)Lscala/collection/SeqView;
+Method	scala/collection/SeqLike$class.view:(Lscala/collection/SeqLike;)Lscala/collection/SeqView;
 Asciz	indices;
 Asciz	()Lscala/collection/immutable/Range;;
 Asciz	(Lscala/collection/SeqLike;)Lscala/collection/immutable/Range;;
@@ -1266,6 +1273,7 @@ NameAndType	patch:(Lscala/collection/SeqLike;ILscala/collection/Seq;ILscala/coll
 Method	scala/collection/SeqLike$class.patch:(Lscala/collection/SeqLike;ILscala/collection/Seq;ILscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 Asciz	replaced;
 Asciz	removeDuplicates;
+Asciz	(Lscala/collection/SeqLike;)Ljava/lang/Object;;
 NameAndType	removeDuplicates:(Lscala/collection/SeqLike;)Ljava/lang/Object;
 Method	scala/collection/SeqLike$class.removeDuplicates:(Lscala/collection/SeqLike;)Ljava/lang/Object;
 Asciz	intersect;
@@ -2839,6 +2847,24 @@ public boolean isDefinedAt(java.lang.Object);
    0      11      1    x       Ljava/lang/Object;
 
 
+public scala.collection.IterableView view();
+  Signature: ()Lscala/collection/IterableView;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.view:()Lscala/collection/SeqView;
+	areturn
+  Labels:
+
+public scala.collection.TraversableView view();
+  Signature: ()Lscala/collection/TraversableView;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.view:()Lscala/collection/SeqView;
+	areturn
+  Labels:
+
 public scala.collection.IterableView view(int, int);
   Signature: (II)Lscala/collection/IterableView;
   Code:
@@ -2872,6 +2898,15 @@ public scala.collection.TraversableView view(int, int);
    0      9      1    from       I
    0      9      2    until       I
 
+
+public scala.collection.IterableView projection();
+  Signature: ()Lscala/collection/IterableView;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.projection:()Lscala/collection/SeqView;
+	areturn
+  Labels:
 
 public scala.Function1 andThen(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Function1;
@@ -2924,7 +2959,7 @@ public scala.collection.immutable.List sort(scala.Function2);
    0      7      1    lt$1       Lscala/Function2;
 
   Signature: length = 0x2
-   01 FFFFFFE6 
+   01 FFFFFFEE 
   Deprecated: true
 
 public scala.collection.immutable.List $minus(java.lang.Object);
@@ -3002,7 +3037,7 @@ l8	pop
    26      88      4    these       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   01 FFFFFFF0 
+   01 FFFFFFF8 
   Deprecated: true
 
 public scala.collection.immutable.List $minus$minus(scala.collection.immutable.List);
@@ -3053,7 +3088,7 @@ l3	pop
    24      45      3    these       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   01 FFFFFFF6 
+   01 FFFFFFFE 
   Deprecated: true
 
 public scala.collection.immutable.List remove(scala.Function1);
@@ -3072,7 +3107,7 @@ public scala.collection.immutable.List remove(scala.Function1);
    0      11      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   01 FFFFFFFB 
+   02 03 
   Deprecated: true
 
 public scala.Tuple2 break(scala.Function1);
@@ -3094,7 +3129,7 @@ public scala.Tuple2 break(scala.Function1);
    0      14      1    p$2       Lscala/Function1;
 
   Signature: length = 0x2
-   02 07 
+   02 0F 
   Deprecated: true
 
 public scala.collection.immutable.Stream toStream();
@@ -3120,7 +3155,7 @@ l2	areturn
    	l1 = 15 // new
    	l2 = 36 // areturn
   Signature: length = 0x2
-   02 19 
+   02 21 
 
 public java.lang.String stringPrefix();
   Signature: ()Ljava/lang/String;
@@ -3167,7 +3202,7 @@ l1	aload_2
    17      26      2    these       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   02 1E 
+   02 26 
 
 public scala.Tuple2 span(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Tuple2;
@@ -3216,7 +3251,7 @@ l1	new	class scala/Tuple2
    10      63      3    these       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   02 07 
+   02 0F 
 
 public scala.collection.immutable.List dropWhile(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/immutable/List;
@@ -3234,7 +3269,7 @@ public scala.collection.immutable.List dropWhile(scala.Function1);
    0      7      1    p$1       Lscala/Function1;
 
   Signature: length = 0x2
-   01 FFFFFFFB 
+   02 03 
 
 public scala.collection.immutable.List takeWhile(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/immutable/List;
@@ -3279,7 +3314,7 @@ l1	aload_2
    10      55      3    these       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   01 FFFFFFFB 
+   02 03 
 
 public scala.Tuple2 splitAt(int);
   Signature: (I)Lscala/Tuple2;
@@ -3332,7 +3367,7 @@ l1	new	class scala/Tuple2
    13      59      4    these       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   02 25 
+   02 2D 
 
 public scala.collection.immutable.List takeRight(int);
   Signature: (I)Lscala/collection/immutable/List;
@@ -3352,7 +3387,7 @@ public scala.collection.immutable.List takeRight(int);
    0      11      1    n       I
 
   Signature: length = 0x2
-   02 28 
+   02 30 
 
 public scala.collection.immutable.List slice(int, int);
   Signature: (II)Lscala/collection/immutable/List;
@@ -3383,7 +3418,7 @@ l1	aload_0
    2      18      3    len       I
 
   Signature: length = 0x2
-   02 2C 
+   02 34 
 
 public scala.collection.immutable.List drop(int);
   Signature: (I)Lscala/collection/immutable/List;
@@ -3421,7 +3456,7 @@ l1	aload_2
    4      32      3    count       I
 
   Signature: length = 0x2
-   02 28 
+   02 30 
 
 public scala.collection.immutable.List take(int);
   Signature: (I)Lscala/collection/immutable/List;
@@ -3477,7 +3512,7 @@ l4	areturn
    13      65      4    these       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   02 28 
+   02 30 
 
 public scala.collection.immutable.List toList();
   Signature: ()Lscala/collection/immutable/List;
@@ -3487,7 +3522,7 @@ public scala.collection.immutable.List toList();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 1E 
+   02 26 
 
 public java.lang.Object $plus$plus(scala.collection.Iterator, scala.collection.generic.CanBuildFrom);
   Signature: (Lscala/collection/Iterator;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
@@ -3507,7 +3542,7 @@ public java.lang.Object $plus$plus(scala.collection.Iterator, scala.collection.g
    0      12      2    bf       Lscala/collection/generic/CanBuildFrom;
 
   Signature: length = 0x2
-   02 39 
+   02 41 
 
 public java.lang.Object $plus$plus(scala.collection.Traversable, scala.collection.generic.CanBuildFrom);
   Signature: (Lscala/collection/Traversable;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
@@ -3541,7 +3576,7 @@ l2	areturn
    8      27      3    b       Lscala/collection/mutable/Builder;
 
   Signature: length = 0x2
-   02 48 
+   02 50 
 
 public scala.collection.immutable.List mapConserve(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/immutable/List;
@@ -3559,7 +3594,7 @@ public scala.collection.immutable.List mapConserve(scala.Function1);
    0      7      1    f$1       Lscala/Function1;
 
   Signature: length = 0x2
-   02 4C 
+   02 54 
 
 public scala.collection.immutable.List reverse_$colon$colon$colon(scala.collection.immutable.List);
   Signature: (Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
@@ -3599,7 +3634,7 @@ l1	aload_3
    15      28      3    pres       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   01 FFFFFFF6 
+   01 FFFFFFFE 
 
 public scala.collection.immutable.List $colon$colon$colon(scala.collection.immutable.List);
   Signature: (Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
@@ -3630,7 +3665,7 @@ l2	areturn
    0      34      1    prefix       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   01 FFFFFFF6 
+   01 FFFFFFFE 
 
 public scala.collection.immutable.List $colon$colon(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/List;
@@ -3649,12 +3684,12 @@ public scala.collection.immutable.List $colon$colon(java.lang.Object);
    0      10      1    x       Ljava/lang/Object;
 
   Signature: length = 0x2
-   01 FFFFFFF0 
+   01 FFFFFFF8 
 
 public abstract java.lang.Object head();
   Signature: ()Ljava/lang/Object;
   Signature: length = 0x2
-   02 53 
+   02 5B 
 
 public abstract boolean isEmpty();
   Signature: ()Z
@@ -3667,7 +3702,7 @@ public scala.collection.generic.GenericCompanion companion();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 56 
+   02 5E 
 
 public scala.collection.TraversableLike$WithFilter withFilter(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/TraversableLike$WithFilter;
@@ -3684,7 +3719,7 @@ public scala.collection.TraversableLike$WithFilter withFilter(scala.Function1);
    0      6      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   02 58 
+   02 60 
 
 public scala.collection.mutable.StringBuilder addString(scala.collection.mutable.StringBuilder);
   Signature: (Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
@@ -4403,12 +4438,12 @@ public scala.PartialFunction orElse(scala.PartialFunction);
    0      6      1    that       Lscala/PartialFunction;
 
 
-public java.lang.Object projection();
-  Signature: ()Ljava/lang/Object;
+public scala.collection.SeqView projection();
+  Signature: ()Lscala/collection/SeqView;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokestatic	Method scala/collection/SeqLike$class.projection:(Lscala/collection/SeqLike;)Ljava/lang/Object;
+	invokestatic	Method scala/collection/SeqLike$class.projection:(Lscala/collection/SeqLike;)Lscala/collection/SeqView;
 	areturn
   Labels:
   Deprecated: true
@@ -4496,12 +4531,12 @@ public scala.collection.SeqView view(int, int);
    0      7      2    until       I
 
 
-public java.lang.Object view();
-  Signature: ()Ljava/lang/Object;
+public scala.collection.SeqView view();
+  Signature: ()Lscala/collection/SeqView;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokestatic	Method scala/collection/SeqLike$class.view:(Lscala/collection/SeqLike;)Ljava/lang/Object;
+	invokestatic	Method scala/collection/SeqLike$class.view:(Lscala/collection/SeqLike;)Lscala/collection/SeqView;
 	areturn
   Labels:
 

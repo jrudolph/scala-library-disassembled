@@ -114,7 +114,7 @@ Asciz	Lscala/collection/immutable/Set$Set1;;
 Asciz	LocalVariableTable;
 Asciz	(TA;)V;
 Asciz	$plus;
-Asciz	(Ljava/lang/Object;)Lscala/collection/SetLike;;
+Asciz	(Ljava/lang/Object;)Lscala/collection/Set;;
 Asciz	(Ljava/lang/Object;)Lscala/collection/immutable/Set;;
 NameAndType	$plus:(Ljava/lang/Object;)Lscala/collection/immutable/Set;
 Method	scala/collection/immutable/Set$Set1.$plus:(Ljava/lang/Object;)Lscala/collection/immutable/Set;
@@ -138,13 +138,6 @@ Asciz	(Z)Ljava/lang/Boolean;;
 NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
 Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 Asciz	v1;
-Asciz	empty;
-Asciz	()Lscala/collection/SetLike;;
-Asciz	scala/collection/generic/GenericSetTemplate;
-class	scala/collection/generic/GenericSetTemplate
-Asciz	()Lscala/collection/Set;;
-NameAndType	empty:()Lscala/collection/Set;
-InterfaceMethod	scala/collection/generic/GenericSetTemplate.empty:()Lscala/collection/Set;
 Asciz	thisCollection;
 Asciz	()Lscala/collection/Traversable;;
 Asciz	scala/collection/IterableLike;
@@ -159,6 +152,10 @@ NameAndType	toCollection:(Ljava/lang/Object;)Lscala/collection/Iterable;
 InterfaceMethod	scala/collection/IterableLike.toCollection:(Ljava/lang/Object;)Lscala/collection/Iterable;
 Asciz	repr;
 Asciz	view;
+Asciz	()Lscala/collection/TraversableView;;
+Asciz	()Lscala/collection/IterableView;;
+NameAndType	view:()Lscala/collection/IterableView;
+InterfaceMethod	scala/collection/IterableLike.view:()Lscala/collection/IterableView;
 Asciz	(II)Lscala/collection/TraversableView;;
 Asciz	(II)Lscala/collection/IterableView;;
 NameAndType	view:(II)Lscala/collection/IterableView;
@@ -478,22 +475,23 @@ Asciz	(Lscala/collection/generic/GenericTraversableTemplate;)Lscala/collection/m
 NameAndType	genericBuilder:(Lscala/collection/generic/GenericTraversableTemplate;)Lscala/collection/mutable/Builder;
 Method	scala/collection/generic/GenericTraversableTemplate$class.genericBuilder:(Lscala/collection/generic/GenericTraversableTemplate;)Lscala/collection/mutable/Builder;
 Asciz	projection;
-Asciz	(Lscala/collection/IterableLike;)Ljava/lang/Object;;
-NameAndType	projection:(Lscala/collection/IterableLike;)Ljava/lang/Object;
-Method	scala/collection/IterableLike$class.projection:(Lscala/collection/IterableLike;)Ljava/lang/Object;
+Asciz	(Lscala/collection/IterableLike;)Lscala/collection/IterableView;;
+NameAndType	projection:(Lscala/collection/IterableLike;)Lscala/collection/IterableView;
+Method	scala/collection/IterableLike$class.projection:(Lscala/collection/IterableLike;)Lscala/collection/IterableView;
 Asciz	Deprecated;
 Asciz	firstOption;
 Asciz	(Lscala/collection/IterableLike;)Lscala/Option;;
 NameAndType	firstOption:(Lscala/collection/IterableLike;)Lscala/Option;
 Method	scala/collection/IterableLike$class.firstOption:(Lscala/collection/IterableLike;)Lscala/Option;
 Asciz	first;
+Asciz	(Lscala/collection/IterableLike;)Ljava/lang/Object;;
 NameAndType	first:(Lscala/collection/IterableLike;)Ljava/lang/Object;
 Method	scala/collection/IterableLike$class.first:(Lscala/collection/IterableLike;)Ljava/lang/Object;
 Asciz	(Lscala/collection/IterableLike;II)Lscala/collection/IterableView;;
 NameAndType	view:(Lscala/collection/IterableLike;II)Lscala/collection/IterableView;
 Method	scala/collection/IterableLike$class.view:(Lscala/collection/IterableLike;II)Lscala/collection/IterableView;
-NameAndType	view:(Lscala/collection/IterableLike;)Ljava/lang/Object;
-Method	scala/collection/IterableLike$class.view:(Lscala/collection/IterableLike;)Ljava/lang/Object;
+NameAndType	view:(Lscala/collection/IterableLike;)Lscala/collection/IterableView;
+Method	scala/collection/IterableLike$class.view:(Lscala/collection/IterableLike;)Lscala/collection/IterableView;
 Asciz	canEqual;
 Asciz	(Lscala/collection/IterableLike;Ljava/lang/Object;)Z;
 NameAndType	canEqual:(Lscala/collection/IterableLike;Ljava/lang/Object;)Z
@@ -596,6 +594,8 @@ Asciz	g;
 Asciz	compose;
 NameAndType	compose:(Lscala/Function1;Lscala/Function1;)Lscala/Function1;
 Method	scala/Function1$class.compose:(Lscala/Function1;Lscala/Function1;)Lscala/Function1;
+Asciz	empty;
+Asciz	()Lscala/collection/Set;;
 Asciz	(Lscala/collection/generic/GenericSetTemplate;)Lscala/collection/Set;;
 NameAndType	empty:(Lscala/collection/generic/GenericSetTemplate;)Lscala/collection/Set;
 Method	scala/collection/generic/GenericSetTemplate$class.empty:(Lscala/collection/generic/GenericSetTemplate;)Lscala/collection/Set;
@@ -649,28 +649,28 @@ NameAndType	subsetOf:(Lscala/collection/SetLike;Lscala/collection/Set;)Z
 Method	scala/collection/SetLike$class.subsetOf:(Lscala/collection/SetLike;Lscala/collection/Set;)Z
 Asciz	Lscala/collection/Set;;
 Asciz	$amp$tilde;
-Asciz	(Lscala/collection/Set;)Lscala/collection/SetLike;;
-Asciz	(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;;
-NameAndType	$amp$tilde:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
-Method	scala/collection/SetLike$class.$amp$tilde:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
+Asciz	(Lscala/collection/Set;)Lscala/collection/Set;;
+Asciz	(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;;
+NameAndType	$amp$tilde:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
+Method	scala/collection/SetLike$class.$amp$tilde:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
 Asciz	diff;
-NameAndType	diff:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
-Method	scala/collection/SetLike$class.diff:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
+NameAndType	diff:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
+Method	scala/collection/SetLike$class.diff:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
 Asciz	$bar;
-NameAndType	$bar:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
-Method	scala/collection/SetLike$class.$bar:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
+NameAndType	$bar:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
+Method	scala/collection/SetLike$class.$bar:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
 Asciz	union;
-NameAndType	union:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
-Method	scala/collection/SetLike$class.union:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
+NameAndType	union:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
+Method	scala/collection/SetLike$class.union:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
 Asciz	$times$times;
-NameAndType	$times$times:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
-Method	scala/collection/SetLike$class.$times$times:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
+NameAndType	$times$times:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
+Method	scala/collection/SetLike$class.$times$times:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
 Asciz	$amp;
-NameAndType	$amp:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
-Method	scala/collection/SetLike$class.$amp:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
+NameAndType	$amp:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
+Method	scala/collection/SetLike$class.$amp:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
 Asciz	intersect;
-NameAndType	intersect:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
-Method	scala/collection/SetLike$class.intersect:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
+NameAndType	intersect:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
+Method	scala/collection/SetLike$class.intersect:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
 NameAndType	apply:(Lscala/collection/SetLike;Ljava/lang/Object;)Z
 Method	scala/collection/SetLike$class.apply:(Lscala/collection/SetLike;Ljava/lang/Object;)Z
 Asciz	isEmpty;
@@ -767,8 +767,8 @@ public scala.collection.immutable.Set$Set1(java.lang.Object);
   Signature: length = 0x2
    00 65 
 
-public scala.collection.SetLike $plus(java.lang.Object);
-  Signature: (Ljava/lang/Object;)Lscala/collection/SetLike;
+public scala.collection.Set $plus(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Lscala/collection/Set;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
@@ -797,8 +797,8 @@ public scala.collection.generic.Addable $plus(java.lang.Object);
    0      6      1    elem       Ljava/lang/Object;
 
 
-public scala.collection.SetLike $minus(java.lang.Object);
-  Signature: (Ljava/lang/Object;)Lscala/collection/SetLike;
+public scala.collection.Set $minus(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Lscala/collection/Set;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
@@ -845,15 +845,6 @@ public java.lang.Object apply(java.lang.Object);
    0      13      1    v1       Ljava/lang/Object;
 
 
-public scala.collection.SetLike empty();
-  Signature: ()Lscala/collection/SetLike;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/generic/GenericSetTemplate.empty:()Lscala/collection/Set;
-	areturn
-  Labels:
-
 public scala.collection.Traversable thisCollection();
   Signature: ()Lscala/collection/Traversable;
   Code:
@@ -877,6 +868,15 @@ public scala.collection.Traversable toCollection(java.lang.Object);
    0      8      0    this       Lscala/collection/immutable/Set$Set1;
    0      8      1    repr       Ljava/lang/Object;
 
+
+public scala.collection.TraversableView view();
+  Signature: ()Lscala/collection/TraversableView;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.view:()Lscala/collection/IterableView;
+	areturn
+  Labels:
 
 public scala.collection.TraversableView view(int, int);
   Signature: (II)Lscala/collection/TraversableView;
@@ -932,7 +932,7 @@ public void foreach(scala.Function1);
    0      12      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFFAD 
+   00 FFFFFFAA 
 
 public scala.collection.Iterator iterator();
   Signature: ()Lscala/collection/Iterator;
@@ -952,7 +952,7 @@ public scala.collection.Iterator iterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFC2 
+   00 FFFFFFBF 
 
 public scala.collection.immutable.Set $minus(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/Set;
@@ -1005,7 +1005,7 @@ l7	areturn
    10      42      2    y0       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 FFFFFFD2 
+   00 FFFFFFCF 
 
 public scala.collection.immutable.Set $plus(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/Set;
@@ -1033,7 +1033,7 @@ l2	areturn
    0      25      1    elem       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 FFFFFFD2 
+   00 FFFFFFCF 
 
 public boolean contains(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -1084,7 +1084,7 @@ l7	ireturn
    10      42      2    y0       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 FFFFFFDB 
+   00 FFFFFFD8 
 
 public int size();
   Signature: ()I
@@ -1109,7 +1109,7 @@ public scala.collection.TraversableLike$WithFilter withFilter(scala.Function1);
    0      6      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFFDF 
+   00 FFFFFFDC 
 
 public scala.collection.mutable.StringBuilder addString(scala.collection.mutable.StringBuilder);
   Signature: (Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
@@ -1807,12 +1807,12 @@ public scala.collection.mutable.Builder genericBuilder();
 	areturn
   Labels:
 
-public java.lang.Object projection();
-  Signature: ()Ljava/lang/Object;
+public scala.collection.IterableView projection();
+  Signature: ()Lscala/collection/IterableView;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokestatic	Method scala/collection/IterableLike$class.projection:(Lscala/collection/IterableLike;)Ljava/lang/Object;
+	invokestatic	Method scala/collection/IterableLike$class.projection:(Lscala/collection/IterableLike;)Lscala/collection/IterableView;
 	areturn
   Labels:
   Deprecated: true
@@ -1854,12 +1854,12 @@ public scala.collection.IterableView view(int, int);
    0      7      2    until       I
 
 
-public java.lang.Object view();
-  Signature: ()Ljava/lang/Object;
+public scala.collection.IterableView view();
+  Signature: ()Lscala/collection/IterableView;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokestatic	Method scala/collection/IterableLike$class.view:(Lscala/collection/IterableLike;)Ljava/lang/Object;
+	invokestatic	Method scala/collection/IterableLike$class.view:(Lscala/collection/IterableLike;)Lscala/collection/IterableView;
 	areturn
   Labels:
 
@@ -2374,13 +2374,13 @@ public boolean subsetOf(scala.collection.Set);
    0      6      1    that       Lscala/collection/Set;
 
 
-public scala.collection.SetLike $amp$tilde(scala.collection.Set);
-  Signature: (Lscala/collection/Set;)Lscala/collection/SetLike;
+public scala.collection.Set $amp$tilde(scala.collection.Set);
+  Signature: (Lscala/collection/Set;)Lscala/collection/Set;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	invokestatic	Method scala/collection/SetLike$class.$amp$tilde:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
+	invokestatic	Method scala/collection/SetLike$class.$amp$tilde:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
 	areturn
   Labels:
   LocalVariableTable: 
@@ -2389,13 +2389,13 @@ public scala.collection.SetLike $amp$tilde(scala.collection.Set);
    0      6      1    that       Lscala/collection/Set;
 
 
-public scala.collection.SetLike diff(scala.collection.Set);
-  Signature: (Lscala/collection/Set;)Lscala/collection/SetLike;
+public scala.collection.Set diff(scala.collection.Set);
+  Signature: (Lscala/collection/Set;)Lscala/collection/Set;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	invokestatic	Method scala/collection/SetLike$class.diff:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
+	invokestatic	Method scala/collection/SetLike$class.diff:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
 	areturn
   Labels:
   LocalVariableTable: 
@@ -2404,13 +2404,13 @@ public scala.collection.SetLike diff(scala.collection.Set);
    0      6      1    that       Lscala/collection/Set;
 
 
-public scala.collection.SetLike $bar(scala.collection.Set);
-  Signature: (Lscala/collection/Set;)Lscala/collection/SetLike;
+public scala.collection.Set $bar(scala.collection.Set);
+  Signature: (Lscala/collection/Set;)Lscala/collection/Set;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	invokestatic	Method scala/collection/SetLike$class.$bar:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
+	invokestatic	Method scala/collection/SetLike$class.$bar:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
 	areturn
   Labels:
   LocalVariableTable: 
@@ -2419,13 +2419,13 @@ public scala.collection.SetLike $bar(scala.collection.Set);
    0      6      1    that       Lscala/collection/Set;
 
 
-public scala.collection.SetLike union(scala.collection.Set);
-  Signature: (Lscala/collection/Set;)Lscala/collection/SetLike;
+public scala.collection.Set union(scala.collection.Set);
+  Signature: (Lscala/collection/Set;)Lscala/collection/Set;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	invokestatic	Method scala/collection/SetLike$class.union:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
+	invokestatic	Method scala/collection/SetLike$class.union:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
 	areturn
   Labels:
   LocalVariableTable: 
@@ -2434,13 +2434,13 @@ public scala.collection.SetLike union(scala.collection.Set);
    0      6      1    that       Lscala/collection/Set;
 
 
-public scala.collection.SetLike $times$times(scala.collection.Set);
-  Signature: (Lscala/collection/Set;)Lscala/collection/SetLike;
+public scala.collection.Set $times$times(scala.collection.Set);
+  Signature: (Lscala/collection/Set;)Lscala/collection/Set;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	invokestatic	Method scala/collection/SetLike$class.$times$times:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
+	invokestatic	Method scala/collection/SetLike$class.$times$times:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
 	areturn
   Labels:
   LocalVariableTable: 
@@ -2450,13 +2450,13 @@ public scala.collection.SetLike $times$times(scala.collection.Set);
 
   Deprecated: true
 
-public scala.collection.SetLike $amp(scala.collection.Set);
-  Signature: (Lscala/collection/Set;)Lscala/collection/SetLike;
+public scala.collection.Set $amp(scala.collection.Set);
+  Signature: (Lscala/collection/Set;)Lscala/collection/Set;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	invokestatic	Method scala/collection/SetLike$class.$amp:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
+	invokestatic	Method scala/collection/SetLike$class.$amp:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
 	areturn
   Labels:
   LocalVariableTable: 
@@ -2465,13 +2465,13 @@ public scala.collection.SetLike $amp(scala.collection.Set);
    0      6      1    that       Lscala/collection/Set;
 
 
-public scala.collection.SetLike intersect(scala.collection.Set);
-  Signature: (Lscala/collection/Set;)Lscala/collection/SetLike;
+public scala.collection.Set intersect(scala.collection.Set);
+  Signature: (Lscala/collection/Set;)Lscala/collection/Set;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	invokestatic	Method scala/collection/SetLike$class.intersect:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/SetLike;
+	invokestatic	Method scala/collection/SetLike$class.intersect:(Lscala/collection/SetLike;Lscala/collection/Set;)Lscala/collection/Set;
 	areturn
   Labels:
   LocalVariableTable: 

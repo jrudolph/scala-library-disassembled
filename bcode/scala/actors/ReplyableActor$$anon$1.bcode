@@ -15,9 +15,9 @@ Asciz	Z;
 Asciz	ftch$2;
 Asciz	Lscala/actors/Channel;;
 Asciz	$outer;
-Asciz	Lscala/actors/ReplyableActor;;
+Asciz	Lscala/actors/AbstractActor;;
 Asciz	<init>;
-Asciz	(Lscala/actors/ReplyableActor;Lscala/actors/Channel;)V;
+Asciz	(Lscala/actors/AbstractActor;Lscala/actors/Channel;)V;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	java/lang/NullPointerException;
@@ -27,8 +27,8 @@ NameAndType	"<init>":()V
 Method	java/lang/NullPointerException."<init>":()V
 Asciz	scala/actors/ReplyableActor$$anon$1;
 class	scala/actors/ReplyableActor$$anon$1
-NameAndType	$outer:Lscala/actors/ReplyableActor;
-Field	scala/actors/ReplyableActor$$anon$1.$outer:Lscala/actors/ReplyableActor;
+NameAndType	$outer:Lscala/actors/AbstractActor;
+Field	scala/actors/ReplyableActor$$anon$1.$outer:Lscala/actors/AbstractActor;
 NameAndType	ftch$2:Lscala/actors/Channel;
 Field	scala/actors/ReplyableActor$$anon$1.ftch$2:Lscala/actors/Channel;
 Asciz	java/lang/Object;
@@ -112,14 +112,11 @@ Asciz	scala/actors/Exit;
 class	scala/actors/Exit
 NameAndType	"<init>":(Lscala/actors/AbstractActor;Ljava/lang/Object;)V
 Method	scala/actors/Exit."<init>":(Lscala/actors/AbstractActor;Ljava/lang/Object;)V
-Asciz	scala/actors/OutputChannel;
-class	scala/actors/OutputChannel
 Asciz	send;
 Asciz	(Ljava/lang/Object;Lscala/actors/OutputChannel;)V;
 NameAndType	send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
 Method	scala/actors/Channel.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
 Asciz	from;
-Asciz	Lscala/actors/AbstractActor;;
 Asciz	reason;
 Asciz	unlinkFrom;
 Asciz	linkTo;
@@ -157,11 +154,11 @@ private boolean exiting;
 private final scala.actors.Channel ftch$2;
   Signature: Lscala/actors/Channel;
 
-private final scala.actors.ReplyableActor $outer;
-  Signature: Lscala/actors/ReplyableActor;
+private final scala.actors.AbstractActor $outer;
+  Signature: Lscala/actors/AbstractActor;
 
-public scala.actors.ReplyableActor$$anon$1(scala.actors.ReplyableActor, scala.actors.Channel);
-  Signature: (Lscala/actors/ReplyableActor;Lscala/actors/Channel;)V
+public scala.actors.ReplyableActor$$anon$1(scala.actors.AbstractActor, scala.actors.Channel);
+  Signature: (Lscala/actors/AbstractActor;Lscala/actors/Channel;)V
   Code:
    Stack=2, Locals=3, Args_size=3
 	aload_1
@@ -172,7 +169,7 @@ public scala.actors.ReplyableActor$$anon$1(scala.actors.ReplyableActor, scala.ac
 	athrow
 l1	aload_0
 	aload_1
-	putfield	Field $outer:Lscala/actors/ReplyableActor;
+	putfield	Field $outer:Lscala/actors/AbstractActor;
 	aload_0
 	aload_2
 	putfield	Field ftch$2:Lscala/actors/Channel;
@@ -188,7 +185,7 @@ l1	aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      35      0    this       Lscala/actors/ReplyableActor$$anon$1;
-   0      35      1    $outer       Lscala/actors/ReplyableActor;
+   0      35      1    $outer       Lscala/actors/AbstractActor;
 
 
 public scala.Function0 $bang$bang(java.lang.Object);
@@ -231,7 +228,7 @@ public scala.actors.Future $bang$bang(java.lang.Object, scala.PartialFunction);
 	dup
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	aload_0
-	getfield	Field $outer:Lscala/actors/ReplyableActor;
+	getfield	Field $outer:Lscala/actors/AbstractActor;
 	checkcast	class scala/actors/Reactor
 	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
 	invokevirtual	Method scala/actors/Actor$.self:(Lscala/actors/IScheduler;)Lscala/actors/Actor;
@@ -260,7 +257,7 @@ public scala.actors.Future $bang$bang(java.lang.Object);
 	dup
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	aload_0
-	getfield	Field $outer:Lscala/actors/ReplyableActor;
+	getfield	Field $outer:Lscala/actors/AbstractActor;
 	checkcast	class scala/actors/Reactor
 	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
 	invokevirtual	Method scala/actors/Actor$.self:(Lscala/actors/IScheduler;)Lscala/actors/Actor;
@@ -324,16 +321,15 @@ public void exit(scala.actors.AbstractActor, java.lang.Object);
 	aload_2
 	invokespecial	Method scala/actors/Exit."<init>":(Lscala/actors/AbstractActor;Ljava/lang/Object;)V
 	aload_0
-	getfield	Field $outer:Lscala/actors/ReplyableActor;
-	checkcast	class scala/actors/OutputChannel
+	getfield	Field $outer:Lscala/actors/AbstractActor;
 	invokevirtual	Method scala/actors/Channel.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      24      0    this       Lscala/actors/ReplyableActor$$anon$1;
-   0      24      1    from       Lscala/actors/AbstractActor;
-   0      24      2    reason       Ljava/lang/Object;
+   0      21      0    this       Lscala/actors/ReplyableActor$$anon$1;
+   0      21      1    from       Lscala/actors/AbstractActor;
+   0      21      2    reason       Ljava/lang/Object;
 
 
 public void unlinkFrom(scala.actors.AbstractActor);
@@ -404,7 +400,7 @@ public void send(java.lang.Object, scala.actors.OutputChannel);
    0      10      2    replyTo       Lscala/actors/OutputChannel;
 
   Signature: length = 0x2
-   00 7E 
+   00 7B 
 
 public void $bang(java.lang.Object);
   Signature: (Ljava/lang/Object;)V

@@ -94,14 +94,11 @@ Asciz	it;
 Asciz	Lscala/collection/Iterator;;
 Asciz	LocalVariableTable;
 Asciz	nodes;
-Asciz	()Ljava/lang/Object;;
-NameAndType	nodes:()Ljava/lang/Object;
-Method	scala/xml/persistent/SetStorage.nodes:()Ljava/lang/Object;
 Asciz	scala/collection/mutable/FlatHashTable;
 class	scala/collection/mutable/FlatHashTable
 Asciz	iterator;
-NameAndType	iterator:()Ljava/lang/Object;
-InterfaceMethod	scala/collection/mutable/FlatHashTable.iterator:()Ljava/lang/Object;
+NameAndType	iterator:()Lscala/collection/Iterator;
+InterfaceMethod	scala/collection/mutable/FlatHashTable.iterator:()Lscala/collection/Iterator;
 Asciz	$minus$eq;
 Asciz	(Lscala/xml/Node;)V;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/HashSet;;
@@ -162,16 +159,6 @@ public scala.xml.persistent.SetStorage(java.io.File);
 public scala.collection.Iterator nodes();
   Signature: ()Lscala/collection/Iterator;
   Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method nodes:()Ljava/lang/Object;
-	checkcast	class scala/collection/Iterator
-	areturn
-  Labels:
-
-public java.lang.Object nodes();
-  Signature: ()Ljava/lang/Object;
-  Code:
    Stack=2, Locals=1, Args_size=1
 	aload_0
 	dup
@@ -179,9 +166,10 @@ public java.lang.Object nodes();
 	monitorenter
 	aload_0
 	getfield	Field scala$xml$persistent$SetStorage$$theSet:Lscala/collection/mutable/HashSet;
-	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.iterator:()Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.iterator:()Lscala/collection/Iterator;
 	aload_0
 	monitorexit
+	checkcast	class scala/collection/Iterator
 	areturn
 	aload_0
 	monitorexit
@@ -189,7 +177,7 @@ public java.lang.Object nodes();
   Labels:
   Exception table:
    from   to  target type
-     4    15    16   any
+     4    15    19   any
 
 public void $minus$eq(scala.xml.Node);
   Signature: (Lscala/xml/Node;)V

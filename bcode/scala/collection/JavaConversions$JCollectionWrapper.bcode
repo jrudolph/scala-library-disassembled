@@ -2,7 +2,7 @@ Compiled from "JavaConversions.scala"
 public class scala.collection.JavaConversions$JCollectionWrapper extends java.lang.Object implements scala.collection.Iterable,scala.ScalaObject,scala.Product,java.io.Serializable
   SourceFile: "JavaConversions.scala"
   Signature: length = 0x2
-   02 1F 
+   02 24 
   Scala: length = 0x
    
   InnerClass: 
@@ -89,6 +89,10 @@ InterfaceMethod	scala/collection/IterableLike.toCollection:(Ljava/lang/Object;)L
 Asciz	repr;
 Asciz	Ljava/lang/Object;;
 Asciz	view;
+Asciz	()Lscala/collection/TraversableView;;
+Asciz	()Lscala/collection/IterableView;;
+NameAndType	view:()Lscala/collection/IterableView;
+InterfaceMethod	scala/collection/IterableLike.view:()Lscala/collection/IterableView;
 Asciz	(II)Lscala/collection/TraversableView;;
 Asciz	(II)Lscala/collection/IterableView;;
 NameAndType	view:(II)Lscala/collection/IterableView;
@@ -428,22 +432,23 @@ Method	scala/collection/generic/GenericTraversableTemplate$class.genericBuilder:
 NameAndType	newBuilder:(Lscala/collection/generic/GenericTraversableTemplate;)Lscala/collection/mutable/Builder;
 Method	scala/collection/generic/GenericTraversableTemplate$class.newBuilder:(Lscala/collection/generic/GenericTraversableTemplate;)Lscala/collection/mutable/Builder;
 Asciz	projection;
-Asciz	(Lscala/collection/IterableLike;)Ljava/lang/Object;;
-NameAndType	projection:(Lscala/collection/IterableLike;)Ljava/lang/Object;
-Method	scala/collection/IterableLike$class.projection:(Lscala/collection/IterableLike;)Ljava/lang/Object;
+Asciz	(Lscala/collection/IterableLike;)Lscala/collection/IterableView;;
+NameAndType	projection:(Lscala/collection/IterableLike;)Lscala/collection/IterableView;
+Method	scala/collection/IterableLike$class.projection:(Lscala/collection/IterableLike;)Lscala/collection/IterableView;
 Asciz	Deprecated;
 Asciz	firstOption;
 Asciz	(Lscala/collection/IterableLike;)Lscala/Option;;
 NameAndType	firstOption:(Lscala/collection/IterableLike;)Lscala/Option;
 Method	scala/collection/IterableLike$class.firstOption:(Lscala/collection/IterableLike;)Lscala/Option;
 Asciz	first;
+Asciz	(Lscala/collection/IterableLike;)Ljava/lang/Object;;
 NameAndType	first:(Lscala/collection/IterableLike;)Ljava/lang/Object;
 Method	scala/collection/IterableLike$class.first:(Lscala/collection/IterableLike;)Ljava/lang/Object;
 Asciz	(Lscala/collection/IterableLike;II)Lscala/collection/IterableView;;
 NameAndType	view:(Lscala/collection/IterableLike;II)Lscala/collection/IterableView;
 Method	scala/collection/IterableLike$class.view:(Lscala/collection/IterableLike;II)Lscala/collection/IterableView;
-NameAndType	view:(Lscala/collection/IterableLike;)Ljava/lang/Object;
-Method	scala/collection/IterableLike$class.view:(Lscala/collection/IterableLike;)Ljava/lang/Object;
+NameAndType	view:(Lscala/collection/IterableLike;)Lscala/collection/IterableView;
+Method	scala/collection/IterableLike$class.view:(Lscala/collection/IterableLike;)Lscala/collection/IterableView;
 Asciz	(Lscala/collection/IterableLike;Ljava/lang/Object;)Z;
 NameAndType	canEqual:(Lscala/collection/IterableLike;Ljava/lang/Object;)Z
 Method	scala/collection/IterableLike$class.canEqual:(Lscala/collection/IterableLike;Ljava/lang/Object;)Z
@@ -660,6 +665,15 @@ public scala.collection.Traversable toCollection(java.lang.Object);
    0      8      1    repr       Ljava/lang/Object;
 
 
+public scala.collection.TraversableView view();
+  Signature: ()Lscala/collection/TraversableView;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.view:()Lscala/collection/IterableView;
+	areturn
+  Labels:
+
 public scala.collection.TraversableView view(int, int);
   Signature: (II)Lscala/collection/TraversableView;
   Code:
@@ -834,7 +848,7 @@ public scala.collection.mutable.ArrayBuffer newBuilder();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFF8A 
+   00 FFFFFF8E 
 
 public boolean isEmpty();
   Signature: ()Z
@@ -868,7 +882,7 @@ public scala.collection.Iterator iterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFA2 
+   00 FFFFFFA6 
 
 public java.util.Collection underlying();
   Signature: ()Ljava/util/Collection;
@@ -879,7 +893,7 @@ public java.util.Collection underlying();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFA3 
+   00 FFFFFFA7 
 
 public java.util.Collection copy$default$1();
   Signature: ()Ljava/util/Collection;
@@ -905,7 +919,7 @@ public scala.collection.TraversableLike$WithFilter withFilter(scala.Function1);
    0      6      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFFA6 
+   00 FFFFFFAA 
 
 public java.lang.String stringPrefix();
   Signature: ()Ljava/lang/String;
@@ -1630,12 +1644,12 @@ public scala.collection.mutable.Builder newBuilder();
 	areturn
   Labels:
 
-public java.lang.Object projection();
-  Signature: ()Ljava/lang/Object;
+public scala.collection.IterableView projection();
+  Signature: ()Lscala/collection/IterableView;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokestatic	Method scala/collection/IterableLike$class.projection:(Lscala/collection/IterableLike;)Ljava/lang/Object;
+	invokestatic	Method scala/collection/IterableLike$class.projection:(Lscala/collection/IterableLike;)Lscala/collection/IterableView;
 	areturn
   Labels:
   Deprecated: true
@@ -1677,12 +1691,12 @@ public scala.collection.IterableView view(int, int);
    0      7      2    until       I
 
 
-public java.lang.Object view();
-  Signature: ()Ljava/lang/Object;
+public scala.collection.IterableView view();
+  Signature: ()Lscala/collection/IterableView;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokestatic	Method scala/collection/IterableLike$class.view:(Lscala/collection/IterableLike;)Ljava/lang/Object;
+	invokestatic	Method scala/collection/IterableLike$class.view:(Lscala/collection/IterableLike;)Lscala/collection/IterableView;
 	areturn
   Labels:
 

@@ -4,6 +4,7 @@ public abstract class scala.collection.SeqLike$class extends java.lang.Object
   Scala: length = 0x
    
   InnerClass: 
+   public abstract ByOne=class scala/collection/immutable/Range$ByOne of class scala/collection/immutable/Range
    public final $anon$1=class scala/collection/SeqLike$$anon$1 of class scala/collection/SeqLike
    public final $anon$2=class scala/collection/SeqLike$$anon$2 of class scala/collection/SeqLike
    public final $anon$4=class scala/math/Ordering$$anon$4 of class scala/math/Ordering
@@ -35,13 +36,13 @@ Asciz	$this;
 Asciz	Lscala/collection/SeqLike;;
 Asciz	LocalVariableTable;
 Asciz	projection;
-Asciz	(Lscala/collection/SeqLike;)Ljava/lang/Object;;
+Asciz	(Lscala/collection/SeqLike;)Lscala/collection/SeqView;;
 Asciz	scala/collection/SeqLike;
 class	scala/collection/SeqLike
 Asciz	view;
-Asciz	()Ljava/lang/Object;;
-NameAndType	view:()Ljava/lang/Object;
-InterfaceMethod	scala/collection/SeqLike.view:()Ljava/lang/Object;
+Asciz	()Lscala/collection/SeqView;;
+NameAndType	view:()Lscala/collection/SeqView;
+InterfaceMethod	scala/collection/SeqLike.view:()Lscala/collection/SeqView;
 Asciz	Deprecated;
 Asciz	equalsWith;
 Asciz	(Lscala/collection/SeqLike;Lscala/collection/Seq;Lscala/Function2;)Z;
@@ -58,6 +59,7 @@ Asciz	()Z;
 NameAndType	hasNext:()Z
 InterfaceMethod	scala/collection/Iterator.hasNext:()Z
 Asciz	next;
+Asciz	()Ljava/lang/Object;;
 NameAndType	next:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/Iterator.next:()Ljava/lang/Object;
 Asciz	scala/Function2;
@@ -179,9 +181,11 @@ NameAndType	length:()I
 InterfaceMethod	scala/collection/SeqLike.length:()I
 Asciz	scala/runtime/RichInt;
 class	scala/runtime/RichInt
-Asciz	(I)Lscala/collection/immutable/Range;;
-NameAndType	until:(I)Lscala/collection/immutable/Range;
-Method	scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range;
+Asciz	(I)Lscala/collection/immutable/Range$ByOne;;
+NameAndType	until:(I)Lscala/collection/immutable/Range$ByOne;
+Method	scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
+Asciz	scala/collection/immutable/Range;
+class	scala/collection/immutable/Range
 Asciz	toSeq;
 Asciz	(Lscala/collection/SeqLike;)Lscala/collection/Seq;;
 Asciz	thisCollection;
@@ -339,6 +343,7 @@ Asciz	temp11;
 Asciz	temp12;
 Asciz	temp10;
 Asciz	removeDuplicates;
+Asciz	(Lscala/collection/SeqLike;)Ljava/lang/Object;;
 Asciz	scala/runtime/ObjectRef;
 class	scala/runtime/ObjectRef
 Asciz	scala/collection/Set$;
@@ -566,6 +571,9 @@ Asciz	(Lscala/collection/SeqLike;I)I;
 Asciz	(Lscala/collection/SeqLike;Ljava/lang/Object;)Lscala/collection/Seq;;
 Asciz	Scala;
 Asciz	InnerClasses;
+Asciz	scala/collection/immutable/Range$ByOne;
+class	scala/collection/immutable/Range$ByOne
+Asciz	ByOne;
 Asciz	$anon$1;
 Asciz	$anon$2;
 Asciz	$anon$4;
@@ -597,12 +605,12 @@ public static void $init$(scala.collection.SeqLike);
    0      1      0    $this       Lscala/collection/SeqLike;
 
 
-public static java.lang.Object projection(scala.collection.SeqLike);
-  Signature: (Lscala/collection/SeqLike;)Ljava/lang/Object;
+public static scala.collection.SeqView projection(scala.collection.SeqLike);
+  Signature: (Lscala/collection/SeqLike;)Lscala/collection/SeqView;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.view:()Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.view:()Lscala/collection/SeqView;
 	areturn
   Labels:
   LocalVariableTable: 
@@ -772,8 +780,7 @@ public static scala.collection.SeqView view(scala.collection.SeqLike, int, int);
   Code:
    Stack=3, Locals=3, Args_size=3
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.view:()Ljava/lang/Object;
-	checkcast	class scala/collection/TraversableViewLike
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.view:()Lscala/collection/SeqView;
 	iload_1
 	iload_2
 	invokeinterface	InterfaceMethod scala/collection/TraversableViewLike.slice:(II)Lscala/collection/TraversableView;
@@ -782,13 +789,13 @@ public static scala.collection.SeqView view(scala.collection.SeqLike, int, int);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      20      0    $this       Lscala/collection/SeqLike;
-   0      20      1    from       I
-   0      20      2    until       I
+   0      17      0    $this       Lscala/collection/SeqLike;
+   0      17      1    from       I
+   0      17      2    until       I
 
 
-public static java.lang.Object view(scala.collection.SeqLike);
-  Signature: (Lscala/collection/SeqLike;)Ljava/lang/Object;
+public static scala.collection.SeqView view(scala.collection.SeqLike);
+  Signature: (Lscala/collection/SeqLike;)Lscala/collection/SeqView;
   Code:
    Stack=3, Locals=1, Args_size=1
 	new	class scala/collection/SeqLike$$anon$2
@@ -811,12 +818,13 @@ public static scala.collection.immutable.Range indices(scala.collection.SeqLike)
 	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range;
+	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
+	checkcast	class scala/collection/immutable/Range
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      17      0    $this       Lscala/collection/SeqLike;
+   0      20      0    $this       Lscala/collection/SeqLike;
 
 
 public static scala.collection.Seq toSeq(scala.collection.SeqLike);
@@ -1136,8 +1144,7 @@ public static java.lang.Object updated(scala.collection.SeqLike, int, java.lang.
 	aload_0
 	aload	8
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.toCollection:(Ljava/lang/Object;)Lscala/collection/Seq;
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.view:()Ljava/lang/Object;
-	checkcast	class scala/collection/TraversableLike
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.view:()Lscala/collection/SeqView;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/Traversable
 	invokeinterface	InterfaceMethod scala/collection/generic/Growable.$plus$plus$eq:(Lscala/collection/Traversable;)Lscala/collection/generic/Growable;
@@ -1158,21 +1165,21 @@ l1	new	class scala/MatchError
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l2 = 138 // new
-   	l1 = 151 // new
+   	l2 = 135 // new
+   	l1 = 148 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      164      0    $this       Lscala/collection/SeqLike;
-   0      164      1    index       I
-   0      164      2    elem       Ljava/lang/Object;
-   0      164      3    bf       Lscala/collection/generic/CanBuildFrom;
-   35      116      4    temp14       Ljava/lang/Object;
-   42      109      5    temp15       Ljava/lang/Object;
-   66      71      7    prefix       Ljava/lang/Object;
-   73      64      8    rest       Ljava/lang/Object;
-   14      123      9    b       Lscala/collection/mutable/Builder;
-   138      26      9    b       Lscala/collection/mutable/Builder;
-   23      141      10    temp13       Lscala/Tuple2;
+   0      161      0    $this       Lscala/collection/SeqLike;
+   0      161      1    index       I
+   0      161      2    elem       Ljava/lang/Object;
+   0      161      3    bf       Lscala/collection/generic/CanBuildFrom;
+   35      113      4    temp14       Ljava/lang/Object;
+   42      106      5    temp15       Ljava/lang/Object;
+   66      68      7    prefix       Ljava/lang/Object;
+   73      61      8    rest       Ljava/lang/Object;
+   14      120      9    b       Lscala/collection/mutable/Builder;
+   135      26      9    b       Lscala/collection/mutable/Builder;
+   23      138      10    temp13       Lscala/Tuple2;
 
 
 public static java.lang.Object patch(scala.collection.SeqLike, int, scala.collection.Seq, int, scala.collection.generic.CanBuildFrom);
@@ -1224,8 +1231,7 @@ public static java.lang.Object patch(scala.collection.SeqLike, int, scala.collec
 	aload_0
 	aload	9
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.toCollection:(Ljava/lang/Object;)Lscala/collection/Seq;
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.view:()Ljava/lang/Object;
-	checkcast	class scala/collection/TraversableViewLike
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.view:()Lscala/collection/SeqView;
 	iload_3
 	invokeinterface	InterfaceMethod scala/collection/TraversableViewLike.drop:(I)Lscala/collection/TraversableView;
 	invokeinterface	InterfaceMethod scala/collection/generic/Growable.$plus$plus$eq:(Lscala/collection/Traversable;)Lscala/collection/generic/Growable;
@@ -1246,22 +1252,22 @@ l1	new	class scala/MatchError
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l2 = 137 // new
-   	l1 = 150 // new
+   	l2 = 134 // new
+   	l1 = 147 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      163      0    $this       Lscala/collection/SeqLike;
-   0      163      1    from       I
-   0      163      2    patch       Lscala/collection/Seq;
-   0      163      3    replaced       I
-   0      163      4    bf       Lscala/collection/generic/CanBuildFrom;
-   36      114      5    temp11       Ljava/lang/Object;
-   43      107      6    temp12       Ljava/lang/Object;
-   67      69      8    prefix       Ljava/lang/Object;
-   74      62      9    rest       Ljava/lang/Object;
-   15      121      10    b       Lscala/collection/mutable/Builder;
-   137      26      10    b       Lscala/collection/mutable/Builder;
-   24      139      11    temp10       Lscala/Tuple2;
+   0      160      0    $this       Lscala/collection/SeqLike;
+   0      160      1    from       I
+   0      160      2    patch       Lscala/collection/Seq;
+   0      160      3    replaced       I
+   0      160      4    bf       Lscala/collection/generic/CanBuildFrom;
+   36      111      5    temp11       Ljava/lang/Object;
+   43      104      6    temp12       Ljava/lang/Object;
+   67      66      8    prefix       Ljava/lang/Object;
+   74      59      9    rest       Ljava/lang/Object;
+   15      118      10    b       Lscala/collection/mutable/Builder;
+   134      26      10    b       Lscala/collection/mutable/Builder;
+   24      136      11    temp10       Lscala/Tuple2;
 
 
 public static java.lang.Object removeDuplicates(scala.collection.SeqLike);

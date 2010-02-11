@@ -15,7 +15,7 @@ Asciz	Lscala/collection/immutable/List;;
 Asciz	Lscala/collection/immutable/List<Lscala/xml/Node;>;;
 Asciz	Signature;
 Asciz	<init>;
-Asciz	(Lscala/xml/parsing/MarkupParser;Lscala/collection/immutable/List;)V;
+Asciz	(Lscala/xml/parsing/MarkupHandler;Lscala/runtime/ObjectRef;)V;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/xml/NodeSeq;
@@ -23,6 +23,20 @@ class	scala/xml/NodeSeq
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	scala/xml/NodeSeq."<init>":()V
+Asciz	scala/runtime/ObjectRef;
+class	scala/runtime/ObjectRef
+Asciz	elem;
+Asciz	Ljava/lang/Object;;
+NameAndType	elem:Ljava/lang/Object;
+Field	scala/runtime/ObjectRef.elem:Ljava/lang/Object;
+Asciz	scala/xml/NodeBuffer;
+class	scala/xml/NodeBuffer
+Asciz	scala/collection/TraversableLike;
+class	scala/collection/TraversableLike
+Asciz	toList;
+Asciz	()Lscala/collection/immutable/List;;
+NameAndType	toList:()Lscala/collection/immutable/List;
+InterfaceMethod	scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
 Asciz	scala/xml/parsing/MarkupParser$$anon$1;
 class	scala/xml/parsing/MarkupParser$$anon$1
 NameAndType	theSeq:Lscala/collection/immutable/List;
@@ -30,10 +44,9 @@ Field	scala/xml/parsing/MarkupParser$$anon$1.theSeq:Lscala/collection/immutable/
 Asciz	this;
 Asciz	Lscala/xml/parsing/MarkupParser$$anon$1;;
 Asciz	$outer;
-Asciz	Lscala/xml/parsing/MarkupParser;;
+Asciz	Lscala/xml/parsing/MarkupHandler;;
 Asciz	LocalVariableTable;
 Asciz	()Lscala/collection/Seq;;
-Asciz	()Lscala/collection/immutable/List;;
 NameAndType	theSeq:()Lscala/collection/immutable/List;
 Method	scala/xml/parsing/MarkupParser$$anon$1.theSeq:()Lscala/collection/immutable/List;
 Asciz	()Lscala/collection/immutable/List<Lscala/xml/Node;>;;
@@ -49,21 +62,24 @@ private final scala.collection.immutable.List theSeq;
   Signature: length = 0x2
    00 05 
 
-public scala.xml.parsing.MarkupParser$$anon$1(scala.xml.parsing.MarkupParser, scala.collection.immutable.List);
-  Signature: (Lscala/xml/parsing/MarkupParser;Lscala/collection/immutable/List;)V
+public scala.xml.parsing.MarkupParser$$anon$1(scala.xml.parsing.MarkupHandler, scala.runtime.ObjectRef);
+  Signature: (Lscala/xml/parsing/MarkupHandler;Lscala/runtime/ObjectRef;)V
   Code:
    Stack=2, Locals=3, Args_size=3
 	aload_0
 	invokespecial	Method scala/xml/NodeSeq."<init>":()V
 	aload_0
 	aload_2
+	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
+	checkcast	class scala/xml/NodeBuffer
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
 	putfield	Field theSeq:Lscala/collection/immutable/List;
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      10      0    this       Lscala/xml/parsing/MarkupParser$$anon$1;
-   0      10      1    $outer       Lscala/xml/parsing/MarkupParser;
+   0      21      0    this       Lscala/xml/parsing/MarkupParser$$anon$1;
+   0      21      1    $outer       Lscala/xml/parsing/MarkupHandler;
 
 
 public scala.collection.Seq theSeq();
@@ -84,7 +100,7 @@ public scala.collection.immutable.List theSeq();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 1D 
+   00 2A 
 
 }
 

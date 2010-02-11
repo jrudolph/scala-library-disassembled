@@ -2,7 +2,7 @@ Compiled from "Option.scala"
 public abstract class scala.Option extends java.lang.Object implements scala.Product,scala.ScalaObject
   SourceFile: "Option.scala"
   Signature: length = 0x2
-   00 FFFFFFBD 
+   00 FFFFFFBB 
   ScalaSig: length = 0x5B7
    05 00 FFFFFF81 5E 07 05 01 02 FFFFFF88 02 05 01 06 4F 70 74
    69 6F 6E 0A 01 03 01 05 73 63 61 6C 61 03 00 10
@@ -137,7 +137,7 @@ Asciz	(Lscala/Product;)V;
 NameAndType	$init$:(Lscala/Product;)V
 Method	scala/Product$class.$init$:(Lscala/Product;)V
 Asciz	toLeft;
-Asciz	(Lscala/Function0;)Lscala/Product;;
+Asciz	(Lscala/Function0;)Lscala/Either;;
 Asciz	scala/Option;
 class	scala/Option
 Asciz	isEmpty;
@@ -203,10 +203,8 @@ Method	scala/package$.Iterator:()Lscala/collection/Iterator$;
 Asciz	scala/collection/Iterator$;
 class	scala/collection/Iterator$
 Asciz	empty;
-NameAndType	empty:()Ljava/lang/Object;
-Method	scala/collection/Iterator$.empty:()Ljava/lang/Object;
-Asciz	scala/collection/Iterator;
-class	scala/collection/Iterator
+NameAndType	empty:()Lscala/collection/Iterator;
+Method	scala/collection/Iterator$.empty:()Lscala/collection/Iterator;
 Asciz	scala/collection/Iterator$$anon$4;
 class	scala/collection/Iterator$$anon$4
 Method	scala/collection/Iterator$$anon$4."<init>":(Ljava/lang/Object;)V
@@ -294,6 +292,8 @@ Method	scala/Product$class.productIterator:(Lscala/Product;)Lscala/collection/It
 Asciz	<A:Ljava/lang/Object;>Ljava/lang/Object;Lscala/Product;Lscala/ScalaObject;;
 Asciz	ScalaSig;
 Asciz	InnerClasses;
+Asciz	scala/collection/Iterator;
+class	scala/collection/Iterator
 Asciz	$anon$4;
 Asciz	scala/Predef$$less$colon$less;
 class	scala/Predef$$less$colon$less
@@ -344,8 +344,8 @@ public scala.Option();
   Signature: length = 0x2
    00 16 
 
-public scala.Product toLeft(scala.Function0);
-  Signature: (Lscala/Function0;)Lscala/Product;
+public scala.Either toLeft(scala.Function0);
+  Signature: (Lscala/Function0;)Lscala/Either;
   Code:
    Stack=3, Locals=2, Args_size=2
 	aload_0
@@ -374,8 +374,8 @@ l2	areturn
   Signature: length = 0x2
    00 3F 
 
-public scala.Product toRight(scala.Function0);
-  Signature: (Lscala/Function0;)Lscala/Product;
+public scala.Either toRight(scala.Function0);
+  Signature: (Lscala/Function0;)Lscala/Either;
   Code:
    Stack=3, Locals=2, Args_size=2
 	aload_0
@@ -445,8 +445,7 @@ public scala.collection.Iterator iterator();
 	ifeq	l1 // aload_0
 	getstatic	Field scala/package$.MODULE$:Lscala/package$;
 	invokevirtual	Method scala/package$.Iterator:()Lscala/collection/Iterator$;
-	invokevirtual	Method scala/collection/Iterator$.empty:()Ljava/lang/Object;
-	checkcast	class scala/collection/Iterator
+	invokevirtual	Method scala/collection/Iterator$.empty:()Lscala/collection/Iterator;
 	goto	l2 // areturn
 l1	aload_0
 	invokevirtual	Method get:()Ljava/lang/Object;
@@ -455,17 +454,16 @@ l1	aload_0
 	dup
 	aload_1
 	invokespecial	Method scala/collection/Iterator$$anon$4."<init>":(Ljava/lang/Object;)V
-	checkcast	class scala/collection/Iterator
 l2	areturn
   Labels:
-   	l1 = 22 // aload_0
-   	l2 = 38 // areturn
+   	l1 = 19 // aload_0
+   	l2 = 32 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      39      0    this       Lscala/Option;
+   0      33      0    this       Lscala/Option;
 
   Signature: length = 0x2
-   00 6C 
+   00 6A 
 
 public scala.Option orElse(scala.Function0);
   Signature: (Lscala/Function0;)Lscala/Option;
@@ -489,7 +487,7 @@ l2	areturn
    0      21      1    alternative       Lscala/Function0;
 
   Signature: length = 0x2
-   00 70 
+   00 6E 
 
 public scala.Option partialMap(scala.PartialFunction);
   Signature: (Lscala/PartialFunction;)Lscala/Option;
@@ -522,7 +520,7 @@ l2	areturn
    0      44      1    pf       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFF88 
+   00 FFFFFF86 
 
 public void foreach(scala.Function1);
   Signature: (Lscala/Function1;)V
@@ -545,7 +543,7 @@ l1	return
    0      19      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFF8D 
+   00 FFFFFF8B 
 
 public boolean exists(scala.Function1);
   Signature: (Lscala/Function1;)Z
@@ -573,7 +571,7 @@ l2	ireturn
    0      29      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFF96 
+   00 FFFFFF94 
 
 public scala.Option filter(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Option;
@@ -602,7 +600,7 @@ l3	areturn
    0      31      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFF99 
+   00 FFFFFF97 
 
 public scala.Option flatMap(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Option;
@@ -628,7 +626,7 @@ l2	areturn
    0      27      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFF9B 
+   00 FFFFFF99 
 
 public scala.Option map(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Option;
@@ -656,7 +654,7 @@ l2	areturn
    0      31      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFF9D 
+   00 FFFFFF9B 
 
 public java.lang.Object orNull(scala.Predef$$less$colon$less);
   Signature: (Lscala/Predef$$less$colon$less;)Ljava/lang/Object;
@@ -677,7 +675,7 @@ public java.lang.Object orNull(scala.Predef$$less$colon$less);
    0      14      1    ev$1       Lscala/Predef$$less$colon$less;
 
   Signature: length = 0x2
-   00 FFFFFFAB 
+   00 FFFFFFA9 
 
 public java.lang.Object getOrElse(scala.Function0);
   Signature: (Lscala/Function0;)Ljava/lang/Object;
@@ -701,12 +699,12 @@ l2	areturn
    0      21      1    default       Lscala/Function0;
 
   Signature: length = 0x2
-   00 FFFFFFAD 
+   00 FFFFFFAB 
 
 public abstract java.lang.Object get();
   Signature: ()Ljava/lang/Object;
   Signature: length = 0x2
-   00 FFFFFFAE 
+   00 FFFFFFAC 
 
 public boolean isDefined();
   Signature: ()Z

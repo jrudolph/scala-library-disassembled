@@ -137,14 +137,14 @@ Method	scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 Asciz	scala/runtime/RichInt;
 class	scala/runtime/RichInt
 Asciz	until;
-Asciz	(I)Lscala/collection/immutable/Range;;
-NameAndType	until:(I)Lscala/collection/immutable/Range;
-Method	scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range;
-Asciz	scala/collection/immutable/Range$ByOne;
-class	scala/collection/immutable/Range$ByOne
+Asciz	(I)Lscala/collection/immutable/Range$ByOne;;
+NameAndType	until:(I)Lscala/collection/immutable/Range$ByOne;
+Method	scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
 Asciz	scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1;
 class	scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1
 Method	scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1."<init>":(Lscala/collection/mutable/FlatHashTable;)V
+Asciz	scala/collection/immutable/Range$ByOne;
+class	scala/collection/immutable/Range$ByOne
 Asciz	foreach;
 Asciz	(Lscala/Function1;)V;
 NameAndType	foreach:(Lscala/Function1;)V
@@ -157,7 +157,7 @@ Asciz	oldtable;
 Asciz	[Ljava/lang/Object;;
 Asciz	entry;
 Asciz	iterator;
-Asciz	(Lscala/collection/mutable/FlatHashTable;)Ljava/lang/Object;;
+Asciz	(Lscala/collection/mutable/FlatHashTable;)Lscala/collection/Iterator;;
 Asciz	scala/collection/mutable/FlatHashTable$$anon$1;
 class	scala/collection/mutable/FlatHashTable$$anon$1
 Method	scala/collection/mutable/FlatHashTable$$anon$1."<init>":(Lscala/collection/mutable/FlatHashTable;)V
@@ -212,15 +212,15 @@ Method	java/io/ObjectOutputStream.defaultWriteObject:()V
 Asciz	writeInt;
 NameAndType	writeInt:(I)V
 Method	java/io/ObjectOutputStream.writeInt:(I)V
-Asciz	()Ljava/lang/Object;;
-NameAndType	iterator:()Ljava/lang/Object;
-InterfaceMethod	scala/collection/mutable/FlatHashTable.iterator:()Ljava/lang/Object;
-Asciz	scala/collection/Iterator;
-class	scala/collection/Iterator
+Asciz	()Lscala/collection/Iterator;;
+NameAndType	iterator:()Lscala/collection/Iterator;
+InterfaceMethod	scala/collection/mutable/FlatHashTable.iterator:()Lscala/collection/Iterator;
 Asciz	scala/collection/mutable/FlatHashTable$$anonfun$serializeTo$1;
 class	scala/collection/mutable/FlatHashTable$$anonfun$serializeTo$1
 NameAndType	"<init>":(Lscala/collection/mutable/FlatHashTable;Ljava/io/ObjectOutputStream;)V
 Method	scala/collection/mutable/FlatHashTable$$anonfun$serializeTo$1."<init>":(Lscala/collection/mutable/FlatHashTable;Ljava/io/ObjectOutputStream;)V
+Asciz	scala/collection/Iterator;
+class	scala/collection/Iterator
 InterfaceMethod	scala/collection/Iterator.foreach:(Lscala/Function1;)V
 Asciz	out$1;
 Asciz	Ljava/io/ObjectOutputStream;;
@@ -250,6 +250,7 @@ class	scala/collection/SeqLike
 NameAndType	size:()I
 InterfaceMethod	scala/collection/SeqLike.size:()I
 Asciz	readObject;
+Asciz	()Ljava/lang/Object;;
 NameAndType	readObject:()Ljava/lang/Object;
 Method	java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
 Asciz	scala/Function1;
@@ -550,8 +551,7 @@ private static void checkConsistent(scala.collection.mutable.FlatHashTable);
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
 	arraylength
-	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range;
-	checkcast	class scala/collection/immutable/Range$ByOne
+	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
 	new	class scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1
 	dup
 	aload_0
@@ -561,7 +561,7 @@ private static void checkConsistent(scala.collection.mutable.FlatHashTable);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      34      0    $this       Lscala/collection/mutable/FlatHashTable;
+   0      31      0    $this       Lscala/collection/mutable/FlatHashTable;
 
 
 private static void growTable(scala.collection.mutable.FlatHashTable);
@@ -625,8 +625,8 @@ l1	return
    51      33      3    i       I
 
 
-public static java.lang.Object iterator(scala.collection.mutable.FlatHashTable);
-  Signature: (Lscala/collection/mutable/FlatHashTable;)Ljava/lang/Object;
+public static scala.collection.Iterator iterator(scala.collection.mutable.FlatHashTable);
+  Signature: (Lscala/collection/mutable/FlatHashTable;)Lscala/collection/Iterator;
   Code:
    Stack=3, Locals=1, Args_size=1
 	new	class scala/collection/mutable/FlatHashTable$$anon$1
@@ -1060,8 +1060,7 @@ public static void serializeTo(scala.collection.mutable.FlatHashTable, java.io.O
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.tableSize:()I
 	invokevirtual	Method java/io/ObjectOutputStream.writeInt:(I)V
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.iterator:()Ljava/lang/Object;
-	checkcast	class scala/collection/Iterator
+	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.iterator:()Lscala/collection/Iterator;
 	new	class scala/collection/mutable/FlatHashTable$$anonfun$serializeTo$1
 	dup
 	aload_0
@@ -1072,8 +1071,8 @@ public static void serializeTo(scala.collection.mutable.FlatHashTable, java.io.O
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      48      0    $this       Lscala/collection/mutable/FlatHashTable;
-   0      48      1    out$1       Ljava/io/ObjectOutputStream;
+   0      45      0    $this       Lscala/collection/mutable/FlatHashTable;
+   0      45      1    out$1       Ljava/io/ObjectOutputStream;
 
 
 public static void init(scala.collection.mutable.FlatHashTable, java.io.ObjectInputStream, scala.Function1);

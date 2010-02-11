@@ -72,16 +72,16 @@ Method	scala/collection/BitSetLike$.scala$collection$BitSetLike$$WordLength:()I
 Asciz	scala/runtime/RichInt;
 class	scala/runtime/RichInt
 Asciz	until;
-Asciz	(I)Lscala/collection/immutable/Range;;
-NameAndType	until:(I)Lscala/collection/immutable/Range;
-Method	scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range;
-Asciz	scala/collection/immutable/Range$ByOne;
-class	scala/collection/immutable/Range$ByOne
+Asciz	(I)Lscala/collection/immutable/Range$ByOne;;
+NameAndType	until:(I)Lscala/collection/immutable/Range$ByOne;
+Method	scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
 Asciz	scala/collection/BitSetLike$$anonfun$addString$1;
 class	scala/collection/BitSetLike$$anonfun$addString$1
 Asciz	(Lscala/collection/BitSetLike;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Lscala/runtime/ObjectRef;)V;
 NameAndType	"<init>":(Lscala/collection/BitSetLike;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Lscala/runtime/ObjectRef;)V
 Method	scala/collection/BitSetLike$$anonfun$addString$1."<init>":(Lscala/collection/BitSetLike;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Lscala/runtime/ObjectRef;)V
+Asciz	scala/collection/immutable/Range$ByOne;
+class	scala/collection/immutable/Range$ByOne
 Asciz	foreach;
 Asciz	(Lscala/Function1;)V;
 NameAndType	foreach:(Lscala/Function1;)V
@@ -96,13 +96,13 @@ Asciz	pre$1;
 Asciz	Lscala/runtime/ObjectRef;;
 Asciz	subsetOf;
 Asciz	(Lscala/collection/BitSetLike;Lscala/collection/BitSet;)Z;
+Asciz	scala/collection/IndexedSeqLike;
+class	scala/collection/IndexedSeqLike
 Asciz	scala/collection/BitSetLike$$anonfun$subsetOf$1;
 class	scala/collection/BitSetLike$$anonfun$subsetOf$1
 Asciz	(Lscala/collection/BitSetLike;Lscala/collection/BitSet;)V;
 NameAndType	"<init>":(Lscala/collection/BitSetLike;Lscala/collection/BitSet;)V
 Method	scala/collection/BitSetLike$$anonfun$subsetOf$1."<init>":(Lscala/collection/BitSetLike;Lscala/collection/BitSet;)V
-Asciz	scala/collection/IndexedSeqLike;
-class	scala/collection/IndexedSeqLike
 Asciz	forall;
 Asciz	(Lscala/Function1;)Z;
 NameAndType	forall:(Lscala/Function1;)Z
@@ -168,7 +168,7 @@ Method	scala/collection/BitSetLike$$anonfun$foreach$1."<init>":(Lscala/collectio
 Asciz	f$1;
 Asciz	Lscala/Function1;;
 Asciz	iterator;
-Asciz	(Lscala/collection/BitSetLike;)Ljava/lang/Object;;
+Asciz	(Lscala/collection/BitSetLike;)Lscala/collection/Iterator;;
 Asciz	scala/collection/BitSetLike$$anon$1;
 class	scala/collection/BitSetLike$$anon$1
 NameAndType	"<init>":(Lscala/collection/BitSetLike;)V
@@ -244,8 +244,7 @@ public static scala.collection.mutable.StringBuilder addString(scala.collection.
 	getstatic	Field scala/collection/BitSetLike$.MODULE$:Lscala/collection/BitSetLike$;
 	invokevirtual	Method scala/collection/BitSetLike$.scala$collection$BitSetLike$$WordLength:()I
 	imul
-	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range;
-	checkcast	class scala/collection/immutable/Range$ByOne
+	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
 	new	class scala/collection/BitSetLike$$anonfun$addString$1
 	dup
 	aload_0
@@ -261,12 +260,12 @@ public static scala.collection.mutable.StringBuilder addString(scala.collection.
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      67      0    $this       Lscala/collection/BitSetLike;
-   0      67      1    sb$1       Lscala/collection/mutable/StringBuilder;
-   0      67      2    start       Ljava/lang/String;
-   0      67      3    sep$1       Ljava/lang/String;
-   0      67      4    end       Ljava/lang/String;
-   17      49      5    pre$1       Lscala/runtime/ObjectRef;
+   0      64      0    $this       Lscala/collection/BitSetLike;
+   0      64      1    sb$1       Lscala/collection/mutable/StringBuilder;
+   0      64      2    start       Ljava/lang/String;
+   0      64      3    sep$1       Ljava/lang/String;
+   0      64      4    end       Ljava/lang/String;
+   17      46      5    pre$1       Lscala/runtime/ObjectRef;
 
 
 public static boolean subsetOf(scala.collection.BitSetLike, scala.collection.BitSet);
@@ -278,7 +277,8 @@ public static boolean subsetOf(scala.collection.BitSetLike, scala.collection.Bit
 	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/BitSetLike.nwords:()I
-	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range;
+	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
+	checkcast	class scala/collection/IndexedSeqLike
 	new	class scala/collection/BitSetLike$$anonfun$subsetOf$1
 	dup
 	aload_0
@@ -289,8 +289,8 @@ public static boolean subsetOf(scala.collection.BitSetLike, scala.collection.Bit
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      31      0    $this       Lscala/collection/BitSetLike;
-   0      31      1    other$5       Lscala/collection/BitSet;
+   0      34      0    $this       Lscala/collection/BitSetLike;
+   0      34      1    other$5       Lscala/collection/BitSet;
 
 
 public static boolean contains(scala.collection.BitSetLike, int);
@@ -345,8 +345,7 @@ public static scala.collection.BitSetLike $up(scala.collection.BitSetLike, scala
 	iconst_0
 	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 	iload_2
-	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range;
-	checkcast	class scala/collection/immutable/Range$ByOne
+	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
 	new	class scala/collection/BitSetLike$$anonfun$$up$1
 	dup
 	aload_0
@@ -361,10 +360,10 @@ public static scala.collection.BitSetLike $up(scala.collection.BitSetLike, scala
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      63      0    $this       Lscala/collection/BitSetLike;
-   0      63      1    other$4       Lscala/collection/BitSet;
-   22      40      2    len       I
-   26      36      3    words$4       [J
+   0      60      0    $this       Lscala/collection/BitSetLike;
+   0      60      1    other$4       Lscala/collection/BitSet;
+   22      37      2    len       I
+   26      33      3    words$4       [J
 
 
 public static scala.collection.BitSetLike $amp$tilde(scala.collection.BitSetLike, scala.collection.BitSet);
@@ -381,8 +380,7 @@ public static scala.collection.BitSetLike $amp$tilde(scala.collection.BitSetLike
 	iconst_0
 	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 	iload_2
-	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range;
-	checkcast	class scala/collection/immutable/Range$ByOne
+	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
 	new	class scala/collection/BitSetLike$$anonfun$$amp$tilde$1
 	dup
 	aload_0
@@ -397,10 +395,10 @@ public static scala.collection.BitSetLike $amp$tilde(scala.collection.BitSetLike
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      48      0    $this       Lscala/collection/BitSetLike;
-   0      48      1    other$3       Lscala/collection/BitSet;
-   7      40      2    len       I
-   11      36      3    words$3       [J
+   0      45      0    $this       Lscala/collection/BitSetLike;
+   0      45      1    other$3       Lscala/collection/BitSet;
+   7      37      2    len       I
+   11      33      3    words$3       [J
 
 
 public static scala.collection.BitSetLike $amp(scala.collection.BitSetLike, scala.collection.BitSet);
@@ -422,8 +420,7 @@ public static scala.collection.BitSetLike $amp(scala.collection.BitSetLike, scal
 	iconst_0
 	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 	iload_2
-	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range;
-	checkcast	class scala/collection/immutable/Range$ByOne
+	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
 	new	class scala/collection/BitSetLike$$anonfun$$amp$1
 	dup
 	aload_0
@@ -438,10 +435,10 @@ public static scala.collection.BitSetLike $amp(scala.collection.BitSetLike, scal
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      63      0    $this       Lscala/collection/BitSetLike;
-   0      63      1    other$2       Lscala/collection/BitSet;
-   22      40      2    len       I
-   26      36      3    words$2       [J
+   0      60      0    $this       Lscala/collection/BitSetLike;
+   0      60      1    other$2       Lscala/collection/BitSet;
+   22      37      2    len       I
+   26      33      3    words$2       [J
 
 
 public static scala.collection.BitSetLike $bar(scala.collection.BitSetLike, scala.collection.BitSet);
@@ -463,8 +460,7 @@ public static scala.collection.BitSetLike $bar(scala.collection.BitSetLike, scal
 	iconst_0
 	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 	iload_2
-	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range;
-	checkcast	class scala/collection/immutable/Range$ByOne
+	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
 	new	class scala/collection/BitSetLike$$anonfun$$bar$1
 	dup
 	aload_0
@@ -479,10 +475,10 @@ public static scala.collection.BitSetLike $bar(scala.collection.BitSetLike, scal
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      63      0    $this       Lscala/collection/BitSetLike;
-   0      63      1    other$1       Lscala/collection/BitSet;
-   22      40      2    len       I
-   26      36      3    words$1       [J
+   0      60      0    $this       Lscala/collection/BitSetLike;
+   0      60      1    other$1       Lscala/collection/BitSet;
+   22      37      2    len       I
+   26      33      3    words$1       [J
 
 
 public static void foreach(scala.collection.BitSetLike, scala.Function1);
@@ -494,8 +490,7 @@ public static void foreach(scala.collection.BitSetLike, scala.Function1);
 	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/BitSetLike.nwords:()I
-	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range;
-	checkcast	class scala/collection/immutable/Range$ByOne
+	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
 	new	class scala/collection/BitSetLike$$anonfun$foreach$1
 	dup
 	aload_0
@@ -506,12 +501,12 @@ public static void foreach(scala.collection.BitSetLike, scala.Function1);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      34      0    $this       Lscala/collection/BitSetLike;
-   0      34      1    f$1       Lscala/Function1;
+   0      31      0    $this       Lscala/collection/BitSetLike;
+   0      31      1    f$1       Lscala/Function1;
 
 
-public static java.lang.Object iterator(scala.collection.BitSetLike);
-  Signature: (Lscala/collection/BitSetLike;)Ljava/lang/Object;
+public static scala.collection.Iterator iterator(scala.collection.BitSetLike);
+  Signature: (Lscala/collection/BitSetLike;)Lscala/collection/Iterator;
   Code:
    Stack=3, Locals=1, Args_size=1
 	new	class scala/collection/BitSetLike$$anon$1

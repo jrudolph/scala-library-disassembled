@@ -20,9 +20,9 @@ Asciz	(Lscala/collection/IterableProxyLike;II)Lscala/collection/IterableView;;
 Asciz	scala/collection/TraversableProxyLike;
 class	scala/collection/TraversableProxyLike
 Asciz	self;
-Asciz	()Lscala/collection/TraversableLike;;
-NameAndType	self:()Lscala/collection/TraversableLike;
-InterfaceMethod	scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+Asciz	()Lscala/collection/Traversable;;
+NameAndType	self:()Lscala/collection/Traversable;
+InterfaceMethod	scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 Asciz	scala/collection/IterableLike;
 class	scala/collection/IterableLike
 Asciz	(II)Lscala/collection/IterableView;;
@@ -31,10 +31,10 @@ InterfaceMethod	scala/collection/IterableLike.view:(II)Lscala/collection/Iterabl
 Asciz	from;
 Asciz	I;
 Asciz	until;
-Asciz	(Lscala/collection/IterableProxyLike;)Ljava/lang/Object;;
-Asciz	()Ljava/lang/Object;;
-NameAndType	view:()Ljava/lang/Object;
-InterfaceMethod	scala/collection/IterableLike.view:()Ljava/lang/Object;
+Asciz	(Lscala/collection/IterableProxyLike;)Lscala/collection/IterableView;;
+Asciz	()Lscala/collection/IterableView;;
+NameAndType	view:()Lscala/collection/IterableView;
+InterfaceMethod	scala/collection/IterableLike.view:()Lscala/collection/IterableView;
 Asciz	toStream;
 Asciz	(Lscala/collection/IterableProxyLike;)Lscala/collection/immutable/Stream;;
 Asciz	()Lscala/collection/immutable/Stream;;
@@ -48,15 +48,19 @@ InterfaceMethod	scala/collection/IterableLike.sameElements:(Lscala/collection/It
 Asciz	that;
 Asciz	Lscala/collection/Iterable;;
 Asciz	dropRight;
-Asciz	(Lscala/collection/IterableProxyLike;I)Lscala/collection/IterableLike;;
+Asciz	(Lscala/collection/IterableProxyLike;I)Lscala/collection/Iterable;;
 Asciz	(I)Ljava/lang/Object;;
 NameAndType	dropRight:(I)Ljava/lang/Object;
 InterfaceMethod	scala/collection/IterableLike.dropRight:(I)Ljava/lang/Object;
+Asciz	scala/collection/Iterable;
+class	scala/collection/Iterable
 Asciz	n;
 Asciz	takeRight;
 NameAndType	takeRight:(I)Ljava/lang/Object;
 InterfaceMethod	scala/collection/IterableLike.takeRight:(I)Ljava/lang/Object;
 Asciz	head;
+Asciz	(Lscala/collection/IterableProxyLike;)Ljava/lang/Object;;
+Asciz	()Ljava/lang/Object;;
 NameAndType	head:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/IterableLike.head:()Ljava/lang/Object;
 Asciz	zipWithIndex;
@@ -137,7 +141,7 @@ public static scala.collection.IterableView view(scala.collection.IterableProxyL
   Code:
    Stack=3, Locals=3, Args_size=3
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	iload_1
 	iload_2
@@ -151,14 +155,14 @@ public static scala.collection.IterableView view(scala.collection.IterableProxyL
    0      17      2    until       I
 
 
-public static java.lang.Object view(scala.collection.IterableProxyLike);
-  Signature: (Lscala/collection/IterableProxyLike;)Ljava/lang/Object;
+public static scala.collection.IterableView view(scala.collection.IterableProxyLike);
+  Signature: (Lscala/collection/IterableProxyLike;)Lscala/collection/IterableView;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
-	invokeinterface	InterfaceMethod scala/collection/IterableLike.view:()Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.view:()Lscala/collection/IterableView;
 	areturn
   Labels:
   LocalVariableTable: 
@@ -171,7 +175,7 @@ public static scala.collection.immutable.Stream toStream(scala.collection.Iterab
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.toStream:()Lscala/collection/immutable/Stream;
 	areturn
@@ -186,7 +190,7 @@ public static boolean sameElements(scala.collection.IterableProxyLike, scala.col
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.sameElements:(Lscala/collection/Iterable;)Z
@@ -198,16 +202,16 @@ public static boolean sameElements(scala.collection.IterableProxyLike, scala.col
    0      16      1    that       Lscala/collection/Iterable;
 
 
-public static scala.collection.IterableLike dropRight(scala.collection.IterableProxyLike, int);
-  Signature: (Lscala/collection/IterableProxyLike;I)Lscala/collection/IterableLike;
+public static scala.collection.Iterable dropRight(scala.collection.IterableProxyLike, int);
+  Signature: (Lscala/collection/IterableProxyLike;I)Lscala/collection/Iterable;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	iload_1
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.dropRight:(I)Ljava/lang/Object;
-	checkcast	class scala/collection/IterableLike
+	checkcast	class scala/collection/Iterable
 	areturn
   Labels:
   LocalVariableTable: 
@@ -216,16 +220,16 @@ public static scala.collection.IterableLike dropRight(scala.collection.IterableP
    0      19      1    n       I
 
 
-public static scala.collection.IterableLike takeRight(scala.collection.IterableProxyLike, int);
-  Signature: (Lscala/collection/IterableProxyLike;I)Lscala/collection/IterableLike;
+public static scala.collection.Iterable takeRight(scala.collection.IterableProxyLike, int);
+  Signature: (Lscala/collection/IterableProxyLike;I)Lscala/collection/Iterable;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	iload_1
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.takeRight:(I)Ljava/lang/Object;
-	checkcast	class scala/collection/IterableLike
+	checkcast	class scala/collection/Iterable
 	areturn
   Labels:
   LocalVariableTable: 
@@ -239,7 +243,7 @@ public static java.lang.Object head(scala.collection.IterableProxyLike);
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.head:()Ljava/lang/Object;
 	areturn
@@ -254,7 +258,7 @@ public static java.lang.Object zipWithIndex(scala.collection.IterableProxyLike, 
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.zipWithIndex:(Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
@@ -271,7 +275,7 @@ public static java.lang.Object zipAll(scala.collection.IterableProxyLike, scala.
   Code:
    Stack=5, Locals=5, Args_size=5
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	aload_1
 	aload_2
@@ -294,7 +298,7 @@ public static java.lang.Object zip(scala.collection.IterableProxyLike, scala.col
   Code:
    Stack=3, Locals=3, Args_size=3
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	aload_1
 	aload_2
@@ -313,7 +317,7 @@ public static scala.collection.Iterable toIterable(scala.collection.IterableProx
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.toIterable:()Lscala/collection/Iterable;
 	areturn
@@ -328,7 +332,7 @@ public static java.lang.Object reduceRight(scala.collection.IterableProxyLike, s
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.reduceRight:(Lscala/Function2;)Ljava/lang/Object;
@@ -345,7 +349,7 @@ public static java.lang.Object foldRight(scala.collection.IterableProxyLike, jav
   Code:
    Stack=3, Locals=3, Args_size=3
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	aload_1
 	aload_2
@@ -364,7 +368,7 @@ public static boolean isEmpty(scala.collection.IterableProxyLike);
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
 	ireturn
@@ -379,7 +383,7 @@ public static void foreach(scala.collection.IterableProxyLike, scala.Function1);
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.foreach:(Lscala/Function1;)V
@@ -396,7 +400,7 @@ public static scala.collection.Iterator iterator(scala.collection.IterableProxyL
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/TraversableLike;
+	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.self:()Lscala/collection/Traversable;
 	checkcast	class scala/collection/IterableLike
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
 	areturn
