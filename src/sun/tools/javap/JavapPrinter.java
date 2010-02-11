@@ -325,11 +325,101 @@ public class JavapPrinter {
                 printVerboseHeader(method);
             }
 
+            initLabels();
+
             for (int pc=0; pc < code.length; ) {
-                out.print("   "+pc+":\t");
+                out.print(getLabelStr(pc)+"\t");
                 pc=pc+printInstr(pc);
                 out.println();
             }
+        }
+        printLabels();
+    }
+
+    public int initLabel(int pc){
+        int opcode = getUbyte(pc);
+        int opcode2;
+        switch (opcode) {
+        case opc_nonpriv:
+        case opc_priv:
+            return 2;
+        case opc_wide:
+            opcode2 = getUbyte(pc+1);
+            if (opcode2==opc_iinc)
+                return 6;
+            return 4;
+        }
+        String mnem=Tables.opcName(opcode);
+        if (mnem==null) {
+            // nonexistent opcode - but we have to print something
+            return 1;
+        }
+        if (opcode>opc_jsr_w) {
+            // pseudo opcodes should be printed as bytecodes
+            return 1;
+        }
+        switch (opcode) {
+        case opc_aload: case opc_astore:
+        case opc_fload: case opc_fstore:
+        case opc_iload: case opc_istore:
+        case opc_lload: case opc_lstore:
+        case opc_dload: case opc_dstore:
+        case opc_ret:
+            return  2;
+        case opc_iinc:
+            return  3;
+        case opc_tableswitch:{
+            int tb=align(pc+1);
+            int default_skip = getInt(tb); /* default skip pamount */
+            int low = getInt(tb+4);
+            int high = getInt(tb+8);
+            int count = high - low;
+            return tb-pc+16+count*4;
+        }
+        case opc_lookupswitch:{
+            int tb=align(pc+1);
+            int default_skip = getInt(tb);
+            int npairs = getInt(tb+4);
+            return tb-pc+(npairs+1)*8;
+        }
+        case opc_newarray:
+            return 2;
+        case opc_anewarray:
+            return 3;
+        case opc_sipush:
+            return 3;
+        case opc_bipush:
+            return 2;
+        case opc_ldc:
+            return 2;
+        case opc_ldc_w: case opc_ldc2_w:
+        case opc_instanceof: case opc_checkcast:
+        case opc_new:
+        case opc_putstatic: case opc_getstatic:
+        case opc_putfield: case opc_getfield:
+        case opc_invokevirtual:
+        case opc_invokespecial:
+        case opc_invokestatic:
+            return 3;
+        case opc_invokeinterface:
+            return 5;
+        case opc_multianewarray:
+            return 4;
+        case opc_jsr: case opc_goto:
+        case opc_ifeq: case opc_ifge: case opc_ifgt:
+        case opc_ifle: case opc_iflt: case opc_ifne:
+        case opc_if_icmpeq: case opc_if_icmpne: case opc_if_icmpge:
+        case opc_if_icmpgt: case opc_if_icmple: case opc_if_icmplt:
+        case opc_if_acmpeq: case opc_if_acmpne:
+        case opc_ifnull: case opc_ifnonnull:
+            createOrGetLabel(pc + getShort(pc+1));
+            return 3;
+        case opc_jsr_w:
+        case opc_goto_w:
+            createOrGetLabel(pc + getInt(pc+1));
+            return 5;
+        default:
+            return 1;
         }
     }
 
@@ -488,17 +578,51 @@ public class JavapPrinter {
         case opc_if_icmpgt: case opc_if_icmple: case opc_if_icmplt:
         case opc_if_acmpeq: case opc_if_acmpne:
         case opc_ifnull: case opc_ifnonnull:
-            out.print("\t"+lP+(pc + getShort(pc+1)) );
+            out.print("\t"+lP);
+            printJumpTarget(pc + getShort(pc+1));
             return 3;
 
         case opc_jsr_w:
         case opc_goto_w:
-            out.print("\t"+lP+(pc + getInt(pc+1)));
+            out.print("\t"+lP);
+            printJumpTarget(pc + getInt(pc+1));
             return 5;
 
         default:
             return 1;
         }
+    }
+
+    short[] labels;
+    short lastLabel;
+
+    private void initLabels(){
+        labels = new short[256*256];
+        lastLabel = 0;
+
+        for (int pc=0; pc < code.length; )
+            pc=pc+initLabel(pc);
+    }
+    private String getLabelStr(int pc){
+        return labels[pc] == 0 ? "" : ("l"+labels[pc]);
+    }
+    private short createOrGetLabel(int pc){
+        if (labels[pc] == 0){
+            lastLabel++;
+            labels[pc] = lastLabel;
+            return lastLabel;
+        }
+        else
+            return labels[pc];
+    }
+    private void printLabels(){
+        out.println("  Labels:");
+        for (int i=0;i<256*256;i++)
+            if (labels[i] != 0)
+                out.println("   \tl"+labels[i]+" = "+i+" // "+Tables.opcName(getUbyte(i)));
+    }
+    private void printJumpTarget(int targetPC){
+        out.print("l"+ createOrGetLabel(targetPC)+" // "+Tables.opcName(getUbyte(targetPC)));
     }
     /**
      * Print code attribute details.
