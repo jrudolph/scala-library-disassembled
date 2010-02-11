@@ -1,0 +1,311 @@
+public class scala.actors.threadpool.helpers.WaitQueue$WaitNode extends java.lang.Object
+  InnerClass: 
+   public WaitNode=class scala/actors/threadpool/helpers/WaitQueue$WaitNode of class scala/actors/threadpool/helpers/WaitQueue
+   public abstract QueuedSync=class scala/actors/threadpool/helpers/WaitQueue$QueuedSync of class scala/actors/threadpool/helpers/WaitQueue
+  minor version: 0
+  major version: 49
+  Constant pool:
+Method	java/lang/Object."<init>":()V
+Field	scala/actors/threadpool/helpers/WaitQueue$WaitNode.waiting:Z
+Field	scala/actors/threadpool/helpers/WaitQueue$WaitNode.next:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+Method	java/lang/Thread.currentThread:()Ljava/lang/Thread;
+Field	scala/actors/threadpool/helpers/WaitQueue$WaitNode.owner:Ljava/lang/Thread;
+Method	java/lang/Object.notify:()V
+InterfaceMethod	scala/actors/threadpool/helpers/WaitQueue$QueuedSync.takeOver:(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)V
+InterfaceMethod	scala/actors/threadpool/helpers/WaitQueue$QueuedSync.recheck:(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)Z
+Method	scala/actors/threadpool/helpers/Utils.nanoTime:()J
+Field	scala/actors/threadpool/TimeUnit.NANOSECONDS:Lscala/actors/threadpool/TimeUnit;
+Method	scala/actors/threadpool/TimeUnit.timedWait:(Ljava/lang/Object;J)V
+class	java/lang/InterruptedException
+Method	java/lang/Thread.interrupt:()V
+Method	java/lang/Object.wait:()V
+Method	java/lang/Thread.interrupted:()Z
+class	scala/actors/threadpool/helpers/WaitQueue$WaitNode
+class	java/lang/Object
+Asciz	waiting;
+Asciz	Z;
+Asciz	next;
+Asciz	WaitNode;
+Asciz	InnerClasses;
+Asciz	Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;;
+Asciz	owner;
+Asciz	Ljava/lang/Thread;;
+Asciz	<init>;
+Asciz	()V;
+Asciz	Code;
+Asciz	getOwner;
+Asciz	()Ljava/lang/Thread;;
+Asciz	signal;
+class	scala/actors/threadpool/helpers/WaitQueue$QueuedSync
+Asciz	QueuedSync;
+Asciz	(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)Z;
+Asciz	doTimedWait;
+Asciz	(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;J)Z;
+Asciz	Exceptions;
+Asciz	doWait;
+Asciz	(Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)V;
+Asciz	doWaitUninterruptibly;
+NameAndType	"<init>":()V
+NameAndType	waiting:Z
+NameAndType	next:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+class	java/lang/Thread
+NameAndType	currentThread:()Ljava/lang/Thread;
+NameAndType	owner:Ljava/lang/Thread;
+NameAndType	notify:()V
+NameAndType	takeOver:(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)V
+NameAndType	recheck:(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)Z
+class	scala/actors/threadpool/helpers/Utils
+NameAndType	nanoTime:()J
+class	scala/actors/threadpool/TimeUnit
+NameAndType	NANOSECONDS:Lscala/actors/threadpool/TimeUnit;
+NameAndType	timedWait:(Ljava/lang/Object;J)V
+Asciz	java/lang/InterruptedException;
+NameAndType	interrupt:()V
+NameAndType	wait:()V
+NameAndType	interrupted:()Z
+class	scala/actors/threadpool/helpers/WaitQueue
+Asciz	scala/actors/threadpool/helpers/WaitQueue$WaitNode;
+Asciz	java/lang/Object;
+Asciz	scala/actors/threadpool/helpers/WaitQueue$QueuedSync;
+Asciz	java/lang/Thread;
+Asciz	currentThread;
+Asciz	notify;
+Asciz	takeOver;
+Asciz	(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)V;
+Asciz	recheck;
+Asciz	(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)Z;
+Asciz	scala/actors/threadpool/helpers/Utils;
+Asciz	nanoTime;
+Asciz	()J;
+Asciz	scala/actors/threadpool/TimeUnit;
+Asciz	NANOSECONDS;
+Asciz	Lscala/actors/threadpool/TimeUnit;;
+Asciz	timedWait;
+Asciz	(Ljava/lang/Object;J)V;
+Asciz	interrupt;
+Asciz	wait;
+Asciz	interrupted;
+Asciz	()Z;
+Asciz	scala/actors/threadpool/helpers/WaitQueue;
+
+{
+boolean waiting;
+  Signature: Z
+
+scala.actors.threadpool.helpers.WaitQueue$WaitNode next;
+  Signature: Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+
+final java.lang.Thread owner;
+  Signature: Ljava/lang/Thread;
+
+public scala.actors.threadpool.helpers.WaitQueue$WaitNode();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	iconst_1
+	putfield	Field waiting:Z
+	aload_0
+	aconst_null
+	putfield	Field next:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	aload_0
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	putfield	Field owner:Ljava/lang/Thread;
+	return
+  Labels:
+
+public java.lang.Thread getOwner();
+  Signature: ()Ljava/lang/Thread;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field owner:Ljava/lang/Thread;
+	areturn
+  Labels:
+
+public synchronized boolean signal(scala.actors.threadpool.helpers.WaitQueue$QueuedSync);
+  Signature: (Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)Z
+  Code:
+   Stack=2, Locals=3, Args_size=2
+	aload_0
+	getfield	Field waiting:Z
+	istore_2
+	iload_2
+	ifeq	l1 // iload_2
+	aload_0
+	iconst_0
+	putfield	Field waiting:Z
+	aload_0
+	invokevirtual	Method java/lang/Object.notify:()V
+	aload_1
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/threadpool/helpers/WaitQueue$QueuedSync.takeOver:(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)V
+l1	iload_2
+	ireturn
+  Labels:
+   	l1 = 25 // iload_2
+
+public synchronized boolean doTimedWait(scala.actors.threadpool.helpers.WaitQueue$QueuedSync, long)   throws java.lang.InterruptedException;
+  Signature: (Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;J)Z
+  Code:
+   Stack=4, Locals=7, Args_size=3
+	aload_1
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/threadpool/helpers/WaitQueue$QueuedSync.recheck:(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)Z
+	ifne	l1 // iconst_1
+	aload_0
+	getfield	Field waiting:Z
+	ifne	l2 // lload_2
+l1	iconst_1
+	ireturn
+l2	lload_2
+	lconst_0
+	lcmp
+	ifgt	l3 // invokestatic
+	aload_0
+	iconst_0
+	putfield	Field waiting:Z
+	iconst_0
+	ireturn
+l3	invokestatic	Method scala/actors/threadpool/helpers/Utils.nanoTime:()J
+	lload_2
+	ladd
+	lstore	4
+l5	getstatic	Field scala/actors/threadpool/TimeUnit.NANOSECONDS:Lscala/actors/threadpool/TimeUnit;
+	aload_0
+	lload_2
+	invokevirtual	Method scala/actors/threadpool/TimeUnit.timedWait:(Ljava/lang/Object;J)V
+	aload_0
+	getfield	Field waiting:Z
+	ifne	l4 // lload
+	iconst_1
+	ireturn
+l4	lload	4
+	invokestatic	Method scala/actors/threadpool/helpers/Utils.nanoTime:()J
+	lsub
+	lstore_2
+	lload_2
+	lconst_0
+	lcmp
+	ifgt	l5 // getstatic
+	aload_0
+	iconst_0
+	putfield	Field waiting:Z
+	iconst_0
+	ireturn
+	astore	6
+	aload_0
+	getfield	Field waiting:Z
+	ifeq	l6 // invokestatic
+	aload_0
+	iconst_0
+	putfield	Field waiting:Z
+	aload	6
+	athrow
+l6	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	invokevirtual	Method java/lang/Thread.interrupt:()V
+	iconst_1
+	ireturn
+  Labels:
+   	l1 = 17 // iconst_1
+   	l2 = 19 // lload_2
+   	l3 = 32 // invokestatic
+   	l5 = 39 // getstatic
+   	l4 = 56 // lload
+   	l6 = 93 // invokestatic
+  Exception table:
+   from   to  target type
+    39    55    76   Class java/lang/InterruptedException
+
+    56    75    76   Class java/lang/InterruptedException
+
+  Exceptions: 
+   throws java.lang.InterruptedException
+public synchronized void doWait(scala.actors.threadpool.helpers.WaitQueue$QueuedSync)   throws java.lang.InterruptedException;
+  Signature: (Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)V
+  Code:
+   Stack=2, Locals=3, Args_size=2
+	aload_1
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/threadpool/helpers/WaitQueue$QueuedSync.recheck:(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)Z
+	ifne	l1 // return
+l3	aload_0
+	getfield	Field waiting:Z
+	ifeq	l2 // goto
+	aload_0
+	invokevirtual	Method java/lang/Object.wait:()V
+	goto	l3 // aload_0
+l2	goto	l1 // return
+	astore_2
+	aload_0
+	getfield	Field waiting:Z
+	ifeq	l4 // invokestatic
+	aload_0
+	iconst_0
+	putfield	Field waiting:Z
+	aload_2
+	athrow
+l4	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	invokevirtual	Method java/lang/Thread.interrupt:()V
+	return
+l1	return
+  Labels:
+   	l3 = 10 // aload_0
+   	l2 = 24 // goto
+   	l4 = 42 // invokestatic
+   	l1 = 49 // return
+  Exception table:
+   from   to  target type
+    10    24    27   Class java/lang/InterruptedException
+
+  Exceptions: 
+   throws java.lang.InterruptedException
+public synchronized void doWaitUninterruptibly(scala.actors.threadpool.helpers.WaitQueue$QueuedSync);
+  Signature: (Lscala/actors/threadpool/helpers/WaitQueue$QueuedSync;)V
+  Code:
+   Stack=2, Locals=5, Args_size=2
+	aload_1
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/threadpool/helpers/WaitQueue$QueuedSync.recheck:(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)Z
+	ifne	l1 // return
+	invokestatic	Method java/lang/Thread.interrupted:()Z
+	istore_2
+l3	aload_0
+	getfield	Field waiting:Z
+	ifeq	l2 // iload_2
+	aload_0
+	invokevirtual	Method java/lang/Object.wait:()V
+	goto	l3 // aload_0
+	astore_3
+	iconst_1
+	istore_2
+	goto	l3 // aload_0
+l2	iload_2
+	ifeq	l1 // return
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	invokevirtual	Method java/lang/Thread.interrupt:()V
+	goto	l1 // return
+	astore	4
+	iload_2
+	ifeq	l4 // aload
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	invokevirtual	Method java/lang/Thread.interrupt:()V
+l4	aload	4
+	athrow
+l1	return
+  Labels:
+   	l3 = 14 // aload_0
+   	l2 = 34 // iload_2
+   	l4 = 59 // aload
+   	l1 = 62 // return
+  Exception table:
+   from   to  target type
+    21    25    28   Class java/lang/InterruptedException
+
+    14    34    47   any
+    47    49    47   any
+
+}
+

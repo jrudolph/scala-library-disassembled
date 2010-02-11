@@ -1,0 +1,529 @@
+public class scala.actors.LinkedQueue extends java.lang.Object
+  minor version: 0
+  major version: 49
+  Constant pool:
+Method	java/lang/Object."<init>":()V
+class	java/lang/Object
+Field	scala/actors/LinkedQueue.putLock_:Ljava/lang/Object;
+Field	scala/actors/LinkedQueue.waitingForTake_:I
+class	scala/actors/LinkedNode
+Method	scala/actors/LinkedNode."<init>":(Ljava/lang/Object;)V
+Field	scala/actors/LinkedQueue.head_:Lscala/actors/LinkedNode;
+Field	scala/actors/LinkedQueue.last_:Lscala/actors/LinkedNode;
+Field	scala/actors/LinkedNode.next:Lscala/actors/LinkedNode;
+Method	java/lang/Object.notify:()V
+Field	scala/actors/LinkedNode.value:Ljava/lang/Object;
+class	java/lang/IllegalArgumentException
+Method	java/lang/IllegalArgumentException."<init>":()V
+Method	java/lang/Thread.interrupted:()Z
+class	java/lang/InterruptedException
+Method	java/lang/InterruptedException."<init>":()V
+Method	scala/actors/LinkedQueue.insert:(Ljava/lang/Object;)V
+Method	scala/actors/LinkedQueue.extract:()Ljava/lang/Object;
+Method	java/lang/Object.wait:()V
+Method	java/lang/System.currentTimeMillis:()J
+Method	java/lang/Object.wait:(J)V
+class	scala/actors/LinkedQueue
+Asciz	head_;
+Asciz	Lscala/actors/LinkedNode;;
+Asciz	putLock_;
+Asciz	Ljava/lang/Object;;
+Asciz	last_;
+Asciz	waitingForTake_;
+Asciz	I;
+Asciz	<init>;
+Asciz	()V;
+Asciz	Code;
+Asciz	insert;
+Asciz	(Ljava/lang/Object;)V;
+Asciz	extract;
+Asciz	()Ljava/lang/Object;;
+Asciz	put;
+Asciz	Exceptions;
+Asciz	offer;
+Asciz	(Ljava/lang/Object;J)Z;
+Asciz	take;
+Asciz	peek;
+Asciz	isEmpty;
+Asciz	()Z;
+Asciz	poll;
+Asciz	(J)Ljava/lang/Object;;
+NameAndType	"<init>":()V
+Asciz	java/lang/Object;
+NameAndType	putLock_:Ljava/lang/Object;
+NameAndType	waitingForTake_:I
+Asciz	scala/actors/LinkedNode;
+NameAndType	"<init>":(Ljava/lang/Object;)V
+NameAndType	head_:Lscala/actors/LinkedNode;
+NameAndType	last_:Lscala/actors/LinkedNode;
+NameAndType	next:Lscala/actors/LinkedNode;
+NameAndType	notify:()V
+NameAndType	value:Ljava/lang/Object;
+Asciz	java/lang/IllegalArgumentException;
+class	java/lang/Thread
+NameAndType	interrupted:()Z
+Asciz	java/lang/InterruptedException;
+NameAndType	insert:(Ljava/lang/Object;)V
+NameAndType	extract:()Ljava/lang/Object;
+NameAndType	wait:()V
+class	java/lang/System
+NameAndType	currentTimeMillis:()J
+NameAndType	wait:(J)V
+Asciz	scala/actors/LinkedQueue;
+Asciz	next;
+Asciz	notify;
+Asciz	value;
+Asciz	java/lang/Thread;
+Asciz	interrupted;
+Asciz	wait;
+Asciz	java/lang/System;
+Asciz	currentTimeMillis;
+Asciz	()J;
+Asciz	(J)V;
+
+{
+protected scala.actors.LinkedNode head_;
+  Signature: Lscala/actors/LinkedNode;
+
+protected final java.lang.Object putLock_;
+  Signature: Ljava/lang/Object;
+
+protected scala.actors.LinkedNode last_;
+  Signature: Lscala/actors/LinkedNode;
+
+protected int waitingForTake_;
+  Signature: I
+
+public scala.actors.LinkedQueue();
+  Signature: ()V
+  Code:
+   Stack=4, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	new	class java/lang/Object
+	dup
+	invokespecial	Method java/lang/Object."<init>":()V
+	putfield	Field putLock_:Ljava/lang/Object;
+	aload_0
+	iconst_0
+	putfield	Field waitingForTake_:I
+	aload_0
+	new	class scala/actors/LinkedNode
+	dup
+	aconst_null
+	invokespecial	Method scala/actors/LinkedNode."<init>":(Ljava/lang/Object;)V
+	putfield	Field head_:Lscala/actors/LinkedNode;
+	aload_0
+	aload_0
+	getfield	Field head_:Lscala/actors/LinkedNode;
+	putfield	Field last_:Lscala/actors/LinkedNode;
+	return
+  Labels:
+
+protected void insert(java.lang.Object);
+  Signature: (Ljava/lang/Object;)V
+  Code:
+   Stack=3, Locals=7, Args_size=2
+	aload_0
+	getfield	Field putLock_:Ljava/lang/Object;
+	dup
+	astore_2
+	monitorenter
+	new	class scala/actors/LinkedNode
+	dup
+	aload_1
+	invokespecial	Method scala/actors/LinkedNode."<init>":(Ljava/lang/Object;)V
+	astore_3
+	aload_0
+	getfield	Field last_:Lscala/actors/LinkedNode;
+	dup
+	astore	4
+	monitorenter
+	aload_0
+	getfield	Field last_:Lscala/actors/LinkedNode;
+	aload_3
+	putfield	Field scala/actors/LinkedNode.next:Lscala/actors/LinkedNode;
+	aload_0
+	aload_3
+	putfield	Field last_:Lscala/actors/LinkedNode;
+	aload	4
+	monitorexit
+	goto	l1 // aload_0
+	astore	5
+	aload	4
+	monitorexit
+	aload	5
+	athrow
+l1	aload_0
+	getfield	Field waitingForTake_:I
+	ifle	l2 // aload_2
+	aload_0
+	getfield	Field putLock_:Ljava/lang/Object;
+	invokevirtual	Method java/lang/Object.notify:()V
+l2	aload_2
+	monitorexit
+	goto	l3 // return
+	astore	6
+	aload_2
+	monitorexit
+	aload	6
+	athrow
+l3	return
+  Labels:
+   	l1 = 51 // aload_0
+   	l2 = 65 // aload_2
+   	l3 = 77 // return
+  Exception table:
+   from   to  target type
+    24    40    43   any
+    43    48    43   any
+     7    67    70   any
+    70    74    70   any
+
+protected synchronized java.lang.Object extract();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=2, Locals=5, Args_size=1
+	aload_0
+	getfield	Field head_:Lscala/actors/LinkedNode;
+	dup
+	astore_1
+	monitorenter
+	aconst_null
+	astore_2
+	aload_0
+	getfield	Field head_:Lscala/actors/LinkedNode;
+	getfield	Field scala/actors/LinkedNode.next:Lscala/actors/LinkedNode;
+	astore_3
+	aload_3
+	ifnull	l1 // aload_2
+	aload_3
+	getfield	Field scala/actors/LinkedNode.value:Ljava/lang/Object;
+	astore_2
+	aload_3
+	aconst_null
+	putfield	Field scala/actors/LinkedNode.value:Ljava/lang/Object;
+	aload_0
+	aload_3
+	putfield	Field head_:Lscala/actors/LinkedNode;
+l1	aload_2
+	aload_1
+	monitorexit
+	areturn
+	astore	4
+	aload_1
+	monitorexit
+	aload	4
+	athrow
+  Labels:
+   	l1 = 36 // aload_2
+  Exception table:
+   from   to  target type
+     7    39    40   any
+    40    44    40   any
+
+public void put(java.lang.Object)   throws java.lang.InterruptedException;
+  Signature: (Ljava/lang/Object;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_1
+	ifnonnull	l1 // invokestatic
+	new	class java/lang/IllegalArgumentException
+	dup
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
+	athrow
+l1	invokestatic	Method java/lang/Thread.interrupted:()Z
+	ifeq	l2 // aload_0
+	new	class java/lang/InterruptedException
+	dup
+	invokespecial	Method java/lang/InterruptedException."<init>":()V
+	athrow
+l2	aload_0
+	aload_1
+	invokevirtual	Method insert:(Ljava/lang/Object;)V
+	return
+  Labels:
+   	l1 = 12 // invokestatic
+   	l2 = 26 // aload_0
+  Exceptions: 
+   throws java.lang.InterruptedException
+public boolean offer(java.lang.Object, long)   throws java.lang.InterruptedException;
+  Signature: (Ljava/lang/Object;J)Z
+  Code:
+   Stack=2, Locals=4, Args_size=3
+	aload_1
+	ifnonnull	l1 // invokestatic
+	new	class java/lang/IllegalArgumentException
+	dup
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
+	athrow
+l1	invokestatic	Method java/lang/Thread.interrupted:()Z
+	ifeq	l2 // aload_0
+	new	class java/lang/InterruptedException
+	dup
+	invokespecial	Method java/lang/InterruptedException."<init>":()V
+	athrow
+l2	aload_0
+	aload_1
+	invokevirtual	Method insert:(Ljava/lang/Object;)V
+	iconst_1
+	ireturn
+  Labels:
+   	l1 = 12 // invokestatic
+   	l2 = 26 // aload_0
+  Exceptions: 
+   throws java.lang.InterruptedException
+public java.lang.Object take()   throws java.lang.InterruptedException;
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=3, Locals=5, Args_size=1
+	invokestatic	Method java/lang/Thread.interrupted:()Z
+	ifeq	l1 // aload_0
+	new	class java/lang/InterruptedException
+	dup
+	invokespecial	Method java/lang/InterruptedException."<init>":()V
+	athrow
+l1	aload_0
+	invokevirtual	Method extract:()Ljava/lang/Object;
+	astore_1
+	aload_1
+	ifnull	l2 // aload_0
+	aload_1
+	areturn
+l2	aload_0
+	getfield	Field putLock_:Ljava/lang/Object;
+	dup
+	astore_2
+	monitorenter
+	aload_0
+	dup
+	getfield	Field waitingForTake_:I
+	iconst_1
+	iadd
+	putfield	Field waitingForTake_:I
+l4	aload_0
+	invokevirtual	Method extract:()Ljava/lang/Object;
+	astore_1
+	aload_1
+	ifnull	l3 // aload_0
+	aload_0
+	dup
+	getfield	Field waitingForTake_:I
+	iconst_1
+	isub
+	putfield	Field waitingForTake_:I
+	aload_1
+	aload_2
+	monitorexit
+	areturn
+l3	aload_0
+	getfield	Field putLock_:Ljava/lang/Object;
+	invokevirtual	Method java/lang/Object.wait:()V
+	goto	l4 // aload_0
+	astore_3
+	aload_0
+	dup
+	getfield	Field waitingForTake_:I
+	iconst_1
+	isub
+	putfield	Field waitingForTake_:I
+	aload_0
+	getfield	Field putLock_:Ljava/lang/Object;
+	invokevirtual	Method java/lang/Object.notify:()V
+	aload_3
+	athrow
+	astore	4
+	aload_2
+	monitorexit
+	aload	4
+	athrow
+  Labels:
+   	l1 = 14 // aload_0
+   	l2 = 25 // aload_0
+   	l4 = 42 // aload_0
+   	l3 = 65 // aload_0
+  Exception table:
+   from   to  target type
+    32    62    75   Class java/lang/InterruptedException
+
+    65    75    75   Class java/lang/InterruptedException
+
+    32    64    95   any
+    65    99    95   any
+  Exceptions: 
+   throws java.lang.InterruptedException
+public java.lang.Object peek();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=2, Locals=4, Args_size=1
+	aload_0
+	getfield	Field head_:Lscala/actors/LinkedNode;
+	dup
+	astore_1
+	monitorenter
+	aload_0
+	getfield	Field head_:Lscala/actors/LinkedNode;
+	getfield	Field scala/actors/LinkedNode.next:Lscala/actors/LinkedNode;
+	astore_2
+	aload_2
+	ifnull	l1 // aconst_null
+	aload_2
+	getfield	Field scala/actors/LinkedNode.value:Ljava/lang/Object;
+	aload_1
+	monitorexit
+	areturn
+l1	aconst_null
+	aload_1
+	monitorexit
+	areturn
+	astore_3
+	aload_1
+	monitorexit
+	aload_3
+	athrow
+  Labels:
+   	l1 = 26 // aconst_null
+  Exception table:
+   from   to  target type
+     7    25    30   any
+    26    29    30   any
+    30    33    30   any
+
+public boolean isEmpty();
+  Signature: ()Z
+  Code:
+   Stack=2, Locals=3, Args_size=1
+	aload_0
+	getfield	Field head_:Lscala/actors/LinkedNode;
+	dup
+	astore_1
+	monitorenter
+	aload_0
+	getfield	Field head_:Lscala/actors/LinkedNode;
+	getfield	Field scala/actors/LinkedNode.next:Lscala/actors/LinkedNode;
+	ifnonnull	l1 // iconst_0
+	iconst_1
+	goto	l2 // aload_1
+l1	iconst_0
+l2	aload_1
+	monitorexit
+	ireturn
+	astore_2
+	aload_1
+	monitorexit
+	aload_2
+	athrow
+  Labels:
+   	l1 = 21 // iconst_0
+   	l2 = 22 // aload_1
+  Exception table:
+   from   to  target type
+     7    24    25   any
+    25    28    25   any
+
+public java.lang.Object poll(long)   throws java.lang.InterruptedException;
+  Signature: (J)Ljava/lang/Object;
+  Code:
+   Stack=6, Locals=10, Args_size=2
+	invokestatic	Method java/lang/Thread.interrupted:()Z
+	ifeq	l1 // aload_0
+	new	class java/lang/InterruptedException
+	dup
+	invokespecial	Method java/lang/InterruptedException."<init>":()V
+	athrow
+l1	aload_0
+	invokevirtual	Method extract:()Ljava/lang/Object;
+	astore_3
+	aload_3
+	ifnull	l2 // aload_0
+	aload_3
+	areturn
+l2	aload_0
+	getfield	Field putLock_:Ljava/lang/Object;
+	dup
+	astore	4
+	monitorenter
+	lload_1
+	lstore	5
+	lload_1
+	lconst_0
+	lcmp
+	ifgt	l3 // invokestatic
+	lconst_0
+	goto	l4 // lstore
+l3	invokestatic	Method java/lang/System.currentTimeMillis:()J
+l4	lstore	7
+	aload_0
+	dup
+	getfield	Field waitingForTake_:I
+	iconst_1
+	iadd
+	putfield	Field waitingForTake_:I
+l7	aload_0
+	invokevirtual	Method extract:()Ljava/lang/Object;
+	astore_3
+	aload_3
+	ifnonnull	l5 // aload_0
+	lload	5
+	lconst_0
+	lcmp
+	ifgt	l6 // aload_0
+l5	aload_0
+	dup
+	getfield	Field waitingForTake_:I
+	iconst_1
+	isub
+	putfield	Field waitingForTake_:I
+	aload_3
+	aload	4
+	monitorexit
+	areturn
+l6	aload_0
+	getfield	Field putLock_:Ljava/lang/Object;
+	lload	5
+	invokevirtual	Method java/lang/Object.wait:(J)V
+	lload_1
+	invokestatic	Method java/lang/System.currentTimeMillis:()J
+	lload	7
+	lsub
+	lsub
+	lstore	5
+	goto	l7 // aload_0
+	astore	5
+	aload_0
+	dup
+	getfield	Field waitingForTake_:I
+	iconst_1
+	isub
+	putfield	Field waitingForTake_:I
+	aload_0
+	getfield	Field putLock_:Ljava/lang/Object;
+	invokevirtual	Method java/lang/Object.notify:()V
+	aload	5
+	athrow
+	astore	9
+	aload	4
+	monitorexit
+	aload	9
+	athrow
+  Labels:
+   	l1 = 14 // aload_0
+   	l2 = 25 // aload_0
+   	l3 = 46 // invokestatic
+   	l4 = 49 // lstore
+   	l7 = 61 // aload_0
+   	l5 = 77 // aload_0
+   	l6 = 92 // aload_0
+  Exception table:
+   from   to  target type
+    33    88   114   Class java/lang/InterruptedException
+
+    92   114   114   Class java/lang/InterruptedException
+
+    33    91   136   any
+    92   141   136   any
+  Exceptions: 
+   throws java.lang.InterruptedException
+}
+

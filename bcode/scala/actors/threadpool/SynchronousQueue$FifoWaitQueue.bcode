@@ -1,0 +1,201 @@
+final class scala.actors.threadpool.SynchronousQueue$FifoWaitQueue extends scala.actors.threadpool.SynchronousQueue$WaitQueue implements java.io.Serializable
+  InnerClass: 
+   final Node=class scala/actors/threadpool/SynchronousQueue$Node of class scala/actors/threadpool/SynchronousQueue
+   final FifoWaitQueue=class scala/actors/threadpool/SynchronousQueue$FifoWaitQueue of class scala/actors/threadpool/SynchronousQueue
+   abstract WaitQueue=class scala/actors/threadpool/SynchronousQueue$WaitQueue of class scala/actors/threadpool/SynchronousQueue
+  minor version: 0
+  major version: 49
+  Constant pool:
+Method	scala/actors/threadpool/SynchronousQueue$WaitQueue."<init>":()V
+class	scala/actors/threadpool/SynchronousQueue$Node
+Method	scala/actors/threadpool/SynchronousQueue$Node."<init>":(Ljava/lang/Object;)V
+Field	scala/actors/threadpool/SynchronousQueue$FifoWaitQueue.last:Lscala/actors/threadpool/SynchronousQueue$Node;
+Field	scala/actors/threadpool/SynchronousQueue$FifoWaitQueue.head:Lscala/actors/threadpool/SynchronousQueue$Node;
+Field	scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+class	scala/actors/threadpool/SynchronousQueue$FifoWaitQueue
+class	scala/actors/threadpool/SynchronousQueue$WaitQueue
+class	java/io/Serializable
+Asciz	serialVersionUID;
+Asciz	J;
+Asciz	ConstantValue;
+long	-3623113410248163686l;
+Asciz	head;
+Asciz	Node;
+Asciz	InnerClasses;
+Asciz	Lscala/actors/threadpool/SynchronousQueue$Node;;
+Asciz	last;
+Asciz	<init>;
+Asciz	()V;
+Asciz	Code;
+Asciz	enq;
+Asciz	(Ljava/lang/Object;)Lscala/actors/threadpool/SynchronousQueue$Node;;
+Asciz	deq;
+Asciz	()Lscala/actors/threadpool/SynchronousQueue$Node;;
+Asciz	shouldUnlink;
+Asciz	(Lscala/actors/threadpool/SynchronousQueue$Node;)Z;
+Asciz	unlink;
+Asciz	(Lscala/actors/threadpool/SynchronousQueue$Node;)V;
+NameAndType	"<init>":()V
+class	scala/actors/threadpool/SynchronousQueue
+Asciz	scala/actors/threadpool/SynchronousQueue$Node;
+NameAndType	"<init>":(Ljava/lang/Object;)V
+NameAndType	last:Lscala/actors/threadpool/SynchronousQueue$Node;
+NameAndType	head:Lscala/actors/threadpool/SynchronousQueue$Node;
+NameAndType	next:Lscala/actors/threadpool/SynchronousQueue$Node;
+Asciz	scala/actors/threadpool/SynchronousQueue$FifoWaitQueue;
+Asciz	FifoWaitQueue;
+Asciz	scala/actors/threadpool/SynchronousQueue$WaitQueue;
+Asciz	WaitQueue;
+Asciz	java/io/Serializable;
+Asciz	scala/actors/threadpool/SynchronousQueue;
+Asciz	(Ljava/lang/Object;)V;
+Asciz	next;
+
+{
+private static final long serialVersionUID;
+  Signature: J
+  Constant value: long -3623113410248163686l
+private transient scala.actors.threadpool.SynchronousQueue$Node head;
+  Signature: Lscala/actors/threadpool/SynchronousQueue$Node;
+
+private transient scala.actors.threadpool.SynchronousQueue$Node last;
+  Signature: Lscala/actors/threadpool/SynchronousQueue$Node;
+
+scala.actors.threadpool.SynchronousQueue$FifoWaitQueue();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method scala/actors/threadpool/SynchronousQueue$WaitQueue."<init>":()V
+	return
+  Labels:
+
+scala.actors.threadpool.SynchronousQueue$Node enq(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Lscala/actors/threadpool/SynchronousQueue$Node;
+  Code:
+   Stack=4, Locals=3, Args_size=2
+	new	class scala/actors/threadpool/SynchronousQueue$Node
+	dup
+	aload_1
+	invokespecial	Method scala/actors/threadpool/SynchronousQueue$Node."<init>":(Ljava/lang/Object;)V
+	astore_2
+	aload_0
+	getfield	Field last:Lscala/actors/threadpool/SynchronousQueue$Node;
+	ifnonnull	l1 // aload_0
+	aload_0
+	aload_0
+	aload_2
+	dup_x1
+	putfield	Field head:Lscala/actors/threadpool/SynchronousQueue$Node;
+	putfield	Field last:Lscala/actors/threadpool/SynchronousQueue$Node;
+	goto	l2 // aload_2
+l1	aload_0
+	aload_0
+	getfield	Field last:Lscala/actors/threadpool/SynchronousQueue$Node;
+	aload_2
+	dup_x1
+	putfield	Field scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+	putfield	Field last:Lscala/actors/threadpool/SynchronousQueue$Node;
+l2	aload_2
+	areturn
+  Labels:
+   	l1 = 29 // aload_0
+   	l2 = 42 // aload_2
+
+scala.actors.threadpool.SynchronousQueue$Node deq();
+  Signature: ()Lscala/actors/threadpool/SynchronousQueue$Node;
+  Code:
+   Stack=3, Locals=2, Args_size=1
+	aload_0
+	getfield	Field head:Lscala/actors/threadpool/SynchronousQueue$Node;
+	astore_1
+	aload_1
+	ifnull	l1 // aload_1
+	aload_0
+	aload_1
+	getfield	Field scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+	dup_x1
+	putfield	Field head:Lscala/actors/threadpool/SynchronousQueue$Node;
+	ifnonnull	l2 // aload_1
+	aload_0
+	aconst_null
+	putfield	Field last:Lscala/actors/threadpool/SynchronousQueue$Node;
+l2	aload_1
+	aconst_null
+	putfield	Field scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+l1	aload_1
+	areturn
+  Labels:
+   	l2 = 26 // aload_1
+   	l1 = 31 // aload_1
+
+boolean shouldUnlink(scala.actors.threadpool.SynchronousQueue$Node);
+  Signature: (Lscala/actors/threadpool/SynchronousQueue$Node;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_1
+	aload_0
+	getfield	Field last:Lscala/actors/threadpool/SynchronousQueue$Node;
+	if_acmpeq	l1 // iconst_1
+	aload_1
+	getfield	Field scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+	ifnull	l2 // iconst_0
+l1	iconst_1
+	goto	l3 // ireturn
+l2	iconst_0
+l3	ireturn
+  Labels:
+   	l1 = 15 // iconst_1
+   	l2 = 19 // iconst_0
+   	l3 = 20 // ireturn
+
+void unlink(scala.actors.threadpool.SynchronousQueue$Node);
+  Signature: (Lscala/actors/threadpool/SynchronousQueue$Node;)V
+  Code:
+   Stack=2, Locals=5, Args_size=2
+	aload_0
+	getfield	Field head:Lscala/actors/threadpool/SynchronousQueue$Node;
+	astore_2
+	aconst_null
+	astore_3
+l5	aload_2
+	ifnull	l1 // return
+	aload_2
+	aload_1
+	if_acmpne	l2 // aload_2
+	aload_2
+	getfield	Field scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+	astore	4
+	aload_3
+	ifnonnull	l3 // aload_3
+	aload_0
+	aload	4
+	putfield	Field head:Lscala/actors/threadpool/SynchronousQueue$Node;
+	goto	l4 // aload_0
+l3	aload_3
+	aload	4
+	putfield	Field scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+l4	aload_0
+	getfield	Field last:Lscala/actors/threadpool/SynchronousQueue$Node;
+	aload_1
+	if_acmpne	l1 // return
+	aload_0
+	aload_3
+	putfield	Field last:Lscala/actors/threadpool/SynchronousQueue$Node;
+	goto	l1 // return
+l2	aload_2
+	astore_3
+	aload_2
+	getfield	Field scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+	astore_2
+	goto	l5 // aload_2
+l1	return
+  Labels:
+   	l5 = 7 // aload_2
+   	l3 = 35 // aload_3
+   	l4 = 41 // aload_0
+   	l2 = 57 // aload_2
+   	l1 = 67 // return
+
+}
+

@@ -1,0 +1,373 @@
+public class scala.concurrent.forkjoin.ThreadLocalRandom extends java.util.Random
+  InnerClass: 
+   class scala/concurrent/forkjoin/ThreadLocalRandom$1
+  minor version: 0
+  major version: 49
+  Constant pool:
+Method	java/util/Random."<init>":()V
+Field	scala/concurrent/forkjoin/ThreadLocalRandom.localRandom:Ljava/lang/ThreadLocal;
+Method	java/lang/ThreadLocal.get:()Ljava/lang/Object;
+class	scala/concurrent/forkjoin/ThreadLocalRandom
+Field	scala/concurrent/forkjoin/ThreadLocalRandom.initialized:Z
+class	java/lang/UnsupportedOperationException
+Method	java/lang/UnsupportedOperationException."<init>":()V
+long	25214903917l;
+long	281474976710655l;
+Field	scala/concurrent/forkjoin/ThreadLocalRandom.rnd:J
+long	11l;
+class	java/lang/IllegalArgumentException
+Method	java/lang/IllegalArgumentException."<init>":()V
+Method	scala/concurrent/forkjoin/ThreadLocalRandom.nextInt:(I)I
+String	n must be positive
+Method	java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+long	2147483647l;
+Method	scala/concurrent/forkjoin/ThreadLocalRandom.next:(I)I
+Method	scala/concurrent/forkjoin/ThreadLocalRandom.nextLong:(J)J
+Method	scala/concurrent/forkjoin/ThreadLocalRandom.nextDouble:()D
+class	scala/concurrent/forkjoin/ThreadLocalRandom$1
+Method	scala/concurrent/forkjoin/ThreadLocalRandom$1."<init>":()V
+class	java/util/Random
+Asciz	multiplier;
+Asciz	J;
+Asciz	ConstantValue;
+Asciz	addend;
+Asciz	mask;
+Asciz	rnd;
+Asciz	initialized;
+Asciz	Z;
+Asciz	pad0;
+Asciz	pad1;
+Asciz	pad2;
+Asciz	pad3;
+Asciz	pad4;
+Asciz	pad5;
+Asciz	pad6;
+Asciz	pad7;
+Asciz	localRandom;
+Asciz	Ljava/lang/ThreadLocal;;
+Asciz	Signature;
+Asciz	Ljava/lang/ThreadLocal<Lscala/concurrent/forkjoin/ThreadLocalRandom;>;;
+Asciz	<init>;
+Asciz	()V;
+Asciz	Code;
+Asciz	current;
+Asciz	()Lscala/concurrent/forkjoin/ThreadLocalRandom;;
+Asciz	setSeed;
+Asciz	(J)V;
+Asciz	next;
+Asciz	(I)I;
+Asciz	nextInt;
+Asciz	(II)I;
+Asciz	nextLong;
+Asciz	(J)J;
+Asciz	(JJ)J;
+Asciz	nextDouble;
+Asciz	(D)D;
+Asciz	(DD)D;
+Asciz	<clinit>;
+NameAndType	"<init>":()V
+NameAndType	localRandom:Ljava/lang/ThreadLocal;
+class	java/lang/ThreadLocal
+NameAndType	get:()Ljava/lang/Object;
+Asciz	scala/concurrent/forkjoin/ThreadLocalRandom;
+NameAndType	initialized:Z
+Asciz	java/lang/UnsupportedOperationException;
+NameAndType	rnd:J
+Asciz	java/lang/IllegalArgumentException;
+NameAndType	nextInt:(I)I
+Asciz	n must be positive;
+NameAndType	"<init>":(Ljava/lang/String;)V
+NameAndType	next:(I)I
+NameAndType	nextLong:(J)J
+NameAndType	nextDouble:()D
+Asciz	scala/concurrent/forkjoin/ThreadLocalRandom$1;
+Asciz	;
+Asciz	InnerClasses;
+Asciz	java/util/Random;
+Asciz	java/lang/ThreadLocal;
+Asciz	get;
+Asciz	()Ljava/lang/Object;;
+Asciz	(Ljava/lang/String;)V;
+Asciz	()D;
+
+{
+private static final long multiplier;
+  Signature: J
+  Constant value: long 25214903917l
+private static final long addend;
+  Signature: J
+  Constant value: long 11l
+private static final long mask;
+  Signature: J
+  Constant value: long 281474976710655l
+private long rnd;
+  Signature: J
+
+boolean initialized;
+  Signature: Z
+
+private long pad0;
+  Signature: J
+
+private long pad1;
+  Signature: J
+
+private long pad2;
+  Signature: J
+
+private long pad3;
+  Signature: J
+
+private long pad4;
+  Signature: J
+
+private long pad5;
+  Signature: J
+
+private long pad6;
+  Signature: J
+
+private long pad7;
+  Signature: J
+
+private static final java.lang.ThreadLocal localRandom;
+  Signature: Ljava/lang/ThreadLocal;
+  Signature: length = 0x2
+   00 2F 
+
+scala.concurrent.forkjoin.ThreadLocalRandom();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method java/util/Random."<init>":()V
+	return
+  Labels:
+
+public static scala.concurrent.forkjoin.ThreadLocalRandom current();
+  Signature: ()Lscala/concurrent/forkjoin/ThreadLocalRandom;
+  Code:
+   Stack=1, Locals=0, Args_size=0
+	getstatic	Field localRandom:Ljava/lang/ThreadLocal;
+	invokevirtual	Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+	checkcast	class scala/concurrent/forkjoin/ThreadLocalRandom
+	areturn
+  Labels:
+
+public void setSeed(long);
+  Signature: (J)V
+  Code:
+   Stack=5, Locals=3, Args_size=2
+	aload_0
+	getfield	Field initialized:Z
+	ifeq	l1 // aload_0
+	new	class java/lang/UnsupportedOperationException
+	dup
+	invokespecial	Method java/lang/UnsupportedOperationException."<init>":()V
+	athrow
+l1	aload_0
+	iconst_1
+	putfield	Field initialized:Z
+	aload_0
+	lload_1
+	ldc2_w	long 25214903917l
+	lxor
+	ldc2_w	long 281474976710655l
+	land
+	putfield	Field rnd:J
+	return
+  Labels:
+   	l1 = 15 // aload_0
+
+protected int next(int);
+  Signature: (I)I
+  Code:
+   Stack=5, Locals=2, Args_size=2
+	aload_0
+	aload_0
+	getfield	Field rnd:J
+	ldc2_w	long 25214903917l
+	lmul
+	ldc2_w	long 11l
+	ladd
+	ldc2_w	long 281474976710655l
+	land
+	dup2_x1
+	putfield	Field rnd:J
+	bipush	48
+	iload_1
+	isub
+	lushr
+	l2i
+	ireturn
+  Labels:
+
+public int nextInt(int, int);
+  Signature: (II)I
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	iload_1
+	iload_2
+	if_icmplt	l1 // aload_0
+	new	class java/lang/IllegalArgumentException
+	dup
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
+	athrow
+l1	aload_0
+	iload_2
+	iload_1
+	isub
+	invokevirtual	Method nextInt:(I)I
+	iload_1
+	iadd
+	ireturn
+  Labels:
+   	l1 = 13 // aload_0
+
+public long nextLong(long);
+  Signature: (J)J
+  Code:
+   Stack=6, Locals=10, Args_size=2
+	lload_1
+	lconst_0
+	lcmp
+	ifgt	l1 // lconst_0
+	new	class java/lang/IllegalArgumentException
+	dup
+	ldc	String n must be positive
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+	athrow
+l1	lconst_0
+	lstore_3
+l6	lload_1
+	ldc2_w	long 2147483647l
+	lcmp
+	iflt	l2 // lload_3
+	aload_0
+	iconst_2
+	invokevirtual	Method next:(I)I
+	istore	5
+	lload_1
+	iconst_1
+	lushr
+	lstore	6
+	iload	5
+	iconst_2
+	iand
+	ifne	l3 // lload_1
+	lload	6
+	goto	l4 // lstore
+l3	lload_1
+	lload	6
+	lsub
+l4	lstore	8
+	iload	5
+	iconst_1
+	iand
+	ifne	l5 // lload
+	lload_3
+	lload_1
+	lload	8
+	lsub
+	ladd
+	lstore_3
+l5	lload	8
+	lstore_1
+	goto	l6 // lload_1
+l2	lload_3
+	aload_0
+	lload_1
+	l2i
+	invokevirtual	Method nextInt:(I)I
+	i2l
+	ladd
+	lreturn
+  Labels:
+   	l1 = 16 // lconst_0
+   	l6 = 18 // lload_1
+   	l3 = 50 // lload_1
+   	l4 = 54 // lstore
+   	l5 = 70 // lload
+   	l2 = 76 // lload_3
+
+public long nextLong(long, long);
+  Signature: (JJ)J
+  Code:
+   Stack=5, Locals=5, Args_size=3
+	lload_1
+	lload_3
+	lcmp
+	iflt	l1 // aload_0
+	new	class java/lang/IllegalArgumentException
+	dup
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
+	athrow
+l1	aload_0
+	lload_3
+	lload_1
+	lsub
+	invokevirtual	Method nextLong:(J)J
+	lload_1
+	ladd
+	lreturn
+  Labels:
+   	l1 = 14 // aload_0
+
+public double nextDouble(double);
+  Signature: (D)D
+  Code:
+   Stack=4, Locals=3, Args_size=2
+	dload_1
+	dconst_0
+	dcmpg
+	ifgt	l1 // aload_0
+	new	class java/lang/IllegalArgumentException
+	dup
+	ldc	String n must be positive
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+	athrow
+l1	aload_0
+	invokevirtual	Method nextDouble:()D
+	dload_1
+	dmul
+	dreturn
+  Labels:
+   	l1 = 16 // aload_0
+
+public double nextDouble(double, double);
+  Signature: (DD)D
+  Code:
+   Stack=6, Locals=5, Args_size=3
+	dload_1
+	dload_3
+	dcmpl
+	iflt	l1 // aload_0
+	new	class java/lang/IllegalArgumentException
+	dup
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
+	athrow
+l1	aload_0
+	invokevirtual	Method nextDouble:()D
+	dload_3
+	dload_1
+	dsub
+	dmul
+	dload_1
+	dadd
+	dreturn
+  Labels:
+   	l1 = 14 // aload_0
+
+static {};
+  Signature: ()V
+  Code:
+   Stack=2, Locals=0, Args_size=0
+	new	class scala/concurrent/forkjoin/ThreadLocalRandom$1
+	dup
+	invokespecial	Method scala/concurrent/forkjoin/ThreadLocalRandom$1."<init>":()V
+	putstatic	Field localRandom:Ljava/lang/ThreadLocal;
+	return
+  Labels:
+
+}
+

@@ -1,0 +1,538 @@
+Compiled from "SingleThreadedScheduler.scala"
+public class scala.actors.scheduler.SingleThreadedScheduler extends java.lang.Object implements scala.actors.IScheduler,scala.ScalaObject
+  SourceFile: "SingleThreadedScheduler.scala"
+  ScalaSig: length = 0x363
+   05 00 7E 06 08 01 02 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF80 00 09 02 17 53
+   69 6E 67 6C 65 54 68 72 65 61 64 65 64 53 63 68
+   65 64 75 6C 65 72 0A 02 03 04 01 09 73 63 68 65
+   64 75 6C 65 72 0A 02 05 06 01 06 61 63 74 6F 72
+   73 0A 01 07 01 05 73 63 61 6C 61 03 00 13 04 00
+   0A 12 16 10 02 0B 10 0D 01 0C 0A 02 0D 0E 01 04
+   6C 61 6E 67 0A 01 0F 01 04 6A 61 76 61 09 02 11
+   0C 02 06 4F 62 6A 65 63 74 10 02 13 14 0D 01 04
+   09 02 15 04 02 0A 49 53 63 68 65 64 75 6C 65 72
+   10 02 17 18 0D 01 06 09 02 19 06 02 0B 53 63 61
+   6C 61 4F 62 6A 65 63 74 08 05 1B 00 FFFFFF84 00 1C 01
+   06 3C 69 6E 69 74 3E 14 01 1D 10 02 1E 00 0D 01
+   02 08 07 20 00 FFFFFFC2 FFFFFF80 FFFFFF84 04 21 01 05 74 61 73 6B
+   73 15 01 22 10 03 23 28 2A 0D 01 24 0A 02 25 26
+   01 07 6D 75 74 61 62 6C 65 0A 02 27 06 01 0A 63
+   6F 6C 6C 65 63 74 69 6F 6E 09 02 29 24 02 05 51
+   75 65 75 65 10 02 0B 2B 09 02 2C 0C 02 08 52 75
+   6E 6E 61 62 6C 65 08 06 2E 00 FFFFFFA0 FFFFFF80 04 22 01 06
+   74 61 73 6B 73 20 08 07 30 00 FFFFFFC2 FFFFFF80 FFFFFF84 08 31 01
+   0A 6D 61 78 4E 65 73 74 69 6E 67 15 01 32 10 02
+   17 33 09 02 34 06 02 03 49 6E 74 08 06 36 00 FFFFFFA0
+   FFFFFF80 04 32 01 0B 6D 61 78 4E 65 73 74 69 6E 67 20
+   08 07 38 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 31 01 07 63 75 72 4E 65
+   73 74 08 07 3A 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 3B 01 0B 63 75 72
+   4E 65 73 74 5F 24 65 71 14 02 3C 3F 10 02 17 3D
+   09 02 3E 06 02 04 55 6E 69 74 08 07 40 39 FFFFFF81 FFFFFF80
+   FFFFFFC0 00 32 01 03 78 24 31 08 06 42 00 FFFFFFA0 FFFFFFA0 04 32
+   01 08 63 75 72 4E 65 73 74 20 08 07 44 00 FFFFFFC0 FFFFFF80
+   FFFFFF84 04 45 01 0A 69 73 53 68 75 74 64 6F 77 6E 15
+   01 46 10 02 17 47 09 02 48 06 02 07 42 6F 6F 6C
+   65 61 6E 08 07 4A 00 FFFFFFC0 FFFFFF80 FFFFFF84 04 4B 01 0E 69 73
+   53 68 75 74 64 6F 77 6E 5F 24 65 71 14 02 3C 4C
+   08 07 40 49 FFFFFF81 FFFFFF80 FFFFFFC0 00 46 08 06 4E 00 FFFFFFA0 FFFFFFA0 04
+   46 01 0B 69 73 53 68 75 74 64 6F 77 6E 20 08 05
+   50 00 FFFFFF84 00 51 01 07 65 78 65 63 75 74 65 14 02
+   3C 52 08 05 53 4F FFFFFFC0 00 2A 01 04 74 61 73 6B 08
+   05 50 00 FFFFFF84 00 55 14 02 3C 56 08 06 57 54 FFFFFF84 FFFFFFC0
+   00 58 01 03 66 75 6E 10 03 17 59 3C 09 02 5A 06
+   02 08 3C 62 79 6E 61 6D 65 3E 08 05 5C 00 FFFFFF84 00
+   5D 01 08 73 68 75 74 64 6F 77 6E 14 01 3C 08 05
+   5F 00 FFFFFF84 00 60 01 08 6E 65 77 41 63 74 6F 72 14
+   02 3C 61 08 05 62 5E FFFFFFC0 00 63 01 05 61 63 74 6F
+   72 10 02 13 64 09 02 65 04 02 07 52 65 61 63 74
+   6F 72 08 05 67 00 FFFFFF84 00 68 01 0A 74 65 72 6D 69
+   6E 61 74 65 64 14 02 3C 69 08 05 62 66 FFFFFFC0 00 63
+   08 05 6B 00 FFFFFF84 00 6C 01 0B 6F 6E 54 65 72 6D 69
+   6E 61 74 65 14 02 6D 70 14 02 3C 6E 08 06 6F 6A
+   FFFFFF84 FFFFFFC0 00 58 01 01 66 08 05 62 6A FFFFFFC0 00 63 08 05
+   72 00 FFFFFF84 00 45 01 08 69 73 41 63 74 69 76 65 08
+   05 74 00 FFFFFF84 00 75 01 0C 6D 61 6E 61 67 65 64 42
+   6C 6F 63 6B 14 02 3C 76 08 05 77 73 FFFFFFC0 00 78 01
+   07 62 6C 6F 63 6B 65 72 10 02 79 7C 0D 01 7A 0A
+   02 7B 06 01 0A 63 6F 6E 63 75 72 72 65 6E 74 09
+   02 7D 7A 02 0E 4D 61 6E 61 67 65 64 42 6C 6F 63
+   6B 65 72 
+  InnerClass: 
+   public final $anon$1=class scala/actors/scheduler/SingleThreadedScheduler$$anon$1 of class scala/actors/scheduler/SingleThreadedScheduler
+  minor version: 0
+  major version: 49
+  Constant pool:
+Asciz	SourceFile;
+Asciz	SingleThreadedScheduler.scala;
+Asciz	isShutdown;
+Asciz	Z;
+Asciz	curNest;
+Asciz	I;
+Asciz	maxNesting;
+Asciz	tasks;
+Asciz	Lscala/collection/mutable/Queue;;
+Asciz	Lscala/collection/mutable/Queue<Ljava/lang/Runnable;>;;
+Asciz	Signature;
+Asciz	<init>;
+Asciz	()V;
+Asciz	Code;
+Asciz	LineNumberTable;
+Asciz	java/lang/Object;
+class	java/lang/Object
+NameAndType	"<init>":()V
+Method	java/lang/Object."<init>":()V
+Asciz	scala/actors/IScheduler$class;
+class	scala/actors/IScheduler$class
+Asciz	$init$;
+Asciz	(Lscala/actors/IScheduler;)V;
+NameAndType	$init$:(Lscala/actors/IScheduler;)V
+Method	scala/actors/IScheduler$class.$init$:(Lscala/actors/IScheduler;)V
+Asciz	scala/collection/mutable/Queue;
+class	scala/collection/mutable/Queue
+Method	scala/collection/mutable/Queue."<init>":()V
+Asciz	scala/actors/scheduler/SingleThreadedScheduler;
+class	scala/actors/scheduler/SingleThreadedScheduler
+NameAndType	tasks:Lscala/collection/mutable/Queue;
+Field	scala/actors/scheduler/SingleThreadedScheduler.tasks:Lscala/collection/mutable/Queue;
+int	10;
+NameAndType	maxNesting:I
+Field	scala/actors/scheduler/SingleThreadedScheduler.maxNesting:I
+NameAndType	curNest:I
+Field	scala/actors/scheduler/SingleThreadedScheduler.curNest:I
+NameAndType	isShutdown:Z
+Field	scala/actors/scheduler/SingleThreadedScheduler.isShutdown:Z
+Asciz	managedBlock;
+Asciz	(Lscala/concurrent/ManagedBlocker;)V;
+Asciz	scala/concurrent/ManagedBlocker;
+class	scala/concurrent/ManagedBlocker
+Asciz	block;
+Asciz	()Z;
+NameAndType	block:()Z
+InterfaceMethod	scala/concurrent/ManagedBlocker.block:()Z
+Asciz	this;
+Asciz	Lscala/actors/scheduler/SingleThreadedScheduler;;
+Asciz	blocker;
+Asciz	Lscala/concurrent/ManagedBlocker;;
+Asciz	LocalVariableTable;
+Asciz	isActive;
+NameAndType	isShutdown:()Z
+Method	scala/actors/scheduler/SingleThreadedScheduler.isShutdown:()Z
+Asciz	onTerminate;
+Asciz	(Lscala/actors/Reactor;Lscala/Function0;)V;
+Asciz	actor;
+Asciz	Lscala/actors/Reactor;;
+Asciz	f;
+Asciz	Lscala/Function0;;
+Asciz	(Lscala/actors/Reactor;Lscala/Function0<Ljava/lang/Object;>;)V;
+Asciz	terminated;
+Asciz	(Lscala/actors/Reactor;)V;
+Asciz	newActor;
+Asciz	shutdown;
+Asciz	isShutdown_$eq;
+Asciz	(Z)V;
+NameAndType	isShutdown_$eq:(Z)V
+Method	scala/actors/scheduler/SingleThreadedScheduler.isShutdown_$eq:(Z)V
+Asciz	()Lscala/collection/mutable/Queue;;
+NameAndType	tasks:()Lscala/collection/mutable/Queue;
+Method	scala/actors/scheduler/SingleThreadedScheduler.tasks:()Lscala/collection/mutable/Queue;
+Asciz	isEmpty;
+NameAndType	isEmpty:()Z
+Method	scala/collection/mutable/Queue.isEmpty:()Z
+Asciz	dequeue;
+Asciz	()Ljava/lang/Object;;
+NameAndType	dequeue:()Ljava/lang/Object;
+Method	scala/collection/mutable/Queue.dequeue:()Ljava/lang/Object;
+Asciz	java/lang/Runnable;
+class	java/lang/Runnable
+Asciz	run;
+NameAndType	run:()V
+InterfaceMethod	java/lang/Runnable.run:()V
+Asciz	task;
+Asciz	Ljava/lang/Runnable;;
+Asciz	execute;
+Asciz	(Lscala/Function0;)V;
+Asciz	scala/actors/scheduler/SingleThreadedScheduler$$anon$1;
+class	scala/actors/scheduler/SingleThreadedScheduler$$anon$1
+Asciz	(Lscala/actors/scheduler/SingleThreadedScheduler;Lscala/Function0;)V;
+NameAndType	"<init>":(Lscala/actors/scheduler/SingleThreadedScheduler;Lscala/Function0;)V
+Method	scala/actors/scheduler/SingleThreadedScheduler$$anon$1."<init>":(Lscala/actors/scheduler/SingleThreadedScheduler;Lscala/Function0;)V
+Asciz	(Ljava/lang/Runnable;)V;
+NameAndType	execute:(Ljava/lang/Runnable;)V
+Method	scala/actors/scheduler/SingleThreadedScheduler.execute:(Ljava/lang/Runnable;)V
+Asciz	fun$1;
+Asciz	(Lscala/Function0<Ljava/lang/Object;>;)V;
+Asciz	()I;
+NameAndType	curNest:()I
+Method	scala/actors/scheduler/SingleThreadedScheduler.curNest:()I
+NameAndType	maxNesting:()I
+Method	scala/actors/scheduler/SingleThreadedScheduler.maxNesting:()I
+Asciz	curNest_$eq;
+Asciz	(I)V;
+NameAndType	curNest_$eq:(I)V
+Method	scala/actors/scheduler/SingleThreadedScheduler.curNest_$eq:(I)V
+Asciz	$plus$eq;
+Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/MutableList;;
+NameAndType	$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/MutableList;
+Method	scala/collection/mutable/Queue.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/MutableList;
+Asciz	()Lscala/collection/mutable/Queue<Ljava/lang/Runnable;>;;
+Asciz	printActorDump;
+NameAndType	printActorDump:(Lscala/actors/IScheduler;)V
+Method	scala/actors/IScheduler$class.printActorDump:(Lscala/actors/IScheduler;)V
+Asciz	onLockup;
+Asciz	(ILscala/Function0;)V;
+Asciz	(Lscala/actors/IScheduler;ILscala/Function0;)V;
+NameAndType	onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
+Method	scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
+Asciz	millis;
+Asciz	handler;
+Asciz	(Lscala/actors/IScheduler;Lscala/Function0;)V;
+NameAndType	onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
+Method	scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
+Asciz	tick;
+Asciz	(Lscala/actors/Actor;)V;
+Asciz	(Lscala/actors/IScheduler;Lscala/actors/Actor;)V;
+NameAndType	tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
+Method	scala/actors/IScheduler$class.tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
+Asciz	a;
+Asciz	Lscala/actors/Actor;;
+Asciz	executeFromActor;
+Asciz	(Lscala/actors/IScheduler;Ljava/lang/Runnable;)V;
+NameAndType	executeFromActor:(Lscala/actors/IScheduler;Ljava/lang/Runnable;)V
+Method	scala/actors/IScheduler$class.executeFromActor:(Lscala/actors/IScheduler;Ljava/lang/Runnable;)V
+Asciz	ScalaSig;
+Asciz	InnerClasses;
+Asciz	$anon$1;
+Asciz	scala/actors/IScheduler;
+class	scala/actors/IScheduler
+Asciz	scala/ScalaObject;
+class	scala/ScalaObject
+
+{
+private boolean isShutdown;
+  Signature: Z
+
+private int curNest;
+  Signature: I
+
+private final int maxNesting;
+  Signature: I
+
+private final scala.collection.mutable.Queue tasks;
+  Signature: Lscala/collection/mutable/Queue;
+  Signature: length = 0x2
+   00 0A 
+
+public scala.actors.scheduler.SingleThreadedScheduler();
+  Signature: ()V
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	invokestatic	Method scala/actors/IScheduler$class.$init$:(Lscala/actors/IScheduler;)V
+	aload_0
+	new	class scala/collection/mutable/Queue
+	dup
+	invokespecial	Method scala/collection/mutable/Queue."<init>":()V
+	putfield	Field tasks:Lscala/collection/mutable/Queue;
+	aload_0
+	ldc	int 10
+	putfield	Field maxNesting:I
+	aload_0
+	iconst_0
+	putfield	Field curNest:I
+	aload_0
+	iconst_0
+	putfield	Field isShutdown:Z
+	return
+  Labels:
+
+public void managedBlock(scala.concurrent.ManagedBlocker);
+  Signature: (Lscala/concurrent/ManagedBlocker;)V
+  Code:
+   Stack=1, Locals=2, Args_size=2
+	aload_1
+	invokeinterface	InterfaceMethod scala/concurrent/ManagedBlocker.block:()Z
+	pop
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/actors/scheduler/SingleThreadedScheduler;
+   0      8      1    blocker       Lscala/concurrent/ManagedBlocker;
+
+
+public boolean isActive();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method isShutdown:()Z
+	ifeq	l1 // iconst_1
+	iconst_0
+	goto	l2 // ireturn
+l1	iconst_1
+l2	ireturn
+  Labels:
+   	l1 = 11 // iconst_1
+   	l2 = 12 // ireturn
+
+public void onTerminate(scala.actors.Reactor, scala.Function0);
+  Signature: (Lscala/actors/Reactor;Lscala/Function0;)V
+  Code:
+   Stack=0, Locals=3, Args_size=3
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    this       Lscala/actors/scheduler/SingleThreadedScheduler;
+   0      1      1    actor       Lscala/actors/Reactor;
+   0      1      2    f       Lscala/Function0;
+
+  Signature: length = 0x2
+   00 3E 
+
+public void terminated(scala.actors.Reactor);
+  Signature: (Lscala/actors/Reactor;)V
+  Code:
+   Stack=0, Locals=2, Args_size=2
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    this       Lscala/actors/scheduler/SingleThreadedScheduler;
+   0      1      1    actor       Lscala/actors/Reactor;
+
+
+public void newActor(scala.actors.Reactor);
+  Signature: (Lscala/actors/Reactor;)V
+  Code:
+   Stack=0, Locals=2, Args_size=2
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    this       Lscala/actors/scheduler/SingleThreadedScheduler;
+   0      1      1    actor       Lscala/actors/Reactor;
+
+
+public void shutdown();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=2, Args_size=1
+	aload_0
+	iconst_0
+	invokespecial	Method isShutdown_$eq:(Z)V
+l2	aload_0
+	invokespecial	Method tasks:()Lscala/collection/mutable/Queue;
+	invokevirtual	Method scala/collection/mutable/Queue.isEmpty:()Z
+	ifeq	l1 // aload_0
+	aload_0
+	iconst_1
+	invokespecial	Method isShutdown_$eq:(Z)V
+	return
+l1	aload_0
+	invokespecial	Method tasks:()Lscala/collection/mutable/Queue;
+	invokevirtual	Method scala/collection/mutable/Queue.dequeue:()Ljava/lang/Object;
+	checkcast	class java/lang/Runnable
+	astore_1
+	aload_1
+	invokeinterface	InterfaceMethod java/lang/Runnable.run:()V
+	goto	l2 // aload_0
+  Labels:
+   	l2 = 5 // aload_0
+   	l1 = 21 // aload_0
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      41      0    this       Lscala/actors/scheduler/SingleThreadedScheduler;
+   32      6      1    task       Ljava/lang/Runnable;
+
+
+public void execute(scala.Function0);
+  Signature: (Lscala/Function0;)V
+  Code:
+   Stack=5, Locals=2, Args_size=2
+	aload_0
+	new	class scala/actors/scheduler/SingleThreadedScheduler$$anon$1
+	dup
+	aload_0
+	aload_1
+	invokespecial	Method scala/actors/scheduler/SingleThreadedScheduler$$anon$1."<init>":(Lscala/actors/scheduler/SingleThreadedScheduler;Lscala/Function0;)V
+	invokevirtual	Method execute:(Ljava/lang/Runnable;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    this       Lscala/actors/scheduler/SingleThreadedScheduler;
+   0      14      1    fun$1       Lscala/Function0;
+
+  Signature: length = 0x2
+   00 63 
+
+public void execute(java.lang.Runnable);
+  Signature: (Ljava/lang/Runnable;)V
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	aload_0
+	invokespecial	Method curNest:()I
+	aload_0
+	invokevirtual	Method maxNesting:()I
+	if_icmpge	l1 // aload_0
+	aload_0
+	aload_0
+	invokespecial	Method curNest:()I
+	iconst_1
+	iadd
+	invokespecial	Method curNest_$eq:(I)V
+	aload_1
+	invokeinterface	InterfaceMethod java/lang/Runnable.run:()V
+	goto	l2 // return
+l1	aload_0
+	iconst_0
+	invokespecial	Method curNest_$eq:(I)V
+	aload_0
+	invokespecial	Method tasks:()Lscala/collection/mutable/Queue;
+	aload_1
+	invokevirtual	Method scala/collection/mutable/Queue.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/MutableList;
+	pop
+l2	return
+  Labels:
+   	l1 = 30 // aload_0
+   	l2 = 44 // return
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      45      0    this       Lscala/actors/scheduler/SingleThreadedScheduler;
+   0      45      1    task       Ljava/lang/Runnable;
+
+
+private void isShutdown_$eq(boolean);
+  Signature: (Z)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field isShutdown:Z
+	return
+  Labels:
+
+private boolean isShutdown();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field isShutdown:Z
+	ireturn
+  Labels:
+
+private void curNest_$eq(int);
+  Signature: (I)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field curNest:I
+	return
+  Labels:
+
+private int curNest();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field curNest:I
+	ireturn
+  Labels:
+
+public int maxNesting();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field maxNesting:I
+	ireturn
+  Labels:
+
+private scala.collection.mutable.Queue tasks();
+  Signature: ()Lscala/collection/mutable/Queue;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field tasks:Lscala/collection/mutable/Queue;
+	areturn
+  Labels:
+  Signature: length = 0x2
+   00 71 
+
+public void printActorDump();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/IScheduler$class.printActorDump:(Lscala/actors/IScheduler;)V
+	return
+  Labels:
+
+public void onLockup(int, scala.Function0);
+  Signature: (ILscala/Function0;)V
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	iload_1
+	aload_2
+	invokestatic	Method scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/scheduler/SingleThreadedScheduler;
+   0      7      1    millis       I
+   0      7      2    handler       Lscala/Function0;
+
+
+public void onLockup(scala.Function0);
+  Signature: (Lscala/Function0;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/SingleThreadedScheduler;
+   0      6      1    handler       Lscala/Function0;
+
+
+public void tick(scala.actors.Actor);
+  Signature: (Lscala/actors/Actor;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/IScheduler$class.tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/SingleThreadedScheduler;
+   0      6      1    a       Lscala/actors/Actor;
+
+
+public void executeFromActor(java.lang.Runnable);
+  Signature: (Ljava/lang/Runnable;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/IScheduler$class.executeFromActor:(Lscala/actors/IScheduler;Ljava/lang/Runnable;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/SingleThreadedScheduler;
+   0      6      1    task       Ljava/lang/Runnable;
+
+
+}
+

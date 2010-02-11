@@ -1,0 +1,725 @@
+abstract class scala.actors.threadpool.locks.ReentrantReadWriteLock$Sync extends java.lang.Object implements java.io.Serializable
+  InnerClass: 
+   abstract Sync=class scala/actors/threadpool/locks/ReentrantReadWriteLock$Sync of class scala/actors/threadpool/locks/ReentrantReadWriteLock
+  minor version: 0
+  major version: 49
+  Constant pool:
+Method	java/lang/Object."<init>":()V
+Field	scala/actors/threadpool/locks/ReentrantReadWriteLock$Sync.activeReaders_:I
+Field	scala/actors/threadpool/locks/ReentrantReadWriteLock$Sync.activeWriter_:Ljava/lang/Thread;
+Field	scala/actors/threadpool/locks/ReentrantReadWriteLock$Sync.waitingReaders_:I
+Field	scala/actors/threadpool/locks/ReentrantReadWriteLock$Sync.waitingWriters_:I
+Field	scala/actors/threadpool/locks/ReentrantReadWriteLock$Sync.writeHolds_:I
+class	java/util/HashMap
+Method	java/util/HashMap."<init>":()V
+Field	scala/actors/threadpool/locks/ReentrantReadWriteLock$Sync.readers_:Ljava/util/HashMap;
+Method	scala/actors/threadpool/locks/ReentrantReadWriteLock$Sync.startRead:()Z
+Method	scala/actors/threadpool/locks/ReentrantReadWriteLock$Sync.startWrite:()Z
+Method	java/lang/Thread.currentThread:()Ljava/lang/Thread;
+Method	java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+class	java/lang/Integer
+Method	java/lang/Integer.intValue:()I
+Method	java/lang/Integer."<init>":(I)V
+Method	java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+Method	scala/actors/threadpool/locks/ReentrantReadWriteLock$Sync.allowReader:()Z
+Field	scala/actors/threadpool/locks/ReentrantReadWriteLock$Sync.IONE:Ljava/lang/Integer;
+Method	java/util/HashMap.size:()I
+class	java/lang/IllegalMonitorStateException
+Method	java/lang/IllegalMonitorStateException."<init>":()V
+Method	java/util/HashMap.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+Method	scala/actors/threadpool/locks/ReentrantReadWriteLock$Sync.isWriteLockedByCurrentThread:()Z
+Method	java/io/ObjectInputStream.defaultReadObject:()V
+class	scala/actors/threadpool/locks/ReentrantReadWriteLock$Sync
+class	java/lang/Object
+class	java/io/Serializable
+Asciz	NONE;
+Asciz	I;
+Asciz	ConstantValue;
+int	0;
+Asciz	READER;
+int	1;
+Asciz	WRITER;
+int	2;
+Asciz	activeReaders_;
+Asciz	activeWriter_;
+Asciz	Ljava/lang/Thread;;
+Asciz	waitingReaders_;
+Asciz	waitingWriters_;
+Asciz	writeHolds_;
+Asciz	readers_;
+Asciz	Ljava/util/HashMap;;
+Asciz	IONE;
+Asciz	Ljava/lang/Integer;;
+Asciz	<init>;
+Asciz	()V;
+Asciz	Code;
+Asciz	startReadFromNewReader;
+Asciz	()Z;
+Asciz	startWriteFromNewWriter;
+Asciz	startReadFromWaitingReader;
+Asciz	startWriteFromWaitingWriter;
+Asciz	cancelledWaitingReader;
+Asciz	cancelledWaitingWriter;
+Asciz	allowReader;
+Asciz	startRead;
+Asciz	startWrite;
+Asciz	endRead;
+Asciz	()I;
+Asciz	endWrite;
+Asciz	getOwner;
+Asciz	()Ljava/lang/Thread;;
+Asciz	getReadLockCount;
+Asciz	isWriteLocked;
+Asciz	isWriteLockedByCurrentThread;
+Asciz	getWriteHoldCount;
+Asciz	getReadHoldCount;
+Asciz	hasQueuedThreads;
+Asciz	getQueueLength;
+Asciz	readObject;
+Asciz	(Ljava/io/ObjectInputStream;)V;
+Asciz	Exceptions;
+class	java/io/IOException
+class	java/lang/ClassNotFoundException
+Asciz	<clinit>;
+NameAndType	"<init>":()V
+NameAndType	activeReaders_:I
+NameAndType	activeWriter_:Ljava/lang/Thread;
+NameAndType	waitingReaders_:I
+NameAndType	waitingWriters_:I
+NameAndType	writeHolds_:I
+Asciz	java/util/HashMap;
+NameAndType	readers_:Ljava/util/HashMap;
+NameAndType	startRead:()Z
+NameAndType	startWrite:()Z
+class	java/lang/Thread
+NameAndType	currentThread:()Ljava/lang/Thread;
+NameAndType	get:(Ljava/lang/Object;)Ljava/lang/Object;
+Asciz	java/lang/Integer;
+NameAndType	intValue:()I
+NameAndType	"<init>":(I)V
+NameAndType	put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+NameAndType	allowReader:()Z
+NameAndType	IONE:Ljava/lang/Integer;
+NameAndType	size:()I
+Asciz	java/lang/IllegalMonitorStateException;
+NameAndType	remove:(Ljava/lang/Object;)Ljava/lang/Object;
+NameAndType	isWriteLockedByCurrentThread:()Z
+class	java/io/ObjectInputStream
+NameAndType	defaultReadObject:()V
+class	scala/actors/threadpool/locks/ReentrantReadWriteLock
+Asciz	scala/actors/threadpool/locks/ReentrantReadWriteLock$Sync;
+Asciz	Sync;
+Asciz	InnerClasses;
+Asciz	java/lang/Object;
+Asciz	java/io/Serializable;
+Asciz	java/io/IOException;
+Asciz	java/lang/ClassNotFoundException;
+Asciz	java/lang/Thread;
+Asciz	currentThread;
+Asciz	get;
+Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
+Asciz	intValue;
+Asciz	(I)V;
+Asciz	put;
+Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;;
+Asciz	size;
+Asciz	remove;
+Asciz	java/io/ObjectInputStream;
+Asciz	defaultReadObject;
+Asciz	scala/actors/threadpool/locks/ReentrantReadWriteLock;
+
+{
+private static final int NONE;
+  Signature: I
+  Constant value: int 0
+private static final int READER;
+  Signature: I
+  Constant value: int 1
+private static final int WRITER;
+  Signature: I
+  Constant value: int 2
+transient int activeReaders_;
+  Signature: I
+
+transient java.lang.Thread activeWriter_;
+  Signature: Ljava/lang/Thread;
+
+transient int waitingReaders_;
+  Signature: I
+
+transient int waitingWriters_;
+  Signature: I
+
+transient int writeHolds_;
+  Signature: I
+
+transient java.util.HashMap readers_;
+  Signature: Ljava/util/HashMap;
+
+static final java.lang.Integer IONE;
+  Signature: Ljava/lang/Integer;
+
+scala.actors.threadpool.locks.ReentrantReadWriteLock$Sync();
+  Signature: ()V
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	iconst_0
+	putfield	Field activeReaders_:I
+	aload_0
+	aconst_null
+	putfield	Field activeWriter_:Ljava/lang/Thread;
+	aload_0
+	iconst_0
+	putfield	Field waitingReaders_:I
+	aload_0
+	iconst_0
+	putfield	Field waitingWriters_:I
+	aload_0
+	iconst_0
+	putfield	Field writeHolds_:I
+	aload_0
+	new	class java/util/HashMap
+	dup
+	invokespecial	Method java/util/HashMap."<init>":()V
+	putfield	Field readers_:Ljava/util/HashMap;
+	return
+  Labels:
+
+synchronized boolean startReadFromNewReader();
+  Signature: ()Z
+  Code:
+   Stack=3, Locals=2, Args_size=1
+	aload_0
+	invokevirtual	Method startRead:()Z
+	istore_1
+	iload_1
+	ifne	l1 // iload_1
+	aload_0
+	dup
+	getfield	Field waitingReaders_:I
+	iconst_1
+	iadd
+	putfield	Field waitingReaders_:I
+l1	iload_1
+	ireturn
+  Labels:
+   	l1 = 19 // iload_1
+
+synchronized boolean startWriteFromNewWriter();
+  Signature: ()Z
+  Code:
+   Stack=3, Locals=2, Args_size=1
+	aload_0
+	invokevirtual	Method startWrite:()Z
+	istore_1
+	iload_1
+	ifne	l1 // iload_1
+	aload_0
+	dup
+	getfield	Field waitingWriters_:I
+	iconst_1
+	iadd
+	putfield	Field waitingWriters_:I
+l1	iload_1
+	ireturn
+  Labels:
+   	l1 = 19 // iload_1
+
+synchronized boolean startReadFromWaitingReader();
+  Signature: ()Z
+  Code:
+   Stack=3, Locals=2, Args_size=1
+	aload_0
+	invokevirtual	Method startRead:()Z
+	istore_1
+	iload_1
+	ifeq	l1 // iload_1
+	aload_0
+	dup
+	getfield	Field waitingReaders_:I
+	iconst_1
+	isub
+	putfield	Field waitingReaders_:I
+l1	iload_1
+	ireturn
+  Labels:
+   	l1 = 19 // iload_1
+
+synchronized boolean startWriteFromWaitingWriter();
+  Signature: ()Z
+  Code:
+   Stack=3, Locals=2, Args_size=1
+	aload_0
+	invokevirtual	Method startWrite:()Z
+	istore_1
+	iload_1
+	ifeq	l1 // iload_1
+	aload_0
+	dup
+	getfield	Field waitingWriters_:I
+	iconst_1
+	isub
+	putfield	Field waitingWriters_:I
+l1	iload_1
+	ireturn
+  Labels:
+   	l1 = 19 // iload_1
+
+synchronized void cancelledWaitingReader();
+  Signature: ()V
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	aload_0
+	dup
+	getfield	Field waitingReaders_:I
+	iconst_1
+	isub
+	putfield	Field waitingReaders_:I
+	return
+  Labels:
+
+synchronized void cancelledWaitingWriter();
+  Signature: ()V
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	aload_0
+	dup
+	getfield	Field waitingWriters_:I
+	iconst_1
+	isub
+	putfield	Field waitingWriters_:I
+	return
+  Labels:
+
+boolean allowReader();
+  Signature: ()Z
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	getfield	Field activeWriter_:Ljava/lang/Thread;
+	ifnonnull	l1 // aload_0
+	aload_0
+	getfield	Field waitingWriters_:I
+	ifeq	l2 // iconst_1
+l1	aload_0
+	getfield	Field activeWriter_:Ljava/lang/Thread;
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	if_acmpne	l3 // iconst_0
+l2	iconst_1
+	goto	l4 // ireturn
+l3	iconst_0
+l4	ireturn
+  Labels:
+   	l1 = 14 // aload_0
+   	l2 = 24 // iconst_1
+   	l3 = 28 // iconst_0
+   	l4 = 29 // ireturn
+
+synchronized boolean startRead();
+  Signature: ()Z
+  Code:
+   Stack=6, Locals=3, Args_size=1
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	astore_1
+	aload_0
+	getfield	Field readers_:Ljava/util/HashMap;
+	aload_1
+	invokevirtual	Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+	astore_2
+	aload_2
+	ifnull	l1 // aload_0
+	aload_0
+	getfield	Field readers_:Ljava/util/HashMap;
+	aload_1
+	new	class java/lang/Integer
+	dup
+	aload_2
+	checkcast	class java/lang/Integer
+	checkcast	class java/lang/Integer
+	invokevirtual	Method java/lang/Integer.intValue:()I
+	iconst_1
+	iadd
+	invokespecial	Method java/lang/Integer."<init>":(I)V
+	invokevirtual	Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	pop
+	aload_0
+	dup
+	getfield	Field activeReaders_:I
+	iconst_1
+	iadd
+	putfield	Field activeReaders_:I
+	iconst_1
+	ireturn
+l1	aload_0
+	invokevirtual	Method allowReader:()Z
+	ifeq	l2 // iconst_0
+	aload_0
+	getfield	Field readers_:Ljava/util/HashMap;
+	aload_1
+	getstatic	Field IONE:Ljava/lang/Integer;
+	invokevirtual	Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	pop
+	aload_0
+	dup
+	getfield	Field activeReaders_:I
+	iconst_1
+	iadd
+	putfield	Field activeReaders_:I
+	iconst_1
+	ireturn
+l2	iconst_0
+	ireturn
+  Labels:
+   	l1 = 57 // aload_0
+   	l2 = 88 // iconst_0
+
+synchronized boolean startWrite();
+  Signature: ()Z
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	aload_0
+	getfield	Field activeWriter_:Ljava/lang/Thread;
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	if_acmpne	l1 // aload_0
+	aload_0
+	dup
+	getfield	Field writeHolds_:I
+	iconst_1
+	iadd
+	putfield	Field writeHolds_:I
+	iconst_1
+	ireturn
+l1	aload_0
+	getfield	Field writeHolds_:I
+	ifne	l2 // iconst_0
+	aload_0
+	getfield	Field activeReaders_:I
+	ifeq	l3 // aload_0
+	aload_0
+	getfield	Field readers_:Ljava/util/HashMap;
+	invokevirtual	Method java/util/HashMap.size:()I
+	iconst_1
+	if_icmpne	l4 // iconst_0
+	aload_0
+	getfield	Field readers_:Ljava/util/HashMap;
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	invokevirtual	Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+	ifnull	l4 // iconst_0
+l3	aload_0
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	putfield	Field activeWriter_:Ljava/lang/Thread;
+	aload_0
+	iconst_1
+	putfield	Field writeHolds_:I
+	iconst_1
+	ireturn
+l4	iconst_0
+	ireturn
+l2	iconst_0
+	ireturn
+  Labels:
+   	l1 = 22 // aload_0
+   	l3 = 60 // aload_0
+   	l4 = 74 // iconst_0
+   	l2 = 76 // iconst_0
+
+synchronized int endRead();
+  Signature: ()I
+  Code:
+   Stack=3, Locals=5, Args_size=1
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	astore_1
+	aload_0
+	getfield	Field readers_:Ljava/util/HashMap;
+	aload_1
+	invokevirtual	Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+	astore_2
+	aload_2
+	ifnonnull	l1 // aload_0
+	new	class java/lang/IllegalMonitorStateException
+	dup
+	invokespecial	Method java/lang/IllegalMonitorStateException."<init>":()V
+	athrow
+l1	aload_0
+	dup
+	getfield	Field activeReaders_:I
+	iconst_1
+	isub
+	putfield	Field activeReaders_:I
+	aload_2
+	getstatic	Field IONE:Ljava/lang/Integer;
+	if_acmpeq	l2 // aload_0
+	aload_2
+	checkcast	class java/lang/Integer
+	checkcast	class java/lang/Integer
+	invokevirtual	Method java/lang/Integer.intValue:()I
+	iconst_1
+	isub
+	istore_3
+	iload_3
+	iconst_1
+	if_icmpne	l3 // new
+	getstatic	Field IONE:Ljava/lang/Integer;
+	goto	l4 // astore
+l3	new	class java/lang/Integer
+	dup
+	iload_3
+	invokespecial	Method java/lang/Integer."<init>":(I)V
+l4	astore	4
+	aload_0
+	getfield	Field readers_:Ljava/util/HashMap;
+	aload_1
+	aload	4
+	invokevirtual	Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	pop
+	iconst_0
+	ireturn
+l2	aload_0
+	getfield	Field readers_:Ljava/util/HashMap;
+	aload_1
+	invokevirtual	Method java/util/HashMap.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+	pop
+	aload_0
+	getfield	Field writeHolds_:I
+	ifle	l5 // aload_0
+	iconst_0
+	ireturn
+l5	aload_0
+	getfield	Field activeReaders_:I
+	ifne	l6 // iconst_0
+	aload_0
+	getfield	Field waitingWriters_:I
+	ifle	l6 // iconst_0
+	iconst_2
+	ireturn
+l6	iconst_0
+	ireturn
+  Labels:
+   	l1 = 25 // aload_0
+   	l3 = 66 // new
+   	l4 = 74 // astore
+   	l2 = 89 // aload_0
+   	l5 = 107 // aload_0
+   	l6 = 123 // iconst_0
+
+synchronized int endWrite();
+  Signature: ()I
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	aload_0
+	getfield	Field activeWriter_:Ljava/lang/Thread;
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	if_acmpeq	l1 // aload_0
+	new	class java/lang/IllegalMonitorStateException
+	dup
+	invokespecial	Method java/lang/IllegalMonitorStateException."<init>":()V
+	athrow
+l1	aload_0
+	dup
+	getfield	Field writeHolds_:I
+	iconst_1
+	isub
+	putfield	Field writeHolds_:I
+	aload_0
+	getfield	Field writeHolds_:I
+	ifle	l2 // aload_0
+	iconst_0
+	ireturn
+l2	aload_0
+	aconst_null
+	putfield	Field activeWriter_:Ljava/lang/Thread;
+	aload_0
+	getfield	Field waitingReaders_:I
+	ifle	l3 // aload_0
+	aload_0
+	invokevirtual	Method allowReader:()Z
+	ifeq	l3 // aload_0
+	iconst_1
+	ireturn
+l3	aload_0
+	getfield	Field waitingWriters_:I
+	ifle	l4 // iconst_0
+	iconst_2
+	ireturn
+l4	iconst_0
+	ireturn
+  Labels:
+   	l1 = 18 // aload_0
+   	l2 = 37 // aload_0
+   	l3 = 58 // aload_0
+   	l4 = 67 // iconst_0
+
+synchronized java.lang.Thread getOwner();
+  Signature: ()Ljava/lang/Thread;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field activeWriter_:Ljava/lang/Thread;
+	areturn
+  Labels:
+
+synchronized int getReadLockCount();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field activeReaders_:I
+	ireturn
+  Labels:
+
+synchronized boolean isWriteLocked();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field activeWriter_:Ljava/lang/Thread;
+	ifnull	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 11 // iconst_0
+   	l2 = 12 // ireturn
+
+synchronized boolean isWriteLockedByCurrentThread();
+  Signature: ()Z
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	getfield	Field activeWriter_:Ljava/lang/Thread;
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	if_acmpne	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 14 // iconst_0
+   	l2 = 15 // ireturn
+
+synchronized int getWriteHoldCount();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method isWriteLockedByCurrentThread:()Z
+	ifeq	l1 // iconst_0
+	aload_0
+	getfield	Field writeHolds_:I
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 14 // iconst_0
+   	l2 = 15 // ireturn
+
+synchronized int getReadHoldCount();
+  Signature: ()I
+  Code:
+   Stack=2, Locals=3, Args_size=1
+	aload_0
+	getfield	Field activeReaders_:I
+	ifne	l1 // invokestatic
+	iconst_0
+	ireturn
+l1	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	astore_1
+	aload_0
+	getfield	Field readers_:Ljava/util/HashMap;
+	aload_1
+	invokevirtual	Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+	checkcast	class java/lang/Integer
+	astore_2
+	aload_2
+	ifnonnull	l2 // aload_2
+	iconst_0
+	goto	l3 // ireturn
+l2	aload_2
+	invokevirtual	Method java/lang/Integer.intValue:()I
+l3	ireturn
+  Labels:
+   	l1 = 9 // invokestatic
+   	l2 = 33 // aload_2
+   	l3 = 37 // ireturn
+
+final synchronized boolean hasQueuedThreads();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field waitingWriters_:I
+	ifgt	l1 // iconst_1
+	aload_0
+	getfield	Field waitingReaders_:I
+	ifle	l2 // iconst_0
+l1	iconst_1
+	goto	l3 // ireturn
+l2	iconst_0
+l3	ireturn
+  Labels:
+   	l1 = 14 // iconst_1
+   	l2 = 18 // iconst_0
+   	l3 = 19 // ireturn
+
+final synchronized int getQueueLength();
+  Signature: ()I
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	getfield	Field waitingWriters_:I
+	aload_0
+	getfield	Field waitingReaders_:I
+	iadd
+	ireturn
+  Labels:
+
+private void readObject(java.io.ObjectInputStream)   throws java.io.IOException, java.lang.ClassNotFoundException;
+  Signature: (Ljava/io/ObjectInputStream;)V
+  Code:
+   Stack=3, Locals=4, Args_size=2
+	aload_1
+	invokevirtual	Method java/io/ObjectInputStream.defaultReadObject:()V
+	aload_0
+	dup
+	astore_2
+	monitorenter
+	aload_0
+	new	class java/util/HashMap
+	dup
+	invokespecial	Method java/util/HashMap."<init>":()V
+	putfield	Field readers_:Ljava/util/HashMap;
+	aload_2
+	monitorexit
+	goto	l1 // return
+	astore_3
+	aload_2
+	monitorexit
+	aload_3
+	athrow
+l1	return
+  Labels:
+   	l1 = 29 // return
+  Exception table:
+   from   to  target type
+     8    21    24   any
+    24    27    24   any
+  Exceptions: 
+   throws java.io.IOException, java.lang.ClassNotFoundException
+static {};
+  Signature: ()V
+  Code:
+   Stack=3, Locals=0, Args_size=0
+	new	class java/lang/Integer
+	dup
+	iconst_1
+	invokespecial	Method java/lang/Integer."<init>":(I)V
+	putstatic	Field IONE:Ljava/lang/Integer;
+	return
+  Labels:
+
+}
+

@@ -1,0 +1,3784 @@
+public class scala.concurrent.forkjoin.ForkJoinPool extends java.util.concurrent.AbstractExecutorService
+  InnerClass: 
+   public abstract ManagedBlocker=class scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker of class scala/concurrent/forkjoin/ForkJoinPool
+   final WaitQueueNode=class scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode of class scala/concurrent/forkjoin/ForkJoinPool
+   final InvokeAll=class scala/concurrent/forkjoin/ForkJoinPool$InvokeAll of class scala/concurrent/forkjoin/ForkJoinPool
+   final AdaptedCallable=class scala/concurrent/forkjoin/ForkJoinPool$AdaptedCallable of class scala/concurrent/forkjoin/ForkJoinPool
+   final AdaptedRunnable=class scala/concurrent/forkjoin/ForkJoinPool$AdaptedRunnable of class scala/concurrent/forkjoin/ForkJoinPool
+   DefaultForkJoinWorkerThreadFactory=class scala/concurrent/forkjoin/ForkJoinPool$DefaultForkJoinWorkerThreadFactory of class scala/concurrent/forkjoin/ForkJoinPool
+   public abstract ForkJoinWorkerThreadFactory=class scala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory of class scala/concurrent/forkjoin/ForkJoinPool
+   public abstract UncaughtExceptionHandler=class java/lang/Thread$UncaughtExceptionHandler of class java/lang/Thread
+   class scala/concurrent/forkjoin/ForkJoinPool$1
+  minor version: 0
+  major version: 49
+  Constant pool:
+Method	scala/concurrent/forkjoin/ForkJoinPool.getUnsafePrivileged:()Lsun/misc/Unsafe;
+Method	java/lang/System.getSecurityManager:()Ljava/lang/SecurityManager;
+Field	scala/concurrent/forkjoin/ForkJoinPool.modifyThreadPermission:Ljava/lang/RuntimePermission;
+Method	java/lang/SecurityManager.checkPermission:(Ljava/security/Permission;)V
+int	65535;
+Field	scala/concurrent/forkjoin/ForkJoinPool.workerCounts:I
+Method	scala/concurrent/forkjoin/ForkJoinPool.casWorkerCounts:(II)Z
+Field	scala/concurrent/forkjoin/ForkJoinPool.runControl:I
+Method	scala/concurrent/forkjoin/ForkJoinPool.casRunControl:(II)Z
+Method	scala/concurrent/forkjoin/ForkJoinPool.canTerminateOnShutdown:(I)Z
+Method	scala/concurrent/forkjoin/ForkJoinPool.terminateOnShutdown:()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.runStateOf:(I)I
+Method	scala/concurrent/forkjoin/ForkJoinPool.activeCountOf:(I)I
+Method	scala/concurrent/forkjoin/ForkJoinPool.runControlFor:(II)I
+Method	java/lang/Runtime.getRuntime:()Ljava/lang/Runtime;
+Method	java/lang/Runtime.availableProcessors:()I
+Field	scala/concurrent/forkjoin/ForkJoinPool.defaultForkJoinWorkerThreadFactory:Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;
+Method	scala/concurrent/forkjoin/ForkJoinPool."<init>":(ILscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;)V
+Method	java/util/concurrent/AbstractExecutorService."<init>":()V
+class	java/lang/IllegalArgumentException
+Method	java/lang/IllegalArgumentException."<init>":()V
+class	java/lang/NullPointerException
+Method	java/lang/NullPointerException."<init>":()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.checkPermission:()V
+Field	scala/concurrent/forkjoin/ForkJoinPool.factory:Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;
+Field	scala/concurrent/forkjoin/ForkJoinPool.parallelism:I
+Field	scala/concurrent/forkjoin/ForkJoinPool.maxPoolSize:I
+Field	scala/concurrent/forkjoin/ForkJoinPool.maintainsParallelism:Z
+Field	scala/concurrent/forkjoin/ForkJoinPool.poolNumberGenerator:Ljava/util/concurrent/atomic/AtomicInteger;
+Method	java/util/concurrent/atomic/AtomicInteger.incrementAndGet:()I
+Field	scala/concurrent/forkjoin/ForkJoinPool.poolNumber:I
+class	java/util/concurrent/locks/ReentrantLock
+Method	java/util/concurrent/locks/ReentrantLock."<init>":()V
+Field	scala/concurrent/forkjoin/ForkJoinPool.workerLock:Ljava/util/concurrent/locks/ReentrantLock;
+Method	java/util/concurrent/locks/ReentrantLock.newCondition:()Ljava/util/concurrent/locks/Condition;
+Field	scala/concurrent/forkjoin/ForkJoinPool.termination:Ljava/util/concurrent/locks/Condition;
+class	java/util/concurrent/atomic/AtomicLong
+Method	java/util/concurrent/atomic/AtomicLong."<init>":()V
+Field	scala/concurrent/forkjoin/ForkJoinPool.stealCount:Ljava/util/concurrent/atomic/AtomicLong;
+class	scala/concurrent/forkjoin/LinkedTransferQueue
+Method	scala/concurrent/forkjoin/LinkedTransferQueue."<init>":()V
+Field	scala/concurrent/forkjoin/ForkJoinPool.submissionQueue:Lscala/concurrent/forkjoin/LinkedTransferQueue;
+Field	scala/concurrent/forkjoin/ForkJoinPool.ueh:Ljava/lang/Thread$UncaughtExceptionHandler;
+InterfaceMethod	scala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory.newThread:(Lscala/concurrent/forkjoin/ForkJoinPool;)Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+Field	scala/concurrent/forkjoin/ForkJoinWorkerThread.poolIndex:I
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.setDaemon:(Z)V
+Field	scala/concurrent/forkjoin/ForkJoinPool.locallyFifo:Z
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.setAsyncMode:(Z)V
+class	java/lang/StringBuilder
+Method	java/lang/StringBuilder."<init>":()V
+String	ForkJoinPool-
+Method	java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+Method	java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+String	-worker-
+Method	java/lang/StringBuilder.toString:()Ljava/lang/String;
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.setName:(Ljava/lang/String;)V
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.setUncaughtExceptionHandler:(Ljava/lang/Thread$UncaughtExceptionHandler;)V
+Method	java/lang/Integer.numberOfLeadingZeros:(I)I
+class	scala/concurrent/forkjoin/ForkJoinWorkerThread
+Method	java/lang/Math.min:(II)I
+Method	java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+Field	scala/concurrent/forkjoin/ForkJoinPool.workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+Method	scala/concurrent/forkjoin/ForkJoinPool.arraySizeFor:(I)I
+Method	scala/concurrent/forkjoin/ForkJoinPool.copyOfWorkers:([Lscala/concurrent/forkjoin/ForkJoinWorkerThread;I)[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+Method	java/util/concurrent/locks/ReentrantLock.lock:()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.ensureWorkerArrayCapacity:(I)[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+Method	scala/concurrent/forkjoin/ForkJoinPool.createWorker:(I)Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.start:()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.updateWorkerCount:(I)V
+Method	java/util/concurrent/locks/ReentrantLock.unlock:()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.resumeAllSpares:()Z
+Method	scala/concurrent/forkjoin/ForkJoinPool.totalCountOf:(I)I
+Method	scala/concurrent/forkjoin/ForkJoinPool.runningCountOf:(I)I
+Method	scala/concurrent/forkjoin/ForkJoinPool.workerCountsFor:(II)I
+Method	scala/concurrent/forkjoin/ForkJoinPool.isShutdown:()Z
+class	java/util/concurrent/RejectedExecutionException
+Method	java/util/concurrent/RejectedExecutionException."<init>":()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.ensureWorkerInitialization:()V
+Method	scala/concurrent/forkjoin/LinkedTransferQueue.offer:(Ljava/lang/Object;)Z
+Method	scala/concurrent/forkjoin/ForkJoinPool.signalIdleWorkers:()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.doSubmit:(Lscala/concurrent/forkjoin/ForkJoinTask;)V
+Method	scala/concurrent/forkjoin/ForkJoinTask.join:()Ljava/lang/Object;
+class	scala/concurrent/forkjoin/ForkJoinPool$AdaptedRunnable
+Method	scala/concurrent/forkjoin/ForkJoinPool$AdaptedRunnable."<init>":(Ljava/lang/Runnable;Ljava/lang/Object;)V
+class	scala/concurrent/forkjoin/ForkJoinPool$AdaptedCallable
+Method	scala/concurrent/forkjoin/ForkJoinPool$AdaptedCallable."<init>":(Ljava/util/concurrent/Callable;)V
+class	java/util/ArrayList
+InterfaceMethod	java/util/Collection.size:()I
+Method	java/util/ArrayList."<init>":(I)V
+InterfaceMethod	java/util/Collection.iterator:()Ljava/util/Iterator;
+InterfaceMethod	java/util/Iterator.hasNext:()Z
+InterfaceMethod	java/util/Iterator.next:()Ljava/lang/Object;
+class	java/util/concurrent/Callable
+Method	java/util/ArrayList.add:(Ljava/lang/Object;)Z
+class	scala/concurrent/forkjoin/ForkJoinPool$InvokeAll
+Method	scala/concurrent/forkjoin/ForkJoinPool$InvokeAll."<init>":(Ljava/util/ArrayList;)V
+Method	scala/concurrent/forkjoin/ForkJoinPool.invoke:(Lscala/concurrent/forkjoin/ForkJoinTask;)Ljava/lang/Object;
+Method	scala/concurrent/forkjoin/ForkJoinPool.isTerminating:()Z
+Method	scala/concurrent/forkjoin/ForkJoinPool.createAndStartAddedWorkers:()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.trimSpares:()V
+Method	java/util/concurrent/atomic/AtomicLong.get:()J
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.getAndClearStealCount:()I
+Method	java/util/concurrent/atomic/AtomicLong.addAndGet:(J)J
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.getQueueSize:()I
+Method	scala/concurrent/forkjoin/LinkedTransferQueue.size:()I
+Method	scala/concurrent/forkjoin/LinkedTransferQueue.isEmpty:()Z
+Method	scala/concurrent/forkjoin/LinkedTransferQueue.poll:()Ljava/lang/Object;
+class	scala/concurrent/forkjoin/ForkJoinTask
+Method	scala/concurrent/forkjoin/LinkedTransferQueue.drainTo:(Ljava/util/Collection;)I
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.drainTasksTo:(Ljava/util/Collection;)I
+Method	scala/concurrent/forkjoin/ForkJoinPool.getStealCount:()J
+Method	scala/concurrent/forkjoin/ForkJoinPool.getQueuedTaskCount:()J
+Method	scala/concurrent/forkjoin/ForkJoinPool.getQueuedSubmissionCount:()I
+Method	java/lang/Object.toString:()Ljava/lang/String;
+String	[
+Method	scala/concurrent/forkjoin/ForkJoinPool.runStateToString:(I)Ljava/lang/String;
+String	, parallelism = 
+String	, size = 
+String	, active = 
+String	, running = 
+String	, steals = 
+Method	java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+String	, tasks = 
+String	, submissions = 
+String	]
+String	Running
+String	Shutting down
+String	Terminating
+String	Terminated
+class	java/lang/Error
+String	Unknown run state
+Method	java/lang/Error."<init>":(Ljava/lang/String;)V
+Method	scala/concurrent/forkjoin/ForkJoinPool.transitionRunStateTo:(I)Z
+Method	scala/concurrent/forkjoin/ForkJoinPool.terminate:()V
+Method	java/util/Collections.emptyList:()Ljava/util/List;
+Method	java/util/concurrent/TimeUnit.toNanos:(J)J
+Method	scala/concurrent/forkjoin/ForkJoinPool.isTerminated:()Z
+InterfaceMethod	java/util/concurrent/locks/Condition.awaitNanos:(J)J
+Method	scala/concurrent/forkjoin/ForkJoinPool.updateStealCount:(Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)V
+InterfaceMethod	java/util/concurrent/locks/Condition.signalAll:()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.tryShrinkWorkerArray:()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.tryResumeSpare:(Z)Z
+Method	scala/concurrent/forkjoin/ForkJoinPool.stopAllWorkers:()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.cancelQueuedSubmissions:()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.cancelQueuedWorkerTasks:()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.interruptUnterminatedWorkers:()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.hasQueuedSubmissions:()Z
+Method	scala/concurrent/forkjoin/ForkJoinPool.pollSubmission:()Lscala/concurrent/forkjoin/ForkJoinTask;
+Method	scala/concurrent/forkjoin/ForkJoinTask.cancel:(Z)Z
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.cancelTasks:()V
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.shutdownNow:()Z
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.isTerminated:()Z
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.interrupt:()V
+class	java/lang/SecurityException
+Field	scala/concurrent/forkjoin/ForkJoinPool.eventCount:J
+Field	scala/concurrent/forkjoin/ForkJoinPool.syncStack:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+Field	scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.count:J
+Method	scala/concurrent/forkjoin/ForkJoinPool.casBarrierStack:(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+Method	scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.signal:()Z
+Field	scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.next:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+Method	scala/concurrent/forkjoin/ForkJoinPool.casEventCount:(JJ)Z
+Method	scala/concurrent/forkjoin/ForkJoinPool.ensureSync:()J
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.isShutdown:()Z
+Method	scala/concurrent/forkjoin/ForkJoinPool.suspendIfSpare:(Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)Z
+Field	scala/concurrent/forkjoin/ForkJoinWorkerThread.lastEventCount:J
+class	scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode
+Method	scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode."<init>":(JLscala/concurrent/forkjoin/ForkJoinWorkerThread;)V
+Method	scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.awaitSyncRelease:(Lscala/concurrent/forkjoin/ForkJoinPool;)V
+Method	java/lang/Thread.interrupted:()Z
+Field	scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.thread:Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.hasQueuedTasks:([Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)Z
+Field	scala/concurrent/forkjoin/ForkJoinPool.spareStack:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+Method	scala/concurrent/forkjoin/ForkJoinPool.needSpare:(IZ)Z
+Field	scala/concurrent/forkjoin/ForkJoinTask.status:I
+Method	scala/concurrent/forkjoin/ForkJoinPool.tryAddSpare:(I)Z
+InterfaceMethod	scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker.isReleasable:()Z
+Method	java/util/concurrent/locks/ReentrantLock.tryLock:()Z
+Method	scala/concurrent/forkjoin/ForkJoinPool.createAndStartSpare:(I)V
+Method	scala/concurrent/forkjoin/ForkJoinPool.casSpareStack:(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+Method	scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.awaitSpareRelease:()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.updateRunningCount:(I)V
+Method	scala/concurrent/forkjoin/ForkJoinWorkerThread.shutdown:()Z
+Method	java/lang/Thread.currentThread:()Ljava/lang/Thread;
+Field	scala/concurrent/forkjoin/ForkJoinWorkerThread.pool:Lscala/concurrent/forkjoin/ForkJoinPool;
+Method	scala/concurrent/forkjoin/ForkJoinPool.preBlock:(Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;Z)Z
+Method	scala/concurrent/forkjoin/ForkJoinPool.awaitBlocker:(Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;)V
+InterfaceMethod	scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker.block:()Z
+Method	sun/misc/Unsafe.getUnsafe:()Lsun/misc/Unsafe;
+class	scala/concurrent/forkjoin/ForkJoinPool$1
+Method	scala/concurrent/forkjoin/ForkJoinPool$1."<init>":()V
+Method	java/security/AccessController.doPrivileged:(Ljava/security/PrivilegedExceptionAction;)Ljava/lang/Object;
+class	sun/misc/Unsafe
+class	java/security/PrivilegedActionException
+Method	java/security/PrivilegedActionException.getCause:()Ljava/lang/Throwable;
+String	theUnsafe
+Method	java/lang/Class.getDeclaredField:(Ljava/lang/String;)Ljava/lang/reflect/Field;
+Method	java/lang/reflect/Field.setAccessible:(Z)V
+Method	java/lang/reflect/Field.get:(Ljava/lang/Object;)Ljava/lang/Object;
+Field	scala/concurrent/forkjoin/ForkJoinPool._unsafe:Lsun/misc/Unsafe;
+class	scala/concurrent/forkjoin/ForkJoinPool
+Method	sun/misc/Unsafe.objectFieldOffset:(Ljava/lang/reflect/Field;)J
+Field	scala/concurrent/forkjoin/ForkJoinPool.eventCountOffset:J
+Method	sun/misc/Unsafe.compareAndSwapLong:(Ljava/lang/Object;JJJ)Z
+Field	scala/concurrent/forkjoin/ForkJoinPool.workerCountsOffset:J
+Method	sun/misc/Unsafe.compareAndSwapInt:(Ljava/lang/Object;JII)Z
+Field	scala/concurrent/forkjoin/ForkJoinPool.runControlOffset:J
+Field	scala/concurrent/forkjoin/ForkJoinPool.spareStackOffset:J
+Method	sun/misc/Unsafe.compareAndSwapObject:(Ljava/lang/Object;JLjava/lang/Object;Ljava/lang/Object;)Z
+Field	scala/concurrent/forkjoin/ForkJoinPool.syncStackOffset:J
+Method	scala/concurrent/forkjoin/ForkJoinPool.submit:(Ljava/util/concurrent/Callable;)Lscala/concurrent/forkjoin/ForkJoinTask;
+Method	scala/concurrent/forkjoin/ForkJoinPool.submit:(Ljava/lang/Runnable;Ljava/lang/Object;)Lscala/concurrent/forkjoin/ForkJoinTask;
+Method	scala/concurrent/forkjoin/ForkJoinPool.submit:(Ljava/lang/Runnable;)Lscala/concurrent/forkjoin/ForkJoinTask;
+class	scala/concurrent/forkjoin/ForkJoinPool$DefaultForkJoinWorkerThreadFactory
+Method	scala/concurrent/forkjoin/ForkJoinPool$DefaultForkJoinWorkerThreadFactory."<init>":()V
+class	java/lang/RuntimePermission
+String	modifyThread
+Method	java/lang/RuntimePermission."<init>":(Ljava/lang/String;)V
+class	java/util/concurrent/atomic/AtomicInteger
+Method	java/util/concurrent/atomic/AtomicInteger."<init>":()V
+Method	scala/concurrent/forkjoin/ForkJoinPool.getUnsafe:()Lsun/misc/Unsafe;
+String	eventCount
+Method	scala/concurrent/forkjoin/ForkJoinPool.fieldOffset:(Ljava/lang/String;)J
+String	workerCounts
+String	runControl
+String	syncStack
+String	spareStack
+class	java/lang/Throwable
+class	java/lang/RuntimeException
+String	Could not initialize intrinsics
+Method	java/lang/RuntimeException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+class	java/util/concurrent/AbstractExecutorService
+class	scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker
+Asciz	ManagedBlocker;
+Asciz	InnerClasses;
+Asciz	WaitQueueNode;
+Asciz	InvokeAll;
+Asciz	AdaptedCallable;
+Asciz	AdaptedRunnable;
+Asciz	DefaultForkJoinWorkerThreadFactory;
+class	scala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory
+Asciz	ForkJoinWorkerThreadFactory;
+Asciz	shortMask;
+Asciz	I;
+Asciz	ConstantValue;
+Asciz	MAX_THREADS;
+int	32767;
+Asciz	defaultForkJoinWorkerThreadFactory;
+Asciz	Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;;
+Asciz	modifyThreadPermission;
+Asciz	Ljava/lang/RuntimePermission;;
+Asciz	poolNumberGenerator;
+Asciz	Ljava/util/concurrent/atomic/AtomicInteger;;
+Asciz	workers;
+Asciz	[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;;
+Asciz	workerLock;
+Asciz	Ljava/util/concurrent/locks/ReentrantLock;;
+Asciz	termination;
+Asciz	Ljava/util/concurrent/locks/Condition;;
+Asciz	ueh;
+class	java/lang/Thread$UncaughtExceptionHandler
+Asciz	UncaughtExceptionHandler;
+Asciz	Ljava/lang/Thread$UncaughtExceptionHandler;;
+Asciz	factory;
+Asciz	spareStack;
+Asciz	Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;;
+Asciz	stealCount;
+Asciz	Ljava/util/concurrent/atomic/AtomicLong;;
+Asciz	submissionQueue;
+Asciz	Lscala/concurrent/forkjoin/LinkedTransferQueue;;
+Asciz	Signature;
+Asciz	Lscala/concurrent/forkjoin/LinkedTransferQueue<Lscala/concurrent/forkjoin/ForkJoinTask<*>;>;;
+Asciz	syncStack;
+Asciz	eventCount;
+Asciz	J;
+Asciz	poolNumber;
+Asciz	maxPoolSize;
+Asciz	parallelism;
+Asciz	locallyFifo;
+Asciz	Z;
+Asciz	workerCounts;
+Asciz	runControl;
+Asciz	RUNNING;
+int	0;
+Asciz	SHUTDOWN;
+int	1;
+Asciz	TERMINATING;
+int	2;
+Asciz	TERMINATED;
+int	3;
+Asciz	maintainsParallelism;
+Asciz	_unsafe;
+Asciz	Lsun/misc/Unsafe;;
+Asciz	eventCountOffset;
+Asciz	workerCountsOffset;
+Asciz	runControlOffset;
+Asciz	syncStackOffset;
+Asciz	spareStackOffset;
+Asciz	checkPermission;
+Asciz	()V;
+Asciz	Code;
+Asciz	totalCountOf;
+Asciz	(I)I;
+Asciz	runningCountOf;
+Asciz	workerCountsFor;
+Asciz	(II)I;
+Asciz	updateRunningCount;
+Asciz	(I)V;
+Asciz	updateWorkerCount;
+Asciz	runStateOf;
+Asciz	activeCountOf;
+Asciz	runControlFor;
+Asciz	tryIncrementActiveCount;
+Asciz	()Z;
+Asciz	tryDecrementActiveCount;
+Asciz	canTerminateOnShutdown;
+Asciz	(I)Z;
+Asciz	transitionRunStateTo;
+Asciz	<init>;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;)V;
+Asciz	(ILscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;)V;
+Asciz	createWorker;
+Asciz	(I)Lscala/concurrent/forkjoin/ForkJoinWorkerThread;;
+Asciz	arraySizeFor;
+Asciz	copyOfWorkers;
+Asciz	([Lscala/concurrent/forkjoin/ForkJoinWorkerThread;I)[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;;
+Asciz	ensureWorkerArrayCapacity;
+Asciz	(I)[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;;
+Asciz	tryShrinkWorkerArray;
+Asciz	ensureWorkerInitialization;
+Asciz	createAndStartAddedWorkers;
+Asciz	doSubmit;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinTask;)V;
+Asciz	<T:Ljava/lang/Object;>(Lscala/concurrent/forkjoin/ForkJoinTask<TT;>;)V;
+Asciz	invoke;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinTask;)Ljava/lang/Object;;
+Asciz	<T:Ljava/lang/Object;>(Lscala/concurrent/forkjoin/ForkJoinTask<TT;>;)TT;;
+Asciz	execute;
+Asciz	(Ljava/lang/Runnable;)V;
+Asciz	submit;
+Asciz	(Ljava/util/concurrent/Callable;)Lscala/concurrent/forkjoin/ForkJoinTask;;
+Asciz	<T:Ljava/lang/Object;>(Ljava/util/concurrent/Callable<TT;>;)Lscala/concurrent/forkjoin/ForkJoinTask<TT;>;;
+Asciz	(Ljava/lang/Runnable;Ljava/lang/Object;)Lscala/concurrent/forkjoin/ForkJoinTask;;
+Asciz	<T:Ljava/lang/Object;>(Ljava/lang/Runnable;TT;)Lscala/concurrent/forkjoin/ForkJoinTask<TT;>;;
+Asciz	(Ljava/lang/Runnable;)Lscala/concurrent/forkjoin/ForkJoinTask;;
+Asciz	(Ljava/lang/Runnable;)Lscala/concurrent/forkjoin/ForkJoinTask<*>;;
+Asciz	invokeAll;
+Asciz	(Ljava/util/Collection;)Ljava/util/List;;
+Asciz	<T:Ljava/lang/Object;>(Ljava/util/Collection<+Ljava/util/concurrent/Callable<TT;>;>;)Ljava/util/List<Ljava/util/concurrent/Future<TT;>;>;;
+Asciz	getFactory;
+Asciz	()Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;;
+Asciz	getUncaughtExceptionHandler;
+Asciz	()Ljava/lang/Thread$UncaughtExceptionHandler;;
+Asciz	setUncaughtExceptionHandler;
+Asciz	(Ljava/lang/Thread$UncaughtExceptionHandler;)Ljava/lang/Thread$UncaughtExceptionHandler;;
+Asciz	setParallelism;
+Asciz	getParallelism;
+Asciz	()I;
+Asciz	getPoolSize;
+Asciz	getMaximumPoolSize;
+Asciz	setMaximumPoolSize;
+Asciz	getMaintainsParallelism;
+Asciz	setMaintainsParallelism;
+Asciz	(Z)V;
+Asciz	setAsyncMode;
+Asciz	(Z)Z;
+Asciz	getAsyncMode;
+Asciz	getRunningThreadCount;
+Asciz	getActiveThreadCount;
+Asciz	getIdleThreadCount;
+Asciz	isQuiescent;
+Asciz	getStealCount;
+Asciz	()J;
+Asciz	updateStealCount;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)V;
+Asciz	getQueuedTaskCount;
+Asciz	getQueuedSubmissionCount;
+Asciz	hasQueuedSubmissions;
+Asciz	pollSubmission;
+Asciz	()Lscala/concurrent/forkjoin/ForkJoinTask;;
+Asciz	()Lscala/concurrent/forkjoin/ForkJoinTask<*>;;
+Asciz	drainTasksTo;
+Asciz	(Ljava/util/Collection;)I;
+Asciz	(Ljava/util/Collection<Lscala/concurrent/forkjoin/ForkJoinTask<*>;>;)I;
+Asciz	toString;
+Asciz	()Ljava/lang/String;;
+Asciz	runStateToString;
+Asciz	(I)Ljava/lang/String;;
+Asciz	shutdown;
+Asciz	shutdownNow;
+Asciz	()Ljava/util/List;;
+Asciz	()Ljava/util/List<Ljava/lang/Runnable;>;;
+Asciz	isTerminated;
+Asciz	isTerminating;
+Asciz	isShutdown;
+Asciz	awaitTermination;
+Asciz	(JLjava/util/concurrent/TimeUnit;)Z;
+Asciz	Exceptions;
+class	java/lang/InterruptedException
+Asciz	workerTerminated;
+Asciz	terminate;
+Asciz	terminateOnShutdown;
+Asciz	cancelQueuedSubmissions;
+Asciz	cancelQueuedWorkerTasks;
+Asciz	stopAllWorkers;
+Asciz	interruptUnterminatedWorkers;
+Asciz	ensureSync;
+Asciz	signalIdleWorkers;
+Asciz	signalWork;
+Asciz	sync;
+Asciz	syncIsReleasable;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z;
+Asciz	hasNewSyncEvent;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)Z;
+Asciz	preJoin;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinTask;Z)Z;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinTask<*>;Z)Z;
+Asciz	preBlock;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;Z)Z;
+Asciz	needSpare;
+Asciz	(IZ)Z;
+Asciz	tryAddSpare;
+Asciz	createAndStartSpare;
+Asciz	suspendIfSpare;
+Asciz	tryResumeSpare;
+Asciz	resumeAllSpares;
+Asciz	trimSpares;
+Asciz	managedBlock;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;Z)V;
+Asciz	awaitBlocker;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;)V;
+Asciz	newTaskFor;
+Asciz	(Ljava/lang/Runnable;Ljava/lang/Object;)Ljava/util/concurrent/RunnableFuture;;
+Asciz	<T:Ljava/lang/Object;>(Ljava/lang/Runnable;TT;)Ljava/util/concurrent/RunnableFuture<TT;>;;
+Asciz	(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/RunnableFuture;;
+Asciz	<T:Ljava/lang/Object;>(Ljava/util/concurrent/Callable<TT;>;)Ljava/util/concurrent/RunnableFuture<TT;>;;
+Asciz	getUnsafe;
+Asciz	()Lsun/misc/Unsafe;;
+Asciz	getUnsafePrivileged;
+class	java/lang/NoSuchFieldException
+class	java/lang/IllegalAccessException
+Asciz	fieldOffset;
+Asciz	(Ljava/lang/String;)J;
+Asciz	casEventCount;
+Asciz	(JJ)Z;
+Asciz	casWorkerCounts;
+Asciz	(II)Z;
+Asciz	casRunControl;
+Asciz	casSpareStack;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z;
+Asciz	casBarrierStack;
+Asciz	(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;;
+Asciz	(Ljava/lang/Runnable;Ljava/lang/Object;)Ljava/util/concurrent/Future;;
+Asciz	(Ljava/lang/Runnable;)Ljava/util/concurrent/Future;;
+Asciz	access$000;
+Asciz	<clinit>;
+NameAndType	getUnsafePrivileged:()Lsun/misc/Unsafe;
+class	java/lang/System
+NameAndType	getSecurityManager:()Ljava/lang/SecurityManager;
+NameAndType	modifyThreadPermission:Ljava/lang/RuntimePermission;
+class	java/lang/SecurityManager
+NameAndType	checkPermission:(Ljava/security/Permission;)V
+NameAndType	workerCounts:I
+NameAndType	casWorkerCounts:(II)Z
+NameAndType	runControl:I
+NameAndType	casRunControl:(II)Z
+NameAndType	canTerminateOnShutdown:(I)Z
+NameAndType	terminateOnShutdown:()V
+NameAndType	runStateOf:(I)I
+NameAndType	activeCountOf:(I)I
+NameAndType	runControlFor:(II)I
+class	java/lang/Runtime
+NameAndType	getRuntime:()Ljava/lang/Runtime;
+NameAndType	availableProcessors:()I
+NameAndType	defaultForkJoinWorkerThreadFactory:Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;
+NameAndType	"<init>":(ILscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;)V
+NameAndType	"<init>":()V
+Asciz	java/lang/IllegalArgumentException;
+Asciz	java/lang/NullPointerException;
+NameAndType	checkPermission:()V
+NameAndType	factory:Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;
+NameAndType	parallelism:I
+NameAndType	maxPoolSize:I
+NameAndType	maintainsParallelism:Z
+NameAndType	poolNumberGenerator:Ljava/util/concurrent/atomic/AtomicInteger;
+NameAndType	incrementAndGet:()I
+NameAndType	poolNumber:I
+Asciz	java/util/concurrent/locks/ReentrantLock;
+NameAndType	workerLock:Ljava/util/concurrent/locks/ReentrantLock;
+NameAndType	newCondition:()Ljava/util/concurrent/locks/Condition;
+NameAndType	termination:Ljava/util/concurrent/locks/Condition;
+Asciz	java/util/concurrent/atomic/AtomicLong;
+NameAndType	stealCount:Ljava/util/concurrent/atomic/AtomicLong;
+Asciz	scala/concurrent/forkjoin/LinkedTransferQueue;
+NameAndType	submissionQueue:Lscala/concurrent/forkjoin/LinkedTransferQueue;
+NameAndType	ueh:Ljava/lang/Thread$UncaughtExceptionHandler;
+NameAndType	newThread:(Lscala/concurrent/forkjoin/ForkJoinPool;)Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+NameAndType	poolIndex:I
+NameAndType	setDaemon:(Z)V
+NameAndType	locallyFifo:Z
+NameAndType	setAsyncMode:(Z)V
+Asciz	java/lang/StringBuilder;
+Asciz	ForkJoinPool-;
+NameAndType	append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+NameAndType	append:(I)Ljava/lang/StringBuilder;
+Asciz	-worker-;
+NameAndType	toString:()Ljava/lang/String;
+NameAndType	setName:(Ljava/lang/String;)V
+NameAndType	setUncaughtExceptionHandler:(Ljava/lang/Thread$UncaughtExceptionHandler;)V
+class	java/lang/Integer
+NameAndType	numberOfLeadingZeros:(I)I
+Asciz	scala/concurrent/forkjoin/ForkJoinWorkerThread;
+class	java/lang/Math
+NameAndType	min:(II)I
+NameAndType	arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+NameAndType	workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+NameAndType	arraySizeFor:(I)I
+NameAndType	copyOfWorkers:([Lscala/concurrent/forkjoin/ForkJoinWorkerThread;I)[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+NameAndType	lock:()V
+NameAndType	ensureWorkerArrayCapacity:(I)[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+NameAndType	createWorker:(I)Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+NameAndType	start:()V
+NameAndType	updateWorkerCount:(I)V
+NameAndType	unlock:()V
+NameAndType	resumeAllSpares:()Z
+NameAndType	totalCountOf:(I)I
+NameAndType	runningCountOf:(I)I
+NameAndType	workerCountsFor:(II)I
+NameAndType	isShutdown:()Z
+Asciz	java/util/concurrent/RejectedExecutionException;
+NameAndType	ensureWorkerInitialization:()V
+NameAndType	offer:(Ljava/lang/Object;)Z
+NameAndType	signalIdleWorkers:()V
+NameAndType	doSubmit:(Lscala/concurrent/forkjoin/ForkJoinTask;)V
+NameAndType	join:()Ljava/lang/Object;
+Asciz	scala/concurrent/forkjoin/ForkJoinPool$AdaptedRunnable;
+NameAndType	"<init>":(Ljava/lang/Runnable;Ljava/lang/Object;)V
+Asciz	scala/concurrent/forkjoin/ForkJoinPool$AdaptedCallable;
+NameAndType	"<init>":(Ljava/util/concurrent/Callable;)V
+Asciz	java/util/ArrayList;
+class	java/util/Collection
+NameAndType	size:()I
+NameAndType	"<init>":(I)V
+NameAndType	iterator:()Ljava/util/Iterator;
+class	java/util/Iterator
+NameAndType	hasNext:()Z
+NameAndType	next:()Ljava/lang/Object;
+Asciz	java/util/concurrent/Callable;
+NameAndType	add:(Ljava/lang/Object;)Z
+Asciz	scala/concurrent/forkjoin/ForkJoinPool$InvokeAll;
+NameAndType	"<init>":(Ljava/util/ArrayList;)V
+NameAndType	invoke:(Lscala/concurrent/forkjoin/ForkJoinTask;)Ljava/lang/Object;
+NameAndType	isTerminating:()Z
+NameAndType	createAndStartAddedWorkers:()V
+NameAndType	trimSpares:()V
+NameAndType	get:()J
+NameAndType	getAndClearStealCount:()I
+NameAndType	addAndGet:(J)J
+NameAndType	getQueueSize:()I
+NameAndType	isEmpty:()Z
+NameAndType	poll:()Ljava/lang/Object;
+Asciz	scala/concurrent/forkjoin/ForkJoinTask;
+NameAndType	drainTo:(Ljava/util/Collection;)I
+NameAndType	drainTasksTo:(Ljava/util/Collection;)I
+NameAndType	getStealCount:()J
+NameAndType	getQueuedTaskCount:()J
+NameAndType	getQueuedSubmissionCount:()I
+class	java/lang/Object
+Asciz	[;
+NameAndType	runStateToString:(I)Ljava/lang/String;
+Asciz	, parallelism = ;
+Asciz	, size = ;
+Asciz	, active = ;
+Asciz	, running = ;
+Asciz	, steals = ;
+NameAndType	append:(J)Ljava/lang/StringBuilder;
+Asciz	, tasks = ;
+Asciz	, submissions = ;
+Asciz	];
+Asciz	Running;
+Asciz	Shutting down;
+Asciz	Terminating;
+Asciz	Terminated;
+Asciz	java/lang/Error;
+Asciz	Unknown run state;
+NameAndType	"<init>":(Ljava/lang/String;)V
+NameAndType	transitionRunStateTo:(I)Z
+NameAndType	terminate:()V
+class	java/util/Collections
+NameAndType	emptyList:()Ljava/util/List;
+class	java/util/concurrent/TimeUnit
+NameAndType	toNanos:(J)J
+NameAndType	isTerminated:()Z
+class	java/util/concurrent/locks/Condition
+NameAndType	awaitNanos:(J)J
+NameAndType	updateStealCount:(Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)V
+NameAndType	signalAll:()V
+NameAndType	tryShrinkWorkerArray:()V
+NameAndType	tryResumeSpare:(Z)Z
+NameAndType	stopAllWorkers:()V
+NameAndType	cancelQueuedSubmissions:()V
+NameAndType	cancelQueuedWorkerTasks:()V
+NameAndType	interruptUnterminatedWorkers:()V
+NameAndType	hasQueuedSubmissions:()Z
+NameAndType	pollSubmission:()Lscala/concurrent/forkjoin/ForkJoinTask;
+NameAndType	cancel:(Z)Z
+NameAndType	cancelTasks:()V
+NameAndType	shutdownNow:()Z
+NameAndType	interrupt:()V
+Asciz	java/lang/SecurityException;
+NameAndType	eventCount:J
+NameAndType	syncStack:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+NameAndType	count:J
+NameAndType	casBarrierStack:(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+NameAndType	signal:()Z
+NameAndType	next:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+NameAndType	casEventCount:(JJ)Z
+NameAndType	ensureSync:()J
+NameAndType	suspendIfSpare:(Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)Z
+NameAndType	lastEventCount:J
+Asciz	scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+NameAndType	"<init>":(JLscala/concurrent/forkjoin/ForkJoinWorkerThread;)V
+NameAndType	awaitSyncRelease:(Lscala/concurrent/forkjoin/ForkJoinPool;)V
+class	java/lang/Thread
+NameAndType	interrupted:()Z
+NameAndType	thread:Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+NameAndType	hasQueuedTasks:([Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)Z
+NameAndType	spareStack:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+NameAndType	needSpare:(IZ)Z
+NameAndType	status:I
+NameAndType	tryAddSpare:(I)Z
+NameAndType	isReleasable:()Z
+NameAndType	tryLock:()Z
+NameAndType	createAndStartSpare:(I)V
+NameAndType	casSpareStack:(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+NameAndType	awaitSpareRelease:()V
+NameAndType	updateRunningCount:(I)V
+NameAndType	shutdown:()Z
+NameAndType	currentThread:()Ljava/lang/Thread;
+NameAndType	pool:Lscala/concurrent/forkjoin/ForkJoinPool;
+NameAndType	preBlock:(Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;Z)Z
+NameAndType	awaitBlocker:(Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;)V
+NameAndType	block:()Z
+NameAndType	getUnsafe:()Lsun/misc/Unsafe;
+Asciz	scala/concurrent/forkjoin/ForkJoinPool$1;
+Asciz	;
+class	java/security/AccessController
+NameAndType	doPrivileged:(Ljava/security/PrivilegedExceptionAction;)Ljava/lang/Object;
+Asciz	sun/misc/Unsafe;
+Asciz	java/security/PrivilegedActionException;
+NameAndType	getCause:()Ljava/lang/Throwable;
+Asciz	theUnsafe;
+class	java/lang/Class
+NameAndType	getDeclaredField:(Ljava/lang/String;)Ljava/lang/reflect/Field;
+class	java/lang/reflect/Field
+NameAndType	setAccessible:(Z)V
+NameAndType	get:(Ljava/lang/Object;)Ljava/lang/Object;
+NameAndType	_unsafe:Lsun/misc/Unsafe;
+Asciz	scala/concurrent/forkjoin/ForkJoinPool;
+NameAndType	objectFieldOffset:(Ljava/lang/reflect/Field;)J
+NameAndType	eventCountOffset:J
+NameAndType	compareAndSwapLong:(Ljava/lang/Object;JJJ)Z
+NameAndType	workerCountsOffset:J
+NameAndType	compareAndSwapInt:(Ljava/lang/Object;JII)Z
+NameAndType	runControlOffset:J
+NameAndType	spareStackOffset:J
+NameAndType	compareAndSwapObject:(Ljava/lang/Object;JLjava/lang/Object;Ljava/lang/Object;)Z
+NameAndType	syncStackOffset:J
+NameAndType	submit:(Ljava/util/concurrent/Callable;)Lscala/concurrent/forkjoin/ForkJoinTask;
+NameAndType	submit:(Ljava/lang/Runnable;Ljava/lang/Object;)Lscala/concurrent/forkjoin/ForkJoinTask;
+NameAndType	submit:(Ljava/lang/Runnable;)Lscala/concurrent/forkjoin/ForkJoinTask;
+Asciz	scala/concurrent/forkjoin/ForkJoinPool$DefaultForkJoinWorkerThreadFactory;
+Asciz	java/lang/RuntimePermission;
+Asciz	modifyThread;
+Asciz	java/util/concurrent/atomic/AtomicInteger;
+NameAndType	fieldOffset:(Ljava/lang/String;)J
+Asciz	java/lang/Throwable;
+Asciz	java/lang/RuntimeException;
+Asciz	Could not initialize intrinsics;
+NameAndType	"<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+Asciz	java/util/concurrent/AbstractExecutorService;
+Asciz	scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;
+Asciz	scala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;
+Asciz	java/lang/Thread$UncaughtExceptionHandler;
+Asciz	java/lang/InterruptedException;
+Asciz	java/lang/NoSuchFieldException;
+Asciz	java/lang/IllegalAccessException;
+Asciz	java/lang/System;
+Asciz	getSecurityManager;
+Asciz	()Ljava/lang/SecurityManager;;
+Asciz	java/lang/SecurityManager;
+Asciz	(Ljava/security/Permission;)V;
+Asciz	java/lang/Runtime;
+Asciz	getRuntime;
+Asciz	()Ljava/lang/Runtime;;
+Asciz	availableProcessors;
+Asciz	incrementAndGet;
+Asciz	newCondition;
+Asciz	()Ljava/util/concurrent/locks/Condition;;
+Asciz	newThread;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinPool;)Lscala/concurrent/forkjoin/ForkJoinWorkerThread;;
+Asciz	poolIndex;
+Asciz	setDaemon;
+Asciz	append;
+Asciz	(Ljava/lang/String;)Ljava/lang/StringBuilder;;
+Asciz	(I)Ljava/lang/StringBuilder;;
+Asciz	setName;
+Asciz	(Ljava/lang/String;)V;
+Asciz	(Ljava/lang/Thread$UncaughtExceptionHandler;)V;
+Asciz	java/lang/Integer;
+Asciz	numberOfLeadingZeros;
+Asciz	java/lang/Math;
+Asciz	min;
+Asciz	arraycopy;
+Asciz	(Ljava/lang/Object;ILjava/lang/Object;II)V;
+Asciz	lock;
+Asciz	start;
+Asciz	unlock;
+Asciz	offer;
+Asciz	(Ljava/lang/Object;)Z;
+Asciz	join;
+Asciz	()Ljava/lang/Object;;
+Asciz	(Ljava/lang/Runnable;Ljava/lang/Object;)V;
+Asciz	(Ljava/util/concurrent/Callable;)V;
+Asciz	java/util/Collection;
+Asciz	size;
+Asciz	iterator;
+Asciz	()Ljava/util/Iterator;;
+Asciz	java/util/Iterator;
+Asciz	hasNext;
+Asciz	next;
+Asciz	add;
+Asciz	(Ljava/util/ArrayList;)V;
+Asciz	get;
+Asciz	getAndClearStealCount;
+Asciz	addAndGet;
+Asciz	(J)J;
+Asciz	getQueueSize;
+Asciz	isEmpty;
+Asciz	poll;
+Asciz	drainTo;
+Asciz	java/lang/Object;
+Asciz	(J)Ljava/lang/StringBuilder;;
+Asciz	java/util/Collections;
+Asciz	emptyList;
+Asciz	java/util/concurrent/TimeUnit;
+Asciz	toNanos;
+Asciz	java/util/concurrent/locks/Condition;
+Asciz	awaitNanos;
+Asciz	signalAll;
+Asciz	cancel;
+Asciz	cancelTasks;
+Asciz	interrupt;
+Asciz	count;
+Asciz	signal;
+Asciz	lastEventCount;
+Asciz	(JLscala/concurrent/forkjoin/ForkJoinWorkerThread;)V;
+Asciz	awaitSyncRelease;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinPool;)V;
+Asciz	java/lang/Thread;
+Asciz	interrupted;
+Asciz	thread;
+Asciz	Lscala/concurrent/forkjoin/ForkJoinWorkerThread;;
+Asciz	hasQueuedTasks;
+Asciz	([Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)Z;
+Asciz	status;
+Asciz	isReleasable;
+Asciz	tryLock;
+Asciz	awaitSpareRelease;
+Asciz	currentThread;
+Asciz	()Ljava/lang/Thread;;
+Asciz	pool;
+Asciz	Lscala/concurrent/forkjoin/ForkJoinPool;;
+Asciz	block;
+Asciz	java/security/AccessController;
+Asciz	doPrivileged;
+Asciz	(Ljava/security/PrivilegedExceptionAction;)Ljava/lang/Object;;
+Asciz	getCause;
+Asciz	()Ljava/lang/Throwable;;
+Asciz	java/lang/Class;
+Asciz	getDeclaredField;
+Asciz	(Ljava/lang/String;)Ljava/lang/reflect/Field;;
+Asciz	java/lang/reflect/Field;
+Asciz	setAccessible;
+Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
+Asciz	objectFieldOffset;
+Asciz	(Ljava/lang/reflect/Field;)J;
+Asciz	compareAndSwapLong;
+Asciz	(Ljava/lang/Object;JJJ)Z;
+Asciz	compareAndSwapInt;
+Asciz	(Ljava/lang/Object;JII)Z;
+Asciz	compareAndSwapObject;
+Asciz	(Ljava/lang/Object;JLjava/lang/Object;Ljava/lang/Object;)Z;
+Asciz	(Ljava/lang/String;Ljava/lang/Throwable;)V;
+
+{
+private static final int shortMask;
+  Signature: I
+  Constant value: int 65535
+private static final int MAX_THREADS;
+  Signature: I
+  Constant value: int 32767
+public static final scala.concurrent.forkjoin.ForkJoinPool$ForkJoinWorkerThreadFactory defaultForkJoinWorkerThreadFactory;
+  Signature: Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;
+
+private static final java.lang.RuntimePermission modifyThreadPermission;
+  Signature: Ljava/lang/RuntimePermission;
+
+private static final java.util.concurrent.atomic.AtomicInteger poolNumberGenerator;
+  Signature: Ljava/util/concurrent/atomic/AtomicInteger;
+
+public volatile scala.concurrent.forkjoin.ForkJoinWorkerThread[] workers;
+  Signature: [Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
+private final java.util.concurrent.locks.ReentrantLock workerLock;
+  Signature: Ljava/util/concurrent/locks/ReentrantLock;
+
+private final java.util.concurrent.locks.Condition termination;
+  Signature: Ljava/util/concurrent/locks/Condition;
+
+private java.lang.Thread$UncaughtExceptionHandler ueh;
+  Signature: Ljava/lang/Thread$UncaughtExceptionHandler;
+
+private final scala.concurrent.forkjoin.ForkJoinPool$ForkJoinWorkerThreadFactory factory;
+  Signature: Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;
+
+private volatile scala.concurrent.forkjoin.ForkJoinPool$WaitQueueNode spareStack;
+  Signature: Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+
+private final java.util.concurrent.atomic.AtomicLong stealCount;
+  Signature: Ljava/util/concurrent/atomic/AtomicLong;
+
+private final scala.concurrent.forkjoin.LinkedTransferQueue submissionQueue;
+  Signature: Lscala/concurrent/forkjoin/LinkedTransferQueue;
+  Signature: length = 0x2
+   01 0F 
+
+private volatile scala.concurrent.forkjoin.ForkJoinPool$WaitQueueNode syncStack;
+  Signature: Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+
+private volatile long eventCount;
+  Signature: J
+
+private final int poolNumber;
+  Signature: I
+
+private volatile int maxPoolSize;
+  Signature: I
+
+private volatile int parallelism;
+  Signature: I
+
+private volatile boolean locallyFifo;
+  Signature: Z
+
+private volatile int workerCounts;
+  Signature: I
+
+private volatile int runControl;
+  Signature: I
+
+private static final int RUNNING;
+  Signature: I
+  Constant value: int 0
+private static final int SHUTDOWN;
+  Signature: I
+  Constant value: int 1
+private static final int TERMINATING;
+  Signature: I
+  Constant value: int 2
+private static final int TERMINATED;
+  Signature: I
+  Constant value: int 3
+private volatile boolean maintainsParallelism;
+  Signature: Z
+
+static final sun.misc.Unsafe _unsafe;
+  Signature: Lsun/misc/Unsafe;
+
+static final long eventCountOffset;
+  Signature: J
+
+static final long workerCountsOffset;
+  Signature: J
+
+static final long runControlOffset;
+  Signature: J
+
+static final long syncStackOffset;
+  Signature: J
+
+static final long spareStackOffset;
+  Signature: J
+
+private static void checkPermission();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=1, Args_size=0
+	invokestatic	Method java/lang/System.getSecurityManager:()Ljava/lang/SecurityManager;
+	astore_0
+	aload_0
+	ifnull	l1 // return
+	aload_0
+	getstatic	Field modifyThreadPermission:Ljava/lang/RuntimePermission;
+	invokevirtual	Method java/lang/SecurityManager.checkPermission:(Ljava/security/Permission;)V
+l1	return
+  Labels:
+   	l1 = 15 // return
+
+private static int totalCountOf(int);
+  Signature: (I)I
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	iload_0
+	bipush	16
+	iushr
+	ireturn
+  Labels:
+
+private static int runningCountOf(int);
+  Signature: (I)I
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	iload_0
+	ldc	int 65535
+	iand
+	ireturn
+  Labels:
+
+private static int workerCountsFor(int, int);
+  Signature: (II)I
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	iload_0
+	bipush	16
+	ishl
+	iload_1
+	iadd
+	ireturn
+  Labels:
+
+final void updateRunningCount(int);
+  Signature: (I)V
+  Code:
+   Stack=4, Locals=3, Args_size=2
+l1	aload_0
+	aload_0
+	getfield	Field workerCounts:I
+	dup
+	istore_2
+	iload_2
+	iload_1
+	iadd
+	invokespecial	Method casWorkerCounts:(II)Z
+	ifeq	l1 // aload_0
+	return
+  Labels:
+   	l1 = 0 // aload_0
+
+private void updateWorkerCount(int);
+  Signature: (I)V
+  Code:
+   Stack=4, Locals=4, Args_size=2
+	iload_1
+	iload_1
+	bipush	16
+	ishl
+	iadd
+	istore_2
+l1	aload_0
+	aload_0
+	getfield	Field workerCounts:I
+	dup
+	istore_3
+	iload_3
+	iload_2
+	iadd
+	invokespecial	Method casWorkerCounts:(II)Z
+	ifeq	l1 // aload_0
+	return
+  Labels:
+   	l1 = 7 // aload_0
+
+private static int runStateOf(int);
+  Signature: (I)I
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	iload_0
+	bipush	16
+	iushr
+	ireturn
+  Labels:
+
+private static int activeCountOf(int);
+  Signature: (I)I
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	iload_0
+	ldc	int 65535
+	iand
+	ireturn
+  Labels:
+
+private static int runControlFor(int, int);
+  Signature: (II)I
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	iload_0
+	bipush	16
+	ishl
+	iload_1
+	iadd
+	ireturn
+  Labels:
+
+final boolean tryIncrementActiveCount();
+  Signature: ()Z
+  Code:
+   Stack=4, Locals=2, Args_size=1
+	aload_0
+	getfield	Field runControl:I
+	istore_1
+	aload_0
+	iload_1
+	iload_1
+	iconst_1
+	iadd
+	invokespecial	Method casRunControl:(II)Z
+	ireturn
+  Labels:
+
+final boolean tryDecrementActiveCount();
+  Signature: ()Z
+  Code:
+   Stack=3, Locals=3, Args_size=1
+	aload_0
+	getfield	Field runControl:I
+	istore_1
+	iload_1
+	iconst_1
+	isub
+	istore_2
+	aload_0
+	iload_1
+	iload_2
+	invokespecial	Method casRunControl:(II)Z
+	ifne	l1 // iload_2
+	iconst_0
+	ireturn
+l1	iload_2
+	invokestatic	Method canTerminateOnShutdown:(I)Z
+	ifeq	l2 // iconst_1
+	aload_0
+	invokespecial	Method terminateOnShutdown:()V
+l2	iconst_1
+	ireturn
+  Labels:
+   	l1 = 20 // iload_2
+   	l2 = 31 // iconst_1
+
+private static boolean canTerminateOnShutdown(int);
+  Signature: (I)Z
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	iload_0
+	iload_0
+	ineg
+	iand
+	bipush	16
+	iushr
+	ifeq	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 14 // iconst_0
+   	l2 = 15 // ireturn
+
+private boolean transitionRunStateTo(int);
+  Signature: (I)Z
+  Code:
+   Stack=4, Locals=3, Args_size=2
+l3	aload_0
+	getfield	Field runControl:I
+	istore_2
+	iload_2
+	invokestatic	Method runStateOf:(I)I
+	iload_1
+	if_icmplt	l1 // aload_0
+	iconst_0
+	ireturn
+l1	aload_0
+	iload_2
+	iload_1
+	iload_2
+	invokestatic	Method activeCountOf:(I)I
+	invokestatic	Method runControlFor:(II)I
+	invokespecial	Method casRunControl:(II)Z
+	ifeq	l2 // goto
+	iconst_1
+	ireturn
+l2	goto	l3 // aload_0
+  Labels:
+   	l3 = 0 // aload_0
+   	l1 = 15 // aload_0
+   	l2 = 33 // goto
+
+public scala.concurrent.forkjoin.ForkJoinPool();
+  Signature: ()V
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method java/lang/Runtime.getRuntime:()Ljava/lang/Runtime;
+	invokevirtual	Method java/lang/Runtime.availableProcessors:()I
+	getstatic	Field defaultForkJoinWorkerThreadFactory:Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;
+	invokespecial	Method "<init>":(ILscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;)V
+	return
+  Labels:
+
+public scala.concurrent.forkjoin.ForkJoinPool(int);
+  Signature: (I)V
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	getstatic	Field defaultForkJoinWorkerThreadFactory:Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;
+	invokespecial	Method "<init>":(ILscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;)V
+	return
+  Labels:
+
+public scala.concurrent.forkjoin.ForkJoinPool(scala.concurrent.forkjoin.ForkJoinPool$ForkJoinWorkerThreadFactory);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;)V
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	aload_0
+	invokestatic	Method java/lang/Runtime.getRuntime:()Ljava/lang/Runtime;
+	invokevirtual	Method java/lang/Runtime.availableProcessors:()I
+	aload_1
+	invokespecial	Method "<init>":(ILscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;)V
+	return
+  Labels:
+
+public scala.concurrent.forkjoin.ForkJoinPool(int, scala.concurrent.forkjoin.ForkJoinPool$ForkJoinWorkerThreadFactory);
+  Signature: (ILscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;)V
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	invokespecial	Method java/util/concurrent/AbstractExecutorService."<init>":()V
+	iload_1
+	ifle	l1 // new
+	iload_1
+	sipush	32767
+	if_icmple	l2 // aload_2
+l1	new	class java/lang/IllegalArgumentException
+	dup
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
+	athrow
+l2	aload_2
+	ifnonnull	l3 // invokestatic
+	new	class java/lang/NullPointerException
+	dup
+	invokespecial	Method java/lang/NullPointerException."<init>":()V
+	athrow
+l3	invokestatic	Method checkPermission:()V
+	aload_0
+	aload_2
+	putfield	Field factory:Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;
+	aload_0
+	iload_1
+	putfield	Field parallelism:I
+	aload_0
+	sipush	32767
+	putfield	Field maxPoolSize:I
+	aload_0
+	iconst_1
+	putfield	Field maintainsParallelism:Z
+	aload_0
+	getstatic	Field poolNumberGenerator:Ljava/util/concurrent/atomic/AtomicInteger;
+	invokevirtual	Method java/util/concurrent/atomic/AtomicInteger.incrementAndGet:()I
+	putfield	Field poolNumber:I
+	aload_0
+	new	class java/util/concurrent/locks/ReentrantLock
+	dup
+	invokespecial	Method java/util/concurrent/locks/ReentrantLock."<init>":()V
+	putfield	Field workerLock:Ljava/util/concurrent/locks/ReentrantLock;
+	aload_0
+	aload_0
+	getfield	Field workerLock:Ljava/util/concurrent/locks/ReentrantLock;
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.newCondition:()Ljava/util/concurrent/locks/Condition;
+	putfield	Field termination:Ljava/util/concurrent/locks/Condition;
+	aload_0
+	new	class java/util/concurrent/atomic/AtomicLong
+	dup
+	invokespecial	Method java/util/concurrent/atomic/AtomicLong."<init>":()V
+	putfield	Field stealCount:Ljava/util/concurrent/atomic/AtomicLong;
+	aload_0
+	new	class scala/concurrent/forkjoin/LinkedTransferQueue
+	dup
+	invokespecial	Method scala/concurrent/forkjoin/LinkedTransferQueue."<init>":()V
+	putfield	Field submissionQueue:Lscala/concurrent/forkjoin/LinkedTransferQueue;
+	return
+  Labels:
+   	l1 = 15 // new
+   	l2 = 23 // aload_2
+   	l3 = 35 // invokestatic
+
+private scala.concurrent.forkjoin.ForkJoinWorkerThread createWorker(int);
+  Signature: (I)Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+  Code:
+   Stack=3, Locals=4, Args_size=2
+	aload_0
+	getfield	Field ueh:Ljava/lang/Thread$UncaughtExceptionHandler;
+	astore_2
+	aload_0
+	getfield	Field factory:Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;
+	aload_0
+	invokeinterface	InterfaceMethod scala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory.newThread:(Lscala/concurrent/forkjoin/ForkJoinPool;)Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_3
+	aload_3
+	ifnull	l1 // aload_3
+	aload_3
+	iload_1
+	putfield	Field scala/concurrent/forkjoin/ForkJoinWorkerThread.poolIndex:I
+	aload_3
+	iconst_1
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.setDaemon:(Z)V
+	aload_3
+	aload_0
+	getfield	Field locallyFifo:Z
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.setAsyncMode:(Z)V
+	aload_3
+	new	class java/lang/StringBuilder
+	dup
+	invokespecial	Method java/lang/StringBuilder."<init>":()V
+	ldc	String ForkJoinPool-
+	invokevirtual	Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	aload_0
+	getfield	Field poolNumber:I
+	invokevirtual	Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+	ldc	String -worker-
+	invokevirtual	Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	iload_1
+	invokevirtual	Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+	invokevirtual	Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.setName:(Ljava/lang/String;)V
+	aload_2
+	ifnull	l1 // aload_3
+	aload_3
+	aload_2
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.setUncaughtExceptionHandler:(Ljava/lang/Thread$UncaughtExceptionHandler;)V
+l1	aload_3
+	areturn
+  Labels:
+   	l1 = 82 // aload_3
+
+private static int arraySizeFor(int);
+  Signature: (I)I
+  Code:
+   Stack=4, Locals=1, Args_size=1
+	iload_0
+	iconst_1
+	if_icmpgt	l1 // iconst_1
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_1
+	bipush	32
+	iload_0
+	iconst_1
+	isub
+	invokestatic	Method java/lang/Integer.numberOfLeadingZeros:(I)I
+	isub
+	ishl
+l2	ireturn
+  Labels:
+   	l1 = 9 // iconst_1
+   	l2 = 20 // ireturn
+
+public static scala.concurrent.forkjoin.ForkJoinWorkerThread[] copyOfWorkers(scala.concurrent.forkjoin.ForkJoinWorkerThread[], int);
+  Signature: ([Lscala/concurrent/forkjoin/ForkJoinWorkerThread;I)[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+  Code:
+   Stack=6, Locals=3, Args_size=2
+	iload_1
+	anewarray	class scala/concurrent/forkjoin/ForkJoinWorkerThread
+	astore_2
+	aload_0
+	iconst_0
+	aload_2
+	iconst_0
+	iload_1
+	aload_0
+	arraylength
+	invokestatic	Method java/lang/Math.min:(II)I
+	invokestatic	Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+	aload_2
+	areturn
+  Labels:
+
+private scala.concurrent.forkjoin.ForkJoinWorkerThread[] ensureWorkerArrayCapacity(int);
+  Signature: (I)[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+  Code:
+   Stack=3, Locals=3, Args_size=2
+	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_2
+	aload_2
+	ifnonnull	l1 // iload_1
+	aload_0
+	iload_1
+	invokestatic	Method arraySizeFor:(I)I
+	anewarray	class scala/concurrent/forkjoin/ForkJoinWorkerThread
+	dup_x1
+	putfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	areturn
+l1	iload_1
+	aload_2
+	arraylength
+	if_icmple	l2 // aload_2
+	aload_0
+	aload_2
+	iload_1
+	invokestatic	Method arraySizeFor:(I)I
+	invokestatic	Method copyOfWorkers:([Lscala/concurrent/forkjoin/ForkJoinWorkerThread;I)[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	dup_x1
+	putfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	areturn
+l2	aload_2
+	areturn
+  Labels:
+   	l1 = 22 // iload_1
+   	l2 = 42 // aload_2
+
+private void tryShrinkWorkerArray();
+  Signature: ()V
+  Code:
+   Stack=3, Locals=5, Args_size=1
+	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_1
+	aload_1
+	ifnull	l1 // return
+	aload_1
+	arraylength
+	istore_2
+	iload_2
+	iconst_1
+	isub
+	istore_3
+l3	iload_3
+	iflt	l2 // iload_3
+	aload_1
+	iload_3
+	aaload
+	ifnonnull	l2 // iload_3
+	iinc	3, -1
+	goto	l3 // iload_3
+l2	iload_3
+	iconst_1
+	iadd
+	invokestatic	Method arraySizeFor:(I)I
+	istore	4
+	iload	4
+	iload_2
+	if_icmpge	l1 // return
+	aload_0
+	aload_1
+	iload	4
+	invokestatic	Method copyOfWorkers:([Lscala/concurrent/forkjoin/ForkJoinWorkerThread;I)[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	putfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+l1	return
+  Labels:
+   	l3 = 16 // iload_3
+   	l2 = 32 // iload_3
+   	l1 = 56 // return
+
+final void ensureWorkerInitialization();
+  Signature: ()V
+  Code:
+   Stack=3, Locals=7, Args_size=1
+	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_1
+	aload_1
+	ifnonnull	l1 // return
+	aload_0
+	getfield	Field workerLock:Ljava/util/concurrent/locks/ReentrantLock;
+	astore_2
+	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.lock:()V
+	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_1
+	aload_1
+	ifnonnull	l2 // aload_2
+	aload_0
+	getfield	Field parallelism:I
+	istore_3
+	aload_0
+	iload_3
+	invokespecial	Method ensureWorkerArrayCapacity:(I)[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_1
+	iconst_0
+	istore	4
+l4	iload	4
+	iload_3
+	if_icmpge	l2 // aload_2
+	aload_0
+	iload	4
+	invokespecial	Method createWorker:(I)Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore	5
+	aload	5
+	ifnull	l3 // iinc
+	aload_1
+	iload	4
+	aload	5
+	aastore
+	aload	5
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.start:()V
+	aload_0
+	iconst_1
+	invokespecial	Method updateWorkerCount:(I)V
+l3	iinc	4, 1
+	goto	l4 // iload
+l2	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	goto	l1 // return
+	astore	6
+	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	aload	6
+	athrow
+l1	return
+  Labels:
+   	l4 = 41 // iload
+   	l3 = 76 // iinc
+   	l2 = 82 // aload_2
+   	l1 = 98 // return
+  Exception table:
+   from   to  target type
+    18    82    89   any
+    89    91    89   any
+
+private void createAndStartAddedWorkers();
+  Signature: ()V
+  Code:
+   Stack=5, Locals=9, Args_size=1
+	aload_0
+	invokespecial	Method resumeAllSpares:()Z
+	pop
+	aload_0
+	getfield	Field parallelism:I
+	istore_1
+	aload_0
+	iload_1
+	invokespecial	Method ensureWorkerArrayCapacity:(I)[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_2
+	aload_2
+	arraylength
+	istore_3
+	iconst_0
+	istore	4
+l3	iload	4
+	iload_3
+	if_icmpge	l1 // return
+	aload_2
+	iload	4
+	aaload
+	ifnull	l2 // aload_0
+	iinc	4, 1
+	goto	l3 // iload
+l2	aload_0
+	getfield	Field workerCounts:I
+	istore	5
+	iload	5
+	invokestatic	Method totalCountOf:(I)I
+	istore	6
+	iload	5
+	invokestatic	Method runningCountOf:(I)I
+	istore	7
+	iload	7
+	iload_1
+	if_icmpge	l1 // return
+	iload	6
+	iload_1
+	if_icmplt	l4 // aload_0
+	goto	l1 // return
+l4	aload_0
+	iload	5
+	iload	6
+	iconst_1
+	iadd
+	iload	7
+	iconst_1
+	iadd
+	invokestatic	Method workerCountsFor:(II)I
+	invokespecial	Method casWorkerCounts:(II)Z
+	ifeq	l5 // goto
+	aload_0
+	iload	4
+	invokespecial	Method createWorker:(I)Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore	8
+	aload	8
+	ifnull	l6 // aload_0
+	aload_2
+	iload	4
+	iinc	4, 1
+	aload	8
+	aastore
+	aload	8
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.start:()V
+	goto	l5 // goto
+l6	aload_0
+	iconst_m1
+	invokespecial	Method updateWorkerCount:(I)V
+	goto	l1 // return
+l5	goto	l3 // iload
+l1	return
+  Labels:
+   	l3 = 22 // iload
+   	l2 = 41 // aload_0
+   	l4 = 76 // aload_0
+   	l6 = 126 // aload_0
+   	l5 = 134 // goto
+   	l1 = 137 // return
+
+private void doSubmit(scala.concurrent.forkjoin.ForkJoinTask);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinTask;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	invokevirtual	Method isShutdown:()Z
+	ifeq	l1 // aload_0
+	new	class java/util/concurrent/RejectedExecutionException
+	dup
+	invokespecial	Method java/util/concurrent/RejectedExecutionException."<init>":()V
+	athrow
+l1	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	ifnonnull	l2 // aload_0
+	aload_0
+	invokevirtual	Method ensureWorkerInitialization:()V
+l2	aload_0
+	getfield	Field submissionQueue:Lscala/concurrent/forkjoin/LinkedTransferQueue;
+	aload_1
+	invokevirtual	Method scala/concurrent/forkjoin/LinkedTransferQueue.offer:(Ljava/lang/Object;)Z
+	pop
+	aload_0
+	invokespecial	Method signalIdleWorkers:()V
+	return
+  Labels:
+   	l1 = 15 // aload_0
+   	l2 = 26 // aload_0
+  Signature: length = 0x2
+   01 4D 
+
+public java.lang.Object invoke(scala.concurrent.forkjoin.ForkJoinTask);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinTask;)Ljava/lang/Object;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokespecial	Method doSubmit:(Lscala/concurrent/forkjoin/ForkJoinTask;)V
+	aload_1
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinTask.join:()Ljava/lang/Object;
+	areturn
+  Labels:
+  Signature: length = 0x2
+   01 50 
+
+public void execute(scala.concurrent.forkjoin.ForkJoinTask);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinTask;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokespecial	Method doSubmit:(Lscala/concurrent/forkjoin/ForkJoinTask;)V
+	return
+  Labels:
+  Signature: length = 0x2
+   01 4D 
+
+public void execute(java.lang.Runnable);
+  Signature: (Ljava/lang/Runnable;)V
+  Code:
+   Stack=5, Locals=2, Args_size=2
+	aload_0
+	new	class scala/concurrent/forkjoin/ForkJoinPool$AdaptedRunnable
+	dup
+	aload_1
+	aconst_null
+	invokespecial	Method scala/concurrent/forkjoin/ForkJoinPool$AdaptedRunnable."<init>":(Ljava/lang/Runnable;Ljava/lang/Object;)V
+	invokespecial	Method doSubmit:(Lscala/concurrent/forkjoin/ForkJoinTask;)V
+	return
+  Labels:
+
+public scala.concurrent.forkjoin.ForkJoinTask submit(java.util.concurrent.Callable);
+  Signature: (Ljava/util/concurrent/Callable;)Lscala/concurrent/forkjoin/ForkJoinTask;
+  Code:
+   Stack=3, Locals=3, Args_size=2
+	new	class scala/concurrent/forkjoin/ForkJoinPool$AdaptedCallable
+	dup
+	aload_1
+	invokespecial	Method scala/concurrent/forkjoin/ForkJoinPool$AdaptedCallable."<init>":(Ljava/util/concurrent/Callable;)V
+	astore_2
+	aload_0
+	aload_2
+	invokespecial	Method doSubmit:(Lscala/concurrent/forkjoin/ForkJoinTask;)V
+	aload_2
+	areturn
+  Labels:
+  Signature: length = 0x2
+   01 55 
+
+public scala.concurrent.forkjoin.ForkJoinTask submit(java.lang.Runnable, java.lang.Object);
+  Signature: (Ljava/lang/Runnable;Ljava/lang/Object;)Lscala/concurrent/forkjoin/ForkJoinTask;
+  Code:
+   Stack=4, Locals=4, Args_size=3
+	new	class scala/concurrent/forkjoin/ForkJoinPool$AdaptedRunnable
+	dup
+	aload_1
+	aload_2
+	invokespecial	Method scala/concurrent/forkjoin/ForkJoinPool$AdaptedRunnable."<init>":(Ljava/lang/Runnable;Ljava/lang/Object;)V
+	astore_3
+	aload_0
+	aload_3
+	invokespecial	Method doSubmit:(Lscala/concurrent/forkjoin/ForkJoinTask;)V
+	aload_3
+	areturn
+  Labels:
+  Signature: length = 0x2
+   01 57 
+
+public scala.concurrent.forkjoin.ForkJoinTask submit(java.lang.Runnable);
+  Signature: (Ljava/lang/Runnable;)Lscala/concurrent/forkjoin/ForkJoinTask;
+  Code:
+   Stack=4, Locals=3, Args_size=2
+	new	class scala/concurrent/forkjoin/ForkJoinPool$AdaptedRunnable
+	dup
+	aload_1
+	aconst_null
+	invokespecial	Method scala/concurrent/forkjoin/ForkJoinPool$AdaptedRunnable."<init>":(Ljava/lang/Runnable;Ljava/lang/Object;)V
+	astore_2
+	aload_0
+	aload_2
+	invokespecial	Method doSubmit:(Lscala/concurrent/forkjoin/ForkJoinTask;)V
+	aload_2
+	areturn
+  Labels:
+  Signature: length = 0x2
+   01 59 
+
+public java.util.List invokeAll(java.util.Collection);
+  Signature: (Ljava/util/Collection;)Ljava/util/List;
+  Code:
+   Stack=4, Locals=5, Args_size=2
+	new	class java/util/ArrayList
+	dup
+	aload_1
+	invokeinterface	InterfaceMethod java/util/Collection.size:()I
+	invokespecial	Method java/util/ArrayList."<init>":(I)V
+	astore_2
+	aload_1
+	invokeinterface	InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+	astore_3
+l2	aload_3
+	invokeinterface	InterfaceMethod java/util/Iterator.hasNext:()Z
+	ifeq	l1 // aload_0
+	aload_3
+	invokeinterface	InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+	checkcast	class java/util/concurrent/Callable
+	astore	4
+	aload_2
+	new	class scala/concurrent/forkjoin/ForkJoinPool$AdaptedCallable
+	dup
+	aload	4
+	invokespecial	Method scala/concurrent/forkjoin/ForkJoinPool$AdaptedCallable."<init>":(Ljava/util/concurrent/Callable;)V
+	invokevirtual	Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+	pop
+	goto	l2 // aload_3
+l1	aload_0
+	new	class scala/concurrent/forkjoin/ForkJoinPool$InvokeAll
+	dup
+	aload_2
+	invokespecial	Method scala/concurrent/forkjoin/ForkJoinPool$InvokeAll."<init>":(Ljava/util/ArrayList;)V
+	invokevirtual	Method invoke:(Lscala/concurrent/forkjoin/ForkJoinTask;)Ljava/lang/Object;
+	pop
+	aload_2
+	areturn
+  Labels:
+   	l2 = 21 // aload_3
+   	l1 = 58 // aload_0
+  Signature: length = 0x2
+   01 5C 
+
+public scala.concurrent.forkjoin.ForkJoinPool$ForkJoinWorkerThreadFactory getFactory();
+  Signature: ()Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field factory:Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;
+	areturn
+  Labels:
+
+public java.lang.Thread$UncaughtExceptionHandler getUncaughtExceptionHandler();
+  Signature: ()Ljava/lang/Thread$UncaughtExceptionHandler;
+  Code:
+   Stack=1, Locals=4, Args_size=1
+	aload_0
+	getfield	Field workerLock:Ljava/util/concurrent/locks/ReentrantLock;
+	astore_2
+	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.lock:()V
+	aload_0
+	getfield	Field ueh:Ljava/lang/Thread$UncaughtExceptionHandler;
+	astore_1
+	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	goto	l1 // aload_1
+	astore_3
+	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	aload_3
+	athrow
+l1	aload_1
+	areturn
+  Labels:
+   	l1 = 28 // aload_1
+  Exception table:
+   from   to  target type
+     9    14    21   any
+    21    22    21   any
+
+public java.lang.Thread$UncaughtExceptionHandler setUncaughtExceptionHandler(java.lang.Thread$UncaughtExceptionHandler);
+  Signature: (Ljava/lang/Thread$UncaughtExceptionHandler;)Ljava/lang/Thread$UncaughtExceptionHandler;
+  Code:
+   Stack=2, Locals=8, Args_size=2
+	invokestatic	Method checkPermission:()V
+	aconst_null
+	astore_2
+	aload_0
+	getfield	Field workerLock:Ljava/util/concurrent/locks/ReentrantLock;
+	astore_3
+	aload_3
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.lock:()V
+	aload_0
+	getfield	Field ueh:Ljava/lang/Thread$UncaughtExceptionHandler;
+	astore_2
+	aload_0
+	aload_1
+	putfield	Field ueh:Ljava/lang/Thread$UncaughtExceptionHandler;
+	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore	4
+	aload	4
+	ifnull	l1 // aload_3
+	iconst_0
+	istore	5
+l3	iload	5
+	aload	4
+	arraylength
+	if_icmpge	l1 // aload_3
+	aload	4
+	iload	5
+	aaload
+	astore	6
+	aload	6
+	ifnull	l2 // iinc
+	aload	6
+	aload_1
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.setUncaughtExceptionHandler:(Ljava/lang/Thread$UncaughtExceptionHandler;)V
+l2	iinc	5, 1
+	goto	l3 // iload
+l1	aload_3
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	goto	l4 // aload_2
+	astore	7
+	aload_3
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	aload	7
+	athrow
+l4	aload_2
+	areturn
+  Labels:
+   	l3 = 38 // iload
+   	l2 = 64 // iinc
+   	l1 = 70 // aload_3
+   	l4 = 86 // aload_2
+  Exception table:
+   from   to  target type
+    14    70    77   any
+    77    79    77   any
+
+public void setParallelism(int);
+  Signature: (I)V
+  Code:
+   Stack=2, Locals=5, Args_size=2
+	invokestatic	Method checkPermission:()V
+	iload_1
+	ifle	l1 // new
+	iload_1
+	aload_0
+	getfield	Field maxPoolSize:I
+	if_icmple	l2 // aload_0
+l1	new	class java/lang/IllegalArgumentException
+	dup
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
+	athrow
+l2	aload_0
+	getfield	Field workerLock:Ljava/util/concurrent/locks/ReentrantLock;
+	astore_2
+	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.lock:()V
+	aload_0
+	invokevirtual	Method isTerminating:()Z
+	ifne	l3 // aload_2
+	aload_0
+	getfield	Field parallelism:I
+	istore_3
+	aload_0
+	iload_1
+	putfield	Field parallelism:I
+	iload_1
+	iload_3
+	if_icmple	l4 // aload_0
+	aload_0
+	invokespecial	Method createAndStartAddedWorkers:()V
+	goto	l3 // aload_2
+l4	aload_0
+	invokespecial	Method trimSpares:()V
+l3	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	goto	l5 // aload_0
+	astore	4
+	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	aload	4
+	athrow
+l5	aload_0
+	invokespecial	Method signalIdleWorkers:()V
+	return
+  Labels:
+   	l1 = 15 // new
+   	l2 = 23 // aload_0
+   	l4 = 61 // aload_0
+   	l3 = 65 // aload_2
+   	l5 = 81 // aload_0
+  Exception table:
+   from   to  target type
+    32    65    72   any
+    72    74    72   any
+
+public int getParallelism();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field parallelism:I
+	ireturn
+  Labels:
+
+public int getPoolSize();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field workerCounts:I
+	invokestatic	Method totalCountOf:(I)I
+	ireturn
+  Labels:
+
+public int getMaximumPoolSize();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field maxPoolSize:I
+	ireturn
+  Labels:
+
+public void setMaximumPoolSize(int);
+  Signature: (I)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	iload_1
+	iflt	l1 // new
+	iload_1
+	sipush	32767
+	if_icmple	l2 // aload_0
+l1	new	class java/lang/IllegalArgumentException
+	dup
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
+	athrow
+l2	aload_0
+	iload_1
+	putfield	Field maxPoolSize:I
+	return
+  Labels:
+   	l1 = 11 // new
+   	l2 = 19 // aload_0
+
+public boolean getMaintainsParallelism();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field maintainsParallelism:Z
+	ireturn
+  Labels:
+
+public void setMaintainsParallelism(boolean);
+  Signature: (Z)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field maintainsParallelism:Z
+	return
+  Labels:
+
+public boolean setAsyncMode(boolean);
+  Signature: (Z)Z
+  Code:
+   Stack=2, Locals=6, Args_size=2
+	aload_0
+	getfield	Field locallyFifo:Z
+	istore_2
+	aload_0
+	iload_1
+	putfield	Field locallyFifo:Z
+	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_3
+	aload_3
+	ifnull	l1 // iload_2
+	iconst_0
+	istore	4
+l3	iload	4
+	aload_3
+	arraylength
+	if_icmpge	l1 // iload_2
+	aload_3
+	iload	4
+	aaload
+	astore	5
+	aload	5
+	ifnull	l2 // iinc
+	aload	5
+	iload_1
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.setAsyncMode:(Z)V
+l2	iinc	4, 1
+	goto	l3 // iload
+l1	iload_2
+	ireturn
+  Labels:
+   	l3 = 22 // iload
+   	l2 = 46 // iinc
+   	l1 = 52 // iload_2
+
+public boolean getAsyncMode();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field locallyFifo:Z
+	ireturn
+  Labels:
+
+public int getRunningThreadCount();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field workerCounts:I
+	invokestatic	Method runningCountOf:(I)I
+	ireturn
+  Labels:
+
+public int getActiveThreadCount();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field runControl:I
+	invokestatic	Method activeCountOf:(I)I
+	ireturn
+  Labels:
+
+final int getIdleThreadCount();
+  Signature: ()I
+  Code:
+   Stack=2, Locals=2, Args_size=1
+	aload_0
+	getfield	Field workerCounts:I
+	invokestatic	Method runningCountOf:(I)I
+	aload_0
+	getfield	Field runControl:I
+	invokestatic	Method activeCountOf:(I)I
+	isub
+	istore_1
+	iload_1
+	ifgt	l1 // iload_1
+	iconst_0
+	goto	l2 // ireturn
+l1	iload_1
+l2	ireturn
+  Labels:
+   	l1 = 24 // iload_1
+   	l2 = 25 // ireturn
+
+public boolean isQuiescent();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field runControl:I
+	invokestatic	Method activeCountOf:(I)I
+	ifne	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 14 // iconst_0
+   	l2 = 15 // ireturn
+
+public long getStealCount();
+  Signature: ()J
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	getfield	Field stealCount:Ljava/util/concurrent/atomic/AtomicLong;
+	invokevirtual	Method java/util/concurrent/atomic/AtomicLong.get:()J
+	lreturn
+  Labels:
+
+private void updateStealCount(scala.concurrent.forkjoin.ForkJoinWorkerThread);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)V
+  Code:
+   Stack=3, Locals=3, Args_size=2
+	aload_1
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.getAndClearStealCount:()I
+	istore_2
+	iload_2
+	ifeq	l1 // return
+	aload_0
+	getfield	Field stealCount:Ljava/util/concurrent/atomic/AtomicLong;
+	iload_2
+	i2l
+	invokevirtual	Method java/util/concurrent/atomic/AtomicLong.addAndGet:(J)J
+	pop2
+l1	return
+  Labels:
+   	l1 = 19 // return
+
+public long getQueuedTaskCount();
+  Signature: ()J
+  Code:
+   Stack=4, Locals=6, Args_size=1
+	lconst_0
+	lstore_1
+	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_3
+	aload_3
+	ifnull	l1 // lload_1
+	iconst_0
+	istore	4
+l3	iload	4
+	aload_3
+	arraylength
+	if_icmpge	l1 // lload_1
+	aload_3
+	iload	4
+	aaload
+	astore	5
+	aload	5
+	ifnull	l2 // iinc
+	lload_1
+	aload	5
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.getQueueSize:()I
+	i2l
+	ladd
+	lstore_1
+l2	iinc	4, 1
+	goto	l3 // iload
+l1	lload_1
+	lreturn
+  Labels:
+   	l3 = 14 // iload
+   	l2 = 41 // iinc
+   	l1 = 47 // lload_1
+
+public int getQueuedSubmissionCount();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field submissionQueue:Lscala/concurrent/forkjoin/LinkedTransferQueue;
+	invokevirtual	Method scala/concurrent/forkjoin/LinkedTransferQueue.size:()I
+	ireturn
+  Labels:
+
+public boolean hasQueuedSubmissions();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field submissionQueue:Lscala/concurrent/forkjoin/LinkedTransferQueue;
+	invokevirtual	Method scala/concurrent/forkjoin/LinkedTransferQueue.isEmpty:()Z
+	ifne	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 14 // iconst_0
+   	l2 = 15 // ireturn
+
+protected scala.concurrent.forkjoin.ForkJoinTask pollSubmission();
+  Signature: ()Lscala/concurrent/forkjoin/ForkJoinTask;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field submissionQueue:Lscala/concurrent/forkjoin/LinkedTransferQueue;
+	invokevirtual	Method scala/concurrent/forkjoin/LinkedTransferQueue.poll:()Ljava/lang/Object;
+	checkcast	class scala/concurrent/forkjoin/ForkJoinTask
+	areturn
+  Labels:
+  Signature: length = 0x2
+   01 7C 
+
+protected int drainTasksTo(java.util.Collection);
+  Signature: (Ljava/util/Collection;)I
+  Code:
+   Stack=3, Locals=6, Args_size=2
+	aload_0
+	getfield	Field submissionQueue:Lscala/concurrent/forkjoin/LinkedTransferQueue;
+	aload_1
+	invokevirtual	Method scala/concurrent/forkjoin/LinkedTransferQueue.drainTo:(Ljava/util/Collection;)I
+	istore_2
+	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_3
+	aload_3
+	ifnull	l1 // iload_2
+	iconst_0
+	istore	4
+l3	iload	4
+	aload_3
+	arraylength
+	if_icmpge	l1 // iload_2
+	aload_3
+	iload	4
+	aaload
+	astore	5
+	aload	5
+	ifnull	l2 // iinc
+	iload_2
+	aload	5
+	aload_1
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.drainTasksTo:(Ljava/util/Collection;)I
+	iadd
+	istore_2
+l2	iinc	4, 1
+	goto	l3 // iload
+l1	iload_2
+	ireturn
+  Labels:
+   	l3 = 21 // iload
+   	l2 = 48 // iinc
+   	l1 = 54 // iload_2
+  Signature: length = 0x2
+   01 7F 
+
+public java.lang.String toString();
+  Signature: ()Ljava/lang/String;
+  Code:
+   Stack=3, Locals=10, Args_size=1
+	aload_0
+	getfield	Field parallelism:I
+	istore_1
+	aload_0
+	getfield	Field workerCounts:I
+	istore_2
+	aload_0
+	getfield	Field runControl:I
+	istore_3
+	aload_0
+	invokevirtual	Method getStealCount:()J
+	lstore	4
+	aload_0
+	invokevirtual	Method getQueuedTaskCount:()J
+	lstore	6
+	aload_0
+	invokevirtual	Method getQueuedSubmissionCount:()I
+	i2l
+	lstore	8
+	new	class java/lang/StringBuilder
+	dup
+	invokespecial	Method java/lang/StringBuilder."<init>":()V
+	aload_0
+	invokespecial	Method java/lang/Object.toString:()Ljava/lang/String;
+	invokevirtual	Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	ldc	String [
+	invokevirtual	Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	iload_3
+	invokestatic	Method runStateOf:(I)I
+	invokestatic	Method runStateToString:(I)Ljava/lang/String;
+	invokevirtual	Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	ldc	String , parallelism = 
+	invokevirtual	Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	iload_1
+	invokevirtual	Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+	ldc	String , size = 
+	invokevirtual	Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	iload_2
+	invokestatic	Method totalCountOf:(I)I
+	invokevirtual	Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+	ldc	String , active = 
+	invokevirtual	Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	iload_3
+	invokestatic	Method activeCountOf:(I)I
+	invokevirtual	Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+	ldc	String , running = 
+	invokevirtual	Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	iload_2
+	invokestatic	Method runningCountOf:(I)I
+	invokevirtual	Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+	ldc	String , steals = 
+	invokevirtual	Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	lload	4
+	invokevirtual	Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+	ldc	String , tasks = 
+	invokevirtual	Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	lload	6
+	invokevirtual	Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+	ldc	String , submissions = 
+	invokevirtual	Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	lload	8
+	invokevirtual	Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+	ldc	String ]
+	invokevirtual	Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	invokevirtual	Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+	areturn
+  Labels:
+
+private static java.lang.String runStateToString(int);
+  Signature: (I)Ljava/lang/String;
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	iload_0
+	tableswitch{ //0 to 3
+		0: 32;
+		1: 35;
+		2: 38;
+		3: 41;
+		default: 44 }
+	ldc	String Running
+	areturn
+	ldc	String Shutting down
+	areturn
+	ldc	String Terminating
+	areturn
+	ldc	String Terminated
+	areturn
+	new	class java/lang/Error
+	dup
+	ldc	String Unknown run state
+	invokespecial	Method java/lang/Error."<init>":(Ljava/lang/String;)V
+	athrow
+  Labels:
+
+public void shutdown();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	invokestatic	Method checkPermission:()V
+	aload_0
+	iconst_1
+	invokespecial	Method transitionRunStateTo:(I)Z
+	pop
+	aload_0
+	getfield	Field runControl:I
+	invokestatic	Method canTerminateOnShutdown:(I)Z
+	ifeq	l1 // return
+	aload_0
+	invokespecial	Method terminateOnShutdown:()V
+l1	return
+  Labels:
+   	l1 = 23 // return
+
+public java.util.List shutdownNow();
+  Signature: ()Ljava/util/List;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	invokestatic	Method checkPermission:()V
+	aload_0
+	invokespecial	Method terminate:()V
+	invokestatic	Method java/util/Collections.emptyList:()Ljava/util/List;
+	areturn
+  Labels:
+  Signature: length = 0x2
+   01 FFFFFF87 
+
+public boolean isTerminated();
+  Signature: ()Z
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	getfield	Field runControl:I
+	invokestatic	Method runStateOf:(I)I
+	iconst_3
+	if_icmpne	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 15 // iconst_0
+   	l2 = 16 // ireturn
+
+public boolean isTerminating();
+  Signature: ()Z
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	getfield	Field runControl:I
+	invokestatic	Method runStateOf:(I)I
+	iconst_2
+	if_icmplt	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 15 // iconst_0
+   	l2 = 16 // ireturn
+
+public boolean isShutdown();
+  Signature: ()Z
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	getfield	Field runControl:I
+	invokestatic	Method runStateOf:(I)I
+	iconst_1
+	if_icmplt	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 15 // iconst_0
+   	l2 = 16 // ireturn
+
+public boolean awaitTermination(long, java.util.concurrent.TimeUnit)   throws java.lang.InterruptedException;
+  Signature: (JLjava/util/concurrent/TimeUnit;)Z
+  Code:
+   Stack=4, Locals=9, Args_size=3
+	aload_3
+	lload_1
+	invokevirtual	Method java/util/concurrent/TimeUnit.toNanos:(J)J
+	lstore	4
+	aload_0
+	getfield	Field workerLock:Ljava/util/concurrent/locks/ReentrantLock;
+	astore	6
+	aload	6
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.lock:()V
+l3	aload_0
+	invokevirtual	Method isTerminated:()Z
+	ifeq	l1 // lload
+	iconst_1
+	istore	7
+	aload	6
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	iload	7
+	ireturn
+l1	lload	4
+	lconst_0
+	lcmp
+	ifgt	l2 // aload_0
+	iconst_0
+	istore	7
+	aload	6
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	iload	7
+	ireturn
+l2	aload_0
+	getfield	Field termination:Ljava/util/concurrent/locks/Condition;
+	lload	4
+	invokeinterface	InterfaceMethod java/util/concurrent/locks/Condition.awaitNanos:(J)J
+	lstore	4
+	goto	l3 // aload_0
+	astore	8
+	aload	6
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	aload	8
+	athrow
+  Labels:
+   	l3 = 18 // aload_0
+   	l1 = 36 // lload
+   	l2 = 54 // aload_0
+  Exception table:
+   from   to  target type
+    18    28    70   any
+    36    46    70   any
+    54    72    70   any
+  Exceptions: 
+   throws java.lang.InterruptedException
+final void workerTerminated(scala.concurrent.forkjoin.ForkJoinWorkerThread);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)V
+  Code:
+   Stack=3, Locals=6, Args_size=2
+	aload_0
+	aload_1
+	invokespecial	Method updateStealCount:(Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)V
+	aload_0
+	iconst_m1
+	invokespecial	Method updateWorkerCount:(I)V
+	aload_0
+	getfield	Field workerLock:Ljava/util/concurrent/locks/ReentrantLock;
+	astore_2
+	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.lock:()V
+	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_3
+	aload_3
+	ifnull	l1 // aload_2
+	aload_1
+	getfield	Field scala/concurrent/forkjoin/ForkJoinWorkerThread.poolIndex:I
+	istore	4
+	iload	4
+	iflt	l2 // aload_0
+	iload	4
+	aload_3
+	arraylength
+	if_icmpge	l2 // aload_0
+	aload_3
+	iload	4
+	aaload
+	aload_1
+	if_acmpne	l2 // aload_0
+	aload_3
+	iload	4
+	aconst_null
+	aastore
+l2	aload_0
+	getfield	Field workerCounts:I
+	invokestatic	Method totalCountOf:(I)I
+	ifne	l3 // aload_0
+	aload_0
+	invokespecial	Method terminate:()V
+	aload_0
+	iconst_3
+	invokespecial	Method transitionRunStateTo:(I)Z
+	pop
+	aload_0
+	getfield	Field termination:Ljava/util/concurrent/locks/Condition;
+	invokeinterface	InterfaceMethod java/util/concurrent/locks/Condition.signalAll:()V
+	goto	l1 // aload_2
+l3	aload_0
+	invokevirtual	Method isTerminating:()Z
+	ifne	l1 // aload_2
+	aload_0
+	invokespecial	Method tryShrinkWorkerArray:()V
+	aload_0
+	iconst_1
+	invokespecial	Method tryResumeSpare:(Z)Z
+	pop
+l1	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	goto	l4 // aload_0
+	astore	5
+	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	aload	5
+	athrow
+l4	aload_0
+	invokespecial	Method signalIdleWorkers:()V
+	return
+  Labels:
+   	l2 = 59 // aload_0
+   	l3 = 91 // aload_0
+   	l1 = 108 // aload_2
+   	l4 = 124 // aload_0
+  Exception table:
+   from   to  target type
+    19   108   115   any
+   115   117   115   any
+
+private void terminate();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	iconst_2
+	invokespecial	Method transitionRunStateTo:(I)Z
+	ifeq	l1 // return
+	aload_0
+	invokespecial	Method stopAllWorkers:()V
+	aload_0
+	invokespecial	Method resumeAllSpares:()Z
+	pop
+	aload_0
+	invokespecial	Method signalIdleWorkers:()V
+	aload_0
+	invokespecial	Method cancelQueuedSubmissions:()V
+	aload_0
+	invokespecial	Method cancelQueuedWorkerTasks:()V
+	aload_0
+	invokespecial	Method interruptUnterminatedWorkers:()V
+	aload_0
+	invokespecial	Method signalIdleWorkers:()V
+l1	return
+  Labels:
+   	l1 = 37 // return
+
+private void terminateOnShutdown();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method hasQueuedSubmissions:()Z
+	ifne	l1 // return
+	aload_0
+	getfield	Field runControl:I
+	invokestatic	Method canTerminateOnShutdown:(I)Z
+	ifeq	l1 // return
+	aload_0
+	invokespecial	Method terminate:()V
+l1	return
+  Labels:
+   	l1 = 21 // return
+
+private void cancelQueuedSubmissions();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=2, Args_size=1
+l2	aload_0
+	invokevirtual	Method pollSubmission:()Lscala/concurrent/forkjoin/ForkJoinTask;
+	dup
+	astore_1
+	ifnull	l1 // return
+	aload_1
+	iconst_0
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinTask.cancel:(Z)Z
+	pop
+	goto	l2 // aload_0
+l1	return
+  Labels:
+   	l2 = 0 // aload_0
+   	l1 = 18 // return
+
+private void cancelQueuedWorkerTasks();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=6, Args_size=1
+	aload_0
+	getfield	Field workerLock:Ljava/util/concurrent/locks/ReentrantLock;
+	astore_1
+	aload_1
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.lock:()V
+	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_2
+	aload_2
+	ifnull	l1 // aload_1
+	iconst_0
+	istore_3
+l3	iload_3
+	aload_2
+	arraylength
+	if_icmpge	l1 // aload_1
+	aload_2
+	iload_3
+	aaload
+	astore	4
+	aload	4
+	ifnull	l2 // iinc
+	aload	4
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.cancelTasks:()V
+l2	iinc	3, 1
+	goto	l3 // iload_3
+l1	aload_1
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	goto	l4 // return
+	astore	5
+	aload_1
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	aload	5
+	athrow
+l4	return
+  Labels:
+   	l3 = 20 // iload_3
+   	l2 = 41 // iinc
+   	l1 = 47 // aload_1
+   	l4 = 63 // return
+  Exception table:
+   from   to  target type
+     9    47    54   any
+    54    56    54   any
+
+private void stopAllWorkers();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=6, Args_size=1
+	aload_0
+	getfield	Field workerLock:Ljava/util/concurrent/locks/ReentrantLock;
+	astore_1
+	aload_1
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.lock:()V
+	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_2
+	aload_2
+	ifnull	l1 // aload_1
+	iconst_0
+	istore_3
+l3	iload_3
+	aload_2
+	arraylength
+	if_icmpge	l1 // aload_1
+	aload_2
+	iload_3
+	aaload
+	astore	4
+	aload	4
+	ifnull	l2 // iinc
+	aload	4
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.shutdownNow:()Z
+	pop
+l2	iinc	3, 1
+	goto	l3 // iload_3
+l1	aload_1
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	goto	l4 // return
+	astore	5
+	aload_1
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	aload	5
+	athrow
+l4	return
+  Labels:
+   	l3 = 20 // iload_3
+   	l2 = 42 // iinc
+   	l1 = 48 // aload_1
+   	l4 = 64 // return
+  Exception table:
+   from   to  target type
+     9    48    55   any
+    55    57    55   any
+
+private void interruptUnterminatedWorkers();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=7, Args_size=1
+	aload_0
+	getfield	Field workerLock:Ljava/util/concurrent/locks/ReentrantLock;
+	astore_1
+	aload_1
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.lock:()V
+	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_2
+	aload_2
+	ifnull	l1 // aload_1
+	iconst_0
+	istore_3
+l3	iload_3
+	aload_2
+	arraylength
+	if_icmpge	l1 // aload_1
+	aload_2
+	iload_3
+	aaload
+	astore	4
+	aload	4
+	ifnull	l2 // iinc
+	aload	4
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.isTerminated:()Z
+	ifne	l2 // iinc
+	aload	4
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.interrupt:()V
+	goto	l2 // iinc
+	astore	5
+l2	iinc	3, 1
+	goto	l3 // iload_3
+l1	aload_1
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	goto	l4 // return
+	astore	6
+	aload_1
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	aload	6
+	athrow
+l4	return
+  Labels:
+   	l3 = 20 // iload_3
+   	l2 = 54 // iinc
+   	l1 = 60 // aload_1
+   	l4 = 76 // return
+  Exception table:
+   from   to  target type
+    44    49    52   Class java/lang/SecurityException
+
+     9    60    67   any
+    67    69    67   any
+
+final long ensureSync();
+  Signature: ()J
+  Code:
+   Stack=4, Locals=4, Args_size=1
+	aload_0
+	getfield	Field eventCount:J
+	lstore_1
+l2	aload_0
+	getfield	Field syncStack:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	dup
+	astore_3
+	ifnull	l1 // lload_1
+	aload_3
+	getfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.count:J
+	lload_1
+	lcmp
+	ifge	l1 // lload_1
+	aload_0
+	aload_3
+	aconst_null
+	invokespecial	Method casBarrierStack:(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+	ifeq	l2 // aload_0
+l3	aload_3
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.signal:()Z
+	pop
+	aload_3
+	getfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.next:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	dup
+	astore_3
+	ifnonnull	l3 // aload_3
+	goto	l1 // lload_1
+l1	lload_1
+	lreturn
+  Labels:
+   	l2 = 5 // aload_0
+   	l3 = 32 // aload_3
+   	l1 = 49 // lload_1
+
+private void signalIdleWorkers();
+  Signature: ()V
+  Code:
+   Stack=7, Locals=3, Args_size=1
+l1	aload_0
+	aload_0
+	getfield	Field eventCount:J
+	dup2
+	lstore_1
+	lload_1
+	lconst_1
+	ladd
+	invokespecial	Method casEventCount:(JJ)Z
+	ifeq	l1 // aload_0
+	aload_0
+	invokevirtual	Method ensureSync:()J
+	pop2
+	return
+  Labels:
+   	l1 = 0 // aload_0
+
+final void signalWork();
+  Signature: ()V
+  Code:
+   Stack=7, Locals=4, Args_size=1
+	aload_0
+	getfield	Field syncStack:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	ifnull	l1 // return
+	aload_0
+	aload_0
+	getfield	Field eventCount:J
+	dup2
+	lstore_1
+	lload_1
+	lconst_1
+	ladd
+	invokespecial	Method casEventCount:(JJ)Z
+	ifeq	l1 // return
+	aload_0
+	getfield	Field syncStack:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	dup
+	astore_3
+	ifnull	l1 // return
+	aload_3
+	getfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.count:J
+	lload_1
+	lcmp
+	ifgt	l1 // return
+	aload_0
+	aload_3
+	aload_3
+	getfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.next:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	invokespecial	Method casBarrierStack:(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+	ifeq	l2 // aload_0
+	aload_3
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.signal:()Z
+	ifne	l1 // return
+l2	aload_0
+	invokevirtual	Method ensureSync:()J
+	pop2
+l1	return
+  Labels:
+   	l2 = 60 // aload_0
+   	l1 = 65 // return
+
+final void sync(scala.concurrent.forkjoin.ForkJoinWorkerThread);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)V
+  Code:
+   Stack=5, Locals=8, Args_size=2
+	aload_0
+	aload_1
+	invokespecial	Method updateStealCount:(Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)V
+l7	aload_1
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.isShutdown:()Z
+	ifne	l1 // return
+	aload_0
+	invokevirtual	Method isTerminating:()Z
+	ifne	l1 // return
+	aload_0
+	aload_1
+	invokespecial	Method suspendIfSpare:(Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)Z
+	ifne	l1 // return
+	aload_1
+	getfield	Field scala/concurrent/forkjoin/ForkJoinWorkerThread.lastEventCount:J
+	lstore_2
+	aconst_null
+	astore	4
+l5	aload_0
+	getfield	Field eventCount:J
+	lload_2
+	lcmp
+	ifne	l2 // aload_0
+	aload_0
+	getfield	Field syncStack:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	dup
+	astore	5
+	ifnull	l3 // aload
+	aload	5
+	getfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.count:J
+	lload_2
+	lcmp
+	ifne	l2 // aload_0
+l3	aload	4
+	ifnonnull	l4 // aload_0
+	new	class scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode
+	dup
+	lload_2
+	aload_1
+	invokespecial	Method scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode."<init>":(JLscala/concurrent/forkjoin/ForkJoinWorkerThread;)V
+	astore	4
+l4	aload_0
+	aload	4
+	aload	5
+	dup_x1
+	putfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.next:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	aload	4
+	invokespecial	Method casBarrierStack:(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+	ifeq	l5 // aload_0
+	aload	4
+	aload_0
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.awaitSyncRelease:(Lscala/concurrent/forkjoin/ForkJoinPool;)V
+	goto	l2 // aload_0
+l2	aload_0
+	invokevirtual	Method ensureSync:()J
+	lstore	6
+	lload	6
+	lload_2
+	lcmp
+	ifeq	l6 // goto
+	aload_1
+	lload	6
+	putfield	Field scala/concurrent/forkjoin/ForkJoinWorkerThread.lastEventCount:J
+	goto	l1 // return
+l6	goto	l7 // aload_1
+l1	return
+  Labels:
+   	l7 = 5 // aload_1
+   	l5 = 35 // aload_0
+   	l3 = 64 // aload
+   	l4 = 80 // aload_0
+   	l2 = 106 // aload_0
+   	l6 = 128 // goto
+   	l1 = 131 // return
+
+final boolean syncIsReleasable(scala.concurrent.forkjoin.ForkJoinPool$WaitQueueNode);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+  Code:
+   Stack=7, Locals=6, Args_size=2
+	aload_1
+	getfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.count:J
+	lstore_2
+	invokestatic	Method java/lang/Thread.interrupted:()Z
+	ifne	l1 // aload_1
+	aload_1
+	getfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.thread:Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	ifnull	l1 // aload_1
+	aload_1
+	getfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.next:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	ifnonnull	l2 // aload_0
+	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	invokestatic	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.hasQueuedTasks:([Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)Z
+	ifne	l1 // aload_1
+l2	aload_0
+	getfield	Field eventCount:J
+	lload_2
+	lcmp
+	ifne	l1 // aload_1
+	iconst_0
+	ireturn
+l1	aload_1
+	getfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.thread:Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	ifnull	l3 // iconst_1
+	aload_1
+	aconst_null
+	putfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.thread:Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	aload_0
+	getfield	Field eventCount:J
+	lstore	4
+	lload_2
+	lload	4
+	lcmp
+	ifgt	l3 // iconst_1
+	aload_0
+	lload	4
+	lload	4
+	lconst_1
+	ladd
+	invokespecial	Method casEventCount:(JJ)Z
+	pop
+l3	iconst_1
+	ireturn
+  Labels:
+   	l2 = 35 // aload_0
+   	l1 = 46 // aload_1
+   	l3 = 82 // iconst_1
+
+final boolean hasNewSyncEvent(scala.concurrent.forkjoin.ForkJoinWorkerThread);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)Z
+  Code:
+   Stack=4, Locals=6, Args_size=2
+	aload_1
+	getfield	Field scala/concurrent/forkjoin/ForkJoinWorkerThread.lastEventCount:J
+	lstore_2
+	aload_0
+	invokevirtual	Method ensureSync:()J
+	lstore	4
+	lload	4
+	lload_2
+	lcmp
+	ifne	l1 // aload_1
+	iconst_0
+	ireturn
+l1	aload_1
+	lload	4
+	putfield	Field scala/concurrent/forkjoin/ForkJoinWorkerThread.lastEventCount:J
+	iconst_1
+	ireturn
+  Labels:
+   	l1 = 20 // aload_1
+
+final boolean preJoin(scala.concurrent.forkjoin.ForkJoinTask, boolean);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinTask;Z)Z
+  Code:
+   Stack=3, Locals=5, Args_size=3
+	iload_2
+	aload_0
+	getfield	Field maintainsParallelism:Z
+	iand
+	istore_2
+	iconst_0
+	istore_3
+l7	aload_0
+	getfield	Field spareStack:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	ifnull	l1 // aload_0
+	aload_0
+	iload_3
+	invokespecial	Method tryResumeSpare:(Z)Z
+	ifne	l2 // iconst_0
+l1	aload_0
+	getfield	Field workerCounts:I
+	istore	4
+	iload_3
+	ifne	l3 // aload_0
+	aload_0
+	iload	4
+	iinc	4, -1
+	iload	4
+	invokespecial	Method casWorkerCounts:(II)Z
+	dup
+	istore_3
+	ifeq	l4 // goto
+l3	aload_0
+	iload	4
+	iload_2
+	invokespecial	Method needSpare:(IZ)Z
+	ifne	l5 // aload_1
+	goto	l2 // iconst_0
+l5	aload_1
+	getfield	Field scala/concurrent/forkjoin/ForkJoinTask.status:I
+	ifge	l6 // aload_0
+	iconst_1
+	ireturn
+l6	aload_0
+	iload	4
+	invokespecial	Method tryAddSpare:(I)Z
+	ifeq	l4 // goto
+	goto	l2 // iconst_0
+l4	goto	l7 // aload_0
+l2	iconst_0
+	ireturn
+  Labels:
+   	l7 = 9 // aload_0
+   	l1 = 24 // aload_0
+   	l3 = 50 // aload_0
+   	l5 = 63 // aload_1
+   	l6 = 72 // aload_0
+   	l4 = 84 // goto
+   	l2 = 87 // iconst_0
+  Signature: length = 0x2
+   01 FFFFFFA0 
+
+final boolean preBlock(scala.concurrent.forkjoin.ForkJoinPool$ManagedBlocker, boolean);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;Z)Z
+  Code:
+   Stack=3, Locals=5, Args_size=3
+	iload_2
+	aload_0
+	getfield	Field maintainsParallelism:Z
+	iand
+	istore_2
+	iconst_0
+	istore_3
+l7	aload_0
+	getfield	Field spareStack:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	ifnull	l1 // aload_0
+	aload_0
+	iload_3
+	invokespecial	Method tryResumeSpare:(Z)Z
+	ifne	l2 // iconst_0
+l1	aload_0
+	getfield	Field workerCounts:I
+	istore	4
+	iload_3
+	ifne	l3 // aload_0
+	aload_0
+	iload	4
+	iinc	4, -1
+	iload	4
+	invokespecial	Method casWorkerCounts:(II)Z
+	dup
+	istore_3
+	ifeq	l4 // goto
+l3	aload_0
+	iload	4
+	iload_2
+	invokespecial	Method needSpare:(IZ)Z
+	ifne	l5 // aload_1
+	goto	l2 // iconst_0
+l5	aload_1
+	invokeinterface	InterfaceMethod scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker.isReleasable:()Z
+	ifeq	l6 // aload_0
+	iconst_1
+	ireturn
+l6	aload_0
+	iload	4
+	invokespecial	Method tryAddSpare:(I)Z
+	ifeq	l4 // goto
+	goto	l2 // iconst_0
+l4	goto	l7 // aload_0
+l2	iconst_0
+	ireturn
+  Labels:
+   	l7 = 9 // aload_0
+   	l1 = 24 // aload_0
+   	l3 = 50 // aload_0
+   	l5 = 63 // aload_1
+   	l6 = 74 // aload_0
+   	l4 = 86 // goto
+   	l2 = 89 // iconst_0
+
+private boolean needSpare(int, boolean);
+  Signature: (IZ)Z
+  Code:
+   Stack=2, Locals=8, Args_size=3
+	aload_0
+	getfield	Field parallelism:I
+	istore_3
+	iload_1
+	invokestatic	Method runningCountOf:(I)I
+	istore	4
+	iload_1
+	invokestatic	Method totalCountOf:(I)I
+	istore	5
+	iload_3
+	iload	4
+	isub
+	istore	6
+	iload	5
+	iload_3
+	isub
+	istore	7
+	iload	5
+	aload_0
+	getfield	Field maxPoolSize:I
+	if_icmpge	l1 // iconst_0
+	iload	4
+	ifeq	l2 // iconst_1
+	iload	7
+	iflt	l2 // iconst_1
+	iload_2
+	ifeq	l1 // iconst_0
+	iload	6
+	iload	7
+	if_icmple	l1 // iconst_0
+	aload_0
+	getfield	Field workers:[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	invokestatic	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.hasQueuedTasks:([Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)Z
+	ifeq	l1 // iconst_0
+l2	iconst_1
+	goto	l3 // ireturn
+l1	iconst_0
+l3	ireturn
+  Labels:
+   	l2 = 69 // iconst_1
+   	l1 = 73 // iconst_0
+   	l3 = 74 // ireturn
+
+private boolean tryAddSpare(int);
+  Signature: (I)Z
+  Code:
+   Stack=5, Locals=11, Args_size=2
+	aload_0
+	getfield	Field workerLock:Ljava/util/concurrent/locks/ReentrantLock;
+	astore_2
+	iload_1
+	invokestatic	Method runningCountOf:(I)I
+	istore_3
+	iload_1
+	invokestatic	Method totalCountOf:(I)I
+	istore	4
+	iconst_0
+	istore	5
+	iconst_0
+	istore	6
+l5	aload_0
+	getfield	Field workerCounts:I
+	istore	7
+	iload	7
+	invokestatic	Method totalCountOf:(I)I
+	istore	8
+	iload	7
+	invokestatic	Method runningCountOf:(I)I
+	istore	9
+	iload	9
+	iload_3
+	if_icmpgt	l1 // iload
+	iload	8
+	iload	4
+	if_icmple	l2 // iload
+	goto	l1 // iload
+l2	iload	6
+	ifne	l3 // aload_0
+	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.tryLock:()Z
+	dup
+	istore	6
+	ifne	l3 // aload_0
+	goto	l1 // iload
+l3	aload_0
+	iload	7
+	iload	8
+	iconst_1
+	iadd
+	iload	9
+	iconst_1
+	iadd
+	invokestatic	Method workerCountsFor:(II)I
+	invokespecial	Method casWorkerCounts:(II)Z
+	ifeq	l4 // goto
+	aload_0
+	iload	8
+	invokespecial	Method createAndStartSpare:(I)V
+	iconst_1
+	istore	5
+	goto	l1 // iload
+l4	goto	l5 // aload_0
+l1	iload	6
+	ifeq	l6 // iload
+	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+	goto	l6 // iload
+	astore	10
+	iload	6
+	ifeq	l7 // aload
+	aload_2
+	invokevirtual	Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+l7	aload	10
+	athrow
+l6	iload	5
+	ireturn
+  Labels:
+   	l5 = 22 // aload_0
+   	l2 = 58 // iload
+   	l3 = 76 // aload_0
+   	l4 = 108 // goto
+   	l1 = 111 // iload
+   	l7 = 134 // aload
+   	l6 = 137 // iload
+  Exception table:
+   from   to  target type
+    22   111   123   any
+   123   125   123   any
+
+private void createAndStartSpare(int);
+  Signature: (I)V
+  Code:
+   Stack=3, Locals=5, Args_size=2
+	aconst_null
+	astore_2
+	aload_0
+	iload_1
+	iconst_1
+	iadd
+	invokespecial	Method ensureWorkerArrayCapacity:(I)[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_3
+	aload_3
+	arraylength
+	istore	4
+	iload_1
+	iload	4
+	if_icmpge	l1 // iload_1
+	aload_3
+	iload_1
+	aaload
+	ifnull	l1 // iload_1
+	iconst_0
+	istore_1
+l2	iload_1
+	iload	4
+	if_icmpge	l1 // iload_1
+	aload_3
+	iload_1
+	aaload
+	ifnull	l1 // iload_1
+	iinc	1, 1
+	goto	l2 // iload_1
+l1	iload_1
+	iload	4
+	if_icmpge	l3 // aload_0
+	aload_0
+	invokevirtual	Method isTerminating:()Z
+	ifne	l3 // aload_0
+	aload_0
+	iload_1
+	invokespecial	Method createWorker:(I)Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	dup
+	astore_2
+	ifnull	l3 // aload_0
+	aload_3
+	iload_1
+	aload_2
+	aastore
+	aload_2
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.start:()V
+	goto	l4 // aload_0
+l3	aload_0
+	iconst_m1
+	invokespecial	Method updateWorkerCount:(I)V
+l4	aload_0
+	invokespecial	Method signalIdleWorkers:()V
+	return
+  Labels:
+   	l2 = 28 // iload_1
+   	l1 = 46 // iload_1
+   	l3 = 80 // aload_0
+   	l4 = 85 // aload_0
+
+private boolean suspendIfSpare(scala.concurrent.forkjoin.ForkJoinWorkerThread);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)Z
+  Code:
+   Stack=5, Locals=4, Args_size=2
+	aconst_null
+	astore_2
+l3	aload_0
+	getfield	Field parallelism:I
+	aload_0
+	getfield	Field workerCounts:I
+	dup
+	istore_3
+	invokestatic	Method runningCountOf:(I)I
+	if_icmpge	l1 // iconst_0
+	aload_2
+	ifnonnull	l2 // aload_0
+	new	class scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode
+	dup
+	lconst_0
+	aload_1
+	invokespecial	Method scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode."<init>":(JLscala/concurrent/forkjoin/ForkJoinWorkerThread;)V
+	astore_2
+l2	aload_0
+	iload_3
+	iload_3
+	iconst_1
+	isub
+	invokespecial	Method casWorkerCounts:(II)Z
+	ifeq	l3 // aload_0
+l4	aload_0
+	aload_2
+	aload_0
+	getfield	Field spareStack:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	dup_x1
+	putfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.next:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	aload_2
+	invokespecial	Method casSpareStack:(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+	ifeq	l4 // aload_0
+	aload_2
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.awaitSpareRelease:()V
+	iconst_1
+	ireturn
+l1	iconst_0
+	ireturn
+  Labels:
+   	l3 = 2 // aload_0
+   	l2 = 32 // aload_0
+   	l4 = 43 // aload_0
+   	l1 = 66 // iconst_0
+
+private boolean tryResumeSpare(boolean);
+  Signature: (Z)Z
+  Code:
+   Stack=3, Locals=3, Args_size=2
+l2	aload_0
+	getfield	Field spareStack:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	dup
+	astore_2
+	ifnull	l1 // iconst_0
+	aload_0
+	aload_2
+	aload_2
+	getfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.next:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	invokespecial	Method casSpareStack:(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+	ifeq	l2 // aload_0
+	iload_1
+	ifeq	l3 // aload_2
+	aload_0
+	iconst_1
+	invokevirtual	Method updateRunningCount:(I)V
+l3	aload_2
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.signal:()Z
+	pop
+	iconst_1
+	ireturn
+l1	iconst_0
+	ireturn
+  Labels:
+   	l2 = 0 // aload_0
+   	l3 = 30 // aload_2
+   	l1 = 37 // iconst_0
+
+private boolean resumeAllSpares();
+  Signature: ()Z
+  Code:
+   Stack=3, Locals=2, Args_size=1
+l2	aload_0
+	getfield	Field spareStack:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	dup
+	astore_1
+	ifnull	l1 // iconst_0
+	aload_0
+	aload_1
+	aconst_null
+	invokespecial	Method casSpareStack:(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+	ifeq	l2 // aload_0
+l3	aload_0
+	iconst_1
+	invokevirtual	Method updateRunningCount:(I)V
+	aload_1
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.signal:()Z
+	pop
+	aload_1
+	getfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.next:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	dup
+	astore_1
+	ifnonnull	l3 // aload_0
+	iconst_1
+	ireturn
+l1	iconst_0
+	ireturn
+  Labels:
+   	l2 = 0 // aload_0
+   	l3 = 18 // aload_0
+   	l1 = 39 // iconst_0
+
+private void trimSpares();
+  Signature: ()V
+  Code:
+   Stack=3, Locals=4, Args_size=1
+	aload_0
+	getfield	Field workerCounts:I
+	invokestatic	Method totalCountOf:(I)I
+	aload_0
+	getfield	Field parallelism:I
+	isub
+	istore_1
+l2	iload_1
+	ifle	l1 // return
+	aload_0
+	getfield	Field spareStack:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	dup
+	astore_2
+	ifnull	l1 // return
+	aload_0
+	aload_2
+	aconst_null
+	invokespecial	Method casSpareStack:(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+	ifeq	l2 // iload_1
+l4	aload_0
+	iconst_1
+	invokevirtual	Method updateRunningCount:(I)V
+	aload_2
+	getfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.thread:Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_3
+	aload_3
+	ifnull	l3 // aload_2
+	iload_1
+	ifle	l3 // aload_2
+	aload_0
+	getfield	Field workerCounts:I
+	invokestatic	Method runningCountOf:(I)I
+	ifle	l3 // aload_2
+	aload_3
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinWorkerThread.shutdown:()Z
+	ifeq	l3 // aload_2
+	iinc	1, -1
+l3	aload_2
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.signal:()Z
+	pop
+	aload_2
+	getfield	Field scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.next:Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+	dup
+	astore_2
+	ifnonnull	l4 // aload_0
+	goto	l2 // iload_1
+l1	return
+  Labels:
+   	l2 = 13 // iload_1
+   	l4 = 35 // aload_0
+   	l3 = 73 // aload_2
+   	l1 = 90 // return
+
+public static void managedBlock(scala.concurrent.forkjoin.ForkJoinPool$ManagedBlocker, boolean)   throws java.lang.InterruptedException;
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;Z)V
+  Code:
+   Stack=3, Locals=5, Args_size=2
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	astore_2
+	aload_2
+	instanceof	class scala/concurrent/forkjoin/ForkJoinWorkerThread
+	ifeq	l1 // aconst_null
+	aload_2
+	checkcast	class scala/concurrent/forkjoin/ForkJoinWorkerThread
+	getfield	Field scala/concurrent/forkjoin/ForkJoinWorkerThread.pool:Lscala/concurrent/forkjoin/ForkJoinPool;
+	goto	l2 // astore_3
+l1	aconst_null
+l2	astore_3
+	aload_0
+	invokeinterface	InterfaceMethod scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker.isReleasable:()Z
+	ifne	l3 // return
+	aload_3
+	ifnull	l4 // aload_0
+	aload_3
+	aload_0
+	iload_1
+	invokevirtual	Method preBlock:(Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;Z)Z
+	ifne	l5 // aload_3
+l4	aload_0
+	invokestatic	Method awaitBlocker:(Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;)V
+l5	aload_3
+	ifnull	l3 // return
+	aload_3
+	iconst_1
+	invokevirtual	Method updateRunningCount:(I)V
+	goto	l3 // return
+	astore	4
+	aload_3
+	ifnull	l6 // aload
+	aload_3
+	iconst_1
+	invokevirtual	Method updateRunningCount:(I)V
+l6	aload	4
+	athrow
+l3	return
+  Labels:
+   	l1 = 21 // aconst_null
+   	l2 = 22 // astore_3
+   	l4 = 45 // aload_0
+   	l5 = 49 // aload_3
+   	l6 = 72 // aload
+   	l3 = 75 // return
+  Exception table:
+   from   to  target type
+    32    49    61   any
+    61    63    61   any
+  Exceptions: 
+   throws java.lang.InterruptedException
+private static void awaitBlocker(scala.concurrent.forkjoin.ForkJoinPool$ManagedBlocker)   throws java.lang.InterruptedException;
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;)V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+l2	aload_0
+	invokeinterface	InterfaceMethod scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker.isReleasable:()Z
+	ifne	l1 // return
+	aload_0
+	invokeinterface	InterfaceMethod scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker.block:()Z
+	ifeq	l2 // aload_0
+l1	return
+  Labels:
+   	l2 = 0 // aload_0
+   	l1 = 18 // return
+  Exceptions: 
+   throws java.lang.InterruptedException
+protected java.util.concurrent.RunnableFuture newTaskFor(java.lang.Runnable, java.lang.Object);
+  Signature: (Ljava/lang/Runnable;Ljava/lang/Object;)Ljava/util/concurrent/RunnableFuture;
+  Code:
+   Stack=4, Locals=3, Args_size=3
+	new	class scala/concurrent/forkjoin/ForkJoinPool$AdaptedRunnable
+	dup
+	aload_1
+	aload_2
+	invokespecial	Method scala/concurrent/forkjoin/ForkJoinPool$AdaptedRunnable."<init>":(Ljava/lang/Runnable;Ljava/lang/Object;)V
+	areturn
+  Labels:
+  Signature: length = 0x2
+   01 FFFFFFB1 
+
+protected java.util.concurrent.RunnableFuture newTaskFor(java.util.concurrent.Callable);
+  Signature: (Ljava/util/concurrent/Callable;)Ljava/util/concurrent/RunnableFuture;
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	new	class scala/concurrent/forkjoin/ForkJoinPool$AdaptedCallable
+	dup
+	aload_1
+	invokespecial	Method scala/concurrent/forkjoin/ForkJoinPool$AdaptedCallable."<init>":(Ljava/util/concurrent/Callable;)V
+	areturn
+  Labels:
+  Signature: length = 0x2
+   01 FFFFFFB3 
+
+private static sun.misc.Unsafe getUnsafe()   throws java.lang.Throwable;
+  Signature: ()Lsun/misc/Unsafe;
+  Code:
+   Stack=2, Locals=2, Args_size=0
+	invokestatic	Method sun/misc/Unsafe.getUnsafe:()Lsun/misc/Unsafe;
+	areturn
+	astore_0
+	new	class scala/concurrent/forkjoin/ForkJoinPool$1
+	dup
+	invokespecial	Method scala/concurrent/forkjoin/ForkJoinPool$1."<init>":()V
+	invokestatic	Method java/security/AccessController.doPrivileged:(Ljava/security/PrivilegedExceptionAction;)Ljava/lang/Object;
+	checkcast	class sun/misc/Unsafe
+	areturn
+	astore_1
+	aload_1
+	invokevirtual	Method java/security/PrivilegedActionException.getCause:()Ljava/lang/Throwable;
+	athrow
+  Labels:
+  Exception table:
+   from   to  target type
+     0     3     4   Class java/lang/SecurityException
+
+     5    18    19   Class java/security/PrivilegedActionException
+
+  Exceptions: 
+   throws java.lang.Throwable
+private static sun.misc.Unsafe getUnsafePrivileged()   throws java.lang.NoSuchFieldException, java.lang.IllegalAccessException;
+  Signature: ()Lsun/misc/Unsafe;
+  Code:
+   Stack=2, Locals=1, Args_size=0
+	ldc_w	class sun/misc/Unsafe
+	ldc	String theUnsafe
+	invokevirtual	Method java/lang/Class.getDeclaredField:(Ljava/lang/String;)Ljava/lang/reflect/Field;
+	astore_0
+	aload_0
+	iconst_1
+	invokevirtual	Method java/lang/reflect/Field.setAccessible:(Z)V
+	aload_0
+	aconst_null
+	invokevirtual	Method java/lang/reflect/Field.get:(Ljava/lang/Object;)Ljava/lang/Object;
+	checkcast	class sun/misc/Unsafe
+	areturn
+  Labels:
+  Exceptions: 
+   throws java.lang.NoSuchFieldException, java.lang.IllegalAccessException
+private static long fieldOffset(java.lang.String)   throws java.lang.NoSuchFieldException;
+  Signature: (Ljava/lang/String;)J
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	getstatic	Field _unsafe:Lsun/misc/Unsafe;
+	ldc_w	class scala/concurrent/forkjoin/ForkJoinPool
+	aload_0
+	invokevirtual	Method java/lang/Class.getDeclaredField:(Ljava/lang/String;)Ljava/lang/reflect/Field;
+	invokevirtual	Method sun/misc/Unsafe.objectFieldOffset:(Ljava/lang/reflect/Field;)J
+	lreturn
+  Labels:
+  Exceptions: 
+   throws java.lang.NoSuchFieldException
+private boolean casEventCount(long, long);
+  Signature: (JJ)Z
+  Code:
+   Stack=8, Locals=5, Args_size=3
+	getstatic	Field _unsafe:Lsun/misc/Unsafe;
+	aload_0
+	getstatic	Field eventCountOffset:J
+	lload_1
+	lload_3
+	invokevirtual	Method sun/misc/Unsafe.compareAndSwapLong:(Ljava/lang/Object;JJJ)Z
+	ireturn
+  Labels:
+
+private boolean casWorkerCounts(int, int);
+  Signature: (II)Z
+  Code:
+   Stack=6, Locals=3, Args_size=3
+	getstatic	Field _unsafe:Lsun/misc/Unsafe;
+	aload_0
+	getstatic	Field workerCountsOffset:J
+	iload_1
+	iload_2
+	invokevirtual	Method sun/misc/Unsafe.compareAndSwapInt:(Ljava/lang/Object;JII)Z
+	ireturn
+  Labels:
+
+private boolean casRunControl(int, int);
+  Signature: (II)Z
+  Code:
+   Stack=6, Locals=3, Args_size=3
+	getstatic	Field _unsafe:Lsun/misc/Unsafe;
+	aload_0
+	getstatic	Field runControlOffset:J
+	iload_1
+	iload_2
+	invokevirtual	Method sun/misc/Unsafe.compareAndSwapInt:(Ljava/lang/Object;JII)Z
+	ireturn
+  Labels:
+
+private boolean casSpareStack(scala.concurrent.forkjoin.ForkJoinPool$WaitQueueNode, scala.concurrent.forkjoin.ForkJoinPool$WaitQueueNode);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+  Code:
+   Stack=6, Locals=3, Args_size=3
+	getstatic	Field _unsafe:Lsun/misc/Unsafe;
+	aload_0
+	getstatic	Field spareStackOffset:J
+	aload_1
+	aload_2
+	invokevirtual	Method sun/misc/Unsafe.compareAndSwapObject:(Ljava/lang/Object;JLjava/lang/Object;Ljava/lang/Object;)Z
+	ireturn
+  Labels:
+
+private boolean casBarrierStack(scala.concurrent.forkjoin.ForkJoinPool$WaitQueueNode, scala.concurrent.forkjoin.ForkJoinPool$WaitQueueNode);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+  Code:
+   Stack=6, Locals=3, Args_size=3
+	getstatic	Field _unsafe:Lsun/misc/Unsafe;
+	aload_0
+	getstatic	Field syncStackOffset:J
+	aload_1
+	aload_2
+	invokevirtual	Method sun/misc/Unsafe.compareAndSwapObject:(Ljava/lang/Object;JLjava/lang/Object;Ljava/lang/Object;)Z
+	ireturn
+  Labels:
+
+public java.util.concurrent.Future submit(java.util.concurrent.Callable);
+  Signature: (Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokevirtual	Method submit:(Ljava/util/concurrent/Callable;)Lscala/concurrent/forkjoin/ForkJoinTask;
+	areturn
+  Labels:
+
+public java.util.concurrent.Future submit(java.lang.Runnable, java.lang.Object);
+  Signature: (Ljava/lang/Runnable;Ljava/lang/Object;)Ljava/util/concurrent/Future;
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	aload_1
+	aload_2
+	invokevirtual	Method submit:(Ljava/lang/Runnable;Ljava/lang/Object;)Lscala/concurrent/forkjoin/ForkJoinTask;
+	areturn
+  Labels:
+
+public java.util.concurrent.Future submit(java.lang.Runnable);
+  Signature: (Ljava/lang/Runnable;)Ljava/util/concurrent/Future;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokevirtual	Method submit:(Ljava/lang/Runnable;)Lscala/concurrent/forkjoin/ForkJoinTask;
+	areturn
+  Labels:
+
+static sun.misc.Unsafe access$000()   throws java.lang.NoSuchFieldException, java.lang.IllegalAccessException;
+  Signature: ()Lsun/misc/Unsafe;
+  Code:
+   Stack=1, Locals=0, Args_size=0
+	invokestatic	Method getUnsafePrivileged:()Lsun/misc/Unsafe;
+	areturn
+  Labels:
+  Exceptions: 
+   throws java.lang.NoSuchFieldException, java.lang.IllegalAccessException
+static {};
+  Signature: ()V
+  Code:
+   Stack=4, Locals=1, Args_size=0
+	new	class scala/concurrent/forkjoin/ForkJoinPool$DefaultForkJoinWorkerThreadFactory
+	dup
+	invokespecial	Method scala/concurrent/forkjoin/ForkJoinPool$DefaultForkJoinWorkerThreadFactory."<init>":()V
+	putstatic	Field defaultForkJoinWorkerThreadFactory:Lscala/concurrent/forkjoin/ForkJoinPool$ForkJoinWorkerThreadFactory;
+	new	class java/lang/RuntimePermission
+	dup
+	ldc	String modifyThread
+	invokespecial	Method java/lang/RuntimePermission."<init>":(Ljava/lang/String;)V
+	putstatic	Field modifyThreadPermission:Ljava/lang/RuntimePermission;
+	new	class java/util/concurrent/atomic/AtomicInteger
+	dup
+	invokespecial	Method java/util/concurrent/atomic/AtomicInteger."<init>":()V
+	putstatic	Field poolNumberGenerator:Ljava/util/concurrent/atomic/AtomicInteger;
+	invokestatic	Method getUnsafe:()Lsun/misc/Unsafe;
+	putstatic	Field _unsafe:Lsun/misc/Unsafe;
+	ldc	String eventCount
+	invokestatic	Method fieldOffset:(Ljava/lang/String;)J
+	putstatic	Field eventCountOffset:J
+	ldc	String workerCounts
+	invokestatic	Method fieldOffset:(Ljava/lang/String;)J
+	putstatic	Field workerCountsOffset:J
+	ldc	String runControl
+	invokestatic	Method fieldOffset:(Ljava/lang/String;)J
+	putstatic	Field runControlOffset:J
+	ldc	String syncStack
+	invokestatic	Method fieldOffset:(Ljava/lang/String;)J
+	putstatic	Field syncStackOffset:J
+	ldc	String spareStack
+	invokestatic	Method fieldOffset:(Ljava/lang/String;)J
+	putstatic	Field spareStackOffset:J
+	goto	l1 // return
+	astore_0
+	new	class java/lang/RuntimeException
+	dup
+	ldc	String Could not initialize intrinsics
+	aload_0
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+	athrow
+l1	return
+  Labels:
+   	l1 = 93 // return
+  Exception table:
+   from   to  target type
+    32    78    81   Class java/lang/Throwable
+
+
+}
+

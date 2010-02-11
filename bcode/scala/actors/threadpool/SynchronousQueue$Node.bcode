@@ -1,0 +1,389 @@
+final class scala.actors.threadpool.SynchronousQueue$Node extends java.lang.Object implements java.io.Serializable
+  InnerClass: 
+   final Node=class scala/actors/threadpool/SynchronousQueue$Node of class scala/actors/threadpool/SynchronousQueue
+  minor version: 0
+  major version: 49
+  Constant pool:
+Method	java/lang/Object."<init>":()V
+Field	scala/actors/threadpool/SynchronousQueue$Node.state:I
+Field	scala/actors/threadpool/SynchronousQueue$Node.item:Ljava/lang/Object;
+Field	scala/actors/threadpool/SynchronousQueue$Node.next:Lscala/actors/threadpool/SynchronousQueue$Node;
+Method	java/lang/Object.notify:()V
+Method	java/lang/Thread.currentThread:()Ljava/lang/Thread;
+Method	java/lang/Thread.interrupt:()V
+Method	scala/actors/threadpool/SynchronousQueue$Node.extract:()Ljava/lang/Object;
+Method	java/lang/Object.wait:()V
+class	java/lang/InterruptedException
+Method	scala/actors/threadpool/SynchronousQueue$Node.checkCancellationOnInterrupt:(Ljava/lang/InterruptedException;)V
+Method	scala/actors/threadpool/helpers/Utils.nanoTime:()J
+Field	scala/actors/threadpool/TimeUnit.NANOSECONDS:Lscala/actors/threadpool/TimeUnit;
+Method	scala/actors/threadpool/TimeUnit.timedWait:(Ljava/lang/Object;J)V
+Method	scala/actors/threadpool/SynchronousQueue$Node.attempt:(J)Z
+class	scala/actors/threadpool/SynchronousQueue$Node
+class	java/lang/Object
+class	java/io/Serializable
+Asciz	serialVersionUID;
+Asciz	J;
+Asciz	ConstantValue;
+long	-3223113410248163686l;
+Asciz	ACK;
+Asciz	I;
+int	1;
+Asciz	CANCEL;
+int	-1;
+Asciz	state;
+Asciz	item;
+Asciz	Ljava/lang/Object;;
+Asciz	next;
+Asciz	Node;
+Asciz	InnerClasses;
+Asciz	Lscala/actors/threadpool/SynchronousQueue$Node;;
+Asciz	<init>;
+Asciz	(Ljava/lang/Object;)V;
+Asciz	Code;
+Asciz	(Ljava/lang/Object;Lscala/actors/threadpool/SynchronousQueue$Node;)V;
+Asciz	extract;
+Asciz	()Ljava/lang/Object;;
+Asciz	checkCancellationOnInterrupt;
+Asciz	(Ljava/lang/InterruptedException;)V;
+Asciz	Exceptions;
+Asciz	setItem;
+Asciz	(Ljava/lang/Object;)Z;
+Asciz	getItem;
+Asciz	waitForTake;
+Asciz	()V;
+Asciz	waitForPut;
+Asciz	attempt;
+Asciz	(J)Z;
+Asciz	(J)Ljava/lang/Object;;
+NameAndType	"<init>":()V
+NameAndType	state:I
+NameAndType	item:Ljava/lang/Object;
+NameAndType	next:Lscala/actors/threadpool/SynchronousQueue$Node;
+NameAndType	notify:()V
+class	java/lang/Thread
+NameAndType	currentThread:()Ljava/lang/Thread;
+NameAndType	interrupt:()V
+NameAndType	extract:()Ljava/lang/Object;
+NameAndType	wait:()V
+Asciz	java/lang/InterruptedException;
+NameAndType	checkCancellationOnInterrupt:(Ljava/lang/InterruptedException;)V
+class	scala/actors/threadpool/helpers/Utils
+NameAndType	nanoTime:()J
+class	scala/actors/threadpool/TimeUnit
+NameAndType	NANOSECONDS:Lscala/actors/threadpool/TimeUnit;
+NameAndType	timedWait:(Ljava/lang/Object;J)V
+NameAndType	attempt:(J)Z
+class	scala/actors/threadpool/SynchronousQueue
+Asciz	scala/actors/threadpool/SynchronousQueue$Node;
+Asciz	java/lang/Object;
+Asciz	java/io/Serializable;
+Asciz	notify;
+Asciz	java/lang/Thread;
+Asciz	currentThread;
+Asciz	()Ljava/lang/Thread;;
+Asciz	interrupt;
+Asciz	wait;
+Asciz	scala/actors/threadpool/helpers/Utils;
+Asciz	nanoTime;
+Asciz	()J;
+Asciz	scala/actors/threadpool/TimeUnit;
+Asciz	NANOSECONDS;
+Asciz	Lscala/actors/threadpool/TimeUnit;;
+Asciz	timedWait;
+Asciz	(Ljava/lang/Object;J)V;
+Asciz	scala/actors/threadpool/SynchronousQueue;
+
+{
+private static final long serialVersionUID;
+  Signature: J
+  Constant value: long -3223113410248163686l
+private static final int ACK;
+  Signature: I
+  Constant value: int 1
+private static final int CANCEL;
+  Signature: I
+  Constant value: int -1
+int state;
+  Signature: I
+
+java.lang.Object item;
+  Signature: Ljava/lang/Object;
+
+scala.actors.threadpool.SynchronousQueue$Node next;
+  Signature: Lscala/actors/threadpool/SynchronousQueue$Node;
+
+scala.actors.threadpool.SynchronousQueue$Node(java.lang.Object);
+  Signature: (Ljava/lang/Object;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	iconst_0
+	putfield	Field state:I
+	aload_0
+	aload_1
+	putfield	Field item:Ljava/lang/Object;
+	return
+  Labels:
+
+scala.actors.threadpool.SynchronousQueue$Node(java.lang.Object, scala.actors.threadpool.SynchronousQueue$Node);
+  Signature: (Ljava/lang/Object;Lscala/actors/threadpool/SynchronousQueue$Node;)V
+  Code:
+   Stack=2, Locals=3, Args_size=3
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	iconst_0
+	putfield	Field state:I
+	aload_0
+	aload_1
+	putfield	Field item:Ljava/lang/Object;
+	aload_0
+	aload_2
+	putfield	Field next:Lscala/actors/threadpool/SynchronousQueue$Node;
+	return
+  Labels:
+
+private java.lang.Object extract();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=2, Locals=2, Args_size=1
+	aload_0
+	getfield	Field item:Ljava/lang/Object;
+	astore_1
+	aload_0
+	aconst_null
+	putfield	Field item:Ljava/lang/Object;
+	aload_1
+	areturn
+  Labels:
+
+private void checkCancellationOnInterrupt(java.lang.InterruptedException)   throws java.lang.InterruptedException;
+  Signature: (Ljava/lang/InterruptedException;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	getfield	Field state:I
+	ifne	l1 // invokestatic
+	aload_0
+	iconst_m1
+	putfield	Field state:I
+	aload_0
+	invokevirtual	Method java/lang/Object.notify:()V
+	aload_1
+	athrow
+l1	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	invokevirtual	Method java/lang/Thread.interrupt:()V
+	return
+  Labels:
+   	l1 = 18 // invokestatic
+  Exceptions: 
+   throws java.lang.InterruptedException
+synchronized boolean setItem(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	getfield	Field state:I
+	ifeq	l1 // aload_0
+	iconst_0
+	ireturn
+l1	aload_0
+	aload_1
+	putfield	Field item:Ljava/lang/Object;
+	aload_0
+	iconst_1
+	putfield	Field state:I
+	aload_0
+	invokevirtual	Method java/lang/Object.notify:()V
+	iconst_1
+	ireturn
+  Labels:
+   	l1 = 9 // aload_0
+
+synchronized java.lang.Object getItem();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	getfield	Field state:I
+	ifeq	l1 // aload_0
+	aconst_null
+	areturn
+l1	aload_0
+	iconst_1
+	putfield	Field state:I
+	aload_0
+	invokevirtual	Method java/lang/Object.notify:()V
+	aload_0
+	invokespecial	Method extract:()Ljava/lang/Object;
+	areturn
+  Labels:
+   	l1 = 9 // aload_0
+
+synchronized void waitForTake()   throws java.lang.InterruptedException;
+  Signature: ()V
+  Code:
+   Stack=2, Locals=2, Args_size=1
+l2	aload_0
+	getfield	Field state:I
+	ifne	l1 // goto
+	aload_0
+	invokevirtual	Method java/lang/Object.wait:()V
+	goto	l2 // aload_0
+l1	goto	l3 // return
+	astore_1
+	aload_0
+	aload_1
+	invokespecial	Method checkCancellationOnInterrupt:(Ljava/lang/InterruptedException;)V
+l3	return
+  Labels:
+   	l2 = 0 // aload_0
+   	l1 = 14 // goto
+   	l3 = 23 // return
+  Exception table:
+   from   to  target type
+     0    14    17   Class java/lang/InterruptedException
+
+  Exceptions: 
+   throws java.lang.InterruptedException
+synchronized java.lang.Object waitForPut()   throws java.lang.InterruptedException;
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=2, Locals=2, Args_size=1
+l2	aload_0
+	getfield	Field state:I
+	ifne	l1 // goto
+	aload_0
+	invokevirtual	Method java/lang/Object.wait:()V
+	goto	l2 // aload_0
+l1	goto	l3 // aload_0
+	astore_1
+	aload_0
+	aload_1
+	invokespecial	Method checkCancellationOnInterrupt:(Ljava/lang/InterruptedException;)V
+l3	aload_0
+	invokespecial	Method extract:()Ljava/lang/Object;
+	areturn
+  Labels:
+   	l2 = 0 // aload_0
+   	l1 = 14 // goto
+   	l3 = 23 // aload_0
+  Exception table:
+   from   to  target type
+     0    14    17   Class java/lang/InterruptedException
+
+  Exceptions: 
+   throws java.lang.InterruptedException
+private boolean attempt(long)   throws java.lang.InterruptedException;
+  Signature: (J)Z
+  Code:
+   Stack=4, Locals=5, Args_size=2
+	aload_0
+	getfield	Field state:I
+	ifeq	l1 // lload_1
+	iconst_1
+	ireturn
+l1	lload_1
+	lconst_0
+	lcmp
+	ifgt	l2 // invokestatic
+	aload_0
+	iconst_m1
+	putfield	Field state:I
+	aload_0
+	invokevirtual	Method java/lang/Object.notify:()V
+	iconst_0
+	ireturn
+l2	invokestatic	Method scala/actors/threadpool/helpers/Utils.nanoTime:()J
+	lload_1
+	ladd
+	lstore_3
+l4	getstatic	Field scala/actors/threadpool/TimeUnit.NANOSECONDS:Lscala/actors/threadpool/TimeUnit;
+	aload_0
+	lload_1
+	invokevirtual	Method scala/actors/threadpool/TimeUnit.timedWait:(Ljava/lang/Object;J)V
+	aload_0
+	getfield	Field state:I
+	ifeq	l3 // lload_3
+	iconst_1
+	ireturn
+l3	lload_3
+	invokestatic	Method scala/actors/threadpool/helpers/Utils.nanoTime:()J
+	lsub
+	lstore_1
+	lload_1
+	lconst_0
+	lcmp
+	ifgt	l4 // getstatic
+	aload_0
+	iconst_m1
+	putfield	Field state:I
+	aload_0
+	invokevirtual	Method java/lang/Object.notify:()V
+	iconst_0
+	ireturn
+  Labels:
+   	l1 = 9 // lload_1
+   	l2 = 26 // invokestatic
+   	l4 = 32 // getstatic
+   	l3 = 49 // lload_3
+  Exceptions: 
+   throws java.lang.InterruptedException
+synchronized boolean waitForTake(long)   throws java.lang.InterruptedException;
+  Signature: (J)Z
+  Code:
+   Stack=3, Locals=4, Args_size=2
+	aload_0
+	lload_1
+	invokespecial	Method attempt:(J)Z
+	ifne	l1 // goto
+	iconst_0
+	ireturn
+l1	goto	l2 // iconst_1
+	astore_3
+	aload_0
+	aload_3
+	invokespecial	Method checkCancellationOnInterrupt:(Ljava/lang/InterruptedException;)V
+l2	iconst_1
+	ireturn
+  Labels:
+   	l1 = 10 // goto
+   	l2 = 19 // iconst_1
+  Exception table:
+   from   to  target type
+     0     9    13   Class java/lang/InterruptedException
+
+  Exceptions: 
+   throws java.lang.InterruptedException
+synchronized java.lang.Object waitForPut(long)   throws java.lang.InterruptedException;
+  Signature: (J)Ljava/lang/Object;
+  Code:
+   Stack=3, Locals=4, Args_size=2
+	aload_0
+	lload_1
+	invokespecial	Method attempt:(J)Z
+	ifne	l1 // goto
+	aconst_null
+	areturn
+l1	goto	l2 // aload_0
+	astore_3
+	aload_0
+	aload_3
+	invokespecial	Method checkCancellationOnInterrupt:(Ljava/lang/InterruptedException;)V
+l2	aload_0
+	invokespecial	Method extract:()Ljava/lang/Object;
+	areturn
+  Labels:
+   	l1 = 10 // goto
+   	l2 = 19 // aload_0
+  Exception table:
+   from   to  target type
+     0     9    13   Class java/lang/InterruptedException
+
+  Exceptions: 
+   throws java.lang.InterruptedException
+}
+

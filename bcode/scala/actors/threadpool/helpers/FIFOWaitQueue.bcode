@@ -1,0 +1,285 @@
+public class scala.actors.threadpool.helpers.FIFOWaitQueue extends scala.actors.threadpool.helpers.WaitQueue implements java.io.Serializable
+  InnerClass: 
+   public WaitNode=class scala/actors/threadpool/helpers/WaitQueue$WaitNode of class scala/actors/threadpool/helpers/WaitQueue
+  minor version: 0
+  major version: 49
+  Constant pool:
+Method	scala/actors/threadpool/helpers/WaitQueue."<init>":()V
+Field	scala/actors/threadpool/helpers/FIFOWaitQueue.head_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+Field	scala/actors/threadpool/helpers/FIFOWaitQueue.tail_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+Field	scala/actors/threadpool/helpers/WaitQueue$WaitNode.next:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+Field	scala/actors/threadpool/helpers/WaitQueue$WaitNode.waiting:Z
+class	java/util/ArrayList
+Method	java/util/ArrayList."<init>":()V
+Field	scala/actors/threadpool/helpers/WaitQueue$WaitNode.owner:Ljava/lang/Thread;
+InterfaceMethod	java/util/List.add:(Ljava/lang/Object;)Z
+class	java/lang/NullPointerException
+Method	java/lang/NullPointerException."<init>":()V
+class	scala/actors/threadpool/helpers/FIFOWaitQueue
+class	scala/actors/threadpool/helpers/WaitQueue
+class	java/io/Serializable
+Asciz	serialVersionUID;
+Asciz	J;
+Asciz	ConstantValue;
+long	2416444691925378811l;
+Asciz	head_;
+class	scala/actors/threadpool/helpers/WaitQueue$WaitNode
+Asciz	WaitNode;
+Asciz	InnerClasses;
+Asciz	Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;;
+Asciz	tail_;
+Asciz	<init>;
+Asciz	()V;
+Asciz	Code;
+Asciz	insert;
+Asciz	(Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)V;
+Asciz	extract;
+Asciz	()Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;;
+Asciz	putBack;
+Asciz	hasNodes;
+Asciz	()Z;
+Asciz	getLength;
+Asciz	()I;
+Asciz	getWaitingThreads;
+Asciz	()Ljava/util/Collection;;
+Asciz	isWaiting;
+Asciz	(Ljava/lang/Thread;)Z;
+NameAndType	"<init>":()V
+NameAndType	head_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+NameAndType	tail_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+NameAndType	next:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+NameAndType	waiting:Z
+Asciz	java/util/ArrayList;
+NameAndType	owner:Ljava/lang/Thread;
+class	java/util/List
+NameAndType	add:(Ljava/lang/Object;)Z
+Asciz	java/lang/NullPointerException;
+Asciz	scala/actors/threadpool/helpers/FIFOWaitQueue;
+Asciz	scala/actors/threadpool/helpers/WaitQueue;
+Asciz	java/io/Serializable;
+Asciz	scala/actors/threadpool/helpers/WaitQueue$WaitNode;
+Asciz	next;
+Asciz	waiting;
+Asciz	Z;
+Asciz	owner;
+Asciz	Ljava/lang/Thread;;
+Asciz	java/util/List;
+Asciz	add;
+Asciz	(Ljava/lang/Object;)Z;
+
+{
+private static final long serialVersionUID;
+  Signature: J
+  Constant value: long 2416444691925378811l
+protected transient scala.actors.threadpool.helpers.WaitQueue$WaitNode head_;
+  Signature: Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+
+protected transient scala.actors.threadpool.helpers.WaitQueue$WaitNode tail_;
+  Signature: Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+
+public scala.actors.threadpool.helpers.FIFOWaitQueue();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method scala/actors/threadpool/helpers/WaitQueue."<init>":()V
+	aload_0
+	aconst_null
+	putfield	Field head_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	aload_0
+	aconst_null
+	putfield	Field tail_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	return
+  Labels:
+
+public void insert(scala.actors.threadpool.helpers.WaitQueue$WaitNode);
+  Signature: (Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)V
+  Code:
+   Stack=4, Locals=2, Args_size=2
+	aload_0
+	getfield	Field tail_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	ifnonnull	l1 // aload_0
+	aload_0
+	aload_0
+	aload_1
+	dup_x1
+	putfield	Field tail_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	putfield	Field head_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	goto	l2 // return
+l1	aload_0
+	getfield	Field tail_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	aload_1
+	putfield	Field scala/actors/threadpool/helpers/WaitQueue$WaitNode.next:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	aload_0
+	aload_1
+	putfield	Field tail_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+l2	return
+  Labels:
+   	l1 = 20 // aload_0
+   	l2 = 33 // return
+
+public scala.actors.threadpool.helpers.WaitQueue$WaitNode extract();
+  Signature: ()Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+  Code:
+   Stack=2, Locals=2, Args_size=1
+	aload_0
+	getfield	Field head_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	ifnonnull	l1 // aload_0
+	aconst_null
+	areturn
+l1	aload_0
+	getfield	Field head_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	astore_1
+	aload_0
+	aload_1
+	getfield	Field scala/actors/threadpool/helpers/WaitQueue$WaitNode.next:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	putfield	Field head_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	aload_0
+	getfield	Field head_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	ifnonnull	l2 // aload_1
+	aload_0
+	aconst_null
+	putfield	Field tail_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+l2	aload_1
+	aconst_null
+	putfield	Field scala/actors/threadpool/helpers/WaitQueue$WaitNode.next:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	aload_1
+	areturn
+  Labels:
+   	l1 = 9 // aload_0
+   	l2 = 34 // aload_1
+
+public void putBack(scala.actors.threadpool.helpers.WaitQueue$WaitNode);
+  Signature: (Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_1
+	aload_0
+	getfield	Field head_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	putfield	Field scala/actors/threadpool/helpers/WaitQueue$WaitNode.next:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	aload_0
+	aload_1
+	putfield	Field head_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	aload_0
+	getfield	Field tail_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	ifnonnull	l1 // return
+	aload_0
+	aload_1
+	putfield	Field tail_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+l1	return
+  Labels:
+   	l1 = 25 // return
+
+public boolean hasNodes();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field head_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	ifnull	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 11 // iconst_0
+   	l2 = 12 // ireturn
+
+public int getLength();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=3, Args_size=1
+	iconst_0
+	istore_1
+	aload_0
+	getfield	Field head_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	astore_2
+l3	aload_2
+	ifnull	l1 // iload_1
+	aload_2
+	getfield	Field scala/actors/threadpool/helpers/WaitQueue$WaitNode.waiting:Z
+	ifeq	l2 // aload_2
+	iinc	1, 1
+l2	aload_2
+	getfield	Field scala/actors/threadpool/helpers/WaitQueue$WaitNode.next:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	astore_2
+	goto	l3 // aload_2
+l1	iload_1
+	ireturn
+  Labels:
+   	l3 = 7 // aload_2
+   	l2 = 21 // aload_2
+   	l1 = 29 // iload_1
+
+public java.util.Collection getWaitingThreads();
+  Signature: ()Ljava/util/Collection;
+  Code:
+   Stack=2, Locals=4, Args_size=1
+	new	class java/util/ArrayList
+	dup
+	invokespecial	Method java/util/ArrayList."<init>":()V
+	astore_1
+	iconst_0
+	istore_2
+	aload_0
+	getfield	Field head_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	astore_3
+l3	aload_3
+	ifnull	l1 // aload_1
+	aload_3
+	getfield	Field scala/actors/threadpool/helpers/WaitQueue$WaitNode.waiting:Z
+	ifeq	l2 // aload_3
+	aload_1
+	aload_3
+	getfield	Field scala/actors/threadpool/helpers/WaitQueue$WaitNode.owner:Ljava/lang/Thread;
+	invokeinterface	InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+	pop
+l2	aload_3
+	getfield	Field scala/actors/threadpool/helpers/WaitQueue$WaitNode.next:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	astore_3
+	goto	l3 // aload_3
+l1	aload_1
+	areturn
+  Labels:
+   	l3 = 15 // aload_3
+   	l2 = 37 // aload_3
+   	l1 = 45 // aload_1
+
+public boolean isWaiting(java.lang.Thread);
+  Signature: (Ljava/lang/Thread;)Z
+  Code:
+   Stack=2, Locals=3, Args_size=2
+	aload_1
+	ifnonnull	l1 // aload_0
+	new	class java/lang/NullPointerException
+	dup
+	invokespecial	Method java/lang/NullPointerException."<init>":()V
+	athrow
+l1	aload_0
+	getfield	Field head_:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	astore_2
+l4	aload_2
+	ifnull	l2 // iconst_0
+	aload_2
+	getfield	Field scala/actors/threadpool/helpers/WaitQueue$WaitNode.waiting:Z
+	ifeq	l3 // aload_2
+	aload_2
+	getfield	Field scala/actors/threadpool/helpers/WaitQueue$WaitNode.owner:Ljava/lang/Thread;
+	aload_1
+	if_acmpne	l3 // aload_2
+	iconst_1
+	ireturn
+l3	aload_2
+	getfield	Field scala/actors/threadpool/helpers/WaitQueue$WaitNode.next:Lscala/actors/threadpool/helpers/WaitQueue$WaitNode;
+	astore_2
+	goto	l4 // aload_2
+l2	iconst_0
+	ireturn
+  Labels:
+   	l1 = 12 // aload_0
+   	l4 = 17 // aload_2
+   	l3 = 38 // aload_2
+   	l2 = 46 // iconst_0
+
+}
+

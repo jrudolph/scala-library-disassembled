@@ -1,0 +1,1815 @@
+Compiled from "XMLEventReader.scala"
+public class scala.xml.pull.XMLEventReader$Parser extends scala.xml.parsing.MarkupHandler implements scala.xml.parsing.MarkupParser,scala.xml.parsing.ExternalSources,java.lang.Runnable,scala.ScalaObject
+  SourceFile: "XMLEventReader.scala"
+  Scala: length = 0x
+   
+  InnerClass: 
+   public Parser=class scala/xml/pull/XMLEventReader$Parser of class scala/xml/pull/XMLEventReader
+   public final $anonfun$run$1=class scala/xml/pull/XMLEventReader$Parser$$anonfun$run$1 of class scala/xml/pull/XMLEventReader$Parser
+   public final $anonfun$setEvent$1=class scala/xml/pull/XMLEventReader$Parser$$anonfun$setEvent$1 of class scala/xml/pull/XMLEventReader$Parser
+  minor version: 0
+  major version: 49
+  Constant pool:
+Asciz	SourceFile;
+Asciz	XMLEventReader.scala;
+Asciz	eof;
+Asciz	Z;
+Asciz	doc;
+Asciz	Lscala/xml/Document;;
+Asciz	dtd;
+Asciz	Lscala/xml/dtd/DTD;;
+Asciz	cbuf;
+Asciz	Lscala/collection/mutable/StringBuilder;;
+Asciz	ch;
+Asciz	C;
+Asciz	tmppos;
+Asciz	I;
+Asciz	extIndex;
+Asciz	pos;
+Asciz	inpStack;
+Asciz	Lscala/collection/immutable/List;;
+Asciz	scala$xml$parsing$MarkupParser$$handle;
+Asciz	Lscala/xml/parsing/MarkupHandler;;
+Asciz	curInput;
+Asciz	Lscala/io/Source;;
+Asciz	$outer;
+Asciz	Lscala/xml/pull/XMLEventReader;;
+Asciz	preserveWS;
+Asciz	input;
+Asciz	<init>;
+Asciz	(Lscala/xml/pull/XMLEventReader;Lscala/io/Source;)V;
+Asciz	Code;
+Asciz	LineNumberTable;
+Asciz	scala/xml/pull/XMLEventReader$Parser;
+class	scala/xml/pull/XMLEventReader$Parser
+NameAndType	input:Lscala/io/Source;
+Field	scala/xml/pull/XMLEventReader$Parser.input:Lscala/io/Source;
+Asciz	java/lang/NullPointerException;
+class	java/lang/NullPointerException
+Asciz	()V;
+NameAndType	"<init>":()V
+Method	java/lang/NullPointerException."<init>":()V
+NameAndType	$outer:Lscala/xml/pull/XMLEventReader;
+Field	scala/xml/pull/XMLEventReader$Parser.$outer:Lscala/xml/pull/XMLEventReader;
+Asciz	scala/xml/parsing/MarkupHandler;
+class	scala/xml/parsing/MarkupHandler
+Method	scala/xml/parsing/MarkupHandler."<init>":()V
+Asciz	scala/xml/parsing/TokenTests$class;
+class	scala/xml/parsing/TokenTests$class
+Asciz	$init$;
+Asciz	(Lscala/xml/parsing/TokenTests;)V;
+NameAndType	$init$:(Lscala/xml/parsing/TokenTests;)V
+Method	scala/xml/parsing/TokenTests$class.$init$:(Lscala/xml/parsing/TokenTests;)V
+Asciz	scala/xml/parsing/MarkupParser$class;
+class	scala/xml/parsing/MarkupParser$class
+Asciz	(Lscala/xml/parsing/MarkupParser;)V;
+NameAndType	$init$:(Lscala/xml/parsing/MarkupParser;)V
+Method	scala/xml/parsing/MarkupParser$class.$init$:(Lscala/xml/parsing/MarkupParser;)V
+Asciz	scala/xml/parsing/ExternalSources$class;
+class	scala/xml/parsing/ExternalSources$class
+Asciz	(Lscala/xml/parsing/ExternalSources;)V;
+NameAndType	$init$:(Lscala/xml/parsing/ExternalSources;)V
+Method	scala/xml/parsing/ExternalSources$class.$init$:(Lscala/xml/parsing/ExternalSources;)V
+Asciz	scala/xml/pull/XMLEventReader;
+class	scala/xml/pull/XMLEventReader
+Asciz	()Z;
+NameAndType	preserveWS:()Z
+Method	scala/xml/pull/XMLEventReader.preserveWS:()Z
+NameAndType	preserveWS:Z
+Field	scala/xml/pull/XMLEventReader$Parser.preserveWS:Z
+Asciz	this;
+Asciz	Lscala/xml/pull/XMLEventReader$Parser;;
+Asciz	LocalVariableTable;
+Asciz	scala$xml$pull$XMLEventReader$Parser$$$outer;
+Asciz	()Lscala/xml/pull/XMLEventReader;;
+Asciz	run;
+Asciz	()Lscala/io/Source;;
+NameAndType	input:()Lscala/io/Source;
+Method	scala/xml/pull/XMLEventReader$Parser.input:()Lscala/io/Source;
+Asciz	scala/xml/parsing/MarkupParser;
+class	scala/xml/parsing/MarkupParser
+Asciz	curInput_$eq;
+Asciz	(Lscala/io/Source;)V;
+NameAndType	curInput_$eq:(Lscala/io/Source;)V
+InterfaceMethod	scala/xml/parsing/MarkupParser.curInput_$eq:(Lscala/io/Source;)V
+NameAndType	scala$xml$pull$XMLEventReader$Parser$$$outer:()Lscala/xml/pull/XMLEventReader;
+Method	scala/xml/pull/XMLEventReader$Parser.scala$xml$pull$XMLEventReader$Parser$$$outer:()Lscala/xml/pull/XMLEventReader;
+Asciz	scala/xml/pull/XMLEventReader$Parser$$anonfun$run$1;
+class	scala/xml/pull/XMLEventReader$Parser$$anonfun$run$1
+Asciz	(Lscala/xml/pull/XMLEventReader$Parser;)V;
+NameAndType	"<init>":(Lscala/xml/pull/XMLEventReader$Parser;)V
+Method	scala/xml/pull/XMLEventReader$Parser$$anonfun$run$1."<init>":(Lscala/xml/pull/XMLEventReader$Parser;)V
+Asciz	scala/xml/pull/ProducerConsumerIterator;
+class	scala/xml/pull/ProducerConsumerIterator
+Asciz	interruptibly;
+Asciz	(Lscala/Function0;)Lscala/Option;;
+NameAndType	interruptibly:(Lscala/Function0;)Lscala/Option;
+InterfaceMethod	scala/xml/pull/ProducerConsumerIterator.interruptibly:(Lscala/Function0;)Lscala/Option;
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	MODULE$;
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	scala/xml/pull/XMLEvent;
+class	scala/xml/pull/XMLEvent
+Asciz	POISON;
+Asciz	()Lscala/xml/pull/XMLEventReader$POISON$;;
+NameAndType	POISON:()Lscala/xml/pull/XMLEventReader$POISON$;
+Method	scala/xml/pull/XMLEventReader.POISON:()Lscala/xml/pull/XMLEventReader$POISON$;
+Asciz	[Ljava/lang/Object;;
+class	"[Ljava/lang/Object;"
+Asciz	wrapRefArray;
+Asciz	([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
+NameAndType	wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+Method	scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+Asciz	setEvent;
+Asciz	(Lscala/collection/Seq;)Lscala/xml/NodeSeq;;
+NameAndType	setEvent:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+Method	scala/xml/pull/XMLEventReader$Parser.setEvent:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+Asciz	text;
+Asciz	(ILjava/lang/String;)Lscala/xml/NodeSeq;;
+Asciz	scala/xml/pull/EvText;
+class	scala/xml/pull/EvText
+Asciz	(Ljava/lang/String;)V;
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	scala/xml/pull/EvText."<init>":(Ljava/lang/String;)V
+Asciz	txt;
+Asciz	Ljava/lang/String;;
+Asciz	entityRef;
+Asciz	scala/xml/pull/EvEntityRef;
+class	scala/xml/pull/EvEntityRef
+Method	scala/xml/pull/EvEntityRef."<init>":(Ljava/lang/String;)V
+Asciz	n;
+Asciz	comment;
+Asciz	scala/xml/pull/EvComment;
+class	scala/xml/pull/EvComment
+Method	scala/xml/pull/EvComment."<init>":(Ljava/lang/String;)V
+Asciz	procInstr;
+Asciz	(ILjava/lang/String;Ljava/lang/String;)Lscala/xml/NodeSeq;;
+Asciz	scala/xml/pull/EvProcInstr;
+class	scala/xml/pull/EvProcInstr
+Asciz	(Ljava/lang/String;Ljava/lang/String;)V;
+NameAndType	"<init>":(Ljava/lang/String;Ljava/lang/String;)V
+Method	scala/xml/pull/EvProcInstr."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+Asciz	target;
+Asciz	elem;
+Asciz	(ILjava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/xml/NodeSeq;)Lscala/xml/NodeSeq;;
+Asciz	scala/xml/Elem;
+class	scala/xml/Elem
+Asciz	ignore;
+String	ignore
+Asciz	scala/xml/Null$;
+class	scala/xml/Null$
+Asciz	Lscala/xml/Null$;;
+NameAndType	MODULE$:Lscala/xml/Null$;
+Field	scala/xml/Null$.MODULE$:Lscala/xml/Null$;
+Asciz	scala/package$;
+class	scala/package$
+Asciz	Lscala/package$;;
+NameAndType	MODULE$:Lscala/package$;
+Field	scala/package$.MODULE$:Lscala/package$;
+Asciz	$scope;
+Asciz	()Lscala/xml/TopScope$;;
+NameAndType	$scope:()Lscala/xml/TopScope$;
+Method	scala/package$.$scope:()Lscala/xml/TopScope$;
+Asciz	scala/xml/Node;
+class	scala/xml/Node
+Asciz	(Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Seq;)V;
+NameAndType	"<init>":(Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Seq;)V
+Method	scala/xml/Elem."<init>":(Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Seq;)V
+Asciz	pre;
+Asciz	label;
+Asciz	attrs;
+Asciz	Lscala/xml/MetaData;;
+Asciz	pscope;
+Asciz	Lscala/xml/NamespaceBinding;;
+Asciz	nodes;
+Asciz	Lscala/xml/NodeSeq;;
+Asciz	elemEnd;
+Asciz	(ILjava/lang/String;Ljava/lang/String;)V;
+Asciz	scala/xml/pull/EvElemEnd;
+class	scala/xml/pull/EvElemEnd
+Method	scala/xml/pull/EvElemEnd."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+Asciz	elemStart;
+Asciz	(ILjava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;)V;
+Asciz	scala/xml/pull/EvElemStart;
+class	scala/xml/pull/EvElemStart
+Asciz	(Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;)V;
+NameAndType	"<init>":(Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;)V
+Method	scala/xml/pull/EvElemStart."<init>":(Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;)V
+Asciz	scope;
+Asciz	scala/xml/pull/XMLEventReader$Parser$$anonfun$setEvent$1;
+class	scala/xml/pull/XMLEventReader$Parser$$anonfun$setEvent$1
+Method	scala/xml/pull/XMLEventReader$Parser$$anonfun$setEvent$1."<init>":(Lscala/xml/pull/XMLEventReader$Parser;)V
+Asciz	scala/collection/IterableLike;
+class	scala/collection/IterableLike
+Asciz	foreach;
+Asciz	(Lscala/Function1;)V;
+NameAndType	foreach:(Lscala/Function1;)V
+InterfaceMethod	scala/collection/IterableLike.foreach:(Lscala/Function1;)V
+Asciz	scala/xml/NodeSeq$;
+class	scala/xml/NodeSeq$
+Asciz	Lscala/xml/NodeSeq$;;
+NameAndType	MODULE$:Lscala/xml/NodeSeq$;
+Field	scala/xml/NodeSeq$.MODULE$:Lscala/xml/NodeSeq$;
+Asciz	Empty;
+Asciz	()Lscala/xml/NodeSeq;;
+NameAndType	Empty:()Lscala/xml/NodeSeq;
+Method	scala/xml/NodeSeq$.Empty:()Lscala/xml/NodeSeq;
+Asciz	es;
+Asciz	Lscala/collection/Seq;;
+Asciz	(Lscala/collection/Seq<Lscala/xml/pull/XMLEvent;>;)Lscala/xml/NodeSeq;;
+Asciz	Signature;
+Asciz	checkPubID;
+Asciz	(Ljava/lang/String;)Z;
+Asciz	(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z;
+NameAndType	checkPubID:(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
+Method	scala/xml/parsing/TokenTests$class.checkPubID:(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
+Asciz	s;
+Asciz	checkSysID;
+NameAndType	checkSysID:(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
+Method	scala/xml/parsing/TokenTests$class.checkSysID:(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
+Asciz	isValidIANAEncoding;
+Asciz	(Lscala/collection/Seq;)Z;
+Asciz	(Lscala/xml/parsing/TokenTests;Lscala/collection/Seq;)Z;
+NameAndType	isValidIANAEncoding:(Lscala/xml/parsing/TokenTests;Lscala/collection/Seq;)Z
+Method	scala/xml/parsing/TokenTests$class.isValidIANAEncoding:(Lscala/xml/parsing/TokenTests;Lscala/collection/Seq;)Z
+Asciz	ianaEncoding;
+Asciz	isPubIDChar;
+Asciz	(C)Z;
+Asciz	(Lscala/xml/parsing/TokenTests;C)Z;
+NameAndType	isPubIDChar:(Lscala/xml/parsing/TokenTests;C)Z
+Method	scala/xml/parsing/TokenTests$class.isPubIDChar:(Lscala/xml/parsing/TokenTests;C)Z
+Asciz	isName;
+NameAndType	isName:(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
+Method	scala/xml/parsing/TokenTests$class.isName:(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
+Asciz	isNameStart;
+NameAndType	isNameStart:(Lscala/xml/parsing/TokenTests;C)Z
+Method	scala/xml/parsing/TokenTests$class.isNameStart:(Lscala/xml/parsing/TokenTests;C)Z
+Asciz	isNameChar;
+NameAndType	isNameChar:(Lscala/xml/parsing/TokenTests;C)Z
+Method	scala/xml/parsing/TokenTests$class.isNameChar:(Lscala/xml/parsing/TokenTests;C)Z
+Asciz	isAlphaDigit;
+NameAndType	isAlphaDigit:(Lscala/xml/parsing/TokenTests;C)Z
+Method	scala/xml/parsing/TokenTests$class.isAlphaDigit:(Lscala/xml/parsing/TokenTests;C)Z
+Asciz	c;
+Asciz	isAlpha;
+NameAndType	isAlpha:(Lscala/xml/parsing/TokenTests;C)Z
+Method	scala/xml/parsing/TokenTests$class.isAlpha:(Lscala/xml/parsing/TokenTests;C)Z
+Asciz	isSpace;
+NameAndType	isSpace:(Lscala/xml/parsing/TokenTests;Lscala/collection/Seq;)Z
+Method	scala/xml/parsing/TokenTests$class.isSpace:(Lscala/xml/parsing/TokenTests;Lscala/collection/Seq;)Z
+Asciz	cs;
+NameAndType	isSpace:(Lscala/xml/parsing/TokenTests;C)Z
+Method	scala/xml/parsing/TokenTests$class.isSpace:(Lscala/xml/parsing/TokenTests;C)Z
+Asciz	normalizeAttributeValue;
+Asciz	(Ljava/lang/String;)Ljava/lang/String;;
+Asciz	(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)Ljava/lang/String;;
+NameAndType	normalizeAttributeValue:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)Ljava/lang/String;
+Method	scala/xml/parsing/MarkupParser$class.normalizeAttributeValue:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)Ljava/lang/String;
+Asciz	attval;
+Asciz	pop;
+NameAndType	pop:(Lscala/xml/parsing/MarkupParser;)V
+Method	scala/xml/parsing/MarkupParser$class.pop:(Lscala/xml/parsing/MarkupParser;)V
+Asciz	pushExternal;
+Asciz	(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)V;
+NameAndType	pushExternal:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)V
+Method	scala/xml/parsing/MarkupParser$class.pushExternal:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)V
+Asciz	systemId;
+Asciz	push;
+NameAndType	push:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)V
+Method	scala/xml/parsing/MarkupParser$class.push:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)V
+Asciz	entityName;
+Asciz	reportValidationError;
+Asciz	(ILjava/lang/String;)V;
+Asciz	(Lscala/xml/parsing/MarkupParser;ILjava/lang/String;)V;
+NameAndType	reportValidationError:(Lscala/xml/parsing/MarkupParser;ILjava/lang/String;)V
+Method	scala/xml/parsing/MarkupParser$class.reportValidationError:(Lscala/xml/parsing/MarkupParser;ILjava/lang/String;)V
+Asciz	str;
+Asciz	reportSyntaxError;
+NameAndType	reportSyntaxError:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)V
+Method	scala/xml/parsing/MarkupParser$class.reportSyntaxError:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)V
+NameAndType	reportSyntaxError:(Lscala/xml/parsing/MarkupParser;ILjava/lang/String;)V
+Method	scala/xml/parsing/MarkupParser$class.reportSyntaxError:(Lscala/xml/parsing/MarkupParser;ILjava/lang/String;)V
+Asciz	notationDecl;
+NameAndType	notationDecl:(Lscala/xml/parsing/MarkupParser;)V
+Method	scala/xml/parsing/MarkupParser$class.notationDecl:(Lscala/xml/parsing/MarkupParser;)V
+Asciz	entityDecl;
+NameAndType	entityDecl:(Lscala/xml/parsing/MarkupParser;)V
+Method	scala/xml/parsing/MarkupParser$class.entityDecl:(Lscala/xml/parsing/MarkupParser;)V
+Asciz	attrDecl;
+NameAndType	attrDecl:(Lscala/xml/parsing/MarkupParser;)V
+Method	scala/xml/parsing/MarkupParser$class.attrDecl:(Lscala/xml/parsing/MarkupParser;)V
+Asciz	elementDecl;
+NameAndType	elementDecl:(Lscala/xml/parsing/MarkupParser;)V
+Method	scala/xml/parsing/MarkupParser$class.elementDecl:(Lscala/xml/parsing/MarkupParser;)V
+Asciz	intSubset;
+NameAndType	intSubset:(Lscala/xml/parsing/MarkupParser;)V
+Method	scala/xml/parsing/MarkupParser$class.intSubset:(Lscala/xml/parsing/MarkupParser;)V
+Asciz	markupDecl;
+NameAndType	markupDecl:(Lscala/xml/parsing/MarkupParser;)V
+Method	scala/xml/parsing/MarkupParser$class.markupDecl:(Lscala/xml/parsing/MarkupParser;)V
+Asciz	markupDecl1;
+Asciz	()Ljava/lang/Object;;
+Asciz	(Lscala/xml/parsing/MarkupParser;)Ljava/lang/Object;;
+NameAndType	markupDecl1:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/Object;
+Method	scala/xml/parsing/MarkupParser$class.markupDecl1:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/Object;
+Asciz	extSubset;
+NameAndType	extSubset:(Lscala/xml/parsing/MarkupParser;)V
+Method	scala/xml/parsing/MarkupParser$class.extSubset:(Lscala/xml/parsing/MarkupParser;)V
+Asciz	pubidLiteral;
+Asciz	()Ljava/lang/String;;
+Asciz	(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;;
+NameAndType	pubidLiteral:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+Method	scala/xml/parsing/MarkupParser$class.pubidLiteral:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+Asciz	systemLiteral;
+NameAndType	systemLiteral:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+Method	scala/xml/parsing/MarkupParser$class.systemLiteral:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+Asciz	xText;
+NameAndType	xText:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+Method	scala/xml/parsing/MarkupParser$class.xText:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+Asciz	xProcInstr;
+Asciz	(Lscala/xml/parsing/MarkupParser;)Lscala/xml/NodeSeq;;
+NameAndType	xProcInstr:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/NodeSeq;
+Method	scala/xml/parsing/MarkupParser$class.xProcInstr:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/NodeSeq;
+Asciz	xSpace;
+NameAndType	xSpace:(Lscala/xml/parsing/MarkupParser;)V
+Method	scala/xml/parsing/MarkupParser$class.xSpace:(Lscala/xml/parsing/MarkupParser;)V
+Asciz	xSpaceOpt;
+NameAndType	xSpaceOpt:(Lscala/xml/parsing/MarkupParser;)V
+Method	scala/xml/parsing/MarkupParser$class.xSpaceOpt:(Lscala/xml/parsing/MarkupParser;)V
+Asciz	xEQ;
+NameAndType	xEQ:(Lscala/xml/parsing/MarkupParser;)V
+Method	scala/xml/parsing/MarkupParser$class.xEQ:(Lscala/xml/parsing/MarkupParser;)V
+Asciz	xName;
+NameAndType	xName:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+Method	scala/xml/parsing/MarkupParser$class.xName:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+Asciz	element1;
+Asciz	(Lscala/xml/NamespaceBinding;)Lscala/xml/NodeSeq;;
+Asciz	(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/xml/NodeSeq;;
+NameAndType	element1:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/xml/NodeSeq;
+Method	scala/xml/parsing/MarkupParser$class.element1:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/xml/NodeSeq;
+Asciz	element;
+NameAndType	element:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/xml/NodeSeq;
+Method	scala/xml/parsing/MarkupParser$class.element:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/xml/NodeSeq;
+Asciz	parseDTD;
+NameAndType	parseDTD:(Lscala/xml/parsing/MarkupParser;)V
+Method	scala/xml/parsing/MarkupParser$class.parseDTD:(Lscala/xml/parsing/MarkupParser;)V
+Asciz	externalID;
+Asciz	()Lscala/xml/dtd/ExternalID;;
+Asciz	(Lscala/xml/parsing/MarkupParser;)Lscala/xml/dtd/ExternalID;;
+NameAndType	externalID:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/dtd/ExternalID;
+Method	scala/xml/parsing/MarkupParser$class.externalID:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/dtd/ExternalID;
+Asciz	content;
+NameAndType	content:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/xml/NodeSeq;
+Method	scala/xml/parsing/MarkupParser$class.content:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/xml/NodeSeq;
+Asciz	content1;
+Asciz	(Lscala/xml/NamespaceBinding;Lscala/xml/NodeBuffer;)V;
+Asciz	(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;Lscala/xml/NodeBuffer;)V;
+NameAndType	content1:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;Lscala/xml/NodeBuffer;)V
+Method	scala/xml/parsing/MarkupParser$class.content1:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;Lscala/xml/NodeBuffer;)V
+Asciz	ts;
+Asciz	Lscala/xml/NodeBuffer;;
+Asciz	appendText;
+Asciz	(ILscala/xml/NodeBuffer;Ljava/lang/String;)V;
+Asciz	(Lscala/xml/parsing/MarkupParser;ILscala/xml/NodeBuffer;Ljava/lang/String;)V;
+NameAndType	appendText:(Lscala/xml/parsing/MarkupParser;ILscala/xml/NodeBuffer;Ljava/lang/String;)V
+Method	scala/xml/parsing/MarkupParser$class.appendText:(Lscala/xml/parsing/MarkupParser;ILscala/xml/NodeBuffer;Ljava/lang/String;)V
+Asciz	xComment;
+NameAndType	xComment:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/NodeSeq;
+Method	scala/xml/parsing/MarkupParser$class.xComment:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/NodeSeq;
+Asciz	xCharRef;
+Asciz	(Lscala/Function0;Lscala/Function0;)Ljava/lang/String;;
+Asciz	(Lscala/xml/parsing/MarkupParser;Lscala/Function0;Lscala/Function0;)Ljava/lang/String;;
+NameAndType	xCharRef:(Lscala/xml/parsing/MarkupParser;Lscala/Function0;Lscala/Function0;)Ljava/lang/String;
+Method	scala/xml/parsing/MarkupParser$class.xCharRef:(Lscala/xml/parsing/MarkupParser;Lscala/Function0;Lscala/Function0;)Ljava/lang/String;
+Asciz	Lscala/Function0;;
+Asciz	nextch;
+Asciz	xCharData;
+NameAndType	xCharData:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/NodeSeq;
+Method	scala/xml/parsing/MarkupParser$class.xCharData:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/NodeSeq;
+Asciz	xEndTag;
+NameAndType	xEndTag:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)V
+Method	scala/xml/parsing/MarkupParser$class.xEndTag:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)V
+Asciz	xTag;
+Asciz	(Lscala/xml/NamespaceBinding;)Lscala/Tuple3;;
+Asciz	(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/Tuple3;;
+NameAndType	xTag:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/Tuple3;
+Method	scala/xml/parsing/MarkupParser$class.xTag:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/Tuple3;
+Asciz	xEntityValue;
+NameAndType	xEntityValue:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+Method	scala/xml/parsing/MarkupParser$class.xEntityValue:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+Asciz	xAttributeValue;
+NameAndType	xAttributeValue:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+Method	scala/xml/parsing/MarkupParser$class.xAttributeValue:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+Asciz	xAttributes;
+Asciz	(Lscala/xml/NamespaceBinding;)Lscala/Tuple2;;
+Asciz	(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/Tuple2;;
+NameAndType	xAttributes:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/Tuple2;
+Method	scala/xml/parsing/MarkupParser$class.xAttributes:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/Tuple2;
+Asciz	xToken;
+Asciz	(Lscala/collection/Seq;)V;
+Asciz	(Lscala/xml/parsing/MarkupParser;Lscala/collection/Seq;)V;
+NameAndType	xToken:(Lscala/xml/parsing/MarkupParser;Lscala/collection/Seq;)V
+Method	scala/xml/parsing/MarkupParser$class.xToken:(Lscala/xml/parsing/MarkupParser;Lscala/collection/Seq;)V
+Asciz	that;
+Asciz	(C)V;
+Asciz	(Lscala/xml/parsing/MarkupParser;C)V;
+NameAndType	xToken:(Lscala/xml/parsing/MarkupParser;C)V
+Method	scala/xml/parsing/MarkupParser$class.xToken:(Lscala/xml/parsing/MarkupParser;C)V
+NameAndType	nextch:(Lscala/xml/parsing/MarkupParser;)V
+Method	scala/xml/parsing/MarkupParser$class.nextch:(Lscala/xml/parsing/MarkupParser;)V
+Asciz	initialize;
+Asciz	()Lscala/xml/parsing/MarkupParser;;
+Asciz	(Lscala/xml/parsing/MarkupParser;)Lscala/xml/parsing/MarkupParser;;
+NameAndType	initialize:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/parsing/MarkupParser;
+Method	scala/xml/parsing/MarkupParser$class.initialize:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/parsing/MarkupParser;
+Asciz	putChar;
+Asciz	(C)Lscala/collection/mutable/StringBuilder;;
+Asciz	(Lscala/xml/parsing/MarkupParser;C)Lscala/collection/mutable/StringBuilder;;
+NameAndType	putChar:(Lscala/xml/parsing/MarkupParser;C)Lscala/collection/mutable/StringBuilder;
+Method	scala/xml/parsing/MarkupParser$class.putChar:(Lscala/xml/parsing/MarkupParser;C)Lscala/collection/mutable/StringBuilder;
+Asciz	document;
+Asciz	()Lscala/xml/Document;;
+Asciz	(Lscala/xml/parsing/MarkupParser;)Lscala/xml/Document;;
+NameAndType	document:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/Document;
+Method	scala/xml/parsing/MarkupParser$class.document:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/Document;
+Asciz	textDecl;
+Asciz	()Lscala/Tuple2;;
+Asciz	(Lscala/xml/parsing/MarkupParser;)Lscala/Tuple2;;
+NameAndType	textDecl:(Lscala/xml/parsing/MarkupParser;)Lscala/Tuple2;
+Method	scala/xml/parsing/MarkupParser$class.textDecl:(Lscala/xml/parsing/MarkupParser;)Lscala/Tuple2;
+Asciz	prolog;
+Asciz	()Lscala/Tuple3;;
+Asciz	(Lscala/xml/parsing/MarkupParser;)Lscala/Tuple3;;
+NameAndType	prolog:(Lscala/xml/parsing/MarkupParser;)Lscala/Tuple3;
+Method	scala/xml/parsing/MarkupParser$class.prolog:(Lscala/xml/parsing/MarkupParser;)Lscala/Tuple3;
+Asciz	xmlProcInstr;
+Asciz	()Lscala/xml/MetaData;;
+Asciz	(Lscala/xml/parsing/MarkupParser;)Lscala/xml/MetaData;;
+NameAndType	xmlProcInstr:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/MetaData;
+Method	scala/xml/parsing/MarkupParser$class.xmlProcInstr:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/MetaData;
+Asciz	scala$xml$parsing$MarkupParser$_setter_$cbuf_$eq;
+Asciz	(Lscala/collection/mutable/StringBuilder;)V;
+NameAndType	cbuf:Lscala/collection/mutable/StringBuilder;
+Field	scala/xml/pull/XMLEventReader$Parser.cbuf:Lscala/collection/mutable/StringBuilder;
+Asciz	scala$xml$parsing$MarkupParser$_setter_$scala$xml$parsing$MarkupParser$$handle_$eq;
+Asciz	(Lscala/xml/parsing/MarkupHandler;)V;
+NameAndType	scala$xml$parsing$MarkupParser$$handle:Lscala/xml/parsing/MarkupHandler;
+Field	scala/xml/pull/XMLEventReader$Parser.scala$xml$parsing$MarkupParser$$handle:Lscala/xml/parsing/MarkupHandler;
+Asciz	eof_$eq;
+Asciz	(Z)V;
+NameAndType	eof:Z
+Field	scala/xml/pull/XMLEventReader$Parser.eof:Z
+Asciz	doc_$eq;
+Asciz	(Lscala/xml/Document;)V;
+NameAndType	doc:Lscala/xml/Document;
+Field	scala/xml/pull/XMLEventReader$Parser.doc:Lscala/xml/Document;
+Asciz	dtd_$eq;
+Asciz	(Lscala/xml/dtd/DTD;)V;
+NameAndType	dtd:Lscala/xml/dtd/DTD;
+Field	scala/xml/pull/XMLEventReader$Parser.dtd:Lscala/xml/dtd/DTD;
+Asciz	()Lscala/xml/dtd/DTD;;
+Asciz	()Lscala/collection/mutable/StringBuilder;;
+Asciz	ch_$eq;
+NameAndType	ch:C
+Field	scala/xml/pull/XMLEventReader$Parser.ch:C
+Asciz	()C;
+Asciz	tmppos_$eq;
+Asciz	(I)V;
+NameAndType	tmppos:I
+Field	scala/xml/pull/XMLEventReader$Parser.tmppos:I
+Asciz	()I;
+Asciz	extIndex_$eq;
+NameAndType	extIndex:I
+Field	scala/xml/pull/XMLEventReader$Parser.extIndex:I
+Asciz	pos_$eq;
+NameAndType	pos:I
+Field	scala/xml/pull/XMLEventReader$Parser.pos:I
+Asciz	inpStack_$eq;
+Asciz	(Lscala/collection/immutable/List;)V;
+NameAndType	inpStack:Lscala/collection/immutable/List;
+Field	scala/xml/pull/XMLEventReader$Parser.inpStack:Lscala/collection/immutable/List;
+Asciz	()Lscala/collection/immutable/List;;
+Asciz	()Lscala/xml/parsing/MarkupHandler;;
+NameAndType	curInput:Lscala/io/Source;
+Field	scala/xml/pull/XMLEventReader$Parser.curInput:Lscala/io/Source;
+Asciz	externalSource;
+Asciz	(Ljava/lang/String;)Lscala/io/Source;;
+Asciz	(Lscala/xml/parsing/ExternalSources;Ljava/lang/String;)Lscala/io/Source;;
+NameAndType	externalSource:(Lscala/xml/parsing/ExternalSources;Ljava/lang/String;)Lscala/io/Source;
+Method	scala/xml/parsing/ExternalSources$class.externalSource:(Lscala/xml/parsing/ExternalSources;Ljava/lang/String;)Lscala/io/Source;
+Asciz	Scala;
+Asciz	InnerClasses;
+Asciz	Parser;
+Asciz	$anonfun$run$1;
+Asciz	$anonfun$setEvent$1;
+Asciz	scala/xml/parsing/ExternalSources;
+class	scala/xml/parsing/ExternalSources
+Asciz	java/lang/Runnable;
+class	java/lang/Runnable
+Asciz	scala/ScalaObject;
+class	scala/ScalaObject
+
+{
+private boolean eof;
+  Signature: Z
+
+private scala.xml.Document doc;
+  Signature: Lscala/xml/Document;
+
+private scala.xml.dtd.DTD dtd;
+  Signature: Lscala/xml/dtd/DTD;
+
+private final scala.collection.mutable.StringBuilder cbuf;
+  Signature: Lscala/collection/mutable/StringBuilder;
+
+private char ch;
+  Signature: C
+
+private int tmppos;
+  Signature: I
+
+private int extIndex;
+  Signature: I
+
+private int pos;
+  Signature: I
+
+private scala.collection.immutable.List inpStack;
+  Signature: Lscala/collection/immutable/List;
+
+private final scala.xml.parsing.MarkupHandler scala$xml$parsing$MarkupParser$$handle;
+  Signature: Lscala/xml/parsing/MarkupHandler;
+
+private scala.io.Source curInput;
+  Signature: Lscala/io/Source;
+
+public final scala.xml.pull.XMLEventReader $outer;
+  Signature: Lscala/xml/pull/XMLEventReader;
+
+private final boolean preserveWS;
+  Signature: Z
+
+private final scala.io.Source input;
+  Signature: Lscala/io/Source;
+
+public scala.xml.pull.XMLEventReader$Parser(scala.xml.pull.XMLEventReader, scala.io.Source);
+  Signature: (Lscala/xml/pull/XMLEventReader;Lscala/io/Source;)V
+  Code:
+   Stack=2, Locals=3, Args_size=3
+	aload_0
+	aload_2
+	putfield	Field input:Lscala/io/Source;
+	aload_1
+	ifnonnull	l1 // aload_0
+	new	class java/lang/NullPointerException
+	dup
+	invokespecial	Method java/lang/NullPointerException."<init>":()V
+	athrow
+l1	aload_0
+	aload_1
+	putfield	Field $outer:Lscala/xml/pull/XMLEventReader;
+	aload_0
+	invokespecial	Method scala/xml/parsing/MarkupHandler."<init>":()V
+	aload_0
+	invokestatic	Method scala/xml/parsing/TokenTests$class.$init$:(Lscala/xml/parsing/TokenTests;)V
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.$init$:(Lscala/xml/parsing/MarkupParser;)V
+	aload_0
+	invokestatic	Method scala/xml/parsing/ExternalSources$class.$init$:(Lscala/xml/parsing/ExternalSources;)V
+	aload_0
+	aload_1
+	invokevirtual	Method scala/xml/pull/XMLEventReader.preserveWS:()Z
+	putfield	Field preserveWS:Z
+	return
+  Labels:
+   	l1 = 17 // aload_0
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      47      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      47      1    $outer       Lscala/xml/pull/XMLEventReader;
+   0      47      2    input       Lscala/io/Source;
+
+
+public scala.xml.pull.XMLEventReader scala$xml$pull$XMLEventReader$Parser$$$outer();
+  Signature: ()Lscala/xml/pull/XMLEventReader;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field $outer:Lscala/xml/pull/XMLEventReader;
+	areturn
+  Labels:
+
+public void run();
+  Signature: ()V
+  Code:
+   Stack=6, Locals=1, Args_size=1
+	aload_0
+	aload_0
+	invokevirtual	Method input:()Lscala/io/Source;
+	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParser.curInput_$eq:(Lscala/io/Source;)V
+	aload_0
+	invokevirtual	Method scala$xml$pull$XMLEventReader$Parser$$$outer:()Lscala/xml/pull/XMLEventReader;
+	new	class scala/xml/pull/XMLEventReader$Parser$$anonfun$run$1
+	dup
+	aload_0
+	invokespecial	Method scala/xml/pull/XMLEventReader$Parser$$anonfun$run$1."<init>":(Lscala/xml/pull/XMLEventReader$Parser;)V
+	invokeinterface	InterfaceMethod scala/xml/pull/ProducerConsumerIterator.interruptibly:(Lscala/Function0;)Lscala/Option;
+	pop
+	aload_0
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iconst_1
+	anewarray	class scala/xml/pull/XMLEvent
+	dup
+	iconst_0
+	aload_0
+	invokevirtual	Method scala$xml$pull$XMLEventReader$Parser$$$outer:()Lscala/xml/pull/XMLEventReader;
+	invokevirtual	Method scala/xml/pull/XMLEventReader.POISON:()Lscala/xml/pull/XMLEventReader$POISON$;
+	aastore
+	checkcast	class "[Ljava/lang/Object;"
+	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+	invokevirtual	Method setEvent:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+	pop
+	return
+  Labels:
+
+public scala.xml.NodeSeq text(int, java.lang.String);
+  Signature: (ILjava/lang/String;)Lscala/xml/NodeSeq;
+  Code:
+   Stack=8, Locals=3, Args_size=3
+	aload_0
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iconst_1
+	anewarray	class scala/xml/pull/XMLEvent
+	dup
+	iconst_0
+	new	class scala/xml/pull/EvText
+	dup
+	aload_2
+	invokespecial	Method scala/xml/pull/EvText."<init>":(Ljava/lang/String;)V
+	aastore
+	checkcast	class "[Ljava/lang/Object;"
+	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+	invokevirtual	Method setEvent:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      29      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      29      1    pos       I
+   0      29      2    txt       Ljava/lang/String;
+
+
+public scala.xml.NodeSeq entityRef(int, java.lang.String);
+  Signature: (ILjava/lang/String;)Lscala/xml/NodeSeq;
+  Code:
+   Stack=8, Locals=3, Args_size=3
+	aload_0
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iconst_1
+	anewarray	class scala/xml/pull/XMLEvent
+	dup
+	iconst_0
+	new	class scala/xml/pull/EvEntityRef
+	dup
+	aload_2
+	invokespecial	Method scala/xml/pull/EvEntityRef."<init>":(Ljava/lang/String;)V
+	aastore
+	checkcast	class "[Ljava/lang/Object;"
+	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+	invokevirtual	Method setEvent:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      29      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      29      1    pos       I
+   0      29      2    n       Ljava/lang/String;
+
+
+public scala.xml.NodeSeq comment(int, java.lang.String);
+  Signature: (ILjava/lang/String;)Lscala/xml/NodeSeq;
+  Code:
+   Stack=8, Locals=3, Args_size=3
+	aload_0
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iconst_1
+	anewarray	class scala/xml/pull/XMLEvent
+	dup
+	iconst_0
+	new	class scala/xml/pull/EvComment
+	dup
+	aload_2
+	invokespecial	Method scala/xml/pull/EvComment."<init>":(Ljava/lang/String;)V
+	aastore
+	checkcast	class "[Ljava/lang/Object;"
+	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+	invokevirtual	Method setEvent:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      29      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      29      1    pos       I
+   0      29      2    txt       Ljava/lang/String;
+
+
+public scala.xml.NodeSeq procInstr(int, java.lang.String, java.lang.String);
+  Signature: (ILjava/lang/String;Ljava/lang/String;)Lscala/xml/NodeSeq;
+  Code:
+   Stack=9, Locals=4, Args_size=4
+	aload_0
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iconst_1
+	anewarray	class scala/xml/pull/XMLEvent
+	dup
+	iconst_0
+	new	class scala/xml/pull/EvProcInstr
+	dup
+	aload_2
+	aload_3
+	invokespecial	Method scala/xml/pull/EvProcInstr."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+	aastore
+	checkcast	class "[Ljava/lang/Object;"
+	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+	invokevirtual	Method setEvent:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      30      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      30      1    pos       I
+   0      30      2    target       Ljava/lang/String;
+   0      30      3    txt       Ljava/lang/String;
+
+
+public final scala.xml.NodeSeq elem(int, java.lang.String, java.lang.String, scala.xml.MetaData, scala.xml.NamespaceBinding, scala.xml.NodeSeq);
+  Signature: (ILjava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/xml/NodeSeq;)Lscala/xml/NodeSeq;
+  Code:
+   Stack=8, Locals=7, Args_size=7
+	new	class scala/xml/Elem
+	dup
+	aconst_null
+	ldc	String ignore
+	getstatic	Field scala/xml/Null$.MODULE$:Lscala/xml/Null$;
+	getstatic	Field scala/package$.MODULE$:Lscala/package$;
+	invokevirtual	Method scala/package$.$scope:()Lscala/xml/TopScope$;
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iconst_0
+	anewarray	class scala/xml/Node
+	checkcast	class "[Ljava/lang/Object;"
+	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+	invokespecial	Method scala/xml/Elem."<init>":(Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Seq;)V
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      33      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      33      1    pos       I
+   0      33      2    pre       Ljava/lang/String;
+   0      33      3    label       Ljava/lang/String;
+   0      33      4    attrs       Lscala/xml/MetaData;
+   0      33      5    pscope       Lscala/xml/NamespaceBinding;
+   0      33      6    nodes       Lscala/xml/NodeSeq;
+
+
+public void elemEnd(int, java.lang.String, java.lang.String);
+  Signature: (ILjava/lang/String;Ljava/lang/String;)V
+  Code:
+   Stack=9, Locals=4, Args_size=4
+	aload_0
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iconst_1
+	anewarray	class scala/xml/pull/XMLEvent
+	dup
+	iconst_0
+	new	class scala/xml/pull/EvElemEnd
+	dup
+	aload_2
+	aload_3
+	invokespecial	Method scala/xml/pull/EvElemEnd."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+	aastore
+	checkcast	class "[Ljava/lang/Object;"
+	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+	invokevirtual	Method setEvent:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+	pop
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      31      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      31      1    pos       I
+   0      31      2    pre       Ljava/lang/String;
+   0      31      3    label       Ljava/lang/String;
+
+
+public void elemStart(int, java.lang.String, java.lang.String, scala.xml.MetaData, scala.xml.NamespaceBinding);
+  Signature: (ILjava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;)V
+  Code:
+   Stack=11, Locals=6, Args_size=6
+	aload_0
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iconst_1
+	anewarray	class scala/xml/pull/XMLEvent
+	dup
+	iconst_0
+	new	class scala/xml/pull/EvElemStart
+	dup
+	aload_2
+	aload_3
+	aload	4
+	aload	5
+	invokespecial	Method scala/xml/pull/EvElemStart."<init>":(Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;)V
+	aastore
+	checkcast	class "[Ljava/lang/Object;"
+	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+	invokevirtual	Method setEvent:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+	pop
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      35      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      35      1    pos       I
+   0      35      2    pre       Ljava/lang/String;
+   0      35      3    label       Ljava/lang/String;
+   0      35      4    attrs       Lscala/xml/MetaData;
+   0      35      5    scope       Lscala/xml/NamespaceBinding;
+
+
+public scala.xml.NodeSeq setEvent(scala.collection.Seq);
+  Signature: (Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+  Code:
+   Stack=4, Locals=2, Args_size=2
+	aload_1
+	new	class scala/xml/pull/XMLEventReader$Parser$$anonfun$setEvent$1
+	dup
+	aload_0
+	invokespecial	Method scala/xml/pull/XMLEventReader$Parser$$anonfun$setEvent$1."<init>":(Lscala/xml/pull/XMLEventReader$Parser;)V
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.foreach:(Lscala/Function1;)V
+	getstatic	Field scala/xml/NodeSeq$.MODULE$:Lscala/xml/NodeSeq$;
+	invokevirtual	Method scala/xml/NodeSeq$.Empty:()Lscala/xml/NodeSeq;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      21      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      21      1    es       Lscala/collection/Seq;
+
+  Signature: length = 0x2
+   00 FFFFFFD2 
+
+public boolean preserveWS();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field preserveWS:Z
+	ireturn
+  Labels:
+
+public scala.io.Source input();
+  Signature: ()Lscala/io/Source;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field input:Lscala/io/Source;
+	areturn
+  Labels:
+
+public boolean checkPubID(java.lang.String);
+  Signature: (Ljava/lang/String;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/TokenTests$class.checkPubID:(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    s       Ljava/lang/String;
+
+
+public boolean checkSysID(java.lang.String);
+  Signature: (Ljava/lang/String;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/TokenTests$class.checkSysID:(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    s       Ljava/lang/String;
+
+
+public boolean isValidIANAEncoding(scala.collection.Seq);
+  Signature: (Lscala/collection/Seq;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/TokenTests$class.isValidIANAEncoding:(Lscala/xml/parsing/TokenTests;Lscala/collection/Seq;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    ianaEncoding       Lscala/collection/Seq;
+
+
+public boolean isPubIDChar(char);
+  Signature: (C)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method scala/xml/parsing/TokenTests$class.isPubIDChar:(Lscala/xml/parsing/TokenTests;C)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    ch       C
+
+
+public boolean isName(java.lang.String);
+  Signature: (Ljava/lang/String;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/TokenTests$class.isName:(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    s       Ljava/lang/String;
+
+
+public boolean isNameStart(char);
+  Signature: (C)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method scala/xml/parsing/TokenTests$class.isNameStart:(Lscala/xml/parsing/TokenTests;C)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    ch       C
+
+
+public boolean isNameChar(char);
+  Signature: (C)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method scala/xml/parsing/TokenTests$class.isNameChar:(Lscala/xml/parsing/TokenTests;C)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    ch       C
+
+
+public boolean isAlphaDigit(char);
+  Signature: (C)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method scala/xml/parsing/TokenTests$class.isAlphaDigit:(Lscala/xml/parsing/TokenTests;C)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    c       C
+
+
+public boolean isAlpha(char);
+  Signature: (C)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method scala/xml/parsing/TokenTests$class.isAlpha:(Lscala/xml/parsing/TokenTests;C)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    c       C
+
+
+public final boolean isSpace(scala.collection.Seq);
+  Signature: (Lscala/collection/Seq;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/TokenTests$class.isSpace:(Lscala/xml/parsing/TokenTests;Lscala/collection/Seq;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    cs       Lscala/collection/Seq;
+
+
+public final boolean isSpace(char);
+  Signature: (C)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method scala/xml/parsing/TokenTests$class.isSpace:(Lscala/xml/parsing/TokenTests;C)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    ch       C
+
+
+public java.lang.String normalizeAttributeValue(java.lang.String);
+  Signature: (Ljava/lang/String;)Ljava/lang/String;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.normalizeAttributeValue:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)Ljava/lang/String;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    attval       Ljava/lang/String;
+
+
+public void pop();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.pop:(Lscala/xml/parsing/MarkupParser;)V
+	return
+  Labels:
+
+public void pushExternal(java.lang.String);
+  Signature: (Ljava/lang/String;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.pushExternal:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    systemId       Ljava/lang/String;
+
+
+public void push(java.lang.String);
+  Signature: (Ljava/lang/String;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.push:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    entityName       Ljava/lang/String;
+
+
+public void reportValidationError(int, java.lang.String);
+  Signature: (ILjava/lang/String;)V
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	iload_1
+	aload_2
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.reportValidationError:(Lscala/xml/parsing/MarkupParser;ILjava/lang/String;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      7      1    pos       I
+   0      7      2    str       Ljava/lang/String;
+
+
+public void reportSyntaxError(java.lang.String);
+  Signature: (Ljava/lang/String;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.reportSyntaxError:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    str       Ljava/lang/String;
+
+
+public void reportSyntaxError(int, java.lang.String);
+  Signature: (ILjava/lang/String;)V
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	iload_1
+	aload_2
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.reportSyntaxError:(Lscala/xml/parsing/MarkupParser;ILjava/lang/String;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      7      1    pos       I
+   0      7      2    str       Ljava/lang/String;
+
+
+public void notationDecl();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.notationDecl:(Lscala/xml/parsing/MarkupParser;)V
+	return
+  Labels:
+
+public void entityDecl();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.entityDecl:(Lscala/xml/parsing/MarkupParser;)V
+	return
+  Labels:
+
+public void attrDecl();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.attrDecl:(Lscala/xml/parsing/MarkupParser;)V
+	return
+  Labels:
+
+public void elementDecl();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.elementDecl:(Lscala/xml/parsing/MarkupParser;)V
+	return
+  Labels:
+
+public void intSubset();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.intSubset:(Lscala/xml/parsing/MarkupParser;)V
+	return
+  Labels:
+
+public void markupDecl();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.markupDecl:(Lscala/xml/parsing/MarkupParser;)V
+	return
+  Labels:
+
+public java.lang.Object markupDecl1();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.markupDecl1:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/Object;
+	areturn
+  Labels:
+
+public void extSubset();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.extSubset:(Lscala/xml/parsing/MarkupParser;)V
+	return
+  Labels:
+
+public java.lang.String pubidLiteral();
+  Signature: ()Ljava/lang/String;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.pubidLiteral:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+	areturn
+  Labels:
+
+public java.lang.String systemLiteral();
+  Signature: ()Ljava/lang/String;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.systemLiteral:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+	areturn
+  Labels:
+
+public java.lang.String xText();
+  Signature: ()Ljava/lang/String;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xText:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+	areturn
+  Labels:
+
+public scala.xml.NodeSeq xProcInstr();
+  Signature: ()Lscala/xml/NodeSeq;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xProcInstr:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/NodeSeq;
+	areturn
+  Labels:
+
+public void xSpace();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xSpace:(Lscala/xml/parsing/MarkupParser;)V
+	return
+  Labels:
+
+public void xSpaceOpt();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xSpaceOpt:(Lscala/xml/parsing/MarkupParser;)V
+	return
+  Labels:
+
+public void xEQ();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xEQ:(Lscala/xml/parsing/MarkupParser;)V
+	return
+  Labels:
+
+public java.lang.String xName();
+  Signature: ()Ljava/lang/String;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xName:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+	areturn
+  Labels:
+
+public scala.xml.NodeSeq element1(scala.xml.NamespaceBinding);
+  Signature: (Lscala/xml/NamespaceBinding;)Lscala/xml/NodeSeq;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.element1:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/xml/NodeSeq;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    pscope       Lscala/xml/NamespaceBinding;
+
+
+public scala.xml.NodeSeq element(scala.xml.NamespaceBinding);
+  Signature: (Lscala/xml/NamespaceBinding;)Lscala/xml/NodeSeq;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.element:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/xml/NodeSeq;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    pscope       Lscala/xml/NamespaceBinding;
+
+
+public void parseDTD();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.parseDTD:(Lscala/xml/parsing/MarkupParser;)V
+	return
+  Labels:
+
+public scala.xml.dtd.ExternalID externalID();
+  Signature: ()Lscala/xml/dtd/ExternalID;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.externalID:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/dtd/ExternalID;
+	areturn
+  Labels:
+
+public scala.xml.NodeSeq content(scala.xml.NamespaceBinding);
+  Signature: (Lscala/xml/NamespaceBinding;)Lscala/xml/NodeSeq;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.content:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/xml/NodeSeq;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    pscope       Lscala/xml/NamespaceBinding;
+
+
+public void content1(scala.xml.NamespaceBinding, scala.xml.NodeBuffer);
+  Signature: (Lscala/xml/NamespaceBinding;Lscala/xml/NodeBuffer;)V
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	aload_1
+	aload_2
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.content1:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;Lscala/xml/NodeBuffer;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      7      1    pscope       Lscala/xml/NamespaceBinding;
+   0      7      2    ts       Lscala/xml/NodeBuffer;
+
+
+public void appendText(int, scala.xml.NodeBuffer, java.lang.String);
+  Signature: (ILscala/xml/NodeBuffer;Ljava/lang/String;)V
+  Code:
+   Stack=4, Locals=4, Args_size=4
+	aload_0
+	iload_1
+	aload_2
+	aload_3
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.appendText:(Lscala/xml/parsing/MarkupParser;ILscala/xml/NodeBuffer;Ljava/lang/String;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      8      1    pos       I
+   0      8      2    ts       Lscala/xml/NodeBuffer;
+   0      8      3    txt       Ljava/lang/String;
+
+
+public scala.xml.NodeSeq xComment();
+  Signature: ()Lscala/xml/NodeSeq;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xComment:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/NodeSeq;
+	areturn
+  Labels:
+
+public java.lang.String xCharRef(scala.Function0, scala.Function0);
+  Signature: (Lscala/Function0;Lscala/Function0;)Ljava/lang/String;
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	aload_1
+	aload_2
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xCharRef:(Lscala/xml/parsing/MarkupParser;Lscala/Function0;Lscala/Function0;)Ljava/lang/String;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      7      1    ch       Lscala/Function0;
+   0      7      2    nextch       Lscala/Function0;
+
+
+public scala.xml.NodeSeq xCharData();
+  Signature: ()Lscala/xml/NodeSeq;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xCharData:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/NodeSeq;
+	areturn
+  Labels:
+
+public void xEndTag(java.lang.String);
+  Signature: (Ljava/lang/String;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xEndTag:(Lscala/xml/parsing/MarkupParser;Ljava/lang/String;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    n       Ljava/lang/String;
+
+
+public scala.Tuple3 xTag(scala.xml.NamespaceBinding);
+  Signature: (Lscala/xml/NamespaceBinding;)Lscala/Tuple3;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xTag:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/Tuple3;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    pscope       Lscala/xml/NamespaceBinding;
+
+
+public java.lang.String xEntityValue();
+  Signature: ()Ljava/lang/String;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xEntityValue:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+	areturn
+  Labels:
+
+public java.lang.String xAttributeValue();
+  Signature: ()Ljava/lang/String;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xAttributeValue:(Lscala/xml/parsing/MarkupParser;)Ljava/lang/String;
+	areturn
+  Labels:
+
+public scala.Tuple2 xAttributes(scala.xml.NamespaceBinding);
+  Signature: (Lscala/xml/NamespaceBinding;)Lscala/Tuple2;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xAttributes:(Lscala/xml/parsing/MarkupParser;Lscala/xml/NamespaceBinding;)Lscala/Tuple2;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    pscope       Lscala/xml/NamespaceBinding;
+
+
+public void xToken(scala.collection.Seq);
+  Signature: (Lscala/collection/Seq;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xToken:(Lscala/xml/parsing/MarkupParser;Lscala/collection/Seq;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    that       Lscala/collection/Seq;
+
+
+public void xToken(char);
+  Signature: (C)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xToken:(Lscala/xml/parsing/MarkupParser;C)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    that       C
+
+
+public void nextch();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.nextch:(Lscala/xml/parsing/MarkupParser;)V
+	return
+  Labels:
+
+public scala.xml.parsing.MarkupParser initialize();
+  Signature: ()Lscala/xml/parsing/MarkupParser;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.initialize:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/parsing/MarkupParser;
+	areturn
+  Labels:
+
+public scala.collection.mutable.StringBuilder putChar(char);
+  Signature: (C)Lscala/collection/mutable/StringBuilder;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.putChar:(Lscala/xml/parsing/MarkupParser;C)Lscala/collection/mutable/StringBuilder;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    c       C
+
+
+public scala.xml.Document document();
+  Signature: ()Lscala/xml/Document;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.document:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/Document;
+	areturn
+  Labels:
+
+public scala.Tuple2 textDecl();
+  Signature: ()Lscala/Tuple2;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.textDecl:(Lscala/xml/parsing/MarkupParser;)Lscala/Tuple2;
+	areturn
+  Labels:
+
+public scala.Tuple3 prolog();
+  Signature: ()Lscala/Tuple3;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.prolog:(Lscala/xml/parsing/MarkupParser;)Lscala/Tuple3;
+	areturn
+  Labels:
+
+public scala.xml.MetaData xmlProcInstr();
+  Signature: ()Lscala/xml/MetaData;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/xml/parsing/MarkupParser$class.xmlProcInstr:(Lscala/xml/parsing/MarkupParser;)Lscala/xml/MetaData;
+	areturn
+  Labels:
+
+public void scala$xml$parsing$MarkupParser$_setter_$cbuf_$eq(scala.collection.mutable.StringBuilder);
+  Signature: (Lscala/collection/mutable/StringBuilder;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field cbuf:Lscala/collection/mutable/StringBuilder;
+	return
+  Labels:
+
+public void scala$xml$parsing$MarkupParser$_setter_$scala$xml$parsing$MarkupParser$$handle_$eq(scala.xml.parsing.MarkupHandler);
+  Signature: (Lscala/xml/parsing/MarkupHandler;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field scala$xml$parsing$MarkupParser$$handle:Lscala/xml/parsing/MarkupHandler;
+	return
+  Labels:
+
+public void eof_$eq(boolean);
+  Signature: (Z)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field eof:Z
+	return
+  Labels:
+
+public boolean eof();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field eof:Z
+	ireturn
+  Labels:
+
+public void doc_$eq(scala.xml.Document);
+  Signature: (Lscala/xml/Document;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field doc:Lscala/xml/Document;
+	return
+  Labels:
+
+public scala.xml.Document doc();
+  Signature: ()Lscala/xml/Document;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field doc:Lscala/xml/Document;
+	areturn
+  Labels:
+
+public void dtd_$eq(scala.xml.dtd.DTD);
+  Signature: (Lscala/xml/dtd/DTD;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field dtd:Lscala/xml/dtd/DTD;
+	return
+  Labels:
+
+public scala.xml.dtd.DTD dtd();
+  Signature: ()Lscala/xml/dtd/DTD;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field dtd:Lscala/xml/dtd/DTD;
+	areturn
+  Labels:
+
+public scala.collection.mutable.StringBuilder cbuf();
+  Signature: ()Lscala/collection/mutable/StringBuilder;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field cbuf:Lscala/collection/mutable/StringBuilder;
+	areturn
+  Labels:
+
+public void ch_$eq(char);
+  Signature: (C)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field ch:C
+	return
+  Labels:
+
+public char ch();
+  Signature: ()C
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field ch:C
+	ireturn
+  Labels:
+
+public void tmppos_$eq(int);
+  Signature: (I)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field tmppos:I
+	return
+  Labels:
+
+public int tmppos();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field tmppos:I
+	ireturn
+  Labels:
+
+public void extIndex_$eq(int);
+  Signature: (I)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field extIndex:I
+	return
+  Labels:
+
+public int extIndex();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field extIndex:I
+	ireturn
+  Labels:
+
+public void pos_$eq(int);
+  Signature: (I)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field pos:I
+	return
+  Labels:
+
+public int pos();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field pos:I
+	ireturn
+  Labels:
+
+public void inpStack_$eq(scala.collection.immutable.List);
+  Signature: (Lscala/collection/immutable/List;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field inpStack:Lscala/collection/immutable/List;
+	return
+  Labels:
+
+public scala.collection.immutable.List inpStack();
+  Signature: ()Lscala/collection/immutable/List;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field inpStack:Lscala/collection/immutable/List;
+	areturn
+  Labels:
+
+public final scala.xml.parsing.MarkupHandler scala$xml$parsing$MarkupParser$$handle();
+  Signature: ()Lscala/xml/parsing/MarkupHandler;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field scala$xml$parsing$MarkupParser$$handle:Lscala/xml/parsing/MarkupHandler;
+	areturn
+  Labels:
+
+public void curInput_$eq(scala.io.Source);
+  Signature: (Lscala/io/Source;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field curInput:Lscala/io/Source;
+	return
+  Labels:
+
+public scala.io.Source curInput();
+  Signature: ()Lscala/io/Source;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field curInput:Lscala/io/Source;
+	areturn
+  Labels:
+
+public scala.io.Source externalSource(java.lang.String);
+  Signature: (Ljava/lang/String;)Lscala/io/Source;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/xml/parsing/ExternalSources$class.externalSource:(Lscala/xml/parsing/ExternalSources;Ljava/lang/String;)Lscala/io/Source;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/xml/pull/XMLEventReader$Parser;
+   0      6      1    systemId       Ljava/lang/String;
+
+
+}
+

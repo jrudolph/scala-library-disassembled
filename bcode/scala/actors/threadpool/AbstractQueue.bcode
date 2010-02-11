@@ -1,0 +1,186 @@
+public abstract class scala.actors.threadpool.AbstractQueue extends scala.actors.threadpool.AbstractCollection implements scala.actors.threadpool.Queue
+  minor version: 0
+  major version: 49
+  Constant pool:
+Method	scala/actors/threadpool/AbstractCollection."<init>":()V
+Method	scala/actors/threadpool/AbstractQueue.offer:(Ljava/lang/Object;)Z
+class	java/lang/IllegalStateException
+String	Queue full
+Method	java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+Method	scala/actors/threadpool/AbstractQueue.poll:()Ljava/lang/Object;
+class	java/util/NoSuchElementException
+Method	java/util/NoSuchElementException."<init>":()V
+Method	scala/actors/threadpool/AbstractQueue.peek:()Ljava/lang/Object;
+class	java/lang/NullPointerException
+Method	java/lang/NullPointerException."<init>":()V
+class	java/lang/IllegalArgumentException
+Method	java/lang/IllegalArgumentException."<init>":()V
+InterfaceMethod	java/util/Collection.iterator:()Ljava/util/Iterator;
+InterfaceMethod	java/util/Iterator.hasNext:()Z
+InterfaceMethod	java/util/Iterator.next:()Ljava/lang/Object;
+Method	scala/actors/threadpool/AbstractQueue.add:(Ljava/lang/Object;)Z
+class	scala/actors/threadpool/AbstractQueue
+class	scala/actors/threadpool/AbstractCollection
+class	scala/actors/threadpool/Queue
+Asciz	<init>;
+Asciz	()V;
+Asciz	Code;
+Asciz	add;
+Asciz	(Ljava/lang/Object;)Z;
+Asciz	remove;
+Asciz	()Ljava/lang/Object;;
+Asciz	element;
+Asciz	clear;
+Asciz	addAll;
+Asciz	(Ljava/util/Collection;)Z;
+NameAndType	"<init>":()V
+NameAndType	offer:(Ljava/lang/Object;)Z
+Asciz	java/lang/IllegalStateException;
+Asciz	Queue full;
+NameAndType	"<init>":(Ljava/lang/String;)V
+NameAndType	poll:()Ljava/lang/Object;
+Asciz	java/util/NoSuchElementException;
+NameAndType	peek:()Ljava/lang/Object;
+Asciz	java/lang/NullPointerException;
+Asciz	java/lang/IllegalArgumentException;
+class	java/util/Collection
+NameAndType	iterator:()Ljava/util/Iterator;
+class	java/util/Iterator
+NameAndType	hasNext:()Z
+NameAndType	next:()Ljava/lang/Object;
+NameAndType	add:(Ljava/lang/Object;)Z
+Asciz	scala/actors/threadpool/AbstractQueue;
+Asciz	scala/actors/threadpool/AbstractCollection;
+Asciz	scala/actors/threadpool/Queue;
+Asciz	offer;
+Asciz	(Ljava/lang/String;)V;
+Asciz	poll;
+Asciz	peek;
+Asciz	java/util/Collection;
+Asciz	iterator;
+Asciz	()Ljava/util/Iterator;;
+Asciz	java/util/Iterator;
+Asciz	hasNext;
+Asciz	()Z;
+Asciz	next;
+
+{
+protected scala.actors.threadpool.AbstractQueue();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method scala/actors/threadpool/AbstractCollection."<init>":()V
+	return
+  Labels:
+
+public boolean add(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Z
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokevirtual	Method offer:(Ljava/lang/Object;)Z
+	ifeq	l1 // new
+	iconst_1
+	ireturn
+l1	new	class java/lang/IllegalStateException
+	dup
+	ldc	String Queue full
+	invokespecial	Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+	athrow
+  Labels:
+   	l1 = 10 // new
+
+public java.lang.Object remove();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=2, Locals=2, Args_size=1
+	aload_0
+	invokevirtual	Method poll:()Ljava/lang/Object;
+	astore_1
+	aload_1
+	ifnull	l1 // new
+	aload_1
+	areturn
+l1	new	class java/util/NoSuchElementException
+	dup
+	invokespecial	Method java/util/NoSuchElementException."<init>":()V
+	athrow
+  Labels:
+   	l1 = 11 // new
+
+public java.lang.Object element();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=2, Locals=2, Args_size=1
+	aload_0
+	invokevirtual	Method peek:()Ljava/lang/Object;
+	astore_1
+	aload_1
+	ifnull	l1 // new
+	aload_1
+	areturn
+l1	new	class java/util/NoSuchElementException
+	dup
+	invokespecial	Method java/util/NoSuchElementException."<init>":()V
+	athrow
+  Labels:
+   	l1 = 11 // new
+
+public void clear();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+l2	aload_0
+	invokevirtual	Method poll:()Ljava/lang/Object;
+	ifnull	l1 // return
+	goto	l2 // aload_0
+l1	return
+  Labels:
+   	l2 = 0 // aload_0
+   	l1 = 10 // return
+
+public boolean addAll(java.util.Collection);
+  Signature: (Ljava/util/Collection;)Z
+  Code:
+   Stack=2, Locals=4, Args_size=2
+	aload_1
+	ifnonnull	l1 // aload_1
+	new	class java/lang/NullPointerException
+	dup
+	invokespecial	Method java/lang/NullPointerException."<init>":()V
+	athrow
+l1	aload_1
+	aload_0
+	if_acmpne	l2 // iconst_0
+	new	class java/lang/IllegalArgumentException
+	dup
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
+	athrow
+l2	iconst_0
+	istore_2
+	aload_1
+	invokeinterface	InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+	astore_3
+l4	aload_3
+	invokeinterface	InterfaceMethod java/util/Iterator.hasNext:()Z
+	ifeq	l3 // iload_2
+	aload_0
+	aload_3
+	invokeinterface	InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+	invokevirtual	Method add:(Ljava/lang/Object;)Z
+	ifeq	l4 // aload_3
+	iconst_1
+	istore_2
+	goto	l4 // aload_3
+l3	iload_2
+	ireturn
+  Labels:
+   	l1 = 12 // aload_1
+   	l2 = 25 // iconst_0
+   	l4 = 34 // aload_3
+   	l3 = 61 // iload_2
+
+}
+

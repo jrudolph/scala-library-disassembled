@@ -1,0 +1,139 @@
+final class scala.actors.threadpool.helpers.Utils$SunPerfProvider extends java.lang.Object implements scala.actors.threadpool.helpers.NanoTimer
+  InnerClass: 
+   class scala/actors/threadpool/helpers/Utils$SunPerfProvider$1
+   final SunPerfProvider=class scala/actors/threadpool/helpers/Utils$SunPerfProvider of class scala/actors/threadpool/helpers/Utils
+  minor version: 0
+  major version: 49
+  Constant pool:
+Method	java/lang/Object."<init>":()V
+class	scala/actors/threadpool/helpers/Utils$SunPerfProvider$1
+Method	scala/actors/threadpool/helpers/Utils$SunPerfProvider$1."<init>":(Lscala/actors/threadpool/helpers/Utils$SunPerfProvider;)V
+Method	java/security/AccessController.doPrivileged:(Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+class	scala/actors/threadpool/Perf
+Field	scala/actors/threadpool/helpers/Utils$SunPerfProvider.perf:Lscala/actors/threadpool/Perf;
+long	1000000000l;
+Method	scala/actors/threadpool/Perf.highResFrequency:()J
+Method	scala/actors/threadpool/helpers/Utils.access$000:(JJ)J
+Field	scala/actors/threadpool/helpers/Utils$SunPerfProvider.multiplier:J
+Field	scala/actors/threadpool/helpers/Utils$SunPerfProvider.divisor:J
+Method	scala/actors/threadpool/Perf.highResCounter:()J
+class	scala/actors/threadpool/helpers/Utils$SunPerfProvider
+class	java/lang/Object
+class	scala/actors/threadpool/helpers/NanoTimer
+Asciz	perf;
+Asciz	Lscala/actors/threadpool/Perf;;
+Asciz	multiplier;
+Asciz	J;
+Asciz	divisor;
+Asciz	<init>;
+Asciz	()V;
+Asciz	Code;
+Asciz	nanoTime;
+Asciz	()J;
+NameAndType	"<init>":()V
+Asciz	scala/actors/threadpool/helpers/Utils$SunPerfProvider$1;
+Asciz	;
+Asciz	InnerClasses;
+NameAndType	"<init>":(Lscala/actors/threadpool/helpers/Utils$SunPerfProvider;)V
+class	java/security/AccessController
+NameAndType	doPrivileged:(Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+Asciz	scala/actors/threadpool/Perf;
+NameAndType	perf:Lscala/actors/threadpool/Perf;
+NameAndType	highResFrequency:()J
+class	scala/actors/threadpool/helpers/Utils
+NameAndType	access$000:(JJ)J
+NameAndType	multiplier:J
+NameAndType	divisor:J
+NameAndType	highResCounter:()J
+Asciz	scala/actors/threadpool/helpers/Utils$SunPerfProvider;
+Asciz	SunPerfProvider;
+Asciz	java/lang/Object;
+Asciz	scala/actors/threadpool/helpers/NanoTimer;
+Asciz	(Lscala/actors/threadpool/helpers/Utils$SunPerfProvider;)V;
+Asciz	java/security/AccessController;
+Asciz	doPrivileged;
+Asciz	(Ljava/security/PrivilegedAction;)Ljava/lang/Object;;
+Asciz	highResFrequency;
+Asciz	scala/actors/threadpool/helpers/Utils;
+Asciz	access$000;
+Asciz	(JJ)J;
+Asciz	highResCounter;
+
+{
+final scala.actors.threadpool.Perf perf;
+  Signature: Lscala/actors/threadpool/Perf;
+
+final long multiplier;
+  Signature: J
+
+final long divisor;
+  Signature: J
+
+scala.actors.threadpool.helpers.Utils$SunPerfProvider();
+  Signature: ()V
+  Code:
+   Stack=5, Locals=7, Args_size=1
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	new	class scala/actors/threadpool/helpers/Utils$SunPerfProvider$1
+	dup
+	aload_0
+	invokespecial	Method scala/actors/threadpool/helpers/Utils$SunPerfProvider$1."<init>":(Lscala/actors/threadpool/helpers/Utils$SunPerfProvider;)V
+	invokestatic	Method java/security/AccessController.doPrivileged:(Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+	checkcast	class scala/actors/threadpool/Perf
+	putfield	Field perf:Lscala/actors/threadpool/Perf;
+	ldc2_w	long 1000000000l
+	lstore_1
+	aload_0
+	getfield	Field perf:Lscala/actors/threadpool/Perf;
+	invokevirtual	Method scala/actors/threadpool/Perf.highResFrequency:()J
+	lstore_3
+	lload_1
+	lload_3
+	invokestatic	Method scala/actors/threadpool/helpers/Utils.access$000:(JJ)J
+	lstore	5
+	aload_0
+	lload_1
+	lload	5
+	ldiv
+	putfield	Field multiplier:J
+	aload_0
+	lload_3
+	lload	5
+	ldiv
+	putfield	Field divisor:J
+	return
+  Labels:
+
+public long nanoTime();
+  Signature: ()J
+  Code:
+   Stack=6, Locals=3, Args_size=1
+	aload_0
+	getfield	Field perf:Lscala/actors/threadpool/Perf;
+	invokevirtual	Method scala/actors/threadpool/Perf.highResCounter:()J
+	lstore_1
+	lload_1
+	aload_0
+	getfield	Field divisor:J
+	ldiv
+	aload_0
+	getfield	Field multiplier:J
+	lmul
+	lload_1
+	aload_0
+	getfield	Field divisor:J
+	lrem
+	aload_0
+	getfield	Field multiplier:J
+	lmul
+	aload_0
+	getfield	Field divisor:J
+	ldiv
+	ladd
+	lreturn
+  Labels:
+
+}
+

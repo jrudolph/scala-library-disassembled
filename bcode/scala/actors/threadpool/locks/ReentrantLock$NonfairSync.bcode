@@ -1,0 +1,438 @@
+final class scala.actors.threadpool.locks.ReentrantLock$NonfairSync extends scala.actors.threadpool.locks.ReentrantLock$Sync
+  InnerClass: 
+   final NonfairSync=class scala/actors/threadpool/locks/ReentrantLock$NonfairSync of class scala/actors/threadpool/locks/ReentrantLock
+   abstract Sync=class scala/actors/threadpool/locks/ReentrantLock$Sync of class scala/actors/threadpool/locks/ReentrantLock
+  minor version: 0
+  major version: 49
+  Constant pool:
+Method	scala/actors/threadpool/locks/ReentrantLock$Sync."<init>":()V
+Method	java/lang/Thread.currentThread:()Ljava/lang/Thread;
+Field	scala/actors/threadpool/locks/ReentrantLock$NonfairSync.owner_:Ljava/lang/Thread;
+Field	scala/actors/threadpool/locks/ReentrantLock$NonfairSync.holds_:I
+Method	scala/actors/threadpool/locks/ReentrantLock$NonfairSync.incHolds:()V
+Method	java/lang/Thread.interrupted:()Z
+Method	java/lang/Object.wait:()V
+class	java/lang/InterruptedException
+Method	java/lang/Thread.interrupt:()V
+Method	java/lang/InterruptedException."<init>":()V
+Method	java/lang/Object.notify:()V
+Method	scala/actors/threadpool/helpers/Utils.nanoTime:()J
+Field	scala/actors/threadpool/TimeUnit.NANOSECONDS:Lscala/actors/threadpool/TimeUnit;
+Method	scala/actors/threadpool/TimeUnit.timedWait:(Ljava/lang/Object;J)V
+class	java/lang/IllegalMonitorStateException
+String	Not owner
+Method	java/lang/IllegalMonitorStateException."<init>":(Ljava/lang/String;)V
+class	scala/actors/threadpool/locks/ReentrantLock$NonfairSync
+class	scala/actors/threadpool/locks/ReentrantLock$Sync
+Asciz	serialVersionUID;
+Asciz	J;
+Asciz	ConstantValue;
+long	7316153563782823691l;
+Asciz	<init>;
+Asciz	()V;
+Asciz	Code;
+Asciz	lock;
+Asciz	lockInterruptibly;
+Asciz	Exceptions;
+Asciz	tryLock;
+Asciz	(J)Z;
+Asciz	unlock;
+Asciz	isFair;
+Asciz	()Z;
+NameAndType	"<init>":()V
+class	java/lang/Thread
+NameAndType	currentThread:()Ljava/lang/Thread;
+NameAndType	owner_:Ljava/lang/Thread;
+NameAndType	holds_:I
+NameAndType	incHolds:()V
+NameAndType	interrupted:()Z
+class	java/lang/Object
+NameAndType	wait:()V
+Asciz	java/lang/InterruptedException;
+NameAndType	interrupt:()V
+NameAndType	notify:()V
+class	scala/actors/threadpool/helpers/Utils
+NameAndType	nanoTime:()J
+class	scala/actors/threadpool/TimeUnit
+NameAndType	NANOSECONDS:Lscala/actors/threadpool/TimeUnit;
+NameAndType	timedWait:(Ljava/lang/Object;J)V
+Asciz	java/lang/IllegalMonitorStateException;
+Asciz	Not owner;
+NameAndType	"<init>":(Ljava/lang/String;)V
+class	scala/actors/threadpool/locks/ReentrantLock
+Asciz	scala/actors/threadpool/locks/ReentrantLock$NonfairSync;
+Asciz	NonfairSync;
+Asciz	InnerClasses;
+Asciz	scala/actors/threadpool/locks/ReentrantLock$Sync;
+Asciz	Sync;
+Asciz	java/lang/Thread;
+Asciz	currentThread;
+Asciz	()Ljava/lang/Thread;;
+Asciz	owner_;
+Asciz	Ljava/lang/Thread;;
+Asciz	holds_;
+Asciz	I;
+Asciz	incHolds;
+Asciz	interrupted;
+Asciz	java/lang/Object;
+Asciz	wait;
+Asciz	interrupt;
+Asciz	notify;
+Asciz	scala/actors/threadpool/helpers/Utils;
+Asciz	nanoTime;
+Asciz	()J;
+Asciz	scala/actors/threadpool/TimeUnit;
+Asciz	NANOSECONDS;
+Asciz	Lscala/actors/threadpool/TimeUnit;;
+Asciz	timedWait;
+Asciz	(Ljava/lang/Object;J)V;
+Asciz	(Ljava/lang/String;)V;
+Asciz	scala/actors/threadpool/locks/ReentrantLock;
+
+{
+private static final long serialVersionUID;
+  Signature: J
+  Constant value: long 7316153563782823691l
+scala.actors.threadpool.locks.ReentrantLock$NonfairSync();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method scala/actors/threadpool/locks/ReentrantLock$Sync."<init>":()V
+	return
+  Labels:
+
+public void lock();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=7, Args_size=1
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	astore_1
+	aload_0
+	dup
+	astore_2
+	monitorenter
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	ifnonnull	l1 // aload_1
+	aload_0
+	aload_1
+	putfield	Field owner_:Ljava/lang/Thread;
+	aload_0
+	iconst_1
+	putfield	Field holds_:I
+	aload_2
+	monitorexit
+	return
+l1	aload_1
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	if_acmpne	l2 // invokestatic
+	aload_0
+	invokevirtual	Method incHolds:()V
+	aload_2
+	monitorexit
+	return
+l2	invokestatic	Method java/lang/Thread.interrupted:()Z
+	istore_3
+l4	aload_0
+	invokevirtual	Method java/lang/Object.wait:()V
+	goto	l3 // aload_0
+	astore	4
+	iconst_1
+	istore_3
+l3	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	ifnonnull	l4 // aload_0
+	aload_0
+	aload_1
+	putfield	Field owner_:Ljava/lang/Thread;
+	aload_0
+	iconst_1
+	putfield	Field holds_:I
+	iload_3
+	ifeq	l5 // aload_2
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	invokevirtual	Method java/lang/Thread.interrupt:()V
+l5	aload_2
+	monitorexit
+	return
+	astore	5
+	iload_3
+	ifeq	l6 // aload
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	invokevirtual	Method java/lang/Thread.interrupt:()V
+l6	aload	5
+	athrow
+	astore	6
+	aload_2
+	monitorexit
+	aload	6
+	athrow
+  Labels:
+   	l1 = 28 // aload_1
+   	l2 = 43 // invokestatic
+   	l4 = 47 // aload_0
+   	l3 = 58 // aload_0
+   	l5 = 85 // aload_2
+   	l6 = 100 // aload
+  Exception table:
+   from   to  target type
+    47    51    54   Class java/lang/InterruptedException
+
+    47    75    88   any
+    88    90    88   any
+     8    27   103   any
+    28    42   103   any
+    43    87   103   any
+    88   107   103   any
+
+public void lockInterruptibly()   throws java.lang.InterruptedException;
+  Signature: ()V
+  Code:
+   Stack=2, Locals=5, Args_size=1
+	invokestatic	Method java/lang/Thread.interrupted:()Z
+	ifeq	l1 // invokestatic
+	new	class java/lang/InterruptedException
+	dup
+	invokespecial	Method java/lang/InterruptedException."<init>":()V
+	athrow
+l1	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	astore_1
+	aload_0
+	dup
+	astore_2
+	monitorenter
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	ifnonnull	l2 // aload_1
+	aload_0
+	aload_1
+	putfield	Field owner_:Ljava/lang/Thread;
+	aload_0
+	iconst_1
+	putfield	Field holds_:I
+	aload_2
+	monitorexit
+	return
+l2	aload_1
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	if_acmpne	l3 // aload_0
+	aload_0
+	invokevirtual	Method incHolds:()V
+	aload_2
+	monitorexit
+	return
+l3	aload_0
+	invokevirtual	Method java/lang/Object.wait:()V
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	ifnonnull	l3 // aload_0
+	aload_0
+	aload_1
+	putfield	Field owner_:Ljava/lang/Thread;
+	aload_0
+	iconst_1
+	putfield	Field holds_:I
+	aload_2
+	monitorexit
+	return
+	astore_3
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	ifnonnull	l4 // aload_3
+	aload_0
+	invokevirtual	Method java/lang/Object.notify:()V
+l4	aload_3
+	athrow
+	astore	4
+	aload_2
+	monitorexit
+	aload	4
+	athrow
+  Labels:
+   	l1 = 14 // invokestatic
+   	l2 = 42 // aload_1
+   	l3 = 57 // aload_0
+   	l4 = 93 // aload_3
+  Exception table:
+   from   to  target type
+    57    78    81   Class java/lang/InterruptedException
+
+    22    41    95   any
+    42    56    95   any
+    57    80    95   any
+    81    99    95   any
+  Exceptions: 
+   throws java.lang.InterruptedException
+public boolean tryLock(long)   throws java.lang.InterruptedException;
+  Signature: (J)Z
+  Code:
+   Stack=4, Locals=9, Args_size=2
+	invokestatic	Method java/lang/Thread.interrupted:()Z
+	ifeq	l1 // invokestatic
+	new	class java/lang/InterruptedException
+	dup
+	invokespecial	Method java/lang/InterruptedException."<init>":()V
+	athrow
+l1	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	astore_3
+	aload_0
+	dup
+	astore	4
+	monitorenter
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	ifnonnull	l2 // aload_3
+	aload_0
+	aload_3
+	putfield	Field owner_:Ljava/lang/Thread;
+	aload_0
+	iconst_1
+	putfield	Field holds_:I
+	iconst_1
+	aload	4
+	monitorexit
+	ireturn
+l2	aload_3
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	if_acmpne	l3 // lload_1
+	aload_0
+	invokevirtual	Method incHolds:()V
+	iconst_1
+	aload	4
+	monitorexit
+	ireturn
+l3	lload_1
+	lconst_0
+	lcmp
+	ifgt	l4 // invokestatic
+	iconst_0
+	aload	4
+	monitorexit
+	ireturn
+l4	invokestatic	Method scala/actors/threadpool/helpers/Utils.nanoTime:()J
+	lload_1
+	ladd
+	lstore	5
+l7	getstatic	Field scala/actors/threadpool/TimeUnit.NANOSECONDS:Lscala/actors/threadpool/TimeUnit;
+	aload_0
+	lload_1
+	invokevirtual	Method scala/actors/threadpool/TimeUnit.timedWait:(Ljava/lang/Object;J)V
+	aload_3
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	if_acmpne	l5 // aload_0
+	aload_0
+	invokevirtual	Method incHolds:()V
+	iconst_1
+	aload	4
+	monitorexit
+	ireturn
+l5	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	ifnonnull	l6 // lload
+	aload_0
+	aload_3
+	putfield	Field owner_:Ljava/lang/Thread;
+	aload_0
+	iconst_1
+	putfield	Field holds_:I
+	iconst_1
+	aload	4
+	monitorexit
+	ireturn
+l6	lload	5
+	invokestatic	Method scala/actors/threadpool/helpers/Utils.nanoTime:()J
+	lsub
+	lstore_1
+	lload_1
+	lconst_0
+	lcmp
+	ifgt	l7 // getstatic
+	iconst_0
+	aload	4
+	monitorexit
+	ireturn
+	astore	7
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	ifnonnull	l8 // aload
+	aload_0
+	invokevirtual	Method java/lang/Object.notify:()V
+l8	aload	7
+	athrow
+	astore	8
+	aload	4
+	monitorexit
+	aload	8
+	athrow
+  Labels:
+   	l1 = 14 // invokestatic
+   	l2 = 45 // aload_3
+   	l3 = 62 // lload_1
+   	l4 = 73 // invokestatic
+   	l7 = 80 // getstatic
+   	l5 = 105 // aload_0
+   	l6 = 127 // lload
+   	l8 = 158 // aload
+  Exception table:
+   from   to  target type
+    80   101   145   Class java/lang/InterruptedException
+
+   105   123   145   Class java/lang/InterruptedException
+
+   127   141   145   Class java/lang/InterruptedException
+
+    23    44   161   any
+    45    61   161   any
+    62    72   161   any
+    73   104   161   any
+   105   126   161   any
+   127   144   161   any
+   145   166   161   any
+  Exceptions: 
+   throws java.lang.InterruptedException
+public synchronized void unlock();
+  Signature: ()V
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	if_acmpeq	l1 // aload_0
+	new	class java/lang/IllegalMonitorStateException
+	dup
+	ldc	String Not owner
+	invokespecial	Method java/lang/IllegalMonitorStateException."<init>":(Ljava/lang/String;)V
+	athrow
+l1	aload_0
+	dup
+	getfield	Field holds_:I
+	iconst_1
+	isub
+	dup_x1
+	putfield	Field holds_:I
+	ifne	l2 // return
+	aload_0
+	aconst_null
+	putfield	Field owner_:Ljava/lang/Thread;
+	aload_0
+	invokevirtual	Method java/lang/Object.notify:()V
+l2	return
+  Labels:
+   	l1 = 20 // aload_0
+   	l2 = 43 // return
+
+public final boolean isFair();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	iconst_0
+	ireturn
+  Labels:
+
+}
+

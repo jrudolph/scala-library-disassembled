@@ -1,0 +1,305 @@
+abstract class scala.actors.threadpool.locks.ReentrantLock$Sync extends java.lang.Object implements java.io.Serializable
+  InnerClass: 
+   abstract Sync=class scala/actors/threadpool/locks/ReentrantLock$Sync of class scala/actors/threadpool/locks/ReentrantLock
+  minor version: 0
+  major version: 49
+  Constant pool:
+Method	java/lang/Object."<init>":()V
+Field	scala/actors/threadpool/locks/ReentrantLock$Sync.owner_:Ljava/lang/Thread;
+Field	scala/actors/threadpool/locks/ReentrantLock$Sync.holds_:I
+class	java/lang/Error
+String	Maximum lock count exceeded
+Method	java/lang/Error."<init>":(Ljava/lang/String;)V
+Method	java/lang/Thread.currentThread:()Ljava/lang/Thread;
+Method	scala/actors/threadpool/locks/ReentrantLock$Sync.incHolds:()V
+Method	scala/actors/threadpool/locks/ReentrantLock$Sync.isHeldByCurrentThread:()Z
+class	java/lang/UnsupportedOperationException
+String	Use FAIR version
+Method	java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+class	scala/actors/threadpool/locks/ReentrantLock$Sync
+class	java/lang/Object
+class	java/io/Serializable
+Asciz	serialVersionUID;
+Asciz	J;
+Asciz	ConstantValue;
+long	-5179523762034025860l;
+Asciz	owner_;
+Asciz	Ljava/lang/Thread;;
+Asciz	holds_;
+Asciz	I;
+Asciz	<init>;
+Asciz	()V;
+Asciz	Code;
+Asciz	lock;
+Asciz	lockInterruptibly;
+Asciz	Exceptions;
+class	java/lang/InterruptedException
+Asciz	incHolds;
+Asciz	tryLock;
+Asciz	()Z;
+Asciz	(J)Z;
+Asciz	unlock;
+Asciz	getHoldCount;
+Asciz	()I;
+Asciz	isHeldByCurrentThread;
+Asciz	isLocked;
+Asciz	isFair;
+Asciz	getOwner;
+Asciz	()Ljava/lang/Thread;;
+Asciz	hasQueuedThreads;
+Asciz	getQueueLength;
+Asciz	getQueuedThreads;
+Asciz	()Ljava/util/Collection;;
+Asciz	isQueued;
+Asciz	(Ljava/lang/Thread;)Z;
+NameAndType	"<init>":()V
+NameAndType	owner_:Ljava/lang/Thread;
+NameAndType	holds_:I
+Asciz	java/lang/Error;
+Asciz	Maximum lock count exceeded;
+NameAndType	"<init>":(Ljava/lang/String;)V
+class	java/lang/Thread
+NameAndType	currentThread:()Ljava/lang/Thread;
+NameAndType	incHolds:()V
+NameAndType	isHeldByCurrentThread:()Z
+Asciz	java/lang/UnsupportedOperationException;
+Asciz	Use FAIR version;
+class	scala/actors/threadpool/locks/ReentrantLock
+Asciz	scala/actors/threadpool/locks/ReentrantLock$Sync;
+Asciz	Sync;
+Asciz	InnerClasses;
+Asciz	java/lang/Object;
+Asciz	java/io/Serializable;
+Asciz	java/lang/InterruptedException;
+Asciz	(Ljava/lang/String;)V;
+Asciz	java/lang/Thread;
+Asciz	currentThread;
+Asciz	scala/actors/threadpool/locks/ReentrantLock;
+
+{
+private static final long serialVersionUID;
+  Signature: J
+  Constant value: long -5179523762034025860l
+protected transient java.lang.Thread owner_;
+  Signature: Ljava/lang/Thread;
+
+protected transient int holds_;
+  Signature: I
+
+protected scala.actors.threadpool.locks.ReentrantLock$Sync();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	aconst_null
+	putfield	Field owner_:Ljava/lang/Thread;
+	aload_0
+	iconst_0
+	putfield	Field holds_:I
+	return
+  Labels:
+
+public abstract void lock();
+  Signature: ()V
+
+public abstract void lockInterruptibly()   throws java.lang.InterruptedException;
+  Signature: ()V
+  Exceptions: 
+   throws java.lang.InterruptedException
+final void incHolds();
+  Signature: ()V
+  Code:
+   Stack=3, Locals=2, Args_size=1
+	aload_0
+	dup
+	getfield	Field holds_:I
+	iconst_1
+	iadd
+	dup_x1
+	putfield	Field holds_:I
+	istore_1
+	iload_1
+	ifge	l1 // aload_0
+	new	class java/lang/Error
+	dup
+	ldc	String Maximum lock count exceeded
+	invokespecial	Method java/lang/Error."<init>":(Ljava/lang/String;)V
+	athrow
+l1	aload_0
+	iload_1
+	putfield	Field holds_:I
+	return
+  Labels:
+   	l1 = 26 // aload_0
+
+public boolean tryLock();
+  Signature: ()Z
+  Code:
+   Stack=2, Locals=4, Args_size=1
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	astore_1
+	aload_0
+	dup
+	astore_2
+	monitorenter
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	ifnonnull	l1 // aload_1
+	aload_0
+	aload_1
+	putfield	Field owner_:Ljava/lang/Thread;
+	aload_0
+	iconst_1
+	putfield	Field holds_:I
+	iconst_1
+	aload_2
+	monitorexit
+	ireturn
+l1	aload_1
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	if_acmpne	l2 // aload_2
+	aload_0
+	invokevirtual	Method incHolds:()V
+	iconst_1
+	aload_2
+	monitorexit
+	ireturn
+l2	aload_2
+	monitorexit
+	goto	l3 // iconst_0
+	astore_3
+	aload_2
+	monitorexit
+	aload_3
+	athrow
+l3	iconst_0
+	ireturn
+  Labels:
+   	l1 = 29 // aload_1
+   	l2 = 45 // aload_2
+   	l3 = 55 // iconst_0
+  Exception table:
+   from   to  target type
+     8    28    50   any
+    29    44    50   any
+    45    47    50   any
+    50    53    50   any
+
+public abstract boolean tryLock(long)   throws java.lang.InterruptedException;
+  Signature: (J)Z
+  Exceptions: 
+   throws java.lang.InterruptedException
+public abstract void unlock();
+  Signature: ()V
+
+public synchronized int getHoldCount();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method isHeldByCurrentThread:()Z
+	ifeq	l1 // iconst_0
+	aload_0
+	getfield	Field holds_:I
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 14 // iconst_0
+   	l2 = 15 // ireturn
+
+public synchronized boolean isHeldByCurrentThread();
+  Signature: ()Z
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	getfield	Field holds_:I
+	ifle	l1 // iconst_0
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	if_acmpne	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 21 // iconst_0
+   	l2 = 22 // ireturn
+
+public synchronized boolean isLocked();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	ifnull	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 11 // iconst_0
+   	l2 = 12 // ireturn
+
+public abstract boolean isFair();
+  Signature: ()Z
+
+protected synchronized java.lang.Thread getOwner();
+  Signature: ()Ljava/lang/Thread;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field owner_:Ljava/lang/Thread;
+	areturn
+  Labels:
+
+public boolean hasQueuedThreads();
+  Signature: ()Z
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	new	class java/lang/UnsupportedOperationException
+	dup
+	ldc	String Use FAIR version
+	invokespecial	Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+	athrow
+  Labels:
+
+public int getQueueLength();
+  Signature: ()I
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	new	class java/lang/UnsupportedOperationException
+	dup
+	ldc	String Use FAIR version
+	invokespecial	Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+	athrow
+  Labels:
+
+public java.util.Collection getQueuedThreads();
+  Signature: ()Ljava/util/Collection;
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	new	class java/lang/UnsupportedOperationException
+	dup
+	ldc	String Use FAIR version
+	invokespecial	Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+	athrow
+  Labels:
+
+public boolean isQueued(java.lang.Thread);
+  Signature: (Ljava/lang/Thread;)Z
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	new	class java/lang/UnsupportedOperationException
+	dup
+	ldc	String Use FAIR version
+	invokespecial	Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+	athrow
+  Labels:
+
+}
+

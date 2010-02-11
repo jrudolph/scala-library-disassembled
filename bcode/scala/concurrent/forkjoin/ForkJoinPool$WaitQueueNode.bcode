@@ -1,0 +1,139 @@
+final class scala.concurrent.forkjoin.ForkJoinPool$WaitQueueNode extends java.lang.Object
+  InnerClass: 
+   final WaitQueueNode=class scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode of class scala/concurrent/forkjoin/ForkJoinPool
+  minor version: 0
+  major version: 49
+  Constant pool:
+Method	java/lang/Object."<init>":()V
+Field	scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.count:J
+Field	scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode.thread:Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+Method	java/util/concurrent/locks/LockSupport.unpark:(Ljava/lang/Thread;)V
+Method	scala/concurrent/forkjoin/ForkJoinPool.syncIsReleasable:(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+Method	java/util/concurrent/locks/LockSupport.park:(Ljava/lang/Object;)V
+Method	java/lang/Thread.interrupted:()Z
+class	scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode
+class	java/lang/Object
+Asciz	next;
+Asciz	WaitQueueNode;
+Asciz	InnerClasses;
+Asciz	Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;;
+Asciz	thread;
+Asciz	Lscala/concurrent/forkjoin/ForkJoinWorkerThread;;
+Asciz	count;
+Asciz	J;
+Asciz	<init>;
+Asciz	(JLscala/concurrent/forkjoin/ForkJoinWorkerThread;)V;
+Asciz	Code;
+Asciz	signal;
+Asciz	()Z;
+Asciz	awaitSyncRelease;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinPool;)V;
+Asciz	awaitSpareRelease;
+Asciz	()V;
+NameAndType	"<init>":()V
+NameAndType	count:J
+NameAndType	thread:Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+class	java/util/concurrent/locks/LockSupport
+NameAndType	unpark:(Ljava/lang/Thread;)V
+class	scala/concurrent/forkjoin/ForkJoinPool
+NameAndType	syncIsReleasable:(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+NameAndType	park:(Ljava/lang/Object;)V
+class	java/lang/Thread
+NameAndType	interrupted:()Z
+Asciz	scala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+Asciz	java/lang/Object;
+Asciz	java/util/concurrent/locks/LockSupport;
+Asciz	unpark;
+Asciz	(Ljava/lang/Thread;)V;
+Asciz	scala/concurrent/forkjoin/ForkJoinPool;
+Asciz	syncIsReleasable;
+Asciz	(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z;
+Asciz	park;
+Asciz	(Ljava/lang/Object;)V;
+Asciz	java/lang/Thread;
+Asciz	interrupted;
+
+{
+scala.concurrent.forkjoin.ForkJoinPool$WaitQueueNode next;
+  Signature: Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;
+
+volatile scala.concurrent.forkjoin.ForkJoinWorkerThread thread;
+  Signature: Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
+final long count;
+  Signature: J
+
+scala.concurrent.forkjoin.ForkJoinPool$WaitQueueNode(long, scala.concurrent.forkjoin.ForkJoinWorkerThread);
+  Signature: (JLscala/concurrent/forkjoin/ForkJoinWorkerThread;)V
+  Code:
+   Stack=3, Locals=4, Args_size=3
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	lload_1
+	putfield	Field count:J
+	aload_0
+	aload_3
+	putfield	Field thread:Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	return
+  Labels:
+
+boolean signal();
+  Signature: ()Z
+  Code:
+   Stack=2, Locals=2, Args_size=1
+	aload_0
+	getfield	Field thread:Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	astore_1
+	aload_1
+	ifnonnull	l1 // aload_0
+	iconst_0
+	ireturn
+l1	aload_0
+	aconst_null
+	putfield	Field thread:Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	aload_1
+	invokestatic	Method java/util/concurrent/locks/LockSupport.unpark:(Ljava/lang/Thread;)V
+	iconst_1
+	ireturn
+  Labels:
+   	l1 = 11 // aload_0
+
+void awaitSyncRelease(scala.concurrent.forkjoin.ForkJoinPool);
+  Signature: (Lscala/concurrent/forkjoin/ForkJoinPool;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+l2	aload_0
+	getfield	Field thread:Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	ifnull	l1 // return
+	aload_1
+	aload_0
+	invokevirtual	Method scala/concurrent/forkjoin/ForkJoinPool.syncIsReleasable:(Lscala/concurrent/forkjoin/ForkJoinPool$WaitQueueNode;)Z
+	ifne	l1 // return
+	aload_0
+	invokestatic	Method java/util/concurrent/locks/LockSupport.park:(Ljava/lang/Object;)V
+	goto	l2 // aload_0
+l1	return
+  Labels:
+   	l2 = 0 // aload_0
+   	l1 = 22 // return
+
+void awaitSpareRelease();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+l2	aload_0
+	getfield	Field thread:Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+	ifnull	l1 // return
+	invokestatic	Method java/lang/Thread.interrupted:()Z
+	ifne	l2 // aload_0
+	aload_0
+	invokestatic	Method java/util/concurrent/locks/LockSupport.park:(Ljava/lang/Object;)V
+	goto	l2 // aload_0
+l1	return
+  Labels:
+   	l2 = 0 // aload_0
+   	l1 = 20 // return
+
+}
+
