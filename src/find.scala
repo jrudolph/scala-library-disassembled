@@ -42,13 +42,23 @@ object RecursiveJavaP {
        .foldLeft(classesInThisDir)(_ ++ _)
   }
 
+  val perform = classOf[sun.tools.javap.Main].getDeclaredMethod("perform", classOf[Array[String]])
+  perform.setAccessible(true)
+
   def main(args: Array[String]) {
     val classDir = new File("class")
-    val cmdBase = "javap -v -classpath "+classDir.getCanonicalPath+" "
+    val cmdBase: List[String] = List("-v", "-classpath", classDir.getCanonicalPath)
 
     def javap(className: String, outName: String) {
-      val cmd = cmdBase + className
-      cmd !> outName
+      import _root_.sun.tools.javap.{Main => JavaP}
+
+      val writer = new PrintWriter(new FileWriter(outName))
+
+      val jp = new JavaP(writer)
+      val args: Array[String] = (cmdBase :+ className).toArray[String]
+      perform.invoke(jp, args)
+
+      writer.close
     }
 
     for ((className, classFile) <- findAllClasses(classDir)(classDir)) {
