@@ -6,6 +6,7 @@ public abstract class scala.xml.parsing.MarkupParser$class extends java.lang.Obj
   InnerClass: 
    public final $anon$1=class scala/xml/NodeSeq$$anon$1 of class scala/xml/NodeSeq
    public final $anon$2=class scala/xml/parsing/MarkupParser$$anon$2 of class scala/xml/parsing/MarkupParser
+   public final $anon$3=class scala/xml/parsing/MarkupParser$$anon$3 of class scala/xml/parsing/MarkupParser
    public final $anon$1=class scala/xml/parsing/MarkupParser$$anon$1 of class scala/xml/parsing/MarkupParser
    public final $anonfun$2=class scala/xml/parsing/MarkupParser$$anonfun$2 of class scala/xml/parsing/MarkupParser
    public final $anonfun$1=class scala/xml/parsing/MarkupParser$$anonfun$1 of class scala/xml/parsing/MarkupParser
@@ -13,6 +14,8 @@ public abstract class scala.xml.parsing.MarkupParser$class extends java.lang.Obj
    public final $anonfun$3=class scala/xml/parsing/MarkupParser$$anonfun$3 of class scala/xml/parsing/MarkupParser
    public final $anonfun$document$1=class scala/xml/parsing/MarkupParser$$anonfun$document$1 of class scala/xml/parsing/MarkupParser
    public final $anonfun$xCharRef$1=class scala/xml/parsing/MarkupParser$$anonfun$xCharRef$1 of class scala/xml/parsing/MarkupParser
+   public final $anonfun$xCharData$2=class scala/xml/parsing/MarkupParser$$anonfun$xCharData$2 of class scala/xml/parsing/MarkupParser
+   public final $anonfun$xCharData$1=class scala/xml/parsing/MarkupParser$$anonfun$xCharData$1 of class scala/xml/parsing/MarkupParser
    public final $anonfun$appendText$1=class scala/xml/parsing/MarkupParser$$anonfun$appendText$1 of class scala/xml/parsing/MarkupParser
   minor version: 0
   major version: 49
@@ -125,6 +128,17 @@ class	scala/xml/parsing/MarkupParser$$anon$1
 Asciz	(Lscala/xml/parsing/MarkupHandler;Lscala/runtime/ObjectRef;)V;
 NameAndType	"<init>":(Lscala/xml/parsing/MarkupHandler;Lscala/runtime/ObjectRef;)V
 Method	scala/xml/parsing/MarkupParser$$anon$1."<init>":(Lscala/xml/parsing/MarkupHandler;Lscala/runtime/ObjectRef;)V
+Asciz	mkResult$1;
+Asciz	(Lscala/xml/parsing/MarkupHandler;ILjava/lang/String;)Lscala/xml/NodeSeq;;
+Asciz	scala/xml/PCData;
+class	scala/xml/PCData
+Asciz	(Ljava/lang/String;)V;
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	scala/xml/PCData."<init>":(Ljava/lang/String;)V
+Asciz	pos;
+Asciz	I;
+Asciz	s;
+Asciz	Ljava/lang/String;;
 Asciz	normalizeAttributeValue;
 Asciz	(Lscala/xml/parsing/MarkupHandler;Ljava/lang/String;)Ljava/lang/String;;
 Asciz	scala/Predef$;
@@ -221,8 +235,6 @@ Asciz	setLength;
 NameAndType	setLength:(I)V
 Method	scala/collection/mutable/StringBuilder.setLength:(I)V
 Asciz	attval;
-Asciz	Ljava/lang/String;;
-Asciz	s;
 Asciz	Lscala/collection/Seq;;
 Asciz	temp85;
 Asciz	C;
@@ -256,7 +268,6 @@ Method	scala/io/Source.ch:()C
 Asciz	ch_$eq;
 NameAndType	ch_$eq:(C)V
 InterfaceMethod	scala/xml/parsing/MarkupParser.ch_$eq:(C)V
-Asciz	pos;
 NameAndType	pos:()I
 Method	scala/io/Source.pos:()I
 Asciz	pos_$eq;
@@ -289,7 +300,6 @@ Asciz	reportSyntaxError;
 Asciz	(ILjava/lang/String;)V;
 NameAndType	reportSyntaxError:(ILjava/lang/String;)V
 InterfaceMethod	scala/xml/parsing/MarkupParser.reportSyntaxError:(ILjava/lang/String;)V
-Asciz	I;
 Asciz	str;
 InterfaceMethod	scala/xml/parsing/MarkupParser.pos:()I
 Asciz	reportError$default$3;
@@ -347,14 +357,12 @@ NameAndType	notationDecl:(Ljava/lang/String;Lscala/xml/dtd/ExternalID;)V
 Method	scala/xml/parsing/MarkupHandler.notationDecl:(Ljava/lang/String;Lscala/xml/dtd/ExternalID;)V
 Asciz	PUBLIC or SYSTEM expected;
 String	PUBLIC or SYSTEM expected
-Asciz	(Ljava/lang/String;)V;
 NameAndType	reportSyntaxError:(Ljava/lang/String;)V
 InterfaceMethod	scala/xml/parsing/MarkupParser.reportSyntaxError:(Ljava/lang/String;)V
 Asciz	died parsing notationdecl;
 String	died parsing notationdecl
 Asciz	java/lang/RuntimeException;
 class	java/lang/RuntimeException
-NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 Asciz	pubID;
 Asciz	sysID;
@@ -732,9 +740,9 @@ NameAndType	pop:()V
 InterfaceMethod	scala/xml/parsing/MarkupParser.pop:()V
 NameAndType	intSubset:()V
 InterfaceMethod	scala/xml/parsing/MarkupParser.intSubset:()V
-Asciz	scala/xml/parsing/MarkupParser$$anon$2;
-class	scala/xml/parsing/MarkupParser$$anon$2
-Method	scala/xml/parsing/MarkupParser$$anon$2."<init>":(Lscala/xml/parsing/MarkupHandler;Lscala/runtime/ObjectRef;)V
+Asciz	scala/xml/parsing/MarkupParser$$anon$3;
+class	scala/xml/parsing/MarkupParser$$anon$3
+Method	scala/xml/parsing/MarkupParser$$anon$3."<init>":(Lscala/xml/parsing/MarkupHandler;Lscala/runtime/ObjectRef;)V
 Asciz	doc;
 Asciz	()Lscala/xml/Document;;
 NameAndType	doc:()Lscala/xml/Document;
@@ -865,9 +873,20 @@ Method	scala/xml/Utility$.parseCharRef:(Lscala/Function0;Lscala/Function0;Lscala
 Asciz	Lscala/Function0;;
 Asciz	[CDATA[;
 String	[CDATA[
-Asciz	scala/xml/PCData;
-class	scala/xml/PCData
-Method	scala/xml/PCData."<init>":(Ljava/lang/String;)V
+Asciz	scala/xml/parsing/MarkupParser$$anonfun$xCharData$1;
+class	scala/xml/parsing/MarkupParser$$anonfun$xCharData$1
+Method	scala/xml/parsing/MarkupParser$$anonfun$xCharData$1."<init>":(Lscala/xml/parsing/MarkupHandler;)V
+Asciz	scala/xml/parsing/MarkupParser$$anonfun$xCharData$2;
+class	scala/xml/parsing/MarkupParser$$anonfun$xCharData$2
+Method	scala/xml/parsing/MarkupParser$$anonfun$xCharData$2."<init>":(Lscala/xml/parsing/MarkupHandler;)V
+Asciz	]]>;
+String	]]>
+Asciz	xTakeUntil;
+Asciz	(Lscala/Function2;Lscala/Function0;Ljava/lang/String;)Ljava/lang/Object;;
+NameAndType	xTakeUntil:(Lscala/Function2;Lscala/Function0;Ljava/lang/String;)Ljava/lang/Object;
+InterfaceMethod	scala/xml/parsing/MarkupParserCommon.xTakeUntil:(Lscala/Function2;Lscala/Function0;Ljava/lang/String;)Ljava/lang/Object;
+Asciz	scala/xml/NodeSeq;
+class	scala/xml/NodeSeq
 Asciz	expected closing tag of ;
 String	expected closing tag of 
 Asciz	m;
@@ -1087,22 +1106,28 @@ Asciz	temp3;
 Asciz	scp;
 Asciz	md;
 Asciz	temp1;
+Asciz	lookahead;
+Asciz	(Lscala/xml/parsing/MarkupHandler;)Lscala/collection/BufferedIterator;;
+Asciz	scala/xml/parsing/MarkupParser$$anon$2;
+class	scala/xml/parsing/MarkupParser$$anon$2
+Method	scala/xml/parsing/MarkupParser$$anon$2."<init>":(Lscala/xml/parsing/MarkupHandler;)V
 Asciz	xHandleError;
 Asciz	(Lscala/xml/parsing/MarkupHandler;CLjava/lang/String;)V;
 Asciz	that;
 Asciz	msg;
 Asciz	Scala;
 Asciz	InnerClasses;
-Asciz	scala/xml/NodeSeq;
-class	scala/xml/NodeSeq
 Asciz	$anon$1;
 Asciz	$anon$2;
+Asciz	$anon$3;
 Asciz	$anonfun$2;
 Asciz	$anonfun$1;
 Asciz	$anonfun$4;
 Asciz	$anonfun$3;
 Asciz	$anonfun$document$1;
 Asciz	$anonfun$xCharRef$1;
+Asciz	$anonfun$xCharData$2;
+Asciz	$anonfun$xCharData$1;
 Asciz	$anonfun$appendText$1;
 
 {
@@ -1267,6 +1292,23 @@ private static final scala.xml.NodeSeq done$1(scala.xml.parsing.MarkupHandler, s
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      10      0    $this       Lscala/xml/parsing/MarkupHandler;
+
+
+public static final scala.xml.NodeSeq mkResult$1(scala.xml.parsing.MarkupHandler, int, java.lang.String);
+  Signature: (Lscala/xml/parsing/MarkupHandler;ILjava/lang/String;)Lscala/xml/NodeSeq;
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	new	class scala/xml/PCData
+	dup
+	aload_2
+	invokespecial	Method scala/xml/PCData."<init>":(Ljava/lang/String;)V
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    $this       Lscala/xml/parsing/MarkupHandler;
+   0      9      1    pos       I
+   0      9      2    s       Ljava/lang/String;
 
 
 public static java.lang.String normalizeAttributeValue(scala.xml.parsing.MarkupHandler, java.lang.String);
@@ -3581,11 +3623,11 @@ l5	aload_0
 	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParserCommon.xToken:(C)V
 	aload_0
 	checkcast	class scala/xml/parsing/MarkupParser
-	new	class scala/xml/parsing/MarkupParser$$anon$2
+	new	class scala/xml/parsing/MarkupParser$$anon$3
 	dup
 	aload_0
 	aload_1
-	invokespecial	Method scala/xml/parsing/MarkupParser$$anon$2."<init>":(Lscala/xml/parsing/MarkupHandler;Lscala/runtime/ObjectRef;)V
+	invokespecial	Method scala/xml/parsing/MarkupParser$$anon$3."<init>":(Lscala/xml/parsing/MarkupHandler;Lscala/runtime/ObjectRef;)V
 	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParser.dtd_$eq:(Lscala/xml/dtd/DTD;)V
 	aload_0
 	checkcast	class scala/xml/parsing/MarkupParser
@@ -4115,98 +4157,31 @@ public static java.lang.String xCharRef(scala.xml.parsing.MarkupHandler, scala.F
 public static scala.xml.NodeSeq xCharData(scala.xml.parsing.MarkupHandler);
   Signature: (Lscala/xml/parsing/MarkupHandler;)Lscala/xml/NodeSeq;
   Code:
-   Stack=3, Locals=2, Args_size=1
+   Stack=5, Locals=1, Args_size=1
 	aload_0
 	checkcast	class scala/xml/parsing/MarkupParserCommon
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	ldc_w	String [CDATA[
 	invokevirtual	Method scala/Predef$.wrapString:(Ljava/lang/String;)Lscala/collection/immutable/WrappedString;
 	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParserCommon.xToken:(Lscala/collection/Seq;)V
-	new	class scala/collection/mutable/StringBuilder
+	aload_0
+	checkcast	class scala/xml/parsing/MarkupParserCommon
+	new	class scala/xml/parsing/MarkupParser$$anonfun$xCharData$1
 	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	astore_1
-l6	aload_0
-	checkcast	class scala/xml/parsing/MarkupParser
-	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParser.ch:()C
-	ldc	int 93
-	if_icmpne	l1 // aload_1
-	aload_1
 	aload_0
-	checkcast	class scala/xml/parsing/MarkupParser
-	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParser.ch:()C
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(C)Lscala/collection/mutable/StringBuilder;
-	pop
-	aload_0
-	checkcast	class scala/xml/parsing/MarkupParser
-	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParser.nextch:()C
-	pop
-	aload_0
-	checkcast	class scala/xml/parsing/MarkupParser
-	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParser.ch:()C
-	ldc	int 93
-	if_icmpne	l2 // iconst_0
-	iconst_1
-	goto	l3 // ifeq
-l2	iconst_0
-l3	ifeq	l1 // aload_1
-	aload_1
-	aload_0
-	checkcast	class scala/xml/parsing/MarkupParser
-	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParser.ch:()C
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(C)Lscala/collection/mutable/StringBuilder;
-	pop
-	aload_0
-	checkcast	class scala/xml/parsing/MarkupParser
-	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParser.nextch:()C
-	pop
-	aload_0
-	checkcast	class scala/xml/parsing/MarkupParser
-	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParser.ch:()C
-	ldc	int 62
-	if_icmpne	l4 // iconst_0
-	iconst_1
-	goto	l5 // ifeq
-l4	iconst_0
-l5	ifeq	l1 // aload_1
-	aload_1
-	aload_1
-	invokevirtual	Method scala/collection/mutable/StringBuilder.length:()I
-	iconst_2
-	isub
-	invokevirtual	Method scala/collection/mutable/StringBuilder.setLength:(I)V
-	aload_0
-	checkcast	class scala/xml/parsing/MarkupParser
-	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParser.nextch:()C
-	pop
-	new	class scala/xml/PCData
+	invokespecial	Method scala/xml/parsing/MarkupParser$$anonfun$xCharData$1."<init>":(Lscala/xml/parsing/MarkupHandler;)V
+	new	class scala/xml/parsing/MarkupParser$$anonfun$xCharData$2
 	dup
-	aload_1
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokespecial	Method scala/xml/PCData."<init>":(Ljava/lang/String;)V
+	aload_0
+	invokespecial	Method scala/xml/parsing/MarkupParser$$anonfun$xCharData$2."<init>":(Lscala/xml/parsing/MarkupHandler;)V
+	ldc_w	String ]]>
+	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParserCommon.xTakeUntil:(Lscala/Function2;Lscala/Function0;Ljava/lang/String;)Ljava/lang/Object;
+	checkcast	class scala/xml/NodeSeq
 	areturn
-l1	aload_1
-	aload_0
-	checkcast	class scala/xml/parsing/MarkupParser
-	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParser.ch:()C
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(C)Lscala/collection/mutable/StringBuilder;
-	pop
-	aload_0
-	checkcast	class scala/xml/parsing/MarkupParser
-	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParser.nextch:()C
-	pop
-	goto	l6 // aload_0
   Labels:
-   	l6 = 26 // aload_0
-   	l2 = 82 // iconst_0
-   	l3 = 83 // ifeq
-   	l4 = 128 // iconst_0
-   	l5 = 129 // ifeq
-   	l1 = 164 // aload_1
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      191      0    $this       Lscala/xml/parsing/MarkupHandler;
-   26      165      1    sb       Lscala/collection/mutable/StringBuilder;
+   0      50      0    $this       Lscala/xml/parsing/MarkupHandler;
 
 
 public static void xEndTag(scala.xml.parsing.MarkupHandler, java.lang.String);
@@ -5395,6 +5370,21 @@ l1	new	class scala/MatchError
    83      74      6    md       Lscala/xml/MetaData;
    41      62      7    temp1       Lscala/Tuple2;
    158      13      7    temp1       Lscala/Tuple2;
+
+
+public static scala.collection.BufferedIterator lookahead(scala.xml.parsing.MarkupHandler);
+  Signature: (Lscala/xml/parsing/MarkupHandler;)Lscala/collection/BufferedIterator;
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	new	class scala/xml/parsing/MarkupParser$$anon$2
+	dup
+	aload_0
+	invokespecial	Method scala/xml/parsing/MarkupParser$$anon$2."<init>":(Lscala/xml/parsing/MarkupHandler;)V
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    $this       Lscala/xml/parsing/MarkupHandler;
 
 
 public static void xHandleError(scala.xml.parsing.MarkupHandler, char, java.lang.String);
