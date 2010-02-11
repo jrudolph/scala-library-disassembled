@@ -31,13 +31,13 @@ Asciz	$this;
 Asciz	Lscala/actors/ReplyReactor;;
 Asciz	LocalVariableTable;
 Asciz	searchMailbox;
-Asciz	(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V;
+Asciz	(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/PartialFunction;Z)V;
 Asciz	scala/actors/ReplyReactor$$anonfun$1;
 class	scala/actors/ReplyReactor$$anonfun$1
 Asciz	<init>;
-Asciz	(Lscala/actors/ReplyReactor;Lscala/Function1;)V;
-NameAndType	"<init>":(Lscala/actors/ReplyReactor;Lscala/Function1;)V
-Method	scala/actors/ReplyReactor$$anonfun$1."<init>":(Lscala/actors/ReplyReactor;Lscala/Function1;)V
+Asciz	(Lscala/actors/ReplyReactor;Lscala/PartialFunction;)V;
+NameAndType	"<init>":(Lscala/actors/ReplyReactor;Lscala/PartialFunction;)V
+Method	scala/actors/ReplyReactor$$anonfun$1."<init>":(Lscala/actors/ReplyReactor;Lscala/PartialFunction;)V
 Asciz	scala/actors/MQueue;
 class	scala/actors/MQueue
 Asciz	extractFirst;
@@ -59,19 +59,16 @@ Asciz	(Lscala/Function2;)V;
 NameAndType	foreach:(Lscala/Function2;)V
 Method	scala/actors/MQueue.foreach:(Lscala/Function2;)V
 Asciz	sendBuffer;
-Asciz	()Lscala/collection/mutable/Queue;;
-NameAndType	sendBuffer:()Lscala/collection/mutable/Queue;
-InterfaceMethod	scala/actors/Reactor.sendBuffer:()Lscala/collection/mutable/Queue;
-Asciz	scala/collection/mutable/Queue;
-class	scala/collection/mutable/Queue
+NameAndType	sendBuffer:()Lscala/actors/MQueue;
+InterfaceMethod	scala/actors/Reactor.sendBuffer:()Lscala/actors/MQueue;
 Asciz	isEmpty;
 Asciz	()Z;
 NameAndType	isEmpty:()Z
-Method	scala/collection/mutable/Queue.isEmpty:()Z
+Method	scala/actors/MQueue.isEmpty:()Z
 Asciz	waitingFor_$eq;
-Asciz	(Lscala/Function1;)V;
-NameAndType	waitingFor_$eq:(Lscala/Function1;)V
-InterfaceMethod	scala/actors/Reactor.waitingFor_$eq:(Lscala/Function1;)V
+Asciz	(Lscala/PartialFunction;)V;
+NameAndType	waitingFor_$eq:(Lscala/PartialFunction;)V
+InterfaceMethod	scala/actors/Reactor.waitingFor_$eq:(Lscala/PartialFunction;)V
 Asciz	scala/actors/Actor$;
 class	scala/actors/Actor$
 Asciz	Lscala/actors/Actor$;;
@@ -106,20 +103,20 @@ Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Method	scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Asciz	resumeReceiver;
-Asciz	(Lscala/Tuple2;Z)V;
-NameAndType	resumeReceiver:(Lscala/Tuple2;Z)V
-InterfaceMethod	scala/actors/ReplyReactor.resumeReceiver:(Lscala/Tuple2;Z)V
+Asciz	(Lscala/Tuple2;Lscala/PartialFunction;Z)V;
+NameAndType	resumeReceiver:(Lscala/Tuple2;Lscala/PartialFunction;Z)V
+InterfaceMethod	scala/actors/ReplyReactor.resumeReceiver:(Lscala/Tuple2;Lscala/PartialFunction;Z)V
 Asciz	startMbox;
 Asciz	Lscala/actors/MQueue;;
-Asciz	handlesMessage$1;
-Asciz	Lscala/Function1;;
+Asciz	handler$1;
+Asciz	Lscala/PartialFunction;;
 Asciz	resumeOnSameThread;
 Asciz	Z;
 Asciz	tmpMbox;
 Asciz	qel;
 Asciz	Lscala/actors/MQueueElement;;
 Asciz	done;
-Asciz	(Lscala/actors/ReplyReactor;Lscala/Tuple2;Z)V;
+Asciz	(Lscala/actors/ReplyReactor;Lscala/Tuple2;Lscala/PartialFunction;Z)V;
 Asciz	scala/collection/immutable/List$;
 class	scala/collection/immutable/List$
 Asciz	Lscala/collection/immutable/List$;;
@@ -145,10 +142,6 @@ Asciz	apply;
 Asciz	(Lscala/collection/Seq;)Lscala/collection/immutable/List;;
 NameAndType	apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
 Method	scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
-Asciz	continuation;
-Asciz	()Lscala/PartialFunction;;
-NameAndType	continuation:()Lscala/PartialFunction;
-InterfaceMethod	scala/actors/Reactor.continuation:()Lscala/PartialFunction;
 Asciz	_1;
 NameAndType	_1:()Ljava/lang/Object;
 Method	scala/Tuple2._1:()Ljava/lang/Object;
@@ -163,6 +156,7 @@ NameAndType	scheduleActor:(Lscala/PartialFunction;Ljava/lang/Object;)V
 InterfaceMethod	scala/actors/Reactor.scheduleActor:(Lscala/PartialFunction;Ljava/lang/Object;)V
 Asciz	item;
 Asciz	Lscala/Tuple2;;
+Asciz	handler;
 Asciz	onSameThread;
 Asciz	forward;
 Asciz	(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V;
@@ -222,8 +216,8 @@ public static void $init$(scala.actors.ReplyReactor);
    0      10      0    $this       Lscala/actors/ReplyReactor;
 
 
-public static void searchMailbox(scala.actors.ReplyReactor, scala.actors.MQueue, scala.Function1, boolean);
-  Signature: (Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V
+public static void searchMailbox(scala.actors.ReplyReactor, scala.actors.MQueue, scala.PartialFunction, boolean);
+  Signature: (Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/PartialFunction;Z)V
   Code:
    Stack=5, Locals=7, Args_size=4
 	aload_1
@@ -238,7 +232,7 @@ l1	aload	4
 	dup
 	aload_0
 	aload_2
-	invokespecial	Method scala/actors/ReplyReactor$$anonfun$1."<init>":(Lscala/actors/ReplyReactor;Lscala/Function1;)V
+	invokespecial	Method scala/actors/ReplyReactor$$anonfun$1."<init>":(Lscala/actors/ReplyReactor;Lscala/PartialFunction;)V
 	invokevirtual	Method scala/actors/MQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MQueueElement;
 	astore	5
 	aload	4
@@ -258,12 +252,12 @@ l2	aload	5
 	pop
 	monitorenter
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.sendBuffer:()Lscala/collection/mutable/Queue;
-	invokevirtual	Method scala/collection/mutable/Queue.isEmpty:()Z
+	invokeinterface	InterfaceMethod scala/actors/Reactor.sendBuffer:()Lscala/actors/MQueue;
+	invokevirtual	Method scala/actors/MQueue.isEmpty:()Z
 	ifeq	l4 // new
 	aload_0
 	aload_2
-	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor_$eq:(Lscala/Function1;)V
+	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor_$eq:(Lscala/PartialFunction;)V
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	invokevirtual	Method scala/actors/Actor$.suspendException:()Lscala/actors/SuspendActorException;
 	athrow
@@ -286,8 +280,9 @@ l3	aload_0
 	aload	5
 	invokevirtual	Method scala/actors/MQueueElement.session:()Lscala/actors/OutputChannel;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+	aload_2
 	iload_3
-	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.resumeReceiver:(Lscala/Tuple2;Z)V
+	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.resumeReceiver:(Lscala/Tuple2;Lscala/PartialFunction;Z)V
 	iconst_1
 	istore	6
 l5	goto	l6 // iload
@@ -300,26 +295,26 @@ l5	goto	l6 // iload
    	l2 = 52 // aload
    	l4 = 87 // new
    	l3 = 111 // aload_0
-   	l5 = 138 // goto
+   	l5 = 139 // goto
   Exception table:
    from   to  target type
-    61   111   141   any
+    61   111   142   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      144      0    $this       Lscala/actors/ReplyReactor;
-   0      144      1    startMbox       Lscala/actors/MQueue;
-   0      144      2    handlesMessage$1       Lscala/Function1;
-   0      144      3    resumeOnSameThread       Z
-   3      141      4    tmpMbox       Lscala/actors/MQueue;
-   28      110      5    qel       Lscala/actors/MQueueElement;
-   141      3      5    qel       Lscala/actors/MQueueElement;
-   6      138      6    done       Z
+   0      145      0    $this       Lscala/actors/ReplyReactor;
+   0      145      1    startMbox       Lscala/actors/MQueue;
+   0      145      2    handler$1       Lscala/PartialFunction;
+   0      145      3    resumeOnSameThread       Z
+   3      142      4    tmpMbox       Lscala/actors/MQueue;
+   28      111      5    qel       Lscala/actors/MQueueElement;
+   142      3      5    qel       Lscala/actors/MQueueElement;
+   6      139      6    done       Z
 
 
-public static void resumeReceiver(scala.actors.ReplyReactor, scala.Tuple2, boolean);
-  Signature: (Lscala/actors/ReplyReactor;Lscala/Tuple2;Z)V
+public static void resumeReceiver(scala.actors.ReplyReactor, scala.Tuple2, scala.PartialFunction, boolean);
+  Signature: (Lscala/actors/ReplyReactor;Lscala/Tuple2;Lscala/PartialFunction;Z)V
   Code:
-   Stack=7, Locals=3, Args_size=3
+   Stack=7, Locals=4, Args_size=4
 	aload_0
 	getstatic	Field scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
@@ -335,18 +330,16 @@ public static void resumeReceiver(scala.actors.ReplyReactor, scala.Tuple2, boole
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 	invokevirtual	Method scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
-	iload_2
+	iload_3
 	ifeq	l1 // aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.continuation:()Lscala/PartialFunction;
+	aload_2
 	aload_1
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	pop
 	return
 l1	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.continuation:()Lscala/PartialFunction;
+	aload_2
 	aload_1
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduleActor:(Lscala/PartialFunction;Ljava/lang/Object;)V
@@ -354,12 +347,13 @@ l1	aload_0
 	invokevirtual	Method scala/actors/Actor$.suspendException:()Lscala/actors/SuspendActorException;
 	athrow
   Labels:
-   	l1 = 56 // aload_0
+   	l1 = 51 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      79      0    $this       Lscala/actors/ReplyReactor;
-   0      79      1    item       Lscala/Tuple2;
-   0      79      2    onSameThread       Z
+   0      69      0    $this       Lscala/actors/ReplyReactor;
+   0      69      1    item       Lscala/Tuple2;
+   0      69      2    handler       Lscala/PartialFunction;
+   0      69      3    onSameThread       Z
 
 
 public static void forward(scala.actors.ReplyReactor, java.lang.Object);

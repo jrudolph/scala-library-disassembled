@@ -17,8 +17,10 @@ public final class scala.collection.JavaConversions$ extends java.lang.Object im
    public JPropertiesWrapper=class scala/collection/JavaConversions$JPropertiesWrapper of class scala/collection/JavaConversions
    public JCollectionWrapper=class scala/collection/JavaConversions$JCollectionWrapper of class scala/collection/JavaConversions
    public JEnumerationWrapper=class scala/collection/JavaConversions$JEnumerationWrapper of class scala/collection/JavaConversions
+   public ConcurrentMapWrapper=class scala/collection/JavaConversions$ConcurrentMapWrapper of class scala/collection/JavaConversions
    public MutableBufferWrapper=class scala/collection/JavaConversions$MutableBufferWrapper of class scala/collection/JavaConversions
    public JConcurrentMapWrapper=class scala/collection/JavaConversions$JConcurrentMapWrapper of class scala/collection/JavaConversions
+   public abstract MutableMapWrapperLike=class scala/collection/JavaConversions$MutableMapWrapperLike of class scala/collection/JavaConversions
   minor version: 0
   major version: 49
   Constant pool:
@@ -55,7 +57,13 @@ Asciz	LocalVariableTable;
 Asciz	(Ljava/util/Properties;)Lscala/collection/mutable/Map<Ljava/lang/String;Ljava/lang/String;>;;
 Asciz	Signature;
 Asciz	asConcurrentMap;
-Asciz	(Ljava/util/concurrent/ConcurrentMap;)Lscala/collection/JavaConversions$JConcurrentMapWrapper;;
+Asciz	(Ljava/util/concurrent/ConcurrentMap;)Lscala/collection/mutable/ConcurrentMap;;
+Asciz	scala/collection/JavaConversions$ConcurrentMapWrapper;
+class	scala/collection/JavaConversions$ConcurrentMapWrapper
+Asciz	underlying;
+Asciz	()Lscala/collection/mutable/ConcurrentMap;;
+NameAndType	underlying:()Lscala/collection/mutable/ConcurrentMap;
+Method	scala/collection/JavaConversions$ConcurrentMapWrapper.underlying:()Lscala/collection/mutable/ConcurrentMap;
 Asciz	scala/collection/JavaConversions$JConcurrentMapWrapper;
 class	scala/collection/JavaConversions$JConcurrentMapWrapper
 Asciz	(Ljava/util/concurrent/ConcurrentMap;)V;
@@ -63,11 +71,14 @@ NameAndType	"<init>":(Ljava/util/concurrent/ConcurrentMap;)V
 Method	scala/collection/JavaConversions$JConcurrentMapWrapper."<init>":(Ljava/util/concurrent/ConcurrentMap;)V
 Asciz	m;
 Asciz	Ljava/util/concurrent/ConcurrentMap;;
-Asciz	<A:Ljava/lang/Object;B:Ljava/lang/Object;>(Ljava/util/concurrent/ConcurrentMap<TA;TB;>;)Lscala/collection/JavaConversions$JConcurrentMapWrapper<TA;TB;>;;
+Asciz	temp47;
+Asciz	Lscala/collection/JavaConversions$ConcurrentMapWrapper;;
+Asciz	temp48;
+Asciz	Lscala/collection/mutable/ConcurrentMap;;
+Asciz	<A:Ljava/lang/Object;B:Ljava/lang/Object;>(Ljava/util/concurrent/ConcurrentMap<TA;TB;>;)Lscala/collection/mutable/ConcurrentMap<TA;TB;>;;
 Asciz	(Ljava/util/Map;)Lscala/collection/mutable/Map;;
 Asciz	scala/collection/JavaConversions$MutableMapWrapper;
 class	scala/collection/JavaConversions$MutableMapWrapper
-Asciz	underlying;
 Asciz	()Lscala/collection/mutable/Map;;
 NameAndType	underlying:()Lscala/collection/mutable/Map;
 Method	scala/collection/JavaConversions$MutableMapWrapper.underlying:()Lscala/collection/mutable/Map;
@@ -77,9 +88,9 @@ Asciz	(Ljava/util/Map;)V;
 NameAndType	"<init>":(Ljava/util/Map;)V
 Method	scala/collection/JavaConversions$JMapWrapper."<init>":(Ljava/util/Map;)V
 Asciz	Ljava/util/Map;;
-Asciz	temp41;
+Asciz	temp44;
 Asciz	Lscala/collection/JavaConversions$MutableMapWrapper;;
-Asciz	temp42;
+Asciz	temp45;
 Asciz	Lscala/collection/mutable/Map;;
 Asciz	<A:Ljava/lang/Object;B:Ljava/lang/Object;>(Ljava/util/Map<TA;TB;>;)Lscala/collection/mutable/Map<TA;TB;>;;
 Asciz	asSet;
@@ -96,9 +107,9 @@ NameAndType	"<init>":(Ljava/util/Set;)V
 Method	scala/collection/JavaConversions$JSetWrapper."<init>":(Ljava/util/Set;)V
 Asciz	s;
 Asciz	Ljava/util/Set;;
-Asciz	temp38;
+Asciz	temp41;
 Asciz	Lscala/collection/JavaConversions$MutableSetWrapper;;
-Asciz	temp39;
+Asciz	temp42;
 Asciz	Lscala/collection/mutable/Set;;
 Asciz	<A:Ljava/lang/Object;>(Ljava/util/Set<TA;>;)Lscala/collection/mutable/Set<TA;>;;
 Asciz	asBuffer;
@@ -115,9 +126,9 @@ NameAndType	"<init>":(Ljava/util/List;)V
 Method	scala/collection/JavaConversions$JListWrapper."<init>":(Ljava/util/List;)V
 Asciz	l;
 Asciz	Ljava/util/List;;
-Asciz	temp35;
+Asciz	temp38;
 Asciz	Lscala/collection/JavaConversions$MutableBufferWrapper;;
-Asciz	temp36;
+Asciz	temp39;
 Asciz	Lscala/collection/mutable/Buffer;;
 Asciz	<A:Ljava/lang/Object;>(Ljava/util/List<TA;>;)Lscala/collection/mutable/Buffer<TA;>;;
 Asciz	asIterable;
@@ -134,9 +145,9 @@ NameAndType	"<init>":(Ljava/util/Collection;)V
 Method	scala/collection/JavaConversions$JCollectionWrapper."<init>":(Ljava/util/Collection;)V
 Asciz	i;
 Asciz	Ljava/util/Collection;;
-Asciz	temp32;
+Asciz	temp35;
 Asciz	Lscala/collection/JavaConversions$IterableWrapper;;
-Asciz	temp33;
+Asciz	temp36;
 Asciz	Lscala/collection/Iterable;;
 Asciz	<A:Ljava/lang/Object;>(Ljava/util/Collection<TA;>;)Lscala/collection/Iterable<TA;>;;
 Asciz	(Ljava/lang/Iterable;)Lscala/collection/Iterable;;
@@ -146,8 +157,8 @@ Asciz	(Ljava/lang/Iterable;)V;
 NameAndType	"<init>":(Ljava/lang/Iterable;)V
 Method	scala/collection/JavaConversions$JIterableWrapper."<init>":(Ljava/lang/Iterable;)V
 Asciz	Ljava/lang/Iterable;;
-Asciz	temp29;
-Asciz	temp30;
+Asciz	temp32;
+Asciz	temp33;
 Asciz	<A:Ljava/lang/Object;>(Ljava/lang/Iterable<TA;>;)Lscala/collection/Iterable<TA;>;;
 Asciz	asIterator;
 Asciz	(Ljava/util/Enumeration;)Lscala/collection/Iterator;;
@@ -162,9 +173,9 @@ Asciz	(Ljava/util/Enumeration;)V;
 NameAndType	"<init>":(Ljava/util/Enumeration;)V
 Method	scala/collection/JavaConversions$JEnumerationWrapper."<init>":(Ljava/util/Enumeration;)V
 Asciz	Ljava/util/Enumeration;;
-Asciz	temp26;
+Asciz	temp29;
 Asciz	Lscala/collection/JavaConversions$IteratorWrapper;;
-Asciz	temp27;
+Asciz	temp30;
 Asciz	Lscala/collection/Iterator;;
 Asciz	<A:Ljava/lang/Object;>(Ljava/util/Enumeration<TA;>;)Lscala/collection/Iterator<TA;>;;
 Asciz	(Ljava/util/Iterator;)Lscala/collection/Iterator;;
@@ -174,9 +185,23 @@ Asciz	(Ljava/util/Iterator;)V;
 NameAndType	"<init>":(Ljava/util/Iterator;)V
 Method	scala/collection/JavaConversions$JIteratorWrapper."<init>":(Ljava/util/Iterator;)V
 Asciz	Ljava/util/Iterator;;
-Asciz	temp23;
-Asciz	temp24;
+Asciz	temp26;
+Asciz	temp27;
 Asciz	<A:Ljava/lang/Object;>(Ljava/util/Iterator<TA;>;)Lscala/collection/Iterator<TA;>;;
+Asciz	(Lscala/collection/mutable/ConcurrentMap;Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)Ljava/util/concurrent/ConcurrentMap;;
+Asciz	()Ljava/util/concurrent/ConcurrentMap;;
+NameAndType	underlying:()Ljava/util/concurrent/ConcurrentMap;
+Method	scala/collection/JavaConversions$JConcurrentMapWrapper.underlying:()Ljava/util/concurrent/ConcurrentMap;
+Asciz	(Lscala/collection/mutable/ConcurrentMap;Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)V;
+NameAndType	"<init>":(Lscala/collection/mutable/ConcurrentMap;Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)V
+Method	scala/collection/JavaConversions$ConcurrentMapWrapper."<init>":(Lscala/collection/mutable/ConcurrentMap;Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)V
+Asciz	ma;
+Asciz	Lscala/reflect/ClassManifest;;
+Asciz	mb;
+Asciz	temp23;
+Asciz	Lscala/collection/JavaConversions$JConcurrentMapWrapper;;
+Asciz	temp24;
+Asciz	<A:Ljava/lang/Object;B:Ljava/lang/Object;>(Lscala/collection/mutable/ConcurrentMap<TA;TB;>;Lscala/reflect/ClassManifest<TA;>;Lscala/reflect/ClassManifest<TB;>;)Ljava/util/concurrent/ConcurrentMap<TA;TB;>;;
 Asciz	(Lscala/collection/mutable/Map;Lscala/reflect/ClassManifest;)Ljava/util/Map;;
 Asciz	()Ljava/util/Map;;
 NameAndType	underlying:()Ljava/util/Map;
@@ -184,8 +209,6 @@ Method	scala/collection/JavaConversions$JMapWrapper.underlying:()Ljava/util/Map;
 Asciz	(Lscala/collection/mutable/Map;Lscala/reflect/ClassManifest;)V;
 NameAndType	"<init>":(Lscala/collection/mutable/Map;Lscala/reflect/ClassManifest;)V
 Method	scala/collection/JavaConversions$MutableMapWrapper."<init>":(Lscala/collection/mutable/Map;Lscala/reflect/ClassManifest;)V
-Asciz	ma;
-Asciz	Lscala/reflect/ClassManifest;;
 Asciz	temp20;
 Asciz	Lscala/collection/JavaConversions$JMapWrapper;;
 Asciz	temp21;
@@ -272,8 +295,12 @@ Asciz	MutableSetWrapper;
 Asciz	JPropertiesWrapper;
 Asciz	JCollectionWrapper;
 Asciz	JEnumerationWrapper;
+Asciz	ConcurrentMapWrapper;
 Asciz	MutableBufferWrapper;
 Asciz	JConcurrentMapWrapper;
+Asciz	scala/collection/JavaConversions$MutableMapWrapperLike;
+class	scala/collection/JavaConversions$MutableMapWrapperLike
+Asciz	MutableMapWrapperLike;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -319,23 +346,38 @@ public scala.collection.mutable.Map asMap(java.util.Properties);
   Signature: length = 0x2
    00 1F 
 
-public scala.collection.JavaConversions$JConcurrentMapWrapper asConcurrentMap(java.util.concurrent.ConcurrentMap);
-  Signature: (Ljava/util/concurrent/ConcurrentMap;)Lscala/collection/JavaConversions$JConcurrentMapWrapper;
+public scala.collection.mutable.ConcurrentMap asConcurrentMap(java.util.concurrent.ConcurrentMap);
+  Signature: (Ljava/util/concurrent/ConcurrentMap;)Lscala/collection/mutable/ConcurrentMap;
   Code:
-   Stack=3, Locals=2, Args_size=2
-	new	class scala/collection/JavaConversions$JConcurrentMapWrapper
+   Stack=3, Locals=4, Args_size=2
+	aload_1
+	instanceof	class scala/collection/JavaConversions$ConcurrentMapWrapper
+	ifeq	l1 // new
+	aload_1
+	checkcast	class scala/collection/JavaConversions$ConcurrentMapWrapper
+	astore_2
+	aload_2
+	invokevirtual	Method scala/collection/JavaConversions$ConcurrentMapWrapper.underlying:()Lscala/collection/mutable/ConcurrentMap;
+	astore_3
+	aload_3
+	goto	l2 // areturn
+l1	new	class scala/collection/JavaConversions$JConcurrentMapWrapper
 	dup
 	aload_1
 	invokespecial	Method scala/collection/JavaConversions$JConcurrentMapWrapper."<init>":(Ljava/util/concurrent/ConcurrentMap;)V
-	areturn
+l2	areturn
   Labels:
+   	l1 = 21 // new
+   	l2 = 29 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      9      0    this       Lscala/collection/JavaConversions$;
-   0      9      1    m       Ljava/util/concurrent/ConcurrentMap;
+   0      30      0    this       Lscala/collection/JavaConversions$;
+   0      30      1    m       Ljava/util/concurrent/ConcurrentMap;
+   12      6      2    temp47       Lscala/collection/JavaConversions$ConcurrentMapWrapper;
+   17      1      3    temp48       Lscala/collection/mutable/ConcurrentMap;
 
   Signature: length = 0x2
-   00 2A 
+   00 34 
 
 public scala.collection.mutable.Map asMap(java.util.Map);
   Signature: (Ljava/util/Map;)Lscala/collection/mutable/Map;
@@ -364,11 +406,11 @@ l2	areturn
    Start  Length  Slot  Name   Signature
    0      30      0    this       Lscala/collection/JavaConversions$;
    0      30      1    m       Ljava/util/Map;
-   12      6      2    temp41       Lscala/collection/JavaConversions$MutableMapWrapper;
-   17      1      3    temp42       Lscala/collection/mutable/Map;
+   12      6      2    temp44       Lscala/collection/JavaConversions$MutableMapWrapper;
+   17      1      3    temp45       Lscala/collection/mutable/Map;
 
   Signature: length = 0x2
-   00 3C 
+   00 45 
 
 public scala.collection.mutable.Set asSet(java.util.Set);
   Signature: (Ljava/util/Set;)Lscala/collection/mutable/Set;
@@ -397,11 +439,11 @@ l2	areturn
    Start  Length  Slot  Name   Signature
    0      30      0    this       Lscala/collection/JavaConversions$;
    0      30      1    s       Ljava/util/Set;
-   12      6      2    temp38       Lscala/collection/JavaConversions$MutableSetWrapper;
-   17      1      3    temp39       Lscala/collection/mutable/Set;
+   12      6      2    temp41       Lscala/collection/JavaConversions$MutableSetWrapper;
+   17      1      3    temp42       Lscala/collection/mutable/Set;
 
   Signature: length = 0x2
-   00 4F 
+   00 58 
 
 public scala.collection.mutable.Buffer asBuffer(java.util.List);
   Signature: (Ljava/util/List;)Lscala/collection/mutable/Buffer;
@@ -430,11 +472,11 @@ l2	areturn
    Start  Length  Slot  Name   Signature
    0      30      0    this       Lscala/collection/JavaConversions$;
    0      30      1    l       Ljava/util/List;
-   12      6      2    temp35       Lscala/collection/JavaConversions$MutableBufferWrapper;
-   17      1      3    temp36       Lscala/collection/mutable/Buffer;
+   12      6      2    temp38       Lscala/collection/JavaConversions$MutableBufferWrapper;
+   17      1      3    temp39       Lscala/collection/mutable/Buffer;
 
   Signature: length = 0x2
-   00 62 
+   00 6B 
 
 public scala.collection.Iterable asIterable(java.util.Collection);
   Signature: (Ljava/util/Collection;)Lscala/collection/Iterable;
@@ -463,11 +505,11 @@ l2	areturn
    Start  Length  Slot  Name   Signature
    0      30      0    this       Lscala/collection/JavaConversions$;
    0      30      1    i       Ljava/util/Collection;
-   12      6      2    temp32       Lscala/collection/JavaConversions$IterableWrapper;
-   17      1      3    temp33       Lscala/collection/Iterable;
+   12      6      2    temp35       Lscala/collection/JavaConversions$IterableWrapper;
+   17      1      3    temp36       Lscala/collection/Iterable;
 
   Signature: length = 0x2
-   00 75 
+   00 7E 
 
 public scala.collection.Iterable asIterable(java.lang.Iterable);
   Signature: (Ljava/lang/Iterable;)Lscala/collection/Iterable;
@@ -496,11 +538,11 @@ l2	areturn
    Start  Length  Slot  Name   Signature
    0      30      0    this       Lscala/collection/JavaConversions$;
    0      30      1    i       Ljava/lang/Iterable;
-   12      6      2    temp29       Lscala/collection/JavaConversions$IterableWrapper;
-   17      1      3    temp30       Lscala/collection/Iterable;
+   12      6      2    temp32       Lscala/collection/JavaConversions$IterableWrapper;
+   17      1      3    temp33       Lscala/collection/Iterable;
 
   Signature: length = 0x2
-   00 7F 
+   00 FFFFFF88 
 
 public scala.collection.Iterator asIterator(java.util.Enumeration);
   Signature: (Ljava/util/Enumeration;)Lscala/collection/Iterator;
@@ -529,11 +571,11 @@ l2	areturn
    Start  Length  Slot  Name   Signature
    0      30      0    this       Lscala/collection/JavaConversions$;
    0      30      1    i       Ljava/util/Enumeration;
-   12      6      2    temp26       Lscala/collection/JavaConversions$IteratorWrapper;
-   17      1      3    temp27       Lscala/collection/Iterator;
+   12      6      2    temp29       Lscala/collection/JavaConversions$IteratorWrapper;
+   17      1      3    temp30       Lscala/collection/Iterator;
 
   Signature: length = 0x2
-   00 FFFFFF91 
+   00 FFFFFF9A 
 
 public scala.collection.Iterator asIterator(java.util.Iterator);
   Signature: (Ljava/util/Iterator;)Lscala/collection/Iterator;
@@ -562,11 +604,48 @@ l2	areturn
    Start  Length  Slot  Name   Signature
    0      30      0    this       Lscala/collection/JavaConversions$;
    0      30      1    i       Ljava/util/Iterator;
-   12      6      2    temp23       Lscala/collection/JavaConversions$IteratorWrapper;
-   17      1      3    temp24       Lscala/collection/Iterator;
+   12      6      2    temp26       Lscala/collection/JavaConversions$IteratorWrapper;
+   17      1      3    temp27       Lscala/collection/Iterator;
 
   Signature: length = 0x2
-   00 FFFFFF9B 
+   00 FFFFFFA4 
+
+public java.util.concurrent.ConcurrentMap asConcurrentMap(scala.collection.mutable.ConcurrentMap, scala.reflect.ClassManifest, scala.reflect.ClassManifest);
+  Signature: (Lscala/collection/mutable/ConcurrentMap;Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)Ljava/util/concurrent/ConcurrentMap;
+  Code:
+   Stack=5, Locals=6, Args_size=4
+	aload_1
+	instanceof	class scala/collection/JavaConversions$JConcurrentMapWrapper
+	ifeq	l1 // new
+	aload_1
+	checkcast	class scala/collection/JavaConversions$JConcurrentMapWrapper
+	astore	4
+	aload	4
+	invokevirtual	Method scala/collection/JavaConversions$JConcurrentMapWrapper.underlying:()Ljava/util/concurrent/ConcurrentMap;
+	astore	5
+	aload	5
+	goto	l2 // areturn
+l1	new	class scala/collection/JavaConversions$ConcurrentMapWrapper
+	dup
+	aload_1
+	aload_2
+	aload_3
+	invokespecial	Method scala/collection/JavaConversions$ConcurrentMapWrapper."<init>":(Lscala/collection/mutable/ConcurrentMap;Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)V
+l2	areturn
+  Labels:
+   	l1 = 25 // new
+   	l2 = 35 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      36      0    this       Lscala/collection/JavaConversions$;
+   0      36      1    m       Lscala/collection/mutable/ConcurrentMap;
+   0      36      2    ma       Lscala/reflect/ClassManifest;
+   0      36      3    mb       Lscala/reflect/ClassManifest;
+   13      9      4    temp23       Lscala/collection/JavaConversions$JConcurrentMapWrapper;
+   20      2      5    temp24       Ljava/util/concurrent/ConcurrentMap;
+
+  Signature: length = 0x2
+   00 FFFFFFB2 
 
 public java.util.Map asMap(scala.collection.mutable.Map, scala.reflect.ClassManifest);
   Signature: (Lscala/collection/mutable/Map;Lscala/reflect/ClassManifest;)Ljava/util/Map;
@@ -601,7 +680,7 @@ l2	areturn
    18      2      4    temp21       Ljava/util/Map;
 
   Signature: length = 0x2
-   00 FFFFFFA8 
+   00 FFFFFFBD 
 
 public java.util.Set asSet(scala.collection.mutable.Set, scala.reflect.ClassManifest);
   Signature: (Lscala/collection/mutable/Set;Lscala/reflect/ClassManifest;)Ljava/util/Set;
@@ -636,7 +715,7 @@ l2	areturn
    18      2      4    temp18       Ljava/util/Set;
 
   Signature: length = 0x2
-   00 FFFFFFB3 
+   00 FFFFFFC8 
 
 public java.util.List asList(scala.collection.mutable.Buffer);
   Signature: (Lscala/collection/mutable/Buffer;)Ljava/util/List;
@@ -669,7 +748,7 @@ l2	areturn
    17      1      3    temp15       Ljava/util/List;
 
   Signature: length = 0x2
-   00 FFFFFFC0 
+   00 FFFFFFD5 
 
 public java.util.Collection asCollection(scala.collection.Iterable);
   Signature: (Lscala/collection/Iterable;)Ljava/util/Collection;
@@ -702,7 +781,7 @@ l2	areturn
    17      1      3    temp12       Ljava/util/Collection;
 
   Signature: length = 0x2
-   00 FFFFFFCC 
+   00 FFFFFFE1 
 
 public java.lang.Iterable asIterable(scala.collection.Iterable);
   Signature: (Lscala/collection/Iterable;)Ljava/lang/Iterable;
@@ -735,7 +814,7 @@ l2	areturn
    17      1      3    temp9       Ljava/lang/Iterable;
 
   Signature: length = 0x2
-   00 FFFFFFD4 
+   00 FFFFFFE9 
 
 public java.util.Enumeration asEnumeration(scala.collection.Iterator);
   Signature: (Lscala/collection/Iterator;)Ljava/util/Enumeration;
@@ -768,7 +847,7 @@ l2	areturn
    17      1      3    temp6       Ljava/util/Enumeration;
 
   Signature: length = 0x2
-   00 FFFFFFE0 
+   00 FFFFFFF5 
 
 public java.util.Iterator asIterator(scala.collection.Iterator);
   Signature: (Lscala/collection/Iterator;)Ljava/util/Iterator;
@@ -801,7 +880,7 @@ l2	areturn
    17      1      3    temp3       Ljava/util/Iterator;
 
   Signature: length = 0x2
-   00 FFFFFFE8 
+   00 FFFFFFFD 
 
 }
 

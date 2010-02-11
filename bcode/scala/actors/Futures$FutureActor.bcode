@@ -2,7 +2,7 @@ Compiled from "Future.scala"
 public class scala.actors.Futures$FutureActor extends scala.actors.Future implements scala.actors.DaemonActor,scala.ScalaObject
   SourceFile: "Future.scala"
   Signature: length = 0x2
-   01 FFFFFFD1 
+   01 FFFFFFC8 
   Scala: length = 0x
    
   InnerClass: 
@@ -23,14 +23,11 @@ Asciz	Z;
 Asciz	kill;
 Asciz	Lscala/Function0;;
 Asciz	waitingFor;
-Asciz	Lscala/Function1;;
-Asciz	waitingForNone;
-Asciz	continuation;
 Asciz	Lscala/PartialFunction;;
+Asciz	waitingForNone;
 Asciz	sendBuffer;
-Asciz	Lscala/collection/mutable/Queue;;
-Asciz	mailbox;
 Asciz	Lscala/actors/MQueue;;
+Asciz	mailbox;
 Asciz	senders;
 Asciz	Lscala/collection/immutable/List;;
 Asciz	shouldExit;
@@ -213,6 +210,7 @@ Asciz	(Lscala/PartialFunction;)Lscala/runtime/Nothing$;;
 NameAndType	react:(Lscala/PartialFunction;)Lscala/runtime/Nothing$;
 InterfaceMethod	scala/actors/InputChannel.react:(Lscala/PartialFunction;)Lscala/runtime/Nothing$;
 Asciz	k$1;
+Asciz	Lscala/Function1;;
 Asciz	ft;
 Asciz	Lscala/actors/Future;;
 Asciz	(Lscala/Function1<TT;Ljava/lang/Object;>;)V;
@@ -275,12 +273,12 @@ Asciz	(Lscala/actors/Reactor;)Lscala/PartialFunction;;
 NameAndType	exceptionHandler:(Lscala/actors/Reactor;)Lscala/PartialFunction;
 Method	scala/actors/Reactor$class.exceptionHandler:(Lscala/actors/Reactor;)Lscala/PartialFunction;
 Asciz	scala$actors$Reactor$_setter_$waitingForNone_$eq;
-NameAndType	waitingForNone:Lscala/Function1;
-Field	scala/actors/Futures$FutureActor.waitingForNone:Lscala/Function1;
+Asciz	(Lscala/PartialFunction;)V;
+NameAndType	waitingForNone:Lscala/PartialFunction;
+Field	scala/actors/Futures$FutureActor.waitingForNone:Lscala/PartialFunction;
 Asciz	scala$actors$Reactor$_setter_$sendBuffer_$eq;
-Asciz	(Lscala/collection/mutable/Queue;)V;
-NameAndType	sendBuffer:Lscala/collection/mutable/Queue;
-Field	scala/actors/Futures$FutureActor.sendBuffer:Lscala/collection/mutable/Queue;
+NameAndType	sendBuffer:Lscala/actors/MQueue;
+Field	scala/actors/Futures$FutureActor.sendBuffer:Lscala/actors/MQueue;
 Asciz	scala$actors$Reactor$_setter_$mailbox_$eq;
 NameAndType	mailbox:Lscala/actors/MQueue;
 Field	scala/actors/Futures$FutureActor.mailbox:Lscala/actors/MQueue;
@@ -289,22 +287,16 @@ NameAndType	kill:Lscala/Function0;
 Field	scala/actors/Futures$FutureActor.kill:Lscala/Function0;
 Asciz	()Lscala/Function0;;
 Asciz	waitingFor_$eq;
-NameAndType	waitingFor:Lscala/Function1;
-Field	scala/actors/Futures$FutureActor.waitingFor:Lscala/Function1;
-Asciz	()Lscala/Function1;;
-Asciz	continuation_$eq;
-Asciz	(Lscala/PartialFunction;)V;
-NameAndType	continuation:Lscala/PartialFunction;
-Field	scala/actors/Futures$FutureActor.continuation:Lscala/PartialFunction;
-Asciz	()Lscala/collection/mutable/Queue;;
+NameAndType	waitingFor:Lscala/PartialFunction;
+Field	scala/actors/Futures$FutureActor.waitingFor:Lscala/PartialFunction;
 Asciz	()Lscala/actors/MQueue;;
 Asciz	searchMailbox;
-Asciz	(Lscala/actors/MQueue;Lscala/Function1;Z)V;
-Asciz	(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V;
-NameAndType	searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V
-Method	scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V
+Asciz	(Lscala/actors/MQueue;Lscala/PartialFunction;Z)V;
+Asciz	(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/PartialFunction;Z)V;
+NameAndType	searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/PartialFunction;Z)V
+Method	scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/PartialFunction;Z)V
 Asciz	startMbox;
-Asciz	handlesMessage;
+Asciz	handler;
 Asciz	resumeOnSameThread;
 Asciz	forward;
 Asciz	(Lscala/actors/ReplyReactor;Ljava/lang/Object;)V;
@@ -418,10 +410,10 @@ Asciz	(Lscala/actors/Actor;Lscala/PartialFunction;)Ljava/lang/Object;;
 NameAndType	receive:(Lscala/actors/Actor;Lscala/PartialFunction;)Ljava/lang/Object;
 Method	scala/actors/Actor$class.receive:(Lscala/actors/Actor;Lscala/PartialFunction;)Ljava/lang/Object;
 Asciz	resumeReceiver;
-Asciz	(Lscala/Tuple2;Z)V;
-Asciz	(Lscala/actors/Actor;Lscala/Tuple2;Z)V;
-NameAndType	resumeReceiver:(Lscala/actors/Actor;Lscala/Tuple2;Z)V
-Method	scala/actors/Actor$class.resumeReceiver:(Lscala/actors/Actor;Lscala/Tuple2;Z)V
+Asciz	(Lscala/Tuple2;Lscala/PartialFunction;Z)V;
+Asciz	(Lscala/actors/Actor;Lscala/Tuple2;Lscala/PartialFunction;Z)V;
+NameAndType	resumeReceiver:(Lscala/actors/Actor;Lscala/Tuple2;Lscala/PartialFunction;Z)V
+Method	scala/actors/Actor$class.resumeReceiver:(Lscala/actors/Actor;Lscala/Tuple2;Lscala/PartialFunction;Z)V
 Asciz	item;
 Asciz	Lscala/Tuple2;;
 Asciz	onSameThread;
@@ -431,19 +423,18 @@ Asciz	(Lscala/actors/Actor;Lscala/Function0;)Ljava/lang/Runnable;;
 NameAndType	makeReaction:(Lscala/actors/Actor;Lscala/Function0;)Ljava/lang/Runnable;
 Method	scala/actors/Actor$class.makeReaction:(Lscala/actors/Actor;Lscala/Function0;)Ljava/lang/Runnable;
 Asciz	startSearch;
-Asciz	(Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/Function1;)Lscala/Function0;;
-Asciz	(Lscala/actors/Actor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/Function1;)Lscala/Function0;;
-NameAndType	startSearch:(Lscala/actors/Actor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/Function1;)Lscala/Function0;
-Method	scala/actors/Actor$class.startSearch:(Lscala/actors/Actor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/Function1;)Lscala/Function0;
-Asciz	handler;
+Asciz	(Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/PartialFunction;)Lscala/Function0;;
+Asciz	(Lscala/actors/Actor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/PartialFunction;)Lscala/Function0;;
+NameAndType	startSearch:(Lscala/actors/Actor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/PartialFunction;)Lscala/Function0;
+Method	scala/actors/Actor$class.startSearch:(Lscala/actors/Actor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/PartialFunction;)Lscala/Function0;
 Asciz	scala$actors$Actor$$super$resumeReceiver;
-Asciz	(Lscala/actors/ReplyReactor;Lscala/Tuple2;Z)V;
-NameAndType	resumeReceiver:(Lscala/actors/ReplyReactor;Lscala/Tuple2;Z)V
-Method	scala/actors/ReplyReactor$class.resumeReceiver:(Lscala/actors/ReplyReactor;Lscala/Tuple2;Z)V
+Asciz	(Lscala/actors/ReplyReactor;Lscala/Tuple2;Lscala/PartialFunction;Z)V;
+NameAndType	resumeReceiver:(Lscala/actors/ReplyReactor;Lscala/Tuple2;Lscala/PartialFunction;Z)V
+Method	scala/actors/ReplyReactor$class.resumeReceiver:(Lscala/actors/ReplyReactor;Lscala/Tuple2;Lscala/PartialFunction;Z)V
 Asciz	scala$actors$Actor$$super$startSearch;
-Asciz	(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/Function1;)Lscala/Function0;;
-NameAndType	startSearch:(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/Function1;)Lscala/Function0;
-Method	scala/actors/Reactor$class.startSearch:(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/Function1;)Lscala/Function0;
+Asciz	(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/PartialFunction;)Lscala/Function0;;
+NameAndType	startSearch:(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/PartialFunction;)Lscala/Function0;
+Method	scala/actors/Reactor$class.startSearch:(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/PartialFunction;)Lscala/Function0;
 Asciz	shouldExit_$eq;
 NameAndType	shouldExit:Z
 Field	scala/actors/Futures$FutureActor.shouldExit:Z
@@ -503,17 +494,14 @@ private boolean exiting;
 private volatile scala.Function0 kill;
   Signature: Lscala/Function0;
 
-private scala.Function1 waitingFor;
-  Signature: Lscala/Function1;
-
-private final scala.Function1 waitingForNone;
-  Signature: Lscala/Function1;
-
-private volatile scala.PartialFunction continuation;
+private scala.PartialFunction waitingFor;
   Signature: Lscala/PartialFunction;
 
-private final scala.collection.mutable.Queue sendBuffer;
-  Signature: Lscala/collection/mutable/Queue;
+private final scala.PartialFunction waitingForNone;
+  Signature: Lscala/PartialFunction;
+
+private final scala.actors.MQueue sendBuffer;
+  Signature: Lscala/actors/MQueue;
 
 private final scala.actors.MQueue mailbox;
   Signature: Lscala/actors/MQueue;
@@ -545,7 +533,7 @@ private volatile boolean scala$actors$Actor$$isSuspended;
 private final scala.Function0 fun;
   Signature: Lscala/Function0;
   Signature: length = 0x2
-   00 1E 
+   00 1B 
 
 public scala.actors.Futures$FutureActor(scala.Function0, scala.actors.Channel);
   Signature: (Lscala/Function0;Lscala/actors/Channel;)V
@@ -582,7 +570,7 @@ public scala.actors.Futures$FutureActor(scala.Function0, scala.actors.Channel);
    0      43      2    channel       Lscala/actors/Channel;
 
   Signature: length = 0x2
-   00 57 
+   00 54 
 
 public scala.actors.Reactor start();
   Signature: ()Lscala/actors/Reactor;
@@ -710,7 +698,7 @@ l1	aload_0
    29      19      2    ft       Lscala/actors/Future;
 
   Signature: length = 0x2
-   00 FFFFFFCA 
+   00 FFFFFFC8 
 
 public java.lang.Object apply();
   Signature: ()Ljava/lang/Object;
@@ -733,7 +721,7 @@ l2	pop
    	l1 = 22 // getstatic
    	l2 = 25 // pop
   Signature: length = 0x2
-   00 FFFFFFDD 
+   00 FFFFFFDB 
 
 public boolean isSet();
   Signature: ()Z
@@ -855,23 +843,23 @@ public scala.PartialFunction exceptionHandler();
 	areturn
   Labels:
 
-public void scala$actors$Reactor$_setter_$waitingForNone_$eq(scala.Function1);
-  Signature: (Lscala/Function1;)V
+public void scala$actors$Reactor$_setter_$waitingForNone_$eq(scala.PartialFunction);
+  Signature: (Lscala/PartialFunction;)V
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	putfield	Field waitingForNone:Lscala/Function1;
+	putfield	Field waitingForNone:Lscala/PartialFunction;
 	return
   Labels:
 
-public void scala$actors$Reactor$_setter_$sendBuffer_$eq(scala.collection.mutable.Queue);
-  Signature: (Lscala/collection/mutable/Queue;)V
+public void scala$actors$Reactor$_setter_$sendBuffer_$eq(scala.actors.MQueue);
+  Signature: (Lscala/actors/MQueue;)V
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	putfield	Field sendBuffer:Lscala/collection/mutable/Queue;
+	putfield	Field sendBuffer:Lscala/actors/MQueue;
 	return
   Labels:
 
@@ -904,59 +892,40 @@ public scala.Function0 kill();
 	areturn
   Labels:
 
-public void waitingFor_$eq(scala.Function1);
-  Signature: (Lscala/Function1;)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	putfield	Field waitingFor:Lscala/Function1;
-	return
-  Labels:
-
-public scala.Function1 waitingFor();
-  Signature: ()Lscala/Function1;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field waitingFor:Lscala/Function1;
-	areturn
-  Labels:
-
-public scala.Function1 waitingForNone();
-  Signature: ()Lscala/Function1;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field waitingForNone:Lscala/Function1;
-	areturn
-  Labels:
-
-public void continuation_$eq(scala.PartialFunction);
+public void waitingFor_$eq(scala.PartialFunction);
   Signature: (Lscala/PartialFunction;)V
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	putfield	Field continuation:Lscala/PartialFunction;
+	putfield	Field waitingFor:Lscala/PartialFunction;
 	return
   Labels:
 
-public scala.PartialFunction continuation();
+public scala.PartialFunction waitingFor();
   Signature: ()Lscala/PartialFunction;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	getfield	Field continuation:Lscala/PartialFunction;
+	getfield	Field waitingFor:Lscala/PartialFunction;
 	areturn
   Labels:
 
-public scala.collection.mutable.Queue sendBuffer();
-  Signature: ()Lscala/collection/mutable/Queue;
+public scala.PartialFunction waitingForNone();
+  Signature: ()Lscala/PartialFunction;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	getfield	Field sendBuffer:Lscala/collection/mutable/Queue;
+	getfield	Field waitingForNone:Lscala/PartialFunction;
+	areturn
+  Labels:
+
+public scala.actors.MQueue sendBuffer();
+  Signature: ()Lscala/actors/MQueue;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field sendBuffer:Lscala/actors/MQueue;
 	areturn
   Labels:
 
@@ -969,22 +938,22 @@ public scala.actors.MQueue mailbox();
 	areturn
   Labels:
 
-public void searchMailbox(scala.actors.MQueue, scala.Function1, boolean);
-  Signature: (Lscala/actors/MQueue;Lscala/Function1;Z)V
+public void searchMailbox(scala.actors.MQueue, scala.PartialFunction, boolean);
+  Signature: (Lscala/actors/MQueue;Lscala/PartialFunction;Z)V
   Code:
    Stack=4, Locals=4, Args_size=4
 	aload_0
 	aload_1
 	aload_2
 	iload_3
-	invokestatic	Method scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/Function1;Z)V
+	invokestatic	Method scala/actors/ReplyReactor$class.searchMailbox:(Lscala/actors/ReplyReactor;Lscala/actors/MQueue;Lscala/PartialFunction;Z)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      8      0    this       Lscala/actors/Futures$FutureActor;
    0      8      1    startMbox       Lscala/actors/MQueue;
-   0      8      2    handlesMessage       Lscala/Function1;
+   0      8      2    handler       Lscala/PartialFunction;
    0      8      3    resumeOnSameThread       Z
 
 
@@ -1379,21 +1348,23 @@ public java.lang.Object receive(scala.PartialFunction);
    0      6      1    f       Lscala/PartialFunction;
 
 
-public void resumeReceiver(scala.Tuple2, boolean);
-  Signature: (Lscala/Tuple2;Z)V
+public void resumeReceiver(scala.Tuple2, scala.PartialFunction, boolean);
+  Signature: (Lscala/Tuple2;Lscala/PartialFunction;Z)V
   Code:
-   Stack=3, Locals=3, Args_size=3
+   Stack=4, Locals=4, Args_size=4
 	aload_0
 	aload_1
-	iload_2
-	invokestatic	Method scala/actors/Actor$class.resumeReceiver:(Lscala/actors/Actor;Lscala/Tuple2;Z)V
+	aload_2
+	iload_3
+	invokestatic	Method scala/actors/Actor$class.resumeReceiver:(Lscala/actors/Actor;Lscala/Tuple2;Lscala/PartialFunction;Z)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      7      0    this       Lscala/actors/Futures$FutureActor;
-   0      7      1    item       Lscala/Tuple2;
-   0      7      2    onSameThread       Z
+   0      8      0    this       Lscala/actors/Futures$FutureActor;
+   0      8      1    item       Lscala/Tuple2;
+   0      8      2    handler       Lscala/PartialFunction;
+   0      8      3    onSameThread       Z
 
 
 public java.lang.Runnable makeReaction(scala.Function0);
@@ -1411,15 +1382,15 @@ public java.lang.Runnable makeReaction(scala.Function0);
    0      6      1    fun       Lscala/Function0;
 
 
-public scala.Function0 startSearch(java.lang.Object, scala.actors.OutputChannel, scala.Function1);
-  Signature: (Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/Function1;)Lscala/Function0;
+public scala.Function0 startSearch(java.lang.Object, scala.actors.OutputChannel, scala.PartialFunction);
+  Signature: (Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/PartialFunction;)Lscala/Function0;
   Code:
    Stack=4, Locals=4, Args_size=4
 	aload_0
 	aload_1
 	aload_2
 	aload_3
-	invokestatic	Method scala/actors/Actor$class.startSearch:(Lscala/actors/Actor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/Function1;)Lscala/Function0;
+	invokestatic	Method scala/actors/Actor$class.startSearch:(Lscala/actors/Actor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/PartialFunction;)Lscala/Function0;
 	areturn
   Labels:
   LocalVariableTable: 
@@ -1427,35 +1398,37 @@ public scala.Function0 startSearch(java.lang.Object, scala.actors.OutputChannel,
    0      8      0    this       Lscala/actors/Futures$FutureActor;
    0      8      1    msg       Ljava/lang/Object;
    0      8      2    replyTo       Lscala/actors/OutputChannel;
-   0      8      3    handler       Lscala/Function1;
+   0      8      3    handler       Lscala/PartialFunction;
 
 
-public final void scala$actors$Actor$$super$resumeReceiver(scala.Tuple2, boolean);
-  Signature: (Lscala/Tuple2;Z)V
+public final void scala$actors$Actor$$super$resumeReceiver(scala.Tuple2, scala.PartialFunction, boolean);
+  Signature: (Lscala/Tuple2;Lscala/PartialFunction;Z)V
   Code:
-   Stack=3, Locals=3, Args_size=3
+   Stack=4, Locals=4, Args_size=4
 	aload_0
 	aload_1
-	iload_2
-	invokestatic	Method scala/actors/ReplyReactor$class.resumeReceiver:(Lscala/actors/ReplyReactor;Lscala/Tuple2;Z)V
+	aload_2
+	iload_3
+	invokestatic	Method scala/actors/ReplyReactor$class.resumeReceiver:(Lscala/actors/ReplyReactor;Lscala/Tuple2;Lscala/PartialFunction;Z)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      7      0    this       Lscala/actors/Futures$FutureActor;
-   0      7      1    item       Lscala/Tuple2;
-   0      7      2    onSameThread       Z
+   0      8      0    this       Lscala/actors/Futures$FutureActor;
+   0      8      1    item       Lscala/Tuple2;
+   0      8      2    handler       Lscala/PartialFunction;
+   0      8      3    onSameThread       Z
 
 
-public final scala.Function0 scala$actors$Actor$$super$startSearch(java.lang.Object, scala.actors.OutputChannel, scala.Function1);
-  Signature: (Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/Function1;)Lscala/Function0;
+public final scala.Function0 scala$actors$Actor$$super$startSearch(java.lang.Object, scala.actors.OutputChannel, scala.PartialFunction);
+  Signature: (Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/PartialFunction;)Lscala/Function0;
   Code:
    Stack=4, Locals=4, Args_size=4
 	aload_0
 	aload_1
 	aload_2
 	aload_3
-	invokestatic	Method scala/actors/Reactor$class.startSearch:(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/Function1;)Lscala/Function0;
+	invokestatic	Method scala/actors/Reactor$class.startSearch:(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/PartialFunction;)Lscala/Function0;
 	areturn
   Labels:
   LocalVariableTable: 
@@ -1463,7 +1436,7 @@ public final scala.Function0 scala$actors$Actor$$super$startSearch(java.lang.Obj
    0      8      0    this       Lscala/actors/Futures$FutureActor;
    0      8      1    msg       Ljava/lang/Object;
    0      8      2    replyTo       Lscala/actors/OutputChannel;
-   0      8      3    handler       Lscala/Function1;
+   0      8      3    handler       Lscala/PartialFunction;
 
 
 public void shouldExit_$eq(boolean);

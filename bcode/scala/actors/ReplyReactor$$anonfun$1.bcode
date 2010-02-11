@@ -19,12 +19,12 @@ Asciz	scala/actors/ReplyReactor$$anonfun$1;
 class	scala/actors/ReplyReactor$$anonfun$1
 NameAndType	serialVersionUID:J
 Field	scala/actors/ReplyReactor$$anonfun$1.serialVersionUID:J
-Asciz	handlesMessage$1;
-Asciz	Lscala/Function1;;
+Asciz	handler$1;
+Asciz	Lscala/PartialFunction;;
 Asciz	$outer;
 Asciz	Lscala/actors/ReplyReactor;;
 Asciz	<init>;
-Asciz	(Lscala/actors/ReplyReactor;Lscala/Function1;)V;
+Asciz	(Lscala/actors/ReplyReactor;Lscala/PartialFunction;)V;
 Asciz	LineNumberTable;
 Asciz	java/lang/NullPointerException;
 class	java/lang/NullPointerException
@@ -32,8 +32,8 @@ NameAndType	"<init>":()V
 Method	java/lang/NullPointerException."<init>":()V
 NameAndType	$outer:Lscala/actors/ReplyReactor;
 Field	scala/actors/ReplyReactor$$anonfun$1.$outer:Lscala/actors/ReplyReactor;
-NameAndType	handlesMessage$1:Lscala/Function1;
-Field	scala/actors/ReplyReactor$$anonfun$1.handlesMessage$1:Lscala/Function1;
+NameAndType	handler$1:Lscala/PartialFunction;
+Field	scala/actors/ReplyReactor$$anonfun$1.handler$1:Lscala/PartialFunction;
 Asciz	scala/runtime/AbstractFunction2;
 class	scala/runtime/AbstractFunction2
 Method	scala/runtime/AbstractFunction2."<init>":()V
@@ -82,15 +82,12 @@ Asciz	senders_$eq;
 Asciz	(Lscala/collection/immutable/List;)V;
 NameAndType	senders_$eq:(Lscala/collection/immutable/List;)V
 InterfaceMethod	scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
-Asciz	scala/Function1;
-class	scala/Function1
-Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
-NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
-InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-Asciz	unboxToBoolean;
+Asciz	scala/PartialFunction;
+class	scala/PartialFunction
+Asciz	isDefinedAt;
 Asciz	(Ljava/lang/Object;)Z;
-NameAndType	unboxToBoolean:(Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
+NameAndType	isDefinedAt:(Ljava/lang/Object;)Z
+InterfaceMethod	scala/PartialFunction.isDefinedAt:(Ljava/lang/Object;)Z
 Asciz	msg;
 Asciz	replyTo;
 Asciz	Lscala/actors/OutputChannel;;
@@ -106,8 +103,8 @@ class	java/io/Serializable
 public static final long serialVersionUID;
   Signature: J
 
-public final scala.Function1 handlesMessage$1;
-  Signature: Lscala/Function1;
+public final scala.PartialFunction handler$1;
+  Signature: Lscala/PartialFunction;
 
 public final scala.actors.ReplyReactor $outer;
   Signature: Lscala/actors/ReplyReactor;
@@ -121,8 +118,8 @@ public static {};
 	return
   Labels:
 
-public scala.actors.ReplyReactor$$anonfun$1(scala.actors.ReplyReactor, scala.Function1);
-  Signature: (Lscala/actors/ReplyReactor;Lscala/Function1;)V
+public scala.actors.ReplyReactor$$anonfun$1(scala.actors.ReplyReactor, scala.PartialFunction);
+  Signature: (Lscala/actors/ReplyReactor;Lscala/PartialFunction;)V
   Code:
    Stack=2, Locals=3, Args_size=3
 	aload_1
@@ -136,7 +133,7 @@ l1	aload_0
 	putfield	Field $outer:Lscala/actors/ReplyReactor;
 	aload_0
 	aload_2
-	putfield	Field handlesMessage$1:Lscala/Function1;
+	putfield	Field handler$1:Lscala/PartialFunction;
 	aload_0
 	invokespecial	Method scala/runtime/AbstractFunction2."<init>":()V
 	return
@@ -188,20 +185,19 @@ public final boolean apply(java.lang.Object, scala.actors.OutputChannel);
 	invokevirtual	Method scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
 	aload_0
-	getfield	Field handlesMessage$1:Lscala/Function1;
+	getfield	Field handler$1:Lscala/PartialFunction;
 	aload_1
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
+	invokeinterface	InterfaceMethod scala/PartialFunction.isDefinedAt:(Ljava/lang/Object;)Z
 	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      46      0    this       Lscala/actors/ReplyReactor$$anonfun$1;
-   0      46      1    msg       Ljava/lang/Object;
-   0      46      2    replyTo       Lscala/actors/OutputChannel;
+   0      43      0    this       Lscala/actors/ReplyReactor$$anonfun$1;
+   0      43      1    msg       Ljava/lang/Object;
+   0      43      2    replyTo       Lscala/actors/OutputChannel;
 
   Signature: length = 0x2
-   00 57 
+   00 54 
 
 }
 
