@@ -4,7 +4,9 @@ public abstract class scala.collection.mutable.HashTable$class extends java.lang
   Scala: length = 0x
    
   InnerClass: 
+   public ofRef=class scala/collection/mutable/ArrayOps$ofRef of class scala/collection/mutable/ArrayOps
    public final $anon$1=class scala/collection/mutable/HashTable$$anon$1 of class scala/collection/mutable/HashTable
+   public final $anonfun$serializeTo$1=class scala/collection/mutable/HashTable$$anonfun$serializeTo$1 of class scala/collection/mutable/HashTable
   minor version: 0
   major version: 49
   Constant pool:
@@ -14,6 +16,16 @@ Asciz	$init$;
 Asciz	(Lscala/collection/mutable/HashTable;)V;
 Asciz	Code;
 Asciz	LineNumberTable;
+Asciz	scala/collection/mutable/HashTable;
+class	scala/collection/mutable/HashTable
+Asciz	loadFactor;
+Asciz	()I;
+NameAndType	loadFactor:()I
+InterfaceMethod	scala/collection/mutable/HashTable.loadFactor:()I
+Asciz	_loadFactor_$eq;
+Asciz	(I)V;
+NameAndType	_loadFactor_$eq:(I)V
+InterfaceMethod	scala/collection/mutable/HashTable._loadFactor_$eq:(I)V
 Asciz	scala/collection/mutable/HashTable$class;
 class	scala/collection/mutable/HashTable$class
 Asciz	initialCapacity;
@@ -22,18 +34,14 @@ NameAndType	initialCapacity:(Lscala/collection/mutable/HashTable;)I
 Method	scala/collection/mutable/HashTable$class.initialCapacity:(Lscala/collection/mutable/HashTable;)I
 Asciz	scala/collection/mutable/HashEntry;
 class	scala/collection/mutable/HashEntry
-Asciz	scala/collection/mutable/HashTable;
-class	scala/collection/mutable/HashTable
 Asciz	table_$eq;
 Asciz	([Lscala/collection/mutable/HashEntry;)V;
 NameAndType	table_$eq:([Lscala/collection/mutable/HashEntry;)V
 InterfaceMethod	scala/collection/mutable/HashTable.table_$eq:([Lscala/collection/mutable/HashEntry;)V
 Asciz	tableSize_$eq;
-Asciz	(I)V;
 NameAndType	tableSize_$eq:(I)V
 InterfaceMethod	scala/collection/mutable/HashTable.tableSize_$eq:(I)V
 Asciz	initialThreshold;
-Asciz	()I;
 NameAndType	initialThreshold:()I
 InterfaceMethod	scala/collection/mutable/HashTable.initialThreshold:()I
 Asciz	threshold_$eq;
@@ -112,9 +120,9 @@ Asciz	i;
 Asciz	e1;
 Asciz	Lscala/collection/mutable/HashEntry;;
 Asciz	e;
-Asciz	loadFactor;
-NameAndType	loadFactor:()I
-InterfaceMethod	scala/collection/mutable/HashTable.loadFactor:()I
+Asciz	_loadFactor;
+NameAndType	_loadFactor:()I
+InterfaceMethod	scala/collection/mutable/HashTable._loadFactor:()I
 long	1000l;
 Asciz	size;
 Asciz	clearTable;
@@ -126,16 +134,14 @@ NameAndType	entriesIterator:()Lscala/collection/Iterator;
 InterfaceMethod	scala/collection/mutable/HashTable.entriesIterator:()Lscala/collection/Iterator;
 Asciz	foreachEntry;
 Asciz	(Lscala/collection/mutable/HashTable;Lscala/Function1;)V;
-Asciz	scala/Function1;
-class	scala/Function1
-Asciz	apply;
-Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
-NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
-InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+Asciz	scala/collection/Iterator;
+class	scala/collection/Iterator
+Asciz	foreach;
+Asciz	(Lscala/Function1;)V;
+NameAndType	foreach:(Lscala/Function1;)V
+InterfaceMethod	scala/collection/Iterator.foreach:(Lscala/Function1;)V
 Asciz	f;
 Asciz	Lscala/Function1;;
-Asciz	t;
-Asciz	entry;
 Asciz	scala/collection/mutable/HashTable$$anon$1;
 class	scala/collection/mutable/HashTable$$anon$1
 Asciz	<init>;
@@ -156,26 +162,101 @@ InterfaceMethod	scala/collection/mutable/HashTable.threshold:()I
 NameAndType	resize:(Lscala/collection/mutable/HashTable;I)V
 Method	scala/collection/mutable/HashTable$class.resize:(Lscala/collection/mutable/HashTable;I)V
 Asciz	findEntry;
-Asciz	powerOfTwo;
+Asciz	capacity;
 int	8;
 int	16;
-Asciz	target;
-Asciz	c;
+Asciz	expectedSize;
+Asciz	c0;
+Asciz	serializeTo;
+Asciz	(Lscala/collection/mutable/HashTable;Ljava/io/ObjectOutputStream;Lscala/Function1;)V;
+Asciz	java/io/ObjectOutputStream;
+class	java/io/ObjectOutputStream
+Asciz	defaultWriteObject;
+Asciz	()V;
+NameAndType	defaultWriteObject:()V
+Method	java/io/ObjectOutputStream.defaultWriteObject:()V
+Asciz	writeInt;
+NameAndType	writeInt:(I)V
+Method	java/io/ObjectOutputStream.writeInt:(I)V
+Asciz	scala/collection/mutable/HashTable$$anonfun$serializeTo$1;
+class	scala/collection/mutable/HashTable$$anonfun$serializeTo$1
+NameAndType	"<init>":(Lscala/collection/mutable/HashTable;Ljava/io/ObjectOutputStream;Lscala/Function1;)V
+Method	scala/collection/mutable/HashTable$$anonfun$serializeTo$1."<init>":(Lscala/collection/mutable/HashTable;Ljava/io/ObjectOutputStream;Lscala/Function1;)V
+NameAndType	foreachEntry:(Lscala/Function1;)V
+InterfaceMethod	scala/collection/mutable/HashTable.foreachEntry:(Lscala/Function1;)V
+Asciz	out$1;
+Asciz	Ljava/io/ObjectOutputStream;;
+Asciz	value$1;
+Asciz	init;
+Asciz	(Lscala/collection/mutable/HashTable;Ljava/io/ObjectInputStream;Lscala/Function2;)V;
+Asciz	java/io/ObjectInputStream;
+class	java/io/ObjectInputStream
+Asciz	defaultReadObject;
+NameAndType	defaultReadObject:()V
+Method	java/io/ObjectInputStream.defaultReadObject:()V
+Asciz	readInt;
+NameAndType	readInt:()I
+Method	java/io/ObjectInputStream.readInt:()I
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	MODULE$;
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	assert;
+Asciz	(Z)V;
+NameAndType	assert:(Z)V
+Method	scala/Predef$.assert:(Z)V
+int	1000;
+NameAndType	capacity:(Lscala/collection/mutable/HashTable;I)I
+Method	scala/collection/mutable/HashTable$class.capacity:(Lscala/collection/mutable/HashTable;I)I
+Asciz	[Ljava/lang/Object;;
+class	"[Ljava/lang/Object;"
+Asciz	scala/collection/mutable/ArrayOps$ofRef;
+class	scala/collection/mutable/ArrayOps$ofRef
+Asciz	([Ljava/lang/Object;)V;
+NameAndType	"<init>":([Ljava/lang/Object;)V
+Method	scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
+Asciz	scala/collection/SeqLike;
+class	scala/collection/SeqLike
+NameAndType	size:()I
+InterfaceMethod	scala/collection/SeqLike.size:()I
+Asciz	readObject;
+NameAndType	readObject:()Ljava/lang/Object;
+Method	java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
+Asciz	scala/Function2;
+class	scala/Function2
+Asciz	apply;
+Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;;
+NameAndType	apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+InterfaceMethod	scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+Asciz	(Lscala/collection/mutable/HashEntry;)V;
+NameAndType	addEntry:(Lscala/collection/mutable/HashEntry;)V
+InterfaceMethod	scala/collection/mutable/HashTable.addEntry:(Lscala/collection/mutable/HashEntry;)V
+Asciz	in;
+Asciz	Ljava/io/ObjectInputStream;;
+Asciz	Lscala/Function2;;
 Asciz	initialSize;
 NameAndType	initialSize:()I
 InterfaceMethod	scala/collection/mutable/HashTable.initialSize:()I
-NameAndType	powerOfTwo:(Lscala/collection/mutable/HashTable;I)I
-Method	scala/collection/mutable/HashTable$class.powerOfTwo:(Lscala/collection/mutable/HashTable;I)I
 int	750;
 Asciz	Scala;
 Asciz	InnerClasses;
+Asciz	scala/collection/mutable/ArrayOps;
+class	scala/collection/mutable/ArrayOps
+Asciz	ofRef;
 Asciz	$anon$1;
+Asciz	$anonfun$serializeTo$1;
 
 {
 public static void $init$(scala.collection.mutable.HashTable);
   Signature: (Lscala/collection/mutable/HashTable;)V
   Code:
    Stack=2, Locals=1, Args_size=1
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.loadFactor:()I
+	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable._loadFactor_$eq:(I)V
 	aload_0
 	aload_0
 	invokestatic	Method initialCapacity:(Lscala/collection/mutable/HashTable;)I
@@ -192,7 +273,7 @@ public static void $init$(scala.collection.mutable.HashTable);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      33      0    $this       Lscala/collection/mutable/HashTable;
+   0      45      0    $this       Lscala/collection/mutable/HashTable;
 
 
 public static final int index(scala.collection.mutable.HashTable, int);
@@ -406,7 +487,7 @@ private static int newThreshold(scala.collection.mutable.HashTable, int);
 	iload_1
 	i2l
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.loadFactor:()I
+	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable._loadFactor:()I
 	i2l
 	lmul
 	ldc2_w	long 1000l
@@ -472,51 +553,17 @@ public static scala.collection.Iterator entries(scala.collection.mutable.HashTab
 public static final void foreachEntry(scala.collection.mutable.HashTable, scala.Function1);
   Signature: (Lscala/collection/mutable/HashTable;Lscala/Function1;)V
   Code:
-   Stack=2, Locals=5, Args_size=2
+   Stack=2, Locals=2, Args_size=2
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.table:()[Lscala/collection/mutable/HashEntry;
-	astore_2
-	aload_2
-	arraylength
-	iconst_1
-	isub
-	istore_3
-l4	iload_3
-	iconst_0
-	if_icmplt	l1 // return
-	aload_2
-	iload_3
-	aaload
-	astore	4
-l3	aload	4
-	ifnull	l2 // iload_3
+	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.entriesIterator:()Lscala/collection/Iterator;
 	aload_1
-	aload	4
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	pop
-	aload	4
-	invokeinterface	InterfaceMethod scala/collection/mutable/HashEntry.next:()Ljava/lang/Object;
-	checkcast	class scala/collection/mutable/HashEntry
-	astore	4
-	goto	l3 // aload
-l2	iload_3
-	iconst_1
-	isub
-	istore_3
-	goto	l4 // iload_3
-l1	return
+	invokeinterface	InterfaceMethod scala/collection/Iterator.foreach:(Lscala/Function1;)V
+	return
   Labels:
-   	l4 = 12 // iload_3
-   	l3 = 22 // aload
-   	l2 = 51 // iload_3
-   	l1 = 58 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      59      0    $this       Lscala/collection/mutable/HashTable;
-   0      59      1    f       Lscala/Function1;
-   7      52      2    t       [Lscala/collection/mutable/HashEntry;
-   12      47      3    index       I
-   22      33      4    entry       Lscala/collection/mutable/HashEntry;
+   0      13      0    $this       Lscala/collection/mutable/HashTable;
+   0      13      1    f       Lscala/Function1;
 
 
 public static scala.collection.Iterator entriesIterator(scala.collection.mutable.HashTable);
@@ -744,11 +791,16 @@ l2	aload_3
    55      13      3    e       Lscala/collection/mutable/HashEntry;
 
 
-private static int powerOfTwo(scala.collection.mutable.HashTable, int);
+private static int capacity(scala.collection.mutable.HashTable, int);
   Signature: (Lscala/collection/mutable/HashTable;I)I
   Code:
    Stack=3, Locals=3, Args_size=2
 	iload_1
+	iconst_0
+	if_icmpne	l1 // iload_1
+	iconst_1
+	goto	l2 // ireturn
+l1	iload_1
 	iconst_1
 	isub
 	istore_2
@@ -785,13 +837,136 @@ private static int powerOfTwo(scala.collection.mutable.HashTable, int);
 	iload_2
 	iconst_1
 	iadd
-	ireturn
+l2	ireturn
+  Labels:
+   	l1 = 9 // iload_1
+   	l2 = 48 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      49      0    $this       Lscala/collection/mutable/HashTable;
+   0      49      1    expectedSize       I
+   13      35      2    c0       I
+
+
+public static void serializeTo(scala.collection.mutable.HashTable, java.io.ObjectOutputStream, scala.Function1);
+  Signature: (Lscala/collection/mutable/HashTable;Ljava/io/ObjectOutputStream;Lscala/Function1;)V
+  Code:
+   Stack=6, Locals=3, Args_size=3
+	aload_1
+	invokevirtual	Method java/io/ObjectOutputStream.defaultWriteObject:()V
+	aload_1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.loadFactor:()I
+	invokevirtual	Method java/io/ObjectOutputStream.writeInt:(I)V
+	aload_1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.tableSize:()I
+	invokevirtual	Method java/io/ObjectOutputStream.writeInt:(I)V
+	aload_0
+	new	class scala/collection/mutable/HashTable$$anonfun$serializeTo$1
+	dup
+	aload_0
+	aload_1
+	aload_2
+	invokespecial	Method scala/collection/mutable/HashTable$$anonfun$serializeTo$1."<init>":(Lscala/collection/mutable/HashTable;Ljava/io/ObjectOutputStream;Lscala/Function1;)V
+	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.foreachEntry:(Lscala/Function1;)V
+	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      40      0    $this       Lscala/collection/mutable/HashTable;
-   0      40      1    target       I
-   4      35      2    c       I
+   0      41      0    $this       Lscala/collection/mutable/HashTable;
+   0      41      1    out$1       Ljava/io/ObjectOutputStream;
+   0      41      2    value$1       Lscala/Function1;
+
+
+public static void init(scala.collection.mutable.HashTable, java.io.ObjectInputStream, scala.Function2);
+  Signature: (Lscala/collection/mutable/HashTable;Ljava/io/ObjectInputStream;Lscala/Function2;)V
+  Code:
+   Stack=5, Locals=6, Args_size=3
+	aload_1
+	invokevirtual	Method java/io/ObjectInputStream.defaultReadObject:()V
+	aload_0
+	aload_1
+	invokevirtual	Method java/io/ObjectInputStream.readInt:()I
+	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable._loadFactor_$eq:(I)V
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable._loadFactor:()I
+	iconst_0
+	if_icmple	l1 // iconst_0
+	iconst_1
+	goto	l2 // invokevirtual
+l1	iconst_0
+l2	invokevirtual	Method scala/Predef$.assert:(Z)V
+	aload_1
+	invokevirtual	Method java/io/ObjectInputStream.readInt:()I
+	istore	4
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iload	4
+	iconst_0
+	if_icmplt	l3 // iconst_0
+	iconst_1
+	goto	l4 // invokevirtual
+l3	iconst_0
+l4	invokevirtual	Method scala/Predef$.assert:(Z)V
+	aload_0
+	aload_0
+	iload	4
+	ldc	int 1000
+	imul
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable._loadFactor:()I
+	idiv
+	invokestatic	Method capacity:(Lscala/collection/mutable/HashTable;I)I
+	anewarray	class scala/collection/mutable/HashEntry
+	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.table_$eq:([Lscala/collection/mutable/HashEntry;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.table:()[Lscala/collection/mutable/HashEntry;
+	checkcast	class "[Ljava/lang/Object;"
+	astore_3
+	new	class scala/collection/mutable/ArrayOps$ofRef
+	dup
+	aload_3
+	invokespecial	Method scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.size:()I
+	invokestatic	Method newThreshold:(Lscala/collection/mutable/HashTable;I)I
+	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.threshold_$eq:(I)V
+	iconst_0
+	istore	5
+l6	iload	5
+	iload	4
+	if_icmpge	l5 // return
+	aload_0
+	aload_2
+	aload_1
+	invokevirtual	Method java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
+	aload_1
+	invokevirtual	Method java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	checkcast	class scala/collection/mutable/HashEntry
+	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.addEntry:(Lscala/collection/mutable/HashEntry;)V
+	iload	5
+	iconst_1
+	iadd
+	istore	5
+	goto	l6 // iload
+l5	return
+  Labels:
+   	l1 = 31 // iconst_0
+   	l2 = 32 // invokevirtual
+   	l3 = 54 // iconst_0
+   	l4 = 55 // invokevirtual
+   	l6 = 119 // iload
+   	l5 = 158 // return
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      159      0    $this       Lscala/collection/mutable/HashTable;
+   0      159      1    in       Ljava/io/ObjectInputStream;
+   0      159      2    f       Lscala/Function2;
+   41      118      4    size       I
+   119      40      5    index       I
 
 
 private static int initialCapacity(scala.collection.mutable.HashTable);
@@ -799,22 +974,14 @@ private static int initialCapacity(scala.collection.mutable.HashTable);
   Code:
    Stack=2, Locals=1, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.initialSize:()I
-	iconst_0
-	if_icmpne	l1 // aload_0
-	iconst_1
-	goto	l2 // ireturn
-l1	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.initialSize:()I
-	invokestatic	Method powerOfTwo:(Lscala/collection/mutable/HashTable;I)I
-l2	ireturn
+	invokestatic	Method capacity:(Lscala/collection/mutable/HashTable;I)I
+	ireturn
   Labels:
-   	l1 = 14 // aload_0
-   	l2 = 24 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      25      0    $this       Lscala/collection/mutable/HashTable;
+   0      11      0    $this       Lscala/collection/mutable/HashTable;
 
 
 public static int initialThreshold(scala.collection.mutable.HashTable);

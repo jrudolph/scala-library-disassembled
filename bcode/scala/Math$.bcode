@@ -129,9 +129,7 @@ Asciz	LocalVariableTable;
 Asciz	(J)J;
 long	-1l;
 Asciz	(F)F;
-float	-1.0f;
 Asciz	(D)D;
-double	-1.0d;
 Asciz	min;
 Asciz	(DD)D;
 Asciz	java/lang/Math;
@@ -476,7 +474,8 @@ l1	fload_1
 	i2f
 	fcmpg
 	ifge	l3 // fload_1
-	ldc	float -1.0f
+	fconst_1
+	fneg
 	goto	l2 // freturn
 l3	fload_1
 	iconst_0
@@ -513,7 +512,8 @@ l1	dload_1
 	i2d
 	dcmpg
 	ifge	l3 // dload_1
-	ldc2_w	double -1.0d
+	dconst_1
+	dneg
 	goto	l2 // dreturn
 l3	dload_1
 	iconst_0
@@ -526,13 +526,13 @@ l4	dload_1
 l2	dreturn
   Labels:
    	l1 = 10 // dload_1
-   	l3 = 23 // dload_1
-   	l4 = 34 // dload_1
-   	l2 = 35 // dreturn
+   	l3 = 22 // dload_1
+   	l4 = 33 // dload_1
+   	l2 = 34 // dreturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      36      0    this       Lscala/Math$;
-   0      36      1    x       D
+   0      35      0    this       Lscala/Math$;
+   0      35      1    x       D
 
 
 public double min(double, double);

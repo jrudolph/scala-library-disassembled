@@ -108,24 +108,84 @@ Asciz	temp4;
 Asciz	Lscala/Option;;
 Asciz	temp1;
 Asciz	LocalVariableTable;
+Asciz	useForkJoin;
+Asciz	()Z;
+Asciz	actors.enableForkJoin;
+String	actors.enableForkJoin
 Asciz	java/lang/System;
 class	java/lang/System
 Asciz	getProperty;
 Asciz	(Ljava/lang/String;)Ljava/lang/String;;
 NameAndType	getProperty:(Ljava/lang/String;)Ljava/lang/String;
 Method	java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	java.version;
+String	java.version
+Asciz	java.vm.vendor;
+String	java.vm.vendor
+Asciz	scala/actors/Debug$;
+class	scala/actors/Debug$
+Asciz	Lscala/actors/Debug$;;
+NameAndType	MODULE$:Lscala/actors/Debug$;
+Field	scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+Asciz	scala/collection/mutable/StringBuilder;
+class	scala/collection/mutable/StringBuilder
+Method	scala/collection/mutable/StringBuilder."<init>":()V
+Asciz	scala/runtime/StringAdd;
+class	scala/runtime/StringAdd
+Asciz	(Ljava/lang/Object;)V;
+NameAndType	"<init>":(Ljava/lang/Object;)V
+Method	scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+Asciz	: java.version = ;
+String	: java.version = 
+Asciz	$plus;
+NameAndType	$plus:(Ljava/lang/String;)Ljava/lang/String;
+Method	scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+Asciz	append;
+Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
+NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+Asciz	info;
+NameAndType	info:(Ljava/lang/String;)V
+Method	scala/actors/Debug$.info:(Ljava/lang/String;)V
+Asciz	: java.vm.vendor = ;
+String	: java.vm.vendor = 
+Asciz	1.6;
+String	1.6
+Asciz	java/lang/String;
+class	java/lang/String
+Asciz	indexOf;
+Asciz	(Ljava/lang/String;)I;
+NameAndType	indexOf:(Ljava/lang/String;)I
+Method	java/lang/String.indexOf:(Ljava/lang/String;)I
+Asciz	1.7;
+String	1.7
+Asciz	Sun;
+String	Sun
+Asciz	true;
+String	true
+Method	java/lang/String.equals:(Ljava/lang/Object;)Z
+Asciz	java/lang/SecurityException;
+class	java/lang/SecurityException
+Asciz	javaVersion;
+Asciz	Ljava/lang/String;;
+Asciz	jvmVendor;
+Asciz	fjProp;
+Asciz	exceptionResult2;
+Asciz	Z;
 Asciz	java/lang/Integer;
 class	java/lang/Integer
 Asciz	parseInt;
-Asciz	(Ljava/lang/String;)I;
 NameAndType	parseInt:(Ljava/lang/String;)I
 Method	java/lang/Integer.parseInt:(Ljava/lang/String;)I
 Asciz	boxToInteger;
 Asciz	(I)Ljava/lang/Integer;;
 NameAndType	boxToInteger:(I)Ljava/lang/Integer;
 Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-Asciz	(Ljava/lang/Object;)V;
-NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/Some."<init>":(Ljava/lang/Object;)V
 Asciz	scala/None$;
 class	scala/None$
@@ -137,7 +197,6 @@ class	java/security/AccessControlException
 Asciz	java/lang/NumberFormatException;
 class	java/lang/NumberFormatException
 Asciz	propName;
-Asciz	Ljava/lang/String;;
 Asciz	prop;
 Asciz	exceptionResult1;
 Asciz	(Ljava/lang/String;)Lscala/Option<Ljava/lang/Integer;>;;
@@ -360,6 +419,106 @@ l2	ireturn
    	l1 = 9 // iconst_0
    	l2 = 10 // ireturn
 
+public boolean useForkJoin();
+  Signature: ()Z
+  Code:
+   Stack=5, Locals=5, Args_size=1
+	ldc	String actors.enableForkJoin
+	invokestatic	Method java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+	astore_3
+	aload_3
+	dup
+	pop
+	ifnull	l1 // ldc
+	aload_3
+	aconst_null
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l2 // aload_3
+l1	ldc	String java.version
+	invokestatic	Method java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+	astore_1
+	ldc	String java.vm.vendor
+	invokestatic	Method java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+	astore_2
+	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	new	class scala/runtime/StringAdd
+	dup
+	aload_0
+	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+	ldc	String : java.version = 
+	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	aload_1
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	new	class scala/runtime/StringAdd
+	dup
+	aload_0
+	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+	ldc	String : java.vm.vendor = 
+	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	aload_2
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+	aload_1
+	ldc	String 1.6
+	invokevirtual	Method java/lang/String.indexOf:(Ljava/lang/String;)I
+	iconst_m1
+	if_icmpne	l3 // aload_2
+	aload_1
+	ldc	String 1.7
+	invokevirtual	Method java/lang/String.indexOf:(Ljava/lang/String;)I
+	iconst_m1
+	if_icmpeq	l4 // iconst_0
+l3	aload_2
+	ldc	String Sun
+	invokevirtual	Method java/lang/String.indexOf:(Ljava/lang/String;)I
+	iconst_m1
+	if_icmpeq	l4 // iconst_0
+	iconst_1
+	goto	l5 // istore
+l4	iconst_0
+	goto	l5 // istore
+l2	aload_3
+	ldc	String true
+	invokevirtual	Method java/lang/String.equals:(Ljava/lang/Object;)Z
+l5	istore	4
+	goto	l6 // iload
+	pop
+	iconst_0
+	istore	4
+l6	iload	4
+	ireturn
+  Labels:
+   	l1 = 20 // ldc
+   	l3 = 124 // aload_2
+   	l4 = 138 // iconst_0
+   	l2 = 142 // aload_3
+   	l5 = 148 // istore
+   	l6 = 157 // iload
+  Exception table:
+   from   to  target type
+     0   153   153   Class java/lang/SecurityException
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      160      0    this       Lscala/actors/scheduler/ThreadPoolConfig$;
+   26      116      1    javaVersion       Ljava/lang/String;
+   32      110      2    jvmVendor       Ljava/lang/String;
+   6      147      3    fjProp       Ljava/lang/String;
+   0      159      4    exceptionResult2       Z
+
+
 public int maxPoolSize();
   Signature: ()I
   Code:
@@ -420,7 +579,7 @@ l1	aload	4
    0      43      4    exceptionResult1       Lscala/Option;
 
   Signature: length = 0x2
-   00 FFFFFF87 
+   00 FFFFFFC2 
 
 private int minNumThreads();
   Signature: ()I

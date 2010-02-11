@@ -1,4 +1,6 @@
+Compiled from "ForkJoinWorkerThread.java"
 public class scala.concurrent.forkjoin.ForkJoinWorkerThread extends java.lang.Thread
+  SourceFile: "ForkJoinWorkerThread.java"
   InnerClass: 
    class scala/concurrent/forkjoin/ForkJoinWorkerThread$1
   minor version: 0
@@ -140,12 +142,17 @@ Asciz	qShift;
 Asciz	<init>;
 Asciz	(Lscala/concurrent/forkjoin/ForkJoinPool;)V;
 Asciz	Code;
+Asciz	LineNumberTable;
+Asciz	LocalVariableTable;
+Asciz	this;
+Asciz	Lscala/concurrent/forkjoin/ForkJoinWorkerThread;;
 Asciz	getPool;
 Asciz	()Lscala/concurrent/forkjoin/ForkJoinPool;;
 Asciz	getPoolIndex;
 Asciz	()I;
 Asciz	setAsyncMode;
 Asciz	(Z)V;
+Asciz	async;
 Asciz	isShutdown;
 Asciz	()Z;
 Asciz	isTerminating;
@@ -154,18 +161,31 @@ Asciz	shutdown;
 Asciz	shutdownNow;
 Asciz	transitionRunStateTo;
 Asciz	(I)Z;
+Asciz	s;
+Asciz	state;
 Asciz	tryActivate;
 Asciz	tryInactivate;
 Asciz	xorShift;
 Asciz	(I)I;
+Asciz	r;
 Asciz	run;
 Asciz	()V;
+Asciz	ex;
+Asciz	Ljava/lang/Throwable;;
+Asciz	exception;
 Asciz	mainLoop;
+Asciz	t;
+Asciz	Lscala/concurrent/forkjoin/ForkJoinTask;;
+Asciz	LocalVariableTypeTable;
+Asciz	Lscala/concurrent/forkjoin/ForkJoinTask<*>;;
 Asciz	onStart;
+Asciz	p;
 Asciz	onTermination;
 Asciz	(Ljava/lang/Throwable;)V;
 Asciz	setSlot;
 Asciz	([Lscala/concurrent/forkjoin/ForkJoinTask;ILscala/concurrent/forkjoin/ForkJoinTask;)V;
+Asciz	q;
+Asciz	i;
 Asciz	([Lscala/concurrent/forkjoin/ForkJoinTask<*>;ILscala/concurrent/forkjoin/ForkJoinTask<*>;)V;
 Asciz	casSlotNull;
 Asciz	([Lscala/concurrent/forkjoin/ForkJoinTask;ILscala/concurrent/forkjoin/ForkJoinTask;)Z;
@@ -174,9 +194,11 @@ Asciz	storeSp;
 Asciz	(I)V;
 Asciz	pushTask;
 Asciz	(Lscala/concurrent/forkjoin/ForkJoinTask;)V;
+Asciz	mask;
 Asciz	(Lscala/concurrent/forkjoin/ForkJoinTask<*>;)V;
 Asciz	deqTask;
 Asciz	()Lscala/concurrent/forkjoin/ForkJoinTask;;
+Asciz	b;
 Asciz	()Lscala/concurrent/forkjoin/ForkJoinTask<*>;;
 Asciz	popTask;
 Asciz	unpushTask;
@@ -184,33 +206,65 @@ Asciz	(Lscala/concurrent/forkjoin/ForkJoinTask;)Z;
 Asciz	(Lscala/concurrent/forkjoin/ForkJoinTask<*>;)Z;
 Asciz	peekTask;
 Asciz	growQueue;
+Asciz	oldIndex;
+Asciz	oldQ;
+Asciz	oldSize;
+Asciz	newSize;
+Asciz	newQ;
+Asciz	bf;
+Asciz	oldMask;
+Asciz	newMask;
 Asciz	scan;
+Asciz	v;
+Asciz	idx;
+Asciz	probes;
+Asciz	ws;
+Asciz	[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;;
 Asciz	pollTask;
 Asciz	pollLocalTask;
 Asciz	pollSubmission;
 Asciz	cancelTasks;
 Asciz	drainTasksTo;
 Asciz	(Ljava/util/Collection;)I;
+Asciz	c;
+Asciz	Ljava/util/Collection;;
+Asciz	n;
+Asciz	Ljava/util/Collection<Lscala/concurrent/forkjoin/ForkJoinTask<*>;>;;
 Asciz	(Ljava/util/Collection<Lscala/concurrent/forkjoin/ForkJoinTask<*>;>;)I;
 Asciz	getAndClearStealCount;
+Asciz	sc;
 Asciz	hasQueuedTasks;
 Asciz	([Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)Z;
+Asciz	w;
+Asciz	j;
+Asciz	len;
 Asciz	getQueueSize;
 Asciz	getEstimatedSurplusTaskCount;
 Asciz	scanWhileJoining;
 Asciz	(Lscala/concurrent/forkjoin/ForkJoinTask;)Lscala/concurrent/forkjoin/ForkJoinTask;;
+Asciz	joinMe;
 Asciz	(Lscala/concurrent/forkjoin/ForkJoinTask<*>;)Lscala/concurrent/forkjoin/ForkJoinTask<*>;;
 Asciz	helpQuiescePool;
 Asciz	getUnsafe;
 Asciz	()Lsun/misc/Unsafe;;
+Asciz	e;
+Asciz	Ljava/security/PrivilegedActionException;;
+Asciz	se;
+Asciz	Ljava/lang/SecurityException;;
 Asciz	Exceptions;
 Asciz	getUnsafePrivileged;
+Asciz	f;
+Asciz	Ljava/lang/reflect/Field;;
 class	java/lang/NoSuchFieldException
 class	java/lang/IllegalAccessException
 Asciz	fieldOffset;
 Asciz	(Ljava/lang/String;)J;
+Asciz	fieldName;
+Asciz	Ljava/lang/String;;
 Asciz	access$000;
 Asciz	<clinit>;
+Asciz	SourceFile;
+Asciz	ForkJoinWorkerThread.java;
 NameAndType	getUnsafePrivileged:()Lsun/misc/Unsafe;
 NameAndType	"<init>":()V
 Asciz	java/lang/NullPointerException;
@@ -326,7 +380,6 @@ Asciz	(Ljava/lang/Object;JI)V;
 Asciz	signalWork;
 Asciz	(Ljava/lang/String;)V;
 Asciz	workers;
-Asciz	[Lscala/concurrent/forkjoin/ForkJoinWorkerThread;;
 Asciz	hasNewSyncEvent;
 Asciz	(Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)Z;
 Asciz	hasQueuedSubmissions;
@@ -448,6 +501,11 @@ l1	aload_0
 	return
   Labels:
    	l1 = 16 // aload_0
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      22      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   0      22      1    pool       Lscala/concurrent/forkjoin/ForkJoinPool;
+
 
 public scala.concurrent.forkjoin.ForkJoinPool getPool();
   Signature: ()Lscala/concurrent/forkjoin/ForkJoinPool;
@@ -457,6 +515,10 @@ public scala.concurrent.forkjoin.ForkJoinPool getPool();
 	getfield	Field pool:Lscala/concurrent/forkjoin/ForkJoinPool;
 	areturn
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      5      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
 
 public int getPoolIndex();
   Signature: ()I
@@ -466,6 +528,10 @@ public int getPoolIndex();
 	getfield	Field poolIndex:I
 	ireturn
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      5      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
 
 void setAsyncMode(boolean);
   Signature: (Z)V
@@ -476,6 +542,11 @@ void setAsyncMode(boolean);
 	putfield	Field locallyFifo:Z
 	return
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   0      6      1    async       Z
+
 
 final boolean isShutdown();
   Signature: ()Z
@@ -492,6 +563,10 @@ l2	ireturn
   Labels:
    	l1 = 12 // iconst_0
    	l2 = 13 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
 
 final boolean isTerminating();
   Signature: ()Z
@@ -508,6 +583,10 @@ l2	ireturn
   Labels:
    	l1 = 12 // iconst_0
    	l2 = 13 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
 
 final boolean isTerminated();
   Signature: ()Z
@@ -524,6 +603,10 @@ l2	ireturn
   Labels:
    	l1 = 12 // iconst_0
    	l2 = 13 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
 
 final boolean shutdown();
   Signature: ()Z
@@ -534,6 +617,10 @@ final boolean shutdown();
 	invokespecial	Method transitionRunStateTo:(I)Z
 	ireturn
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
 
 final boolean shutdownNow();
   Signature: ()Z
@@ -544,6 +631,10 @@ final boolean shutdownNow();
 	invokespecial	Method transitionRunStateTo:(I)Z
 	ireturn
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
 
 private boolean transitionRunStateTo(int);
   Signature: (I)Z
@@ -571,6 +662,12 @@ l2	goto	l3 // aload_0
    	l3 = 0 // aload_0
    	l1 = 12 // getstatic
    	l2 = 29 // goto
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   5      24      2    s       I
+   0      32      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   0      32      1    state       I
+
 
 private boolean tryActivate();
   Signature: ()Z
@@ -593,6 +690,10 @@ l1	iconst_1
   Labels:
    	l2 = 19 // aload_0
    	l1 = 24 // iconst_1
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      26      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
 
 private boolean tryInactivate();
   Signature: ()Z
@@ -615,6 +716,10 @@ l1	iconst_1
   Labels:
    	l2 = 19 // aload_0
    	l1 = 24 // iconst_1
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      26      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
 
 private static int xorShift(int);
   Signature: (I)I
@@ -641,6 +746,10 @@ private static int xorShift(int);
 	iload_0
 	ireturn
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      21      0    r       I
+
 
 public void run();
   Signature: ()V
@@ -683,6 +792,12 @@ l1	return
      2    18    37   any
     26    29    37   any
     37    38    37   any
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   27      2      2    ex       Ljava/lang/Throwable;
+   0      46      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   2      44      1    exception       Ljava/lang/Throwable;
+
 
 private void mainLoop();
   Signature: ()V
@@ -719,6 +834,13 @@ l1	return
    	l3 = 32 // aload_0
    	l4 = 47 // goto
    	l1 = 50 // return
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   12      35      1    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+   0      51      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
+  LocalVariableTypeTable: length = 0xC
+   00 01 00 0C 00 23 00 FFFFFFA9 00 FFFFFFAC 00 01 
 
 protected void onStart();
   Signature: ()V
@@ -750,6 +872,11 @@ protected void onStart();
 	putfield	Field seed:I
 	return
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      38      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   17      21      1    p       I
+
 
 protected void onTermination(java.lang.Throwable);
   Signature: (Ljava/lang/Throwable;)V
@@ -829,6 +956,16 @@ l4	return
     47    71   100   any
     82    89   100   any
    100   101   100   any
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   30      8      2    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+   42      2      2    ex       Ljava/lang/Throwable;
+   83      6      2    ex       Ljava/lang/Throwable;
+   0      112      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   0      112      1    exception       Ljava/lang/Throwable;
+
+  LocalVariableTypeTable: length = 0xC
+   00 01 00 1E 00 08 00 FFFFFFA9 00 FFFFFFAC 00 02 
 
 private static void setSlot(scala.concurrent.forkjoin.ForkJoinTask[], int, scala.concurrent.forkjoin.ForkJoinTask);
   Signature: ([Lscala/concurrent/forkjoin/ForkJoinTask;ILscala/concurrent/forkjoin/ForkJoinTask;)V
@@ -846,8 +983,17 @@ private static void setSlot(scala.concurrent.forkjoin.ForkJoinTask[], int, scala
 	invokevirtual	Method sun/misc/Unsafe.putOrderedObject:(Ljava/lang/Object;JLjava/lang/Object;)V
 	return
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      19      0    q       [Lscala/concurrent/forkjoin/ForkJoinTask;
+   0      19      1    i       I
+   0      19      2    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+
+  LocalVariableTypeTable: length = 0x16
+   00 02 00 00 00 13 00 FFFFFFB3 00 6B 00 00 00 00 00 13
+   00 FFFFFFA9 00 FFFFFFAC 00 02 
   Signature: length = 0x2
-   00 FFFFFFA3 
+   00 FFFFFFB5 
 
 private static boolean casSlotNull(scala.concurrent.forkjoin.ForkJoinTask[], int, scala.concurrent.forkjoin.ForkJoinTask);
   Signature: ([Lscala/concurrent/forkjoin/ForkJoinTask;ILscala/concurrent/forkjoin/ForkJoinTask;)Z
@@ -866,8 +1012,17 @@ private static boolean casSlotNull(scala.concurrent.forkjoin.ForkJoinTask[], int
 	invokevirtual	Method sun/misc/Unsafe.compareAndSwapObject:(Ljava/lang/Object;JLjava/lang/Object;Ljava/lang/Object;)Z
 	ireturn
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      20      0    q       [Lscala/concurrent/forkjoin/ForkJoinTask;
+   0      20      1    i       I
+   0      20      2    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+
+  LocalVariableTypeTable: length = 0x16
+   00 02 00 00 00 14 00 FFFFFFB3 00 6B 00 00 00 00 00 14
+   00 FFFFFFA9 00 FFFFFFAC 00 02 
   Signature: length = 0x2
-   00 FFFFFFA6 
+   00 FFFFFFB8 
 
 private void storeSp(int);
   Signature: (I)V
@@ -880,6 +1035,11 @@ private void storeSp(int);
 	invokevirtual	Method sun/misc/Unsafe.putOrderedInt:(Ljava/lang/Object;JI)V
 	return
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      12      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   0      12      1    s       I
+
 
 final void pushTask(scala.concurrent.forkjoin.ForkJoinTask);
   Signature: (Lscala/concurrent/forkjoin/ForkJoinTask;)V
@@ -927,8 +1087,19 @@ l2	return
   Labels:
    	l1 = 58 // iload
    	l2 = 68 // return
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      69      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   0      69      1    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+   5      64      2    q       [Lscala/concurrent/forkjoin/ForkJoinTask;
+   10      59      3    mask       I
+   16      53      4    s       I
+
+  LocalVariableTypeTable: length = 0x16
+   00 02 00 00 00 45 00 FFFFFFA9 00 FFFFFFAC 00 01 00 05 00 40
+   00 FFFFFFB3 00 6B 00 02 
   Signature: length = 0x2
-   00 FFFFFFAB 
+   00 FFFFFFBE 
 
 final scala.concurrent.forkjoin.ForkJoinTask deqTask();
   Signature: ()Lscala/concurrent/forkjoin/ForkJoinTask;
@@ -975,8 +1146,19 @@ l1	aconst_null
 	areturn
   Labels:
    	l1 = 58 // aconst_null
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   36      22      1    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+   20      38      2    q       [Lscala/concurrent/forkjoin/ForkJoinTask;
+   33      25      3    i       I
+   0      60      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   11      49      4    b       I
+
+  LocalVariableTypeTable: length = 0x16
+   00 02 00 24 00 16 00 FFFFFFA9 00 FFFFFFAC 00 01 00 14 00 26
+   00 FFFFFFB3 00 6B 00 02 
   Signature: length = 0x2
-   00 FFFFFFAE 
+   00 FFFFFFC2 
 
 final scala.concurrent.forkjoin.ForkJoinTask popTask();
   Signature: ()Lscala/concurrent/forkjoin/ForkJoinTask;
@@ -1031,8 +1213,20 @@ l1	aconst_null
    	l2 = 5 // iload_1
    	l3 = 62 // aload_0
    	l1 = 72 // aconst_null
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   25      47      2    q       [Lscala/concurrent/forkjoin/ForkJoinTask;
+   30      42      3    mask       I
+   37      35      4    i       I
+   43      29      5    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+   0      74      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   5      69      1    s       I
+
+  LocalVariableTypeTable: length = 0x16
+   00 02 00 19 00 2F 00 FFFFFFB3 00 6B 00 02 00 2B 00 1D
+   00 FFFFFFA9 00 FFFFFFAC 00 05 
   Signature: length = 0x2
-   00 FFFFFFAE 
+   00 FFFFFFC2 
 
 final boolean unpushTask(scala.concurrent.forkjoin.ForkJoinTask);
   Signature: (Lscala/concurrent/forkjoin/ForkJoinTask;)Z
@@ -1067,8 +1261,19 @@ l1	iconst_0
 	ireturn
   Labels:
    	l1 = 38 // iconst_0
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      40      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   0      40      1    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+   5      35      2    q       [Lscala/concurrent/forkjoin/ForkJoinTask;
+   10      30      3    mask       I
+   18      22      4    s       I
+
+  LocalVariableTypeTable: length = 0x16
+   00 02 00 00 00 28 00 FFFFFFA9 00 FFFFFFAC 00 01 00 05 00 23
+   00 FFFFFFB3 00 6B 00 02 
   Signature: length = 0x2
-   00 FFFFFFB2 
+   00 FFFFFFC6 
 
 final scala.concurrent.forkjoin.ForkJoinTask peekTask();
   Signature: ()Lscala/concurrent/forkjoin/ForkJoinTask;
@@ -1107,8 +1312,17 @@ l3	istore_3
    	l1 = 11 // aload_1
    	l2 = 30 // aload_0
    	l3 = 36 // istore_3
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      43      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   5      38      1    q       [Lscala/concurrent/forkjoin/ForkJoinTask;
+   16      27      2    mask       I
+   37      6      3    i       I
+
+  LocalVariableTypeTable: length = 0xC
+   00 01 00 05 00 26 00 FFFFFFB3 00 6B 00 01 
   Signature: length = 0x2
-   00 FFFFFFAE 
+   00 FFFFFFC2 
 
 private void growQueue();
   Signature: ()V
@@ -1188,6 +1402,24 @@ l2	aload	4
    	l1 = 28 // aload_0
    	l3 = 61 // iload
    	l2 = 93 // aload
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   68      37      9    oldIndex       I
+   74      31      10    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+   0      123      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   5      118      1    oldQ       [Lscala/concurrent/forkjoin/ForkJoinTask;
+   8      115      2    oldSize       I
+   12      111      3    newSize       I
+   39      84      4    newQ       [Lscala/concurrent/forkjoin/ForkJoinTask;
+   45      78      5    b       I
+   51      72      6    bf       I
+   56      67      7    oldMask       I
+   61      62      8    newMask       I
+
+  LocalVariableTypeTable: length = 0x20
+   00 03 00 4A 00 1F 00 FFFFFFA9 00 FFFFFFAC 00 0A 00 05 00 76
+   00 FFFFFFCA 00 6B 00 01 00 27 00 54 00 FFFFFFCD 00 6B 00 04
+   
 
 private scala.concurrent.forkjoin.ForkJoinTask scan();
   Signature: ()Lscala/concurrent/forkjoin/ForkJoinTask;
@@ -1276,8 +1508,21 @@ l7	aload_0
    	l6 = 118 // goto
    	l1 = 121 // aload_0
    	l7 = 132 // aload_0
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   52      66      7    v       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   32      89      5    idx       I
+   38      83      6    probes       I
+   26      95      4    mask       I
+   0      139      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   2      137      1    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+   7      132      2    r       I
+   16      123      3    ws       [Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
+  LocalVariableTypeTable: length = 0xC
+   00 01 00 02 00 FFFFFF89 00 FFFFFFA9 00 FFFFFFAC 00 01 
   Signature: length = 0x2
-   00 FFFFFFAE 
+   00 FFFFFFC2 
 
 final scala.concurrent.forkjoin.ForkJoinTask pollTask();
   Signature: ()Lscala/concurrent/forkjoin/ForkJoinTask;
@@ -1311,8 +1556,15 @@ l3	aload_1
    	l1 = 14 // aload_0
    	l2 = 18 // astore_1
    	l3 = 42 // aload_1
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      44      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   19      25      1    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+
+  LocalVariableTypeTable: length = 0xC
+   00 01 00 13 00 19 00 FFFFFFA9 00 FFFFFFAC 00 01 
   Signature: length = 0x2
-   00 FFFFFFAE 
+   00 FFFFFFC2 
 
 final scala.concurrent.forkjoin.ForkJoinTask pollLocalTask();
   Signature: ()Lscala/concurrent/forkjoin/ForkJoinTask;
@@ -1330,8 +1582,12 @@ l2	areturn
   Labels:
    	l1 = 14 // aload_0
    	l2 = 18 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      19      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
   Signature: length = 0x2
-   00 FFFFFFAE 
+   00 FFFFFFC2 
 
 private scala.concurrent.forkjoin.ForkJoinTask pollSubmission();
   Signature: ()Lscala/concurrent/forkjoin/ForkJoinTask;
@@ -1360,8 +1616,16 @@ l1	aconst_null
    	l3 = 5 // aload_1
    	l2 = 30 // goto
    	l1 = 33 // aconst_null
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   25      5      2    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+   0      35      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   5      30      1    p       Lscala/concurrent/forkjoin/ForkJoinPool;
+
+  LocalVariableTypeTable: length = 0xC
+   00 01 00 19 00 05 00 FFFFFFA9 00 FFFFFFAC 00 02 
   Signature: length = 0x2
-   00 FFFFFFAE 
+   00 FFFFFFC2 
 
 final void cancelTasks();
   Signature: ()V
@@ -1384,6 +1648,13 @@ l1	return
   Labels:
    	l2 = 0 // aload_0
    	l1 = 27 // return
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   17      10      1    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+   0      28      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
+  LocalVariableTypeTable: length = 0xC
+   00 01 00 11 00 0A 00 FFFFFFA9 00 FFFFFFAC 00 01 
 
 final int drainTasksTo(java.util.Collection);
   Signature: (Ljava/util/Collection;)I
@@ -1412,8 +1683,18 @@ l1	iload_2
   Labels:
    	l2 = 2 // aload_0
    	l1 = 36 // iload_2
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   19      17      3    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+   0      38      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   0      38      1    c       Ljava/util/Collection;
+   2      36      2    n       I
+
+  LocalVariableTypeTable: length = 0x16
+   00 02 00 13 00 11 00 FFFFFFA9 00 FFFFFFAC 00 03 00 00 00 26
+   00 FFFFFFDD 00 FFFFFFE0 00 01 
   Signature: length = 0x2
-   00 FFFFFFBC 
+   00 FFFFFFE1 
 
 final int getAndClearStealCount();
   Signature: ()I
@@ -1428,6 +1709,11 @@ final int getAndClearStealCount();
 	iload_1
 	ireturn
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      12      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   5      7      1    sc       I
+
 
 static boolean hasQueuedTasks(scala.concurrent.forkjoin.ForkJoinWorkerThread[]);
   Signature: ([Lscala/concurrent/forkjoin/ForkJoinWorkerThread;)Z
@@ -1473,6 +1759,14 @@ l1	iconst_0
    	l3 = 46 // iinc
    	l2 = 52 // iinc
    	l1 = 58 // iconst_0
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   26      20      4    w       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   16      36      3    i       I
+   9      49      2    j       I
+   7      51      1    len       I
+   0      60      0    ws       [Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
 
 final int getQueueSize();
   Signature: ()I
@@ -1493,6 +1787,11 @@ l2	ireturn
   Labels:
    	l1 = 18 // iload_1
    	l2 = 19 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      20      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   10      10      1    n       I
+
 
 final int getEstimatedSurplusTaskCount();
   Signature: ()I
@@ -1511,6 +1810,10 @@ final int getEstimatedSurplusTaskCount();
 	isub
 	ireturn
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      20      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
 
 final scala.concurrent.forkjoin.ForkJoinTask scanWhileJoining(scala.concurrent.forkjoin.ForkJoinTask);
   Signature: (Lscala/concurrent/forkjoin/ForkJoinTask;)Lscala/concurrent/forkjoin/ForkJoinTask;
@@ -1538,8 +1841,17 @@ l1	aload_2
 	areturn
   Labels:
    	l1 = 34 // aload_2
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      36      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+   0      36      1    joinMe       Lscala/concurrent/forkjoin/ForkJoinTask;
+   5      31      2    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+
+  LocalVariableTypeTable: length = 0x16
+   00 02 00 00 00 24 00 FFFFFFED 00 FFFFFFAC 00 01 00 05 00 1F
+   00 FFFFFFA9 00 FFFFFFAC 00 02 
   Signature: length = 0x2
-   00 FFFFFFC4 
+   00 FFFFFFEE 
 
 final void helpQuiescePool();
   Signature: ()V
@@ -1571,6 +1883,13 @@ l3	aload_0
    	l1 = 16 // aload_0
    	l2 = 36 // goto
    	l3 = 39 // aload_0
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   5      31      1    t       Lscala/concurrent/forkjoin/ForkJoinTask;
+   0      47      0    this       Lscala/concurrent/forkjoin/ForkJoinWorkerThread;
+
+  LocalVariableTypeTable: length = 0xC
+   00 01 00 05 00 1F 00 FFFFFFA9 00 FFFFFFAC 00 01 
 
 private static sun.misc.Unsafe getUnsafe()   throws java.lang.Throwable;
   Signature: ()Lsun/misc/Unsafe;
@@ -1596,6 +1915,11 @@ private static sun.misc.Unsafe getUnsafe()   throws java.lang.Throwable;
 
      5    18    19   Class java/security/PrivilegedActionException
 
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   20      5      1    e       Ljava/security/PrivilegedActionException;
+   5      20      0    se       Ljava/lang/SecurityException;
+
   Exceptions: 
    throws java.lang.Throwable
 private static sun.misc.Unsafe getUnsafePrivileged()   throws java.lang.NoSuchFieldException, java.lang.IllegalAccessException;
@@ -1615,6 +1939,10 @@ private static sun.misc.Unsafe getUnsafePrivileged()   throws java.lang.NoSuchFi
 	checkcast	class sun/misc/Unsafe
 	areturn
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   9      14      0    f       Ljava/lang/reflect/Field;
+
   Exceptions: 
    throws java.lang.NoSuchFieldException, java.lang.IllegalAccessException
 private static long fieldOffset(java.lang.String)   throws java.lang.NoSuchFieldException;
@@ -1628,6 +1956,10 @@ private static long fieldOffset(java.lang.String)   throws java.lang.NoSuchField
 	invokevirtual	Method sun/misc/Unsafe.objectFieldOffset:(Ljava/lang/reflect/Field;)J
 	lreturn
   Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    fieldName       Ljava/lang/String;
+
   Exceptions: 
    throws java.lang.NoSuchFieldException
 static sun.misc.Unsafe access$000()   throws java.lang.NoSuchFieldException, java.lang.IllegalAccessException;
@@ -1694,6 +2026,11 @@ l2	return
   Exception table:
    from   to  target type
      0    81    84   Class java/lang/Throwable
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   53      28      0    s       I
+   85      11      0    e       Ljava/lang/Throwable;
 
 
 }

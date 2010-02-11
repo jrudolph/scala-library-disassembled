@@ -70,7 +70,7 @@ public class scala.xml.ProcInstr extends scala.xml.SpecialNode implements scala.
   Constant pool:
 Asciz	SourceFile;
 Asciz	ProcInstr.scala;
-Asciz	curry;
+Asciz	tuple;
 Asciz	()Lscala/Function1;;
 Asciz	Code;
 Asciz	scala/xml/ProcInstr$;
@@ -79,6 +79,9 @@ Asciz	MODULE$;
 Asciz	Lscala/xml/ProcInstr$;;
 NameAndType	MODULE$:Lscala/xml/ProcInstr$;
 Field	scala/xml/ProcInstr$.MODULE$:Lscala/xml/ProcInstr$;
+NameAndType	tuple:()Lscala/Function1;
+Method	scala/xml/ProcInstr$.tuple:()Lscala/Function1;
+Asciz	curry;
 NameAndType	curry:()Lscala/Function1;
 Method	scala/xml/ProcInstr$.curry:()Lscala/Function1;
 Asciz	proctext;
@@ -199,10 +202,12 @@ class	scala/Predef$
 Asciz	Lscala/Predef$;;
 NameAndType	MODULE$:Lscala/Predef$;
 Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	scala/collection/IndexedSeqLike;
+class	scala/collection/IndexedSeqLike
 Asciz	isEmpty;
 Asciz	()Z;
 NameAndType	isEmpty:()Z
-Method	java/lang/String.isEmpty:()Z
+InterfaceMethod	scala/collection/IndexedSeqLike.isEmpty:()Z
 Asciz	;
 String	
 Asciz	 ;
@@ -252,6 +257,15 @@ private final java.lang.String proctext;
 
 private final java.lang.String target;
   Signature: Ljava/lang/String;
+
+public static final scala.Function1 tuple();
+  Signature: ()Lscala/Function1;
+  Code:
+   Stack=1, Locals=0, Args_size=0
+	getstatic	Field scala/xml/ProcInstr$.MODULE$:Lscala/xml/ProcInstr$;
+	invokevirtual	Method scala/xml/ProcInstr$.tuple:()Lscala/Function1;
+	areturn
+  Labels:
 
 public static final scala.Function1 curry();
   Signature: ()Lscala/Function1;
@@ -439,7 +453,7 @@ public scala.xml.ProcInstr copy(java.lang.String, java.lang.String);
 public scala.collection.mutable.StringBuilder buildString(scala.collection.mutable.StringBuilder);
   Signature: (Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
   Code:
-   Stack=8, Locals=3, Args_size=2
+   Stack=9, Locals=4, Args_size=2
 	aload_1
 	ldc	String <?%s%s?>
 	astore_2
@@ -459,7 +473,12 @@ public scala.collection.mutable.StringBuilder buildString(scala.collection.mutab
 	iconst_1
 	aload_0
 	invokevirtual	Method proctext:()Ljava/lang/String;
-	invokevirtual	Method java/lang/String.isEmpty:()Z
+	astore_3
+	new	class scala/collection/immutable/StringOps
+	dup
+	aload_3
+	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
+	invokeinterface	InterfaceMethod scala/collection/IndexedSeqLike.isEmpty:()Z
 	ifeq	l1 // new
 	ldc	String 
 	goto	l2 // aastore
@@ -478,12 +497,12 @@ l2	aastore
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 	areturn
   Labels:
-   	l1 = 43 // new
-   	l2 = 65 // aastore
+   	l1 = 54 // new
+   	l2 = 76 // aastore
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      78      0    this       Lscala/xml/ProcInstr;
-   0      78      1    sb       Lscala/collection/mutable/StringBuilder;
+   0      89      0    this       Lscala/xml/ProcInstr;
+   0      89      1    sb       Lscala/collection/mutable/StringBuilder;
 
 
 public java.lang.String text();
