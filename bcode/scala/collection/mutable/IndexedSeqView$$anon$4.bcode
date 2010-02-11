@@ -690,11 +690,6 @@ Asciz	reversedElements;
 Asciz	(Lscala/collection/SeqLike;)Lscala/collection/Iterator;;
 NameAndType	reversedElements:(Lscala/collection/SeqLike;)Lscala/collection/Iterator;
 Method	scala/collection/SeqLike$class.reversedElements:(Lscala/collection/SeqLike;)Lscala/collection/Iterator;
-Asciz	reverseMap;
-Asciz	(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
-Asciz	(Lscala/collection/SeqLike;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
-NameAndType	reverseMap:(Lscala/collection/SeqLike;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-Method	scala/collection/SeqLike$class.reverseMap:(Lscala/collection/SeqLike;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 Asciz	lastIndexWhere;
 NameAndType	lastIndexWhere:(Lscala/collection/SeqLike;Lscala/Function1;)I
 Method	scala/collection/SeqLike$class.lastIndexWhere:(Lscala/collection/SeqLike;Lscala/Function1;)I
@@ -862,6 +857,7 @@ Asciz	(Lscala/collection/IndexedSeq;)Lscala/collection/generic/GenericCompanion;
 NameAndType	companion:(Lscala/collection/IndexedSeq;)Lscala/collection/generic/GenericCompanion;
 Method	scala/collection/IndexedSeq$class.companion:(Lscala/collection/IndexedSeq;)Lscala/collection/generic/GenericCompanion;
 Asciz	flatMap;
+Asciz	(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
 Asciz	(Lscala/collection/TraversableViewLike;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
 NameAndType	flatMap:(Lscala/collection/TraversableViewLike;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 Method	scala/collection/TraversableViewLike$class.flatMap:(Lscala/collection/TraversableViewLike;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
@@ -901,6 +897,10 @@ Method	scala/collection/IterableViewLike$class.zipWithIndex:(Lscala/collection/I
 Asciz	(Lscala/collection/IterableViewLike;Lscala/collection/Iterable;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
 NameAndType	zip:(Lscala/collection/IterableViewLike;Lscala/collection/Iterable;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 Method	scala/collection/IterableViewLike$class.zip:(Lscala/collection/IterableViewLike;Lscala/collection/Iterable;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+Asciz	reverseMap;
+Asciz	(Lscala/collection/SeqViewLike;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
+NameAndType	reverseMap:(Lscala/collection/SeqViewLike;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+Method	scala/collection/SeqViewLike$class.reverseMap:(Lscala/collection/SeqViewLike;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 Asciz	padTo;
 Asciz	(Lscala/collection/SeqViewLike;ILjava/lang/Object;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
 NameAndType	padTo:(Lscala/collection/SeqViewLike;ILjava/lang/Object;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
@@ -3180,23 +3180,6 @@ public scala.collection.Iterator reversedElements();
   Labels:
   Deprecated: true
 
-public java.lang.Object reverseMap(scala.Function1, scala.collection.generic.CanBuildFrom);
-  Signature: (Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-  Code:
-   Stack=3, Locals=3, Args_size=3
-	aload_0
-	aload_1
-	aload_2
-	invokestatic	Method scala/collection/SeqLike$class.reverseMap:(Lscala/collection/SeqLike;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      7      0    this       Lscala/collection/mutable/IndexedSeqView$$anon$4;
-   0      7      1    f       Lscala/Function1;
-   0      7      2    bf       Lscala/collection/generic/CanBuildFrom;
-
-
 public int lastIndexWhere(scala.Function1);
   Signature: (Lscala/Function1;)I
   Code:
@@ -3975,6 +3958,23 @@ public java.lang.Object zip(scala.collection.Iterable, scala.collection.generic.
    Start  Length  Slot  Name   Signature
    0      7      0    this       Lscala/collection/mutable/IndexedSeqView$$anon$4;
    0      7      1    that       Lscala/collection/Iterable;
+   0      7      2    bf       Lscala/collection/generic/CanBuildFrom;
+
+
+public java.lang.Object reverseMap(scala.Function1, scala.collection.generic.CanBuildFrom);
+  Signature: (Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	aload_1
+	aload_2
+	invokestatic	Method scala/collection/SeqViewLike$class.reverseMap:(Lscala/collection/SeqViewLike;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/IndexedSeqView$$anon$4;
+   0      7      1    f       Lscala/Function1;
    0      7      2    bf       Lscala/collection/generic/CanBuildFrom;
 
 
