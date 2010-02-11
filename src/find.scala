@@ -45,14 +45,16 @@ object RecursiveJavaP {
   def main(args: Array[String]) {
     val classDir = new File("class")
     val cmdBase = "javap -v -classpath "+classDir.getCanonicalPath+" "
+
+    def javap(className: String, outName: String) {
+      val cmd = cmdBase + className
+      cmd !> outName
+    }
+
     for ((className, classFile) <- findAllClasses(classDir)(classDir)) {
       val outName = classFile.getCanonicalPath.replaceAll("\\.class", ".bcode")
-
-      val cmd = cmdBase + className
-
-      println("cmd: "+cmd+" outName: "+outName)
-
-      cmd !> outName
+      println("Analyzing "+className)
+      javap(className, outName)
     }
   }
 }
