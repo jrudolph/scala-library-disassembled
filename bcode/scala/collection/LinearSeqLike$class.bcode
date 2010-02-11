@@ -211,15 +211,10 @@ class	scala/collection/LinearSeqLike$$anon$1
 NameAndType	"<init>":(Lscala/collection/LinearSeqLike;)V
 Method	scala/collection/LinearSeqLike$$anon$1."<init>":(Lscala/collection/LinearSeqLike;)V
 Asciz	(Lscala/collection/LinearSeqLike;I)Ljava/lang/Object;;
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	require;
-Asciz	(Z)V;
-NameAndType	require:(Z)V
-Method	scala/Predef$.require:(Z)V
+Asciz	java/lang/IndexOutOfBoundsException;
+class	java/lang/IndexOutOfBoundsException
+Method	java/lang/IndexOutOfBoundsException."<init>":()V
+Asciz	rest;
 Asciz	length;
 Asciz	(Lscala/collection/LinearSeqLike;)I;
 Asciz	toCollection;
@@ -1218,27 +1213,32 @@ public static scala.collection.Iterator iterator(scala.collection.LinearSeqLike)
 public static java.lang.Object apply(scala.collection.LinearSeqLike, int);
   Signature: (Lscala/collection/LinearSeqLike;I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	iload_1
-	iconst_0
-	if_icmplt	l1 // iconst_0
-	iconst_1
-	goto	l2 // invokevirtual
-l1	iconst_0
-l2	invokevirtual	Method scala/Predef$.require:(Z)V
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	iload_1
 	invokeinterface	InterfaceMethod scala/collection/LinearSeqLike.drop:(I)Lscala/collection/LinearSeqLike;
+	astore_2
+	iload_1
+	iconst_0
+	if_icmplt	l1 // new
+	aload_2
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
+	ifeq	l2 // aload_2
+l1	new	class java/lang/IndexOutOfBoundsException
+	dup
+	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":()V
+	athrow
+l2	aload_2
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.head:()Ljava/lang/Object;
 	areturn
   Labels:
-   	l1 = 12 // iconst_0
-   	l2 = 13 // invokevirtual
+   	l1 = 22 // new
+   	l2 = 30 // aload_2
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      29      0    $this       Lscala/collection/LinearSeqLike;
-   0      29      1    n       I
+   0      37      0    $this       Lscala/collection/LinearSeqLike;
+   0      37      1    n       I
+   8      28      2    rest       Lscala/collection/LinearSeqLike;
 
 
 public static int length(scala.collection.LinearSeqLike);

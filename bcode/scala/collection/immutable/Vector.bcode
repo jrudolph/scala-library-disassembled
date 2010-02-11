@@ -2,7 +2,7 @@ Compiled from "Vector.scala"
 public final class scala.collection.immutable.Vector extends java.lang.Object implements scala.collection.immutable.Seq,scala.collection.generic.GenericTraversableTemplate,scala.collection.SeqLike,scala.collection.immutable.VectorPointer,scala.ScalaObject,java.io.Serializable
   SourceFile: "Vector.scala"
   Signature: length = 0x2
-   04 5B 
+   04 5E 
   ScalaSig: length = 0xB76
    05 00 FFFFFF82 7E 07 05 01 02 FFFFFF88 02 09 01 06 56 65 63
    74 6F 72 0A 02 03 04 01 09 69 6D 6D 75 74 61 62
@@ -1099,17 +1099,12 @@ Asciz	projection;
 Asciz	(Lscala/collection/SeqLike;)Ljava/lang/Object;;
 NameAndType	projection:(Lscala/collection/SeqLike;)Ljava/lang/Object;
 Method	scala/collection/SeqLike$class.projection:(Lscala/collection/SeqLike;)Ljava/lang/Object;
-Asciz	containsSlice;
-Asciz	(Lscala/collection/Seq;)Z;
-Asciz	(Lscala/collection/SeqLike;Lscala/collection/Seq;)Z;
-NameAndType	containsSlice:(Lscala/collection/SeqLike;Lscala/collection/Seq;)Z
-Method	scala/collection/SeqLike$class.containsSlice:(Lscala/collection/SeqLike;Lscala/collection/Seq;)Z
-Asciz	Lscala/collection/Seq;;
 Asciz	equalsWith;
 Asciz	(Lscala/collection/Seq;Lscala/Function2;)Z;
 Asciz	(Lscala/collection/SeqLike;Lscala/collection/Seq;Lscala/Function2;)Z;
 NameAndType	equalsWith:(Lscala/collection/SeqLike;Lscala/collection/Seq;Lscala/Function2;)Z
 Method	scala/collection/SeqLike$class.equalsWith:(Lscala/collection/SeqLike;Lscala/collection/Seq;Lscala/Function2;)Z
+Asciz	Lscala/collection/Seq;;
 Asciz	findLastIndexOf;
 Asciz	(Lscala/collection/SeqLike;Lscala/Function1;)I;
 NameAndType	findLastIndexOf:(Lscala/collection/SeqLike;Lscala/Function1;)I
@@ -1153,6 +1148,9 @@ Asciz	(Lscala/collection/SeqLike;Lscala/Function2;)Ljava/lang/Object;;
 NameAndType	sortWith:(Lscala/collection/SeqLike;Lscala/Function2;)Ljava/lang/Object;
 Method	scala/collection/SeqLike$class.sortWith:(Lscala/collection/SeqLike;Lscala/Function2;)Ljava/lang/Object;
 Asciz	lt;
+Asciz	corresponds;
+NameAndType	corresponds:(Lscala/collection/SeqLike;Lscala/collection/Seq;Lscala/Function2;)Z
+Method	scala/collection/SeqLike$class.corresponds:(Lscala/collection/SeqLike;Lscala/collection/Seq;Lscala/Function2;)Z
 Asciz	padTo;
 Asciz	(Lscala/collection/SeqLike;ILjava/lang/Object;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
 NameAndType	padTo:(Lscala/collection/SeqLike;ILjava/lang/Object;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
@@ -1182,6 +1180,11 @@ Method	scala/collection/SeqLike$class.union:(Lscala/collection/SeqLike;Lscala/co
 Asciz	contains;
 NameAndType	contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 Method	scala/collection/SeqLike$class.contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
+Asciz	containsSlice;
+Asciz	(Lscala/collection/Seq;)Z;
+Asciz	(Lscala/collection/SeqLike;Lscala/collection/Seq;)Z;
+NameAndType	containsSlice:(Lscala/collection/SeqLike;Lscala/collection/Seq;)Z
+Method	scala/collection/SeqLike$class.containsSlice:(Lscala/collection/SeqLike;Lscala/collection/Seq;)Z
 Asciz	lastIndexOfSlice;
 Asciz	(Lscala/collection/Seq;I)I;
 Asciz	(Lscala/collection/SeqLike;Lscala/collection/Seq;I)I;
@@ -5588,21 +5591,6 @@ public java.lang.Object projection();
 	areturn
   Labels:
 
-public boolean containsSlice(scala.collection.Seq);
-  Signature: (Lscala/collection/Seq;)Z
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	invokestatic	Method scala/collection/SeqLike$class.containsSlice:(Lscala/collection/SeqLike;Lscala/collection/Seq;)Z
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      6      0    this       Lscala/collection/immutable/Vector;
-   0      6      1    that       Lscala/collection/Seq;
-
-
 public boolean equalsWith(scala.collection.Seq, scala.Function2);
   Signature: (Lscala/collection/Seq;Lscala/Function2;)Z
   Code:
@@ -5759,6 +5747,23 @@ public java.lang.Object sortWith(scala.Function2);
    0      6      1    lt       Lscala/Function2;
 
 
+public boolean corresponds(scala.collection.Seq, scala.Function2);
+  Signature: (Lscala/collection/Seq;Lscala/Function2;)Z
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	aload_1
+	aload_2
+	invokestatic	Method scala/collection/SeqLike$class.corresponds:(Lscala/collection/SeqLike;Lscala/collection/Seq;Lscala/Function2;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/immutable/Vector;
+   0      7      1    that       Lscala/collection/Seq;
+   0      7      2    p       Lscala/Function2;
+
+
 public java.lang.Object padTo(int, java.lang.Object, scala.collection.generic.CanBuildFrom);
   Signature: (ILjava/lang/Object;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
   Code:
@@ -5868,6 +5873,21 @@ public boolean contains(java.lang.Object);
    Start  Length  Slot  Name   Signature
    0      6      0    this       Lscala/collection/immutable/Vector;
    0      6      1    elem       Ljava/lang/Object;
+
+
+public boolean containsSlice(scala.collection.Seq);
+  Signature: (Lscala/collection/Seq;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/collection/SeqLike$class.containsSlice:(Lscala/collection/SeqLike;Lscala/collection/Seq;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/immutable/Vector;
+   0      6      1    that       Lscala/collection/Seq;
 
 
 public int lastIndexOfSlice(scala.collection.Seq, int);

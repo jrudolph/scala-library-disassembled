@@ -42,14 +42,6 @@ Asciz	view;
 Asciz	()Ljava/lang/Object;;
 NameAndType	view:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/SeqLike.view:()Ljava/lang/Object;
-Asciz	containsSlice;
-Asciz	(Lscala/collection/SeqLike;Lscala/collection/Seq;)Z;
-Asciz	indexOfSlice;
-Asciz	(Lscala/collection/Seq;)I;
-NameAndType	indexOfSlice:(Lscala/collection/Seq;)I
-InterfaceMethod	scala/collection/SeqLike.indexOfSlice:(Lscala/collection/Seq;)I
-Asciz	that;
-Asciz	Lscala/collection/Seq;;
 Asciz	equalsWith;
 Asciz	(Lscala/collection/SeqLike;Lscala/collection/Seq;Lscala/Function2;)Z;
 Asciz	scala/collection/IterableLike;
@@ -79,6 +71,8 @@ Asciz	unboxToBoolean;
 Asciz	(Ljava/lang/Object;)Z;
 NameAndType	unboxToBoolean:(Ljava/lang/Object;)Z
 Method	scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
+Asciz	that;
+Asciz	Lscala/collection/Seq;;
 Asciz	f;
 Asciz	Lscala/Function2;;
 Asciz	i;
@@ -263,6 +257,7 @@ Asciz	(Lscala/Function2;)V;
 NameAndType	"<init>":(Lscala/Function2;)V
 Method	scala/math/Ordering$$anon$4."<init>":(Lscala/Function2;)V
 Asciz	lt;
+Asciz	corresponds;
 Asciz	padTo;
 Asciz	(Lscala/collection/SeqLike;ILjava/lang/Object;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
 Asciz	repr;
@@ -419,6 +414,12 @@ Asciz	(Lscala/Function1;)Z;
 NameAndType	exists:(Lscala/Function1;)Z
 InterfaceMethod	scala/collection/IterableLike.exists:(Lscala/Function1;)Z
 Asciz	elem$4;
+Asciz	containsSlice;
+Asciz	(Lscala/collection/SeqLike;Lscala/collection/Seq;)Z;
+Asciz	indexOfSlice;
+Asciz	(Lscala/collection/Seq;)I;
+NameAndType	indexOfSlice:(Lscala/collection/Seq;)I
+InterfaceMethod	scala/collection/SeqLike.indexOfSlice:(Lscala/collection/Seq;)I
 Asciz	lastIndexOfSlice;
 Asciz	(Lscala/collection/SeqLike;Lscala/collection/Seq;I)I;
 Asciz	scala/collection/SeqLike$;
@@ -606,28 +607,6 @@ public static java.lang.Object projection(scala.collection.SeqLike);
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      7      0    $this       Lscala/collection/SeqLike;
-
-
-public static boolean containsSlice(scala.collection.SeqLike, scala.collection.Seq);
-  Signature: (Lscala/collection/SeqLike;Lscala/collection/Seq;)Z
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.indexOfSlice:(Lscala/collection/Seq;)I
-	iconst_m1
-	if_icmpeq	l1 // iconst_0
-	iconst_1
-	goto	l2 // ireturn
-l1	iconst_0
-l2	ireturn
-  Labels:
-   	l1 = 15 // iconst_0
-   	l2 = 16 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      17      0    $this       Lscala/collection/SeqLike;
-   0      17      1    that       Lscala/collection/Seq;
 
 
 public static boolean equalsWith(scala.collection.SeqLike, scala.collection.Seq, scala.Function2);
@@ -934,6 +913,57 @@ public static java.lang.Object sortWith(scala.collection.SeqLike, scala.Function
    Start  Length  Slot  Name   Signature
    0      15      0    $this       Lscala/collection/SeqLike;
    0      15      1    lt       Lscala/Function2;
+
+
+public static boolean corresponds(scala.collection.SeqLike, scala.collection.Seq, scala.Function2);
+  Signature: (Lscala/collection/SeqLike;Lscala/collection/Seq;Lscala/Function2;)Z
+  Code:
+   Stack=3, Locals=5, Args_size=3
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
+	astore_3
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
+	astore	4
+l2	aload_3
+	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
+	ifeq	l1 // aload_3
+	aload	4
+	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
+	ifeq	l1 // aload_3
+	aload_2
+	aload_3
+	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
+	aload	4
+	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
+	ifne	l2 // aload_3
+	iconst_0
+	ireturn
+l1	aload_3
+	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
+	ifne	l3 // iconst_0
+	aload	4
+	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
+	ifeq	l4 // iconst_1
+l3	iconst_0
+	goto	l5 // ireturn
+l4	iconst_1
+l5	ireturn
+  Labels:
+   	l2 = 15 // aload_3
+   	l1 = 61 // aload_3
+   	l3 = 80 // iconst_0
+   	l4 = 84 // iconst_1
+   	l5 = 85 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      86      0    $this       Lscala/collection/SeqLike;
+   0      86      1    that       Lscala/collection/Seq;
+   0      86      2    p       Lscala/Function2;
+   7      79      3    i       Lscala/collection/Iterator;
+   15      71      4    j       Lscala/collection/Iterator;
 
 
 public static java.lang.Object padTo(scala.collection.SeqLike, int, java.lang.Object, scala.collection.generic.CanBuildFrom);
@@ -1390,6 +1420,28 @@ public static boolean contains(scala.collection.SeqLike, java.lang.Object);
    Start  Length  Slot  Name   Signature
    0      16      0    $this       Lscala/collection/SeqLike;
    0      16      1    elem$4       Ljava/lang/Object;
+
+
+public static boolean containsSlice(scala.collection.SeqLike, scala.collection.Seq);
+  Signature: (Lscala/collection/SeqLike;Lscala/collection/Seq;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.indexOfSlice:(Lscala/collection/Seq;)I
+	iconst_m1
+	if_icmpeq	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 15 // iconst_0
+   	l2 = 16 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      17      0    $this       Lscala/collection/SeqLike;
+   0      17      1    that       Lscala/collection/Seq;
 
 
 public static int lastIndexOfSlice(scala.collection.SeqLike, scala.collection.Seq, int);

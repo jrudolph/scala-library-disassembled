@@ -262,10 +262,6 @@ Method	scala/collection/immutable/Nil$.orElse:(Lscala/PartialFunction;)Lscala/Pa
 Asciz	projection;
 NameAndType	projection:()Ljava/lang/Object;
 Method	scala/collection/immutable/Nil$.projection:()Ljava/lang/Object;
-Asciz	containsSlice;
-Asciz	(Lscala/collection/Seq;)Z;
-NameAndType	containsSlice:(Lscala/collection/Seq;)Z
-Method	scala/collection/immutable/Nil$.containsSlice:(Lscala/collection/Seq;)Z
 Asciz	equalsWith;
 Asciz	(Lscala/collection/Seq;Lscala/Function2;)Z;
 NameAndType	equalsWith:(Lscala/collection/Seq;Lscala/Function2;)Z
@@ -298,6 +294,9 @@ Method	scala/collection/immutable/Nil$.sortWith:(Lscala/math/Ordering;)Ljava/lan
 Asciz	(Lscala/Function2;)Ljava/lang/Object;;
 NameAndType	sortWith:(Lscala/Function2;)Ljava/lang/Object;
 Method	scala/collection/immutable/Nil$.sortWith:(Lscala/Function2;)Ljava/lang/Object;
+Asciz	corresponds;
+NameAndType	corresponds:(Lscala/collection/Seq;Lscala/Function2;)Z
+Method	scala/collection/immutable/Nil$.corresponds:(Lscala/collection/Seq;Lscala/Function2;)Z
 Asciz	padTo;
 Asciz	(ILjava/lang/Object;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
 NameAndType	padTo:(ILjava/lang/Object;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
@@ -333,6 +332,10 @@ Method	scala/collection/immutable/Nil$.union:(Lscala/collection/Seq;Lscala/colle
 Asciz	contains;
 NameAndType	contains:(Ljava/lang/Object;)Z
 Method	scala/collection/immutable/Nil$.contains:(Ljava/lang/Object;)Z
+Asciz	containsSlice;
+Asciz	(Lscala/collection/Seq;)Z;
+NameAndType	containsSlice:(Lscala/collection/Seq;)Z
+Method	scala/collection/immutable/Nil$.containsSlice:(Lscala/collection/Seq;)Z
 Asciz	lastIndexOfSlice;
 Asciz	(Lscala/collection/Seq;I)I;
 NameAndType	lastIndexOfSlice:(Lscala/collection/Seq;I)I
@@ -1188,16 +1191,6 @@ public static final java.lang.Object projection();
 	areturn
   Labels:
 
-public static final boolean containsSlice(scala.collection.Seq);
-  Signature: (Lscala/collection/Seq;)Z
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
-	aload_0
-	invokevirtual	Method scala/collection/immutable/Nil$.containsSlice:(Lscala/collection/Seq;)Z
-	ireturn
-  Labels:
-
 public static final boolean equalsWith(scala.collection.Seq, scala.Function2);
   Signature: (Lscala/collection/Seq;Lscala/Function2;)Z
   Code:
@@ -1286,6 +1279,17 @@ public static final java.lang.Object sortWith(scala.Function2);
 	aload_0
 	invokevirtual	Method scala/collection/immutable/Nil$.sortWith:(Lscala/Function2;)Ljava/lang/Object;
 	areturn
+  Labels:
+
+public static final boolean corresponds(scala.collection.Seq, scala.Function2);
+  Signature: (Lscala/collection/Seq;Lscala/Function2;)Z
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+	aload_0
+	aload_1
+	invokevirtual	Method scala/collection/immutable/Nil$.corresponds:(Lscala/collection/Seq;Lscala/Function2;)Z
+	ireturn
   Labels:
 
 public static final java.lang.Object padTo(int, java.lang.Object, scala.collection.generic.CanBuildFrom);
@@ -1394,6 +1398,16 @@ public static final boolean contains(java.lang.Object);
 	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 	aload_0
 	invokevirtual	Method scala/collection/immutable/Nil$.contains:(Ljava/lang/Object;)Z
+	ireturn
+  Labels:
+
+public static final boolean containsSlice(scala.collection.Seq);
+  Signature: (Lscala/collection/Seq;)Z
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+	aload_0
+	invokevirtual	Method scala/collection/immutable/Nil$.containsSlice:(Lscala/collection/Seq;)Z
 	ireturn
   Labels:
 
@@ -1830,7 +1844,7 @@ public static final scala.collection.immutable.List sort(scala.Function2);
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFAC 
+   01 FFFFFFAF 
 
 public static final scala.collection.immutable.List $minus(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/List;
@@ -1842,7 +1856,7 @@ public static final scala.collection.immutable.List $minus(java.lang.Object);
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFB1 
+   01 FFFFFFB4 
 
 public static final scala.collection.immutable.List $minus$minus(scala.collection.immutable.List);
   Signature: (Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
@@ -1854,7 +1868,7 @@ public static final scala.collection.immutable.List $minus$minus(scala.collectio
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFB6 
+   01 FFFFFFB9 
 
 public static final scala.collection.immutable.List remove(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/immutable/List;
@@ -1866,7 +1880,7 @@ public static final scala.collection.immutable.List remove(scala.Function1);
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFBB 
+   01 FFFFFFBE 
 
 public static final scala.Tuple2 break(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Tuple2;
@@ -1878,7 +1892,7 @@ public static final scala.Tuple2 break(scala.Function1);
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFBF 
+   01 FFFFFFC2 
 
 public static final scala.collection.immutable.Stream toStream();
   Signature: ()Lscala/collection/immutable/Stream;
@@ -1889,7 +1903,7 @@ public static final scala.collection.immutable.Stream toStream();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFC4 
+   01 FFFFFFC7 
 
 public static final java.lang.String stringPrefix();
   Signature: ()Ljava/lang/String;
@@ -1921,7 +1935,7 @@ public static final scala.Tuple2 span(scala.Function1);
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFBF 
+   01 FFFFFFC2 
 
 public static final scala.collection.immutable.List dropWhile(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/immutable/List;
@@ -1933,7 +1947,7 @@ public static final scala.collection.immutable.List dropWhile(scala.Function1);
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFBB 
+   01 FFFFFFBE 
 
 public static final scala.collection.immutable.List takeWhile(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/immutable/List;
@@ -1945,7 +1959,7 @@ public static final scala.collection.immutable.List takeWhile(scala.Function1);
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFBB 
+   01 FFFFFFBE 
 
 public static final scala.Tuple2 splitAt(int);
   Signature: (I)Lscala/Tuple2;
@@ -1957,7 +1971,7 @@ public static final scala.Tuple2 splitAt(int);
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFD8 
+   01 FFFFFFDB 
 
 public static final scala.collection.immutable.List takeRight(int);
   Signature: (I)Lscala/collection/immutable/List;
@@ -1969,7 +1983,7 @@ public static final scala.collection.immutable.List takeRight(int);
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFDD 
+   01 FFFFFFE0 
 
 public static final scala.collection.immutable.List slice(int, int);
   Signature: (II)Lscala/collection/immutable/List;
@@ -1982,7 +1996,7 @@ public static final scala.collection.immutable.List slice(int, int);
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFE2 
+   01 FFFFFFE5 
 
 public static final scala.collection.immutable.List drop(int);
   Signature: (I)Lscala/collection/immutable/List;
@@ -1994,7 +2008,7 @@ public static final scala.collection.immutable.List drop(int);
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFDD 
+   01 FFFFFFE0 
 
 public static final scala.collection.immutable.List take(int);
   Signature: (I)Lscala/collection/immutable/List;
@@ -2006,7 +2020,7 @@ public static final scala.collection.immutable.List take(int);
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFDD 
+   01 FFFFFFE0 
 
 public static final scala.collection.immutable.List toList();
   Signature: ()Lscala/collection/immutable/List;
@@ -2030,7 +2044,7 @@ public static final java.lang.Object $plus$plus(scala.collection.Iterator, scala
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFF0 
+   01 FFFFFFF3 
 
 public static final java.lang.Object $plus$plus(scala.collection.Traversable, scala.collection.generic.CanBuildFrom);
   Signature: (Lscala/collection/Traversable;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
@@ -2043,7 +2057,7 @@ public static final java.lang.Object $plus$plus(scala.collection.Traversable, sc
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFF4 
+   01 FFFFFFF7 
 
 public static final scala.collection.immutable.List mapConserve(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/immutable/List;
@@ -2055,7 +2069,7 @@ public static final scala.collection.immutable.List mapConserve(scala.Function1)
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFF8 
+   01 FFFFFFFB 
 
 public static final scala.collection.immutable.List reverse_$colon$colon$colon(scala.collection.immutable.List);
   Signature: (Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
@@ -2067,7 +2081,7 @@ public static final scala.collection.immutable.List reverse_$colon$colon$colon(s
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFB6 
+   01 FFFFFFB9 
 
 public static final scala.collection.immutable.List $colon$colon$colon(scala.collection.immutable.List);
   Signature: (Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
@@ -2079,7 +2093,7 @@ public static final scala.collection.immutable.List $colon$colon$colon(scala.col
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFB6 
+   01 FFFFFFB9 
 
 public static final scala.collection.immutable.List $colon$colon(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/List;
@@ -2091,7 +2105,7 @@ public static final scala.collection.immutable.List $colon$colon(java.lang.Objec
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFB1 
+   01 FFFFFFB4 
 
 public static final scala.collection.generic.GenericCompanion companion();
   Signature: ()Lscala/collection/generic/GenericCompanion;
@@ -2102,7 +2116,7 @@ public static final scala.collection.generic.GenericCompanion companion();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 06 
+   02 09 
 
 public static final scala.collection.LinearSeqLike takeWhile(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/LinearSeqLike;
