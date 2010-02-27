@@ -30,6 +30,10 @@ NameAndType	_1:()Ljava/lang/Object;
 Method	scala/Tuple2._1:()Ljava/lang/Object;
 Asciz	java/lang/String;
 class	java/lang/String
+Asciz	scala/xml/dtd/ParsedEntityDecl;
+class	scala/xml/dtd/ParsedEntityDecl
+Asciz	scala/xml/dtd/IntDef;
+class	scala/xml/dtd/IntDef
 Asciz	_2;
 NameAndType	_2:()Ljava/lang/Object;
 Method	scala/Tuple2._2:()Ljava/lang/Object;
@@ -39,10 +43,6 @@ Asciz	unboxToInt;
 Asciz	(Ljava/lang/Object;)I;
 NameAndType	unboxToInt:(Ljava/lang/Object;)I
 Method	scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-Asciz	scala/xml/dtd/ParsedEntityDecl;
-class	scala/xml/dtd/ParsedEntityDecl
-Asciz	scala/xml/dtd/IntDef;
-class	scala/xml/dtd/IntDef
 Asciz	boxToCharacter;
 Asciz	(C)Ljava/lang/Character;;
 NameAndType	boxToCharacter:(C)Ljava/lang/Character;
@@ -71,8 +71,6 @@ Asciz	this;
 Asciz	Lscala/xml/parsing/XhtmlEntities$$anonfun$2;;
 Asciz	temp5;
 Asciz	Ljava/lang/String;;
-Asciz	temp6;
-Asciz	I;
 Asciz	LocalVariableTable;
 Asciz	(Lscala/Tuple2<Ljava/lang/String;Ljava/lang/Integer;>;)Lscala/Tuple2<Ljava/lang/String;Lscala/xml/dtd/ParsedEntityDecl;>;;
 Asciz	Signature;
@@ -109,17 +107,13 @@ public static {};
 public final scala.Tuple2 apply(scala.Tuple2);
   Signature: (Lscala/Tuple2;)Lscala/Tuple2;
   Code:
-   Stack=9, Locals=5, Args_size=2
+   Stack=9, Locals=4, Args_size=2
 	aload_1
 	ifnull	l1 // new
 	aload_1
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
 	checkcast	class java/lang/String
 	astore_2
-	aload_1
-	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-	istore_3
 	new	class scala/Tuple2
 	dup
 	aload_2
@@ -128,10 +122,12 @@ public final scala.Tuple2 apply(scala.Tuple2);
 	aload_2
 	new	class scala/xml/dtd/IntDef
 	dup
-	iload_3
+	aload_1
+	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	i2c
-	istore	4
-	iload	4
+	istore_3
+	iload_3
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
 	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
 	invokespecial	Method scala/xml/dtd/IntDef."<init>":(Ljava/lang/String;)V
@@ -145,15 +141,14 @@ l1	new	class scala/MatchError
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 56 // new
+   	l1 = 52 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      68      0    this       Lscala/xml/parsing/XhtmlEntities$$anonfun$2;
-   12      43      2    temp5       Ljava/lang/String;
-   20      35      3    temp6       I
+   0      64      0    this       Lscala/xml/parsing/XhtmlEntities$$anonfun$2;
+   12      39      2    temp5       Ljava/lang/String;
 
   Signature: length = 0x2
-   00 43 
+   00 41 
 
 public final java.lang.Object apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;

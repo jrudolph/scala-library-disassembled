@@ -36,13 +36,13 @@ NameAndType	_1:()Ljava/lang/Object;
 Method	scala/Tuple2._1:()Ljava/lang/Object;
 Asciz	scala/collection/immutable/List;
 class	scala/collection/immutable/List
-Asciz	_2;
-NameAndType	_2:()Ljava/lang/Object;
-Method	scala/Tuple2._2:()Ljava/lang/Object;
 Asciz	$colon$colon;
 Asciz	(Ljava/lang/Object;)Lscala/collection/immutable/List;;
 NameAndType	$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 Method	scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
+Asciz	_2;
+NameAndType	_2:()Ljava/lang/Object;
+Method	scala/Tuple2._2:()Ljava/lang/Object;
 Asciz	<init>;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
@@ -65,14 +65,9 @@ Asciz	this;
 Asciz	Lscala/collection/immutable/List$$anonfun$separate$1;;
 Asciz	temp41;
 Asciz	Lscala/Left;;
-Asciz	temp43;
-Asciz	Lscala/collection/immutable/List;;
 Asciz	temp42;
-Asciz	temp44;
 Asciz	temp45;
 Asciz	Lscala/Right;;
-Asciz	temp47;
-Asciz	temp48;
 Asciz	temp46;
 Asciz	LocalVariableTable;
 Asciz	(Lscala/Either<TA;TB;>;Lscala/Tuple2<Lscala/collection/immutable/List<TA;>;Lscala/collection/immutable/List<TB;>;>;)Lscala/Tuple2<Lscala/collection/immutable/List<TA;>;Lscala/collection/immutable/List<TB;>;>;;
@@ -110,7 +105,7 @@ public static {};
 public final scala.Tuple2 apply(scala.Either, scala.Tuple2);
   Signature: (Lscala/Either;Lscala/Tuple2;)Lscala/Tuple2;
   Code:
-   Stack=6, Locals=11, Args_size=3
+   Stack=6, Locals=7, Args_size=3
 	aload_1
 	instanceof	class scala/Left
 	ifeq	l1 // aload_1
@@ -119,23 +114,18 @@ public final scala.Tuple2 apply(scala.Either, scala.Tuple2);
 	astore_3
 	aload_3
 	getfield	Field scala/Left.a:Ljava/lang/Object;
-	astore	5
+	astore	4
 	aload_2
 	ifnull	l2 // new
+	new	class scala/Tuple2
+	dup
 	aload_2
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
-	astore	4
+	aload	4
+	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	aload_2
 	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
-	checkcast	class scala/collection/immutable/List
-	astore	6
-	new	class scala/Tuple2
-	dup
-	aload	4
-	aload	5
-	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
-	aload	6
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	goto	l3 // areturn
 l2	new	class scala/MatchError
@@ -153,25 +143,20 @@ l1	aload_1
 	ifeq	l4 // new
 	aload_1
 	checkcast	class scala/Right
-	astore	7
-	aload	7
+	astore	5
+	aload	5
 	getfield	Field scala/Right.b:Ljava/lang/Object;
-	astore	10
+	astore	6
 	aload_2
 	ifnull	l5 // new
+	new	class scala/Tuple2
+	dup
 	aload_2
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
-	checkcast	class scala/collection/immutable/List
-	astore	8
 	aload_2
 	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
-	astore	9
-	new	class scala/Tuple2
-	dup
-	aload	8
-	aload	9
-	aload	10
+	aload	6
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 l3	areturn
@@ -196,27 +181,23 @@ l4	new	class scala/MatchError
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l2 = 59 // new
-   	l1 = 79 // aload_1
-   	l3 = 137 // areturn
-   	l5 = 138 // new
-   	l4 = 158 // new
+   	l2 = 48 // new
+   	l1 = 68 // aload_1
+   	l3 = 115 // areturn
+   	l5 = 116 // new
+   	l4 = 136 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      178      0    this       Lscala/collection/immutable/List$$anonfun$separate$1;
-   12      67      3    temp41       Lscala/Left;
-   31      25      4    temp43       Lscala/collection/immutable/List;
-   18      61      5    temp42       Ljava/lang/Object;
-   40      16      6    temp44       Lscala/collection/immutable/List;
-   92      45      7    temp45       Lscala/Right;
-   138      20      7    temp45       Lscala/Right;
-   112      25      8    temp47       Lscala/collection/immutable/List;
-   121      16      9    temp48       Lscala/collection/immutable/List;
-   99      38      10    temp46       Ljava/lang/Object;
-   138      20      10    temp46       Ljava/lang/Object;
+   0      156      0    this       Lscala/collection/immutable/List$$anonfun$separate$1;
+   12      56      3    temp41       Lscala/Left;
+   18      50      4    temp42       Ljava/lang/Object;
+   81      34      5    temp45       Lscala/Right;
+   116      20      5    temp45       Lscala/Right;
+   88      27      6    temp46       Ljava/lang/Object;
+   116      20      6    temp46       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 44 
+   00 3F 
 
 public final java.lang.Object apply(java.lang.Object, java.lang.Object);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;

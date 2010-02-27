@@ -2,7 +2,7 @@ Compiled from "RedBlack.scala"
 public abstract class scala.collection.immutable.RedBlack extends java.lang.Object implements scala.ScalaObject,java.io.Serializable
   SourceFile: "RedBlack.scala"
   Signature: length = 0x2
-   00 62 
+   00 5E 
   ScalaSig: length = 0x12E0
    05 00 FFFFFF84 61 06 05 01 02 FFFFFF81 00 09 02 08 52 65 64
    42 6C 61 63 6B 0A 02 03 04 01 09 69 6D 6D 75 74
@@ -342,6 +342,8 @@ Asciz	(Lscala/collection/immutable/RedBlack$Tree;)Lscala/collection/immutable/Re
 Asciz	LineNumberTable;
 Asciz	scala/collection/immutable/RedBlack$RedTree;
 class	scala/collection/immutable/RedBlack$RedTree
+Asciz	scala/collection/immutable/RedBlack$BlackTree;
+class	scala/collection/immutable/RedBlack$BlackTree
 Asciz	key;
 Asciz	()Ljava/lang/Object;;
 NameAndType	key:()Ljava/lang/Object;
@@ -356,8 +358,6 @@ Method	scala/collection/immutable/RedBlack$RedTree.left:()Lscala/collection/immu
 Asciz	right;
 NameAndType	right:()Lscala/collection/immutable/RedBlack$Tree;
 Method	scala/collection/immutable/RedBlack$RedTree.right:()Lscala/collection/immutable/RedBlack$Tree;
-Asciz	scala/collection/immutable/RedBlack$BlackTree;
-class	scala/collection/immutable/RedBlack$BlackTree
 Asciz	<init>;
 Asciz	(Lscala/collection/immutable/RedBlack;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/immutable/RedBlack$Tree;Lscala/collection/immutable/RedBlack$Tree;)V;
 NameAndType	"<init>":(Lscala/collection/immutable/RedBlack;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/immutable/RedBlack$Tree;Lscala/collection/immutable/RedBlack$Tree;)V
@@ -368,11 +368,6 @@ Asciz	t;
 Asciz	Lscala/collection/immutable/RedBlack$Tree;;
 Asciz	temp2;
 Asciz	Lscala/collection/immutable/RedBlack$RedTree;;
-Asciz	temp3;
-Asciz	Ljava/lang/Object;;
-Asciz	temp4;
-Asciz	temp5;
-Asciz	temp6;
 Asciz	LocalVariableTable;
 Asciz	scala$collection$immutable$RedBlack$$mkTree;
 Asciz	(ZLjava/lang/Object;Ljava/lang/Object;Lscala/collection/immutable/RedBlack$Tree;Lscala/collection/immutable/RedBlack$Tree;)Lscala/collection/immutable/RedBlack$NonEmpty;;
@@ -380,6 +375,7 @@ Method	scala/collection/immutable/RedBlack$RedTree."<init>":(Lscala/collection/i
 Asciz	isBlack;
 Asciz	Z;
 Asciz	k;
+Asciz	Ljava/lang/Object;;
 Asciz	v;
 Asciz	l;
 Asciz	r;
@@ -455,48 +451,36 @@ public abstract boolean isSmaller(java.lang.Object, java.lang.Object);
 public final scala.collection.immutable.RedBlack$Tree scala$collection$immutable$RedBlack$$blacken(scala.collection.immutable.RedBlack$Tree);
   Signature: (Lscala/collection/immutable/RedBlack$Tree;)Lscala/collection/immutable/RedBlack$Tree;
   Code:
-   Stack=7, Locals=7, Args_size=2
+   Stack=7, Locals=3, Args_size=2
 	aload_1
 	instanceof	class scala/collection/immutable/RedBlack$RedTree
 	ifeq	l1 // aload_1
 	aload_1
 	checkcast	class scala/collection/immutable/RedBlack$RedTree
 	astore_2
-	aload_2
-	invokevirtual	Method scala/collection/immutable/RedBlack$RedTree.key:()Ljava/lang/Object;
-	astore_3
-	aload_2
-	invokevirtual	Method scala/collection/immutable/RedBlack$RedTree.value:()Ljava/lang/Object;
-	astore	4
-	aload_2
-	invokevirtual	Method scala/collection/immutable/RedBlack$RedTree.left:()Lscala/collection/immutable/RedBlack$Tree;
-	astore	5
-	aload_2
-	invokevirtual	Method scala/collection/immutable/RedBlack$RedTree.right:()Lscala/collection/immutable/RedBlack$Tree;
-	astore	6
 	new	class scala/collection/immutable/RedBlack$BlackTree
 	dup
 	aload_0
-	aload_3
-	aload	4
-	aload	5
-	aload	6
+	aload_2
+	invokevirtual	Method scala/collection/immutable/RedBlack$RedTree.key:()Ljava/lang/Object;
+	aload_2
+	invokevirtual	Method scala/collection/immutable/RedBlack$RedTree.value:()Ljava/lang/Object;
+	aload_2
+	invokevirtual	Method scala/collection/immutable/RedBlack$RedTree.left:()Lscala/collection/immutable/RedBlack$Tree;
+	aload_2
+	invokevirtual	Method scala/collection/immutable/RedBlack$RedTree.right:()Lscala/collection/immutable/RedBlack$Tree;
 	invokespecial	Method scala/collection/immutable/RedBlack$BlackTree."<init>":(Lscala/collection/immutable/RedBlack;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/immutable/RedBlack$Tree;Lscala/collection/immutable/RedBlack$Tree;)V
 	goto	l2 // areturn
 l1	aload_1
 l2	areturn
   Labels:
-   	l1 = 53 // aload_1
-   	l2 = 54 // areturn
+   	l1 = 39 // aload_1
+   	l2 = 40 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      55      0    this       Lscala/collection/immutable/RedBlack;
-   0      55      1    t       Lscala/collection/immutable/RedBlack$Tree;
-   12      38      2    temp2       Lscala/collection/immutable/RedBlack$RedTree;
-   17      33      3    temp3       Ljava/lang/Object;
-   23      27      4    temp4       Ljava/lang/Object;
-   29      21      5    temp5       Lscala/collection/immutable/RedBlack$Tree;
-   35      15      6    temp6       Lscala/collection/immutable/RedBlack$Tree;
+   0      41      0    this       Lscala/collection/immutable/RedBlack;
+   0      41      1    t       Lscala/collection/immutable/RedBlack$Tree;
+   12      24      2    temp2       Lscala/collection/immutable/RedBlack$RedTree;
 
 
 public final scala.collection.immutable.RedBlack$NonEmpty scala$collection$immutable$RedBlack$$mkTree(boolean, java.lang.Object, java.lang.Object, scala.collection.immutable.RedBlack$Tree, scala.collection.immutable.RedBlack$Tree);
@@ -555,7 +539,7 @@ l1	aload_0
   Labels:
    	l1 = 19 // aload_0
   Signature: length = 0x2
-   00 4F 
+   00 4B 
 
 public final scala.collection.immutable.RedBlack$BlackTree$ BlackTree();
   Signature: ()Lscala/collection/immutable/RedBlack$BlackTree$;

@@ -83,11 +83,11 @@ Asciz	col;
 Asciz	()I;
 NameAndType	col:()I
 Method	scala/xml/PrettyPrinter$Box.col:()I
+int	32;
 Asciz	s;
 Asciz	()Ljava/lang/String;;
 NameAndType	s:()Ljava/lang/String;
 Method	scala/xml/PrettyPrinter$Box.s:()Ljava/lang/String;
-int	32;
 Asciz	(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;;
 NameAndType	append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
@@ -111,12 +111,6 @@ Asciz	b;
 Asciz	Lscala/xml/PrettyPrinter$Item;;
 Asciz	temp40;
 Asciz	Lscala/xml/PrettyPrinter$Box;;
-Asciz	temp41;
-Asciz	temp42;
-Asciz	Ljava/lang/String;;
-Asciz	temp43;
-Asciz	Lscala/xml/PrettyPrinter$Para;;
-Asciz	temp44;
 Asciz	LocalVariableTable;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	apply:(Lscala/xml/PrettyPrinter$Item;)Ljava/lang/Object;
@@ -168,7 +162,7 @@ public static {};
 public final java.lang.Object apply(scala.xml.PrettyPrinter$Item);
   Signature: (Lscala/xml/PrettyPrinter$Item;)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=8, Args_size=2
+   Stack=3, Locals=4, Args_size=2
 	aload_1
 	aload_0
 	getfield	Field $outer:Lscala/xml/PrettyPrinter;
@@ -210,12 +204,6 @@ l3	aload_1
 	aload_1
 	checkcast	class scala/xml/PrettyPrinter$Box
 	astore_3
-	aload_3
-	invokevirtual	Method scala/xml/PrettyPrinter$Box.col:()I
-	istore	4
-	aload_3
-	invokevirtual	Method scala/xml/PrettyPrinter$Box.s:()Ljava/lang/String;
-	astore	5
 	aload_0
 	getfield	Field lastwasbreak$1:Lscala/runtime/BooleanRef;
 	iconst_0
@@ -223,7 +211,8 @@ l3	aload_1
 l9	aload_0
 	getfield	Field cur$1:Lscala/runtime/IntRef;
 	getfield	Field scala/runtime/IntRef.elem:I
-	iload	4
+	aload_3
+	invokevirtual	Method scala/xml/PrettyPrinter$Box.col:()I
 	if_icmpge	l8 // aload_0
 	aload_0
 	getfield	Field sb$1:Lscala/collection/mutable/StringBuilder;
@@ -241,25 +230,22 @@ l9	aload_0
 	goto	l9 // aload_0
 l8	aload_0
 	getfield	Field sb$1:Lscala/collection/mutable/StringBuilder;
-	aload	5
+	aload_3
+	invokevirtual	Method scala/xml/PrettyPrinter$Box.s:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 	goto	l6 // areturn
 l7	aload_1
 	instanceof	class scala/xml/PrettyPrinter$Para
 	ifeq	l10 // new
-	aload_1
-	checkcast	class scala/xml/PrettyPrinter$Para
-	astore	6
-	aload	6
-	invokevirtual	Method scala/xml/PrettyPrinter$Para.s:()Ljava/lang/String;
-	astore	7
 	aload_0
 	getfield	Field lastwasbreak$1:Lscala/runtime/BooleanRef;
 	iconst_0
 	putfield	Field scala/runtime/BooleanRef.elem:Z
 	aload_0
 	getfield	Field sb$1:Lscala/collection/mutable/StringBuilder;
-	aload	7
+	aload_1
+	checkcast	class scala/xml/PrettyPrinter$Para
+	invokevirtual	Method scala/xml/PrettyPrinter$Para.s:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 l6	areturn
 l10	new	class scala/MatchError
@@ -274,20 +260,16 @@ l10	new	class scala/MatchError
    	l4 = 44 // aload_0
    	l5 = 53 // pop
    	l3 = 76 // aload_1
-   	l9 = 108 // aload_0
-   	l8 = 149 // aload_0
-   	l7 = 161 // aload_1
-   	l6 = 198 // areturn
-   	l10 = 199 // new
+   	l9 = 96 // aload_0
+   	l8 = 139 // aload_0
+   	l7 = 153 // aload_1
+   	l6 = 182 // areturn
+   	l10 = 183 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      211      0    this       Lscala/xml/PrettyPrinter$$anonfun$format$1;
-   0      211      1    b       Lscala/xml/PrettyPrinter$Item;
-   88      70      3    temp40       Lscala/xml/PrettyPrinter$Box;
-   94      64      4    temp41       I
-   100      58      5    temp42       Ljava/lang/String;
-   174      24      6    temp43       Lscala/xml/PrettyPrinter$Para;
-   181      17      7    temp44       Ljava/lang/String;
+   0      195      0    this       Lscala/xml/PrettyPrinter$$anonfun$format$1;
+   0      195      1    b       Lscala/xml/PrettyPrinter$Item;
+   88      62      3    temp40       Lscala/xml/PrettyPrinter$Box;
 
 
 public final java.lang.Object apply(java.lang.Object);

@@ -169,14 +169,9 @@ Asciz	Lscala/Symbol;;
 Asciz	a;
 Asciz	$inlThis4;
 Asciz	sched1;
-Asciz	temp3;
-Asciz	Lscala/Some;;
-Asciz	temp4;
 Asciz	temp1;
 Asciz	Lscala/Option;;
 Asciz	selfKernel;
-Asciz	temp7;
-Asciz	temp8;
 Asciz	temp5;
 Asciz	select;
 Asciz	(Lscala/actors/remote/Node;Lscala/Symbol;)Lscala/actors/AbstractActor;;
@@ -391,7 +386,7 @@ public scala.actors.remote.NetKernel createKernelOnPort(int);
 public void register(scala.Symbol, scala.actors.Actor);
   Signature: (Lscala/Symbol;Lscala/actors/Actor;)V
   Code:
-   Stack=4, Locals=12, Args_size=3
+   Stack=4, Locals=10, Args_size=3
 	aload_0
 	dup
 	pop
@@ -407,15 +402,15 @@ public void register(scala.Symbol, scala.actors.Actor);
 	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
 	checkcast	class scala/actors/Actor
 	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
-	astore	11
+	astore	9
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	dup
 	ifnonnull	l1 // aload
 	pop
-	aload	11
+	aload	9
 	ifnull	l2 // getstatic
 	goto	l3 // aload
-l1	aload	11
+l1	aload	9
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload
 l2	getstatic	Field scala/actors/remote/TcpService$.MODULE$:Lscala/actors/remote/TcpService$;
@@ -444,19 +439,15 @@ l2	getstatic	Field scala/actors/remote/TcpService$.MODULE$:Lscala/actors/remote/
 	aload	7
 	invokeinterface	InterfaceMethod scala/actors/remote/Service.kernel:()Lscala/actors/remote/NetKernel;
 	goto	l4 // astore
-l3	aload	11
+l3	aload	9
 	instanceof	class scala/Some
 	ifeq	l5 // new
-	aload	11
+	aload	9
 	checkcast	class scala/Some
-	astore	8
-	aload	8
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/actors/remote/NetKernel
-	astore	9
-	aload	9
-l4	astore	10
-	aload	10
+l4	astore	8
+	aload	8
 	aload_1
 	aload_2
 	invokevirtual	Method scala/actors/remote/NetKernel.register:(Lscala/Symbol;Lscala/actors/OutputChannel;)V
@@ -465,7 +456,7 @@ l4	astore	10
 	return
 l5	new	class scala/MatchError
 	dup
-	aload	11
+	aload	9
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
@@ -476,33 +467,31 @@ l5	new	class scala/MatchError
    	l1 = 47 // aload
    	l2 = 55 // getstatic
    	l3 = 124 // aload
-   	l4 = 151 // astore
-   	l5 = 163 // new
+   	l4 = 143 // astore
+   	l5 = 155 // new
   Exception table:
    from   to  target type
-     4   162   176   any
-   163   176   176   any
+     4   154   168   any
+   155   168   168   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      179      0    this       Lscala/actors/remote/RemoteActor$;
-   0      179      1    name       Lscala/Symbol;
-   0      179      2    a       Lscala/actors/Actor;
+   0      171      0    this       Lscala/actors/remote/RemoteActor$;
+   0      171      1    name       Lscala/Symbol;
+   0      171      2    a       Lscala/actors/Actor;
    12      26      3    $inlThis1       Ljava/lang/Object;
    17      9      4    sched0       Lscala/actors/IScheduler;
    85      39      5    $inlThis4       Ljava/lang/Object;
    90      10      6    sched1       Lscala/actors/IScheduler;
    73      48      7    serv       Lscala/actors/remote/TcpService;
-   139      12      8    temp3       Lscala/Some;
-   149      2      9    temp4       Lscala/actors/remote/NetKernel;
-   153      7      10    kernel       Lscala/actors/remote/NetKernel;
-   31      131      11    temp1       Lscala/Option;
-   163      13      11    temp1       Lscala/Option;
+   145      7      8    kernel       Lscala/actors/remote/NetKernel;
+   31      123      9    temp1       Lscala/Option;
+   155      13      9    temp1       Lscala/Option;
 
 
 private scala.actors.remote.NetKernel selfKernel();
   Signature: ()Lscala/actors/remote/NetKernel;
   Code:
-   Stack=5, Locals=12, Args_size=1
+   Stack=5, Locals=10, Args_size=1
 	aload_0
 	getfield	Field scala$actors$remote$RemoteActor$$kernels:Lscala/collection/mutable/HashMap;
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
@@ -514,15 +503,15 @@ private scala.actors.remote.NetKernel selfKernel();
 	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
 	checkcast	class scala/actors/Actor
 	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
-	astore	11
+	astore	9
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	dup
 	ifnonnull	l1 // aload
 	pop
-	aload	11
+	aload	9
 	ifnull	l2 // getstatic
 	goto	l3 // aload
-l1	aload	11
+l1	aload	9
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload
 l2	getstatic	Field scala/actors/remote/TcpService$.MODULE$:Lscala/actors/remote/TcpService$;
@@ -563,21 +552,17 @@ l2	getstatic	Field scala/actors/remote/TcpService$.MODULE$:Lscala/actors/remote/
 	invokeinterface	InterfaceMethod scala/actors/Actor.onTerminate:(Lscala/Function0;)V
 	aload	8
 	goto	l4 // areturn
-l3	aload	11
+l3	aload	9
 	instanceof	class scala/Some
 	ifeq	l5 // new
-	aload	11
-	checkcast	class scala/Some
-	astore	9
 	aload	9
+	checkcast	class scala/Some
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/actors/remote/NetKernel
-	astore	10
-	aload	10
 l4	areturn
 l5	new	class scala/MatchError
 	dup
-	aload	11
+	aload	9
 	invokevirtual	Method scala/Option.toString:()Ljava/lang/String;
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
@@ -585,17 +570,15 @@ l5	new	class scala/MatchError
    	l1 = 41 // aload
    	l2 = 49 // getstatic
    	l3 = 141 // aload
-   	l4 = 168 // areturn
-   	l5 = 169 // new
+   	l4 = 160 // areturn
+   	l5 = 161 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      182      0    this       Lscala/actors/remote/RemoteActor$;
+   0      174      0    this       Lscala/actors/remote/RemoteActor$;
    69      69      4    serv0       Lscala/actors/remote/TcpService;
    100      38      7    s$10       Lscala/actors/Actor;
    78      60      8    kern$10       Lscala/actors/remote/NetKernel;
-   156      12      9    temp7       Lscala/Some;
-   166      2      10    temp8       Lscala/actors/remote/NetKernel;
-   25      157      11    temp5       Lscala/Option;
+   25      149      9    temp5       Lscala/Option;
 
 
 public scala.actors.AbstractActor select(scala.actors.remote.Node, scala.Symbol);

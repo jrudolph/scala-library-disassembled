@@ -2,7 +2,7 @@ Compiled from "Either.scala"
 public abstract class scala.Either extends java.lang.Object implements scala.ScalaObject
   SourceFile: "Either.scala"
   Signature: length = 0x2
-   00 77 
+   00 65 
   ScalaSig: length = 0x1062
    05 00 FFFFFF84 25 06 05 01 02 FFFFFF81 10 05 02 06 45 69 74
    68 65 72 0A 01 03 01 05 73 63 61 6C 61 03 00 15
@@ -354,12 +354,6 @@ Asciz	Lscala/Either;;
 Asciz	fa;
 Asciz	Lscala/Function1;;
 Asciz	fb;
-Asciz	temp2;
-Asciz	Lscala/Left;;
-Asciz	temp3;
-Asciz	temp4;
-Asciz	Lscala/Right;;
-Asciz	temp5;
 Asciz	LocalVariableTable;
 Asciz	<X:Ljava/lang/Object;>(Lscala/Function1<TA;TX;>;Lscala/Function1<TB;TX;>;)TX;;
 Asciz	swap;
@@ -368,24 +362,12 @@ Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/Right."<init>":(Ljava/lang/Object;)V
 Method	scala/Left."<init>":(Ljava/lang/Object;)V
-Asciz	temp7;
-Asciz	temp8;
-Asciz	temp9;
-Asciz	temp10;
 Asciz	joinRight;
 Asciz	(Lscala/Predef$$less$colon$less;)Lscala/Either;;
 Asciz	ev;
 Asciz	Lscala/Predef$$less$colon$less;;
-Asciz	temp12;
-Asciz	temp13;
-Asciz	temp14;
-Asciz	temp15;
 Asciz	<A1:Ljava/lang/Object;B1:Ljava/lang/Object;C:Ljava/lang/Object;>(Lscala/Predef$$less$colon$less<TB1;Lscala/Either<TA1;TC;>;>;)Lscala/Either<TA1;TC;>;;
 Asciz	joinLeft;
-Asciz	temp17;
-Asciz	temp18;
-Asciz	temp19;
-Asciz	temp20;
 Asciz	<A1:Ljava/lang/Object;B1:Ljava/lang/Object;C:Ljava/lang/Object;>(Lscala/Predef$$less$colon$less<TA1;Lscala/Either<TC;TB1;>;>;)Lscala/Either<TC;TB1;>;;
 Asciz	isLeft;
 Asciz	()Z;
@@ -486,31 +468,27 @@ public scala.Either$RightProjection right();
 public java.lang.Object fold(scala.Function1, scala.Function1);
   Signature: (Lscala/Function1;Lscala/Function1;)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=7, Args_size=3
+   Stack=3, Locals=5, Args_size=3
 	aload_0
 	instanceof	class scala/Left
 	ifeq	l1 // aload_0
+	aload_1
 	aload_0
 	checkcast	class scala/Left
 	astore_3
 	aload_3
 	getfield	Field scala/Left.a:Ljava/lang/Object;
-	astore	4
-	aload_1
-	aload	4
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	goto	l2 // areturn
 l1	aload_0
 	instanceof	class scala/Right
 	ifeq	l3 // new
+	aload_2
 	aload_0
 	checkcast	class scala/Right
-	astore	5
-	aload	5
+	astore	4
+	aload	4
 	getfield	Field scala/Right.b:Ljava/lang/Object;
-	astore	6
-	aload_2
-	aload	6
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 l2	areturn
 l3	new	class scala/MatchError
@@ -520,52 +498,44 @@ l3	new	class scala/MatchError
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 29 // aload_0
-   	l2 = 57 // areturn
-   	l3 = 58 // new
+   	l1 = 25 // aload_0
+   	l2 = 49 // areturn
+   	l3 = 50 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      70      0    this       Lscala/Either;
-   0      70      1    fa       Lscala/Function1;
-   0      70      2    fb       Lscala/Function1;
-   12      14      3    temp2       Lscala/Left;
-   18      8      4    temp3       Ljava/lang/Object;
-   42      15      5    temp4       Lscala/Right;
-   49      8      6    temp5       Ljava/lang/Object;
+   0      62      0    this       Lscala/Either;
+   0      62      1    fa       Lscala/Function1;
+   0      62      2    fb       Lscala/Function1;
 
   Signature: length = 0x2
-   00 55 
+   00 4F 
 
 public scala.Either swap();
   Signature: ()Lscala/Either;
   Code:
-   Stack=3, Locals=5, Args_size=1
+   Stack=3, Locals=3, Args_size=1
 	aload_0
 	instanceof	class scala/Left
 	ifeq	l1 // aload_0
+	new	class scala/Right
+	dup
 	aload_0
 	checkcast	class scala/Left
 	astore_1
 	aload_1
 	getfield	Field scala/Left.a:Ljava/lang/Object;
-	astore_2
-	new	class scala/Right
-	dup
-	aload_2
 	invokespecial	Method scala/Right."<init>":(Ljava/lang/Object;)V
 	goto	l2 // areturn
 l1	aload_0
 	instanceof	class scala/Right
 	ifeq	l3 // new
-	aload_0
-	checkcast	class scala/Right
-	astore_3
-	aload_3
-	getfield	Field scala/Right.b:Ljava/lang/Object;
-	astore	4
 	new	class scala/Left
 	dup
-	aload	4
+	aload_0
+	checkcast	class scala/Right
+	astore_2
+	aload_2
+	getfield	Field scala/Right.b:Ljava/lang/Object;
 	invokespecial	Method scala/Left."<init>":(Ljava/lang/Object;)V
 l2	areturn
 l3	new	class scala/MatchError
@@ -575,47 +545,39 @@ l3	new	class scala/MatchError
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 28 // aload_0
-   	l2 = 55 // areturn
-   	l3 = 56 // new
+   	l1 = 26 // aload_0
+   	l2 = 49 // areturn
+   	l3 = 50 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      68      0    this       Lscala/Either;
-   12      13      1    temp7       Lscala/Left;
-   17      8      2    temp8       Ljava/lang/Object;
-   40      15      3    temp9       Lscala/Right;
-   46      9      4    temp10       Ljava/lang/Object;
+   0      62      0    this       Lscala/Either;
 
 
 public scala.Either joinRight(scala.Predef$$less$colon$less);
   Signature: (Lscala/Predef$$less$colon$less;)Lscala/Either;
   Code:
-   Stack=3, Locals=6, Args_size=2
+   Stack=3, Locals=4, Args_size=2
 	aload_0
 	instanceof	class scala/Left
 	ifeq	l1 // aload_0
+	new	class scala/Left
+	dup
 	aload_0
 	checkcast	class scala/Left
 	astore_2
 	aload_2
 	getfield	Field scala/Left.a:Ljava/lang/Object;
-	astore_3
-	new	class scala/Left
-	dup
-	aload_3
 	invokespecial	Method scala/Left."<init>":(Ljava/lang/Object;)V
 	goto	l2 // areturn
 l1	aload_0
 	instanceof	class scala/Right
 	ifeq	l3 // new
+	aload_1
 	aload_0
 	checkcast	class scala/Right
-	astore	4
-	aload	4
+	astore_3
+	aload_3
 	getfield	Field scala/Right.b:Ljava/lang/Object;
-	astore	5
-	aload_1
-	aload	5
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	checkcast	class scala/Either
 l2	areturn
@@ -626,51 +588,43 @@ l3	new	class scala/MatchError
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 28 // aload_0
-   	l2 = 59 // areturn
-   	l3 = 60 // new
+   	l1 = 26 // aload_0
+   	l2 = 51 // areturn
+   	l3 = 52 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      72      0    this       Lscala/Either;
-   0      72      1    ev       Lscala/Predef$$less$colon$less;
-   12      13      2    temp12       Lscala/Left;
-   17      8      3    temp13       Ljava/lang/Object;
-   41      18      4    temp14       Lscala/Right;
-   48      11      5    temp15       Ljava/lang/Object;
+   0      64      0    this       Lscala/Either;
+   0      64      1    ev       Lscala/Predef$$less$colon$less;
 
   Signature: length = 0x2
-   00 68 
+   00 5A 
 
 public scala.Either joinLeft(scala.Predef$$less$colon$less);
   Signature: (Lscala/Predef$$less$colon$less;)Lscala/Either;
   Code:
-   Stack=3, Locals=6, Args_size=2
+   Stack=3, Locals=4, Args_size=2
 	aload_0
 	instanceof	class scala/Left
 	ifeq	l1 // aload_0
+	aload_1
 	aload_0
 	checkcast	class scala/Left
 	astore_2
 	aload_2
 	getfield	Field scala/Left.a:Ljava/lang/Object;
-	astore_3
-	aload_1
-	aload_3
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	checkcast	class scala/Either
 	goto	l2 // areturn
 l1	aload_0
 	instanceof	class scala/Right
 	ifeq	l3 // new
-	aload_0
-	checkcast	class scala/Right
-	astore	4
-	aload	4
-	getfield	Field scala/Right.b:Ljava/lang/Object;
-	astore	5
 	new	class scala/Right
 	dup
-	aload	5
+	aload_0
+	checkcast	class scala/Right
+	astore_3
+	aload_3
+	getfield	Field scala/Right.b:Ljava/lang/Object;
 	invokespecial	Method scala/Right."<init>":(Ljava/lang/Object;)V
 l2	areturn
 l3	new	class scala/MatchError
@@ -680,20 +634,16 @@ l3	new	class scala/MatchError
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 30 // aload_0
-   	l2 = 59 // areturn
-   	l3 = 60 // new
+   	l1 = 28 // aload_0
+   	l2 = 51 // areturn
+   	l3 = 52 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      72      0    this       Lscala/Either;
-   0      72      1    ev       Lscala/Predef$$less$colon$less;
-   12      15      2    temp17       Lscala/Left;
-   17      10      3    temp18       Ljava/lang/Object;
-   43      16      4    temp19       Lscala/Right;
-   50      9      5    temp20       Ljava/lang/Object;
+   0      64      0    this       Lscala/Either;
+   0      64      1    ev       Lscala/Predef$$less$colon$less;
 
   Signature: length = 0x2
-   00 6E 
+   00 5C 
 
 public abstract boolean isLeft();
   Signature: ()Z
@@ -710,7 +660,7 @@ public scala.Either();
 	return
   Labels:
   Signature: length = 0x2
-   00 72 
+   00 60 
 
 }
 

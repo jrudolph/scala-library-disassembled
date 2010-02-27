@@ -95,36 +95,36 @@ Asciz	unifiedPrimitiveEquals;
 Asciz	(Lscala/math/ScalaNumericConversions;Ljava/lang/Object;)Z;
 Asciz	java/lang/Character;
 class	java/lang/Character
+NameAndType	isValidChar:()Z
+InterfaceMethod	scala/math/ScalaNumericConversions.isValidChar:()Z
 Asciz	unboxToChar;
 Asciz	(Ljava/lang/Object;)C;
 NameAndType	unboxToChar:(Ljava/lang/Object;)C
 Method	scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
-NameAndType	isValidChar:()Z
-InterfaceMethod	scala/math/ScalaNumericConversions.isValidChar:()Z
 Asciz	java/lang/Byte;
 class	java/lang/Byte
+NameAndType	isValidByte:()Z
+InterfaceMethod	scala/math/ScalaNumericConversions.isValidByte:()Z
 Asciz	unboxToByte;
 Asciz	(Ljava/lang/Object;)B;
 NameAndType	unboxToByte:(Ljava/lang/Object;)B
 Method	scala/runtime/BoxesRunTime.unboxToByte:(Ljava/lang/Object;)B
-NameAndType	isValidByte:()Z
-InterfaceMethod	scala/math/ScalaNumericConversions.isValidByte:()Z
 Asciz	java/lang/Short;
 class	java/lang/Short
+NameAndType	isValidShort:()Z
+InterfaceMethod	scala/math/ScalaNumericConversions.isValidShort:()Z
 Asciz	unboxToShort;
 Asciz	(Ljava/lang/Object;)S;
 NameAndType	unboxToShort:(Ljava/lang/Object;)S
 Method	scala/runtime/BoxesRunTime.unboxToShort:(Ljava/lang/Object;)S
-NameAndType	isValidShort:()Z
-InterfaceMethod	scala/math/ScalaNumericConversions.isValidShort:()Z
 Asciz	java/lang/Integer;
 class	java/lang/Integer
+NameAndType	isValidInt:()Z
+InterfaceMethod	scala/math/ScalaNumericConversions.isValidInt:()Z
 Asciz	unboxToInt;
 Asciz	(Ljava/lang/Object;)I;
 NameAndType	unboxToInt:(Ljava/lang/Object;)I
 Method	scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-NameAndType	isValidInt:()Z
-InterfaceMethod	scala/math/ScalaNumericConversions.isValidInt:()Z
 Asciz	java/lang/Long;
 class	java/lang/Long
 Asciz	unboxToLong;
@@ -133,41 +133,26 @@ NameAndType	unboxToLong:(Ljava/lang/Object;)J
 Method	scala/runtime/BoxesRunTime.unboxToLong:(Ljava/lang/Object;)J
 Asciz	java/lang/Float;
 class	java/lang/Float
+NameAndType	toFloat:()F
+InterfaceMethod	scala/math/ScalaNumericConversions.toFloat:()F
 Asciz	unboxToFloat;
 Asciz	(Ljava/lang/Object;)F;
 NameAndType	unboxToFloat:(Ljava/lang/Object;)F
 Method	scala/runtime/BoxesRunTime.unboxToFloat:(Ljava/lang/Object;)F
-NameAndType	toFloat:()F
-InterfaceMethod	scala/math/ScalaNumericConversions.toFloat:()F
 Asciz	java/lang/Double;
 class	java/lang/Double
+NameAndType	toDouble:()D
+InterfaceMethod	scala/math/ScalaNumericConversions.toDouble:()D
 Asciz	unboxToDouble;
 Asciz	(Ljava/lang/Object;)D;
 NameAndType	unboxToDouble:(Ljava/lang/Object;)D
 Method	scala/runtime/BoxesRunTime.unboxToDouble:(Ljava/lang/Object;)D
-NameAndType	toDouble:()D
-InterfaceMethod	scala/math/ScalaNumericConversions.toDouble:()D
 Asciz	equals;
 Asciz	(Ljava/lang/Object;)Z;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	x;
 Asciz	Ljava/lang/Object;;
-Asciz	temp2;
-Asciz	C;
-Asciz	temp3;
-Asciz	B;
-Asciz	temp4;
-Asciz	S;
-Asciz	temp5;
-Asciz	I;
-Asciz	temp6;
-Asciz	temp7;
-Asciz	F;
-Asciz	temp8;
-Asciz	D;
-Asciz	temp9;
-Asciz	Ljava/lang/Number;;
 Asciz	$init$;
 Asciz	(Lscala/math/ScalaNumericConversions;)V;
 Asciz	Scala;
@@ -413,19 +398,17 @@ l2	ireturn
 public static boolean unifiedPrimitiveEquals(scala.math.ScalaNumericConversions, java.lang.Object);
   Signature: (Lscala/math/ScalaNumericConversions;Ljava/lang/Object;)Z
   Code:
-   Stack=4, Locals=12, Args_size=2
+   Stack=4, Locals=2, Args_size=2
 	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l1 // aload_1
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
-	istore_2
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.isValidChar:()Z
 	ifeq	l2 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toInt:()I
-	iload_2
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
 	if_icmpne	l2 // iconst_0
 	iconst_1
 	goto	l3 // ireturn
@@ -434,15 +417,13 @@ l2	iconst_0
 l1	aload_1
 	instanceof	class java/lang/Byte
 	ifeq	l4 // aload_1
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToByte:(Ljava/lang/Object;)B
-	istore_3
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.isValidByte:()Z
 	ifeq	l5 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toByte:()B
-	iload_3
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToByte:(Ljava/lang/Object;)B
 	if_icmpne	l5 // iconst_0
 	iconst_1
 	goto	l3 // ireturn
@@ -451,15 +432,13 @@ l5	iconst_0
 l4	aload_1
 	instanceof	class java/lang/Short
 	ifeq	l6 // aload_1
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToShort:(Ljava/lang/Object;)S
-	istore	4
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.isValidShort:()Z
 	ifeq	l7 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toShort:()S
-	iload	4
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToShort:(Ljava/lang/Object;)S
 	if_icmpne	l7 // iconst_0
 	iconst_1
 	goto	l3 // ireturn
@@ -468,15 +447,13 @@ l7	iconst_0
 l6	aload_1
 	instanceof	class java/lang/Integer
 	ifeq	l8 // aload_1
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-	istore	5
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.isValidInt:()Z
 	ifeq	l9 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toInt:()I
-	iload	5
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	if_icmpne	l9 // iconst_0
 	iconst_1
 	goto	l3 // ireturn
@@ -485,12 +462,10 @@ l9	iconst_0
 l8	aload_1
 	instanceof	class java/lang/Long
 	ifeq	l10 // aload_1
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToLong:(Ljava/lang/Object;)J
-	lstore	6
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toLong:()J
-	lload	6
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToLong:(Ljava/lang/Object;)J
 	lcmp
 	ifne	l11 // iconst_0
 	iconst_1
@@ -500,12 +475,10 @@ l11	iconst_0
 l10	aload_1
 	instanceof	class java/lang/Float
 	ifeq	l12 // aload_1
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToFloat:(Ljava/lang/Object;)F
-	fstore	8
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toFloat:()F
-	fload	8
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToFloat:(Ljava/lang/Object;)F
 	fcmpl
 	ifne	l13 // iconst_0
 	iconst_1
@@ -515,12 +488,10 @@ l13	iconst_0
 l12	aload_1
 	instanceof	class java/lang/Double
 	ifeq	l14 // aload_1
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToDouble:(Ljava/lang/Object;)D
-	dstore	9
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toDouble:()D
-	dload	9
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToDouble:(Ljava/lang/Object;)D
 	dcmpl
 	ifne	l15 // iconst_0
 	iconst_1
@@ -530,44 +501,34 @@ l15	iconst_0
 l14	aload_1
 	instanceof	class java/lang/Number
 	ifeq	l16 // iconst_0
+	aload_0
 	aload_1
 	checkcast	class java/lang/Number
-	astore	11
-	aload_0
-	aload	11
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	goto	l3 // ireturn
 l16	iconst_0
 l3	ireturn
   Labels:
-   	l2 = 35 // iconst_0
-   	l1 = 39 // aload_1
-   	l5 = 74 // iconst_0
-   	l4 = 78 // aload_1
-   	l7 = 115 // iconst_0
-   	l6 = 119 // aload_1
-   	l9 = 156 // iconst_0
-   	l8 = 160 // aload_1
-   	l11 = 189 // iconst_0
-   	l10 = 193 // aload_1
-   	l13 = 222 // iconst_0
-   	l12 = 226 // aload_1
-   	l15 = 255 // iconst_0
-   	l14 = 259 // aload_1
-   	l16 = 281 // iconst_0
-   	l3 = 282 // ireturn
+   	l2 = 33 // iconst_0
+   	l1 = 37 // aload_1
+   	l5 = 70 // iconst_0
+   	l4 = 74 // aload_1
+   	l7 = 107 // iconst_0
+   	l6 = 111 // aload_1
+   	l9 = 144 // iconst_0
+   	l8 = 148 // aload_1
+   	l11 = 173 // iconst_0
+   	l10 = 177 // aload_1
+   	l13 = 202 // iconst_0
+   	l12 = 206 // aload_1
+   	l15 = 231 // iconst_0
+   	l14 = 235 // aload_1
+   	l16 = 253 // iconst_0
+   	l3 = 254 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      283      0    $this       Lscala/math/ScalaNumericConversions;
-   0      283      1    x       Ljava/lang/Object;
-   12      27      2    temp2       C
-   51      27      3    temp3       B
-   91      28      4    temp4       S
-   132      28      5    temp5       I
-   173      20      6    temp6       J
-   206      20      8    temp7       F
-   239      20      9    temp8       D
-   272      6      11    temp9       Ljava/lang/Number;
+   0      255      0    $this       Lscala/math/ScalaNumericConversions;
+   0      255      1    x       Ljava/lang/Object;
 
 
 public static void $init$(scala.math.ScalaNumericConversions);

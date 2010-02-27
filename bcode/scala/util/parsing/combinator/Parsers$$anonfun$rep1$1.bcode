@@ -52,14 +52,14 @@ class	scala/util/parsing/combinator/Parsers$Success
 Asciz	result;
 NameAndType	result:()Ljava/lang/Object;
 Method	scala/util/parsing/combinator/Parsers$Success.result:()Ljava/lang/Object;
-Asciz	next;
-Asciz	()Lscala/util/parsing/input/Reader;;
-NameAndType	next:()Lscala/util/parsing/input/Reader;
-Method	scala/util/parsing/combinator/Parsers$Success.next:()Lscala/util/parsing/input/Reader;
 Asciz	$plus$eq;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/ListBuffer;;
 NameAndType	$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ListBuffer;
 Method	scala/collection/mutable/ListBuffer.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ListBuffer;
+Asciz	next;
+Asciz	()Lscala/util/parsing/input/Reader;;
+NameAndType	next:()Lscala/util/parsing/input/Reader;
+Method	scala/util/parsing/combinator/Parsers$Success.next:()Lscala/util/parsing/input/Reader;
 Asciz	continue$1;
 Asciz	(Lscala/util/parsing/input/Reader;Lscala/collection/mutable/ListBuffer;)Lscala/util/parsing/combinator/Parsers$ParseResult;;
 NameAndType	continue$1:(Lscala/util/parsing/input/Reader;Lscala/collection/mutable/ListBuffer;)Lscala/util/parsing/combinator/Parsers$ParseResult;
@@ -81,17 +81,12 @@ Asciz	this;
 Asciz	Lscala/util/parsing/combinator/Parsers$$anonfun$rep1$1;;
 Asciz	in;
 Asciz	Lscala/util/parsing/input/Reader;;
-Asciz	temp75;
-Asciz	Lscala/util/parsing/combinator/Parsers$Success;;
-Asciz	temp76;
-Asciz	Ljava/lang/Object;;
-Asciz	temp77;
 Asciz	elems$1;
 Asciz	Lscala/collection/mutable/ListBuffer;;
-Asciz	temp78;
-Asciz	Lscala/util/parsing/combinator/Parsers$NoSuccess;;
 Asciz	temp74;
 Asciz	Lscala/util/parsing/combinator/Parsers$ParseResult;;
+Asciz	temp75;
+Asciz	Lscala/util/parsing/combinator/Parsers$Success;;
 Asciz	LocalVariableTable;
 Asciz	(Lscala/util/parsing/input/Reader<Ljava/lang/Object;>;)Lscala/util/parsing/combinator/Parsers$ParseResult<Lscala/collection/immutable/List<TT;>;>;;
 Asciz	Signature;
@@ -100,6 +95,7 @@ Asciz	scala/util/parsing/input/Reader;
 class	scala/util/parsing/input/Reader
 Method	scala/util/parsing/combinator/Parsers$$anonfun$rep1$1.apply:(Lscala/util/parsing/input/Reader;)Lscala/util/parsing/combinator/Parsers$ParseResult;
 Asciz	v1;
+Asciz	Ljava/lang/Object;;
 Asciz	applyp$1;
 Asciz	(Lscala/util/parsing/input/Reader;Lscala/collection/mutable/ListBuffer;Lscala/util/parsing/combinator/Parsers$Parser;)Lscala/util/parsing/combinator/Parsers$ParseResult;;
 NameAndType	$outer:Lscala/util/parsing/combinator/Parsers;
@@ -114,8 +110,6 @@ Method	scala/util/parsing/combinator/Parsers$Success."<init>":(Lscala/util/parsi
 Asciz	in0;
 Asciz	temp70;
 Asciz	temp71;
-Asciz	temp72;
-Asciz	temp73;
 NameAndType	p$10:Lscala/Function0;
 Field	scala/util/parsing/combinator/Parsers$$anonfun$rep1$1.p$10:Lscala/Function0;
 NameAndType	applyp$1:(Lscala/util/parsing/input/Reader;Lscala/collection/mutable/ListBuffer;Lscala/util/parsing/combinator/Parsers$Parser;)Lscala/util/parsing/combinator/Parsers$ParseResult;
@@ -166,70 +160,61 @@ public static {};
 public final scala.util.parsing.combinator.Parsers$ParseResult apply(scala.util.parsing.input.Reader);
   Signature: (Lscala/util/parsing/input/Reader;)Lscala/util/parsing/combinator/Parsers$ParseResult;
   Code:
-   Stack=3, Locals=8, Args_size=2
+   Stack=3, Locals=5, Args_size=2
 	new	class scala/collection/mutable/ListBuffer
 	dup
 	invokespecial	Method scala/collection/mutable/ListBuffer."<init>":()V
-	astore	5
+	astore_2
 	aload_0
 	getfield	Field first$1:Lscala/Function0;
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
 	checkcast	class scala/util/parsing/combinator/Parsers$Parser
 	aload_1
 	invokevirtual	Method scala/util/parsing/combinator/Parsers$Parser.apply:(Lscala/util/parsing/input/Reader;)Lscala/util/parsing/combinator/Parsers$ParseResult;
-	astore	7
-	aload	7
-	instanceof	class scala/util/parsing/combinator/Parsers$Success
-	ifeq	l1 // aload
-	aload	7
-	checkcast	class scala/util/parsing/combinator/Parsers$Success
-	astore_2
-	aload_2
-	invokevirtual	Method scala/util/parsing/combinator/Parsers$Success.result:()Ljava/lang/Object;
 	astore_3
-	aload_2
-	invokevirtual	Method scala/util/parsing/combinator/Parsers$Success.next:()Lscala/util/parsing/input/Reader;
-	astore	4
-	aload	5
 	aload_3
+	instanceof	class scala/util/parsing/combinator/Parsers$Success
+	ifeq	l1 // aload_3
+	aload_3
+	checkcast	class scala/util/parsing/combinator/Parsers$Success
+	astore	4
+	aload_2
+	aload	4
+	invokevirtual	Method scala/util/parsing/combinator/Parsers$Success.result:()Ljava/lang/Object;
 	invokevirtual	Method scala/collection/mutable/ListBuffer.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ListBuffer;
 	pop
 	aload_0
 	aload	4
-	aload	5
+	invokevirtual	Method scala/util/parsing/combinator/Parsers$Success.next:()Lscala/util/parsing/input/Reader;
+	aload_2
 	invokespecial	Method continue$1:(Lscala/util/parsing/input/Reader;Lscala/collection/mutable/ListBuffer;)Lscala/util/parsing/combinator/Parsers$ParseResult;
 	goto	l2 // areturn
-l1	aload	7
+l1	aload_3
 	instanceof	class scala/util/parsing/combinator/Parsers$NoSuccess
 	ifeq	l3 // new
-	aload	7
+	aload_3
 	checkcast	class scala/util/parsing/combinator/Parsers$NoSuccess
-	astore	6
-	aload	6
 l2	areturn
 l3	new	class scala/MatchError
 	dup
-	aload	7
+	aload_3
 	invokevirtual	Method scala/util/parsing/combinator/Parsers$ParseResult.toString:()Ljava/lang/String;
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 70 // aload
-   	l2 = 87 // areturn
-   	l3 = 88 // new
+   	l1 = 61 // aload_3
+   	l2 = 72 // areturn
+   	l3 = 73 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      101      0    this       Lscala/util/parsing/combinator/Parsers$$anonfun$rep1$1;
-   0      101      1    in       Lscala/util/parsing/input/Reader;
-   41      26      2    temp75       Lscala/util/parsing/combinator/Parsers$Success;
-   46      21      3    temp76       Ljava/lang/Object;
-   52      15      4    temp77       Lscala/util/parsing/input/Reader;
-   9      92      5    elems$1       Lscala/collection/mutable/ListBuffer;
-   85      2      6    temp78       Lscala/util/parsing/combinator/Parsers$NoSuccess;
-   27      74      7    temp74       Lscala/util/parsing/combinator/Parsers$ParseResult;
+   0      85      0    this       Lscala/util/parsing/combinator/Parsers$$anonfun$rep1$1;
+   0      85      1    in       Lscala/util/parsing/input/Reader;
+   8      77      2    elems$1       Lscala/collection/mutable/ListBuffer;
+   25      60      3    temp74       Lscala/util/parsing/combinator/Parsers$ParseResult;
+   38      20      4    temp75       Lscala/util/parsing/combinator/Parsers$Success;
 
   Signature: length = 0x2
-   00 52 
+   00 4D 
 
 public final java.lang.Object apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
@@ -250,7 +235,7 @@ public final java.lang.Object apply(java.lang.Object);
 private final scala.util.parsing.combinator.Parsers$ParseResult applyp$1(scala.util.parsing.input.Reader, scala.collection.mutable.ListBuffer, scala.util.parsing.combinator.Parsers$Parser);
   Signature: (Lscala/util/parsing/input/Reader;Lscala/collection/mutable/ListBuffer;Lscala/util/parsing/combinator/Parsers$Parser;)Lscala/util/parsing/combinator/Parsers$ParseResult;
   Code:
-   Stack=5, Locals=8, Args_size=4
+   Stack=5, Locals=6, Args_size=4
 l2	aload_3
 	aload_1
 	invokevirtual	Method scala/util/parsing/combinator/Parsers$Parser.apply:(Lscala/util/parsing/input/Reader;)Lscala/util/parsing/combinator/Parsers$ParseResult;
@@ -261,17 +246,13 @@ l2	aload_3
 	aload	4
 	checkcast	class scala/util/parsing/combinator/Parsers$Success
 	astore	5
+	aload_2
 	aload	5
 	invokevirtual	Method scala/util/parsing/combinator/Parsers$Success.result:()Ljava/lang/Object;
-	astore	6
-	aload	5
-	invokevirtual	Method scala/util/parsing/combinator/Parsers$Success.next:()Lscala/util/parsing/input/Reader;
-	astore	7
-	aload_2
-	aload	6
 	invokevirtual	Method scala/collection/mutable/ListBuffer.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ListBuffer;
 	pop
-	aload	7
+	aload	5
+	invokevirtual	Method scala/util/parsing/combinator/Parsers$Success.next:()Lscala/util/parsing/input/Reader;
 	astore_1
 	goto	l2 // aload_3
 l1	new	class scala/util/parsing/combinator/Parsers$Success
@@ -285,15 +266,13 @@ l1	new	class scala/util/parsing/combinator/Parsers$Success
 	areturn
   Labels:
    	l2 = 0 // aload_3
-   	l1 = 49 // new
+   	l1 = 41 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      66      0    this       Lscala/util/parsing/combinator/Parsers$$anonfun$rep1$1;
-   0      66      1    in0       Lscala/util/parsing/input/Reader;
-   7      59      4    temp70       Lscala/util/parsing/combinator/Parsers$ParseResult;
-   22      27      5    temp71       Lscala/util/parsing/combinator/Parsers$Success;
-   29      20      6    temp72       Ljava/lang/Object;
-   36      13      7    temp73       Lscala/util/parsing/input/Reader;
+   0      58      0    this       Lscala/util/parsing/combinator/Parsers$$anonfun$rep1$1;
+   0      58      1    in0       Lscala/util/parsing/input/Reader;
+   7      51      4    temp70       Lscala/util/parsing/combinator/Parsers$ParseResult;
+   22      19      5    temp71       Lscala/util/parsing/combinator/Parsers$Success;
 
 
 private final scala.util.parsing.combinator.Parsers$ParseResult continue$1(scala.util.parsing.input.Reader, scala.collection.mutable.ListBuffer);

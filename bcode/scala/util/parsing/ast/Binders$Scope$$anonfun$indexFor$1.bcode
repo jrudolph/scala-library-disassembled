@@ -36,15 +36,6 @@ NameAndType	_1:()Ljava/lang/Object;
 Method	scala/Tuple2._1:()Ljava/lang/Object;
 Asciz	scala/util/parsing/ast/AbstractSyntax$NameElement;
 class	scala/util/parsing/ast/AbstractSyntax$NameElement
-Asciz	_2;
-NameAndType	_2:()Ljava/lang/Object;
-Method	scala/Tuple2._2:()Ljava/lang/Object;
-Asciz	scala/runtime/BoxesRunTime;
-class	scala/runtime/BoxesRunTime
-Asciz	unboxToInt;
-Asciz	(Ljava/lang/Object;)I;
-NameAndType	unboxToInt:(Ljava/lang/Object;)I
-Method	scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 Asciz	name;
 Asciz	()Ljava/lang/String;;
 NameAndType	name:()Ljava/lang/String;
@@ -63,6 +54,15 @@ NameAndType	nonLocalReturnKey1$1:Ljava/lang/Object;
 Field	scala/util/parsing/ast/Binders$Scope$$anonfun$indexFor$1.nonLocalReturnKey1$1:Ljava/lang/Object;
 Asciz	scala/Some;
 class	scala/Some
+Asciz	_2;
+NameAndType	_2:()Ljava/lang/Object;
+Method	scala/Tuple2._2:()Ljava/lang/Object;
+Asciz	scala/runtime/BoxesRunTime;
+class	scala/runtime/BoxesRunTime
+Asciz	unboxToInt;
+Asciz	(Ljava/lang/Object;)I;
+NameAndType	unboxToInt:(Ljava/lang/Object;)I
+Method	scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 Asciz	boxToInteger;
 Asciz	(I)Ljava/lang/Integer;;
 NameAndType	boxToInteger:(I)Ljava/lang/Integer;
@@ -116,8 +116,6 @@ NameAndType	"<init>":(Ljava/lang/String;)V
 Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	this;
 Asciz	Lscala/util/parsing/ast/Binders$Scope$$anonfun$indexFor$1;;
-Asciz	temp3;
-Asciz	I;
 Asciz	temp2;
 Asciz	LocalVariableTable;
 Asciz	(Lscala/Tuple2<TbinderType;Ljava/lang/Integer;>;)V;
@@ -175,18 +173,14 @@ public static {};
 public final void apply(scala.Tuple2);
   Signature: (Lscala/Tuple2;)V
   Code:
-   Stack=7, Locals=9, Args_size=2
+   Stack=7, Locals=8, Args_size=2
 	aload_1
 	ifnull	l1 // new
 	aload_1
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
 	checkcast	class scala/util/parsing/ast/AbstractSyntax$NameElement
-	astore	5
-	aload_1
-	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-	istore_3
-	aload	5
+	astore	4
+	aload	4
 	invokeinterface	InterfaceMethod scala/util/parsing/ast/AbstractSyntax$NameElement.name:()Ljava/lang/String;
 	aload_0
 	getfield	Field b$1:Lscala/util/parsing/ast/AbstractSyntax$NameElement;
@@ -207,11 +201,13 @@ l3	new	class scala/runtime/NonLocalReturnException
 	getfield	Field nonLocalReturnKey1$1:Ljava/lang/Object;
 	new	class scala/Some
 	dup
-	iload_3
+	aload_1
+	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	iconst_1
 	iadd
-	istore	4
-	iload	4
+	istore_3
+	iload_3
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	invokespecial	Method scala/runtime/NonLocalReturnException."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
@@ -221,14 +217,14 @@ l4	getstatic	Field scala/Console$.MODULE$:Lscala/Console$;
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc	String !=
-	astore	6
+	astore	5
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	aload	5
+	aload	4
 	invokestatic	Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	6
+	aload	5
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
@@ -236,11 +232,11 @@ l4	getstatic	Field scala/Console$.MODULE$:Lscala/Console$;
 	getfield	Field b$1:Lscala/util/parsing/ast/AbstractSyntax$NameElement;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	astore	8
 	astore	7
-	aload	7
+	astore	6
+	aload	6
 	invokevirtual	Method scala/Console$.out:()Ljava/io/PrintStream;
-	aload	8
+	aload	7
 	invokevirtual	Method java/io/PrintStream.println:(Ljava/lang/Object;)V
 	return
 l1	new	class scala/MatchError
@@ -250,18 +246,17 @@ l1	new	class scala/MatchError
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l2 = 50 // aload_2
-   	l3 = 57 // new
-   	l4 = 86 // getstatic
-   	l1 = 151 // new
+   	l2 = 42 // aload_2
+   	l3 = 49 // new
+   	l4 = 82 // getstatic
+   	l1 = 147 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      163      0    this       Lscala/util/parsing/ast/Binders$Scope$$anonfun$indexFor$1;
-   21      130      3    temp3       I
-   13      138      5    temp2       Lscala/util/parsing/ast/AbstractSyntax$NameElement;
+   0      159      0    this       Lscala/util/parsing/ast/Binders$Scope$$anonfun$indexFor$1;
+   13      134      4    temp2       Lscala/util/parsing/ast/AbstractSyntax$NameElement;
 
   Signature: length = 0x2
-   00 6F 
+   00 6D 
 
 public final java.lang.Object apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
@@ -300,7 +295,7 @@ public scala.util.parsing.ast.Binders$Scope$$anonfun$indexFor$1(scala.util.parsi
    0      15      1    $outer       Lscala/util/parsing/ast/Binders$Scope;
 
   Signature: length = 0x2
-   00 FFFFFF81 
+   00 7F 
 
 }
 

@@ -2,7 +2,7 @@ Compiled from "IntMap.scala"
 public abstract class scala.collection.immutable.IntMapIterator extends java.lang.Object implements scala.collection.Iterator,scala.ScalaObject
   SourceFile: "IntMap.scala"
   Signature: length = 0x2
-   01 FFFFFF99 
+   01 FFFFFF96 
   ScalaSig: length = 0x298
    05 00 70 06 06 01 02 FFFFFF81 00 02 08 02 0E 49 6E 74
    4D 61 70 49 74 65 72 61 74 6F 72 0A 02 03 04 01
@@ -446,11 +446,8 @@ InterfaceMethod	scala/collection/MapLike.toString:()Ljava/lang/String;
 Method	scala/MatchError."<init>":(Ljava/lang/String;)V
 Asciz	temp13;
 Asciz	Lscala/collection/immutable/IntMap$Bin;;
-Asciz	temp18;
-Asciz	Lscala/collection/immutable/IntMap$Tip;;
 Asciz	temp17;
 Asciz	temp16;
-Asciz	temp21;
 Asciz	temp12;
 Asciz	()TT;;
 Asciz	()V;
@@ -1520,96 +1517,90 @@ l2	ireturn
 public final java.lang.Object next();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=3, Locals=8, Args_size=1
+   Stack=3, Locals=6, Args_size=1
 l4	aload_0
 	invokevirtual	Method pop:()Lscala/collection/immutable/IntMap;
-	astore	7
-	aload	7
+	astore	5
+	aload	5
 	instanceof	class scala/collection/immutable/IntMap$Bin
 	ifeq	l1 // aload
-	aload	7
+	aload	5
 	checkcast	class scala/collection/immutable/IntMap$Bin
 	astore_1
 	aload_1
 	invokevirtual	Method scala/collection/immutable/IntMap$Bin.left:()Lscala/collection/immutable/IntMap;
-	astore	4
+	astore_3
 	aload_1
 	invokevirtual	Method scala/collection/immutable/IntMap$Bin.right:()Lscala/collection/immutable/IntMap;
-	astore_3
-	aload	4
+	astore_2
+	aload_3
 	instanceof	class scala/collection/immutable/IntMap$Tip
 	ifeq	l2 // aload_0
-	aload	4
-	checkcast	class scala/collection/immutable/IntMap$Tip
-	astore_2
-	aload_0
-	aload_3
-	invokevirtual	Method push:(Lscala/collection/immutable/IntMap;)V
 	aload_0
 	aload_2
+	invokevirtual	Method push:(Lscala/collection/immutable/IntMap;)V
+	aload_0
+	aload_3
+	checkcast	class scala/collection/immutable/IntMap$Tip
 	invokevirtual	Method valueOf:(Lscala/collection/immutable/IntMap$Tip;)Ljava/lang/Object;
 	goto	l3 // areturn
 l2	aload_0
+	aload_2
+	invokevirtual	Method push:(Lscala/collection/immutable/IntMap;)V
+	aload_0
 	aload_3
 	invokevirtual	Method push:(Lscala/collection/immutable/IntMap;)V
-	aload_0
-	aload	4
-	invokevirtual	Method push:(Lscala/collection/immutable/IntMap;)V
 	goto	l4 // aload_0
-l1	aload	7
+l1	aload	5
 	instanceof	class scala/collection/immutable/IntMap$Tip
 	ifeq	l5 // getstatic
-	aload	7
-	checkcast	class scala/collection/immutable/IntMap$Tip
-	astore	5
 	aload_0
 	aload	5
+	checkcast	class scala/collection/immutable/IntMap$Tip
 	invokevirtual	Method valueOf:(Lscala/collection/immutable/IntMap$Tip;)Ljava/lang/Object;
 l3	areturn
 l5	getstatic	Field scala/collection/immutable/IntMap$Nil$.MODULE$:Lscala/collection/immutable/IntMap$Nil$;
 	dup
 	ifnonnull	l6 // aload
 	pop
-	aload	7
+	aload	5
 	ifnull	l7 // ldc_w
 	goto	l8 // new
-l6	aload	7
+l6	aload	5
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l8 // new
 l7	ldc_w	String Empty maps not allowed as subtrees
-	astore	6
+	astore	4
 	new	class java/lang/RuntimeException
 	dup
-	aload	6
+	aload	4
 	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 	athrow
 l8	new	class scala/MatchError
 	dup
-	aload	7
+	aload	5
 	invokeinterface	InterfaceMethod scala/collection/MapLike.toString:()Ljava/lang/String;
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
    	l4 = 0 // aload_0
-   	l2 = 58 // aload_0
-   	l1 = 72 // aload
-   	l3 = 93 // areturn
-   	l5 = 94 // getstatic
-   	l6 = 110 // aload
-   	l7 = 118 // ldc_w
-   	l8 = 133 // new
+   	l2 = 53 // aload_0
+   	l1 = 66 // aload
+   	l3 = 83 // areturn
+   	l5 = 84 // getstatic
+   	l6 = 100 // aload
+   	l7 = 108 // ldc_w
+   	l8 = 123 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      148      0    this       Lscala/collection/immutable/IntMapIterator;
-   20      52      1    temp13       Lscala/collection/immutable/IntMap$Bin;
-   45      10      2    temp18       Lscala/collection/immutable/IntMap$Tip;
-   31      41      3    temp17       Lscala/collection/immutable/IntMap;
-   26      46      4    temp16       Lscala/collection/immutable/IntMap;
-   87      6      5    temp21       Lscala/collection/immutable/IntMap$Tip;
-   6      142      7    temp12       Lscala/collection/immutable/IntMap;
+   0      138      0    this       Lscala/collection/immutable/IntMapIterator;
+   20      46      1    temp13       Lscala/collection/immutable/IntMap$Bin;
+   30      36      2    temp17       Lscala/collection/immutable/IntMap;
+   25      41      3    temp16       Lscala/collection/immutable/IntMap;
+   6      132      5    temp12       Lscala/collection/immutable/IntMap;
 
   Signature: length = 0x2
-   01 FFFFFF8F 
+   01 FFFFFF8C 
 
 public scala.collection.immutable.IntMapIterator(scala.collection.immutable.IntMap);
   Signature: (Lscala/collection/immutable/IntMap;)V
