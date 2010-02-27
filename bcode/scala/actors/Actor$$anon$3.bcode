@@ -4,6 +4,7 @@ public final class scala.actors.Actor$$anon$3 extends java.lang.Object implement
   Scala: length = 0x
    
   InnerClass: 
+   public abstract Body=class scala/actors/Actor$Body of class scala/actors/Actor
    public final $anon$3=class scala/actors/Actor$$anon$3 of class scala/actors/Actor
   minor version: 0
   major version: 49
@@ -18,14 +19,13 @@ Asciz	kill;
 Asciz	Lscala/Function0;;
 Asciz	waitingFor;
 Asciz	Lscala/PartialFunction;;
-Asciz	waitingForNone;
 Asciz	sendBuffer;
 Asciz	Lscala/actors/MQueue;;
 Asciz	mailbox;
 Asciz	senders;
 Asciz	Lscala/collection/immutable/List;;
 Asciz	shouldExit;
-Asciz	exitReason;
+Asciz	scala$actors$Actor$$exitReason;
 Asciz	Ljava/lang/Object;;
 Asciz	trapExit;
 Asciz	links;
@@ -33,7 +33,7 @@ Asciz	scala$actors$Actor$$onTimeout;
 Asciz	Lscala/Option;;
 Asciz	scala$actors$Actor$$received;
 Asciz	scala$actors$Actor$$isSuspended;
-Asciz	body$6;
+Asciz	body$4;
 Asciz	scheduler;
 Asciz	Lscala/actors/IScheduler;;
 Asciz	()Z;
@@ -72,9 +72,9 @@ NameAndType	trapExit:Z
 Field	scala/actors/Actor$$anon$3.trapExit:Z
 Asciz	trapExit_$eq;
 Asciz	()Ljava/lang/Object;;
-NameAndType	exitReason:Ljava/lang/Object;
-Field	scala/actors/Actor$$anon$3.exitReason:Ljava/lang/Object;
-Asciz	exitReason_$eq;
+NameAndType	scala$actors$Actor$$exitReason:Ljava/lang/Object;
+Field	scala/actors/Actor$$anon$3.scala$actors$Actor$$exitReason:Ljava/lang/Object;
+Asciz	scala$actors$Actor$$exitReason_$eq;
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	shouldExit:Z
 Field	scala/actors/Actor$$anon$3.shouldExit:Z
@@ -257,8 +257,6 @@ Field	scala/actors/Actor$$anon$3.mailbox:Lscala/actors/MQueue;
 NameAndType	sendBuffer:Lscala/actors/MQueue;
 Field	scala/actors/Actor$$anon$3.sendBuffer:Lscala/actors/MQueue;
 Asciz	()Lscala/PartialFunction;;
-NameAndType	waitingForNone:Lscala/PartialFunction;
-Field	scala/actors/Actor$$anon$3.waitingForNone:Lscala/PartialFunction;
 NameAndType	waitingFor:Lscala/PartialFunction;
 Field	scala/actors/Actor$$anon$3.waitingFor:Lscala/PartialFunction;
 Asciz	waitingFor_$eq;
@@ -270,7 +268,6 @@ Asciz	kill_$eq;
 Asciz	scala$actors$Reactor$_setter_$mailbox_$eq;
 Asciz	(Lscala/actors/MQueue;)V;
 Asciz	scala$actors$Reactor$_setter_$sendBuffer_$eq;
-Asciz	scala$actors$Reactor$_setter_$waitingForNone_$eq;
 Asciz	exceptionHandler;
 Asciz	(Lscala/actors/Reactor;)Lscala/PartialFunction;;
 NameAndType	exceptionHandler:(Lscala/actors/Reactor;)Lscala/PartialFunction;
@@ -294,6 +291,11 @@ Asciz	(Lscala/actors/Reactor;Lscala/actors/MQueue;)V;
 NameAndType	drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MQueue;)V
 Method	scala/actors/Reactor$class.drainSendBuffer:(Lscala/actors/Reactor;Lscala/actors/MQueue;)V
 Asciz	mbox;
+Asciz	mkBody;
+Asciz	(Lscala/Function0;)Lscala/actors/Actor$Body;;
+Asciz	(Lscala/actors/Reactor;Lscala/Function0;)Lscala/actors/Actor$Body;;
+NameAndType	mkBody:(Lscala/actors/Reactor;Lscala/Function0;)Lscala/actors/Actor$Body;
+Method	scala/actors/Reactor$class.mkBody:(Lscala/actors/Reactor;Lscala/Function0;)Lscala/actors/Actor$Body;
 Asciz	seq;
 Asciz	(Lscala/Function0;Lscala/Function0;)V;
 Asciz	(Lscala/actors/Reactor;Lscala/Function0;Lscala/Function0;)V;
@@ -305,12 +307,27 @@ Asciz	terminated;
 Asciz	(Lscala/actors/Reactor;)V;
 NameAndType	terminated:(Lscala/actors/Reactor;)V
 Method	scala/actors/Reactor$class.terminated:(Lscala/actors/Reactor;)V
+Asciz	loop;
+Asciz	scala/actors/Combinators$class;
+class	scala/actors/Combinators$class
+Asciz	(Lscala/actors/Combinators;Lscala/Function0;)V;
+NameAndType	loop:(Lscala/actors/Combinators;Lscala/Function0;)V
+Method	scala/actors/Combinators$class.loop:(Lscala/actors/Combinators;Lscala/Function0;)V
+Asciz	loopWhile;
+Asciz	(Lscala/actors/Combinators;Lscala/Function0;Lscala/Function0;)V;
+NameAndType	loopWhile:(Lscala/actors/Combinators;Lscala/Function0;Lscala/Function0;)V
+Method	scala/actors/Combinators$class.loopWhile:(Lscala/actors/Combinators;Lscala/Function0;Lscala/Function0;)V
+Asciz	cond;
+Asciz	continue;
+Asciz	(Lscala/actors/Combinators;)V;
+NameAndType	continue:(Lscala/actors/Combinators;)V
+Method	scala/actors/Combinators$class.continue:(Lscala/actors/Combinators;)V
 NameAndType	exiting:Z
 Field	scala/actors/Actor$$anon$3.exiting:Z
 Asciz	exiting_$eq;
 Asciz	act;
-NameAndType	body$6:Lscala/Function0;
-Field	scala/actors/Actor$$anon$3.body$6:Lscala/Function0;
+NameAndType	body$4:Lscala/Function0;
+Field	scala/actors/Actor$$anon$3.body$4:Lscala/Function0;
 Asciz	scala/Function0;
 class	scala/Function0
 Asciz	apply;
@@ -346,6 +363,8 @@ Asciz	scala/actors/AbstractActor$class;
 class	scala/actors/AbstractActor$class
 NameAndType	$init$:(Lscala/actors/AbstractActor;)V
 Method	scala/actors/AbstractActor$class.$init$:(Lscala/actors/AbstractActor;)V
+NameAndType	$init$:(Lscala/actors/Combinators;)V
+Method	scala/actors/Combinators$class.$init$:(Lscala/actors/Combinators;)V
 NameAndType	$init$:(Lscala/actors/Reactor;)V
 Method	scala/actors/Reactor$class.$init$:(Lscala/actors/Reactor;)V
 Asciz	scala/actors/ReplyableReactor$class;
@@ -363,6 +382,9 @@ Asciz	$outer;
 Asciz	Lscala/actors/Actor;;
 Asciz	Scala;
 Asciz	InnerClasses;
+Asciz	scala/actors/Actor$Body;
+class	scala/actors/Actor$Body
+Asciz	Body;
 Asciz	$anon$3;
 
 {
@@ -378,9 +400,6 @@ private volatile scala.Function0 kill;
 private scala.PartialFunction waitingFor;
   Signature: Lscala/PartialFunction;
 
-private final scala.PartialFunction waitingForNone;
-  Signature: Lscala/PartialFunction;
-
 private final scala.actors.MQueue sendBuffer;
   Signature: Lscala/actors/MQueue;
 
@@ -393,7 +412,7 @@ private volatile scala.collection.immutable.List senders;
 private boolean shouldExit;
   Signature: Z
 
-private java.lang.Object exitReason;
+private java.lang.Object scala$actors$Actor$$exitReason;
   Signature: Ljava/lang/Object;
 
 private boolean trapExit;
@@ -411,7 +430,7 @@ private volatile scala.Option scala$actors$Actor$$received;
 private volatile boolean scala$actors$Actor$$isSuspended;
   Signature: Z
 
-private final scala.Function0 body$6;
+private final scala.Function0 body$4;
   Signature: Lscala/Function0;
 
 private final scala.actors.IScheduler scheduler;
@@ -531,22 +550,22 @@ public void trapExit_$eq(boolean);
 	return
   Labels:
 
-public java.lang.Object exitReason();
+public final java.lang.Object scala$actors$Actor$$exitReason();
   Signature: ()Ljava/lang/Object;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	getfield	Field exitReason:Ljava/lang/Object;
+	getfield	Field scala$actors$Actor$$exitReason:Ljava/lang/Object;
 	areturn
   Labels:
 
-public void exitReason_$eq(java.lang.Object);
+public final void scala$actors$Actor$$exitReason_$eq(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	putfield	Field exitReason:Ljava/lang/Object;
+	putfield	Field scala$actors$Actor$$exitReason:Ljava/lang/Object;
 	return
   Labels:
 
@@ -1088,15 +1107,6 @@ public scala.actors.MQueue sendBuffer();
 	areturn
   Labels:
 
-public scala.PartialFunction waitingForNone();
-  Signature: ()Lscala/PartialFunction;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field waitingForNone:Lscala/PartialFunction;
-	areturn
-  Labels:
-
 public scala.PartialFunction waitingFor();
   Signature: ()Lscala/PartialFunction;
   Code:
@@ -1152,16 +1162,6 @@ public void scala$actors$Reactor$_setter_$sendBuffer_$eq(scala.actors.MQueue);
 	aload_0
 	aload_1
 	putfield	Field sendBuffer:Lscala/actors/MQueue;
-	return
-  Labels:
-
-public void scala$actors$Reactor$_setter_$waitingForNone_$eq(scala.PartialFunction);
-  Signature: (Lscala/PartialFunction;)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	putfield	Field waitingForNone:Lscala/PartialFunction;
 	return
   Labels:
 
@@ -1224,6 +1224,21 @@ public void drainSendBuffer(scala.actors.MQueue);
    0      6      1    mbox       Lscala/actors/MQueue;
 
 
+public scala.actors.Actor$Body mkBody(scala.Function0);
+  Signature: (Lscala/Function0;)Lscala/actors/Actor$Body;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/Reactor$class.mkBody:(Lscala/actors/Reactor;Lscala/Function0;)Lscala/actors/Actor$Body;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/Actor$$anon$3;
+   0      6      1    body       Lscala/Function0;
+
+
 public void seq(scala.Function0, scala.Function0);
   Signature: (Lscala/Function0;Lscala/Function0;)V
   Code:
@@ -1247,6 +1262,47 @@ public void terminated();
    Stack=1, Locals=1, Args_size=1
 	aload_0
 	invokestatic	Method scala/actors/Reactor$class.terminated:(Lscala/actors/Reactor;)V
+	return
+  Labels:
+
+public void loop(scala.Function0);
+  Signature: (Lscala/Function0;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/Combinators$class.loop:(Lscala/actors/Combinators;Lscala/Function0;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/Actor$$anon$3;
+   0      6      1    body       Lscala/Function0;
+
+
+public void loopWhile(scala.Function0, scala.Function0);
+  Signature: (Lscala/Function0;Lscala/Function0;)V
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	aload_1
+	aload_2
+	invokestatic	Method scala/actors/Combinators$class.loopWhile:(Lscala/actors/Combinators;Lscala/Function0;Lscala/Function0;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/Actor$$anon$3;
+   0      7      1    cond       Lscala/Function0;
+   0      7      2    body       Lscala/Function0;
+
+
+public void continue();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/Combinators$class.continue:(Lscala/actors/Combinators;)V
 	return
   Labels:
 
@@ -1274,7 +1330,7 @@ public void act();
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	getfield	Field body$6:Lscala/Function0;
+	getfield	Field body$4:Lscala/Function0;
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
 	pop
 	return
@@ -1336,13 +1392,15 @@ public scala.actors.Actor$$anon$3(scala.actors.Actor, scala.Function0);
    Stack=2, Locals=3, Args_size=3
 	aload_0
 	aload_2
-	putfield	Field body$6:Lscala/Function0;
+	putfield	Field body$4:Lscala/Function0;
 	aload_0
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
 	invokestatic	Method scala/actors/Replyable$class.$init$:(Lscala/actors/Replyable;)V
 	aload_0
 	invokestatic	Method scala/actors/AbstractActor$class.$init$:(Lscala/actors/AbstractActor;)V
+	aload_0
+	invokestatic	Method scala/actors/Combinators$class.$init$:(Lscala/actors/Combinators;)V
 	aload_0
 	invokestatic	Method scala/actors/Reactor$class.$init$:(Lscala/actors/Reactor;)V
 	aload_0
@@ -1361,8 +1419,8 @@ public scala.actors.Actor$$anon$3(scala.actors.Actor, scala.Function0);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      48      0    this       Lscala/actors/Actor$$anon$3;
-   0      48      1    $outer       Lscala/actors/Actor;
+   0      52      0    this       Lscala/actors/Actor$$anon$3;
+   0      52      1    $outer       Lscala/actors/Actor;
 
 
 }

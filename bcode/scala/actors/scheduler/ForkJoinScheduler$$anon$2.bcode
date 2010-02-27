@@ -1,35 +1,38 @@
 Compiled from "ForkJoinScheduler.scala"
-public final class scala.actors.scheduler.ForkJoinScheduler$$anon$2 extends java.lang.Object implements java.lang.Runnable
+public final class scala.actors.scheduler.ForkJoinScheduler$$anon$2 extends java.lang.Object implements scala.concurrent.forkjoin.ForkJoinPool$ManagedBlocker
   SourceFile: "ForkJoinScheduler.scala"
   Scala: length = 0x
    
   InnerClass: 
    public final $anon$2=class scala/actors/scheduler/ForkJoinScheduler$$anon$2 of class scala/actors/scheduler/ForkJoinScheduler
+   public abstract ManagedBlocker=class scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker of class scala/concurrent/forkjoin/ForkJoinPool
   minor version: 0
   major version: 49
   Constant pool:
 Asciz	SourceFile;
 Asciz	ForkJoinScheduler.scala;
-Asciz	fun$1;
-Asciz	Lscala/Function0;;
-Asciz	run;
-Asciz	()V;
+Asciz	blocker$1;
+Asciz	Lscala/concurrent/ManagedBlocker;;
+Asciz	block;
+Asciz	()Z;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/actors/scheduler/ForkJoinScheduler$$anon$2;
 class	scala/actors/scheduler/ForkJoinScheduler$$anon$2
-NameAndType	fun$1:Lscala/Function0;
-Field	scala/actors/scheduler/ForkJoinScheduler$$anon$2.fun$1:Lscala/Function0;
-Asciz	scala/Function0;
-class	scala/Function0
-Asciz	apply;
-Asciz	()Ljava/lang/Object;;
-NameAndType	apply:()Ljava/lang/Object;
-InterfaceMethod	scala/Function0.apply:()Ljava/lang/Object;
+NameAndType	blocker$1:Lscala/concurrent/ManagedBlocker;
+Field	scala/actors/scheduler/ForkJoinScheduler$$anon$2.blocker$1:Lscala/concurrent/ManagedBlocker;
+Asciz	scala/concurrent/ManagedBlocker;
+class	scala/concurrent/ManagedBlocker
+NameAndType	block:()Z
+InterfaceMethod	scala/concurrent/ManagedBlocker.block:()Z
+Asciz	isReleasable;
+NameAndType	isReleasable:()Z
+InterfaceMethod	scala/concurrent/ManagedBlocker.isReleasable:()Z
 Asciz	<init>;
-Asciz	(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/Function0;)V;
+Asciz	(Lscala/actors/scheduler/ForkJoinScheduler;Lscala/concurrent/ManagedBlocker;)V;
 Asciz	java/lang/Object;
 class	java/lang/Object
+Asciz	()V;
 NameAndType	"<init>":()V
 Method	java/lang/Object."<init>":()V
 Asciz	this;
@@ -42,31 +45,43 @@ Asciz	InnerClasses;
 Asciz	scala/actors/scheduler/ForkJoinScheduler;
 class	scala/actors/scheduler/ForkJoinScheduler
 Asciz	$anon$2;
-Asciz	java/lang/Runnable;
-class	java/lang/Runnable
+Asciz	scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker;
+class	scala/concurrent/forkjoin/ForkJoinPool$ManagedBlocker
+Asciz	scala/concurrent/forkjoin/ForkJoinPool;
+class	scala/concurrent/forkjoin/ForkJoinPool
+Asciz	ManagedBlocker;
 
 {
-private final scala.Function0 fun$1;
-  Signature: Lscala/Function0;
+private final scala.concurrent.ManagedBlocker blocker$1;
+  Signature: Lscala/concurrent/ManagedBlocker;
 
-public void run();
-  Signature: ()V
+public boolean block();
+  Signature: ()Z
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	getfield	Field fun$1:Lscala/Function0;
-	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
-	pop
-	return
+	getfield	Field blocker$1:Lscala/concurrent/ManagedBlocker;
+	invokeinterface	InterfaceMethod scala/concurrent/ManagedBlocker.block:()Z
+	ireturn
   Labels:
 
-public scala.actors.scheduler.ForkJoinScheduler$$anon$2(scala.actors.scheduler.ForkJoinScheduler, scala.Function0);
-  Signature: (Lscala/actors/scheduler/ForkJoinScheduler;Lscala/Function0;)V
+public boolean isReleasable();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field blocker$1:Lscala/concurrent/ManagedBlocker;
+	invokeinterface	InterfaceMethod scala/concurrent/ManagedBlocker.isReleasable:()Z
+	ireturn
+  Labels:
+
+public scala.actors.scheduler.ForkJoinScheduler$$anon$2(scala.actors.scheduler.ForkJoinScheduler, scala.concurrent.ManagedBlocker);
+  Signature: (Lscala/actors/scheduler/ForkJoinScheduler;Lscala/concurrent/ManagedBlocker;)V
   Code:
    Stack=2, Locals=3, Args_size=3
 	aload_0
 	aload_2
-	putfield	Field fun$1:Lscala/Function0;
+	putfield	Field blocker$1:Lscala/concurrent/ManagedBlocker;
 	aload_0
 	invokespecial	Method java/lang/Object."<init>":()V
 	return

@@ -78,6 +78,11 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	productElementName;
+Asciz	(I)Ljava/lang/String;;
+String	finalizer
+String	catches
+String	block
 Asciz	canEqual;
 Asciz	(Ljava/lang/Object;)Z;
 Asciz	scala/reflect/generic/Trees$Tree;
@@ -240,6 +245,32 @@ l1	areturn
   Labels:
    	l1 = 61 // areturn
 
+public java.lang.String productElementName(int);
+  Signature: (I)Ljava/lang/String;
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	iload_1
+	tableswitch{ //0 to 2
+		0: 53;
+		1: 48;
+		2: 43;
+		default: 28 }
+	new	class java/lang/IndexOutOfBoundsException
+	dup
+	iload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
+	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+	athrow
+	ldc	String finalizer
+	goto	l1 // areturn
+	ldc	String catches
+	goto	l1 // areturn
+	ldc	String block
+l1	areturn
+  Labels:
+   	l1 = 55 // areturn
+
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
@@ -285,7 +316,7 @@ public scala.reflect.generic.Trees$Try(scala.reflect.generic.Universe, scala.ref
    0      22      4    finalizer       Lscala/reflect/generic/Trees$Tree;
 
   Signature: length = 0x2
-   00 50 
+   00 55 
 
 }
 

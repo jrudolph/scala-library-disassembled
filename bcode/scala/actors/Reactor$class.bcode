@@ -4,12 +4,13 @@ public abstract class scala.actors.Reactor$class extends java.lang.Object
   Scala: length = 0x
    
   InnerClass: 
-   public final $anon$1=class scala/actors/Reactor$$anon$1 of class scala/actors/Reactor
-   public final $anonfun$4=class scala/actors/Reactor$$anonfun$4 of class scala/actors/Reactor
+   public abstract Body=class scala/actors/Actor$Body of class scala/actors/Actor
+   public final $anon$3=class scala/actors/Reactor$$anon$3 of class scala/actors/Reactor
    public final $anonfun$3=class scala/actors/Reactor$$anonfun$3 of class scala/actors/Reactor
    public final $anonfun$2=class scala/actors/Reactor$$anonfun$2 of class scala/actors/Reactor
    public final $anonfun$1=class scala/actors/Reactor$$anonfun$1 of class scala/actors/Reactor
    public final $anonfun$seq$1=class scala/actors/Reactor$$anonfun$seq$1 of class scala/actors/Reactor
+   public final $anonfun$start$1=class scala/actors/Reactor$$anonfun$start$1 of class scala/actors/Reactor
    public final $anonfun$startSearch$1=class scala/actors/Reactor$$anonfun$startSearch$1 of class scala/actors/Reactor
   minor version: 0
   major version: 49
@@ -79,7 +80,7 @@ NameAndType	waitingFor:()Lscala/PartialFunction;
 InterfaceMethod	scala/actors/Reactor.waitingFor:()Lscala/PartialFunction;
 Asciz	waitingForNone;
 NameAndType	waitingForNone:()Lscala/PartialFunction;
-InterfaceMethod	scala/actors/Reactor.waitingForNone:()Lscala/PartialFunction;
+Method	scala/actors/Reactor$.waitingForNone:()Lscala/PartialFunction;
 Asciz	waitingFor_$eq;
 Asciz	(Lscala/PartialFunction;)V;
 NameAndType	waitingFor_$eq:(Lscala/PartialFunction;)V
@@ -218,40 +219,6 @@ Asciz	Lscala/actors/MQueueElement;;
 Asciz	done;
 Asciz	react;
 Asciz	(Lscala/actors/Reactor;Lscala/PartialFunction;)Lscala/runtime/Nothing$;;
-Asciz	()Lscala/actors/IScheduler;;
-NameAndType	scheduler:()Lscala/actors/IScheduler;
-InterfaceMethod	scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
-Asciz	rawSelf;
-Asciz	(Lscala/actors/IScheduler;)Lscala/actors/Reactor;;
-NameAndType	rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
-Method	scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
-Asciz	java/lang/AssertionError;
-class	java/lang/AssertionError
-Asciz	scala/collection/mutable/StringBuilder;
-class	scala/collection/mutable/StringBuilder
-Asciz	()V;
-NameAndType	"<init>":()V
-Method	scala/collection/mutable/StringBuilder."<init>":()V
-Asciz	assertion failed: ;
-String	assertion failed: 
-Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
-NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-Asciz	react on channel belonging to other actor;
-String	react on channel belonging to other actor
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
-NameAndType	toString:()Ljava/lang/String;
-Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-Asciz	(Ljava/lang/Object;)V;
-NameAndType	"<init>":(Ljava/lang/Object;)V
-Method	java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
 Asciz	(Lscala/actors/MQueue;Lscala/PartialFunction;Z)V;
 NameAndType	searchMailbox:(Lscala/actors/MQueue;Lscala/PartialFunction;Z)V
 InterfaceMethod	scala/actors/Reactor.searchMailbox:(Lscala/actors/MQueue;Lscala/PartialFunction;Z)V
@@ -261,6 +228,12 @@ Asciz	scala/actors/Reactor$$anonfun$2;
 class	scala/actors/Reactor$$anonfun$2
 NameAndType	"<init>":(Lscala/actors/Reactor;Lscala/PartialFunction;Ljava/lang/Object;)V
 Method	scala/actors/Reactor$$anonfun$2."<init>":(Lscala/actors/Reactor;Lscala/PartialFunction;Ljava/lang/Object;)V
+Asciz	()Lscala/actors/IScheduler;;
+NameAndType	scheduler:()Lscala/actors/IScheduler;
+InterfaceMethod	scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
+Asciz	(Lscala/Function0;)Ljava/lang/Runnable;;
+NameAndType	makeReaction:(Lscala/Function0;)Ljava/lang/Runnable;
+InterfaceMethod	scala/actors/Reactor.makeReaction:(Lscala/Function0;)Ljava/lang/Runnable;
 Asciz	scala/actors/IScheduler;
 class	scala/actors/IScheduler
 Asciz	executeFromActor;
@@ -269,19 +242,23 @@ NameAndType	executeFromActor:(Ljava/lang/Runnable;)V
 InterfaceMethod	scala/actors/IScheduler.executeFromActor:(Ljava/lang/Runnable;)V
 Asciz	handler$2;
 Asciz	msg$2;
-Asciz	task;
-Asciz	Lscala/actors/ReactorTask;;
 Asciz	start;
 Asciz	(Lscala/actors/Reactor;)Lscala/actors/Reactor;;
 Asciz	newActor;
 NameAndType	newActor:(Lscala/actors/Reactor;)V
 InterfaceMethod	scala/actors/IScheduler.newActor:(Lscala/actors/Reactor;)V
-Asciz	scala/actors/Reactor$$anonfun$3;
-class	scala/actors/Reactor$$anonfun$3
-Method	scala/actors/Reactor$$anonfun$3."<init>":(Lscala/actors/Reactor;)V
+Asciz	scala/actors/Reactor$$anonfun$start$1;
+class	scala/actors/Reactor$$anonfun$start$1
+Method	scala/actors/Reactor$$anonfun$start$1."<init>":(Lscala/actors/Reactor;)V
 Asciz	execute;
 NameAndType	execute:(Ljava/lang/Runnable;)V
 InterfaceMethod	scala/actors/IScheduler.execute:(Ljava/lang/Runnable;)V
+Asciz	mkBody;
+Asciz	(Lscala/actors/Reactor;Lscala/Function0;)Lscala/actors/Actor$Body;;
+Asciz	scala/actors/Reactor$$anon$3;
+class	scala/actors/Reactor$$anon$3
+Method	scala/actors/Reactor$$anon$3."<init>":(Lscala/actors/Reactor;Lscala/Function0;)V
+Asciz	body$1;
 Asciz	seq;
 Asciz	(Lscala/actors/Reactor;Lscala/Function0;Lscala/Function0;)V;
 Asciz	kill;
@@ -290,19 +267,19 @@ NameAndType	kill:()Lscala/Function0;
 InterfaceMethod	scala/actors/Reactor.kill:()Lscala/Function0;
 Asciz	scala/actors/Reactor$$anonfun$seq$1;
 class	scala/actors/Reactor$$anonfun$seq$1
-Asciz	(Lscala/actors/Reactor;Lscala/Function0;Lscala/actors/Reactor;Lscala/Function0;)V;
-NameAndType	"<init>":(Lscala/actors/Reactor;Lscala/Function0;Lscala/actors/Reactor;Lscala/Function0;)V
-Method	scala/actors/Reactor$$anonfun$seq$1."<init>":(Lscala/actors/Reactor;Lscala/Function0;Lscala/actors/Reactor;Lscala/Function0;)V
+NameAndType	"<init>":(Lscala/actors/Reactor;Lscala/Function0;Lscala/Function0;)V
+Method	scala/actors/Reactor$$anonfun$seq$1."<init>":(Lscala/actors/Reactor;Lscala/Function0;Lscala/Function0;)V
 Asciz	kill_$eq;
 Asciz	(Lscala/Function0;)V;
 NameAndType	kill_$eq:(Lscala/Function0;)V
 InterfaceMethod	scala/actors/Reactor.kill_$eq:(Lscala/Function0;)V
 Asciz	scala/actors/KillActorException;
 class	scala/actors/KillActorException
+Asciz	()V;
+NameAndType	"<init>":()V
 Method	scala/actors/KillActorException."<init>":()V
 Asciz	first;
 Asciz	next$1;
-Asciz	s$1;
 Asciz	killNext$1;
 Asciz	exit;
 Asciz	(Lscala/actors/Reactor;)Lscala/runtime/Nothing$;;
@@ -322,26 +299,25 @@ String	SendBuffer
 Asciz	scala$actors$Reactor$_setter_$sendBuffer_$eq;
 NameAndType	scala$actors$Reactor$_setter_$sendBuffer_$eq:(Lscala/actors/MQueue;)V
 InterfaceMethod	scala/actors/Reactor.scala$actors$Reactor$_setter_$sendBuffer_$eq:(Lscala/actors/MQueue;)V
-Asciz	scala/actors/Reactor$$anon$1;
-class	scala/actors/Reactor$$anon$1
-Method	scala/actors/Reactor$$anon$1."<init>":(Lscala/actors/Reactor;)V
-Asciz	scala$actors$Reactor$_setter_$waitingForNone_$eq;
-NameAndType	scala$actors$Reactor$_setter_$waitingForNone_$eq:(Lscala/PartialFunction;)V
-InterfaceMethod	scala/actors/Reactor.scala$actors$Reactor$_setter_$waitingForNone_$eq:(Lscala/PartialFunction;)V
-Asciz	scala/actors/Reactor$$anonfun$4;
-class	scala/actors/Reactor$$anonfun$4
-Method	scala/actors/Reactor$$anonfun$4."<init>":(Lscala/actors/Reactor;)V
+Asciz	scala/actors/Reactor$$anonfun$3;
+class	scala/actors/Reactor$$anonfun$3
+Method	scala/actors/Reactor$$anonfun$3."<init>":(Lscala/actors/Reactor;)V
 Asciz	Scala;
 Asciz	InnerClasses;
-Asciz	$anon$1;
-Asciz	$anonfun$4;
+Asciz	scala/actors/Actor$Body;
+class	scala/actors/Actor$Body
+Asciz	Body;
+Asciz	$anon$3;
 Asciz	$anonfun$3;
 Asciz	$anonfun$2;
 Asciz	$anonfun$1;
 Asciz	$anonfun$seq$1;
+Asciz	$anonfun$start$1;
 Asciz	$anonfun$startSearch$1;
 Asciz	scala/actors/Reactor$class;
 class	scala/actors/Reactor$class
+Asciz	java/lang/Object;
+class	java/lang/Object
 
 {
 public static scala.PartialFunction exceptionHandler(scala.actors.Reactor);
@@ -400,15 +376,15 @@ public static void send(scala.actors.Reactor, java.lang.Object, scala.actors.Out
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor:()Lscala/PartialFunction;
-	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingForNone:()Lscala/PartialFunction;
+	getstatic	Field scala/actors/Reactor$.MODULE$:Lscala/actors/Reactor$;
+	invokevirtual	Method scala/actors/Reactor$.waitingForNone:()Lscala/PartialFunction;
 	if_acmpeq	l1 // aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor:()Lscala/PartialFunction;
 	astore_3
 	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingForNone:()Lscala/PartialFunction;
+	getstatic	Field scala/actors/Reactor$.MODULE$:Lscala/actors/Reactor$;
+	invokevirtual	Method scala/actors/Reactor$.waitingForNone:()Lscala/PartialFunction;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor_$eq:(Lscala/PartialFunction;)V
 	aload_0
 	aload_1
@@ -674,39 +650,8 @@ l5	goto	l6 // iload
 public static scala.runtime.Nothing$ react(scala.actors.Reactor, scala.PartialFunction);
   Signature: (Lscala/actors/Reactor;Lscala/PartialFunction;)Lscala/runtime/Nothing$;
   Code:
-   Stack=4, Locals=3, Args_size=2
-	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
+   Stack=4, Locals=2, Args_size=2
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
-	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
-	dup
-	ifnonnull	l1 // aload_0
-	pop
-	aload_0
-	ifnull	l2 // iconst_1
-	goto	l3 // iconst_0
-l1	aload_0
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l3 // iconst_0
-l2	iconst_1
-	goto	l4 // istore_2
-l3	iconst_0
-l4	istore_2
-	iload_2
-	ifne	l5 // aload_0
-	new	class java/lang/AssertionError
-	dup
-	new	class scala/collection/mutable/StringBuilder
-	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	ldc	String assertion failed: 
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	ldc	String react on channel belonging to other actor
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
-	athrow
-l5	aload_0
 	dup
 	pop
 	monitorenter
@@ -729,24 +674,19 @@ l5	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l1 = 24 // aload_0
-   	l2 = 31 // iconst_1
-   	l3 = 35 // iconst_0
-   	l4 = 36 // istore_2
-   	l5 = 69 // aload_0
   Exception table:
    from   to  target type
-    73    87   108   any
+     4    18    39   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      111      0    $this       Lscala/actors/Reactor;
-   0      111      1    f       Lscala/PartialFunction;
+   0      42      0    $this       Lscala/actors/Reactor;
+   0      42      1    f       Lscala/PartialFunction;
 
 
 public static void scheduleActor(scala.actors.Reactor, scala.PartialFunction, java.lang.Object);
   Signature: (Lscala/actors/Reactor;Lscala/PartialFunction;Ljava/lang/Object;)V
   Code:
-   Stack=5, Locals=5, Args_size=3
+   Stack=5, Locals=4, Args_size=3
 	new	class scala/actors/Reactor$$anonfun$2
 	dup
 	aload_0
@@ -754,77 +694,78 @@ public static void scheduleActor(scala.actors.Reactor, scala.PartialFunction, ja
 	aload_2
 	invokespecial	Method scala/actors/Reactor$$anonfun$2."<init>":(Lscala/actors/Reactor;Lscala/PartialFunction;Ljava/lang/Object;)V
 	astore_3
-	new	class scala/actors/ReactorTask
-	dup
-	aload_0
-	aload_3
-	invokespecial	Method scala/actors/ReactorTask."<init>":(Lscala/actors/Reactor;Lscala/Function0;)V
-	astore	4
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
-	aload	4
+	aload_0
+	aload_3
+	invokeinterface	InterfaceMethod scala/actors/Reactor.makeReaction:(Lscala/Function0;)Ljava/lang/Runnable;
 	invokeinterface	InterfaceMethod scala/actors/IScheduler.executeFromActor:(Ljava/lang/Runnable;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      36      0    $this       Lscala/actors/Reactor;
-   0      36      1    handler$2       Lscala/PartialFunction;
-   0      36      2    msg$2       Ljava/lang/Object;
-   11      24      3    fun       Lscala/Function0;
-   22      13      4    task       Lscala/actors/ReactorTask;
+   0      30      0    $this       Lscala/actors/Reactor;
+   0      30      1    handler$2       Lscala/PartialFunction;
+   0      30      2    msg$2       Ljava/lang/Object;
+   11      18      3    fun       Lscala/Function0;
 
 
 public static scala.actors.Reactor start(scala.actors.Reactor);
   Signature: (Lscala/actors/Reactor;)Lscala/actors/Reactor;
   Code:
-   Stack=6, Locals=2, Args_size=1
+   Stack=5, Locals=1, Args_size=1
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/IScheduler.newActor:(Lscala/actors/Reactor;)V
-	new	class scala/actors/ReactorTask
-	dup
-	aload_0
-	new	class scala/actors/Reactor$$anonfun$3
-	dup
-	aload_0
-	invokespecial	Method scala/actors/Reactor$$anonfun$3."<init>":(Lscala/actors/Reactor;)V
-	invokespecial	Method scala/actors/ReactorTask."<init>":(Lscala/actors/Reactor;Lscala/Function0;)V
-	astore_1
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
-	aload_1
+	aload_0
+	new	class scala/actors/Reactor$$anonfun$start$1
+	dup
+	aload_0
+	invokespecial	Method scala/actors/Reactor$$anonfun$start$1."<init>":(Lscala/actors/Reactor;)V
+	invokeinterface	InterfaceMethod scala/actors/Reactor.makeReaction:(Lscala/Function0;)Ljava/lang/Runnable;
 	invokeinterface	InterfaceMethod scala/actors/IScheduler.execute:(Ljava/lang/Runnable;)V
 	aload_0
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      43      0    $this       Lscala/actors/Reactor;
-   29      13      1    task       Lscala/actors/ReactorTask;
+   0      39      0    $this       Lscala/actors/Reactor;
+
+
+public static scala.actors.Actor$Body mkBody(scala.actors.Reactor, scala.Function0);
+  Signature: (Lscala/actors/Reactor;Lscala/Function0;)Lscala/actors/Actor$Body;
+  Code:
+   Stack=4, Locals=2, Args_size=2
+	new	class scala/actors/Reactor$$anon$3
+	dup
+	aload_0
+	aload_1
+	invokespecial	Method scala/actors/Reactor$$anon$3."<init>":(Lscala/actors/Reactor;Lscala/Function0;)V
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      10      0    $this       Lscala/actors/Reactor;
+   0      10      1    body$1       Lscala/Function0;
 
 
 public static void seq(scala.actors.Reactor, scala.Function0, scala.Function0);
   Signature: (Lscala/actors/Reactor;Lscala/Function0;Lscala/Function0;)V
   Code:
-   Stack=7, Locals=5, Args_size=3
-	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
+   Stack=6, Locals=4, Args_size=3
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
-	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
-	astore_3
-	aload_3
 	invokeinterface	InterfaceMethod scala/actors/Reactor.kill:()Lscala/Function0;
-	astore	4
-	aload_3
+	astore_3
+	aload_0
 	new	class scala/actors/Reactor$$anonfun$seq$1
 	dup
 	aload_0
 	aload_2
 	aload_3
-	aload	4
-	invokespecial	Method scala/actors/Reactor$$anonfun$seq$1."<init>":(Lscala/actors/Reactor;Lscala/Function0;Lscala/actors/Reactor;Lscala/Function0;)V
+	invokespecial	Method scala/actors/Reactor$$anonfun$seq$1."<init>":(Lscala/actors/Reactor;Lscala/Function0;Lscala/Function0;)V
 	invokeinterface	InterfaceMethod scala/actors/Reactor.kill_$eq:(Lscala/Function0;)V
 	aload_1
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
@@ -836,11 +777,10 @@ public static void seq(scala.actors.Reactor, scala.Function0, scala.Function0);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      54      0    $this       Lscala/actors/Reactor;
-   0      54      1    first       Lscala/Function0;
-   0      54      2    next$1       Lscala/Function0;
-   13      41      3    s$1       Lscala/actors/Reactor;
-   21      33      4    killNext$1       Lscala/Function0;
+   0      38      0    $this       Lscala/actors/Reactor;
+   0      38      1    first       Lscala/Function0;
+   0      38      2    next$1       Lscala/Function0;
+   7      31      3    killNext$1       Lscala/Function0;
 
 
 public static scala.runtime.Nothing$ exit(scala.actors.Reactor);
@@ -890,26 +830,20 @@ public static void $init$(scala.actors.Reactor);
 	invokespecial	Method scala/actors/MQueue."<init>":(Ljava/lang/String;)V
 	invokeinterface	InterfaceMethod scala/actors/Reactor.scala$actors$Reactor$_setter_$sendBuffer_$eq:(Lscala/actors/MQueue;)V
 	aload_0
-	new	class scala/actors/Reactor$$anon$1
-	dup
-	aload_0
-	invokespecial	Method scala/actors/Reactor$$anon$1."<init>":(Lscala/actors/Reactor;)V
-	invokeinterface	InterfaceMethod scala/actors/Reactor.scala$actors$Reactor$_setter_$waitingForNone_$eq:(Lscala/PartialFunction;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingForNone:()Lscala/PartialFunction;
+	getstatic	Field scala/actors/Reactor$.MODULE$:Lscala/actors/Reactor$;
+	invokevirtual	Method scala/actors/Reactor$.waitingForNone:()Lscala/PartialFunction;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor_$eq:(Lscala/PartialFunction;)V
 	aload_0
-	new	class scala/actors/Reactor$$anonfun$4
+	new	class scala/actors/Reactor$$anonfun$3
 	dup
 	aload_0
-	invokespecial	Method scala/actors/Reactor$$anonfun$4."<init>":(Lscala/actors/Reactor;)V
+	invokespecial	Method scala/actors/Reactor$$anonfun$3."<init>":(Lscala/actors/Reactor;)V
 	invokeinterface	InterfaceMethod scala/actors/Reactor.kill_$eq:(Lscala/Function0;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      73      0    $this       Lscala/actors/Reactor;
+   0      59      0    $this       Lscala/actors/Reactor;
 
 
 }

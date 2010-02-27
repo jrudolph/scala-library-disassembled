@@ -1,5 +1,5 @@
 Compiled from "Actor.scala"
-public final class scala.actors.Actor$ extends java.lang.Object implements scala.ScalaObject
+public final class scala.actors.Actor$ extends java.lang.Object implements scala.actors.Combinators,scala.ScalaObject
   SourceFile: "Actor.scala"
   Scala: length = 0x
    
@@ -23,12 +23,10 @@ public final class scala.actors.Actor$ extends java.lang.Object implements scala
    public final $anonfun$10=class scala/actors/Actor$$anonfun$10 of class scala/actors/Actor
    public final $anonfun$link$2=class scala/actors/Actor$$anonfun$link$2 of class scala/actors/Actor
    public final $anonfun$link$1=class scala/actors/Actor$$anonfun$link$1 of class scala/actors/Actor
-   public final $anonfun$loop$1=class scala/actors/Actor$$anonfun$loop$1 of class scala/actors/Actor
    public final $anonfun$react$1=class scala/actors/Actor$$anonfun$react$1 of class scala/actors/Actor
    public final $anonfun$unlink$1=class scala/actors/Actor$$anonfun$unlink$1 of class scala/actors/Actor
    public final $anonfun$$qmark$1=class scala/actors/Actor$$anonfun$$qmark$1 of class scala/actors/Actor
    public final $anonfun$receive$1=class scala/actors/Actor$$anonfun$receive$1 of class scala/actors/Actor
-   public final $anonfun$loopWhile$1=class scala/actors/Actor$$anonfun$loopWhile$1 of class scala/actors/Actor
    public final $anonfun$respondOn$1=class scala/actors/Actor$$anonfun$respondOn$1 of class scala/actors/Actor
    public final $anonfun$exitLinked$1=class scala/actors/Actor$$anonfun$exitLinked$1 of class scala/actors/Actor
    public final $anonfun$unlinkFrom$1=class scala/actors/Actor$$anonfun$unlinkFrom$1 of class scala/actors/Actor
@@ -62,8 +60,29 @@ Asciz	tl;
 Asciz	Ljava/lang/ThreadLocal;;
 Asciz	Ljava/lang/ThreadLocal<Lscala/actors/Reactor;>;;
 Asciz	Signature;
-Asciz	()Ljava/lang/ThreadLocal;;
+Asciz	loop;
+Asciz	(Lscala/Function0;)V;
 Asciz	LineNumberTable;
+Asciz	scala/actors/Combinators$class;
+class	scala/actors/Combinators$class
+Asciz	(Lscala/actors/Combinators;Lscala/Function0;)V;
+NameAndType	loop:(Lscala/actors/Combinators;Lscala/Function0;)V
+Method	scala/actors/Combinators$class.loop:(Lscala/actors/Combinators;Lscala/Function0;)V
+Asciz	this;
+Asciz	body;
+Asciz	Lscala/Function0;;
+Asciz	LocalVariableTable;
+Asciz	loopWhile;
+Asciz	(Lscala/Function0;Lscala/Function0;)V;
+Asciz	(Lscala/actors/Combinators;Lscala/Function0;Lscala/Function0;)V;
+NameAndType	loopWhile:(Lscala/actors/Combinators;Lscala/Function0;Lscala/Function0;)V
+Method	scala/actors/Combinators$class.loopWhile:(Lscala/actors/Combinators;Lscala/Function0;Lscala/Function0;)V
+Asciz	cond;
+Asciz	continue;
+Asciz	(Lscala/actors/Combinators;)V;
+NameAndType	continue:(Lscala/actors/Combinators;)V
+Method	scala/actors/Combinators$class.continue:(Lscala/actors/Combinators;)V
+Asciz	()Ljava/lang/ThreadLocal;;
 NameAndType	tl:Ljava/lang/ThreadLocal;
 Field	scala/actors/Actor$.tl:Ljava/lang/ThreadLocal;
 Asciz	()Ljava/lang/ThreadLocal<Lscala/actors/Reactor;>;;
@@ -89,10 +108,8 @@ NameAndType	rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
 Method	scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
 Asciz	scala/actors/Actor;
 class	scala/actors/Actor
-Asciz	this;
 Asciz	sched;
 Asciz	Lscala/actors/IScheduler;;
-Asciz	LocalVariableTable;
 Asciz	()Lscala/actors/Reactor;;
 Asciz	java/lang/ThreadLocal;
 class	java/lang/ThreadLocal
@@ -137,14 +154,12 @@ Asciz	actor;
 Asciz	(Lscala/Function0;)Lscala/actors/Actor;;
 Asciz	scala/actors/Actor$$anon$1;
 class	scala/actors/Actor$$anon$1
-Asciz	(Lscala/Function0;)V;
 NameAndType	"<init>":(Lscala/Function0;)V
 Method	scala/actors/Actor$$anon$1."<init>":(Lscala/Function0;)V
 Asciz	start;
 NameAndType	start:()Lscala/actors/Actor;
 InterfaceMethod	scala/actors/Actor.start:()Lscala/actors/Actor;
 Asciz	body$1;
-Asciz	Lscala/Function0;;
 Asciz	Lscala/actors/Actor;;
 Asciz	(Lscala/Function0<Ljava/lang/Object;>;)Lscala/actors/Actor;;
 Asciz	reactor;
@@ -229,40 +244,6 @@ class	scala/actors/Actor$$anon$7
 Method	scala/actors/Actor$$anon$7."<init>":(Lscala/Function0;)V
 Asciz	body$3;
 Asciz	<a:Ljava/lang/Object;>(Lscala/Function0<Ta;>;)Ljava/lang/Object;;
-Asciz	loop;
-Asciz	scala/actors/Actor$$anonfun$loop$1;
-class	scala/actors/Actor$$anonfun$loop$1
-Method	scala/actors/Actor$$anonfun$loop$1."<init>":(Lscala/Function0;)V
-NameAndType	MODULE$:Lscala/actors/Actor$;
-Field	scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
-Asciz	seq;
-Asciz	(Lscala/Function0;Lscala/Function0;)V;
-NameAndType	seq:(Lscala/Function0;Lscala/Function0;)V
-InterfaceMethod	scala/actors/Reactor.seq:(Lscala/Function0;Lscala/Function0;)V
-Asciz	body$4;
-Asciz	(Lscala/Function0<Ljava/lang/Object;>;)V;
-Asciz	loopWhile;
-Asciz	scala/Function0;
-class	scala/Function0
-Asciz	apply;
-NameAndType	apply:()Ljava/lang/Object;
-InterfaceMethod	scala/Function0.apply:()Ljava/lang/Object;
-Asciz	scala/runtime/BoxesRunTime;
-class	scala/runtime/BoxesRunTime
-Asciz	unboxToBoolean;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	unboxToBoolean:(Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
-Asciz	scala/actors/Actor$$anonfun$loopWhile$1;
-class	scala/actors/Actor$$anonfun$loopWhile$1
-NameAndType	"<init>":(Lscala/Function0;Lscala/Function0;)V
-Method	scala/actors/Actor$$anonfun$loopWhile$1."<init>":(Lscala/Function0;Lscala/Function0;)V
-Asciz	scala/actors/KillActorException;
-class	scala/actors/KillActorException
-Method	scala/actors/KillActorException."<init>":()V
-Asciz	cond$1;
-Asciz	body$5;
-Asciz	(Lscala/Function0<Ljava/lang/Boolean;>;Lscala/Function0<Ljava/lang/Object;>;)V;
 Asciz	link;
 Asciz	(Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;;
 NameAndType	link:(Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;
@@ -271,7 +252,6 @@ Asciz	to;
 Asciz	Lscala/actors/AbstractActor;;
 NameAndType	link:(Lscala/Function0;)Lscala/actors/Actor;
 InterfaceMethod	scala/actors/Actor.link:(Lscala/Function0;)Lscala/actors/Actor;
-Asciz	body;
 Asciz	unlink;
 Asciz	(Lscala/actors/Actor;)V;
 Asciz	(Lscala/actors/AbstractActor;)V;
@@ -286,10 +266,14 @@ Asciz	reason;
 Asciz	()Lscala/runtime/Nothing$;;
 NameAndType	exit:()Lscala/runtime/Nothing$;
 InterfaceMethod	scala/actors/Actor.exit:()Lscala/runtime/Nothing$;
-Asciz	continue;
 Asciz	java/lang/Object;
 class	java/lang/Object
 Method	java/lang/Object."<init>":()V
+NameAndType	MODULE$:Lscala/actors/Actor$;
+Field	scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
+Asciz	$init$;
+NameAndType	$init$:(Lscala/actors/Combinators;)V
+Method	scala/actors/Combinators$class.$init$:(Lscala/actors/Combinators;)V
 Method	java/lang/ThreadLocal."<init>":()V
 Asciz	java/util/Timer;
 class	java/util/Timer
@@ -351,7 +335,6 @@ Asciz	$anonfun$link$2;
 Asciz	scala/actors/Actor$$anonfun$link$1;
 class	scala/actors/Actor$$anonfun$link$1
 Asciz	$anonfun$link$1;
-Asciz	$anonfun$loop$1;
 Asciz	scala/actors/Actor$$anonfun$react$1;
 class	scala/actors/Actor$$anonfun$react$1
 Asciz	$anonfun$react$1;
@@ -364,7 +347,6 @@ Asciz	$anonfun$$qmark$1;
 Asciz	scala/actors/Actor$$anonfun$receive$1;
 class	scala/actors/Actor$$anonfun$receive$1
 Asciz	$anonfun$receive$1;
-Asciz	$anonfun$loopWhile$1;
 Asciz	$anonfun$respondOn$1;
 Asciz	scala/actors/Actor$$anonfun$exitLinked$1;
 class	scala/actors/Actor$$anonfun$exitLinked$1
@@ -388,6 +370,8 @@ Asciz	$anonfun$receiveWithin$2;
 Asciz	scala/actors/Actor$$anonfun$receiveWithin$1;
 class	scala/actors/Actor$$anonfun$receiveWithin$1
 Asciz	$anonfun$receiveWithin$1;
+Asciz	scala/actors/Combinators;
+class	scala/actors/Combinators
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -415,6 +399,47 @@ public static {};
 	return
   Labels:
 
+public void loop(scala.Function0);
+  Signature: (Lscala/Function0;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/Combinators$class.loop:(Lscala/actors/Combinators;Lscala/Function0;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/Actor$;
+   0      6      1    body       Lscala/Function0;
+
+
+public void loopWhile(scala.Function0, scala.Function0);
+  Signature: (Lscala/Function0;Lscala/Function0;)V
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	aload_1
+	aload_2
+	invokestatic	Method scala/actors/Combinators$class.loopWhile:(Lscala/actors/Combinators;Lscala/Function0;Lscala/Function0;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/Actor$;
+   0      7      1    cond       Lscala/Function0;
+   0      7      2    body       Lscala/Function0;
+
+
+public void continue();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/Combinators$class.continue:(Lscala/actors/Combinators;)V
+	return
+  Labels:
+
 public java.lang.ThreadLocal tl();
   Signature: ()Ljava/lang/ThreadLocal;
   Code:
@@ -424,7 +449,7 @@ public java.lang.ThreadLocal tl();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 1A 
+   00 2F 
 
 public java.util.Timer timer();
   Signature: ()Ljava/util/Timer;
@@ -606,7 +631,7 @@ public scala.actors.Actor actor(scala.Function0);
    9      8      2    a       Lscala/actors/Actor;
 
   Signature: length = 0x2
-   00 6A 
+   00 7B 
 
 public scala.actors.Actor reactor(scala.Function0);
   Signature: (Lscala/Function0;)Lscala/actors/Actor;
@@ -630,7 +655,7 @@ public scala.actors.Actor reactor(scala.Function0);
    9      8      2    a       Lscala/actors/Actor;
 
   Signature: length = 0x2
-   00 70 
+   00 FFFFFF81 
 
 public java.lang.Object $qmark();
   Signature: ()Ljava/lang/Object;
@@ -658,7 +683,7 @@ public java.lang.Object receive(scala.PartialFunction);
    0      11      1    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 7C 
+   00 FFFFFF8D 
 
 public java.lang.Object receiveWithin(long, scala.PartialFunction);
   Signature: (JLscala/PartialFunction;)Ljava/lang/Object;
@@ -678,7 +703,7 @@ public java.lang.Object receiveWithin(long, scala.PartialFunction);
    0      12      3    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFF83 
+   00 FFFFFF94 
 
 public scala.runtime.Nothing$ react(scala.PartialFunction);
   Signature: (Lscala/PartialFunction;)Lscala/runtime/Nothing$;
@@ -696,7 +721,7 @@ public scala.runtime.Nothing$ react(scala.PartialFunction);
    0      11      1    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFF8A 
+   00 FFFFFF9B 
 
 public scala.runtime.Nothing$ reactWithin(long, scala.PartialFunction);
   Signature: (JLscala/PartialFunction;)Lscala/runtime/Nothing$;
@@ -716,7 +741,7 @@ public scala.runtime.Nothing$ reactWithin(long, scala.PartialFunction);
    0      12      3    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFF8F 
+   00 FFFFFFA0 
 
 public scala.runtime.Nothing$ eventloop(scala.PartialFunction);
   Signature: (Lscala/PartialFunction;)Lscala/runtime/Nothing$;
@@ -739,7 +764,7 @@ public scala.runtime.Nothing$ eventloop(scala.PartialFunction);
    0      22      1    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFF8A 
+   00 FFFFFF9B 
 
 public scala.actors.OutputChannel sender();
   Signature: ()Lscala/actors/OutputChannel;
@@ -752,7 +777,7 @@ public scala.actors.OutputChannel sender();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFF9C 
+   00 FFFFFFAD 
 
 public void reply(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
@@ -809,7 +834,7 @@ public scala.Function1 respondOn(scala.Function1);
    0      9      1    fun$1       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFFB5 
+   00 FFFFFFC6 
 
 public scala.actors.Actor$Body mkBody(scala.Function0);
   Signature: (Lscala/Function0;)Lscala/actors/Actor$Body;
@@ -827,82 +852,7 @@ public scala.actors.Actor$Body mkBody(scala.Function0);
    0      9      1    body$3       Lscala/Function0;
 
   Signature: length = 0x2
-   00 FFFFFFBC 
-
-public void loop(scala.Function0);
-  Signature: (Lscala/Function0;)V
-  Code:
-   Stack=3, Locals=4, Args_size=2
-	new	class scala/actors/Actor$$anon$7
-	dup
-	aload_1
-	invokespecial	Method scala/actors/Actor$$anon$7."<init>":(Lscala/Function0;)V
-	pop
-	new	class scala/actors/Actor$$anonfun$loop$1
-	dup
-	aload_1
-	invokespecial	Method scala/actors/Actor$$anonfun$loop$1."<init>":(Lscala/Function0;)V
-	astore_3
-	getstatic	Field MODULE$:Lscala/actors/Actor$;
-	astore_2
-	aload_2
-	getstatic	Field scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
-	invokevirtual	Method rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
-	aload_1
-	aload_3
-	invokeinterface	InterfaceMethod scala/actors/Reactor.seq:(Lscala/Function0;Lscala/Function0;)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      37      0    this       Lscala/actors/Actor$;
-   0      37      1    body$4       Lscala/Function0;
-
-  Signature: length = 0x2
-   00 FFFFFFC8 
-
-public void loopWhile(scala.Function0, scala.Function0);
-  Signature: (Lscala/Function0;Lscala/Function0;)V
-  Code:
-   Stack=4, Locals=5, Args_size=3
-	aload_1
-	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
-	ifeq	l1 // new
-	new	class scala/actors/Actor$$anon$7
-	dup
-	aload_2
-	invokespecial	Method scala/actors/Actor$$anon$7."<init>":(Lscala/Function0;)V
-	pop
-	new	class scala/actors/Actor$$anonfun$loopWhile$1
-	dup
-	aload_1
-	aload_2
-	invokespecial	Method scala/actors/Actor$$anonfun$loopWhile$1."<init>":(Lscala/Function0;Lscala/Function0;)V
-	astore	4
-	getstatic	Field MODULE$:Lscala/actors/Actor$;
-	astore_3
-	aload_3
-	getstatic	Field scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
-	invokevirtual	Method rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
-	aload_2
-	aload	4
-	invokeinterface	InterfaceMethod scala/actors/Reactor.seq:(Lscala/Function0;Lscala/Function0;)V
-	return
-l1	new	class scala/actors/KillActorException
-	dup
-	invokespecial	Method scala/actors/KillActorException."<init>":()V
-	athrow
-  Labels:
-   	l1 = 52 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      60      0    this       Lscala/actors/Actor$;
-   0      60      1    cond$1       Lscala/Function0;
-   0      60      2    body$5       Lscala/Function0;
-
-  Signature: length = 0x2
-   00 FFFFFFDE 
+   00 FFFFFFCD 
 
 public scala.actors.AbstractActor link(scala.actors.AbstractActor);
   Signature: (Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;
@@ -936,7 +886,7 @@ public scala.actors.Actor link(scala.Function0);
    0      11      1    body       Lscala/Function0;
 
   Signature: length = 0x2
-   00 6A 
+   00 7B 
 
 public void unlink(scala.actors.Actor);
   Signature: (Lscala/actors/Actor;)V
@@ -980,16 +930,6 @@ public scala.runtime.Nothing$ exit();
 	areturn
   Labels:
 
-public void continue();
-  Signature: ()V
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	new	class scala/actors/KillActorException
-	dup
-	invokespecial	Method scala/actors/KillActorException."<init>":()V
-	athrow
-  Labels:
-
 private scala.actors.Actor$();
   Signature: ()V
   Code:
@@ -998,6 +938,8 @@ private scala.actors.Actor$();
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
 	putstatic	Field MODULE$:Lscala/actors/Actor$;
+	aload_0
+	invokestatic	Method scala/actors/Combinators$class.$init$:(Lscala/actors/Combinators;)V
 	aload_0
 	new	class java/lang/ThreadLocal
 	dup

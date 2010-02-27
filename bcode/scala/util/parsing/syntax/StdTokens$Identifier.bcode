@@ -86,8 +86,8 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
-Asciz	temp14;
-Asciz	temp15;
+Asciz	temp17;
+Asciz	temp18;
 Asciz	productPrefix;
 Asciz	Identifier;
 String	Identifier
@@ -108,6 +108,9 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	productElementName;
+Asciz	(I)Ljava/lang/String;;
+String	chars
 NameAndType	$outer:Lscala/util/parsing/syntax/StdTokens;
 Field	scala/util/parsing/syntax/StdTokens$Identifier.$outer:Lscala/util/parsing/syntax/StdTokens;
 NameAndType	equals:(Ljava/lang/Object;)Z
@@ -275,8 +278,8 @@ l6	ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      71      0    this       Lscala/util/parsing/syntax/StdTokens$Identifier;
-   31      30      2    temp14       Lscala/util/parsing/syntax/StdTokens$Identifier;
-   36      25      3    temp15       Ljava/lang/String;
+   31      30      2    temp17       Lscala/util/parsing/syntax/StdTokens$Identifier;
+   36      25      3    temp18       Ljava/lang/String;
 
 
 public java.lang.String productPrefix();
@@ -314,6 +317,25 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	athrow
   Labels:
    	l1 = 10 // new
+
+public java.lang.String productElementName(int);
+  Signature: (I)Ljava/lang/String;
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	iload_1
+	iconst_0
+	if_icmpne	l1 // new
+	ldc	String chars
+	areturn
+l1	new	class java/lang/IndexOutOfBoundsException
+	dup
+	iload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
+	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+	athrow
+  Labels:
+   	l1 = 8 // new
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z

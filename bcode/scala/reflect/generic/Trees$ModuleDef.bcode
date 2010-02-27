@@ -79,6 +79,11 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	productElementName;
+Asciz	(I)Ljava/lang/String;;
+String	impl
+String	name
+String	mods
 Asciz	canEqual;
 Asciz	(Ljava/lang/Object;)Z;
 Asciz	scala/reflect/generic/Trees$Tree;
@@ -241,6 +246,32 @@ public java.lang.Object productElement(int);
 l1	areturn
   Labels:
    	l1 = 61 // areturn
+
+public java.lang.String productElementName(int);
+  Signature: (I)Ljava/lang/String;
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	iload_1
+	tableswitch{ //0 to 2
+		0: 53;
+		1: 48;
+		2: 43;
+		default: 28 }
+	new	class java/lang/IndexOutOfBoundsException
+	dup
+	iload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
+	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+	athrow
+	ldc	String impl
+	goto	l1 // areturn
+	ldc	String name
+	goto	l1 // areturn
+	ldc	String mods
+l1	areturn
+  Labels:
+   	l1 = 55 // areturn
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z

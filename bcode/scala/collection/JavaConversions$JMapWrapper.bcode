@@ -2,7 +2,7 @@ Compiled from "JavaConversions.scala"
 public class scala.collection.JavaConversions$JMapWrapper extends scala.collection.JavaConversions$JMapWrapperLike implements scala.ScalaObject,scala.Product,java.io.Serializable
   SourceFile: "JavaConversions.scala"
   Signature: length = 0x2
-   00 52 
+   00 55 
   Scala: length = 0x
    
   InnerClass: 
@@ -80,6 +80,9 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	productElementName;
+Asciz	(I)Ljava/lang/String;;
+String	underlying
 Asciz	()Lscala/collection/Map;;
 NameAndType	empty:()Lscala/collection/JavaConversions$JMapWrapper;
 Method	scala/collection/JavaConversions$JMapWrapper.empty:()Lscala/collection/JavaConversions$JMapWrapper;
@@ -217,6 +220,25 @@ l1	new	class java/lang/IndexOutOfBoundsException
   Labels:
    	l1 = 10 // new
 
+public java.lang.String productElementName(int);
+  Signature: (I)Ljava/lang/String;
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	iload_1
+	iconst_0
+	if_icmpne	l1 // new
+	ldc	String underlying
+	areturn
+l1	new	class java/lang/IndexOutOfBoundsException
+	dup
+	iload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
+	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+	athrow
+  Labels:
+   	l1 = 8 // new
+
 public scala.collection.Map empty();
   Signature: ()Lscala/collection/Map;
   Code:
@@ -255,7 +277,7 @@ public scala.collection.JavaConversions$JMapWrapper(java.util.Map);
    0      15      1    underlying       Ljava/util/Map;
 
   Signature: length = 0x2
-   00 51 
+   00 54 
 
 }
 

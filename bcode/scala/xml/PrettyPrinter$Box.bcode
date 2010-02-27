@@ -82,9 +82,9 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
-Asciz	temp3;
 Asciz	temp4;
 Asciz	temp5;
+Asciz	temp6;
 Asciz	productPrefix;
 Asciz	Box;
 String	Box
@@ -106,6 +106,10 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	productElementName;
+Asciz	(I)Ljava/lang/String;;
+String	s
+String	col
 Asciz	scala/xml/PrettyPrinter$Item;
 class	scala/xml/PrettyPrinter$Item
 Asciz	$outer;
@@ -288,9 +292,9 @@ l6	ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      79      0    this       Lscala/xml/PrettyPrinter$Box;
-   31      38      2    temp3       Lscala/xml/PrettyPrinter$Box;
-   36      33      3    temp4       I
-   42      27      4    temp5       Ljava/lang/String;
+   31      38      2    temp4       Lscala/xml/PrettyPrinter$Box;
+   36      33      3    temp5       I
+   42      27      4    temp6       Ljava/lang/String;
 
 
 public java.lang.String productPrefix();
@@ -336,6 +340,29 @@ public java.lang.Object productElement(int);
 l1	areturn
   Labels:
    	l1 = 55 // areturn
+
+public java.lang.String productElementName(int);
+  Signature: (I)Ljava/lang/String;
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	iload_1
+	tableswitch{ //0 to 1
+		0: 44;
+		1: 39;
+		default: 24 }
+	new	class java/lang/IndexOutOfBoundsException
+	dup
+	iload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
+	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+	athrow
+	ldc	String s
+	goto	l1 // areturn
+	ldc	String col
+l1	areturn
+  Labels:
+   	l1 = 46 // areturn
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z

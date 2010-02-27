@@ -115,8 +115,8 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
-Asciz	temp9;
 Asciz	temp10;
+Asciz	temp11;
 Asciz	productPrefix;
 Asciz	Sum;
 String	Sum
@@ -138,6 +138,9 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	productElementName;
+Asciz	(I)Ljava/lang/String;;
+String	gs
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 NameAndType	"<init>":()V
@@ -396,8 +399,8 @@ l6	ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      57      0    this       Lscala/concurrent/pilib$Sum;
-   17      30      2    temp9       Lscala/concurrent/pilib$Sum;
-   22      25      3    temp10       Lscala/collection/immutable/List;
+   17      30      2    temp10       Lscala/concurrent/pilib$Sum;
+   22      25      3    temp11       Lscala/collection/immutable/List;
 
 
 public java.lang.String productPrefix();
@@ -435,6 +438,25 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	athrow
   Labels:
    	l1 = 10 // new
+
+public java.lang.String productElementName(int);
+  Signature: (I)Ljava/lang/String;
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	iload_1
+	iconst_0
+	if_icmpne	l1 // new
+	ldc	String gs
+	areturn
+l1	new	class java/lang/IndexOutOfBoundsException
+	dup
+	iload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
+	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+	athrow
+  Labels:
+   	l1 = 8 // new
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -494,7 +516,7 @@ public scala.concurrent.pilib$Sum(scala.collection.immutable.List);
    0      19      1    gs       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   00 FFFFFF8B 
+   00 FFFFFF8E 
 
 }
 

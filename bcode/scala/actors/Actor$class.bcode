@@ -412,9 +412,9 @@ NameAndType	notify:()V
 Method	java/lang/Object.notify:()V
 Asciz	start;
 Asciz	(Lscala/actors/Actor;)Lscala/actors/Actor;;
-Asciz	exitReason_$eq;
-NameAndType	exitReason_$eq:(Ljava/lang/Object;)V
-InterfaceMethod	scala/actors/Actor.exitReason_$eq:(Ljava/lang/Object;)V
+Asciz	scala$actors$Actor$$exitReason_$eq;
+NameAndType	scala$actors$Actor$$exitReason_$eq:(Ljava/lang/Object;)V
+InterfaceMethod	scala/actors/Actor.scala$actors$Actor$$exitReason_$eq:(Ljava/lang/Object;)V
 Asciz	scala/actors/AbstractActor;
 class	scala/actors/AbstractActor
 Asciz	exiting_$eq;
@@ -451,7 +451,7 @@ NameAndType	link:(Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;
 InterfaceMethod	scala/actors/Actor.link:(Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;
 NameAndType	start:(Lscala/actors/Actor;)Lscala/actors/Actor;
 Method	scala/actors/Actor$class.start:(Lscala/actors/Actor;)Lscala/actors/Actor;
-Asciz	body$6;
+Asciz	body$4;
 Asciz	a;
 Asciz	(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V;
 Asciz	links;
@@ -522,9 +522,14 @@ Asciz	waitingFor;
 Asciz	()Lscala/PartialFunction;;
 NameAndType	waitingFor:()Lscala/PartialFunction;
 InterfaceMethod	scala/actors/Reactor.waitingFor:()Lscala/PartialFunction;
+Asciz	scala/actors/Reactor$;
+class	scala/actors/Reactor$
+Asciz	Lscala/actors/Reactor$;;
+NameAndType	MODULE$:Lscala/actors/Reactor$;
+Field	scala/actors/Reactor$.MODULE$:Lscala/actors/Reactor$;
 Asciz	waitingForNone;
 NameAndType	waitingForNone:()Lscala/PartialFunction;
-InterfaceMethod	scala/actors/Reactor.waitingForNone:()Lscala/PartialFunction;
+Method	scala/actors/Reactor$.waitingForNone:()Lscala/PartialFunction;
 Asciz	onTerminate;
 Asciz	(Lscala/actors/Reactor;Lscala/Function0;)V;
 NameAndType	onTerminate:(Lscala/actors/Reactor;Lscala/Function0;)V
@@ -1544,7 +1549,7 @@ public static scala.actors.Actor start(scala.actors.Actor);
 	monitorenter
 	aload_0
 	getstatic	Field symbol$1:Lscala/Symbol;
-	invokeinterface	InterfaceMethod scala/actors/Actor.exitReason_$eq:(Ljava/lang/Object;)V
+	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$exitReason_$eq:(Ljava/lang/Object;)V
 	aload_0
 	iconst_0
 	invokeinterface	InterfaceMethod scala/actors/AbstractActor.exiting_$eq:(Z)V
@@ -1703,7 +1708,7 @@ l5	new	class scala/actors/Actor$$anon$3
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      108      0    $this       Lscala/actors/Actor;
-   0      108      1    body$6       Lscala/Function0;
+   0      108      1    body$4       Lscala/Function0;
    90      17      5    a       Lscala/actors/Actor;
 
 
@@ -1837,7 +1842,7 @@ public static scala.runtime.Nothing$ exit(scala.actors.Actor, java.lang.Object);
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	invokeinterface	InterfaceMethod scala/actors/Actor.exitReason_$eq:(Ljava/lang/Object;)V
+	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$exitReason_$eq:(Ljava/lang/Object;)V
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.exit:()Lscala/runtime/Nothing$;
 	areturn
@@ -1906,7 +1911,7 @@ public static void exitLinked(scala.actors.Actor, java.lang.Object);
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	invokeinterface	InterfaceMethod scala/actors/Actor.exitReason_$eq:(Ljava/lang/Object;)V
+	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$exitReason_$eq:(Ljava/lang/Object;)V
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.exitLinked:()V
 	return
@@ -1953,7 +1958,7 @@ l4	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.shouldExit_$eq:(Z)V
 	aload_0
 	aload_2
-	invokeinterface	InterfaceMethod scala/actors/Actor.exitReason_$eq:(Ljava/lang/Object;)V
+	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$exitReason_$eq:(Ljava/lang/Object;)V
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$isSuspended:()Z
 	ifeq	l5 // aload_0
@@ -1962,8 +1967,8 @@ l4	aload_0
 	goto	l6 // aload_0
 l5	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor:()Lscala/PartialFunction;
-	aload_0
-	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingForNone:()Lscala/PartialFunction;
+	getstatic	Field scala/actors/Reactor$.MODULE$:Lscala/actors/Reactor$;
+	invokevirtual	Method scala/actors/Reactor$.waitingForNone:()Lscala/PartialFunction;
 	if_acmpeq	l6 // aload_0
 	aload_0
 	aload_0
@@ -2052,7 +2057,7 @@ public static void $init$(scala.actors.Actor);
 	invokeinterface	InterfaceMethod scala/actors/Actor.trapExit_$eq:(Z)V
 	aload_0
 	getstatic	Field symbol$1:Lscala/Symbol;
-	invokeinterface	InterfaceMethod scala/actors/Actor.exitReason_$eq:(Ljava/lang/Object;)V
+	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$exitReason_$eq:(Ljava/lang/Object;)V
 	aload_0
 	iconst_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.shouldExit_$eq:(Z)V
