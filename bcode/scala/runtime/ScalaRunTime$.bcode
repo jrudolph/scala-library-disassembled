@@ -487,6 +487,16 @@ String	,
 InterfaceMethod	scala/collection/TraversableLike.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 Asciz	scala/collection/Traversable;
 class	scala/collection/Traversable
+Asciz	getName;
+NameAndType	getName:()Ljava/lang/String;
+Method	java/lang/Class.getName:()Ljava/lang/String;
+Asciz	scala.tools.nsc.io;
+String	scala.tools.nsc.io
+Asciz	startsWith;
+Asciz	(Ljava/lang/String;)Z;
+NameAndType	startsWith:(Ljava/lang/String;)Z
+Method	java/lang/String.startsWith:(Ljava/lang/String;)Z
+InterfaceMethod	scala/collection/TraversableLike.toString:()Ljava/lang/String;
 Asciz	scala/runtime/ScalaRunTime$$anonfun$stringOf$2;
 class	scala/runtime/ScalaRunTime$$anonfun$stringOf$2
 Method	scala/runtime/ScalaRunTime$$anonfun$stringOf$2."<init>":()V
@@ -1618,6 +1628,15 @@ l6	aload_1
 	checkcast	class scala/collection/Traversable
 	astore	6
 	aload	6
+	invokevirtual	Method java/lang/Object.getClass:()Ljava/lang/Class;
+	invokevirtual	Method java/lang/Class.getName:()Ljava/lang/String;
+	ldc_w	String scala.tools.nsc.io
+	invokevirtual	Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+	ifeq	l8 // aload
+	aload	6
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toString:()Ljava/lang/String;
+	goto	l3 // areturn
+l8	aload	6
 	new	class scala/runtime/ScalaRunTime$$anonfun$stringOf$2
 	dup
 	invokespecial	Method scala/runtime/ScalaRunTime$$anonfun$stringOf$2."<init>":()V
@@ -1644,10 +1663,10 @@ l6	aload_1
 	goto	l3 // areturn
 l7	aload_1
 	astore	7
-	goto	l8 // aload
+	goto	l9 // aload
 l5	aload_1
 	astore	7
-l8	aload	7
+l9	aload	7
 	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
 l3	areturn
   Labels:
@@ -1655,18 +1674,19 @@ l3	areturn
    	l2 = 20 // aload_1
    	l4 = 39 // aload_1
    	l6 = 122 // aload_1
-   	l7 = 206 // aload_1
-   	l5 = 212 // aload_1
-   	l8 = 215 // aload
-   	l3 = 220 // areturn
+   	l8 = 162 // aload
+   	l7 = 233 // aload_1
+   	l5 = 239 // aload_1
+   	l9 = 242 // aload
+   	l3 = 247 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      221      0    this       Lscala/runtime/ScalaRunTime$;
-   0      221      1    arg       Ljava/lang/Object;
+   0      248      0    this       Lscala/runtime/ScalaRunTime$;
+   0      248      1    arg       Ljava/lang/Object;
    32      4      2    temp55       Lscala/xml/Node;
-   135      68      6    temp57       Lscala/collection/Traversable;
-   209      3      7    x       Ljava/lang/Object;
-   215      5      7    x       Ljava/lang/Object;
+   135      98      6    temp57       Lscala/collection/Traversable;
+   236      3      7    x       Ljava/lang/Object;
+   242      5      7    x       Ljava/lang/Object;
 
 
 private final boolean gd1$1(scala.Product, scala.Product);
