@@ -4,7 +4,7 @@ public class scala.actors.ActorTask extends scala.actors.ReplyReactorTask implem
   ScalaSig: length = 0x3
    05 00 00 
   RuntimeVisibleAnnotations: length = 0xB
-   00 01 00 3D 00 01 00 3E 73 00 3F 
+   00 01 00 60 00 01 00 61 73 00 62 
   minor version: 0
   major version: 49
   Constant pool:
@@ -12,6 +12,8 @@ Asciz	SourceFile;
 Asciz	ActorTask.scala;
 Asciz	actor;
 Asciz	Lscala/actors/Actor;;
+Asciz	msg;
+Asciz	Ljava/lang/Object;;
 Asciz	beginExecution;
 Asciz	()V;
 Asciz	Code;
@@ -36,6 +38,37 @@ NameAndType	exit:()Lscala/runtime/Nothing$;
 InterfaceMethod	scala/actors/Actor.exit:()Lscala/runtime/Nothing$;
 Asciz	terminateExecution;
 Asciz	(Ljava/lang/Exception;)V;
+Asciz	scala/Some;
+class	scala/Some
+Asciz	scala/actors/ReplyReactor;
+class	scala/actors/ReplyReactor
+Asciz	sender;
+Asciz	()Lscala/actors/OutputChannel;;
+NameAndType	sender:()Lscala/actors/OutputChannel;
+InterfaceMethod	scala/actors/ReplyReactor.sender:()Lscala/actors/OutputChannel;
+Asciz	<init>;
+Asciz	(Ljava/lang/Object;)V;
+NameAndType	"<init>":(Ljava/lang/Object;)V
+Method	scala/Some."<init>":(Ljava/lang/Object;)V
+Asciz	scala/None$;
+class	scala/None$
+Asciz	MODULE$;
+Asciz	Lscala/None$;;
+NameAndType	MODULE$:Lscala/None$;
+Field	scala/None$.MODULE$:Lscala/None$;
+Asciz	scala/actors/UncaughtException;
+class	scala/actors/UncaughtException
+NameAndType	msg:Ljava/lang/Object;
+Field	scala/actors/ActorTask.msg:Ljava/lang/Object;
+Asciz	java/lang/Thread;
+class	java/lang/Thread
+Asciz	currentThread;
+Asciz	()Ljava/lang/Thread;;
+NameAndType	currentThread:()Ljava/lang/Thread;
+Method	java/lang/Thread.currentThread:()Ljava/lang/Thread;
+Asciz	(Lscala/actors/Reactor;Lscala/Option;Lscala/Option;Ljava/lang/Thread;Ljava/lang/Exception;)V;
+NameAndType	"<init>":(Lscala/actors/Reactor;Lscala/Option;Lscala/Option;Ljava/lang/Thread;Ljava/lang/Exception;)V
+Method	scala/actors/UncaughtException."<init>":(Lscala/actors/Reactor;Lscala/Option;Lscala/Option;Ljava/lang/Thread;Ljava/lang/Exception;)V
 Asciz	links;
 Asciz	()Lscala/collection/immutable/List;;
 NameAndType	links:()Lscala/collection/immutable/List;
@@ -46,15 +79,19 @@ Asciz	isEmpty;
 NameAndType	isEmpty:()Z
 InterfaceMethod	scala/collection/IterableLike.isEmpty:()Z
 Asciz	exitLinked;
-Asciz	(Ljava/lang/Object;)V;
 NameAndType	exitLinked:(Ljava/lang/Object;)V
 InterfaceMethod	scala/actors/Actor.exitLinked:(Ljava/lang/Object;)V
+Asciz	java/lang/Exception;
+class	java/lang/Exception
 Asciz	this;
 Asciz	Lscala/actors/ActorTask;;
 Asciz	e;
 Asciz	Ljava/lang/Exception;;
+Asciz	exceptionResult1;
+Asciz	Lscala/Option;;
+Asciz	uncaught;
+Asciz	Lscala/actors/UncaughtException;;
 Asciz	LocalVariableTable;
-Asciz	<init>;
 Asciz	(Lscala/actors/Actor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)V;
 Asciz	(Lscala/actors/ReplyReactor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)V;
 NameAndType	"<init>":(Lscala/actors/ReplyReactor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)V
@@ -63,8 +100,6 @@ Asciz	fun;
 Asciz	Lscala/Function0;;
 Asciz	handler;
 Asciz	Lscala/PartialFunction;;
-Asciz	msg;
-Asciz	Ljava/lang/Object;;
 Asciz	(Lscala/actors/Actor;Lscala/Function0<Ljava/lang/Object;>;Lscala/PartialFunction<Ljava/lang/Object;Ljava/lang/Object;>;Ljava/lang/Object;)V;
 Asciz	Signature;
 Asciz	ScalaSig;
@@ -78,6 +113,9 @@ class	scala/ScalaObject
 {
 private final scala.actors.Actor actor;
   Signature: Lscala/actors/Actor;
+
+private final java.lang.Object msg;
+  Signature: Ljava/lang/Object;
 
 public void beginExecution();
   Signature: ()V
@@ -100,38 +138,75 @@ l1	return
 public void terminateExecution(java.lang.Exception);
   Signature: (Ljava/lang/Exception;)V
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=7, Locals=5, Args_size=2
+	new	class scala/Some
+	dup
+	aload_0
+	getfield	Field actor:Lscala/actors/Actor;
+	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.sender:()Lscala/actors/OutputChannel;
+	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
+	astore_2
+	goto	l1 // new
+	pop
+	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	astore_2
+l1	new	class scala/actors/UncaughtException
+	dup
+	aload_0
+	getfield	Field actor:Lscala/actors/Actor;
+	aload_0
+	getfield	Field msg:Ljava/lang/Object;
+	ifnonnull	l2 // new
+	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l3 // aload_2
+l2	new	class scala/Some
+	dup
+	aload_0
+	getfield	Field msg:Ljava/lang/Object;
+	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
+l3	aload_2
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+	aload_1
+	invokespecial	Method scala/actors/UncaughtException."<init>":(Lscala/actors/Reactor;Lscala/Option;Lscala/Option;Ljava/lang/Thread;Ljava/lang/Exception;)V
+	astore_3
 	aload_0
 	getfield	Field actor:Lscala/actors/Actor;
 	dup
-	astore_2
+	astore	4
 	monitorenter
 	aload_0
 	getfield	Field actor:Lscala/actors/Actor;
 	invokeinterface	InterfaceMethod scala/actors/Actor.links:()Lscala/collection/immutable/List;
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
-	ifeq	l1 // aload_0
-	goto	l2 // aload_2
-l1	aload_0
+	ifeq	l4 // aload_0
+	goto	l5 // aload
+l4	aload_0
 	getfield	Field actor:Lscala/actors/Actor;
-	aload_1
+	aload_3
 	invokeinterface	InterfaceMethod scala/actors/Actor.exitLinked:(Ljava/lang/Object;)V
-l2	aload_2
+l5	aload	4
 	monitorexit
 	return
-	aload_2
+	aload	4
 	monitorexit
 	athrow
   Labels:
-   	l1 = 27 // aload_0
-   	l2 = 37 // aload_2
+   	l1 = 25 // new
+   	l2 = 46 // new
+   	l3 = 57 // aload_2
+   	l4 = 94 // aload_0
+   	l5 = 104 // aload
   Exception table:
    from   to  target type
-     7    39    40   any
+    74   107   108   any
+     0    20    20   Class java/lang/Exception
+
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      43      0    this       Lscala/actors/ActorTask;
-   0      43      1    e       Ljava/lang/Exception;
+   0      112      0    this       Lscala/actors/ActorTask;
+   0      112      1    e       Ljava/lang/Exception;
+   0      25      2    exceptionResult1       Lscala/Option;
+   66      46      3    uncaught       Lscala/actors/UncaughtException;
 
 
 public scala.actors.ActorTask(scala.actors.Actor, scala.Function0, scala.PartialFunction, java.lang.Object);
@@ -142,6 +217,9 @@ public scala.actors.ActorTask(scala.actors.Actor, scala.Function0, scala.Partial
 	aload_1
 	putfield	Field actor:Lscala/actors/Actor;
 	aload_0
+	aload	4
+	putfield	Field msg:Ljava/lang/Object;
+	aload_0
 	aload_1
 	aload_2
 	aload_3
@@ -151,14 +229,14 @@ public scala.actors.ActorTask(scala.actors.Actor, scala.Function0, scala.Partial
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      15      0    this       Lscala/actors/ActorTask;
-   0      15      1    actor       Lscala/actors/Actor;
-   0      15      2    fun       Lscala/Function0;
-   0      15      3    handler       Lscala/PartialFunction;
-   0      15      4    msg       Ljava/lang/Object;
+   0      21      0    this       Lscala/actors/ActorTask;
+   0      21      1    actor       Lscala/actors/Actor;
+   0      21      2    fun       Lscala/Function0;
+   0      21      3    handler       Lscala/PartialFunction;
+   0      21      4    msg       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 3A 
+   00 5D 
 
 }
 

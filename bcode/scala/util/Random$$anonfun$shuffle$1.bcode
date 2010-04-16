@@ -36,16 +36,30 @@ NameAndType	nextInt:(I)I
 Method	scala/util/Random$.nextInt:(I)I
 NameAndType	buf$1:Lscala/collection/mutable/ArrayBuffer;
 Field	scala/util/Random$$anonfun$shuffle$1.buf$1:Lscala/collection/mutable/ArrayBuffer;
-Asciz	swap$1;
-Asciz	(IILscala/collection/mutable/ArrayBuffer;)V;
-NameAndType	swap$1:(IILscala/collection/mutable/ArrayBuffer;)V
-Method	scala/util/Random$.swap$1:(IILscala/collection/mutable/ArrayBuffer;)V
+Asciz	scala/collection/mutable/ResizableArray;
+class	scala/collection/mutable/ResizableArray
+Asciz	(I)Ljava/lang/Object;;
+NameAndType	apply:(I)Ljava/lang/Object;
+InterfaceMethod	scala/collection/mutable/ResizableArray.apply:(I)Ljava/lang/Object;
+Asciz	update;
+Asciz	(ILjava/lang/Object;)V;
+NameAndType	update:(ILjava/lang/Object;)V
+InterfaceMethod	scala/collection/mutable/ResizableArray.update:(ILjava/lang/Object;)V
 Asciz	this;
 Asciz	Lscala/util/Random$$anonfun$shuffle$1;;
 Asciz	n;
 Asciz	I;
-Asciz	k;
+Asciz	k0;
+Asciz	tmp0;
+Asciz	Ljava/lang/Object;;
 Asciz	LocalVariableTable;
+Asciz	apply$mcVI$sp;
+Asciz	swap$1;
+Asciz	(IILscala/collection/mutable/ArrayBuffer;)V;
+NameAndType	swap$1:(IILscala/collection/mutable/ArrayBuffer;)V
+Method	scala/util/Random$.swap$1:(IILscala/collection/mutable/ArrayBuffer;)V
+Asciz	v1;
+Asciz	k;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
@@ -61,8 +75,6 @@ Asciz	UNIT;
 Asciz	Lscala/runtime/BoxedUnit;;
 NameAndType	UNIT:Lscala/runtime/BoxedUnit;
 Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-Asciz	v1;
-Asciz	Ljava/lang/Object;;
 Asciz	<init>;
 Asciz	(Lscala/collection/mutable/ArrayBuffer;)V;
 Asciz	scala/runtime/AbstractFunction1;
@@ -96,6 +108,45 @@ public static {};
 public final void apply(int);
   Signature: (I)V
   Code:
+   Stack=4, Locals=6, Args_size=2
+	getstatic	Field scala/util/Random$.MODULE$:Lscala/util/Random$;
+	iload_1
+	invokevirtual	Method scala/util/Random$.nextInt:(I)I
+	istore	4
+	iload_1
+	iconst_1
+	isub
+	aload_0
+	getfield	Field buf$1:Lscala/collection/mutable/ArrayBuffer;
+	astore_3
+	istore_2
+	aload_3
+	iload_2
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.apply:(I)Ljava/lang/Object;
+	astore	5
+	aload_3
+	iload_2
+	aload_3
+	iload	4
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.apply:(I)Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.update:(ILjava/lang/Object;)V
+	aload_3
+	iload	4
+	aload	5
+	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.update:(ILjava/lang/Object;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      53      0    this       Lscala/util/Random$$anonfun$shuffle$1;
+   0      53      1    n       I
+   9      43      4    k0       I
+   27      25      5    tmp0       Ljava/lang/Object;
+
+
+public void apply$mcVI$sp(int);
+  Signature: (I)V
+  Code:
    Stack=4, Locals=3, Args_size=2
 	getstatic	Field scala/util/Random$.MODULE$:Lscala/util/Random$;
 	iload_1
@@ -114,7 +165,7 @@ public final void apply(int);
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      23      0    this       Lscala/util/Random$$anonfun$shuffle$1;
-   0      23      1    n       I
+   0      23      1    v1       I
    8      14      2    k       I
 
 

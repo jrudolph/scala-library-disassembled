@@ -4,7 +4,7 @@ public final class scala.collection.Iterator$$anon$20 extends java.lang.Object i
   Scala: length = 0x
    
   Signature: length = 0x2
-   01 FFFFFFB6 
+   01 FFFFFFBD 
   InnerClass: 
    public final $anon$20=class scala/collection/Iterator$$anon$20 of class scala/collection/Iterator
    public abstract $less$colon$less=class scala/Predef$$less$colon$less of class scala/Predef
@@ -18,9 +18,12 @@ Asciz	cur;
 Asciz	Lscala/collection/Iterator;;
 Asciz	Lscala/collection/Iterator<TB;>;;
 Asciz	Signature;
+Asciz	it;
 Asciz	$outer;
 Asciz	that$1;
 Asciz	Lscala/Function0;;
+Asciz	bitmap$0;
+Asciz	I;
 Asciz	isEmpty;
 Asciz	()Z;
 Asciz	Code;
@@ -44,7 +47,6 @@ Method	scala/collection/Iterator$class.take:(Lscala/collection/Iterator;I)Lscala
 Asciz	this;
 Asciz	Lscala/collection/Iterator$$anon$20;;
 Asciz	n;
-Asciz	I;
 Asciz	LocalVariableTable;
 Asciz	drop;
 NameAndType	drop:(Lscala/collection/Iterator;I)Lscala/collection/Iterator;
@@ -406,15 +408,8 @@ Asciz	()Lscala/collection/Iterator<TB;>;;
 Asciz	cur_$eq;
 Asciz	(Lscala/collection/Iterator;)V;
 Asciz	(Lscala/collection/Iterator<TB;>;)V;
-Asciz	hasNext;
-NameAndType	cur:()Lscala/collection/Iterator;
-Method	scala/collection/Iterator$$anon$20.cur:()Lscala/collection/Iterator;
-Asciz	scala/collection/Iterator;
-class	scala/collection/Iterator
-NameAndType	hasNext:()Z
-InterfaceMethod	scala/collection/Iterator.hasNext:()Z
-NameAndType	$outer:Lscala/collection/Iterator;
-Field	scala/collection/Iterator$$anon$20.$outer:Lscala/collection/Iterator;
+NameAndType	bitmap$0:I
+Field	scala/collection/Iterator$$anon$20.bitmap$0:I
 NameAndType	that$1:Lscala/Function0;
 Field	scala/collection/Iterator$$anon$20.that$1:Lscala/Function0;
 Asciz	scala/Function0;
@@ -423,9 +418,21 @@ Asciz	apply;
 Asciz	()Ljava/lang/Object;;
 NameAndType	apply:()Ljava/lang/Object;
 InterfaceMethod	scala/Function0.apply:()Ljava/lang/Object;
+Asciz	scala/collection/Iterator;
+class	scala/collection/Iterator
+NameAndType	it:Lscala/collection/Iterator;
+Field	scala/collection/Iterator$$anon$20.it:Lscala/collection/Iterator;
+Asciz	hasNext;
+NameAndType	cur:()Lscala/collection/Iterator;
+Method	scala/collection/Iterator$$anon$20.cur:()Lscala/collection/Iterator;
+NameAndType	hasNext:()Z
+InterfaceMethod	scala/collection/Iterator.hasNext:()Z
+NameAndType	$outer:Lscala/collection/Iterator;
+Field	scala/collection/Iterator$$anon$20.$outer:Lscala/collection/Iterator;
+NameAndType	it:()Lscala/collection/Iterator;
+Method	scala/collection/Iterator$$anon$20.it:()Lscala/collection/Iterator;
 NameAndType	cur_$eq:(Lscala/collection/Iterator;)V
 Method	scala/collection/Iterator$$anon$20.cur_$eq:(Lscala/collection/Iterator;)V
-Asciz	it;
 Asciz	next;
 Method	scala/collection/Iterator$$anon$20.hasNext:()Z
 NameAndType	next:()Ljava/lang/Object;
@@ -467,11 +474,19 @@ private scala.collection.Iterator cur;
   Signature: length = 0x2
    00 05 
 
+private scala.collection.Iterator it;
+  Signature: Lscala/collection/Iterator;
+  Signature: length = 0x2
+   00 05 
+
 private final scala.collection.Iterator $outer;
   Signature: Lscala/collection/Iterator;
 
 private final scala.Function0 that$1;
   Signature: Lscala/Function0;
+
+public volatile int bitmap$0;
+  Signature: I
 
 public boolean isEmpty();
   Signature: ()Z
@@ -886,7 +901,7 @@ public scala.collection.Iterator$GroupedIterator grouped(int);
    0      6      1    size       I
 
   Signature: length = 0x2
-   00 FFFFFF98 
+   00 FFFFFF9A 
 
 public scala.collection.Iterator$GroupedIterator sliding(int, int);
   Signature: (II)Lscala/collection/Iterator$GroupedIterator;
@@ -905,7 +920,7 @@ public scala.collection.Iterator$GroupedIterator sliding(int, int);
    0      7      2    step       I
 
   Signature: length = 0x2
-   00 FFFFFF9E 
+   00 FFFFFFA0 
 
 public int length();
   Signature: ()I
@@ -1576,7 +1591,7 @@ private scala.collection.Iterator cur();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFF87 
+   01 FFFFFF89 
 
 private void cur_$eq(scala.collection.Iterator);
   Signature: (Lscala/collection/Iterator;)V
@@ -1588,12 +1603,64 @@ private void cur_$eq(scala.collection.Iterator);
 	return
   Labels:
   Signature: length = 0x2
-   01 FFFFFF8A 
+   01 FFFFFF8C 
+
+private scala.collection.Iterator it();
+  Signature: ()Lscala/collection/Iterator;
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	aload_0
+	getfield	Field bitmap$0:I
+	iconst_1
+	iand
+	iconst_0
+	if_icmpne	l1 // aload_0
+	aload_0
+	dup
+	pop
+	monitorenter
+	aload_0
+	getfield	Field bitmap$0:I
+	iconst_1
+	iand
+	iconst_0
+	if_icmpne	l2 // aload_0
+	aload_0
+	aload_0
+	getfield	Field that$1:Lscala/Function0;
+	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
+	checkcast	class scala/collection/Iterator
+	putfield	Field it:Lscala/collection/Iterator;
+	aload_0
+	aload_0
+	getfield	Field bitmap$0:I
+	iconst_1
+	ior
+	putfield	Field bitmap$0:I
+l2	aload_0
+	monitorexit
+	aload_0
+	aconst_null
+	putfield	Field that$1:Lscala/Function0;
+l1	aload_0
+	getfield	Field it:Lscala/collection/Iterator;
+	areturn
+	aload_0
+	monitorexit
+	athrow
+  Labels:
+   	l2 = 50 // aload_0
+   	l1 = 57 // aload_0
+  Exception table:
+   from   to  target type
+    14    52    62   any
+  Signature: length = 0x2
+   01 FFFFFF89 
 
 public boolean hasNext();
   Signature: ()Z
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=1, Args_size=1
 	aload_0
 	invokespecial	Method cur:()Lscala/collection/Iterator;
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
@@ -1604,37 +1671,23 @@ public boolean hasNext();
 	getfield	Field $outer:Lscala/collection/Iterator;
 	if_acmpne	l2 // iconst_0
 	aload_0
-	getfield	Field that$1:Lscala/Function0;
-	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
-	checkcast	class scala/collection/Iterator
-	astore_1
-	aload_1
+	invokespecial	Method it:()Lscala/collection/Iterator;
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l3 // iconst_0
+	ifeq	l2 // iconst_0
 	aload_0
-	aload_1
+	aload_0
+	invokespecial	Method it:()Lscala/collection/Iterator;
 	invokespecial	Method cur_$eq:(Lscala/collection/Iterator;)V
 	iconst_1
-	ifeq	l3 // iconst_0
-	iconst_1
-	goto	l4 // ifeq
-l3	iconst_0
-l4	ifeq	l2 // iconst_0
+	ifeq	l2 // iconst_0
 l1	iconst_1
-	goto	l5 // ireturn
+	goto	l3 // ireturn
 l2	iconst_0
-l5	ireturn
+l3	ireturn
   Labels:
-   	l3 = 58 // iconst_0
-   	l4 = 59 // ifeq
-   	l1 = 62 // iconst_1
-   	l2 = 66 // iconst_0
-   	l5 = 67 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      68      0    this       Lscala/collection/Iterator$$anon$20;
-   36      26      1    it       Lscala/collection/Iterator;
-
+   	l1 = 47 // iconst_1
+   	l2 = 51 // iconst_0
+   	l3 = 52 // ireturn
 
 public java.lang.Object next();
   Signature: ()Ljava/lang/Object;
@@ -1649,7 +1702,7 @@ public java.lang.Object next();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 FFFFFFA3 
+   01 FFFFFFAA 
 
 public scala.collection.Iterator$$anon$20(scala.collection.Iterator, scala.Function0);
   Signature: (Lscala/collection/Iterator;Lscala/Function0;)V
@@ -1685,7 +1738,7 @@ l1	aload_0
    0      40      1    $outer       Lscala/collection/Iterator;
 
   Signature: length = 0x2
-   01 FFFFFFB4 
+   01 FFFFFFBB 
 
 }
 

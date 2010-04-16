@@ -19,28 +19,36 @@ Asciz	scala/io/Source$$anonfun$fromFile$2;
 class	scala/io/Source$$anonfun$fromFile$2
 NameAndType	serialVersionUID:J
 Field	scala/io/Source$$anonfun$fromFile$2.serialVersionUID:J
-Asciz	inputStream$2;
-Asciz	Ljava/io/FileInputStream;;
+Asciz	file$1;
+Asciz	Ljava/io/File;;
+Asciz	bufferSize$2;
+Asciz	I;
+Asciz	codec$2;
+Asciz	Lscala/io/Codec;;
 Asciz	apply;
+Asciz	()Lscala/io/Source;;
+Asciz	scala/io/Source$;
+class	scala/io/Source$
+Asciz	MODULE$;
+Asciz	Lscala/io/Source$;;
+NameAndType	MODULE$:Lscala/io/Source$;
+Field	scala/io/Source$.MODULE$:Lscala/io/Source$;
 Asciz	LineNumberTable;
-NameAndType	inputStream$2:Ljava/io/FileInputStream;
-Field	scala/io/Source$$anonfun$fromFile$2.inputStream$2:Ljava/io/FileInputStream;
-Asciz	java/io/FileInputStream;
-class	java/io/FileInputStream
-Asciz	close;
-NameAndType	close:()V
-Method	java/io/FileInputStream.close:()V
+NameAndType	file$1:Ljava/io/File;
+Field	scala/io/Source$$anonfun$fromFile$2.file$1:Ljava/io/File;
+NameAndType	bufferSize$2:I
+Field	scala/io/Source$$anonfun$fromFile$2.bufferSize$2:I
+NameAndType	codec$2:Lscala/io/Codec;
+Field	scala/io/Source$$anonfun$fromFile$2.codec$2:Lscala/io/Codec;
+Asciz	fromFile;
+Asciz	(Ljava/io/File;ILscala/io/Codec;)Lscala/io/Source;;
+NameAndType	fromFile:(Ljava/io/File;ILscala/io/Codec;)Lscala/io/Source;
+Method	scala/io/Source$.fromFile:(Ljava/io/File;ILscala/io/Codec;)Lscala/io/Source;
 Asciz	()Ljava/lang/Object;;
-NameAndType	apply:()V
-Method	scala/io/Source$$anonfun$fromFile$2.apply:()V
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+NameAndType	apply:()Lscala/io/Source;
+Method	scala/io/Source$$anonfun$fromFile$2.apply:()Lscala/io/Source;
 Asciz	<init>;
-Asciz	(Ljava/io/FileInputStream;)V;
+Asciz	(Ljava/io/File;ILscala/io/Codec;)V;
 Asciz	scala/runtime/AbstractFunction0;
 class	scala/runtime/AbstractFunction0
 NameAndType	"<init>":()V
@@ -57,8 +65,14 @@ class	java/io/Serializable
 public static final long serialVersionUID;
   Signature: J
 
-public final java.io.FileInputStream inputStream$2;
-  Signature: Ljava/io/FileInputStream;
+public final java.io.File file$1;
+  Signature: Ljava/io/File;
+
+public final int bufferSize$2;
+  Signature: I
+
+public final scala.io.Codec codec$2;
+  Signature: Lscala/io/Codec;
 
 public static {};
   Signature: ()V
@@ -69,14 +83,19 @@ public static {};
 	return
   Labels:
 
-public final void apply();
-  Signature: ()V
+public final scala.io.Source apply();
+  Signature: ()Lscala/io/Source;
   Code:
-   Stack=1, Locals=1, Args_size=1
+   Stack=4, Locals=1, Args_size=1
+	getstatic	Field scala/io/Source$.MODULE$:Lscala/io/Source$;
 	aload_0
-	getfield	Field inputStream$2:Ljava/io/FileInputStream;
-	invokevirtual	Method java/io/FileInputStream.close:()V
-	return
+	getfield	Field file$1:Ljava/io/File;
+	aload_0
+	getfield	Field bufferSize$2:I
+	aload_0
+	getfield	Field codec$2:Lscala/io/Codec;
+	invokevirtual	Method scala/io/Source$.fromFile:(Ljava/io/File;ILscala/io/Codec;)Lscala/io/Source;
+	areturn
   Labels:
 
 public final java.lang.Object apply();
@@ -84,18 +103,23 @@ public final java.lang.Object apply();
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokevirtual	Method apply:()V
-	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	invokevirtual	Method apply:()Lscala/io/Source;
 	areturn
   Labels:
 
-public scala.io.Source$$anonfun$fromFile$2(java.io.FileInputStream);
-  Signature: (Ljava/io/FileInputStream;)V
+public scala.io.Source$$anonfun$fromFile$2(java.io.File, int, scala.io.Codec);
+  Signature: (Ljava/io/File;ILscala/io/Codec;)V
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=4, Args_size=4
 	aload_0
 	aload_1
-	putfield	Field inputStream$2:Ljava/io/FileInputStream;
+	putfield	Field file$1:Ljava/io/File;
+	aload_0
+	iload_2
+	putfield	Field bufferSize$2:I
+	aload_0
+	aload_3
+	putfield	Field codec$2:Lscala/io/Codec;
 	aload_0
 	invokespecial	Method scala/runtime/AbstractFunction0."<init>":()V
 	return

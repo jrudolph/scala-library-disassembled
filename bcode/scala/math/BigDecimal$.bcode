@@ -25,6 +25,9 @@ Method	scala/math/BigDecimal$."<init>":()V
 Asciz	minCached;
 Asciz	I;
 Asciz	maxCached;
+Asciz	MinLong;
+Asciz	Lscala/math/BigDecimal;;
+Asciz	MaxLong;
 Asciz	cache;
 Asciz	[Lscala/math/BigDecimal;;
 Asciz	defaultMathContext;
@@ -36,6 +39,11 @@ NameAndType	minCached:I
 Field	scala/math/BigDecimal$.minCached:I
 NameAndType	maxCached:I
 Field	scala/math/BigDecimal$.maxCached:I
+Asciz	()Lscala/math/BigDecimal;;
+NameAndType	MinLong:Lscala/math/BigDecimal;
+Field	scala/math/BigDecimal$.MinLong:Lscala/math/BigDecimal;
+NameAndType	MaxLong:Lscala/math/BigDecimal;
+Field	scala/math/BigDecimal$.MaxLong:Lscala/math/BigDecimal;
 Asciz	()[Lscala/math/BigDecimal;;
 NameAndType	bitmap$0:I
 Field	scala/math/BigDecimal$.bitmap$0:I
@@ -93,7 +101,6 @@ NameAndType	"<init>":(Ljava/math/BigDecimal;Ljava/math/MathContext;)V
 Method	scala/math/BigDecimal."<init>":(Ljava/math/BigDecimal;Ljava/math/MathContext;)V
 Asciz	offset;
 Asciz	n;
-Asciz	Lscala/math/BigDecimal;;
 Asciz	(J)Lscala/math/BigDecimal;;
 Asciz	l;
 Asciz	J;
@@ -189,6 +196,8 @@ NameAndType	MODULE$:Lscala/math/BigDecimal$;
 Field	scala/math/BigDecimal$.MODULE$:Lscala/math/BigDecimal$;
 int	-512;
 int	512;
+long	-9223372036854775808l;
+long	9223372036854775807l;
 Asciz	java/math/MathContext;
 class	java/math/MathContext
 Asciz	UNLIMITED;
@@ -217,6 +226,12 @@ private final int minCached;
 
 private final int maxCached;
   Signature: I
+
+private final scala.math.BigDecimal MinLong;
+  Signature: Lscala/math/BigDecimal;
+
+private final scala.math.BigDecimal MaxLong;
+  Signature: Lscala/math/BigDecimal;
 
 private scala.math.BigDecimal[] cache;
   Signature: [Lscala/math/BigDecimal;
@@ -252,6 +267,24 @@ private int maxCached();
 	aload_0
 	getfield	Field maxCached:I
 	ireturn
+  Labels:
+
+public scala.math.BigDecimal MinLong();
+  Signature: ()Lscala/math/BigDecimal;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field MinLong:Lscala/math/BigDecimal;
+	areturn
+  Labels:
+
+public scala.math.BigDecimal MaxLong();
+  Signature: ()Lscala/math/BigDecimal;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field MaxLong:Lscala/math/BigDecimal;
+	areturn
   Labels:
 
 private scala.math.BigDecimal[] cache();
@@ -834,7 +867,7 @@ public scala.math.BigDecimal double2bigDecimal(double);
 private scala.math.BigDecimal$();
   Signature: ()V
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=4, Locals=1, Args_size=1
 	aload_0
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
@@ -845,6 +878,16 @@ private scala.math.BigDecimal$();
 	aload_0
 	ldc	int 512
 	putfield	Field maxCached:I
+	aload_0
+	aload_0
+	ldc2_w	long -9223372036854775808l
+	invokevirtual	Method apply:(J)Lscala/math/BigDecimal;
+	putfield	Field MinLong:Lscala/math/BigDecimal;
+	aload_0
+	aload_0
+	ldc2_w	long 9223372036854775807l
+	invokevirtual	Method apply:(J)Lscala/math/BigDecimal;
+	putfield	Field MaxLong:Lscala/math/BigDecimal;
 	aload_0
 	getstatic	Field java/math/MathContext.UNLIMITED:Ljava/math/MathContext;
 	putfield	Field defaultMathContext:Ljava/math/MathContext;

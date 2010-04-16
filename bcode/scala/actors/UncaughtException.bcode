@@ -4,9 +4,9 @@ public class scala.actors.UncaughtException extends java.lang.Exception implemen
   ScalaSig: length = 0x3
    05 00 00 
   Signature: length = 0x2
-   00 42 
+   00 49 
   RuntimeVisibleAnnotations: length = 0xB
-   00 01 00 43 00 01 00 44 73 00 45 
+   00 01 00 4A 00 01 00 4B 73 00 4C 
   minor version: 0
   major version: 49
   Constant pool:
@@ -19,6 +19,8 @@ Asciz	Signature;
 Asciz	message;
 Asciz	Lscala/Option;;
 Asciz	Lscala/Option<TMsg;>;;
+Asciz	sender;
+Asciz	Lscala/Option<Lscala/actors/OutputChannel<Ljava/lang/Object;>;>;;
 Asciz	thread;
 Asciz	Ljava/lang/Thread;;
 Asciz	cause;
@@ -35,6 +37,9 @@ Asciz	()Lscala/Option;;
 NameAndType	message:Lscala/Option;
 Field	scala/actors/UncaughtException.message:Lscala/Option;
 Asciz	()Lscala/Option<TMsg;>;;
+NameAndType	sender:Lscala/Option;
+Field	scala/actors/UncaughtException.sender:Lscala/Option;
+Asciz	()Lscala/Option<Lscala/actors/OutputChannel<Ljava/lang/Object;>;>;;
 Asciz	()Ljava/lang/Thread;;
 NameAndType	thread:Ljava/lang/Thread;
 Field	scala/actors/UncaughtException.thread:Ljava/lang/Thread;
@@ -58,13 +63,15 @@ Asciz	,;
 String	,
 NameAndType	message:()Lscala/Option;
 Method	scala/actors/UncaughtException.message:()Lscala/Option;
+NameAndType	sender:()Lscala/Option;
+Method	scala/actors/UncaughtException.sender:()Lscala/Option;
 NameAndType	cause:Ljava/lang/Exception;
 Field	scala/actors/UncaughtException.cause:Ljava/lang/Exception;
 Asciz	);
 String	)
 NameAndType	toString:()Ljava/lang/String;
 Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-Asciz	(Lscala/actors/Reactor;Lscala/Option;Ljava/lang/Thread;Ljava/lang/Exception;)V;
+Asciz	(Lscala/actors/Reactor;Lscala/Option;Lscala/Option;Ljava/lang/Thread;Ljava/lang/Exception;)V;
 Asciz	java/lang/Exception;
 class	java/lang/Exception
 Asciz	(Ljava/lang/Throwable;)V;
@@ -73,12 +80,12 @@ Method	java/lang/Exception."<init>":(Ljava/lang/Throwable;)V
 Asciz	this;
 Asciz	Lscala/actors/UncaughtException;;
 Asciz	LocalVariableTable;
-Asciz	(Lscala/actors/Reactor<TMsg;>;Lscala/Option<TMsg;>;Ljava/lang/Thread;Ljava/lang/Exception;)V;
+Asciz	(Lscala/actors/Reactor<TMsg;>;Lscala/Option<TMsg;>;Lscala/Option<Lscala/actors/OutputChannel<Ljava/lang/Object;>;>;Ljava/lang/Thread;Ljava/lang/Exception;)V;
 Asciz	ScalaSig;
 Asciz	<Msg:Ljava/lang/Object;>Ljava/lang/Exception;Lscala/ScalaObject;;
 Asciz	Lscala/reflect/ScalaSignature;;
 Asciz	bytes;
-Asciz	Q3A!\t\tRK\2bkDG/=dKB$n8\r!AB1di>8OC8-7b)\"I5\t1B\r!A.8hq6bmL!EC8-9uS>tC\n!B-6-7b\nTWm;\tY!Q1A]\tQ!Y2u_J,\t3iaR\"\nm!a*fC$xN\t;ya \tQ1!\ri5oZ\tC\"A\n\r\"!(vY2\"AE\n\"!aA!os\"ABB%$bGR|'\t\tU)!CW9Q.Z:tC,W#IiC$/\t\t1q\n;j_:D\rIL\t[8/Y4fA!A!BC1'uQJ,\rZiA!\"Nm-a5sK$QD'/Z1eA!A!BB%1(AdCVX\r=\t:QH}ka\ta:p_Rt\"A\n\r#a9bG.w-Z!S!a\tA%\rqJg.;?)I%j'N!\rI-\rU\re\ru\ra!\tU\ti>FO]5oOR\t%&1k'RN\4;
+Asciz	y3A!\t\tRK\2bkDG/=dKB$n8\r!AB1di>8OC8-7b)\"I5\t1B\r!A.8hq6bmL!EC8-9uS>tC\n!B-6-7b\nTWm;\tY!Q1A]\tQ!Y2u_J,\t3iaR\"\nm!a*fC$xN\t;ya \tQ1!\ri5oZ\tC\"A\n\r\"!(vY2\"AE\n\"!aA!os\"ABB%$bGR|'\t\tU)!CW9Q.Z:tC,W#IiC$/\t\t1q\n;j_:D\rIL\t[8/Y4fA!A!BC1'tK:$WM]iA!#Le1D%8\tiq*;qkR.8oK2D\"INgtG-:!!YA!b\naA;ieG-F>!\tQa(@\t1A:fCD\"I!Pi\"X-3!!A!A!!!B2bkN,CA#N\t15JH6\tJJ\r1AH]8pizJ!B\tq]1dW<W-*A\n!!\t!Uy%t \rIF+,X!\rI-=\rU=\re=\rw=\r!>\r3!\tEW\ti>FO]5oOR\t19&Ql'RN\4;
 Asciz	RuntimeVisibleAnnotations;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
@@ -93,6 +100,11 @@ private final scala.Option message;
   Signature: Lscala/Option;
   Signature: length = 0x2
    00 09 
+
+private final scala.Option sender;
+  Signature: Lscala/Option;
+  Signature: length = 0x2
+   00 0B 
 
 private final java.lang.Thread thread;
   Signature: Ljava/lang/Thread;
@@ -109,7 +121,7 @@ public scala.actors.Reactor actor();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 15 
+   00 17 
 
 public scala.Option message();
   Signature: ()Lscala/Option;
@@ -120,7 +132,18 @@ public scala.Option message();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 19 
+   00 1B 
+
+public scala.Option sender();
+  Signature: ()Lscala/Option;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field sender:Lscala/Option;
+	areturn
+  Labels:
+  Signature: length = 0x2
+   00 1E 
 
 public java.lang.Thread thread();
   Signature: ()Ljava/lang/Thread;
@@ -151,6 +174,11 @@ public java.lang.String toString();
 	ldc	String ,
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
+	invokevirtual	Method sender:()Lscala/Option;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	ldc	String ,
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	aload_0
 	getfield	Field cause:Ljava/lang/Exception;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc	String )
@@ -159,10 +187,10 @@ public java.lang.String toString();
 	areturn
   Labels:
 
-public scala.actors.UncaughtException(scala.actors.Reactor, scala.Option, java.lang.Thread, java.lang.Exception);
-  Signature: (Lscala/actors/Reactor;Lscala/Option;Ljava/lang/Thread;Ljava/lang/Exception;)V
+public scala.actors.UncaughtException(scala.actors.Reactor, scala.Option, scala.Option, java.lang.Thread, java.lang.Exception);
+  Signature: (Lscala/actors/Reactor;Lscala/Option;Lscala/Option;Ljava/lang/Thread;Ljava/lang/Exception;)V
   Code:
-   Stack=2, Locals=5, Args_size=5
+   Stack=2, Locals=6, Args_size=6
 	aload_0
 	aload_1
 	putfield	Field actor:Lscala/actors/Reactor;
@@ -171,25 +199,29 @@ public scala.actors.UncaughtException(scala.actors.Reactor, scala.Option, java.l
 	putfield	Field message:Lscala/Option;
 	aload_0
 	aload_3
+	putfield	Field sender:Lscala/Option;
+	aload_0
+	aload	4
 	putfield	Field thread:Ljava/lang/Thread;
 	aload_0
-	aload	4
+	aload	5
 	putfield	Field cause:Ljava/lang/Exception;
 	aload_0
-	aload	4
+	aload	5
 	invokespecial	Method java/lang/Exception."<init>":(Ljava/lang/Throwable;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      28      0    this       Lscala/actors/UncaughtException;
-   0      28      1    actor       Lscala/actors/Reactor;
-   0      28      2    message       Lscala/Option;
-   0      28      3    thread       Ljava/lang/Thread;
-   0      28      4    cause       Ljava/lang/Exception;
+   0      34      0    this       Lscala/actors/UncaughtException;
+   0      34      1    actor       Lscala/actors/Reactor;
+   0      34      2    message       Lscala/Option;
+   0      34      3    sender       Lscala/Option;
+   0      34      4    thread       Ljava/lang/Thread;
+   0      34      5    cause       Ljava/lang/Exception;
 
   Signature: length = 0x2
-   00 40 
+   00 47 
 
 }
 

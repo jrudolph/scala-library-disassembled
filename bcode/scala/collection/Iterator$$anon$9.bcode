@@ -424,21 +424,12 @@ NameAndType	hasNext:()Z
 Method	scala/collection/Iterator$$anon$9.hasNext:()Z
 NameAndType	step$1:Lscala/Function1;
 Field	scala/collection/Iterator$$anon$9.step$1:Lscala/Function1;
-Asciz	scala/runtime/BoxesRunTime;
-class	scala/runtime/BoxesRunTime
-Asciz	boxToInteger;
-Asciz	(I)Ljava/lang/Integer;;
-NameAndType	boxToInteger:(I)Ljava/lang/Integer;
-Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 Asciz	scala/Function1;
 class	scala/Function1
-Asciz	apply;
-Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
-NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
-InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-Asciz	unboxToInt;
-NameAndType	unboxToInt:(Ljava/lang/Object;)I
-Method	scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
+Asciz	apply$mcII$sp;
+Asciz	(I)I;
+NameAndType	apply$mcII$sp:(I)I
+InterfaceMethod	scala/Function1.apply$mcII$sp:(I)I
 NameAndType	i_$eq:(I)V
 Method	scala/collection/Iterator$$anon$9.i_$eq:(I)V
 Asciz	scala/collection/Iterator$;
@@ -455,9 +446,18 @@ class	scala/collection/Iterator
 Asciz	()Ljava/lang/Object;;
 NameAndType	next:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/Iterator.next:()Ljava/lang/Object;
+Asciz	scala/runtime/BoxesRunTime;
+class	scala/runtime/BoxesRunTime
+Asciz	unboxToInt;
+NameAndType	unboxToInt:(Ljava/lang/Object;)I
+Method	scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 Asciz	j;
 NameAndType	next:()I
 Method	scala/collection/Iterator$$anon$9.next:()I
+Asciz	boxToInteger;
+Asciz	(I)Ljava/lang/Integer;;
+NameAndType	boxToInteger:(I)Ljava/lang/Integer;
+Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 Asciz	<init>;
 Asciz	(IILscala/Function1;)V;
 Asciz	java/lang/Object;
@@ -1665,7 +1665,7 @@ l4	ireturn
 public int next();
   Signature: ()I
   Code:
-   Stack=3, Locals=3, Args_size=1
+   Stack=3, Locals=2, Args_size=1
 	aload_0
 	invokevirtual	Method hasNext:()Z
 	ifeq	l1 // getstatic
@@ -1677,11 +1677,7 @@ public int next();
 	getfield	Field step$1:Lscala/Function1;
 	aload_0
 	invokespecial	Method i:()I
-	istore_2
-	iload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
+	invokeinterface	InterfaceMethod scala/Function1.apply$mcII$sp:(I)I
 	invokespecial	Method i_$eq:(I)V
 	iload_1
 	goto	l2 // ireturn
@@ -1691,12 +1687,12 @@ l1	getstatic	Field scala/collection/Iterator$.MODULE$:Lscala/collection/Iterator
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 l2	ireturn
   Labels:
-   	l1 = 41 // getstatic
-   	l2 = 55 // ireturn
+   	l1 = 33 // getstatic
+   	l2 = 47 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      56      0    this       Lscala/collection/Iterator$$anon$9;
-   12      26      1    j       I
+   0      48      0    this       Lscala/collection/Iterator$$anon$9;
+   12      18      1    j       I
 
 
 public java.lang.Object next();
@@ -1730,9 +1726,7 @@ public scala.collection.Iterator$$anon$9(int, int, scala.Function1);
 	aload_0
 	aload_3
 	iload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
+	invokeinterface	InterfaceMethod scala/Function1.apply$mcII$sp:(I)I
 	iload_1
 	if_icmple	l1 // iconst_0
 	iconst_1
@@ -1742,9 +1736,7 @@ l2	putfield	Field up:Z
 	aload_0
 	aload_3
 	iload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
+	invokeinterface	InterfaceMethod scala/Function1.apply$mcII$sp:(I)I
 	iload_1
 	if_icmpge	l3 // iconst_0
 	iconst_1
@@ -1756,10 +1748,10 @@ l4	putfield	Field down:Z
 	putfield	Field i:I
 	return
   Labels:
-   	l1 = 44 // iconst_0
-   	l2 = 45 // putfield
-   	l3 = 70 // iconst_0
-   	l4 = 71 // putfield
+   	l1 = 38 // iconst_0
+   	l2 = 39 // putfield
+   	l3 = 58 // iconst_0
+   	l4 = 59 // putfield
 
 }
 

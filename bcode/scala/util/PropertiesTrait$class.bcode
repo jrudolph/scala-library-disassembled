@@ -65,10 +65,9 @@ Asciz	Ljava/io/InputStream;;
 Asciz	LocalVariableTable;
 Asciz	scala/Function0;
 class	scala/Function0
-Asciz	apply;
-Asciz	()Ljava/lang/Object;;
-NameAndType	apply:()Ljava/lang/Object;
-InterfaceMethod	scala/Function0.apply:()Ljava/lang/Object;
+Asciz	apply$mcV$sp;
+NameAndType	apply$mcV$sp:()V
+InterfaceMethod	scala/Function0.apply$mcV$sp:()V
 Asciz	java/io/IOException;
 class	java/io/IOException
 Asciz	action;
@@ -116,6 +115,7 @@ Asciz	MODULE$;
 Asciz	Lscala/Option$;;
 NameAndType	MODULE$:Lscala/Option$;
 Field	scala/Option$.MODULE$:Lscala/Option$;
+Asciz	apply;
 Asciz	(Ljava/lang/Object;)Lscala/Option;;
 NameAndType	apply:(Ljava/lang/Object;)Lscala/Option;
 Method	scala/Option$.apply:(Ljava/lang/Object;)Lscala/Option;
@@ -158,6 +158,7 @@ Method	scala/Option.getOrElse:(Lscala/Function0;)Ljava/lang/Object;
 Asciz	java/lang/String;
 class	java/lang/String
 Asciz	alt$1;
+Asciz	envOrNone;
 Asciz	scalaPropOrElse;
 Asciz	()Ljava/util/Properties;;
 NameAndType	scalaProps:()Ljava/util/Properties;
@@ -428,16 +429,13 @@ private static void quietlyDispose(scala.util.PropertiesTrait, scala.Function0, 
   Code:
    Stack=1, Locals=4, Args_size=3
 	aload_1
-	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
-	pop
+	invokeinterface	InterfaceMethod scala/Function0.apply$mcV$sp:()V
 	aload_2
-	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
-	pop
+	invokeinterface	InterfaceMethod scala/Function0.apply$mcV$sp:()V
 	goto	l1 // return
 	astore_3
 	aload_2
-	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
-	pop
+	invokeinterface	InterfaceMethod scala/Function0.apply$mcV$sp:()V
 	goto	l2 // aload_3
 	pop
 l2	aload_3
@@ -445,20 +443,20 @@ l2	aload_3
 	pop
 l1	return
   Labels:
-   	l2 = 29 // aload_3
-   	l1 = 32 // return
+   	l2 = 26 // aload_3
+   	l1 = 29 // return
   Exception table:
    from   to  target type
-     7    17    31   Class java/io/IOException
+     6    15    28   Class java/io/IOException
 
-    18    28    28   Class java/io/IOException
+    16    25    25   Class java/io/IOException
 
-     0     7    17   any
+     0     6    15   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      33      0    $this       Lscala/util/PropertiesTrait;
-   0      33      1    action       Lscala/Function0;
-   0      33      2    disposal       Lscala/Function0;
+   0      30      0    $this       Lscala/util/PropertiesTrait;
+   0      30      1    action       Lscala/Function0;
+   0      30      2    disposal       Lscala/Function0;
 
 
 public static boolean propIsSet(scala.util.PropertiesTrait, java.lang.String);
@@ -650,6 +648,22 @@ public static java.lang.String envOrElse(scala.util.PropertiesTrait, java.lang.S
    0      26      0    $this       Lscala/util/PropertiesTrait;
    0      26      1    name       Ljava/lang/String;
    0      26      2    alt$1       Ljava/lang/String;
+
+
+public static scala.Option envOrNone(scala.util.PropertiesTrait, java.lang.String);
+  Signature: (Lscala/util/PropertiesTrait;Ljava/lang/String;)Lscala/Option;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	getstatic	Field scala/Option$.MODULE$:Lscala/Option$;
+	aload_1
+	invokestatic	Method java/lang/System.getenv:(Ljava/lang/String;)Ljava/lang/String;
+	invokevirtual	Method scala/Option$.apply:(Ljava/lang/Object;)Lscala/Option;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      11      0    $this       Lscala/util/PropertiesTrait;
+   0      11      1    name       Ljava/lang/String;
 
 
 public static java.lang.String scalaPropOrElse(scala.util.PropertiesTrait, java.lang.String, java.lang.String);

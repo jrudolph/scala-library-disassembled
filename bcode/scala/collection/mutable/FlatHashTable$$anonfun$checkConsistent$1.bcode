@@ -6,7 +6,7 @@ public final class scala.collection.mutable.FlatHashTable$$anonfun$checkConsiste
   InnerClass: 
    public ofRef=class scala/collection/mutable/ArrayOps$ofRef of class scala/collection/mutable/ArrayOps
    public final $anonfun$checkConsistent$1=class scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1 of class scala/collection/mutable/FlatHashTable
-   public final $anonfun$apply$1=class scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1$$anonfun$apply$1 of class scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1
+   public final $anonfun$apply$mcVI$sp$1=class scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1$$anonfun$apply$mcVI$sp$1 of class scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1
   minor version: 0
   major version: 49
   Constant pool:
@@ -75,11 +75,13 @@ NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
 Asciz	this;
 Asciz	Lscala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1;;
-Asciz	i$1;
+Asciz	i;
 Asciz	I;
 Asciz	assertion0;
 Asciz	Z;
 Asciz	LocalVariableTable;
+Asciz	apply$mcVI$sp;
+Asciz	v1$1;
 Asciz	scala$collection$mutable$FlatHashTable$$anonfun$$$outer;
 Asciz	()Lscala/collection/mutable/FlatHashTable;;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
@@ -114,9 +116,9 @@ Asciz	scala/collection/mutable/ArrayOps;
 class	scala/collection/mutable/ArrayOps
 Asciz	ofRef;
 Asciz	$anonfun$checkConsistent$1;
-Asciz	scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1$$anonfun$apply$1;
-class	scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1$$anonfun$apply$1
-Asciz	$anonfun$apply$1;
+Asciz	scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1$$anonfun$apply$mcVI$sp$1;
+class	scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1$$anonfun$apply$mcVI$sp$1
+Asciz	$anonfun$apply$mcVI$sp$1;
 Asciz	java/io/Serializable;
 class	java/io/Serializable
 
@@ -207,7 +209,83 @@ l2	new	class java/lang/AssertionError
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      142      0    this       Lscala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1;
-   0      142      1    i$1       I
+   0      142      1    i       I
+   43      0      2    assertion0       Z
+   44      98      2    assertion0       Z
+
+
+public void apply$mcVI$sp(int);
+  Signature: (I)V
+  Code:
+   Stack=7, Locals=6, Args_size=2
+	aload_0
+	getfield	Field $outer:Lscala/collection/mutable/FlatHashTable;
+	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
+	iload_1
+	aaload
+	ifnull	l1 // return
+	aload_0
+	getfield	Field $outer:Lscala/collection/mutable/FlatHashTable;
+	aload_0
+	getfield	Field $outer:Lscala/collection/mutable/FlatHashTable;
+	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
+	iload_1
+	aaload
+	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.containsEntry:(Ljava/lang/Object;)Z
+	ifne	l1 // return
+	iconst_0
+	istore_2
+	iload_2
+	ifeq	l2 // new
+l1	return
+l2	new	class java/lang/AssertionError
+	dup
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	ldc	String assertion failed: 
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	iload_1
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(I)Lscala/collection/mutable/StringBuilder;
+	ldc	String  
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	aload_0
+	astore_3
+	aload_3
+	getfield	Field $outer:Lscala/collection/mutable/FlatHashTable;
+	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
+	iload_1
+	aaload
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	ldc	String  
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	aload_0
+	astore	4
+	aload	4
+	getfield	Field $outer:Lscala/collection/mutable/FlatHashTable;
+	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
+	astore	5
+	new	class scala/collection/mutable/ArrayOps$ofRef
+	dup
+	aload	5
+	invokespecial	Method scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.mkString:()Ljava/lang/String;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokespecial	Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
+	athrow
+  Labels:
+   	l1 = 43 // return
+   	l2 = 44 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      142      0    this       Lscala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1;
+   0      142      1    v1$1       I
    43      0      2    assertion0       Z
    44      98      2    assertion0       Z
 
@@ -262,7 +340,7 @@ l1	aload_0
    0      22      1    $outer       Lscala/collection/mutable/FlatHashTable;
 
   Signature: length = 0x2
-   00 61 
+   00 63 
 
 }
 

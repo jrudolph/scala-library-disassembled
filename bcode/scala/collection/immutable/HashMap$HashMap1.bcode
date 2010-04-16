@@ -4,7 +4,7 @@ public class scala.collection.immutable.HashMap$HashMap1 extends scala.collectio
   Scala: length = 0x
    
   Signature: length = 0x2
-   00 FFFFFFCD 
+   00 FFFFFFB0 
   InnerClass: 
    public HashMap1=class scala/collection/immutable/HashMap$HashMap1 of class scala/collection/immutable/HashMap
    public HashTrieMap=class scala/collection/immutable/HashMap$HashTrieMap of class scala/collection/immutable/HashMap
@@ -130,11 +130,8 @@ Method	scala/collection/immutable/ListMap.updated:(Ljava/lang/Object;Ljava/lang/
 Asciz	(ILscala/collection/immutable/ListMap;)V;
 NameAndType	"<init>":(ILscala/collection/immutable/ListMap;)V
 Method	scala/collection/immutable/HashMap$HashMapCollision1."<init>":(ILscala/collection/immutable/ListMap;)V
-int	31;
 Asciz	m;
 Asciz	Lscala/collection/immutable/HashMap$HashTrieMap;;
-Asciz	elems;
-Asciz	[Lscala/collection/immutable/HashMap;;
 Asciz	<B1:Ljava/lang/Object;>(TA;IITB1;Lscala/Tuple2<TA;TB1;>;)Lscala/collection/immutable/HashMap<TA;TB1;>;;
 Asciz	removed0;
 Asciz	(Ljava/lang/Object;II)Lscala/collection/immutable/HashMap;;
@@ -187,32 +184,6 @@ NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Method	scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 NameAndType	kv_$eq:(Lscala/Tuple2;)V
 Method	scala/collection/immutable/HashMap$HashMap1.kv_$eq:(Lscala/Tuple2;)V
-Asciz	writeObject;
-Asciz	(Ljava/io/ObjectOutputStream;)V;
-Asciz	java/io/ObjectOutputStream;
-class	java/io/ObjectOutputStream
-NameAndType	writeObject:(Ljava/lang/Object;)V
-Method	java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
-Asciz	out;
-Asciz	Ljava/io/ObjectOutputStream;;
-Asciz	readObject;
-Asciz	(Ljava/io/ObjectInputStream;)V;
-Asciz	java/io/ObjectInputStream;
-class	java/io/ObjectInputStream
-NameAndType	readObject:()Ljava/lang/Object;
-Method	java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
-NameAndType	key_$eq:(Ljava/lang/Object;)V
-Method	scala/collection/immutable/HashMap$HashMap1.key_$eq:(Ljava/lang/Object;)V
-NameAndType	value_$eq:(Ljava/lang/Object;)V
-Method	scala/collection/immutable/HashMap$HashMap1.value_$eq:(Ljava/lang/Object;)V
-Asciz	computeHash;
-Asciz	(Ljava/lang/Object;)I;
-NameAndType	computeHash:(Ljava/lang/Object;)I
-Method	scala/collection/immutable/HashMap$HashMap1.computeHash:(Ljava/lang/Object;)I
-NameAndType	hash_$eq:(I)V
-Method	scala/collection/immutable/HashMap$HashMap1.hash_$eq:(I)V
-Asciz	in;
-Asciz	Ljava/io/ObjectInputStream;;
 Method	scala/collection/immutable/HashMap."<init>":()V
 Asciz	(TA;ITB;Lscala/Tuple2<TA;TB;>;)V;
 Asciz	Scala;
@@ -409,7 +380,7 @@ l7	areturn
 public scala.collection.immutable.HashMap updated0(java.lang.Object, int, int, java.lang.Object, scala.Tuple2);
   Signature: (Ljava/lang/Object;IILjava/lang/Object;Lscala/Tuple2;)Lscala/collection/immutable/HashMap;
   Code:
-   Stack=8, Locals=9, Args_size=6
+   Stack=6, Locals=8, Args_size=6
 	iload_2
 	aload_0
 	invokevirtual	Method hash:()I
@@ -457,7 +428,7 @@ l3	ifeq	l1 // iload_2
 l1	iload_2
 	aload_0
 	invokevirtual	Method hash:()I
-	if_icmpeq	l8 // iload_3
+	if_icmpeq	l8 // new
 	new	class scala/collection/immutable/HashMap$HashTrieMap
 	dup
 	iconst_0
@@ -484,44 +455,7 @@ l1	iload_2
 	aload	5
 	invokevirtual	Method scala/collection/immutable/HashMap.updated0:(Ljava/lang/Object;IILjava/lang/Object;Lscala/Tuple2;)Lscala/collection/immutable/HashMap;
 	goto	l7 // areturn
-l8	iload_3
-	iconst_0
-	if_icmpne	l9 // new
-	iconst_1
-	anewarray	class scala/collection/immutable/HashMap
-	astore	8
-	aload	8
-	iconst_0
-	new	class scala/collection/immutable/HashMap$HashMapCollision1
-	dup
-	iload_2
-	new	class scala/collection/immutable/ListMap
-	dup
-	invokespecial	Method scala/collection/immutable/ListMap."<init>":()V
-	aload_0
-	invokespecial	Method key:()Ljava/lang/Object;
-	aload_0
-	invokespecial	Method value:()Ljava/lang/Object;
-	invokevirtual	Method scala/collection/immutable/ListMap.updated:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/ListMap;
-	aload_1
-	aload	4
-	invokevirtual	Method scala/collection/immutable/ListMap.updated:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/ListMap;
-	invokespecial	Method scala/collection/immutable/HashMap$HashMapCollision1."<init>":(ILscala/collection/immutable/ListMap;)V
-	aastore
-	new	class scala/collection/immutable/HashMap$HashTrieMap
-	dup
-	iconst_1
-	iload_2
-	iload_3
-	iushr
-	ldc	int 31
-	iand
-	ishl
-	aload	8
-	iconst_2
-	invokespecial	Method scala/collection/immutable/HashMap$HashTrieMap."<init>":(I[Lscala/collection/immutable/HashMap;I)V
-	goto	l7 // areturn
-l9	new	class scala/collection/immutable/HashMap$HashMapCollision1
+l8	new	class scala/collection/immutable/HashMap$HashMapCollision1
 	dup
 	iload_2
 	new	class scala/collection/immutable/ListMap
@@ -544,23 +478,21 @@ l7	areturn
    	l6 = 70 // aload_1
    	l3 = 76 // ifeq
    	l1 = 95 // iload_2
-   	l8 = 153 // iload_3
-   	l9 = 221 // new
-   	l7 = 253 // areturn
+   	l8 = 153 // new
+   	l7 = 185 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      254      0    this       Lscala/collection/immutable/HashMap$HashMap1;
-   0      254      1    key       Ljava/lang/Object;
-   0      254      2    hash       I
-   0      254      3    level       I
-   0      254      4    value       Ljava/lang/Object;
-   0      254      5    kv       Lscala/Tuple2;
+   0      186      0    this       Lscala/collection/immutable/HashMap$HashMap1;
+   0      186      1    key       Ljava/lang/Object;
+   0      186      2    hash       I
+   0      186      3    level       I
+   0      186      4    value       Ljava/lang/Object;
+   0      186      5    kv       Lscala/Tuple2;
    20      59      6    y0       Ljava/lang/Object;
    118      32      7    m       Lscala/collection/immutable/HashMap$HashTrieMap;
-   164      54      8    elems       [Lscala/collection/immutable/HashMap;
 
   Signature: length = 0x2
-   00 7C 
+   00 79 
 
 public scala.collection.immutable.HashMap removed0(java.lang.Object, int, int);
   Signature: (Ljava/lang/Object;II)Lscala/collection/immutable/HashMap;
@@ -623,7 +555,7 @@ l7	areturn
    20      59      4    y0       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 FFFFFF84 
+   00 FFFFFF81 
 
 public scala.collection.Iterator iterator();
   Signature: ()Lscala/collection/Iterator;
@@ -644,7 +576,7 @@ public scala.collection.Iterator iterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFA0 
+   00 FFFFFF9D 
 
 public void foreach(scala.Function1);
   Signature: (Lscala/Function1;)V
@@ -663,7 +595,7 @@ public void foreach(scala.Function1);
    0      12      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFFAA 
+   00 FFFFFFA7 
 
 public scala.Tuple2 ensurePair();
   Signature: ()Lscala/Tuple2;
@@ -692,52 +624,6 @@ l2	areturn
    	l2 = 37 // areturn
   Signature: length = 0x2
    00 26 
-
-private void writeObject(java.io.ObjectOutputStream);
-  Signature: (Ljava/io/ObjectOutputStream;)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_1
-	aload_0
-	invokespecial	Method key:()Ljava/lang/Object;
-	invokevirtual	Method java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
-	aload_1
-	aload_0
-	invokespecial	Method value:()Ljava/lang/Object;
-	invokevirtual	Method java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      17      0    this       Lscala/collection/immutable/HashMap$HashMap1;
-   0      17      1    out       Ljava/io/ObjectOutputStream;
-
-
-private void readObject(java.io.ObjectInputStream);
-  Signature: (Ljava/io/ObjectInputStream;)V
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	invokevirtual	Method java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
-	invokespecial	Method key_$eq:(Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokevirtual	Method java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
-	invokespecial	Method value_$eq:(Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokespecial	Method key:()Ljava/lang/Object;
-	invokevirtual	Method computeHash:(Ljava/lang/Object;)I
-	invokevirtual	Method hash_$eq:(I)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      29      0    this       Lscala/collection/immutable/HashMap$HashMap1;
-   0      29      1    in       Ljava/io/ObjectInputStream;
-
 
 public scala.collection.immutable.HashMap$HashMap1(java.lang.Object, int, java.lang.Object, scala.Tuple2);
   Signature: (Ljava/lang/Object;ILjava/lang/Object;Lscala/Tuple2;)V
@@ -768,7 +654,7 @@ public scala.collection.immutable.HashMap$HashMap1(java.lang.Object, int, java.l
    0      26      4    kv       Lscala/Tuple2;
 
   Signature: length = 0x2
-   00 FFFFFFCB 
+   00 FFFFFFAE 
 
 }
 

@@ -4,12 +4,11 @@ public class scala.collection.immutable.HashMap$HashTrieMap extends scala.collec
   Scala: length = 0x
    
   Signature: length = 0x2
-   00 FFFFFFAD 
+   00 FFFFFF87 
   InnerClass: 
    public HashMap1=class scala/collection/immutable/HashMap$HashMap1 of class scala/collection/immutable/HashMap
    public HashTrieMap=class scala/collection/immutable/HashMap$HashTrieMap of class scala/collection/immutable/HashMap
    public final $anon$1=class scala/collection/immutable/HashMap$HashTrieMap$$anon$1 of class scala/collection/immutable/HashMap$HashTrieMap
-   public final $anonfun$writeObject$1=class scala/collection/immutable/HashMap$HashTrieMap$$anonfun$writeObject$1 of class scala/collection/immutable/HashMap$HashTrieMap
   minor version: 0
   major version: 49
   Constant pool:
@@ -113,6 +112,12 @@ Asciz	removed0;
 Asciz	(Ljava/lang/Object;II)Lscala/collection/immutable/HashMap;;
 NameAndType	removed0:(Ljava/lang/Object;II)Lscala/collection/immutable/HashMap;
 Method	scala/collection/immutable/HashMap.removed0:(Ljava/lang/Object;II)Lscala/collection/immutable/HashMap;
+Asciz	scala/collection/MapLike;
+class	scala/collection/MapLike
+Asciz	isEmpty;
+Asciz	()Z;
+NameAndType	isEmpty:()Z
+InterfaceMethod	scala/collection/MapLike.isEmpty:()Z
 Asciz	scala/collection/immutable/HashMap$EmptyHashMap$;
 class	scala/collection/immutable/HashMap$EmptyHashMap$
 Asciz	Lscala/collection/immutable/HashMap$EmptyHashMap$;;
@@ -135,50 +140,6 @@ Asciz	f;
 Asciz	Lscala/Function1;;
 Asciz	i;
 Asciz	<U:Ljava/lang/Object;>(Lscala/Function1<Lscala/Tuple2<TA;TB;>;TU;>;)V;
-Asciz	writeObject;
-Asciz	(Ljava/io/ObjectOutputStream;)V;
-Asciz	java/io/ObjectOutputStream;
-class	java/io/ObjectOutputStream
-Asciz	writeInt;
-NameAndType	writeInt:(I)V
-Method	java/io/ObjectOutputStream.writeInt:(I)V
-Asciz	scala/collection/immutable/HashMap$HashTrieMap$$anonfun$writeObject$1;
-class	scala/collection/immutable/HashMap$HashTrieMap$$anonfun$writeObject$1
-Asciz	(Lscala/collection/immutable/HashMap$HashTrieMap;Ljava/io/ObjectOutputStream;)V;
-NameAndType	"<init>":(Lscala/collection/immutable/HashMap$HashTrieMap;Ljava/io/ObjectOutputStream;)V
-Method	scala/collection/immutable/HashMap$HashTrieMap$$anonfun$writeObject$1."<init>":(Lscala/collection/immutable/HashMap$HashTrieMap;Ljava/io/ObjectOutputStream;)V
-Method	scala/collection/immutable/HashMap$HashTrieMap.foreach:(Lscala/Function1;)V
-Asciz	out$1;
-Asciz	Ljava/io/ObjectOutputStream;;
-Asciz	readObject;
-Asciz	(Ljava/io/ObjectInputStream;)V;
-Asciz	java/io/ObjectInputStream;
-class	java/io/ObjectInputStream
-Asciz	readInt;
-NameAndType	readInt:()I
-Method	java/io/ObjectInputStream.readInt:()I
-Asciz	scala/Tuple2;
-class	scala/Tuple2
-Asciz	()Ljava/lang/Object;;
-NameAndType	readObject:()Ljava/lang/Object;
-Method	java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
-NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-Method	scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-Asciz	$plus;
-Asciz	(Lscala/Tuple2;)Lscala/collection/immutable/HashMap;;
-NameAndType	$plus:(Lscala/Tuple2;)Lscala/collection/immutable/HashMap;
-Method	scala/collection/immutable/HashMap.$plus:(Lscala/Tuple2;)Lscala/collection/immutable/HashMap;
-NameAndType	bitmap_$eq:(I)V
-Method	scala/collection/immutable/HashMap$HashTrieMap.bitmap_$eq:(I)V
-NameAndType	scala$collection$immutable$HashMap$HashTrieMap$$elems_$eq:([Lscala/collection/immutable/HashMap;)V
-Method	scala/collection/immutable/HashMap$HashTrieMap.scala$collection$immutable$HashMap$HashTrieMap$$elems_$eq:([Lscala/collection/immutable/HashMap;)V
-NameAndType	size0_$eq:(I)V
-Method	scala/collection/immutable/HashMap$HashTrieMap.size0_$eq:(I)V
-Asciz	in;
-Asciz	Ljava/io/ObjectInputStream;;
-Asciz	m;
-Asciz	tm;
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	scala/collection/immutable/HashMap."<init>":()V
@@ -190,7 +151,6 @@ Asciz	InnerClasses;
 Asciz	HashMap1;
 Asciz	HashTrieMap;
 Asciz	$anon$1;
-Asciz	$anonfun$writeObject$1;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -502,116 +462,163 @@ l2	areturn
 public scala.collection.immutable.HashMap removed0(java.lang.Object, int, int);
   Signature: (Ljava/lang/Object;II)Lscala/collection/immutable/HashMap;
   Code:
-   Stack=7, Locals=11, Args_size=4
+   Stack=7, Locals=14, Args_size=4
 	iload_2
 	iload_3
 	iushr
 	ldc	int 31
 	iand
-	istore	5
-	iconst_1
-	iload	5
-	ishl
 	istore	4
+	iconst_1
+	iload	4
+	ishl
+	istore	5
 	aload_0
 	invokespecial	Method bitmap:()I
-	iload	4
+	iload	5
 	iconst_1
 	isub
 	iand
 	invokestatic	Method java/lang/Integer.bitCount:(I)I
-	istore	6
+	istore	9
 	aload_0
 	invokespecial	Method bitmap:()I
 	iload	5
-	iushr
-	iconst_1
 	iand
-	iconst_1
-	if_icmpne	l1 // aload_0
-	aload_0
-	getfield	Field scala$collection$immutable$HashMap$HashTrieMap$$elems:[Lscala/collection/immutable/HashMap;
-	arraylength
-	anewarray	class scala/collection/immutable/HashMap
-	astore	8
-	getstatic	Field scala/Array$.MODULE$:Lscala/Array$;
-	aload_0
-	getfield	Field scala$collection$immutable$HashMap$HashTrieMap$$elems:[Lscala/collection/immutable/HashMap;
 	iconst_0
-	aload	8
-	iconst_0
+	if_icmpeq	l1 // aload_0
 	aload_0
 	getfield	Field scala$collection$immutable$HashMap$HashTrieMap$$elems:[Lscala/collection/immutable/HashMap;
-	arraylength
-	invokevirtual	Method scala/Array$.copy:(Ljava/lang/Object;ILjava/lang/Object;II)V
-	aload_0
-	invokevirtual	Method scala$collection$immutable$HashMap$HashTrieMap$$elems:()[Lscala/collection/immutable/HashMap;
-	iload	6
+	iload	9
 	aaload
-	astore	10
-	aload	10
+	astore	11
+	aload	11
 	aload_1
 	iload_2
 	iload_3
 	iconst_5
 	iadd
 	invokevirtual	Method scala/collection/immutable/HashMap.removed0:(Ljava/lang/Object;II)Lscala/collection/immutable/HashMap;
-	astore	9
-	aload	8
+	astore	10
+	aload	10
+	invokeinterface	InterfaceMethod scala/collection/MapLike.isEmpty:()Z
+	ifeq	l2 // aload_0
+	aload_0
+	invokespecial	Method bitmap:()I
+	iload	5
+	ixor
+	istore	6
 	iload	6
-	aload	9
+	iconst_0
+	if_icmpeq	l3 // getstatic
+	aload_0
+	getfield	Field scala$collection$immutable$HashMap$HashTrieMap$$elems:[Lscala/collection/immutable/HashMap;
+	arraylength
+	iconst_1
+	isub
+	anewarray	class scala/collection/immutable/HashMap
+	astore	7
+	getstatic	Field scala/Array$.MODULE$:Lscala/Array$;
+	aload_0
+	getfield	Field scala$collection$immutable$HashMap$HashTrieMap$$elems:[Lscala/collection/immutable/HashMap;
+	iconst_0
+	aload	7
+	iconst_0
+	iload	9
+	invokevirtual	Method scala/Array$.copy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+	getstatic	Field scala/Array$.MODULE$:Lscala/Array$;
+	aload_0
+	invokevirtual	Method scala$collection$immutable$HashMap$HashTrieMap$$elems:()[Lscala/collection/immutable/HashMap;
+	iload	9
+	iconst_1
+	iadd
+	aload	7
+	iload	9
+	aload_0
+	invokevirtual	Method scala$collection$immutable$HashMap$HashTrieMap$$elems:()[Lscala/collection/immutable/HashMap;
+	arraylength
+	iload	9
+	isub
+	iconst_1
+	isub
+	invokevirtual	Method scala/Array$.copy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+	aload_0
+	invokevirtual	Method size:()I
+	aload	11
+	invokevirtual	Method scala/collection/immutable/HashMap.size:()I
+	isub
+	istore	8
+	new	class scala/collection/immutable/HashMap$HashTrieMap
+	dup
+	iload	6
+	aload	7
+	iload	8
+	invokespecial	Method "<init>":(I[Lscala/collection/immutable/HashMap;I)V
+	goto	l4 // areturn
+l3	getstatic	Field scala/collection/immutable/HashMap$EmptyHashMap$.MODULE$:Lscala/collection/immutable/HashMap$EmptyHashMap$;
+	goto	l4 // areturn
+l2	aload_0
+	invokevirtual	Method scala$collection$immutable$HashMap$HashTrieMap$$elems:()[Lscala/collection/immutable/HashMap;
+	arraylength
+	anewarray	class scala/collection/immutable/HashMap
+	astore	12
+	getstatic	Field scala/Array$.MODULE$:Lscala/Array$;
+	aload_0
+	invokevirtual	Method scala$collection$immutable$HashMap$HashTrieMap$$elems:()[Lscala/collection/immutable/HashMap;
+	iconst_0
+	aload	12
+	iconst_0
+	aload_0
+	invokevirtual	Method scala$collection$immutable$HashMap$HashTrieMap$$elems:()[Lscala/collection/immutable/HashMap;
+	arraylength
+	invokevirtual	Method scala/Array$.copy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+	aload	12
+	iload	9
+	aload	10
 	aastore
 	aload_0
 	invokevirtual	Method size:()I
-	aload	9
-	invokevirtual	Method scala/collection/immutable/HashMap.size:()I
 	aload	10
+	invokevirtual	Method scala/collection/immutable/HashMap.size:()I
+	aload	11
 	invokevirtual	Method scala/collection/immutable/HashMap.size:()I
 	isub
 	iadd
-	istore	7
-	iload	7
-	iconst_0
-	if_icmple	l2 // getstatic
+	istore	13
 	new	class scala/collection/immutable/HashMap$HashTrieMap
 	dup
 	aload_0
 	invokespecial	Method bitmap:()I
-	aload	8
-	aload_0
-	invokevirtual	Method size:()I
-	aload	9
-	invokevirtual	Method scala/collection/immutable/HashMap.size:()I
-	aload	10
-	invokevirtual	Method scala/collection/immutable/HashMap.size:()I
-	isub
-	iadd
+	aload	12
+	iload	13
 	invokespecial	Method "<init>":(I[Lscala/collection/immutable/HashMap;I)V
-	goto	l3 // areturn
-l2	getstatic	Field scala/collection/immutable/HashMap$EmptyHashMap$.MODULE$:Lscala/collection/immutable/HashMap$EmptyHashMap$;
-	goto	l3 // areturn
+	goto	l4 // areturn
 l1	aload_0
-l3	areturn
+l4	areturn
   Labels:
-   	l2 = 154 // getstatic
-   	l1 = 160 // aload_0
-   	l3 = 161 // areturn
+   	l3 = 169 // getstatic
+   	l2 = 175 // aload_0
+   	l1 = 247 // aload_0
+   	l4 = 248 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      162      0    this       Lscala/collection/immutable/HashMap$HashTrieMap;
-   0      162      1    key       Ljava/lang/Object;
-   0      162      2    hash       I
-   0      162      3    level       I
-   14      148      4    mask       I
-   8      154      5    index       I
-   28      134      6    offset       I
-   116      44      7    sizeNew       I
-   51      109      8    elemsNew       [Lscala/collection/immutable/HashMap;
-   91      69      9    subNew       Lscala/collection/immutable/HashMap;
-   79      81      10    sub       Lscala/collection/immutable/HashMap;
+   0      249      0    this       Lscala/collection/immutable/HashMap$HashTrieMap;
+   0      249      1    key       Ljava/lang/Object;
+   0      249      2    hash       I
+   0      249      3    level       I
+   8      241      4    index       I
+   14      235      5    mask       I
+   79      96      6    bitmapNew       I
+   97      69      7    elemsNew       [Lscala/collection/immutable/HashMap;
+   153      13      8    sizeNew       I
+   28      221      9    offset       I
+   60      187      10    subNew       Lscala/collection/immutable/HashMap;
+   48      199      11    sub       Lscala/collection/immutable/HashMap;
+   185      59      12    elemsNew       [Lscala/collection/immutable/HashMap;
+   229      15      13    sizeNew       I
 
   Signature: length = 0x2
-   00 6B 
+   00 71 
 
 public scala.collection.Iterator iterator();
   Signature: ()Lscala/collection/Iterator;
@@ -657,88 +664,7 @@ l1	return
    2      27      2    i       I
 
   Signature: length = 0x2
-   00 7A 
-
-private void writeObject(java.io.ObjectOutputStream);
-  Signature: (Ljava/io/ObjectOutputStream;)V
-  Code:
-   Stack=5, Locals=2, Args_size=2
-	aload_1
-	aload_0
-	invokevirtual	Method size:()I
-	invokevirtual	Method java/io/ObjectOutputStream.writeInt:(I)V
-	aload_0
-	new	class scala/collection/immutable/HashMap$HashTrieMap$$anonfun$writeObject$1
-	dup
-	aload_0
-	aload_1
-	invokespecial	Method scala/collection/immutable/HashMap$HashTrieMap$$anonfun$writeObject$1."<init>":(Lscala/collection/immutable/HashMap$HashTrieMap;Ljava/io/ObjectOutputStream;)V
-	invokevirtual	Method foreach:(Lscala/Function1;)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      22      0    this       Lscala/collection/immutable/HashMap$HashTrieMap;
-   0      22      1    out$1       Ljava/io/ObjectOutputStream;
-
-
-private void readObject(java.io.ObjectInputStream);
-  Signature: (Ljava/io/ObjectInputStream;)V
-  Code:
-   Stack=5, Locals=6, Args_size=2
-	aload_1
-	invokevirtual	Method java/io/ObjectInputStream.readInt:()I
-	istore_2
-	iconst_0
-	istore_3
-	getstatic	Field scala/collection/immutable/HashMap$EmptyHashMap$.MODULE$:Lscala/collection/immutable/HashMap$EmptyHashMap$;
-	astore	4
-l2	iload_3
-	iload_2
-	if_icmpge	l1 // aload
-	aload	4
-	new	class scala/Tuple2
-	dup
-	aload_1
-	invokevirtual	Method java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
-	aload_1
-	invokevirtual	Method java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
-	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-	invokevirtual	Method scala/collection/immutable/HashMap.$plus:(Lscala/Tuple2;)Lscala/collection/immutable/HashMap;
-	astore	4
-	iload_3
-	iconst_1
-	iadd
-	istore_3
-	goto	l2 // iload_3
-l1	aload	4
-	checkcast	class scala/collection/immutable/HashMap$HashTrieMap
-	astore	5
-	aload_0
-	aload	5
-	invokespecial	Method bitmap:()I
-	invokespecial	Method bitmap_$eq:(I)V
-	aload_0
-	aload	5
-	getfield	Field scala$collection$immutable$HashMap$HashTrieMap$$elems:[Lscala/collection/immutable/HashMap;
-	invokespecial	Method scala$collection$immutable$HashMap$HashTrieMap$$elems_$eq:([Lscala/collection/immutable/HashMap;)V
-	aload_0
-	aload	5
-	invokespecial	Method size0:()I
-	invokespecial	Method size0_$eq:(I)V
-	return
-  Labels:
-   	l2 = 12 // iload_3
-   	l1 = 46 // aload
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      81      0    this       Lscala/collection/immutable/HashMap$HashTrieMap;
-   0      81      1    in       Ljava/io/ObjectInputStream;
-   5      75      2    size       I
-   7      73      3    index       I
-   12      68      4    m       Lscala/collection/immutable/HashMap;
-   53      27      5    tm       Lscala/collection/immutable/HashMap$HashTrieMap;
-
+   00 FFFFFF80 
 
 public scala.collection.immutable.HashMap$HashTrieMap(int, scala.collection.immutable.HashMap[], int);
   Signature: (I[Lscala/collection/immutable/HashMap;I)V
@@ -765,7 +691,7 @@ public scala.collection.immutable.HashMap$HashTrieMap(int, scala.collection.immu
    0      20      3    size0       I
 
   Signature: length = 0x2
-   00 FFFFFFAB 
+   00 FFFFFF85 
 
 }
 

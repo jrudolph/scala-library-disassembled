@@ -4,7 +4,7 @@ public class scala.actors.scheduler.ForkJoinScheduler extends java.lang.Object i
   ScalaSig: length = 0x3
    05 00 00 
   RuntimeVisibleAnnotations: length = 0xB
-   00 01 01 FFFFFF92 00 01 01 FFFFFF93 73 01 FFFFFF94 
+   00 01 01 FFFFFF9D 00 01 01 FFFFFF9E 73 01 FFFFFF9F 
   InnerClass: 
    public final $anon$2=class scala/actors/scheduler/ForkJoinScheduler$$anon$2 of class scala/actors/scheduler/ForkJoinScheduler
    public final $anon$1=class scala/actors/scheduler/ForkJoinScheduler$$anon$1 of class scala/actors/scheduler/ForkJoinScheduler
@@ -29,10 +29,13 @@ Asciz	Ljava/util/Collection;;
 Asciz	Ljava/util/Collection<Lscala/concurrent/forkjoin/ForkJoinTask<*>;>;;
 Asciz	Signature;
 Asciz	CHECK_FREQ;
+Asciz	random;
+Asciz	Ljava/util/Random;;
 Asciz	activeActors;
 Asciz	terminationHandlers;
 Asciz	Lscala/collection/mutable/HashMap;;
 Asciz	scala$actors$scheduler$TerminationMonitor$$started;
+Asciz	bitmap$0;
 Asciz	()I;
 Asciz	Code;
 Asciz	LineNumberTable;
@@ -134,7 +137,17 @@ Asciz	(Ljava/util/Collection;)V;
 Asciz	(Ljava/util/Collection<Lscala/concurrent/forkjoin/ForkJoinTask<*>;>;)V;
 NameAndType	CHECK_FREQ:I
 Field	scala/actors/scheduler/ForkJoinScheduler.CHECK_FREQ:I
+Asciz	()Ljava/util/Random;;
+NameAndType	bitmap$0:I
+Field	scala/actors/scheduler/ForkJoinScheduler.bitmap$0:I
+Asciz	java/util/Random;
+class	java/util/Random
 Asciz	<init>;
+NameAndType	"<init>":()V
+Method	java/util/Random."<init>":()V
+NameAndType	random:Ljava/util/Random;
+Field	scala/actors/scheduler/ForkJoinScheduler.random:Ljava/util/Random;
+Asciz	(ZZ)V;
 Asciz	scala/actors/scheduler/ThreadPoolConfig$;
 class	scala/actors/scheduler/ThreadPoolConfig$
 Asciz	MODULE$;
@@ -151,12 +164,13 @@ Asciz	(IIZZ)V;
 NameAndType	"<init>":(IIZZ)V
 Method	scala/actors/scheduler/ForkJoinScheduler."<init>":(IIZZ)V
 Asciz	d;
+NameAndType	"<init>":(ZZ)V
+Method	scala/actors/scheduler/ForkJoinScheduler."<init>":(ZZ)V
 NameAndType	"<init>":(Z)V
 Method	scala/actors/scheduler/ForkJoinScheduler."<init>":(Z)V
 Asciz	makeNewPool;
 Asciz	scala/actors/scheduler/DrainableForkJoinPool;
 class	scala/actors/scheduler/DrainableForkJoinPool
-NameAndType	"<init>":()V
 Method	scala/actors/scheduler/DrainableForkJoinPool."<init>":()V
 Asciz	setAsyncMode;
 Asciz	(Z)Z;
@@ -313,16 +327,13 @@ Asciz	Ljava/lang/Runnable;;
 Asciz	executeFromActor;
 NameAndType	fair:Z
 Field	scala/actors/scheduler/ForkJoinScheduler.fair:Z
-Asciz	scala/util/Random$;
-class	scala/util/Random$
-Asciz	Lscala/util/Random$;;
-NameAndType	MODULE$:Lscala/util/Random$;
-Field	scala/util/Random$.MODULE$:Lscala/util/Random$;
+NameAndType	random:()Ljava/util/Random;
+Method	scala/actors/scheduler/ForkJoinScheduler.random:()Ljava/util/Random;
 int	50;
 Asciz	nextInt;
 Asciz	(I)I;
 NameAndType	nextInt:(I)I
-Method	scala/util/Random$.nextInt:(I)I
+Method	java/util/Random.nextInt:(I)I
 Asciz	scala/concurrent/forkjoin/RecursiveAction;
 class	scala/concurrent/forkjoin/RecursiveAction
 Asciz	fork;
@@ -414,7 +425,7 @@ int	10;
 Asciz	ScalaSig;
 Asciz	Lscala/reflect/ScalaSignature;;
 Asciz	bytes;
-Asciz	mdC\t\tA#{'o&pS:6\r[3ek2,'O\tI1o5fIVdWM\ta!Y2u_J(\"AM\r\1M1A\n3u\"a\t1Q!!\t1gn!!.<b\t\tBBPE*,7\r\tMI!I+hN\1cY\"AFI!%6\r[3ek2,'75\t!!\tB+:nS:G/[8o>t^8s!\tqr$D\tcAATGdm2kK$IA%t^\"peN_3\"AH\n2!aA%oi\"ABB%A%Aj]&$8i:f'&TX\r\t\tU)!CG9Q.=TSj,5pU5{KBBIaLI,Wn8yBAun7fC:Db\rIaLML'C6a'=S:LGOoaJ$h\t5AQA\tABQAABQAA=BQa\rA=Bq!A%a(q_>dW#A iBA!U!%/Y5oC\ndWMR8sW*{N)p_2DqaA%A)q_>dwJ3r)\t)\n\r&qI+:LGCJ\tA a$LKaPa>|G\t\r\"O-!XM]7j]$N\4=BqA%+AuKJlN\1uS:<wJ3r)\t)%CJ\tA\t\rQ)01!XM]7j]$N\4!11A\n91b8baNDw^5oO\"9a\nIaD:oCBn;j]|F%Z9SbB%X\ra9BMt\r]:i_RLgn\ty!C?aAM]1j]$G+Y:lgV\t\rEbIlAG:\tA!;jY&QM>dG.Z2uS>tGA4r!\rAWn\S*!n[\tM>8N[8j]*ANBG>t7-:sK:$B8j11uN]6K_&tG+Y:l!\tIA!AM1a2#\t!xk&aO>$.8h!\tq0z\r\tI\=\tm!CyBM]1j]$G+Y:lg~#S-vDq!>aEbI~D!!A!.\A!\rQ\te!\t!Bg\"A!B\tY!AeeLg.3UCN\7\t\tCi\rM5n#2]A\n\t!\"ACA\tIC\rCUiQ&`\rJ+C\rCUiQ&`\rJ+\tk!\t!a]\n\tC$uADa!B#A\t-\".YQ.Y6f<k\8m)ybBA1GgR'\"9qBMa:v]\"91uaB3yK,H/}bBA!s\rAEi8CF!\t%a!DXmY;uKx.\!di>HcA#J!9IA\"bBAQ\n=\"CA)\"\tAA*\r1WO\t=US)CX2z]lWM7AAA!.;e_^tBBA0a*jgG/<f\tC!K\nA\"\1oC,GM7pG.$2!RA4!\tI'!A-a2m_\WM\t[\ny'Dl\r\t\thtmZ3e2|7m[3s\t)Cg\tb8baNDwsAAAXm;beR;
+Asciz	UeC\t\tA#{'o&pS:6\r[3ek2,'O\tI1o5fIVdWM\ta!Y2u_J(\"AM\r\1M1A\n3u\"a\t1Q!!\t1gn!!.<b\t\tBBPE*,7\r\tMI!I+hN\1cY\"AFI!%6\r[3ek2,'75\t!!\tB+:nS:G/[8o>t^8s!\tqr$D\tcAATGdm2kK$IA%t^\"peN_3\"AH\n2!aA%oi\"ABB%A%Aj]&$8i:f'&TX\r\t\tU)!CG9Q.=TSj,5pU5{KBBIaLI,Wn8yBAun7fC:Db\rIaLML'C6a'=S:LGOoaJ$h\t5AQA\tABQAABQAA=BQa\rA=Bq!A%a(q_>dW#A iBA!U!%/Y5oC\ndWMR8sW*{N)p_2DqaA%A)q_>dwJ3r)\t)\n\r&qI+:LGCJ\tA a$LKaPa>|G\t\r\"O-!XM]7j]$N\4=BqA%+AuKJlN\1uS:<wJ3r)\t)%CJ\tA\t\rQ)01!XM]7j]$N\4!11A\n91b8baNDw^5oO\"9a\nIaD:oCBn;j]|F%Z9SbB%X\ra9BMt\r]:i_RLgn\ty!C?aAM]1j]$G+Y:lgV\t\rEbIlAG:\tA!;jY&QM>dG.Z2uS>tGA4r!\rAWn\S*!n[\tM>8N[8j]*ANBG>t7-:sK:$B8j11uN]6K_&tG+Y:l!\tIA!AM1a2#\t!xk&aO>$.8h!\tq0z\r\tI\=\tm!CyBM]1j]$G+Y:lg~#S-vDq!>aEbI~D!!A!.\A!\rQ\te!\t!Bg\"A!B\tY!AeeLg.3UCN\7\t\tCi\rM5n#2]A\n\t!\"ACA\tIC\rCUiQ&`\rJ+C\rCUiQ&`\rJ+\t?R1A\nA:b]|W.$A-!\n\n\"MSC:$w.W!Q!\n\ra:b]|W\tk!\t!a]\n\t$!\tMQa_\tA\rC85ADa!mBcA>!91GAyBB\t\t\tF8\t)C\n1\"\1lK:+wU8pYR\tqCL!\t!!M$M;Cq!!\t\ni%Ask:Dq!!\t\t9&AfqW^3IC\M\n\tQ7o?AIA1A)0Z2vi4%o\7BGR|'FFGBq!a^!CV!\t!aIClD1na-8\ty\ty'Rc2!cs:W. \tU\"NA1[;uI><hz!\tAT\tSN5\r^5wK\"9QB}D7b]<W\r\"m_\GcA#\"A1QA>\t))AcY>7.:\tRW&1R65g.Y4fI\ncwnY6fe\"9q5C:oCBn;\tM\"N9!/Z:uCJ$;
 Asciz	RuntimeVisibleAnnotations;
 Asciz	InnerClasses;
 Asciz	$anon$2;
@@ -459,6 +470,9 @@ private java.util.Collection drainedTasks;
 private final int CHECK_FREQ;
   Signature: I
 
+private java.util.Random random;
+  Signature: Ljava/util/Random;
+
 private int activeActors;
   Signature: I
 
@@ -467,6 +481,9 @@ private final scala.collection.mutable.HashMap terminationHandlers;
 
 private boolean scala$actors$scheduler$TerminationMonitor$$started;
   Signature: Z
+
+public volatile int bitmap$0;
+  Signature: I
 
 public int activeActors();
   Signature: ()I
@@ -744,7 +761,7 @@ private java.util.Collection drainedTasks();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 75 
+   00 78 
 
 private void drainedTasks_$eq(java.util.Collection);
   Signature: (Ljava/util/Collection;)V
@@ -756,7 +773,7 @@ private void drainedTasks_$eq(java.util.Collection);
 	return
   Labels:
   Signature: length = 0x2
-   00 78 
+   00 7B 
 
 public int CHECK_FREQ();
   Signature: ()I
@@ -767,17 +784,63 @@ public int CHECK_FREQ();
 	ireturn
   Labels:
 
-public scala.actors.scheduler.ForkJoinScheduler(boolean);
-  Signature: (Z)V
+private java.util.Random random();
+  Signature: ()Ljava/util/Random;
   Code:
-   Stack=5, Locals=2, Args_size=2
+   Stack=3, Locals=1, Args_size=1
+	aload_0
+	getfield	Field bitmap$0:I
+	iconst_1
+	iand
+	iconst_0
+	if_icmpne	l1 // aload_0
+	aload_0
+	dup
+	pop
+	monitorenter
+	aload_0
+	getfield	Field bitmap$0:I
+	iconst_1
+	iand
+	iconst_0
+	if_icmpne	l2 // aload_0
+	aload_0
+	new	class java/util/Random
+	dup
+	invokespecial	Method java/util/Random."<init>":()V
+	putfield	Field random:Ljava/util/Random;
+	aload_0
+	aload_0
+	getfield	Field bitmap$0:I
+	iconst_1
+	ior
+	putfield	Field bitmap$0:I
+l2	aload_0
+	monitorexit
+l1	aload_0
+	getfield	Field random:Ljava/util/Random;
+	areturn
+	aload_0
+	monitorexit
+	athrow
+  Labels:
+   	l2 = 45 // aload_0
+   	l1 = 47 // aload_0
+  Exception table:
+   from   to  target type
+    14    47    52   any
+
+public scala.actors.scheduler.ForkJoinScheduler(boolean, boolean);
+  Signature: (ZZ)V
+  Code:
+   Stack=5, Locals=3, Args_size=3
 	aload_0
 	getstatic	Field scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
 	invokevirtual	Method scala/actors/scheduler/ThreadPoolConfig$.corePoolSize:()I
 	getstatic	Field scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
 	invokevirtual	Method scala/actors/scheduler/ThreadPoolConfig$.maxPoolSize:()I
 	iload_1
-	iconst_1
+	iload_2
 	invokespecial	Method "<init>":(IIZZ)V
 	return
   Labels:
@@ -785,6 +848,23 @@ public scala.actors.scheduler.ForkJoinScheduler(boolean);
    Start  Length  Slot  Name   Signature
    0      19      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
    0      19      1    d       Z
+   0      19      2    f       Z
+
+
+public scala.actors.scheduler.ForkJoinScheduler(boolean);
+  Signature: (Z)V
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	iconst_1
+	invokespecial	Method "<init>":(ZZ)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      7      1    d       Z
 
 
 public scala.actors.scheduler.ForkJoinScheduler();
@@ -935,7 +1015,7 @@ l1	aload_0
 	dup
 	aload_0
 	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
-	ldc	String : all actors terminated
+	ldc_w	String : all actors terminated
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
 	aload_0
@@ -1023,24 +1103,24 @@ l7	ldc2_w	long 10l
   Labels:
    	l6 = 0 // aload_0
    	l1 = 23 // aload_0
-   	l2 = 64 // aload_0
-   	l4 = 162 // goto
-   	l3 = 165 // aload_0
-   	l5 = 171 // aload_0
-   	l8 = 200 // aload_0
-   	l7 = 218 // ldc2_w
+   	l2 = 65 // aload_0
+   	l4 = 163 // goto
+   	l3 = 166 // aload_0
+   	l5 = 172 // aload_0
+   	l8 = 201 // aload_0
+   	l7 = 219 // ldc2_w
   Exception table:
    from   to  target type
-     4   176   176   any
-   218   227   227   Class java/lang/InterruptedException
+     4   177   177   any
+   219   228   228   Class java/lang/InterruptedException
 
-     0   179   179   Class scala/actors/scheduler/QuitControl
+     0   180   180   Class scala/actors/scheduler/QuitControl
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      231      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   98      64      1    num       I
-   89      73      2    list       Ljava/util/ArrayList;
+   0      232      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   99      64      1    num       I
+   90      73      2    list       Ljava/util/ArrayList;
 
 
 public void execute(java.lang.Runnable);
@@ -1062,31 +1142,53 @@ public void execute(java.lang.Runnable);
 public void executeFromActor(java.lang.Runnable);
   Signature: (Ljava/lang/Runnable;)V
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=4, Args_size=2
 	aload_0
 	getfield	Field fair:Z
 	ifeq	l1 // aload_1
-	getstatic	Field scala/util/Random$.MODULE$:Lscala/util/Random$;
+	aload_0
+	invokespecial	Method random:()Ljava/util/Random;
+	dup
+	astore_3
+	monitorenter
+	aload_0
+	invokespecial	Method random:()Ljava/util/Random;
 	ldc_w	int 50
-	invokevirtual	Method scala/util/Random$.nextInt:(I)I
+	invokevirtual	Method java/util/Random.nextInt:(I)I
 	iconst_1
-	if_icmpne	l1 // aload_1
+	if_icmpne	l2 // iconst_0
+	iconst_1
+	goto	l3 // istore_2
+l2	iconst_0
+l3	istore_2
+	aload_3
+	monitorexit
+	iload_2
+	ifeq	l1 // aload_1
 	aload_0
 	invokespecial	Method pool:()Lscala/actors/scheduler/DrainableForkJoinPool;
 	aload_1
 	invokevirtual	Method scala/actors/scheduler/DrainableForkJoinPool.execute:(Ljava/lang/Runnable;)V
-	goto	l2 // return
+	goto	l4 // return
 l1	aload_1
 	checkcast	class scala/concurrent/forkjoin/RecursiveAction
 	invokevirtual	Method scala/concurrent/forkjoin/RecursiveAction.fork:()V
-l2	return
+l4	return
+	aload_3
+	monitorexit
+	athrow
   Labels:
-   	l1 = 31 // aload_1
-   	l2 = 38 // return
+   	l2 = 32 // iconst_0
+   	l3 = 33 // istore_2
+   	l1 = 51 // aload_1
+   	l4 = 58 // return
+  Exception table:
+   from   to  target type
+    14    36    59   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      39      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
-   0      39      1    task       Ljava/lang/Runnable;
+   0      62      0    this       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      62      1    task       Ljava/lang/Runnable;
 
 
 public void execute(scala.Function0);
@@ -1108,7 +1210,7 @@ public void execute(scala.Function0);
    0      14      1    fun$1       Lscala/Function0;
 
   Signature: length = 0x2
-   01 45 
+   01 50 
 
 public void shutdown();
   Signature: ()V

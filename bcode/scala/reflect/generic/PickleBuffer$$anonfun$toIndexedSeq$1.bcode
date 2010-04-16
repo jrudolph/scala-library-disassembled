@@ -81,10 +81,15 @@ Asciz	this;
 Asciz	Lscala/reflect/generic/PickleBuffer$$anonfun$toIndexedSeq$1;;
 Asciz	index;
 Asciz	I;
+Asciz	len0;
+Asciz	tag0;
+Asciz	bytes0;
+Asciz	LocalVariableTable;
+Asciz	apply$mcVI$sp;
+Asciz	v1;
 Asciz	len;
 Asciz	tag;
 Asciz	bytes;
-Asciz	LocalVariableTable;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 Asciz	unboxToInt;
 Asciz	(Ljava/lang/Object;)I;
@@ -98,7 +103,6 @@ Asciz	UNIT;
 Asciz	Lscala/runtime/BoxedUnit;;
 NameAndType	UNIT:Lscala/runtime/BoxedUnit;
 Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-Asciz	v1;
 Asciz	Ljava/lang/Object;;
 Asciz	(Lscala/reflect/generic/PickleBuffer;[Lscala/Tuple2;)V;
 Asciz	java/lang/NullPointerException;
@@ -201,6 +205,73 @@ public final void apply(int);
    Start  Length  Slot  Name   Signature
    0      110      0    this       Lscala/reflect/generic/PickleBuffer$$anonfun$toIndexedSeq$1;
    0      110      1    index       I
+   17      92      3    len0       I
+   9      100      4    tag0       I
+   59      50      6    bytes0       [B
+
+
+public void apply$mcVI$sp(int);
+  Signature: (I)V
+  Code:
+   Stack=6, Locals=7, Args_size=2
+	aload_0
+	getfield	Field $outer:Lscala/reflect/generic/PickleBuffer;
+	invokevirtual	Method scala/reflect/generic/PickleBuffer.readNat:()I
+	istore	4
+	aload_0
+	getfield	Field $outer:Lscala/reflect/generic/PickleBuffer;
+	invokevirtual	Method scala/reflect/generic/PickleBuffer.readNat:()I
+	istore_3
+	aload_0
+	getfield	Field $outer:Lscala/reflect/generic/PickleBuffer;
+	getfield	Field scala/reflect/generic/PickleBuffer.scala$reflect$generic$PickleBuffer$$data:[B
+	astore_2
+	new	class scala/collection/mutable/ArrayOps$ofByte
+	dup
+	aload_2
+	invokespecial	Method scala/collection/mutable/ArrayOps$ofByte."<init>":([B)V
+	aload_0
+	getfield	Field $outer:Lscala/reflect/generic/PickleBuffer;
+	invokevirtual	Method scala/reflect/generic/PickleBuffer.readIndex:()I
+	iload_3
+	aload_0
+	getfield	Field $outer:Lscala/reflect/generic/PickleBuffer;
+	invokevirtual	Method scala/reflect/generic/PickleBuffer.readIndex:()I
+	iadd
+	invokeinterface	InterfaceMethod scala/collection/IndexedSeqOptimized.slice:(II)Ljava/lang/Object;
+	checkcast	class "[B"
+	astore	6
+	aload_0
+	getfield	Field $outer:Lscala/reflect/generic/PickleBuffer;
+	aload_0
+	getfield	Field $outer:Lscala/reflect/generic/PickleBuffer;
+	invokevirtual	Method scala/reflect/generic/PickleBuffer.readIndex:()I
+	iload_3
+	iadd
+	invokevirtual	Method scala/reflect/generic/PickleBuffer.readIndex_$eq:(I)V
+	aload_0
+	getfield	Field result$1:[Lscala/Tuple2;
+	iload_1
+	iload	4
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	astore	5
+	new	class scala/Predef$ArrowAssoc
+	dup
+	aload	5
+	invokespecial	Method scala/Predef$ArrowAssoc."<init>":(Ljava/lang/Object;)V
+	pop
+	new	class scala/Tuple2
+	dup
+	aload	5
+	aload	6
+	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+	aastore
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      110      0    this       Lscala/reflect/generic/PickleBuffer$$anonfun$toIndexedSeq$1;
+   0      110      1    v1       I
    17      92      3    len       I
    9      100      4    tag       I
    59      50      6    bytes       [B

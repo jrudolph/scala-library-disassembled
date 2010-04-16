@@ -4,7 +4,7 @@ public class scala.collection.immutable.HashSet$HashSet1 extends scala.collectio
   Scala: length = 0x
    
   Signature: length = 0x2
-   00 FFFFFF9D 
+   00 FFFFFF82 
   InnerClass: 
    public HashSet1=class scala/collection/immutable/HashSet$HashSet1 of class scala/collection/immutable/HashSet
    public HashTrieSet=class scala/collection/immutable/HashSet$HashTrieSet of class scala/collection/immutable/HashSet
@@ -96,11 +96,8 @@ Method	scala/collection/immutable/ListSet.$plus:(Ljava/lang/Object;)Lscala/colle
 Asciz	(ILscala/collection/immutable/ListSet;)V;
 NameAndType	"<init>":(ILscala/collection/immutable/ListSet;)V
 Method	scala/collection/immutable/HashSet$HashSetCollision1."<init>":(ILscala/collection/immutable/ListSet;)V
-int	31;
 Asciz	m;
 Asciz	Lscala/collection/immutable/HashSet$HashTrieSet;;
-Asciz	elems;
-Asciz	[Lscala/collection/immutable/HashSet;;
 Asciz	(TA;II)Lscala/collection/immutable/HashSet<TA;>;;
 Asciz	removed0;
 Asciz	scala/collection/immutable/HashSet$EmptyHashSet$;
@@ -140,30 +137,6 @@ InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 Asciz	f;
 Asciz	Lscala/Function1;;
 Asciz	<U:Ljava/lang/Object;>(Lscala/Function1<TA;TU;>;)V;
-Asciz	writeObject;
-Asciz	(Ljava/io/ObjectOutputStream;)V;
-Asciz	java/io/ObjectOutputStream;
-class	java/io/ObjectOutputStream
-NameAndType	writeObject:(Ljava/lang/Object;)V
-Method	java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
-Asciz	out;
-Asciz	Ljava/io/ObjectOutputStream;;
-Asciz	readObject;
-Asciz	(Ljava/io/ObjectInputStream;)V;
-Asciz	java/io/ObjectInputStream;
-class	java/io/ObjectInputStream
-NameAndType	readObject:()Ljava/lang/Object;
-Method	java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
-NameAndType	key_$eq:(Ljava/lang/Object;)V
-Method	scala/collection/immutable/HashSet$HashSet1.key_$eq:(Ljava/lang/Object;)V
-Asciz	computeHash;
-Asciz	(Ljava/lang/Object;)I;
-NameAndType	computeHash:(Ljava/lang/Object;)I
-Method	scala/collection/immutable/HashSet$HashSet1.computeHash:(Ljava/lang/Object;)I
-NameAndType	hash_$eq:(I)V
-Method	scala/collection/immutable/HashSet$HashSet1.hash_$eq:(I)V
-Asciz	in;
-Asciz	Ljava/io/ObjectInputStream;;
 Asciz	(Ljava/lang/Object;I)V;
 Method	scala/collection/immutable/HashSet."<init>":()V
 Asciz	(TA;I)V;
@@ -301,7 +274,7 @@ l7	ireturn
 public scala.collection.immutable.HashSet updated0(java.lang.Object, int, int);
   Signature: (Ljava/lang/Object;II)Lscala/collection/immutable/HashSet;
   Code:
-   Stack=7, Locals=7, Args_size=4
+   Stack=5, Locals=6, Args_size=4
 	iload_2
 	aload_0
 	invokevirtual	Method hash:()I
@@ -343,7 +316,7 @@ l3	ifeq	l1 // iload_2
 l1	iload_2
 	aload_0
 	invokevirtual	Method hash:()I
-	if_icmpeq	l8 // iload_3
+	if_icmpeq	l8 // new
 	new	class scala/collection/immutable/HashSet$HashTrieSet
 	dup
 	iconst_0
@@ -364,41 +337,7 @@ l1	iload_2
 	iload_3
 	invokevirtual	Method scala/collection/immutable/HashSet.updated0:(Ljava/lang/Object;II)Lscala/collection/immutable/HashSet;
 	goto	l7 // areturn
-l8	iload_3
-	iconst_0
-	if_icmpne	l9 // new
-	iconst_1
-	anewarray	class scala/collection/immutable/HashSet
-	astore	6
-	aload	6
-	iconst_0
-	new	class scala/collection/immutable/HashSet$HashSetCollision1
-	dup
-	iload_2
-	new	class scala/collection/immutable/ListSet
-	dup
-	invokespecial	Method scala/collection/immutable/ListSet."<init>":()V
-	aload_0
-	invokevirtual	Method key:()Ljava/lang/Object;
-	invokevirtual	Method scala/collection/immutable/ListSet.$plus:(Ljava/lang/Object;)Lscala/collection/immutable/ListSet;
-	aload_1
-	invokevirtual	Method scala/collection/immutable/ListSet.$plus:(Ljava/lang/Object;)Lscala/collection/immutable/ListSet;
-	invokespecial	Method scala/collection/immutable/HashSet$HashSetCollision1."<init>":(ILscala/collection/immutable/ListSet;)V
-	aastore
-	new	class scala/collection/immutable/HashSet$HashTrieSet
-	dup
-	iconst_1
-	iload_2
-	iload_3
-	iushr
-	ldc	int 31
-	iand
-	ishl
-	aload	6
-	iconst_2
-	invokespecial	Method scala/collection/immutable/HashSet$HashTrieSet."<init>":(I[Lscala/collection/immutable/HashSet;I)V
-	goto	l7 // areturn
-l9	new	class scala/collection/immutable/HashSet$HashSetCollision1
+l8	new	class scala/collection/immutable/HashSet$HashSetCollision1
 	dup
 	iload_2
 	new	class scala/collection/immutable/ListSet
@@ -418,21 +357,19 @@ l7	areturn
    	l6 = 70 // aload_1
    	l3 = 76 // ifeq
    	l1 = 83 // iload_2
-   	l8 = 129 // iload_3
-   	l9 = 191 // new
-   	l7 = 217 // areturn
+   	l8 = 129 // new
+   	l7 = 155 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      218      0    this       Lscala/collection/immutable/HashSet$HashSet1;
-   0      218      1    key       Ljava/lang/Object;
-   0      218      2    hash       I
-   0      218      3    level       I
+   0      156      0    this       Lscala/collection/immutable/HashSet$HashSet1;
+   0      156      1    key       Ljava/lang/Object;
+   0      156      2    hash       I
+   0      156      3    level       I
    20      59      4    y0       Ljava/lang/Object;
    106      20      5    m       Lscala/collection/immutable/HashSet$HashTrieSet;
-   140      48      6    elems       [Lscala/collection/immutable/HashSet;
 
   Signature: length = 0x2
-   00 5A 
+   00 57 
 
 public scala.collection.immutable.HashSet removed0(java.lang.Object, int, int);
   Signature: (Ljava/lang/Object;II)Lscala/collection/immutable/HashSet;
@@ -495,7 +432,7 @@ l7	areturn
    20      59      4    y0       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 5A 
+   00 57 
 
 public scala.collection.Iterator iterator();
   Signature: ()Lscala/collection/Iterator;
@@ -515,7 +452,7 @@ public scala.collection.Iterator iterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 76 
+   00 73 
 
 public void foreach(scala.Function1);
   Signature: (Lscala/Function1;)V
@@ -534,45 +471,7 @@ public void foreach(scala.Function1);
    0      12      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFF80 
-
-private void writeObject(java.io.ObjectOutputStream);
-  Signature: (Ljava/io/ObjectOutputStream;)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_1
-	aload_0
-	invokevirtual	Method key:()Ljava/lang/Object;
-	invokevirtual	Method java/io/ObjectOutputStream.writeObject:(Ljava/lang/Object;)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      9      0    this       Lscala/collection/immutable/HashSet$HashSet1;
-   0      9      1    out       Ljava/io/ObjectOutputStream;
-
-
-private void readObject(java.io.ObjectInputStream);
-  Signature: (Ljava/io/ObjectInputStream;)V
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	invokevirtual	Method java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
-	invokevirtual	Method key_$eq:(Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokevirtual	Method key:()Ljava/lang/Object;
-	invokevirtual	Method computeHash:(Ljava/lang/Object;)I
-	invokevirtual	Method hash_$eq:(I)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      21      0    this       Lscala/collection/immutable/HashSet$HashSet1;
-   0      21      1    in       Ljava/io/ObjectInputStream;
-
+   00 7D 
 
 public scala.collection.immutable.HashSet$HashSet1(java.lang.Object, int);
   Signature: (Ljava/lang/Object;I)V
@@ -595,7 +494,7 @@ public scala.collection.immutable.HashSet$HashSet1(java.lang.Object, int);
    0      15      2    hash       I
 
   Signature: length = 0x2
-   00 FFFFFF9B 
+   00 FFFFFF80 
 
 }
 

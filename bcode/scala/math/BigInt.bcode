@@ -743,17 +743,32 @@ l1	aload_1
 	invokevirtual	Method scala/Option.exists:(Lscala/Function1;)Z
 	goto	l2 // ireturn
 l3	aload_0
+	getstatic	Field scala/math/BigInt$.MODULE$:Lscala/math/BigInt$;
+	invokevirtual	Method scala/math/BigInt$.MaxLong:()Lscala/math/BigInt;
+	invokevirtual	Method $less$eq:(Lscala/math/BigInt;)Z
+	ifeq	l4 // iconst_0
+	aload_0
+	getstatic	Field scala/math/BigInt$.MODULE$:Lscala/math/BigInt$;
+	invokevirtual	Method scala/math/BigInt$.MinLong:()Lscala/math/BigInt;
+	invokevirtual	Method $greater$eq:(Lscala/math/BigInt;)Z
+	ifeq	l4 // iconst_0
+	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.unifiedPrimitiveEquals:(Ljava/lang/Object;)Z
+	ifeq	l4 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l4	iconst_0
 l2	ireturn
   Labels:
    	l1 = 18 // aload_1
    	l3 = 46 // aload_0
-   	l2 = 53 // ireturn
+   	l4 = 86 // iconst_0
+   	l2 = 87 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      54      0    this       Lscala/math/BigInt;
-   0      54      1    that       Ljava/lang/Object;
+   0      88      0    this       Lscala/math/BigInt;
+   0      88      1    that       Ljava/lang/Object;
 
 
 public boolean isWhole();
