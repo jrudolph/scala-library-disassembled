@@ -25,13 +25,13 @@ Method	scala/math/BigDecimal$."<init>":()V
 Asciz	minCached;
 Asciz	I;
 Asciz	maxCached;
+Asciz	defaultMathContext;
+Asciz	Ljava/math/MathContext;;
 Asciz	MinLong;
 Asciz	Lscala/math/BigDecimal;;
 Asciz	MaxLong;
 Asciz	cache;
 Asciz	[Lscala/math/BigDecimal;;
-Asciz	defaultMathContext;
-Asciz	Ljava/math/MathContext;;
 Asciz	bitmap$0;
 Asciz	()I;
 Asciz	LineNumberTable;
@@ -39,6 +39,9 @@ NameAndType	minCached:I
 Field	scala/math/BigDecimal$.minCached:I
 NameAndType	maxCached:I
 Field	scala/math/BigDecimal$.maxCached:I
+Asciz	()Ljava/math/MathContext;;
+NameAndType	defaultMathContext:Ljava/math/MathContext;
+Field	scala/math/BigDecimal$.defaultMathContext:Ljava/math/MathContext;
 Asciz	()Lscala/math/BigDecimal;;
 NameAndType	MinLong:Lscala/math/BigDecimal;
 Field	scala/math/BigDecimal$.MinLong:Lscala/math/BigDecimal;
@@ -55,9 +58,6 @@ Asciz	scala/math/BigDecimal;
 class	scala/math/BigDecimal
 NameAndType	cache:[Lscala/math/BigDecimal;
 Field	scala/math/BigDecimal$.cache:[Lscala/math/BigDecimal;
-Asciz	()Ljava/math/MathContext;;
-NameAndType	defaultMathContext:Ljava/math/MathContext;
-Field	scala/math/BigDecimal$.defaultMathContext:Ljava/math/MathContext;
 Asciz	valueOf;
 Asciz	(D)Lscala/math/BigDecimal;;
 Asciz	java/math/BigDecimal;
@@ -196,13 +196,13 @@ NameAndType	MODULE$:Lscala/math/BigDecimal$;
 Field	scala/math/BigDecimal$.MODULE$:Lscala/math/BigDecimal$;
 int	-512;
 int	512;
-long	-9223372036854775808l;
-long	9223372036854775807l;
 Asciz	java/math/MathContext;
 class	java/math/MathContext
 Asciz	UNLIMITED;
 NameAndType	UNLIMITED:Ljava/math/MathContext;
 Field	java/math/MathContext.UNLIMITED:Ljava/math/MathContext;
+long	-9223372036854775808l;
+long	9223372036854775807l;
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	scala/math/BigDecimal$$anonfun$to$1;
@@ -227,6 +227,9 @@ private final int minCached;
 private final int maxCached;
   Signature: I
 
+private final java.math.MathContext defaultMathContext;
+  Signature: Ljava/math/MathContext;
+
 private final scala.math.BigDecimal MinLong;
   Signature: Lscala/math/BigDecimal;
 
@@ -235,9 +238,6 @@ private final scala.math.BigDecimal MaxLong;
 
 private scala.math.BigDecimal[] cache;
   Signature: [Lscala/math/BigDecimal;
-
-private final java.math.MathContext defaultMathContext;
-  Signature: Ljava/math/MathContext;
 
 public volatile int bitmap$0;
   Signature: I
@@ -267,6 +267,15 @@ private int maxCached();
 	aload_0
 	getfield	Field maxCached:I
 	ireturn
+  Labels:
+
+public java.math.MathContext defaultMathContext();
+  Signature: ()Ljava/math/MathContext;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field defaultMathContext:Ljava/math/MathContext;
+	areturn
   Labels:
 
 public scala.math.BigDecimal MinLong();
@@ -337,15 +346,6 @@ l1	aload_0
   Exception table:
    from   to  target type
     14    54    59   any
-
-public java.math.MathContext defaultMathContext();
-  Signature: ()Ljava/math/MathContext;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field defaultMathContext:Ljava/math/MathContext;
-	areturn
-  Labels:
 
 public scala.math.BigDecimal valueOf(double);
   Signature: (D)Lscala/math/BigDecimal;
@@ -867,7 +867,7 @@ public scala.math.BigDecimal double2bigDecimal(double);
 private scala.math.BigDecimal$();
   Signature: ()V
   Code:
-   Stack=4, Locals=1, Args_size=1
+   Stack=5, Locals=1, Args_size=1
 	aload_0
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
@@ -879,18 +879,26 @@ private scala.math.BigDecimal$();
 	ldc	int 512
 	putfield	Field maxCached:I
 	aload_0
-	aload_0
-	ldc2_w	long -9223372036854775808l
-	invokevirtual	Method apply:(J)Lscala/math/BigDecimal;
-	putfield	Field MinLong:Lscala/math/BigDecimal;
-	aload_0
-	aload_0
-	ldc2_w	long 9223372036854775807l
-	invokevirtual	Method apply:(J)Lscala/math/BigDecimal;
-	putfield	Field MaxLong:Lscala/math/BigDecimal;
-	aload_0
 	getstatic	Field java/math/MathContext.UNLIMITED:Ljava/math/MathContext;
 	putfield	Field defaultMathContext:Ljava/math/MathContext;
+	aload_0
+	new	class scala/math/BigDecimal
+	dup
+	ldc2_w	long -9223372036854775808l
+	invokestatic	Method java/math/BigDecimal.valueOf:(J)Ljava/math/BigDecimal;
+	aload_0
+	invokevirtual	Method defaultMathContext:()Ljava/math/MathContext;
+	invokespecial	Method scala/math/BigDecimal."<init>":(Ljava/math/BigDecimal;Ljava/math/MathContext;)V
+	putfield	Field MinLong:Lscala/math/BigDecimal;
+	aload_0
+	new	class scala/math/BigDecimal
+	dup
+	ldc2_w	long 9223372036854775807l
+	invokestatic	Method java/math/BigDecimal.valueOf:(J)Ljava/math/BigDecimal;
+	aload_0
+	invokevirtual	Method defaultMathContext:()Ljava/math/MathContext;
+	invokespecial	Method scala/math/BigDecimal."<init>":(Ljava/math/BigDecimal;Ljava/math/MathContext;)V
+	putfield	Field MaxLong:Lscala/math/BigDecimal;
 	return
   Labels:
 
