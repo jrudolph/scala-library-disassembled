@@ -4,7 +4,7 @@ public class scala.collection.immutable.Stream$StreamBuilder extends scala.colle
   Scala: length = 0x
    
   Signature: length = 0x2
-   00 5F 
+   00 5D 
   InnerClass: 
    public StreamBuilder=class scala/collection/immutable/Stream$StreamBuilder of class scala/collection/immutable/Stream
    public final $anonfun$flatMap$1=class scala/collection/immutable/Stream$$anonfun$flatMap$1 of class scala/collection/immutable/Stream
@@ -80,9 +80,9 @@ NameAndType	tail:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 Asciz	scala/collection/immutable/Stream$$anonfun$flatMap$1;
 class	scala/collection/immutable/Stream$$anonfun$flatMap$1
-Asciz	(Lscala/collection/immutable/Stream;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;Lscala/runtime/ObjectRef;)V;
-NameAndType	"<init>":(Lscala/collection/immutable/Stream;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;Lscala/runtime/ObjectRef;)V
-Method	scala/collection/immutable/Stream$$anonfun$flatMap$1."<init>":(Lscala/collection/immutable/Stream;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;Lscala/runtime/ObjectRef;)V
+Asciz	(Lscala/collection/immutable/Stream;Lscala/Function1;Lscala/runtime/ObjectRef;)V;
+NameAndType	"<init>":(Lscala/collection/immutable/Stream;Lscala/Function1;Lscala/runtime/ObjectRef;)V
+Method	scala/collection/immutable/Stream$$anonfun$flatMap$1."<init>":(Lscala/collection/immutable/Stream;Lscala/Function1;Lscala/runtime/ObjectRef;)V
 Asciz	append;
 Asciz	(Lscala/Function0;)Lscala/collection/immutable/Stream;;
 NameAndType	append:(Lscala/Function0;)Lscala/collection/immutable/Stream;
@@ -94,8 +94,6 @@ Asciz	Lscala/collection/immutable/Stream;;
 Asciz	$inlThis0;
 Asciz	f$20;
 Asciz	Lscala/Function1;;
-Asciz	bf$50;
-Asciz	Lscala/collection/generic/CanBuildFrom;;
 Asciz	nonEmptyPrefix$10;
 Asciz	Lscala/runtime/ObjectRef;;
 Asciz	LocalVariableTable;
@@ -120,7 +118,7 @@ class	scala/ScalaObject
 public scala.collection.immutable.Stream result();
   Signature: ()Lscala/collection/immutable/Stream;
   Code:
-   Stack=7, Locals=11, Args_size=1
+   Stack=6, Locals=11, Args_size=1
 	aload_0
 	invokevirtual	Method parts:()Lscala/collection/mutable/ListBuffer;
 	astore_1
@@ -133,20 +131,20 @@ public scala.collection.immutable.Stream result();
 	new	class scala/collection/immutable/Stream$StreamCanBuildFrom
 	dup
 	invokespecial	Method scala/collection/immutable/Stream$StreamCanBuildFrom."<init>":()V
-	astore	9
+	pop
 	astore	8
 	astore	7
 	aload	7
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
 	ifeq	l1 // new
 	getstatic	Field scala/collection/immutable/Stream$Empty$.MODULE$:Lscala/collection/immutable/Stream$Empty$;
-	goto	l2 // checkcast
+	goto	l2 // astore
 l1	new	class scala/runtime/ObjectRef
 	dup
 	aload	7
 	invokespecial	Method scala/runtime/ObjectRef."<init>":(Ljava/lang/Object;)V
-	astore	10
-	aload	10
+	astore	9
+	aload	9
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/Stream
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.head:()Ljava/lang/Object;
@@ -159,7 +157,7 @@ l1	new	class scala/runtime/ObjectRef
 	checkcast	class scala/collection/TraversableOnce
 	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toStream:()Lscala/collection/immutable/Stream;
 	astore	6
-l4	aload	10
+l4	aload	9
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/Stream
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
@@ -167,19 +165,19 @@ l4	aload	10
 	aload	6
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
 	ifeq	l3 // aload
-	aload	10
-	aload	10
+	aload	9
+	aload	9
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/Stream
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/Stream
 	putfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
-	aload	10
+	aload	9
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/Stream
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
 	ifne	l4 // aload
-	aload	10
+	aload	9
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/Stream
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.head:()Ljava/lang/Object;
@@ -193,41 +191,41 @@ l4	aload	10
 	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toStream:()Lscala/collection/immutable/Stream;
 	astore	6
 	goto	l4 // aload
-l3	aload	10
+l3	aload	9
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/Stream
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
 	ifeq	l5 // aload
 	getstatic	Field scala/collection/immutable/Stream$Empty$.MODULE$:Lscala/collection/immutable/Stream$Empty$;
-	goto	l2 // checkcast
+	goto	l2 // astore
 l5	aload	6
 	new	class scala/collection/immutable/Stream$$anonfun$flatMap$1
 	dup
 	aload	7
 	aload	8
 	aload	9
-	aload	10
-	invokespecial	Method scala/collection/immutable/Stream$$anonfun$flatMap$1."<init>":(Lscala/collection/immutable/Stream;Lscala/Function1;Lscala/collection/generic/CanBuildFrom;Lscala/runtime/ObjectRef;)V
+	invokespecial	Method scala/collection/immutable/Stream$$anonfun$flatMap$1."<init>":(Lscala/collection/immutable/Stream;Lscala/Function1;Lscala/runtime/ObjectRef;)V
 	invokevirtual	Method scala/collection/immutable/Stream.append:(Lscala/Function0;)Lscala/collection/immutable/Stream;
-l2	checkcast	class scala/collection/immutable/Stream
+l2	astore	10
+	aload	10
+	checkcast	class scala/collection/immutable/Stream
 	areturn
   Labels:
-   	l1 = 46 // new
-   	l4 = 92 // aload
-   	l3 = 197 // aload
-   	l5 = 219 // aload
-   	l2 = 239 // checkcast
+   	l1 = 45 // new
+   	l4 = 91 // aload
+   	l3 = 196 // aload
+   	l5 = 218 // aload
+   	l2 = 236 // astore
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      243      0    this       Lscala/collection/immutable/Stream$StreamBuilder;
-   92      147      6    prefix0       Lscala/collection/immutable/Stream;
-   40      203      7    $inlThis0       Ljava/lang/Object;
-   40      203      8    f$20       Lscala/Function1;
-   40      203      9    bf$50       Lscala/collection/generic/CanBuildFrom;
-   57      182      10    nonEmptyPrefix$10       Lscala/runtime/ObjectRef;
+   0      244      0    this       Lscala/collection/immutable/Stream$StreamBuilder;
+   91      145      6    prefix0       Lscala/collection/immutable/Stream;
+   39      205      7    $inlThis0       Ljava/lang/Object;
+   39      205      8    f$20       Lscala/Function1;
+   56      180      9    nonEmptyPrefix$10       Lscala/runtime/ObjectRef;
 
   Signature: length = 0x2
-   00 57 
+   00 55 
 
 public java.lang.Object result();
   Signature: ()Ljava/lang/Object;

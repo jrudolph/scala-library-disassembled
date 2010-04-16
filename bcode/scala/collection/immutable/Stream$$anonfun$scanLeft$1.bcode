@@ -4,6 +4,8 @@ public final class scala.collection.immutable.Stream$$anonfun$scanLeft$1 extends
   Scala: length = 0x
    
   InnerClass: 
+   public final Cons=class scala/collection/immutable/Stream$Cons of class scala/collection/immutable/Stream
+   public StreamCanBuildFrom=class scala/collection/immutable/Stream$StreamCanBuildFrom of class scala/collection/immutable/Stream
    public final $anonfun$scanLeft$1=class scala/collection/immutable/Stream$$anonfun$scanLeft$1 of class scala/collection/immutable/Stream
   minor version: 0
   major version: 49
@@ -25,8 +27,6 @@ Asciz	z$1;
 Asciz	Ljava/lang/Object;;
 Asciz	op$1;
 Asciz	Lscala/Function2;;
-Asciz	bf$2;
-Asciz	Lscala/collection/generic/CanBuildFrom;;
 Asciz	apply;
 Asciz	()Lscala/collection/immutable/Stream;;
 Asciz	LineNumberTable;
@@ -54,31 +54,59 @@ class	scala/Function2
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 InterfaceMethod	scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-NameAndType	bf$2:Lscala/collection/generic/CanBuildFrom;
-Field	scala/collection/immutable/Stream$$anonfun$scanLeft$1.bf$2:Lscala/collection/generic/CanBuildFrom;
-Asciz	scanLeft;
-Asciz	(Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
-NameAndType	scanLeft:(Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-Method	scala/collection/immutable/Stream.scanLeft:(Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+Asciz	scala/collection/immutable/Stream$StreamCanBuildFrom;
+class	scala/collection/immutable/Stream$StreamCanBuildFrom
+Asciz	<init>;
+NameAndType	"<init>":()V
+Method	scala/collection/immutable/Stream$StreamCanBuildFrom."<init>":()V
+Asciz	isEmpty;
+Asciz	()Z;
+NameAndType	isEmpty:()Z
+InterfaceMethod	scala/collection/IterableLike.isEmpty:()Z
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	MODULE$;
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	genericWrapArray;
+Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
+NameAndType	genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+Method	scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+Asciz	toStream;
+NameAndType	toStream:()Lscala/collection/immutable/Stream;
+InterfaceMethod	scala/collection/IterableLike.toStream:()Lscala/collection/immutable/Stream;
+Asciz	scala/collection/immutable/Stream$Cons;
+class	scala/collection/immutable/Stream$Cons
+Asciz	(Lscala/collection/immutable/Stream;Ljava/lang/Object;Lscala/Function2;)V;
+NameAndType	"<init>":(Lscala/collection/immutable/Stream;Ljava/lang/Object;Lscala/Function2;)V
+Method	scala/collection/immutable/Stream$$anonfun$scanLeft$1."<init>":(Lscala/collection/immutable/Stream;Ljava/lang/Object;Lscala/Function2;)V
+Asciz	(Ljava/lang/Object;Lscala/Function0;)V;
+NameAndType	"<init>":(Ljava/lang/Object;Lscala/Function0;)V
+Method	scala/collection/immutable/Stream$Cons."<init>":(Ljava/lang/Object;Lscala/Function0;)V
+Asciz	this;
+Asciz	Lscala/collection/immutable/Stream$$anonfun$scanLeft$1;;
+Asciz	$inlThis2;
+Asciz	z$10;
+Asciz	op$10;
+Asciz	LocalVariableTable;
 Asciz	()Lscala/collection/immutable/Stream<TB;>;;
 Asciz	Signature;
 NameAndType	apply:()Lscala/collection/immutable/Stream;
 Method	scala/collection/immutable/Stream$$anonfun$scanLeft$1.apply:()Lscala/collection/immutable/Stream;
-Asciz	<init>;
-Asciz	(Lscala/collection/immutable/Stream;Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)V;
 Asciz	java/lang/NullPointerException;
 class	java/lang/NullPointerException
-NameAndType	"<init>":()V
 Method	java/lang/NullPointerException."<init>":()V
 Asciz	scala/runtime/AbstractFunction0;
 class	scala/runtime/AbstractFunction0
 Method	scala/runtime/AbstractFunction0."<init>":()V
-Asciz	this;
-Asciz	Lscala/collection/immutable/Stream$$anonfun$scanLeft$1;;
-Asciz	LocalVariableTable;
 Asciz	(Lscala/collection/immutable/Stream<TA;>;)V;
 Asciz	Scala;
 Asciz	InnerClasses;
+Asciz	Cons;
+Asciz	StreamCanBuildFrom;
 Asciz	$anonfun$scanLeft$1;
 Asciz	java/io/Serializable;
 class	java/io/Serializable
@@ -96,9 +124,6 @@ public final java.lang.Object z$1;
 public final scala.Function2 op$1;
   Signature: Lscala/Function2;
 
-public final scala.collection.generic.CanBuildFrom bf$2;
-  Signature: Lscala/collection/generic/CanBuildFrom;
-
 public static {};
   Signature: ()V
   Code:
@@ -111,7 +136,7 @@ public static {};
 public final scala.collection.immutable.Stream apply();
   Signature: ()Lscala/collection/immutable/Stream;
   Code:
-   Stack=4, Locals=1, Args_size=1
+   Stack=8, Locals=6, Args_size=1
 	aload_0
 	getfield	Field $outer:Lscala/collection/immutable/Stream;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
@@ -126,14 +151,54 @@ public final scala.collection.immutable.Stream apply();
 	invokeinterface	InterfaceMethod scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 	aload_0
 	getfield	Field op$1:Lscala/Function2;
-	aload_0
-	getfield	Field bf$2:Lscala/collection/generic/CanBuildFrom;
-	invokevirtual	Method scala/collection/immutable/Stream.scanLeft:(Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+	new	class scala/collection/immutable/Stream$StreamCanBuildFrom
+	dup
+	invokespecial	Method scala/collection/immutable/Stream$StreamCanBuildFrom."<init>":()V
+	pop
+	astore	4
+	astore_3
+	astore_2
+	aload_2
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
+	ifeq	l1 // new
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iconst_1
+	anewarray	class java/lang/Object
+	dup
+	iconst_0
+	aload_3
+	aastore
+	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+	astore_1
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.toStream:()Lscala/collection/immutable/Stream;
+	goto	l2 // astore
+l1	new	class scala/collection/immutable/Stream$Cons
+	dup
+	aload_3
+	new	class scala/collection/immutable/Stream$$anonfun$scanLeft$1
+	dup
+	aload_2
+	aload_3
+	aload	4
+	invokespecial	Method "<init>":(Lscala/collection/immutable/Stream;Ljava/lang/Object;Lscala/Function2;)V
+	invokespecial	Method scala/collection/immutable/Stream$Cons."<init>":(Ljava/lang/Object;Lscala/Function0;)V
+l2	astore	5
+	aload	5
 	checkcast	class scala/collection/immutable/Stream
 	areturn
   Labels:
+   	l1 = 83 // new
+   	l2 = 102 // astore
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      110      0    this       Lscala/collection/immutable/Stream$$anonfun$scanLeft$1;
+   59      51      2    $inlThis2       Ljava/lang/Object;
+   59      51      3    z$10       Ljava/lang/Object;
+   59      51      4    op$10       Lscala/Function2;
+
   Signature: length = 0x2
-   00 35 
+   00 53 
 
 public final java.lang.Object apply();
   Signature: ()Ljava/lang/Object;
@@ -144,10 +209,10 @@ public final java.lang.Object apply();
 	areturn
   Labels:
 
-public scala.collection.immutable.Stream$$anonfun$scanLeft$1(scala.collection.immutable.Stream, java.lang.Object, scala.Function2, scala.collection.generic.CanBuildFrom);
-  Signature: (Lscala/collection/immutable/Stream;Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)V
+public scala.collection.immutable.Stream$$anonfun$scanLeft$1(scala.collection.immutable.Stream, java.lang.Object, scala.Function2);
+  Signature: (Lscala/collection/immutable/Stream;Ljava/lang/Object;Lscala/Function2;)V
   Code:
-   Stack=2, Locals=5, Args_size=5
+   Stack=2, Locals=4, Args_size=4
 	aload_1
 	ifnonnull	l1 // aload_0
 	new	class java/lang/NullPointerException
@@ -164,20 +229,17 @@ l1	aload_0
 	aload_3
 	putfield	Field op$1:Lscala/Function2;
 	aload_0
-	aload	4
-	putfield	Field bf$2:Lscala/collection/generic/CanBuildFrom;
-	aload_0
 	invokespecial	Method scala/runtime/AbstractFunction0."<init>":()V
 	return
   Labels:
    	l1 = 12 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      38      0    this       Lscala/collection/immutable/Stream$$anonfun$scanLeft$1;
-   0      38      1    $outer       Lscala/collection/immutable/Stream;
+   0      32      0    this       Lscala/collection/immutable/Stream$$anonfun$scanLeft$1;
+   0      32      1    $outer       Lscala/collection/immutable/Stream;
 
   Signature: length = 0x2
-   00 45 
+   00 5D 
 
 }
 
