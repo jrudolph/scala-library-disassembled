@@ -6,6 +6,7 @@ public abstract class scala.actors.Reactor$class extends java.lang.Object
   InnerClass: 
    public abstract Body=class scala/actors/Actor$Body of class scala/actors/Actor
    public final $anon$3=class scala/actors/Reactor$$anon$3 of class scala/actors/Reactor
+   public abstract Value=class scala/Enumeration$Value of class scala/Enumeration
    public final $anonfun$3=class scala/actors/Reactor$$anonfun$3 of class scala/actors/Reactor
    public final $anonfun$2=class scala/actors/Reactor$$anonfun$2 of class scala/actors/Reactor
    public final $anonfun$1=class scala/actors/Reactor$$anonfun$1 of class scala/actors/Reactor
@@ -222,7 +223,6 @@ Asciz	(Lscala/actors/Reactor;Lscala/PartialFunction;)Lscala/runtime/Nothing$;;
 Asciz	(Lscala/actors/MQueue;Lscala/PartialFunction;Z)V;
 NameAndType	searchMailbox:(Lscala/actors/MQueue;Lscala/PartialFunction;Z)V
 InterfaceMethod	scala/actors/Reactor.searchMailbox:(Lscala/actors/MQueue;Lscala/PartialFunction;Z)V
-Asciz	f;
 Asciz	(Lscala/actors/Reactor;Lscala/PartialFunction;Ljava/lang/Object;)V;
 Asciz	scala/actors/Reactor$$anonfun$2;
 class	scala/actors/Reactor$$anonfun$2
@@ -244,6 +244,31 @@ Asciz	handler$2;
 Asciz	msg$2;
 Asciz	start;
 Asciz	(Lscala/actors/Reactor;)Lscala/actors/Reactor;;
+Asciz	_state;
+Asciz	()Lscala/Enumeration$Value;;
+NameAndType	_state:()Lscala/Enumeration$Value;
+InterfaceMethod	scala/actors/Reactor._state:()Lscala/Enumeration$Value;
+Asciz	scala/actors/Actor$State$;
+class	scala/actors/Actor$State$
+Asciz	Lscala/actors/Actor$State$;;
+NameAndType	MODULE$:Lscala/actors/Actor$State$;
+Field	scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
+Asciz	New;
+NameAndType	New:()Lscala/Enumeration$Value;
+Method	scala/actors/Actor$State$.New:()Lscala/Enumeration$Value;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	Runnable;
+NameAndType	Runnable:()Lscala/Enumeration$Value;
+Method	scala/actors/Actor$State$.Runnable:()Lscala/Enumeration$Value;
+Asciz	_state_$eq;
+Asciz	(Lscala/Enumeration$Value;)V;
+NameAndType	_state_$eq:(Lscala/Enumeration$Value;)V
+InterfaceMethod	scala/actors/Reactor._state_$eq:(Lscala/Enumeration$Value;)V
 Asciz	newActor;
 NameAndType	newActor:(Lscala/actors/Reactor;)V
 InterfaceMethod	scala/actors/IScheduler.newActor:(Lscala/actors/Reactor;)V
@@ -253,6 +278,13 @@ Method	scala/actors/Reactor$$anonfun$start$1."<init>":(Lscala/actors/Reactor;)V
 Asciz	execute;
 NameAndType	execute:(Ljava/lang/Runnable;)V
 InterfaceMethod	scala/actors/IScheduler.execute:(Ljava/lang/Runnable;)V
+Asciz	getState;
+Asciz	(Lscala/actors/Reactor;)Lscala/Enumeration$Value;;
+Asciz	Suspended;
+NameAndType	Suspended:()Lscala/Enumeration$Value;
+Method	scala/actors/Actor$State$.Suspended:()Lscala/Enumeration$Value;
+Asciz	scala/Enumeration$Value;
+class	scala/Enumeration$Value
 Asciz	mkBody;
 Asciz	(Lscala/actors/Reactor;Lscala/Function0;)Lscala/actors/Actor$Body;;
 Asciz	scala/actors/Reactor$$anon$3;
@@ -286,6 +318,9 @@ Asciz	(Lscala/actors/Reactor;)Lscala/runtime/Nothing$;;
 Asciz	terminated;
 NameAndType	terminated:()V
 InterfaceMethod	scala/actors/Reactor.terminated:()V
+Asciz	Terminated;
+NameAndType	Terminated:()Lscala/Enumeration$Value;
+Method	scala/actors/Actor$State$.Terminated:()Lscala/Enumeration$Value;
 NameAndType	terminated:(Lscala/actors/Reactor;)V
 InterfaceMethod	scala/actors/IScheduler.terminated:(Lscala/actors/Reactor;)V
 Asciz	$init$;
@@ -308,6 +343,9 @@ Asciz	scala/actors/Actor$Body;
 class	scala/actors/Actor$Body
 Asciz	Body;
 Asciz	$anon$3;
+Asciz	scala/Enumeration;
+class	scala/Enumeration
+Asciz	Value;
 Asciz	$anonfun$3;
 Asciz	$anonfun$2;
 Asciz	$anonfun$1;
@@ -316,8 +354,6 @@ Asciz	$anonfun$start$1;
 Asciz	$anonfun$startSearch$1;
 Asciz	scala/actors/Reactor$class;
 class	scala/actors/Reactor$class
-Asciz	java/lang/Object;
-class	java/lang/Object
 
 {
 public static scala.PartialFunction exceptionHandler(scala.actors.Reactor);
@@ -680,7 +716,7 @@ public static scala.runtime.Nothing$ react(scala.actors.Reactor, scala.PartialFu
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      42      0    $this       Lscala/actors/Reactor;
-   0      42      1    f       Lscala/PartialFunction;
+   0      42      1    handler       Lscala/PartialFunction;
 
 
 public static void scheduleActor(scala.actors.Reactor, scala.PartialFunction, java.lang.Object);
@@ -713,7 +749,29 @@ public static void scheduleActor(scala.actors.Reactor, scala.PartialFunction, ja
 public static scala.actors.Reactor start(scala.actors.Reactor);
   Signature: (Lscala/actors/Reactor;)Lscala/actors/Reactor;
   Code:
-   Stack=5, Locals=1, Args_size=1
+   Stack=5, Locals=2, Args_size=1
+	aload_0
+	dup
+	pop
+	monitorenter
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/Reactor._state:()Lscala/Enumeration$Value;
+	getstatic	Field scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
+	invokevirtual	Method scala/actors/Actor$State$.New:()Lscala/Enumeration$Value;
+	astore_1
+	dup
+	ifnonnull	l1 // aload_1
+	pop
+	aload_1
+	ifnull	l2 // aload_0
+	goto	l3 // aload_0
+l1	aload_1
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l3 // aload_0
+l2	aload_0
+	getstatic	Field scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
+	invokevirtual	Method scala/actors/Actor$State$.Runnable:()Lscala/Enumeration$Value;
+	invokeinterface	InterfaceMethod scala/actors/Reactor._state_$eq:(Lscala/Enumeration$Value;)V
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
 	aload_0
@@ -727,12 +785,63 @@ public static scala.actors.Reactor start(scala.actors.Reactor);
 	invokespecial	Method scala/actors/Reactor$$anonfun$start$1."<init>":(Lscala/actors/Reactor;)V
 	invokeinterface	InterfaceMethod scala/actors/Reactor.makeReaction:(Lscala/Function0;)Ljava/lang/Runnable;
 	invokeinterface	InterfaceMethod scala/actors/IScheduler.execute:(Ljava/lang/Runnable;)V
+	goto	l3 // aload_0
+l3	aload_0
+	monitorexit
 	aload_0
+	checkcast	class scala/actors/Reactor
 	areturn
+	aload_0
+	monitorexit
+	athrow
   Labels:
+   	l1 = 29 // aload_1
+   	l2 = 36 // aload_0
+   	l3 = 88 // aload_0
+  Exception table:
+   from   to  target type
+     4    90    95   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      39      0    $this       Lscala/actors/Reactor;
+   0      98      0    $this       Lscala/actors/Reactor;
+
+
+public static scala.Enumeration$Value getState(scala.actors.Reactor);
+  Signature: (Lscala/actors/Reactor;)Lscala/Enumeration$Value;
+  Code:
+   Stack=2, Locals=2, Args_size=1
+	aload_0
+	dup
+	pop
+	monitorenter
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor:()Lscala/PartialFunction;
+	getstatic	Field scala/actors/Reactor$.MODULE$:Lscala/actors/Reactor$;
+	invokevirtual	Method scala/actors/Reactor$.waitingForNone:()Lscala/PartialFunction;
+	if_acmpeq	l1 // aload_0
+	getstatic	Field scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
+	invokevirtual	Method scala/actors/Actor$State$.Suspended:()Lscala/Enumeration$Value;
+	goto	l2 // astore_1
+l1	aload_0
+	invokeinterface	InterfaceMethod scala/actors/Reactor._state:()Lscala/Enumeration$Value;
+l2	astore_1
+	aload_0
+	monitorexit
+	aload_1
+	checkcast	class scala/Enumeration$Value
+	areturn
+	aload_0
+	monitorexit
+	athrow
+  Labels:
+   	l1 = 28 // aload_0
+   	l2 = 34 // astore_1
+  Exception table:
+   from   to  target type
+     4    37    42   any
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      45      0    $this       Lscala/actors/Reactor;
 
 
 public static scala.actors.Actor$Body mkBody(scala.actors.Reactor, scala.Function0);
@@ -803,14 +912,30 @@ public static void terminated(scala.actors.Reactor);
   Code:
    Stack=2, Locals=1, Args_size=1
 	aload_0
+	dup
+	pop
+	monitorenter
+	aload_0
+	getstatic	Field scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
+	invokevirtual	Method scala/actors/Actor$State$.Terminated:()Lscala/Enumeration$Value;
+	invokeinterface	InterfaceMethod scala/actors/Reactor._state_$eq:(Lscala/Enumeration$Value;)V
+	aload_0
+	monitorexit
+	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/IScheduler.terminated:(Lscala/actors/Reactor;)V
 	return
+	aload_0
+	monitorexit
+	athrow
   Labels:
+  Exception table:
+   from   to  target type
+     4    18    31   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      13      0    $this       Lscala/actors/Reactor;
+   0      34      0    $this       Lscala/actors/Reactor;
 
 
 public static void $init$(scala.actors.Reactor);
@@ -834,6 +959,10 @@ public static void $init$(scala.actors.Reactor);
 	invokevirtual	Method scala/actors/Reactor$.waitingForNone:()Lscala/PartialFunction;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor_$eq:(Lscala/PartialFunction;)V
 	aload_0
+	getstatic	Field scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
+	invokevirtual	Method scala/actors/Actor$State$.New:()Lscala/Enumeration$Value;
+	invokeinterface	InterfaceMethod scala/actors/Reactor._state_$eq:(Lscala/Enumeration$Value;)V
+	aload_0
 	new	class scala/actors/Reactor$$anonfun$3
 	dup
 	aload_0
@@ -843,7 +972,7 @@ public static void $init$(scala.actors.Reactor);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      59      0    $this       Lscala/actors/Reactor;
+   0      71      0    $this       Lscala/actors/Reactor;
 
 
 }

@@ -2,7 +2,7 @@ Compiled from "ReplyableReactor.scala"
 public final class scala.actors.ReplyableReactor$$anon$3 extends java.lang.Object implements scala.actors.OutputChannel
   SourceFile: "ReplyableReactor.scala"
   Signature: length = 0x2
-   00 46 
+   00 45 
   Scala: length = 0x
    
   InnerClass: 
@@ -17,8 +17,8 @@ Asciz	Lscala/concurrent/SyncVar;;
 Asciz	ftch$1;
 Asciz	Lscala/actors/ReactChannel;;
 Asciz	myself$2;
-Asciz	Lscala/actors/Reactor;;
-Asciz	f$1;
+Asciz	Lscala/actors/ReplyReactor;;
+Asciz	handler$1;
 Asciz	Lscala/PartialFunction;;
 Asciz	$bang;
 Asciz	(Ljava/lang/Object;)V;
@@ -26,8 +26,8 @@ Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/actors/ReplyableReactor$$anon$3;
 class	scala/actors/ReplyableReactor$$anon$3
-NameAndType	f$1:Lscala/PartialFunction;
-Field	scala/actors/ReplyableReactor$$anon$3.f$1:Lscala/PartialFunction;
+NameAndType	handler$1:Lscala/PartialFunction;
+Field	scala/actors/ReplyableReactor$$anon$3.handler$1:Lscala/PartialFunction;
 Asciz	scala/Function1;
 class	scala/Function1
 Asciz	apply;
@@ -66,19 +66,18 @@ NameAndType	forward:(Ljava/lang/Object;)V
 Method	scala/actors/ReactChannel.forward:(Ljava/lang/Object;)V
 Asciz	receiver;
 Asciz	()Lscala/actors/Actor;;
-NameAndType	myself$2:Lscala/actors/Reactor;
-Field	scala/actors/ReplyableReactor$$anon$3.myself$2:Lscala/actors/Reactor;
+NameAndType	myself$2:Lscala/actors/ReplyReactor;
+Field	scala/actors/ReplyableReactor$$anon$3.myself$2:Lscala/actors/ReplyReactor;
 Asciz	scala/actors/Actor;
 class	scala/actors/Actor
 Asciz	<init>;
-Asciz	(Lscala/actors/ReplyReactor;Lscala/PartialFunction;Lscala/actors/Reactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V;
+Asciz	(Lscala/actors/ReplyReactor;Lscala/PartialFunction;Lscala/actors/ReplyReactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V;
 Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	java/lang/Object."<init>":()V
 Asciz	$outer;
-Asciz	Lscala/actors/ReplyReactor;;
 Asciz	Ljava/lang/Object;Lscala/actors/OutputChannel<Ljava/lang/Object;>;;
 Asciz	Scala;
 Asciz	InnerClasses;
@@ -95,10 +94,10 @@ private final scala.concurrent.SyncVar res$2;
 private final scala.actors.ReactChannel ftch$1;
   Signature: Lscala/actors/ReactChannel;
 
-private final scala.actors.Reactor myself$2;
-  Signature: Lscala/actors/Reactor;
+private final scala.actors.ReplyReactor myself$2;
+  Signature: Lscala/actors/ReplyReactor;
 
-private final scala.PartialFunction f$1;
+private final scala.PartialFunction handler$1;
   Signature: Lscala/PartialFunction;
 
 public void $bang(java.lang.Object);
@@ -106,7 +105,7 @@ public void $bang(java.lang.Object);
   Code:
    Stack=2, Locals=3, Args_size=2
 	aload_0
-	getfield	Field f$1:Lscala/PartialFunction;
+	getfield	Field handler$1:Lscala/PartialFunction;
 	aload_1
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	astore_2
@@ -132,7 +131,7 @@ public void send(java.lang.Object, scala.actors.OutputChannel);
   Code:
    Stack=3, Locals=4, Args_size=3
 	aload_0
-	getfield	Field f$1:Lscala/PartialFunction;
+	getfield	Field handler$1:Lscala/PartialFunction;
 	aload_1
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	astore_3
@@ -162,7 +161,7 @@ public void forward(java.lang.Object);
   Code:
    Stack=2, Locals=3, Args_size=2
 	aload_0
-	getfield	Field f$1:Lscala/PartialFunction;
+	getfield	Field handler$1:Lscala/PartialFunction;
 	aload_1
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	astore_2
@@ -188,21 +187,21 @@ public scala.actors.Actor receiver();
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	getfield	Field myself$2:Lscala/actors/Reactor;
+	getfield	Field myself$2:Lscala/actors/ReplyReactor;
 	checkcast	class scala/actors/Actor
 	areturn
   Labels:
 
-public scala.actors.ReplyableReactor$$anon$3(scala.actors.ReplyReactor, scala.PartialFunction, scala.actors.Reactor, scala.actors.ReactChannel, scala.concurrent.SyncVar);
-  Signature: (Lscala/actors/ReplyReactor;Lscala/PartialFunction;Lscala/actors/Reactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V
+public scala.actors.ReplyableReactor$$anon$3(scala.actors.ReplyReactor, scala.PartialFunction, scala.actors.ReplyReactor, scala.actors.ReactChannel, scala.concurrent.SyncVar);
+  Signature: (Lscala/actors/ReplyReactor;Lscala/PartialFunction;Lscala/actors/ReplyReactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V
   Code:
    Stack=2, Locals=6, Args_size=6
 	aload_0
 	aload_2
-	putfield	Field f$1:Lscala/PartialFunction;
+	putfield	Field handler$1:Lscala/PartialFunction;
 	aload_0
 	aload_3
-	putfield	Field myself$2:Lscala/actors/Reactor;
+	putfield	Field myself$2:Lscala/actors/ReplyReactor;
 	aload_0
 	aload	4
 	putfield	Field ftch$1:Lscala/actors/ReactChannel;

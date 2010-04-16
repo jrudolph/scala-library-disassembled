@@ -4,7 +4,11 @@ public abstract class scala.actors.ReplyReactor$class extends java.lang.Object
   Scala: length = 0x
    
   InnerClass: 
+   public abstract Value=class scala/Enumeration$Value of class scala/Enumeration
+   public final $anon$1=class scala/actors/ReplyReactor$$anon$1 of class scala/actors/ReplyReactor
+   public final $anonfun$2=class scala/actors/ReplyReactor$$anonfun$2 of class scala/actors/ReplyReactor
    public final $anonfun$1=class scala/actors/ReplyReactor$$anonfun$1 of class scala/actors/ReplyReactor
+   public final $anonfun$reactWithin$2=class scala/actors/ReplyReactor$$anonfun$reactWithin$2 of class scala/actors/ReplyReactor
    public final $anonfun$searchMailbox$1=class scala/actors/ReplyReactor$$anonfun$searchMailbox$1 of class scala/actors/ReplyReactor
   minor version: 0
   major version: 49
@@ -56,9 +60,9 @@ Asciz	()Lscala/actors/IScheduler;;
 NameAndType	scheduler:()Lscala/actors/IScheduler;
 InterfaceMethod	scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
 Asciz	rawSelf;
-Asciz	(Lscala/actors/IScheduler;)Lscala/actors/Reactor;;
-NameAndType	rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
-Method	scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
+Asciz	(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;;
+NameAndType	rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+Method	scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
 Asciz	send;
 Asciz	(Ljava/lang/Object;Lscala/actors/OutputChannel;)V;
 NameAndType	send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
@@ -67,6 +71,33 @@ Asciz	forward;
 Method	scala/actors/Actor$.sender:()Lscala/actors/OutputChannel;
 Asciz	resumeReceiver;
 Asciz	(Lscala/actors/ReplyReactor;Lscala/Tuple2;Lscala/PartialFunction;Z)V;
+Asciz	onTimeout;
+Asciz	()Lscala/Option;;
+NameAndType	onTimeout:()Lscala/Option;
+InterfaceMethod	scala/actors/ReplyReactor.onTimeout:()Lscala/Option;
+Asciz	scala/Option;
+class	scala/Option
+Asciz	isEmpty;
+Asciz	()Z;
+NameAndType	isEmpty:()Z
+Method	scala/Option.isEmpty:()Z
+Asciz	get;
+NameAndType	get:()Ljava/lang/Object;
+Method	scala/Option.get:()Ljava/lang/Object;
+Asciz	java/util/TimerTask;
+class	java/util/TimerTask
+Asciz	cancel;
+NameAndType	cancel:()Z
+Method	java/util/TimerTask.cancel:()Z
+Asciz	scala/None$;
+class	scala/None$
+Asciz	Lscala/None$;;
+NameAndType	MODULE$:Lscala/None$;
+Field	scala/None$.MODULE$:Lscala/None$;
+Asciz	onTimeout_$eq;
+Asciz	(Lscala/Option;)V;
+NameAndType	onTimeout_$eq:(Lscala/Option;)V
+InterfaceMethod	scala/actors/ReplyReactor.onTimeout_$eq:(Lscala/Option;)V
 Asciz	scala/collection/immutable/List$;
 class	scala/collection/immutable/List$
 Asciz	Lscala/collection/immutable/List$;;
@@ -96,22 +127,10 @@ Asciz	senders_$eq;
 Asciz	(Lscala/collection/immutable/List;)V;
 NameAndType	senders_$eq:(Lscala/collection/immutable/List;)V
 InterfaceMethod	scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
-Asciz	_1;
-NameAndType	_1:()Ljava/lang/Object;
-Method	scala/Tuple2._1:()Ljava/lang/Object;
-Asciz	scala/Function1;
-class	scala/Function1
-Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
-NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
-InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-Asciz	scheduleActor;
-Asciz	(Lscala/PartialFunction;Ljava/lang/Object;)V;
-NameAndType	scheduleActor:(Lscala/PartialFunction;Ljava/lang/Object;)V
-InterfaceMethod	scala/actors/Reactor.scheduleActor:(Lscala/PartialFunction;Ljava/lang/Object;)V
-Asciz	suspendException;
-Asciz	()Lscala/actors/SuspendActorControl;;
-NameAndType	suspendException:()Lscala/actors/SuspendActorControl;
-Method	scala/actors/Actor$.suspendException:()Lscala/actors/SuspendActorControl;
+Asciz	scala$actors$ReplyReactor$$super$resumeReceiver;
+Asciz	(Lscala/Tuple2;Lscala/PartialFunction;Z)V;
+NameAndType	scala$actors$ReplyReactor$$super$resumeReceiver:(Lscala/Tuple2;Lscala/PartialFunction;Z)V
+InterfaceMethod	scala/actors/ReplyReactor.scala$actors$ReplyReactor$$super$resumeReceiver:(Lscala/Tuple2;Lscala/PartialFunction;Z)V
 Asciz	item;
 Asciz	Lscala/Tuple2;;
 Asciz	handler;
@@ -148,14 +167,15 @@ Method	scala/actors/MQueue.foreach:(Lscala/Function2;)V
 Asciz	sendBuffer;
 NameAndType	sendBuffer:()Lscala/actors/MQueue;
 InterfaceMethod	scala/actors/Reactor.sendBuffer:()Lscala/actors/MQueue;
-Asciz	isEmpty;
-Asciz	()Z;
-NameAndType	isEmpty:()Z
 Method	scala/actors/MQueue.isEmpty:()Z
 Asciz	waitingFor_$eq;
 Asciz	(Lscala/PartialFunction;)V;
 NameAndType	waitingFor_$eq:(Lscala/PartialFunction;)V
 InterfaceMethod	scala/actors/Reactor.waitingFor_$eq:(Lscala/PartialFunction;)V
+Asciz	suspendException;
+Asciz	()Lscala/actors/SuspendActorControl;;
+NameAndType	suspendException:()Lscala/actors/SuspendActorControl;
+Method	scala/actors/Actor$.suspendException:()Lscala/actors/SuspendActorControl;
 Asciz	Temp;
 String	Temp
 Asciz	(Ljava/lang/String;)V;
@@ -175,12 +195,11 @@ Method	scala/actors/MQueueElement.session:()Lscala/actors/OutputChannel;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Method	scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-Asciz	(Lscala/Tuple2;Lscala/PartialFunction;Z)V;
 NameAndType	resumeReceiver:(Lscala/Tuple2;Lscala/PartialFunction;Z)V
 InterfaceMethod	scala/actors/ReplyReactor.resumeReceiver:(Lscala/Tuple2;Lscala/PartialFunction;Z)V
 Asciz	startMbox;
 Asciz	Lscala/actors/MQueue;;
-Asciz	handler$1;
+Asciz	handler$2;
 Asciz	resumeOnSameThread;
 Asciz	tmpMbox;
 Asciz	qel;
@@ -195,6 +214,104 @@ NameAndType	"<init>":(Lscala/actors/ReplyReactor;Lscala/Function0;)V
 Method	scala/actors/ReplyReactorTask."<init>":(Lscala/actors/ReplyReactor;Lscala/Function0;)V
 Asciz	fun;
 Asciz	Lscala/Function0;;
+Asciz	react;
+Asciz	(Lscala/actors/ReplyReactor;Lscala/PartialFunction;)Lscala/runtime/Nothing$;;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	java/lang/AssertionError;
+class	java/lang/AssertionError
+Asciz	scala/collection/mutable/StringBuilder;
+class	scala/collection/mutable/StringBuilder
+Asciz	()V;
+NameAndType	"<init>":()V
+Method	scala/collection/mutable/StringBuilder."<init>":()V
+Asciz	assertion failed: ;
+String	assertion failed: 
+Asciz	append;
+Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
+NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+Asciz	react on channel belonging to other actor;
+String	react on channel belonging to other actor
+Asciz	toString;
+Asciz	()Ljava/lang/String;;
+NameAndType	toString:()Ljava/lang/String;
+Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+NameAndType	"<init>":(Ljava/lang/Object;)V
+Method	java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
+Asciz	scala$actors$ReplyReactor$$super$react;
+Asciz	(Lscala/PartialFunction;)Lscala/runtime/Nothing$;;
+NameAndType	scala$actors$ReplyReactor$$super$react:(Lscala/PartialFunction;)Lscala/runtime/Nothing$;
+InterfaceMethod	scala/actors/ReplyReactor.scala$actors$ReplyReactor$$super$react:(Lscala/PartialFunction;)Lscala/runtime/Nothing$;
+Asciz	reactWithin;
+Asciz	(Lscala/actors/ReplyReactor;JLscala/PartialFunction;)Lscala/runtime/Nothing$;;
+Asciz	scala/actors/ReplyReactor$$anonfun$reactWithin$2;
+class	scala/actors/ReplyReactor$$anonfun$reactWithin$2
+Method	scala/actors/ReplyReactor$$anonfun$reactWithin$2."<init>":(Lscala/actors/ReplyReactor;)V
+Asciz	scala/actors/ReplyReactor$$anonfun$2;
+class	scala/actors/ReplyReactor$$anonfun$2
+Method	scala/actors/ReplyReactor$$anonfun$2."<init>":(Lscala/actors/ReplyReactor;Lscala/PartialFunction;)V
+Asciz	scala/actors/TIMEOUT$;
+class	scala/actors/TIMEOUT$
+Asciz	Lscala/actors/TIMEOUT$;;
+NameAndType	MODULE$:Lscala/actors/TIMEOUT$;
+Field	scala/actors/TIMEOUT$.MODULE$:Lscala/actors/TIMEOUT$;
+Asciz	scala/Some;
+class	scala/Some
+Asciz	scala/actors/ReplyReactor$$anon$1;
+class	scala/actors/ReplyReactor$$anon$1
+Asciz	(Lscala/actors/ReplyReactor;Lscala/actors/ReplyReactor;)V;
+NameAndType	"<init>":(Lscala/actors/ReplyReactor;Lscala/actors/ReplyReactor;)V
+Method	scala/actors/ReplyReactor$$anon$1."<init>":(Lscala/actors/ReplyReactor;Lscala/actors/ReplyReactor;)V
+Method	scala/Some."<init>":(Ljava/lang/Object;)V
+Asciz	timer;
+Asciz	()Ljava/util/Timer;;
+NameAndType	timer:()Ljava/util/Timer;
+Method	scala/actors/Actor$.timer:()Ljava/util/Timer;
+Asciz	java/util/Timer;
+class	java/util/Timer
+Asciz	schedule;
+Asciz	(Ljava/util/TimerTask;J)V;
+NameAndType	schedule:(Ljava/util/TimerTask;J)V
+Method	java/util/Timer.schedule:(Ljava/util/TimerTask;J)V
+Asciz	msec;
+Asciz	J;
+Asciz	handler$1;
+Asciz	getState;
+Asciz	(Lscala/actors/ReplyReactor;)Lscala/Enumeration$Value;;
+Asciz	waitingFor;
+Asciz	()Lscala/PartialFunction;;
+NameAndType	waitingFor:()Lscala/PartialFunction;
+InterfaceMethod	scala/actors/Reactor.waitingFor:()Lscala/PartialFunction;
+Asciz	scala/actors/Reactor$;
+class	scala/actors/Reactor$
+Asciz	Lscala/actors/Reactor$;;
+NameAndType	MODULE$:Lscala/actors/Reactor$;
+Field	scala/actors/Reactor$.MODULE$:Lscala/actors/Reactor$;
+Asciz	waitingForNone;
+NameAndType	waitingForNone:()Lscala/PartialFunction;
+Method	scala/actors/Reactor$.waitingForNone:()Lscala/PartialFunction;
+Asciz	scala/actors/Actor$State$;
+class	scala/actors/Actor$State$
+Asciz	Lscala/actors/Actor$State$;;
+NameAndType	MODULE$:Lscala/actors/Actor$State$;
+Field	scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
+Asciz	Suspended;
+Asciz	()Lscala/Enumeration$Value;;
+NameAndType	Suspended:()Lscala/Enumeration$Value;
+Method	scala/actors/Actor$State$.Suspended:()Lscala/Enumeration$Value;
+Asciz	TimedSuspended;
+NameAndType	TimedSuspended:()Lscala/Enumeration$Value;
+Method	scala/actors/Actor$State$.TimedSuspended:()Lscala/Enumeration$Value;
+Asciz	_state;
+NameAndType	_state:()Lscala/Enumeration$Value;
+InterfaceMethod	scala/actors/Reactor._state:()Lscala/Enumeration$Value;
+Asciz	scala/Enumeration$Value;
+class	scala/Enumeration$Value
 Asciz	$init$;
 Asciz	scala/collection/immutable/Nil$;
 class	scala/collection/immutable/Nil$
@@ -203,12 +320,16 @@ NameAndType	MODULE$:Lscala/collection/immutable/Nil$;
 Field	scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 Asciz	Scala;
 Asciz	InnerClasses;
+Asciz	scala/Enumeration;
+class	scala/Enumeration
+Asciz	Value;
+Asciz	$anon$1;
+Asciz	$anonfun$2;
 Asciz	$anonfun$1;
+Asciz	$anonfun$reactWithin$2;
 Asciz	$anonfun$searchMailbox$1;
 Asciz	scala/actors/ReplyReactor$class;
 class	scala/actors/ReplyReactor$class
-Asciz	java/lang/Object;
-class	java/lang/Object
 
 {
 public static scala.actors.OutputChannel sender(scala.actors.ReplyReactor);
@@ -251,7 +372,7 @@ public static void $bang(scala.actors.ReplyReactor, java.lang.Object);
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
-	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
+	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
 	return
   Labels:
@@ -283,6 +404,26 @@ public static void resumeReceiver(scala.actors.ReplyReactor, scala.Tuple2, scala
   Code:
    Stack=7, Locals=4, Args_size=4
 	aload_0
+	dup
+	pop
+	monitorenter
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.onTimeout:()Lscala/Option;
+	invokevirtual	Method scala/Option.isEmpty:()Z
+	ifeq	l1 // aload_0
+	goto	l2 // aload_0
+l1	aload_0
+	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.onTimeout:()Lscala/Option;
+	invokevirtual	Method scala/Option.get:()Ljava/lang/Object;
+	checkcast	class java/util/TimerTask
+	invokevirtual	Method java/util/TimerTask.cancel:()Z
+	pop
+	aload_0
+	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.onTimeout_$eq:(Lscala/Option;)V
+l2	aload_0
+	monitorexit
+	aload_0
 	getstatic	Field scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_1
@@ -297,30 +438,27 @@ public static void resumeReceiver(scala.actors.ReplyReactor, scala.Tuple2, scala
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 	invokevirtual	Method scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
+	aload_0
+	aload_1
+	aload_2
 	iload_3
-	ifeq	l1 // aload_0
-	aload_2
-	aload_1
-	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	pop
+	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.scala$actors$ReplyReactor$$super$resumeReceiver:(Lscala/Tuple2;Lscala/PartialFunction;Z)V
 	return
-l1	aload_0
-	aload_2
-	aload_1
-	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduleActor:(Lscala/PartialFunction;Ljava/lang/Object;)V
-	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
-	invokevirtual	Method scala/actors/Actor$.suspendException:()Lscala/actors/SuspendActorControl;
+	aload_0
+	monitorexit
 	athrow
   Labels:
-   	l1 = 51 // aload_0
+   	l1 = 19 // aload_0
+   	l2 = 44 // aload_0
+  Exception table:
+   from   to  target type
+     4    46    91   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      69      0    $this       Lscala/actors/ReplyReactor;
-   0      69      1    item       Lscala/Tuple2;
-   0      69      2    handler       Lscala/PartialFunction;
-   0      69      3    onSameThread       Z
+   0      94      0    $this       Lscala/actors/ReplyReactor;
+   0      94      1    item       Lscala/Tuple2;
+   0      94      2    handler       Lscala/PartialFunction;
+   0      94      3    onSameThread       Z
 
 
 public static void searchMailbox(scala.actors.ReplyReactor, scala.actors.MQueue, scala.PartialFunction, boolean);
@@ -410,7 +548,7 @@ l5	goto	l6 // iload
    Start  Length  Slot  Name   Signature
    0      145      0    $this       Lscala/actors/ReplyReactor;
    0      145      1    startMbox       Lscala/actors/MQueue;
-   0      145      2    handler$1       Lscala/PartialFunction;
+   0      145      2    handler$2       Lscala/PartialFunction;
    0      145      3    resumeOnSameThread       Z
    3      142      4    tmpMbox       Lscala/actors/MQueue;
    28      111      5    qel       Lscala/actors/MQueueElement;
@@ -435,6 +573,263 @@ public static java.lang.Runnable makeReaction(scala.actors.ReplyReactor, scala.F
    0      10      1    fun       Lscala/Function0;
 
 
+public static scala.runtime.Nothing$ react(scala.actors.ReplyReactor, scala.PartialFunction);
+  Signature: (Lscala/actors/ReplyReactor;Lscala/PartialFunction;)Lscala/runtime/Nothing$;
+  Code:
+   Stack=4, Locals=3, Args_size=2
+	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
+	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+	dup
+	ifnonnull	l1 // aload_0
+	pop
+	aload_0
+	ifnull	l2 // iconst_1
+	goto	l3 // iconst_0
+l1	aload_0
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l3 // iconst_0
+l2	iconst_1
+	goto	l4 // istore_2
+l3	iconst_0
+l4	istore_2
+	iload_2
+	ifne	l5 // aload_0
+	new	class java/lang/AssertionError
+	dup
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	ldc	String assertion failed: 
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	ldc	String react on channel belonging to other actor
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokespecial	Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
+	athrow
+l5	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.scala$actors$ReplyReactor$$super$react:(Lscala/PartialFunction;)Lscala/runtime/Nothing$;
+	areturn
+  Labels:
+   	l1 = 24 // aload_0
+   	l2 = 31 // iconst_1
+   	l3 = 35 // iconst_0
+   	l4 = 36 // istore_2
+   	l5 = 69 // aload_0
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      77      0    $this       Lscala/actors/ReplyReactor;
+   0      77      1    handler       Lscala/PartialFunction;
+
+
+public static scala.runtime.Nothing$ reactWithin(scala.actors.ReplyReactor, long, scala.PartialFunction);
+  Signature: (Lscala/actors/ReplyReactor;JLscala/PartialFunction;)Lscala/runtime/Nothing$;
+  Code:
+   Stack=7, Locals=6, Args_size=3
+	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
+	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+	dup
+	ifnonnull	l1 // aload_0
+	pop
+	aload_0
+	ifnull	l2 // iconst_1
+	goto	l3 // iconst_0
+l1	aload_0
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l3 // iconst_0
+l2	iconst_1
+	goto	l4 // istore
+l3	iconst_0
+l4	istore	4
+	iload	4
+	ifne	l5 // aload_0
+	new	class java/lang/AssertionError
+	dup
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	ldc	String assertion failed: 
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	ldc	String react on channel belonging to other actor
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokespecial	Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
+	athrow
+l5	aload_0
+	dup
+	pop
+	monitorenter
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
+	aload_0
+	monitorexit
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
+	new	class scala/actors/ReplyReactor$$anonfun$reactWithin$2
+	dup
+	aload_0
+	invokespecial	Method scala/actors/ReplyReactor$$anonfun$reactWithin$2."<init>":(Lscala/actors/ReplyReactor;)V
+	invokevirtual	Method scala/actors/MQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MQueueElement;
+	pop
+l11	aload_0
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
+	new	class scala/actors/ReplyReactor$$anonfun$2
+	dup
+	aload_0
+	aload_3
+	invokespecial	Method scala/actors/ReplyReactor$$anonfun$2."<init>":(Lscala/actors/ReplyReactor;Lscala/PartialFunction;)V
+	invokevirtual	Method scala/actors/MQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MQueueElement;
+	astore	5
+	aload	5
+	ifnonnull	l6 // aload_0
+	aload_0
+	dup
+	pop
+	monitorenter
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/Reactor.sendBuffer:()Lscala/actors/MQueue;
+	invokevirtual	Method scala/actors/MQueue.isEmpty:()Z
+	ifeq	l7 // aload_0
+	lload_1
+	lconst_0
+	lcmp
+	ifne	l8 // aload_0
+	aload_0
+	new	class scala/Tuple2
+	dup
+	getstatic	Field scala/actors/TIMEOUT$.MODULE$:Lscala/actors/TIMEOUT$;
+	aload_0
+	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+	aload_3
+	iconst_0
+	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.resumeReceiver:(Lscala/Tuple2;Lscala/PartialFunction;Z)V
+	goto	l9 // aload_0
+l8	aload_0
+	aload_3
+	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor_$eq:(Lscala/PartialFunction;)V
+	aload_0
+	new	class scala/Some
+	dup
+	new	class scala/actors/ReplyReactor$$anon$1
+	dup
+	aload_0
+	aload_0
+	invokespecial	Method scala/actors/ReplyReactor$$anon$1."<init>":(Lscala/actors/ReplyReactor;Lscala/actors/ReplyReactor;)V
+	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
+	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.onTimeout_$eq:(Lscala/Option;)V
+	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
+	invokevirtual	Method scala/actors/Actor$.timer:()Ljava/util/Timer;
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.onTimeout:()Lscala/Option;
+	invokevirtual	Method scala/Option.get:()Ljava/lang/Object;
+	checkcast	class java/util/TimerTask
+	lload_1
+	invokevirtual	Method java/util/Timer.schedule:(Ljava/util/TimerTask;J)V
+	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
+	invokevirtual	Method scala/actors/Actor$.suspendException:()Lscala/actors/SuspendActorControl;
+	athrow
+l7	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
+	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
+l9	aload_0
+	monitorexit
+	goto	l10 // goto
+l6	aload_0
+	new	class scala/Tuple2
+	dup
+	aload	5
+	invokevirtual	Method scala/actors/MQueueElement.msg:()Ljava/lang/Object;
+	aload	5
+	invokevirtual	Method scala/actors/MQueueElement.session:()Lscala/actors/OutputChannel;
+	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+	aload_3
+	iconst_0
+	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.resumeReceiver:(Lscala/Tuple2;Lscala/PartialFunction;Z)V
+l10	goto	l11 // aload_0
+	aload_0
+	monitorexit
+	athrow
+	aload_0
+	monitorexit
+	athrow
+  Labels:
+   	l1 = 24 // aload_0
+   	l2 = 31 // iconst_1
+   	l3 = 35 // iconst_0
+   	l4 = 36 // istore
+   	l5 = 71 // aload_0
+   	l11 = 107 // aload_0
+   	l8 = 176 // aload_0
+   	l7 = 234 // aload_0
+   	l9 = 246 // aload_0
+   	l6 = 251 // aload_0
+   	l10 = 276 // goto
+  Exception table:
+   from   to  target type
+   136   248   282   any
+    75    89   279   any
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      285      0    $this       Lscala/actors/ReplyReactor;
+   0      285      1    msec       J
+   0      285      3    handler$1       Lscala/PartialFunction;
+   127      149      5    qel       Lscala/actors/MQueueElement;
+   282      3      5    qel       Lscala/actors/MQueueElement;
+
+
+public static scala.Enumeration$Value getState(scala.actors.ReplyReactor);
+  Signature: (Lscala/actors/ReplyReactor;)Lscala/Enumeration$Value;
+  Code:
+   Stack=2, Locals=2, Args_size=1
+	aload_0
+	dup
+	pop
+	monitorenter
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor:()Lscala/PartialFunction;
+	getstatic	Field scala/actors/Reactor$.MODULE$:Lscala/actors/Reactor$;
+	invokevirtual	Method scala/actors/Reactor$.waitingForNone:()Lscala/PartialFunction;
+	if_acmpeq	l1 // aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.onTimeout:()Lscala/Option;
+	invokevirtual	Method scala/Option.isEmpty:()Z
+	ifeq	l2 // getstatic
+	getstatic	Field scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
+	invokevirtual	Method scala/actors/Actor$State$.Suspended:()Lscala/Enumeration$Value;
+	goto	l3 // astore_1
+l2	getstatic	Field scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
+	invokevirtual	Method scala/actors/Actor$State$.TimedSuspended:()Lscala/Enumeration$Value;
+	goto	l3 // astore_1
+l1	aload_0
+	invokeinterface	InterfaceMethod scala/actors/Reactor._state:()Lscala/Enumeration$Value;
+l3	astore_1
+	aload_0
+	monitorexit
+	aload_1
+	checkcast	class scala/Enumeration$Value
+	areturn
+	aload_0
+	monitorexit
+	athrow
+  Labels:
+   	l2 = 40 // getstatic
+   	l1 = 49 // aload_0
+   	l3 = 55 // astore_1
+  Exception table:
+   from   to  target type
+     4    58    63   any
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      66      0    $this       Lscala/actors/ReplyReactor;
+
+
 public static void $init$(scala.actors.ReplyReactor);
   Signature: (Lscala/actors/ReplyReactor;)V
   Code:
@@ -442,11 +837,14 @@ public static void $init$(scala.actors.ReplyReactor);
 	aload_0
 	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
+	aload_0
+	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.onTimeout_$eq:(Lscala/Option;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      10      0    $this       Lscala/actors/ReplyReactor;
+   0      19      0    $this       Lscala/actors/ReplyReactor;
 
 
 }

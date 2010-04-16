@@ -23,10 +23,21 @@ Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/Tuple3$."<init>":()V
 Asciz	unapply;
-Asciz	(Lscala/Tuple3;)Lscala/Some;;
+Asciz	(Lscala/Tuple3;)Lscala/Option;;
+Asciz	LineNumberTable;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	scala/None$;
+class	scala/None$
+Asciz	Lscala/None$;;
+NameAndType	MODULE$:Lscala/None$;
+Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/Some;
 class	scala/Some
-Asciz	LineNumberTable;
 Asciz	scala/Tuple3;
 class	scala/Tuple3
 Asciz	_1;
@@ -52,8 +63,6 @@ Asciz	LocalVariableTable;
 Asciz	apply;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lscala/Tuple3;;
 Asciz	Ljava/lang/Object;;
-Asciz	java/lang/Object;
-class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/Tuple3$;
 Field	scala/Tuple3$.MODULE$:Lscala/Tuple3$;
@@ -80,11 +89,21 @@ public static {};
 	return
   Labels:
 
-public scala.Some unapply(scala.Tuple3);
-  Signature: (Lscala/Tuple3;)Lscala/Some;
+public scala.Option unapply(scala.Tuple3);
+  Signature: (Lscala/Tuple3;)Lscala/Option;
   Code:
    Stack=7, Locals=2, Args_size=2
-	new	class scala/Some
+	aload_1
+	dup
+	pop
+	ifnull	l1 // getstatic
+	aload_1
+	aconst_null
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l2 // new
+l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l3 // areturn
+l2	new	class scala/Some
 	dup
 	new	class scala/Tuple3
 	dup
@@ -96,12 +115,15 @@ public scala.Some unapply(scala.Tuple3);
 	invokevirtual	Method scala/Tuple3._3:()Ljava/lang/Object;
 	invokespecial	Method scala/Tuple3."<init>":(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	areturn
+l3	areturn
   Labels:
+   	l1 = 14 // getstatic
+   	l2 = 20 // new
+   	l3 = 46 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      27      0    this       Lscala/Tuple3$;
-   0      27      1    x$0       Lscala/Tuple3;
+   0      47      0    this       Lscala/Tuple3$;
+   0      47      1    x$0       Lscala/Tuple3;
 
 
 public scala.Tuple3 apply(java.lang.Object, java.lang.Object, java.lang.Object);

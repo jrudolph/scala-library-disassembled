@@ -22,10 +22,21 @@ Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/collection/JavaConversions$ConcurrentMapWrapper$."<init>":()V
 Asciz	unapply;
-Asciz	(Lscala/collection/JavaConversions$ConcurrentMapWrapper;)Lscala/Some;;
+Asciz	(Lscala/collection/JavaConversions$ConcurrentMapWrapper;)Lscala/Option;;
+Asciz	LineNumberTable;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	scala/None$;
+class	scala/None$
+Asciz	Lscala/None$;;
+NameAndType	MODULE$:Lscala/None$;
+Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/Some;
 class	scala/Some
-Asciz	LineNumberTable;
 Asciz	scala/collection/JavaConversions$ConcurrentMapWrapper;
 class	scala/collection/JavaConversions$ConcurrentMapWrapper
 Asciz	underlying;
@@ -48,8 +59,6 @@ Asciz	Lscala/collection/mutable/ConcurrentMap;;
 Asciz	m;
 Asciz	Lscala/reflect/ClassManifest;;
 Asciz	mv;
-Asciz	java/lang/Object;
-class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/collection/JavaConversions$ConcurrentMapWrapper$;
 Field	scala/collection/JavaConversions$ConcurrentMapWrapper$.MODULE$:Lscala/collection/JavaConversions$ConcurrentMapWrapper$;
@@ -73,21 +82,34 @@ public static {};
 	return
   Labels:
 
-public scala.Some unapply(scala.collection.JavaConversions$ConcurrentMapWrapper);
-  Signature: (Lscala/collection/JavaConversions$ConcurrentMapWrapper;)Lscala/Some;
+public scala.Option unapply(scala.collection.JavaConversions$ConcurrentMapWrapper);
+  Signature: (Lscala/collection/JavaConversions$ConcurrentMapWrapper;)Lscala/Option;
   Code:
    Stack=3, Locals=2, Args_size=2
-	new	class scala/Some
+	aload_1
+	dup
+	pop
+	ifnull	l1 // getstatic
+	aload_1
+	aconst_null
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l2 // new
+l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l3 // areturn
+l2	new	class scala/Some
 	dup
 	aload_1
 	invokevirtual	Method scala/collection/JavaConversions$ConcurrentMapWrapper.underlying:()Lscala/collection/mutable/ConcurrentMap;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	areturn
+l3	areturn
   Labels:
+   	l1 = 14 // getstatic
+   	l2 = 20 // new
+   	l3 = 31 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      12      0    this       Lscala/collection/JavaConversions$ConcurrentMapWrapper$;
-   0      12      1    x$0       Lscala/collection/JavaConversions$ConcurrentMapWrapper;
+   0      32      0    this       Lscala/collection/JavaConversions$ConcurrentMapWrapper$;
+   0      32      1    x$0       Lscala/collection/JavaConversions$ConcurrentMapWrapper;
 
 
 public scala.collection.JavaConversions$ConcurrentMapWrapper apply(scala.collection.mutable.ConcurrentMap, scala.reflect.ClassManifest, scala.reflect.ClassManifest);

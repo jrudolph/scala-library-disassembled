@@ -20,10 +20,21 @@ Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/Tuple7$."<init>":()V
 Asciz	unapply;
-Asciz	(Lscala/Tuple7;)Lscala/Some;;
+Asciz	(Lscala/Tuple7;)Lscala/Option;;
+Asciz	LineNumberTable;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	scala/None$;
+class	scala/None$
+Asciz	Lscala/None$;;
+NameAndType	MODULE$:Lscala/None$;
+Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/Some;
 class	scala/Some
-Asciz	LineNumberTable;
 Asciz	scala/Tuple7;
 class	scala/Tuple7
 Asciz	_1;
@@ -61,8 +72,6 @@ Asciz	LocalVariableTable;
 Asciz	apply;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lscala/Tuple7;;
 Asciz	Ljava/lang/Object;;
-Asciz	java/lang/Object;
-class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/Tuple7$;
 Field	scala/Tuple7$.MODULE$:Lscala/Tuple7$;
@@ -82,11 +91,21 @@ public static {};
 	return
   Labels:
 
-public scala.Some unapply(scala.Tuple7);
-  Signature: (Lscala/Tuple7;)Lscala/Some;
+public scala.Option unapply(scala.Tuple7);
+  Signature: (Lscala/Tuple7;)Lscala/Option;
   Code:
    Stack=11, Locals=2, Args_size=2
-	new	class scala/Some
+	aload_1
+	dup
+	pop
+	ifnull	l1 // getstatic
+	aload_1
+	aconst_null
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l2 // new
+l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l3 // areturn
+l2	new	class scala/Some
 	dup
 	new	class scala/Tuple7
 	dup
@@ -106,12 +125,15 @@ public scala.Some unapply(scala.Tuple7);
 	invokevirtual	Method scala/Tuple7._7:()Ljava/lang/Object;
 	invokespecial	Method scala/Tuple7."<init>":(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	areturn
+l3	areturn
   Labels:
+   	l1 = 14 // getstatic
+   	l2 = 20 // new
+   	l3 = 62 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      43      0    this       Lscala/Tuple7$;
-   0      43      1    x$0       Lscala/Tuple7;
+   0      63      0    this       Lscala/Tuple7$;
+   0      63      1    x$0       Lscala/Tuple7;
 
 
 public scala.Tuple7 apply(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object);

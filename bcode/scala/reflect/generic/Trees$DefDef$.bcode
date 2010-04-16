@@ -37,7 +37,19 @@ Asciz	tupled;
 NameAndType	tupled:(Lscala/Function6;)Lscala/Function1;
 Method	scala/Function6$class.tupled:(Lscala/Function6;)Lscala/Function1;
 Asciz	unapply;
-Asciz	(Lscala/reflect/generic/Trees$DefDef;)Lscala/Some;;
+Asciz	(Lscala/reflect/generic/Trees$DefDef;)Lscala/Option;;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	scala/None$;
+class	scala/None$
+Asciz	MODULE$;
+Asciz	Lscala/None$;;
+NameAndType	MODULE$:Lscala/None$;
+Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/Some;
 class	scala/Some
 Asciz	scala/Tuple6;
@@ -112,8 +124,6 @@ class	java/lang/NullPointerException
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	java/lang/NullPointerException."<init>":()V
-Asciz	java/lang/Object;
-class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 Asciz	$init$;
 Asciz	(Lscala/Function6;)V;
@@ -171,11 +181,21 @@ public scala.Function1 tupled();
 	areturn
   Labels:
 
-public scala.Some unapply(scala.reflect.generic.Trees$DefDef);
-  Signature: (Lscala/reflect/generic/Trees$DefDef;)Lscala/Some;
+public scala.Option unapply(scala.reflect.generic.Trees$DefDef);
+  Signature: (Lscala/reflect/generic/Trees$DefDef;)Lscala/Option;
   Code:
    Stack=10, Locals=2, Args_size=2
-	new	class scala/Some
+	aload_1
+	dup
+	pop
+	ifnull	l1 // getstatic
+	aload_1
+	aconst_null
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l2 // new
+l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l3 // areturn
+l2	new	class scala/Some
 	dup
 	new	class scala/Tuple6
 	dup
@@ -193,12 +213,15 @@ public scala.Some unapply(scala.reflect.generic.Trees$DefDef);
 	invokevirtual	Method scala/reflect/generic/Trees$DefDef.rhs:()Lscala/reflect/generic/Trees$Tree;
 	invokespecial	Method scala/Tuple6."<init>":(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	areturn
+l3	areturn
   Labels:
+   	l1 = 14 // getstatic
+   	l2 = 20 // new
+   	l3 = 58 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      39      0    this       Lscala/reflect/generic/Trees$DefDef$;
-   0      39      1    x$0       Lscala/reflect/generic/Trees$DefDef;
+   0      59      0    this       Lscala/reflect/generic/Trees$DefDef$;
+   0      59      1    x$0       Lscala/reflect/generic/Trees$DefDef;
 
 
 public scala.reflect.generic.Trees$DefDef apply(scala.reflect.generic.Trees$Modifiers, java.lang.Object, scala.collection.immutable.List, scala.collection.immutable.List, scala.reflect.generic.Trees$Tree, scala.reflect.generic.Trees$Tree);

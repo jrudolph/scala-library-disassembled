@@ -42,7 +42,18 @@ Asciz	tupled;
 NameAndType	tupled:(Lscala/Function2;)Lscala/Function1;
 Method	scala/Function2$class.tupled:(Lscala/Function2;)Lscala/Function1;
 Asciz	unapply;
-Asciz	(Lscala/util/parsing/input/OffsetPosition;)Lscala/Some;;
+Asciz	(Lscala/util/parsing/input/OffsetPosition;)Lscala/Option;;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	scala/None$;
+class	scala/None$
+Asciz	Lscala/None$;;
+NameAndType	MODULE$:Lscala/None$;
+Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/Some;
 class	scala/Some
 Asciz	scala/Tuple2;
@@ -92,8 +103,6 @@ Method	scala/util/parsing/input/OffsetPosition$.apply:(Ljava/lang/CharSequence;I
 Asciz	v1;
 Asciz	Ljava/lang/Object;;
 Asciz	v2;
-Asciz	java/lang/Object;
-class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/util/parsing/input/OffsetPosition$;
 Field	scala/util/parsing/input/OffsetPosition$.MODULE$:Lscala/util/parsing/input/OffsetPosition$;
@@ -160,11 +169,21 @@ public scala.Function1 tupled();
 	areturn
   Labels:
 
-public scala.Some unapply(scala.util.parsing.input.OffsetPosition);
-  Signature: (Lscala/util/parsing/input/OffsetPosition;)Lscala/Some;
+public scala.Option unapply(scala.util.parsing.input.OffsetPosition);
+  Signature: (Lscala/util/parsing/input/OffsetPosition;)Lscala/Option;
   Code:
    Stack=6, Locals=3, Args_size=2
-	new	class scala/Some
+	aload_1
+	dup
+	pop
+	ifnull	l1 // getstatic
+	aload_1
+	aconst_null
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l2 // new
+l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l3 // areturn
+l2	new	class scala/Some
 	dup
 	new	class scala/Tuple2
 	dup
@@ -177,12 +196,15 @@ public scala.Some unapply(scala.util.parsing.input.OffsetPosition);
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	areturn
+l3	areturn
   Labels:
+   	l1 = 14 // getstatic
+   	l2 = 20 // new
+   	l3 = 47 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      28      0    this       Lscala/util/parsing/input/OffsetPosition$;
-   0      28      1    x$0       Lscala/util/parsing/input/OffsetPosition;
+   0      48      0    this       Lscala/util/parsing/input/OffsetPosition$;
+   0      48      1    x$0       Lscala/util/parsing/input/OffsetPosition;
 
 
 public scala.util.parsing.input.OffsetPosition apply(java.lang.CharSequence, int);

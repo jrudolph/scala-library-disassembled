@@ -22,10 +22,21 @@ Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/collection/immutable/IntMap$Bin$."<init>":()V
 Asciz	unapply;
-Asciz	(Lscala/collection/immutable/IntMap$Bin;)Lscala/Some;;
+Asciz	(Lscala/collection/immutable/IntMap$Bin;)Lscala/Option;;
+Asciz	LineNumberTable;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	scala/None$;
+class	scala/None$
+Asciz	Lscala/None$;;
+NameAndType	MODULE$:Lscala/None$;
+Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/Some;
 class	scala/Some
-Asciz	LineNumberTable;
 Asciz	scala/Tuple4;
 class	scala/Tuple4
 Asciz	scala/collection/immutable/IntMap$Bin;
@@ -67,8 +78,6 @@ NameAndType	"<init>":(IILscala/collection/immutable/IntMap;Lscala/collection/imm
 Method	scala/collection/immutable/IntMap$Bin."<init>":(IILscala/collection/immutable/IntMap;Lscala/collection/immutable/IntMap;)V
 Asciz	I;
 Asciz	Lscala/collection/immutable/IntMap;;
-Asciz	java/lang/Object;
-class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/collection/immutable/IntMap$Bin$;
 Field	scala/collection/immutable/IntMap$Bin$.MODULE$:Lscala/collection/immutable/IntMap$Bin$;
@@ -92,11 +101,21 @@ public static {};
 	return
   Labels:
 
-public scala.Some unapply(scala.collection.immutable.IntMap$Bin);
-  Signature: (Lscala/collection/immutable/IntMap$Bin;)Lscala/Some;
+public scala.Option unapply(scala.collection.immutable.IntMap$Bin);
+  Signature: (Lscala/collection/immutable/IntMap$Bin;)Lscala/Option;
   Code:
    Stack=8, Locals=4, Args_size=2
-	new	class scala/Some
+	aload_1
+	dup
+	pop
+	ifnull	l1 // getstatic
+	aload_1
+	aconst_null
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l2 // new
+l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l3 // areturn
+l2	new	class scala/Some
 	dup
 	new	class scala/Tuple4
 	dup
@@ -116,12 +135,15 @@ public scala.Some unapply(scala.collection.immutable.IntMap$Bin);
 	invokevirtual	Method scala/collection/immutable/IntMap$Bin.right:()Lscala/collection/immutable/IntMap;
 	invokespecial	Method scala/Tuple4."<init>":(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	areturn
+l3	areturn
   Labels:
+   	l1 = 14 // getstatic
+   	l2 = 20 // new
+   	l3 = 60 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      41      0    this       Lscala/collection/immutable/IntMap$Bin$;
-   0      41      1    x$0       Lscala/collection/immutable/IntMap$Bin;
+   0      61      0    this       Lscala/collection/immutable/IntMap$Bin$;
+   0      61      1    x$0       Lscala/collection/immutable/IntMap$Bin;
 
 
 public scala.collection.immutable.IntMap$Bin apply(int, int, scala.collection.immutable.IntMap, scala.collection.immutable.IntMap);

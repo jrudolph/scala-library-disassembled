@@ -40,7 +40,18 @@ Asciz	tupled;
 NameAndType	tupled:(Lscala/Function4;)Lscala/Function1;
 Method	scala/Function4$class.tupled:(Lscala/Function4;)Lscala/Function1;
 Asciz	unapply;
-Asciz	(Lscala/actors/remote/NamedSend;)Lscala/Some;;
+Asciz	(Lscala/actors/remote/NamedSend;)Lscala/Option;;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	scala/None$;
+class	scala/None$
+Asciz	Lscala/None$;;
+NameAndType	MODULE$:Lscala/None$;
+Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/Some;
 class	scala/Some
 Asciz	scala/Tuple4;
@@ -93,8 +104,6 @@ Asciz	Ljava/lang/Object;;
 Asciz	v2;
 Asciz	v3;
 Asciz	v4;
-Asciz	java/lang/Object;
-class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/actors/remote/NamedSend$;
 Field	scala/actors/remote/NamedSend$.MODULE$:Lscala/actors/remote/NamedSend$;
@@ -157,11 +166,21 @@ public scala.Function1 tupled();
 	areturn
   Labels:
 
-public scala.Some unapply(scala.actors.remote.NamedSend);
-  Signature: (Lscala/actors/remote/NamedSend;)Lscala/Some;
+public scala.Option unapply(scala.actors.remote.NamedSend);
+  Signature: (Lscala/actors/remote/NamedSend;)Lscala/Option;
   Code:
    Stack=8, Locals=2, Args_size=2
-	new	class scala/Some
+	aload_1
+	dup
+	pop
+	ifnull	l1 // getstatic
+	aload_1
+	aconst_null
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l2 // new
+l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l3 // areturn
+l2	new	class scala/Some
 	dup
 	new	class scala/Tuple4
 	dup
@@ -175,12 +194,15 @@ public scala.Some unapply(scala.actors.remote.NamedSend);
 	invokevirtual	Method scala/actors/remote/NamedSend.session:()Lscala/Symbol;
 	invokespecial	Method scala/Tuple4."<init>":(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	areturn
+l3	areturn
   Labels:
+   	l1 = 14 // getstatic
+   	l2 = 20 // new
+   	l3 = 50 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      31      0    this       Lscala/actors/remote/NamedSend$;
-   0      31      1    x$0       Lscala/actors/remote/NamedSend;
+   0      51      0    this       Lscala/actors/remote/NamedSend$;
+   0      51      1    x$0       Lscala/actors/remote/NamedSend;
 
 
 public scala.actors.remote.NamedSend apply(scala.actors.remote.Locator, scala.actors.remote.Locator, byte[], scala.Symbol);

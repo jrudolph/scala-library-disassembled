@@ -20,14 +20,25 @@ Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/Some$."<init>":()V
 Asciz	unapply;
-Asciz	(Lscala/Some;)Lscala/Some;;
+Asciz	(Lscala/Some;)Lscala/Option;;
+Asciz	LineNumberTable;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	scala/None$;
+class	scala/None$
+Asciz	Lscala/None$;;
+NameAndType	MODULE$:Lscala/None$;
+Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/Some;
 class	scala/Some
-Asciz	LineNumberTable;
 Asciz	x;
-Asciz	()Ljava/lang/Object;;
-NameAndType	x:()Ljava/lang/Object;
-Method	scala/Some.x:()Ljava/lang/Object;
+Asciz	Ljava/lang/Object;;
+NameAndType	x:Ljava/lang/Object;
+Field	scala/Some.x:Ljava/lang/Object;
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/Some."<init>":(Ljava/lang/Object;)V
@@ -37,9 +48,6 @@ Asciz	Lscala/Some;;
 Asciz	LocalVariableTable;
 Asciz	apply;
 Asciz	(Ljava/lang/Object;)Lscala/Some;;
-Asciz	Ljava/lang/Object;;
-Asciz	java/lang/Object;
-class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/Some$;
 Field	scala/Some$.MODULE$:Lscala/Some$;
@@ -59,21 +67,34 @@ public static {};
 	return
   Labels:
 
-public scala.Some unapply(scala.Some);
-  Signature: (Lscala/Some;)Lscala/Some;
+public scala.Option unapply(scala.Some);
+  Signature: (Lscala/Some;)Lscala/Option;
   Code:
    Stack=3, Locals=2, Args_size=2
-	new	class scala/Some
+	aload_1
+	dup
+	pop
+	ifnull	l1 // getstatic
+	aload_1
+	aconst_null
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l2 // new
+l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l3 // areturn
+l2	new	class scala/Some
 	dup
 	aload_1
-	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
+	getfield	Field scala/Some.x:Ljava/lang/Object;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	areturn
+l3	areturn
   Labels:
+   	l1 = 14 // getstatic
+   	l2 = 20 // new
+   	l3 = 31 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      12      0    this       Lscala/Some$;
-   0      12      1    x$0       Lscala/Some;
+   0      32      0    this       Lscala/Some$;
+   0      32      1    x$0       Lscala/Some;
 
 
 public scala.Some apply(java.lang.Object);

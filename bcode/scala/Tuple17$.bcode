@@ -20,10 +20,21 @@ Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/Tuple17$."<init>":()V
 Asciz	unapply;
-Asciz	(Lscala/Tuple17;)Lscala/Some;;
+Asciz	(Lscala/Tuple17;)Lscala/Option;;
+Asciz	LineNumberTable;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	scala/None$;
+class	scala/None$
+Asciz	Lscala/None$;;
+NameAndType	MODULE$:Lscala/None$;
+Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/Some;
 class	scala/Some
-Asciz	LineNumberTable;
 Asciz	scala/Tuple17;
 class	scala/Tuple17
 Asciz	_1;
@@ -91,8 +102,6 @@ Asciz	LocalVariableTable;
 Asciz	apply;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lscala/Tuple17;;
 Asciz	Ljava/lang/Object;;
-Asciz	java/lang/Object;
-class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/Tuple17$;
 Field	scala/Tuple17$.MODULE$:Lscala/Tuple17$;
@@ -112,11 +121,21 @@ public static {};
 	return
   Labels:
 
-public scala.Some unapply(scala.Tuple17);
-  Signature: (Lscala/Tuple17;)Lscala/Some;
+public scala.Option unapply(scala.Tuple17);
+  Signature: (Lscala/Tuple17;)Lscala/Option;
   Code:
    Stack=21, Locals=2, Args_size=2
-	new	class scala/Some
+	aload_1
+	dup
+	pop
+	ifnull	l1 // getstatic
+	aload_1
+	aconst_null
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l2 // new
+l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l3 // areturn
+l2	new	class scala/Some
 	dup
 	new	class scala/Tuple17
 	dup
@@ -156,12 +175,15 @@ public scala.Some unapply(scala.Tuple17);
 	invokevirtual	Method scala/Tuple17._17:()Ljava/lang/Object;
 	invokespecial	Method scala/Tuple17."<init>":(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	areturn
+l3	areturn
   Labels:
+   	l1 = 14 // getstatic
+   	l2 = 20 // new
+   	l3 = 102 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      83      0    this       Lscala/Tuple17$;
-   0      83      1    x$0       Lscala/Tuple17;
+   0      103      0    this       Lscala/Tuple17$;
+   0      103      1    x$0       Lscala/Tuple17;
 
 
 public scala.Tuple17 apply(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object);

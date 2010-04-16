@@ -48,9 +48,9 @@ Asciz	()Lscala/actors/IScheduler;;
 NameAndType	scheduler:()Lscala/actors/IScheduler;
 InterfaceMethod	scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
 Asciz	rawSelf;
-Asciz	(Lscala/actors/IScheduler;)Lscala/actors/Reactor;;
-NameAndType	rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
-Method	scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
+Asciz	(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;;
+NameAndType	rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+Method	scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
 Asciz	scala/concurrent/SyncVar;
 class	scala/concurrent/SyncVar
 Asciz	<init>;
@@ -59,9 +59,9 @@ NameAndType	"<init>":()V
 Method	scala/concurrent/SyncVar."<init>":()V
 Asciz	scala/actors/ReplyableReactor$$anon$2;
 class	scala/actors/ReplyableReactor$$anon$2
-Asciz	(Lscala/actors/ReplyReactor;Lscala/actors/Reactor;Lscala/concurrent/SyncVar;)V;
-NameAndType	"<init>":(Lscala/actors/ReplyReactor;Lscala/actors/Reactor;Lscala/concurrent/SyncVar;)V
-Method	scala/actors/ReplyableReactor$$anon$2."<init>":(Lscala/actors/ReplyReactor;Lscala/actors/Reactor;Lscala/concurrent/SyncVar;)V
+Asciz	(Lscala/actors/ReplyReactor;Lscala/actors/ReplyReactor;Lscala/concurrent/SyncVar;)V;
+NameAndType	"<init>":(Lscala/actors/ReplyReactor;Lscala/actors/ReplyReactor;Lscala/concurrent/SyncVar;)V
+Method	scala/actors/ReplyableReactor$$anon$2."<init>":(Lscala/actors/ReplyReactor;Lscala/actors/ReplyReactor;Lscala/concurrent/SyncVar;)V
 Asciz	send;
 Asciz	(Ljava/lang/Object;Lscala/actors/OutputChannel;)V;
 NameAndType	send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
@@ -73,7 +73,6 @@ Method	scala/concurrent/SyncVar.get:(J)Lscala/Option;
 Asciz	msec;
 Asciz	J;
 Asciz	myself$1;
-Asciz	Lscala/actors/Reactor;;
 Asciz	res$1;
 Asciz	Lscala/concurrent/SyncVar;;
 Asciz	out;
@@ -90,20 +89,18 @@ InterfaceMethod	scala/actors/ReplyableReactor.$bang$bang:(Ljava/lang/Object;Lsca
 Asciz	(Lscala/actors/ReplyReactor;Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;;
 Asciz	scala/actors/ReactChannel;
 class	scala/actors/ReactChannel
-Asciz	(Lscala/actors/Reactor;)V;
-NameAndType	"<init>":(Lscala/actors/Reactor;)V
-Method	scala/actors/ReactChannel."<init>":(Lscala/actors/Reactor;)V
+Method	scala/actors/ReactChannel."<init>":(Lscala/actors/ReplyReactor;)V
 Asciz	scala/actors/ReplyableReactor$$anon$3;
 class	scala/actors/ReplyableReactor$$anon$3
-Asciz	(Lscala/actors/ReplyReactor;Lscala/PartialFunction;Lscala/actors/Reactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V;
-NameAndType	"<init>":(Lscala/actors/ReplyReactor;Lscala/PartialFunction;Lscala/actors/Reactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V
-Method	scala/actors/ReplyableReactor$$anon$3."<init>":(Lscala/actors/ReplyReactor;Lscala/PartialFunction;Lscala/actors/Reactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V
+Asciz	(Lscala/actors/ReplyReactor;Lscala/PartialFunction;Lscala/actors/ReplyReactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V;
+NameAndType	"<init>":(Lscala/actors/ReplyReactor;Lscala/PartialFunction;Lscala/actors/ReplyReactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V
+Method	scala/actors/ReplyableReactor$$anon$3."<init>":(Lscala/actors/ReplyReactor;Lscala/PartialFunction;Lscala/actors/ReplyReactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V
 Asciz	scala/actors/ReplyableReactor$$anon$1;
 class	scala/actors/ReplyableReactor$$anon$1
 Asciz	(Lscala/actors/ReplyReactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V;
 NameAndType	"<init>":(Lscala/actors/ReplyReactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V
 Method	scala/actors/ReplyableReactor$$anon$1."<init>":(Lscala/actors/ReplyReactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V
-Asciz	f$1;
+Asciz	handler$1;
 Asciz	Lscala/PartialFunction;;
 Asciz	myself$2;
 Asciz	ftch$1;
@@ -145,7 +142,7 @@ public static scala.Option $bang$qmark(scala.actors.ReplyReactor, long, java.lan
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
-	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
+	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
 	astore	4
 	new	class scala/concurrent/SyncVar
 	dup
@@ -156,7 +153,7 @@ public static scala.Option $bang$qmark(scala.actors.ReplyReactor, long, java.lan
 	aload_0
 	aload	4
 	aload	5
-	invokespecial	Method scala/actors/ReplyableReactor$$anon$2."<init>":(Lscala/actors/ReplyReactor;Lscala/actors/Reactor;Lscala/concurrent/SyncVar;)V
+	invokespecial	Method scala/actors/ReplyableReactor$$anon$2."<init>":(Lscala/actors/ReplyReactor;Lscala/actors/ReplyReactor;Lscala/concurrent/SyncVar;)V
 	astore	6
 	aload_0
 	aload_3
@@ -172,7 +169,7 @@ public static scala.Option $bang$qmark(scala.actors.ReplyReactor, long, java.lan
    0      53      0    $this       Lscala/actors/ReplyReactor;
    0      53      1    msec       J
    0      53      3    msg       Ljava/lang/Object;
-   14      38      4    myself$1       Lscala/actors/Reactor;
+   14      38      4    myself$1       Lscala/actors/ReplyReactor;
    23      29      5    res$1       Lscala/concurrent/SyncVar;
    37      15      6    out       Lscala/actors/OutputChannel;
 
@@ -203,12 +200,12 @@ public static scala.actors.Future $bang$bang(scala.actors.ReplyReactor, java.lan
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
-	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/Reactor;
+	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
 	astore_3
 	new	class scala/actors/ReactChannel
 	dup
 	aload_3
-	invokespecial	Method scala/actors/ReactChannel."<init>":(Lscala/actors/Reactor;)V
+	invokespecial	Method scala/actors/ReactChannel."<init>":(Lscala/actors/ReplyReactor;)V
 	astore	4
 	new	class scala/concurrent/SyncVar
 	dup
@@ -221,7 +218,7 @@ public static scala.actors.Future $bang$bang(scala.actors.ReplyReactor, java.lan
 	aload_3
 	aload	4
 	aload	5
-	invokespecial	Method scala/actors/ReplyableReactor$$anon$3."<init>":(Lscala/actors/ReplyReactor;Lscala/PartialFunction;Lscala/actors/Reactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V
+	invokespecial	Method scala/actors/ReplyableReactor$$anon$3."<init>":(Lscala/actors/ReplyReactor;Lscala/PartialFunction;Lscala/actors/ReplyReactor;Lscala/actors/ReactChannel;Lscala/concurrent/SyncVar;)V
 	astore	6
 	aload_0
 	aload_1
@@ -239,8 +236,8 @@ public static scala.actors.Future $bang$bang(scala.actors.ReplyReactor, java.lan
    Start  Length  Slot  Name   Signature
    0      70      0    $this       Lscala/actors/ReplyReactor;
    0      70      1    msg       Ljava/lang/Object;
-   0      70      2    f$1       Lscala/PartialFunction;
-   13      56      3    myself$2       Lscala/actors/Reactor;
+   0      70      2    handler$1       Lscala/PartialFunction;
+   13      56      3    myself$2       Lscala/actors/ReplyReactor;
    23      46      4    ftch$1       Lscala/actors/ReactChannel;
    32      37      5    res$2       Lscala/concurrent/SyncVar;
    48      21      6    out       Lscala/actors/OutputChannel;

@@ -99,8 +99,6 @@ public class scala.actors.remote.Proxy extends java.lang.Object implements scala
   Constant pool:
 Asciz	SourceFile;
 Asciz	Proxy.scala;
-Asciz	exiting;
-Asciz	Z;
 Asciz	del;
 Asciz	Lscala/actors/Actor;;
 Asciz	kernel;
@@ -109,16 +107,18 @@ Asciz	name;
 Asciz	Lscala/Symbol;;
 Asciz	node;
 Asciz	Lscala/actors/remote/Node;;
+Asciz	exiting;
 Asciz	()Z;
 Asciz	Code;
 Asciz	LineNumberTable;
+Asciz	scala/actors/AbstractActor$class;
+class	scala/actors/AbstractActor$class
+Asciz	(Lscala/actors/AbstractActor;)Z;
+NameAndType	exiting:(Lscala/actors/AbstractActor;)Z
+Method	scala/actors/AbstractActor$class.exiting:(Lscala/actors/AbstractActor;)Z
+Asciz	()Lscala/actors/remote/NetKernel;;
 Asciz	scala/actors/remote/Proxy;
 class	scala/actors/remote/Proxy
-NameAndType	exiting:Z
-Field	scala/actors/remote/Proxy.exiting:Z
-Asciz	exiting_$eq;
-Asciz	(Z)V;
-Asciz	()Lscala/actors/remote/NetKernel;;
 NameAndType	kernel:Lscala/actors/remote/NetKernel;
 Field	scala/actors/remote/Proxy.kernel:Lscala/actors/remote/NetKernel;
 Asciz	kernel_$eq;
@@ -299,20 +299,19 @@ NameAndType	toString:()Ljava/lang/String;
 Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/Object;Lscala/PartialFunction;)Lscala/Function0;;
 Method	scala/actors/remote/Proxy.$bang$bang:(Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;
+Asciz	handler;
 Asciz	(Ljava/lang/Object;)Lscala/Function0;;
 Method	scala/actors/remote/Proxy.$bang$bang:(Ljava/lang/Object;)Lscala/actors/Future;
 Asciz	(Lscala/actors/remote/Node;Lscala/Symbol;Lscala/actors/remote/NetKernel;)V;
 Asciz	java/lang/Object;
 class	java/lang/Object
 Method	java/lang/Object."<init>":()V
-Asciz	scala/actors/Replyable$class;
-class	scala/actors/Replyable$class
+Asciz	scala/actors/CanReply$class;
+class	scala/actors/CanReply$class
 Asciz	$init$;
-Asciz	(Lscala/actors/Replyable;)V;
-NameAndType	$init$:(Lscala/actors/Replyable;)V
-Method	scala/actors/Replyable$class.$init$:(Lscala/actors/Replyable;)V
-Asciz	scala/actors/AbstractActor$class;
-class	scala/actors/AbstractActor$class
+Asciz	(Lscala/actors/CanReply;)V;
+NameAndType	$init$:(Lscala/actors/CanReply;)V
+Method	scala/actors/CanReply$class.$init$:(Lscala/actors/CanReply;)V
 NameAndType	$init$:(Lscala/actors/AbstractActor;)V
 Method	scala/actors/AbstractActor$class.$init$:(Lscala/actors/AbstractActor;)V
 Asciz	ScalaSig;
@@ -324,9 +323,6 @@ Asciz	java/io/Serializable;
 class	java/io/Serializable
 
 {
-private boolean exiting;
-  Signature: Z
-
 private transient scala.actors.Actor del;
   Signature: Lscala/actors/Actor;
 
@@ -344,18 +340,8 @@ public boolean exiting();
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	getfield	Field exiting:Z
+	invokestatic	Method scala/actors/AbstractActor$class.exiting:(Lscala/actors/AbstractActor;)Z
 	ireturn
-  Labels:
-
-public void exiting_$eq(boolean);
-  Signature: (Z)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	iload_1
-	putfield	Field exiting:Z
-	return
   Labels:
 
 public scala.actors.remote.NetKernel kernel();
@@ -707,7 +693,7 @@ public scala.Function0 $bang$bang(java.lang.Object, scala.PartialFunction);
    Start  Length  Slot  Name   Signature
    0      7      0    this       Lscala/actors/remote/Proxy;
    0      7      1    msg       Ljava/lang/Object;
-   0      7      2    f       Lscala/PartialFunction;
+   0      7      2    handler       Lscala/PartialFunction;
 
 
 public scala.Function0 $bang$bang(java.lang.Object);
@@ -741,7 +727,7 @@ public scala.actors.remote.Proxy(scala.actors.remote.Node, scala.Symbol, scala.a
 	aload_0
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
-	invokestatic	Method scala/actors/Replyable$class.$init$:(Lscala/actors/Replyable;)V
+	invokestatic	Method scala/actors/CanReply$class.$init$:(Lscala/actors/CanReply;)V
 	aload_0
 	invokestatic	Method scala/actors/AbstractActor$class.$init$:(Lscala/actors/AbstractActor;)V
 	aload_0

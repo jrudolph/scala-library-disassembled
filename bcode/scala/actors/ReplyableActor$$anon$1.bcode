@@ -10,29 +10,37 @@ public final class scala.actors.ReplyableActor$$anon$1 extends java.lang.Object 
   Constant pool:
 Asciz	SourceFile;
 Asciz	ReplyableActor.scala;
-Asciz	exiting;
-Asciz	Z;
 Asciz	ftch$2;
 Asciz	Lscala/actors/Channel;;
 Asciz	$outer;
 Asciz	Lscala/actors/AbstractActor;;
+Asciz	exiting;
 Asciz	()Z;
 Asciz	Code;
 Asciz	LineNumberTable;
-Asciz	scala/actors/ReplyableActor$$anon$1;
-class	scala/actors/ReplyableActor$$anon$1
-NameAndType	exiting:Z
-Field	scala/actors/ReplyableActor$$anon$1.exiting:Z
-Asciz	exiting_$eq;
-Asciz	(Z)V;
+Asciz	scala/actors/AbstractActor$class;
+class	scala/actors/AbstractActor$class
+Asciz	(Lscala/actors/AbstractActor;)Z;
+NameAndType	exiting:(Lscala/actors/AbstractActor;)Z
+Method	scala/actors/AbstractActor$class.exiting:(Lscala/actors/AbstractActor;)Z
 Asciz	$bang;
 Asciz	(Ljava/lang/Object;)V;
+Asciz	scala/actors/ReplyableActor$$anon$1;
+class	scala/actors/ReplyableActor$$anon$1
 NameAndType	ftch$2:Lscala/actors/Channel;
 Field	scala/actors/ReplyableActor$$anon$1.ftch$2:Lscala/actors/Channel;
 Asciz	scala/actors/Channel;
 class	scala/actors/Channel
 NameAndType	$bang:(Ljava/lang/Object;)V
 Method	scala/actors/Channel.$bang:(Ljava/lang/Object;)V
+NameAndType	$outer:Lscala/actors/AbstractActor;
+Field	scala/actors/ReplyableActor$$anon$1.$outer:Lscala/actors/AbstractActor;
+Asciz	scala/actors/AbstractActor;
+class	scala/actors/AbstractActor
+Asciz	unlinkFrom;
+Asciz	(Lscala/actors/AbstractActor;)V;
+NameAndType	unlinkFrom:(Lscala/actors/AbstractActor;)V
+InterfaceMethod	scala/actors/AbstractActor.unlinkFrom:(Lscala/actors/AbstractActor;)V
 Asciz	this;
 Asciz	Lscala/actors/ReplyableActor$$anon$1;;
 Asciz	msg;
@@ -54,9 +62,7 @@ Asciz	()Lscala/actors/Actor;;
 NameAndType	receiver:()Lscala/actors/Actor;
 Method	scala/actors/Channel.receiver:()Lscala/actors/Actor;
 Asciz	linkTo;
-Asciz	(Lscala/actors/AbstractActor;)V;
 Asciz	to;
-Asciz	unlinkFrom;
 Asciz	from;
 Asciz	exit;
 Asciz	(Lscala/actors/AbstractActor;Ljava/lang/Object;)V;
@@ -65,8 +71,6 @@ class	scala/actors/Exit
 Asciz	<init>;
 NameAndType	"<init>":(Lscala/actors/AbstractActor;Ljava/lang/Object;)V
 Method	scala/actors/Exit."<init>":(Lscala/actors/AbstractActor;Ljava/lang/Object;)V
-NameAndType	$outer:Lscala/actors/AbstractActor;
-Field	scala/actors/ReplyableActor$$anon$1.$outer:Lscala/actors/AbstractActor;
 Asciz	reason;
 Asciz	$bang$qmark;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
@@ -117,6 +121,7 @@ Asciz	<A:Ljava/lang/Object;>(Ljava/lang/Object;Lscala/PartialFunction<Ljava/lang
 Asciz	(Ljava/lang/Object;Lscala/PartialFunction;)Lscala/Function0;;
 NameAndType	$bang$bang:(Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;
 Method	scala/actors/ReplyableActor$$anon$1.$bang$bang:(Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;
+Asciz	handler;
 Asciz	(Ljava/lang/Object;)Lscala/Function0;;
 NameAndType	$bang$bang:(Ljava/lang/Object;)Lscala/actors/Future;
 Method	scala/actors/ReplyableActor$$anon$1.$bang$bang:(Ljava/lang/Object;)Lscala/actors/Future;
@@ -129,14 +134,12 @@ Method	java/lang/NullPointerException."<init>":()V
 Asciz	java/lang/Object;
 class	java/lang/Object
 Method	java/lang/Object."<init>":()V
-Asciz	scala/actors/Replyable$class;
-class	scala/actors/Replyable$class
+Asciz	scala/actors/CanReply$class;
+class	scala/actors/CanReply$class
 Asciz	$init$;
-Asciz	(Lscala/actors/Replyable;)V;
-NameAndType	$init$:(Lscala/actors/Replyable;)V
-Method	scala/actors/Replyable$class.$init$:(Lscala/actors/Replyable;)V
-Asciz	scala/actors/AbstractActor$class;
-class	scala/actors/AbstractActor$class
+Asciz	(Lscala/actors/CanReply;)V;
+NameAndType	$init$:(Lscala/actors/CanReply;)V
+Method	scala/actors/CanReply$class.$init$:(Lscala/actors/CanReply;)V
 NameAndType	$init$:(Lscala/actors/AbstractActor;)V
 Method	scala/actors/AbstractActor$class.$init$:(Lscala/actors/AbstractActor;)V
 Asciz	Scala;
@@ -144,13 +147,8 @@ Asciz	InnerClasses;
 Asciz	scala/actors/ReplyableActor;
 class	scala/actors/ReplyableActor
 Asciz	$anon$1;
-Asciz	scala/actors/AbstractActor;
-class	scala/actors/AbstractActor
 
 {
-private boolean exiting;
-  Signature: Z
-
 private final scala.actors.Channel ftch$2;
   Signature: Lscala/actors/Channel;
 
@@ -162,18 +160,8 @@ public boolean exiting();
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	getfield	Field exiting:Z
+	invokestatic	Method scala/actors/AbstractActor$class.exiting:(Lscala/actors/AbstractActor;)Z
 	ireturn
-  Labels:
-
-public void exiting_$eq(boolean);
-  Signature: (Z)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	iload_1
-	putfield	Field exiting:Z
-	return
   Labels:
 
 public void $bang(java.lang.Object);
@@ -184,12 +172,16 @@ public void $bang(java.lang.Object);
 	getfield	Field ftch$2:Lscala/actors/Channel;
 	aload_1
 	invokevirtual	Method scala/actors/Channel.$bang:(Ljava/lang/Object;)V
+	aload_0
+	getfield	Field $outer:Lscala/actors/AbstractActor;
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/AbstractActor.unlinkFrom:(Lscala/actors/AbstractActor;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      9      0    this       Lscala/actors/ReplyableActor$$anon$1;
-   0      9      1    msg       Ljava/lang/Object;
+   0      19      0    this       Lscala/actors/ReplyableActor$$anon$1;
+   0      19      1    msg       Ljava/lang/Object;
 
 
 public void send(java.lang.Object, scala.actors.OutputChannel);
@@ -201,16 +193,20 @@ public void send(java.lang.Object, scala.actors.OutputChannel);
 	aload_1
 	aload_2
 	invokevirtual	Method scala/actors/Channel.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
+	aload_0
+	getfield	Field $outer:Lscala/actors/AbstractActor;
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/AbstractActor.unlinkFrom:(Lscala/actors/AbstractActor;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      10      0    this       Lscala/actors/ReplyableActor$$anon$1;
-   0      10      1    msg       Ljava/lang/Object;
-   0      10      2    replyTo       Lscala/actors/OutputChannel;
+   0      20      0    this       Lscala/actors/ReplyableActor$$anon$1;
+   0      20      1    msg       Ljava/lang/Object;
+   0      20      2    replyTo       Lscala/actors/OutputChannel;
 
   Signature: length = 0x2
-   00 25 
+   00 2D 
 
 public void forward(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
@@ -220,12 +216,16 @@ public void forward(java.lang.Object);
 	getfield	Field ftch$2:Lscala/actors/Channel;
 	aload_1
 	invokevirtual	Method scala/actors/Channel.forward:(Ljava/lang/Object;)V
+	aload_0
+	getfield	Field $outer:Lscala/actors/AbstractActor;
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/AbstractActor.unlinkFrom:(Lscala/actors/AbstractActor;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      9      0    this       Lscala/actors/ReplyableActor$$anon$1;
-   0      9      1    msg       Ljava/lang/Object;
+   0      19      0    this       Lscala/actors/ReplyableActor$$anon$1;
+   0      19      1    msg       Ljava/lang/Object;
 
 
 public scala.actors.Actor receiver();
@@ -276,13 +276,17 @@ public void exit(scala.actors.AbstractActor, java.lang.Object);
 	aload_0
 	getfield	Field $outer:Lscala/actors/AbstractActor;
 	invokevirtual	Method scala/actors/Channel.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
+	aload_0
+	getfield	Field $outer:Lscala/actors/AbstractActor;
+	aload_0
+	invokeinterface	InterfaceMethod scala/actors/AbstractActor.unlinkFrom:(Lscala/actors/AbstractActor;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      21      0    this       Lscala/actors/ReplyableActor$$anon$1;
-   0      21      1    from       Lscala/actors/AbstractActor;
-   0      21      2    reason       Ljava/lang/Object;
+   0      31      0    this       Lscala/actors/ReplyableActor$$anon$1;
+   0      31      1    from       Lscala/actors/AbstractActor;
+   0      31      2    reason       Ljava/lang/Object;
 
 
 public java.lang.Object $bang$qmark(java.lang.Object);
@@ -315,7 +319,7 @@ public scala.Option $bang$qmark(long, java.lang.Object);
    0      9      3    msg       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 46 
+   00 4A 
 
 public scala.actors.Future $bang$bang(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/actors/Future;
@@ -343,7 +347,7 @@ public scala.actors.Future $bang$bang(java.lang.Object);
    26      7      2    someChan       Lscala/actors/Channel;
 
   Signature: length = 0x2
-   00 66 
+   00 6A 
 
 public scala.actors.Future $bang$bang(java.lang.Object, scala.PartialFunction);
   Signature: (Ljava/lang/Object;Lscala/PartialFunction;)Lscala/actors/Future;
@@ -372,7 +376,7 @@ public scala.actors.Future $bang$bang(java.lang.Object, scala.PartialFunction);
    26      7      3    someChan       Lscala/actors/Channel;
 
   Signature: length = 0x2
-   00 6A 
+   00 6E 
 
 public scala.Function0 $bang$bang(java.lang.Object, scala.PartialFunction);
   Signature: (Ljava/lang/Object;Lscala/PartialFunction;)Lscala/Function0;
@@ -388,7 +392,7 @@ public scala.Function0 $bang$bang(java.lang.Object, scala.PartialFunction);
    Start  Length  Slot  Name   Signature
    0      7      0    this       Lscala/actors/ReplyableActor$$anon$1;
    0      7      1    msg       Ljava/lang/Object;
-   0      7      2    f       Lscala/PartialFunction;
+   0      7      2    handler       Lscala/PartialFunction;
 
 
 public scala.Function0 $bang$bang(java.lang.Object);
@@ -425,7 +429,7 @@ l1	aload_0
 	aload_0
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
-	invokestatic	Method scala/actors/Replyable$class.$init$:(Lscala/actors/Replyable;)V
+	invokestatic	Method scala/actors/CanReply$class.$init$:(Lscala/actors/CanReply;)V
 	aload_0
 	invokestatic	Method scala/actors/AbstractActor$class.$init$:(Lscala/actors/AbstractActor;)V
 	return

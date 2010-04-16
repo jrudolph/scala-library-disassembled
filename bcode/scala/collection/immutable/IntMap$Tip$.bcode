@@ -22,10 +22,21 @@ Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/collection/immutable/IntMap$Tip$."<init>":()V
 Asciz	unapply;
-Asciz	(Lscala/collection/immutable/IntMap$Tip;)Lscala/Some;;
+Asciz	(Lscala/collection/immutable/IntMap$Tip;)Lscala/Option;;
+Asciz	LineNumberTable;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	scala/None$;
+class	scala/None$
+Asciz	Lscala/None$;;
+NameAndType	MODULE$:Lscala/None$;
+Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/Some;
 class	scala/Some
-Asciz	LineNumberTable;
 Asciz	scala/Tuple2;
 class	scala/Tuple2
 Asciz	scala/collection/immutable/IntMap$Tip;
@@ -61,8 +72,6 @@ NameAndType	"<init>":(ILjava/lang/Object;)V
 Method	scala/collection/immutable/IntMap$Tip."<init>":(ILjava/lang/Object;)V
 Asciz	I;
 Asciz	Ljava/lang/Object;;
-Asciz	java/lang/Object;
-class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/collection/immutable/IntMap$Tip$;
 Field	scala/collection/immutable/IntMap$Tip$.MODULE$:Lscala/collection/immutable/IntMap$Tip$;
@@ -86,11 +95,21 @@ public static {};
 	return
   Labels:
 
-public scala.Some unapply(scala.collection.immutable.IntMap$Tip);
-  Signature: (Lscala/collection/immutable/IntMap$Tip;)Lscala/Some;
+public scala.Option unapply(scala.collection.immutable.IntMap$Tip);
+  Signature: (Lscala/collection/immutable/IntMap$Tip;)Lscala/Option;
   Code:
    Stack=6, Locals=3, Args_size=2
-	new	class scala/Some
+	aload_1
+	dup
+	pop
+	ifnull	l1 // getstatic
+	aload_1
+	aconst_null
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l2 // new
+l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l3 // areturn
+l2	new	class scala/Some
 	dup
 	new	class scala/Tuple2
 	dup
@@ -103,12 +122,15 @@ public scala.Some unapply(scala.collection.immutable.IntMap$Tip);
 	invokevirtual	Method scala/collection/immutable/IntMap$Tip.value:()Ljava/lang/Object;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	areturn
+l3	areturn
   Labels:
+   	l1 = 14 // getstatic
+   	l2 = 20 // new
+   	l3 = 47 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      28      0    this       Lscala/collection/immutable/IntMap$Tip$;
-   0      28      1    x$0       Lscala/collection/immutable/IntMap$Tip;
+   0      48      0    this       Lscala/collection/immutable/IntMap$Tip$;
+   0      48      1    x$0       Lscala/collection/immutable/IntMap$Tip;
 
 
 public scala.collection.immutable.IntMap$Tip apply(int, java.lang.Object);
