@@ -441,7 +441,7 @@ l3	ifeq	l1 // iload_2
 l1	iload_2
 	aload_0
 	invokevirtual	Method hash:()I
-	if_icmpeq	l8 // iconst_1
+	if_icmpeq	l8 // iload_3
 	new	class scala/collection/immutable/HashMap$HashTrieMap
 	dup
 	iconst_0
@@ -468,7 +468,10 @@ l1	iload_2
 	aload	5
 	invokevirtual	Method scala/collection/immutable/HashMap.updated0:(Ljava/lang/Object;IILjava/lang/Object;Lscala/Tuple2;)Lscala/collection/immutable/HashMap;
 	goto	l7 // areturn
-l8	iconst_1
+l8	iload_3
+	iconst_0
+	if_icmpne	l9 // new
+	iconst_1
 	anewarray	class scala/collection/immutable/HashMap
 	astore	8
 	aload	8
@@ -501,6 +504,22 @@ l8	iconst_1
 	aload	8
 	iconst_2
 	invokespecial	Method scala/collection/immutable/HashMap$HashTrieMap."<init>":(I[Lscala/collection/immutable/HashMap;I)V
+	goto	l7 // areturn
+l9	new	class scala/collection/immutable/HashMap$HashMapCollision1
+	dup
+	iload_2
+	new	class scala/collection/immutable/ListMap
+	dup
+	invokespecial	Method scala/collection/immutable/ListMap."<init>":()V
+	aload_0
+	invokespecial	Method key:()Ljava/lang/Object;
+	aload_0
+	invokespecial	Method value:()Ljava/lang/Object;
+	invokevirtual	Method scala/collection/immutable/ListMap.updated:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/ListMap;
+	aload_1
+	aload	4
+	invokevirtual	Method scala/collection/immutable/ListMap.updated:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/ListMap;
+	invokespecial	Method scala/collection/immutable/HashMap$HashMapCollision1."<init>":(ILscala/collection/immutable/ListMap;)V
 l7	areturn
   Labels:
    	l2 = 24 // aload_1
@@ -509,19 +528,20 @@ l7	areturn
    	l6 = 55 // aload_1
    	l3 = 61 // ifeq
    	l1 = 80 // iload_2
-   	l8 = 138 // iconst_1
-   	l7 = 198 // areturn
+   	l8 = 138 // iload_3
+   	l9 = 206 // new
+   	l7 = 238 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      199      0    this       Lscala/collection/immutable/HashMap$HashMap1;
-   0      199      1    key       Ljava/lang/Object;
-   0      199      2    hash       I
-   0      199      3    level       I
-   0      199      4    value       Ljava/lang/Object;
-   0      199      5    kv       Lscala/Tuple2;
+   0      239      0    this       Lscala/collection/immutable/HashMap$HashMap1;
+   0      239      1    key       Ljava/lang/Object;
+   0      239      2    hash       I
+   0      239      3    level       I
+   0      239      4    value       Ljava/lang/Object;
+   0      239      5    kv       Lscala/Tuple2;
    20      44      6    y0       Ljava/lang/Object;
    103      32      7    m       Lscala/collection/immutable/HashMap$HashTrieMap;
-   144      54      8    elems       [Lscala/collection/immutable/HashMap;
+   149      54      8    elems       [Lscala/collection/immutable/HashMap;
 
   Signature: length = 0x2
    00 78 
@@ -594,7 +614,7 @@ public scala.collection.Iterator iterator();
 	dup
 	iconst_0
 	aload_0
-	invokespecial	Method ensurePair:()Lscala/Tuple2;
+	invokevirtual	Method ensurePair:()Lscala/Tuple2;
 	aastore
 	checkcast	class "[Ljava/lang/Object;"
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
@@ -610,7 +630,7 @@ public void foreach(scala.Function1);
    Stack=2, Locals=2, Args_size=2
 	aload_1
 	aload_0
-	invokespecial	Method ensurePair:()Lscala/Tuple2;
+	invokevirtual	Method ensurePair:()Lscala/Tuple2;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	pop
 	return
@@ -623,7 +643,7 @@ public void foreach(scala.Function1);
   Signature: length = 0x2
    00 FFFFFFA6 
 
-private scala.Tuple2 ensurePair();
+public scala.Tuple2 ensurePair();
   Signature: ()Lscala/Tuple2;
   Code:
    Stack=5, Locals=1, Args_size=1
