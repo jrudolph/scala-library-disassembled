@@ -158,12 +158,12 @@ NameAndType	MODULE$:Lscala/collection/immutable/Nil$;
 Field	scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 Asciz	argString;
 Asciz	(Lscala/reflect/ClassManifest;)Ljava/lang/String;;
-Asciz	scala/collection/TraversableLike;
-class	scala/collection/TraversableLike
+Asciz	scala/collection/TraversableOnce;
+class	scala/collection/TraversableOnce
 Asciz	nonEmpty;
 Asciz	()Z;
 NameAndType	nonEmpty:()Z
-InterfaceMethod	scala/collection/TraversableLike.nonEmpty:()Z
+InterfaceMethod	scala/collection/TraversableOnce.nonEmpty:()Z
 Asciz	[;
 String	[
 Asciz	, ;
@@ -173,7 +173,7 @@ String	]
 Asciz	mkString;
 Asciz	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;;
 NameAndType	mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-InterfaceMethod	scala/collection/TraversableLike.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+InterfaceMethod	scala/collection/TraversableOnce.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 Asciz	isArray;
 NameAndType	isArray:()Z
 Method	java/lang/Class.isArray:()Z
@@ -210,7 +210,7 @@ class	scala/collection/mutable/ArrayOps$ofRef
 Method	scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
 Asciz	toList;
 NameAndType	toList:()Lscala/collection/immutable/List;
-InterfaceMethod	scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+InterfaceMethod	scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
 Asciz	scala/Predef$;
 class	scala/Predef$
 Asciz	Lscala/Predef$;;
@@ -677,14 +677,14 @@ public static java.lang.String argString(scala.reflect.ClassManifest);
    Stack=4, Locals=1, Args_size=1
 	aload_0
 	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.typeArguments:()Lscala/collection/immutable/List;
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.nonEmpty:()Z
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.nonEmpty:()Z
 	ifeq	l1 // aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.typeArguments:()Lscala/collection/immutable/List;
 	ldc	String [
 	ldc	String , 
 	ldc	String ]
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	goto	l2 // areturn
 l1	aload_0
 	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.erasure:()Ljava/lang/Class;
@@ -731,19 +731,13 @@ public static final boolean subtype$1(scala.reflect.ClassManifest, java.lang.Cla
 	dup
 	aload_3
 	invokespecial	Method scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
 	astore	6
 	aload	4
-	dup
-	pop
-	ifnull	l1 // getstatic
-	aload	4
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // getstatic
-l1	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
-	goto	l3 // astore
-l2	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	ifnonnull	l1 // getstatic
+	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+	goto	l2 // astore
+l1	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_1
 	anewarray	class java/lang/Class
 	dup
@@ -754,8 +748,8 @@ l2	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 	astore	5
 	aload	5
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
-l3	astore	7
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
+l2	astore	7
 	aload	6
 	aload	7
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon$colon:(Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
@@ -763,7 +757,7 @@ l3	astore	7
 	aload	8
 	aload_2
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.contains:(Ljava/lang/Object;)Z
-	ifne	l4 // iconst_1
+	ifne	l3 // iconst_1
 	aload	8
 	new	class scala/reflect/ClassManifest$$anonfun$subtype$1$1
 	dup
@@ -771,26 +765,25 @@ l3	astore	7
 	aload_2
 	invokespecial	Method scala/reflect/ClassManifest$$anonfun$subtype$1$1."<init>":(Lscala/reflect/ClassManifest;Ljava/lang/Class;)V
 	invokeinterface	InterfaceMethod scala/collection/LinearSeqLike.exists:(Lscala/Function1;)Z
-	ifeq	l5 // iconst_0
-l4	iconst_1
-	goto	l6 // ireturn
-l5	iconst_0
-l6	ireturn
+	ifeq	l4 // iconst_0
+l3	iconst_1
+	goto	l5 // ireturn
+l4	iconst_0
+l5	ireturn
   Labels:
-   	l1 = 45 // getstatic
-   	l2 = 51 // getstatic
-   	l3 = 78 // astore
-   	l4 = 119 // iconst_1
-   	l5 = 123 // iconst_0
-   	l6 = 124 // ireturn
+   	l1 = 40 // getstatic
+   	l2 = 67 // astore
+   	l3 = 108 // iconst_1
+   	l4 = 112 // iconst_0
+   	l5 = 113 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      125      0    $this       Lscala/reflect/ClassManifest;
-   0      125      1    sub       Ljava/lang/Class;
-   0      125      2    sup$1       Ljava/lang/Class;
-   6      119      4    subSuperClass       Ljava/lang/Class;
-   29      96      6    subSuperInterfaces       Lscala/collection/immutable/List;
-   89      36      8    subSuper       Lscala/collection/immutable/List;
+   0      114      0    $this       Lscala/reflect/ClassManifest;
+   0      114      1    sub       Ljava/lang/Class;
+   0      114      2    sup$1       Ljava/lang/Class;
+   6      108      4    subSuperClass       Ljava/lang/Class;
+   29      85      6    subSuperInterfaces       Lscala/collection/immutable/List;
+   78      36      8    subSuper       Lscala/collection/immutable/List;
 
 
 private static final boolean subargs$1(scala.reflect.ClassManifest, scala.collection.immutable.List, scala.collection.immutable.List);

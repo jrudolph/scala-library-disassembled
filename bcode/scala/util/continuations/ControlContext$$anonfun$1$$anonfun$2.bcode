@@ -20,13 +20,13 @@ Asciz	scala/util/continuations/ControlContext$$anonfun$1$$anonfun$2;
 class	scala/util/continuations/ControlContext$$anonfun$1$$anonfun$2
 NameAndType	serialVersionUID:J
 Field	scala/util/continuations/ControlContext$$anonfun$1$$anonfun$2.serialVersionUID:J
-Asciz	thr1$1;
-Asciz	Lscala/Function1;;
-Asciz	ret1$1;
 Asciz	$outer;
 Asciz	Lscala/util/continuations/ControlContext$$anonfun$1;;
+Asciz	ret1$1;
+Asciz	Lscala/Function1;;
+Asciz	thr1$1;
 Asciz	apply;
-Asciz	(Ljava/lang/Throwable;)Ljava/lang/Object;;
+Asciz	(Ljava/lang/Exception;)Ljava/lang/Object;;
 Asciz	scala/runtime/BooleanRef;
 class	scala/runtime/BooleanRef
 Asciz	LineNumberTable;
@@ -76,28 +76,29 @@ class	scala/Function2
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 InterfaceMethod	scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+Asciz	java/lang/Exception;
+class	java/lang/Exception
 Asciz	gd3$1;
-Asciz	(Ljava/lang/Throwable;Lscala/runtime/BooleanRef;)Z;
-NameAndType	gd3$1:(Ljava/lang/Throwable;Lscala/runtime/BooleanRef;)Z
-Method	scala/util/continuations/ControlContext$$anonfun$1$$anonfun$2.gd3$1:(Ljava/lang/Throwable;Lscala/runtime/BooleanRef;)Z
+Asciz	(Ljava/lang/Exception;Lscala/runtime/BooleanRef;)Z;
+NameAndType	gd3$1:(Ljava/lang/Exception;Lscala/runtime/BooleanRef;)Z
+Method	scala/util/continuations/ControlContext$$anonfun$1$$anonfun$2.gd3$1:(Ljava/lang/Exception;Lscala/runtime/BooleanRef;)Z
 Asciz	this;
 Asciz	Lscala/util/continuations/ControlContext$$anonfun$1$$anonfun$2;;
 Asciz	t;
-Asciz	Ljava/lang/Throwable;;
+Asciz	Ljava/lang/Exception;;
 Asciz	cc1;
 Asciz	Lscala/util/continuations/ControlContext;;
 Asciz	f0;
 Asciz	g0;
 Asciz	captureExceptions$1;
 Asciz	Lscala/runtime/BooleanRef;;
-Asciz	exceptionResult3;
+Asciz	temp6;
+Asciz	exceptionResult6;
 Asciz	LocalVariableTable;
-Asciz	(Ljava/lang/Throwable;)TB1;;
+Asciz	(Ljava/lang/Exception;)TB1;;
 Asciz	Signature;
-Asciz	java/lang/Throwable;
-class	java/lang/Throwable
-NameAndType	apply:(Ljava/lang/Throwable;)Ljava/lang/Object;
-Method	scala/util/continuations/ControlContext$$anonfun$1$$anonfun$2.apply:(Ljava/lang/Throwable;)Ljava/lang/Object;
+NameAndType	apply:(Ljava/lang/Exception;)Ljava/lang/Object;
+Method	scala/util/continuations/ControlContext$$anonfun$1$$anonfun$2.apply:(Ljava/lang/Exception;)Ljava/lang/Object;
 Asciz	v1;
 Asciz	(Lscala/util/continuations/ControlContext$$anonfun$1;Lscala/Function1;Lscala/Function1;)V;
 Asciz	java/lang/NullPointerException;
@@ -119,14 +120,14 @@ class	java/io/Serializable
 public static final long serialVersionUID;
   Signature: J
 
-private final scala.Function1 thr1$1;
-  Signature: Lscala/Function1;
+private final scala.util.continuations.ControlContext$$anonfun$1 $outer;
+  Signature: Lscala/util/continuations/ControlContext$$anonfun$1;
 
 private final scala.Function1 ret1$1;
   Signature: Lscala/Function1;
 
-private final scala.util.continuations.ControlContext$$anonfun$1 $outer;
-  Signature: Lscala/util/continuations/ControlContext$$anonfun$1;
+private final scala.Function1 thr1$1;
+  Signature: Lscala/Function1;
 
 public static {};
   Signature: ()V
@@ -137,10 +138,10 @@ public static {};
 	return
   Labels:
 
-public final java.lang.Object apply(java.lang.Throwable);
-  Signature: (Ljava/lang/Throwable;)Ljava/lang/Object;
+public final java.lang.Object apply(java.lang.Exception);
+  Signature: (Ljava/lang/Exception;)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=8, Args_size=2
+   Stack=3, Locals=9, Args_size=2
 	new	class scala/runtime/BooleanRef
 	dup
 	iconst_1
@@ -189,47 +190,58 @@ l1	aload	5
 	getfield	Field thr1$1:Lscala/Function1;
 	aload_1
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-l4	astore	6
+l4	astore	7
 	goto	l5 // aload
-	astore	7
-	aload_0
-	aload	7
-	aload	5
-	invokespecial	Method gd3$1:(Ljava/lang/Throwable;Lscala/runtime/BooleanRef;)Z
+	astore	8
+	aload	8
+	instanceof	class java/lang/Exception
 	ifeq	l6 // aload
+	aload	8
+	checkcast	class java/lang/Exception
+	astore	6
+	aload_0
+	aload	6
+	aload	5
+	invokespecial	Method gd3$1:(Ljava/lang/Exception;Lscala/runtime/BooleanRef;)Z
+	ifeq	l7 // aload
 	aload_0
 	getfield	Field thr1$1:Lscala/Function1;
-	aload	7
+	aload	6
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	astore	6
-l5	aload	6
+	astore	7
+l5	aload	7
 	areturn
-l6	aload	7
+l7	aload	8
+	athrow
+l6	aload	8
 	athrow
   Labels:
    	l2 = 80 // aload_2
    	l3 = 92 // goto
    	l1 = 95 // aload
    	l4 = 111 // astore
-   	l5 = 142 // aload
-   	l6 = 145 // aload
+   	l5 = 157 // aload
+   	l7 = 160 // aload
+   	l6 = 163 // aload
   Exception table:
    from   to  target type
     10   116   116   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      148      0    this       Lscala/util/continuations/ControlContext$$anonfun$1$$anonfun$2;
-   0      148      1    t       Ljava/lang/Throwable;
+   0      166      0    this       Lscala/util/continuations/ControlContext$$anonfun$1$$anonfun$2;
+   0      166      1    t       Ljava/lang/Exception;
    43      49      2    cc1       Lscala/util/continuations/ControlContext;
    60      32      3    f0       Lscala/Function1;
    60      32      4    g0       Lscala/Function1;
-   10      134      5    captureExceptions$1       Lscala/runtime/BooleanRef;
-   145      3      5    captureExceptions$1       Lscala/runtime/BooleanRef;
-   10      134      6    exceptionResult3       Ljava/lang/Object;
-   145      3      6    exceptionResult3       Ljava/lang/Object;
+   10      149      5    captureExceptions$1       Lscala/runtime/BooleanRef;
+   160      6      5    captureExceptions$1       Lscala/runtime/BooleanRef;
+   133      24      6    temp6       Ljava/lang/Exception;
+   160      3      6    temp6       Ljava/lang/Exception;
+   10      149      7    exceptionResult6       Ljava/lang/Object;
+   160      6      7    exceptionResult6       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 54 
+   00 57 
 
 public final java.lang.Object apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
@@ -237,8 +249,8 @@ public final java.lang.Object apply(java.lang.Object);
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	checkcast	class java/lang/Throwable
-	invokevirtual	Method apply:(Ljava/lang/Throwable;)Ljava/lang/Object;
+	checkcast	class java/lang/Exception
+	invokevirtual	Method apply:(Ljava/lang/Exception;)Ljava/lang/Object;
 	areturn
   Labels:
   LocalVariableTable: 
@@ -247,8 +259,8 @@ public final java.lang.Object apply(java.lang.Object);
    0      9      1    v1       Ljava/lang/Object;
 
 
-private final boolean gd3$1(java.lang.Throwable, scala.runtime.BooleanRef);
-  Signature: (Ljava/lang/Throwable;Lscala/runtime/BooleanRef;)Z
+private final boolean gd3$1(java.lang.Exception, scala.runtime.BooleanRef);
+  Signature: (Ljava/lang/Exception;Lscala/runtime/BooleanRef;)Z
   Code:
    Stack=1, Locals=3, Args_size=3
 	aload_2
@@ -286,7 +298,7 @@ l1	aload_0
    0      32      1    $outer       Lscala/util/continuations/ControlContext$$anonfun$1;
 
   Signature: length = 0x2
-   00 63 
+   00 64 
 
 }
 

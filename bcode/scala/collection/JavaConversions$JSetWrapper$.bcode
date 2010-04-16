@@ -10,7 +10,6 @@ public final class scala.collection.JavaConversions$JSetWrapper$ extends java.la
   Constant pool:
 Asciz	SourceFile;
 Asciz	JavaConversions.scala;
-Asciz	Scala;
 Asciz	MODULE$;
 Asciz	Lscala/collection/JavaConversions$JSetWrapper$;;
 Asciz	<clinit>;
@@ -24,12 +23,6 @@ Method	scala/collection/JavaConversions$JSetWrapper$."<init>":()V
 Asciz	unapply;
 Asciz	(Lscala/collection/JavaConversions$JSetWrapper;)Lscala/Option;;
 Asciz	LineNumberTable;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/None$;
 class	scala/None$
 Asciz	Lscala/None$;;
@@ -56,9 +49,12 @@ Asciz	(Ljava/util/Set;)V;
 NameAndType	"<init>":(Ljava/util/Set;)V
 Method	scala/collection/JavaConversions$JSetWrapper."<init>":(Ljava/util/Set;)V
 Asciz	Ljava/util/Set;;
+Asciz	java/lang/Object;
+class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/collection/JavaConversions$JSetWrapper$;
 Field	scala/collection/JavaConversions$JSetWrapper$.MODULE$:Lscala/collection/JavaConversions$JSetWrapper$;
+Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	scala/collection/JavaConversions;
 class	scala/collection/JavaConversions
@@ -84,29 +80,22 @@ public scala.Option unapply(scala.collection.JavaConversions$JSetWrapper);
   Code:
    Stack=3, Locals=2, Args_size=2
 	aload_1
-	dup
-	pop
-	ifnull	l1 // getstatic
-	aload_1
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // new
-l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	goto	l3 // areturn
-l2	new	class scala/Some
+	ifnonnull	l1 // new
+	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l2 // areturn
+l1	new	class scala/Some
 	dup
 	aload_1
 	invokevirtual	Method scala/collection/JavaConversions$JSetWrapper.underlying:()Ljava/util/Set;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-l3	areturn
+l2	areturn
   Labels:
-   	l1 = 14 // getstatic
-   	l2 = 20 // new
-   	l3 = 31 // areturn
+   	l1 = 10 // new
+   	l2 = 21 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      32      0    this       Lscala/collection/JavaConversions$JSetWrapper$;
-   0      32      1    x$0       Lscala/collection/JavaConversions$JSetWrapper;
+   0      22      0    this       Lscala/collection/JavaConversions$JSetWrapper$;
+   0      22      1    x$0       Lscala/collection/JavaConversions$JSetWrapper;
 
 
 public scala.collection.JavaConversions$JSetWrapper apply(java.util.Set);

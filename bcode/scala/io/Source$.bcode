@@ -17,7 +17,6 @@ public final class scala.io.Source$ extends java.lang.Object implements scala.Sc
   Constant pool:
 Asciz	SourceFile;
 Asciz	Source.scala;
-Asciz	Scala;
 Asciz	MODULE$;
 Asciz	Lscala/io/Source$;;
 Asciz	<clinit>;
@@ -98,12 +97,6 @@ class	scala/io/Codec
 Asciz	(Ljava/nio/charset/Charset;)V;
 NameAndType	"<init>":(Ljava/nio/charset/Charset;)V
 Method	scala/io/Codec."<init>":(Ljava/nio/charset/Charset;)V
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/io/Source$$anonfun$1;
 class	scala/io/Source$$anonfun$1
 Asciz	(Ljava/io/InputStream;ILscala/Function0;Lscala/Function0;Lscala/io/Codec;)V;
@@ -280,10 +273,13 @@ Asciz	close$1;
 Asciz	codec$1;
 Asciz	resetFn;
 Asciz	(Ljava/io/InputStream;ILscala/Function0<Lscala/io/Source;>;Lscala/Function0<Ljava/lang/Object;>;Lscala/io/Codec;)Lscala/io/Source;;
+Asciz	java/lang/Object;
+class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/io/Source$;
 Field	scala/io/Source$.MODULE$:Lscala/io/Source$;
 int	2048;
+Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	$anon$1;
 Asciz	scala/io/Source$Positioner;
@@ -470,14 +466,8 @@ public scala.io.Source stdin();
 	invokespecial	Method scala/io/Codec."<init>":(Ljava/nio/charset/Charset;)V
 	astore	5
 	aload_3
-	dup
-	pop
-	ifnull	l1 // new
-	aload_3
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // aload_3
-l1	new	class scala/io/Source$$anonfun$1
+	ifnonnull	l1 // aload_3
+	new	class scala/io/Source$$anonfun$1
 	dup
 	aload	4
 	iload_2
@@ -485,9 +475,9 @@ l1	new	class scala/io/Source$$anonfun$1
 	aload	7
 	aload	5
 	invokespecial	Method scala/io/Source$$anonfun$1."<init>":(Ljava/io/InputStream;ILscala/Function0;Lscala/Function0;Lscala/io/Codec;)V
-	goto	l3 // astore
-l2	aload_3
-l3	astore	6
+	goto	l2 // astore
+l1	aload_3
+l2	astore	6
 	new	class scala/io/BufferedSource
 	dup
 	aload	4
@@ -499,18 +489,17 @@ l3	astore	6
 	invokevirtual	Method scala/io/Source.withClose:(Lscala/Function0;)Lscala/io/Source;
 	areturn
   Labels:
-   	l1 = 43 // new
-   	l2 = 61 // aload_3
-   	l3 = 62 // astore
+   	l1 = 51 // aload_3
+   	l2 = 52 // astore
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      86      0    this       Lscala/io/Source$;
-   10      75      2    x$3       I
-   12      73      3    x$4       Lscala/Function0;
-   5      80      4    x$2       Ljava/io/InputStream;
-   29      56      5    x$6       Lscala/io/Codec;
-   64      21      6    resetFn0       Lscala/Function0;
-   15      70      7    x$5       Lscala/Function0;
+   0      76      0    this       Lscala/io/Source$;
+   10      65      2    x$3       I
+   12      63      3    x$4       Lscala/Function0;
+   5      70      4    x$2       Ljava/io/InputStream;
+   29      46      5    x$6       Lscala/io/Codec;
+   54      21      6    resetFn0       Lscala/Function0;
+   15      60      7    x$5       Lscala/Function0;
 
 
 public scala.io.Source fromIterable(scala.collection.Iterable);
@@ -534,7 +523,7 @@ public scala.io.Source fromIterable(scala.collection.Iterable);
    0      20      1    iterable$1       Lscala/collection/Iterable;
 
   Signature: length = 0x2
-   00 FFFFFF81 
+   00 7A 
 
 public scala.io.Source fromChar(char);
   Signature: (C)Lscala/io/Source;
@@ -753,14 +742,8 @@ public scala.io.Source fromInputStream(java.io.InputStream, int, scala.Function0
   Code:
    Stack=7, Locals=7, Args_size=6
 	aload_3
-	dup
-	pop
-	ifnull	l1 // new
-	aload_3
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // aload_3
-l1	new	class scala/io/Source$$anonfun$1
+	ifnonnull	l1 // aload_3
+	new	class scala/io/Source$$anonfun$1
 	dup
 	aload_1
 	iload_2
@@ -768,9 +751,9 @@ l1	new	class scala/io/Source$$anonfun$1
 	aload	4
 	aload	5
 	invokespecial	Method scala/io/Source$$anonfun$1."<init>":(Ljava/io/InputStream;ILscala/Function0;Lscala/Function0;Lscala/io/Codec;)V
-	goto	l3 // astore
-l2	aload_3
-l3	astore	6
+	goto	l2 // astore
+l1	aload_3
+l2	astore	6
 	new	class scala/io/BufferedSource
 	dup
 	aload_1
@@ -782,21 +765,20 @@ l3	astore	6
 	invokevirtual	Method scala/io/Source.withClose:(Lscala/Function0;)Lscala/io/Source;
 	areturn
   Labels:
-   	l1 = 14 // new
-   	l2 = 31 // aload_3
-   	l3 = 32 // astore
+   	l1 = 21 // aload_3
+   	l2 = 22 // astore
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      55      0    this       Lscala/io/Source$;
-   0      55      1    inputStream$1       Ljava/io/InputStream;
-   0      55      2    bufferSize$1       I
-   0      55      3    reset$1       Lscala/Function0;
-   0      55      4    close$1       Lscala/Function0;
-   0      55      5    codec$1       Lscala/io/Codec;
-   34      20      6    resetFn       Lscala/Function0;
+   0      45      0    this       Lscala/io/Source$;
+   0      45      1    inputStream$1       Ljava/io/InputStream;
+   0      45      2    bufferSize$1       I
+   0      45      3    reset$1       Lscala/Function0;
+   0      45      4    close$1       Lscala/Function0;
+   0      45      5    codec$1       Lscala/io/Codec;
+   24      20      6    resetFn       Lscala/Function0;
 
   Signature: length = 0x2
-   01 09 
+   01 02 
 
 private scala.io.Source$();
   Signature: ()V

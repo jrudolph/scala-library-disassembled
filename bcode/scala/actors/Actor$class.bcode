@@ -82,14 +82,15 @@ Asciz	Lscala/actors/OutputChannel;;
 Asciz	handler;
 Asciz	Lscala/PartialFunction;;
 Asciz	makeReaction;
-Asciz	(Lscala/actors/Actor;Lscala/Function0;)Ljava/lang/Runnable;;
+Asciz	(Lscala/actors/Actor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)Ljava/lang/Runnable;;
 Asciz	scala/actors/ActorTask;
 class	scala/actors/ActorTask
-Asciz	(Lscala/actors/Actor;Lscala/Function0;)V;
-NameAndType	"<init>":(Lscala/actors/Actor;Lscala/Function0;)V
-Method	scala/actors/ActorTask."<init>":(Lscala/actors/Actor;Lscala/Function0;)V
+Asciz	(Lscala/actors/Actor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)V;
+NameAndType	"<init>":(Lscala/actors/Actor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)V
+Method	scala/actors/ActorTask."<init>":(Lscala/actors/Actor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)V
 Asciz	fun;
 Asciz	Lscala/Function0;;
+Asciz	msg;
 Asciz	receive;
 Asciz	(Lscala/actors/Actor;Lscala/PartialFunction;)Ljava/lang/Object;;
 Asciz	scala/actors/Actor$;
@@ -226,7 +227,6 @@ Asciz	scala/Some;
 class	scala/Some
 Asciz	scala/actors/MQueueElement;
 class	scala/actors/MQueueElement
-Asciz	msg;
 NameAndType	msg:()Ljava/lang/Object;
 Method	scala/actors/MQueueElement.msg:()Ljava/lang/Object;
 Method	scala/Some."<init>":(Ljava/lang/Object;)V
@@ -327,17 +327,13 @@ NameAndType	receive:(Lscala/PartialFunction;)Ljava/lang/Object;
 InterfaceMethod	scala/actors/Actor.receive:(Lscala/PartialFunction;)Ljava/lang/Object;
 Asciz	scheduleActor;
 Asciz	(Lscala/actors/Actor;Lscala/PartialFunction;Ljava/lang/Object;)V;
-Asciz	scala/actors/Reaction;
-class	scala/actors/Reaction
-NameAndType	"<init>":(Lscala/actors/Actor;Lscala/PartialFunction;Ljava/lang/Object;)V
-Method	scala/actors/Reaction."<init>":(Lscala/actors/Actor;Lscala/PartialFunction;Ljava/lang/Object;)V
 Asciz	executeFromActor;
 Asciz	(Ljava/lang/Runnable;)V;
 NameAndType	executeFromActor:(Ljava/lang/Runnable;)V
 InterfaceMethod	scala/actors/IScheduler.executeFromActor:(Ljava/lang/Runnable;)V
 Asciz	f;
 Asciz	task;
-Asciz	Lscala/actors/Reaction;;
+Asciz	Lscala/actors/ActorTask;;
 Asciz	scala$actors$Actor$$suspendActor;
 Asciz	liftedTree1$1;
 NameAndType	liftedTree1$1:(Lscala/actors/Actor;)V
@@ -382,6 +378,8 @@ Asciz	newActor;
 Asciz	(Lscala/actors/Reactor;)V;
 NameAndType	newActor:(Lscala/actors/Reactor;)V
 InterfaceMethod	scala/actors/IScheduler.newActor:(Lscala/actors/Reactor;)V
+Asciz	scala/actors/Reaction;
+class	scala/actors/Reaction
 Method	scala/actors/Reaction."<init>":(Lscala/actors/Actor;)V
 Asciz	execute;
 NameAndType	execute:(Ljava/lang/Runnable;)V
@@ -415,6 +413,8 @@ Asciz	Lscala/actors/AbstractActor;;
 Asciz	(Lscala/actors/Actor;Lscala/Function0;)Lscala/actors/Actor;;
 Asciz	scala/actors/Actor$$anon$3;
 class	scala/actors/Actor$$anon$3
+Asciz	(Lscala/actors/Actor;Lscala/Function0;)V;
+NameAndType	"<init>":(Lscala/actors/Actor;Lscala/Function0;)V
 Method	scala/actors/Actor$$anon$3."<init>":(Lscala/actors/Actor;Lscala/Function0;)V
 Asciz	(Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;;
 NameAndType	link:(Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;
@@ -599,21 +599,25 @@ l2	areturn
    0      32      3    handler       Lscala/PartialFunction;
 
 
-public static java.lang.Runnable makeReaction(scala.actors.Actor, scala.Function0);
-  Signature: (Lscala/actors/Actor;Lscala/Function0;)Ljava/lang/Runnable;
+public static java.lang.Runnable makeReaction(scala.actors.Actor, scala.Function0, scala.PartialFunction, java.lang.Object);
+  Signature: (Lscala/actors/Actor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)Ljava/lang/Runnable;
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=6, Locals=4, Args_size=4
 	new	class scala/actors/ActorTask
 	dup
 	aload_0
 	aload_1
-	invokespecial	Method scala/actors/ActorTask."<init>":(Lscala/actors/Actor;Lscala/Function0;)V
+	aload_2
+	aload_3
+	invokespecial	Method scala/actors/ActorTask."<init>":(Lscala/actors/Actor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)V
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      10      0    $this       Lscala/actors/Actor;
-   0      10      1    fun       Lscala/Function0;
+   0      12      0    $this       Lscala/actors/Actor;
+   0      12      1    fun       Lscala/Function0;
+   0      12      2    handler       Lscala/PartialFunction;
+   0      12      3    msg       Ljava/lang/Object;
 
 
 public static java.lang.Object receive(scala.actors.Actor, scala.PartialFunction);
@@ -1143,15 +1147,16 @@ public static java.lang.Object $qmark(scala.actors.Actor);
 public static void scheduleActor(scala.actors.Actor, scala.PartialFunction, java.lang.Object);
   Signature: (Lscala/actors/Actor;Lscala/PartialFunction;Ljava/lang/Object;)V
   Code:
-   Stack=5, Locals=4, Args_size=3
+   Stack=6, Locals=4, Args_size=3
 	aload_1
 	ifnull	l1 // return
-	new	class scala/actors/Reaction
+	new	class scala/actors/ActorTask
 	dup
 	aload_0
+	aconst_null
 	aload_1
 	aload_2
-	invokespecial	Method scala/actors/Reaction."<init>":(Lscala/actors/Actor;Lscala/PartialFunction;Ljava/lang/Object;)V
+	invokespecial	Method scala/actors/ActorTask."<init>":(Lscala/actors/Actor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)V
 	astore_3
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scheduler:()Lscala/actors/IScheduler;
@@ -1159,13 +1164,13 @@ public static void scheduleActor(scala.actors.Actor, scala.PartialFunction, java
 	invokeinterface	InterfaceMethod scala/actors/IScheduler.executeFromActor:(Ljava/lang/Runnable;)V
 l1	return
   Labels:
-   	l1 = 27 // return
+   	l1 = 28 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      28      0    $this       Lscala/actors/Actor;
-   0      28      1    f       Lscala/PartialFunction;
-   0      28      2    msg       Ljava/lang/Object;
-   15      12      3    task       Lscala/actors/Reaction;
+   0      29      0    $this       Lscala/actors/Actor;
+   0      29      1    f       Lscala/PartialFunction;
+   0      29      2    msg       Ljava/lang/Object;
+   16      12      3    task       Lscala/actors/ActorTask;
 
 
 public static final void scala$actors$Actor$$suspendActor(scala.actors.Actor);

@@ -74,12 +74,12 @@ Asciz	to;
 Asciz	(I)Lscala/collection/immutable/Range$Inclusive;;
 NameAndType	to:(I)Lscala/collection/immutable/Range$Inclusive;
 Method	scala/runtime/RichInt.to:(I)Lscala/collection/immutable/Range$Inclusive;
-Asciz	scala/collection/TraversableLike;
-class	scala/collection/TraversableLike
+Asciz	scala/collection/TraversableOnce;
+class	scala/collection/TraversableOnce
 Asciz	toList;
 Asciz	()Lscala/collection/immutable/List;;
 NameAndType	toList:()Lscala/collection/immutable/List;
-InterfaceMethod	scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+InterfaceMethod	scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
 Asciz	scala/util/matching/Regex$MatchData$$anonfun$subgroups$1;
 class	scala/util/matching/Regex$MatchData$$anonfun$subgroups$1
 Asciz	<init>;
@@ -95,6 +95,8 @@ Asciz	canBuildFrom;
 Asciz	()Lscala/collection/generic/CanBuildFrom;;
 NameAndType	canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
 Method	scala/collection/immutable/List$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
+Asciz	scala/collection/TraversableLike;
+class	scala/collection/TraversableLike
 Asciz	map;
 Asciz	(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
 NameAndType	map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
@@ -146,12 +148,10 @@ Asciz	zipWithIndex;
 Asciz	(Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
 NameAndType	zipWithIndex:(Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 InterfaceMethod	scala/collection/IterableLike.zipWithIndex:(Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-Asciz	scala/collection/Traversable;
-class	scala/collection/Traversable
 Asciz	$plus$plus;
-Asciz	(Lscala/collection/Traversable;)Lscala/collection/immutable/Map;;
-NameAndType	$plus$plus:(Lscala/collection/Traversable;)Lscala/collection/immutable/Map;
-InterfaceMethod	scala/collection/immutable/MapLike.$plus$plus:(Lscala/collection/Traversable;)Lscala/collection/immutable/Map;
+Asciz	(Lscala/collection/TraversableOnce;)Lscala/collection/immutable/Map;;
+NameAndType	$plus$plus:(Lscala/collection/TraversableOnce;)Lscala/collection/immutable/Map;
+InterfaceMethod	scala/collection/immutable/MapLike.$plus$plus:(Lscala/collection/TraversableOnce;)Lscala/collection/immutable/Map;
 Asciz	(Lscala/util/matching/Regex$MatchData;Ljava/lang/String;)Ljava/lang/String;;
 Asciz	()Lscala/collection/immutable/Map;;
 NameAndType	scala$util$matching$Regex$MatchData$$nameToIndex:()Lscala/collection/immutable/Map;
@@ -300,7 +300,7 @@ public static scala.collection.immutable.List subgroups(scala.util.matching.Rege
 	aload_0
 	invokeinterface	InterfaceMethod scala/util/matching/Regex$MatchData.groupCount:()I
 	invokevirtual	Method scala/runtime/RichInt.to:(I)Lscala/collection/immutable/Range$Inclusive;
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
 	new	class scala/util/matching/Regex$MatchData$$anonfun$subgroups$1
 	dup
 	aload_0
@@ -443,14 +443,14 @@ public static final scala.collection.immutable.Map scala$util$matching$Regex$Mat
 	astore_1
 	aload_0
 	invokeinterface	InterfaceMethod scala/util/matching/Regex$MatchData.groupNames:()Lscala/collection/Seq;
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
 	aload_1
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	getstatic	Field scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
 	invokevirtual	Method scala/collection/immutable/List$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.zipWithIndex:(Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-	checkcast	class scala/collection/Traversable
-	invokeinterface	InterfaceMethod scala/collection/immutable/MapLike.$plus$plus:(Lscala/collection/Traversable;)Lscala/collection/immutable/Map;
+	checkcast	class scala/collection/TraversableOnce
+	invokeinterface	InterfaceMethod scala/collection/immutable/MapLike.$plus$plus:(Lscala/collection/TraversableOnce;)Lscala/collection/immutable/Map;
 	areturn
   Labels:
   LocalVariableTable: 

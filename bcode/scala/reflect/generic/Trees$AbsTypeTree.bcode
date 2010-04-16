@@ -24,12 +24,6 @@ Asciz	tpe;
 Asciz	()Lscala/reflect/generic/Types$AbsType;;
 NameAndType	tpe:()Lscala/reflect/generic/Types$AbsType;
 Method	scala/reflect/generic/Trees$AbsTypeTree.tpe:()Lscala/reflect/generic/Types$AbsType;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/reflect/generic/Types$AbsType;
 class	scala/reflect/generic/Types$AbsType
 Asciz	typeSymbol;
@@ -46,6 +40,12 @@ class	scala/reflect/generic/Types
 Asciz	NoType;
 NameAndType	NoType:()Lscala/reflect/generic/Types$AbsType;
 InterfaceMethod	scala/reflect/generic/Types.NoType:()Lscala/reflect/generic/Types$AbsType;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/reflect/generic/Trees$Tree;
 class	scala/reflect/generic/Trees$Tree
 Asciz	$outer;
@@ -81,26 +81,19 @@ class	scala/ScalaObject
 public scala.reflect.generic.Symbols$AbsSymbol symbol();
   Signature: ()Lscala/reflect/generic/Symbols$AbsSymbol;
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=1, Locals=1, Args_size=1
 	aload_0
 	invokevirtual	Method tpe:()Lscala/reflect/generic/Types$AbsType;
-	dup
-	astore_1
-	ifnull	l1 // aconst_null
-	aload_1
+	ifnonnull	l1 // aload_0
 	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // aload_0
-l1	aconst_null
-	goto	l3 // areturn
-l2	aload_0
+	goto	l2 // areturn
+l1	aload_0
 	invokevirtual	Method tpe:()Lscala/reflect/generic/Types$AbsType;
 	invokevirtual	Method scala/reflect/generic/Types$AbsType.typeSymbol:()Lscala/reflect/generic/Symbols$AbsSymbol;
-l3	areturn
+l2	areturn
   Labels:
-   	l1 = 17 // aconst_null
-   	l2 = 21 // aload_0
-   	l3 = 28 // areturn
+   	l1 = 11 // aload_0
+   	l2 = 18 // areturn
 
 public boolean isEmpty();
   Signature: ()Z

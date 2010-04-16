@@ -8,7 +8,6 @@ public final class scala.collection.script.Remove$ extends java.lang.Object impl
   Constant pool:
 Asciz	SourceFile;
 Asciz	Message.scala;
-Asciz	Scala;
 Asciz	MODULE$;
 Asciz	Lscala/collection/script/Remove$;;
 Asciz	<clinit>;
@@ -22,12 +21,6 @@ Method	scala/collection/script/Remove$."<init>":()V
 Asciz	unapply;
 Asciz	(Lscala/collection/script/Remove;)Lscala/Option;;
 Asciz	LineNumberTable;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/None$;
 class	scala/None$
 Asciz	Lscala/None$;;
@@ -64,9 +57,12 @@ NameAndType	"<init>":(Lscala/collection/script/Location;Ljava/lang/Object;)V
 Method	scala/collection/script/Remove."<init>":(Lscala/collection/script/Location;Ljava/lang/Object;)V
 Asciz	Lscala/collection/script/Location;;
 Asciz	Ljava/lang/Object;;
+Asciz	java/lang/Object;
+class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/collection/script/Remove$;
 Field	scala/collection/script/Remove$.MODULE$:Lscala/collection/script/Remove$;
+Asciz	Scala;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -88,16 +84,10 @@ public scala.Option unapply(scala.collection.script.Remove);
   Code:
    Stack=6, Locals=2, Args_size=2
 	aload_1
-	dup
-	pop
-	ifnull	l1 // getstatic
-	aload_1
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // new
-l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	goto	l3 // areturn
-l2	new	class scala/Some
+	ifnonnull	l1 // new
+	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l2 // areturn
+l1	new	class scala/Some
 	dup
 	new	class scala/Tuple2
 	dup
@@ -107,15 +97,14 @@ l2	new	class scala/Some
 	invokevirtual	Method scala/collection/script/Remove.elem:()Ljava/lang/Object;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-l3	areturn
+l2	areturn
   Labels:
-   	l1 = 14 // getstatic
-   	l2 = 20 // new
-   	l3 = 42 // areturn
+   	l1 = 10 // new
+   	l2 = 32 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      43      0    this       Lscala/collection/script/Remove$;
-   0      43      1    x$0       Lscala/collection/script/Remove;
+   0      33      0    this       Lscala/collection/script/Remove$;
+   0      33      1    x$0       Lscala/collection/script/Remove;
 
 
 public scala.collection.script.Remove apply(scala.collection.script.Location, java.lang.Object);

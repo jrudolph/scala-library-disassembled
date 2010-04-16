@@ -53,12 +53,6 @@ Asciz	DefaultBufSize;
 Asciz	()I;
 NameAndType	DefaultBufSize:()I
 Method	scala/io/Source$.DefaultBufSize:()I
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/io/Source$$anonfun$1;
 class	scala/io/Source$$anonfun$1
 Asciz	(Ljava/io/InputStream;ILscala/Function0;Lscala/Function0;Lscala/io/Codec;)V;
@@ -161,6 +155,8 @@ Asciz	(Lscala/xml/parsing/MarkupHandler;)V;
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	$anonfun$1;
+Asciz	java/lang/Object;
+class	java/lang/Object
 
 {
 public static scala.io.Source externalSource(scala.xml.parsing.MarkupHandler, java.lang.String);
@@ -196,14 +192,8 @@ public static scala.io.Source externalSource(scala.xml.parsing.MarkupHandler, ja
 	istore	5
 	astore	7
 	aload	6
-	dup
-	pop
-	ifnull	l2 // new
-	aload	6
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l3 // aload
-l2	new	class scala/io/Source$$anonfun$1
+	ifnonnull	l2 // aload
+	new	class scala/io/Source$$anonfun$1
 	dup
 	aload	7
 	iload	5
@@ -211,9 +201,9 @@ l2	new	class scala/io/Source$$anonfun$1
 	aload	10
 	aload	8
 	invokespecial	Method scala/io/Source$$anonfun$1."<init>":(Ljava/io/InputStream;ILscala/Function0;Lscala/Function0;Lscala/io/Codec;)V
-	goto	l4 // astore
-l3	aload	6
-l4	astore	9
+	goto	l3 // astore
+l2	aload	6
+l3	astore	9
 	new	class scala/io/BufferedSource
 	dup
 	aload	7
@@ -232,7 +222,7 @@ l1	aload_0
 	aload_0
 	aload	13
 	invokestatic	Method gd1$1:(Lscala/xml/parsing/MarkupHandler;Ljava/lang/String;)Z
-	ifeq	l5 // new
+	ifeq	l4 // new
 	new	class scala/collection/immutable/StringOps
 	dup
 	aload	13
@@ -244,8 +234,8 @@ l1	aload_0
 	iload	12
 	invokestatic	Method scala/collection/IndexedSeqLike$class.drop:(Lscala/collection/IndexedSeqLike;I)Ljava/lang/Object;
 	checkcast	class java/lang/String
-	goto	l6 // astore
-l5	new	class scala/collection/immutable/StringOps
+	goto	l5 // astore
+l4	new	class scala/collection/immutable/StringOps
 	dup
 	aload	13
 	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
@@ -260,7 +250,7 @@ l5	new	class scala/collection/immutable/StringOps
 	iload	15
 	invokestatic	Method scala/collection/IndexedSeqLike$class.take:(Lscala/collection/IndexedSeqLike;I)Ljava/lang/Object;
 	checkcast	class java/lang/String
-l6	astore	16
+l5	astore	16
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -283,28 +273,27 @@ l6	astore	16
 	invokevirtual	Method scala/io/Source$.fromPath:(Ljava/lang/String;Lscala/io/Codec;)Lscala/io/Source;
 	areturn
   Labels:
-   	l2 = 72 // new
-   	l3 = 92 // aload
-   	l4 = 94 // astore
-   	l1 = 118 // aload_0
-   	l5 = 168 // new
-   	l6 = 201 // astore
+   	l2 = 81 // aload
+   	l3 = 83 // astore
+   	l1 = 107 // aload_0
+   	l4 = 157 // new
+   	l5 = 190 // astore
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      251      0    $this       Lscala/xml/parsing/MarkupHandler;
-   0      251      1    systemId       Ljava/lang/String;
-   18      100      3    x$1       Ljava/net/URL;
-   63      55      4    $inlThis3       Ljava/lang/Object;
-   63      55      5    bufferSize$10       I
-   63      55      6    reset$10       Lscala/Function0;
-   63      55      7    inputStream$10       Ljava/io/InputStream;
-   32      86      8    x$2       Lscala/io/Codec;
-   96      21      9    resetFn0       Lscala/Function0;
-   63      55      10    close$10       Lscala/Function0;
-   132      119      13    temp1       Ljava/lang/String;
-   203      47      16    fileStr       Ljava/lang/String;
-   224      26      18    x$3       Ljava/lang/String;
-   240      10      19    x$4       Lscala/io/Codec;
+   0      240      0    $this       Lscala/xml/parsing/MarkupHandler;
+   0      240      1    systemId       Ljava/lang/String;
+   18      89      3    x$1       Ljava/net/URL;
+   61      46      4    $inlThis3       Ljava/lang/Object;
+   61      46      5    bufferSize$10       I
+   61      46      6    reset$10       Lscala/Function0;
+   61      46      7    inputStream$10       Ljava/io/InputStream;
+   32      75      8    x$2       Lscala/io/Codec;
+   85      21      9    resetFn0       Lscala/Function0;
+   61      46      10    close$10       Lscala/Function0;
+   121      119      13    temp1       Ljava/lang/String;
+   192      47      16    fileStr       Ljava/lang/String;
+   213      26      18    x$3       Ljava/lang/String;
+   229      10      19    x$4       Lscala/io/Codec;
 
 
 private static final boolean gd1$1(scala.xml.parsing.MarkupHandler, java.lang.String);

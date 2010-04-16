@@ -34,13 +34,8 @@ Asciz	table;
 Asciz	()[Ljava/lang/Object;;
 NameAndType	table:()[Ljava/lang/Object;
 InterfaceMethod	scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	containsEntry;
+Asciz	(Ljava/lang/Object;)Z;
 NameAndType	containsEntry:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/collection/mutable/FlatHashTable.containsEntry:(Ljava/lang/Object;)Z
 Asciz	java/lang/AssertionError;
@@ -66,12 +61,12 @@ class	scala/collection/mutable/ArrayOps$ofRef
 Asciz	([Ljava/lang/Object;)V;
 NameAndType	"<init>":([Ljava/lang/Object;)V
 Method	scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
-Asciz	scala/collection/TraversableLike;
-class	scala/collection/TraversableLike
+Asciz	scala/collection/TraversableOnce;
+class	scala/collection/TraversableOnce
 Asciz	mkString;
 Asciz	()Ljava/lang/String;;
 NameAndType	mkString:()Ljava/lang/String;
-InterfaceMethod	scala/collection/TraversableLike.mkString:()Ljava/lang/String;
+InterfaceMethod	scala/collection/TraversableOnce.mkString:()Ljava/lang/String;
 Asciz	toString;
 NameAndType	toString:()Ljava/lang/String;
 Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
@@ -144,19 +139,13 @@ public static {};
 public final void apply(int);
   Signature: (I)V
   Code:
-   Stack=7, Locals=7, Args_size=2
+   Stack=7, Locals=6, Args_size=2
 	aload_0
 	getfield	Field $outer:Lscala/collection/mutable/FlatHashTable;
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
 	iload_1
 	aaload
-	dup
-	astore_2
 	ifnull	l1 // return
-	aload_2
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifne	l1 // return
 	aload_0
 	getfield	Field $outer:Lscala/collection/mutable/FlatHashTable;
 	aload_0
@@ -167,8 +156,8 @@ public final void apply(int);
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.containsEntry:(Ljava/lang/Object;)Z
 	ifne	l1 // return
 	iconst_0
-	istore_3
-	iload_3
+	istore_2
+	iload_2
 	ifeq	l2 // new
 l1	return
 l2	new	class java/lang/AssertionError
@@ -186,8 +175,8 @@ l2	new	class java/lang/AssertionError
 	ldc	String  
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
-	astore	4
-	aload	4
+	astore_3
+	aload_3
 	getfield	Field $outer:Lscala/collection/mutable/FlatHashTable;
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
 	iload_1
@@ -196,16 +185,16 @@ l2	new	class java/lang/AssertionError
 	ldc	String  
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
-	astore	5
-	aload	5
+	astore	4
+	aload	4
 	getfield	Field $outer:Lscala/collection/mutable/FlatHashTable;
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
-	astore	6
+	astore	5
 	new	class scala/collection/mutable/ArrayOps$ofRef
 	dup
-	aload	6
+	aload	5
 	invokespecial	Method scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.mkString:()Ljava/lang/String;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.mkString:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
@@ -213,14 +202,14 @@ l2	new	class java/lang/AssertionError
 	invokespecial	Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 53 // return
-   	l2 = 54 // new
+   	l1 = 43 // return
+   	l2 = 44 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      154      0    this       Lscala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1;
-   0      154      1    i$1       I
-   53      0      3    assertion0       Z
-   54      100      3    assertion0       Z
+   0      142      0    this       Lscala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1;
+   0      142      1    i$1       I
+   43      0      2    assertion0       Z
+   44      98      2    assertion0       Z
 
 
 public scala.collection.mutable.FlatHashTable scala$collection$mutable$FlatHashTable$$anonfun$$$outer();
@@ -273,7 +262,7 @@ l1	aload_0
    0      22      1    $outer       Lscala/collection/mutable/FlatHashTable;
 
   Signature: length = 0x2
-   00 66 
+   00 61 
 
 }
 

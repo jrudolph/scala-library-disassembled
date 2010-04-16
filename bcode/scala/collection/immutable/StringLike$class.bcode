@@ -151,12 +151,6 @@ Asciz	scala/collection/immutable/StringLike$$anonfun$linesIterator$1;
 class	scala/collection/immutable/StringLike$$anonfun$linesIterator$1
 Method	scala/collection/immutable/StringLike$$anonfun$linesIterator$1."<init>":(Lscala/collection/immutable/StringLike;)V
 Asciz	capitalize;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	;
 String	
 Asciz	toCharArray;
@@ -329,6 +323,12 @@ NameAndType	toLowerCase:()Ljava/lang/String;
 Method	java/lang/String.toLowerCase:()Ljava/lang/String;
 Asciz	true;
 String	true
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	false;
 String	false
 Asciz	For input string: \";
@@ -366,6 +366,8 @@ class	scala/collection/TraversableLike
 Asciz	(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
 NameAndType	map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 InterfaceMethod	scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+Asciz	scala/collection/TraversableOnce;
+class	scala/collection/TraversableOnce
 Asciz	scala/reflect/Manifest$;
 class	scala/reflect/Manifest$
 Asciz	Lscala/reflect/Manifest$;;
@@ -378,7 +380,7 @@ Method	scala/reflect/Manifest$.Object:()Lscala/reflect/Manifest;
 Asciz	toArray;
 Asciz	(Lscala/reflect/ClassManifest;)Ljava/lang/Object;;
 NameAndType	toArray:(Lscala/reflect/ClassManifest;)Ljava/lang/Object;
-InterfaceMethod	scala/collection/TraversableLike.toArray:(Lscala/reflect/ClassManifest;)Ljava/lang/Object;
+InterfaceMethod	scala/collection/TraversableOnce.toArray:(Lscala/reflect/ClassManifest;)Ljava/lang/Object;
 Asciz	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;;
 NameAndType	format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 Method	java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
@@ -646,52 +648,45 @@ public static scala.collection.Iterator linesIterator(scala.collection.immutable
 public static java.lang.String capitalize(scala.collection.immutable.StringLike);
   Signature: (Lscala/collection/immutable/StringLike;)Ljava/lang/String;
   Code:
-   Stack=4, Locals=4, Args_size=1
+   Stack=4, Locals=3, Args_size=1
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.toString:()Ljava/lang/String;
-	dup
-	astore_1
-	ifnull	l1 // aconst_null
-	aload_1
+	ifnonnull	l1 // aload_0
 	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // aload_0
-l1	aconst_null
-	goto	l3 // areturn
-l2	aload_0
+	goto	l2 // areturn
+l1	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.toString:()Ljava/lang/String;
 	invokevirtual	Method java/lang/String.length:()I
 	iconst_0
-	if_icmpne	l4 // aload_0
+	if_icmpne	l3 // aload_0
 	ldc	String 
-	goto	l3 // areturn
-l4	aload_0
+	goto	l2 // areturn
+l3	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.toString:()Ljava/lang/String;
 	invokevirtual	Method java/lang/String.toCharArray:()[C
-	astore_3
-	aload_3
+	astore_2
+	aload_2
 	iconst_0
-	aload_3
+	aload_2
 	iconst_0
 	caload
-	istore_2
-	iload_2
+	istore_1
+	iload_1
 	invokestatic	Method java/lang/Character.toUpperCase:(C)C
 	castore
 	new	class java/lang/String
 	dup
-	aload_3
+	aload_2
 	invokespecial	Method java/lang/String."<init>":([C)V
-l3	areturn
+l2	areturn
   Labels:
-   	l1 = 19 // aconst_null
-   	l2 = 23 // aload_0
-   	l4 = 41 // aload_0
-   	l3 = 70 // areturn
+   	l1 = 13 // aload_0
+   	l3 = 31 // aload_0
+   	l2 = 60 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      71      0    $this       Lscala/collection/immutable/StringLike;
-   51      19      3    chars       [C
+   0      61      0    $this       Lscala/collection/immutable/StringLike;
+   41      19      2    chars       [C
 
 
 public static java.lang.String stripPrefix(scala.collection.immutable.StringLike, java.lang.String);
@@ -998,50 +993,44 @@ private static boolean parseBoolean(scala.collection.immutable.StringLike, java.
   Code:
    Stack=4, Locals=5, Args_size=2
 	aload_1
-	dup
-	pop
-	ifnull	l1 // new
-	aload_1
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // aload_1
-l1	new	class java/lang/NumberFormatException
+	ifnonnull	l1 // aload_1
+	new	class java/lang/NumberFormatException
 	dup
 	ldc_w	String For input string: \"null\"
 	invokespecial	Method java/lang/NumberFormatException."<init>":(Ljava/lang/String;)V
 	athrow
-l2	aload_1
+l1	aload_1
 	invokevirtual	Method java/lang/String.toLowerCase:()Ljava/lang/String;
-	astore_3
-	aload_3
-	ldc_w	String true
 	astore_2
-	dup
-	ifnonnull	l3 // aload_2
-	pop
 	aload_2
-	ifnull	l4 // iconst_1
-	goto	l5 // aload_3
-l3	aload_2
+	ldc_w	String true
+	astore_3
+	dup
+	ifnonnull	l2 // aload_3
+	pop
+	aload_3
+	ifnull	l3 // iconst_1
+	goto	l4 // aload_2
+l2	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l5 // aload_3
-l4	iconst_1
-	goto	l6 // ireturn
-l5	aload_3
+	ifeq	l4 // aload_2
+l3	iconst_1
+	goto	l5 // ireturn
+l4	aload_2
 	ldc_w	String false
 	astore	4
 	dup
-	ifnonnull	l7 // aload
+	ifnonnull	l6 // aload
 	pop
 	aload	4
-	ifnull	l8 // iconst_0
-	goto	l9 // new
-l7	aload	4
+	ifnull	l7 // iconst_0
+	goto	l8 // new
+l6	aload	4
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l9 // new
-l8	iconst_0
-l6	ireturn
-l9	new	class java/lang/NumberFormatException
+	ifeq	l8 // new
+l7	iconst_0
+l5	ireturn
+l8	new	class java/lang/NumberFormatException
 	dup
 	new	class scala/collection/mutable/StringBuilder
 	dup
@@ -1056,21 +1045,20 @@ l9	new	class java/lang/NumberFormatException
 	invokespecial	Method java/lang/NumberFormatException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 14 // new
-   	l2 = 25 // aload_1
-   	l3 = 47 // aload_2
-   	l4 = 54 // iconst_1
-   	l5 = 58 // aload_3
-   	l7 = 77 // aload
-   	l8 = 85 // iconst_0
-   	l6 = 86 // ireturn
-   	l9 = 87 // new
+   	l1 = 15 // aload_1
+   	l2 = 37 // aload_3
+   	l3 = 44 // iconst_1
+   	l4 = 48 // aload_2
+   	l6 = 67 // aload
+   	l7 = 75 // iconst_0
+   	l5 = 76 // ireturn
+   	l8 = 77 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      121      0    $this       Lscala/collection/immutable/StringLike;
-   0      121      1    s       Ljava/lang/String;
-   30      56      3    temp1       Ljava/lang/String;
-   87      34      3    temp1       Ljava/lang/String;
+   0      111      0    $this       Lscala/collection/immutable/StringLike;
+   0      111      1    s       Ljava/lang/String;
+   20      56      2    temp1       Ljava/lang/String;
+   77      34      2    temp1       Ljava/lang/String;
 
 
 public static final java.lang.Object scala$collection$immutable$StringLike$$unwrapArg(scala.collection.immutable.StringLike, java.lang.Object);
@@ -1109,10 +1097,10 @@ public static java.lang.String format(scala.collection.immutable.StringLike, sca
 	getstatic	Field scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
 	invokevirtual	Method scala/collection/Seq$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-	checkcast	class scala/collection/TraversableLike
+	checkcast	class scala/collection/TraversableOnce
 	getstatic	Field scala/reflect/Manifest$.MODULE$:Lscala/reflect/Manifest$;
 	invokevirtual	Method scala/reflect/Manifest$.Object:()Lscala/reflect/Manifest;
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toArray:(Lscala/reflect/ClassManifest;)Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toArray:(Lscala/reflect/ClassManifest;)Ljava/lang/Object;
 	checkcast	class "[Ljava/lang/Object;"
 	invokestatic	Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 	areturn
@@ -1138,10 +1126,10 @@ public static java.lang.String formatLocal(scala.collection.immutable.StringLike
 	getstatic	Field scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
 	invokevirtual	Method scala/collection/Seq$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-	checkcast	class scala/collection/TraversableLike
+	checkcast	class scala/collection/TraversableOnce
 	getstatic	Field scala/reflect/Manifest$.MODULE$:Lscala/reflect/Manifest$;
 	invokevirtual	Method scala/reflect/Manifest$.Object:()Lscala/reflect/Manifest;
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toArray:(Lscala/reflect/ClassManifest;)Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toArray:(Lscala/reflect/ClassManifest;)Ljava/lang/Object;
 	checkcast	class "[Ljava/lang/Object;"
 	invokestatic	Method java/lang/String.format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 	areturn

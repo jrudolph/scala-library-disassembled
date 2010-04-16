@@ -12,7 +12,6 @@ public final class scala.math.BigDecimal$ extends java.lang.Object implements sc
   Constant pool:
 Asciz	SourceFile;
 Asciz	BigDecimal.scala;
-Asciz	Scala;
 Asciz	MODULE$;
 Asciz	Lscala/math/BigDecimal$;;
 Asciz	<clinit>;
@@ -23,14 +22,14 @@ class	scala/math/BigDecimal$
 Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/math/BigDecimal$."<init>":()V
-Asciz	bitmap$0;
+Asciz	minCached;
 Asciz	I;
-Asciz	defaultMathContext;
-Asciz	Ljava/math/MathContext;;
+Asciz	maxCached;
 Asciz	cache;
 Asciz	[Lscala/math/BigDecimal;;
-Asciz	maxCached;
-Asciz	minCached;
+Asciz	defaultMathContext;
+Asciz	Ljava/math/MathContext;;
+Asciz	bitmap$0;
 Asciz	()I;
 Asciz	LineNumberTable;
 NameAndType	minCached:I
@@ -78,6 +77,12 @@ Asciz	(ILjava/math/MathContext;)Lscala/math/BigDecimal;;
 NameAndType	apply:(ILjava/math/MathContext;)Lscala/math/BigDecimal;
 Method	scala/math/BigDecimal$.apply:(ILjava/math/MathContext;)Lscala/math/BigDecimal;
 Asciz	i;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 NameAndType	cache:()[Lscala/math/BigDecimal;
 Method	scala/math/BigDecimal$.cache:()[Lscala/math/BigDecimal;
 Asciz	(J)Ljava/math/BigDecimal;;
@@ -140,12 +145,12 @@ Asciz	charArrayOps;
 Asciz	([C)Lscala/collection/mutable/ArrayOps;;
 NameAndType	charArrayOps:([C)Lscala/collection/mutable/ArrayOps;
 Method	scala/Predef$.charArrayOps:([C)Lscala/collection/mutable/ArrayOps;
-Asciz	scala/collection/TraversableLike;
-class	scala/collection/TraversableLike
+Asciz	scala/collection/TraversableOnce;
+class	scala/collection/TraversableOnce
 Asciz	mkString;
 Asciz	()Ljava/lang/String;;
 NameAndType	mkString:()Ljava/lang/String;
-InterfaceMethod	scala/collection/TraversableLike.mkString:()Ljava/lang/String;
+InterfaceMethod	scala/collection/TraversableOnce.mkString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)Lscala/math/BigDecimal;;
 Asciz	(Ljava/lang/String;Ljava/math/MathContext;)Lscala/math/BigDecimal;;
 NameAndType	apply:(Ljava/lang/String;Ljava/math/MathContext;)Lscala/math/BigDecimal;
@@ -179,8 +184,6 @@ Method	scala/math/BigDecimal$.apply:(J)Lscala/math/BigDecimal;
 Asciz	double2bigDecimal;
 NameAndType	valueOf:(DLjava/math/MathContext;)Lscala/math/BigDecimal;
 Method	scala/math/BigDecimal$.valueOf:(DLjava/math/MathContext;)Lscala/math/BigDecimal;
-Asciz	java/lang/Object;
-class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/math/BigDecimal$;
 Field	scala/math/BigDecimal$.MODULE$:Lscala/math/BigDecimal$;
@@ -191,6 +194,7 @@ class	java/math/MathContext
 Asciz	UNLIMITED;
 NameAndType	UNLIMITED:Ljava/math/MathContext;
 Field	java/math/MathContext.UNLIMITED:Ljava/math/MathContext;
+Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	scala/math/BigDecimal$$anonfun$to$1;
 class	scala/math/BigDecimal$$anonfun$to$1
@@ -208,19 +212,19 @@ class	scala/ScalaObject
 public static final scala.math.BigDecimal$ MODULE$;
   Signature: Lscala/math/BigDecimal$;
 
-public volatile int bitmap$0;
+private final int minCached;
   Signature: I
-
-private final java.math.MathContext defaultMathContext;
-  Signature: Ljava/math/MathContext;
-
-private scala.math.BigDecimal[] cache;
-  Signature: [Lscala/math/BigDecimal;
 
 private final int maxCached;
   Signature: I
 
-private final int minCached;
+private scala.math.BigDecimal[] cache;
+  Signature: [Lscala/math/BigDecimal;
+
+private final java.math.MathContext defaultMathContext;
+  Signature: Ljava/math/MathContext;
+
+public volatile int bitmap$0;
   Signature: I
 
 public static {};
@@ -364,27 +368,40 @@ public scala.math.BigDecimal apply(int);
 public scala.math.BigDecimal apply(int, java.math.MathContext);
   Signature: (ILjava/math/MathContext;)Lscala/math/BigDecimal;
   Code:
-   Stack=4, Locals=5, Args_size=3
+   Stack=4, Locals=6, Args_size=3
+	aload_2
 	aload_0
+	getfield	Field defaultMathContext:Ljava/math/MathContext;
+	astore_3
+	dup
+	ifnonnull	l1 // aload_3
+	pop
+	aload_3
+	ifnull	l2 // aload_0
+	goto	l3 // new
+l1	aload_3
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l3 // new
+l2	aload_0
 	invokespecial	Method minCached:()I
 	iload_1
-	if_icmpgt	l1 // new
+	if_icmpgt	l3 // new
 	iload_1
 	aload_0
 	invokespecial	Method maxCached:()I
-	if_icmpgt	l1 // new
+	if_icmpgt	l3 // new
 	iload_1
 	aload_0
 	invokespecial	Method minCached:()I
 	isub
-	istore_3
+	istore	4
 	aload_0
 	invokespecial	Method cache:()[Lscala/math/BigDecimal;
-	iload_3
+	iload	4
 	aaload
-	astore	4
-	aload	4
-	ifnonnull	l2 // aload
+	astore	5
+	aload	5
+	ifnonnull	l4 // aload
 	new	class scala/math/BigDecimal
 	dup
 	iload_1
@@ -392,33 +409,35 @@ public scala.math.BigDecimal apply(int, java.math.MathContext);
 	invokestatic	Method java/math/BigDecimal.valueOf:(J)Ljava/math/BigDecimal;
 	aload_2
 	invokespecial	Method scala/math/BigDecimal."<init>":(Ljava/math/BigDecimal;Ljava/math/MathContext;)V
-	astore	4
+	astore	5
 	aload_0
 	invokespecial	Method cache:()[Lscala/math/BigDecimal;
-	iload_3
-	aload	4
+	iload	4
+	aload	5
 	aastore
-l2	aload	4
-	goto	l3 // areturn
-l1	new	class scala/math/BigDecimal
+l4	aload	5
+	goto	l5 // areturn
+l3	new	class scala/math/BigDecimal
 	dup
 	iload_1
 	i2l
 	invokestatic	Method java/math/BigDecimal.valueOf:(J)Ljava/math/BigDecimal;
 	aload_2
 	invokespecial	Method scala/math/BigDecimal."<init>":(Ljava/math/BigDecimal;Ljava/math/MathContext;)V
-l3	areturn
+l5	areturn
   Labels:
-   	l2 = 59 // aload
-   	l1 = 64 // new
-   	l3 = 77 // areturn
+   	l1 = 18 // aload_3
+   	l2 = 25 // aload_0
+   	l4 = 87 // aload
+   	l3 = 92 // new
+   	l5 = 105 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      78      0    this       Lscala/math/BigDecimal$;
-   0      78      1    i       I
-   0      78      2    mc       Ljava/math/MathContext;
-   23      38      3    offset       I
-   31      30      4    n       Lscala/math/BigDecimal;
+   0      106      0    this       Lscala/math/BigDecimal$;
+   0      106      1    i       I
+   0      106      2    mc       Ljava/math/MathContext;
+   49      40      4    offset       I
+   58      31      5    n       Lscala/math/BigDecimal;
 
 
 public scala.math.BigDecimal apply(long);
@@ -593,7 +612,7 @@ public scala.math.BigDecimal apply(char[], java.math.MathContext);
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_1
 	invokevirtual	Method scala/Predef$.charArrayOps:([C)Lscala/collection/mutable/ArrayOps;
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.mkString:()Ljava/lang/String;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.mkString:()Ljava/lang/String;
 	aload_2
 	invokespecial	Method java/math/BigDecimal."<init>":(Ljava/lang/String;Ljava/math/MathContext;)V
 	aload_2

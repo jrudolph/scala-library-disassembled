@@ -19,13 +19,13 @@ Asciz	scala/xml/parsing/FactoryAdapter$$anonfun$startElement$1;
 class	scala/xml/parsing/FactoryAdapter$$anonfun$startElement$1
 NameAndType	serialVersionUID:J
 Field	scala/xml/parsing/FactoryAdapter$$anonfun$startElement$1.serialVersionUID:J
-Asciz	scpe$1;
-Asciz	Lscala/runtime/ObjectRef;;
-Asciz	m$1;
-Asciz	attributes$1;
-Asciz	Lorg/xml/sax/Attributes;;
 Asciz	$outer;
 Asciz	Lscala/xml/parsing/FactoryAdapter;;
+Asciz	attributes$1;
+Asciz	Lorg/xml/sax/Attributes;;
+Asciz	m$1;
+Asciz	Lscala/runtime/ObjectRef;;
+Asciz	scpe$1;
 Asciz	apply;
 Asciz	(I)V;
 Asciz	LineNumberTable;
@@ -125,12 +125,12 @@ Asciz	i;
 Asciz	I;
 Asciz	qname;
 Asciz	Ljava/lang/String;;
-Asciz	arg;
-Asciz	pre;
-Asciz	key;
 Asciz	value;
 Asciz	temp1;
 Asciz	Lscala/Tuple2;;
+Asciz	pre;
+Asciz	key;
+Asciz	arg;
 Asciz	LocalVariableTable;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 Asciz	scala/runtime/BoxesRunTime;
@@ -169,17 +169,17 @@ class	java/io/Serializable
 public static final long serialVersionUID;
   Signature: J
 
-public final scala.runtime.ObjectRef scpe$1;
-  Signature: Lscala/runtime/ObjectRef;
-
-public final scala.runtime.ObjectRef m$1;
-  Signature: Lscala/runtime/ObjectRef;
+public final scala.xml.parsing.FactoryAdapter $outer;
+  Signature: Lscala/xml/parsing/FactoryAdapter;
 
 public final org.xml.sax.Attributes attributes$1;
   Signature: Lorg/xml/sax/Attributes;
 
-public final scala.xml.parsing.FactoryAdapter $outer;
-  Signature: Lscala/xml/parsing/FactoryAdapter;
+public final scala.runtime.ObjectRef m$1;
+  Signature: Lscala/runtime/ObjectRef;
+
+public final scala.runtime.ObjectRef scpe$1;
+  Signature: Lscala/runtime/ObjectRef;
 
 public static {};
   Signature: ()V
@@ -198,86 +198,74 @@ public final void apply(int);
 	getfield	Field attributes$1:Lorg/xml/sax/Attributes;
 	iload_1
 	invokeinterface	InterfaceMethod org/xml/sax/Attributes.getQName:(I)Ljava/lang/String;
-	astore	4
+	astore_2
 	aload_0
 	getfield	Field attributes$1:Lorg/xml/sax/Attributes;
 	iload_1
 	invokeinterface	InterfaceMethod org/xml/sax/Attributes.getValue:(I)Ljava/lang/String;
-	astore	9
+	astore_3
 	aload_0
 	getfield	Field $outer:Lscala/xml/parsing/FactoryAdapter;
-	aload	4
+	aload_2
 	invokevirtual	Method scala/xml/parsing/FactoryAdapter.scala$xml$parsing$FactoryAdapter$$splitName:(Ljava/lang/String;)Lscala/Tuple2;
-	astore	10
-	aload	10
+	astore	5
+	aload	5
 	ifnull	l1 // new
 	new	class scala/Tuple2
 	dup
-	aload	10
+	aload	5
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
-	aload	10
+	aload	5
 	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-	astore_2
-	aload_2
+	astore	4
+	aload	4
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
 	checkcast	class java/lang/String
-	astore	7
-	aload_2
+	astore	6
+	aload	4
 	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
 	checkcast	class java/lang/String
-	astore	8
-	aload	7
+	astore	7
+	aload	6
 	ldc	String xmlns
-	astore_3
+	astore	8
 	dup
-	ifnonnull	l2 // aload_3
+	ifnonnull	l2 // aload
 	pop
-	aload_3
+	aload	8
 	ifnull	l3 // aload
 	goto	l4 // aload
-l2	aload_3
+l2	aload	8
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l3 // aload
-l4	aload	7
-	dup
-	pop
-	ifnull	l5 // aload
-	aload	7
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l6 // aload_0
-l5	aload	4
+l4	aload	6
+	ifnonnull	l5 // aload_0
+	aload_2
 	ldc	String xmlns
-	astore	5
+	astore	9
 	dup
-	ifnonnull	l7 // aload
+	ifnonnull	l6 // aload
 	pop
-	aload	5
+	aload	9
 	ifnull	l3 // aload
-	goto	l6 // aload_0
-l7	aload	5
+	goto	l5 // aload_0
+l6	aload	9
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l6 // aload_0
-l3	aload	7
-	dup
-	pop
-	ifnull	l8 // aconst_null
-	aload	7
+	ifeq	l5 // aload_0
+l3	aload	6
+	ifnonnull	l7 // aload
 	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l9 // aload
-l8	aconst_null
-	goto	l10 // astore
-l9	aload	8
-l10	astore	6
+	goto	l8 // astore
+l7	aload	7
+l8	astore	10
 	aload_0
 	getfield	Field scpe$1:Lscala/runtime/ObjectRef;
 	new	class scala/xml/NamespaceBinding
 	dup
-	aload	6
+	aload	10
 	aload_0
-	aload	9
+	aload_3
 	invokespecial	Method nullIfEmpty$1:(Ljava/lang/String;)Ljava/lang/String;
 	aload_0
 	getfield	Field scpe$1:Lscala/runtime/ObjectRef;
@@ -285,17 +273,17 @@ l10	astore	6
 	checkcast	class scala/xml/NamespaceBinding
 	invokespecial	Method scala/xml/NamespaceBinding."<init>":(Ljava/lang/String;Ljava/lang/String;Lscala/xml/NamespaceBinding;)V
 	putfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
-	goto	l11 // return
-l6	aload_0
+	goto	l9 // return
+l5	aload_0
 	getfield	Field m$1:Lscala/runtime/ObjectRef;
 	getstatic	Field scala/xml/Attribute$.MODULE$:Lscala/xml/Attribute$;
 	getstatic	Field scala/Option$.MODULE$:Lscala/Option$;
-	aload	7
+	aload	6
 	invokevirtual	Method scala/Option$.apply:(Ljava/lang/Object;)Lscala/Option;
-	aload	8
+	aload	7
 	new	class scala/xml/Text
 	dup
-	aload	9
+	aload_3
 	invokespecial	Method scala/xml/Text."<init>":(Ljava/lang/String;)V
 	aload_0
 	getfield	Field m$1:Lscala/runtime/ObjectRef;
@@ -304,35 +292,33 @@ l6	aload_0
 	invokevirtual	Method scala/xml/Attribute$.apply:(Lscala/Option;Ljava/lang/String;Lscala/collection/Seq;Lscala/xml/MetaData;)Lscala/xml/Attribute;
 	checkcast	class scala/xml/MetaData
 	putfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
-l11	return
+l9	return
 l1	new	class scala/MatchError
 	dup
-	aload	10
+	aload	5
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l2 = 93 // aload_3
-   	l4 = 100 // aload
-   	l5 = 116 // aload
-   	l7 = 135 // aload
-   	l3 = 143 // aload
-   	l8 = 159 // aconst_null
-   	l9 = 163 // aload
-   	l10 = 165 // astore
-   	l6 = 202 // aload_0
-   	l11 = 247 // return
-   	l1 = 248 // new
+   	l2 = 95 // aload
+   	l4 = 103 // aload
+   	l6 = 126 // aload
+   	l3 = 134 // aload
+   	l7 = 143 // aload
+   	l8 = 145 // astore
+   	l5 = 181 // aload_0
+   	l9 = 225 // return
+   	l1 = 226 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      258      0    this       Lscala/xml/parsing/FactoryAdapter$$anonfun$startElement$1;
-   0      258      1    i       I
-   12      246      4    qname       Ljava/lang/String;
-   167      32      6    arg       Ljava/lang/String;
-   67      181      7    pre       Ljava/lang/String;
-   76      172      8    key       Ljava/lang/String;
-   24      234      9    value       Ljava/lang/String;
-   35      50      10    temp1       Lscala/Tuple2;
-   248      10      10    temp1       Lscala/Tuple2;
+   0      236      0    this       Lscala/xml/parsing/FactoryAdapter$$anonfun$startElement$1;
+   0      236      1    i       I
+   11      225      2    qname       Ljava/lang/String;
+   22      214      3    value       Ljava/lang/String;
+   32      54      5    temp1       Lscala/Tuple2;
+   226      10      5    temp1       Lscala/Tuple2;
+   66      160      6    pre       Ljava/lang/String;
+   76      150      7    key       Ljava/lang/String;
+   147      31      10    arg       Ljava/lang/String;
 
 
 public final java.lang.Object apply(java.lang.Object);

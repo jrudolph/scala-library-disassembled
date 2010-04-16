@@ -33,12 +33,12 @@ Asciz	Lscala/collection/SetLike;;
 Asciz	LocalVariableTable;
 Asciz	isEmpty;
 Asciz	(Lscala/collection/SetLike;)Z;
-Asciz	scala/collection/TraversableLike;
-class	scala/collection/TraversableLike
+Asciz	scala/collection/TraversableOnce;
+class	scala/collection/TraversableOnce
 Asciz	size;
 Asciz	()I;
 NameAndType	size:()I
-InterfaceMethod	scala/collection/TraversableLike.size:()I
+InterfaceMethod	scala/collection/TraversableOnce.size:()I
 Asciz	apply;
 Asciz	(Lscala/collection/SetLike;Ljava/lang/Object;)Z;
 Asciz	contains;
@@ -54,6 +54,8 @@ class	scala/collection/SetLike$$anonfun$intersect$1
 Asciz	(Lscala/collection/SetLike;Lscala/collection/Set;)V;
 NameAndType	"<init>":(Lscala/collection/SetLike;Lscala/collection/Set;)V
 Method	scala/collection/SetLike$$anonfun$intersect$1."<init>":(Lscala/collection/SetLike;Lscala/collection/Set;)V
+Asciz	scala/collection/TraversableLike;
+class	scala/collection/TraversableLike
 Asciz	filter;
 Asciz	(Lscala/Function1;)Ljava/lang/Object;;
 NameAndType	filter:(Lscala/Function1;)Ljava/lang/Object;
@@ -73,9 +75,9 @@ Asciz	union;
 Asciz	scala/collection/generic/Addable;
 class	scala/collection/generic/Addable
 Asciz	$plus$plus;
-Asciz	(Lscala/collection/Traversable;)Lscala/collection/generic/Addable;;
-NameAndType	$plus$plus:(Lscala/collection/Traversable;)Lscala/collection/generic/Addable;
-InterfaceMethod	scala/collection/generic/Addable.$plus$plus:(Lscala/collection/Traversable;)Lscala/collection/generic/Addable;
+Asciz	(Lscala/collection/TraversableOnce;)Lscala/collection/generic/Addable;;
+NameAndType	$plus$plus:(Lscala/collection/TraversableOnce;)Lscala/collection/generic/Addable;
+InterfaceMethod	scala/collection/generic/Addable.$plus$plus:(Lscala/collection/TraversableOnce;)Lscala/collection/generic/Addable;
 Asciz	$bar;
 NameAndType	union:(Lscala/collection/Set;)Lscala/collection/Set;
 InterfaceMethod	scala/collection/SetLike.union:(Lscala/collection/Set;)Lscala/collection/Set;
@@ -83,9 +85,9 @@ Asciz	diff;
 Asciz	scala/collection/generic/Subtractable;
 class	scala/collection/generic/Subtractable
 Asciz	$minus$minus;
-Asciz	(Lscala/collection/Traversable;)Lscala/collection/generic/Subtractable;;
-NameAndType	$minus$minus:(Lscala/collection/Traversable;)Lscala/collection/generic/Subtractable;
-InterfaceMethod	scala/collection/generic/Subtractable.$minus$minus:(Lscala/collection/Traversable;)Lscala/collection/generic/Subtractable;
+Asciz	(Lscala/collection/TraversableOnce;)Lscala/collection/generic/Subtractable;;
+NameAndType	$minus$minus:(Lscala/collection/TraversableOnce;)Lscala/collection/generic/Subtractable;
+InterfaceMethod	scala/collection/generic/Subtractable.$minus$minus:(Lscala/collection/TraversableOnce;)Lscala/collection/generic/Subtractable;
 Asciz	$amp$tilde;
 NameAndType	diff:(Lscala/collection/Set;)Lscala/collection/Set;
 InterfaceMethod	scala/collection/SetLike.diff:(Lscala/collection/Set;)Lscala/collection/Set;
@@ -140,7 +142,7 @@ Field	scala/math/Numeric$IntIsIntegral$.MODULE$:Lscala/math/Numeric$IntIsIntegra
 Asciz	sum;
 Asciz	(Lscala/math/Numeric;)Ljava/lang/Object;;
 NameAndType	sum:(Lscala/math/Numeric;)Ljava/lang/Object;
-InterfaceMethod	scala/collection/TraversableLike.sum:(Lscala/math/Numeric;)Ljava/lang/Object;
+InterfaceMethod	scala/collection/TraversableOnce.sum:(Lscala/math/Numeric;)Ljava/lang/Object;
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
 Asciz	unboxToInt;
@@ -195,7 +197,7 @@ public static boolean isEmpty(scala.collection.SetLike);
   Code:
    Stack=2, Locals=1, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.size:()I
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.size:()I
 	iconst_0
 	if_icmpne	l1 // iconst_0
 	iconst_1
@@ -282,7 +284,7 @@ public static scala.collection.Set union(scala.collection.SetLike, scala.collect
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	invokeinterface	InterfaceMethod scala/collection/generic/Addable.$plus$plus:(Lscala/collection/Traversable;)Lscala/collection/generic/Addable;
+	invokeinterface	InterfaceMethod scala/collection/generic/Addable.$plus$plus:(Lscala/collection/TraversableOnce;)Lscala/collection/generic/Addable;
 	checkcast	class scala/collection/Set
 	areturn
   Labels:
@@ -313,7 +315,7 @@ public static scala.collection.Set diff(scala.collection.SetLike, scala.collecti
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	invokeinterface	InterfaceMethod scala/collection/generic/Subtractable.$minus$minus:(Lscala/collection/Traversable;)Lscala/collection/generic/Subtractable;
+	invokeinterface	InterfaceMethod scala/collection/generic/Subtractable.$minus$minus:(Lscala/collection/TraversableOnce;)Lscala/collection/generic/Subtractable;
 	checkcast	class scala/collection/Set
 	areturn
   Labels:
@@ -394,9 +396,9 @@ public static int hashCode(scala.collection.SetLike);
 	getstatic	Field scala/collection/Set$.MODULE$:Lscala/collection/Set$;
 	invokevirtual	Method scala/collection/Set$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-	checkcast	class scala/collection/TraversableLike
+	checkcast	class scala/collection/TraversableOnce
 	getstatic	Field scala/math/Numeric$IntIsIntegral$.MODULE$:Lscala/math/Numeric$IntIsIntegral$;
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.sum:(Lscala/math/Numeric;)Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.sum:(Lscala/math/Numeric;)Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	ireturn
   Labels:
@@ -423,9 +425,9 @@ public static boolean equals(scala.collection.SetLike, java.lang.Object);
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.canEqual:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.size:()I
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.size:()I
 	aload_2
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.size:()I
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.size:()I
 	if_icmpne	l3 // iconst_0
 	aload_0
 	aload_2

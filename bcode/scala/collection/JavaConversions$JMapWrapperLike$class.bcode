@@ -34,13 +34,8 @@ Asciz	(Lscala/collection/JavaConversions$JMapWrapperLike;Ljava/lang/Object;)Lsca
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	get:(Ljava/lang/Object;)Ljava/lang/Object;
 InterfaceMethod	java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	containsKey;
+Asciz	(Ljava/lang/Object;)Z;
 NameAndType	containsKey:(Ljava/lang/Object;)Z
 InterfaceMethod	java/util/Map.containsKey:(Ljava/lang/Object;)Z
 Asciz	scala/Some;
@@ -107,6 +102,8 @@ Asciz	JMapWrapperLike;
 Asciz	$anon$2;
 Asciz	scala/collection/JavaConversions$JMapWrapperLike$class;
 class	scala/collection/JavaConversions$JMapWrapperLike$class
+Asciz	java/lang/Object;
+class	java/lang/Object
 
 {
 public static int size(scala.collection.JavaConversions$JMapWrapperLike);
@@ -133,40 +130,33 @@ public static scala.Option get(scala.collection.JavaConversions$JMapWrapperLike,
 	invokeinterface	InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
 	astore_2
 	aload_2
-	dup
-	pop
-	ifnull	l1 // aload_0
-	aload_2
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // new
-l1	aload_0
+	ifnonnull	l1 // new
+	aload_0
 	invokeinterface	InterfaceMethod scala/collection/JavaConversions$JMapWrapperLike.underlying:()Ljava/util/Map;
 	aload_1
 	invokeinterface	InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
-	ifeq	l3 // getstatic
+	ifeq	l2 // getstatic
 	new	class scala/Some
 	dup
 	aconst_null
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	goto	l4 // areturn
-l3	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	goto	l4 // areturn
-l2	new	class scala/Some
+	goto	l3 // areturn
+l2	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l3 // areturn
+l1	new	class scala/Some
 	dup
 	aload_2
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-l4	areturn
+l3	areturn
   Labels:
-   	l1 = 27 // aload_0
-   	l3 = 53 // getstatic
-   	l2 = 59 // new
-   	l4 = 67 // areturn
+   	l2 = 43 // getstatic
+   	l1 = 49 // new
+   	l3 = 57 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      68      0    $this       Lscala/collection/JavaConversions$JMapWrapperLike;
-   0      68      1    k       Ljava/lang/Object;
-   13      55      2    v       Ljava/lang/Object;
+   0      58      0    $this       Lscala/collection/JavaConversions$JMapWrapperLike;
+   0      58      1    k       Ljava/lang/Object;
+   13      45      2    v       Ljava/lang/Object;
 
 
 public static scala.collection.JavaConversions$JMapWrapperLike $plus$eq(scala.collection.JavaConversions$JMapWrapperLike, scala.Tuple2);
@@ -219,30 +209,23 @@ public static scala.Option put(scala.collection.JavaConversions$JMapWrapperLike,
 	invokeinterface	InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 	astore_3
 	aload_3
-	dup
-	pop
-	ifnull	l1 // getstatic
-	aload_3
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // new
-l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	goto	l3 // areturn
-l2	new	class scala/Some
+	ifnonnull	l1 // new
+	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l2 // areturn
+l1	new	class scala/Some
 	dup
 	aload_3
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-l3	areturn
+l2	areturn
   Labels:
-   	l1 = 28 // getstatic
-   	l2 = 34 // new
-   	l3 = 42 // areturn
+   	l1 = 24 // new
+   	l2 = 32 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      43      0    $this       Lscala/collection/JavaConversions$JMapWrapperLike;
-   0      43      1    k       Ljava/lang/Object;
-   0      43      2    v       Ljava/lang/Object;
-   14      29      3    r       Ljava/lang/Object;
+   0      33      0    $this       Lscala/collection/JavaConversions$JMapWrapperLike;
+   0      33      1    k       Ljava/lang/Object;
+   0      33      2    v       Ljava/lang/Object;
+   14      19      3    r       Ljava/lang/Object;
 
 
 public static void update(scala.collection.JavaConversions$JMapWrapperLike, java.lang.Object, java.lang.Object);
@@ -274,29 +257,22 @@ public static scala.Option remove(scala.collection.JavaConversions$JMapWrapperLi
 	invokeinterface	InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
 	astore_2
 	aload_2
-	dup
-	pop
-	ifnull	l1 // getstatic
-	aload_2
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // new
-l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	goto	l3 // areturn
-l2	new	class scala/Some
+	ifnonnull	l1 // new
+	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l2 // areturn
+l1	new	class scala/Some
 	dup
 	aload_2
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-l3	areturn
+l2	areturn
   Labels:
-   	l1 = 27 // getstatic
-   	l2 = 33 // new
-   	l3 = 41 // areturn
+   	l1 = 23 // new
+   	l2 = 31 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      42      0    $this       Lscala/collection/JavaConversions$JMapWrapperLike;
-   0      42      1    k       Ljava/lang/Object;
-   13      29      2    r       Ljava/lang/Object;
+   0      32      0    $this       Lscala/collection/JavaConversions$JMapWrapperLike;
+   0      32      1    k       Ljava/lang/Object;
+   13      19      2    r       Ljava/lang/Object;
 
 
 public static scala.collection.Iterator iterator(scala.collection.JavaConversions$JMapWrapperLike);

@@ -206,12 +206,12 @@ Asciz	qel;
 Asciz	Lscala/actors/MQueueElement;;
 Asciz	done;
 Asciz	makeReaction;
-Asciz	(Lscala/actors/ReplyReactor;Lscala/Function0;)Ljava/lang/Runnable;;
+Asciz	(Lscala/actors/ReplyReactor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)Ljava/lang/Runnable;;
 Asciz	scala/actors/ReplyReactorTask;
 class	scala/actors/ReplyReactorTask
-Asciz	(Lscala/actors/ReplyReactor;Lscala/Function0;)V;
-NameAndType	"<init>":(Lscala/actors/ReplyReactor;Lscala/Function0;)V
-Method	scala/actors/ReplyReactorTask."<init>":(Lscala/actors/ReplyReactor;Lscala/Function0;)V
+Asciz	(Lscala/actors/ReplyReactor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)V;
+NameAndType	"<init>":(Lscala/actors/ReplyReactor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)V
+Method	scala/actors/ReplyReactorTask."<init>":(Lscala/actors/ReplyReactor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)V
 Asciz	fun;
 Asciz	Lscala/Function0;;
 Asciz	react;
@@ -556,21 +556,25 @@ l5	goto	l6 // iload
    6      139      6    done       Z
 
 
-public static java.lang.Runnable makeReaction(scala.actors.ReplyReactor, scala.Function0);
-  Signature: (Lscala/actors/ReplyReactor;Lscala/Function0;)Ljava/lang/Runnable;
+public static java.lang.Runnable makeReaction(scala.actors.ReplyReactor, scala.Function0, scala.PartialFunction, java.lang.Object);
+  Signature: (Lscala/actors/ReplyReactor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)Ljava/lang/Runnable;
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=6, Locals=4, Args_size=4
 	new	class scala/actors/ReplyReactorTask
 	dup
 	aload_0
 	aload_1
-	invokespecial	Method scala/actors/ReplyReactorTask."<init>":(Lscala/actors/ReplyReactor;Lscala/Function0;)V
+	aload_2
+	aload_3
+	invokespecial	Method scala/actors/ReplyReactorTask."<init>":(Lscala/actors/ReplyReactor;Lscala/Function0;Lscala/PartialFunction;Ljava/lang/Object;)V
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      10      0    $this       Lscala/actors/ReplyReactor;
-   0      10      1    fun       Lscala/Function0;
+   0      12      0    $this       Lscala/actors/ReplyReactor;
+   0      12      1    fun       Lscala/Function0;
+   0      12      2    handler       Lscala/PartialFunction;
+   0      12      3    msg       Ljava/lang/Object;
 
 
 public static scala.runtime.Nothing$ react(scala.actors.ReplyReactor, scala.PartialFunction);

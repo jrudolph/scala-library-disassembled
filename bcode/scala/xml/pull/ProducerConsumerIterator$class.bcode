@@ -101,12 +101,6 @@ Asciz	isElement;
 Asciz	(Lscala/xml/pull/ProducerConsumerIterator;Ljava/lang/Object;)Z;
 NameAndType	isElement:(Lscala/xml/pull/ProducerConsumerIterator;Ljava/lang/Object;)Z
 Method	scala/xml/pull/ProducerConsumerIterator$class.isElement:(Lscala/xml/pull/ProducerConsumerIterator;Ljava/lang/Object;)Z
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	EndOfStream;
 NameAndType	EndOfStream:()Ljava/lang/Object;
 InterfaceMethod	scala/xml/pull/ProducerConsumerIterator.EndOfStream:()Ljava/lang/Object;
@@ -124,6 +118,12 @@ Asciz	equalsCharObject;
 Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
 NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	x;
 Asciz	Ljava/lang/Object;;
 Asciz	y0;
@@ -277,13 +277,7 @@ private static boolean isElement(scala.xml.pull.ProducerConsumerIterator, java.l
   Code:
    Stack=2, Locals=3, Args_size=2
 	aload_1
-	dup
-	pop
 	ifnull	l1 // iconst_0
-	aload_1
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifne	l1 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/pull/ProducerConsumerIterator.EndOfStream:()Ljava/lang/Object;
 	astore_2
@@ -321,19 +315,19 @@ l1	iconst_0
 l7	iconst_1
 l8	ireturn
   Labels:
-   	l2 = 30 // aload_1
-   	l4 = 38 // aload_1
-   	l5 = 56 // aload_1
-   	l6 = 74 // aload_1
-   	l3 = 79 // ifeq
-   	l1 = 82 // iconst_0
-   	l7 = 86 // iconst_1
-   	l8 = 87 // ireturn
+   	l2 = 20 // aload_1
+   	l4 = 28 // aload_1
+   	l5 = 46 // aload_1
+   	l6 = 64 // aload_1
+   	l3 = 69 // ifeq
+   	l1 = 72 // iconst_0
+   	l7 = 76 // iconst_1
+   	l8 = 77 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      88      0    $this       Lscala/xml/pull/ProducerConsumerIterator;
-   0      88      1    x       Ljava/lang/Object;
-   26      56      2    y0       Ljava/lang/Object;
+   0      78      0    $this       Lscala/xml/pull/ProducerConsumerIterator;
+   0      78      1    x       Ljava/lang/Object;
+   16      56      2    y0       Ljava/lang/Object;
 
 
 private static boolean eos(scala.xml.pull.ProducerConsumerIterator);
@@ -421,40 +415,33 @@ l1	return
 public static boolean hasNext(scala.xml.pull.ProducerConsumerIterator);
   Signature: (Lscala/xml/pull/ProducerConsumerIterator;)Z
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=1, Locals=1, Args_size=1
 	aload_0
 	invokestatic	Method eos:(Lscala/xml/pull/ProducerConsumerIterator;)Z
 	ifne	l1 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/pull/ProducerConsumerIterator.scala$xml$pull$ProducerConsumerIterator$$buffer:()Ljava/lang/Object;
-	dup
-	astore_1
-	ifnull	l2 // aload_0
-	aload_1
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l3 // iconst_1
-l2	aload_0
+	ifnonnull	l2 // iconst_1
+	aload_0
 	invokestatic	Method fillBuffer:(Lscala/xml/pull/ProducerConsumerIterator;)Z
-	ifne	l3 // iconst_1
+	ifne	l2 // iconst_1
 l1	iconst_0
-	goto	l4 // ireturn
-l3	iconst_1
-l4	ireturn
+	goto	l3 // ireturn
+l2	iconst_1
+l3	ireturn
   Labels:
-   	l2 = 26 // aload_0
-   	l1 = 33 // iconst_0
-   	l3 = 37 // iconst_1
-   	l4 = 38 // ireturn
+   	l1 = 23 // iconst_0
+   	l2 = 27 // iconst_1
+   	l3 = 28 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      39      0    $this       Lscala/xml/pull/ProducerConsumerIterator;
+   0      29      0    $this       Lscala/xml/pull/ProducerConsumerIterator;
 
 
 public static java.lang.Object next(scala.xml.pull.ProducerConsumerIterator);
   Signature: (Lscala/xml/pull/ProducerConsumerIterator;)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=1
+   Stack=3, Locals=1, Args_size=1
 	aload_0
 	invokestatic	Method eos:(Lscala/xml/pull/ProducerConsumerIterator;)Z
 	ifeq	l1 // aload_0
@@ -465,27 +452,20 @@ public static java.lang.Object next(scala.xml.pull.ProducerConsumerIterator);
 	athrow
 l1	aload_0
 	invokeinterface	InterfaceMethod scala/xml/pull/ProducerConsumerIterator.scala$xml$pull$ProducerConsumerIterator$$buffer:()Ljava/lang/Object;
-	dup
-	astore_1
-	ifnull	l2 // aload_0
-	aload_1
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l3 // aload_0
-l2	aload_0
+	ifnonnull	l2 // aload_0
+	aload_0
 	invokestatic	Method fillBuffer:(Lscala/xml/pull/ProducerConsumerIterator;)Z
 	pop
-	goto	l3 // aload_0
-l3	aload_0
+	goto	l2 // aload_0
+l2	aload_0
 	invokestatic	Method drainBuffer:(Lscala/xml/pull/ProducerConsumerIterator;)Ljava/lang/Object;
 	areturn
   Labels:
    	l1 = 17 // aload_0
-   	l2 = 36 // aload_0
-   	l3 = 44 // aload_0
+   	l2 = 34 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      49      0    $this       Lscala/xml/pull/ProducerConsumerIterator;
+   0      39      0    $this       Lscala/xml/pull/ProducerConsumerIterator;
 
 
 public static boolean available(scala.xml.pull.ProducerConsumerIterator);

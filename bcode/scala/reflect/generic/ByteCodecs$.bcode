@@ -8,7 +8,6 @@ public final class scala.reflect.generic.ByteCodecs$ extends java.lang.Object im
   Constant pool:
 Asciz	SourceFile;
 Asciz	ByteCodecs.scala;
-Asciz	Scala;
 Asciz	MODULE$;
 Asciz	Lscala/reflect/generic/ByteCodecs$;;
 Asciz	<clinit>;
@@ -48,9 +47,9 @@ Asciz	dstlen;
 Asciz	out;
 Asciz	decode7to8;
 Asciz	([BII)V;
-Asciz	([BI)V;
-NameAndType	decode7to8:([BI)V
-Method	scala/reflect/generic/ByteCodecs$.decode7to8:([BI)V
+Asciz	([BI)I;
+NameAndType	decode7to8:([BI)I
+Method	scala/reflect/generic/ByteCodecs$.decode7to8:([BI)I
 Asciz	Deprecated;
 int	15;
 int	31;
@@ -62,9 +61,9 @@ NameAndType	avoidZero:([B)[B
 Method	scala/reflect/generic/ByteCodecs$.avoidZero:([B)[B
 Asciz	xs;
 Asciz	decode;
-Asciz	([B)V;
-NameAndType	decode:([B)V
-Method	scala/reflect/generic/ByteCodecs$.decode:([B)V
+Asciz	([BI)V;
+NameAndType	decode:([B)I
+Method	scala/reflect/generic/ByteCodecs$.decode:([B)I
 NameAndType	regenerateZero:([B)I
 Method	scala/reflect/generic/ByteCodecs$.regenerateZero:([B)I
 Asciz	len;
@@ -73,6 +72,7 @@ class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/reflect/generic/ByteCodecs$;
 Field	scala/reflect/generic/ByteCodecs$.MODULE$:Lscala/reflect/generic/ByteCodecs$;
+Asciz	Scala;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -696,20 +696,21 @@ public void decode7to8(byte[], int, int);
 	aload_0
 	aload_1
 	iload_2
-	invokevirtual	Method decode7to8:([BI)V
+	invokevirtual	Method decode7to8:([BI)I
+	pop
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      7      0    this       Lscala/reflect/generic/ByteCodecs$;
-   0      7      1    src       [B
-   0      7      2    srclen       I
-   0      7      3    dstlen       I
+   0      8      0    this       Lscala/reflect/generic/ByteCodecs$;
+   0      8      1    src       [B
+   0      8      2    srclen       I
+   0      8      3    dstlen       I
 
   Deprecated: true
 
-public void decode7to8(byte[], int);
-  Signature: ([BI)V
+public int decode7to8(byte[], int);
+  Signature: ([BI)I
   Code:
    Stack=5, Locals=10, Args_size=3
 	iconst_0
@@ -897,7 +898,7 @@ l2	iload_3
 	goto	l2 // iload_3
 l1	iload_3
 	iload_2
-	if_icmpge	l3 // return
+	if_icmpge	l3 // iload
 	aload_1
 	iload_3
 	baload
@@ -1084,26 +1085,27 @@ l1	iload_3
 	istore	8
 l4	iload	4
 	iload	5
-	if_icmpge	l3 // return
+	if_icmpge	l3 // iload
 	aload_1
 	iload	4
 	iload	8
 	i2b
 	bastore
-l3	return
+l3	iload	5
+	ireturn
   Labels:
    	l2 = 17 // iload_3
    	l1 = 248 // iload_3
    	l4 = 507 // iload
-   	l3 = 521 // return
+   	l3 = 521 // iload
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      522      0    this       Lscala/reflect/generic/ByteCodecs$;
-   0      522      1    src       [B
-   0      522      2    srclen       I
-   2      520      3    i       I
-   5      517      4    j       I
-   17      505      5    dstlen       I
+   0      524      0    this       Lscala/reflect/generic/ByteCodecs$;
+   0      524      1    src       [B
+   0      524      2    srclen       I
+   2      521      3    i       I
+   5      518      4    j       I
+   17      506      5    dstlen       I
    30      215      6    out       I
    37      208      7    in       B
    258      263      8    out       I
@@ -1133,19 +1135,20 @@ public void decode(byte[], int);
    Stack=2, Locals=3, Args_size=3
 	aload_0
 	aload_1
-	invokevirtual	Method decode:([B)V
+	invokevirtual	Method decode:([B)I
+	pop
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      6      0    this       Lscala/reflect/generic/ByteCodecs$;
-   0      6      1    xs       [B
-   0      6      2    dstlen       I
+   0      7      0    this       Lscala/reflect/generic/ByteCodecs$;
+   0      7      1    xs       [B
+   0      7      2    dstlen       I
 
   Deprecated: true
 
-public void decode(byte[]);
-  Signature: ([B)V
+public int decode(byte[]);
+  Signature: ([B)I
   Code:
    Stack=3, Locals=3, Args_size=2
 	aload_0
@@ -1155,8 +1158,8 @@ public void decode(byte[]);
 	aload_0
 	aload_1
 	iload_2
-	invokevirtual	Method decode7to8:([BI)V
-	return
+	invokevirtual	Method decode7to8:([BI)I
+	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature

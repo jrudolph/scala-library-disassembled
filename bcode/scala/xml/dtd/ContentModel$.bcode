@@ -24,7 +24,6 @@ public final class scala.xml.dtd.ContentModel$ extends scala.util.regexp.WordExp
   Constant pool:
 Asciz	SourceFile;
 Asciz	ContentModel.scala;
-Asciz	Scala;
 Asciz	MODULE$;
 Asciz	Lscala/xml/dtd/ContentModel$;;
 Asciz	<clinit>;
@@ -312,6 +311,7 @@ Asciz	temp23;
 Asciz	scala/util/regexp/WordExp;
 class	scala/util/regexp/WordExp
 Method	scala/util/regexp/WordExp."<init>":()V
+Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	scala/util/regexp/Base;
 class	scala/util/regexp/Base
@@ -441,7 +441,7 @@ public scala.collection.immutable.Set getLabels(scala.util.regexp.Base$RegExp);
    0      6      1    r       Lscala/util/regexp/Base$RegExp;
 
   Signature: length = 0x2
-   00 3F 
+   00 3E 
 
 public java.lang.String buildString(scala.util.regexp.Base$RegExp);
   Signature: (Lscala/util/regexp/Base$RegExp;)Ljava/lang/String;
@@ -500,7 +500,7 @@ private void buildString(scala.collection.Seq, scala.collection.mutable.StringBu
    0      39      3    sep$1       C
 
   Signature: length = 0x2
-   00 6E 
+   00 6D 
 
 public scala.collection.mutable.StringBuilder buildString(scala.xml.dtd.ContentModel, scala.collection.mutable.StringBuilder);
   Signature: (Lscala/xml/dtd/ContentModel;Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
@@ -624,24 +624,18 @@ l3	aload_1
 	checkcast	class scala/collection/Seq
 	astore	6
 	aload	6
-	dup
-	pop
-	ifnull	l7 // iconst_0
-	aload	6
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l8 // aload
-l7	iconst_0
-	goto	l9 // ifeq
-l8	aload	6
+	ifnonnull	l7 // aload
+	iconst_0
+	goto	l8 // ifeq
+l7	aload	6
 	iconst_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.lengthCompare:(I)I
 	iconst_0
-	if_icmplt	l10 // iconst_0
+	if_icmplt	l9 // iconst_0
 	iconst_1
-	goto	l9 // ifeq
-l10	iconst_0
-l9	ifeq	l11 // new
+	goto	l8 // ifeq
+l9	iconst_0
+l8	ifeq	l10 // new
 	aload_2
 	ldc	int 40
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(C)Lscala/collection/mutable/StringBuilder;
@@ -655,7 +649,7 @@ l9	ifeq	l11 // new
 	ldc	int 41
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(C)Lscala/collection/mutable/StringBuilder;
 	goto	l4 // areturn
-l11	new	class scala/MatchError
+l10	new	class scala/MatchError
 	dup
 	aload_1
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
@@ -667,7 +661,7 @@ l6	new	class scala/MatchError
 	athrow
 l5	aload_1
 	instanceof	class scala/util/regexp/Base$Alt
-	ifeq	l12 // aload_1
+	ifeq	l11 // aload_1
 	aload_1
 	checkcast	class scala/util/regexp/Base$Alt
 	astore	7
@@ -681,30 +675,24 @@ l5	aload_1
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	astore	8
 	iconst_1
-	ifeq	l13 // new
+	ifeq	l12 // new
 	aload	8
 	getfield	Field scala/Some.x:Ljava/lang/Object;
 	checkcast	class scala/collection/Seq
 	astore	9
 	aload	9
-	dup
-	pop
-	ifnull	l14 // iconst_0
-	aload	9
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l15 // aload
-l14	iconst_0
-	goto	l16 // ifeq
-l15	aload	9
+	ifnonnull	l13 // aload
+	iconst_0
+	goto	l14 // ifeq
+l13	aload	9
 	iconst_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.lengthCompare:(I)I
 	iconst_0
-	if_icmplt	l17 // iconst_0
+	if_icmplt	l15 // iconst_0
 	iconst_1
-	goto	l16 // ifeq
-l17	iconst_0
-l16	ifeq	l18 // new
+	goto	l14 // ifeq
+l15	iconst_0
+l14	ifeq	l16 // new
 	aload_2
 	ldc	int 40
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(C)Lscala/collection/mutable/StringBuilder;
@@ -718,19 +706,19 @@ l16	ifeq	l18 // new
 	ldc	int 41
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(C)Lscala/collection/mutable/StringBuilder;
 	goto	l4 // areturn
-l18	new	class scala/MatchError
+l16	new	class scala/MatchError
 	dup
 	aload_1
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
-l13	new	class scala/MatchError
+l12	new	class scala/MatchError
 	dup
 	aload_1
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
-l12	aload_1
+l11	aload_1
 	instanceof	class scala/util/regexp/Base$Star
-	ifeq	l19 // aload_1
+	ifeq	l17 // aload_1
 	aload_1
 	checkcast	class scala/util/regexp/Base$Star
 	astore	10
@@ -738,7 +726,7 @@ l12	aload_1
 	invokevirtual	Method scala/util/regexp/Base$Star.r:()Lscala/util/regexp/Base$RegExp;
 	astore	11
 	aload	11
-	ifnull	l20 // new
+	ifnull	l18 // new
 	aload_2
 	ldc	int 40
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(C)Lscala/collection/mutable/StringBuilder;
@@ -752,14 +740,14 @@ l12	aload_1
 	ldc	String )*
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 	goto	l4 // areturn
-l20	new	class scala/MatchError
+l18	new	class scala/MatchError
 	dup
 	aload_1
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
-l19	aload_1
+l17	aload_1
 	instanceof	class scala/util/regexp/WordExp$Letter
-	ifeq	l21 // new
+	ifeq	l19 // new
 	aload_1
 	checkcast	class scala/util/regexp/WordExp$Letter
 	astore	12
@@ -768,18 +756,18 @@ l19	aload_1
 	checkcast	class scala/xml/dtd/ContentModel$ElemName
 	astore	13
 	aload	13
-	ifnull	l22 // new
+	ifnull	l20 // new
 	aload_2
 	aload	13
 	invokevirtual	Method scala/xml/dtd/ContentModel$ElemName.name:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 l4	areturn
-l22	new	class scala/MatchError
+l20	new	class scala/MatchError
 	dup
 	aload_1
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
-l21	new	class scala/MatchError
+l19	new	class scala/MatchError
 	dup
 	aload_1
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
@@ -788,42 +776,40 @@ l21	new	class scala/MatchError
    	l1 = 18 // aload_3
    	l2 = 25 // aload_2
    	l3 = 29 // aload_1
-   	l7 = 91 // iconst_0
-   	l8 = 95 // aload
-   	l10 = 111 // iconst_0
-   	l9 = 112 // ifeq
-   	l11 = 140 // new
-   	l6 = 149 // new
-   	l5 = 158 // aload_1
-   	l14 = 220 // iconst_0
-   	l15 = 224 // aload
-   	l17 = 240 // iconst_0
-   	l16 = 241 // ifeq
-   	l18 = 269 // new
-   	l13 = 278 // new
-   	l12 = 287 // aload_1
-   	l20 = 336 // new
-   	l19 = 345 // aload_1
-   	l4 = 382 // areturn
-   	l22 = 383 // new
-   	l21 = 392 // new
+   	l7 = 84 // aload
+   	l9 = 100 // iconst_0
+   	l8 = 101 // ifeq
+   	l10 = 129 // new
+   	l6 = 138 // new
+   	l5 = 147 // aload_1
+   	l13 = 202 // aload
+   	l15 = 218 // iconst_0
+   	l14 = 219 // ifeq
+   	l16 = 247 // new
+   	l12 = 256 // new
+   	l11 = 265 // aload_1
+   	l18 = 314 // new
+   	l17 = 323 // aload_1
+   	l4 = 360 // areturn
+   	l20 = 361 // new
+   	l19 = 370 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      401      0    this       Lscala/xml/dtd/ContentModel$;
-   0      401      1    r       Lscala/util/regexp/Base$RegExp;
-   0      401      2    sb       Lscala/collection/mutable/StringBuilder;
-   42      116      4    temp34       Lscala/util/regexp/Base$Sequ;
-   61      97      5    temp35       Lscala/Some;
-   75      74      6    temp36       Lscala/collection/Seq;
-   171      116      7    temp38       Lscala/util/regexp/Base$Alt;
-   190      97      8    temp39       Lscala/Some;
-   204      74      9    temp40       Lscala/collection/Seq;
-   300      45      10    temp42       Lscala/util/regexp/Base$Star;
-   307      38      11    temp43       Lscala/util/regexp/Base$RegExp;
-   358      24      12    temp44       Lscala/util/regexp/WordExp$Letter;
-   383      9      12    temp44       Lscala/util/regexp/WordExp$Letter;
-   368      14      13    temp45       Lscala/xml/dtd/ContentModel$ElemName;
-   383      9      13    temp45       Lscala/xml/dtd/ContentModel$ElemName;
+   0      379      0    this       Lscala/xml/dtd/ContentModel$;
+   0      379      1    r       Lscala/util/regexp/Base$RegExp;
+   0      379      2    sb       Lscala/collection/mutable/StringBuilder;
+   42      105      4    temp34       Lscala/util/regexp/Base$Sequ;
+   61      86      5    temp35       Lscala/Some;
+   75      63      6    temp36       Lscala/collection/Seq;
+   160      105      7    temp38       Lscala/util/regexp/Base$Alt;
+   179      86      8    temp39       Lscala/Some;
+   193      63      9    temp40       Lscala/collection/Seq;
+   278      45      10    temp42       Lscala/util/regexp/Base$Star;
+   285      38      11    temp43       Lscala/util/regexp/Base$RegExp;
+   336      24      12    temp44       Lscala/util/regexp/WordExp$Letter;
+   361      9      12    temp44       Lscala/util/regexp/WordExp$Letter;
+   346      14      13    temp45       Lscala/xml/dtd/ContentModel$ElemName;
+   361      9      13    temp45       Lscala/xml/dtd/ContentModel$ElemName;
 
 
 public final scala.collection.immutable.Set traverse$1(scala.util.regexp.Base$RegExp);
@@ -892,24 +878,18 @@ l4	aload_1
 	checkcast	class scala/collection/Seq
 	astore	6
 	aload	6
-	dup
-	pop
-	ifnull	l8 // iconst_0
-	aload	6
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l9 // aload
-l8	iconst_0
-	goto	l10 // ifeq
-l9	aload	6
+	ifnonnull	l8 // aload
+	iconst_0
+	goto	l9 // ifeq
+l8	aload	6
 	iconst_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.lengthCompare:(I)I
 	iconst_0
-	if_icmplt	l11 // iconst_0
+	if_icmplt	l10 // iconst_0
 	iconst_1
-	goto	l10 // ifeq
-l11	iconst_0
-l10	ifeq	l12 // new
+	goto	l9 // ifeq
+l10	iconst_0
+l9	ifeq	l11 // new
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	invokevirtual	Method scala/Predef$.Set:()Lscala/collection/immutable/Set$;
 	aload	6
@@ -932,7 +912,7 @@ l10	ifeq	l12 // new
 	invokevirtual	Method scala/collection/immutable/Set$.apply:(Lscala/collection/Seq;)Lscala/collection/Traversable;
 	checkcast	class scala/collection/immutable/Set
 	goto	l3 // areturn
-l12	new	class scala/MatchError
+l11	new	class scala/MatchError
 	dup
 	aload_1
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
@@ -944,7 +924,7 @@ l7	new	class scala/MatchError
 	athrow
 l6	aload_1
 	instanceof	class scala/util/regexp/Base$Alt
-	ifeq	l13 // new
+	ifeq	l12 // new
 	aload_1
 	checkcast	class scala/util/regexp/Base$Alt
 	astore	8
@@ -958,30 +938,24 @@ l6	aload_1
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	astore	9
 	iconst_1
-	ifeq	l14 // new
+	ifeq	l13 // new
 	aload	9
 	getfield	Field scala/Some.x:Ljava/lang/Object;
 	checkcast	class scala/collection/Seq
 	astore	10
 	aload	10
-	dup
-	pop
-	ifnull	l15 // iconst_0
-	aload	10
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l16 // aload
-l15	iconst_0
-	goto	l17 // ifeq
-l16	aload	10
+	ifnonnull	l14 // aload
+	iconst_0
+	goto	l15 // ifeq
+l14	aload	10
 	iconst_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.lengthCompare:(I)I
 	iconst_0
-	if_icmplt	l18 // iconst_0
+	if_icmplt	l16 // iconst_0
 	iconst_1
-	goto	l17 // ifeq
-l18	iconst_0
-l17	ifeq	l19 // new
+	goto	l15 // ifeq
+l16	iconst_0
+l15	ifeq	l17 // new
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	invokevirtual	Method scala/Predef$.Set:()Lscala/collection/immutable/Set$;
 	aload	10
@@ -1004,12 +978,7 @@ l17	ifeq	l19 // new
 	invokevirtual	Method scala/collection/immutable/Set$.apply:(Lscala/collection/Seq;)Lscala/collection/Traversable;
 	checkcast	class scala/collection/immutable/Set
 l3	areturn
-l19	new	class scala/MatchError
-	dup
-	aload_1
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
-	athrow
-l14	new	class scala/MatchError
+l17	new	class scala/MatchError
 	dup
 	aload_1
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
@@ -1019,41 +988,44 @@ l13	new	class scala/MatchError
 	aload_1
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
+l12	new	class scala/MatchError
+	dup
+	aload_1
+	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
+	athrow
   Labels:
    	l5 = 0 // aload_1
    	l2 = 59 // new
    	l1 = 68 // aload_1
    	l4 = 86 // aload_1
-   	l8 = 148 // iconst_0
-   	l9 = 152 // aload
-   	l11 = 168 // iconst_0
-   	l10 = 169 // ifeq
-   	l12 = 233 // new
-   	l7 = 242 // new
-   	l6 = 251 // aload_1
-   	l15 = 313 // iconst_0
-   	l16 = 317 // aload
-   	l18 = 333 // iconst_0
-   	l17 = 334 // ifeq
-   	l3 = 395 // areturn
-   	l19 = 396 // new
-   	l14 = 405 // new
-   	l13 = 414 // new
+   	l8 = 141 // aload
+   	l10 = 157 // iconst_0
+   	l9 = 158 // ifeq
+   	l11 = 222 // new
+   	l7 = 231 // new
+   	l6 = 240 // aload_1
+   	l14 = 295 // aload
+   	l16 = 311 // iconst_0
+   	l15 = 312 // ifeq
+   	l3 = 373 // areturn
+   	l17 = 374 // new
+   	l13 = 383 // new
+   	l12 = 392 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      423      0    this       Lscala/xml/dtd/ContentModel$;
-   0      423      1    r       Lscala/util/regexp/Base$RegExp;
+   0      401      0    this       Lscala/xml/dtd/ContentModel$;
+   0      401      1    r       Lscala/util/regexp/Base$RegExp;
    12      56      2    temp12       Lscala/util/regexp/WordExp$Letter;
    20      48      3    temp13       Lscala/xml/dtd/ContentModel$ElemName;
-   99      152      4    temp17       Lscala/util/regexp/Base$Sequ;
-   118      133      5    temp18       Lscala/Some;
-   132      110      6    temp19       Lscala/collection/Seq;
-   264      131      8    temp21       Lscala/util/regexp/Base$Alt;
-   396      18      8    temp21       Lscala/util/regexp/Base$Alt;
-   283      112      9    temp22       Lscala/Some;
-   396      18      9    temp22       Lscala/Some;
-   297      98      10    temp23       Lscala/collection/Seq;
-   396      9      10    temp23       Lscala/collection/Seq;
+   99      141      4    temp17       Lscala/util/regexp/Base$Sequ;
+   118      122      5    temp18       Lscala/Some;
+   132      99      6    temp19       Lscala/collection/Seq;
+   253      120      8    temp21       Lscala/util/regexp/Base$Alt;
+   374      18      8    temp21       Lscala/util/regexp/Base$Alt;
+   272      101      9    temp22       Lscala/Some;
+   374      18      9    temp22       Lscala/Some;
+   286      87      10    temp23       Lscala/collection/Seq;
+   374      9      10    temp23       Lscala/collection/Seq;
 
 
 private scala.xml.dtd.ContentModel$();

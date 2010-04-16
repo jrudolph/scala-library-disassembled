@@ -11,7 +11,6 @@ public final class scala.testing.SUnit$AssertFailed$ extends java.lang.Object im
   Constant pool:
 Asciz	SourceFile;
 Asciz	SUnit.scala;
-Asciz	Scala;
 Asciz	MODULE$;
 Asciz	Lscala/testing/SUnit$AssertFailed$;;
 Asciz	<clinit>;
@@ -44,12 +43,6 @@ NameAndType	tupled:(Lscala/Function2;)Lscala/Function1;
 Method	scala/Function2$class.tupled:(Lscala/Function2;)Lscala/Function1;
 Asciz	unapply;
 Asciz	(Lscala/testing/SUnit$AssertFailed;)Lscala/Option;;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/None$;
 class	scala/None$
 Asciz	Lscala/None$;;
@@ -95,6 +88,7 @@ Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;;
 Asciz	java/lang/String;
 class	java/lang/String
 Asciz	unboxToBoolean;
+Asciz	(Ljava/lang/Object;)Z;
 NameAndType	unboxToBoolean:(Ljava/lang/Object;)Z
 Method	scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 NameAndType	apply:(Ljava/lang/String;Z)Lscala/testing/SUnit$AssertFailed;
@@ -102,6 +96,8 @@ Method	scala/testing/SUnit$AssertFailed$.apply:(Ljava/lang/String;Z)Lscala/testi
 Asciz	v1;
 Asciz	Ljava/lang/Object;;
 Asciz	v2;
+Asciz	java/lang/Object;
+class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/testing/SUnit$AssertFailed$;
 Field	scala/testing/SUnit$AssertFailed$.MODULE$:Lscala/testing/SUnit$AssertFailed$;
@@ -109,6 +105,7 @@ Asciz	$init$;
 Asciz	(Lscala/Function2;)V;
 NameAndType	$init$:(Lscala/Function2;)V
 Method	scala/Function2$class.$init$:(Lscala/Function2;)V
+Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	scala/testing/SUnit;
 class	scala/testing/SUnit
@@ -176,16 +173,10 @@ public scala.Option unapply(scala.testing.SUnit$AssertFailed);
   Code:
    Stack=6, Locals=3, Args_size=2
 	aload_1
-	dup
-	pop
-	ifnull	l1 // getstatic
-	aload_1
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // new
-l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	goto	l3 // areturn
-l2	new	class scala/Some
+	ifnonnull	l1 // new
+	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l2 // areturn
+l1	new	class scala/Some
 	dup
 	new	class scala/Tuple2
 	dup
@@ -198,15 +189,14 @@ l2	new	class scala/Some
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-l3	areturn
+l2	areturn
   Labels:
-   	l1 = 14 // getstatic
-   	l2 = 20 // new
-   	l3 = 47 // areturn
+   	l1 = 10 // new
+   	l2 = 37 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      48      0    this       Lscala/testing/SUnit$AssertFailed$;
-   0      48      1    x$0       Lscala/testing/SUnit$AssertFailed;
+   0      38      0    this       Lscala/testing/SUnit$AssertFailed$;
+   0      38      1    x$0       Lscala/testing/SUnit$AssertFailed;
 
 
 public scala.testing.SUnit$AssertFailed apply(java.lang.String, boolean);

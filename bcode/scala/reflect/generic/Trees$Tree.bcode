@@ -16,14 +16,14 @@ public abstract class scala.reflect.generic.Trees$Tree extends java.lang.Object 
   Constant pool:
 Asciz	SourceFile;
 Asciz	Trees.scala;
-Asciz	$outer;
-Asciz	Lscala/reflect/generic/Universe;;
-Asciz	rawtpe;
-Asciz	Lscala/reflect/generic/Types$AbsType;;
-Asciz	rawpos;
-Asciz	Ljava/lang/Object;;
 Asciz	id;
 Asciz	I;
+Asciz	rawpos;
+Asciz	Ljava/lang/Object;;
+Asciz	rawtpe;
+Asciz	Lscala/reflect/generic/Types$AbsType;;
+Asciz	$outer;
+Asciz	Lscala/reflect/generic/Universe;;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 Asciz	Code;
@@ -117,11 +117,11 @@ Asciz	scala/Product;
 class	scala/Product
 NameAndType	productIterator:()Lscala/collection/Iterator;
 InterfaceMethod	scala/Product.productIterator:()Lscala/collection/Iterator;
-Asciz	scala/collection/Iterator;
-class	scala/collection/Iterator
+Asciz	scala/collection/TraversableOnce;
+class	scala/collection/TraversableOnce
 Asciz	toList;
 NameAndType	toList:()Lscala/collection/immutable/List;
-InterfaceMethod	scala/collection/Iterator.toList:()Lscala/collection/immutable/List;
+InterfaceMethod	scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
 Asciz	scala/reflect/generic/Trees$Tree$$anonfun$children$1;
 class	scala/reflect/generic/Trees$Tree$$anonfun$children$1
 Asciz	(Lscala/reflect/generic/Trees$Tree;)V;
@@ -232,7 +232,6 @@ Asciz	wrapRefArray;
 Asciz	([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
 NameAndType	wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 Method	scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-InterfaceMethod	scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
 Asciz	scala/reflect/generic/Trees$Tree$$anonfun$subtrees$1$1;
 class	scala/reflect/generic/Trees$Tree$$anonfun$subtrees$1$1
 Method	scala/reflect/generic/Trees$Tree$$anonfun$subtrees$1$1."<init>":(Lscala/reflect/generic/Trees$Tree;)V
@@ -286,17 +285,17 @@ Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
 {
-public final scala.reflect.generic.Universe $outer;
-  Signature: Lscala/reflect/generic/Universe;
-
-private scala.reflect.generic.Types$AbsType rawtpe;
-  Signature: Lscala/reflect/generic/Types$AbsType;
+private final int id;
+  Signature: I
 
 private java.lang.Object rawpos;
   Signature: Ljava/lang/Object;
 
-private final int id;
-  Signature: I
+private scala.reflect.generic.Types$AbsType rawtpe;
+  Signature: Lscala/reflect/generic/Types$AbsType;
+
+public final scala.reflect.generic.Universe $outer;
+  Signature: Lscala/reflect/generic/Universe;
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
@@ -522,7 +521,7 @@ public scala.collection.immutable.List children();
    Stack=4, Locals=1, Args_size=1
 	aload_0
 	invokeinterface	InterfaceMethod scala/Product.productIterator:()Lscala/collection/Iterator;
-	invokeinterface	InterfaceMethod scala/collection/Iterator.toList:()Lscala/collection/immutable/List;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
 	new	class scala/reflect/generic/Trees$Tree$$anonfun$children$1
 	dup
 	aload_0
@@ -700,7 +699,7 @@ l3	aload_1
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 	astore_3
 	aload_3
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
 	goto	l4 // areturn
 l5	aload_1
 	instanceof	class scala/collection/immutable/List

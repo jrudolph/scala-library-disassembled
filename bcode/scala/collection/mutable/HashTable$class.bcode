@@ -154,12 +154,6 @@ InterfaceMethod	scala/collection/mutable/HashTable.elemHashCode:(Ljava/lang/Obje
 Asciz	(I)I;
 NameAndType	index:(I)I
 InterfaceMethod	scala/collection/mutable/HashTable.index:(I)I
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	key;
 NameAndType	key:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/mutable/HashEntry.key:()Ljava/lang/Object;
@@ -230,6 +224,12 @@ Asciz	equalsCharObject;
 Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
 NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	key1;
 Asciz	key2;
 Asciz	(Lscala/collection/mutable/HashTable;Ljava/lang/Object;)I;
@@ -503,13 +503,7 @@ public static scala.collection.mutable.HashEntry findEntry(scala.collection.muta
 	aaload
 	astore_3
 l3	aload_3
-	dup
-	pop
 	ifnull	l1 // aload_3
-	aload_3
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifne	l1 // aload_3
 	aload_0
 	aload_3
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashEntry.key:()Ljava/lang/Object;
@@ -525,16 +519,16 @@ l2	aload_3
 	goto	l3 // aload_3
   Labels:
    	l3 = 23 // aload_3
-   	l1 = 53 // aload_3
-   	l2 = 55 // aload_3
+   	l1 = 43 // aload_3
+   	l2 = 45 // aload_3
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      68      0    $this       Lscala/collection/mutable/HashTable;
-   0      68      1    key       Ljava/lang/Object;
-   14      40      2    h       I
-   55      13      2    h       I
-   23      31      3    e       Lscala/collection/mutable/HashEntry;
-   55      13      3    e       Lscala/collection/mutable/HashEntry;
+   0      58      0    $this       Lscala/collection/mutable/HashTable;
+   0      58      1    key       Ljava/lang/Object;
+   14      30      2    h       I
+   45      13      2    h       I
+   23      21      3    e       Lscala/collection/mutable/HashEntry;
+   45      13      3    e       Lscala/collection/mutable/HashEntry;
 
 
 public static void addEntry(scala.collection.mutable.HashTable, scala.collection.mutable.HashEntry);
@@ -603,13 +597,7 @@ public static scala.collection.mutable.HashEntry removeEntry(scala.collection.mu
 	aaload
 	astore_3
 	aload_3
-	dup
-	pop
 	ifnull	l1 // aconst_null
-	aload_3
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifne	l1 // aconst_null
 	aload_0
 	aload_3
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashEntry.key:()Ljava/lang/Object;
@@ -636,13 +624,7 @@ l2	aload_3
 	checkcast	class scala/collection/mutable/HashEntry
 	astore	4
 l6	aload	4
-	dup
-	pop
 	ifnull	l3 // aload
-	aload	4
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifne	l3 // aload
 	aload_0
 	aload	4
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashEntry.key:()Ljava/lang/Object;
@@ -650,13 +632,7 @@ l6	aload	4
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.elemEquals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 	ifeq	l4 // aload
 l3	aload	4
-	dup
-	pop
-	ifnull	l1 // aconst_null
-	aload	4
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l5 // aload_3
+	ifnonnull	l5 // aload_3
 l1	aconst_null
 	areturn
 l5	aload_3
@@ -679,22 +655,22 @@ l4	aload	4
 	astore	4
 	goto	l6 // aload
   Labels:
-   	l2 = 86 // aload_3
-   	l6 = 97 // aload
-   	l3 = 130 // aload
-   	l1 = 146 // aconst_null
-   	l5 = 148 // aload_3
-   	l4 = 178 // aload
+   	l2 = 76 // aload_3
+   	l6 = 87 // aload
+   	l3 = 109 // aload
+   	l1 = 114 // aconst_null
+   	l5 = 116 // aload_3
+   	l4 = 146 // aload
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      196      0    $this       Lscala/collection/mutable/HashTable;
-   0      196      1    key       Ljava/lang/Object;
-   14      133      2    h       I
-   148      48      2    h       I
-   23      124      3    e       Lscala/collection/mutable/HashEntry;
-   148      48      3    e       Lscala/collection/mutable/HashEntry;
-   97      49      4    e1       Lscala/collection/mutable/HashEntry;
-   148      48      4    e1       Lscala/collection/mutable/HashEntry;
+   0      164      0    $this       Lscala/collection/mutable/HashTable;
+   0      164      1    key       Ljava/lang/Object;
+   14      101      2    h       I
+   116      48      2    h       I
+   23      92      3    e       Lscala/collection/mutable/HashEntry;
+   116      48      3    e       Lscala/collection/mutable/HashEntry;
+   87      27      4    e1       Lscala/collection/mutable/HashEntry;
+   116      48      4    e1       Lscala/collection/mutable/HashEntry;
 
 
 public static scala.collection.Iterator entriesIterator(scala.collection.mutable.HashTable);
@@ -815,51 +791,45 @@ private static void resize(scala.collection.mutable.HashTable, int);
 	iconst_1
 	isub
 	istore_3
-l4	iload_3
+l3	iload_3
 	iconst_0
 	if_icmplt	l1 // aload_0
 	aload_2
 	iload_3
 	aaload
-	astore	6
-l5	aload	6
-	dup
-	pop
-	ifnull	l2 // iload_3
-	aload	6
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l3 // aload_0
-l2	iload_3
+	astore	4
+l4	aload	4
+	ifnonnull	l2 // aload_0
+	iload_3
 	iconst_1
 	isub
 	istore_3
-	goto	l4 // iload_3
-l3	aload_0
+	goto	l3 // iload_3
+l2	aload_0
 	aload_0
-	aload	6
+	aload	4
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashEntry.key:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.elemHashCode:(Ljava/lang/Object;)I
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.index:(I)I
-	istore	4
-	aload	6
+	istore	5
+	aload	4
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashEntry.next:()Ljava/lang/Object;
 	checkcast	class scala/collection/mutable/HashEntry
-	astore	5
-	aload	6
+	astore	6
+	aload	4
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.table:()[Lscala/collection/mutable/HashEntry;
-	iload	4
+	iload	5
 	aaload
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashEntry.next_$eq:(Ljava/lang/Object;)V
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.table:()[Lscala/collection/mutable/HashEntry;
-	iload	4
-	aload	6
+	iload	5
+	aload	4
 	aastore
-	aload	5
-	astore	6
-	goto	l5 // aload
+	aload	6
+	astore	4
+	goto	l4 // aload
 l1	aload_0
 	aload_0
 	iload_1
@@ -867,21 +837,20 @@ l1	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.threshold_$eq:(I)V
 	return
   Labels:
-   	l4 = 22 // iload_3
-   	l5 = 32 // aload
-   	l2 = 48 // iload_3
-   	l3 = 55 // aload_0
-   	l1 = 122 // aload_0
+   	l3 = 22 // iload_3
+   	l4 = 32 // aload
+   	l2 = 44 // aload_0
+   	l1 = 111 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      134      0    $this       Lscala/collection/mutable/HashTable;
-   0      134      1    newSize       I
-   7      126      2    oldTable       [Lscala/collection/mutable/HashEntry;
-   22      111      3    i       I
-   76      43      4    h       I
-   88      31      5    e1       Lscala/collection/mutable/HashEntry;
-   32      20      6    e       Lscala/collection/mutable/HashEntry;
-   55      67      6    e       Lscala/collection/mutable/HashEntry;
+   0      123      0    $this       Lscala/collection/mutable/HashTable;
+   0      123      1    newSize       I
+   7      115      2    oldTable       [Lscala/collection/mutable/HashEntry;
+   22      100      3    i       I
+   32      9      4    e       Lscala/collection/mutable/HashEntry;
+   44      67      4    e       Lscala/collection/mutable/HashEntry;
+   65      43      5    h       I
+   77      31      6    e1       Lscala/collection/mutable/HashEntry;
 
 
 public static boolean elemEquals(scala.collection.mutable.HashTable, java.lang.Object, java.lang.Object);
@@ -939,28 +908,21 @@ l7	ireturn
 public static int elemHashCode(scala.collection.mutable.HashTable, java.lang.Object);
   Signature: (Lscala/collection/mutable/HashTable;Ljava/lang/Object;)I
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=1, Locals=2, Args_size=2
 	aload_1
-	dup
-	pop
-	ifnull	l1 // iconst_0
-	aload_1
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // aload_1
-l1	iconst_0
-	goto	l3 // ireturn
-l2	aload_1
+	ifnonnull	l1 // aload_1
+	iconst_0
+	goto	l2 // ireturn
+l1	aload_1
 	invokevirtual	Method java/lang/Object.hashCode:()I
-l3	ireturn
+l2	ireturn
   Labels:
-   	l1 = 14 // iconst_0
-   	l2 = 18 // aload_1
-   	l3 = 22 // ireturn
+   	l1 = 8 // aload_1
+   	l2 = 12 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      23      0    $this       Lscala/collection/mutable/HashTable;
-   0      23      1    key       Ljava/lang/Object;
+   0      13      0    $this       Lscala/collection/mutable/HashTable;
+   0      13      1    key       Ljava/lang/Object;
 
 
 public static final int improve(scala.collection.mutable.HashTable, int);

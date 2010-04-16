@@ -1,31 +1,10 @@
 Compiled from "JavaSerializer.scala"
 public class scala.actors.remote.JavaSerializer extends scala.actors.remote.Serializer implements scala.ScalaObject
   SourceFile: "JavaSerializer.scala"
-  ScalaSig: length = 0x177
-   05 00 3C 06 08 01 02 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF80 00 09 02 0E 4A
-   61 76 61 53 65 72 69 61 6C 69 7A 65 72 0A 02 03
-   04 01 06 72 65 6D 6F 74 65 0A 02 05 06 01 06 61
-   63 74 6F 72 73 0A 01 07 01 05 73 63 61 6C 61 03
-   00 13 03 00 0A 0E 10 02 0B 0C 0D 01 02 09 02 0D
-   02 02 0A 53 65 72 69 61 6C 69 7A 65 72 10 02 0F
-   10 0D 01 06 09 02 11 06 02 0B 53 63 61 6C 61 4F
-   62 6A 65 63 74 08 09 13 00 FFFFFF82 FFFFFF80 FFFFFFA0 FFFFFF80 04 14 17
-   01 04 73 65 72 76 10 02 0B 15 09 02 16 02 02 07
-   53 65 72 76 69 63 65 09 02 18 0C 01 07 73 65 72
-   76 69 63 65 08 08 1A 00 FFFFFF82 FFFFFF80 FFFFFFA0 FFFFFF80 04 1B 01 02
-   63 6C 10 02 1C 21 0D 01 1D 0A 02 1E 1F 01 04 6C
-   61 6E 67 0A 01 20 01 04 6A 61 76 61 09 02 22 1D
-   02 0B 43 6C 61 73 73 4C 6F 61 64 65 72 08 05 24
-   00 FFFFFF84 00 25 01 06 3C 69 6E 69 74 3E 14 03 26 27
-   28 10 02 0B 00 08 05 13 23 FFFFFFC0 00 14 08 05 1A 23
-   FFFFFFC0 00 1B 08 05 2A 00 FFFFFF84 00 2B 01 09 73 65 72 69
-   61 6C 69 7A 65 14 02 2C 32 10 03 0F 2D 2F 09 02
-   2E 06 02 05 41 72 72 61 79 10 02 0F 30 09 02 31
-   06 02 04 42 79 74 65 08 05 33 29 FFFFFFC0 00 34 01 01
-   6F 10 02 0F 35 09 02 36 06 02 06 41 6E 79 52 65
-   66 08 05 38 00 FFFFFF84 00 39 01 0B 64 65 73 65 72 69
-   61 6C 69 7A 65 14 02 34 3A 08 05 3B 37 FFFFFFC0 00 2C
-   01 05 62 79 74 65 73 
+  ScalaSig: length = 0x3
+   05 00 00 
+  RuntimeVisibleAnnotations: length = 0xB
+   00 01 00 50 00 01 00 41 73 00 51 
   minor version: 0
   major version: 49
   Constant pool:
@@ -79,12 +58,6 @@ Asciz	scala/actors/remote/JavaSerializer;
 class	scala/actors/remote/JavaSerializer
 NameAndType	cl:Ljava/lang/ClassLoader;
 Field	scala/actors/remote/JavaSerializer.cl:Ljava/lang/ClassLoader;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	java/io/ObjectInputStream;
 class	java/io/ObjectInputStream
 Asciz	(Ljava/io/InputStream;)V;
@@ -114,6 +87,9 @@ Method	scala/actors/remote/Serializer."<init>":(Lscala/actors/remote/Service;)V
 Asciz	serv;
 Asciz	Lscala/actors/remote/Service;;
 Asciz	ScalaSig;
+Asciz	Lscala/reflect/ScalaSignature;;
+Asciz	q2\"\t!4mU3sSdN_3s\tA!sK6|G/\ta!Y2u_J(\"AM\r\1MA-aQ\"\n5!AC*fe&G.>feBqE\r%C'G.Y(cUGC\t\t!/!1/:w!\tYQ#\t91+:wS,B\r\rXM<jGDBIaGG2\"HuQ!AH\t1gnA!!.<b\tSDADY8T8bI\"\t)Aj]&$hF'O!\"a\tM\tiA\t)AAM,'/[1mSj,GC3!\ryQfL]Q!:sCf\"a\nE2!\"ziDQaMAQ\na\tUJ!A\rsPU3gA\":-!Wm]3sSdN_3QR\"B8a!2zi;
+Asciz	RuntimeVisibleAnnotations;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -154,7 +130,7 @@ public byte[] serialize(java.lang.Object);
 public java.lang.Object deserialize(byte[]);
   Signature: ([B)Ljava/lang/Object;
   Code:
-   Stack=4, Locals=5, Args_size=2
+   Stack=4, Locals=4, Args_size=2
 	new	class java/io/ByteArrayInputStream
 	dup
 	aload_1
@@ -162,38 +138,31 @@ public java.lang.Object deserialize(byte[]);
 	astore_2
 	aload_0
 	getfield	Field cl:Ljava/lang/ClassLoader;
-	dup
-	astore	4
-	ifnull	l1 // new
-	aload	4
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // new
-l1	new	class java/io/ObjectInputStream
+	ifnonnull	l1 // new
+	new	class java/io/ObjectInputStream
 	dup
 	aload_2
 	invokespecial	Method java/io/ObjectInputStream."<init>":(Ljava/io/InputStream;)V
-	goto	l3 // astore_3
-l2	new	class scala/actors/remote/CustomObjectInputStream
+	goto	l2 // astore_3
+l1	new	class scala/actors/remote/CustomObjectInputStream
 	dup
 	aload_2
 	aload_0
 	getfield	Field cl:Ljava/lang/ClassLoader;
 	invokespecial	Method scala/actors/remote/CustomObjectInputStream."<init>":(Ljava/io/InputStream;Ljava/lang/ClassLoader;)V
-l3	astore_3
+l2	astore_3
 	aload_3
 	invokevirtual	Method java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
 	areturn
   Labels:
-   	l1 = 28 // new
-   	l2 = 39 // new
-   	l3 = 51 // astore_3
+   	l1 = 27 // new
+   	l2 = 39 // astore_3
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      57      0    this       Lscala/actors/remote/JavaSerializer;
-   0      57      1    bytes       [B
-   9      47      2    bis       Ljava/io/ByteArrayInputStream;
-   52      4      3    in       Ljava/io/ObjectInputStream;
+   0      45      0    this       Lscala/actors/remote/JavaSerializer;
+   0      45      1    bytes       [B
+   9      35      2    bis       Ljava/io/ByteArrayInputStream;
+   40      4      3    in       Ljava/io/ObjectInputStream;
 
 
 public scala.actors.remote.JavaSerializer(scala.actors.remote.Service, java.lang.ClassLoader);

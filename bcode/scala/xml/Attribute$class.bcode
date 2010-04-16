@@ -263,33 +263,26 @@ l6	areturn
 public static boolean isPrefixed(scala.xml.Attribute);
   Signature: (Lscala/xml/Attribute;)Z
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=1, Locals=1, Args_size=1
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.pre:()Ljava/lang/String;
-	dup
-	astore_1
-	ifnull	l1 // iconst_0
-	aload_1
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // iconst_1
-l1	iconst_0
-	goto	l3 // ireturn
-l2	iconst_1
-l3	ireturn
+	ifnonnull	l1 // iconst_1
+	iconst_0
+	goto	l2 // ireturn
+l1	iconst_1
+l2	ireturn
   Labels:
-   	l1 = 19 // iconst_0
-   	l2 = 23 // iconst_1
-   	l3 = 24 // ireturn
+   	l1 = 13 // iconst_1
+   	l2 = 14 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      25      0    $this       Lscala/xml/Attribute;
+   0      15      0    $this       Lscala/xml/Attribute;
 
 
 public static boolean wellformed(scala.xml.Attribute, scala.xml.NamespaceBinding);
   Signature: (Lscala/xml/Attribute;Lscala/xml/NamespaceBinding;)Z
   Code:
-   Stack=4, Locals=4, Args_size=2
+   Stack=4, Locals=3, Args_size=2
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.isPrefixed:()Z
 	ifeq	l1 // aconst_null
@@ -307,33 +300,26 @@ l2	astore_2
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.key:()Ljava/lang/String;
 	invokevirtual	Method scala/xml/MetaData.apply:(Ljava/lang/String;Lscala/xml/NamespaceBinding;Ljava/lang/String;)Lscala/collection/Seq;
-	dup
-	astore_3
-	ifnull	l3 // aload_0
-	aload_3
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l4 // iconst_0
-l3	aload_0
+	ifnonnull	l3 // iconst_0
+	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.next:()Lscala/xml/MetaData;
 	aload_1
 	invokevirtual	Method scala/xml/MetaData.wellformed:(Lscala/xml/NamespaceBinding;)Z
-	ifeq	l4 // iconst_0
+	ifeq	l3 // iconst_0
 	iconst_1
-	goto	l5 // ireturn
-l4	iconst_0
-l5	ireturn
+	goto	l4 // ireturn
+l3	iconst_0
+l4	ireturn
   Labels:
    	l1 = 22 // aconst_null
    	l2 = 23 // astore_2
-   	l3 = 54 // aload_0
-   	l4 = 71 // iconst_0
-   	l5 = 72 // ireturn
+   	l3 = 61 // iconst_0
+   	l4 = 62 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      73      0    $this       Lscala/xml/Attribute;
-   0      73      1    scope       Lscala/xml/NamespaceBinding;
-   24      49      2    arg       Ljava/lang/String;
+   0      63      0    $this       Lscala/xml/Attribute;
+   0      63      1    scope       Lscala/xml/NamespaceBinding;
+   24      39      2    arg       Ljava/lang/String;
 
 
 public static boolean canEqual(scala.xml.Attribute, java.lang.Object);
@@ -450,29 +436,23 @@ public static scala.collection.immutable.List basisForHashCode(scala.xml.Attribu
 public static void toString1(scala.xml.Attribute, scala.collection.mutable.StringBuilder);
   Signature: (Lscala/xml/Attribute;Lscala/collection/mutable/StringBuilder;)V
   Code:
-   Stack=5, Locals=4, Args_size=2
+   Stack=5, Locals=3, Args_size=2
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.value:()Lscala/collection/Seq;
-	dup
-	astore_2
-	ifnull	l1 // return
-	aload_2
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // aload_0
-l1	return
-l2	aload_0
+	ifnonnull	l1 // aload_0
+	return
+l1	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.isPrefixed:()Z
-	ifeq	l3 // getstatic
+	ifeq	l2 // getstatic
 	aload_1
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.pre:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 	ldc	int 58
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(C)Lscala/collection/mutable/StringBuilder;
-	goto	l4 // pop
-l3	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-l4	pop
+	goto	l3 // pop
+l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+l3	pop
 	aload_1
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.key:()Ljava/lang/String;
@@ -483,31 +463,30 @@ l4	pop
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	astore_3
+	astore_2
 	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.value:()Lscala/collection/Seq;
 	getstatic	Field scala/xml/TopScope$.MODULE$:Lscala/xml/TopScope$;
-	aload_3
+	aload_2
 	iconst_1
 	invokevirtual	Method scala/xml/Utility$.sequenceToXML:(Lscala/collection/Seq;Lscala/xml/NamespaceBinding;Lscala/collection/mutable/StringBuilder;Z)V
 	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
-	aload_3
+	aload_2
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	aload_1
 	invokevirtual	Method scala/xml/Utility$.appendQuoted:(Ljava/lang/String;Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
 	pop
 	return
   Labels:
-   	l1 = 19 // return
-   	l2 = 20 // aload_0
-   	l3 = 47 // getstatic
-   	l4 = 50 // pop
+   	l1 = 10 // aload_0
+   	l2 = 37 // getstatic
+   	l3 = 40 // pop
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      105      0    $this       Lscala/xml/Attribute;
-   0      105      1    sb       Lscala/collection/mutable/StringBuilder;
-   75      29      3    sb2       Lscala/collection/mutable/StringBuilder;
+   0      95      0    $this       Lscala/xml/Attribute;
+   0      95      1    sb       Lscala/collection/mutable/StringBuilder;
+   65      29      2    sb2       Lscala/collection/mutable/StringBuilder;
 
 
 public static void $init$(scala.xml.Attribute);

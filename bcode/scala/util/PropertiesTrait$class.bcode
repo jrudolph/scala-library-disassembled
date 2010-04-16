@@ -82,12 +82,6 @@ Asciz	getProperty;
 Asciz	(Ljava/lang/String;)Ljava/lang/String;;
 NameAndType	getProperty:(Ljava/lang/String;)Ljava/lang/String;
 Method	java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	name;
 Asciz	Ljava/lang/String;;
 Asciz	propIsSetTo;
@@ -95,6 +89,12 @@ Asciz	(Lscala/util/PropertiesTrait;Ljava/lang/String;Ljava/lang/String;)Z;
 Asciz	propOrNull;
 NameAndType	propOrNull:(Ljava/lang/String;)Ljava/lang/String;
 InterfaceMethod	scala/util/PropertiesTrait.propOrNull:(Ljava/lang/String;)Ljava/lang/String;
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	value;
 Asciz	propOrElse;
 Asciz	(Lscala/util/PropertiesTrait;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;;
@@ -294,12 +294,12 @@ Asciz	wrapRefArray;
 Asciz	([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
 NameAndType	wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 Method	scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-Asciz	scala/collection/TraversableLike;
-class	scala/collection/TraversableLike
+Asciz	scala/collection/TraversableOnce;
+class	scala/collection/TraversableOnce
 Asciz	toList;
 Asciz	()Lscala/collection/immutable/List;;
 NameAndType	toList:()Lscala/collection/immutable/List;
-InterfaceMethod	scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+InterfaceMethod	scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
 Asciz	scala/collection/immutable/Nil$;
 class	scala/collection/immutable/Nil$
 Asciz	Lscala/collection/immutable/Nil$;;
@@ -464,28 +464,21 @@ l1	return
 public static boolean propIsSet(scala.util.PropertiesTrait, java.lang.String);
   Signature: (Lscala/util/PropertiesTrait;Ljava/lang/String;)Z
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=1, Locals=2, Args_size=2
 	aload_1
 	invokestatic	Method java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
-	dup
-	astore_2
-	ifnull	l1 // iconst_0
-	aload_2
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // iconst_1
-l1	iconst_0
-	goto	l3 // ireturn
-l2	iconst_1
-l3	ireturn
+	ifnonnull	l1 // iconst_1
+	iconst_0
+	goto	l2 // ireturn
+l1	iconst_1
+l2	ireturn
   Labels:
-   	l1 = 17 // iconst_0
-   	l2 = 21 // iconst_1
-   	l3 = 22 // ireturn
+   	l1 = 11 // iconst_1
+   	l2 = 12 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      23      0    $this       Lscala/util/PropertiesTrait;
-   0      23      1    name       Ljava/lang/String;
+   0      13      0    $this       Lscala/util/PropertiesTrait;
+   0      13      1    name       Ljava/lang/String;
 
 
 public static boolean propIsSetTo(scala.util.PropertiesTrait, java.lang.String, java.lang.String);
@@ -1071,7 +1064,7 @@ l2	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 	astore_3
 	aload_3
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
 	goto	l4 // astore
 l3	aload_1
 	ldc_w	String 1.6
@@ -1100,7 +1093,7 @@ l6	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 	astore	5
 	aload	5
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
 	goto	l4 // astore
 l7	aload_1
 	ldc_w	String 1.7
@@ -1125,7 +1118,7 @@ l9	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 	astore	7
 	aload	7
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
 	goto	l4 // astore
 l10	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 l4	astore	8

@@ -531,20 +531,14 @@ private static final void drainRefQ$1(scala.actors.scheduler.ActorGC);
   Signature: (Lscala/actors/scheduler/ActorGC;)V
   Code:
    Stack=3, Locals=2, Args_size=1
-l3	aload_0
+l2	aload_0
 	invokeinterface	InterfaceMethod scala/actors/scheduler/ActorGC.scala$actors$scheduler$ActorGC$$refQ:()Ljava/lang/ref/ReferenceQueue;
 	invokevirtual	Method java/lang/ref/ReferenceQueue.poll:()Ljava/lang/ref/Reference;
 	astore_1
 	aload_1
-	dup
-	pop
-	ifnull	l1 // return
-	aload_1
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // aload_0
-l1	return
-l2	aload_0
+	ifnonnull	l1 // aload_0
+	return
+l1	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/scheduler/TerminationMonitor.activeActors:()I
 	iconst_1
@@ -557,15 +551,14 @@ l2	aload_0
 	pop
 	aload_0
 	astore_0
-	goto	l3 // aload_0
+	goto	l2 // aload_0
   Labels:
-   	l3 = 0 // aload_0
-   	l1 = 24 // return
-   	l2 = 25 // aload_0
+   	l2 = 0 // aload_0
+   	l1 = 15 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      55      0    $this       Lscala/actors/scheduler/ActorGC;
-   10      45      1    wr       Ljava/lang/ref/Reference;
+   0      45      0    $this       Lscala/actors/scheduler/ActorGC;
+   10      35      1    wr       Ljava/lang/ref/Reference;
 
 
 public static void $init$(scala.actors.scheduler.ActorGC);

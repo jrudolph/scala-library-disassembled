@@ -8,7 +8,6 @@ public final class scala.reflect.LocalMethod$ extends java.lang.Object implement
   Constant pool:
 Asciz	SourceFile;
 Asciz	Symbol.scala;
-Asciz	Scala;
 Asciz	MODULE$;
 Asciz	Lscala/reflect/LocalMethod$;;
 Asciz	<clinit>;
@@ -41,12 +40,6 @@ NameAndType	tupled:(Lscala/Function3;)Lscala/Function1;
 Method	scala/Function3$class.tupled:(Lscala/Function3;)Lscala/Function1;
 Asciz	unapply;
 Asciz	(Lscala/reflect/LocalMethod;)Lscala/Option;;
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/None$;
 class	scala/None$
 Asciz	Lscala/None$;;
@@ -100,6 +93,8 @@ Asciz	v1;
 Asciz	Ljava/lang/Object;;
 Asciz	v2;
 Asciz	v3;
+Asciz	java/lang/Object;
+class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/reflect/LocalMethod$;
 Field	scala/reflect/LocalMethod$.MODULE$:Lscala/reflect/LocalMethod$;
@@ -107,6 +102,7 @@ Asciz	$init$;
 Asciz	(Lscala/Function3;)V;
 NameAndType	$init$:(Lscala/Function3;)V
 Method	scala/Function3$class.$init$:(Lscala/Function3;)V
+Asciz	Scala;
 Asciz	scala/Function3;
 class	scala/Function3
 Asciz	scala/ScalaObject;
@@ -167,16 +163,10 @@ public scala.Option unapply(scala.reflect.LocalMethod);
   Code:
    Stack=7, Locals=2, Args_size=2
 	aload_1
-	dup
-	pop
-	ifnull	l1 // getstatic
-	aload_1
-	aconst_null
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // new
-l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	goto	l3 // areturn
-l2	new	class scala/Some
+	ifnonnull	l1 // new
+	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l2 // areturn
+l1	new	class scala/Some
 	dup
 	new	class scala/Tuple3
 	dup
@@ -188,15 +178,14 @@ l2	new	class scala/Some
 	invokevirtual	Method scala/reflect/LocalMethod.tpe:()Lscala/reflect/Type;
 	invokespecial	Method scala/Tuple3."<init>":(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-l3	areturn
+l2	areturn
   Labels:
-   	l1 = 14 // getstatic
-   	l2 = 20 // new
-   	l3 = 46 // areturn
+   	l1 = 10 // new
+   	l2 = 36 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      47      0    this       Lscala/reflect/LocalMethod$;
-   0      47      1    x$0       Lscala/reflect/LocalMethod;
+   0      37      0    this       Lscala/reflect/LocalMethod$;
+   0      37      1    x$0       Lscala/reflect/LocalMethod;
 
 
 public scala.reflect.LocalMethod apply(scala.reflect.Symbol, java.lang.String, scala.reflect.Type);

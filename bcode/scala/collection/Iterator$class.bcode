@@ -4,7 +4,6 @@ public abstract class scala.collection.Iterator$class extends java.lang.Object
   Scala: length = 0x
    
   InnerClass: 
-   public final Cons=class scala/collection/immutable/Stream$Cons of class scala/collection/immutable/Stream
    public final $anon$1=class scala/collection/Iterator$$anon$1 of class scala/collection/Iterator
    public final $anon$2=class scala/collection/Iterator$$anon$2 of class scala/collection/Iterator
    public final $anon$6=class scala/collection/Iterator$$anon$6 of class scala/collection/Iterator
@@ -22,10 +21,8 @@ public abstract class scala.collection.Iterator$class extends java.lang.Object
    public final $anon$18=class scala/collection/Iterator$$anon$18 of class scala/collection/Iterator
    public Partner$1=class scala/collection/Iterator$Partner$1 of class scala/collection/Iterator
    public final $anonfun$1=class scala/collection/Iterator$$anonfun$1 of class scala/collection/Iterator
-   public abstract $less$colon$less=class scala/Predef$$less$colon$less of class scala/Predef
    public GroupedIterator=class scala/collection/Iterator$GroupedIterator of class scala/collection/Iterator
    public final $anonfun$append$1=class scala/collection/Iterator$$anonfun$append$1 of class scala/collection/Iterator
-   public final $anonfun$toStream$1=class scala/collection/Iterator$$anonfun$toStream$1 of class scala/collection/Iterator
    public final $anonfun$contains$1=class scala/collection/Iterator$$anonfun$contains$1 of class scala/collection/Iterator
    public PartitionIterator$1=class scala/collection/Iterator$PartitionIterator$1 of class scala/collection/Iterator
    public final $anonfun$filterNot$1=class scala/collection/Iterator$$anonfun$filterNot$1 of class scala/collection/Iterator
@@ -49,6 +46,10 @@ Asciz	hasNext;
 Asciz	()Z;
 NameAndType	hasNext:()Z
 InterfaceMethod	scala/collection/Iterator.hasNext:()Z
+Asciz	isTraversableAgain;
+Asciz	hasDefiniteSize;
+NameAndType	isEmpty:()Z
+InterfaceMethod	scala/collection/Iterator.isEmpty:()Z
 Asciz	take;
 Asciz	(Lscala/collection/Iterator;I)Lscala/collection/Iterator;;
 Asciz	scala/collection/Iterator$$anon$18;
@@ -113,7 +114,7 @@ Asciz	scala/collection/Iterator$$anonfun$filterNot$1;
 class	scala/collection/Iterator$$anonfun$filterNot$1
 Method	scala/collection/Iterator$$anonfun$filterNot$1."<init>":(Lscala/collection/Iterator;Lscala/Function1;)V
 Asciz	p$4;
-Asciz	partialMap;
+Asciz	collect;
 Asciz	(Lscala/collection/Iterator;Lscala/PartialFunction;)Lscala/collection/Iterator;;
 Asciz	buffered;
 Asciz	()Lscala/collection/BufferedIterator;;
@@ -242,7 +243,6 @@ NameAndType	MODULE$:Lscala/None$;
 Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/Option;
 class	scala/Option
-NameAndType	isEmpty:()Z
 Method	scala/Option.isEmpty:()Z
 Asciz	scala/Some;
 class	scala/Some
@@ -276,45 +276,6 @@ NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	elem;
 Asciz	x0;
-Asciz	foldLeft;
-Asciz	(Lscala/collection/Iterator;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;;
-Asciz	scala/Function2;
-class	scala/Function2
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;;
-NameAndType	apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-InterfaceMethod	scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-Asciz	z;
-Asciz	op;
-Asciz	Lscala/Function2;;
-Asciz	acc;
-Asciz	foldRight;
-Asciz	(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;;
-NameAndType	foldRight:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-InterfaceMethod	scala/collection/Iterator.foldRight:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-Asciz	$div$colon;
-NameAndType	foldLeft:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-InterfaceMethod	scala/collection/Iterator.foldLeft:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-Asciz	$colon$bslash;
-Asciz	reduceLeft;
-Asciz	(Lscala/collection/Iterator;Lscala/Function2;)Ljava/lang/Object;;
-Asciz	java/lang/UnsupportedOperationException;
-class	java/lang/UnsupportedOperationException
-Asciz	empty.reduceLeft;
-String	empty.reduceLeft
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
-Asciz	reduceRight;
-Asciz	empty.reduceRight;
-String	empty.reduceRight
-Asciz	reduceLeftOption;
-Asciz	(Lscala/collection/Iterator;Lscala/Function2;)Lscala/Option;;
-Asciz	(Lscala/Function2;)Ljava/lang/Object;;
-NameAndType	reduceLeft:(Lscala/Function2;)Ljava/lang/Object;
-InterfaceMethod	scala/collection/Iterator.reduceLeft:(Lscala/Function2;)Ljava/lang/Object;
-Asciz	reduceRightOption;
-NameAndType	reduceRight:(Lscala/Function2;)Ljava/lang/Object;
-InterfaceMethod	scala/collection/Iterator.reduceRight:(Lscala/Function2;)Ljava/lang/Object;
 Asciz	(Lscala/collection/Iterator;)Lscala/collection/BufferedIterator;;
 Asciz	scala/collection/Iterator$$anon$2;
 class	scala/collection/Iterator$$anon$2
@@ -331,6 +292,11 @@ Asciz	sliding;
 Asciz	(Lscala/collection/Iterator;II)Lscala/collection/Iterator$GroupedIterator;;
 Asciz	step;
 Asciz	length;
+Asciz	scala/collection/TraversableOnce;
+class	scala/collection/TraversableOnce
+Asciz	()I;
+NameAndType	size:()I
+InterfaceMethod	scala/collection/TraversableOnce.size:()I
 Asciz	duplicate;
 Asciz	(Lscala/collection/Iterator;)Lscala/Tuple2;;
 Asciz	scala/collection/mutable/Queue;
@@ -388,149 +354,34 @@ Asciz	xs;
 Asciz	start;
 Asciz	len;
 Asciz	end;
-Asciz	(Lscala/collection/Iterator;Ljava/lang/Object;I)V;
-Asciz	(Ljava/lang/Object;II)V;
-NameAndType	copyToArray:(Ljava/lang/Object;II)V
-InterfaceMethod	scala/collection/Iterator.copyToArray:(Ljava/lang/Object;II)V
-Asciz	copyToBuffer;
-Asciz	(Lscala/collection/Iterator;Lscala/collection/mutable/Buffer;)V;
-Asciz	scala/collection/mutable/BufferLike;
-class	scala/collection/mutable/BufferLike
-Asciz	$plus$eq;
-Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/Buffer;;
-NameAndType	$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Buffer;
-InterfaceMethod	scala/collection/mutable/BufferLike.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Buffer;
-Asciz	dest;
-Asciz	Lscala/collection/mutable/Buffer;;
-Asciz	toList;
-Asciz	(Lscala/collection/Iterator;)Lscala/collection/immutable/List;;
-Asciz	scala/collection/mutable/ListBuffer;
-class	scala/collection/mutable/ListBuffer
-Method	scala/collection/mutable/ListBuffer."<init>":()V
-Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/ListBuffer;;
-NameAndType	$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ListBuffer;
-Method	scala/collection/mutable/ListBuffer.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ListBuffer;
-Asciz	()Lscala/collection/immutable/List;;
-NameAndType	toList:()Lscala/collection/immutable/List;
-Method	scala/collection/mutable/ListBuffer.toList:()Lscala/collection/immutable/List;
-Asciz	Lscala/collection/mutable/ListBuffer;;
-Asciz	toSet;
-Asciz	(Lscala/collection/Iterator;)Lscala/collection/immutable/Set;;
-Asciz	scala/collection/generic/TraversableForwarder$class;
-class	scala/collection/generic/TraversableForwarder$class
-Asciz	(Lscala/collection/generic/TraversableForwarder;)Lscala/collection/immutable/Set;;
-NameAndType	toSet:(Lscala/collection/generic/TraversableForwarder;)Lscala/collection/immutable/Set;
-Method	scala/collection/generic/TraversableForwarder$class.toSet:(Lscala/collection/generic/TraversableForwarder;)Lscala/collection/immutable/Set;
-Asciz	toStream;
-Asciz	(Lscala/collection/Iterator;)Lscala/collection/immutable/Stream;;
-Asciz	scala/collection/Iterator$$anonfun$toStream$1;
-class	scala/collection/Iterator$$anonfun$toStream$1
-Method	scala/collection/Iterator$$anonfun$toStream$1."<init>":(Lscala/collection/Iterator;)V
-Asciz	scala/collection/immutable/Stream$Cons;
-class	scala/collection/immutable/Stream$Cons
-Asciz	(Ljava/lang/Object;Lscala/Function0;)V;
-NameAndType	"<init>":(Ljava/lang/Object;Lscala/Function0;)V
-Method	scala/collection/immutable/Stream$Cons."<init>":(Ljava/lang/Object;Lscala/Function0;)V
-Asciz	scala/collection/immutable/Stream$Empty$;
-class	scala/collection/immutable/Stream$Empty$
-Asciz	Lscala/collection/immutable/Stream$Empty$;;
-NameAndType	MODULE$:Lscala/collection/immutable/Stream$Empty$;
-Field	scala/collection/immutable/Stream$Empty$.MODULE$:Lscala/collection/immutable/Stream$Empty$;
-Asciz	toSeq;
-Asciz	(Lscala/collection/Iterator;)Lscala/collection/Seq;;
-Asciz	scala/collection/mutable/ArrayBuffer;
-class	scala/collection/mutable/ArrayBuffer
-Method	scala/collection/mutable/ArrayBuffer."<init>":()V
-Asciz	(Lscala/collection/mutable/Buffer;)V;
-NameAndType	copyToBuffer:(Lscala/collection/mutable/Buffer;)V
-InterfaceMethod	scala/collection/Iterator.copyToBuffer:(Lscala/collection/mutable/Buffer;)V
-Asciz	buffer;
-Asciz	Lscala/collection/mutable/ArrayBuffer;;
-Asciz	toMap;
-Asciz	(Lscala/collection/Iterator;Lscala/Predef$$less$colon$less;)Lscala/collection/immutable/Map;;
-Asciz	scala/collection/immutable/Map$;
-class	scala/collection/immutable/Map$
-Asciz	Lscala/collection/immutable/Map$;;
-NameAndType	MODULE$:Lscala/collection/immutable/Map$;
-Field	scala/collection/immutable/Map$.MODULE$:Lscala/collection/immutable/Map$;
-Asciz	newBuilder;
-Asciz	()Lscala/collection/mutable/Builder;;
-NameAndType	newBuilder:()Lscala/collection/mutable/Builder;
-Method	scala/collection/immutable/Map$.newBuilder:()Lscala/collection/mutable/Builder;
-Asciz	scala/collection/mutable/Builder;
-class	scala/collection/mutable/Builder
-Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/Builder;;
-NameAndType	$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
-InterfaceMethod	scala/collection/mutable/Builder.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
-Asciz	result;
-NameAndType	result:()Ljava/lang/Object;
-InterfaceMethod	scala/collection/mutable/Builder.result:()Ljava/lang/Object;
-Asciz	scala/collection/immutable/Map;
-class	scala/collection/immutable/Map
-Asciz	ev;
-Asciz	Lscala/Predef$$less$colon$less;;
-Asciz	b;
-Asciz	Lscala/collection/mutable/Builder;;
 Asciz	sameElements;
 Asciz	(Lscala/collection/Iterator;Lscala/collection/Iterator;)Z;
 Asciz	that;
 Asciz	y0;
-Asciz	mkString;
-Asciz	(Lscala/collection/Iterator;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;;
+Asciz	toTraversable;
+Asciz	(Lscala/collection/Iterator;)Lscala/collection/Traversable;;
+Asciz	toStream;
+Asciz	()Lscala/collection/immutable/Stream;;
+NameAndType	toStream:()Lscala/collection/immutable/Stream;
+InterfaceMethod	scala/collection/TraversableOnce.toStream:()Lscala/collection/immutable/Stream;
+Asciz	toIterator;
+Asciz	toString;
+Asciz	(Lscala/collection/Iterator;)Ljava/lang/String;;
 Asciz	scala/collection/mutable/StringBuilder;
 class	scala/collection/mutable/StringBuilder
-Method	scala/collection/mutable/StringBuilder."<init>":()V
-Asciz	addString;
-Asciz	(Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;;
-NameAndType	addString:(Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
-InterfaceMethod	scala/collection/Iterator.addString:(Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
-NameAndType	toString:()Ljava/lang/String;
-Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-Asciz	Ljava/lang/String;;
-Asciz	sep;
-Asciz	buf;
-Asciz	Lscala/collection/mutable/StringBuilder;;
-Asciz	(Lscala/collection/Iterator;Ljava/lang/String;)Ljava/lang/String;;
-Asciz	;
-String	
-Asciz	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;;
-NameAndType	mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-InterfaceMethod	scala/collection/Iterator.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-Asciz	(Lscala/collection/Iterator;)Ljava/lang/String;;
-Asciz	(Ljava/lang/String;)Ljava/lang/String;;
-NameAndType	mkString:(Ljava/lang/String;)Ljava/lang/String;
-InterfaceMethod	scala/collection/Iterator.mkString:(Ljava/lang/String;)Ljava/lang/String;
-Asciz	(Lscala/collection/Iterator;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;;
-Asciz	append;
-Asciz	(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;;
-NameAndType	append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
-Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
-Asciz	java/lang/String;
-class	java/lang/String
-Asciz	valueOf;
-Asciz	(Ljava/lang/Object;)Ljava/lang/String;;
-NameAndType	valueOf:(Ljava/lang/Object;)Ljava/lang/String;
-Method	java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-Asciz	(Lscala/collection/Iterator;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;;
-Asciz	(Lscala/collection/Iterator;Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;;
 Method	scala/collection/mutable/StringBuilder."<init>":()V
 Asciz	non-empty;
 String	non-empty
 Asciz	empty;
 String	empty
+Asciz	append;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
 NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 Asciz	 iterator;
 String	 iterator
+Asciz	()Ljava/lang/String;;
+NameAndType	toString:()Ljava/lang/String;
 Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 Asciz	scala/collection/Iterator$$anonfun$append$1;
 class	scala/collection/Iterator$$anonfun$append$1
@@ -544,10 +395,6 @@ Asciz	findIndexOf;
 Asciz	(Lscala/Function1;)I;
 NameAndType	indexWhere:(Lscala/Function1;)I
 InterfaceMethod	scala/collection/Iterator.indexWhere:(Lscala/Function1;)I
-Asciz	collect;
-Asciz	()Lscala/collection/Seq;;
-NameAndType	toSeq:()Lscala/collection/Seq;
-InterfaceMethod	scala/collection/Iterator.toSeq:()Lscala/collection/Seq;
 Asciz	counted;
 Asciz	(Lscala/collection/Iterator;)Lscala/CountedIterator;;
 Asciz	scala/collection/Iterator$$anon$1;
@@ -555,15 +402,14 @@ class	scala/collection/Iterator$$anon$1
 Method	scala/collection/Iterator$$anon$1."<init>":(Lscala/collection/Iterator;)V
 Asciz	readInto;
 Asciz	sz;
+Asciz	(Lscala/collection/Iterator;Ljava/lang/Object;I)V;
+Asciz	(Ljava/lang/Object;II)V;
 NameAndType	readInto:(Ljava/lang/Object;II)V
 InterfaceMethod	scala/collection/Iterator.readInto:(Ljava/lang/Object;II)V
 Asciz	left;
 Asciz	$init$;
 Asciz	Scala;
 Asciz	InnerClasses;
-Asciz	scala/collection/immutable/Stream;
-class	scala/collection/immutable/Stream
-Asciz	Cons;
 Asciz	$anon$1;
 Asciz	$anon$2;
 Asciz	$anon$6;
@@ -581,14 +427,8 @@ Asciz	$anon$19;
 Asciz	$anon$18;
 Asciz	Partner$1;
 Asciz	$anonfun$1;
-Asciz	scala/Predef$$less$colon$less;
-class	scala/Predef$$less$colon$less
-Asciz	scala/Predef;
-class	scala/Predef
-Asciz	$less$colon$less;
 Asciz	GroupedIterator;
 Asciz	$anonfun$append$1;
-Asciz	$anonfun$toStream$1;
 Asciz	$anonfun$contains$1;
 Asciz	PartitionIterator$1;
 Asciz	$anonfun$filterNot$1;
@@ -623,6 +463,31 @@ l2	ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      15      0    $this       Lscala/collection/Iterator;
+
+
+public static boolean isTraversableAgain(scala.collection.Iterator);
+  Signature: (Lscala/collection/Iterator;)Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	iconst_0
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      2      0    $this       Lscala/collection/Iterator;
+
+
+public static boolean hasDefiniteSize(scala.collection.Iterator);
+  Signature: (Lscala/collection/Iterator;)Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/Iterator.isEmpty:()Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    $this       Lscala/collection/Iterator;
 
 
 public static scala.collection.Iterator take(scala.collection.Iterator, int);
@@ -779,7 +644,7 @@ public static scala.collection.Iterator filterNot(scala.collection.Iterator, sca
    0      16      1    p$4       Lscala/Function1;
 
 
-public static scala.collection.Iterator partialMap(scala.collection.Iterator, scala.PartialFunction);
+public static scala.collection.Iterator collect(scala.collection.Iterator, scala.PartialFunction);
   Signature: (Lscala/collection/Iterator;Lscala/PartialFunction;)Lscala/collection/Iterator;
   Code:
    Stack=5, Locals=3, Args_size=2
@@ -1226,199 +1091,6 @@ l10	ireturn
    3      108      4    i       I
 
 
-public static java.lang.Object foldLeft(scala.collection.Iterator, java.lang.Object, scala.Function2);
-  Signature: (Lscala/collection/Iterator;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-  Code:
-   Stack=3, Locals=4, Args_size=3
-	aload_1
-	astore_3
-l2	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // aload_3
-	aload_2
-	aload_3
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-	astore_3
-	goto	l2 // aload_0
-l1	aload_3
-	areturn
-  Labels:
-   	l2 = 2 // aload_0
-   	l1 = 28 // aload_3
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      30      0    $this       Lscala/collection/Iterator;
-   0      30      1    z       Ljava/lang/Object;
-   0      30      2    op       Lscala/Function2;
-   2      27      3    acc       Ljava/lang/Object;
-
-
-public static java.lang.Object foldRight(scala.collection.Iterator, java.lang.Object, scala.Function2);
-  Signature: (Lscala/collection/Iterator;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-  Code:
-   Stack=5, Locals=3, Args_size=3
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // aload_1
-	aload_2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	aload_0
-	aload_1
-	aload_2
-	invokeinterface	InterfaceMethod scala/collection/Iterator.foldRight:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-	goto	l2 // areturn
-l1	aload_1
-l2	areturn
-  Labels:
-   	l1 = 32 // aload_1
-   	l2 = 33 // areturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      34      0    $this       Lscala/collection/Iterator;
-   0      34      1    z       Ljava/lang/Object;
-   0      34      2    op       Lscala/Function2;
-
-
-public static java.lang.Object $div$colon(scala.collection.Iterator, java.lang.Object, scala.Function2);
-  Signature: (Lscala/collection/Iterator;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-  Code:
-   Stack=3, Locals=3, Args_size=3
-	aload_0
-	aload_1
-	aload_2
-	invokeinterface	InterfaceMethod scala/collection/Iterator.foldLeft:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      9      0    $this       Lscala/collection/Iterator;
-   0      9      1    z       Ljava/lang/Object;
-   0      9      2    op       Lscala/Function2;
-
-
-public static java.lang.Object $colon$bslash(scala.collection.Iterator, java.lang.Object, scala.Function2);
-  Signature: (Lscala/collection/Iterator;Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-  Code:
-   Stack=3, Locals=3, Args_size=3
-	aload_0
-	aload_1
-	aload_2
-	invokeinterface	InterfaceMethod scala/collection/Iterator.foldRight:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      9      0    $this       Lscala/collection/Iterator;
-   0      9      1    z       Ljava/lang/Object;
-   0      9      2    op       Lscala/Function2;
-
-
-public static java.lang.Object reduceLeft(scala.collection.Iterator, scala.Function2);
-  Signature: (Lscala/collection/Iterator;Lscala/Function2;)Ljava/lang/Object;
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // new
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/Iterator.foldLeft:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-	areturn
-l1	new	class java/lang/UnsupportedOperationException
-	dup
-	ldc_w	String empty.reduceLeft
-	invokespecial	Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
-	athrow
-  Labels:
-   	l1 = 23 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      34      0    $this       Lscala/collection/Iterator;
-   0      34      1    op       Lscala/Function2;
-
-
-public static java.lang.Object reduceRight(scala.collection.Iterator, scala.Function2);
-  Signature: (Lscala/collection/Iterator;Lscala/Function2;)Ljava/lang/Object;
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // new
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/Iterator.foldRight:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-	areturn
-l1	new	class java/lang/UnsupportedOperationException
-	dup
-	ldc_w	String empty.reduceRight
-	invokespecial	Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
-	athrow
-  Labels:
-   	l1 = 23 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      34      0    $this       Lscala/collection/Iterator;
-   0      34      1    op       Lscala/Function2;
-
-
-public static scala.Option reduceLeftOption(scala.collection.Iterator, scala.Function2);
-  Signature: (Lscala/collection/Iterator;Lscala/Function2;)Lscala/Option;
-  Code:
-   Stack=4, Locals=2, Args_size=2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // getstatic
-	new	class scala/Some
-	dup
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/Iterator.reduceLeft:(Lscala/Function2;)Ljava/lang/Object;
-	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	goto	l2 // areturn
-l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-l2	areturn
-  Labels:
-   	l1 = 26 // getstatic
-   	l2 = 29 // areturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      30      0    $this       Lscala/collection/Iterator;
-   0      30      1    op       Lscala/Function2;
-
-
-public static scala.Option reduceRightOption(scala.collection.Iterator, scala.Function2);
-  Signature: (Lscala/collection/Iterator;Lscala/Function2;)Lscala/Option;
-  Code:
-   Stack=4, Locals=2, Args_size=2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // getstatic
-	new	class scala/Some
-	dup
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/Iterator.reduceRight:(Lscala/Function2;)Ljava/lang/Object;
-	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	goto	l2 // areturn
-l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-l2	areturn
-  Labels:
-   	l1 = 26 // getstatic
-   	l2 = 29 // areturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      30      0    $this       Lscala/collection/Iterator;
-   0      30      1    op       Lscala/Function2;
-
-
 public static scala.collection.BufferedIterator buffered(scala.collection.Iterator);
   Signature: (Lscala/collection/Iterator;)Lscala/collection/BufferedIterator;
   Code:
@@ -1476,29 +1148,14 @@ public static scala.collection.Iterator$GroupedIterator sliding(scala.collection
 public static int length(scala.collection.Iterator);
   Signature: (Lscala/collection/Iterator;)I
   Code:
-   Stack=2, Locals=2, Args_size=1
-	iconst_0
-	istore_1
-l2	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // iload_1
+   Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	pop
-	iload_1
-	iconst_1
-	iadd
-	istore_1
-	goto	l2 // aload_0
-l1	iload_1
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.size:()I
 	ireturn
   Labels:
-   	l2 = 2 // aload_0
-   	l1 = 25 // iload_1
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      27      0    $this       Lscala/collection/Iterator;
-   2      24      1    i       I
+   0      7      0    $this       Lscala/collection/Iterator;
 
 
 public static scala.Tuple2 duplicate(scala.collection.Iterator);
@@ -1609,211 +1266,6 @@ l1	return
    3      67      6    i       I
 
 
-public static void copyToArray(scala.collection.Iterator, java.lang.Object, int);
-  Signature: (Lscala/collection/Iterator;Ljava/lang/Object;I)V
-  Code:
-   Stack=5, Locals=3, Args_size=3
-	aload_0
-	aload_1
-	iload_2
-	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
-	aload_1
-	invokevirtual	Method scala/runtime/ScalaRunTime$.array_length:(Ljava/lang/Object;)I
-	iload_2
-	isub
-	invokeinterface	InterfaceMethod scala/collection/Iterator.copyToArray:(Ljava/lang/Object;II)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      18      0    $this       Lscala/collection/Iterator;
-   0      18      1    xs       Ljava/lang/Object;
-   0      18      2    start       I
-
-
-public static void copyToArray(scala.collection.Iterator, java.lang.Object);
-  Signature: (Lscala/collection/Iterator;Ljava/lang/Object;)V
-  Code:
-   Stack=5, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	iconst_0
-	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
-	aload_1
-	invokevirtual	Method scala/runtime/ScalaRunTime$.array_length:(Ljava/lang/Object;)I
-	invokeinterface	InterfaceMethod scala/collection/Iterator.copyToArray:(Ljava/lang/Object;II)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      16      0    $this       Lscala/collection/Iterator;
-   0      16      1    xs       Ljava/lang/Object;
-
-
-public static void copyToBuffer(scala.collection.Iterator, scala.collection.mutable.Buffer);
-  Signature: (Lscala/collection/Iterator;Lscala/collection/mutable/Buffer;)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-l2	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // return
-	aload_1
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Buffer;
-	pop
-	goto	l2 // aload_0
-l1	return
-  Labels:
-   	l2 = 0 // aload_0
-   	l1 = 25 // return
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      26      0    $this       Lscala/collection/Iterator;
-   0      26      1    dest       Lscala/collection/mutable/Buffer;
-
-
-public static scala.collection.immutable.List toList(scala.collection.Iterator);
-  Signature: (Lscala/collection/Iterator;)Lscala/collection/immutable/List;
-  Code:
-   Stack=2, Locals=2, Args_size=1
-	new	class scala/collection/mutable/ListBuffer
-	dup
-	invokespecial	Method scala/collection/mutable/ListBuffer."<init>":()V
-	astore_1
-l2	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // aload_1
-	aload_1
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	invokevirtual	Method scala/collection/mutable/ListBuffer.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ListBuffer;
-	pop
-	goto	l2 // aload_0
-l1	aload_1
-	invokevirtual	Method scala/collection/mutable/ListBuffer.toList:()Lscala/collection/immutable/List;
-	areturn
-  Labels:
-   	l2 = 8 // aload_0
-   	l1 = 31 // aload_1
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      36      0    $this       Lscala/collection/Iterator;
-   8      27      1    res       Lscala/collection/mutable/ListBuffer;
-
-
-public static scala.collection.immutable.Set toSet(scala.collection.Iterator);
-  Signature: (Lscala/collection/Iterator;)Lscala/collection/immutable/Set;
-  Code:
-   Stack=2, Locals=2, Args_size=1
-	new	class scala/collection/mutable/ListBuffer
-	dup
-	invokespecial	Method scala/collection/mutable/ListBuffer."<init>":()V
-	astore_1
-l2	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // aload_1
-	aload_1
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	invokevirtual	Method scala/collection/mutable/ListBuffer.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ListBuffer;
-	pop
-	goto	l2 // aload_0
-l1	aload_1
-	invokestatic	Method scala/collection/generic/TraversableForwarder$class.toSet:(Lscala/collection/generic/TraversableForwarder;)Lscala/collection/immutable/Set;
-	areturn
-  Labels:
-   	l2 = 8 // aload_0
-   	l1 = 31 // aload_1
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      36      0    $this       Lscala/collection/Iterator;
-   8      27      1    res       Lscala/collection/mutable/ListBuffer;
-
-
-public static scala.collection.immutable.Stream toStream(scala.collection.Iterator);
-  Signature: (Lscala/collection/Iterator;)Lscala/collection/immutable/Stream;
-  Code:
-   Stack=4, Locals=3, Args_size=1
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // getstatic
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	new	class scala/collection/Iterator$$anonfun$toStream$1
-	dup
-	aload_0
-	invokespecial	Method scala/collection/Iterator$$anonfun$toStream$1."<init>":(Lscala/collection/Iterator;)V
-	astore_2
-	astore_1
-	new	class scala/collection/immutable/Stream$Cons
-	dup
-	aload_1
-	aload_2
-	invokespecial	Method scala/collection/immutable/Stream$Cons."<init>":(Ljava/lang/Object;Lscala/Function0;)V
-	goto	l2 // areturn
-l1	getstatic	Field scala/collection/immutable/Stream$Empty$.MODULE$:Lscala/collection/immutable/Stream$Empty$;
-l2	areturn
-  Labels:
-   	l1 = 37 // getstatic
-   	l2 = 40 // areturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      41      0    $this       Lscala/collection/Iterator;
-
-
-public static scala.collection.Seq toSeq(scala.collection.Iterator);
-  Signature: (Lscala/collection/Iterator;)Lscala/collection/Seq;
-  Code:
-   Stack=2, Locals=2, Args_size=1
-	new	class scala/collection/mutable/ArrayBuffer
-	dup
-	invokespecial	Method scala/collection/mutable/ArrayBuffer."<init>":()V
-	astore_1
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/Iterator.copyToBuffer:(Lscala/collection/mutable/Buffer;)V
-	aload_1
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      17      0    $this       Lscala/collection/Iterator;
-   8      8      1    buffer       Lscala/collection/mutable/ArrayBuffer;
-
-
-public static scala.collection.immutable.Map toMap(scala.collection.Iterator, scala.Predef$$less$colon$less);
-  Signature: (Lscala/collection/Iterator;Lscala/Predef$$less$colon$less;)Lscala/collection/immutable/Map;
-  Code:
-   Stack=3, Locals=3, Args_size=2
-	getstatic	Field scala/collection/immutable/Map$.MODULE$:Lscala/collection/immutable/Map$;
-	invokevirtual	Method scala/collection/immutable/Map$.newBuilder:()Lscala/collection/mutable/Builder;
-	astore_2
-l2	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // aload_2
-	aload_2
-	aload_1
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
-	pop
-	goto	l2 // aload_0
-l1	aload_2
-	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.result:()Ljava/lang/Object;
-	checkcast	class scala/collection/immutable/Map
-	areturn
-  Labels:
-   	l2 = 7 // aload_0
-   	l1 = 38 // aload_2
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      48      0    $this       Lscala/collection/Iterator;
-   0      48      1    ev       Lscala/Predef$$less$colon$less;
-   7      40      2    b       Lscala/collection/mutable/Builder;
-
-
 public static boolean sameElements(scala.collection.Iterator, scala.collection.Iterator);
   Signature: (Lscala/collection/Iterator;Lscala/collection/Iterator;)Z
   Code:
@@ -1890,153 +1342,29 @@ l10	ireturn
    37      56      3    y0       Ljava/lang/Object;
 
 
-public static java.lang.String mkString(scala.collection.Iterator, java.lang.String, java.lang.String, java.lang.String);
-  Signature: (Lscala/collection/Iterator;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+public static scala.collection.Traversable toTraversable(scala.collection.Iterator);
+  Signature: (Lscala/collection/Iterator;)Lscala/collection/Traversable;
   Code:
-   Stack=5, Locals=5, Args_size=4
-	new	class scala/collection/mutable/StringBuilder
-	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	astore	4
+   Stack=1, Locals=1, Args_size=1
 	aload_0
-	aload	4
-	aload_1
-	aload_2
-	aload_3
-	invokeinterface	InterfaceMethod scala/collection/Iterator.addString:(Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toStream:()Lscala/collection/immutable/Stream;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      24      0    $this       Lscala/collection/Iterator;
-   0      24      1    start       Ljava/lang/String;
-   0      24      2    sep       Ljava/lang/String;
-   0      24      3    end       Ljava/lang/String;
-   9      14      4    buf       Lscala/collection/mutable/StringBuilder;
+   0      7      0    $this       Lscala/collection/Iterator;
 
 
-public static java.lang.String mkString(scala.collection.Iterator, java.lang.String);
-  Signature: (Lscala/collection/Iterator;Ljava/lang/String;)Ljava/lang/String;
+public static scala.collection.Iterator toIterator(scala.collection.Iterator);
+  Signature: (Lscala/collection/Iterator;)Lscala/collection/Iterator;
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=1, Locals=1, Args_size=1
 	aload_0
-	ldc_w	String 
-	aload_1
-	ldc_w	String 
-	invokeinterface	InterfaceMethod scala/collection/Iterator.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      14      0    $this       Lscala/collection/Iterator;
-   0      14      1    sep       Ljava/lang/String;
-
-
-public static java.lang.String mkString(scala.collection.Iterator);
-  Signature: (Lscala/collection/Iterator;)Ljava/lang/String;
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	ldc_w	String 
-	invokeinterface	InterfaceMethod scala/collection/Iterator.mkString:(Ljava/lang/String;)Ljava/lang/String;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      10      0    $this       Lscala/collection/Iterator;
-
-
-public static scala.collection.mutable.StringBuilder addString(scala.collection.Iterator, scala.collection.mutable.StringBuilder, java.lang.String, java.lang.String, java.lang.String);
-  Signature: (Lscala/collection/Iterator;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
-  Code:
-   Stack=2, Locals=7, Args_size=5
-	aload_1
-	aload_2
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
-	pop
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // getstatic
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	astore	5
-	aload_1
-	aload	5
-	invokestatic	Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
-	goto	l2 // pop
-l1	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-l2	pop
-l4	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l3 // aload_1
-	aload_1
-	aload_3
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
-	pop
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
-	astore	6
-	aload_1
-	aload	6
-	invokestatic	Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
-	pop
-	goto	l4 // aload_0
-l3	aload_1
-	aload	4
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
-	areturn
-  Labels:
-   	l1 = 35 // getstatic
-   	l2 = 38 // pop
-   	l4 = 39 // aload_0
-   	l3 = 75 // aload_1
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      82      0    $this       Lscala/collection/Iterator;
-   0      82      1    buf       Lscala/collection/mutable/StringBuilder;
-   0      82      2    start       Ljava/lang/String;
-   0      82      3    sep       Ljava/lang/String;
-   0      82      4    end       Ljava/lang/String;
-
-
-public static scala.collection.mutable.StringBuilder addString(scala.collection.Iterator, scala.collection.mutable.StringBuilder, java.lang.String);
-  Signature: (Lscala/collection/Iterator;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
-  Code:
-   Stack=5, Locals=3, Args_size=3
-	aload_0
-	aload_1
-	ldc_w	String 
-	aload_2
-	ldc_w	String 
-	invokeinterface	InterfaceMethod scala/collection/Iterator.addString:(Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      15      0    $this       Lscala/collection/Iterator;
-   0      15      1    buf       Lscala/collection/mutable/StringBuilder;
-   0      15      2    sep       Ljava/lang/String;
-
-
-public static scala.collection.mutable.StringBuilder addString(scala.collection.Iterator, scala.collection.mutable.StringBuilder);
-  Signature: (Lscala/collection/Iterator;Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
-  Code:
-   Stack=5, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	ldc_w	String 
-	ldc_w	String 
-	ldc_w	String 
-	invokeinterface	InterfaceMethod scala/collection/Iterator.addString:(Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      17      0    $this       Lscala/collection/Iterator;
-   0      17      1    buf       Lscala/collection/mutable/StringBuilder;
+   0      2      0    $this       Lscala/collection/Iterator;
 
 
 public static java.lang.String toString(scala.collection.Iterator);
@@ -2098,20 +1426,6 @@ public static int findIndexOf(scala.collection.Iterator, scala.Function1);
    Start  Length  Slot  Name   Signature
    0      8      0    $this       Lscala/collection/Iterator;
    0      8      1    p       Lscala/Function1;
-
-  Deprecated: true
-
-public static scala.collection.Seq collect(scala.collection.Iterator);
-  Signature: (Lscala/collection/Iterator;)Lscala/collection/Seq;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/Iterator.toSeq:()Lscala/collection/Seq;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      7      0    $this       Lscala/collection/Iterator;
 
   Deprecated: true
 
