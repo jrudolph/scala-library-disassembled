@@ -19,11 +19,11 @@ Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/actors/package$."<init>":()V
 Asciz	ActorGC;
-Asciz	Lscala/actors/scheduler/ActorGC;;
-Asciz	()Lscala/actors/scheduler/ActorGC;;
+Asciz	Lscala/actors/IScheduler;;
+Asciz	()Lscala/actors/IScheduler;;
 Asciz	LineNumberTable;
-NameAndType	ActorGC:Lscala/actors/scheduler/ActorGC;
-Field	scala/actors/package$.ActorGC:Lscala/actors/scheduler/ActorGC;
+NameAndType	ActorGC:Lscala/actors/IScheduler;
+Field	scala/actors/package$.ActorGC:Lscala/actors/IScheduler;
 Asciz	Deprecated;
 Asciz	java/lang/Object;
 class	java/lang/Object
@@ -38,11 +38,15 @@ Field	scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
 Asciz	scala/actors/scheduler/DelegatingScheduler;
 class	scala/actors/scheduler/DelegatingScheduler
 Asciz	impl;
-Asciz	()Lscala/actors/IScheduler;;
 NameAndType	impl:()Lscala/actors/IScheduler;
 InterfaceMethod	scala/actors/scheduler/DelegatingScheduler.impl:()Lscala/actors/IScheduler;
+Asciz	scala/actors/IScheduler;
+class	scala/actors/IScheduler
 Asciz	scala/actors/scheduler/ActorGC;
 class	scala/actors/scheduler/ActorGC
+Asciz	this;
+Asciz	temp1;
+Asciz	LocalVariableTable;
 Asciz	Scala;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
@@ -51,8 +55,8 @@ class	scala/ScalaObject
 public static final scala.actors.package$ MODULE$;
   Signature: Lscala/actors/package$;
 
-private final scala.actors.scheduler.ActorGC ActorGC;
-  Signature: Lscala/actors/scheduler/ActorGC;
+private final scala.actors.IScheduler ActorGC;
+  Signature: Lscala/actors/IScheduler;
 
 public static {};
   Signature: ()V
@@ -63,12 +67,12 @@ public static {};
 	return
   Labels:
 
-public scala.actors.scheduler.ActorGC ActorGC();
-  Signature: ()Lscala/actors/scheduler/ActorGC;
+public scala.actors.IScheduler ActorGC();
+  Signature: ()Lscala/actors/IScheduler;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	getfield	Field ActorGC:Lscala/actors/scheduler/ActorGC;
+	getfield	Field ActorGC:Lscala/actors/IScheduler;
 	areturn
   Labels:
   Deprecated: true
@@ -76,7 +80,7 @@ public scala.actors.scheduler.ActorGC ActorGC();
 private scala.actors.package$();
   Signature: ()V
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=2, Locals=2, Args_size=1
 	aload_0
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
@@ -84,10 +88,32 @@ private scala.actors.package$();
 	aload_0
 	getstatic	Field scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
 	invokeinterface	InterfaceMethod scala/actors/scheduler/DelegatingScheduler.impl:()Lscala/actors/IScheduler;
-	checkcast	class scala/actors/scheduler/ActorGC
-	putfield	Field ActorGC:Lscala/actors/scheduler/ActorGC;
+	astore_1
+	aload_1
+	instanceof	class scala/actors/IScheduler
+	ifeq	l1 // iconst_0
+	aload_1
+	instanceof	class scala/actors/scheduler/ActorGC
+	ifeq	l1 // iconst_0
+	iconst_1
+	goto	l2 // ifeq
+l1	iconst_0
+l2	ifeq	l3 // aconst_null
+	aload_1
+	goto	l4 // putfield
+l3	aconst_null
+l4	putfield	Field ActorGC:Lscala/actors/IScheduler;
 	return
   Labels:
+   	l1 = 36 // iconst_0
+   	l2 = 37 // ifeq
+   	l3 = 44 // aconst_null
+   	l4 = 45 // putfield
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      49      0    this       Lscala/actors/package$;
+   18      31      1    temp1       Lscala/actors/IScheduler;
+
 
 }
 

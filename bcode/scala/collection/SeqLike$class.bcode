@@ -177,9 +177,9 @@ class	scala/collection/SeqLike$$anonfun$reverse$2
 Asciz	(Lscala/collection/SeqLike;Lscala/collection/mutable/Builder;)V;
 NameAndType	"<init>":(Lscala/collection/SeqLike;Lscala/collection/mutable/Builder;)V
 Method	scala/collection/SeqLike$$anonfun$reverse$2."<init>":(Lscala/collection/SeqLike;Lscala/collection/mutable/Builder;)V
-Asciz	scala/collection/LinearSeqLike;
-class	scala/collection/LinearSeqLike
-InterfaceMethod	scala/collection/LinearSeqLike.foreach:(Lscala/Function1;)V
+Asciz	scala/collection/LinearSeqOptimized;
+class	scala/collection/LinearSeqOptimized
+InterfaceMethod	scala/collection/LinearSeqOptimized.foreach:(Lscala/Function1;)V
 Asciz	scala/collection/mutable/Builder;
 class	scala/collection/mutable/Builder
 Asciz	result;
@@ -467,21 +467,21 @@ Asciz	f;
 Asciz	ord;
 Asciz	Lscala/math/Ordering;;
 Asciz	(Lscala/collection/SeqLike;Lscala/math/Ordering;)Ljava/lang/Object;;
-Asciz	scala/collection/mutable/GenericArray;
-class	scala/collection/mutable/GenericArray
-Method	scala/collection/mutable/GenericArray."<init>":(I)V
+Asciz	scala/collection/mutable/ArraySeq;
+class	scala/collection/mutable/ArraySeq
+Method	scala/collection/mutable/ArraySeq."<init>":(I)V
 Asciz	scala/runtime/IntRef;
 class	scala/runtime/IntRef
 Method	scala/runtime/IntRef."<init>":(I)V
 Asciz	scala/collection/SeqLike$$anonfun$sorted$1;
 class	scala/collection/SeqLike$$anonfun$sorted$1
-Asciz	(Lscala/collection/SeqLike;Lscala/collection/mutable/GenericArray;Lscala/runtime/IntRef;)V;
-NameAndType	"<init>":(Lscala/collection/SeqLike;Lscala/collection/mutable/GenericArray;Lscala/runtime/IntRef;)V
-Method	scala/collection/SeqLike$$anonfun$sorted$1."<init>":(Lscala/collection/SeqLike;Lscala/collection/mutable/GenericArray;Lscala/runtime/IntRef;)V
+Asciz	(Lscala/collection/SeqLike;Lscala/collection/mutable/ArraySeq;Lscala/runtime/IntRef;)V;
+NameAndType	"<init>":(Lscala/collection/SeqLike;Lscala/collection/mutable/ArraySeq;Lscala/runtime/IntRef;)V
+Method	scala/collection/SeqLike$$anonfun$sorted$1."<init>":(Lscala/collection/SeqLike;Lscala/collection/mutable/ArraySeq;Lscala/runtime/IntRef;)V
 Asciz	array;
 Asciz	()[Ljava/lang/Object;;
 NameAndType	array:()[Ljava/lang/Object;
-Method	scala/collection/mutable/GenericArray.array:()[Ljava/lang/Object;
+Method	scala/collection/mutable/ArraySeq.array:()[Ljava/lang/Object;
 Asciz	java/util/Arrays;
 class	java/util/Arrays
 Asciz	sort;
@@ -491,9 +491,9 @@ Method	java/util/Arrays.sort:([Ljava/lang/Object;Ljava/util/Comparator;)V
 Asciz	scala/collection/SeqLike$$anonfun$sorted$2;
 class	scala/collection/SeqLike$$anonfun$sorted$2
 Method	scala/collection/SeqLike$$anonfun$sorted$2."<init>":(Lscala/collection/SeqLike;Lscala/collection/mutable/Builder;)V
-Method	scala/collection/mutable/GenericArray.foreach:(Lscala/Function1;)V
+Method	scala/collection/mutable/ArraySeq.foreach:(Lscala/Function1;)V
 Asciz	arr$1;
-Asciz	Lscala/collection/mutable/GenericArray;;
+Asciz	Lscala/collection/mutable/ArraySeq;;
 Asciz	i$2;
 Asciz	Lscala/runtime/IntRef;;
 Asciz	b$6;
@@ -997,7 +997,7 @@ public static java.lang.Object reverse(scala.collection.SeqLike);
 	aload_0
 	aload_2
 	invokespecial	Method scala/collection/SeqLike$$anonfun$reverse$2."<init>":(Lscala/collection/SeqLike;Lscala/collection/mutable/Builder;)V
-	invokeinterface	InterfaceMethod scala/collection/LinearSeqLike.foreach:(Lscala/Function1;)V
+	invokeinterface	InterfaceMethod scala/collection/LinearSeqOptimized.foreach:(Lscala/Function1;)V
 	aload_2
 	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.result:()Ljava/lang/Object;
 	areturn
@@ -1039,7 +1039,7 @@ public static java.lang.Object reverseMap(scala.collection.SeqLike, scala.Functi
 	aload_1
 	aload	4
 	invokespecial	Method scala/collection/SeqLike$$anonfun$reverseMap$2."<init>":(Lscala/collection/SeqLike;Lscala/Function1;Lscala/collection/mutable/Builder;)V
-	invokeinterface	InterfaceMethod scala/collection/LinearSeqLike.foreach:(Lscala/Function1;)V
+	invokeinterface	InterfaceMethod scala/collection/LinearSeqOptimized.foreach:(Lscala/Function1;)V
 	aload	4
 	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.result:()Ljava/lang/Object;
 	areturn
@@ -1929,11 +1929,11 @@ public static java.lang.Object sorted(scala.collection.SeqLike, scala.math.Order
   Signature: (Lscala/collection/SeqLike;Lscala/math/Ordering;)Ljava/lang/Object;
   Code:
    Stack=6, Locals=5, Args_size=2
-	new	class scala/collection/mutable/GenericArray
+	new	class scala/collection/mutable/ArraySeq
 	dup
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	invokespecial	Method scala/collection/mutable/GenericArray."<init>":(I)V
+	invokespecial	Method scala/collection/mutable/ArraySeq."<init>":(I)V
 	astore_2
 	new	class scala/runtime/IntRef
 	dup
@@ -1946,10 +1946,10 @@ public static java.lang.Object sorted(scala.collection.SeqLike, scala.math.Order
 	aload_0
 	aload_2
 	aload_3
-	invokespecial	Method scala/collection/SeqLike$$anonfun$sorted$1."<init>":(Lscala/collection/SeqLike;Lscala/collection/mutable/GenericArray;Lscala/runtime/IntRef;)V
+	invokespecial	Method scala/collection/SeqLike$$anonfun$sorted$1."<init>":(Lscala/collection/SeqLike;Lscala/collection/mutable/ArraySeq;Lscala/runtime/IntRef;)V
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.foreach:(Lscala/Function1;)V
 	aload_2
-	invokevirtual	Method scala/collection/mutable/GenericArray.array:()[Ljava/lang/Object;
+	invokevirtual	Method scala/collection/mutable/ArraySeq.array:()[Ljava/lang/Object;
 	aload_1
 	invokestatic	Method java/util/Arrays.sort:([Ljava/lang/Object;Ljava/util/Comparator;)V
 	aload_0
@@ -1961,7 +1961,7 @@ public static java.lang.Object sorted(scala.collection.SeqLike, scala.math.Order
 	aload_0
 	aload	4
 	invokespecial	Method scala/collection/SeqLike$$anonfun$sorted$2."<init>":(Lscala/collection/SeqLike;Lscala/collection/mutable/Builder;)V
-	invokevirtual	Method scala/collection/mutable/GenericArray.foreach:(Lscala/Function1;)V
+	invokevirtual	Method scala/collection/mutable/ArraySeq.foreach:(Lscala/Function1;)V
 	aload	4
 	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.result:()Ljava/lang/Object;
 	areturn
@@ -1970,7 +1970,7 @@ public static java.lang.Object sorted(scala.collection.SeqLike, scala.math.Order
    Start  Length  Slot  Name   Signature
    0      77      0    $this       Lscala/collection/SeqLike;
    0      77      1    ord       Lscala/math/Ordering;
-   14      62      2    arr$1       Lscala/collection/mutable/GenericArray;
+   14      62      2    arr$1       Lscala/collection/mutable/ArraySeq;
    23      53      3    i$2       Lscala/runtime/IntRef;
    55      21      4    b$6       Lscala/collection/mutable/Builder;
 
