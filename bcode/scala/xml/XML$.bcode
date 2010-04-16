@@ -146,9 +146,10 @@ Asciz	(Ljavax/xml/parsers/SAXParser;)Lscala/xml/factory/XMLLoader<Lscala/xml/Ele
 Asciz	Signature;
 Asciz	saveFull;
 Asciz	(Ljava/lang/String;Lscala/xml/Node;ZLscala/xml/dtd/DocType;)V;
+Asciz	save;
 Asciz	(Ljava/lang/String;Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;)V;
-NameAndType	saveFull:(Ljava/lang/String;Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;)V
-Method	scala/xml/XML$.saveFull:(Ljava/lang/String;Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;)V
+NameAndType	save:(Ljava/lang/String;Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;)V
+Method	scala/xml/XML$.save:(Ljava/lang/String;Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;)V
 Asciz	filename;
 Asciz	node;
 Asciz	Lscala/xml/Node;;
@@ -158,7 +159,6 @@ Asciz	doctype;
 Asciz	Lscala/xml/dtd/DocType;;
 Asciz	Deprecated;
 Asciz	enc;
-Asciz	save;
 Asciz	java/io/FileOutputStream;
 class	java/io/FileOutputStream
 Asciz	(Ljava/lang/String;)V;
@@ -181,9 +181,9 @@ NameAndType	MODULE$:Lscala/util/control/Exception$;
 Field	scala/util/control/Exception$.MODULE$:Lscala/util/control/Exception$;
 Asciz	scala/xml/XML$$anonfun$save$1;
 class	scala/xml/XML$$anonfun$save$1
-Asciz	(Ljava/io/FileOutputStream;Ljava/io/Writer;)V;
-NameAndType	"<init>":(Ljava/io/FileOutputStream;Ljava/io/Writer;)V
-Method	scala/xml/XML$$anonfun$save$1."<init>":(Ljava/io/FileOutputStream;Ljava/io/Writer;)V
+Asciz	(Ljava/io/Writer;)V;
+NameAndType	"<init>":(Ljava/io/Writer;)V
+Method	scala/xml/XML$$anonfun$save$1."<init>":(Ljava/io/Writer;)V
 Asciz	noCatch;
 Asciz	()Lscala/util/control/Exception$Catch;;
 NameAndType	noCatch:()Lscala/util/control/Exception$Catch;
@@ -207,7 +207,7 @@ Asciz	node$1;
 Asciz	enc$1;
 Asciz	xmlDecl$1;
 Asciz	doctype$1;
-Asciz	fos$1;
+Asciz	fos;
 Asciz	Ljava/io/FileOutputStream;;
 Asciz	w$1;
 Asciz	Ljava/io/Writer;;
@@ -629,7 +629,7 @@ public final void saveFull(java.lang.String, scala.xml.Node, boolean, scala.xml.
 	invokevirtual	Method encoding:()Ljava/lang/String;
 	iload_3
 	aload	4
-	invokevirtual	Method saveFull:(Ljava/lang/String;Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;)V
+	invokevirtual	Method save:(Ljava/lang/String;Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;)V
 	return
   Labels:
   LocalVariableTable: 
@@ -645,18 +645,24 @@ public final void saveFull(java.lang.String, scala.xml.Node, boolean, scala.xml.
 public final void saveFull(java.lang.String, scala.xml.Node, java.lang.String, boolean, scala.xml.dtd.DocType);
   Signature: (Ljava/lang/String;Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;)V
   Code:
-   Stack=0, Locals=6, Args_size=6
-l1	goto	l1 // goto
+   Stack=6, Locals=6, Args_size=6
+	aload_0
+	aload_1
+	aload_2
+	aload_3
+	iload	4
+	aload	5
+	invokevirtual	Method save:(Ljava/lang/String;Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;)V
+	return
   Labels:
-   	l1 = 0 // goto
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      3      0    this       Lscala/xml/XML$;
-   0      3      1    filename       Ljava/lang/String;
-   0      3      2    node       Lscala/xml/Node;
-   0      3      3    enc       Ljava/lang/String;
-   0      3      4    xmlDecl       Z
-   0      3      5    doctype       Lscala/xml/dtd/DocType;
+   0      12      0    this       Lscala/xml/XML$;
+   0      12      1    filename       Ljava/lang/String;
+   0      12      2    node       Lscala/xml/Node;
+   0      12      3    enc       Ljava/lang/String;
+   0      12      4    xmlDecl       Z
+   0      12      5    doctype       Lscala/xml/dtd/DocType;
 
   Deprecated: true
 
@@ -677,9 +683,8 @@ public final void save(java.lang.String, scala.xml.Node, java.lang.String, boole
 	getstatic	Field scala/util/control/Exception$.MODULE$:Lscala/util/control/Exception$;
 	new	class scala/xml/XML$$anonfun$save$1
 	dup
-	aload	6
 	aload	9
-	invokespecial	Method scala/xml/XML$$anonfun$save$1."<init>":(Ljava/io/FileOutputStream;Ljava/io/Writer;)V
+	invokespecial	Method scala/xml/XML$$anonfun$save$1."<init>":(Ljava/io/Writer;)V
 	astore	8
 	astore	7
 	aload	7
@@ -700,14 +705,14 @@ public final void save(java.lang.String, scala.xml.Node, java.lang.String, boole
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      69      0    this       Lscala/xml/XML$;
-   0      69      1    filename       Ljava/lang/String;
-   0      69      2    node$1       Lscala/xml/Node;
-   0      69      3    enc$1       Ljava/lang/String;
-   0      69      4    xmlDecl$1       Z
-   0      69      5    doctype$1       Lscala/xml/dtd/DocType;
-   10      58      6    fos$1       Ljava/io/FileOutputStream;
-   21      47      9    w$1       Ljava/io/Writer;
+   0      67      0    this       Lscala/xml/XML$;
+   0      67      1    filename       Ljava/lang/String;
+   0      67      2    node$1       Lscala/xml/Node;
+   0      67      3    enc$1       Ljava/lang/String;
+   0      67      4    xmlDecl$1       Z
+   0      67      5    doctype$1       Lscala/xml/dtd/DocType;
+   10      56      6    fos       Ljava/io/FileOutputStream;
+   21      45      9    w$1       Ljava/io/Writer;
 
 
 public final void write(java.io.Writer, scala.xml.Node, java.lang.String, boolean, scala.xml.dtd.DocType);
