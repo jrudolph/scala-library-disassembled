@@ -70,8 +70,14 @@ Asciz	$greater$colon$greater;
 Asciz	(Lscala/reflect/ClassManifest;)Z;
 NameAndType	$less$colon$less:(Lscala/reflect/ClassManifest;)Z
 InterfaceMethod	scala/reflect/ClassManifest.$less$colon$less:(Lscala/reflect/ClassManifest;)Z
+Asciz	canEqual;
 Asciz	(Lscala/reflect/ClassManifest;Ljava/lang/Object;)Z;
+Asciz	other;
 Asciz	Ljava/lang/Object;;
+Asciz	gd1$1;
+NameAndType	gd1$1:(Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)Z
+Method	scala/reflect/ClassManifest$class.gd1$1:(Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)Z
+Asciz	temp13;
 Asciz	hashCode;
 Asciz	(Lscala/reflect/ClassManifest;)I;
 Asciz	java/lang/Class;
@@ -265,6 +271,8 @@ NameAndType	forall:(Lscala/Function1;)Z
 InterfaceMethod	scala/collection/LinearSeqLike.forall:(Lscala/Function1;)Z
 Asciz	args1;
 Asciz	args2;
+NameAndType	canEqual:(Ljava/lang/Object;)Z
+InterfaceMethod	scala/reflect/ClassManifest.canEqual:(Ljava/lang/Object;)Z
 Asciz	$init$;
 Asciz	Scala;
 Asciz	InnerClasses;
@@ -402,50 +410,68 @@ public static boolean $greater$colon$greater(scala.reflect.ClassManifest, scala.
    0      8      1    that       Lscala/reflect/ClassManifest;
 
 
+public static boolean canEqual(scala.reflect.ClassManifest, java.lang.Object);
+  Signature: (Lscala/reflect/ClassManifest;Ljava/lang/Object;)Z
+  Code:
+   Stack=1, Locals=2, Args_size=2
+	aload_1
+	instanceof	class scala/reflect/ClassManifest
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      5      0    $this       Lscala/reflect/ClassManifest;
+   0      5      1    other       Ljava/lang/Object;
+
+
 public static boolean equals(scala.reflect.ClassManifest, java.lang.Object);
   Signature: (Lscala/reflect/ClassManifest;Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=4, Args_size=2
 	aload_1
-	instanceof	class scala/reflect/AnyValManifest
-	ifeq	l1 // aload_1
-	iconst_0
-	goto	l2 // ireturn
-l1	aload_1
 	instanceof	class scala/reflect/ClassManifest
-	ifeq	l3 // iconst_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.erasure:()Ljava/lang/Class;
+	ifeq	l1 // iconst_0
 	aload_1
 	checkcast	class scala/reflect/ClassManifest
-	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.erasure:()Ljava/lang/Class;
 	astore_2
-	dup
-	ifnonnull	l4 // aload_2
-	pop
+	aload_0
 	aload_2
-	ifnull	l5 // iconst_1
-	goto	l6 // iconst_0
-l4	aload_2
+	invokestatic	Method gd1$1:(Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)Z
+	ifeq	l2 // iconst_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.erasure:()Ljava/lang/Class;
+	aload_2
+	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.erasure:()Ljava/lang/Class;
+	astore_3
+	dup
+	ifnonnull	l3 // aload_3
+	pop
+	aload_3
+	ifnull	l4 // iconst_1
+	goto	l5 // iconst_0
+l3	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l6 // iconst_0
-l5	iconst_1
-	goto	l2 // ireturn
-l6	iconst_0
-	goto	l2 // ireturn
-l3	iconst_0
-l2	ireturn
+	ifeq	l5 // iconst_0
+l4	iconst_1
+	goto	l6 // ireturn
+l5	iconst_0
+	goto	l6 // ireturn
+l2	iconst_0
+	goto	l6 // ireturn
+l1	iconst_0
+l6	ireturn
   Labels:
-   	l1 = 11 // aload_1
-   	l4 = 46 // aload_2
-   	l5 = 53 // iconst_1
-   	l6 = 57 // iconst_0
-   	l3 = 61 // iconst_0
-   	l2 = 62 // ireturn
+   	l3 = 45 // aload_3
+   	l4 = 52 // iconst_1
+   	l5 = 56 // iconst_0
+   	l2 = 60 // iconst_0
+   	l1 = 64 // iconst_0
+   	l6 = 65 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      63      0    $this       Lscala/reflect/ClassManifest;
-   0      63      1    that       Ljava/lang/Object;
+   0      66      0    $this       Lscala/reflect/ClassManifest;
+   0      66      1    that       Ljava/lang/Object;
+   12      52      2    temp13       Lscala/reflect/ClassManifest;
 
 
 public static int hashCode(scala.reflect.ClassManifest);
@@ -789,6 +815,20 @@ private static final boolean subargs$1(scala.reflect.ClassManifest, scala.collec
    0      30      0    $this       Lscala/reflect/ClassManifest;
    0      30      1    args1       Lscala/collection/immutable/List;
    0      30      2    args2       Lscala/collection/immutable/List;
+
+
+private static final boolean gd1$1(scala.reflect.ClassManifest, scala.reflect.ClassManifest);
+  Signature: (Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_1
+	aload_0
+	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.canEqual:(Ljava/lang/Object;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    $this       Lscala/reflect/ClassManifest;
 
 
 public static void $init$(scala.reflect.ClassManifest);
