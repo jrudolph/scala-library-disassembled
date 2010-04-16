@@ -2,7 +2,7 @@ Compiled from "ListMap.scala"
 public class scala.collection.immutable.ListMap extends java.lang.Object implements scala.collection.immutable.Map,scala.collection.immutable.MapLike,scala.ScalaObject,java.io.Serializable
   SourceFile: "ListMap.scala"
   Signature: length = 0x2
-   03 13 
+   03 18 
   ScalaSig: length = 0x5F3
    05 00 FFFFFF81 64 07 05 01 02 FFFFFF88 02 09 01 07 4C 69 73
    74 4D 61 70 0A 02 03 04 01 09 69 6D 6D 75 74 61
@@ -222,19 +222,16 @@ Asciz	(Lscala/collection/MapLike;)Lscala/collection/Iterator;;
 NameAndType	keysIterator:(Lscala/collection/MapLike;)Lscala/collection/Iterator;
 Method	scala/collection/MapLike$class.keysIterator:(Lscala/collection/MapLike;)Lscala/collection/Iterator;
 Asciz	keys;
-NameAndType	keys:(Lscala/collection/MapLike;)Lscala/collection/Iterator;
-Method	scala/collection/MapLike$class.keys:(Lscala/collection/MapLike;)Lscala/collection/Iterator;
-Asciz	valuesIterable;
 Asciz	()Lscala/collection/Iterable;;
 Asciz	(Lscala/collection/MapLike;)Lscala/collection/Iterable;;
-NameAndType	valuesIterable:(Lscala/collection/MapLike;)Lscala/collection/Iterable;
-Method	scala/collection/MapLike$class.valuesIterable:(Lscala/collection/MapLike;)Lscala/collection/Iterable;
+NameAndType	keys:(Lscala/collection/MapLike;)Lscala/collection/Iterable;
+Method	scala/collection/MapLike$class.keys:(Lscala/collection/MapLike;)Lscala/collection/Iterable;
+Asciz	values;
+NameAndType	values:(Lscala/collection/MapLike;)Lscala/collection/Iterable;
+Method	scala/collection/MapLike$class.values:(Lscala/collection/MapLike;)Lscala/collection/Iterable;
 Asciz	valuesIterator;
 NameAndType	valuesIterator:(Lscala/collection/MapLike;)Lscala/collection/Iterator;
 Method	scala/collection/MapLike$class.valuesIterator:(Lscala/collection/MapLike;)Lscala/collection/Iterator;
-Asciz	values;
-NameAndType	values:(Lscala/collection/MapLike;)Lscala/collection/Iterator;
-Method	scala/collection/MapLike$class.values:(Lscala/collection/MapLike;)Lscala/collection/Iterator;
 NameAndType	default:(Lscala/collection/MapLike;Ljava/lang/Object;)Ljava/lang/Object;
 Method	scala/collection/MapLike$class.default:(Lscala/collection/MapLike;Ljava/lang/Object;)Ljava/lang/Object;
 Asciz	mapElements;
@@ -572,6 +569,14 @@ Method	scala/collection/TraversableLike$class.reduceLeftOption:(Lscala/collectio
 Asciz	reduceRightOption;
 NameAndType	reduceRightOption:(Lscala/collection/TraversableLike;Lscala/Function2;)Lscala/Option;
 Method	scala/collection/TraversableLike$class.reduceRightOption:(Lscala/collection/TraversableLike;Lscala/Function2;)Lscala/Option;
+Asciz	scanLeft;
+Asciz	(Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
+Asciz	(Lscala/collection/TraversableLike;Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
+NameAndType	scanLeft:(Lscala/collection/TraversableLike;Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+Method	scala/collection/TraversableLike$class.scanLeft:(Lscala/collection/TraversableLike;Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+Asciz	scanRight;
+NameAndType	scanRight:(Lscala/collection/TraversableLike;Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+Method	scala/collection/TraversableLike$class.scanRight:(Lscala/collection/TraversableLike;Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 Asciz	sum;
 Asciz	(Lscala/math/Numeric;)Ljava/lang/Object;;
 Asciz	(Lscala/collection/TraversableLike;Lscala/math/Numeric;)Ljava/lang/Object;;
@@ -1149,22 +1154,21 @@ public scala.collection.Iterator keysIterator();
 	areturn
   Labels:
 
-public scala.collection.Iterator keys();
-  Signature: ()Lscala/collection/Iterator;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokestatic	Method scala/collection/MapLike$class.keys:(Lscala/collection/MapLike;)Lscala/collection/Iterator;
-	areturn
-  Labels:
-  Deprecated: true
-
-public scala.collection.Iterable valuesIterable();
+public scala.collection.Iterable keys();
   Signature: ()Lscala/collection/Iterable;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokestatic	Method scala/collection/MapLike$class.valuesIterable:(Lscala/collection/MapLike;)Lscala/collection/Iterable;
+	invokestatic	Method scala/collection/MapLike$class.keys:(Lscala/collection/MapLike;)Lscala/collection/Iterable;
+	areturn
+  Labels:
+
+public scala.collection.Iterable values();
+  Signature: ()Lscala/collection/Iterable;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/collection/MapLike$class.values:(Lscala/collection/MapLike;)Lscala/collection/Iterable;
 	areturn
   Labels:
 
@@ -1176,16 +1180,6 @@ public scala.collection.Iterator valuesIterator();
 	invokestatic	Method scala/collection/MapLike$class.valuesIterator:(Lscala/collection/MapLike;)Lscala/collection/Iterator;
 	areturn
   Labels:
-
-public scala.collection.Iterator values();
-  Signature: ()Lscala/collection/Iterator;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokestatic	Method scala/collection/MapLike$class.values:(Lscala/collection/MapLike;)Lscala/collection/Iterator;
-	areturn
-  Labels:
-  Deprecated: true
 
 public java.lang.Object default(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
@@ -2165,6 +2159,44 @@ public scala.Option reduceRightOption(scala.Function2);
    0      6      1    op       Lscala/Function2;
 
 
+public java.lang.Object scanLeft(java.lang.Object, scala.Function2, scala.collection.generic.CanBuildFrom);
+  Signature: (Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+  Code:
+   Stack=4, Locals=4, Args_size=4
+	aload_0
+	aload_1
+	aload_2
+	aload_3
+	invokestatic	Method scala/collection/TraversableLike$class.scanLeft:(Lscala/collection/TraversableLike;Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/immutable/ListMap;
+   0      8      1    z       Ljava/lang/Object;
+   0      8      2    op       Lscala/Function2;
+   0      8      3    bf       Lscala/collection/generic/CanBuildFrom;
+
+
+public java.lang.Object scanRight(java.lang.Object, scala.Function2, scala.collection.generic.CanBuildFrom);
+  Signature: (Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+  Code:
+   Stack=4, Locals=4, Args_size=4
+	aload_0
+	aload_1
+	aload_2
+	aload_3
+	invokestatic	Method scala/collection/TraversableLike$class.scanRight:(Lscala/collection/TraversableLike;Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/immutable/ListMap;
+   0      8      1    z       Ljava/lang/Object;
+   0      8      2    op       Lscala/Function2;
+   0      8      3    bf       Lscala/collection/generic/CanBuildFrom;
+
+
 public java.lang.Object sum(scala.math.Numeric);
   Signature: (Lscala/math/Numeric;)Ljava/lang/Object;
   Code:
@@ -2533,7 +2565,7 @@ public scala.collection.TraversableLike$WithFilter withFilter(scala.Function1);
    0      6      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   02 4B 
+   02 50 
 
 public scala.collection.immutable.ListMap empty();
   Signature: ()Lscala/collection/immutable/ListMap;
@@ -2544,7 +2576,7 @@ public scala.collection.immutable.ListMap empty();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 5A 
+   02 5F 
 
 public int size();
   Signature: ()I
@@ -2567,7 +2599,7 @@ public scala.Option get(java.lang.Object);
    0      4      1    key       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 62 
+   02 67 
 
 public scala.collection.immutable.ListMap updated(java.lang.Object, java.lang.Object);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/ListMap;
@@ -2588,7 +2620,7 @@ public scala.collection.immutable.ListMap updated(java.lang.Object, java.lang.Ob
    0      11      2    value       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 6B 
+   02 70 
 
 public scala.collection.immutable.ListMap $plus(scala.Tuple2);
   Signature: (Lscala/Tuple2;)Lscala/collection/immutable/ListMap;
@@ -2608,7 +2640,7 @@ public scala.collection.immutable.ListMap $plus(scala.Tuple2);
    0      13      1    kv       Lscala/Tuple2;
 
   Signature: length = 0x2
-   02 7A 
+   02 7F 
 
 public scala.collection.immutable.ListMap $plus(scala.Tuple2, scala.Tuple2, scala.collection.Seq);
   Signature: (Lscala/Tuple2;Lscala/Tuple2;Lscala/collection/Seq;)Lscala/collection/immutable/ListMap;
@@ -2634,7 +2666,7 @@ public scala.collection.immutable.ListMap $plus(scala.Tuple2, scala.Tuple2, scal
    0      25      3    elems       Lscala/collection/Seq;
 
   Signature: length = 0x2
-   02 FFFFFF86 
+   02 FFFFFF8B 
 
 public scala.collection.immutable.ListMap $minus(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/ListMap;
@@ -2649,7 +2681,7 @@ public scala.collection.immutable.ListMap $minus(java.lang.Object);
    0      2      1    key       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 FFFFFF88 
+   02 FFFFFF8D 
 
 public scala.collection.Iterator iterator();
   Signature: ()Lscala/collection/Iterator;
@@ -2664,7 +2696,7 @@ public scala.collection.Iterator iterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 FFFFFF98 
+   02 FFFFFF9D 
 
 public java.lang.Object key();
   Signature: ()Ljava/lang/Object;
@@ -2677,7 +2709,7 @@ public java.lang.Object key();
 	athrow
   Labels:
   Signature: length = 0x2
-   02 FFFFFFA0 
+   02 FFFFFFA5 
 
 public java.lang.Object value();
   Signature: ()Ljava/lang/Object;
@@ -2690,7 +2722,7 @@ public java.lang.Object value();
 	athrow
   Labels:
   Signature: length = 0x2
-   02 FFFFFFA1 
+   02 FFFFFFA6 
 
 public scala.collection.immutable.ListMap next();
   Signature: ()Lscala/collection/immutable/ListMap;
@@ -2703,7 +2735,7 @@ public scala.collection.immutable.ListMap next();
 	athrow
   Labels:
   Signature: length = 0x2
-   02 FFFFFFA3 
+   02 FFFFFFA8 
 
 public scala.collection.generic.Subtractable repr();
   Signature: ()Lscala/collection/generic/Subtractable;

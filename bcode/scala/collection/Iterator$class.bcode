@@ -41,6 +41,14 @@ Asciz	LineNumberTable;
 Asciz	$this;
 Asciz	Lscala/collection/Iterator;;
 Asciz	LocalVariableTable;
+Asciz	isEmpty;
+Asciz	(Lscala/collection/Iterator;)Z;
+Asciz	scala/collection/Iterator;
+class	scala/collection/Iterator
+Asciz	hasNext;
+Asciz	()Z;
+NameAndType	hasNext:()Z
+InterfaceMethod	scala/collection/Iterator.hasNext:()Z
 Asciz	take;
 Asciz	(Lscala/collection/Iterator;I)Lscala/collection/Iterator;;
 Asciz	scala/collection/Iterator$$anon$18;
@@ -60,8 +68,6 @@ Method	scala/collection/Iterator$class.loop$1:(Lscala/collection/Iterator;I)Lsca
 Asciz	n;
 Asciz	slice;
 Asciz	(Lscala/collection/Iterator;II)Lscala/collection/Iterator;;
-Asciz	scala/collection/Iterator;
-class	scala/collection/Iterator
 Asciz	(I)Lscala/collection/Iterator;;
 NameAndType	drop:(I)Lscala/collection/Iterator;
 InterfaceMethod	scala/collection/Iterator.drop:(I)Lscala/collection/Iterator;
@@ -193,10 +199,6 @@ Asciz	that$1;
 Asciz	thisElem$1;
 Asciz	thatElem$1;
 Asciz	foreach;
-Asciz	hasNext;
-Asciz	()Z;
-NameAndType	hasNext:()Z
-InterfaceMethod	scala/collection/Iterator.hasNext:()Z
 Asciz	next;
 Asciz	()Ljava/lang/Object;;
 NameAndType	next:()Ljava/lang/Object;
@@ -240,7 +242,6 @@ NameAndType	MODULE$:Lscala/None$;
 Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/Option;
 class	scala/Option
-Asciz	isEmpty;
 NameAndType	isEmpty:()Z
 Method	scala/Option.isEmpty:()Z
 Asciz	scala/Some;
@@ -599,6 +600,25 @@ public static int sliding$default$2(scala.collection.Iterator);
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      2      0    $this       Lscala/collection/Iterator;
+
+
+public static boolean isEmpty(scala.collection.Iterator);
+  Signature: (Lscala/collection/Iterator;)Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
+	ifeq	l1 // iconst_1
+	iconst_0
+	goto	l2 // ireturn
+l1	iconst_1
+l2	ireturn
+  Labels:
+   	l1 = 13 // iconst_1
+   	l2 = 14 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      15      0    $this       Lscala/collection/Iterator;
 
 
 public static scala.collection.Iterator take(scala.collection.Iterator, int);

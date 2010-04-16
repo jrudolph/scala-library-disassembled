@@ -7,6 +7,8 @@ public abstract class scala.collection.TraversableLike$class extends java.lang.O
    public final $anon$1=class scala/collection/TraversableLike$$anon$1 of class scala/collection/TraversableLike
    public abstract $less$colon$less=class scala/Predef$$less$colon$less of class scala/Predef
    public WithFilter=class scala/collection/TraversableLike$WithFilter of class scala/collection/TraversableLike
+   public final $anonfun$3=class scala/collection/TraversableLike$$anonfun$3 of class scala/collection/TraversableLike
+   public final $anonfun$2=class scala/collection/TraversableLike$$anonfun$2 of class scala/collection/TraversableLike
    public final $anonfun$1=class scala/collection/TraversableLike$$anonfun$1 of class scala/collection/TraversableLike
    public final $anonfun$max$1=class scala/collection/TraversableLike$$anonfun$max$1 of class scala/collection/TraversableLike
    public final $anonfun$min$1=class scala/collection/TraversableLike$$anonfun$min$1 of class scala/collection/TraversableLike
@@ -398,6 +400,29 @@ Asciz	elems$2;
 Asciz	reduceRightOption;
 NameAndType	reduceRight:(Lscala/Function2;)Ljava/lang/Object;
 InterfaceMethod	scala/collection/TraversableLike.reduceRight:(Lscala/Function2;)Ljava/lang/Object;
+Asciz	scanLeft;
+Asciz	(Lscala/collection/TraversableLike;Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
+Asciz	$plus$eq;
+NameAndType	$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
+InterfaceMethod	scala/collection/mutable/Builder.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
+Asciz	scala/collection/TraversableLike$$anonfun$1;
+class	scala/collection/TraversableLike$$anonfun$1
+Method	scala/collection/TraversableLike$$anonfun$1."<init>":(Lscala/collection/TraversableLike;Lscala/Function2;)V
+Asciz	_2;
+NameAndType	_2:()Ljava/lang/Object;
+Method	scala/Tuple2._2:()Ljava/lang/Object;
+Asciz	scala/MatchError;
+class	scala/MatchError
+Method	scala/MatchError."<init>":(Ljava/lang/Object;)V
+Asciz	op$5;
+Asciz	temp5;
+Asciz	Lscala/Tuple2;;
+Asciz	scanRight;
+Asciz	scala/collection/TraversableLike$$anonfun$2;
+class	scala/collection/TraversableLike$$anonfun$2
+Method	scala/collection/TraversableLike$$anonfun$2."<init>":(Lscala/collection/TraversableLike;Lscala/Function2;)V
+Asciz	op$6;
+Asciz	temp8;
 Asciz	sum;
 Asciz	(Lscala/collection/TraversableLike;Lscala/math/Numeric;)Ljava/lang/Object;;
 Asciz	scala/math/Numeric;
@@ -442,9 +467,9 @@ class	scala/collection/TraversableLike$$anonfun$max$1
 Method	scala/collection/TraversableLike$$anonfun$max$1."<init>":(Lscala/collection/TraversableLike;Lscala/math/Ordering;Lscala/runtime/ObjectRef;)V
 Asciz	cmp$2;
 Asciz	acc$4;
-Asciz	scala/collection/TraversableLike$$anonfun$1;
-class	scala/collection/TraversableLike$$anonfun$1
-Method	scala/collection/TraversableLike$$anonfun$1."<init>":(Lscala/collection/TraversableLike;)V
+Asciz	scala/collection/TraversableLike$$anonfun$3;
+class	scala/collection/TraversableLike$$anonfun$3
+Method	scala/collection/TraversableLike$$anonfun$3."<init>":(Lscala/collection/TraversableLike;)V
 Asciz	scala/collection/TraversableLike$$anonfun$head$1;
 class	scala/collection/TraversableLike$$anonfun$head$1
 Method	scala/collection/TraversableLike$$anonfun$head$1."<init>":(Lscala/collection/TraversableLike;Lscala/runtime/ObjectRef;)V
@@ -796,6 +821,8 @@ Asciz	scala/Predef;
 class	scala/Predef
 Asciz	$less$colon$less;
 Asciz	WithFilter;
+Asciz	$anonfun$3;
+Asciz	$anonfun$2;
 Asciz	$anonfun$1;
 Asciz	$anonfun$max$1;
 Asciz	$anonfun$min$1;
@@ -1583,6 +1610,104 @@ l2	areturn
    0      30      1    op       Lscala/Function2;
 
 
+public static java.lang.Object scanLeft(scala.collection.TraversableLike, java.lang.Object, scala.Function2, scala.collection.generic.CanBuildFrom);
+  Signature: (Lscala/collection/TraversableLike;Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+  Code:
+   Stack=6, Locals=6, Args_size=4
+	aload_0
+	new	class scala/Tuple2
+	dup
+	aload_1
+	aload_3
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.repr:()Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/generic/CanBuildFrom.apply:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
+	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+	new	class scala/collection/TraversableLike$$anonfun$1
+	dup
+	aload_0
+	aload_2
+	invokespecial	Method scala/collection/TraversableLike$$anonfun$1."<init>":(Lscala/collection/TraversableLike;Lscala/Function2;)V
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.foldLeft:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+	checkcast	class scala/Tuple2
+	astore	5
+	aload	5
+	ifnull	l1 // new
+	aload	5
+	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
+	checkcast	class scala/collection/mutable/Builder
+	astore	4
+	aload	4
+	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.result:()Ljava/lang/Object;
+	areturn
+l1	new	class scala/MatchError
+	dup
+	aload	5
+	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
+	athrow
+  Labels:
+   	l1 = 69 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      79      0    $this       Lscala/collection/TraversableLike;
+   0      79      1    z       Ljava/lang/Object;
+   0      79      2    op$5       Lscala/Function2;
+   0      79      3    bf       Lscala/collection/generic/CanBuildFrom;
+   61      7      4    b       Lscala/collection/mutable/Builder;
+   46      33      5    temp5       Lscala/Tuple2;
+
+
+public static java.lang.Object scanRight(scala.collection.TraversableLike, java.lang.Object, scala.Function2, scala.collection.generic.CanBuildFrom);
+  Signature: (Lscala/collection/TraversableLike;Ljava/lang/Object;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+  Code:
+   Stack=6, Locals=6, Args_size=4
+	aload_0
+	new	class scala/Tuple2
+	dup
+	aload_1
+	aload_3
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.repr:()Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/generic/CanBuildFrom.apply:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
+	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+	new	class scala/collection/TraversableLike$$anonfun$2
+	dup
+	aload_0
+	aload_2
+	invokespecial	Method scala/collection/TraversableLike$$anonfun$2."<init>":(Lscala/collection/TraversableLike;Lscala/Function2;)V
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.foldRight:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+	checkcast	class scala/Tuple2
+	astore	5
+	aload	5
+	ifnull	l1 // new
+	aload	5
+	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
+	checkcast	class scala/collection/mutable/Builder
+	astore	4
+	aload	4
+	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.result:()Ljava/lang/Object;
+	areturn
+l1	new	class scala/MatchError
+	dup
+	aload	5
+	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
+	athrow
+  Labels:
+   	l1 = 69 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      79      0    $this       Lscala/collection/TraversableLike;
+   0      79      1    z       Ljava/lang/Object;
+   0      79      2    op$6       Lscala/Function2;
+   0      79      3    bf       Lscala/collection/generic/CanBuildFrom;
+   61      7      4    b       Lscala/collection/mutable/Builder;
+   46      33      5    temp8       Lscala/Tuple2;
+
+
 public static java.lang.Object sum(scala.collection.TraversableLike, scala.math.Numeric);
   Signature: (Lscala/collection/TraversableLike;Lscala/math/Numeric;)Ljava/lang/Object;
   Code:
@@ -1723,10 +1848,10 @@ public static java.lang.Object head(scala.collection.TraversableLike);
    Stack=5, Locals=2, Args_size=1
 	new	class scala/runtime/ObjectRef
 	dup
-	new	class scala/collection/TraversableLike$$anonfun$1
+	new	class scala/collection/TraversableLike$$anonfun$3
 	dup
 	aload_0
-	invokespecial	Method scala/collection/TraversableLike$$anonfun$1."<init>":(Lscala/collection/TraversableLike;)V
+	invokespecial	Method scala/collection/TraversableLike$$anonfun$3."<init>":(Lscala/collection/TraversableLike;)V
 	invokespecial	Method scala/runtime/ObjectRef."<init>":(Ljava/lang/Object;)V
 	astore_1
 	getstatic	Field scala/collection/Traversable$.MODULE$:Lscala/collection/Traversable$;
