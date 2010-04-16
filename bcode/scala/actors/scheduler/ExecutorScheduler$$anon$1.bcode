@@ -1,0 +1,771 @@
+Compiled from "ExecutorScheduler.scala"
+public final class scala.actors.scheduler.ExecutorScheduler$$anon$1 extends java.lang.Thread implements scala.actors.scheduler.ExecutorScheduler
+  SourceFile: "ExecutorScheduler.scala"
+  Scala: length = 0x
+   
+  InnerClass: 
+   public final $anon$1=class scala/actors/scheduler/ExecutorScheduler$$anon$1 of class scala/actors/scheduler/ExecutorScheduler
+  minor version: 0
+  major version: 49
+  Constant pool:
+Asciz	SourceFile;
+Asciz	ExecutorScheduler.scala;
+Asciz	scala$actors$scheduler$TerminationMonitor$$started;
+Asciz	Z;
+Asciz	terminationHandlers;
+Asciz	Lscala/collection/mutable/HashMap;;
+Asciz	activeActors;
+Asciz	I;
+Asciz	CHECK_FREQ;
+Asciz	terminate;
+Asciz	scala$actors$scheduler$TerminationService$$terminating;
+Asciz	executor;
+Asciz	Ljava/util/concurrent/ExecutorService;;
+Asciz	execute;
+Asciz	(Ljava/lang/Runnable;)V;
+Asciz	Code;
+Asciz	LineNumberTable;
+Asciz	scala/actors/scheduler/ExecutorScheduler$class;
+class	scala/actors/scheduler/ExecutorScheduler$class
+Asciz	(Lscala/actors/scheduler/ExecutorScheduler;Ljava/lang/Runnable;)V;
+NameAndType	execute:(Lscala/actors/scheduler/ExecutorScheduler;Ljava/lang/Runnable;)V
+Method	scala/actors/scheduler/ExecutorScheduler$class.execute:(Lscala/actors/scheduler/ExecutorScheduler;Ljava/lang/Runnable;)V
+Asciz	this;
+Asciz	Lscala/actors/scheduler/ExecutorScheduler$$anon$1;;
+Asciz	task;
+Asciz	Ljava/lang/Runnable;;
+Asciz	LocalVariableTable;
+Asciz	(Lscala/Function0;)V;
+Asciz	(Lscala/actors/scheduler/ExecutorScheduler;Lscala/Function0;)V;
+NameAndType	execute:(Lscala/actors/scheduler/ExecutorScheduler;Lscala/Function0;)V
+Method	scala/actors/scheduler/ExecutorScheduler$class.execute:(Lscala/actors/scheduler/ExecutorScheduler;Lscala/Function0;)V
+Asciz	fun;
+Asciz	Lscala/Function0;;
+Asciz	onShutdown;
+Asciz	()V;
+Asciz	(Lscala/actors/scheduler/ExecutorScheduler;)V;
+NameAndType	onShutdown:(Lscala/actors/scheduler/ExecutorScheduler;)V
+Method	scala/actors/scheduler/ExecutorScheduler$class.onShutdown:(Lscala/actors/scheduler/ExecutorScheduler;)V
+Asciz	isActive;
+Asciz	()Z;
+Asciz	(Lscala/actors/scheduler/ExecutorScheduler;)Z;
+NameAndType	isActive:(Lscala/actors/scheduler/ExecutorScheduler;)Z
+Method	scala/actors/scheduler/ExecutorScheduler$class.isActive:(Lscala/actors/scheduler/ExecutorScheduler;)Z
+Asciz	functionAsTask;
+Asciz	(Lscala/Function0;)Ljava/util/concurrent/Callable;;
+Asciz	scala/concurrent/ThreadPoolRunner$class;
+class	scala/concurrent/ThreadPoolRunner$class
+Asciz	(Lscala/concurrent/ThreadPoolRunner;Lscala/Function0;)Ljava/util/concurrent/Callable;;
+NameAndType	functionAsTask:(Lscala/concurrent/ThreadPoolRunner;Lscala/Function0;)Ljava/util/concurrent/Callable;
+Method	scala/concurrent/ThreadPoolRunner$class.functionAsTask:(Lscala/concurrent/ThreadPoolRunner;Lscala/Function0;)Ljava/util/concurrent/Callable;
+Asciz	futureAsFunction;
+Asciz	(Ljava/util/concurrent/Future;)Lscala/Function0;;
+Asciz	(Lscala/concurrent/ThreadPoolRunner;Ljava/util/concurrent/Future;)Lscala/Function0;;
+NameAndType	futureAsFunction:(Lscala/concurrent/ThreadPoolRunner;Ljava/util/concurrent/Future;)Lscala/Function0;
+Method	scala/concurrent/ThreadPoolRunner$class.futureAsFunction:(Lscala/concurrent/ThreadPoolRunner;Ljava/util/concurrent/Future;)Lscala/Function0;
+Asciz	x;
+Asciz	Ljava/util/concurrent/Future;;
+Asciz	submit;
+Asciz	(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;;
+Asciz	(Lscala/concurrent/ThreadPoolRunner;Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;;
+NameAndType	submit:(Lscala/concurrent/ThreadPoolRunner;Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
+Method	scala/concurrent/ThreadPoolRunner$class.submit:(Lscala/concurrent/ThreadPoolRunner;Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
+Asciz	Ljava/util/concurrent/Callable;;
+Asciz	(Ljava/util/concurrent/Callable;)V;
+Asciz	(Lscala/concurrent/ThreadPoolRunner;Ljava/util/concurrent/Callable;)V;
+NameAndType	execute:(Lscala/concurrent/ThreadPoolRunner;Ljava/util/concurrent/Callable;)V
+Method	scala/concurrent/ThreadPoolRunner$class.execute:(Lscala/concurrent/ThreadPoolRunner;Ljava/util/concurrent/Callable;)V
+Asciz	managedBlock;
+Asciz	(Lscala/concurrent/ManagedBlocker;)V;
+Asciz	(Lscala/concurrent/ThreadPoolRunner;Lscala/concurrent/ManagedBlocker;)V;
+NameAndType	managedBlock:(Lscala/concurrent/ThreadPoolRunner;Lscala/concurrent/ManagedBlocker;)V
+Method	scala/concurrent/ThreadPoolRunner$class.managedBlock:(Lscala/concurrent/ThreadPoolRunner;Lscala/concurrent/ManagedBlocker;)V
+Asciz	blocker;
+Asciz	Lscala/concurrent/ManagedBlocker;;
+Asciz	tryCatch;
+Asciz	(Lscala/Function0;)Lscala/Either;;
+Asciz	scala/concurrent/TaskRunner$class;
+class	scala/concurrent/TaskRunner$class
+Asciz	(Lscala/concurrent/TaskRunner;Lscala/Function0;)Lscala/Either;;
+NameAndType	tryCatch:(Lscala/concurrent/TaskRunner;Lscala/Function0;)Lscala/Either;
+Method	scala/concurrent/TaskRunner$class.tryCatch:(Lscala/concurrent/TaskRunner;Lscala/Function0;)Lscala/Either;
+Asciz	body;
+Asciz	scala/actors/scheduler/ExecutorScheduler$$anon$1;
+class	scala/actors/scheduler/ExecutorScheduler$$anon$1
+NameAndType	scala$actors$scheduler$TerminationService$$terminating:Z
+Field	scala/actors/scheduler/ExecutorScheduler$$anon$1.scala$actors$scheduler$TerminationService$$terminating:Z
+Asciz	scala$actors$scheduler$TerminationService$$terminating_$eq;
+Asciz	(Z)V;
+NameAndType	terminate:Z
+Field	scala/actors/scheduler/ExecutorScheduler$$anon$1.terminate:Z
+Asciz	()I;
+NameAndType	CHECK_FREQ:I
+Field	scala/actors/scheduler/ExecutorScheduler$$anon$1.CHECK_FREQ:I
+Asciz	scala$actors$scheduler$TerminationService$_setter_$terminate_$eq;
+Asciz	scala$actors$scheduler$TerminationService$_setter_$CHECK_FREQ_$eq;
+Asciz	(I)V;
+Asciz	run;
+Asciz	scala/actors/scheduler/TerminationService$class;
+class	scala/actors/scheduler/TerminationService$class
+Asciz	(Ljava/lang/Thread;)V;
+NameAndType	run:(Ljava/lang/Thread;)V
+Method	scala/actors/scheduler/TerminationService$class.run:(Ljava/lang/Thread;)V
+Asciz	shutdown;
+NameAndType	shutdown:(Ljava/lang/Thread;)V
+Method	scala/actors/scheduler/TerminationService$class.shutdown:(Ljava/lang/Thread;)V
+NameAndType	activeActors:I
+Field	scala/actors/scheduler/ExecutorScheduler$$anon$1.activeActors:I
+Asciz	activeActors_$eq;
+Asciz	()Lscala/collection/mutable/HashMap;;
+NameAndType	terminationHandlers:Lscala/collection/mutable/HashMap;
+Field	scala/actors/scheduler/ExecutorScheduler$$anon$1.terminationHandlers:Lscala/collection/mutable/HashMap;
+NameAndType	scala$actors$scheduler$TerminationMonitor$$started:Z
+Field	scala/actors/scheduler/ExecutorScheduler$$anon$1.scala$actors$scheduler$TerminationMonitor$$started:Z
+Asciz	scala$actors$scheduler$TerminationMonitor$$started_$eq;
+Asciz	scala$actors$scheduler$TerminationMonitor$_setter_$terminationHandlers_$eq;
+Asciz	(Lscala/collection/mutable/HashMap;)V;
+Asciz	newActor;
+Asciz	(Lscala/actors/Reactor;)V;
+Asciz	scala/actors/scheduler/TerminationMonitor$class;
+class	scala/actors/scheduler/TerminationMonitor$class
+Asciz	(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V;
+NameAndType	newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+Method	scala/actors/scheduler/TerminationMonitor$class.newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+Asciz	a;
+Asciz	Lscala/actors/Reactor;;
+Asciz	onTerminate;
+Asciz	(Lscala/actors/Reactor;Lscala/Function0;)V;
+Asciz	(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V;
+NameAndType	onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+Method	scala/actors/scheduler/TerminationMonitor$class.onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+Asciz	f;
+Asciz	terminated;
+NameAndType	terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+Method	scala/actors/scheduler/TerminationMonitor$class.terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+Asciz	allActorsTerminated;
+Asciz	(Lscala/actors/scheduler/TerminationMonitor;)Z;
+NameAndType	allActorsTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+Method	scala/actors/scheduler/TerminationMonitor$class.allActorsTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+Asciz	allTerminated;
+NameAndType	allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+Method	scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+Asciz	Deprecated;
+Asciz	gc;
+Asciz	(Lscala/actors/scheduler/TerminationMonitor;)V;
+NameAndType	gc:(Lscala/actors/scheduler/TerminationMonitor;)V
+Method	scala/actors/scheduler/TerminationMonitor$class.gc:(Lscala/actors/scheduler/TerminationMonitor;)V
+Asciz	executeFromActor;
+Asciz	scala/actors/IScheduler$class;
+class	scala/actors/IScheduler$class
+Asciz	(Lscala/actors/IScheduler;Ljava/lang/Runnable;)V;
+NameAndType	executeFromActor:(Lscala/actors/IScheduler;Ljava/lang/Runnable;)V
+Method	scala/actors/IScheduler$class.executeFromActor:(Lscala/actors/IScheduler;Ljava/lang/Runnable;)V
+Asciz	tick;
+Asciz	(Lscala/actors/Actor;)V;
+Asciz	(Lscala/actors/IScheduler;Lscala/actors/Actor;)V;
+NameAndType	tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
+Method	scala/actors/IScheduler$class.tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
+Asciz	Lscala/actors/Actor;;
+Asciz	onLockup;
+Asciz	(Lscala/actors/IScheduler;Lscala/Function0;)V;
+NameAndType	onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
+Method	scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
+Asciz	handler;
+Asciz	(ILscala/Function0;)V;
+Asciz	(Lscala/actors/IScheduler;ILscala/Function0;)V;
+NameAndType	onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
+Method	scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
+Asciz	millis;
+Asciz	printActorDump;
+Asciz	(Lscala/actors/IScheduler;)V;
+NameAndType	printActorDump:(Lscala/actors/IScheduler;)V
+Method	scala/actors/IScheduler$class.printActorDump:(Lscala/actors/IScheduler;)V
+Asciz	()Ljava/util/concurrent/ExecutorService;;
+NameAndType	executor:Ljava/util/concurrent/ExecutorService;
+Field	scala/actors/scheduler/ExecutorScheduler$$anon$1.executor:Ljava/util/concurrent/ExecutorService;
+Asciz	(Ljava/lang/Object;)V;
+Asciz	java/util/concurrent/Callable;
+class	java/util/concurrent/Callable
+Asciz	scala/concurrent/ThreadPoolRunner;
+class	scala/concurrent/ThreadPoolRunner
+NameAndType	execute:(Ljava/util/concurrent/Callable;)V
+InterfaceMethod	scala/concurrent/ThreadPoolRunner.execute:(Ljava/util/concurrent/Callable;)V
+Asciz	Ljava/lang/Object;;
+Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
+NameAndType	submit:(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
+InterfaceMethod	scala/concurrent/ThreadPoolRunner.submit:(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
+Asciz	(Ljava/lang/Object;)Lscala/Function0;;
+Asciz	java/util/concurrent/Future;
+class	java/util/concurrent/Future
+NameAndType	futureAsFunction:(Ljava/util/concurrent/Future;)Lscala/Function0;
+InterfaceMethod	scala/concurrent/ThreadPoolRunner.futureAsFunction:(Ljava/util/concurrent/Future;)Lscala/Function0;
+Asciz	(Lscala/Function0;)Ljava/lang/Object;;
+NameAndType	functionAsTask:(Lscala/Function0;)Ljava/util/concurrent/Callable;
+InterfaceMethod	scala/concurrent/ThreadPoolRunner.functionAsTask:(Lscala/Function0;)Ljava/util/concurrent/Callable;
+Asciz	<init>;
+Asciz	(Ljava/util/concurrent/ExecutorService;)V;
+Asciz	java/lang/Thread;
+class	java/lang/Thread
+NameAndType	"<init>":()V
+Method	java/lang/Thread."<init>":()V
+Asciz	$init$;
+NameAndType	$init$:(Lscala/actors/IScheduler;)V
+Method	scala/actors/IScheduler$class.$init$:(Lscala/actors/IScheduler;)V
+NameAndType	$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+Method	scala/actors/scheduler/TerminationMonitor$class.$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+NameAndType	$init$:(Ljava/lang/Thread;)V
+Method	scala/actors/scheduler/TerminationService$class.$init$:(Ljava/lang/Thread;)V
+Asciz	(Lscala/concurrent/TaskRunner;)V;
+NameAndType	$init$:(Lscala/concurrent/TaskRunner;)V
+Method	scala/concurrent/TaskRunner$class.$init$:(Lscala/concurrent/TaskRunner;)V
+Asciz	(Lscala/concurrent/ThreadPoolRunner;)V;
+NameAndType	$init$:(Lscala/concurrent/ThreadPoolRunner;)V
+Method	scala/concurrent/ThreadPoolRunner$class.$init$:(Lscala/concurrent/ThreadPoolRunner;)V
+NameAndType	$init$:(Lscala/actors/scheduler/ExecutorScheduler;)V
+Method	scala/actors/scheduler/ExecutorScheduler$class.$init$:(Lscala/actors/scheduler/ExecutorScheduler;)V
+Asciz	Scala;
+Asciz	InnerClasses;
+Asciz	scala/actors/scheduler/ExecutorScheduler;
+class	scala/actors/scheduler/ExecutorScheduler
+Asciz	$anon$1;
+
+{
+private boolean scala$actors$scheduler$TerminationMonitor$$started;
+  Signature: Z
+
+private final scala.collection.mutable.HashMap terminationHandlers;
+  Signature: Lscala/collection/mutable/HashMap;
+
+private int activeActors;
+  Signature: I
+
+private final int CHECK_FREQ;
+  Signature: I
+
+private final boolean terminate;
+  Signature: Z
+
+private boolean scala$actors$scheduler$TerminationService$$terminating;
+  Signature: Z
+
+private final java.util.concurrent.ExecutorService executor;
+  Signature: Ljava/util/concurrent/ExecutorService;
+
+public void execute(java.lang.Runnable);
+  Signature: (Ljava/lang/Runnable;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/scheduler/ExecutorScheduler$class.execute:(Lscala/actors/scheduler/ExecutorScheduler;Ljava/lang/Runnable;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      6      1    task       Ljava/lang/Runnable;
+
+
+public void execute(scala.Function0);
+  Signature: (Lscala/Function0;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/scheduler/ExecutorScheduler$class.execute:(Lscala/actors/scheduler/ExecutorScheduler;Lscala/Function0;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      6      1    fun       Lscala/Function0;
+
+
+public void onShutdown();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/scheduler/ExecutorScheduler$class.onShutdown:(Lscala/actors/scheduler/ExecutorScheduler;)V
+	return
+  Labels:
+
+public boolean isActive();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/scheduler/ExecutorScheduler$class.isActive:(Lscala/actors/scheduler/ExecutorScheduler;)Z
+	ireturn
+  Labels:
+
+public java.util.concurrent.Callable functionAsTask(scala.Function0);
+  Signature: (Lscala/Function0;)Ljava/util/concurrent/Callable;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/concurrent/ThreadPoolRunner$class.functionAsTask:(Lscala/concurrent/ThreadPoolRunner;Lscala/Function0;)Ljava/util/concurrent/Callable;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      6      1    fun       Lscala/Function0;
+
+
+public scala.Function0 futureAsFunction(java.util.concurrent.Future);
+  Signature: (Ljava/util/concurrent/Future;)Lscala/Function0;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/concurrent/ThreadPoolRunner$class.futureAsFunction:(Lscala/concurrent/ThreadPoolRunner;Ljava/util/concurrent/Future;)Lscala/Function0;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      6      1    x       Ljava/util/concurrent/Future;
+
+
+public java.util.concurrent.Future submit(java.util.concurrent.Callable);
+  Signature: (Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/concurrent/ThreadPoolRunner$class.submit:(Lscala/concurrent/ThreadPoolRunner;Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      6      1    task       Ljava/util/concurrent/Callable;
+
+
+public void execute(java.util.concurrent.Callable);
+  Signature: (Ljava/util/concurrent/Callable;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/concurrent/ThreadPoolRunner$class.execute:(Lscala/concurrent/ThreadPoolRunner;Ljava/util/concurrent/Callable;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      6      1    task       Ljava/util/concurrent/Callable;
+
+
+public void managedBlock(scala.concurrent.ManagedBlocker);
+  Signature: (Lscala/concurrent/ManagedBlocker;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/concurrent/ThreadPoolRunner$class.managedBlock:(Lscala/concurrent/ThreadPoolRunner;Lscala/concurrent/ManagedBlocker;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      6      1    blocker       Lscala/concurrent/ManagedBlocker;
+
+
+public scala.Either tryCatch(scala.Function0);
+  Signature: (Lscala/Function0;)Lscala/Either;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/concurrent/TaskRunner$class.tryCatch:(Lscala/concurrent/TaskRunner;Lscala/Function0;)Lscala/Either;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      6      1    body       Lscala/Function0;
+
+
+public final boolean scala$actors$scheduler$TerminationService$$terminating();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field scala$actors$scheduler$TerminationService$$terminating:Z
+	ireturn
+  Labels:
+
+public final void scala$actors$scheduler$TerminationService$$terminating_$eq(boolean);
+  Signature: (Z)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field scala$actors$scheduler$TerminationService$$terminating:Z
+	return
+  Labels:
+
+public boolean terminate();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field terminate:Z
+	ireturn
+  Labels:
+
+public int CHECK_FREQ();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field CHECK_FREQ:I
+	ireturn
+  Labels:
+
+public void scala$actors$scheduler$TerminationService$_setter_$terminate_$eq(boolean);
+  Signature: (Z)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field terminate:Z
+	return
+  Labels:
+
+public void scala$actors$scheduler$TerminationService$_setter_$CHECK_FREQ_$eq(int);
+  Signature: (I)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field CHECK_FREQ:I
+	return
+  Labels:
+
+public void run();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/scheduler/TerminationService$class.run:(Ljava/lang/Thread;)V
+	return
+  Labels:
+
+public void shutdown();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/scheduler/TerminationService$class.shutdown:(Ljava/lang/Thread;)V
+	return
+  Labels:
+
+public int activeActors();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field activeActors:I
+	ireturn
+  Labels:
+
+public void activeActors_$eq(int);
+  Signature: (I)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field activeActors:I
+	return
+  Labels:
+
+public scala.collection.mutable.HashMap terminationHandlers();
+  Signature: ()Lscala/collection/mutable/HashMap;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field terminationHandlers:Lscala/collection/mutable/HashMap;
+	areturn
+  Labels:
+
+public final boolean scala$actors$scheduler$TerminationMonitor$$started();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field scala$actors$scheduler$TerminationMonitor$$started:Z
+	ireturn
+  Labels:
+
+public final void scala$actors$scheduler$TerminationMonitor$$started_$eq(boolean);
+  Signature: (Z)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field scala$actors$scheduler$TerminationMonitor$$started:Z
+	return
+  Labels:
+
+public void scala$actors$scheduler$TerminationMonitor$_setter_$terminationHandlers_$eq(scala.collection.mutable.HashMap);
+  Signature: (Lscala/collection/mutable/HashMap;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field terminationHandlers:Lscala/collection/mutable/HashMap;
+	return
+  Labels:
+
+public void newActor(scala.actors.Reactor);
+  Signature: (Lscala/actors/Reactor;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.newActor:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      6      1    a       Lscala/actors/Reactor;
+
+
+public void onTerminate(scala.actors.Reactor, scala.Function0);
+  Signature: (Lscala/actors/Reactor;Lscala/Function0;)V
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	aload_1
+	aload_2
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.onTerminate:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;Lscala/Function0;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      7      1    a       Lscala/actors/Reactor;
+   0      7      2    f       Lscala/Function0;
+
+
+public void terminated(scala.actors.Reactor);
+  Signature: (Lscala/actors/Reactor;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.terminated:(Lscala/actors/scheduler/TerminationMonitor;Lscala/actors/Reactor;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      6      1    a       Lscala/actors/Reactor;
+
+
+public boolean allActorsTerminated();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.allActorsTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+	ireturn
+  Labels:
+
+public boolean allTerminated();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.allTerminated:(Lscala/actors/scheduler/TerminationMonitor;)Z
+	ireturn
+  Labels:
+  Deprecated: true
+
+public void gc();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.gc:(Lscala/actors/scheduler/TerminationMonitor;)V
+	return
+  Labels:
+
+public void executeFromActor(java.lang.Runnable);
+  Signature: (Ljava/lang/Runnable;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/IScheduler$class.executeFromActor:(Lscala/actors/IScheduler;Ljava/lang/Runnable;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      6      1    task       Ljava/lang/Runnable;
+
+
+public void tick(scala.actors.Actor);
+  Signature: (Lscala/actors/Actor;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/IScheduler$class.tick:(Lscala/actors/IScheduler;Lscala/actors/Actor;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      6      1    a       Lscala/actors/Actor;
+
+  Deprecated: true
+
+public void onLockup(scala.Function0);
+  Signature: (Lscala/Function0;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;Lscala/Function0;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      6      1    handler       Lscala/Function0;
+
+  Deprecated: true
+
+public void onLockup(int, scala.Function0);
+  Signature: (ILscala/Function0;)V
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	iload_1
+	aload_2
+	invokestatic	Method scala/actors/IScheduler$class.onLockup:(Lscala/actors/IScheduler;ILscala/Function0;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      7      1    millis       I
+   0      7      2    handler       Lscala/Function0;
+
+  Deprecated: true
+
+public void printActorDump();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/actors/IScheduler$class.printActorDump:(Lscala/actors/IScheduler;)V
+	return
+  Labels:
+  Deprecated: true
+
+public java.util.concurrent.ExecutorService executor();
+  Signature: ()Ljava/util/concurrent/ExecutorService;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field executor:Ljava/util/concurrent/ExecutorService;
+	areturn
+  Labels:
+
+public void execute(java.lang.Object);
+  Signature: (Ljava/lang/Object;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	checkcast	class java/util/concurrent/Callable
+	invokeinterface	InterfaceMethod scala/concurrent/ThreadPoolRunner.execute:(Ljava/util/concurrent/Callable;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      11      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      11      1    task       Ljava/lang/Object;
+
+
+public java.lang.Object submit(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Ljava/lang/Object;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	checkcast	class java/util/concurrent/Callable
+	invokeinterface	InterfaceMethod scala/concurrent/ThreadPoolRunner.submit:(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      11      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      11      1    task       Ljava/lang/Object;
+
+
+public scala.Function0 futureAsFunction(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Lscala/Function0;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	checkcast	class java/util/concurrent/Future
+	invokeinterface	InterfaceMethod scala/concurrent/ThreadPoolRunner.futureAsFunction:(Ljava/util/concurrent/Future;)Lscala/Function0;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      11      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      11      1    x       Ljava/lang/Object;
+
+
+public java.lang.Object functionAsTask(scala.Function0);
+  Signature: (Lscala/Function0;)Ljava/lang/Object;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/concurrent/ThreadPoolRunner.functionAsTask:(Lscala/Function0;)Ljava/util/concurrent/Callable;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/actors/scheduler/ExecutorScheduler$$anon$1;
+   0      8      1    fun       Lscala/Function0;
+
+
+public scala.actors.scheduler.ExecutorScheduler$$anon$1(java.util.concurrent.ExecutorService);
+  Signature: (Ljava/util/concurrent/ExecutorService;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	invokespecial	Method java/lang/Thread."<init>":()V
+	aload_0
+	invokestatic	Method scala/actors/IScheduler$class.$init$:(Lscala/actors/IScheduler;)V
+	aload_0
+	invokestatic	Method scala/actors/scheduler/TerminationMonitor$class.$init$:(Lscala/actors/scheduler/TerminationMonitor;)V
+	aload_0
+	invokestatic	Method scala/actors/scheduler/TerminationService$class.$init$:(Ljava/lang/Thread;)V
+	aload_0
+	invokestatic	Method scala/concurrent/TaskRunner$class.$init$:(Lscala/concurrent/TaskRunner;)V
+	aload_0
+	invokestatic	Method scala/concurrent/ThreadPoolRunner$class.$init$:(Lscala/concurrent/ThreadPoolRunner;)V
+	aload_0
+	invokestatic	Method scala/actors/scheduler/ExecutorScheduler$class.$init$:(Lscala/actors/scheduler/ExecutorScheduler;)V
+	aload_0
+	aload_1
+	putfield	Field executor:Ljava/util/concurrent/ExecutorService;
+	return
+  Labels:
+
+}
+

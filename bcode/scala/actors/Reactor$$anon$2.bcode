@@ -5,6 +5,7 @@ public final class scala.actors.Reactor$$anon$2 extends java.lang.Object impleme
    
   InnerClass: 
    public final $anon$2=class scala/actors/Reactor$$anon$2 of class scala/actors/Reactor
+   public CallerRunsPolicy=class java/util/concurrent/ThreadPoolExecutor$CallerRunsPolicy of class java/util/concurrent/ThreadPoolExecutor
   minor version: 0
   major version: 49
   Constant pool:
@@ -134,12 +135,34 @@ Method	scala/actors/scheduler/ForkJoinScheduler."<init>":(IIZZ)V
 Asciz	start;
 NameAndType	start:()V
 Method	scala/actors/scheduler/ForkJoinScheduler.start:()V
-Asciz	scala/actors/scheduler/DefaultThreadPoolScheduler;
-class	scala/actors/scheduler/DefaultThreadPoolScheduler
-Asciz	(Z)V;
-NameAndType	"<init>":(Z)V
-Method	scala/actors/scheduler/DefaultThreadPoolScheduler."<init>":(Z)V
-Method	scala/actors/scheduler/DefaultThreadPoolScheduler.start:()V
+Asciz	java/util/concurrent/LinkedBlockingQueue;
+class	java/util/concurrent/LinkedBlockingQueue
+NameAndType	"<init>":()V
+Method	java/util/concurrent/LinkedBlockingQueue."<init>":()V
+Asciz	scala/actors/scheduler/ExecutorScheduler$;
+class	scala/actors/scheduler/ExecutorScheduler$
+Asciz	Lscala/actors/scheduler/ExecutorScheduler$;;
+NameAndType	MODULE$:Lscala/actors/scheduler/ExecutorScheduler$;
+Field	scala/actors/scheduler/ExecutorScheduler$.MODULE$:Lscala/actors/scheduler/ExecutorScheduler$;
+Asciz	java/util/concurrent/ThreadPoolExecutor;
+class	java/util/concurrent/ThreadPoolExecutor
+long	60000l;
+Asciz	java/util/concurrent/TimeUnit;
+class	java/util/concurrent/TimeUnit
+Asciz	MILLISECONDS;
+Asciz	Ljava/util/concurrent/TimeUnit;;
+NameAndType	MILLISECONDS:Ljava/util/concurrent/TimeUnit;
+Field	java/util/concurrent/TimeUnit.MILLISECONDS:Ljava/util/concurrent/TimeUnit;
+Asciz	java/util/concurrent/ThreadPoolExecutor$CallerRunsPolicy;
+class	java/util/concurrent/ThreadPoolExecutor$CallerRunsPolicy
+Method	java/util/concurrent/ThreadPoolExecutor$CallerRunsPolicy."<init>":()V
+Asciz	(IIJLjava/util/concurrent/TimeUnit;Ljava/util/concurrent/BlockingQueue;Ljava/util/concurrent/RejectedExecutionHandler;)V;
+NameAndType	"<init>":(IIJLjava/util/concurrent/TimeUnit;Ljava/util/concurrent/BlockingQueue;Ljava/util/concurrent/RejectedExecutionHandler;)V
+Method	java/util/concurrent/ThreadPoolExecutor."<init>":(IIJLjava/util/concurrent/TimeUnit;Ljava/util/concurrent/BlockingQueue;Ljava/util/concurrent/RejectedExecutionHandler;)V
+Asciz	apply;
+Asciz	(Ljava/util/concurrent/ExecutorService;)Lscala/actors/scheduler/ExecutorScheduler;;
+NameAndType	apply:(Ljava/util/concurrent/ExecutorService;)Lscala/actors/scheduler/ExecutorScheduler;
+Method	scala/actors/scheduler/ExecutorScheduler$.apply:(Ljava/util/concurrent/ExecutorService;)Lscala/actors/scheduler/ExecutorScheduler;
 Asciz	scala/actors/Debug$;
 class	scala/actors/Debug$
 Asciz	Lscala/actors/Debug$;;
@@ -147,7 +170,6 @@ NameAndType	MODULE$:Lscala/actors/Debug$;
 Field	scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 Asciz	scala/collection/mutable/StringBuilder;
 class	scala/collection/mutable/StringBuilder
-NameAndType	"<init>":()V
 Method	scala/collection/mutable/StringBuilder."<init>":()V
 Asciz	scala/runtime/StringAdd;
 class	scala/runtime/StringAdd
@@ -184,7 +206,8 @@ NameAndType	info:(Ljava/lang/String;)V
 Method	scala/actors/Debug$.info:(Ljava/lang/String;)V
 Asciz	s;
 Asciz	Lscala/actors/scheduler/ForkJoinScheduler;;
-Asciz	Lscala/actors/scheduler/DefaultThreadPoolScheduler;;
+Asciz	workQueue;
+Asciz	Ljava/util/concurrent/LinkedBlockingQueue;;
 Method	java/lang/Object."<init>":()V
 Asciz	$init$;
 NameAndType	$init$:(Lscala/actors/IScheduler;)V
@@ -196,6 +219,7 @@ Asciz	InnerClasses;
 Asciz	scala/actors/Reactor;
 class	scala/actors/Reactor
 Asciz	$anon$2;
+Asciz	CallerRunsPolicy;
 Asciz	scala/actors/scheduler/DelegatingScheduler;
 class	scala/actors/scheduler/DelegatingScheduler
 
@@ -434,7 +458,7 @@ public void printActorDump();
 public scala.actors.IScheduler makeNewScheduler();
   Signature: ()Lscala/actors/IScheduler;
   Code:
-   Stack=6, Locals=4, Args_size=1
+   Stack=11, Locals=4, Args_size=1
 	getstatic	Field scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
 	invokevirtual	Method scala/actors/scheduler/ThreadPoolConfig$.useForkJoin:()Z
 	ifeq	l1 // new
@@ -452,14 +476,25 @@ public scala.actors.IScheduler makeNewScheduler();
 	invokevirtual	Method scala/actors/scheduler/ForkJoinScheduler.start:()V
 	aload_1
 	goto	l2 // astore_3
-l1	new	class scala/actors/scheduler/DefaultThreadPoolScheduler
+l1	new	class java/util/concurrent/LinkedBlockingQueue
 	dup
-	iconst_0
-	invokespecial	Method scala/actors/scheduler/DefaultThreadPoolScheduler."<init>":(Z)V
+	invokespecial	Method java/util/concurrent/LinkedBlockingQueue."<init>":()V
 	astore_2
+	getstatic	Field scala/actors/scheduler/ExecutorScheduler$.MODULE$:Lscala/actors/scheduler/ExecutorScheduler$;
+	new	class java/util/concurrent/ThreadPoolExecutor
+	dup
+	getstatic	Field scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
+	invokevirtual	Method scala/actors/scheduler/ThreadPoolConfig$.corePoolSize:()I
+	getstatic	Field scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
+	invokevirtual	Method scala/actors/scheduler/ThreadPoolConfig$.maxPoolSize:()I
+	ldc2_w	long 60000l
+	getstatic	Field java/util/concurrent/TimeUnit.MILLISECONDS:Ljava/util/concurrent/TimeUnit;
 	aload_2
-	invokevirtual	Method scala/actors/scheduler/DefaultThreadPoolScheduler.start:()V
-	aload_2
+	new	class java/util/concurrent/ThreadPoolExecutor$CallerRunsPolicy
+	dup
+	invokespecial	Method java/util/concurrent/ThreadPoolExecutor$CallerRunsPolicy."<init>":()V
+	invokespecial	Method java/util/concurrent/ThreadPoolExecutor."<init>":(IIJLjava/util/concurrent/TimeUnit;Ljava/util/concurrent/BlockingQueue;Ljava/util/concurrent/RejectedExecutionHandler;)V
+	invokevirtual	Method scala/actors/scheduler/ExecutorScheduler$.apply:(Ljava/util/concurrent/ExecutorService;)Lscala/actors/scheduler/ExecutorScheduler;
 l2	astore_3
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
@@ -487,13 +522,13 @@ l2	astore_3
 	areturn
   Labels:
    	l1 = 39 // new
-   	l2 = 53 // astore_3
+   	l2 = 86 // astore_3
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      109      0    this       Lscala/actors/Reactor$$anon$2;
+   0      142      0    this       Lscala/actors/Reactor$$anon$2;
    31      5      1    s       Lscala/actors/scheduler/ForkJoinScheduler;
-   48      5      2    s       Lscala/actors/scheduler/DefaultThreadPoolScheduler;
-   54      54      3    sched       Lscala/actors/IScheduler;
+   47      39      2    workQueue       Ljava/util/concurrent/LinkedBlockingQueue;
+   87      54      3    sched       Lscala/actors/IScheduler;
 
 
 public scala.actors.Reactor$$anon$2();

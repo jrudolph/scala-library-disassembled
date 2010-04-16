@@ -81,12 +81,14 @@ Asciz	useForkJoin;
 Asciz	()Z;
 Asciz	actors.enableForkJoin;
 String	actors.enableForkJoin
-Asciz	true;
-String	true
+Asciz	false;
+String	false
 Asciz	propIsSetTo;
 Asciz	(Ljava/lang/String;Ljava/lang/String;)Z;
 NameAndType	propIsSetTo:(Ljava/lang/String;Ljava/lang/String;)Z
 InterfaceMethod	scala/util/PropertiesTrait.propIsSetTo:(Ljava/lang/String;Ljava/lang/String;)Z
+Asciz	true;
+String	true
 Asciz	scala/actors/Debug$;
 class	scala/actors/Debug$
 Asciz	Lscala/actors/Debug$;;
@@ -316,9 +318,14 @@ public boolean useForkJoin();
    Stack=5, Locals=2, Args_size=1
 	getstatic	Field scala/util/Properties$.MODULE$:Lscala/util/Properties$;
 	ldc	String actors.enableForkJoin
+	ldc	String false
+	invokeinterface	InterfaceMethod scala/util/PropertiesTrait.propIsSetTo:(Ljava/lang/String;Ljava/lang/String;)Z
+	ifne	l1 // iconst_0
+	getstatic	Field scala/util/Properties$.MODULE$:Lscala/util/Properties$;
+	ldc	String actors.enableForkJoin
 	ldc	String true
 	invokeinterface	InterfaceMethod scala/util/PropertiesTrait.propIsSetTo:(Ljava/lang/String;Ljava/lang/String;)Z
-	ifne	l1 // iconst_1
+	ifne	l2 // iconst_1
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
@@ -354,24 +361,24 @@ public boolean useForkJoin();
 	getstatic	Field scala/util/Properties$.MODULE$:Lscala/util/Properties$;
 	ldc	String 1.6
 	invokeinterface	InterfaceMethod scala/util/PropertiesTrait.isJavaAtLeast:(Ljava/lang/String;)Z
-	ifeq	l2 // iconst_0
+	ifeq	l3 // iconst_0
 	getstatic	Field scala/util/Properties$.MODULE$:Lscala/util/Properties$;
 	invokeinterface	InterfaceMethod scala/util/PropertiesTrait.javaVmVendor:()Ljava/lang/String;
 	ldc	String Sun
 	invokevirtual	Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
-	ifne	l3 // iconst_1
+	ifne	l4 // iconst_1
 	getstatic	Field scala/util/Properties$.MODULE$:Lscala/util/Properties$;
 	invokeinterface	InterfaceMethod scala/util/PropertiesTrait.javaVmVendor:()Ljava/lang/String;
 	ldc	String Apple
 	invokevirtual	Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
-	ifeq	l2 // iconst_0
-l3	iconst_1
-	goto	l4 // ifeq
-l2	iconst_0
-l4	ifeq	l5 // iconst_0
-l1	iconst_1
+	ifeq	l3 // iconst_0
+l4	iconst_1
+	goto	l5 // ifeq
+l3	iconst_0
+l5	ifeq	l1 // iconst_0
+l2	iconst_1
 	goto	l6 // istore_1
-l5	iconst_0
+l1	iconst_0
 l6	istore_1
 	goto	l7 // iload_1
 	pop
@@ -380,21 +387,21 @@ l6	istore_1
 l7	iload_1
 	ireturn
   Labels:
-   	l3 = 146 // iconst_1
-   	l2 = 150 // iconst_0
-   	l4 = 151 // ifeq
-   	l1 = 154 // iconst_1
-   	l5 = 158 // iconst_0
-   	l6 = 159 // istore_1
-   	l7 = 166 // iload_1
+   	l4 = 161 // iconst_1
+   	l3 = 165 // iconst_0
+   	l5 = 166 // ifeq
+   	l2 = 169 // iconst_1
+   	l1 = 173 // iconst_0
+   	l6 = 174 // istore_1
+   	l7 = 181 // iload_1
   Exception table:
    from   to  target type
-     0   163   163   Class java/lang/SecurityException
+     0   178   178   Class java/lang/SecurityException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      168      0    this       Lscala/actors/scheduler/ThreadPoolConfig$;
-   0      167      1    exceptionResult2       Z
+   0      183      0    this       Lscala/actors/scheduler/ThreadPoolConfig$;
+   0      182      1    exceptionResult2       Z
 
 
 private final boolean gd1$1(int);
