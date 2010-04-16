@@ -172,17 +172,11 @@ class	java/lang/String
 Asciz	length;
 NameAndType	length:()I
 Method	java/lang/String.length:()I
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	intWrapper;
-Asciz	(I)Lscala/runtime/RichInt;;
-NameAndType	intWrapper:(I)Lscala/runtime/RichInt;
-Method	scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 Asciz	scala/runtime/RichInt;
 class	scala/runtime/RichInt
+Asciz	(I)V;
+NameAndType	"<init>":(I)V
+Method	scala/runtime/RichInt."<init>":(I)V
 Asciz	min;
 Asciz	(I)I;
 NameAndType	min:(I)I
@@ -476,27 +470,30 @@ public scala.collection.immutable.PagedSeq fromSource(scala.io.Source);
 public final int more$1(char[], int, int, scala.collection.Iterator, scala.runtime.ObjectRef);
   Signature: ([CIILscala/collection/Iterator;Lscala/runtime/ObjectRef;)I
   Code:
-   Stack=7, Locals=8, Args_size=6
+   Stack=6, Locals=9, Args_size=6
 l5	aload	5
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class java/lang/String
 	invokevirtual	Method java/lang/String.length:()I
 	iconst_0
 	if_icmpeq	l1 // aload
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload	5
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class java/lang/String
 	invokevirtual	Method java/lang/String.length:()I
-	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
+	istore	6
+	new	class scala/runtime/RichInt
+	dup
+	iload	6
+	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
 	iload_3
 	invokevirtual	Method scala/runtime/RichInt.min:(I)I
-	istore	7
+	istore	8
 	aload	5
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class java/lang/String
 	iconst_0
-	iload	7
+	iload	8
 	aload_1
 	iload_2
 	invokevirtual	Method java/lang/String.getChars:(II[CI)V
@@ -504,30 +501,33 @@ l5	aload	5
 	aload	5
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class java/lang/String
-	iload	7
+	iload	8
 	invokevirtual	Method java/lang/String.substring:(I)Ljava/lang/String;
 	putfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
-	iload	7
+	iload	8
 	iload_3
-	if_icmpne	l2 // getstatic
-	iload	7
+	if_icmpne	l2 // aload_0
+	iload	8
 	goto	l3 // ireturn
-l2	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	aload_0
+l2	aload_0
 	aload_1
 	iload_2
-	iload	7
+	iload	8
 	iadd
 	iload_3
-	iload	7
+	iload	8
 	isub
 	aload	4
 	aload	5
 	invokevirtual	Method more$1:([CIILscala/collection/Iterator;Lscala/runtime/ObjectRef;)I
-	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
+	istore	7
+	new	class scala/runtime/RichInt
+	dup
+	iload	7
+	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
 	iconst_0
 	invokevirtual	Method scala/runtime/RichInt.max:(I)I
-	iload	7
+	iload	8
 	iadd
 	goto	l3 // ireturn
 l1	aload	4
@@ -543,17 +543,17 @@ l4	iconst_m1
 l3	ireturn
   Labels:
    	l5 = 0 // aload
-   	l2 = 83 // getstatic
-   	l1 = 116 // aload
-   	l4 = 144 // iconst_m1
-   	l3 = 145 // ireturn
+   	l2 = 88 // aload_0
+   	l1 = 126 // aload
+   	l4 = 154 // iconst_m1
+   	l3 = 155 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      146      0    this       Lscala/collection/immutable/PagedSeq$;
-   0      146      1    data       [C
-   0      146      2    start       I
-   0      146      3    len       I
-   38      78      7    cnt       I
+   0      156      0    this       Lscala/collection/immutable/PagedSeq$;
+   0      156      1    data       [C
+   0      156      2    start       I
+   0      156      3    len       I
+   43      83      8    cnt       I
 
 
 private scala.collection.immutable.PagedSeq$();

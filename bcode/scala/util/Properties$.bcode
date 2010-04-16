@@ -41,12 +41,6 @@ NameAndType	scalaProps:(Lscala/util/PropertiesTrait;)Ljava/util/Properties;
 Method	scala/util/PropertiesTrait$class.scalaProps:(Lscala/util/PropertiesTrait;)Ljava/util/Properties;
 NameAndType	scalaProps:Ljava/util/Properties;
 Field	scala/util/Properties$.scalaProps:Ljava/util/Properties;
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 NameAndType	versionString:Ljava/lang/String;
 Field	scala/util/Properties$.versionString:Ljava/lang/String;
 NameAndType	copyrightString:Ljava/lang/String;
@@ -88,6 +82,9 @@ Asciz	(Ljava/lang/String;)Lscala/Option;;
 Asciz	(Lscala/util/PropertiesTrait;Ljava/lang/String;)Lscala/Option;;
 NameAndType	propOrNone:(Lscala/util/PropertiesTrait;Ljava/lang/String;)Lscala/Option;
 Method	scala/util/PropertiesTrait$class.propOrNone:(Lscala/util/PropertiesTrait;Ljava/lang/String;)Lscala/Option;
+Asciz	propOrFalse;
+NameAndType	propOrFalse:(Lscala/util/PropertiesTrait;Ljava/lang/String;)Z
+Method	scala/util/PropertiesTrait$class.propOrFalse:(Lscala/util/PropertiesTrait;Ljava/lang/String;)Z
 Asciz	setProp;
 NameAndType	setProp:(Lscala/util/PropertiesTrait;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 Method	scala/util/PropertiesTrait$class.setProp:(Lscala/util/PropertiesTrait;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
@@ -244,7 +241,7 @@ public java.lang.String propFilename();
 public java.util.Properties scalaProps();
   Signature: ()Ljava/util/Properties;
   Code:
-   Stack=3, Locals=2, Args_size=1
+   Stack=3, Locals=1, Args_size=1
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
@@ -253,14 +250,14 @@ public java.util.Properties scalaProps();
 	if_icmpne	l1 // aload_0
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
 	iand
 	iconst_0
-	if_icmpne	l2 // getstatic
+	if_icmpne	l2 // aload_0
 	aload_0
 	aload_0
 	invokestatic	Method scala/util/PropertiesTrait$class.scalaProps:(Lscala/util/PropertiesTrait;)Ljava/util/Properties;
@@ -271,22 +268,20 @@ public java.util.Properties scalaProps();
 	iconst_1
 	ior
 	putfield	Field bitmap$0:I
-l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_1
+l2	aload_0
 	monitorexit
 l1	aload_0
 	getfield	Field scalaProps:Ljava/util/Properties;
 	areturn
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l2 = 42 // getstatic
-   	l1 = 48 // aload_0
+   	l2 = 42 // aload_0
+   	l1 = 44 // aload_0
   Exception table:
    from   to  target type
-    14    48    53   any
+    14    44    49   any
 
 public java.lang.String versionString();
   Signature: ()Ljava/lang/String;
@@ -423,6 +418,21 @@ public scala.Option propOrNone(java.lang.String);
 	aload_1
 	invokestatic	Method scala/util/PropertiesTrait$class.propOrNone:(Lscala/util/PropertiesTrait;Ljava/lang/String;)Lscala/Option;
 	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/util/Properties$;
+   0      6      1    name       Ljava/lang/String;
+
+
+public boolean propOrFalse(java.lang.String);
+  Signature: (Ljava/lang/String;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/util/PropertiesTrait$class.propOrFalse:(Lscala/util/PropertiesTrait;Ljava/lang/String;)Z
+	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
@@ -755,7 +765,7 @@ public java.lang.Class pickJarBasedOn();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFB9 
+   00 FFFFFFB6 
 
 private scala.util.Properties$();
   Signature: ()V

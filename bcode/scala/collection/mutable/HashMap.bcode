@@ -2,7 +2,7 @@ Compiled from "HashMap.scala"
 public class scala.collection.mutable.HashMap extends java.lang.Object implements scala.collection.mutable.Map,scala.collection.mutable.MapLike,scala.collection.mutable.HashTable,scala.ScalaObject,java.io.Serializable
   SourceFile: "HashMap.scala"
   Signature: length = 0x2
-   04 04 
+   04 01 
   ScalaSig: length = 0x59F
    05 00 FFFFFF81 55 06 04 01 02 00 09 02 07 48 61 73 68
    4D 61 70 0A 02 03 04 01 07 6D 75 74 61 62 6C 65
@@ -896,8 +896,8 @@ NameAndType	MODULE$:Lscala/None$;
 Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/Some;
 class	scala/Some
-NameAndType	value:()Ljava/lang/Object;
-Method	scala/collection/mutable/DefaultEntry.value:()Ljava/lang/Object;
+NameAndType	value:Ljava/lang/Object;
+Field	scala/collection/mutable/DefaultEntry.value:Ljava/lang/Object;
 Asciz	<init>;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/Some."<init>":(Ljava/lang/Object;)V
@@ -910,9 +910,6 @@ NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Method	scala/collection/mutable/DefaultEntry."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 NameAndType	addEntry:(Lscala/collection/mutable/HashEntry;)V
 InterfaceMethod	scala/collection/mutable/HashTable.addEntry:(Lscala/collection/mutable/HashEntry;)V
-Asciz	value_$eq;
-NameAndType	value_$eq:(Ljava/lang/Object;)V
-Method	scala/collection/mutable/DefaultEntry.value_$eq:(Ljava/lang/Object;)V
 Asciz	v;
 Asciz	(TA;TB;)Lscala/Option<TB;>;;
 Asciz	update;
@@ -3363,7 +3360,7 @@ public int size();
 public scala.Option get(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/Option;
   Code:
-   Stack=3, Locals=4, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.findEntry:(Ljava/lang/Object;)Lscala/collection/mutable/HashEntry;
@@ -3371,9 +3368,9 @@ public scala.Option get(java.lang.Object);
 	astore_2
 	aload_2
 	dup
-	astore_3
+	pop
 	ifnull	l1 // getstatic
-	aload_3
+	aload_2
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // new
@@ -3382,7 +3379,7 @@ l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 l2	new	class scala/Some
 	dup
 	aload_2
-	invokevirtual	Method scala/collection/mutable/DefaultEntry.value:()Ljava/lang/Object;
+	getfield	Field scala/collection/mutable/DefaultEntry.value:Ljava/lang/Object;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 l3	areturn
   Labels:
@@ -3401,7 +3398,7 @@ l3	areturn
 public scala.Option put(java.lang.Object, java.lang.Object);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;)Lscala/Option;
   Code:
-   Stack=5, Locals=6, Args_size=3
+   Stack=5, Locals=5, Args_size=3
 	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.findEntry:(Ljava/lang/Object;)Lscala/collection/mutable/HashEntry;
@@ -3409,9 +3406,9 @@ public scala.Option put(java.lang.Object, java.lang.Object);
 	astore_3
 	aload_3
 	dup
-	astore	4
+	pop
 	ifnull	l1 // aload_0
-	aload	4
+	aload_3
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // aload_3
@@ -3425,30 +3422,30 @@ l1	aload_0
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	goto	l3 // areturn
 l2	aload_3
-	invokevirtual	Method scala/collection/mutable/DefaultEntry.value:()Ljava/lang/Object;
-	astore	5
+	getfield	Field scala/collection/mutable/DefaultEntry.value:Ljava/lang/Object;
+	astore	4
 	aload_3
 	aload_2
-	invokevirtual	Method scala/collection/mutable/DefaultEntry.value_$eq:(Ljava/lang/Object;)V
+	putfield	Field scala/collection/mutable/DefaultEntry.value:Ljava/lang/Object;
 	new	class scala/Some
 	dup
-	aload	5
+	aload	4
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 l3	areturn
   Labels:
-   	l1 = 27 // aload_0
-   	l2 = 48 // aload_3
-   	l3 = 68 // areturn
+   	l1 = 25 // aload_0
+   	l2 = 46 // aload_3
+   	l3 = 66 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      69      0    this       Lscala/collection/mutable/HashMap;
-   0      69      1    key       Ljava/lang/Object;
-   0      69      2    value       Ljava/lang/Object;
-   11      58      3    e       Lscala/collection/mutable/DefaultEntry;
-   54      14      5    v       Ljava/lang/Object;
+   0      67      0    this       Lscala/collection/mutable/HashMap;
+   0      67      1    key       Ljava/lang/Object;
+   0      67      2    value       Ljava/lang/Object;
+   11      56      3    e       Lscala/collection/mutable/DefaultEntry;
+   52      14      4    v       Ljava/lang/Object;
 
   Signature: length = 0x2
-   03 27 
+   03 24 
 
 public void update(java.lang.Object, java.lang.Object);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;)V
@@ -3468,7 +3465,7 @@ public void update(java.lang.Object, java.lang.Object);
    0      8      2    value       Ljava/lang/Object;
 
   Signature: length = 0x2
-   03 2B 
+   03 28 
 
 public scala.Option remove(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/Option;
@@ -3484,7 +3481,7 @@ public scala.Option remove(java.lang.Object);
 	new	class scala/Some
 	dup
 	aload_2
-	invokevirtual	Method scala/collection/mutable/DefaultEntry.value:()Ljava/lang/Object;
+	getfield	Field scala/collection/mutable/DefaultEntry.value:Ljava/lang/Object;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	goto	l2 // areturn
 l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
@@ -3513,12 +3510,12 @@ public scala.collection.mutable.HashMap $plus$eq(scala.Tuple2);
 	astore_2
 	aload_2
 	dup
-	astore_3
+	pop
 	ifnull	l1 // aload_0
-	aload_3
+	aload_2
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // aload_2
+	ifeq	l2 // aload_1
 l1	aload_0
 	new	class scala/collection/mutable/DefaultEntry
 	dup
@@ -3529,24 +3526,26 @@ l1	aload_0
 	invokespecial	Method scala/collection/mutable/DefaultEntry."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.addEntry:(Lscala/collection/mutable/HashEntry;)V
 	goto	l3 // aload_0
-l2	aload_2
-	aload_1
+l2	aload_1
 	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
-	invokevirtual	Method scala/collection/mutable/DefaultEntry.value_$eq:(Ljava/lang/Object;)V
+	astore_3
+	aload_2
+	aload_3
+	putfield	Field scala/collection/mutable/DefaultEntry.value:Ljava/lang/Object;
 l3	aload_0
 	areturn
   Labels:
    	l1 = 28 // aload_0
-   	l2 = 52 // aload_2
-   	l3 = 60 // aload_0
+   	l2 = 52 // aload_1
+   	l3 = 62 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      62      0    this       Lscala/collection/mutable/HashMap;
-   0      62      1    kv       Lscala/Tuple2;
-   14      47      2    e       Lscala/collection/mutable/DefaultEntry;
+   0      64      0    this       Lscala/collection/mutable/HashMap;
+   0      64      1    kv       Lscala/Tuple2;
+   14      49      2    e       Lscala/collection/mutable/DefaultEntry;
 
   Signature: length = 0x2
-   03 38 
+   03 35 
 
 public scala.collection.mutable.HashMap $minus$eq(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/mutable/HashMap;
@@ -3565,7 +3564,7 @@ public scala.collection.mutable.HashMap $minus$eq(java.lang.Object);
    0      10      1    key       Ljava/lang/Object;
 
   Signature: length = 0x2
-   03 3A 
+   03 37 
 
 public scala.collection.Iterator iterator();
   Signature: ()Lscala/collection/Iterator;
@@ -3581,7 +3580,7 @@ public scala.collection.Iterator iterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   03 48 
+   03 45 
 
 public void foreach(scala.Function1);
   Signature: (Lscala/Function1;)V
@@ -3602,7 +3601,7 @@ public void foreach(scala.Function1);
    0      16      1    f$1       Lscala/Function1;
 
   Signature: length = 0x2
-   03 52 
+   03 4F 
 
 public scala.collection.Set keySet();
   Signature: ()Lscala/collection/Set;
@@ -3615,7 +3614,7 @@ public scala.collection.Set keySet();
 	areturn
   Labels:
   Signature: length = 0x2
-   03 58 
+   03 55 
 
 public scala.collection.Iterable valuesIterable();
   Signature: ()Lscala/collection/Iterable;
@@ -3628,7 +3627,7 @@ public scala.collection.Iterable valuesIterable();
 	areturn
   Labels:
   Signature: length = 0x2
-   03 5D 
+   03 5A 
 
 public scala.collection.Iterator keysIterator();
   Signature: ()Lscala/collection/Iterator;
@@ -3641,7 +3640,7 @@ public scala.collection.Iterator keysIterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   03 62 
+   03 5F 
 
 public scala.collection.Iterator valuesIterator();
   Signature: ()Lscala/collection/Iterator;
@@ -3654,7 +3653,7 @@ public scala.collection.Iterator valuesIterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   03 67 
+   03 64 
 
 private void writeObject(java.io.ObjectOutputStream);
   Signature: (Ljava/io/ObjectOutputStream;)V

@@ -2,7 +2,7 @@ Compiled from "LinkedHashMap.scala"
 public class scala.collection.mutable.LinkedHashMap extends java.lang.Object implements scala.collection.mutable.Map,scala.collection.mutable.MapLike,scala.collection.mutable.HashTable,scala.ScalaObject,java.io.Serializable
   SourceFile: "LinkedHashMap.scala"
   Signature: length = 0x2
-   04 23 
+   04 20 
   ScalaSig: length = 0x634
    05 00 FFFFFF81 61 07 05 01 02 FFFFFF88 02 09 01 0D 4C 69 6E
    6B 65 64 48 61 73 68 4D 61 70 0A 02 03 04 01 07
@@ -928,8 +928,8 @@ NameAndType	MODULE$:Lscala/None$;
 Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/Some;
 class	scala/Some
-NameAndType	value:()Ljava/lang/Object;
-Method	scala/collection/mutable/LinkedEntry.value:()Ljava/lang/Object;
+NameAndType	value:Ljava/lang/Object;
+Field	scala/collection/mutable/LinkedEntry.value:Ljava/lang/Object;
 Asciz	<init>;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/Some."<init>":(Ljava/lang/Object;)V
@@ -943,9 +943,6 @@ InterfaceMethod	scala/collection/mutable/HashTable.addEntry:(Lscala/collection/m
 Asciz	scala$collection$mutable$LinkedHashMap$$updateLinkedEntries;
 NameAndType	scala$collection$mutable$LinkedHashMap$$updateLinkedEntries:(Lscala/collection/mutable/LinkedEntry;)V
 Method	scala/collection/mutable/LinkedHashMap.scala$collection$mutable$LinkedHashMap$$updateLinkedEntries:(Lscala/collection/mutable/LinkedEntry;)V
-Asciz	value_$eq;
-NameAndType	value_$eq:(Ljava/lang/Object;)V
-Method	scala/collection/mutable/LinkedEntry.value_$eq:(Ljava/lang/Object;)V
 Asciz	v;
 Asciz	(TA;TB;)Lscala/Option<TB;>;;
 NameAndType	firstEntry:()Lscala/collection/mutable/LinkedEntry;
@@ -1005,8 +1002,8 @@ class	scala/collection/mutable/LinkedHashMap$$anon$3
 Method	scala/collection/mutable/LinkedHashMap$$anon$3."<init>":(Lscala/collection/mutable/LinkedHashMap;)V
 Asciz	()Lscala/collection/Iterator<TB;>;;
 Asciz	foreach;
-NameAndType	key:()Ljava/lang/Object;
-Method	scala/collection/mutable/LinkedEntry.key:()Ljava/lang/Object;
+NameAndType	key:Ljava/lang/Object;
+Field	scala/collection/mutable/LinkedEntry.key:Ljava/lang/Object;
 Method	scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Asciz	scala/Function1;
 class	scala/Function1
@@ -3480,7 +3477,7 @@ public void lastEntry_$eq(scala.collection.mutable.LinkedEntry);
 public scala.Option get(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/Option;
   Code:
-   Stack=3, Locals=4, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.findEntry:(Ljava/lang/Object;)Lscala/collection/mutable/HashEntry;
@@ -3488,9 +3485,9 @@ public scala.Option get(java.lang.Object);
 	astore_2
 	aload_2
 	dup
-	astore_3
+	pop
 	ifnull	l1 // getstatic
-	aload_3
+	aload_2
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // new
@@ -3499,7 +3496,7 @@ l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 l2	new	class scala/Some
 	dup
 	aload_2
-	invokevirtual	Method scala/collection/mutable/LinkedEntry.value:()Ljava/lang/Object;
+	getfield	Field scala/collection/mutable/LinkedEntry.value:Ljava/lang/Object;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 l3	areturn
   Labels:
@@ -3518,60 +3515,60 @@ l3	areturn
 public scala.Option put(java.lang.Object, java.lang.Object);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;)Lscala/Option;
   Code:
-   Stack=4, Locals=7, Args_size=3
+   Stack=4, Locals=6, Args_size=3
 	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.findEntry:(Ljava/lang/Object;)Lscala/collection/mutable/HashEntry;
 	checkcast	class scala/collection/mutable/LinkedEntry
-	astore_3
-	aload_3
-	dup
 	astore	4
+	aload	4
+	dup
+	pop
 	ifnull	l1 // new
 	aload	4
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // aload_3
+	ifeq	l2 // aload
 l1	new	class scala/collection/mutable/LinkedEntry
 	dup
 	aload_1
 	aload_2
 	invokespecial	Method scala/collection/mutable/LinkedEntry."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-	astore	5
+	astore_3
 	aload_0
-	aload	5
+	aload_3
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.addEntry:(Lscala/collection/mutable/HashEntry;)V
 	aload_0
-	aload	5
+	aload_3
 	invokevirtual	Method scala$collection$mutable$LinkedHashMap$$updateLinkedEntries:(Lscala/collection/mutable/LinkedEntry;)V
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	goto	l3 // areturn
-l2	aload_3
-	invokevirtual	Method scala/collection/mutable/LinkedEntry.value:()Ljava/lang/Object;
-	astore	6
-	aload_3
+l2	aload	4
+	getfield	Field scala/collection/mutable/LinkedEntry.value:Ljava/lang/Object;
+	astore	5
+	aload	4
 	aload_2
-	invokevirtual	Method scala/collection/mutable/LinkedEntry.value_$eq:(Ljava/lang/Object;)V
+	putfield	Field scala/collection/mutable/LinkedEntry.value:Ljava/lang/Object;
 	new	class scala/Some
 	dup
-	aload	6
+	aload	5
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 l3	areturn
   Labels:
-   	l1 = 27 // new
-   	l2 = 58 // aload_3
+   	l1 = 28 // new
+   	l2 = 56 // aload
    	l3 = 78 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      79      0    this       Lscala/collection/mutable/LinkedHashMap;
    0      79      1    key       Ljava/lang/Object;
    0      79      2    value       Ljava/lang/Object;
-   11      68      3    e       Lscala/collection/mutable/LinkedEntry;
-   38      17      5    e       Lscala/collection/mutable/LinkedEntry;
-   64      14      6    v       Ljava/lang/Object;
+   38      15      3    e       Lscala/collection/mutable/LinkedEntry;
+   12      67      4    e       Lscala/collection/mutable/LinkedEntry;
+   63      15      5    v       Ljava/lang/Object;
 
   Signature: length = 0x2
-   03 41 
+   03 3E 
 
 public final void scala$collection$mutable$LinkedHashMap$$updateLinkedEntries(scala.collection.mutable.LinkedEntry);
   Signature: (Lscala/collection/mutable/LinkedEntry;)V
@@ -3654,7 +3651,7 @@ l5	aload_2
 l6	new	class scala/Some
 	dup
 	aload_2
-	invokevirtual	Method scala/collection/mutable/LinkedEntry.value:()Ljava/lang/Object;
+	getfield	Field scala/collection/mutable/LinkedEntry.value:Ljava/lang/Object;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 l2	areturn
   Labels:
@@ -3693,7 +3690,7 @@ public scala.collection.mutable.LinkedHashMap $plus$eq(scala.Tuple2);
    0      15      1    kv       Lscala/Tuple2;
 
   Signature: length = 0x2
-   03 64 
+   03 61 
 
 public scala.collection.mutable.LinkedHashMap $minus$eq(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/mutable/LinkedHashMap;
@@ -3712,7 +3709,7 @@ public scala.collection.mutable.LinkedHashMap $minus$eq(java.lang.Object);
    0      8      1    key       Ljava/lang/Object;
 
   Signature: length = 0x2
-   03 68 
+   03 65 
 
 public scala.collection.Iterator iterator();
   Signature: ()Lscala/collection/Iterator;
@@ -3725,7 +3722,7 @@ public scala.collection.Iterator iterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   03 6F 
+   03 6C 
 
 public scala.collection.Iterator keysIterator();
   Signature: ()Lscala/collection/Iterator;
@@ -3738,7 +3735,7 @@ public scala.collection.Iterator keysIterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   03 74 
+   03 71 
 
 public scala.collection.Iterator valuesIterator();
   Signature: ()Lscala/collection/Iterator;
@@ -3751,7 +3748,7 @@ public scala.collection.Iterator valuesIterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   03 79 
+   03 76 
 
 public void foreach(scala.Function1);
   Signature: (Lscala/Function1;)V
@@ -3766,9 +3763,9 @@ l2	aload_2
 	new	class scala/Tuple2
 	dup
 	aload_2
-	invokevirtual	Method scala/collection/mutable/LinkedEntry.key:()Ljava/lang/Object;
+	getfield	Field scala/collection/mutable/LinkedEntry.key:Ljava/lang/Object;
 	aload_2
-	invokevirtual	Method scala/collection/mutable/LinkedEntry.value:()Ljava/lang/Object;
+	getfield	Field scala/collection/mutable/LinkedEntry.value:Ljava/lang/Object;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	pop
@@ -3787,7 +3784,7 @@ l1	return
    5      35      2    cur       Lscala/collection/mutable/LinkedEntry;
 
   Signature: length = 0x2
-   03 FFFFFF83 
+   03 FFFFFF80 
 
 public void clear();
   Signature: ()V
@@ -3796,8 +3793,6 @@ public void clear();
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/HashTable.clearTable:()V
 	aload_0
-	aconst_null
-	pop
 	aconst_null
 	invokevirtual	Method firstEntry_$eq:(Lscala/collection/mutable/LinkedEntry;)V
 	return
@@ -4203,12 +4198,8 @@ public scala.collection.mutable.LinkedHashMap();
 	invokestatic	Method scala/collection/mutable/HashTable$class.$init$:(Lscala/collection/mutable/HashTable;)V
 	aload_0
 	aconst_null
-	pop
-	aconst_null
 	putfield	Field firstEntry:Lscala/collection/mutable/LinkedEntry;
 	aload_0
-	aconst_null
-	pop
 	aconst_null
 	putfield	Field lastEntry:Lscala/collection/mutable/LinkedEntry;
 	return

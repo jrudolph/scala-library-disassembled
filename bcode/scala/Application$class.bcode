@@ -20,21 +20,18 @@ Field	scala/util/Properties$.MODULE$:Lscala/util/Properties$;
 Asciz	LineNumberTable;
 Asciz	scala.time;
 String	scala.time
-Asciz	scala/util/PropertiesTrait;
-class	scala/util/PropertiesTrait
+Asciz	scala/util/PropertiesTrait$class;
+class	scala/util/PropertiesTrait$class
 Asciz	propIsSet;
-Asciz	(Ljava/lang/String;)Z;
-NameAndType	propIsSet:(Ljava/lang/String;)Z
-InterfaceMethod	scala/util/PropertiesTrait.propIsSet:(Ljava/lang/String;)Z
-Asciz	scala/compat/Platform$;
-class	scala/compat/Platform$
-Asciz	Lscala/compat/Platform$;;
-NameAndType	MODULE$:Lscala/compat/Platform$;
-Field	scala/compat/Platform$.MODULE$:Lscala/compat/Platform$;
-Asciz	currentTime;
+Asciz	(Lscala/util/PropertiesTrait;Ljava/lang/String;)Z;
+NameAndType	propIsSet:(Lscala/util/PropertiesTrait;Ljava/lang/String;)Z
+Method	scala/util/PropertiesTrait$class.propIsSet:(Lscala/util/PropertiesTrait;Ljava/lang/String;)Z
+Asciz	java/lang/System;
+class	java/lang/System
+Asciz	currentTimeMillis;
 Asciz	()J;
-NameAndType	currentTime:()J
-Method	scala/compat/Platform$.currentTime:()J
+NameAndType	currentTimeMillis:()J
+Method	java/lang/System.currentTimeMillis:()J
 Asciz	scala/Application;
 class	scala/Application
 Asciz	executionStart;
@@ -69,10 +66,16 @@ Asciz	toString;
 Asciz	()Ljava/lang/String;;
 NameAndType	toString:()Ljava/lang/String;
 Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+Asciz	out;
+Asciz	()Ljava/io/PrintStream;;
+NameAndType	out:()Ljava/io/PrintStream;
+Method	scala/Console$.out:()Ljava/io/PrintStream;
+Asciz	java/io/PrintStream;
+class	java/io/PrintStream
 Asciz	println;
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	println:(Ljava/lang/Object;)V
-Method	scala/Console$.println:(Ljava/lang/Object;)V
+Method	java/io/PrintStream.println:(Ljava/lang/Object;)V
 Asciz	$this;
 Asciz	Lscala/Application;;
 Asciz	args;
@@ -82,6 +85,14 @@ Asciz	J;
 Asciz	LocalVariableTable;
 Asciz	$init$;
 Asciz	(Lscala/Application;)V;
+Asciz	scala/compat/Platform$;
+class	scala/compat/Platform$
+Asciz	Lscala/compat/Platform$;;
+NameAndType	MODULE$:Lscala/compat/Platform$;
+Field	scala/compat/Platform$.MODULE$:Lscala/compat/Platform$;
+Asciz	currentTime;
+NameAndType	currentTime:()J
+Method	scala/compat/Platform$.currentTime:()J
 Asciz	scala$Application$_setter_$executionStart_$eq;
 Asciz	(J)V;
 NameAndType	scala$Application$_setter_$executionStart_$eq:(J)V
@@ -96,38 +107,46 @@ class	java/lang/Object
 public static void main(scala.Application, java.lang.String[]);
   Signature: (Lscala/Application;[Ljava/lang/String;)V
   Code:
-   Stack=4, Locals=4, Args_size=2
+   Stack=4, Locals=8, Args_size=2
 	getstatic	Field scala/util/Properties$.MODULE$:Lscala/util/Properties$;
 	ldc	String scala.time
-	invokeinterface	InterfaceMethod scala/util/PropertiesTrait.propIsSet:(Ljava/lang/String;)Z
+	astore_3
+	astore_2
+	aload_2
+	aload_3
+	invokestatic	Method scala/util/PropertiesTrait$class.propIsSet:(Lscala/util/PropertiesTrait;Ljava/lang/String;)Z
 	ifeq	l1 // return
-	getstatic	Field scala/compat/Platform$.MODULE$:Lscala/compat/Platform$;
-	invokevirtual	Method scala/compat/Platform$.currentTime:()J
+	invokestatic	Method java/lang/System.currentTimeMillis:()J
 	aload_0
 	invokeinterface	InterfaceMethod scala/Application.executionStart:()J
 	lsub
-	lstore_2
+	lstore	4
 	getstatic	Field scala/Console$.MODULE$:Lscala/Console$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc	String [total 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	lload_2
+	lload	4
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToLong:(J)Ljava/lang/Long;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc	String ms]
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokevirtual	Method scala/Console$.println:(Ljava/lang/Object;)V
+	astore	7
+	astore	6
+	aload	6
+	invokevirtual	Method scala/Console$.out:()Ljava/io/PrintStream;
+	aload	7
+	invokevirtual	Method java/io/PrintStream.println:(Ljava/lang/Object;)V
 l1	return
   Labels:
-   	l1 = 60 // return
+   	l1 = 72 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      61      0    $this       Lscala/Application;
-   0      61      1    args       [Ljava/lang/String;
-   27      33      2    total       J
+   0      73      0    $this       Lscala/Application;
+   0      73      1    args       [Ljava/lang/String;
+   27      45      4    total       J
 
 
 public static void $init$(scala.Application);

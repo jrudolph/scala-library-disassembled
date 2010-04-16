@@ -2,7 +2,7 @@ Compiled from "Source.scala"
 public class scala.io.Source$LineIterator extends java.lang.Object implements scala.collection.Iterator,scala.ScalaObject
   SourceFile: "Source.scala"
   Signature: length = 0x2
-   01 FFFFFFCA 
+   01 FFFFFFC5 
   Scala: length = 0x
    
   InnerClass: 
@@ -354,12 +354,6 @@ NameAndType	buffered:()Lscala/collection/BufferedIterator;
 InterfaceMethod	scala/collection/Iterator.buffered:()Lscala/collection/BufferedIterator;
 NameAndType	iter:Lscala/collection/BufferedIterator;
 Field	scala/io/Source$LineIterator.iter:Lscala/collection/BufferedIterator;
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	()Lscala/collection/BufferedIterator<Ljava/lang/Character;>;;
 Asciz	()Lscala/Function1;;
 NameAndType	isNewline:Lscala/Function1;
@@ -406,10 +400,10 @@ NameAndType	append:(C)Lscala/collection/mutable/StringBuilder;
 Method	scala/collection/mutable/StringBuilder.append:(C)Lscala/collection/mutable/StringBuilder;
 Asciz	ch;
 Asciz	C;
-Asciz	clear;
-Asciz	()V;
-NameAndType	clear:()V
-Method	scala/collection/mutable/StringBuilder.clear:()V
+Asciz	setLength;
+Asciz	(I)V;
+NameAndType	setLength:(I)V
+Method	scala/collection/mutable/StringBuilder.setLength:(I)V
 NameAndType	getc:()Z
 Method	scala/io/Source$LineIterator.getc:()Z
 NameAndType	toString:()Ljava/lang/String;
@@ -424,6 +418,7 @@ NameAndType	scala$io$Source$LineIterator$$separator:Ljava/lang/String;
 Field	scala/io/Source$LineIterator.scala$io$Source$LineIterator$$separator:Ljava/lang/String;
 Asciz	java/lang/NullPointerException;
 class	java/lang/NullPointerException
+Asciz	()V;
 NameAndType	"<init>":()V
 Method	java/lang/NullPointerException."<init>":()V
 Asciz	java/lang/Object;
@@ -1440,7 +1435,7 @@ public int sliding$default$2();
 public scala.collection.BufferedIterator iter();
   Signature: ()Lscala/collection/BufferedIterator;
   Code:
-   Stack=3, Locals=2, Args_size=1
+   Stack=3, Locals=1, Args_size=1
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
@@ -1449,14 +1444,14 @@ public scala.collection.BufferedIterator iter();
 	if_icmpne	l1 // aload_0
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
 	iand
 	iconst_0
-	if_icmpne	l2 // getstatic
+	if_icmpne	l2 // aload_0
 	aload_0
 	aload_0
 	invokevirtual	Method scala$io$Source$LineIterator$$$outer:()Lscala/io/Source;
@@ -1469,24 +1464,22 @@ public scala.collection.BufferedIterator iter();
 	iconst_1
 	ior
 	putfield	Field bitmap$0:I
-l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_1
+l2	aload_0
 	monitorexit
 l1	aload_0
 	getfield	Field iter:Lscala/collection/BufferedIterator;
 	areturn
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l2 = 50 // getstatic
-   	l1 = 56 // aload_0
+   	l2 = 50 // aload_0
+   	l1 = 52 // aload_0
   Exception table:
    from   to  target type
-    14    56    61   any
+    14    52    57   any
   Signature: length = 0x2
-   01 5A 
+   01 54 
 
 public scala.Function1 isNewline();
   Signature: ()Lscala/Function1;
@@ -1497,7 +1490,7 @@ public scala.Function1 isNewline();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 5E 
+   01 58 
 
 private boolean getc();
   Signature: ()Z
@@ -1553,10 +1546,13 @@ public boolean hasNext();
 public java.lang.String next();
   Signature: ()Ljava/lang/String;
   Code:
-   Stack=1, Locals=1, Args_size=1
+   Stack=2, Locals=2, Args_size=1
 	aload_0
 	getfield	Field sb:Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.clear:()V
+	astore_1
+	aload_1
+	iconst_0
+	invokevirtual	Method scala/collection/mutable/StringBuilder.setLength:(I)V
 l1	aload_0
 	invokespecial	Method getc:()Z
 	ifne	l1 // aload_0
@@ -1565,7 +1561,11 @@ l1	aload_0
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	areturn
   Labels:
-   	l1 = 7 // aload_0
+   	l1 = 10 // aload_0
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      25      0    this       Lscala/io/Source$LineIterator;
+
 
 public scala.io.Source scala$io$Source$LineIterator$$$outer();
   Signature: ()Lscala/io/Source;

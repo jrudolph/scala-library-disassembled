@@ -147,9 +147,9 @@ Method	java/lang/ref/WeakReference.get:()Ljava/lang/Object;
 Asciz	unlock;
 NameAndType	unlock:()V
 Method	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock.unlock:()V
-Asciz	exceptionResult1;
 Asciz	reference;
 Asciz	Ljava/lang/ref/WeakReference;;
+Asciz	exceptionResult1;
 NameAndType	wlock:()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
 Method	scala/UniquenessCache.wlock:()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
 Asciz	java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
@@ -168,8 +168,8 @@ Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 Method	java/util/WeakHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 Method	java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.unlock:()V
-Asciz	exceptionResult2;
 Asciz	sym;
+Asciz	exceptionResult2;
 NameAndType	"<init>":()V
 Method	java/lang/Object."<init>":()V
 Asciz	java/lang/ref/ReferenceQueue;
@@ -277,16 +277,16 @@ public abstract scala.Option keyFromValue(java.lang.Object);
 public java.lang.Object apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
   Code:
-   Stack=2, Locals=4, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	aload_1
 	invokespecial	Method cached$1:(Ljava/lang/Object;)Ljava/lang/Object;
 	astore_2
 	aload_2
 	dup
-	astore_3
+	pop
 	ifnull	l1 // aload_0
-	aload_3
+	aload_2
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // aload_2
@@ -329,124 +329,118 @@ public scala.Option unapply(java.lang.Object);
 private final java.lang.Object cached$1(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
   Code:
-   Stack=2, Locals=6, Args_size=2
+   Stack=2, Locals=5, Args_size=2
 	aload_0
 	invokespecial	Method rlock:()Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
 	invokevirtual	Method java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock.lock:()V
-	aconst_null
-	astore_2
 	aload_0
 	invokespecial	Method map:()Ljava/util/WeakHashMap;
 	aload_1
 	invokevirtual	Method java/util/WeakHashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
 	checkcast	class java/lang/ref/WeakReference
-	astore	4
-	aload	4
+	astore_2
+	aload_2
 	dup
-	astore	5
+	pop
 	ifnull	l1 // aconst_null
-	aload	5
+	aload_2
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // aload
+	ifeq	l2 // aload_2
 l1	aconst_null
-	pop
-	aconst_null
-	goto	l3 // astore_2
-l2	aload	4
+	goto	l3 // astore_3
+l2	aload_2
 	invokevirtual	Method java/lang/ref/WeakReference.get:()Ljava/lang/Object;
-l3	astore_2
-	aload_0
-	invokespecial	Method rlock:()Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
-	invokevirtual	Method java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock.unlock:()V
-	aload_2
-	areturn
-	astore_3
+l3	astore_3
 	aload_0
 	invokespecial	Method rlock:()Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
 	invokevirtual	Method java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock.unlock:()V
 	aload_3
+	areturn
+	astore	4
+	aload_0
+	invokespecial	Method rlock:()Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
+	invokevirtual	Method java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock.unlock:()V
+	aload	4
 	athrow
   Labels:
-   	l1 = 39 // aconst_null
-   	l2 = 45 // aload
-   	l3 = 50 // astore_2
+   	l1 = 33 // aconst_null
+   	l2 = 37 // aload_2
+   	l3 = 41 // astore_3
   Exception table:
    from   to  target type
-     9    51    60   any
+     7    42    51   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      70      0    this       Lscala/UniquenessCache;
-   9      50      2    exceptionResult1       Ljava/lang/Object;
-   60      10      2    exceptionResult1       Ljava/lang/Object;
-   22      29      4    reference       Ljava/lang/ref/WeakReference;
+   0      63      0    this       Lscala/UniquenessCache;
+   19      23      2    reference       Ljava/lang/ref/WeakReference;
+   7      43      3    exceptionResult1       Ljava/lang/Object;
+   51      12      3    exceptionResult1       Ljava/lang/Object;
 
 
 private final java.lang.Object updateCache$1(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
   Code:
-   Stack=6, Locals=7, Args_size=2
+   Stack=6, Locals=6, Args_size=2
 	aload_0
 	invokespecial	Method wlock:()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
 	invokevirtual	Method java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.lock:()V
-	aconst_null
-	astore_2
 	aload_0
 	aload_1
 	invokespecial	Method cached$1:(Ljava/lang/Object;)Ljava/lang/Object;
-	astore	4
-	aload	4
+	astore_3
+	aload_3
 	dup
-	astore	5
+	pop
 	ifnull	l1 // aload_0
-	aload	5
+	aload_3
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // aload
+	ifeq	l2 // aload_3
 l1	aload_0
 	aload_1
 	invokevirtual	Method valueFromKey:(Ljava/lang/Object;)Ljava/lang/Object;
-	astore	6
+	astore_2
 	aload_0
 	invokespecial	Method map:()Ljava/util/WeakHashMap;
 	aload_1
 	new	class java/lang/ref/WeakReference
 	dup
-	aload	6
+	aload_2
 	aload_0
 	invokespecial	Method queue:()Ljava/lang/ref/ReferenceQueue;
 	invokespecial	Method java/lang/ref/WeakReference."<init>":(Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
 	invokevirtual	Method java/util/WeakHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 	pop
-	aload	6
-	goto	l3 // astore_2
-l2	aload	4
-l3	astore_2
-	aload_0
-	invokespecial	Method wlock:()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
-	invokevirtual	Method java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.unlock:()V
 	aload_2
-	areturn
-	astore_3
+	goto	l3 // astore
+l2	aload_3
+l3	astore	4
 	aload_0
 	invokespecial	Method wlock:()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
 	invokevirtual	Method java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.unlock:()V
-	aload_3
+	aload	4
+	areturn
+	astore	5
+	aload_0
+	invokespecial	Method wlock:()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
+	invokevirtual	Method java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.unlock:()V
+	aload	5
 	athrow
   Labels:
-   	l1 = 33 // aload_0
-   	l2 = 67 // aload
-   	l3 = 69 // astore_2
+   	l1 = 27 // aload_0
+   	l2 = 58 // aload_3
+   	l3 = 59 // astore
   Exception table:
    from   to  target type
-     9    70    79   any
+     7    61    71   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      89      0    this       Lscala/UniquenessCache;
-   9      69      2    exceptionResult2       Ljava/lang/Object;
-   79      10      2    exceptionResult2       Ljava/lang/Object;
-   16      54      4    res       Ljava/lang/Object;
-   40      24      6    sym       Ljava/lang/Object;
+   0      83      0    this       Lscala/UniquenessCache;
+   33      22      2    sym       Ljava/lang/Object;
+   13      48      3    res       Ljava/lang/Object;
+   7      63      4    exceptionResult2       Ljava/lang/Object;
+   71      12      4    exceptionResult2       Ljava/lang/Object;
 
 
 public scala.UniquenessCache();

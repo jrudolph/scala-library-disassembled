@@ -2,7 +2,7 @@ Compiled from "List.scala"
 public final class scala.collection.immutable.$colon$colon extends scala.collection.immutable.List implements scala.ScalaObject,scala.Product,java.io.Serializable
   SourceFile: "List.scala"
   Signature: length = 0x2
-   00 FFFFFFA2 
+   00 FFFFFF98 
   ScalaSig: length = 0x566
    05 00 FFFFFF81 41 06 04 01 02 42 09 02 0C 24 63 6F 6C
    6F 6E 24 63 6F 6C 6F 6E 0A 02 03 04 01 09 69 6D
@@ -194,8 +194,6 @@ class	scala/collection/immutable/Nil$
 Asciz	Lscala/collection/immutable/Nil$;;
 NameAndType	MODULE$:Lscala/collection/immutable/Nil$;
 Field	scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
-NameAndType	tl_$eq:(Lscala/collection/immutable/List;)V
-Method	scala/collection/immutable/$colon$colon.tl_$eq:(Lscala/collection/immutable/List;)V
 Asciz	<init>;
 Asciz	(Ljava/lang/Object;Lscala/collection/immutable/List;)V;
 NameAndType	"<init>":(Ljava/lang/Object;Lscala/collection/immutable/List;)V
@@ -206,10 +204,9 @@ NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/MatchError."<init>":(Ljava/lang/Object;)V
 Asciz	in;
 Asciz	Ljava/io/ObjectInputStream;;
+Asciz	list;
 Asciz	current;
 Asciz	temp25;
-Asciz	a;
-Asciz	list;
 Asciz	copy;
 Asciz	(Ljava/lang/Object;Lscala/collection/immutable/List;)Lscala/collection/immutable/$colon$colon;;
 Asciz	hd;
@@ -237,17 +234,10 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
-NameAndType	tl$1:()Lscala/collection/immutable/List;
-Method	scala/collection/immutable/$colon$colon.tl$1:()Lscala/collection/immutable/List;
-NameAndType	hd$1:()Ljava/lang/Object;
-Method	scala/collection/immutable/$colon$colon.hd$1:()Ljava/lang/Object;
-Asciz	temp27;
-Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	tl$1
 String	hd$1
-Asciz	temp28;
 Asciz	()Lscala/collection/LinearSeqLike;;
 NameAndType	tail:()Lscala/collection/immutable/List;
 Method	scala/collection/immutable/$colon$colon.tail:()Lscala/collection/immutable/List;
@@ -267,12 +257,12 @@ class	java/io/Serializable
 public static final long serialVersionUID;
   Signature: J
 
-private scala.collection.immutable.List tl;
+public scala.collection.immutable.List tl;
   Signature: Lscala/collection/immutable/List;
   Signature: length = 0x2
    00 10 
 
-private java.lang.Object scala$collection$immutable$$colon$colon$$hd;
+public java.lang.Object scala$collection$immutable$$colon$colon$$hd;
   Signature: Ljava/lang/Object;
 
 public static {};
@@ -410,14 +400,14 @@ l1	aload_1
 private void readObject(java.io.ObjectInputStream);
   Signature: (Ljava/io/ObjectInputStream;)V
   Code:
-   Stack=4, Locals=8, Args_size=2
+   Stack=4, Locals=7, Args_size=2
 	aload_0
 	aload_1
 	invokevirtual	Method java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
 	invokespecial	Method scala$collection$immutable$$colon$colon$$hd_$eq:(Ljava/lang/Object;)V
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
-	invokevirtual	Method scala$collection$immutable$$colon$colon$$hd:()Ljava/lang/Object;
+	getfield	Field scala$collection$immutable$$colon$colon$$hd:Ljava/lang/Object;
 	getstatic	Field scala/collection/immutable/ListSerializeEnd$.MODULE$:Lscala/collection/immutable/ListSerializeEnd$;
 	astore_2
 	dup
@@ -434,45 +424,43 @@ l2	iconst_0
 l3	iconst_1
 l4	invokevirtual	Method scala/Predef$.assert:(Z)V
 	aload_0
-	astore_3
+	astore	5
 l9	aload_1
 	invokevirtual	Method java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
-	astore	4
+	astore	6
 	getstatic	Field scala/collection/immutable/ListSerializeEnd$.MODULE$:Lscala/collection/immutable/ListSerializeEnd$;
-	aload	4
-	astore	5
 	dup
 	ifnonnull	l5 // aload
 	pop
-	aload	5
-	ifnull	l6 // aload_3
+	aload	6
+	ifnull	l6 // getstatic
 	goto	l7 // aload
-l5	aload	5
+l5	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l7 // aload
-l6	aload_3
-	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
-	invokevirtual	Method tl_$eq:(Lscala/collection/immutable/List;)V
+l6	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+	astore_3
+	aload	5
+	aload_3
+	putfield	Field tl:Lscala/collection/immutable/List;
 	return
-l7	aload	4
+l7	aload	6
 	ifnull	l8 // new
-	aload	4
-	astore	6
 	new	class scala/collection/immutable/$colon$colon
 	dup
 	aload	6
 	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 	invokespecial	Method "<init>":(Ljava/lang/Object;Lscala/collection/immutable/List;)V
-	astore	7
-	aload_3
-	aload	7
-	invokevirtual	Method tl_$eq:(Lscala/collection/immutable/List;)V
-	aload	7
-	astore_3
+	astore	4
+	aload	5
+	aload	4
+	putfield	Field tl:Lscala/collection/immutable/List;
+	aload	4
+	astore	5
 	goto	l9 // aload_1
 l8	new	class scala/MatchError
 	dup
-	aload	4
+	aload	6
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
@@ -480,19 +468,18 @@ l8	new	class scala/MatchError
    	l2 = 38 // iconst_0
    	l3 = 42 // iconst_1
    	l4 = 43 // invokevirtual
-   	l9 = 48 // aload_1
-   	l5 = 74 // aload
-   	l6 = 82 // aload_3
+   	l9 = 49 // aload_1
+   	l5 = 71 // aload
+   	l6 = 79 // getstatic
    	l7 = 90 // aload
-   	l8 = 125 // new
+   	l8 = 123 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      135      0    this       Lscala/collection/immutable/$colon$colon;
-   0      135      1    in       Ljava/io/ObjectInputStream;
-   48      87      3    current       Lscala/collection/immutable/$colon$colon;
-   54      81      4    temp25       Ljava/lang/Object;
-   99      23      6    a       Ljava/lang/Object;
-   113      9      7    list       Lscala/collection/immutable/$colon$colon;
+   0      133      0    this       Lscala/collection/immutable/$colon$colon;
+   0      133      1    in       Ljava/io/ObjectInputStream;
+   109      11      4    list       Lscala/collection/immutable/$colon$colon;
+   49      84      5    current       Lscala/collection/immutable/$colon$colon;
+   55      78      6    temp25       Ljava/lang/Object;
 
 
 public scala.collection.immutable.$colon$colon copy(java.lang.Object, scala.collection.immutable.List);
@@ -550,10 +537,8 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=2, Args_size=2
 	iload_1
-	istore_2
-	iload_2
 	tableswitch{ //0 to 1
 		0: 46;
 		1: 39;
@@ -566,26 +551,19 @@ public java.lang.Object productElement(int);
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
 	aload_0
-	invokevirtual	Method tl$1:()Lscala/collection/immutable/List;
+	getfield	Field tl:Lscala/collection/immutable/List;
 	goto	l1 // areturn
 	aload_0
-	invokevirtual	Method hd$1:()Ljava/lang/Object;
+	getfield	Field scala$collection$immutable$$colon$colon$$hd:Ljava/lang/Object;
 l1	areturn
   Labels:
    	l1 = 50 // areturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      51      0    this       Lscala/collection/immutable/$colon$colon;
-   2      49      2    temp27       I
-
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=2, Args_size=2
 	iload_1
-	istore_2
-	iload_2
 	tableswitch{ //0 to 1
 		0: 44;
 		1: 39;
@@ -603,11 +581,6 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 46 // areturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      47      0    this       Lscala/collection/immutable/$colon$colon;
-   2      45      2    temp28       I
-
 
 public scala.collection.LinearSeqLike tail();
   Signature: ()Lscala/collection/LinearSeqLike;
@@ -648,7 +621,7 @@ public scala.collection.immutable.$colon$colon(java.lang.Object, scala.collectio
    0      15      2    tl       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   00 FFFFFFA1 
+   00 FFFFFF97 
 
 }
 

@@ -2,7 +2,7 @@ Compiled from "ArrayBuilder.scala"
 public class scala.collection.mutable.ArrayBuilder$ofUnit extends scala.collection.mutable.ArrayBuilder implements scala.ScalaObject
   SourceFile: "ArrayBuilder.scala"
   Signature: length = 0x2
-   00 79 
+   00 75 
   Scala: length = 0x
    
   InnerClass: 
@@ -84,10 +84,9 @@ Asciz	$plus$plus$eq;
 Asciz	(Lscala/collection/Traversable;)Lscala/collection/mutable/ArrayBuilder$ofUnit;;
 Asciz	scala/collection/mutable/WrappedArray$ofUnit;
 class	scala/collection/mutable/WrappedArray$ofUnit
-Asciz	length;
-NameAndType	length:()I
-Method	scala/collection/mutable/WrappedArray$ofUnit.length:()I
 Asciz	array;
+NameAndType	array:[Lscala/runtime/BoxedUnit;
+Field	scala/collection/mutable/WrappedArray$ofUnit.array:[Lscala/runtime/BoxedUnit;
 NameAndType	array:()[Lscala/runtime/BoxedUnit;
 Method	scala/collection/mutable/WrappedArray$ofUnit.array:()[Lscala/runtime/BoxedUnit;
 Asciz	scala/collection/generic/Growable$class;
@@ -97,7 +96,6 @@ NameAndType	$plus$plus$eq:(Lscala/collection/generic/Growable;Lscala/collection/
 Method	scala/collection/generic/Growable$class.$plus$plus$eq:(Lscala/collection/generic/Growable;Lscala/collection/Traversable;)Lscala/collection/generic/Growable;
 Asciz	xs;
 Asciz	Lscala/collection/Traversable;;
-Asciz	temp37;
 Asciz	temp38;
 Asciz	Lscala/collection/mutable/WrappedArray$ofUnit;;
 Asciz	(Lscala/collection/Traversable<Ljava/lang/Object;>;)Lscala/collection/mutable/ArrayBuilder$ofUnit;;
@@ -109,9 +107,7 @@ Asciz	equals;
 Asciz	(Ljava/lang/Object;)Z;
 Asciz	other;
 Asciz	Ljava/lang/Object;;
-Asciz	temp39;
 Asciz	temp40;
-Asciz	x;
 Asciz	toString;
 Asciz	()Ljava/lang/String;;
 Asciz	ArrayBuilder.ofUnit;
@@ -356,40 +352,39 @@ public scala.collection.mutable.ArrayBuilder$ofUnit $plus$eq(scala.runtime.Boxed
 public scala.collection.mutable.ArrayBuilder$ofUnit $plus$plus$eq(scala.collection.Traversable);
   Signature: (Lscala/collection/Traversable;)Lscala/collection/mutable/ArrayBuilder$ofUnit;
   Code:
-   Stack=6, Locals=5, Args_size=2
+   Stack=6, Locals=3, Args_size=2
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class scala/collection/mutable/WrappedArray$ofUnit
 	ifeq	l1 // aload_0
-	aload_2
+	aload_1
 	checkcast	class scala/collection/mutable/WrappedArray$ofUnit
-	astore_3
-	aload_3
-	astore	4
+	astore_2
 	aload_0
 	aload_0
 	invokespecial	Method size:()I
-	aload	4
-	invokevirtual	Method scala/collection/mutable/WrappedArray$ofUnit.length:()I
+	aload_2
+	getfield	Field scala/collection/mutable/WrappedArray$ofUnit.array:[Lscala/runtime/BoxedUnit;
+	arraylength
 	iadd
 	invokespecial	Method ensureSize:(I)V
 	getstatic	Field scala/Array$.MODULE$:Lscala/Array$;
-	aload	4
-	invokevirtual	Method scala/collection/mutable/WrappedArray$ofUnit.array:()[Lscala/runtime/BoxedUnit;
+	aload_2
+	getfield	Field scala/collection/mutable/WrappedArray$ofUnit.array:[Lscala/runtime/BoxedUnit;
 	iconst_0
 	aload_0
 	invokespecial	Method elems:()[Lscala/runtime/BoxedUnit;
 	aload_0
 	invokespecial	Method size:()I
-	aload	4
-	invokevirtual	Method scala/collection/mutable/WrappedArray$ofUnit.length:()I
+	aload_2
+	getfield	Field scala/collection/mutable/WrappedArray$ofUnit.array:[Lscala/runtime/BoxedUnit;
+	arraylength
 	invokevirtual	Method scala/Array$.copy:(Ljava/lang/Object;ILjava/lang/Object;II)V
 	aload_0
 	aload_0
 	invokespecial	Method size:()I
-	aload	4
-	invokevirtual	Method scala/collection/mutable/WrappedArray$ofUnit.length:()I
+	aload_2
+	invokevirtual	Method scala/collection/mutable/WrappedArray$ofUnit.array:()[Lscala/runtime/BoxedUnit;
+	arraylength
 	iadd
 	invokespecial	Method size_$eq:(I)V
 	aload_0
@@ -400,18 +395,16 @@ l1	aload_0
 	checkcast	class scala/collection/mutable/ArrayBuilder$ofUnit
 l2	areturn
   Labels:
-   	l1 = 74 // aload_0
-   	l2 = 82 // areturn
+   	l1 = 68 // aload_0
+   	l2 = 76 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      83      0    this       Lscala/collection/mutable/ArrayBuilder$ofUnit;
-   0      83      1    xs       Lscala/collection/Traversable;
-   2      81      2    temp37       Lscala/collection/Traversable;
-   14      57      3    temp38       Lscala/collection/mutable/WrappedArray$ofUnit;
-   17      54      4    xs       Lscala/collection/mutable/WrappedArray$ofUnit;
+   0      77      0    this       Lscala/collection/mutable/ArrayBuilder$ofUnit;
+   0      77      1    xs       Lscala/collection/Traversable;
+   12      53      2    temp38       Lscala/collection/mutable/WrappedArray$ofUnit;
 
   Signature: length = 0x2
-   00 5A 
+   00 58 
 
 public void clear();
   Signature: ()V
@@ -451,25 +444,21 @@ l2	areturn
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=5, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class scala/collection/mutable/ArrayBuilder$ofUnit
 	ifeq	l1 // iconst_0
-	aload_2
+	aload_1
 	checkcast	class scala/collection/mutable/ArrayBuilder$ofUnit
-	astore_3
-	aload_3
-	astore	4
+	astore_2
 	aload_0
 	invokespecial	Method size:()I
-	aload	4
+	aload_2
 	invokespecial	Method size:()I
 	if_icmpne	l2 // iconst_0
 	aload_0
 	invokespecial	Method elems:()[Lscala/runtime/BoxedUnit;
-	aload	4
+	aload_2
 	invokespecial	Method elems:()[Lscala/runtime/BoxedUnit;
 	if_acmpne	l2 // iconst_0
 	iconst_1
@@ -479,16 +468,14 @@ l2	iconst_0
 l1	iconst_0
 l3	ireturn
   Labels:
-   	l2 = 45 // iconst_0
-   	l1 = 49 // iconst_0
-   	l3 = 50 // ireturn
+   	l2 = 38 // iconst_0
+   	l1 = 42 // iconst_0
+   	l3 = 43 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      51      0    this       Lscala/collection/mutable/ArrayBuilder$ofUnit;
-   0      51      1    other       Ljava/lang/Object;
-   2      49      2    temp39       Ljava/lang/Object;
-   14      35      3    temp40       Lscala/collection/mutable/ArrayBuilder$ofUnit;
-   17      32      4    x       Lscala/collection/mutable/ArrayBuilder$ofUnit;
+   0      44      0    this       Lscala/collection/mutable/ArrayBuilder$ofUnit;
+   0      44      1    other       Ljava/lang/Object;
+   12      30      2    temp40       Lscala/collection/mutable/ArrayBuilder$ofUnit;
 
 
 public java.lang.String toString();

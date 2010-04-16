@@ -2848,16 +2848,14 @@ public scala.collection.immutable.TreeMap(scala.math.Ordering);
 	aload_0
 	iconst_0
 	aconst_null
-	pop
-	aconst_null
 	aload_1
 	invokespecial	Method "<init>":(ILscala/collection/immutable/RedBlack$Tree;Lscala/math/Ordering;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      10      0    this       Lscala/collection/immutable/TreeMap;
-   0      10      1    ordering       Lscala/math/Ordering;
+   0      8      0    this       Lscala/collection/immutable/TreeMap;
+   0      8      1    ordering       Lscala/math/Ordering;
 
   Signature: length = 0x2
    02 FFFFFF85 
@@ -2963,7 +2961,7 @@ public scala.collection.immutable.TreeMap empty();
 public scala.collection.immutable.TreeMap updated(java.lang.Object, java.lang.Object);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/TreeMap;
   Code:
-   Stack=5, Locals=4, Args_size=3
+   Stack=5, Locals=6, Args_size=3
 	aload_0
 	invokevirtual	Method tree:()Lscala/collection/immutable/RedBlack$Tree;
 	aload_1
@@ -2978,8 +2976,6 @@ public scala.collection.immutable.TreeMap updated(java.lang.Object, java.lang.Ob
 l1	aload_0
 	invokevirtual	Method size:()I
 l2	istore_3
-	getstatic	Field scala/collection/immutable/TreeMap$.MODULE$:Lscala/collection/immutable/TreeMap$;
-	iload_3
 	aload_0
 	invokevirtual	Method tree:()Lscala/collection/immutable/RedBlack$Tree;
 	aload_1
@@ -2987,17 +2983,24 @@ l2	istore_3
 	invokevirtual	Method scala/collection/immutable/RedBlack$Tree.update:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/RedBlack$Tree;
 	aload_0
 	invokevirtual	Method ordering:()Lscala/math/Ordering;
-	invokevirtual	Method scala/collection/immutable/TreeMap$.scala$collection$immutable$TreeMap$$make:(ILscala/collection/immutable/RedBlack$Tree;Lscala/math/Ordering;)Lscala/collection/immutable/TreeMap;
+	astore	5
+	astore	4
+	new	class scala/collection/immutable/TreeMap
+	dup
+	iload_3
+	aload	4
+	aload	5
+	invokespecial	Method "<init>":(ILscala/collection/immutable/RedBlack$Tree;Lscala/math/Ordering;)V
 	areturn
   Labels:
    	l1 = 23 // aload_0
    	l2 = 27 // istore_3
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      49      0    this       Lscala/collection/immutable/TreeMap;
-   0      49      1    key       Ljava/lang/Object;
-   0      49      2    value       Ljava/lang/Object;
-   28      20      3    newsize       I
+   0      58      0    this       Lscala/collection/immutable/TreeMap;
+   0      58      1    key       Ljava/lang/Object;
+   0      58      2    value       Ljava/lang/Object;
+   28      29      3    newsize       I
 
   Signature: length = 0x2
    02 FFFFFFBC 
@@ -3088,17 +3091,16 @@ public scala.collection.immutable.TreeMap insert(java.lang.Object, java.lang.Obj
 public scala.collection.immutable.TreeMap $minus(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/TreeMap;
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=5, Locals=5, Args_size=2
 	aload_0
 	invokevirtual	Method tree:()Lscala/collection/immutable/RedBlack$Tree;
 	aload_1
 	invokevirtual	Method scala/collection/immutable/RedBlack$Tree.lookup:(Ljava/lang/Object;)Lscala/collection/immutable/RedBlack$Tree;
 	invokevirtual	Method scala/collection/immutable/RedBlack$Tree.isEmpty:()Z
-	ifeq	l1 // getstatic
+	ifeq	l1 // aload_0
 	aload_0
 	goto	l2 // areturn
-l1	getstatic	Field scala/collection/immutable/TreeMap$.MODULE$:Lscala/collection/immutable/TreeMap$;
-	aload_0
+l1	aload_0
 	invokevirtual	Method size:()I
 	iconst_1
 	isub
@@ -3108,15 +3110,23 @@ l1	getstatic	Field scala/collection/immutable/TreeMap$.MODULE$:Lscala/collection
 	invokevirtual	Method scala/collection/immutable/RedBlack$Tree.delete:(Ljava/lang/Object;)Lscala/collection/immutable/RedBlack$Tree;
 	aload_0
 	invokevirtual	Method ordering:()Lscala/math/Ordering;
-	invokevirtual	Method scala/collection/immutable/TreeMap$.scala$collection$immutable$TreeMap$$make:(ILscala/collection/immutable/RedBlack$Tree;Lscala/math/Ordering;)Lscala/collection/immutable/TreeMap;
+	astore	4
+	astore_3
+	istore_2
+	new	class scala/collection/immutable/TreeMap
+	dup
+	iload_2
+	aload_3
+	aload	4
+	invokespecial	Method "<init>":(ILscala/collection/immutable/RedBlack$Tree;Lscala/math/Ordering;)V
 l2	areturn
   Labels:
-   	l1 = 18 // getstatic
-   	l2 = 42 // areturn
+   	l1 = 18 // aload_0
+   	l2 = 51 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      43      0    this       Lscala/collection/immutable/TreeMap;
-   0      43      1    key       Ljava/lang/Object;
+   0      52      0    this       Lscala/collection/immutable/TreeMap;
+   0      52      1    key       Ljava/lang/Object;
 
   Signature: length = 0x2
    02 FFFFFFE2 

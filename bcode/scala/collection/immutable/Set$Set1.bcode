@@ -2,7 +2,7 @@ Compiled from "Set.scala"
 public class scala.collection.immutable.Set$Set1 extends java.lang.Object implements scala.collection.immutable.Set,scala.ScalaObject,java.io.Serializable
   SourceFile: "Set.scala"
   Signature: length = 0x2
-   02 FFFFFFB3 
+   02 FFFFFFB9 
   Scala: length = 0x
    
   InnerClass: 
@@ -554,11 +554,21 @@ Method	scala/collection/TraversableLike$class.withFilter:(Lscala/collection/Trav
 Asciz	contains;
 NameAndType	elem1:Ljava/lang/Object;
 Field	scala/collection/immutable/Set$Set1.elem1:Ljava/lang/Object;
+Asciz	java/lang/Number;
+class	java/lang/Number
+Asciz	java/lang/Character;
+class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
+Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	java/lang/Object;
+class	java/lang/Object
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	y0;
 Asciz	(TA;)Z;
 Asciz	(Ljava/lang/Object;)Lscala/collection/immutable/Set;;
 NameAndType	contains:(Ljava/lang/Object;)Z
@@ -570,14 +580,12 @@ Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Method	scala/collection/immutable/Set$Set2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Asciz	(TA;)Lscala/collection/immutable/Set<TA;>;;
-Asciz	scala/collection/immutable/Set$;
-class	scala/collection/immutable/Set$
+Asciz	scala/collection/immutable/Set$EmptySet$;
+class	scala/collection/immutable/Set$EmptySet$
 Asciz	MODULE$;
-Asciz	Lscala/collection/immutable/Set$;;
-NameAndType	MODULE$:Lscala/collection/immutable/Set$;
-Field	scala/collection/immutable/Set$.MODULE$:Lscala/collection/immutable/Set$;
-NameAndType	empty:()Lscala/collection/immutable/Set;
-Method	scala/collection/immutable/Set$.empty:()Lscala/collection/immutable/Set;
+Asciz	Lscala/collection/immutable/Set$EmptySet$;;
+NameAndType	MODULE$:Lscala/collection/immutable/Set$EmptySet$;
+Field	scala/collection/immutable/Set$EmptySet$.MODULE$:Lscala/collection/immutable/Set$EmptySet$;
 Asciz	iterator;
 Asciz	scala/collection/Iterator$;
 class	scala/collection/Iterator$
@@ -589,8 +597,6 @@ class	scala/Predef$
 Asciz	Lscala/Predef$;;
 NameAndType	MODULE$:Lscala/Predef$;
 Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	java/lang/Object;
-class	java/lang/Object
 Asciz	genericWrapArray;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
 NameAndType	genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
@@ -2241,26 +2247,53 @@ public int size();
 public boolean contains(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_1
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	getfield	Field elem1:Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l1 // iconst_0
+	astore_2
+	aload_1
+	aload_2
+	if_acmpne	l1 // aload_1
 	iconst_1
-	goto	l2 // ireturn
-l1	iconst_0
-l2	ireturn
+	goto	l2 // ifeq
+l1	aload_1
+	ifnonnull	l3 // aload_1
+	iconst_0
+	goto	l2 // ifeq
+l3	aload_1
+	instanceof	class java/lang/Number
+	ifne	l4 // aload_1
+	aload_1
+	instanceof	class java/lang/Character
+	ifeq	l5 // aload_1
+l4	aload_1
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l2 // ifeq
+l5	aload_1
+	aload_2
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l2	ifeq	l6 // iconst_0
+	iconst_1
+	goto	l7 // ireturn
+l6	iconst_0
+l7	ireturn
   Labels:
-   	l1 = 15 // iconst_0
-   	l2 = 16 // ireturn
+   	l1 = 14 // aload_1
+   	l3 = 22 // aload_1
+   	l4 = 36 // aload_1
+   	l5 = 44 // aload_1
+   	l2 = 49 // ifeq
+   	l6 = 56 // iconst_0
+   	l7 = 57 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      17      0    this       Lscala/collection/immutable/Set$Set1;
-   0      17      1    elem       Ljava/lang/Object;
+   0      58      0    this       Lscala/collection/immutable/Set$Set1;
+   0      58      1    elem       Ljava/lang/Object;
+   10      42      2    y0       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 24 
+   02 2E 
 
 public scala.collection.immutable.Set $plus(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/Set;
@@ -2288,32 +2321,58 @@ l2	areturn
    0      25      1    elem       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 2E 
+   02 38 
 
 public scala.collection.immutable.Set $minus(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/Set;
   Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_1
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	getfield	Field elem1:Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l1 // aload_0
-	getstatic	Field scala/collection/immutable/Set$.MODULE$:Lscala/collection/immutable/Set$;
-	invokevirtual	Method scala/collection/immutable/Set$.empty:()Lscala/collection/immutable/Set;
-	goto	l2 // areturn
-l1	aload_0
-l2	areturn
+	astore_2
+	aload_1
+	aload_2
+	if_acmpne	l1 // aload_1
+	iconst_1
+	goto	l2 // ifeq
+l1	aload_1
+	ifnonnull	l3 // aload_1
+	iconst_0
+	goto	l2 // ifeq
+l3	aload_1
+	instanceof	class java/lang/Number
+	ifne	l4 // aload_1
+	aload_1
+	instanceof	class java/lang/Character
+	ifeq	l5 // aload_1
+l4	aload_1
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l2 // ifeq
+l5	aload_1
+	aload_2
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l2	ifeq	l6 // aload_0
+	getstatic	Field scala/collection/immutable/Set$EmptySet$.MODULE$:Lscala/collection/immutable/Set$EmptySet$;
+	goto	l7 // areturn
+l6	aload_0
+l7	areturn
   Labels:
-   	l1 = 20 // aload_0
-   	l2 = 21 // areturn
+   	l1 = 14 // aload_1
+   	l3 = 22 // aload_1
+   	l4 = 36 // aload_1
+   	l5 = 44 // aload_1
+   	l2 = 49 // ifeq
+   	l6 = 58 // aload_0
+   	l7 = 59 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      22      0    this       Lscala/collection/immutable/Set$Set1;
-   0      22      1    elem       Ljava/lang/Object;
+   0      60      0    this       Lscala/collection/immutable/Set$Set1;
+   0      60      1    elem       Ljava/lang/Object;
+   10      42      2    y0       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 2E 
+   02 38 
 
 public scala.collection.Iterator iterator();
   Signature: ()Lscala/collection/Iterator;
@@ -2333,7 +2392,7 @@ public scala.collection.Iterator iterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 4B 
+   02 51 
 
 public void foreach(scala.Function1);
   Signature: (Lscala/Function1;)V
@@ -2352,7 +2411,7 @@ public void foreach(scala.Function1);
    0      12      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   02 53 
+   02 59 
 
 public scala.collection.generic.Addable repr();
   Signature: ()Lscala/collection/generic/Addable;
@@ -2427,17 +2486,19 @@ public scala.collection.Traversable thisCollection();
 public java.lang.Object apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/SetLike.apply:(Ljava/lang/Object;)Z
+	istore_2
+	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      11      0    this       Lscala/collection/immutable/Set$Set1;
-   0      11      1    v1       Ljava/lang/Object;
+   0      13      0    this       Lscala/collection/immutable/Set$Set1;
+   0      13      1    v1       Ljava/lang/Object;
 
 
 public scala.collection.generic.Subtractable $minus(java.lang.Object);
@@ -2545,7 +2606,7 @@ public scala.collection.immutable.Set$Set1(java.lang.Object);
    0      66      1    elem1       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 FFFFFFB2 
+   02 FFFFFFB8 
 
 }
 

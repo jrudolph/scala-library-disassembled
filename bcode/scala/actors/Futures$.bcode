@@ -165,8 +165,15 @@ InterfaceMethod	scala/collection/TraversableLike.filter:(Lscala/Function1;)Ljava
 Asciz	scala/actors/Futures$$anonfun$5;
 class	scala/actors/Futures$$anonfun$5
 Method	scala/actors/Futures$$anonfun$5."<init>":()V
-NameAndType	self:()Lscala/actors/Actor;
-Method	scala/actors/Actor$.self:()Lscala/actors/Actor;
+Asciz	scala/actors/Scheduler$;
+class	scala/actors/Scheduler$
+Asciz	Lscala/actors/Scheduler$;;
+NameAndType	MODULE$:Lscala/actors/Scheduler$;
+Field	scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
+Asciz	rawSelf;
+Asciz	(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;;
+NameAndType	rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+Method	scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
 Asciz	scala/actors/Futures$$anon$3;
 class	scala/actors/Futures$$anon$3
 Method	scala/actors/Futures$$anon$3."<init>":(Lscala/actors/Actor;)V
@@ -186,10 +193,12 @@ Asciz	length;
 Asciz	()I;
 NameAndType	length:()I
 InterfaceMethod	scala/collection/SeqLike.length:()I
-Asciz	awaitWith$1;
-Asciz	(Lscala/collection/Seq;Lscala/runtime/ObjectRef;)V;
-NameAndType	awaitWith$1:(Lscala/collection/Seq;Lscala/runtime/ObjectRef;)V
-Method	scala/actors/Futures$.awaitWith$1:(Lscala/collection/Seq;Lscala/runtime/ObjectRef;)V
+Asciz	scala/actors/Futures$$anon$2;
+class	scala/actors/Futures$$anon$2
+Asciz	(Lscala/runtime/ObjectRef;Lscala/collection/Seq;)V;
+NameAndType	"<init>":(Lscala/runtime/ObjectRef;Lscala/collection/Seq;)V
+Method	scala/actors/Futures$$anon$2."<init>":(Lscala/runtime/ObjectRef;Lscala/collection/Seq;)V
+InterfaceMethod	scala/actors/Actor.receive:(Lscala/PartialFunction;)Ljava/lang/Object;
 Asciz	scala/collection/immutable/Nil$;
 class	scala/collection/immutable/Nil$
 Asciz	Lscala/collection/immutable/Nil$;;
@@ -204,17 +213,9 @@ class	scala/collection/mutable/Map
 Asciz	size;
 NameAndType	size:()I
 InterfaceMethod	scala/collection/TraversableLike.size:()I
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	intWrapper;
-Asciz	(I)Lscala/runtime/RichInt;;
-NameAndType	intWrapper:(I)Lscala/runtime/RichInt;
-Method	scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 Asciz	scala/runtime/RichInt;
 class	scala/runtime/RichInt
+Method	scala/runtime/RichInt."<init>":(I)V
 Asciz	until;
 Asciz	(I)Lscala/collection/immutable/Range$ByOne;;
 NameAndType	until:(I)Lscala/collection/immutable/Range$ByOne;
@@ -241,20 +242,22 @@ class	scala/collection/immutable/List
 Asciz	timeout;
 Asciz	fts;
 Asciz	Lscala/collection/Seq;;
-Asciz	resultsMap$1;
-Asciz	Lscala/runtime/ObjectRef;;
 Asciz	cnt$1;
 Asciz	Lscala/runtime/IntRef;;
 Asciz	mappedFts;
 Asciz	unsetFts;
-Asciz	partFuns;
 Asciz	thisActor$1;
 Asciz	Lscala/actors/Actor;;
+Asciz	partFuns;
+Asciz	reaction0;
+Asciz	Lscala/PartialFunction;;
+Asciz	resultsMap$1;
+Asciz	Lscala/runtime/ObjectRef;;
+Asciz	size$1;
+Asciz	I;
 Asciz	timerTask;
 Asciz	Ljava/util/TimerTask;;
 Asciz	results$1;
-Asciz	size$1;
-Asciz	I;
 Asciz	(JLscala/collection/Seq<Lscala/actors/Future<Ljava/lang/Object;>;>;)Lscala/collection/immutable/List<Lscala/Option<Ljava/lang/Object;>;>;;
 Asciz	fromInputChannel;
 Asciz	(Lscala/actors/InputChannel;)Lscala/actors/Future;;
@@ -265,14 +268,10 @@ NameAndType	"<init>":(Lscala/actors/InputChannel;)V
 Method	scala/actors/Futures$$anon$1."<init>":(Lscala/actors/InputChannel;)V
 Asciz	inputChannel$1;
 Asciz	<T:Ljava/lang/Object;>(Lscala/actors/InputChannel<TT;>;)Lscala/actors/Future<TT;>;;
-Asciz	scala/actors/Futures$$anon$2;
-class	scala/actors/Futures$$anon$2
-Asciz	(Lscala/runtime/ObjectRef;Lscala/collection/Seq;)V;
-NameAndType	"<init>":(Lscala/runtime/ObjectRef;Lscala/collection/Seq;)V
-Method	scala/actors/Futures$$anon$2."<init>":(Lscala/runtime/ObjectRef;Lscala/collection/Seq;)V
+Asciz	awaitWith$1;
+Asciz	(Lscala/collection/Seq;Lscala/runtime/ObjectRef;)V;
 Asciz	partFuns$1;
 Asciz	reaction;
-Asciz	Lscala/PartialFunction;;
 Asciz	java/lang/Object;
 class	java/lang/Object
 Method	java/lang/Object."<init>":()V
@@ -419,38 +418,38 @@ public java.lang.Object awaitEither(scala.actors.Future, scala.actors.Future);
 public scala.collection.immutable.List awaitAll(long, scala.collection.Seq);
   Signature: (JLscala/collection/Seq;)Lscala/collection/immutable/List;
   Code:
-   Stack=6, Locals=13, Args_size=3
+   Stack=6, Locals=19, Args_size=3
 	new	class scala/runtime/ObjectRef
 	dup
 	new	class scala/collection/mutable/HashMap
 	dup
 	invokespecial	Method scala/collection/mutable/HashMap."<init>":()V
 	invokespecial	Method scala/runtime/ObjectRef."<init>":(Ljava/lang/Object;)V
-	astore	4
+	astore	15
 	new	class scala/runtime/IntRef
 	dup
 	iconst_0
 	invokespecial	Method scala/runtime/IntRef."<init>":(I)V
-	astore	5
+	astore	4
 	aload_3
 	new	class scala/actors/Futures$$anonfun$3
 	dup
-	aload	5
+	aload	4
 	invokespecial	Method scala/actors/Futures$$anonfun$3."<init>":(Lscala/runtime/IntRef;)V
 	getstatic	Field scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
 	invokevirtual	Method scala/collection/Seq$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 	checkcast	class scala/collection/Seq
-	astore	6
-	aload	6
+	astore	5
+	aload	5
 	new	class scala/actors/Futures$$anonfun$4
 	dup
-	aload	4
+	aload	15
 	invokespecial	Method scala/actors/Futures$$anonfun$4."<init>":(Lscala/runtime/ObjectRef;)V
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.filter:(Lscala/Function1;)Ljava/lang/Object;
 	checkcast	class scala/collection/Seq
-	astore	7
-	aload	7
+	astore	6
+	aload	6
 	new	class scala/actors/Futures$$anonfun$5
 	dup
 	invokespecial	Method scala/actors/Futures$$anonfun$5."<init>":()V
@@ -458,76 +457,99 @@ public scala.collection.immutable.List awaitAll(long, scala.collection.Seq);
 	invokevirtual	Method scala/collection/Seq$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 	checkcast	class scala/collection/Seq
-	astore	8
+	astore	10
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
-	invokevirtual	Method scala/actors/Actor$.self:()Lscala/actors/Actor;
+	astore	7
+	getstatic	Field scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
+	astore	8
+	aload	7
+	aload	8
+	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+	checkcast	class scala/actors/Actor
 	astore	9
 	new	class scala/actors/Futures$$anon$3
 	dup
 	aload	9
 	invokespecial	Method scala/actors/Futures$$anon$3."<init>":(Lscala/actors/Actor;)V
-	astore	10
+	astore	17
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	invokevirtual	Method scala/actors/Actor$.timer:()Ljava/util/Timer;
-	aload	10
+	aload	17
 	lload_1
 	invokevirtual	Method java/util/Timer.schedule:(Ljava/util/TimerTask;J)V
-	aload	8
+	aload	10
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
 	iconst_0
 	if_icmple	l1 // new
-	aload_0
-	aload	8
-	aload	4
-	invokevirtual	Method awaitWith$1:(Lscala/collection/Seq;Lscala/runtime/ObjectRef;)V
+	new	class scala/actors/Futures$$anon$2
+	dup
+	aload	15
+	aload	10
+	invokespecial	Method scala/actors/Futures$$anon$2."<init>":(Lscala/runtime/ObjectRef;Lscala/collection/Seq;)V
+	astore	13
+	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
+	astore	11
+	getstatic	Field scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
+	astore	12
+	aload	11
+	aload	12
+	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+	checkcast	class scala/actors/Actor
+	aload	13
+	invokeinterface	InterfaceMethod scala/actors/Actor.receive:(Lscala/PartialFunction;)Ljava/lang/Object;
+	pop
 l1	new	class scala/runtime/ObjectRef
 	dup
 	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 	invokespecial	Method scala/runtime/ObjectRef."<init>":(Ljava/lang/Object;)V
-	astore	11
-	aload	4
+	astore	18
+	aload	15
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class scala/collection/mutable/Map
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.size:()I
-	istore	12
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	istore	16
 	iconst_0
-	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
-	iload	12
+	istore	14
+	new	class scala/runtime/RichInt
+	dup
+	iload	14
+	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
+	iload	16
 	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
 	new	class scala/actors/Futures$$anonfun$awaitAll$1
 	dup
-	aload	4
-	aload	11
-	iload	12
+	aload	15
+	aload	18
+	iload	16
 	invokespecial	Method scala/actors/Futures$$anonfun$awaitAll$1."<init>":(Lscala/runtime/ObjectRef;Lscala/runtime/ObjectRef;I)V
 	invokeinterface	InterfaceMethod scala/collection/immutable/Range$ByOne.foreach:(Lscala/Function1;)V
-	aload	10
+	aload	17
 	invokevirtual	Method java/util/TimerTask.cancel:()Z
 	pop
-	aload	11
+	aload	18
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
 	areturn
   Labels:
-   	l1 = 148 // new
+   	l1 = 195 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      220      0    this       Lscala/actors/Futures$;
-   0      220      1    timeout       J
-   0      220      3    fts       Lscala/collection/Seq;
-   16      203      4    resultsMap$1       Lscala/runtime/ObjectRef;
-   26      193      5    cnt$1       Lscala/runtime/IntRef;
-   52      167      6    mappedFts       Lscala/collection/Seq;
-   73      146      7    unsetFts       Lscala/collection/Seq;
-   98      121      8    partFuns       Lscala/collection/Seq;
-   106      113      9    thisActor$1       Lscala/actors/Actor;
-   117      102      10    timerTask       Ljava/util/TimerTask;
-   160      59      11    results$1       Lscala/runtime/ObjectRef;
-   175      44      12    size$1       I
+   0      272      0    this       Lscala/actors/Futures$;
+   0      272      1    timeout       J
+   0      272      3    fts       Lscala/collection/Seq;
+   26      245      4    cnt$1       Lscala/runtime/IntRef;
+   52      219      5    mappedFts       Lscala/collection/Seq;
+   73      198      6    unsetFts       Lscala/collection/Seq;
+   120      151      9    thisActor$1       Lscala/actors/Actor;
+   98      173      10    partFuns       Lscala/collection/Seq;
+   167      28      13    reaction0       Lscala/PartialFunction;
+   16      255      15    resultsMap$1       Lscala/runtime/ObjectRef;
+   222      49      16    size$1       I
+   131      140      17    timerTask       Ljava/util/TimerTask;
+   207      64      18    results$1       Lscala/runtime/ObjectRef;
 
   Signature: length = 0x2
-   00 FFFFFFED 
+   00 FFFFFFF0 
 
 public scala.actors.Future fromInputChannel(scala.actors.InputChannel);
   Signature: (Lscala/actors/InputChannel;)Lscala/actors/Future;
@@ -545,7 +567,7 @@ public scala.actors.Future fromInputChannel(scala.actors.InputChannel);
    0      9      1    inputChannel$1       Lscala/actors/InputChannel;
 
   Signature: length = 0x2
-   00 FFFFFFF6 
+   00 FFFFFFF9 
 
 public final void awaitWith$1(scala.collection.Seq, scala.runtime.ObjectRef);
   Signature: (Lscala/collection/Seq;Lscala/runtime/ObjectRef;)V

@@ -82,26 +82,22 @@ Asciz	(Ljava/io/ObjectStreamClass;)Ljava/lang/Class<*>;;
 Asciz	Signature;
 Asciz	resolveProxyClass;
 Asciz	([Ljava/lang/String;)Ljava/lang/Class;;
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	MODULE$;
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
 Asciz	[Ljava/lang/Object;;
 class	"[Ljava/lang/Object;"
-Asciz	refArrayOps;
-Asciz	([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;;
-NameAndType	refArrayOps:([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;
-Method	scala/Predef$.refArrayOps:([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;
+Asciz	scala/collection/mutable/ArrayOps$ofRef;
+class	scala/collection/mutable/ArrayOps$ofRef
+Asciz	<init>;
+Asciz	([Ljava/lang/Object;)V;
+NameAndType	"<init>":([Ljava/lang/Object;)V
+Method	scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
 Asciz	scala/actors/remote/CustomObjectInputStream$$anonfun$1;
 class	scala/actors/remote/CustomObjectInputStream$$anonfun$1
-Asciz	<init>;
 Asciz	(Lscala/actors/remote/CustomObjectInputStream;)V;
 NameAndType	"<init>":(Lscala/actors/remote/CustomObjectInputStream;)V
 Method	scala/actors/remote/CustomObjectInputStream$$anonfun$1."<init>":(Lscala/actors/remote/CustomObjectInputStream;)V
 Asciz	scala/Array$;
 class	scala/Array$
+Asciz	MODULE$;
 Asciz	Lscala/Array$;;
 NameAndType	MODULE$:Lscala/Array$;
 Field	scala/Array$.MODULE$:Lscala/Array$;
@@ -117,6 +113,11 @@ class	scala/reflect/NoManifest$
 Asciz	Lscala/reflect/NoManifest$;;
 NameAndType	MODULE$:Lscala/reflect/NoManifest$;
 Field	scala/reflect/NoManifest$.MODULE$:Lscala/reflect/NoManifest$;
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
 Asciz	scala/reflect/OptManifest;
 class	scala/reflect/OptManifest
 Asciz	wrapRefArray;
@@ -149,8 +150,8 @@ NameAndType	resolveProxyClass:([Ljava/lang/String;)Ljava/lang/Class;
 Method	java/io/ObjectInputStream.resolveProxyClass:([Ljava/lang/String;)Ljava/lang/Class;
 Asciz	interfaces;
 Asciz	[Ljava/lang/String;;
-Asciz	exceptionResult2;
 Asciz	ifaces;
+Asciz	exceptionResult2;
 Asciz	([Ljava/lang/String;)Ljava/lang/Class<*>;;
 Asciz	(Ljava/io/InputStream;Ljava/lang/ClassLoader;)V;
 Asciz	(Ljava/io/InputStream;)V;
@@ -172,9 +173,7 @@ public final java.lang.ClassLoader scala$actors$remote$CustomObjectInputStream$$
 public java.lang.Class resolveClass(java.io.ObjectStreamClass);
   Signature: (Ljava/io/ObjectStreamClass;)Ljava/lang/Class;
   Code:
-   Stack=2, Locals=4, Args_size=2
-	aconst_null
-	astore_2
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	getfield	Field scala$actors$remote$CustomObjectInputStream$$cl:Ljava/lang/ClassLoader;
 	aload_1
@@ -182,7 +181,7 @@ public java.lang.Class resolveClass(java.io.ObjectStreamClass);
 	invokevirtual	Method java/lang/ClassLoader.loadClass:(Ljava/lang/String;)Ljava/lang/Class;
 	astore_2
 	goto	l1 // aload_2
-	astore_3
+	pop
 	aload_0
 	aload_1
 	invokespecial	Method java/io/ObjectInputStream.resolveClass:(Ljava/io/ObjectStreamClass;)Ljava/lang/Class;
@@ -190,16 +189,16 @@ public java.lang.Class resolveClass(java.io.ObjectStreamClass);
 l1	aload_2
 	areturn
   Labels:
-   	l1 = 24 // aload_2
+   	l1 = 22 // aload_2
   Exception table:
    from   to  target type
-     2    17    17   Class java/lang/ClassNotFoundException
+     0    15    15   Class java/lang/ClassNotFoundException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      26      0    this       Lscala/actors/remote/CustomObjectInputStream;
-   0      26      1    cd       Ljava/io/ObjectStreamClass;
-   2      23      2    exceptionResult1       Ljava/lang/Class;
+   0      24      0    this       Lscala/actors/remote/CustomObjectInputStream;
+   0      24      1    cd       Ljava/io/ObjectStreamClass;
+   0      23      2    exceptionResult1       Ljava/lang/Class;
 
   Signature: length = 0x2
    00 26 
@@ -208,12 +207,13 @@ public java.lang.Class resolveProxyClass(java.lang.String[]);
   Signature: ([Ljava/lang/String;)Ljava/lang/Class;
   Code:
    Stack=8, Locals=5, Args_size=2
-	aconst_null
-	astore_2
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_1
 	checkcast	class "[Ljava/lang/Object;"
-	invokevirtual	Method scala/Predef$.refArrayOps:([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;
+	astore_2
+	new	class scala/collection/mutable/ArrayOps$ofRef
+	dup
+	aload_2
+	invokespecial	Method scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
 	new	class scala/actors/remote/CustomObjectInputStream$$anonfun$1
 	dup
 	aload_0
@@ -231,35 +231,35 @@ public java.lang.Class resolveProxyClass(java.lang.String[]);
 	invokevirtual	Method scala/Array$.canBuildFrom:(Lscala/reflect/ClassManifest;)Lscala/collection/generic/CanBuildFrom;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 	checkcast	class "[Ljava/lang/Class;"
-	astore	4
+	astore_3
 	aload_0
 	getfield	Field scala$actors$remote$CustomObjectInputStream$$cl:Ljava/lang/ClassLoader;
-	aload	4
+	aload_3
 	invokestatic	Method java/lang/reflect/Proxy.getProxyClass:(Ljava/lang/ClassLoader;[Ljava/lang/Class;)Ljava/lang/Class;
-	astore_2
-	goto	l1 // aload_2
-	astore_3
+	astore	4
+	goto	l1 // aload
+	pop
 	aload_0
 	aload_1
 	invokespecial	Method java/io/ObjectInputStream.resolveProxyClass:([Ljava/lang/String;)Ljava/lang/Class;
-	astore_2
-l1	aload_2
+	astore	4
+l1	aload	4
 	areturn
   Labels:
-   	l1 = 80 // aload_2
+   	l1 = 81 // aload
   Exception table:
    from   to  target type
-     2    73    73   Class java/lang/ClassNotFoundException
+     0    73    73   Class java/lang/ClassNotFoundException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      82      0    this       Lscala/actors/remote/CustomObjectInputStream;
-   0      82      1    interfaces       [Ljava/lang/String;
-   2      79      2    exceptionResult2       Ljava/lang/Class;
-   60      9      4    ifaces       [Ljava/lang/Class;
+   0      84      0    this       Lscala/actors/remote/CustomObjectInputStream;
+   0      84      1    interfaces       [Ljava/lang/String;
+   60      8      3    ifaces       [Ljava/lang/Class;
+   0      83      4    exceptionResult2       Ljava/lang/Class;
 
   Signature: length = 0x2
-   00 6F 
+   00 70 
 
 public scala.actors.remote.CustomObjectInputStream(java.io.InputStream, java.lang.ClassLoader);
   Signature: (Ljava/io/InputStream;Ljava/lang/ClassLoader;)V

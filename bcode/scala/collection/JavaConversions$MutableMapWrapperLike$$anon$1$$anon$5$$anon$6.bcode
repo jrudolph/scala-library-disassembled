@@ -2,7 +2,7 @@ Compiled from "JavaConversions.scala"
 public final class scala.collection.JavaConversions$MutableMapWrapperLike$$anon$1$$anon$5$$anon$6 extends java.lang.Object implements java.util.Map$Entry
   SourceFile: "JavaConversions.scala"
   Signature: length = 0x2
-   00 4E 
+   00 57 
   Scala: length = 0x
    
   InnerClass: 
@@ -68,18 +68,29 @@ Asciz	java/util/Map$Entry;
 class	java/util/Map$Entry
 NameAndType	getKey:()Ljava/lang/Object;
 InterfaceMethod	java/util/Map$Entry.getKey:()Ljava/lang/Object;
+Asciz	java/lang/Number;
+class	java/lang/Number
+Asciz	java/lang/Character;
+class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
+Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	java/lang/Object;
+class	java/lang/Object
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 NameAndType	getValue:()Ljava/lang/Object;
 InterfaceMethod	java/util/Map$Entry.getValue:()Ljava/lang/Object;
 Asciz	other;
-Asciz	temp102;
+Asciz	x0;
+Asciz	y0;
 Asciz	temp103;
 Asciz	Ljava/util/Map$Entry;;
-Asciz	e;
+Asciz	x1;
+Asciz	y1;
 Asciz	<init>;
 Asciz	(Lscala/collection/JavaConversions$MutableMapWrapperLike$$anon$1$$anon$5;Ljava/lang/Object;Ljava/lang/Object;)V;
 Asciz	java/lang/NullPointerException;
@@ -87,8 +98,6 @@ class	java/lang/NullPointerException
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	java/lang/NullPointerException."<init>":()V
-Asciz	java/lang/Object;
-class	java/lang/Object
 Method	java/lang/Object."<init>":()V
 Asciz	(Lscala/collection/JavaConversions$MutableMapWrapperLike<TA;TB;>.$anon$1.$anon$5;)V;
 Asciz	Ljava/lang/Object;Ljava/util/Map$Entry<TA;TB;>;;
@@ -161,46 +170,100 @@ public java.lang.Object setValue(java.lang.Object);
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=5, Args_size=2
+   Stack=2, Locals=7, Args_size=2
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class java/util/Map$Entry
 	ifeq	l1 // iconst_0
-	aload_2
+	aload_1
 	checkcast	class java/util/Map$Entry
-	astore_3
-	aload_3
 	astore	4
 	aload_0
 	getfield	Field k$1:Ljava/lang/Object;
 	aload	4
 	invokeinterface	InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l2 // iconst_0
+	astore_3
+	astore_2
+	aload_2
+	aload_3
+	if_acmpne	l2 // aload_2
+	iconst_1
+	goto	l3 // ifeq
+l2	aload_2
+	ifnonnull	l4 // aload_2
+	iconst_0
+	goto	l3 // ifeq
+l4	aload_2
+	instanceof	class java/lang/Number
+	ifne	l5 // aload_2
+	aload_2
+	instanceof	class java/lang/Character
+	ifeq	l6 // aload_2
+l5	aload_2
+	aload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l3 // ifeq
+l6	aload_2
+	aload_3
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l3	ifeq	l7 // iconst_0
 	aload_0
 	getfield	Field v$1:Ljava/lang/Object;
 	aload	4
 	invokeinterface	InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l2 // iconst_0
+	astore	6
+	astore	5
+	aload	5
+	aload	6
+	if_acmpne	l8 // aload
 	iconst_1
-	goto	l3 // ireturn
-l2	iconst_0
-	goto	l3 // ireturn
+	goto	l9 // ifeq
+l8	aload	5
+	ifnonnull	l10 // aload
+	iconst_0
+	goto	l9 // ifeq
+l10	aload	5
+	instanceof	class java/lang/Number
+	ifne	l11 // aload
+	aload	5
+	instanceof	class java/lang/Character
+	ifeq	l12 // aload
+l11	aload	5
+	aload	6
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l9 // ifeq
+l12	aload	5
+	aload	6
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l9	ifeq	l7 // iconst_0
+	iconst_1
+	goto	l13 // ireturn
+l7	iconst_0
+	goto	l13 // ireturn
 l1	iconst_0
-l3	ireturn
+l13	ireturn
   Labels:
-   	l2 = 55 // iconst_0
-   	l1 = 59 // iconst_0
-   	l3 = 60 // ireturn
+   	l2 = 35 // aload_2
+   	l4 = 43 // aload_2
+   	l5 = 57 // aload_2
+   	l6 = 65 // aload_2
+   	l3 = 70 // ifeq
+   	l8 = 99 // aload
+   	l10 = 108 // aload
+   	l11 = 124 // aload
+   	l12 = 134 // aload
+   	l9 = 141 // ifeq
+   	l7 = 148 // iconst_0
+   	l1 = 152 // iconst_0
+   	l13 = 153 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      61      0    this       Lscala/collection/JavaConversions$MutableMapWrapperLike$$anon$1$$anon$5$$anon$6;
-   0      61      1    other       Ljava/lang/Object;
-   2      59      2    temp102       Ljava/lang/Object;
-   14      45      3    temp103       Ljava/util/Map$Entry;
-   17      42      4    e       Ljava/util/Map$Entry;
+   0      154      0    this       Lscala/collection/JavaConversions$MutableMapWrapperLike$$anon$1$$anon$5$$anon$6;
+   0      154      1    other       Ljava/lang/Object;
+   31      42      2    x0       Ljava/lang/Object;
+   31      42      3    y0       Ljava/lang/Object;
+   13      139      4    temp103       Ljava/util/Map$Entry;
+   95      49      5    x1       Ljava/lang/Object;
+   95      49      6    y1       Ljava/lang/Object;
 
 
 public scala.collection.JavaConversions$MutableMapWrapperLike$$anon$1$$anon$5$$anon$6(scala.collection.JavaConversions$MutableMapWrapperLike$$anon$1$$anon$5, java.lang.Object, java.lang.Object);
@@ -233,7 +296,7 @@ l1	aload_0
    0      32      1    $outer       Lscala/collection/JavaConversions$MutableMapWrapperLike$$anon$1$$anon$5;
 
   Signature: length = 0x2
-   00 4D 
+   00 56 
 
 }
 

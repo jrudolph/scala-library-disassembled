@@ -45,12 +45,6 @@ Asciz	x;
 Asciz	LocalVariableTable;
 Asciz	alive;
 Asciz	(I)V;
-Asciz	createKernelOnPort;
-Asciz	(I)Lscala/actors/remote/NetKernel;;
-NameAndType	createKernelOnPort:(I)Lscala/actors/remote/NetKernel;
-Method	scala/actors/remote/RemoteActor$.createKernelOnPort:(I)Lscala/actors/remote/NetKernel;
-Asciz	port;
-Asciz	I;
 Asciz	scala/actors/remote/TcpService$;
 class	scala/actors/remote/TcpService$
 Asciz	Lscala/actors/remote/TcpService$;;
@@ -71,12 +65,17 @@ class	scala/actors/Actor$
 Asciz	Lscala/actors/Actor$;;
 NameAndType	MODULE$:Lscala/actors/Actor$;
 Field	scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
-Asciz	self;
-Asciz	()Lscala/actors/Actor;;
-NameAndType	self:()Lscala/actors/Actor;
-Method	scala/actors/Actor$.self:()Lscala/actors/Actor;
-NameAndType	scala$actors$remote$RemoteActor$$kernels:()Lscala/collection/mutable/HashMap;
-Method	scala/actors/remote/RemoteActor$.scala$actors$remote$RemoteActor$$kernels:()Lscala/collection/mutable/HashMap;
+Asciz	scala/actors/Scheduler$;
+class	scala/actors/Scheduler$
+Asciz	Lscala/actors/Scheduler$;;
+NameAndType	MODULE$:Lscala/actors/Scheduler$;
+Field	scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
+Asciz	rawSelf;
+Asciz	(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;;
+NameAndType	rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+Method	scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+Asciz	scala/actors/Actor;
+class	scala/actors/Actor
 Asciz	scala/Predef$Pair$;
 class	scala/Predef$Pair$
 Asciz	Lscala/Predef$Pair$;;
@@ -96,18 +95,33 @@ class	scala/actors/remote/RemoteActor$$anonfun$createKernelOnPort$1
 Asciz	(Lscala/actors/remote/NetKernel;Lscala/actors/Actor;)V;
 NameAndType	"<init>":(Lscala/actors/remote/NetKernel;Lscala/actors/Actor;)V
 Method	scala/actors/remote/RemoteActor$$anonfun$createKernelOnPort$1."<init>":(Lscala/actors/remote/NetKernel;Lscala/actors/Actor;)V
-Asciz	scala/actors/Actor;
-class	scala/actors/Actor
 Asciz	onTerminate;
 Asciz	(Lscala/Function0;)V;
 NameAndType	onTerminate:(Lscala/Function0;)V
 InterfaceMethod	scala/actors/Actor.onTerminate:(Lscala/Function0;)V
-Asciz	serv;
+Asciz	port;
+Asciz	I;
+Asciz	serv0;
 Asciz	Lscala/actors/remote/TcpService;;
-Asciz	kern$1;
+Asciz	$inlThis1;
+Asciz	Ljava/lang/Object;;
+Asciz	sched0;
+Asciz	Lscala/actors/IScheduler;;
+Asciz	kern$10;
 Asciz	Lscala/actors/remote/NetKernel;;
-Asciz	s$1;
+Asciz	s$10;
 Asciz	Lscala/actors/Actor;;
+Asciz	createKernelOnPort;
+Asciz	(I)Lscala/actors/remote/NetKernel;;
+Asciz	self;
+Asciz	()Lscala/actors/Actor;;
+NameAndType	self:()Lscala/actors/Actor;
+Method	scala/actors/Actor$.self:()Lscala/actors/Actor;
+NameAndType	scala$actors$remote$RemoteActor$$kernels:()Lscala/collection/mutable/HashMap;
+Method	scala/actors/remote/RemoteActor$.scala$actors$remote$RemoteActor$$kernels:()Lscala/collection/mutable/HashMap;
+Asciz	serv;
+Asciz	kern$1;
+Asciz	s$1;
 Asciz	register;
 Asciz	(Lscala/Symbol;Lscala/actors/Actor;)V;
 Asciz	get;
@@ -139,12 +153,6 @@ class	scala/actors/remote/NetKernel
 Asciz	(Lscala/Symbol;Lscala/actors/OutputChannel;)V;
 NameAndType	register:(Lscala/Symbol;Lscala/actors/OutputChannel;)V
 Method	scala/actors/remote/NetKernel.register:(Lscala/Symbol;Lscala/actors/OutputChannel;)V
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	scala/MatchError;
 class	scala/MatchError
 Asciz	(Ljava/lang/Object;)V;
@@ -153,6 +161,8 @@ Method	scala/MatchError."<init>":(Ljava/lang/Object;)V
 Asciz	name;
 Asciz	Lscala/Symbol;;
 Asciz	a;
+Asciz	$inlThis4;
+Asciz	sched1;
 Asciz	temp1;
 Asciz	Lscala/Option;;
 Asciz	selfKernel;
@@ -265,29 +275,63 @@ public void classLoader_$eq(java.lang.ClassLoader);
 public void alive(int);
   Signature: (I)V
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=5, Locals=7, Args_size=2
 	aload_0
 	dup
-	astore_2
-	monitorenter
-	aload_0
-	iload_1
-	invokevirtual	Method createKernelOnPort:(I)Lscala/actors/remote/NetKernel;
 	pop
+	monitorenter
+	getstatic	Field scala/actors/remote/TcpService$.MODULE$:Lscala/actors/remote/TcpService$;
+	iload_1
+	aload_0
+	invokespecial	Method cl:()Ljava/lang/ClassLoader;
+	invokevirtual	Method scala/actors/remote/TcpService$.apply:(ILjava/lang/ClassLoader;)Lscala/actors/remote/TcpService;
+	astore_2
 	aload_2
+	invokeinterface	InterfaceMethod scala/actors/remote/Service.kernel:()Lscala/actors/remote/NetKernel;
+	astore	5
+	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
+	astore_3
+	getstatic	Field scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
+	astore	4
+	aload_3
+	aload	4
+	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+	checkcast	class scala/actors/Actor
+	astore	6
+	aload_0
+	getfield	Field scala$actors$remote$RemoteActor$$kernels:Lscala/collection/mutable/HashMap;
+	getstatic	Field scala/Predef$Pair$.MODULE$:Lscala/Predef$Pair$;
+	aload	6
+	aload	5
+	invokevirtual	Method scala/Predef$Pair$.apply:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/Tuple2;
+	invokevirtual	Method scala/collection/mutable/HashMap.$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/HashMap;
+	pop
+	aload	6
+	new	class scala/actors/remote/RemoteActor$$anonfun$createKernelOnPort$1
+	dup
+	aload	5
+	aload	6
+	invokespecial	Method scala/actors/remote/RemoteActor$$anonfun$createKernelOnPort$1."<init>":(Lscala/actors/remote/NetKernel;Lscala/actors/Actor;)V
+	invokeinterface	InterfaceMethod scala/actors/Actor.onTerminate:(Lscala/Function0;)V
+	aload_0
 	monitorexit
 	return
-	aload_2
+	aload_0
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    12    13   any
+     4    82    83   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      16      0    this       Lscala/actors/remote/RemoteActor$;
-   0      16      1    port       I
+   0      86      0    this       Lscala/actors/remote/RemoteActor$;
+   0      86      1    port       I
+   16      64      2    serv0       Lscala/actors/remote/TcpService;
+   28      52      3    $inlThis1       Ljava/lang/Object;
+   33      9      4    sched0       Lscala/actors/IScheduler;
+   24      56      5    kern$10       Lscala/actors/remote/NetKernel;
+   44      36      6    s$10       Lscala/actors/Actor;
 
 
 public scala.actors.remote.NetKernel createKernelOnPort(int);
@@ -336,27 +380,31 @@ public scala.actors.remote.NetKernel createKernelOnPort(int);
 public void register(scala.Symbol, scala.actors.Actor);
   Signature: (Lscala/Symbol;Lscala/actors/Actor;)V
   Code:
-   Stack=4, Locals=8, Args_size=3
+   Stack=4, Locals=10, Args_size=3
 	aload_0
 	dup
-	astore_3
+	pop
 	monitorenter
 	aload_0
-	invokevirtual	Method scala$actors$remote$RemoteActor$$kernels:()Lscala/collection/mutable/HashMap;
+	getfield	Field scala$actors$remote$RemoteActor$$kernels:Lscala/collection/mutable/HashMap;
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
-	invokevirtual	Method scala/actors/Actor$.self:()Lscala/actors/Actor;
+	astore_3
+	getstatic	Field scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
+	astore	4
+	aload_3
+	aload	4
+	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+	checkcast	class scala/actors/Actor
 	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
-	astore	5
+	astore	9
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	aload	5
-	astore	6
 	dup
 	ifnonnull	l1 // aload
 	pop
-	aload	6
+	aload	9
 	ifnull	l2 // getstatic
 	goto	l3 // aload
-l1	aload	6
+l1	aload	9
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload
 l2	getstatic	Field scala/actors/remote/TcpService$.MODULE$:Lscala/actors/remote/TcpService$;
@@ -367,10 +415,16 @@ l2	getstatic	Field scala/actors/remote/TcpService$.MODULE$:Lscala/actors/remote/
 	invokevirtual	Method scala/actors/remote/TcpService$.apply:(ILjava/lang/ClassLoader;)Lscala/actors/remote/TcpService;
 	astore	7
 	aload_0
-	invokevirtual	Method scala$actors$remote$RemoteActor$$kernels:()Lscala/collection/mutable/HashMap;
+	getfield	Field scala$actors$remote$RemoteActor$$kernels:Lscala/collection/mutable/HashMap;
 	getstatic	Field scala/Predef$Pair$.MODULE$:Lscala/Predef$Pair$;
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
-	invokevirtual	Method scala/actors/Actor$.self:()Lscala/actors/Actor;
+	astore	5
+	getstatic	Field scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
+	astore	6
+	aload	5
+	aload	6
+	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+	checkcast	class scala/actors/Actor
 	aload	7
 	invokeinterface	InterfaceMethod scala/actors/remote/Service.kernel:()Lscala/actors/remote/NetKernel;
 	invokevirtual	Method scala/Predef$Pair$.apply:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/Tuple2;
@@ -379,135 +433,177 @@ l2	getstatic	Field scala/actors/remote/TcpService$.MODULE$:Lscala/actors/remote/
 	aload	7
 	invokeinterface	InterfaceMethod scala/actors/remote/Service.kernel:()Lscala/actors/remote/NetKernel;
 	goto	l4 // astore
-l3	aload	5
+l3	aload	9
 	instanceof	class scala/Some
 	ifeq	l5 // new
-	aload	5
+	aload	9
 	checkcast	class scala/Some
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/actors/remote/NetKernel
-l4	astore	4
-	aload	4
+l4	astore	8
+	aload	8
 	aload_1
 	aload_2
 	invokevirtual	Method scala/actors/remote/NetKernel.register:(Lscala/Symbol;Lscala/actors/OutputChannel;)V
-	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_3
+	aload_0
 	monitorexit
 	return
 l5	new	class scala/MatchError
 	dup
-	aload	5
+	aload	9
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
-	aload_3
+	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l1 = 39 // aload
-   	l2 = 47 // getstatic
-   	l3 = 102 // aload
-   	l4 = 121 // astore
-   	l5 = 137 // new
+   	l1 = 47 // aload
+   	l2 = 55 // getstatic
+   	l3 = 124 // aload
+   	l4 = 143 // astore
+   	l5 = 155 // new
   Exception table:
    from   to  target type
-     4   136   147   any
-   137   147   147   any
+     4   154   165   any
+   155   165   165   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      150      0    this       Lscala/actors/remote/RemoteActor$;
-   0      150      1    name       Lscala/Symbol;
-   0      150      2    a       Lscala/actors/Actor;
-   123      11      4    kernel       Lscala/actors/remote/NetKernel;
-   19      117      5    temp1       Lscala/Option;
-   137      10      5    temp1       Lscala/Option;
-   65      34      7    serv       Lscala/actors/remote/TcpService;
+   0      168      0    this       Lscala/actors/remote/RemoteActor$;
+   0      168      1    name       Lscala/Symbol;
+   0      168      2    a       Lscala/actors/Actor;
+   12      26      3    $inlThis1       Ljava/lang/Object;
+   17      9      4    sched0       Lscala/actors/IScheduler;
+   85      39      5    $inlThis4       Ljava/lang/Object;
+   90      10      6    sched1       Lscala/actors/IScheduler;
+   73      48      7    serv       Lscala/actors/remote/TcpService;
+   145      7      8    kernel       Lscala/actors/remote/NetKernel;
+   31      123      9    temp1       Lscala/Option;
+   155      10      9    temp1       Lscala/Option;
 
 
 private scala.actors.remote.NetKernel selfKernel();
   Signature: ()Lscala/actors/remote/NetKernel;
   Code:
-   Stack=3, Locals=3, Args_size=1
+   Stack=5, Locals=10, Args_size=1
 	aload_0
-	invokevirtual	Method scala$actors$remote$RemoteActor$$kernels:()Lscala/collection/mutable/HashMap;
+	getfield	Field scala$actors$remote$RemoteActor$$kernels:Lscala/collection/mutable/HashMap;
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
-	invokevirtual	Method scala/actors/Actor$.self:()Lscala/actors/Actor;
-	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
 	astore_1
-	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	aload_1
+	getstatic	Field scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
 	astore_2
-	dup
-	ifnonnull	l1 // aload_2
-	pop
+	aload_1
 	aload_2
-	ifnull	l2 // aload_0
-	goto	l3 // aload_1
-l1	aload_2
+	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+	checkcast	class scala/actors/Actor
+	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
+	astore	9
+	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	dup
+	ifnonnull	l1 // aload
+	pop
+	aload	9
+	ifnull	l2 // getstatic
+	goto	l3 // aload
+l1	aload	9
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l3 // aload_1
-l2	aload_0
-	getstatic	Field scala/actors/remote/TcpService$.MODULE$:Lscala/actors/remote/TcpService$;
+	ifeq	l3 // aload
+l2	getstatic	Field scala/actors/remote/TcpService$.MODULE$:Lscala/actors/remote/TcpService$;
 	invokevirtual	Method scala/actors/remote/TcpService$.generatePort:()I
-	invokevirtual	Method createKernelOnPort:(I)Lscala/actors/remote/NetKernel;
+	istore_3
+	getstatic	Field scala/actors/remote/TcpService$.MODULE$:Lscala/actors/remote/TcpService$;
+	iload_3
+	aload_0
+	invokespecial	Method cl:()Ljava/lang/ClassLoader;
+	invokevirtual	Method scala/actors/remote/TcpService$.apply:(ILjava/lang/ClassLoader;)Lscala/actors/remote/TcpService;
+	astore	4
+	aload	4
+	invokeinterface	InterfaceMethod scala/actors/remote/Service.kernel:()Lscala/actors/remote/NetKernel;
+	astore	8
+	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
+	astore	5
+	getstatic	Field scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
+	astore	6
+	aload	5
+	aload	6
+	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+	checkcast	class scala/actors/Actor
+	astore	7
+	aload_0
+	getfield	Field scala$actors$remote$RemoteActor$$kernels:Lscala/collection/mutable/HashMap;
+	getstatic	Field scala/Predef$Pair$.MODULE$:Lscala/Predef$Pair$;
+	aload	7
+	aload	8
+	invokevirtual	Method scala/Predef$Pair$.apply:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/Tuple2;
+	invokevirtual	Method scala/collection/mutable/HashMap.$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/HashMap;
+	pop
+	aload	7
+	new	class scala/actors/remote/RemoteActor$$anonfun$createKernelOnPort$1
+	dup
+	aload	8
+	aload	7
+	invokespecial	Method scala/actors/remote/RemoteActor$$anonfun$createKernelOnPort$1."<init>":(Lscala/actors/remote/NetKernel;Lscala/actors/Actor;)V
+	invokeinterface	InterfaceMethod scala/actors/Actor.onTerminate:(Lscala/Function0;)V
+	aload	8
 	goto	l4 // areturn
-l3	aload_1
+l3	aload	9
 	instanceof	class scala/Some
 	ifeq	l5 // new
-	aload_1
+	aload	9
 	checkcast	class scala/Some
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/actors/remote/NetKernel
 l4	areturn
 l5	new	class scala/MatchError
 	dup
-	aload_1
+	aload	9
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 31 // aload_2
-   	l2 = 38 // aload_0
-   	l3 = 51 // aload_1
-   	l4 = 68 // areturn
-   	l5 = 69 // new
+   	l1 = 41 // aload
+   	l2 = 49 // getstatic
+   	l3 = 141 // aload
+   	l4 = 160 // areturn
+   	l5 = 161 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      78      0    this       Lscala/actors/remote/RemoteActor$;
-   14      64      1    temp5       Lscala/Option;
+   0      171      0    this       Lscala/actors/remote/RemoteActor$;
+   69      69      4    serv0       Lscala/actors/remote/TcpService;
+   100      38      7    s$10       Lscala/actors/Actor;
+   78      60      8    kern$10       Lscala/actors/remote/NetKernel;
+   25      146      9    temp5       Lscala/Option;
 
 
 public scala.actors.AbstractActor select(scala.actors.remote.Node, scala.Symbol);
   Signature: (Lscala/actors/remote/Node;Lscala/Symbol;)Lscala/actors/AbstractActor;
   Code:
-   Stack=3, Locals=5, Args_size=3
+   Stack=3, Locals=4, Args_size=3
 	aload_0
 	dup
-	astore_3
+	pop
 	monitorenter
 	aload_0
 	invokespecial	Method selfKernel:()Lscala/actors/remote/NetKernel;
 	aload_1
 	aload_2
 	invokevirtual	Method scala/actors/remote/NetKernel.getOrCreateProxy:(Lscala/actors/remote/Node;Lscala/Symbol;)Lscala/actors/remote/Proxy;
-	astore	4
-	aload_3
+	astore_3
+	aload_0
 	monitorexit
-	aload	4
+	aload_3
 	checkcast	class scala/actors/AbstractActor
 	areturn
-	aload_3
+	aload_0
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    17    23   any
+     4    16    21   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      26      0    this       Lscala/actors/remote/RemoteActor$;
-   0      26      1    node       Lscala/actors/remote/Node;
-   0      26      2    sym       Lscala/Symbol;
+   0      24      0    this       Lscala/actors/remote/RemoteActor$;
+   0      24      1    node       Lscala/actors/remote/Node;
+   0      24      2    sym       Lscala/Symbol;
 
 
 public scala.actors.remote.NetKernel someKernel();
@@ -536,8 +632,6 @@ private scala.actors.remote.RemoteActor$();
 	invokespecial	Method scala/collection/mutable/HashMap."<init>":()V
 	putfield	Field scala$actors$remote$RemoteActor$$kernels:Lscala/collection/mutable/HashMap;
 	aload_0
-	aconst_null
-	pop
 	aconst_null
 	putfield	Field cl:Ljava/lang/ClassLoader;
 	return

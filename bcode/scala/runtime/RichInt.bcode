@@ -203,7 +203,7 @@ Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
 {
-private final int start;
+public final int start;
   Signature: I
 
 public boolean $less(java.lang.Object);
@@ -326,9 +326,11 @@ public int start();
 public java.lang.Object self();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=1, Locals=1, Args_size=1
+   Stack=1, Locals=2, Args_size=1
 	aload_0
 	invokevirtual	Method start:()I
+	istore_1
+	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	areturn
   Labels:
@@ -338,13 +340,13 @@ public int compare(int);
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	invokevirtual	Method start:()I
+	getfield	Field start:I
 	iload_1
 	if_icmpge	l1 // aload_0
 	iconst_m1
 	goto	l2 // ireturn
 l1	aload_0
-	invokevirtual	Method start:()I
+	getfield	Field start:I
 	iload_1
 	if_icmple	l3 // iconst_0
 	iconst_1
@@ -438,11 +440,11 @@ public int min(int);
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	invokevirtual	Method start:()I
+	getfield	Field start:I
 	iload_1
 	if_icmpge	l1 // iload_1
 	aload_0
-	invokevirtual	Method start:()I
+	getfield	Field start:I
 	goto	l2 // ireturn
 l1	iload_1
 l2	ireturn
@@ -460,11 +462,11 @@ public int max(int);
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	invokevirtual	Method start:()I
+	getfield	Field start:I
 	iload_1
 	if_icmple	l1 // iload_1
 	aload_0
-	invokevirtual	Method start:()I
+	getfield	Field start:I
 	goto	l2 // ireturn
 l1	iload_1
 l2	ireturn
@@ -482,15 +484,15 @@ public int abs();
   Code:
    Stack=2, Locals=1, Args_size=1
 	aload_0
-	invokevirtual	Method start:()I
+	getfield	Field start:I
 	iconst_0
 	if_icmpge	l1 // aload_0
 	aload_0
-	invokevirtual	Method start:()I
+	getfield	Field start:I
 	ineg
 	goto	l2 // ireturn
 l1	aload_0
-	invokevirtual	Method start:()I
+	getfield	Field start:I
 l2	ireturn
   Labels:
    	l1 = 16 // aload_0

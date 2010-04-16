@@ -163,12 +163,6 @@ NameAndType	NoMods:(Lscala/reflect/generic/Universe;)Lscala/reflect/generic/Tree
 Method	scala/reflect/generic/Trees$class.NoMods:(Lscala/reflect/generic/Universe;)Lscala/reflect/generic/Trees$Modifiers;
 NameAndType	NoMods:Lscala/reflect/generic/Trees$Modifiers;
 Field	scala/reflect/generic/Universe.NoMods:Lscala/reflect/generic/Trees$Modifiers;
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	EmptyTree;
 Asciz	()Lscala/reflect/generic/Trees$EmptyTree$;;
 NameAndType	EmptyTree$module:Lscala/reflect/generic/Trees$EmptyTree$;
@@ -781,7 +775,7 @@ l1	aload_0
 public scala.reflect.generic.Trees$Modifiers NoMods();
   Signature: ()Lscala/reflect/generic/Trees$Modifiers;
   Code:
-   Stack=3, Locals=2, Args_size=1
+   Stack=3, Locals=1, Args_size=1
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
@@ -790,14 +784,14 @@ public scala.reflect.generic.Trees$Modifiers NoMods();
 	if_icmpne	l1 // aload_0
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
 	iand
 	iconst_0
-	if_icmpne	l2 // getstatic
+	if_icmpne	l2 // aload_0
 	aload_0
 	aload_0
 	invokestatic	Method scala/reflect/generic/Trees$class.NoMods:(Lscala/reflect/generic/Universe;)Lscala/reflect/generic/Trees$Modifiers;
@@ -808,22 +802,20 @@ public scala.reflect.generic.Trees$Modifiers NoMods();
 	iconst_1
 	ior
 	putfield	Field bitmap$0:I
-l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_1
+l2	aload_0
 	monitorexit
 l1	aload_0
 	getfield	Field NoMods:Lscala/reflect/generic/Trees$Modifiers;
 	areturn
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l2 = 42 // getstatic
-   	l1 = 48 // aload_0
+   	l2 = 42 // aload_0
+   	l1 = 44 // aload_0
   Exception table:
    from   to  target type
-    14    48    53   any
+    14    44    49   any
 
 public final scala.reflect.generic.Trees$EmptyTree$ EmptyTree();
   Signature: ()Lscala/reflect/generic/Trees$EmptyTree$;

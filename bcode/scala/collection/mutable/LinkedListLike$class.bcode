@@ -8,7 +8,6 @@ public abstract class scala.collection.mutable.LinkedListLike$class extends java
    public final $anonfun$tail$1=class scala/collection/mutable/LinkedListLike$$anonfun$tail$1 of class scala/collection/mutable/LinkedListLike
    public final $anonfun$apply$1=class scala/collection/mutable/LinkedListLike$$anonfun$apply$1 of class scala/collection/mutable/LinkedListLike
    public final $anonfun$update$1=class scala/collection/mutable/LinkedListLike$$anonfun$update$1 of class scala/collection/mutable/LinkedListLike
-   public final $anonfun$insert$1=class scala/collection/mutable/LinkedListLike$$anonfun$insert$1 of class scala/collection/mutable/LinkedListLike
   minor version: 0
   major version: 49
   Constant pool:
@@ -81,9 +80,6 @@ Asciz	that$1;
 Asciz	Lscala/collection/mutable/Seq;;
 Asciz	insert;
 Asciz	(Lscala/collection/mutable/LinkedListLike;Lscala/collection/mutable/Seq;)V;
-Asciz	scala/collection/mutable/LinkedListLike$$anonfun$insert$1;
-class	scala/collection/mutable/LinkedListLike$$anonfun$insert$1
-Method	scala/collection/mutable/LinkedListLike$$anonfun$insert$1."<init>":(Lscala/collection/mutable/LinkedListLike;)V
 Asciz	(Lscala/collection/mutable/Seq;)Lscala/collection/mutable/Seq;;
 NameAndType	append:(Lscala/collection/mutable/Seq;)Lscala/collection/mutable/Seq;
 InterfaceMethod	scala/collection/mutable/LinkedListLike.append:(Lscala/collection/mutable/Seq;)Lscala/collection/mutable/Seq;
@@ -91,7 +87,30 @@ Asciz	next_$eq;
 Asciz	(Lscala/collection/mutable/Seq;)V;
 NameAndType	next_$eq:(Lscala/collection/mutable/Seq;)V
 InterfaceMethod	scala/collection/mutable/LinkedListLike.next_$eq:(Lscala/collection/mutable/Seq;)V
+Asciz	java/lang/IllegalArgumentException;
+class	java/lang/IllegalArgumentException
+Asciz	scala/collection/mutable/StringBuilder;
+class	scala/collection/mutable/StringBuilder
+Asciz	()V;
+NameAndType	"<init>":()V
+Method	scala/collection/mutable/StringBuilder."<init>":()V
+Asciz	requirement failed: ;
+String	requirement failed: 
+Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
+NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+Asciz	insert into empty list;
+String	insert into empty list
+Asciz	toString;
+Asciz	()Ljava/lang/String;;
+NameAndType	toString:()Ljava/lang/String;
+Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+Asciz	(Ljava/lang/String;)V;
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
 Asciz	that;
+Asciz	requirement0;
+Asciz	Z;
 Asciz	drop;
 Asciz	(Lscala/collection/mutable/LinkedListLike;I)Lscala/collection/mutable/Seq;;
 Asciz	n;
@@ -113,12 +132,7 @@ NameAndType	boxToInteger:(I)Ljava/lang/Integer;
 Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 Asciz	java/lang/Object;
 class	java/lang/Object
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
-NameAndType	toString:()Ljava/lang/String;
 Method	java/lang/Object.toString:()Ljava/lang/String;
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 Asciz	scala/Function1;
 class	scala/Function1
@@ -171,7 +185,6 @@ Asciz	$anon$1;
 Asciz	$anonfun$tail$1;
 Asciz	$anonfun$apply$1;
 Asciz	$anonfun$update$1;
-Asciz	$anonfun$insert$1;
 
 {
 public static boolean isEmpty(scala.collection.mutable.LinkedListLike);
@@ -283,18 +296,15 @@ l2	areturn
 public static void insert(scala.collection.mutable.LinkedListLike, scala.collection.mutable.Seq);
   Signature: (Lscala/collection/mutable/LinkedListLike;Lscala/collection/mutable/Seq;)V
   Code:
-   Stack=5, Locals=2, Args_size=2
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+   Stack=4, Locals=3, Args_size=2
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.nonEmpty:()Z
-	new	class scala/collection/mutable/LinkedListLike$$anonfun$insert$1
-	dup
-	aload_0
-	invokespecial	Method scala/collection/mutable/LinkedListLike$$anonfun$insert$1."<init>":(Lscala/collection/mutable/LinkedListLike;)V
-	invokevirtual	Method scala/Predef$.require:(ZLscala/Function0;)V
+	istore_2
+	iload_2
+	ifeq	l1 // new
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.nonEmpty:()Z
-	ifeq	l1 // return
+	ifeq	l2 // return
 	aload_1
 	checkcast	class scala/collection/mutable/LinkedListLike
 	aload_0
@@ -304,13 +314,28 @@ public static void insert(scala.collection.mutable.LinkedListLike, scala.collect
 	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/mutable/LinkedListLike.next_$eq:(Lscala/collection/mutable/Seq;)V
-l1	return
+l2	return
+l1	new	class java/lang/IllegalArgumentException
+	dup
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	ldc	String requirement failed: 
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	ldc	String insert into empty list
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+	athrow
   Labels:
-   	l1 = 52 // return
+   	l2 = 43 // return
+   	l1 = 44 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      53      0    $this       Lscala/collection/mutable/LinkedListLike;
-   0      53      1    that       Lscala/collection/mutable/Seq;
+   0      72      0    $this       Lscala/collection/mutable/LinkedListLike;
+   0      72      1    that       Lscala/collection/mutable/Seq;
+   11      9      2    requirement0       Z
+   44      28      2    requirement0       Z
 
 
 public static scala.collection.mutable.Seq drop(scala.collection.mutable.LinkedListLike, int);
@@ -504,7 +529,7 @@ l1	return
 private static final void loop$1(scala.collection.mutable.LinkedListLike, scala.collection.mutable.Seq, scala.collection.mutable.Seq);
   Signature: (Lscala/collection/mutable/LinkedListLike;Lscala/collection/mutable/Seq;Lscala/collection/mutable/Seq;)V
   Code:
-   Stack=2, Locals=4, Args_size=3
+   Stack=2, Locals=3, Args_size=3
 l2	aload_1
 	checkcast	class scala/collection/mutable/LinkedListLike
 	invokeinterface	InterfaceMethod scala/collection/mutable/LinkedListLike.next:()Lscala/collection/mutable/Seq;

@@ -103,8 +103,6 @@ class	scala/actors/Actor
 Asciz	sched;
 Asciz	Lscala/actors/IScheduler;;
 Asciz	()Lscala/actors/ReplyReactor;;
-NameAndType	tl:()Ljava/lang/ThreadLocal;
-Method	scala/actors/Actor$.tl:()Ljava/lang/ThreadLocal;
 Asciz	java/lang/ThreadLocal;
 class	java/lang/ThreadLocal
 Asciz	get;
@@ -115,15 +113,12 @@ Asciz	scala/actors/ReplyReactor;
 class	scala/actors/ReplyReactor
 Asciz	scala/actors/ActorProxy;
 class	scala/actors/ActorProxy
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	java/lang/Thread;
+class	java/lang/Thread
 Asciz	currentThread;
 Asciz	()Ljava/lang/Thread;;
 NameAndType	currentThread:()Ljava/lang/Thread;
-Method	scala/Predef$.currentThread:()Ljava/lang/Thread;
+Method	java/lang/Thread.currentThread:()Ljava/lang/Thread;
 Asciz	(Ljava/lang/Thread;Lscala/actors/IScheduler;)V;
 NameAndType	"<init>":(Ljava/lang/Thread;Lscala/actors/IScheduler;)V
 Method	scala/actors/ActorProxy."<init>":(Ljava/lang/Thread;Lscala/actors/IScheduler;)V
@@ -131,10 +126,10 @@ Asciz	set;
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	set:(Ljava/lang/Object;)V
 Method	java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
-Asciz	s;
-Asciz	Lscala/actors/ReplyReactor;;
 Asciz	r;
 Asciz	Lscala/actors/ActorProxy;;
+Asciz	s;
+Asciz	Lscala/actors/ReplyReactor;;
 Asciz	scala$actors$Actor$$parentScheduler;
 Asciz	()Lscala/actors/IScheduler;;
 Asciz	scala/actors/Reactor;
@@ -147,6 +142,8 @@ NameAndType	scala$actors$Actor$$parentScheduler:()Lscala/actors/IScheduler;
 Method	scala/actors/Actor$.scala$actors$Actor$$parentScheduler:()Lscala/actors/IScheduler;
 Asciz	a;
 Asciz	clearSelf;
+NameAndType	tl:()Ljava/lang/ThreadLocal;
+Method	scala/actors/Actor$.tl:()Ljava/lang/ThreadLocal;
 Asciz	actor;
 Asciz	(Lscala/Function0;)Lscala/actors/Actor;;
 Asciz	scala/actors/Actor$$anon$1;
@@ -481,36 +478,35 @@ public scala.actors.ReplyReactor rawSelf(scala.actors.IScheduler);
   Code:
    Stack=4, Locals=4, Args_size=2
 	aload_0
-	invokevirtual	Method tl:()Ljava/lang/ThreadLocal;
+	getfield	Field tl:Ljava/lang/ThreadLocal;
 	invokevirtual	Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
 	checkcast	class scala/actors/ReplyReactor
-	astore_2
-	aload_2
-	ifnonnull	l1 // aload_2
+	astore_3
+	aload_3
+	ifnonnull	l1 // aload_3
 	new	class scala/actors/ActorProxy
 	dup
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	invokevirtual	Method scala/Predef$.currentThread:()Ljava/lang/Thread;
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
 	aload_1
 	invokespecial	Method scala/actors/ActorProxy."<init>":(Ljava/lang/Thread;Lscala/actors/IScheduler;)V
-	astore_3
+	astore_2
 	aload_0
-	invokevirtual	Method tl:()Ljava/lang/ThreadLocal;
-	aload_3
+	getfield	Field tl:Ljava/lang/ThreadLocal;
+	aload_2
 	invokevirtual	Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
-	aload_3
+	aload_2
 	goto	l2 // areturn
-l1	aload_2
+l1	aload_3
 l2	areturn
   Labels:
-   	l1 = 42 // aload_2
-   	l2 = 43 // areturn
+   	l1 = 39 // aload_3
+   	l2 = 40 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      44      0    this       Lscala/actors/Actor$;
-   0      44      1    sched       Lscala/actors/IScheduler;
-   11      33      2    s       Lscala/actors/ReplyReactor;
-   30      9      3    r       Lscala/actors/ActorProxy;
+   0      41      0    this       Lscala/actors/Actor$;
+   0      41      1    sched       Lscala/actors/IScheduler;
+   27      9      2    r       Lscala/actors/ActorProxy;
+   11      30      3    s       Lscala/actors/ReplyReactor;
 
 
 public final scala.actors.IScheduler scala$actors$Actor$$parentScheduler();
@@ -518,7 +514,7 @@ public final scala.actors.IScheduler scala$actors$Actor$$parentScheduler();
   Code:
    Stack=1, Locals=2, Args_size=1
 	aload_0
-	invokevirtual	Method tl:()Ljava/lang/ThreadLocal;
+	getfield	Field tl:Ljava/lang/ThreadLocal;
 	invokevirtual	Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
 	checkcast	class scala/actors/ReplyReactor
 	astore_1
@@ -543,7 +539,7 @@ public void resetProxy();
   Code:
    Stack=5, Locals=2, Args_size=1
 	aload_0
-	invokevirtual	Method tl:()Ljava/lang/ThreadLocal;
+	getfield	Field tl:Ljava/lang/ThreadLocal;
 	invokevirtual	Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
 	checkcast	class scala/actors/ReplyReactor
 	astore_1
@@ -553,22 +549,21 @@ public void resetProxy();
 	instanceof	class scala/actors/ActorProxy
 	ifeq	l1 // return
 	aload_0
-	invokevirtual	Method tl:()Ljava/lang/ThreadLocal;
+	getfield	Field tl:Ljava/lang/ThreadLocal;
 	new	class scala/actors/ActorProxy
 	dup
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	invokevirtual	Method scala/Predef$.currentThread:()Ljava/lang/Thread;
+	invokestatic	Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
 	aload_0
 	invokevirtual	Method scala$actors$Actor$$parentScheduler:()Lscala/actors/IScheduler;
 	invokespecial	Method scala/actors/ActorProxy."<init>":(Ljava/lang/Thread;Lscala/actors/IScheduler;)V
 	invokevirtual	Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
 l1	return
   Labels:
-   	l1 = 46 // return
+   	l1 = 43 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      47      0    this       Lscala/actors/Actor$;
-   11      36      1    a       Lscala/actors/ReplyReactor;
+   0      44      0    this       Lscala/actors/Actor$;
+   11      33      1    a       Lscala/actors/ReplyReactor;
 
 
 public void clearSelf();
@@ -577,8 +572,6 @@ public void clearSelf();
    Stack=2, Locals=1, Args_size=1
 	aload_0
 	invokevirtual	Method tl:()Ljava/lang/ThreadLocal;
-	aconst_null
-	pop
 	aconst_null
 	invokevirtual	Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
 	return
@@ -606,7 +599,7 @@ public scala.actors.Actor actor(scala.Function0);
    9      8      2    a       Lscala/actors/Actor;
 
   Signature: length = 0x2
-   00 FFFFFF80 
+   00 7D 
 
 public scala.actors.Actor reactor(scala.Function0);
   Signature: (Lscala/Function0;)Lscala/actors/Actor;
@@ -630,7 +623,7 @@ public scala.actors.Actor reactor(scala.Function0);
    9      8      2    a       Lscala/actors/Actor;
 
   Signature: length = 0x2
-   00 FFFFFF86 
+   00 FFFFFF83 
 
 public java.lang.Object $qmark();
   Signature: ()Ljava/lang/Object;
@@ -658,7 +651,7 @@ public java.lang.Object receive(scala.PartialFunction);
    0      11      1    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFF92 
+   00 FFFFFF8F 
 
 public java.lang.Object receiveWithin(long, scala.PartialFunction);
   Signature: (JLscala/PartialFunction;)Ljava/lang/Object;
@@ -678,7 +671,7 @@ public java.lang.Object receiveWithin(long, scala.PartialFunction);
    0      12      3    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFF99 
+   00 FFFFFF96 
 
 public scala.runtime.Nothing$ react(scala.PartialFunction);
   Signature: (Lscala/PartialFunction;)Lscala/runtime/Nothing$;
@@ -696,7 +689,7 @@ public scala.runtime.Nothing$ react(scala.PartialFunction);
    0      11      1    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFFA0 
+   00 FFFFFF9D 
 
 public scala.runtime.Nothing$ reactWithin(long, scala.PartialFunction);
   Signature: (JLscala/PartialFunction;)Lscala/runtime/Nothing$;
@@ -716,7 +709,7 @@ public scala.runtime.Nothing$ reactWithin(long, scala.PartialFunction);
    0      12      3    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFFA5 
+   00 FFFFFFA2 
 
 public scala.runtime.Nothing$ eventloop(scala.PartialFunction);
   Signature: (Lscala/PartialFunction;)Lscala/runtime/Nothing$;
@@ -739,7 +732,7 @@ public scala.runtime.Nothing$ eventloop(scala.PartialFunction);
    0      22      1    f       Lscala/PartialFunction;
 
   Signature: length = 0x2
-   00 FFFFFFA0 
+   00 FFFFFF9D 
 
 public scala.actors.OutputChannel sender();
   Signature: ()Lscala/actors/OutputChannel;
@@ -751,7 +744,7 @@ public scala.actors.OutputChannel sender();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFB0 
+   00 FFFFFFAD 
 
 public void reply(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
@@ -806,7 +799,7 @@ public scala.Function1 respondOn(scala.Function1);
    0      9      1    fun$1       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFFC9 
+   00 FFFFFFC6 
 
 public scala.actors.Actor$Body mkBody(scala.Function0);
   Signature: (Lscala/Function0;)Lscala/actors/Actor$Body;
@@ -824,7 +817,7 @@ public scala.actors.Actor$Body mkBody(scala.Function0);
    0      9      1    body$1       Lscala/Function0;
 
   Signature: length = 0x2
-   00 FFFFFFD0 
+   00 FFFFFFCD 
 
 public scala.actors.AbstractActor link(scala.actors.AbstractActor);
   Signature: (Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;
@@ -858,7 +851,7 @@ public scala.actors.Actor link(scala.Function0);
    0      11      1    body       Lscala/Function0;
 
   Signature: length = 0x2
-   00 FFFFFF80 
+   00 7D 
 
 public void unlink(scala.actors.Actor);
   Signature: (Lscala/actors/Actor;)V

@@ -707,8 +707,6 @@ private void save();
 	new	class scala/xml/Elem
 	dup
 	aconst_null
-	pop
-	aconst_null
 	ldc	String nodes
 	getstatic	Field scala/xml/Null$.MODULE$:Lscala/xml/Null$;
 	getstatic	Field scala/package$.MODULE$:Lscala/package$;
@@ -735,8 +733,6 @@ private void save();
 	aload_3
 	ldc	String utf-8
 	iconst_1
-	aconst_null
-	pop
 	aconst_null
 	invokevirtual	Method scala/xml/XML$.write:(Ljava/io/Writer;Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;)V
 	aload_0
@@ -766,21 +762,21 @@ private void save();
 	invokeinterface	InterfaceMethod scala/util/logging/Logged.log:(Ljava/lang/String;)V
 l1	return
   Labels:
-   	l1 = 226 // return
+   	l1 = 222 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      227      0    this       Lscala/xml/persistent/CachedFileStorage;
-   91      135      1    fos       Ljava/io/FileOutputStream;
-   96      130      2    c       Ljava/nio/channels/FileChannel;
-   144      82      3    storageNode       Lscala/xml/Elem;
-   123      17      4    $buf       Lscala/xml/NodeBuffer;
-   152      74      5    w       Ljava/io/Writer;
+   0      223      0    this       Lscala/xml/persistent/CachedFileStorage;
+   91      131      1    fos       Ljava/io/FileOutputStream;
+   96      126      2    c       Ljava/nio/channels/FileChannel;
+   142      80      3    storageNode       Lscala/xml/Elem;
+   121      17      4    $buf       Lscala/xml/NodeBuffer;
+   150      72      5    w       Ljava/io/Writer;
 
 
 public void run();
   Signature: ()V
   Code:
-   Stack=3, Locals=1, Args_size=1
+   Stack=3, Locals=2, Args_size=1
 	aload_0
 	new	class scala/collection/mutable/StringBuilder
 	dup
@@ -789,6 +785,8 @@ public void run();
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokevirtual	Method interval:()I
+	istore_1
+	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc_w	String  ms
@@ -803,7 +801,7 @@ l1	aload_0
 	invokespecial	Method save:()V
 	goto	l1 // aload_0
   Labels:
-   	l1 = 38 // aload_0
+   	l1 = 40 // aload_0
 
 public void flush();
   Signature: ()V
@@ -866,8 +864,6 @@ public scala.xml.persistent.CachedFileStorage(java.io.File);
 	putfield	Field file2:Ljava/io/File;
 	aload_0
 	aconst_null
-	pop
-	aconst_null
 	putfield	Field theFile:Ljava/io/File;
 	aload_0
 	iconst_0
@@ -879,8 +875,8 @@ public scala.xml.persistent.CachedFileStorage(java.io.File);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      71      0    this       Lscala/xml/persistent/CachedFileStorage;
-   0      71      1    file1       Ljava/io/File;
+   0      69      0    this       Lscala/xml/persistent/CachedFileStorage;
+   0      69      1    file1       Ljava/io/File;
 
 
 }

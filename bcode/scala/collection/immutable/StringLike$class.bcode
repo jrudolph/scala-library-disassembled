@@ -163,15 +163,12 @@ Asciz	toCharArray;
 Asciz	()[C;
 NameAndType	toCharArray:()[C
 Method	java/lang/String.toCharArray:()[C
-Asciz	charWrapper;
-Asciz	(C)Lscala/runtime/RichChar;;
-NameAndType	charWrapper:(C)Lscala/runtime/RichChar;
-Method	scala/Predef$.charWrapper:(C)Lscala/runtime/RichChar;
-Asciz	scala/runtime/RichChar;
-class	scala/runtime/RichChar
-Asciz	toUpper;
-NameAndType	toUpper:()C
-Method	scala/runtime/RichChar.toUpper:()C
+Asciz	java/lang/Character;
+class	java/lang/Character
+Asciz	toUpperCase;
+Asciz	(C)C;
+NameAndType	toUpperCase:(C)C
+Method	java/lang/Character.toUpperCase:(C)C
 Asciz	([C)V;
 NameAndType	"<init>":([C)V
 Method	java/lang/String."<init>":([C)V
@@ -350,7 +347,6 @@ NameAndType	underlying:()Ljava/lang/Object;
 Method	scala/math/ScalaNumber.underlying:()Ljava/lang/Object;
 Asciz	arg;
 Asciz	Ljava/lang/Object;;
-Asciz	temp4;
 Asciz	format;
 Asciz	(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;;
 Asciz	scala/collection/immutable/StringLike$$anonfun$format$1;
@@ -650,7 +646,7 @@ public static scala.collection.Iterator linesIterator(scala.collection.immutable
 public static java.lang.String capitalize(scala.collection.immutable.StringLike);
   Signature: (Lscala/collection/immutable/StringLike;)Ljava/lang/String;
   Code:
-   Stack=5, Locals=3, Args_size=1
+   Stack=4, Locals=4, Args_size=1
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.toString:()Ljava/lang/String;
 	dup
@@ -661,8 +657,6 @@ public static java.lang.String capitalize(scala.collection.immutable.StringLike)
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // aload_0
 l1	aconst_null
-	pop
-	aconst_null
 	goto	l3 // areturn
 l2	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.toString:()Ljava/lang/String;
@@ -674,30 +668,30 @@ l2	aload_0
 l4	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.toString:()Ljava/lang/String;
 	invokevirtual	Method java/lang/String.toCharArray:()[C
-	astore_2
-	aload_2
+	astore_3
+	aload_3
 	iconst_0
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	aload_2
+	aload_3
 	iconst_0
 	caload
-	invokevirtual	Method scala/Predef$.charWrapper:(C)Lscala/runtime/RichChar;
-	invokevirtual	Method scala/runtime/RichChar.toUpper:()C
+	istore_2
+	iload_2
+	invokestatic	Method java/lang/Character.toUpperCase:(C)C
 	castore
 	new	class java/lang/String
 	dup
-	aload_2
+	aload_3
 	invokespecial	Method java/lang/String."<init>":([C)V
 l3	areturn
   Labels:
    	l1 = 19 // aconst_null
-   	l2 = 25 // aload_0
-   	l4 = 43 // aload_0
-   	l3 = 76 // areturn
+   	l2 = 23 // aload_0
+   	l4 = 41 // aload_0
+   	l3 = 70 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      77      0    $this       Lscala/collection/immutable/StringLike;
-   53      23      2    chars       [C
+   0      71      0    $this       Lscala/collection/immutable/StringLike;
+   51      19      3    chars       [C
 
 
 public static java.lang.String stripPrefix(scala.collection.immutable.StringLike, java.lang.String);
@@ -1002,12 +996,12 @@ public static double toDouble(scala.collection.immutable.StringLike);
 private static boolean parseBoolean(scala.collection.immutable.StringLike, java.lang.String);
   Signature: (Lscala/collection/immutable/StringLike;Ljava/lang/String;)Z
   Code:
-   Stack=4, Locals=6, Args_size=2
+   Stack=4, Locals=5, Args_size=2
 	aload_1
 	dup
-	astore_2
+	pop
 	ifnull	l1 // new
-	aload_2
+	aload_1
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // aload_1
@@ -1021,28 +1015,28 @@ l2	aload_1
 	astore_3
 	aload_3
 	ldc_w	String true
-	astore	4
+	astore_2
 	dup
-	ifnonnull	l3 // aload
+	ifnonnull	l3 // aload_2
 	pop
-	aload	4
+	aload_2
 	ifnull	l4 // iconst_1
 	goto	l5 // aload_3
-l3	aload	4
+l3	aload_2
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l5 // aload_3
 l4	iconst_1
 	goto	l6 // ireturn
 l5	aload_3
 	ldc_w	String false
-	astore	5
+	astore	4
 	dup
 	ifnonnull	l7 // aload
 	pop
-	aload	5
+	aload	4
 	ifnull	l8 // iconst_0
 	goto	l9 // new
-l7	aload	5
+l7	aload	4
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l9 // new
 l8	iconst_0
@@ -1064,44 +1058,41 @@ l9	new	class java/lang/NumberFormatException
   Labels:
    	l1 = 14 // new
    	l2 = 25 // aload_1
-   	l3 = 49 // aload
-   	l4 = 57 // iconst_1
-   	l5 = 61 // aload_3
-   	l7 = 80 // aload
-   	l8 = 88 // iconst_0
-   	l6 = 89 // ireturn
-   	l9 = 90 // new
+   	l3 = 47 // aload_2
+   	l4 = 54 // iconst_1
+   	l5 = 58 // aload_3
+   	l7 = 77 // aload
+   	l8 = 85 // iconst_0
+   	l6 = 86 // ireturn
+   	l9 = 87 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      124      0    $this       Lscala/collection/immutable/StringLike;
-   0      124      1    s       Ljava/lang/String;
-   30      59      3    temp1       Ljava/lang/String;
-   90      34      3    temp1       Ljava/lang/String;
+   0      121      0    $this       Lscala/collection/immutable/StringLike;
+   0      121      1    s       Ljava/lang/String;
+   30      56      3    temp1       Ljava/lang/String;
+   87      34      3    temp1       Ljava/lang/String;
 
 
 public static final java.lang.Object scala$collection$immutable$StringLike$$unwrapArg(scala.collection.immutable.StringLike, java.lang.Object);
   Signature: (Lscala/collection/immutable/StringLike;Ljava/lang/Object;)Ljava/lang/Object;
   Code:
-   Stack=1, Locals=3, Args_size=2
+   Stack=1, Locals=2, Args_size=2
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class scala/math/ScalaNumber
-	ifeq	l1 // aload_2
-	aload_2
+	ifeq	l1 // aload_1
+	aload_1
 	checkcast	class scala/math/ScalaNumber
 	invokevirtual	Method scala/math/ScalaNumber.underlying:()Ljava/lang/Object;
 	goto	l2 // areturn
-l1	aload_2
+l1	aload_1
 l2	areturn
   Labels:
-   	l1 = 19 // aload_2
-   	l2 = 20 // areturn
+   	l1 = 17 // aload_1
+   	l2 = 18 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      21      0    $this       Lscala/collection/immutable/StringLike;
-   0      21      1    arg       Ljava/lang/Object;
-   2      19      2    temp4       Ljava/lang/Object;
+   0      19      0    $this       Lscala/collection/immutable/StringLike;
+   0      19      1    arg       Ljava/lang/Object;
 
 
 public static java.lang.String format(scala.collection.immutable.StringLike, scala.collection.Seq);

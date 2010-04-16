@@ -346,8 +346,8 @@ Method	scala/collection/mutable/LinkedHashMap$$anon$3.hasNext:()Z
 Asciz	scala/collection/mutable/LinkedEntry;
 class	scala/collection/mutable/LinkedEntry
 Asciz	value;
-NameAndType	value:()Ljava/lang/Object;
-Method	scala/collection/mutable/LinkedEntry.value:()Ljava/lang/Object;
+NameAndType	value:Ljava/lang/Object;
+Field	scala/collection/mutable/LinkedEntry.value:Ljava/lang/Object;
 Asciz	later;
 NameAndType	later:()Lscala/collection/mutable/LinkedEntry;
 Method	scala/collection/mutable/LinkedEntry.later:()Lscala/collection/mutable/LinkedEntry;
@@ -1371,32 +1371,34 @@ l2	ireturn
 public java.lang.Object next();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=3, Args_size=1
 	aload_0
 	invokevirtual	Method hasNext:()Z
 	ifeq	l1 // getstatic
 	aload_0
 	invokespecial	Method cur:()Lscala/collection/mutable/LinkedEntry;
-	invokevirtual	Method scala/collection/mutable/LinkedEntry.value:()Ljava/lang/Object;
 	astore_1
+	aload_1
+	getfield	Field scala/collection/mutable/LinkedEntry.value:Ljava/lang/Object;
+	astore_2
 	aload_0
 	aload_0
 	invokespecial	Method cur:()Lscala/collection/mutable/LinkedEntry;
 	invokevirtual	Method scala/collection/mutable/LinkedEntry.later:()Lscala/collection/mutable/LinkedEntry;
 	invokespecial	Method cur_$eq:(Lscala/collection/mutable/LinkedEntry;)V
-	aload_1
+	aload_2
 	goto	l2 // areturn
 l1	getstatic	Field scala/collection/Iterator$.MODULE$:Lscala/collection/Iterator$;
 	invokevirtual	Method scala/collection/Iterator$.empty:()Lscala/collection/Iterator;
 	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
 l2	areturn
   Labels:
-   	l1 = 30 // getstatic
-   	l2 = 41 // areturn
+   	l1 = 32 // getstatic
+   	l2 = 43 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      42      0    this       Lscala/collection/mutable/LinkedHashMap$$anon$3;
-   15      12      1    res       Ljava/lang/Object;
+   0      44      0    this       Lscala/collection/mutable/LinkedHashMap$$anon$3;
+   17      12      2    res       Ljava/lang/Object;
 
   Signature: length = 0x2
    01 64 

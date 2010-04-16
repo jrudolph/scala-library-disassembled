@@ -347,12 +347,11 @@ class	scala/Tuple2
 Asciz	scala/collection/mutable/LinkedEntry;
 class	scala/collection/mutable/LinkedEntry
 Asciz	key;
-Asciz	()Ljava/lang/Object;;
-NameAndType	key:()Ljava/lang/Object;
-Method	scala/collection/mutable/LinkedEntry.key:()Ljava/lang/Object;
+NameAndType	key:Ljava/lang/Object;
+Field	scala/collection/mutable/LinkedEntry.key:Ljava/lang/Object;
 Asciz	value;
-NameAndType	value:()Ljava/lang/Object;
-Method	scala/collection/mutable/LinkedEntry.value:()Ljava/lang/Object;
+NameAndType	value:Ljava/lang/Object;
+Field	scala/collection/mutable/LinkedEntry.value:Ljava/lang/Object;
 Asciz	<init>;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
@@ -373,6 +372,7 @@ NameAndType	empty:()Lscala/collection/Iterator;
 Method	scala/collection/Iterator$.empty:()Lscala/collection/Iterator;
 Asciz	scala/collection/Iterator;
 class	scala/collection/Iterator
+Asciz	()Ljava/lang/Object;;
 NameAndType	next:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/Iterator.next:()Ljava/lang/Object;
 Asciz	res;
@@ -1382,7 +1382,7 @@ l2	ireturn
 public scala.Tuple2 next();
   Signature: ()Lscala/Tuple2;
   Code:
-   Stack=4, Locals=2, Args_size=1
+   Stack=4, Locals=4, Args_size=1
 	aload_0
 	invokevirtual	Method hasNext:()Z
 	ifeq	l1 // getstatic
@@ -1390,18 +1390,22 @@ public scala.Tuple2 next();
 	dup
 	aload_0
 	invokespecial	Method cur:()Lscala/collection/mutable/LinkedEntry;
-	invokevirtual	Method scala/collection/mutable/LinkedEntry.key:()Ljava/lang/Object;
+	astore_1
+	aload_1
+	getfield	Field scala/collection/mutable/LinkedEntry.key:Ljava/lang/Object;
 	aload_0
 	invokespecial	Method cur:()Lscala/collection/mutable/LinkedEntry;
-	invokevirtual	Method scala/collection/mutable/LinkedEntry.value:()Ljava/lang/Object;
+	astore_2
+	aload_2
+	getfield	Field scala/collection/mutable/LinkedEntry.value:Ljava/lang/Object;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-	astore_1
+	astore_3
 	aload_0
 	aload_0
 	invokespecial	Method cur:()Lscala/collection/mutable/LinkedEntry;
 	invokevirtual	Method scala/collection/mutable/LinkedEntry.later:()Lscala/collection/mutable/LinkedEntry;
 	invokespecial	Method cur_$eq:(Lscala/collection/mutable/LinkedEntry;)V
-	aload_1
+	aload_3
 	goto	l2 // areturn
 l1	getstatic	Field scala/collection/Iterator$.MODULE$:Lscala/collection/Iterator$;
 	invokevirtual	Method scala/collection/Iterator$.empty:()Lscala/collection/Iterator;
@@ -1409,12 +1413,12 @@ l1	getstatic	Field scala/collection/Iterator$.MODULE$:Lscala/collection/Iterator
 	checkcast	class scala/Tuple2
 l2	areturn
   Labels:
-   	l1 = 44 // getstatic
-   	l2 = 58 // areturn
+   	l1 = 48 // getstatic
+   	l2 = 62 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      59      0    this       Lscala/collection/mutable/LinkedHashMap$$anon$1;
-   29      12      1    res       Lscala/Tuple2;
+   0      63      0    this       Lscala/collection/mutable/LinkedHashMap$$anon$1;
+   33      12      3    res       Lscala/Tuple2;
 
   Signature: length = 0x2
    01 6E 

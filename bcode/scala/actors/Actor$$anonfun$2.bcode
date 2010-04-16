@@ -69,17 +69,16 @@ Asciz	senders_$eq;
 Asciz	(Lscala/collection/immutable/List;)V;
 NameAndType	senders_$eq:(Lscala/collection/immutable/List;)V
 InterfaceMethod	scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
 Asciz	unhandled timeout;
 String	unhandled timeout
-Asciz	error;
-Asciz	(Ljava/lang/String;)Lscala/runtime/Nothing$;;
-NameAndType	error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
-Method	scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+Asciz	java/lang/RuntimeException;
+class	java/lang/RuntimeException
+Asciz	(Ljava/lang/String;)V;
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+Asciz	this;
+Asciz	Lscala/actors/Actor$$anonfun$2;;
+Asciz	LocalVariableTable;
 Asciz	()Ljava/lang/Object;;
 NameAndType	apply:()V
 Method	scala/actors/Actor$$anonfun$2.apply:()V
@@ -97,9 +96,6 @@ Method	java/lang/NullPointerException."<init>":()V
 Asciz	scala/runtime/AbstractFunction0;
 class	scala/runtime/AbstractFunction0
 Method	scala/runtime/AbstractFunction0."<init>":()V
-Asciz	this;
-Asciz	Lscala/actors/Actor$$anonfun$2;;
-Asciz	LocalVariableTable;
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	$anonfun$2;
@@ -110,10 +106,10 @@ class	java/io/Serializable
 public static final long serialVersionUID;
   Signature: J
 
-private final scala.PartialFunction f$2;
+public final scala.PartialFunction f$2;
   Signature: Lscala/PartialFunction;
 
-private final scala.actors.Actor $outer;
+public final scala.actors.Actor $outer;
   Signature: Lscala/actors/Actor;
 
 public static {};
@@ -128,12 +124,12 @@ public static {};
 public final void apply();
   Signature: ()V
   Code:
-   Stack=4, Locals=2, Args_size=1
+   Stack=4, Locals=3, Args_size=1
 	aload_0
 	getfield	Field f$2:Lscala/PartialFunction;
 	getstatic	Field scala/actors/TIMEOUT$.MODULE$:Lscala/actors/TIMEOUT$;
 	invokeinterface	InterfaceMethod scala/PartialFunction.isDefinedAt:(Ljava/lang/Object;)Z
-	ifeq	l1 // getstatic
+	ifeq	l1 // ldc
 	aload_0
 	getfield	Field $outer:Lscala/actors/Actor;
 	new	class scala/Some
@@ -153,12 +149,19 @@ public final void apply();
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
 	return
-l1	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	ldc	String unhandled timeout
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+l1	ldc	String unhandled timeout
+	astore_2
+	new	class java/lang/RuntimeException
+	dup
+	aload_2
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 62 // getstatic
+   	l1 = 62 // ldc
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      74      0    this       Lscala/actors/Actor$$anonfun$2;
+
 
 public final java.lang.Object apply();
   Signature: ()Ljava/lang/Object;

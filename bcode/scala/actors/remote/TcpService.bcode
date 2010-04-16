@@ -245,19 +245,11 @@ Asciz	scala/collection/mutable/StringBuilder;
 class	scala/collection/mutable/StringBuilder
 NameAndType	"<init>":()V
 Method	scala/collection/mutable/StringBuilder."<init>":()V
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	any2stringadd;
-Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
-NameAndType	any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
-Method	scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
-Asciz	: caught ;
-String	: caught 
 Asciz	scala/runtime/StringAdd;
 class	scala/runtime/StringAdd
+Method	scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+Asciz	: caught ;
+String	: caught 
 Asciz	$plus;
 Asciz	(Ljava/lang/String;)Ljava/lang/String;;
 NameAndType	$plus:(Ljava/lang/String;)Ljava/lang/String;
@@ -330,6 +322,15 @@ Method	scala/actors/remote/TcpServiceWorker.readNode:()V
 Asciz	start;
 NameAndType	start:()V
 Method	scala/actors/remote/TcpServiceWorker.start:()V
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	any2stringadd;
+Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
+NameAndType	any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+Method	scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
 Asciz	java/lang/Exception;
 class	java/lang/Exception
 Asciz	socket;
@@ -369,13 +370,6 @@ Asciz	(Lscala/actors/remote/Node;)Z;
 Asciz	isEmpty;
 NameAndType	isEmpty:()Z
 Method	scala/Option.isEmpty:()Z
-Asciz	boxToBoolean;
-Asciz	(Z)Ljava/lang/Boolean;;
-NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
-Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
-Asciz	unboxToBoolean;
-NameAndType	unboxToBoolean:(Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 Asciz	connect;
 Asciz	(Lscala/actors/remote/Node;)Lscala/actors/remote/TcpServiceWorker;;
 Asciz	sendNode;
@@ -446,12 +440,11 @@ NameAndType	$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 Method	scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 Asciz	t;
 Asciz	Ljava/lang/Throwable;;
-Asciz	temp5;
 Asciz	temp7;
 Asciz	Lscala/Some;;
 Asciz	temp8;
 Asciz	Lscala/collection/immutable/List;;
-Asciz	msgs;
+Asciz	temp5;
 Asciz	scala/actors/remote/TcpService$$anonfun$liftedTree1$1$1;
 class	scala/actors/remote/TcpService$$anonfun$liftedTree1$1$1
 Asciz	(Lscala/actors/remote/TcpService;Lscala/actors/remote/TcpServiceWorker;)V;
@@ -460,10 +453,10 @@ Method	scala/actors/remote/TcpService$$anonfun$liftedTree1$1$1."<init>":(Lscala/
 InterfaceMethod	scala/collection/LinearSeqLike.foreach:(Lscala/Function1;)V
 NameAndType	bufferMsg$1:(Ljava/lang/Throwable;Lscala/actors/remote/Node;[B)V
 Method	scala/actors/remote/TcpService.bufferMsg$1:(Ljava/lang/Throwable;Lscala/actors/remote/Node;[B)V
-Asciz	exceptionResult3;
-Asciz	Ljava/lang/Object;;
 Asciz	newWorker$1;
 Asciz	temp9;
+Asciz	exceptionResult3;
+Asciz	Ljava/lang/Object;;
 Asciz	(ILjava/lang/ClassLoader;)V;
 Asciz	java/lang/Thread;
 class	java/lang/Thread
@@ -626,36 +619,34 @@ private scala.collection.mutable.HashMap pendingSends();
 public void send(scala.actors.remote.Node, byte[]);
   Signature: (Lscala/actors/remote/Node;[B)V
   Code:
-   Stack=3, Locals=6, Args_size=3
+   Stack=3, Locals=4, Args_size=3
 	aload_0
 	dup
-	astore_3
+	pop
 	monitorenter
 	aload_0
 	aload_1
 	invokevirtual	Method getConnection:(Lscala/actors/remote/Node;)Lscala/Option;
-	astore	4
+	astore_3
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	aload	4
-	astore	5
 	dup
-	ifnonnull	l1 // aload
+	ifnonnull	l1 // aload_3
 	pop
-	aload	5
+	aload_3
 	ifnull	l2 // aload_0
-	goto	l3 // aload
-l1	aload	5
+	goto	l3 // aload_3
+l1	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l3 // aload
+	ifeq	l3 // aload_3
 l2	aload_0
 	aload_1
 	aload_2
 	invokespecial	Method liftedTree1$1:(Lscala/actors/remote/Node;[B)Ljava/lang/Object;
 	goto	l4 // pop
-l3	aload	4
+l3	aload_3
 	instanceof	class scala/Some
 	ifeq	l5 // new
-	aload	4
+	aload_3
 	checkcast	class scala/Some
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/actors/remote/TcpServiceWorker
@@ -663,40 +654,40 @@ l3	aload	4
 	invokevirtual	Method scala/actors/remote/TcpServiceWorker.transmit:([B)V
 	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 l4	pop
-	aload_3
+	aload_0
 	monitorexit
 	return
 l5	new	class scala/MatchError
 	dup
-	aload	4
+	aload_3
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
-	aload_3
+	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l1 = 31 // aload
-   	l2 = 39 // aload_0
-   	l3 = 48 // aload
-   	l4 = 74 // pop
-   	l5 = 78 // new
+   	l1 = 25 // aload_3
+   	l2 = 32 // aload_0
+   	l3 = 41 // aload_3
+   	l4 = 65 // pop
+   	l5 = 69 // new
   Exception table:
    from   to  target type
-     4    77    88   any
-    78    88    88   any
+     4    68    78   any
+    69    78    78   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      91      0    this       Lscala/actors/remote/TcpService;
-   0      91      1    node$1       Lscala/actors/remote/Node;
-   0      91      2    data$1       [B
-   11      64      4    temp13       Lscala/Option;
-   78      10      4    temp13       Lscala/Option;
+   0      81      0    this       Lscala/actors/remote/TcpService;
+   0      81      1    node$1       Lscala/actors/remote/Node;
+   0      81      2    data$1       [B
+   10      56      3    temp13       Lscala/Option;
+   69      9      3    temp13       Lscala/Option;
 
 
 public void terminate();
   Signature: ()V
   Code:
-   Stack=4, Locals=2, Args_size=1
+   Stack=5, Locals=2, Args_size=1
 	aload_0
 	iconst_1
 	invokespecial	Method shouldTerminate_$eq:(Z)V
@@ -716,9 +707,10 @@ public void terminate();
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	new	class scala/runtime/StringAdd
+	dup
 	aload_0
-	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
 	ldc	String : caught 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
@@ -728,14 +720,14 @@ public void terminate();
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
 l1	return
   Labels:
-   	l1 = 66 // return
+   	l1 = 67 // return
   Exception table:
    from   to  target type
      5    30    30   Class java/net/ConnectException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      67      0    this       Lscala/actors/remote/TcpService;
+   0      68      0    this       Lscala/actors/remote/TcpService;
 
 
 private boolean shouldTerminate();
@@ -760,20 +752,21 @@ private void shouldTerminate_$eq(boolean);
 public void run();
   Signature: ()V
   Code:
-   Stack=4, Locals=6, Args_size=1
+   Stack=5, Locals=7, Args_size=1
 	new	class java/net/ServerSocket
 	dup
 	aload_0
 	getfield	Field port:I
 	invokespecial	Method java/net/ServerSocket."<init>":(I)V
-	astore_3
+	astore_2
 l4	aload_0
 	invokespecial	Method shouldTerminate:()Z
 	ifeq	l1 // getstatic
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	new	class scala/runtime/StringAdd
+	dup
 	aload_0
-	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
 	ldc	String : shutting down...
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
@@ -789,62 +782,66 @@ l1	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	new	class scala/runtime/StringAdd
+	dup
 	aload_0
-	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
 	ldc	String : waiting for new connection on port 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	getfield	Field port:I
+	istore_1
+	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc	String ...
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
-	aload_3
+	aload_2
 	invokevirtual	Method java/net/ServerSocket.accept:()Ljava/net/Socket;
-	astore	4
+	astore_3
 	aload_0
 	invokespecial	Method shouldTerminate:()Z
 	ifeq	l3 // new
-	aload	4
+	aload_3
 	invokevirtual	Method java/net/Socket.close:()V
 	goto	l4 // aload_0
 l3	new	class scala/actors/remote/TcpServiceWorker
 	dup
 	aload_0
-	aload	4
+	aload_3
 	invokespecial	Method scala/actors/remote/TcpServiceWorker."<init>":(Lscala/actors/remote/TcpService;Ljava/net/Socket;)V
-	astore	5
+	astore	4
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc	String Started new 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	5
+	aload	4
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
-	aload	5
+	aload	4
 	invokevirtual	Method scala/actors/remote/TcpServiceWorker.readNode:()V
-	aload	5
+	aload	4
 	invokevirtual	Method scala/actors/remote/TcpServiceWorker.start:()V
 	goto	l4 // aload_0
-	astore_1
+	astore	5
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	new	class scala/runtime/StringAdd
+	dup
 	aload_0
-	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
 	ldc	String : caught 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload_1
+	aload	5
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
@@ -863,7 +860,7 @@ l3	new	class scala/actors/remote/TcpServiceWorker
 	invokespecial	Method scala/actors/remote/TcpService$$anonfun$run$1."<init>":(Lscala/actors/remote/TcpService;)V
 	invokevirtual	Method scala/collection/mutable/HashMap.foreach:(Lscala/Function1;)V
 l2	return
-	astore_2
+	astore	6
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
@@ -878,28 +875,28 @@ l2	return
 	aload_0
 	invokespecial	Method scala/actors/remote/TcpService$$anonfun$run$1."<init>":(Lscala/actors/remote/TcpService;)V
 	invokevirtual	Method scala/collection/mutable/HashMap.foreach:(Lscala/Function1;)V
-	aload_2
+	aload	6
 	athrow
   Labels:
    	l4 = 12 // aload_0
-   	l1 = 55 // getstatic
-   	l3 = 122 // new
-   	l2 = 242 // return
+   	l1 = 56 // getstatic
+   	l3 = 124 // new
+   	l2 = 246 // return
   Exception table:
    from   to  target type
-     0    19   173   Class java/lang/Exception
+     0    19   174   Class java/lang/Exception
 
-    55   173   173   Class java/lang/Exception
+    56   174   174   Class java/lang/Exception
 
-     0    19   243   any
-    55   209   243   any
+     0    19   247   any
+    56   213   247   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      279      0    this       Lscala/actors/remote/TcpService;
-   12      7      3    socket       Ljava/net/ServerSocket;
-   55      118      3    socket       Ljava/net/ServerSocket;
-   107      66      4    nextClient       Ljava/net/Socket;
-   134      36      5    worker       Lscala/actors/remote/TcpServiceWorker;
+   0      285      0    this       Lscala/actors/remote/TcpService;
+   12      7      2    socket       Ljava/net/ServerSocket;
+   56      118      2    socket       Ljava/net/ServerSocket;
+   110      64      3    nextClient       Ljava/net/Socket;
+   135      36      4    worker       Lscala/actors/remote/TcpServiceWorker;
 
 
 private scala.collection.mutable.HashMap connections();
@@ -911,15 +908,15 @@ private scala.collection.mutable.HashMap connections();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFEE 
+   00 FFFFFFEF 
 
 public scala.collection.mutable.HashMap addConnection(scala.actors.remote.Node, scala.actors.remote.TcpServiceWorker);
   Signature: (Lscala/actors/remote/Node;Lscala/actors/remote/TcpServiceWorker;)Lscala/collection/mutable/HashMap;
   Code:
-   Stack=4, Locals=5, Args_size=3
+   Stack=4, Locals=4, Args_size=3
 	aload_0
 	dup
-	astore_3
+	pop
 	monitorenter
 	aload_0
 	invokespecial	Method connections:()Lscala/collection/mutable/HashMap;
@@ -928,47 +925,47 @@ public scala.collection.mutable.HashMap addConnection(scala.actors.remote.Node, 
 	aload_2
 	invokevirtual	Method scala/Predef$Pair$.apply:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/Tuple2;
 	invokevirtual	Method scala/collection/mutable/HashMap.$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/HashMap;
-	astore	4
-	aload_3
+	astore_3
+	aload_0
 	monitorexit
-	aload	4
+	aload_3
 	checkcast	class scala/collection/mutable/HashMap
 	areturn
-	aload_3
+	aload_0
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    23    29   any
+     4    22    27   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      32      0    this       Lscala/actors/remote/TcpService;
-   0      32      1    node       Lscala/actors/remote/Node;
-   0      32      2    worker       Lscala/actors/remote/TcpServiceWorker;
+   0      30      0    this       Lscala/actors/remote/TcpService;
+   0      30      1    node       Lscala/actors/remote/Node;
+   0      30      2    worker       Lscala/actors/remote/TcpServiceWorker;
 
   Signature: length = 0x2
-   00 FFFFFFFD 
+   00 FFFFFFFE 
 
 public scala.Option getConnection(scala.actors.remote.Node);
   Signature: (Lscala/actors/remote/Node;)Lscala/Option;
   Code:
-   Stack=2, Locals=4, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	dup
-	astore_2
+	pop
 	monitorenter
 	aload_0
 	invokespecial	Method connections:()Lscala/collection/mutable/HashMap;
 	aload_1
 	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
-	astore_3
-	aload_2
+	astore_2
+	aload_0
 	monitorexit
-	aload_3
+	aload_2
 	checkcast	class scala/Option
 	areturn
-	aload_2
+	aload_0
 	monitorexit
 	athrow
   Labels:
@@ -981,15 +978,15 @@ public scala.Option getConnection(scala.actors.remote.Node);
    0      23      1    n       Lscala/actors/remote/Node;
 
   Signature: length = 0x2
-   01 05 
+   01 06 
 
 public boolean isConnected(scala.actors.remote.Node);
   Signature: (Lscala/actors/remote/Node;)Z
   Code:
-   Stack=2, Locals=4, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	dup
-	astore_2
+	pop
 	monitorenter
 	aload_0
 	invokespecial	Method connections:()Lscala/collection/mutable/HashMap;
@@ -998,37 +995,35 @@ public boolean isConnected(scala.actors.remote.Node);
 	invokevirtual	Method scala/Option.isEmpty:()Z
 	ifeq	l1 // iconst_1
 	iconst_0
-	goto	l2 // invokestatic
+	goto	l2 // istore_2
 l1	iconst_1
-l2	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
-	astore_3
-	aload_2
+l2	istore_2
+	aload_0
 	monitorexit
-	aload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
+	iload_2
 	ireturn
-	aload_2
+	aload_0
 	monitorexit
 	athrow
   Labels:
    	l1 = 22 // iconst_1
-   	l2 = 23 // invokestatic
+   	l2 = 23 // istore_2
   Exception table:
    from   to  target type
-     4    29    34   any
+     4    26    28   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      37      0    this       Lscala/actors/remote/TcpService;
-   0      37      1    n       Lscala/actors/remote/Node;
+   0      31      0    this       Lscala/actors/remote/TcpService;
+   0      31      1    n       Lscala/actors/remote/Node;
 
 
 public scala.actors.remote.TcpServiceWorker connect(scala.actors.remote.Node);
   Signature: (Lscala/actors/remote/Node;)Lscala/actors/remote/TcpServiceWorker;
   Code:
-   Stack=4, Locals=6, Args_size=2
+   Stack=4, Locals=4, Args_size=2
 	aload_0
 	dup
-	astore_2
+	pop
 	monitorenter
 	new	class java/net/Socket
 	dup
@@ -1037,73 +1032,68 @@ public scala.actors.remote.TcpServiceWorker connect(scala.actors.remote.Node);
 	aload_1
 	invokevirtual	Method scala/actors/remote/Node.port:()I
 	invokespecial	Method java/net/Socket."<init>":(Ljava/lang/String;I)V
-	astore	4
+	astore_2
 	new	class scala/actors/remote/TcpServiceWorker
 	dup
 	aload_0
-	aload	4
+	aload_2
 	invokespecial	Method scala/actors/remote/TcpServiceWorker."<init>":(Lscala/actors/remote/TcpService;Ljava/net/Socket;)V
-	astore	5
-	aload	5
+	astore_3
+	aload_3
 	aload_1
 	invokevirtual	Method scala/actors/remote/TcpServiceWorker.sendNode:(Lscala/actors/remote/Node;)V
-	aload	5
+	aload_3
 	invokevirtual	Method scala/actors/remote/TcpServiceWorker.start:()V
 	aload_0
 	aload_1
-	aload	5
+	aload_3
 	invokevirtual	Method addConnection:(Lscala/actors/remote/Node;Lscala/actors/remote/TcpServiceWorker;)Lscala/collection/mutable/HashMap;
 	pop
-	aload	5
-	astore_3
-	aload_2
+	aload_0
 	monitorexit
 	aload_3
 	checkcast	class scala/actors/remote/TcpServiceWorker
 	areturn
-	aload_2
+	aload_0
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    57    62   any
+     4    48    53   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      65      0    this       Lscala/actors/remote/TcpService;
-   0      65      1    n       Lscala/actors/remote/Node;
-   21      33      4    socket       Ljava/net/Socket;
-   33      21      5    worker       Lscala/actors/remote/TcpServiceWorker;
+   0      56      0    this       Lscala/actors/remote/TcpService;
+   0      56      1    n       Lscala/actors/remote/Node;
+   20      26      2    socket       Ljava/net/Socket;
+   30      16      3    worker       Lscala/actors/remote/TcpServiceWorker;
 
 
 public void disconnectNode(scala.actors.remote.Node);
   Signature: (Lscala/actors/remote/Node;)V
   Code:
-   Stack=3, Locals=5, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	aload_0
 	dup
-	astore_2
+	pop
 	monitorenter
 	aload_0
 	invokespecial	Method connections:()Lscala/collection/mutable/HashMap;
 	aload_1
 	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
-	astore_3
+	astore_2
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	aload_3
-	astore	4
 	dup
-	ifnonnull	l1 // aload
+	ifnonnull	l1 // aload_2
 	pop
-	aload	4
-	ifnull	l2 // getstatic
-	goto	l3 // aload_3
-l1	aload	4
+	aload_2
+	ifnull	l2 // goto
+	goto	l3 // aload_2
+l1	aload_2
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l3 // aload_3
-l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	goto	l4 // pop
-l3	aload_3
+	ifeq	l3 // aload_2
+l2	goto	l4 // aload_0
+l3	aload_2
 	instanceof	class scala/Some
 	ifeq	l5 // new
 	aload_0
@@ -1111,109 +1101,105 @@ l3	aload_3
 	aload_1
 	invokevirtual	Method scala/collection/mutable/HashMap.$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/HashMap;
 	pop
-	aload_3
+	aload_2
 	checkcast	class scala/Some
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/actors/remote/TcpServiceWorker
 	invokevirtual	Method scala/actors/remote/TcpServiceWorker.halt:()V
-	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-l4	pop
-	aload_2
+l4	aload_0
 	monitorexit
 	return
 l5	new	class scala/MatchError
 	dup
-	aload_3
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
-	aload_2
+	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l1 = 32 // aload
-   	l2 = 40 // getstatic
-   	l3 = 46 // aload_3
-   	l4 = 78 // pop
-   	l5 = 82 // new
+   	l1 = 28 // aload_2
+   	l2 = 35 // goto
+   	l3 = 38 // aload_2
+   	l4 = 67 // aload_0
+   	l5 = 70 // new
   Exception table:
    from   to  target type
-     4    81    91   any
-    82    91    91   any
+     4    69    79   any
+    70    79    79   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      94      0    this       Lscala/actors/remote/TcpService;
-   0      94      1    n       Lscala/actors/remote/Node;
-   13      66      3    temp20       Lscala/Option;
-   82      9      3    temp20       Lscala/Option;
+   0      82      0    this       Lscala/actors/remote/TcpService;
+   0      82      1    n       Lscala/actors/remote/Node;
+   13      54      2    temp20       Lscala/Option;
+   70      9      2    temp20       Lscala/Option;
 
 
 public boolean isReachable(scala.actors.remote.Node);
   Signature: (Lscala/actors/remote/Node;)Z
   Code:
-   Stack=2, Locals=6, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	aload_1
 	invokevirtual	Method isConnected:(Lscala/actors/remote/Node;)Z
-	ifeq	l1 // iconst_0
+	ifeq	l1 // aload_0
 	iconst_1
 	goto	l2 // ireturn
-l1	iconst_0
-	istore_2
-	aload_0
+l1	aload_0
 	aload_1
 	invokevirtual	Method connect:(Lscala/actors/remote/Node;)Lscala/actors/remote/TcpServiceWorker;
 	pop
 	iconst_1
 	ireturn
-	astore_3
+	pop
 	iconst_0
 	istore_2
 	goto	l3 // iload_2
-	astore	4
+	pop
 	iconst_0
 	istore_2
 	goto	l3 // iload_2
-	astore	5
+	pop
 	iconst_0
 	istore_2
 l3	iload_2
 l2	ireturn
   Labels:
-   	l1 = 12 // iconst_0
-   	l3 = 39 // iload_2
-   	l2 = 40 // ireturn
+   	l1 = 12 // aload_0
+   	l3 = 35 // iload_2
+   	l2 = 36 // ireturn
   Exception table:
    from   to  target type
-    14    22    35   Class java/net/UnknownHostException
+    12    20    32   Class java/net/UnknownHostException
 
-    14    22    28   Class java/io/IOException
+    12    20    26   Class java/io/IOException
 
-    14    22    22   Class java/lang/SecurityException
+    12    20    20   Class java/lang/SecurityException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      41      0    this       Lscala/actors/remote/TcpService;
-   0      41      1    node       Lscala/actors/remote/Node;
-   14      26      2    exceptionResult2       Z
+   0      37      0    this       Lscala/actors/remote/TcpService;
+   0      37      1    node       Lscala/actors/remote/Node;
+   12      24      2    exceptionResult2       Z
 
 
 public void nodeDown(scala.actors.remote.Node);
   Signature: (Lscala/actors/remote/Node;)V
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=2, Args_size=2
 	aload_0
 	dup
-	astore_2
+	pop
 	monitorenter
 	aload_0
 	invokespecial	Method connections:()Lscala/collection/mutable/HashMap;
 	aload_1
 	invokevirtual	Method scala/collection/mutable/HashMap.$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/HashMap;
 	pop
-	aload_2
+	aload_0
 	monitorexit
 	return
-	aload_2
+	aload_0
 	monitorexit
 	athrow
   Labels:
@@ -1255,22 +1241,20 @@ l2	ireturn
 private final void bufferMsg$1(java.lang.Throwable, scala.actors.remote.Node, byte[]);
   Signature: (Ljava/lang/Throwable;Lscala/actors/remote/Node;[B)V
   Code:
-   Stack=9, Locals=10, Args_size=4
+   Stack=9, Locals=7, Args_size=4
 	aload_0
 	invokespecial	Method pendingSends:()Lscala/collection/mutable/HashMap;
 	aload_2
 	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
-	astore	4
+	astore	6
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	aload	4
-	astore	5
 	dup
 	ifnonnull	l1 // aload
 	pop
-	aload	5
+	aload	6
 	ifnull	l2 // aload_0
 	goto	l3 // aload
-l1	aload	5
+l1	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload
 l2	aload_0
@@ -1292,30 +1276,26 @@ l2	aload_0
 	invokevirtual	Method scala/collection/mutable/HashMap.$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/HashMap;
 	pop
 	goto	l4 // return
-l3	aload	4
+l3	aload	6
 	instanceof	class scala/Some
 	ifeq	l5 // new
-	aload	4
-	checkcast	class scala/Some
-	astore	6
 	aload	6
+	checkcast	class scala/Some
+	astore	4
+	aload	4
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
-	astore	7
-	aload	7
-	astore	8
+	astore	5
 	aload_0
-	aload	8
+	aload	5
 	invokespecial	Method gd1$1:(Lscala/collection/immutable/List;)Z
 	ifeq	l6 // new
 	aload_0
 	invokespecial	Method pendingSends:()Lscala/collection/mutable/HashMap;
 	getstatic	Field scala/Predef$Pair$.MODULE$:Lscala/Predef$Pair$;
 	aload_2
+	aload	5
 	aload_3
-	astore	9
-	aload	7
-	aload	9
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	invokevirtual	Method scala/Predef$Pair$.apply:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/Tuple2;
 	invokevirtual	Method scala/collection/mutable/HashMap.$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/HashMap;
@@ -1323,94 +1303,88 @@ l3	aload	4
 l4	return
 l6	new	class scala/MatchError
 	dup
-	aload	4
+	aload	6
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
 l5	new	class scala/MatchError
 	dup
-	aload	4
+	aload	6
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 30 // aload
-   	l2 = 38 // aload_0
-   	l3 = 79 // aload
-   	l4 = 142 // return
-   	l6 = 143 // new
-   	l5 = 153 // new
+   	l1 = 26 // aload
+   	l2 = 34 // aload_0
+   	l3 = 75 // aload
+   	l4 = 130 // return
+   	l6 = 131 // new
+   	l5 = 141 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      163      0    this       Lscala/actors/remote/TcpService;
-   0      163      1    t       Ljava/lang/Throwable;
-   10      153      4    temp5       Lscala/Option;
-   94      48      6    temp7       Lscala/Some;
-   143      10      6    temp7       Lscala/Some;
-   104      38      7    temp8       Lscala/collection/immutable/List;
-   143      10      7    temp8       Lscala/collection/immutable/List;
-   108      34      8    msgs       Lscala/collection/immutable/List;
-   143      10      8    msgs       Lscala/collection/immutable/List;
+   0      151      0    this       Lscala/actors/remote/TcpService;
+   0      151      1    t       Ljava/lang/Throwable;
+   90      40      4    temp7       Lscala/Some;
+   131      10      4    temp7       Lscala/Some;
+   100      30      5    temp8       Lscala/collection/immutable/List;
+   131      10      5    temp8       Lscala/collection/immutable/List;
+   10      141      6    temp5       Lscala/Option;
 
 
 private final java.lang.Object liftedTree1$1(scala.actors.remote.Node, byte[]);
   Signature: (Lscala/actors/remote/Node;[B)Ljava/lang/Object;
   Code:
-   Stack=5, Locals=10, Args_size=3
-	aconst_null
-	astore_3
+   Stack=5, Locals=8, Args_size=3
 	aload_0
 	aload_1
 	invokevirtual	Method connect:(Lscala/actors/remote/Node;)Lscala/actors/remote/TcpServiceWorker;
-	astore	7
-	aload	7
+	astore_3
+	aload_3
 	aload_2
 	invokevirtual	Method scala/actors/remote/TcpServiceWorker.transmit:([B)V
 	aload_0
 	invokespecial	Method pendingSends:()Lscala/collection/mutable/HashMap;
 	aload_1
 	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
-	astore	8
+	astore	4
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	aload	8
-	astore	9
 	dup
 	ifnonnull	l1 // aload
 	pop
-	aload	9
+	aload	4
 	ifnull	l2 // getstatic
 	goto	l3 // aload
-l1	aload	9
+l1	aload	4
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload
 l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	goto	l4 // astore_3
-l3	aload	8
+	goto	l4 // astore
+l3	aload	4
 	instanceof	class scala/Some
 	ifeq	l5 // new
-	aload	8
+	aload	4
 	checkcast	class scala/Some
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/collection/LinearSeqLike
 	new	class scala/actors/remote/TcpService$$anonfun$liftedTree1$1$1
 	dup
 	aload_0
-	aload	7
+	aload_3
 	invokespecial	Method scala/actors/remote/TcpService$$anonfun$liftedTree1$1$1."<init>":(Lscala/actors/remote/TcpService;Lscala/actors/remote/TcpServiceWorker;)V
 	invokeinterface	InterfaceMethod scala/collection/LinearSeqLike.foreach:(Lscala/Function1;)V
 	aload_0
 	invokespecial	Method pendingSends:()Lscala/collection/mutable/HashMap;
 	aload_1
 	invokevirtual	Method scala/collection/mutable/HashMap.$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/HashMap;
-l4	astore_3
-	goto	l6 // aload_3
+l4	astore	7
+	goto	l6 // aload
 l5	new	class scala/MatchError
 	dup
-	aload	8
+	aload	4
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
-	astore	4
+	pop
 	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	astore_3
-	goto	l6 // aload_3
+	astore	7
+	goto	l6 // aload
 	astore	5
 	aload_0
 	aload	5
@@ -1418,8 +1392,8 @@ l5	new	class scala/MatchError
 	aload_2
 	invokespecial	Method bufferMsg$1:(Ljava/lang/Throwable;Lscala/actors/remote/Node;[B)V
 	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	astore_3
-	goto	l6 // aload_3
+	astore	7
+	goto	l6 // aload
 	astore	6
 	aload_0
 	aload	6
@@ -1427,30 +1401,30 @@ l5	new	class scala/MatchError
 	aload_2
 	invokespecial	Method bufferMsg$1:(Ljava/lang/Throwable;Lscala/actors/remote/Node;[B)V
 	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	astore_3
-l6	aload_3
+	astore	7
+l6	aload	7
 	areturn
   Labels:
-   	l1 = 45 // aload
-   	l2 = 53 // getstatic
-   	l3 = 59 // aload
-   	l4 = 101 // astore_3
-   	l5 = 105 // new
-   	l6 = 155 // aload_3
+   	l1 = 37 // aload
+   	l2 = 45 // getstatic
+   	l3 = 51 // aload
+   	l4 = 92 // astore
+   	l5 = 97 // new
+   	l6 = 149 // aload
   Exception table:
    from   to  target type
-     2   115   141   Class java/net/UnknownHostException
+     0   107   134   Class java/net/UnknownHostException
 
-     2   115   124   Class java/io/IOException
+     0   107   116   Class java/io/IOException
 
-     2   115   115   Class java/lang/SecurityException
+     0   107   107   Class java/lang/SecurityException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      157      0    this       Lscala/actors/remote/TcpService;
-   2      154      3    exceptionResult3       Ljava/lang/Object;
-   9      106      7    newWorker$1       Lscala/actors/remote/TcpServiceWorker;
-   25      90      8    temp9       Lscala/Option;
+   0      152      0    this       Lscala/actors/remote/TcpService;
+   6      101      3    newWorker$1       Lscala/actors/remote/TcpServiceWorker;
+   21      86      4    temp9       Lscala/Option;
+   0      151      7    exceptionResult3       Ljava/lang/Object;
 
 
 public scala.actors.remote.TcpService(int, java.lang.ClassLoader);

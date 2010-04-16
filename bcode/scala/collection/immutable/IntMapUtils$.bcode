@@ -36,8 +36,6 @@ NameAndType	complement:(I)I
 Method	scala/collection/immutable/IntMapUtils$.complement:(I)I
 Asciz	hasMatch;
 Asciz	(III)Z;
-NameAndType	mask:(II)I
-Method	scala/collection/immutable/IntMapUtils$.mask:(II)I
 Asciz	key;
 Asciz	prefix;
 Asciz	m;
@@ -56,8 +54,6 @@ NameAndType	highestOneBit:(I)I
 Method	scala/collection/immutable/IntMapUtils$.highestOneBit:(I)I
 Asciz	join;
 Asciz	(ILscala/collection/immutable/IntMap;ILscala/collection/immutable/IntMap;)Lscala/collection/immutable/IntMap;;
-NameAndType	branchMask:(II)I
-Method	scala/collection/immutable/IntMapUtils$.branchMask:(II)I
 NameAndType	zero:(II)Z
 Method	scala/collection/immutable/IntMapUtils$.zero:(II)Z
 Asciz	scala/collection/immutable/IntMap$Bin;
@@ -70,6 +66,7 @@ Asciz	t1;
 Asciz	Lscala/collection/immutable/IntMap;;
 Asciz	p2;
 Asciz	t2;
+Asciz	i1;
 Asciz	p;
 Asciz	<T:Ljava/lang/Object;>(ILscala/collection/immutable/IntMap<TT;>;ILscala/collection/immutable/IntMap<TT;>;)Lscala/collection/immutable/IntMap<TT;>;;
 Asciz	Signature;
@@ -88,8 +85,6 @@ NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	left;
 Asciz	right;
-Asciz	tp1;
-Asciz	tp2;
 Asciz	<T:Ljava/lang/Object;>(IILscala/collection/immutable/IntMap<TT;>;Lscala/collection/immutable/IntMap<TT;>;)Lscala/collection/immutable/IntMap<TT;>;;
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/collection/immutable/IntMapUtils$;
@@ -162,11 +157,18 @@ public int mask(int, int);
 public boolean hasMatch(int, int, int);
   Signature: (III)Z
   Code:
-   Stack=3, Locals=4, Args_size=4
-	aload_0
+   Stack=3, Locals=5, Args_size=4
 	iload_1
 	iload_3
-	invokevirtual	Method mask:(II)I
+	iconst_1
+	isub
+	istore	4
+	iconst_m1
+	iload	4
+	ixor
+	iload_3
+	ixor
+	iand
 	iload_2
 	if_icmpne	l1 // iconst_0
 	iconst_1
@@ -174,14 +176,14 @@ public boolean hasMatch(int, int, int);
 l1	iconst_0
 l2	ireturn
   Labels:
-   	l1 = 14 // iconst_0
-   	l2 = 15 // ireturn
+   	l1 = 21 // iconst_0
+   	l2 = 22 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      16      0    this       Lscala/collection/immutable/IntMapUtils$;
-   0      16      1    key       I
-   0      16      2    prefix       I
-   0      16      3    m       I
+   0      23      0    this       Lscala/collection/immutable/IntMapUtils$;
+   0      23      1    key       I
+   0      23      2    prefix       I
+   0      23      3    m       I
 
 
 public boolean unsignedCompare(int, int);
@@ -260,9 +262,7 @@ public int highestOneBit(int);
   Code:
    Stack=3, Locals=3, Args_size=2
 	iload_1
-	istore_2
-	iload_2
-	iload_2
+	iload_1
 	iconst_1
 	ishr
 	ior
@@ -300,9 +300,9 @@ public int highestOneBit(int);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      40      0    this       Lscala/collection/immutable/IntMapUtils$;
-   0      40      1    j       I
-   2      37      2    i       I
+   0      38      0    this       Lscala/collection/immutable/IntMapUtils$;
+   0      38      1    j       I
+   0      37      2    i       I
 
 
 public int branchMask(int, int);
@@ -326,118 +326,151 @@ public int branchMask(int, int);
 public scala.collection.immutable.IntMap join(int, scala.collection.immutable.IntMap, int, scala.collection.immutable.IntMap);
   Signature: (ILscala/collection/immutable/IntMap;ILscala/collection/immutable/IntMap;)Lscala/collection/immutable/IntMap;
   Code:
-   Stack=6, Locals=7, Args_size=5
-	aload_0
+   Stack=6, Locals=10, Args_size=5
 	iload_1
 	iload_3
-	invokevirtual	Method branchMask:(II)I
+	ixor
 	istore	5
-	aload_0
-	iload_1
 	iload	5
-	invokevirtual	Method mask:(II)I
+	iload	5
+	iconst_1
+	ishr
+	ior
 	istore	6
+	iload	6
+	iload	6
+	iconst_2
+	ishr
+	ior
+	istore	6
+	iload	6
+	iload	6
+	iconst_4
+	ishr
+	ior
+	istore	6
+	iload	6
+	iload	6
+	ldc	int 8
+	ishr
+	ior
+	istore	6
+	iload	6
+	iload	6
+	ldc	int 16
+	ishr
+	ior
+	istore	6
+	iload	6
+	iload	6
+	iconst_1
+	iushr
+	isub
+	istore	9
+	iload_1
+	iload	9
+	iconst_1
+	isub
+	istore	7
+	iconst_m1
+	iload	7
+	ixor
+	iload	9
+	ixor
+	iand
+	istore	8
 	aload_0
 	iload_1
-	iload	5
+	iload	9
 	invokevirtual	Method zero:(II)Z
 	ifeq	l1 // new
 	new	class scala/collection/immutable/IntMap$Bin
 	dup
-	iload	6
-	iload	5
+	iload	8
+	iload	9
 	aload_2
 	aload	4
 	invokespecial	Method scala/collection/immutable/IntMap$Bin."<init>":(IILscala/collection/immutable/IntMap;Lscala/collection/immutable/IntMap;)V
 	goto	l2 // areturn
 l1	new	class scala/collection/immutable/IntMap$Bin
 	dup
-	iload	6
-	iload	5
+	iload	8
+	iload	9
 	aload	4
 	aload_2
 	invokespecial	Method scala/collection/immutable/IntMap$Bin."<init>":(IILscala/collection/immutable/IntMap;Lscala/collection/immutable/IntMap;)V
 l2	areturn
   Labels:
-   	l1 = 44 // new
-   	l2 = 58 // areturn
+   	l1 = 105 // new
+   	l2 = 119 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      59      0    this       Lscala/collection/immutable/IntMapUtils$;
-   0      59      1    p1       I
-   0      59      2    t1       Lscala/collection/immutable/IntMap;
-   0      59      3    p2       I
-   0      59      4    t2       Lscala/collection/immutable/IntMap;
-   8      51      5    m       I
-   17      42      6    p       I
+   0      120      0    this       Lscala/collection/immutable/IntMapUtils$;
+   0      120      1    p1       I
+   0      120      2    t1       Lscala/collection/immutable/IntMap;
+   0      120      3    p2       I
+   0      120      4    t2       Lscala/collection/immutable/IntMap;
+   5      54      6    i1       I
+   78      42      8    p       I
+   61      59      9    m       I
 
   Signature: length = 0x2
-   00 40 
+   00 3D 
 
 public scala.collection.immutable.IntMap bin(int, int, scala.collection.immutable.IntMap, scala.collection.immutable.IntMap);
   Signature: (IILscala/collection/immutable/IntMap;Lscala/collection/immutable/IntMap;)Lscala/collection/immutable/IntMap;
   Code:
-   Stack=6, Locals=9, Args_size=5
-	aload_3
-	astore	5
-	aload	4
-	astore	6
+   Stack=6, Locals=5, Args_size=5
 	getstatic	Field scala/collection/immutable/IntMap$Nil$.MODULE$:Lscala/collection/immutable/IntMap$Nil$;
-	aload	6
-	astore	7
 	dup
 	ifnonnull	l1 // aload
 	pop
-	aload	7
-	ifnull	l2 // aload
+	aload	4
+	ifnull	l2 // aload_3
 	goto	l3 // getstatic
-l1	aload	7
+l1	aload	4
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // getstatic
-l2	aload	5
+l2	aload_3
 	goto	l4 // areturn
 l3	getstatic	Field scala/collection/immutable/IntMap$Nil$.MODULE$:Lscala/collection/immutable/IntMap$Nil$;
-	aload	5
-	astore	8
 	dup
-	ifnonnull	l5 // aload
+	ifnonnull	l5 // aload_3
 	pop
-	aload	8
+	aload_3
 	ifnull	l6 // aload
 	goto	l7 // new
-l5	aload	8
+l5	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l7 // new
-l6	aload	6
+l6	aload	4
 	goto	l4 // areturn
 l7	new	class scala/collection/immutable/IntMap$Bin
 	dup
 	iload_1
 	iload_2
-	aload	5
-	aload	6
+	aload_3
+	aload	4
 	invokespecial	Method scala/collection/immutable/IntMap$Bin."<init>":(IILscala/collection/immutable/IntMap;Lscala/collection/immutable/IntMap;)V
 l4	areturn
   Labels:
-   	l1 = 27 // aload
-   	l2 = 35 // aload
-   	l3 = 40 // getstatic
-   	l5 = 60 // aload
-   	l6 = 68 // aload
-   	l7 = 73 // new
-   	l4 = 86 // areturn
+   	l1 = 16 // aload
+   	l2 = 24 // aload_3
+   	l3 = 28 // getstatic
+   	l5 = 43 // aload_3
+   	l6 = 50 // aload
+   	l7 = 55 // new
+   	l4 = 67 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      87      0    this       Lscala/collection/immutable/IntMapUtils$;
-   0      87      1    prefix       I
-   0      87      2    mask       I
-   0      87      3    left       Lscala/collection/immutable/IntMap;
-   0      87      4    right       Lscala/collection/immutable/IntMap;
-   3      84      5    tp1       Lscala/collection/immutable/IntMap;
-   7      80      6    tp2       Lscala/collection/immutable/IntMap;
+   0      68      0    this       Lscala/collection/immutable/IntMapUtils$;
+   0      68      1    prefix       I
+   0      68      2    mask       I
+   0      68      3    left       Lscala/collection/immutable/IntMap;
+   0      68      4    right       Lscala/collection/immutable/IntMap;
 
   Signature: length = 0x2
-   00 53 
+   00 4E 
 
 private scala.collection.immutable.IntMapUtils$();
   Signature: ()V

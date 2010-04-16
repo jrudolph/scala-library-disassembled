@@ -38,12 +38,6 @@ NameAndType	bitmap$0:I
 Field	scala/util/regexp/WordExp$Wildcard.bitmap$0:I
 NameAndType	isNullable:Z
 Field	scala/util/regexp/WordExp$Wildcard.isNullable:Z
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	()I;
 NameAndType	pos:I
 Field	scala/util/regexp/WordExp$Wildcard.pos:I
@@ -77,11 +71,6 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
-Asciz	this;
-Asciz	Lscala/util/regexp/WordExp$Wildcard;;
-Asciz	temp6;
-Asciz	Ljava/lang/Object;;
-Asciz	LocalVariableTable;
 Asciz	productPrefix;
 Asciz	Wildcard;
 String	Wildcard
@@ -104,10 +93,8 @@ Asciz	<init>;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
-Asciz	temp8;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
-Asciz	temp9;
 NameAndType	$outer:Lscala/util/regexp/WordExp;
 Field	scala/util/regexp/WordExp$Wildcard.$outer:Lscala/util/regexp/WordExp;
 Asciz	(Lscala/util/regexp/WordExp;)V;
@@ -125,6 +112,9 @@ Asciz	$init$;
 Asciz	(Lscala/Product;)V;
 NameAndType	$init$:(Lscala/Product;)V
 Method	scala/Product$class.$init$:(Lscala/Product;)V
+Asciz	this;
+Asciz	Lscala/util/regexp/WordExp$Wildcard;;
+Asciz	LocalVariableTable;
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	scala/util/regexp/Base;
@@ -174,7 +164,7 @@ public scala.collection.Iterator productElements();
 public final boolean isNullable();
   Signature: ()Z
   Code:
-   Stack=3, Locals=2, Args_size=1
+   Stack=3, Locals=1, Args_size=1
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
@@ -183,14 +173,14 @@ public final boolean isNullable();
 	if_icmpne	l1 // aload_0
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
 	iand
 	iconst_0
-	if_icmpne	l2 // getstatic
+	if_icmpne	l2 // aload_0
 	aload_0
 	iconst_0
 	putfield	Field isNullable:Z
@@ -200,22 +190,20 @@ public final boolean isNullable();
 	iconst_1
 	ior
 	putfield	Field bitmap$0:I
-l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_1
+l2	aload_0
 	monitorexit
 l1	aload_0
 	getfield	Field isNullable:Z
 	ireturn
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l2 = 39 // getstatic
-   	l1 = 45 // aload_0
+   	l2 = 39 // aload_0
+   	l1 = 41 // aload_0
   Exception table:
    from   to  target type
-    14    45    50   any
+    14    41    46   any
 
 public int pos();
   Signature: ()I
@@ -259,16 +247,14 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class scala/util/regexp/WordExp$Wildcard
 	ifeq	l2 // iconst_0
-	aload_2
+	aload_1
 	checkcast	class scala/util/regexp/WordExp$Wildcard
 	invokevirtual	Method scala$util$regexp$WordExp$Wildcard$$$outer:()Lscala/util/regexp/WordExp;
 	aload_0
@@ -286,16 +272,11 @@ l1	iconst_1
 l4	iconst_0
 l5	ireturn
   Labels:
-   	l2 = 41 // iconst_0
-   	l3 = 42 // ifeq
-   	l1 = 45 // iconst_1
-   	l4 = 49 // iconst_0
-   	l5 = 50 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      51      0    this       Lscala/util/regexp/WordExp$Wildcard;
-   7      38      2    temp6       Ljava/lang/Object;
-
+   	l2 = 39 // iconst_0
+   	l3 = 40 // ifeq
+   	l1 = 43 // iconst_1
+   	l4 = 47 // iconst_0
+   	l5 = 48 // ireturn
 
 public java.lang.String productPrefix();
   Signature: ()Ljava/lang/String;
@@ -316,9 +297,7 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=3, Args_size=2
-	iload_1
-	istore_2
+   Stack=3, Locals=2, Args_size=2
 	new	class java/lang/IndexOutOfBoundsException
 	dup
 	iload_1
@@ -327,18 +306,11 @@ public java.lang.Object productElement(int);
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      17      0    this       Lscala/util/regexp/WordExp$Wildcard;
-   2      15      2    temp8       I
-
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=3, Args_size=2
-	iload_1
-	istore_2
+   Stack=3, Locals=2, Args_size=2
 	new	class java/lang/IndexOutOfBoundsException
 	dup
 	iload_1
@@ -347,11 +319,6 @@ public java.lang.String productElementName(int);
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      17      0    this       Lscala/util/regexp/WordExp$Wildcard;
-   2      15      2    temp9       I
-
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z

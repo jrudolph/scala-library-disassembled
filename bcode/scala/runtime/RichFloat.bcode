@@ -2,7 +2,7 @@ Compiled from "RichFloat.scala"
 public final class scala.runtime.RichFloat extends java.lang.Object implements scala.Proxy,scala.math.Ordered,scala.ScalaObject
   SourceFile: "RichFloat.scala"
   Signature: length = 0x2
-   00 FFFFFF87 
+   00 FFFFFF85 
   ScalaSig: length = 0x227
    05 00 5C 06 08 01 02 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF80 02 07 02 09 52
    69 63 68 46 6C 6F 61 74 0A 02 03 04 01 07 72 75
@@ -153,8 +153,6 @@ Asciz	(F)Z;
 NameAndType	isInfinite:(F)Z
 Method	java/lang/Float.isInfinite:(F)Z
 Asciz	isPosInfinity;
-NameAndType	isInfinity:()Z
-Method	scala/runtime/RichFloat.isInfinity:()Z
 Asciz	isNegInfinity;
 Asciz	unboxToFloat;
 Asciz	(Ljava/lang/Object;)F;
@@ -187,7 +185,7 @@ Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
 {
-private final float x;
+public final float x;
   Signature: F
 
 public boolean $less(java.lang.Object);
@@ -301,9 +299,11 @@ public java.lang.String toString();
 public java.lang.Object self();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=1, Locals=1, Args_size=1
+   Stack=1, Locals=2, Args_size=1
 	aload_0
 	getfield	Field x:F
+	fstore_1
+	fload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToFloat:(F)Ljava/lang/Float;
 	areturn
   Labels:
@@ -447,7 +447,8 @@ public boolean isPosInfinity();
   Code:
    Stack=2, Locals=1, Args_size=1
 	aload_0
-	invokevirtual	Method isInfinity:()Z
+	getfield	Field x:F
+	invokestatic	Method java/lang/Float.isInfinite:(F)Z
 	ifeq	l1 // iconst_0
 	aload_0
 	getfield	Field x:F
@@ -459,15 +460,16 @@ public boolean isPosInfinity();
 l1	iconst_0
 l2	ireturn
   Labels:
-   	l1 = 20 // iconst_0
-   	l2 = 21 // ireturn
+   	l1 = 23 // iconst_0
+   	l2 = 24 // ireturn
 
 public boolean isNegInfinity();
   Signature: ()Z
   Code:
    Stack=2, Locals=1, Args_size=1
 	aload_0
-	invokevirtual	Method isInfinity:()Z
+	getfield	Field x:F
+	invokestatic	Method java/lang/Float.isInfinite:(F)Z
 	ifeq	l1 // iconst_0
 	aload_0
 	getfield	Field x:F
@@ -479,8 +481,8 @@ public boolean isNegInfinity();
 l1	iconst_0
 l2	ireturn
   Labels:
-   	l1 = 20 // iconst_0
-   	l2 = 21 // ireturn
+   	l1 = 23 // iconst_0
+   	l2 = 24 // ireturn
 
 public int compare(java.lang.Object);
   Signature: (Ljava/lang/Object;)I

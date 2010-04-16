@@ -391,19 +391,13 @@ Field	scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 Asciz	scala/collection/mutable/StringBuilder;
 class	scala/collection/mutable/StringBuilder
 Method	scala/collection/mutable/StringBuilder."<init>":()V
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	any2stringadd;
-Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
-NameAndType	any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
-Method	scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
-Asciz	: drained ;
-String	: drained 
 Asciz	scala/runtime/StringAdd;
 class	scala/runtime/StringAdd
+Asciz	(Ljava/lang/Object;)V;
+NameAndType	"<init>":(Ljava/lang/Object;)V
+Method	scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+Asciz	: drained ;
+String	: drained 
 Asciz	$plus;
 Asciz	(Ljava/lang/String;)Ljava/lang/String;;
 NameAndType	$plus:(Ljava/lang/String;)Ljava/lang/String;
@@ -450,12 +444,6 @@ Method	scala/actors/scheduler/ResizableThreadPoolScheduler.coreSize_$eq:(I)V
 Asciz	setCorePoolSize;
 NameAndType	setCorePoolSize:(I)V
 Method	scala/actors/threadpool/ThreadPoolExecutor.setCorePoolSize:(I)V
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 NameAndType	terminate:()Z
 Method	scala/actors/scheduler/ResizableThreadPoolScheduler.terminate:()Z
 NameAndType	allActorsTerminated:()Z
@@ -487,13 +475,6 @@ Asciz	isActive;
 Asciz	isShutdown;
 NameAndType	isShutdown:()Z
 Method	scala/actors/threadpool/ThreadPoolExecutor.isShutdown:()Z
-Asciz	boxToBoolean;
-Asciz	(Z)Ljava/lang/Boolean;;
-NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
-Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
-Asciz	unboxToBoolean;
-NameAndType	unboxToBoolean:(Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 Asciz	managedBlock;
 Asciz	(Lscala/concurrent/ManagedBlocker;)V;
 Asciz	scala/concurrent/ManagedBlocker;
@@ -511,10 +492,10 @@ NameAndType	isActive:()Z
 Method	scala/actors/scheduler/ResizableThreadPoolScheduler.isActive:()Z
 Asciz	scheduler is still active;
 String	scheduler is still active
-Asciz	error;
-Asciz	(Ljava/lang/String;)Lscala/runtime/Nothing$;;
-NameAndType	error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
-Method	scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+Asciz	java/lang/RuntimeException;
+class	java/lang/RuntimeException
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 NameAndType	makeNewPool:()Lscala/actors/threadpool/ThreadPoolExecutor;
 Method	scala/actors/scheduler/ResizableThreadPoolScheduler.makeNewPool:()Lscala/actors/threadpool/ThreadPoolExecutor;
 NameAndType	executor_$eq:(Lscala/actors/threadpool/ThreadPoolExecutor;)V
@@ -570,6 +551,15 @@ class	scala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory
 Asciz	(Lscala/actors/scheduler/ResizableThreadPoolScheduler;)V;
 NameAndType	"<init>":(Lscala/actors/scheduler/ResizableThreadPoolScheduler;)V
 Method	scala/actors/scheduler/ResizableThreadPoolScheduler$DaemonThreadFactory."<init>":(Lscala/actors/scheduler/ResizableThreadPoolScheduler;)V
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	any2stringadd;
+Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
+NameAndType	any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+Method	scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
 Asciz	ScalaSig;
 Asciz	InnerClasses;
 Asciz	State;
@@ -1131,10 +1121,10 @@ l1	aload_0
 public void run();
   Signature: ()V
   Code:
-   Stack=4, Locals=3, Args_size=1
-l7	aload_0
+   Stack=5, Locals=5, Args_size=1
+l6	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	invokespecial	Method liftedTree1$1:()V
@@ -1157,15 +1147,18 @@ l1	aload_0
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	new	class scala/runtime/StringAdd
+	dup
 	aload_0
-	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
 	ldc_w	String : drained 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokespecial	Method drainedTasks:()Ljava/util/List;
 	invokeinterface	InterfaceMethod java/util/List.size:()I
+	istore_1
+	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc_w	String  tasks
@@ -1207,23 +1200,23 @@ l2	aload_0
 	aload_0
 	invokespecial	Method coreSize:()I
 	invokevirtual	Method scala/actors/threadpool/ThreadPoolExecutor.setCorePoolSize:(I)V
-	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	goto	l4 // pop
+	goto	l4 // aload_0
 l3	aload_0
 	invokevirtual	Method terminate:()Z
-	ifeq	l5 // getstatic
+	ifeq	l4 // aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/scheduler/TerminationMonitor.allActorsTerminated:()Z
-	ifeq	l5 // getstatic
+	ifeq	l4 // aload_0
 	aload_0
 	invokespecial	Method executor:()Lscala/actors/threadpool/ThreadPoolExecutor;
 	invokevirtual	Method scala/actors/threadpool/ThreadPoolExecutor.getActiveCount:()I
 	iconst_0
-	if_icmpne	l6 // getstatic
+	if_icmpne	l5 // goto
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	new	class scala/runtime/StringAdd
+	dup
 	aload_0
-	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
 	ldc_w	String : initiating shutdown...
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
@@ -1231,20 +1224,25 @@ l3	aload_0
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	new	class scala/runtime/StringAdd
+	dup
 	aload_0
-	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
 	ldc_w	String : corePoolSize = 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokespecial	Method coreSize:()I
+	istore_3
+	iload_3
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc_w	String , maxPoolSize = 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokespecial	Method maxSize:()I
+	istore	4
+	iload	4
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
@@ -1256,14 +1254,11 @@ l3	aload_0
 	dup
 	invokespecial	Method scala/actors/scheduler/QuitControl."<init>":()V
 	athrow
-l6	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	goto	l4 // pop
-l5	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-l4	pop
-	aload_1
+l5	goto	l4 // aload_0
+l4	aload_0
 	monitorexit
-	goto	l7 // aload_0
-	aload_1
+	goto	l6 // aload_0
+	aload_0
 	monitorexit
 	athrow
 	pop
@@ -1272,22 +1267,21 @@ l4	pop
 	invokevirtual	Method scala/actors/threadpool/ThreadPoolExecutor.shutdown:()V
 	return
   Labels:
-   	l7 = 0 // aload_0
+   	l6 = 0 // aload_0
    	l1 = 23 // aload_0
-   	l2 = 107 // aload_0
+   	l2 = 110 // aload_0
    	l3 = 169 // aload_0
-   	l6 = 286 // getstatic
-   	l5 = 292 // getstatic
-   	l4 = 295 // pop
+   	l5 = 294 // goto
+   	l4 = 297 // aload_0
   Exception table:
    from   to  target type
-     4   301   301   any
-     0   304   304   Class scala/actors/scheduler/QuitControl
+     4   302   302   any
+     0   305   305   Class scala/actors/scheduler/QuitControl
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      313      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
-   118      177      2    activeBlocked       I
+   0      314      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   121      176      2    activeBlocked       I
 
 
 public void execute(java.lang.Runnable);
@@ -1326,39 +1320,37 @@ public void execute(scala.Function0);
    0      17      1    fun$1       Lscala/Function0;
 
   Signature: length = 0x2
-   01 6E 
+   01 62 
 
 public void shutdown();
   Signature: ()V
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=1, Args_size=1
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	iconst_1
 	invokespecial	Method terminating_$eq:(Z)V
-	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_1
+	aload_0
 	monitorexit
 	return
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    15    16   any
+     4    11    12   any
 
 public boolean isActive();
   Signature: ()Z
   Code:
-   Stack=2, Locals=3, Args_size=1
+   Stack=2, Locals=2, Args_size=1
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	invokespecial	Method terminating:()Z
@@ -1371,24 +1363,22 @@ public boolean isActive();
 	invokevirtual	Method scala/actors/threadpool/ThreadPoolExecutor.isShutdown:()Z
 	ifne	l1 // iconst_0
 	iconst_1
-	goto	l2 // invokestatic
+	goto	l2 // istore_1
 l1	iconst_0
-l2	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
-	astore_2
-	aload_1
+l2	istore_1
+	aload_0
 	monitorexit
-	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
+	iload_1
 	ireturn
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
    	l1 = 32 // iconst_0
-   	l2 = 33 // invokestatic
+   	l2 = 33 // istore_1
   Exception table:
    from   to  target type
-     4    39    44   any
+     4    36    38   any
 
 public void managedBlock(scala.concurrent.ManagedBlocker);
   Signature: (Lscala/concurrent/ManagedBlocker;)V
@@ -1408,44 +1398,45 @@ public void managedBlock(scala.concurrent.ManagedBlocker);
 public void snapshot();
   Signature: ()V
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=1, Args_size=1
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	iconst_1
 	invokespecial	Method suspending_$eq:(Z)V
-	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_1
+	aload_0
 	monitorexit
 	return
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    15    16   any
+     4    11    12   any
 
 public void restart();
   Signature: ()V
   Code:
-   Stack=2, Locals=3, Args_size=1
+   Stack=3, Locals=4, Args_size=1
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	invokespecial	Method suspending:()Z
-	ifeq	l1 // getstatic
+	ifeq	l1 // ldc_w
 	aload_0
 	invokevirtual	Method isActive:()Z
 	ifeq	l2 // aload_0
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	ldc_w	String scheduler is still active
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+	astore_1
+	new	class java/lang/RuntimeException
+	dup
+	aload_1
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 	athrow
 l2	aload_0
 	iconst_0
@@ -1454,9 +1445,7 @@ l2	aload_0
 	aload_0
 	invokespecial	Method makeNewPool:()Lscala/actors/threadpool/ThreadPoolExecutor;
 	invokespecial	Method executor_$eq:(Lscala/actors/threadpool/ThreadPoolExecutor;)V
-	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_1
+	aload_0
 	monitorexit
 	aload_0
 	invokespecial	Method drainedTasks:()Ljava/util/List;
@@ -1475,26 +1464,29 @@ l4	aload_2
 l3	aload_0
 	invokevirtual	Method start:()V
 	return
-l1	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	ldc_w	String snapshot has not been invoked
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+l1	ldc_w	String snapshot has not been invoked
+	astore_3
+	new	class java/lang/RuntimeException
+	dup
+	aload_3
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 	athrow
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l2 = 28 // aload_0
-   	l4 = 57 // aload_2
-   	l3 = 85 // aload_0
-   	l1 = 90 // getstatic
+   	l2 = 31 // aload_0
+   	l4 = 56 // aload_2
+   	l3 = 84 // aload_0
+   	l1 = 89 // ldc_w
   Exception table:
    from   to  target type
-     4    47   100   any
-    90   100   100   any
+     4    46   102   any
+    89   102   102   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      103      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
-   57      32      2    iter       Ljava/util/Iterator;
+   0      105      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   56      32      2    iter       Ljava/util/Iterator;
 
 
 private final void liftedTree1$1();
@@ -1519,7 +1511,7 @@ l1	return
 public scala.actors.scheduler.ResizableThreadPoolScheduler(boolean, boolean);
   Signature: (ZZ)V
   Code:
-   Stack=4, Locals=3, Args_size=3
+   Stack=4, Locals=5, Args_size=3
 	aload_0
 	iload_1
 	putfield	Field terminate:Z
@@ -1542,8 +1534,6 @@ public scala.actors.scheduler.ResizableThreadPoolScheduler(boolean, boolean);
 	iconst_0
 	putfield	Field suspending:Z
 	aload_0
-	aconst_null
-	pop
 	aconst_null
 	putfield	Field drainedTasks:Ljava/util/List;
 	aload_0
@@ -1583,12 +1573,16 @@ public scala.actors.scheduler.ResizableThreadPoolScheduler(boolean, boolean);
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokespecial	Method coreSize:()I
+	istore_3
+	iload_3
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc_w	String , maxPoolSize = 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokespecial	Method maxSize:()I
+	istore	4
+	iload	4
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
@@ -1597,9 +1591,9 @@ public scala.actors.scheduler.ResizableThreadPoolScheduler(boolean, boolean);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      160      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
-   0      160      1    terminate       Z
-   0      160      2    daemon       Z
+   0      164      0    this       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
+   0      164      1    terminate       Z
+   0      164      2    daemon       Z
 
 
 }

@@ -43,12 +43,6 @@ NameAndType	available:()Z
 Method	scala/concurrent/Lock.available:()Z
 NameAndType	available_$eq:(Z)V
 Method	scala/concurrent/Lock.available_$eq:(Z)V
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	wait;
 NameAndType	wait:()V
 Method	scala/concurrent/Lock.wait:()V
@@ -91,10 +85,10 @@ public void available_$eq(boolean);
 public void acquire();
   Signature: ()V
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=1, Args_size=1
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 l2	aload_0
 	invokevirtual	Method available:()Z
@@ -102,50 +96,46 @@ l2	aload_0
 	aload_0
 	iconst_0
 	invokevirtual	Method available_$eq:(Z)V
-	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_1
+	aload_0
 	monitorexit
 	return
 l1	aload_0
 	invokevirtual	Method wait:()V
 	goto	l2 // aload_0
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
    	l2 = 4 // aload_0
-   	l1 = 23 // aload_0
+   	l1 = 19 // aload_0
   Exception table:
    from   to  target type
-     4    22    30   any
-    23    30    30   any
+     4    18    26   any
+    19    26    26   any
 
 public void release();
   Signature: ()V
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=1, Args_size=1
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	iconst_1
 	invokevirtual	Method available_$eq:(Z)V
 	aload_0
 	invokevirtual	Method notify:()V
-	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_1
+	aload_0
 	monitorexit
 	return
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    19    20   any
+     4    15    16   any
 
 public scala.concurrent.Lock();
   Signature: ()V

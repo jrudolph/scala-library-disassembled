@@ -76,12 +76,22 @@ Asciz	next;
 Asciz	()Ljava/lang/Object;;
 NameAndType	next:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/Iterator.next:()Ljava/lang/Object;
+Asciz	java/lang/Number;
+class	java/lang/Number
+Asciz	java/lang/Character;
+class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals;
+Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	(Ljava/lang/Object;)Lscala/collection/generic/Sorted;;
 NameAndType	until:(Ljava/lang/Object;)Lscala/collection/generic/Sorted;
 InterfaceMethod	scala/collection/generic/Sorted.until:(Ljava/lang/Object;)Lscala/collection/generic/Sorted;
@@ -104,8 +114,6 @@ Asciz	(Lscala/collection/generic/Sorted;)V;
 Asciz	Scala;
 Asciz	scala/collection/generic/Sorted$class;
 class	scala/collection/generic/Sorted$class
-Asciz	java/lang/Object;
-class	java/lang/Object
 
 {
 public static int compare(scala.collection.generic.Sorted, java.lang.Object, java.lang.Object);
@@ -205,20 +213,39 @@ public static scala.collection.generic.Sorted to(scala.collection.generic.Sorted
 	astore_3
 	aload_3
 	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l2 // aload_0
+	if_acmpne	l2 // aload_3
+	iconst_1
+	goto	l3 // ifeq
+l2	aload_3
+	ifnonnull	l4 // aload_3
+	iconst_0
+	goto	l3 // ifeq
+l4	aload_3
+	instanceof	class java/lang/Number
+	ifne	l5 // aload_3
+	aload_3
+	instanceof	class java/lang/Character
+	ifeq	l6 // aload_3
+l5	aload_3
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l3 // ifeq
+l6	aload_3
+	aload_1
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l3	ifeq	l7 // aload_0
 	aload_2
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l3 // aload_0
+	ifeq	l8 // aload_0
 	aload_0
 	aload_2
 	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/collection/generic/Sorted.until:(Ljava/lang/Object;)Lscala/collection/generic/Sorted;
 	areturn
-l3	aload_0
+l8	aload_0
 	invokeinterface	InterfaceMethod scala/collection/generic/Sorted.repr:()Lscala/collection/generic/Sorted;
 	areturn
-l2	aload_0
+l7	aload_0
 	aload_3
 	invokeinterface	InterfaceMethod scala/collection/generic/Sorted.until:(Ljava/lang/Object;)Lscala/collection/generic/Sorted;
 	areturn
@@ -226,15 +253,20 @@ l1	aload_0
 	invokeinterface	InterfaceMethod scala/collection/generic/Sorted.repr:()Lscala/collection/generic/Sorted;
 	areturn
   Labels:
-   	l3 = 64 // aload_0
-   	l2 = 71 // aload_0
-   	l1 = 79 // aload_0
+   	l2 = 43 // aload_3
+   	l4 = 51 // aload_3
+   	l5 = 65 // aload_3
+   	l6 = 73 // aload_3
+   	l3 = 78 // ifeq
+   	l8 = 103 // aload_0
+   	l7 = 110 // aload_0
+   	l1 = 118 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      86      0    $this       Lscala/collection/generic/Sorted;
-   0      86      1    to       Ljava/lang/Object;
-   18      68      2    i       Lscala/collection/Iterator;
-   34      45      3    next       Ljava/lang/Object;
+   0      125      0    $this       Lscala/collection/generic/Sorted;
+   0      125      1    to       Ljava/lang/Object;
+   18      107      2    i       Lscala/collection/Iterator;
+   34      84      3    next       Ljava/lang/Object;
 
 
 public static boolean hasAll(scala.collection.generic.Sorted, scala.collection.Iterator);

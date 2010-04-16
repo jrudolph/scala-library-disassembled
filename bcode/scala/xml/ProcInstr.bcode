@@ -133,27 +133,29 @@ Asciz	;
 String	
 Asciz	buildString;
 Asciz	(Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;;
+Asciz	<?%s%s?>;
+String	<?%s%s?>
+Asciz	scala/collection/immutable/StringOps;
+class	scala/collection/immutable/StringOps
+Asciz	<init>;
+Asciz	(Ljava/lang/String;)V;
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
 Asciz	scala/Predef$;
 class	scala/Predef$
 Asciz	Lscala/Predef$;;
 NameAndType	MODULE$:Lscala/Predef$;
 Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	<?%s%s?>;
-String	<?%s%s?>
-Asciz	augmentString;
-Asciz	(Ljava/lang/String;)Lscala/collection/immutable/StringOps;;
-NameAndType	augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
-Method	scala/Predef$.augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
 Asciz	java/lang/Object;
 class	java/lang/Object
-Asciz	java/lang/String;
-class	java/lang/String
+Asciz	scala/collection/IndexedSeqLike$class;
+class	scala/collection/IndexedSeqLike$class
 Asciz	isEmpty;
-NameAndType	isEmpty:()Z
-Method	java/lang/String.isEmpty:()Z
+Asciz	(Lscala/collection/IndexedSeqLike;)Z;
+NameAndType	isEmpty:(Lscala/collection/IndexedSeqLike;)Z
+Method	scala/collection/IndexedSeqLike$class.isEmpty:(Lscala/collection/IndexedSeqLike;)Z
 Asciz	scala/collection/mutable/StringBuilder;
 class	scala/collection/mutable/StringBuilder
-Asciz	<init>;
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	scala/collection/mutable/StringBuilder."<init>":()V
@@ -170,12 +172,12 @@ Asciz	genericWrapArray;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
 NameAndType	genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 Method	scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-Asciz	scala/collection/immutable/StringLike;
-class	scala/collection/immutable/StringLike
+Asciz	scala/collection/immutable/StringLike$class;
+class	scala/collection/immutable/StringLike$class
 Asciz	format;
-Asciz	(Lscala/collection/Seq;)Ljava/lang/String;;
-NameAndType	format:(Lscala/collection/Seq;)Ljava/lang/String;
-InterfaceMethod	scala/collection/immutable/StringLike.format:(Lscala/collection/Seq;)Ljava/lang/String;
+Asciz	(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;;
+NameAndType	format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
+Method	scala/collection/immutable/StringLike$class.format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
 Asciz	(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;;
 NameAndType	append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
@@ -205,16 +207,11 @@ Asciz	(I)Ljava/lang/Integer;;
 NameAndType	boxToInteger:(I)Ljava/lang/Integer;
 Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 Method	java/lang/Object.toString:()Ljava/lang/String;
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
-Asciz	temp1;
-Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	proctext
 String	target
-Asciz	temp2;
 Asciz	scala/xml/SpecialNode;
 class	scala/xml/SpecialNode
 Method	scala/xml/SpecialNode."<init>":()V
@@ -235,6 +232,8 @@ NameAndType	isName:(Ljava/lang/String;)Z
 InterfaceMethod	scala/xml/parsing/TokenTests.isName:(Ljava/lang/String;)Z
 Asciz	?>;
 String	?>
+Asciz	java/lang/String;
+class	java/lang/String
 Asciz	contains;
 Asciz	(Ljava/lang/CharSequence;)Z;
 NameAndType	contains:(Ljava/lang/CharSequence;)Z
@@ -390,11 +389,14 @@ public java.lang.String text();
 public scala.collection.mutable.StringBuilder buildString(scala.collection.mutable.StringBuilder);
   Signature: (Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
   Code:
-   Stack=8, Locals=2, Args_size=2
+   Stack=9, Locals=7, Args_size=2
 	aload_1
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	ldc	String <?%s%s?>
-	invokevirtual	Method scala/Predef$.augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
+	astore_2
+	new	class scala/collection/immutable/StringOps
+	dup
+	aload_2
+	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_2
 	anewarray	class java/lang/Object
@@ -407,7 +409,14 @@ public scala.collection.mutable.StringBuilder buildString(scala.collection.mutab
 	iconst_1
 	aload_0
 	invokevirtual	Method proctext:()Ljava/lang/String;
-	invokevirtual	Method java/lang/String.isEmpty:()Z
+	astore_3
+	new	class scala/collection/immutable/StringOps
+	dup
+	aload_3
+	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
+	astore	4
+	aload	4
+	invokestatic	Method scala/collection/IndexedSeqLike$class.isEmpty:(Lscala/collection/IndexedSeqLike;)Z
 	ifeq	l1 // new
 	ldc	String 
 	goto	l2 // aastore
@@ -422,16 +431,20 @@ l1	new	class scala/collection/mutable/StringBuilder
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 l2	aastore
 	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	invokeinterface	InterfaceMethod scala/collection/immutable/StringLike.format:(Lscala/collection/Seq;)Ljava/lang/String;
+	astore	6
+	astore	5
+	aload	5
+	aload	6
+	invokestatic	Method scala/collection/immutable/StringLike$class.format:(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;
 	areturn
   Labels:
-   	l1 = 40 // new
-   	l2 = 62 // aastore
+   	l1 = 56 // new
+   	l2 = 78 // aastore
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      75      0    this       Lscala/xml/ProcInstr;
-   0      75      1    sb       Lscala/collection/mutable/StringBuilder;
+   0      97      0    this       Lscala/xml/ProcInstr;
+   0      97      1    sb       Lscala/collection/mutable/StringBuilder;
 
 
 public scala.xml.ProcInstr copy(java.lang.String, java.lang.String);
@@ -471,10 +484,8 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=2, Args_size=2
 	iload_1
-	istore_2
-	iload_2
 	tableswitch{ //0 to 1
 		0: 46;
 		1: 39;
@@ -494,19 +505,12 @@ public java.lang.Object productElement(int);
 l1	areturn
   Labels:
    	l1 = 50 // areturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      51      0    this       Lscala/xml/ProcInstr;
-   2      49      2    temp1       I
-
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=2, Args_size=2
 	iload_1
-	istore_2
-	iload_2
 	tableswitch{ //0 to 1
 		0: 44;
 		1: 39;
@@ -524,11 +528,6 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 46 // areturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      47      0    this       Lscala/xml/ProcInstr;
-   2      45      2    temp2       I
-
 
 public scala.xml.ProcInstr(java.lang.String, java.lang.String);
   Signature: (Ljava/lang/String;Ljava/lang/String;)V

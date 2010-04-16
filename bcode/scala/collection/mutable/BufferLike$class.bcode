@@ -232,9 +232,14 @@ Asciz	apply;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
 InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+Asciz	java/lang/Number;
+class	java/lang/Number
+Asciz	java/lang/Character;
+class	java/lang/Character
+Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
 NameAndType	$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Buffer;
 InterfaceMethod	scala/collection/mutable/BufferLike.$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Buffer;
 Asciz	scala/collection/script/Reset;
@@ -258,7 +263,6 @@ Method	scala/collection/mutable/BufferLike$$anonfun$$less$less$1."<init>":(Lscal
 InterfaceMethod	scala/collection/Iterator.foreach:(Lscala/Function1;)V
 Asciz	cmd;
 Asciz	Lscala/collection/script/Message;;
-Asciz	temp1;
 Asciz	temp2;
 Asciz	Lscala/collection/script/Include;;
 Asciz	temp3;
@@ -270,11 +274,14 @@ Asciz	temp11;
 Asciz	temp12;
 Asciz	temp17;
 Asciz	Lscala/collection/script/Remove;;
-Asciz	temp18;
-Asciz	temp19;
+Asciz	x0;
+Asciz	x1;
 Asciz	temp22;
 Asciz	Lscala/collection/script/Index;;
+Asciz	x2;
 Asciz	temp23;
+Asciz	temp18;
+Asciz	temp19;
 Asciz	stringPrefix;
 Asciz	(Lscala/collection/mutable/Buffer;)Ljava/lang/String;;
 Asciz	Buffer;
@@ -492,55 +499,49 @@ public static void appendAll(scala.collection.mutable.Buffer, scala.collection.I
 public static void prepend(scala.collection.mutable.Buffer, scala.collection.Seq);
   Signature: (Lscala/collection/mutable/Buffer;Lscala/collection/Seq;)V
   Code:
-   Stack=2, Locals=3, Args_size=2
-	aload_1
-	astore_2
+   Stack=2, Locals=2, Args_size=2
 	aload_0
-	aload_2
+	aload_1
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.$plus$plus$eq$colon:(Lscala/collection/Traversable;)Lscala/collection/mutable/Buffer;
 	pop
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      11      0    $this       Lscala/collection/mutable/Buffer;
-   0      11      1    elems       Lscala/collection/Seq;
+   0      9      0    $this       Lscala/collection/mutable/Buffer;
+   0      9      1    elems       Lscala/collection/Seq;
 
 
 public static void prependAll(scala.collection.mutable.Buffer, scala.collection.Traversable);
   Signature: (Lscala/collection/mutable/Buffer;Lscala/collection/Traversable;)V
   Code:
-   Stack=2, Locals=3, Args_size=2
-	aload_1
-	astore_2
+   Stack=2, Locals=2, Args_size=2
 	aload_0
-	aload_2
+	aload_1
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.$plus$plus$eq$colon:(Lscala/collection/Traversable;)Lscala/collection/mutable/Buffer;
 	pop
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      11      0    $this       Lscala/collection/mutable/Buffer;
-   0      11      1    iter       Lscala/collection/Traversable;
+   0      9      0    $this       Lscala/collection/mutable/Buffer;
+   0      9      1    iter       Lscala/collection/Traversable;
 
 
 public static void prependAll(scala.collection.mutable.Buffer, scala.collection.Iterator);
   Signature: (Lscala/collection/mutable/Buffer;Lscala/collection/Iterator;)V
   Code:
-   Stack=2, Locals=3, Args_size=2
-	aload_1
-	astore_2
+   Stack=2, Locals=2, Args_size=2
 	aload_0
-	aload_2
+	aload_1
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.$plus$plus$eq$colon:(Lscala/collection/Iterator;)Lscala/collection/mutable/Buffer;
 	pop
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      11      0    $this       Lscala/collection/mutable/Buffer;
-   0      11      1    iter       Lscala/collection/Iterator;
+   0      9      0    $this       Lscala/collection/mutable/Buffer;
+   0      9      1    iter       Lscala/collection/Iterator;
 
 
 public static void insert(scala.collection.mutable.Buffer, int, scala.collection.Seq);
@@ -602,31 +603,27 @@ public static void trimEnd(scala.collection.mutable.Buffer, int);
 public static void $less$less(scala.collection.mutable.Buffer, scala.collection.script.Message);
   Signature: (Lscala/collection/mutable/Buffer;Lscala/collection/script/Message;)V
   Code:
-   Stack=7, Locals=23, Args_size=2
+   Stack=7, Locals=18, Args_size=2
 	aload_1
+	instanceof	class scala/collection/script/Include
+	ifeq	l1 // aload_1
+	aload_1
+	checkcast	class scala/collection/script/Include
 	astore_2
 	aload_2
-	instanceof	class scala/collection/script/Include
-	ifeq	l1 // aload_2
-	aload_2
-	checkcast	class scala/collection/script/Include
-	astore_3
-	aload_3
 	invokevirtual	Method scala/collection/script/Include.location:()Lscala/collection/script/Location;
-	astore	4
-	aload_3
+	astore_3
+	aload_2
 	invokevirtual	Method scala/collection/script/Include.elem:()Ljava/lang/Object;
-	astore	5
+	astore	4
 	getstatic	Field scala/collection/script/Start$.MODULE$:Lscala/collection/script/Start$;
-	aload	4
-	astore	6
 	dup
-	ifnonnull	l2 // aload
+	ifnonnull	l2 // aload_3
 	pop
-	aload	6
+	aload_3
 	ifnull	l3 // aload_0
 	goto	l4 // getstatic
-l2	aload	6
+l2	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l4 // getstatic
 l3	aload_0
@@ -635,39 +632,37 @@ l3	aload_0
 	anewarray	class java/lang/Object
 	dup
 	iconst_0
-	aload	5
+	aload	4
 	aastore
 	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.prepend:(Lscala/collection/Seq;)V
 	goto	l5 // return
 l4	getstatic	Field scala/collection/script/End$.MODULE$:Lscala/collection/script/End$;
-	aload	4
-	astore	7
 	dup
-	ifnonnull	l6 // aload
+	ifnonnull	l6 // aload_3
 	pop
-	aload	7
+	aload_3
 	ifnull	l7 // aload_0
-	goto	l8 // aload
-l6	aload	7
+	goto	l8 // aload_3
+l6	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l8 // aload
+	ifeq	l8 // aload_3
 l7	aload_0
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_1
 	anewarray	class java/lang/Object
 	dup
 	iconst_0
-	aload	5
+	aload	4
 	aastore
 	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.append:(Lscala/collection/Seq;)V
 	goto	l5 // return
-l8	aload	4
+l8	aload_3
 	instanceof	class scala/collection/script/Index
 	ifeq	l9 // getstatic
 	aload_0
-	aload	4
+	aload_3
 	checkcast	class scala/collection/script/Index
 	invokevirtual	Method scala/collection/script/Index.n:()I
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
@@ -675,25 +670,23 @@ l8	aload	4
 	anewarray	class java/lang/Object
 	dup
 	iconst_0
-	aload	5
+	aload	4
 	aastore
 	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.insert:(ILscala/collection/Seq;)V
 	goto	l5 // return
 l9	getstatic	Field scala/collection/script/NoLo$.MODULE$:Lscala/collection/script/NoLo$;
-	aload	4
-	astore	8
 	dup
-	ifnonnull	l10 // aload
+	ifnonnull	l10 // aload_3
 	pop
-	aload	8
+	aload_3
 	ifnull	l11 // aload_0
 	goto	l12 // new
-l10	aload	8
+l10	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l12 // new
 l11	aload_0
-	aload	5
+	aload	4
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Buffer;
 	pop
 	goto	l5 // return
@@ -711,45 +704,41 @@ l12	new	class java/lang/UnsupportedOperationException
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokespecial	Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
 	athrow
-l1	aload_2
+l1	aload_1
 	instanceof	class scala/collection/script/Update
-	ifeq	l13 // aload_2
-	aload_2
+	ifeq	l13 // aload_1
+	aload_1
 	checkcast	class scala/collection/script/Update
-	astore	9
-	aload	9
+	astore	5
+	aload	5
 	invokevirtual	Method scala/collection/script/Update.location:()Lscala/collection/script/Location;
-	astore	10
-	aload	9
+	astore	6
+	aload	5
 	invokevirtual	Method scala/collection/script/Update.elem:()Ljava/lang/Object;
-	astore	11
+	astore	7
 	getstatic	Field scala/collection/script/Start$.MODULE$:Lscala/collection/script/Start$;
-	aload	10
-	astore	12
 	dup
 	ifnonnull	l14 // aload
 	pop
-	aload	12
+	aload	6
 	ifnull	l15 // aload_0
 	goto	l16 // getstatic
-l14	aload	12
+l14	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l16 // getstatic
 l15	aload_0
 	iconst_0
-	aload	11
+	aload	7
 	invokeinterface	InterfaceMethod scala/collection/mutable/Seq.update:(ILjava/lang/Object;)V
 	goto	l5 // return
 l16	getstatic	Field scala/collection/script/End$.MODULE$:Lscala/collection/script/End$;
-	aload	10
-	astore	13
 	dup
 	ifnonnull	l17 // aload
 	pop
-	aload	13
+	aload	6
 	ifnull	l18 // aload_0
 	goto	l19 // aload
-l17	aload	13
+l17	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l19 // aload
 l18	aload_0
@@ -757,17 +746,17 @@ l18	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.length:()I
 	iconst_1
 	isub
-	aload	11
+	aload	7
 	invokeinterface	InterfaceMethod scala/collection/mutable/Seq.update:(ILjava/lang/Object;)V
 	goto	l5 // return
-l19	aload	10
+l19	aload	6
 	instanceof	class scala/collection/script/Index
 	ifeq	l20 // new
 	aload_0
-	aload	10
+	aload	6
 	checkcast	class scala/collection/script/Index
 	invokevirtual	Method scala/collection/script/Index.n:()I
-	aload	11
+	aload	7
 	invokeinterface	InterfaceMethod scala/collection/mutable/Seq.update:(ILjava/lang/Object;)V
 	goto	l5 // return
 l20	new	class java/lang/UnsupportedOperationException
@@ -784,64 +773,106 @@ l20	new	class java/lang/UnsupportedOperationException
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokespecial	Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
 	athrow
-l13	aload_2
+l13	aload_1
 	instanceof	class scala/collection/script/Remove
-	ifeq	l21 // aload_2
-	aload_2
+	ifeq	l21 // aload_1
+	aload_1
 	checkcast	class scala/collection/script/Remove
-	astore	14
-	aload	14
+	astore	8
+	aload	8
 	invokevirtual	Method scala/collection/script/Remove.location:()Lscala/collection/script/Location;
-	astore	15
-	aload	14
-	invokevirtual	Method scala/collection/script/Remove.elem:()Ljava/lang/Object;
 	astore	16
-	getstatic	Field scala/collection/script/Start$.MODULE$:Lscala/collection/script/Start$;
-	aload	15
+	aload	8
+	invokevirtual	Method scala/collection/script/Remove.elem:()Ljava/lang/Object;
 	astore	17
+	getstatic	Field scala/collection/script/Start$.MODULE$:Lscala/collection/script/Start$;
 	dup
 	ifnonnull	l22 // aload
 	pop
-	aload	17
+	aload	16
 	ifnull	l23 // aload_0
 	goto	l24 // getstatic
-l22	aload	17
+l22	aload	16
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l24 // getstatic
 l23	aload_0
 	iconst_0
+	istore	9
+	iload	9
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	aload	16
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l5 // return
+	astore	10
+	aload	10
+	aload	17
+	if_acmpne	l25 // aload
+	iconst_1
+	goto	l26 // ifeq
+l25	aload	10
+	ifnonnull	l27 // aload
+	iconst_0
+	goto	l26 // ifeq
+l27	aload	10
+	instanceof	class java/lang/Number
+	ifne	l28 // aload
+	aload	10
+	instanceof	class java/lang/Character
+	ifeq	l29 // aload
+l28	aload	10
+	aload	17
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l26 // ifeq
+l29	aload	10
+	aload	17
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l26	ifeq	l5 // return
 	aload_0
 	iconst_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.remove:(I)Ljava/lang/Object;
 	pop
 	goto	l5 // return
 l24	getstatic	Field scala/collection/script/End$.MODULE$:Lscala/collection/script/End$;
-	aload	15
-	astore	18
 	dup
-	ifnonnull	l25 // aload
+	ifnonnull	l30 // aload
 	pop
-	aload	18
-	ifnull	l26 // aload_0
-	goto	l27 // aload
-l25	aload	18
+	aload	16
+	ifnull	l31 // aload_0
+	goto	l32 // aload
+l30	aload	16
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l27 // aload
-l26	aload_0
+	ifeq	l32 // aload
+l31	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.length:()I
 	iconst_1
 	isub
+	istore	11
+	iload	11
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	aload	16
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l5 // return
+	astore	12
+	aload	12
+	aload	17
+	if_acmpne	l33 // aload
+	iconst_1
+	goto	l34 // ifeq
+l33	aload	12
+	ifnonnull	l35 // aload
+	iconst_0
+	goto	l34 // ifeq
+l35	aload	12
+	instanceof	class java/lang/Number
+	ifne	l36 // aload
+	aload	12
+	instanceof	class java/lang/Character
+	ifeq	l37 // aload
+l36	aload	12
+	aload	17
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l34 // ifeq
+l37	aload	12
+	aload	17
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l34	ifeq	l5 // return
 	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.length:()I
@@ -850,47 +881,64 @@ l26	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.remove:(I)Ljava/lang/Object;
 	pop
 	goto	l5 // return
-l27	aload	15
+l32	aload	16
 	instanceof	class scala/collection/script/Index
-	ifeq	l28 // getstatic
-	aload	15
+	ifeq	l38 // getstatic
+	aload	16
 	checkcast	class scala/collection/script/Index
-	astore	19
-	aload	19
+	astore	13
+	aload	13
 	invokevirtual	Method scala/collection/script/Index.n:()I
-	istore	20
-	iload	20
-	istore	21
+	istore	15
 	aload_0
-	iload	21
+	iload	15
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	aload	16
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l5 // return
+	astore	14
+	aload	14
+	aload	17
+	if_acmpne	l39 // aload
+	iconst_1
+	goto	l40 // ifeq
+l39	aload	14
+	ifnonnull	l41 // aload
+	iconst_0
+	goto	l40 // ifeq
+l41	aload	14
+	instanceof	class java/lang/Number
+	ifne	l42 // aload
+	aload	14
+	instanceof	class java/lang/Character
+	ifeq	l43 // aload
+l42	aload	14
+	aload	17
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l40 // ifeq
+l43	aload	14
+	aload	17
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l40	ifeq	l5 // return
 	aload_0
-	iload	21
+	iload	15
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.remove:(I)Ljava/lang/Object;
 	pop
 	goto	l5 // return
-l28	getstatic	Field scala/collection/script/NoLo$.MODULE$:Lscala/collection/script/NoLo$;
-	aload	15
-	astore	22
+l38	getstatic	Field scala/collection/script/NoLo$.MODULE$:Lscala/collection/script/NoLo$;
 	dup
-	ifnonnull	l29 // aload
+	ifnonnull	l44 // aload
 	pop
-	aload	22
-	ifnull	l30 // aload_0
-	goto	l31 // new
-l29	aload	22
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l31 // new
-l30	aload_0
 	aload	16
+	ifnull	l45 // aload_0
+	goto	l46 // new
+l44	aload	16
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l46 // new
+l45	aload_0
+	aload	17
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.$minus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Buffer;
 	pop
 	goto	l5 // return
-l31	new	class java/lang/UnsupportedOperationException
+l46	new	class java/lang/UnsupportedOperationException
 	dup
 	new	class scala/collection/mutable/StringBuilder
 	dup
@@ -904,16 +952,16 @@ l31	new	class java/lang/UnsupportedOperationException
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokespecial	Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
 	athrow
-l21	aload_2
+l21	aload_1
 	instanceof	class scala/collection/script/Reset
-	ifeq	l32 // aload_2
+	ifeq	l47 // aload_1
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.clear:()V
 	goto	l5 // return
-l32	aload_2
+l47	aload_1
 	instanceof	class scala/collection/script/Script
-	ifeq	l33 // new
-	aload_2
+	ifeq	l48 // new
+	aload_1
 	checkcast	class scala/collection/script/Script
 	invokeinterface	InterfaceMethod scala/collection/IndexedSeqLike.iterator:()Lscala/collection/Iterator;
 	new	class scala/collection/mutable/BufferLike$$anonfun$$less$less$1
@@ -922,7 +970,7 @@ l32	aload_2
 	invokespecial	Method scala/collection/mutable/BufferLike$$anonfun$$less$less$1."<init>":(Lscala/collection/mutable/Buffer;)V
 	invokeinterface	InterfaceMethod scala/collection/Iterator.foreach:(Lscala/Function1;)V
 l5	return
-l33	new	class java/lang/UnsupportedOperationException
+l48	new	class java/lang/UnsupportedOperationException
 	dup
 	new	class scala/collection/mutable/StringBuilder
 	dup
@@ -937,56 +985,72 @@ l33	new	class java/lang/UnsupportedOperationException
 	invokespecial	Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l2 = 46 // aload
-   	l3 = 54 // aload_0
-   	l4 = 78 // getstatic
-   	l6 = 98 // aload
-   	l7 = 106 // aload_0
-   	l8 = 130 // aload
-   	l9 = 170 // getstatic
-   	l10 = 190 // aload
-   	l11 = 198 // aload_0
-   	l12 = 210 // new
-   	l1 = 242 // aload_2
-   	l14 = 289 // aload
-   	l15 = 297 // aload_0
-   	l16 = 309 // getstatic
-   	l17 = 329 // aload
-   	l18 = 337 // aload_0
-   	l19 = 356 // aload
-   	l20 = 383 // new
-   	l13 = 415 // aload_2
-   	l22 = 462 // aload
-   	l23 = 470 // aload_0
-   	l24 = 499 // getstatic
-   	l25 = 519 // aload
-   	l26 = 527 // aload_0
-   	l27 = 570 // aload
-   	l28 = 627 // getstatic
-   	l29 = 647 // aload
-   	l30 = 655 // aload_0
-   	l31 = 667 // new
-   	l21 = 699 // aload_2
-   	l32 = 715 // aload_2
-   	l5 = 744 // return
-   	l33 = 745 // new
+   	l2 = 38 // aload_3
+   	l3 = 45 // aload_0
+   	l4 = 69 // getstatic
+   	l6 = 84 // aload_3
+   	l7 = 91 // aload_0
+   	l8 = 115 // aload_3
+   	l9 = 153 // getstatic
+   	l10 = 168 // aload_3
+   	l11 = 175 // aload_0
+   	l12 = 187 // new
+   	l1 = 219 // aload_1
+   	l14 = 262 // aload
+   	l15 = 270 // aload_0
+   	l16 = 282 // getstatic
+   	l17 = 298 // aload
+   	l18 = 306 // aload_0
+   	l19 = 325 // aload
+   	l20 = 352 // new
+   	l13 = 384 // aload_1
+   	l22 = 427 // aload
+   	l23 = 435 // aload_0
+   	l25 = 462 // aload
+   	l27 = 471 // aload
+   	l28 = 487 // aload
+   	l29 = 497 // aload
+   	l26 = 504 // ifeq
+   	l24 = 518 // getstatic
+   	l30 = 534 // aload
+   	l31 = 542 // aload_0
+   	l33 = 576 // aload
+   	l35 = 585 // aload
+   	l36 = 601 // aload
+   	l37 = 611 // aload
+   	l34 = 618 // ifeq
+   	l32 = 639 // aload
+   	l39 = 685 // aload
+   	l41 = 694 // aload
+   	l42 = 710 // aload
+   	l43 = 720 // aload
+   	l40 = 727 // ifeq
+   	l38 = 742 // getstatic
+   	l44 = 758 // aload
+   	l45 = 766 // aload_0
+   	l46 = 778 // new
+   	l21 = 810 // aload_1
+   	l47 = 826 // aload_1
+   	l5 = 855 // return
+   	l48 = 856 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      777      0    $this       Lscala/collection/mutable/Buffer;
-   0      777      1    cmd       Lscala/collection/script/Message;
-   2      775      2    temp1       Lscala/collection/script/Message;
-   14      228      3    temp2       Lscala/collection/script/Include;
-   20      222      4    temp3       Lscala/collection/script/Location;
-   26      216      5    temp4       Ljava/lang/Object;
-   255      160      9    temp10       Lscala/collection/script/Update;
-   262      153      10    temp11       Lscala/collection/script/Location;
-   269      146      11    temp12       Ljava/lang/Object;
-   428      271      14    temp17       Lscala/collection/script/Remove;
-   435      264      15    temp18       Lscala/collection/script/Location;
-   442      257      16    temp19       Ljava/lang/Object;
-   585      42      19    temp22       Lscala/collection/script/Index;
-   592      35      20    temp23       I
-   596      31      21    n       I
+   0      888      0    $this       Lscala/collection/mutable/Buffer;
+   0      888      1    cmd       Lscala/collection/script/Message;
+   12      207      2    temp2       Lscala/collection/script/Include;
+   17      202      3    temp3       Lscala/collection/script/Location;
+   23      196      4    temp4       Ljava/lang/Object;
+   232      152      5    temp10       Lscala/collection/script/Update;
+   239      145      6    temp11       Lscala/collection/script/Location;
+   246      138      7    temp12       Ljava/lang/Object;
+   397      413      8    temp17       Lscala/collection/script/Remove;
+   458      49      10    x0       Ljava/lang/Object;
+   572      49      12    x1       Ljava/lang/Object;
+   654      88      13    temp22       Lscala/collection/script/Index;
+   681      49      14    x2       Ljava/lang/Object;
+   661      81      15    temp23       I
+   404      406      16    temp18       Lscala/collection/script/Location;
+   411      399      17    temp19       Ljava/lang/Object;
 
 
 public static java.lang.String stringPrefix(scala.collection.mutable.Buffer);
@@ -1020,7 +1084,7 @@ public static void $plus$plus$eq(scala.collection.mutable.Buffer, java.lang.Obje
    Stack=4, Locals=6, Args_size=4
 	iload_2
 	istore	4
-	iload	4
+	iload_2
 	iload_3
 	iadd
 	istore	5
@@ -1041,16 +1105,16 @@ l2	iload	4
 	goto	l2 // iload
 l1	return
   Labels:
-   	l2 = 9 // iload
-   	l1 = 41 // return
+   	l2 = 8 // iload
+   	l1 = 40 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      42      0    $this       Lscala/collection/mutable/Buffer;
-   0      42      1    src       Ljava/lang/Object;
-   0      42      2    start       I
-   0      42      3    len       I
-   3      39      4    i       I
-   9      33      5    end       I
+   0      41      0    $this       Lscala/collection/mutable/Buffer;
+   0      41      1    src       Ljava/lang/Object;
+   0      41      2    start       I
+   0      41      3    len       I
+   3      38      4    i       I
+   8      33      5    end       I
 
   Deprecated: true
 

@@ -49,17 +49,12 @@ NameAndType	token:()I
 Method	scala/xml/dtd/ContentModelParser$.token:()I
 int	6;
 int	10;
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
 Asciz	in DTDs, \nmixed content models must be like (#PCDATA|Name|Name|...)*;
 String	in DTDs, \nmixed content models must be like (#PCDATA|Name|Name|...)*
-Asciz	error;
-Asciz	(Ljava/lang/String;)Lscala/runtime/Nothing$;;
-NameAndType	error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
-Method	scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+Asciz	java/lang/RuntimeException;
+class	java/lang/RuntimeException
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 Asciz	scala/collection/mutable/StringBuilder;
 class	scala/collection/mutable/StringBuilder
 Method	scala/collection/mutable/StringBuilder."<init>":()V
@@ -95,6 +90,11 @@ Asciz	Alt;
 Asciz	()Lscala/util/regexp/Base$Alt$;;
 NameAndType	Alt:()Lscala/util/regexp/Base$Alt$;
 Method	scala/xml/dtd/ContentModel$.Alt:()Lscala/util/regexp/Base$Alt$;
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
 Asciz	scala/util/regexp/Base$RegExp;
 class	scala/util/regexp/Base$RegExp
 Asciz	Eps;
@@ -183,10 +183,10 @@ Field	scala/xml/dtd/EMPTY$.MODULE$:Lscala/xml/dtd/EMPTY$;
 Asciz	expected ANY, EMPTY or '(' instead of ;
 String	expected ANY, EMPTY or '(' instead of 
 Asciz	temp6;
-Asciz	temp2;
 Asciz	temp5;
 Asciz	res;
 Asciz	Lscala/xml/dtd/MIXED;;
+Asciz	temp2;
 int	13;
 Asciz	particle;
 NameAndType	particle:()Lscala/util/regexp/Base$RegExp;
@@ -207,18 +207,16 @@ NameAndType	seqRest:(Lscala/util/regexp/Base$RegExp;)Lscala/util/regexp/Base$Reg
 Method	scala/xml/dtd/ContentModelParser$.seqRest:(Lscala/util/regexp/Base$RegExp;)Lscala/util/regexp/Base$RegExp;
 NameAndType	maybeSuffix:(Lscala/util/regexp/Base$RegExp;)Lscala/util/regexp/Base$RegExp;
 Method	scala/xml/dtd/ContentModelParser$.maybeSuffix:(Lscala/util/regexp/Base$RegExp;)Lscala/util/regexp/Base$RegExp;
-Asciz	p;
 Asciz	temp7;
 Asciz	q;
 Asciz	Lscala/util/regexp/Base$Alt;;
-Asciz	scala/collection/immutable/List$;
-class	scala/collection/immutable/List$
-Asciz	Lscala/collection/immutable/List$;;
-NameAndType	MODULE$:Lscala/collection/immutable/List$;
-Field	scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
-Asciz	(Lscala/collection/Seq;)Lscala/collection/immutable/List;;
-NameAndType	apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
-Method	scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
+Asciz	p;
+Asciz	scala/collection/TraversableLike;
+class	scala/collection/TraversableLike
+Asciz	toList;
+Asciz	()Lscala/collection/immutable/List;;
+NameAndType	toList:()Lscala/collection/immutable/List;
+InterfaceMethod	scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
 Asciz	scala/collection/immutable/List;
 class	scala/collection/immutable/List
 Asciz	$colon$colon;
@@ -226,7 +224,6 @@ Asciz	(Ljava/lang/Object;)Lscala/collection/immutable/List;;
 NameAndType	$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 Method	scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 Asciz	reverse;
-Asciz	()Lscala/collection/immutable/List;;
 NameAndType	reverse:()Lscala/collection/immutable/List;
 Method	scala/collection/immutable/List.reverse:()Lscala/collection/immutable/List;
 Asciz	k;
@@ -238,7 +235,6 @@ Asciz	scala/util/regexp/WordExp$Letter;
 class	scala/util/regexp/WordExp$Letter
 Asciz	scala/xml/dtd/ContentModel$ElemName;
 class	scala/xml/dtd/ContentModel$ElemName
-NameAndType	"<init>":(Ljava/lang/String;)V
 Method	scala/xml/dtd/ContentModel$ElemName."<init>":(Ljava/lang/String;)V
 Asciz	(Lscala/util/regexp/WordExp;Lscala/util/regexp/WordExp$Label;)V;
 NameAndType	"<init>":(Lscala/util/regexp/WordExp;Lscala/util/regexp/WordExp$Label;)V
@@ -308,24 +304,26 @@ public scala.xml.dtd.ContentModel parse(java.lang.String);
 public void accept(int);
   Signature: (I)V
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=3, Locals=4, Args_size=2
 	aload_0
 	invokevirtual	Method token:()I
 	iload_1
 	if_icmpeq	l1 // aload_0
 	iload_1
 	ldc	int 6
-	if_icmpne	l2 // getstatic
+	if_icmpne	l2 // new
 	aload_0
 	invokevirtual	Method token:()I
 	ldc	int 10
-	if_icmpne	l2 // getstatic
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	if_icmpne	l2 // new
 	ldc	String in DTDs, \nmixed content models must be like (#PCDATA|Name|Name|...)*
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
-	goto	l3 // athrow
-l2	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	new	class scala/collection/mutable/StringBuilder
+	astore_2
+	new	class java/lang/RuntimeException
+	dup
+	aload_2
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+	athrow
+l2	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc	String expected 
@@ -342,19 +340,22 @@ l2	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	invokevirtual	Method token2string:(I)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
-l3	athrow
+	astore_3
+	new	class java/lang/RuntimeException
+	dup
+	aload_3
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+	athrow
 l1	aload_0
 	invokevirtual	Method nextToken:()V
 	return
   Labels:
-   	l2 = 34 // getstatic
-   	l3 = 79 // athrow
-   	l1 = 80 // aload_0
+   	l2 = 35 // new
+   	l1 = 84 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      85      0    this       Lscala/xml/dtd/ContentModelParser$;
-   0      85      1    tok       I
+   0      89      0    this       Lscala/xml/dtd/ContentModelParser$;
+   0      89      1    tok       I
 
 
 public scala.util.regexp.Base$RegExp maybeSuffix(scala.util.regexp.Base$RegExp);
@@ -435,16 +436,15 @@ l1	areturn
 public scala.xml.dtd.ContentModel contentspec();
   Signature: ()Lscala/xml/dtd/ContentModel;
   Code:
-   Stack=4, Locals=7, Args_size=1
+   Stack=4, Locals=10, Args_size=1
 	aload_0
 	invokevirtual	Method token:()I
 	istore_1
 	iload_1
 	lookupswitch{ //2
-		1: 210;
-		3: 65;
+		1: 219;
+		3: 68;
 		default: 32 }
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -456,7 +456,11 @@ public scala.xml.dtd.ContentModel contentspec();
 	invokevirtual	Method token2string:(I)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+	astore_2
+	new	class java/lang/RuntimeException
+	dup
+	aload_2
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 	athrow
 	aload_0
 	invokevirtual	Method nextToken:()V
@@ -476,13 +480,12 @@ l1	aload_0
 	invokevirtual	Method nextToken:()V
 	aload_0
 	invokevirtual	Method token:()I
-	istore	5
-	iload	5
+	istore_3
+	iload_3
 	lookupswitch{ //2
-		4: 204;
-		9: 165;
-		default: 132 }
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+		4: 213;
+		9: 174;
+		default: 136 }
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -494,7 +497,11 @@ l1	aload_0
 	invokevirtual	Method token2string:(I)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+	astore	4
+	new	class java/lang/RuntimeException
+	dup
+	aload	4
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 	athrow
 	new	class scala/xml/dtd/MIXED
 	dup
@@ -503,7 +510,7 @@ l1	aload_0
 	invokevirtual	Method scala/xml/dtd/ContentModel$.Eps:()Lscala/util/regexp/Base$Eps$;
 	invokevirtual	Method choiceRest:(Lscala/util/regexp/Base$RegExp;)Lscala/util/regexp/Base$Alt;
 	invokespecial	Method scala/xml/dtd/MIXED."<init>":(Lscala/util/regexp/Base$RegExp;)V
-	astore	6
+	astore	5
 	aload_0
 	invokevirtual	Method sOpt:()V
 	aload_0
@@ -512,43 +519,42 @@ l1	aload_0
 	aload_0
 	ldc	int 6
 	invokevirtual	Method accept:(I)V
-	aload	6
+	aload	5
 	goto	l2 // areturn
 	getstatic	Field scala/xml/dtd/PCDATA$.MODULE$:Lscala/xml/dtd/PCDATA$;
 	goto	l2 // areturn
 	aload_0
 	invokevirtual	Method value:()Ljava/lang/String;
-	astore_2
-	aload_2
+	astore	7
+	aload	7
 	ldc	String ANY
-	astore_3
+	astore	6
 	dup
-	ifnonnull	l3 // aload_3
+	ifnonnull	l3 // aload
 	pop
-	aload_3
+	aload	6
 	ifnull	l4 // getstatic
-	goto	l5 // aload_2
-l3	aload_3
+	goto	l5 // aload
+l3	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l5 // aload_2
+	ifeq	l5 // aload
 l4	getstatic	Field scala/xml/dtd/ANY$.MODULE$:Lscala/xml/dtd/ANY$;
 	goto	l2 // areturn
-l5	aload_2
+l5	aload	7
 	ldc	String EMPTY
-	astore	4
+	astore	8
 	dup
 	ifnonnull	l6 // aload
 	pop
-	aload	4
+	aload	8
 	ifnull	l7 // getstatic
-	goto	l8 // getstatic
-l6	aload	4
+	goto	l8 // new
+l6	aload	8
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l8 // getstatic
+	ifeq	l8 // new
 l7	getstatic	Field scala/xml/dtd/EMPTY$.MODULE$:Lscala/xml/dtd/EMPTY$;
 l2	areturn
-l8	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	new	class scala/collection/mutable/StringBuilder
+l8	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc	String expected ANY, EMPTY or '(' instead of 
@@ -557,25 +563,29 @@ l8	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	invokevirtual	Method value:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+	astore	9
+	new	class java/lang/RuntimeException
+	dup
+	aload	9
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 95 // aload_0
-   	l3 = 231 // aload_3
-   	l4 = 238 // getstatic
-   	l5 = 244 // aload_2
-   	l6 = 262 // aload
-   	l7 = 270 // getstatic
-   	l2 = 273 // areturn
-   	l8 = 274 // getstatic
+   	l1 = 98 // aload_0
+   	l3 = 244 // aload
+   	l4 = 252 // getstatic
+   	l5 = 258 // aload
+   	l6 = 277 // aload
+   	l7 = 285 // getstatic
+   	l2 = 288 // areturn
+   	l8 = 289 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      303      0    this       Lscala/xml/dtd/ContentModelParser$;
-   5      298      1    temp6       I
-   215      58      2    temp2       Ljava/lang/String;
-   274      29      2    temp2       Ljava/lang/String;
-   105      105      5    temp5       I
-   184      17      6    res       Lscala/xml/dtd/MIXED;
+   0      323      0    this       Lscala/xml/dtd/ContentModelParser$;
+   5      318      1    temp6       I
+   107      112      3    temp5       I
+   193      17      5    res       Lscala/xml/dtd/MIXED;
+   225      63      7    temp2       Ljava/lang/String;
+   289      34      7    temp2       Ljava/lang/String;
 
 
 public void sOpt();
@@ -598,36 +608,36 @@ public scala.util.regexp.Base$RegExp regexp();
    Stack=4, Locals=5, Args_size=1
 	aload_0
 	invokevirtual	Method particle:()Lscala/util/regexp/Base$RegExp;
-	astore_1
+	astore	4
 	aload_0
 	invokevirtual	Method sOpt:()V
 	aload_0
 	aload_0
 	invokevirtual	Method token:()I
-	istore_2
-	iload_2
+	istore_1
+	iload_1
 	lookupswitch{ //3
 		4: 96;
-		5: 81;
+		5: 80;
 		9: 64;
 		default: 52 }
 	new	class scala/MatchError
 	dup
-	iload_2
+	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
 	aload_0
-	aload_1
+	aload	4
 	invokevirtual	Method choiceRest:(Lscala/util/regexp/Base$RegExp;)Lscala/util/regexp/Base$Alt;
-	astore	4
+	astore_2
 	aload_0
 	iconst_4
 	invokevirtual	Method accept:(I)V
-	aload	4
+	aload_2
 	goto	l1 // invokevirtual
 	aload_0
-	aload_1
+	aload	4
 	invokevirtual	Method seqRest:(Lscala/util/regexp/Base$RegExp;)Lscala/util/regexp/Base$RegExp;
 	astore_3
 	aload_0
@@ -637,25 +647,24 @@ public scala.util.regexp.Base$RegExp regexp();
 	goto	l1 // invokevirtual
 	aload_0
 	invokevirtual	Method nextToken:()V
-	aload_1
+	aload	4
 l1	invokevirtual	Method maybeSuffix:(Lscala/util/regexp/Base$RegExp;)Lscala/util/regexp/Base$RegExp;
 	areturn
   Labels:
-   	l1 = 101 // invokevirtual
+   	l1 = 102 // invokevirtual
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      105      0    this       Lscala/xml/dtd/ContentModelParser$;
-   5      99      1    p       Lscala/util/regexp/Base$RegExp;
-   15      90      2    temp7       I
+   0      106      0    this       Lscala/xml/dtd/ContentModelParser$;
+   16      90      1    temp7       I
+   71      6      2    q       Lscala/util/regexp/Base$Alt;
    87      6      3    q       Lscala/util/regexp/Base$RegExp;
-   71      7      4    q       Lscala/util/regexp/Base$Alt;
+   6      99      4    p       Lscala/util/regexp/Base$RegExp;
 
 
 public scala.util.regexp.Base$RegExp seqRest(scala.util.regexp.Base$RegExp);
   Signature: (Lscala/util/regexp/Base$RegExp;)Lscala/util/regexp/Base$RegExp;
   Code:
-   Stack=6, Locals=4, Args_size=2
-	getstatic	Field scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
+   Stack=5, Locals=5, Args_size=2
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_1
 	anewarray	class scala/util/regexp/Base$RegExp
@@ -665,8 +674,10 @@ public scala.util.regexp.Base$RegExp seqRest(scala.util.regexp.Base$RegExp);
 	aastore
 	checkcast	class "[Ljava/lang/Object;"
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	invokevirtual	Method scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
 	astore_2
+	aload_2
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+	astore	4
 l2	aload_0
 	invokevirtual	Method token:()I
 	iconst_5
@@ -678,34 +689,33 @@ l2	aload_0
 	aload_0
 	invokevirtual	Method particle:()Lscala/util/regexp/Base$RegExp;
 	astore_3
-	aload_2
+	aload	4
 	aload_3
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
-	astore_2
+	astore	4
 	aload_0
 	invokevirtual	Method sOpt:()V
 	goto	l2 // aload_0
 l1	getstatic	Field scala/xml/dtd/ContentModel$.MODULE$:Lscala/xml/dtd/ContentModel$;
 	invokevirtual	Method scala/xml/dtd/ContentModel$.Sequ:()Lscala/util/regexp/Base$Sequ$;
-	aload_2
+	aload	4
 	invokevirtual	Method scala/collection/immutable/List.reverse:()Lscala/collection/immutable/List;
 	invokevirtual	Method scala/util/regexp/Base$Sequ$.apply:(Lscala/collection/Seq;)Lscala/util/regexp/Base$RegExp;
 	areturn
   Labels:
-   	l2 = 24 // aload_0
-   	l1 = 58 // getstatic
+   	l2 = 26 // aload_0
+   	l1 = 62 // getstatic
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      72      0    this       Lscala/xml/dtd/ContentModelParser$;
-   0      72      1    p       Lscala/util/regexp/Base$RegExp;
-   24      47      2    k       Lscala/collection/immutable/List;
+   0      77      0    this       Lscala/xml/dtd/ContentModelParser$;
+   0      77      1    p       Lscala/util/regexp/Base$RegExp;
+   26      50      4    k       Lscala/collection/immutable/List;
 
 
 public scala.util.regexp.Base$Alt choiceRest(scala.util.regexp.Base$RegExp);
   Signature: (Lscala/util/regexp/Base$RegExp;)Lscala/util/regexp/Base$Alt;
   Code:
-   Stack=6, Locals=4, Args_size=2
-	getstatic	Field scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
+   Stack=5, Locals=5, Args_size=2
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_1
 	anewarray	class scala/util/regexp/Base$RegExp
@@ -715,8 +725,10 @@ public scala.util.regexp.Base$Alt choiceRest(scala.util.regexp.Base$RegExp);
 	aastore
 	checkcast	class "[Ljava/lang/Object;"
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	invokevirtual	Method scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
 	astore_2
+	aload_2
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+	astore	4
 l2	aload_0
 	invokevirtual	Method token:()I
 	ldc	int 9
@@ -728,42 +740,41 @@ l2	aload_0
 	aload_0
 	invokevirtual	Method particle:()Lscala/util/regexp/Base$RegExp;
 	astore_3
-	aload_2
+	aload	4
 	aload_3
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
-	astore_2
+	astore	4
 	aload_0
 	invokevirtual	Method sOpt:()V
 	goto	l2 // aload_0
 l1	getstatic	Field scala/xml/dtd/ContentModel$.MODULE$:Lscala/xml/dtd/ContentModel$;
 	invokevirtual	Method scala/xml/dtd/ContentModel$.Alt:()Lscala/util/regexp/Base$Alt$;
-	aload_2
+	aload	4
 	invokevirtual	Method scala/collection/immutable/List.reverse:()Lscala/collection/immutable/List;
 	invokevirtual	Method scala/util/regexp/Base$Alt$.apply:(Lscala/collection/Seq;)Lscala/util/regexp/Base$Alt;
 	areturn
   Labels:
-   	l2 = 24 // aload_0
-   	l1 = 59 // getstatic
+   	l2 = 26 // aload_0
+   	l1 = 63 // getstatic
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      73      0    this       Lscala/xml/dtd/ContentModelParser$;
-   0      73      1    p       Lscala/util/regexp/Base$RegExp;
-   24      48      2    k       Lscala/collection/immutable/List;
+   0      78      0    this       Lscala/xml/dtd/ContentModelParser$;
+   0      78      1    p       Lscala/util/regexp/Base$RegExp;
+   26      51      4    k       Lscala/collection/immutable/List;
 
 
 public scala.util.regexp.Base$RegExp particle();
   Signature: ()Lscala/util/regexp/Base$RegExp;
   Code:
-   Stack=6, Locals=3, Args_size=1
+   Stack=6, Locals=4, Args_size=1
 	aload_0
 	invokevirtual	Method token:()I
 	istore_1
 	iload_1
 	lookupswitch{ //2
-		1: 80;
-		3: 65;
+		1: 83;
+		3: 68;
 		default: 32 }
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -775,7 +786,11 @@ public scala.util.regexp.Base$RegExp particle();
 	invokevirtual	Method token2string:(I)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+	astore_2
+	new	class java/lang/RuntimeException
+	dup
+	aload_2
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 	athrow
 	aload_0
 	invokevirtual	Method nextToken:()V
@@ -793,32 +808,32 @@ public scala.util.regexp.Base$RegExp particle();
 	invokevirtual	Method value:()Ljava/lang/String;
 	invokespecial	Method scala/xml/dtd/ContentModel$ElemName."<init>":(Ljava/lang/String;)V
 	invokespecial	Method scala/util/regexp/WordExp$Letter."<init>":(Lscala/util/regexp/WordExp;Lscala/util/regexp/WordExp$Label;)V
-	astore_2
+	astore_3
 	aload_0
 	invokevirtual	Method nextToken:()V
 	aload_0
-	aload_2
+	aload_3
 	invokevirtual	Method maybeSuffix:(Lscala/util/regexp/Base$RegExp;)Lscala/util/regexp/Base$RegExp;
 l1	areturn
   Labels:
-   	l1 = 111 // areturn
+   	l1 = 114 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      112      0    this       Lscala/xml/dtd/ContentModelParser$;
-   5      107      1    temp8       I
-   102      9      2    a       Lscala/util/regexp/WordExp$Letter;
+   0      115      0    this       Lscala/xml/dtd/ContentModelParser$;
+   5      110      1    temp8       I
+   105      9      3    a       Lscala/util/regexp/WordExp$Letter;
 
 
 public scala.util.regexp.WordExp$Letter atom();
   Signature: ()Lscala/util/regexp/WordExp$Letter;
   Code:
-   Stack=6, Locals=3, Args_size=1
+   Stack=6, Locals=4, Args_size=1
 	aload_0
 	invokevirtual	Method token:()I
 	istore_1
 	iload_1
 	iconst_1
-	if_icmpne	l1 // getstatic
+	if_icmpne	l1 // new
 	new	class scala/util/regexp/WordExp$Letter
 	dup
 	getstatic	Field scala/xml/dtd/ContentModel$.MODULE$:Lscala/xml/dtd/ContentModel$;
@@ -833,8 +848,7 @@ public scala.util.regexp.WordExp$Letter atom();
 	invokevirtual	Method nextToken:()V
 	aload_2
 	areturn
-l1	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	new	class scala/collection/mutable/StringBuilder
+l1	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc	String expected Name, got:
@@ -845,14 +859,18 @@ l1	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	invokevirtual	Method token2string:(I)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+	astore_3
+	new	class java/lang/RuntimeException
+	dup
+	aload_3
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 38 // getstatic
+   	l1 = 38 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      71      0    this       Lscala/xml/dtd/ContentModelParser$;
-   5      66      1    temp9       I
+   0      74      0    this       Lscala/xml/dtd/ContentModelParser$;
+   5      69      1    temp9       I
    32      5      2    a       Lscala/util/regexp/WordExp$Letter;
 
 

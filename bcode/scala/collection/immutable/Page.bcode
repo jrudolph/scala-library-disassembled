@@ -2,7 +2,7 @@ Compiled from "PagedSeq.scala"
 public class scala.collection.immutable.Page extends java.lang.Object implements scala.ScalaObject
   SourceFile: "PagedSeq.scala"
   Signature: length = 0x2
-   00 FFFFFF8F 
+   00 FFFFFF8D 
   ScalaSig: length = 0x36E
    05 00 FFFFFF81 06 06 04 01 02 04 09 02 04 50 61 67 65
    0A 02 03 04 01 09 69 6D 6D 75 74 61 62 6C 65 0A
@@ -159,8 +159,6 @@ Asciz	MODULE$;
 Asciz	Lscala/runtime/ScalaRunTime$;;
 NameAndType	MODULE$:Lscala/runtime/ScalaRunTime$;
 Field	scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
-NameAndType	data:()Ljava/lang/Object;
-Method	scala/collection/immutable/Page.data:()Ljava/lang/Object;
 Asciz	array_apply;
 Asciz	(Ljava/lang/Object;I)Ljava/lang/Object;;
 NameAndType	array_apply:(Ljava/lang/Object;I)Ljava/lang/Object;
@@ -234,7 +232,7 @@ private scala.collection.immutable.Page next;
 private final int PageSize;
   Signature: I
 
-private final scala.reflect.ClassManifest evidence$5;
+public final scala.reflect.ClassManifest evidence$5;
   Signature: Lscala/reflect/ClassManifest;
   Signature: length = 0x2
    00 12 
@@ -408,14 +406,18 @@ l1	aload_0
 public java.lang.Object apply(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=5, Locals=2, Args_size=2
 	iload_1
 	aload_0
-	invokevirtual	Method start:()I
+	invokevirtual	Method num:()I
+	ldc	int 4096
+	imul
 	if_icmplt	l1 // new
 	iload_1
 	aload_0
-	invokevirtual	Method start:()I
+	invokevirtual	Method num:()I
+	ldc	int 4096
+	imul
 	isub
 	aload_0
 	invokevirtual	Method filled:()I
@@ -429,28 +431,30 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	athrow
 l2	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
 	aload_0
-	invokevirtual	Method data:()Ljava/lang/Object;
+	getfield	Field data:Ljava/lang/Object;
 	iload_1
 	aload_0
-	invokevirtual	Method start:()I
+	invokevirtual	Method num:()I
+	ldc	int 4096
+	imul
 	isub
 	invokevirtual	Method scala/runtime/ScalaRunTime$.array_apply:(Ljava/lang/Object;I)Ljava/lang/Object;
 	areturn
   Labels:
-   	l1 = 21 // new
-   	l2 = 36 // getstatic
+   	l1 = 27 // new
+   	l2 = 42 // getstatic
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      53      0    this       Lscala/collection/immutable/Page;
-   0      53      1    index       I
+   0      62      0    this       Lscala/collection/immutable/Page;
+   0      62      1    index       I
 
   Signature: length = 0x2
-   00 6B 
+   00 69 
 
 public final scala.collection.immutable.Page addMore(scala.Function3);
   Signature: (Lscala/Function3;)Lscala/collection/immutable/Page;
   Code:
-   Stack=5, Locals=4, Args_size=2
+   Stack=5, Locals=5, Args_size=2
 l2	aload_0
 	invokevirtual	Method filled:()I
 	ldc	int 4096
@@ -472,19 +476,23 @@ l2	aload_0
 	goto	l2 // aload_0
 l1	aload_1
 	aload_0
-	invokevirtual	Method data:()Ljava/lang/Object;
+	getfield	Field data:Ljava/lang/Object;
 	aload_0
 	invokevirtual	Method filled:()I
+	istore_2
+	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	ldc	int 4096
 	aload_0
 	invokevirtual	Method filled:()I
 	isub
+	istore_3
+	iload_3
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokeinterface	InterfaceMethod scala/Function3.apply:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-	istore_3
-	iload_3
+	istore	4
+	iload	4
 	iconst_0
 	if_icmpge	l3 // aload_0
 	aload_0
@@ -494,7 +502,7 @@ l1	aload_1
 l3	aload_0
 	aload_0
 	invokevirtual	Method filled:()I
-	iload_3
+	iload	4
 	iadd
 	invokevirtual	Method filled_$eq:(I)V
 l4	aload_0
@@ -502,16 +510,16 @@ l4	aload_0
   Labels:
    	l2 = 0 // aload_0
    	l1 = 38 // aload_1
-   	l3 = 82 // aload_0
-   	l4 = 92 // aload_0
+   	l3 = 88 // aload_0
+   	l4 = 99 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      94      0    this       Lscala/collection/immutable/Page;
-   0      94      1    more       Lscala/Function3;
-   69      24      3    count       I
+   0      101      0    this       Lscala/collection/immutable/Page;
+   0      101      1    more       Lscala/Function3;
+   74      26      4    count       I
 
   Signature: length = 0x2
-   00 FFFFFF85 
+   00 FFFFFF83 
 
 public scala.collection.immutable.Page(int, scala.reflect.ClassManifest);
   Signature: (ILscala/reflect/ClassManifest;)V
@@ -526,8 +534,6 @@ public scala.collection.immutable.Page(int, scala.reflect.ClassManifest);
 	aload_0
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
-	aconst_null
-	pop
 	aconst_null
 	putfield	Field next:Lscala/collection/immutable/Page;
 	aload_0
@@ -548,12 +554,12 @@ public scala.collection.immutable.Page(int, scala.reflect.ClassManifest);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      49      0    this       Lscala/collection/immutable/Page;
-   0      49      1    num       I
-   0      49      2    evidence$5       Lscala/reflect/ClassManifest;
+   0      47      0    this       Lscala/collection/immutable/Page;
+   0      47      1    num       I
+   0      47      2    evidence$5       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   00 FFFFFF8E 
+   00 FFFFFF8C 
 
 }
 

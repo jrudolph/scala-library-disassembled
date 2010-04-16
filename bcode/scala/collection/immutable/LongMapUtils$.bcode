@@ -36,8 +36,7 @@ NameAndType	complement:(J)J
 Method	scala/collection/immutable/LongMapUtils$.complement:(J)J
 Asciz	hasMatch;
 Asciz	(JJJ)Z;
-NameAndType	mask:(JJ)J
-Method	scala/collection/immutable/LongMapUtils$.mask:(JJ)J
+long	-1l;
 Asciz	key;
 Asciz	prefix;
 Asciz	m;
@@ -48,7 +47,6 @@ NameAndType	unsignedCompare:(JJ)Z
 Method	scala/collection/immutable/LongMapUtils$.unsignedCompare:(JJ)Z
 Asciz	m1;
 Asciz	m2;
-long	-1l;
 Asciz	branchMask;
 Asciz	highestOneBit;
 NameAndType	highestOneBit:(J)J
@@ -58,8 +56,6 @@ int	16;
 int	32;
 Asciz	join;
 Asciz	(JLscala/collection/immutable/LongMap;JLscala/collection/immutable/LongMap;)Lscala/collection/immutable/LongMap;;
-NameAndType	branchMask:(JJ)J
-Method	scala/collection/immutable/LongMapUtils$.branchMask:(JJ)J
 NameAndType	zero:(JJ)Z
 Method	scala/collection/immutable/LongMapUtils$.zero:(JJ)Z
 Asciz	scala/collection/immutable/LongMap$Bin;
@@ -72,6 +68,7 @@ Asciz	t1;
 Asciz	Lscala/collection/immutable/LongMap;;
 Asciz	p2;
 Asciz	t2;
+Asciz	i1;
 Asciz	p;
 Asciz	<T:Ljava/lang/Object;>(JLscala/collection/immutable/LongMap<TT;>;JLscala/collection/immutable/LongMap<TT;>;)Lscala/collection/immutable/LongMap<TT;>;;
 Asciz	Signature;
@@ -90,8 +87,6 @@ NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	left;
 Asciz	right;
-Asciz	tp1;
-Asciz	tp2;
 Asciz	<T:Ljava/lang/Object;>(JJLscala/collection/immutable/LongMap<TT;>;Lscala/collection/immutable/LongMap<TT;>;)Lscala/collection/immutable/LongMap<TT;>;;
 Method	java/lang/Object."<init>":()V
 NameAndType	MODULE$:Lscala/collection/immutable/LongMapUtils$;
@@ -165,11 +160,18 @@ public long mask(long, long);
 public boolean hasMatch(long, long, long);
   Signature: (JJJ)Z
   Code:
-   Stack=5, Locals=7, Args_size=4
-	aload_0
+   Stack=6, Locals=9, Args_size=4
 	lload_1
 	lload	5
-	invokevirtual	Method mask:(JJ)J
+	lconst_1
+	lsub
+	lstore	7
+	ldc2_w	long -1l
+	lload	7
+	lxor
+	lload	5
+	lxor
+	land
 	lload_3
 	lcmp
 	ifne	l1 // iconst_0
@@ -178,14 +180,14 @@ public boolean hasMatch(long, long, long);
 l1	iconst_0
 l2	ireturn
   Labels:
-   	l1 = 16 // iconst_0
-   	l2 = 17 // ireturn
+   	l1 = 26 // iconst_0
+   	l2 = 27 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      18      0    this       Lscala/collection/immutable/LongMapUtils$;
-   0      18      1    key       J
-   0      18      3    prefix       J
-   0      18      5    m       J
+   0      28      0    this       Lscala/collection/immutable/LongMapUtils$;
+   0      28      1    key       J
+   0      28      3    prefix       J
+   0      28      5    m       J
 
 
 public boolean unsignedCompare(long, long);
@@ -285,9 +287,7 @@ public long highestOneBit(long);
   Code:
    Stack=5, Locals=5, Args_size=2
 	lload_1
-	lstore_3
-	lload_3
-	lload_3
+	lload_1
 	iconst_1
 	lshr
 	lor
@@ -331,126 +331,165 @@ public long highestOneBit(long);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      47      0    this       Lscala/collection/immutable/LongMapUtils$;
-   0      47      1    j       J
-   2      44      3    i       J
+   0      45      0    this       Lscala/collection/immutable/LongMapUtils$;
+   0      45      1    j       J
+   0      44      3    i       J
 
 
 public scala.collection.immutable.LongMap join(long, scala.collection.immutable.LongMap, long, scala.collection.immutable.LongMap);
   Signature: (JLscala/collection/immutable/LongMap;JLscala/collection/immutable/LongMap;)Lscala/collection/immutable/LongMap;
   Code:
-   Stack=8, Locals=11, Args_size=5
-	aload_0
+   Stack=8, Locals=17, Args_size=5
 	lload_1
 	lload	4
-	invokevirtual	Method branchMask:(JJ)J
+	lxor
 	lstore	7
-	aload_0
-	lload_1
 	lload	7
-	invokevirtual	Method mask:(JJ)J
+	lload	7
+	iconst_1
+	lshr
+	lor
 	lstore	9
+	lload	9
+	lload	9
+	iconst_2
+	lshr
+	lor
+	lstore	9
+	lload	9
+	lload	9
+	iconst_4
+	lshr
+	lor
+	lstore	9
+	lload	9
+	lload	9
+	ldc	int 8
+	lshr
+	lor
+	lstore	9
+	lload	9
+	lload	9
+	ldc	int 16
+	lshr
+	lor
+	lstore	9
+	lload	9
+	lload	9
+	ldc	int 32
+	lshr
+	lor
+	lstore	9
+	lload	9
+	lload	9
+	iconst_1
+	lushr
+	lsub
+	lstore	15
+	lload_1
+	lload	15
+	lconst_1
+	lsub
+	lstore	11
+	ldc2_w	long -1l
+	lload	11
+	lxor
+	lload	15
+	lxor
+	land
+	lstore	13
 	aload_0
 	lload_1
-	lload	7
+	lload	15
 	invokevirtual	Method zero:(JJ)Z
 	ifeq	l1 // new
 	new	class scala/collection/immutable/LongMap$Bin
 	dup
-	lload	9
-	lload	7
+	lload	13
+	lload	15
 	aload_3
 	aload	6
 	invokespecial	Method scala/collection/immutable/LongMap$Bin."<init>":(JJLscala/collection/immutable/LongMap;Lscala/collection/immutable/LongMap;)V
 	goto	l2 // areturn
 l1	new	class scala/collection/immutable/LongMap$Bin
 	dup
-	lload	9
-	lload	7
+	lload	13
+	lload	15
 	aload	6
 	aload_3
 	invokespecial	Method scala/collection/immutable/LongMap$Bin."<init>":(JJLscala/collection/immutable/LongMap;Lscala/collection/immutable/LongMap;)V
 l2	areturn
   Labels:
-   	l1 = 45 // new
-   	l2 = 59 // areturn
+   	l1 = 118 // new
+   	l2 = 132 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      60      0    this       Lscala/collection/immutable/LongMapUtils$;
-   0      60      1    p1       J
-   0      60      3    t1       Lscala/collection/immutable/LongMap;
-   0      60      4    p2       J
-   0      60      6    t2       Lscala/collection/immutable/LongMap;
-   9      51      7    m       J
-   18      42      9    p       J
+   0      133      0    this       Lscala/collection/immutable/LongMapUtils$;
+   0      133      1    p1       J
+   0      133      3    t1       Lscala/collection/immutable/LongMap;
+   0      133      4    p2       J
+   0      133      6    t2       Lscala/collection/immutable/LongMap;
+   6      64      9    i1       J
+   91      42      13    p       J
+   72      61      15    m       J
 
   Signature: length = 0x2
-   00 43 
+   00 40 
 
 public scala.collection.immutable.LongMap bin(long, long, scala.collection.immutable.LongMap, scala.collection.immutable.LongMap);
   Signature: (JJLscala/collection/immutable/LongMap;Lscala/collection/immutable/LongMap;)Lscala/collection/immutable/LongMap;
   Code:
-   Stack=8, Locals=11, Args_size=5
-	aload	5
-	astore	7
-	aload	6
-	astore	8
+   Stack=8, Locals=7, Args_size=5
 	getstatic	Field scala/collection/immutable/LongMap$Nil$.MODULE$:Lscala/collection/immutable/LongMap$Nil$;
-	aload	8
-	astore	9
 	dup
 	ifnonnull	l1 // aload
 	pop
-	aload	9
+	aload	6
 	ifnull	l2 // aload
 	goto	l3 // getstatic
-l1	aload	9
+l1	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // getstatic
-l2	aload	7
+l2	aload	5
 	goto	l4 // areturn
 l3	getstatic	Field scala/collection/immutable/LongMap$Nil$.MODULE$:Lscala/collection/immutable/LongMap$Nil$;
-	aload	7
-	astore	10
 	dup
 	ifnonnull	l5 // aload
 	pop
-	aload	10
+	aload	5
 	ifnull	l6 // aload
 	goto	l7 // new
-l5	aload	10
+l5	aload	5
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l7 // new
-l6	aload	8
+l6	aload	6
 	goto	l4 // areturn
 l7	new	class scala/collection/immutable/LongMap$Bin
 	dup
 	lload_1
 	lload_3
-	aload	7
-	aload	8
+	aload	5
+	aload	6
 	invokespecial	Method scala/collection/immutable/LongMap$Bin."<init>":(JJLscala/collection/immutable/LongMap;Lscala/collection/immutable/LongMap;)V
 l4	areturn
   Labels:
-   	l1 = 28 // aload
-   	l2 = 36 // aload
-   	l3 = 41 // getstatic
-   	l5 = 61 // aload
-   	l6 = 69 // aload
-   	l7 = 74 // new
-   	l4 = 87 // areturn
+   	l1 = 16 // aload
+   	l2 = 24 // aload
+   	l3 = 29 // getstatic
+   	l5 = 45 // aload
+   	l6 = 53 // aload
+   	l7 = 58 // new
+   	l4 = 71 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      88      0    this       Lscala/collection/immutable/LongMapUtils$;
-   0      88      1    prefix       J
-   0      88      3    mask       J
-   0      88      5    left       Lscala/collection/immutable/LongMap;
-   0      88      6    right       Lscala/collection/immutable/LongMap;
-   4      84      7    tp1       Lscala/collection/immutable/LongMap;
-   8      80      8    tp2       Lscala/collection/immutable/LongMap;
+   0      72      0    this       Lscala/collection/immutable/LongMapUtils$;
+   0      72      1    prefix       J
+   0      72      3    mask       J
+   0      72      5    left       Lscala/collection/immutable/LongMap;
+   0      72      6    right       Lscala/collection/immutable/LongMap;
 
   Signature: length = 0x2
-   00 56 
+   00 51 
 
 private scala.collection.immutable.LongMapUtils$();
   Signature: ()V

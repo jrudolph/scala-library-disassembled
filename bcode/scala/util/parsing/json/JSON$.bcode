@@ -12,6 +12,7 @@ public final class scala.util.parsing.json.JSON$ extends scala.util.parsing.json
    public abstract ParseResult=class scala/util/parsing/combinator/Parsers$ParseResult of class scala/util/parsing/combinator/Parsers
    public final $anonfun$resolveType$2=class scala/util/parsing/json/JSON$$anonfun$resolveType$2 of class scala/util/parsing/json/JSON
    public final $anonfun$resolveType$1=class scala/util/parsing/json/JSON$$anonfun$resolveType$1 of class scala/util/parsing/json/JSON
+   public GenericCanBuildFrom=class scala/collection/generic/TraversableFactory$GenericCanBuildFrom of class scala/collection/generic/TraversableFactory
   minor version: 0
   major version: 49
   Constant pool:
@@ -84,8 +85,9 @@ Asciz	parseFull;
 NameAndType	parse:(Ljava/lang/String;)Lscala/Option;
 Method	scala/util/parsing/json/JSON$.parse:(Ljava/lang/String;)Lscala/Option;
 Asciz	x;
-NameAndType	x:()Ljava/lang/Object;
-Method	scala/Some.x:()Ljava/lang/Object;
+Asciz	Ljava/lang/Object;;
+NameAndType	x:Ljava/lang/Object;
+Field	scala/Some.x:Ljava/lang/Object;
 Asciz	scala/collection/immutable/List;
 class	scala/collection/immutable/List
 Asciz	resolveType;
@@ -143,7 +145,6 @@ Asciz	(Lscala/Function1;)Z;
 NameAndType	forall:(Lscala/Function1;)Z
 InterfaceMethod	scala/collection/LinearSeqLike.forall:(Lscala/Function1;)Z
 Asciz	elem;
-Asciz	Ljava/lang/Object;;
 NameAndType	elem:Ljava/lang/Object;
 Field	scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 Asciz	scala/util/parsing/json/JSON$$anonfun$resolveType$2;
@@ -154,10 +155,11 @@ class	scala/collection/immutable/List$
 Asciz	Lscala/collection/immutable/List$;;
 NameAndType	MODULE$:Lscala/collection/immutable/List$;
 Field	scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
-Asciz	canBuildFrom;
-Asciz	()Lscala/collection/generic/CanBuildFrom;;
-NameAndType	canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
-Method	scala/collection/immutable/List$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
+Asciz	scala/collection/generic/TraversableFactory$GenericCanBuildFrom;
+class	scala/collection/generic/TraversableFactory$GenericCanBuildFrom
+Asciz	(Lscala/collection/generic/TraversableFactory;)V;
+NameAndType	"<init>":(Lscala/collection/generic/TraversableFactory;)V
+Method	scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
 Asciz	scala/collection/TraversableLike;
 class	scala/collection/TraversableLike
 Asciz	map;
@@ -222,6 +224,9 @@ Asciz	scala/util/parsing/json/JSON;
 class	scala/util/parsing/json/JSON
 Asciz	$anonfun$resolveType$2;
 Asciz	$anonfun$resolveType$1;
+Asciz	scala/collection/generic/TraversableFactory;
+class	scala/collection/generic/TraversableFactory
+Asciz	GenericCanBuildFrom;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -285,23 +290,23 @@ public scala.Option parseFull(java.lang.String);
 	aload_0
 	aload_1
 	invokevirtual	Method parse:(Ljava/lang/String;)Lscala/Option;
-	astore_2
-	aload_2
+	astore_3
+	aload_3
 	instanceof	class scala/Some
 	ifeq	l1 // getstatic
 	new	class scala/Some
 	dup
 	aload_0
-	aload_2
+	aload_3
 	checkcast	class scala/Some
-	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
+	astore_2
+	aload_2
+	getfield	Field scala/Some.x:Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
 	invokevirtual	Method resolveType:(Lscala/collection/immutable/List;)Ljava/lang/Object;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	goto	l2 // areturn
 l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	aload_2
-	astore_3
 	dup
 	ifnonnull	l3 // aload_3
 	pop
@@ -315,11 +320,11 @@ l4	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 l2	areturn
 l5	new	class scala/MatchError
 	dup
-	aload_2
+	aload_3
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 37 // getstatic
+   	l1 = 39 // getstatic
    	l3 = 54 // aload_3
    	l4 = 61 // getstatic
    	l2 = 64 // areturn
@@ -328,15 +333,15 @@ l5	new	class scala/MatchError
    Start  Length  Slot  Name   Signature
    0      74      0    this       Lscala/util/parsing/json/JSON$;
    0      74      1    input       Ljava/lang/String;
-   6      68      2    temp5       Lscala/Option;
+   6      68      3    temp5       Lscala/Option;
 
   Signature: length = 0x2
-   00 59 
+   00 5A 
 
 public java.lang.Object resolveType(scala.collection.immutable.List);
   Signature: (Lscala/collection/immutable/List;)Ljava/lang/Object;
   Code:
-   Stack=5, Locals=3, Args_size=2
+   Stack=5, Locals=4, Args_size=2
 	new	class scala/runtime/ObjectRef
 	dup
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
@@ -366,20 +371,24 @@ l1	aload_1
 	dup
 	invokespecial	Method scala/util/parsing/json/JSON$$anonfun$resolveType$2."<init>":()V
 	getstatic	Field scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
-	invokevirtual	Method scala/collection/immutable/List$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
+	astore_3
+	new	class scala/collection/generic/TraversableFactory$GenericCanBuildFrom
+	dup
+	aload_3
+	invokespecial	Method scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 l2	areturn
   Labels:
    	l1 = 60 // aload_1
-   	l2 = 79 // areturn
+   	l2 = 85 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      80      0    this       Lscala/util/parsing/json/JSON$;
-   0      80      1    input       Lscala/collection/immutable/List;
-   33      47      2    objMap$1       Lscala/runtime/ObjectRef;
+   0      86      0    this       Lscala/util/parsing/json/JSON$;
+   0      86      1    input       Lscala/collection/immutable/List;
+   33      53      2    objMap$1       Lscala/runtime/ObjectRef;
 
   Signature: length = 0x2
-   00 FFFFFF99 
+   00 FFFFFF9A 
 
 public void globalNumberParser_$eq(scala.Function1);
   Signature: (Lscala/Function1;)V
@@ -396,7 +405,7 @@ public void globalNumberParser_$eq(scala.Function1);
    0      6      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFFA1 
+   00 FFFFFFA2 
 
 public scala.Function1 globalNumberParser();
   Signature: ()Lscala/Function1;
@@ -407,7 +416,7 @@ public scala.Function1 globalNumberParser();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFA7 
+   00 FFFFFFA8 
 
 public void perThreadNumberParser_$eq(scala.Function1);
   Signature: (Lscala/Function1;)V
@@ -425,7 +434,7 @@ public void perThreadNumberParser_$eq(scala.Function1);
    0      9      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFFA1 
+   00 FFFFFFA2 
 
 public scala.Function1 perThreadNumberParser();
   Signature: ()Lscala/Function1;
@@ -438,7 +447,7 @@ public scala.Function1 perThreadNumberParser();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFA7 
+   00 FFFFFFA8 
 
 private scala.util.parsing.json.JSON$();
   Signature: ()V

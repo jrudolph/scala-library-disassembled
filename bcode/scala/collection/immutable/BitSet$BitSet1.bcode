@@ -6,6 +6,7 @@ public class scala.collection.immutable.BitSet$BitSet1 extends scala.collection.
   InnerClass: 
    public BitSet2=class scala/collection/immutable/BitSet$BitSet2 of class scala/collection/immutable/BitSet
    public BitSet1=class scala/collection/immutable/BitSet$BitSet1 of class scala/collection/immutable/BitSet
+   public final $anonfun$apply$7=class scala/Array$$anonfun$apply$7 of class scala/Array
   minor version: 0
   major version: 49
   Constant pool:
@@ -48,11 +49,6 @@ Asciz	MODULE$;
 Asciz	Lscala/collection/BitSetLike$;;
 NameAndType	MODULE$:Lscala/collection/BitSetLike$;
 Field	scala/collection/BitSetLike$.MODULE$:Lscala/collection/BitSetLike$;
-Asciz	scala/Array$;
-class	scala/Array$
-Asciz	Lscala/Array$;;
-NameAndType	MODULE$:Lscala/Array$;
-Field	scala/Array$.MODULE$:Lscala/Array$;
 Asciz	scala/Predef$;
 class	scala/Predef$
 Asciz	Lscala/Predef$;;
@@ -62,10 +58,33 @@ Asciz	wrapLongArray;
 Asciz	([J)Lscala/collection/mutable/WrappedArray;;
 NameAndType	wrapLongArray:([J)Lscala/collection/mutable/WrappedArray;
 Method	scala/Predef$.wrapLongArray:([J)Lscala/collection/mutable/WrappedArray;
-Asciz	apply;
-Asciz	(JLscala/collection/Seq;)[J;
-NameAndType	apply:(JLscala/collection/Seq;)[J
-Method	scala/Array$.apply:(JLscala/collection/Seq;)[J
+Asciz	scala/collection/SeqLike;
+class	scala/collection/SeqLike
+Asciz	length;
+NameAndType	length:()I
+InterfaceMethod	scala/collection/SeqLike.length:()I
+Asciz	scala/runtime/IntRef;
+class	scala/runtime/IntRef
+Asciz	(I)V;
+NameAndType	"<init>":(I)V
+Method	scala/runtime/IntRef."<init>":(I)V
+Asciz	scala/collection/IterableLike;
+class	scala/collection/IterableLike
+Asciz	iterator;
+Asciz	()Lscala/collection/Iterator;;
+NameAndType	iterator:()Lscala/collection/Iterator;
+InterfaceMethod	scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
+Asciz	scala/Array$$anonfun$apply$7;
+class	scala/Array$$anonfun$apply$7
+Asciz	([JLscala/runtime/IntRef;)V;
+NameAndType	"<init>":([JLscala/runtime/IntRef;)V
+Method	scala/Array$$anonfun$apply$7."<init>":([JLscala/runtime/IntRef;)V
+Asciz	scala/collection/Iterator;
+class	scala/collection/Iterator
+Asciz	foreach;
+Asciz	(Lscala/Function1;)V;
+NameAndType	foreach:(Lscala/Function1;)V
+InterfaceMethod	scala/collection/Iterator.foreach:(Lscala/Function1;)V
 Asciz	updateArray;
 Asciz	([JIJ)[J;
 NameAndType	updateArray:([JIJ)[J
@@ -75,6 +94,10 @@ Asciz	([J)Lscala/collection/immutable/BitSet;;
 NameAndType	fromArray:([J)Lscala/collection/immutable/BitSet;
 Method	scala/collection/immutable/BitSet$BitSet1.fromArray:([J)Lscala/collection/immutable/BitSet;
 Asciz	w;
+Asciz	i$70;
+Asciz	Lscala/runtime/IntRef;;
+Asciz	array$70;
+Asciz	[J;
 Asciz	scala/collection/immutable/BitSet;
 class	scala/collection/immutable/BitSet
 Asciz	()V;
@@ -84,6 +107,9 @@ Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	BitSet2;
 Asciz	BitSet1;
+Asciz	scala/Array;
+class	scala/Array
+Asciz	$anonfun$apply$7;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -132,7 +158,7 @@ l2	lreturn
 public scala.collection.immutable.BitSet updateWord(int, long);
   Signature: (IJ)Lscala/collection/immutable/BitSet;
   Code:
-   Stack=7, Locals=4, Args_size=3
+   Stack=7, Locals=9, Args_size=3
 	iload_1
 	iconst_0
 	if_icmpne	l1 // iload_1
@@ -153,14 +179,38 @@ l1	iload_1
 	goto	l2 // areturn
 l3	aload_0
 	getstatic	Field scala/collection/BitSetLike$.MODULE$:Lscala/collection/BitSetLike$;
-	getstatic	Field scala/Array$.MODULE$:Lscala/Array$;
 	aload_0
 	invokevirtual	Method elems:()J
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_0
 	newarray long
 	invokevirtual	Method scala/Predef$.wrapLongArray:([J)Lscala/collection/mutable/WrappedArray;
-	invokevirtual	Method scala/Array$.apply:(JLscala/collection/Seq;)[J
+	astore	6
+	lstore	4
+	aload	6
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
+	iconst_1
+	iadd
+	newarray long
+	astore	8
+	aload	8
+	iconst_0
+	lload	4
+	lastore
+	new	class scala/runtime/IntRef
+	dup
+	iconst_1
+	invokespecial	Method scala/runtime/IntRef."<init>":(I)V
+	astore	7
+	aload	6
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
+	new	class scala/Array$$anonfun$apply$7
+	dup
+	aload	8
+	aload	7
+	invokespecial	Method scala/Array$$anonfun$apply$7."<init>":([JLscala/runtime/IntRef;)V
+	invokeinterface	InterfaceMethod scala/collection/Iterator.foreach:(Lscala/Function1;)V
+	aload	8
 	iload_1
 	lload_2
 	invokevirtual	Method scala/collection/BitSetLike$.updateArray:([JIJ)[J
@@ -169,12 +219,14 @@ l2	areturn
   Labels:
    	l1 = 16 // iload_1
    	l3 = 36 // aload_0
-   	l2 = 67 // areturn
+   	l2 = 119 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      68      0    this       Lscala/collection/immutable/BitSet$BitSet1;
-   0      68      1    idx       I
-   0      68      2    w       J
+   0      120      0    this       Lscala/collection/immutable/BitSet$BitSet1;
+   0      120      1    idx       I
+   0      120      2    w       J
+   86      25      7    i$70       Lscala/runtime/IntRef;
+   70      41      8    array$70       [J
 
 
 public scala.collection.immutable.BitSet$BitSet1(long);

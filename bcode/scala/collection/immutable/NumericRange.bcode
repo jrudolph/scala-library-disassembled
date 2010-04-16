@@ -2,7 +2,7 @@ Compiled from "NumericRange.scala"
 public abstract class scala.collection.immutable.NumericRange extends java.lang.Object implements scala.collection.immutable.IndexedSeq,scala.ScalaObject,java.io.Serializable
   SourceFile: "NumericRange.scala"
   Signature: length = 0x2
-   04 07 
+   04 0B 
   ScalaSig: length = 0x7D6
    05 00 FFFFFF82 11 06 05 01 02 FFFFFF81 00 09 02 0C 4E 75 6D
    65 72 69 63 52 61 6E 67 65 0A 02 03 04 01 09 69
@@ -1005,39 +1005,43 @@ NameAndType	"<init>":(Lscala/collection/immutable/NumericRange;Lscala/Function1;
 Method	scala/collection/immutable/NumericRange$$anon$1."<init>":(Lscala/collection/immutable/NumericRange;Lscala/Function1;Lscala/math/Integral;Lscala/collection/immutable/NumericRange;)V
 Asciz	fm$1;
 Asciz	unum$1;
-Asciz	self$1;
 Asciz	<A:Ljava/lang/Object;>(Lscala/Function1<TT;TA;>;Lscala/math/Integral<TA;>;)Lscala/collection/immutable/NumericRange<TA;>;;
 Asciz	contains;
 NameAndType	containsTyped:(Ljava/lang/Object;)Z
 Method	scala/collection/immutable/NumericRange.containsTyped:(Ljava/lang/Object;)Z
+Asciz	java/lang/Number;
+class	java/lang/Number
+Asciz	java/lang/Character;
+class	java/lang/Character
+Asciz	equals2;
+NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Asciz	equals;
-NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	(Lscala/collection/SeqLike;Ljava/lang/Object;)Z;
 NameAndType	contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 Method	scala/collection/SeqLike$class.contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 Asciz	java/lang/ClassCastException;
 class	java/lang/ClassCastException
 Asciz	exceptionResult1;
-Asciz	typedX;
 NameAndType	bitmap$0:I
 Field	scala/collection/immutable/NumericRange.bitmap$0:I
 NameAndType	hashCode:(Lscala/collection/SeqLike;)I
 Method	scala/collection/SeqLike$class.hashCode:(Lscala/collection/SeqLike;)I
 NameAndType	hashCode:I
 Field	scala/collection/immutable/NumericRange.hashCode:I
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 NameAndType	equals:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 Method	scala/collection/SeqLike$class.equals:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 Asciz	other;
-Asciz	temp5;
-Asciz	temp6;
 Asciz	temp4;
+Asciz	x0;
+Asciz	y0;
+Asciz	x1;
+Asciz	y1;
+Asciz	temp6;
+Asciz	x2;
+Asciz	y2;
 Asciz	scala/collection/immutable/Range$;
 class	scala/collection/immutable/Range$
 Asciz	Lscala/collection/immutable/Range$;;
@@ -3810,76 +3814,92 @@ l7	ireturn
 public scala.collection.immutable.NumericRange mapRange(scala.Function1, scala.math.Integral);
   Signature: (Lscala/Function1;Lscala/math/Integral;)Lscala/collection/immutable/NumericRange;
   Code:
-   Stack=6, Locals=4, Args_size=3
-	aload_0
-	astore_3
+   Stack=6, Locals=3, Args_size=3
 	new	class scala/collection/immutable/NumericRange$$anon$1
 	dup
 	aload_0
 	aload_1
 	aload_2
-	aload_3
+	aload_0
 	invokespecial	Method scala/collection/immutable/NumericRange$$anon$1."<init>":(Lscala/collection/immutable/NumericRange;Lscala/Function1;Lscala/math/Integral;Lscala/collection/immutable/NumericRange;)V
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      14      0    this       Lscala/collection/immutable/NumericRange;
-   0      14      1    fm$1       Lscala/Function1;
-   0      14      2    unum$1       Lscala/math/Integral;
-   2      11      3    self$1       Lscala/collection/immutable/NumericRange;
+   0      12      0    this       Lscala/collection/immutable/NumericRange;
+   0      12      1    fm$1       Lscala/Function1;
+   0      12      2    unum$1       Lscala/math/Integral;
 
   Signature: length = 0x2
-   03 61 
+   03 60 
 
 public boolean contains(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=4, Args_size=2
-	iconst_0
-	istore_2
-	aload_1
-	astore_3
+   Stack=2, Locals=3, Args_size=2
 	aload_0
-	aload_3
+	aload_1
 	invokevirtual	Method containsTyped:(Ljava/lang/Object;)Z
 	ifeq	l1 // iconst_0
 	aload_1
-	aload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l1 // iconst_0
+	aload_1
+	if_acmpne	l2 // aload_1
 	iconst_1
-	goto	l2 // istore_2
+	goto	l3 // ifeq
+l2	aload_1
+	ifnonnull	l4 // aload_1
+	iconst_0
+	goto	l3 // ifeq
+l4	aload_1
+	instanceof	class java/lang/Number
+	ifne	l5 // aload_1
+	aload_1
+	instanceof	class java/lang/Character
+	ifeq	l6 // aload_1
+l5	aload_1
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l3 // ifeq
+l6	aload_1
+	aload_1
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l3	ifeq	l1 // iconst_0
+	iconst_1
+	goto	l7 // istore_2
 l1	iconst_0
-l2	istore_2
-	goto	l3 // iload_2
+l7	istore_2
+	goto	l8 // iload_2
 	pop
 	aload_0
 	aload_1
 	invokestatic	Method scala/collection/SeqLike$class.contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 	istore_2
-l3	iload_2
+l8	iload_2
 	ireturn
   Labels:
-   	l1 = 24 // iconst_0
-   	l2 = 25 // istore_2
-   	l3 = 36 // iload_2
+   	l2 = 17 // aload_1
+   	l4 = 25 // aload_1
+   	l5 = 39 // aload_1
+   	l6 = 47 // aload_1
+   	l3 = 52 // ifeq
+   	l1 = 59 // iconst_0
+   	l7 = 60 // istore_2
+   	l8 = 71 // iload_2
   Exception table:
    from   to  target type
-     2    29    29   Class java/lang/ClassCastException
+     0    64    64   Class java/lang/ClassCastException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      38      0    this       Lscala/collection/immutable/NumericRange;
-   0      38      1    x       Ljava/lang/Object;
-   2      35      2    exceptionResult1       Z
-   4      25      3    typedX       Ljava/lang/Object;
+   0      73      0    this       Lscala/collection/immutable/NumericRange;
+   0      73      1    x       Ljava/lang/Object;
+   0      72      2    exceptionResult1       Z
 
 
 public int hashCode();
   Signature: ()I
   Code:
-   Stack=3, Locals=2, Args_size=1
+   Stack=3, Locals=1, Args_size=1
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
@@ -3888,14 +3908,14 @@ public int hashCode();
 	if_icmpne	l1 // aload_0
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
 	iand
 	iconst_0
-	if_icmpne	l2 // getstatic
+	if_icmpne	l2 // aload_0
 	aload_0
 	aload_0
 	invokestatic	Method scala/collection/SeqLike$class.hashCode:(Lscala/collection/SeqLike;)I
@@ -3906,101 +3926,183 @@ public int hashCode();
 	iconst_1
 	ior
 	putfield	Field bitmap$0:I
-l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_1
+l2	aload_0
 	monitorexit
 l1	aload_0
 	getfield	Field hashCode:I
 	ireturn
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l2 = 42 // getstatic
-   	l1 = 48 // aload_0
+   	l2 = 42 // aload_0
+   	l1 = 44 // aload_0
   Exception table:
    from   to  target type
-    14    48    53   any
+    14    44    49   any
 
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=6, Args_size=2
+   Stack=2, Locals=10, Args_size=2
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class scala/collection/immutable/NumericRange
 	ifeq	l1 // aload_0
-	aload_2
+	aload_1
 	checkcast	class scala/collection/immutable/NumericRange
-	astore_3
-	aload_3
-	astore	4
+	astore	7
 	aload_0
 	invokevirtual	Method length:()I
-	aload	4
+	aload	7
 	invokevirtual	Method length:()I
 	if_icmpne	l2 // iconst_0
 	aload_0
 	invokevirtual	Method length:()I
-	istore	5
-	iload	5
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
-		0: 121;
-		1: 98;
-		default: 60 }
-	aload	4
+		0: 268;
+		1: 191;
+		default: 52 }
+	aload	7
 	invokevirtual	Method start:()Ljava/lang/Object;
 	aload_0
 	invokevirtual	Method start:()Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l3 // iconst_0
+	astore	4
+	astore_3
+	aload_3
 	aload	4
+	if_acmpne	l3 // aload_3
+	iconst_1
+	goto	l4 // ifeq
+l3	aload_3
+	ifnonnull	l5 // aload_3
+	iconst_0
+	goto	l4 // ifeq
+l5	aload_3
+	instanceof	class java/lang/Number
+	ifne	l6 // aload_3
+	aload_3
+	instanceof	class java/lang/Character
+	ifeq	l7 // aload_3
+l6	aload_3
+	aload	4
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l4 // ifeq
+l7	aload_3
+	aload	4
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l4	ifeq	l8 // iconst_0
+	aload	7
 	invokevirtual	Method step:()Ljava/lang/Object;
 	aload_0
 	invokevirtual	Method step:()Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l3 // iconst_0
+	astore	6
+	astore	5
+	aload	5
+	aload	6
+	if_acmpne	l9 // aload
 	iconst_1
-	goto	l4 // ifeq
-l3	iconst_0
-	goto	l4 // ifeq
-	aload	4
+	goto	l10 // ifeq
+l9	aload	5
+	ifnonnull	l11 // aload
+	iconst_0
+	goto	l10 // ifeq
+l11	aload	5
+	instanceof	class java/lang/Number
+	ifne	l12 // aload
+	aload	5
+	instanceof	class java/lang/Character
+	ifeq	l13 // aload
+l12	aload	5
+	aload	6
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l10 // ifeq
+l13	aload	5
+	aload	6
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l10	ifeq	l8 // iconst_0
+	iconst_1
+	goto	l14 // ifeq
+l8	iconst_0
+	goto	l14 // ifeq
+	aload	7
 	invokevirtual	Method start:()Ljava/lang/Object;
 	aload_0
 	invokevirtual	Method start:()Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l5 // iconst_0
+	astore	9
+	astore	8
+	aload	8
+	aload	9
+	if_acmpne	l15 // aload
 	iconst_1
-	goto	l4 // ifeq
-l5	iconst_0
-	goto	l4 // ifeq
+	goto	l16 // ifeq
+l15	aload	8
+	ifnonnull	l17 // aload
+	iconst_0
+	goto	l16 // ifeq
+l17	aload	8
+	instanceof	class java/lang/Number
+	ifne	l18 // aload
+	aload	8
+	instanceof	class java/lang/Character
+	ifeq	l19 // aload
+l18	aload	8
+	aload	9
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l16 // ifeq
+l19	aload	8
+	aload	9
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l16	ifeq	l20 // iconst_0
 	iconst_1
-l4	ifeq	l2 // iconst_0
+	goto	l14 // ifeq
+l20	iconst_0
+	goto	l14 // ifeq
 	iconst_1
-	goto	l6 // ireturn
+l14	ifeq	l2 // iconst_0
+	iconst_1
+	goto	l21 // ireturn
 l2	iconst_0
-	goto	l6 // ireturn
+	goto	l21 // ireturn
 l1	aload_0
 	aload_1
 	invokestatic	Method scala/collection/SeqLike$class.equals:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
-l6	ireturn
+l21	ireturn
   Labels:
-   	l3 = 94 // iconst_0
-   	l5 = 117 // iconst_0
-   	l4 = 122 // ifeq
-   	l2 = 129 // iconst_0
-   	l1 = 133 // aload_0
-   	l6 = 138 // ireturn
+   	l3 = 74 // aload_3
+   	l5 = 82 // aload_3
+   	l6 = 96 // aload_3
+   	l7 = 105 // aload_3
+   	l4 = 111 // ifeq
+   	l9 = 138 // aload
+   	l11 = 147 // aload
+   	l12 = 163 // aload
+   	l13 = 173 // aload
+   	l10 = 180 // ifeq
+   	l8 = 187 // iconst_0
+   	l15 = 215 // aload
+   	l17 = 224 // aload
+   	l18 = 240 // aload
+   	l19 = 250 // aload
+   	l16 = 257 // ifeq
+   	l20 = 264 // iconst_0
+   	l14 = 269 // ifeq
+   	l2 = 276 // iconst_0
+   	l1 = 280 // aload_0
+   	l21 = 285 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      139      0    this       Lscala/collection/immutable/NumericRange;
-   0      139      1    other       Ljava/lang/Object;
-   2      137      2    temp5       Ljava/lang/Object;
-   14      119      3    temp6       Lscala/collection/immutable/NumericRange;
-   17      116      4    x       Lscala/collection/immutable/NumericRange;
-   35      90      5    temp4       I
+   0      286      0    this       Lscala/collection/immutable/NumericRange;
+   0      286      1    other       Ljava/lang/Object;
+   30      242      2    temp4       I
+   70      44      3    x0       Ljava/lang/Object;
+   70      44      4    y0       Ljava/lang/Object;
+   134      49      5    x1       Ljava/lang/Object;
+   134      49      6    y1       Ljava/lang/Object;
+   13      267      7    temp6       Lscala/collection/immutable/NumericRange;
+   211      49      8    x2       Ljava/lang/Object;
+   211      49      9    y2       Ljava/lang/Object;
 
 
 public java.lang.String toString();
@@ -4383,7 +4485,7 @@ l2	return
    0      179      5    num       Lscala/math/Integral;
 
   Signature: length = 0x2
-   04 06 
+   04 0A 
 
 }
 

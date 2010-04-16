@@ -2,7 +2,7 @@ Compiled from "PagedSeqReader.scala"
 public class scala.util.parsing.input.PagedSeqReader extends scala.util.parsing.input.Reader implements scala.ScalaObject
   SourceFile: "PagedSeqReader.scala"
   Signature: length = 0x2
-   00 73 
+   00 6B 
   ScalaSig: length = 0x27B
    05 00 67 07 05 01 02 FFFFFF88 02 0B 01 0E 50 61 67 65
    64 53 65 71 52 65 61 64 65 72 0A 02 03 04 01 05
@@ -44,6 +44,8 @@ public class scala.util.parsing.input.PagedSeqReader extends scala.util.parsing.
    02 19 60 09 02 61 08 02 07 42 6F 6F 6C 65 61 6E
    08 05 63 26 FFFFFF84 20 64 01 04 64 72 6F 70 14 02 42
    65 08 05 66 62 FFFFFFC0 00 3B 01 01 6E 
+  InnerClass: 
+   public final $anon$5=class scala/Predef$$anon$5 of class scala/Predef
   minor version: 0
   major version: 49
   Constant pool:
@@ -78,33 +80,25 @@ Field	scala/util/parsing/input/PagedSeqReader.offset:I
 Asciz	()Ljava/lang/CharSequence;;
 NameAndType	bitmap$0:I
 Field	scala/util/parsing/input/PagedSeqReader.bitmap$0:I
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
 NameAndType	seq:Lscala/collection/immutable/PagedSeq;
 Field	scala/util/parsing/input/PagedSeqReader.seq:Lscala/collection/immutable/PagedSeq;
-Asciz	seqToCharSequence;
-Asciz	(Lscala/collection/IndexedSeq;)Ljava/lang/CharSequence;;
-NameAndType	seqToCharSequence:(Lscala/collection/IndexedSeq;)Ljava/lang/CharSequence;
-Method	scala/Predef$.seqToCharSequence:(Lscala/collection/IndexedSeq;)Ljava/lang/CharSequence;
+Asciz	scala/Predef$$anon$5;
+class	scala/Predef$$anon$5
+Asciz	<init>;
+Asciz	(Lscala/collection/IndexedSeq;)V;
+NameAndType	"<init>":(Lscala/collection/IndexedSeq;)V
+Method	scala/Predef$$anon$5."<init>":(Lscala/collection/IndexedSeq;)V
 NameAndType	source:Ljava/lang/CharSequence;
 Field	scala/util/parsing/input/PagedSeqReader.source:Ljava/lang/CharSequence;
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-Asciz	<init>;
+Asciz	this;
+Asciz	Lscala/util/parsing/input/PagedSeqReader;;
+Asciz	xs$20;
+Asciz	Lscala/collection/IndexedSeq;;
+Asciz	LocalVariableTable;
 Asciz	(Lscala/collection/immutable/PagedSeq;)V;
 Asciz	(Lscala/collection/immutable/PagedSeq;I)V;
 NameAndType	"<init>":(Lscala/collection/immutable/PagedSeq;I)V
 Method	scala/util/parsing/input/PagedSeqReader."<init>":(Lscala/collection/immutable/PagedSeq;I)V
-Asciz	this;
-Asciz	Lscala/util/parsing/input/PagedSeqReader;;
-Asciz	LocalVariableTable;
 Asciz	(Lscala/collection/immutable/PagedSeq<Ljava/lang/Character;>;)V;
 Asciz	first;
 NameAndType	offset:()I
@@ -163,6 +157,10 @@ Method	scala/util/parsing/input/Reader."<init>":()V
 Asciz	(Lscala/collection/immutable/PagedSeq<Ljava/lang/Character;>;I)V;
 Asciz	Lscala/util/parsing/input/Reader<Ljava/lang/Character;>;Lscala/ScalaObject;;
 Asciz	ScalaSig;
+Asciz	InnerClasses;
+Asciz	scala/Predef;
+class	scala/Predef
+Asciz	$anon$5;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -202,7 +200,7 @@ public int offset();
 public java.lang.CharSequence source();
   Signature: ()Ljava/lang/CharSequence;
   Code:
-   Stack=3, Locals=2, Args_size=1
+   Stack=4, Locals=2, Args_size=1
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
@@ -211,19 +209,22 @@ public java.lang.CharSequence source();
 	if_icmpne	l1 // aload_0
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
 	iand
 	iconst_0
-	if_icmpne	l2 // getstatic
+	if_icmpne	l2 // aload_0
 	aload_0
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
 	getfield	Field seq:Lscala/collection/immutable/PagedSeq;
-	invokevirtual	Method scala/Predef$.seqToCharSequence:(Lscala/collection/IndexedSeq;)Ljava/lang/CharSequence;
+	astore_1
+	new	class scala/Predef$$anon$5
+	dup
+	aload_1
+	invokespecial	Method scala/Predef$$anon$5."<init>":(Lscala/collection/IndexedSeq;)V
 	putfield	Field source:Ljava/lang/CharSequence;
 	aload_0
 	aload_0
@@ -231,22 +232,25 @@ public java.lang.CharSequence source();
 	iconst_1
 	ior
 	putfield	Field bitmap$0:I
-l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_1
+l2	aload_0
 	monitorexit
 l1	aload_0
 	getfield	Field source:Ljava/lang/CharSequence;
 	areturn
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l2 = 48 // getstatic
-   	l1 = 54 // aload_0
+   	l2 = 51 // aload_0
+   	l1 = 53 // aload_0
   Exception table:
    from   to  target type
-    14    54    59   any
+    14    53    58   any
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      61      0    this       Lscala/util/parsing/input/PagedSeqReader;
+   30      8      1    xs$20       Lscala/collection/IndexedSeq;
+
 
 public scala.util.parsing.input.PagedSeqReader(scala.collection.immutable.PagedSeq);
   Signature: (Lscala/collection/immutable/PagedSeq;)V
@@ -264,7 +268,7 @@ public scala.util.parsing.input.PagedSeqReader(scala.collection.immutable.PagedS
    0      7      1    seq       Lscala/collection/immutable/PagedSeq;
 
   Signature: length = 0x2
-   00 3B 
+   00 33 
 
 public char first();
   Signature: ()C
@@ -395,9 +399,11 @@ public scala.util.parsing.input.Reader rest();
 public java.lang.Object first();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=1, Locals=1, Args_size=1
+   Stack=1, Locals=2, Args_size=1
 	aload_0
 	invokevirtual	Method first:()C
+	istore_1
+	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
 	areturn
   Labels:
@@ -423,7 +429,7 @@ public scala.util.parsing.input.PagedSeqReader(scala.collection.immutable.PagedS
    0      15      2    offset       I
 
   Signature: length = 0x2
-   00 72 
+   00 6A 
 
 }
 

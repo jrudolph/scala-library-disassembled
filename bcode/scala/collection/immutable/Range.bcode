@@ -2,7 +2,7 @@ Compiled from "Range.scala"
 public class scala.collection.immutable.Range extends java.lang.Object implements scala.collection.immutable.IndexedSeq,scala.ScalaObject,java.io.Serializable
   SourceFile: "Range.scala"
   Signature: length = 0x2
-   03 FFFFFF93 
+   03 FFFFFF8F 
   ScalaSig: length = 0xD31
    05 00 FFFFFF83 35 06 08 01 02 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF80 00 09 02 05
    52 61 6E 67 65 0A 02 03 04 01 09 69 6D 6D 75 74
@@ -914,12 +914,6 @@ NameAndType	plen$1:(III)I
 Method	scala/collection/immutable/Range.plen$1:(III)I
 NameAndType	length:I
 Field	scala/collection/immutable/Range.length:I
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	isEmpty;
 NameAndType	length:()I
 Method	scala/collection/immutable/Range.length:()I
@@ -954,13 +948,9 @@ Asciz	n;
 Asciz	take;
 NameAndType	locationAfterN:(I)I
 Method	scala/collection/immutable/Range.locationAfterN:(I)I
-Asciz	scala/collection/immutable/Range$;
-class	scala/collection/immutable/Range$
-Asciz	Lscala/collection/immutable/Range$;;
-NameAndType	MODULE$:Lscala/collection/immutable/Range$;
-Field	scala/collection/immutable/Range$.MODULE$:Lscala/collection/immutable/Range$;
-NameAndType	apply:(III)Lscala/collection/immutable/Range;
-Method	scala/collection/immutable/Range$.apply:(III)Lscala/collection/immutable/Range;
+Asciz	(I)V;
+NameAndType	"<init>":(I)V
+Method	scala/runtime/RichInt."<init>":(I)V
 Asciz	limit1;
 Asciz	drop;
 NameAndType	take:(I)Lscala/collection/immutable/Range;
@@ -977,8 +967,15 @@ Asciz	s;
 Asciz	(Lscala/Function1<Ljava/lang/Integer;Ljava/lang/Boolean;>;)I;
 Asciz	takeWhile;
 Asciz	(Lscala/Function1;)Lscala/collection/immutable/Range;;
+Asciz	scala/collection/immutable/Range$;
+class	scala/collection/immutable/Range$
+Asciz	Lscala/collection/immutable/Range$;;
+NameAndType	MODULE$:Lscala/collection/immutable/Range$;
+Field	scala/collection/immutable/Range$.MODULE$:Lscala/collection/immutable/Range$;
 NameAndType	skip:(Lscala/Function1;)I
 Method	scala/collection/immutable/Range.skip:(Lscala/Function1;)I
+NameAndType	apply:(III)Lscala/collection/immutable/Range;
+Method	scala/collection/immutable/Range$.apply:(III)Lscala/collection/immutable/Range;
 Asciz	(Lscala/Function1<Ljava/lang/Integer;Ljava/lang/Boolean;>;)Lscala/collection/immutable/Range;;
 Asciz	dropWhile;
 Asciz	span;
@@ -1012,7 +1009,6 @@ Asciz	equals;
 NameAndType	equals:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 Method	scala/collection/SeqLike$class.equals:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 Asciz	other;
-Asciz	temp1;
 Asciz	temp2;
 Asciz	MAX_PRINT;
 NameAndType	MAX_PRINT:()I
@@ -3204,7 +3200,7 @@ l5	return
 public int length();
   Signature: ()I
   Code:
-   Stack=5, Locals=2, Args_size=1
+   Stack=5, Locals=1, Args_size=1
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
@@ -3213,14 +3209,14 @@ public int length();
 	if_icmpne	l1 // aload_0
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
 	iand
 	iconst_0
-	if_icmpne	l2 // getstatic
+	if_icmpne	l2 // aload_0
 	aload_0
 	aload_0
 	invokevirtual	Method step:()I
@@ -3251,24 +3247,22 @@ l4	putfield	Field length:I
 	iconst_1
 	ior
 	putfield	Field bitmap$0:I
-l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_1
+l2	aload_0
 	monitorexit
 l1	aload_0
 	getfield	Field length:I
 	ireturn
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
    	l3 = 52 // aload_0
    	l4 = 69 // putfield
-   	l2 = 82 // getstatic
-   	l1 = 88 // aload_0
+   	l2 = 82 // aload_0
+   	l1 = 84 // aload_0
   Exception table:
    from   to  target type
-    14    88    93   any
+    14    84    89   any
 
 public final boolean isEmpty();
   Signature: ()Z
@@ -3368,49 +3362,65 @@ private int locationAfterN(int);
 public final scala.collection.immutable.Range take(int);
   Signature: (I)Lscala/collection/immutable/Range;
   Code:
-   Stack=4, Locals=3, Args_size=2
+   Stack=5, Locals=9, Args_size=2
 	aload_0
 	iload_1
 	invokespecial	Method locationAfterN:(I)I
-	istore_2
+	istore	5
 	aload_0
 	invokevirtual	Method step:()I
 	iconst_0
-	if_icmple	l1 // getstatic
-	getstatic	Field scala/collection/immutable/Range$.MODULE$:Lscala/collection/immutable/Range$;
+	if_icmple	l1 // aload_0
 	aload_0
 	invokevirtual	Method start:()I
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	iload_2
-	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
+	new	class scala/runtime/RichInt
+	dup
+	iload	5
+	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
 	aload_0
 	invokevirtual	Method limit:()I
 	invokevirtual	Method scala/runtime/RichInt.min:(I)I
 	aload_0
 	invokevirtual	Method step:()I
-	invokevirtual	Method scala/collection/immutable/Range$.apply:(III)Lscala/collection/immutable/Range;
-	goto	l2 // areturn
-l1	getstatic	Field scala/collection/immutable/Range$.MODULE$:Lscala/collection/immutable/Range$;
-	aload_0
-	invokevirtual	Method start:()I
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	istore	4
+	istore_3
+	istore_2
+	new	class scala/collection/immutable/Range
+	dup
 	iload_2
-	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
+	iload_3
+	iload	4
+	invokespecial	Method "<init>":(III)V
+	goto	l2 // areturn
+l1	aload_0
+	invokevirtual	Method start:()I
+	new	class scala/runtime/RichInt
+	dup
+	iload	5
+	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
 	aload_0
 	invokevirtual	Method limit:()I
 	invokevirtual	Method scala/runtime/RichInt.max:(I)I
 	aload_0
 	invokevirtual	Method step:()I
-	invokevirtual	Method scala/collection/immutable/Range$.apply:(III)Lscala/collection/immutable/Range;
+	istore	8
+	istore	7
+	istore	6
+	new	class scala/collection/immutable/Range
+	dup
+	iload	6
+	iload	7
+	iload	8
+	invokespecial	Method "<init>":(III)V
 l2	areturn
   Labels:
-   	l1 = 45 // getstatic
-   	l2 = 73 // areturn
+   	l1 = 57 // aload_0
+   	l2 = 100 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      74      0    this       Lscala/collection/immutable/Range;
-   0      74      1    n       I
-   6      68      2    limit1       I
+   0      101      0    this       Lscala/collection/immutable/Range;
+   0      101      1    n       I
+   7      94      5    limit1       I
 
 
 public final scala.collection.immutable.Range drop(int);
@@ -3522,7 +3532,7 @@ l5	iload_2
    5      67      2    s       I
 
   Signature: length = 0x2
-   02 FFFFFFEC 
+   02 FFFFFFE2 
 
 public final scala.collection.immutable.Range takeWhile(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/immutable/Range;
@@ -3545,7 +3555,7 @@ public final scala.collection.immutable.Range takeWhile(scala.Function1);
    0      20      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   02 FFFFFFF1 
+   02 FFFFFFEE 
 
 public final scala.collection.immutable.Range dropWhile(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/immutable/Range;
@@ -3568,7 +3578,7 @@ public final scala.collection.immutable.Range dropWhile(scala.Function1);
    0      18      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   02 FFFFFFF1 
+   02 FFFFFFEE 
 
 public final scala.Tuple2 span(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Tuple2;
@@ -3604,7 +3614,7 @@ public final scala.Tuple2 span(scala.Function1);
    6      35      2    split       I
 
   Signature: length = 0x2
-   02 FFFFFFFA 
+   02 FFFFFFF7 
 
 public final scala.Tuple2 splitAt(int);
   Signature: (I)Lscala/Tuple2;
@@ -3627,7 +3637,7 @@ public final scala.Tuple2 splitAt(int);
    0      18      1    n       I
 
   Signature: length = 0x2
-   02 FFFFFFFD 
+   02 FFFFFFFA 
 
 public final scala.collection.immutable.Range takeRight(int);
   Signature: (I)Lscala/collection/immutable/Range;
@@ -3763,20 +3773,16 @@ l3	ireturn
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=5, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class scala/collection/immutable/Range
 	ifeq	l1 // aload_0
-	aload_2
+	aload_1
 	checkcast	class scala/collection/immutable/Range
-	astore_3
-	aload_3
-	astore	4
+	astore_2
 	aload_0
 	invokevirtual	Method length:()I
-	aload	4
+	aload_2
 	invokevirtual	Method length:()I
 	if_icmpne	l2 // iconst_0
 	aload_0
@@ -3785,7 +3791,7 @@ public boolean equals(java.lang.Object);
 	if_icmpeq	l3 // iconst_1
 	aload_0
 	invokevirtual	Method start:()I
-	aload	4
+	aload_2
 	invokevirtual	Method start:()I
 	if_icmpne	l2 // iconst_0
 	aload_0
@@ -3794,7 +3800,7 @@ public boolean equals(java.lang.Object);
 	if_icmpeq	l3 // iconst_1
 	aload_0
 	invokevirtual	Method step:()I
-	aload	4
+	aload_2
 	invokevirtual	Method step:()I
 	if_icmpne	l2 // iconst_0
 l3	iconst_1
@@ -3806,17 +3812,15 @@ l1	aload_0
 	invokestatic	Method scala/collection/SeqLike$class.equals:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
 l4	ireturn
   Labels:
-   	l3 = 69 // iconst_1
-   	l2 = 73 // iconst_0
-   	l1 = 77 // aload_0
-   	l4 = 82 // ireturn
+   	l3 = 61 // iconst_1
+   	l2 = 65 // iconst_0
+   	l1 = 69 // aload_0
+   	l4 = 74 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      83      0    this       Lscala/collection/immutable/Range;
-   0      83      1    other       Ljava/lang/Object;
-   2      81      2    temp1       Ljava/lang/Object;
-   14      63      3    temp2       Lscala/collection/immutable/Range;
-   17      60      4    x       Lscala/collection/immutable/Range;
+   0      75      0    this       Lscala/collection/immutable/Range;
+   0      75      1    other       Ljava/lang/Object;
+   12      57      2    temp2       Lscala/collection/immutable/Range;
 
 
 public java.lang.String toString();
@@ -4168,34 +4172,38 @@ public final java.lang.Object take(int);
 public final java.lang.Object apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	aload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	invokevirtual	Method apply:(I)I
+	istore_2
+	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      12      0    this       Lscala/collection/immutable/Range;
-   0      12      1    v1       Ljava/lang/Object;
+   0      14      0    this       Lscala/collection/immutable/Range;
+   0      14      1    v1       Ljava/lang/Object;
 
 
 public final java.lang.Object apply(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	iload_1
 	invokevirtual	Method apply:(I)I
+	istore_2
+	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      9      0    this       Lscala/collection/immutable/Range;
-   0      9      1    idx       I
+   0      11      0    this       Lscala/collection/immutable/Range;
+   0      11      1    idx       I
 
 
 private final int plen$1(int, int, int);

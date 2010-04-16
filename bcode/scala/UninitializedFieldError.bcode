@@ -134,15 +134,8 @@ Asciz	gd1$1;
 Asciz	(Ljava/lang/String;)Z;
 NameAndType	gd1$1:(Ljava/lang/String;)Z
 Method	scala/UninitializedFieldError.gd1$1:(Ljava/lang/String;)Z
-Asciz	scala/Equals;
-class	scala/Equals
-Asciz	canEqual;
-NameAndType	canEqual:(Ljava/lang/Object;)Z
-InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
-Asciz	temp1;
 Asciz	temp2;
 Asciz	temp3;
-Asciz	msg$1;
 Asciz	productPrefix;
 Asciz	UninitializedFieldError;
 String	UninitializedFieldError
@@ -158,12 +151,10 @@ Asciz	(I)Ljava/lang/Integer;;
 NameAndType	boxToInteger:(I)Ljava/lang/Integer;
 Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
-Asciz	temp4;
-Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	msg
-Asciz	temp5;
+Asciz	canEqual;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	java/lang/RuntimeException;
@@ -182,7 +173,7 @@ Asciz	java/io/Serializable;
 class	java/io/Serializable
 
 {
-private final java.lang.String msg;
+public final java.lang.String msg;
   Signature: Ljava/lang/String;
 
 public static final scala.Function1 andThen(scala.Function1);
@@ -293,31 +284,25 @@ public int hashCode();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=6, Args_size=2
+   Stack=2, Locals=4, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class scala/UninitializedFieldError
 	ifeq	l2 // iconst_0
-	aload_2
-	checkcast	class scala/UninitializedFieldError
-	astore_3
-	aload_3
-	invokevirtual	Method msg:()Ljava/lang/String;
-	astore	4
-	aload	4
-	astore	5
-	aload_0
-	aload	5
-	invokespecial	Method gd1$1:(Ljava/lang/String;)Z
-	ifeq	l3 // iconst_0
 	aload_1
 	checkcast	class scala/UninitializedFieldError
+	astore_2
+	aload_2
+	getfield	Field msg:Ljava/lang/String;
+	astore_3
 	aload_0
-	invokeinterface	InterfaceMethod scala/Equals.canEqual:(Ljava/lang/Object;)Z
+	aload_3
+	invokespecial	Method gd1$1:(Ljava/lang/String;)Z
+	ifeq	l3 // iconst_0
+	aload_0
+	instanceof	class scala/UninitializedFieldError
 	goto	l4 // ifeq
 l3	iconst_0
 	goto	l4 // ifeq
@@ -328,19 +313,17 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 51 // iconst_0
-   	l2 = 55 // iconst_0
-   	l4 = 56 // ifeq
-   	l1 = 59 // iconst_1
-   	l5 = 63 // iconst_0
-   	l6 = 64 // ireturn
+   	l3 = 37 // iconst_0
+   	l2 = 41 // iconst_0
+   	l4 = 42 // ifeq
+   	l1 = 45 // iconst_1
+   	l5 = 49 // iconst_0
+   	l6 = 50 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      65      0    this       Lscala/UninitializedFieldError;
-   7      52      2    temp1       Ljava/lang/Object;
-   19      36      3    temp2       Lscala/UninitializedFieldError;
-   25      30      4    temp3       Ljava/lang/String;
-   29      26      5    msg$1       Ljava/lang/String;
+   0      51      0    this       Lscala/UninitializedFieldError;
+   17      24      2    temp2       Lscala/UninitializedFieldError;
+   22      19      3    temp3       Ljava/lang/String;
 
 
 public java.lang.String productPrefix();
@@ -362,14 +345,12 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=2, Args_size=2
 	iload_1
-	istore_2
-	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	aload_0
-	invokevirtual	Method msg:()Ljava/lang/String;
+	getfield	Field msg:Ljava/lang/String;
 	areturn
 l1	new	class java/lang/IndexOutOfBoundsException
 	dup
@@ -379,20 +360,13 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 12 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      27      0    this       Lscala/UninitializedFieldError;
-   2      25      2    temp4       I
-
+   	l1 = 10 // new
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=2, Args_size=2
 	iload_1
-	istore_2
-	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	ldc	String msg
@@ -405,12 +379,7 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 10 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      25      0    this       Lscala/UninitializedFieldError;
-   2      23      2    temp5       I
-
+   	l1 = 8 // new
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -427,7 +396,7 @@ private final boolean gd1$1(java.lang.String);
    Stack=2, Locals=3, Args_size=2
 	aload_1
 	aload_0
-	invokevirtual	Method msg:()Ljava/lang/String;
+	getfield	Field msg:Ljava/lang/String;
 	astore_2
 	dup
 	ifnonnull	l1 // aload_2

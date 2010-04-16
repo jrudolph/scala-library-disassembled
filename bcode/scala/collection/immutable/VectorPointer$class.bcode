@@ -112,16 +112,12 @@ Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	copyOf;
 Asciz	(Lscala/collection/immutable/VectorPointer;[Ljava/lang/Object;)[Ljava/lang/Object;;
-Asciz	scala/compat/Platform$;
-class	scala/compat/Platform$
-Asciz	MODULE$;
-Asciz	Lscala/compat/Platform$;;
-NameAndType	MODULE$:Lscala/compat/Platform$;
-Field	scala/compat/Platform$.MODULE$:Lscala/compat/Platform$;
+Asciz	java/lang/System;
+class	java/lang/System
 Asciz	arraycopy;
 Asciz	(Ljava/lang/Object;ILjava/lang/Object;II)V;
 NameAndType	arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
-Method	scala/compat/Platform$.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+Method	java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
 Asciz	a;
 Asciz	b;
 Asciz	nullSlotAndCopy;
@@ -147,15 +143,16 @@ Asciz	copyRange;
 Asciz	(Lscala/collection/immutable/VectorPointer;[Ljava/lang/Object;II)[Ljava/lang/Object;;
 Asciz	scala/math/package$;
 class	scala/math/package$
+Asciz	MODULE$;
 Asciz	Lscala/math/package$;;
 NameAndType	MODULE$:Lscala/math/package$;
 Field	scala/math/package$.MODULE$:Lscala/math/package$;
-Asciz	scala/MathCommon;
-class	scala/MathCommon
+Asciz	scala/MathCommon$class;
+class	scala/MathCommon$class
 Asciz	max;
-Asciz	(II)I;
-NameAndType	max:(II)I
-InterfaceMethod	scala/MathCommon.max:(II)I
+Asciz	(Lscala/MathCommon;II)I;
+NameAndType	max:(Lscala/MathCommon;II)I
+Method	scala/MathCommon$class.max:(Lscala/MathCommon;II)I
 Asciz	oldLeft;
 Asciz	newLeft;
 Asciz	elems;
@@ -1243,27 +1240,32 @@ l10	new	class java/lang/IllegalArgumentException
 public static final java.lang.Object[] copyOf(scala.collection.immutable.VectorPointer, java.lang.Object[]);
   Signature: (Lscala/collection/immutable/VectorPointer;[Ljava/lang/Object;)[Ljava/lang/Object;
   Code:
-   Stack=6, Locals=3, Args_size=2
+   Stack=5, Locals=6, Args_size=2
 	aload_1
 	arraylength
 	anewarray	class java/lang/Object
-	astore_2
-	getstatic	Field scala/compat/Platform$.MODULE$:Lscala/compat/Platform$;
-	aload_1
+	astore	5
 	iconst_0
-	aload_2
 	iconst_0
 	aload_1
 	arraylength
-	invokevirtual	Method scala/compat/Platform$.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
-	aload_2
+	istore	4
+	istore_3
+	istore_2
+	aload_1
+	iload_2
+	aload	5
+	iload_3
+	iload	4
+	invokestatic	Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+	aload	5
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      20      0    $this       Lscala/collection/immutable/VectorPointer;
-   0      20      1    a       [Ljava/lang/Object;
-   6      13      2    b       [Ljava/lang/Object;
+   0      28      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      28      1    a       [Ljava/lang/Object;
+   7      20      5    b       [Ljava/lang/Object;
 
 
 public static final java.lang.Object[] nullSlotAndCopy(scala.collection.immutable.VectorPointer, java.lang.Object[], int);
@@ -2273,32 +2275,35 @@ l7	new	class java/lang/IllegalArgumentException
 public static final java.lang.Object[] copyRange(scala.collection.immutable.VectorPointer, java.lang.Object[], int, int);
   Signature: (Lscala/collection/immutable/VectorPointer;[Ljava/lang/Object;II)[Ljava/lang/Object;
   Code:
-   Stack=9, Locals=5, Args_size=4
+   Stack=5, Locals=7, Args_size=4
 	ldc	int 32
 	anewarray	class java/lang/Object
-	astore	4
-	getstatic	Field scala/compat/Platform$.MODULE$:Lscala/compat/Platform$;
-	aload_1
-	iload_2
-	aload	4
-	iload_3
+	astore	6
 	ldc	int 32
 	getstatic	Field scala/math/package$.MODULE$:Lscala/math/package$;
+	astore	4
+	aload	4
 	iload_3
 	iload_2
-	invokeinterface	InterfaceMethod scala/MathCommon.max:(II)I
+	invokestatic	Method scala/MathCommon$class.max:(Lscala/MathCommon;II)I
 	isub
-	invokevirtual	Method scala/compat/Platform$.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
-	aload	4
+	istore	5
+	aload_1
+	iload_2
+	aload	6
+	iload_3
+	iload	5
+	invokestatic	Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+	aload	6
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      34      0    $this       Lscala/collection/immutable/VectorPointer;
-   0      34      1    array       [Ljava/lang/Object;
-   0      34      2    oldLeft       I
-   0      34      3    newLeft       I
-   7      26      4    elems       [Ljava/lang/Object;
+   0      37      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      37      1    array       [Ljava/lang/Object;
+   0      37      2    oldLeft       I
+   0      37      3    newLeft       I
+   7      29      6    elems       [Ljava/lang/Object;
 
 
 public static final void gotoFreshPosWritable0(scala.collection.immutable.VectorPointer, int, int, int);
@@ -2381,8 +2386,6 @@ l5	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
 	aconst_null
-	pop
-	aconst_null
 	if_acmpne	l6 // aload_0
 	aload_0
 	ldc	int 32
@@ -2442,8 +2445,6 @@ l8	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
 	aconst_null
-	pop
-	aconst_null
 	if_acmpne	l9 // aload_0
 	aload_0
 	ldc	int 32
@@ -2462,8 +2463,6 @@ l9	aload_0
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	aconst_null
-	pop
 	aconst_null
 	if_acmpne	l10 // aload_0
 	aload_0
@@ -2528,8 +2527,6 @@ l12	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
 	aconst_null
-	pop
-	aconst_null
 	if_acmpne	l13 // aload_0
 	aload_0
 	ldc	int 32
@@ -2549,8 +2546,6 @@ l13	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
 	aconst_null
-	pop
-	aconst_null
 	if_acmpne	l14 // aload_0
 	aload_0
 	ldc	int 32
@@ -2569,8 +2564,6 @@ l14	aload_0
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	aconst_null
-	pop
 	aconst_null
 	if_acmpne	l15 // aload_0
 	aload_0
@@ -2639,8 +2632,6 @@ l17	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
 	aconst_null
-	pop
-	aconst_null
 	if_acmpne	l18 // aload_0
 	aload_0
 	ldc	int 32
@@ -2659,8 +2650,6 @@ l18	aload_0
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	aconst_null
-	pop
 	aconst_null
 	if_acmpne	l19 // aload_0
 	aload_0
@@ -2681,8 +2670,6 @@ l19	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
 	aconst_null
-	pop
-	aconst_null
 	if_acmpne	l20 // aload_0
 	aload_0
 	ldc	int 32
@@ -2702,8 +2689,6 @@ l20	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
 	aconst_null
-	pop
-	aconst_null
 	if_acmpne	l21 // aload_0
 	aload_0
 	ldc	int 32
@@ -2722,30 +2707,30 @@ l16	new	class java/lang/IllegalArgumentException
    	l3 = 66 // aload_0
    	l2 = 80 // iload_3
    	l5 = 141 // aload_0
-   	l6 = 187 // aload_0
-   	l4 = 201 // iload_3
-   	l8 = 284 // aload_0
-   	l9 = 330 // aload_0
-   	l10 = 376 // aload_0
-   	l7 = 390 // iload_3
-   	l12 = 484 // aload_0
-   	l13 = 530 // aload_0
-   	l14 = 576 // aload_0
-   	l15 = 622 // aload_0
-   	l11 = 636 // iload_3
-   	l17 = 741 // aload_0
-   	l18 = 787 // aload_0
-   	l19 = 833 // aload_0
-   	l20 = 879 // aload_0
-   	l21 = 925 // aload_0
-   	l1 = 936 // return
-   	l16 = 937 // new
+   	l6 = 185 // aload_0
+   	l4 = 199 // iload_3
+   	l8 = 282 // aload_0
+   	l9 = 326 // aload_0
+   	l10 = 370 // aload_0
+   	l7 = 384 // iload_3
+   	l12 = 478 // aload_0
+   	l13 = 522 // aload_0
+   	l14 = 566 // aload_0
+   	l15 = 610 // aload_0
+   	l11 = 624 // iload_3
+   	l17 = 729 // aload_0
+   	l18 = 773 // aload_0
+   	l19 = 817 // aload_0
+   	l20 = 861 // aload_0
+   	l21 = 905 // aload_0
+   	l1 = 916 // return
+   	l16 = 917 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      945      0    $this       Lscala/collection/immutable/VectorPointer;
-   0      945      1    oldIndex       I
-   0      945      2    newIndex       I
-   0      945      3    xor       I
+   0      925      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      925      1    oldIndex       I
+   0      925      2    newIndex       I
+   0      925      3    xor       I
 
 
 public static final void gotoFreshPosWritable1(scala.collection.immutable.VectorPointer, int, int, int);

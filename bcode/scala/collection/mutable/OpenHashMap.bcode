@@ -2,7 +2,7 @@ Compiled from "OpenHashMap.scala"
 public class scala.collection.mutable.OpenHashMap extends java.lang.Object implements scala.collection.mutable.Map,scala.collection.mutable.MapLike,scala.ScalaObject
   SourceFile: "OpenHashMap.scala"
   Signature: length = 0x2
-   04 0D 
+   04 0C 
   ScalaSig: length = 0x8C6
    05 00 FFFFFF82 2F 07 05 01 02 FFFFFF88 02 09 01 0B 4F 70 65
    6E 48 61 73 68 4D 61 70 0A 02 03 04 01 07 6D 75
@@ -924,18 +924,25 @@ Method	scala/collection/mutable/OpenHashMap.findIndex:(Ljava/lang/Object;I)I
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	hash;
-NameAndType	hash:()I
-Method	scala/collection/mutable/OpenHashMap$OpenEntry.hash:()I
-NameAndType	key:()Ljava/lang/Object;
-Method	scala/collection/mutable/OpenHashMap$OpenEntry.key:()Ljava/lang/Object;
+NameAndType	hash:I
+Field	scala/collection/mutable/OpenHashMap$OpenEntry.hash:I
+NameAndType	key:Ljava/lang/Object;
+Field	scala/collection/mutable/OpenHashMap$OpenEntry.key:Ljava/lang/Object;
+Asciz	java/lang/Number;
+class	java/lang/Number
+Asciz	java/lang/Character;
+class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
+Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	$inlThis5;
+Asciz	x0;
+Asciz	perturb;
 Asciz	j;
 Asciz	index;
-Asciz	perturb;
 Asciz	(TKey;I)I;
 Asciz	scala$collection$mutable$OpenHashMap$$addEntry;
 Asciz	(Lscala/collection/mutable/OpenHashMap$OpenEntry;)V;
@@ -970,8 +977,6 @@ Asciz	(TKey;)Lscala/collection/mutable/OpenHashMap<TKey;TValue;>;;
 Asciz	(TKey;TValue;)Lscala/Option<TValue;>;;
 NameAndType	size:()I
 Method	scala/collection/mutable/OpenHashMap.size:()I
-NameAndType	scala$collection$mutable$OpenHashMap$$deleted:()I
-Method	scala/collection/mutable/OpenHashMap.scala$collection$mutable$OpenHashMap$$deleted:()I
 NameAndType	growTable:()V
 Method	scala/collection/mutable/OpenHashMap.growTable:()V
 Asciz	scala/Some;
@@ -983,21 +988,15 @@ NameAndType	"<init>":(Ljava/lang/Object;ILscala/Option;)V
 Method	scala/collection/mutable/OpenHashMap$OpenEntry."<init>":(Ljava/lang/Object;ILscala/Option;)V
 NameAndType	scala$collection$mutable$OpenHashMap$$modCount:I
 Field	scala/collection/mutable/OpenHashMap.scala$collection$mutable$OpenHashMap$$modCount:I
-NameAndType	scala$collection$mutable$OpenHashMap$$size_$eq:(I)V
-Method	scala/collection/mutable/OpenHashMap.scala$collection$mutable$OpenHashMap$$size_$eq:(I)V
 Asciz	scala/None$;
 class	scala/None$
 Asciz	Lscala/None$;;
 NameAndType	MODULE$:Lscala/None$;
 Field	scala/None$.MODULE$:Lscala/None$;
-NameAndType	value:()Lscala/Option;
-Method	scala/collection/mutable/OpenHashMap$OpenEntry.value:()Lscala/Option;
-Asciz	value_$eq;
-Asciz	(Lscala/Option;)V;
-NameAndType	value_$eq:(Lscala/Option;)V
-Method	scala/collection/mutable/OpenHashMap$OpenEntry.value_$eq:(Lscala/Option;)V
-Asciz	res;
 Asciz	Lscala/Option;;
+NameAndType	value:Lscala/Option;
+Field	scala/collection/mutable/OpenHashMap$OpenEntry.value:Lscala/Option;
+Asciz	res;
 NameAndType	findIndex:(Ljava/lang/Object;)I
 Method	scala/collection/mutable/OpenHashMap.findIndex:(Ljava/lang/Object;)I
 Asciz	(TKey;)Lscala/Option<TValue;>;;
@@ -3338,100 +3337,132 @@ private int findIndex(java.lang.Object);
 private int findIndex(java.lang.Object, int);
   Signature: (Ljava/lang/Object;I)I
   Code:
-   Stack=2, Locals=7, Args_size=3
+   Stack=2, Locals=10, Args_size=3
 	iload_2
-	istore_3
+	istore	8
 	iload_2
 	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$mask:()I
+	getfield	Field scala$collection$mutable$OpenHashMap$$mask:I
 	iand
-	istore	4
-	iload	4
-	istore	5
-l3	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$table:()[Lscala/collection/mutable/OpenHashMap$OpenEntry;
-	iload	4
+	istore	9
+	iload	9
+	istore	7
+l8	aload_0
+	getfield	Field scala$collection$mutable$OpenHashMap$$table:[Lscala/collection/mutable/OpenHashMap$OpenEntry;
+	iload	9
 	aaload
 	dup
-	astore	6
+	astore_3
 	ifnull	l1 // iload
-	aload	6
+	aload_3
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l1 // iload
 	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$table:()[Lscala/collection/mutable/OpenHashMap$OpenEntry;
-	iload	4
+	getfield	Field scala$collection$mutable$OpenHashMap$$table:[Lscala/collection/mutable/OpenHashMap$OpenEntry;
+	iload	9
 	aaload
-	invokevirtual	Method scala/collection/mutable/OpenHashMap$OpenEntry.hash:()I
+	astore	4
+	aload	4
+	getfield	Field scala/collection/mutable/OpenHashMap$OpenEntry.hash:I
 	iload_2
 	if_icmpne	l2 // iconst_5
 	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$table:()[Lscala/collection/mutable/OpenHashMap$OpenEntry;
-	iload	4
+	getfield	Field scala$collection$mutable$OpenHashMap$$table:[Lscala/collection/mutable/OpenHashMap$OpenEntry;
+	iload	9
 	aaload
-	invokevirtual	Method scala/collection/mutable/OpenHashMap$OpenEntry.key:()Ljava/lang/Object;
+	astore	5
+	aload	5
+	getfield	Field scala/collection/mutable/OpenHashMap$OpenEntry.key:Ljava/lang/Object;
+	astore	6
+	aload	6
 	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l2 // iconst_5
-l1	iload	4
+	if_acmpne	l3 // aload
+	iconst_1
+	goto	l4 // ifeq
+l3	aload	6
+	ifnonnull	l5 // aload
+	iconst_0
+	goto	l4 // ifeq
+l5	aload	6
+	instanceof	class java/lang/Number
+	ifne	l6 // aload
+	aload	6
+	instanceof	class java/lang/Character
+	ifeq	l7 // aload
+l6	aload	6
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l4 // ifeq
+l7	aload	6
+	aload_1
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l4	ifeq	l2 // iconst_5
+l1	iload	9
 	ireturn
 l2	iconst_5
-	iload_3
+	iload	8
 	imul
 	iconst_1
 	iadd
-	iload	5
+	iload	7
 	iadd
-	istore_3
-	iload	5
+	istore	8
+	iload	7
 	iconst_5
 	ishr
-	istore	5
-	iload_3
+	istore	7
+	iload	8
 	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$mask:()I
+	getfield	Field scala$collection$mutable$OpenHashMap$$mask:I
 	iand
-	istore	4
-	goto	l3 // aload_0
+	istore	9
+	goto	l8 // aload_0
   Labels:
-   	l3 = 14 // aload_0
-   	l1 = 67 // iload
-   	l2 = 70 // iconst_5
+   	l8 = 15 // aload_0
+   	l3 = 79 // aload
+   	l5 = 88 // aload
+   	l6 = 104 // aload
+   	l7 = 113 // aload
+   	l4 = 119 // ifeq
+   	l1 = 122 // iload
+   	l2 = 125 // iconst_5
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      96      0    this       Lscala/collection/mutable/OpenHashMap;
-   0      96      1    key       Ljava/lang/Object;
-   0      96      2    hash       I
-   2      67      3    j       I
-   70      26      3    j       I
-   10      59      4    index       I
-   70      26      4    index       I
-   14      55      5    perturb       I
-   70      26      5    perturb       I
+   0      154      0    this       Lscala/collection/mutable/OpenHashMap;
+   0      154      1    key       Ljava/lang/Object;
+   0      154      2    hash       I
+   75      47      5    $inlThis5       Ljava/lang/Object;
+   75      47      6    x0       Ljava/lang/Object;
+   15      109      7    perturb       I
+   125      29      7    perturb       I
+   3      121      8    j       I
+   125      29      8    j       I
+   11      113      9    index       I
+   125      29      9    index       I
 
   Signature: length = 0x2
-   03 09 
+   03 10 
 
 public final void scala$collection$mutable$OpenHashMap$$addEntry(scala.collection.mutable.OpenHashMap$OpenEntry);
   Signature: (Lscala/collection/mutable/OpenHashMap$OpenEntry;)V
   Code:
-   Stack=4, Locals=3, Args_size=2
+   Stack=4, Locals=2, Args_size=2
 	aload_1
 	dup
-	astore_2
+	pop
 	ifnull	l1 // return
-	aload_2
+	aload_1
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l1 // return
 	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$table:()[Lscala/collection/mutable/OpenHashMap$OpenEntry;
+	getfield	Field scala$collection$mutable$OpenHashMap$$table:[Lscala/collection/mutable/OpenHashMap$OpenEntry;
 	aload_0
 	aload_1
-	invokevirtual	Method scala/collection/mutable/OpenHashMap$OpenEntry.key:()Ljava/lang/Object;
+	getfield	Field scala/collection/mutable/OpenHashMap$OpenEntry.key:Ljava/lang/Object;
 	aload_1
-	invokevirtual	Method scala/collection/mutable/OpenHashMap$OpenEntry.hash:()I
+	getfield	Field scala/collection/mutable/OpenHashMap$OpenEntry.hash:I
 	invokespecial	Method findIndex:(Ljava/lang/Object;I)I
 	aload_1
 	aastore
@@ -3465,7 +3496,7 @@ public void update(java.lang.Object, java.lang.Object);
    0      13      2    value       Ljava/lang/Object;
 
   Signature: length = 0x2
-   03 14 
+   03 1B 
 
 public scala.collection.mutable.OpenHashMap $plus$eq(scala.Tuple2);
   Signature: (Lscala/Tuple2;)Lscala/collection/mutable/OpenHashMap;
@@ -3487,7 +3518,7 @@ public scala.collection.mutable.OpenHashMap $plus$eq(scala.Tuple2);
    0      15      1    kv       Lscala/Tuple2;
 
   Signature: length = 0x2
-   03 22 
+   03 29 
 
 public scala.collection.mutable.OpenHashMap $minus$eq(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/mutable/OpenHashMap;
@@ -3506,7 +3537,7 @@ public scala.collection.mutable.OpenHashMap $minus$eq(java.lang.Object);
    0      8      1    key       Ljava/lang/Object;
 
   Signature: length = 0x2
-   03 27 
+   03 2E 
 
 public scala.Option put(java.lang.Object, java.lang.Object);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;)Lscala/Option;
@@ -3528,21 +3559,21 @@ public scala.Option put(java.lang.Object, java.lang.Object);
    0      12      2    value       Ljava/lang/Object;
 
   Signature: length = 0x2
-   03 28 
+   03 2F 
 
 public final scala.Option scala$collection$mutable$OpenHashMap$$put(java.lang.Object, int, java.lang.Object);
   Signature: (Ljava/lang/Object;ILjava/lang/Object;)Lscala/Option;
   Code:
-   Stack=9, Locals=9, Args_size=4
+   Stack=9, Locals=11, Args_size=4
 	iconst_2
 	aload_0
 	invokevirtual	Method size:()I
 	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$deleted:()I
+	getfield	Field scala$collection$mutable$OpenHashMap$$deleted:I
 	iadd
 	imul
 	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$mask:()I
+	getfield	Field scala$collection$mutable$OpenHashMap$$mask:I
 	if_icmple	l1 // aload_0
 	aload_0
 	invokespecial	Method growTable:()V
@@ -3552,20 +3583,20 @@ l1	aload_0
 	invokespecial	Method findIndex:(Ljava/lang/Object;I)I
 	istore	4
 	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$table:()[Lscala/collection/mutable/OpenHashMap$OpenEntry;
+	getfield	Field scala$collection$mutable$OpenHashMap$$table:[Lscala/collection/mutable/OpenHashMap$OpenEntry;
 	iload	4
 	aaload
-	astore	5
-	aload	5
+	astore	8
+	aload	8
 	dup
-	astore	6
+	pop
 	ifnull	l2 // aload_0
-	aload	6
+	aload	8
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload
 l2	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$table:()[Lscala/collection/mutable/OpenHashMap$OpenEntry;
+	getfield	Field scala$collection$mutable$OpenHashMap$$table:[Lscala/collection/mutable/OpenHashMap$OpenEntry;
 	iload	4
 	new	class scala/collection/mutable/OpenHashMap$OpenEntry
 	dup
@@ -3584,92 +3615,100 @@ l2	aload_0
 	iadd
 	putfield	Field scala$collection$mutable$OpenHashMap$$modCount:I
 	aload_0
-	aload_0
 	invokevirtual	Method size:()I
 	iconst_1
 	iadd
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$size_$eq:(I)V
+	istore	5
+	aload_0
+	iload	5
+	invokespecial	Method _size_$eq:(I)V
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	goto	l4 // areturn
-l3	aload	5
-	invokevirtual	Method scala/collection/mutable/OpenHashMap$OpenEntry.value:()Lscala/Option;
-	astore	7
-	aload	5
-	invokevirtual	Method scala/collection/mutable/OpenHashMap$OpenEntry.value:()Lscala/Option;
+l3	aload	8
+	getfield	Field scala/collection/mutable/OpenHashMap$OpenEntry.value:Lscala/Option;
+	astore	10
+	aload	8
+	getfield	Field scala/collection/mutable/OpenHashMap$OpenEntry.value:Lscala/Option;
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	astore	8
+	astore	6
 	dup
 	ifnonnull	l5 // aload
 	pop
-	aload	8
+	aload	6
 	ifnull	l6 // aload_0
-	goto	l7 // aload
-l5	aload	8
+	goto	l7 // new
+l5	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l7 // aload
+	ifeq	l7 // new
 l6	aload_0
-	aload_0
 	invokevirtual	Method size:()I
 	iconst_1
 	iadd
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$size_$eq:(I)V
+	istore	7
+	aload_0
+	iload	7
+	invokespecial	Method _size_$eq:(I)V
 	aload_0
 	aload_0
 	getfield	Field scala$collection$mutable$OpenHashMap$$modCount:I
 	iconst_1
 	iadd
 	putfield	Field scala$collection$mutable$OpenHashMap$$modCount:I
-l7	aload	5
-	new	class scala/Some
+l7	new	class scala/Some
 	dup
 	aload_3
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	invokevirtual	Method scala/collection/mutable/OpenHashMap$OpenEntry.value_$eq:(Lscala/Option;)V
-	aload	7
+	astore	9
+	aload	8
+	aload	9
+	putfield	Field scala/collection/mutable/OpenHashMap$OpenEntry.value:Lscala/Option;
+	aload	10
 l4	areturn
   Labels:
    	l1 = 22 // aload_0
-   	l2 = 56 // aload_0
-   	l3 = 106 // aload
-   	l5 = 136 // aload
-   	l6 = 144 // aload_0
-   	l7 = 164 // aload
-   	l4 = 179 // areturn
+   	l2 = 55 // aload_0
+   	l3 = 109 // aload
+   	l5 = 139 // aload
+   	l6 = 147 // aload_0
+   	l7 = 171 // new
+   	l4 = 190 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      180      0    this       Lscala/collection/mutable/OpenHashMap;
-   0      180      1    key       Ljava/lang/Object;
-   0      180      2    hash       I
-   0      180      3    value       Ljava/lang/Object;
-   30      150      4    index       I
-   39      141      5    entry       Lscala/collection/mutable/OpenHashMap$OpenEntry;
-   113      66      7    res       Lscala/Option;
+   0      191      0    this       Lscala/collection/mutable/OpenHashMap;
+   0      191      1    key       Ljava/lang/Object;
+   0      191      2    hash       I
+   0      191      3    value       Ljava/lang/Object;
+   30      161      4    index       I
+   39      152      8    entry       Lscala/collection/mutable/OpenHashMap$OpenEntry;
+   116      74      10    res       Lscala/Option;
 
 
 public scala.Option remove(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/Option;
   Code:
-   Stack=3, Locals=6, Args_size=2
+   Stack=2, Locals=12, Args_size=2
 	aload_0
 	aload_1
 	invokespecial	Method findIndex:(Ljava/lang/Object;)I
-	istore_2
+	istore	6
 	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$table:()[Lscala/collection/mutable/OpenHashMap$OpenEntry;
-	iload_2
+	getfield	Field scala$collection$mutable$OpenHashMap$$table:[Lscala/collection/mutable/OpenHashMap$OpenEntry;
+	iload	6
 	aaload
 	dup
-	astore_3
+	astore_2
 	ifnull	l1 // getstatic
-	aload_3
+	aload_2
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l1 // getstatic
 	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$table:()[Lscala/collection/mutable/OpenHashMap$OpenEntry;
-	iload_2
+	getfield	Field scala$collection$mutable$OpenHashMap$$table:[Lscala/collection/mutable/OpenHashMap$OpenEntry;
+	iload	6
 	aaload
-	invokevirtual	Method scala/collection/mutable/OpenHashMap$OpenEntry.value:()Lscala/Option;
+	astore_3
+	aload_3
+	getfield	Field scala/collection/mutable/OpenHashMap$OpenEntry.value:Lscala/Option;
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	astore	4
 	dup
@@ -3684,45 +3723,55 @@ l2	aload	4
 l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	goto	l4 // areturn
 l3	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$table:()[Lscala/collection/mutable/OpenHashMap$OpenEntry;
-	iload_2
+	getfield	Field scala$collection$mutable$OpenHashMap$$table:[Lscala/collection/mutable/OpenHashMap$OpenEntry;
+	iload	6
 	aaload
-	invokevirtual	Method scala/collection/mutable/OpenHashMap$OpenEntry.value:()Lscala/Option;
 	astore	5
+	aload	5
+	getfield	Field scala/collection/mutable/OpenHashMap$OpenEntry.value:Lscala/Option;
+	astore	11
 	aload_0
 	invokevirtual	Method scala$collection$mutable$OpenHashMap$$table:()[Lscala/collection/mutable/OpenHashMap$OpenEntry;
-	iload_2
+	iload	6
 	aaload
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	invokevirtual	Method scala/collection/mutable/OpenHashMap$OpenEntry.value_$eq:(Lscala/Option;)V
-	aload_0
+	astore	8
+	astore	7
+	aload	7
+	aload	8
+	putfield	Field scala/collection/mutable/OpenHashMap$OpenEntry.value:Lscala/Option;
 	aload_0
 	invokevirtual	Method size:()I
 	iconst_1
 	isub
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$size_$eq:(I)V
+	istore	9
 	aload_0
+	iload	9
+	invokespecial	Method _size_$eq:(I)V
 	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$deleted:()I
+	getfield	Field scala$collection$mutable$OpenHashMap$$deleted:I
 	iconst_1
 	iadd
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$deleted_$eq:(I)V
-	aload	5
+	istore	10
+	aload_0
+	iload	10
+	putfield	Field scala$collection$mutable$OpenHashMap$$deleted:I
+	aload	11
 l4	areturn
   Labels:
-   	l2 = 52 // aload
-   	l1 = 60 // getstatic
-   	l3 = 66 // aload_0
-   	l4 = 111 // areturn
+   	l2 = 57 // aload
+   	l1 = 65 // getstatic
+   	l3 = 71 // aload_0
+   	l4 = 138 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      112      0    this       Lscala/collection/mutable/OpenHashMap;
-   0      112      1    key       Ljava/lang/Object;
-   6      106      2    index       I
-   77      34      5    res       Lscala/Option;
+   0      139      0    this       Lscala/collection/mutable/OpenHashMap;
+   0      139      1    key       Ljava/lang/Object;
+   7      132      6    index       I
+   87      51      11    res       Lscala/Option;
 
   Signature: length = 0x2
-   03 49 
+   03 48 
 
 public scala.Option get(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/Option;
@@ -3733,22 +3782,22 @@ public scala.Option get(java.lang.Object);
 	invokevirtual	Method hashOf:(Ljava/lang/Object;)I
 	istore_2
 	iload_2
-	istore_3
+	istore	5
 	iload_2
 	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$mask:()I
+	getfield	Field scala$collection$mutable$OpenHashMap$$mask:I
 	iand
+	istore	6
+	iload	6
 	istore	4
-	iload	4
-	istore	5
 	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$table:()[Lscala/collection/mutable/OpenHashMap$OpenEntry;
-	iload	4
+	getfield	Field scala$collection$mutable$OpenHashMap$$table:[Lscala/collection/mutable/OpenHashMap$OpenEntry;
+	iload	6
 	aaload
-	astore	6
-l4	aload	6
-	dup
 	astore	7
+l9	aload	7
+	dup
+	pop
 	ifnull	l1 // getstatic
 	aload	7
 	aconst_null
@@ -3756,63 +3805,90 @@ l4	aload	6
 	ifeq	l2 // aload
 l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	areturn
-l2	aload	6
-	invokevirtual	Method scala/collection/mutable/OpenHashMap$OpenEntry.hash:()I
+l2	aload	7
+	getfield	Field scala/collection/mutable/OpenHashMap$OpenEntry.hash:I
 	iload_2
 	if_icmpne	l3 // iconst_5
-	aload	6
-	invokevirtual	Method scala/collection/mutable/OpenHashMap$OpenEntry.key:()Ljava/lang/Object;
+	aload	7
+	getfield	Field scala/collection/mutable/OpenHashMap$OpenEntry.key:Ljava/lang/Object;
+	astore_3
+	aload_3
 	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l3 // iconst_5
-	aload	6
-	invokevirtual	Method scala/collection/mutable/OpenHashMap$OpenEntry.value:()Lscala/Option;
+	if_acmpne	l4 // aload_3
+	iconst_1
+	goto	l5 // ifeq
+l4	aload_3
+	ifnonnull	l6 // aload_3
+	iconst_0
+	goto	l5 // ifeq
+l6	aload_3
+	instanceof	class java/lang/Number
+	ifne	l7 // aload_3
+	aload_3
+	instanceof	class java/lang/Character
+	ifeq	l8 // aload_3
+l7	aload_3
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l5 // ifeq
+l8	aload_3
+	aload_1
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l5	ifeq	l3 // iconst_5
+	aload	7
+	getfield	Field scala/collection/mutable/OpenHashMap$OpenEntry.value:Lscala/Option;
 	areturn
 l3	iconst_5
-	iload_3
+	iload	5
 	imul
 	iconst_1
 	iadd
-	iload	5
+	iload	4
 	iadd
-	istore_3
-	iload	5
+	istore	5
+	iload	4
 	iconst_5
 	ishr
-	istore	5
-	iload_3
-	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$mask:()I
-	iand
 	istore	4
+	iload	5
 	aload_0
-	invokevirtual	Method scala$collection$mutable$OpenHashMap$$table:()[Lscala/collection/mutable/OpenHashMap$OpenEntry;
-	iload	4
+	getfield	Field scala$collection$mutable$OpenHashMap$$mask:I
+	iand
+	istore	6
+	aload_0
+	getfield	Field scala$collection$mutable$OpenHashMap$$table:[Lscala/collection/mutable/OpenHashMap$OpenEntry;
+	iload	6
 	aaload
-	astore	6
-	goto	l4 // aload
+	astore	7
+	goto	l9 // aload
   Labels:
-   	l4 = 29 // aload
+   	l9 = 30 // aload
    	l1 = 46 // getstatic
    	l2 = 50 // aload
-   	l3 = 77 // iconst_5
+   	l4 = 74 // aload_3
+   	l6 = 82 // aload_3
+   	l7 = 96 // aload_3
+   	l8 = 104 // aload_3
+   	l5 = 109 // ifeq
+   	l3 = 118 // iconst_5
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      112      0    this       Lscala/collection/mutable/OpenHashMap;
-   0      112      1    key       Ljava/lang/Object;
+   0      156      0    this       Lscala/collection/mutable/OpenHashMap;
+   0      156      1    key       Ljava/lang/Object;
    6      43      2    hash       I
-   50      62      2    hash       I
-   8      41      3    j       I
-   50      62      3    j       I
-   16      33      4    index       I
-   50      62      4    index       I
-   20      29      5    perturb       I
-   50      62      5    perturb       I
-   29      20      6    entry       Lscala/collection/mutable/OpenHashMap$OpenEntry;
-   50      62      6    entry       Lscala/collection/mutable/OpenHashMap$OpenEntry;
+   50      106      2    hash       I
+   70      42      3    x0       Ljava/lang/Object;
+   21      28      4    perturb       I
+   50      106      4    perturb       I
+   9      40      5    j       I
+   50      106      5    j       I
+   17      32      6    index       I
+   50      106      6    index       I
+   30      19      7    entry       Lscala/collection/mutable/OpenHashMap$OpenEntry;
+   50      106      7    entry       Lscala/collection/mutable/OpenHashMap$OpenEntry;
 
   Signature: length = 0x2
-   03 49 
+   03 48 
 
 public scala.collection.Iterator iterator();
   Signature: ()Lscala/collection/Iterator;
@@ -3875,7 +3951,7 @@ public void foreach(scala.Function1);
    5      14      2    startModCount$1       I
 
   Signature: length = 0x2
-   03 61 
+   03 60 
 
 private void foreachUndeletedEntry(scala.Function1);
   Signature: (Lscala/Function1;)V
@@ -3900,7 +3976,7 @@ private void foreachUndeletedEntry(scala.Function1);
    0      28      1    f$1       Lscala/Function1;
 
   Signature: length = 0x2
-   03 68 
+   03 67 
 
 public scala.collection.mutable.OpenHashMap transform(scala.Function2);
   Signature: (Lscala/Function2;)Lscala/collection/mutable/OpenHashMap;
@@ -3922,7 +3998,7 @@ public scala.collection.mutable.OpenHashMap transform(scala.Function2);
    0      15      1    f$3       Lscala/Function2;
 
   Signature: length = 0x2
-   03 71 
+   03 70 
 
 public scala.collection.mutable.OpenHashMap retain(scala.Function2);
   Signature: (Lscala/Function2;)Lscala/collection/mutable/OpenHashMap;
@@ -3944,7 +4020,7 @@ public scala.collection.mutable.OpenHashMap retain(scala.Function2);
    0      15      1    f$4       Lscala/Function2;
 
   Signature: length = 0x2
-   03 77 
+   03 76 
 
 public java.lang.String stringPrefix();
   Signature: ()Ljava/lang/String;

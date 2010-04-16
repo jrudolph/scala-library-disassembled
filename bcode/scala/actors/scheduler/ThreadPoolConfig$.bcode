@@ -70,8 +70,6 @@ Asciz	propName;
 Asciz	Ljava/lang/String;;
 Asciz	exceptionResult1;
 Asciz	Lscala/Option;;
-Asciz	temp1;
-Asciz	Ljava/lang/Throwable;;
 Asciz	LocalVariableTable;
 Asciz	(Ljava/lang/String;)Lscala/Option<Ljava/lang/Integer;>;;
 Asciz	Signature;
@@ -99,19 +97,13 @@ Field	scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 Asciz	scala/collection/mutable/StringBuilder;
 class	scala/collection/mutable/StringBuilder
 Method	scala/collection/mutable/StringBuilder."<init>":()V
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	any2stringadd;
-Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
-NameAndType	any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
-Method	scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
-Asciz	: java.version = ;
-String	: java.version = 
 Asciz	scala/runtime/StringAdd;
 class	scala/runtime/StringAdd
+Asciz	(Ljava/lang/Object;)V;
+NameAndType	"<init>":(Ljava/lang/Object;)V
+Method	scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+Asciz	: java.version = ;
+String	: java.version = 
 Asciz	$plus;
 Asciz	(Ljava/lang/String;)Ljava/lang/String;;
 NameAndType	$plus:(Ljava/lang/String;)Ljava/lang/String;
@@ -206,7 +198,6 @@ Asciz	temp4;
 Asciz	temp5;
 Asciz	Lscala/Some;;
 Asciz	temp6;
-Asciz	i;
 Asciz	byCores;
 Asciz	preMaxSize;
 Asciz	InnerClasses;
@@ -263,9 +254,7 @@ private int minNumThreads();
 private scala.Option getIntegerProp(java.lang.String);
   Signature: (Ljava/lang/String;)Lscala/Option;
   Code:
-   Stack=3, Locals=5, Args_size=2
-	aconst_null
-	astore_2
+   Stack=3, Locals=4, Args_size=2
 	getstatic	Field scala/util/Properties$.MODULE$:Lscala/util/Properties$;
 	aload_1
 	invokeinterface	InterfaceMethod scala/util/PropertiesTrait.propOrNone:(Ljava/lang/String;)Lscala/Option;
@@ -277,11 +266,9 @@ private scala.Option getIntegerProp(java.lang.String);
 	goto	l1 // aload_2
 	astore_3
 	aload_3
-	astore	4
-	aload	4
 	instanceof	class java/lang/SecurityException
 	ifne	l2 // getstatic
-	aload	4
+	aload_3
 	instanceof	class java/lang/NumberFormatException
 	ifeq	l3 // aload_3
 l2	getstatic	Field scala/None$.MODULE$:Lscala/None$;
@@ -291,23 +278,21 @@ l1	aload_2
 l3	aload_3
 	athrow
   Labels:
-   	l2 = 45 // getstatic
-   	l1 = 49 // aload_2
-   	l3 = 51 // aload_3
+   	l2 = 38 // getstatic
+   	l1 = 42 // aload_2
+   	l3 = 44 // aload_3
   Exception table:
    from   to  target type
-     2    25    25   any
+     0    23    23   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      53      0    this       Lscala/actors/scheduler/ThreadPoolConfig$;
-   0      53      1    propName       Ljava/lang/String;
-   2      48      2    exceptionResult1       Lscala/Option;
-   51      2      2    exceptionResult1       Lscala/Option;
-   29      20      4    temp1       Ljava/lang/Throwable;
-   51      2      4    temp1       Ljava/lang/Throwable;
+   0      46      0    this       Lscala/actors/scheduler/ThreadPoolConfig$;
+   0      46      1    propName       Ljava/lang/String;
+   0      43      2    exceptionResult1       Lscala/Option;
+   44      2      2    exceptionResult1       Lscala/Option;
 
   Signature: length = 0x2
-   00 41 
+   00 3F 
 
 public int corePoolSize();
   Signature: ()I
@@ -330,9 +315,7 @@ public int maxPoolSize();
 public boolean useForkJoin();
   Signature: ()Z
   Code:
-   Stack=4, Locals=2, Args_size=1
-	iconst_0
-	istore_1
+   Stack=5, Locals=2, Args_size=1
 	getstatic	Field scala/util/Properties$.MODULE$:Lscala/util/Properties$;
 	ldc	String actors.enableForkJoin
 	ldc	String false
@@ -347,9 +330,10 @@ public boolean useForkJoin();
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	new	class scala/runtime/StringAdd
+	dup
 	aload_0
-	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
 	ldc	String : java.version = 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
@@ -362,9 +346,10 @@ public boolean useForkJoin();
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	new	class scala/runtime/StringAdd
+	dup
 	aload_0
-	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
 	ldc	String : java.vm.vendor = 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
@@ -411,12 +396,12 @@ l7	iload_1
    	l7 = 181 // iload_1
   Exception table:
    from   to  target type
-     2   178   178   Class java/lang/SecurityException
+     0   178   178   Class java/lang/SecurityException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      183      0    this       Lscala/actors/scheduler/ThreadPoolConfig$;
-   2      180      1    exceptionResult2       Z
+   0      182      1    exceptionResult2       Z
 
 
 private final boolean gd1$1(int);
@@ -437,7 +422,7 @@ l2	ireturn
 private scala.actors.scheduler.ThreadPoolConfig$();
   Signature: ()V
   Code:
-   Stack=4, Locals=7, Args_size=1
+   Stack=4, Locals=6, Args_size=1
 	aload_0
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
@@ -463,10 +448,8 @@ private scala.actors.scheduler.ThreadPoolConfig$();
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	istore_3
-	iload_3
-	istore	4
 	aload_0
-	iload	4
+	iload_3
 	invokespecial	Method gd1$1:(I)Z
 	ifeq	l1 // aload_0
 	iload_3
@@ -476,12 +459,12 @@ l1	aload_0
 	invokevirtual	Method java/lang/Runtime.availableProcessors:()I
 	iconst_2
 	imul
-	istore	5
-	iload	5
+	istore	4
+	iload	4
 	aload_0
 	invokespecial	Method minNumThreads:()I
 	if_icmple	l3 // aload_0
-	iload	5
+	iload	4
 	goto	l2 // putfield
 l3	aload_0
 	invokespecial	Method minNumThreads:()I
@@ -495,32 +478,31 @@ l2	putfield	Field corePoolSize:I
 	invokespecial	Method scala/actors/scheduler/ThreadPoolConfig$$anonfun$1."<init>":()V
 	invokevirtual	Method scala/Option.getOrElse:(Lscala/Function0;)Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-	istore	6
-	iload	6
+	istore	5
+	iload	5
 	aload_0
 	invokevirtual	Method corePoolSize:()I
 	if_icmplt	l4 // aload_0
-	iload	6
+	iload	5
 	goto	l5 // putfield
 l4	aload_0
 	invokevirtual	Method corePoolSize:()I
 l5	putfield	Field maxPoolSize:I
 	return
   Labels:
-   	l1 = 64 // aload_0
-   	l3 = 89 // aload_0
-   	l2 = 93 // putfield
-   	l4 = 132 // aload_0
-   	l5 = 136 // putfield
+   	l1 = 60 // aload_0
+   	l3 = 85 // aload_0
+   	l2 = 89 // putfield
+   	l4 = 128 // aload_0
+   	l5 = 132 // putfield
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      140      0    this       Lscala/actors/scheduler/ThreadPoolConfig$;
-   28      99      1    temp4       Lscala/Option;
-   40      53      2    temp5       Lscala/Some;
-   48      45      3    temp6       I
-   51      42      4    i       I
-   75      18      5    byCores       I
-   118      22      6    preMaxSize       I
+   0      136      0    this       Lscala/actors/scheduler/ThreadPoolConfig$;
+   28      95      1    temp4       Lscala/Option;
+   40      49      2    temp5       Lscala/Some;
+   48      41      3    temp6       I
+   71      18      4    byCores       I
+   114      22      5    preMaxSize       I
 
 
 }

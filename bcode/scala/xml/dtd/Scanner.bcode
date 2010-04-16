@@ -232,10 +232,10 @@ String	' !
 Asciz	toString;
 NameAndType	toString:()Ljava/lang/String;
 Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-Asciz	error;
-Asciz	(Ljava/lang/String;)Lscala/runtime/Nothing$;;
-NameAndType	error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
-Method	scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+Asciz	java/lang/RuntimeException;
+class	java/lang/RuntimeException
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 Asciz	d;
 Asciz	accS;
 Asciz	(Lscala/collection/Seq;)V;
@@ -274,8 +274,6 @@ Asciz	wrapString;
 Asciz	(Ljava/lang/String;)Lscala/collection/immutable/WrappedString;;
 NameAndType	wrapString:(Ljava/lang/String;)Lscala/collection/immutable/WrappedString;
 Method	scala/Predef$.wrapString:(Ljava/lang/String;)Lscala/collection/immutable/WrappedString;
-NameAndType	accS:(Lscala/collection/Seq;)V
-Method	scala/xml/dtd/Scanner.accS:(Lscala/collection/Seq;)V
 Asciz	temp1;
 Method	scala/collection/mutable/StringBuilder."<init>":()V
 Asciz	(C)Lscala/collection/mutable/StringBuilder;;
@@ -670,16 +668,15 @@ l2	return
 public final void acc(char);
   Signature: (C)V
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=4, Args_size=2
 	aload_0
 	invokespecial	Method c:()C
 	iload_1
-	if_icmpne	l1 // getstatic
+	if_icmpne	l1 // new
 	aload_0
 	invokevirtual	Method next:()V
 	return
-l1	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	new	class scala/collection/mutable/StringBuilder
+l1	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc	String expected '
@@ -691,19 +688,25 @@ l1	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokespecial	Method c:()C
+	istore_2
+	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc	String ' !
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+	astore_3
+	new	class java/lang/RuntimeException
+	dup
+	aload_3
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 13 // getstatic
+   	l1 = 13 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      62      0    this       Lscala/xml/dtd/Scanner;
-   0      62      1    d       C
+   0      67      0    this       Lscala/xml/dtd/Scanner;
+   0      67      1    d       C
 
 
 public final void accS(scala.collection.Seq);
@@ -729,7 +732,7 @@ public final void accS(scala.collection.Seq);
 public final int readToken();
   Signature: ()I
   Code:
-   Stack=3, Locals=2, Args_size=1
+   Stack=4, Locals=5, Args_size=1
 	aload_0
 	aload_0
 	invokespecial	Method c:()C
@@ -754,36 +757,41 @@ l1	aload_0
 	istore_1
 	iload_1
 	lookupswitch{ //9
-		0: 272;
-		35: 252;
-		40: 244;
-		41: 236;
-		42: 227;
-		43: 218;
-		44: 210;
-		63: 201;
-		124: 192;
+		0: 290;
+		35: 257;
+		40: 249;
+		41: 241;
+		42: 232;
+		43: 223;
+		44: 215;
+		63: 206;
+		124: 197;
 		default: 140 }
 	aload_0
 	aload_0
 	invokespecial	Method c:()C
 	invokeinterface	InterfaceMethod scala/xml/parsing/TokenTests.isNameStart:(C)Z
-	ifeq	l5 // getstatic
+	ifeq	l5 // new
 	aload_0
 	invokevirtual	Method name:()I
 	goto	l4 // ireturn
-l5	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	new	class scala/collection/mutable/StringBuilder
+l5	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc	String unexpected character:
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokespecial	Method c:()C
+	istore_2
+	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+	astore_3
+	new	class java/lang/RuntimeException
+	dup
+	aload_3
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 	athrow
 	aload_0
 	invokevirtual	Method next:()V
@@ -815,11 +823,16 @@ l5	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	goto	l4 // ireturn
 	aload_0
 	invokevirtual	Method next:()V
-	aload_0
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	ldc	String PCDATA
 	invokevirtual	Method scala/Predef$.wrapString:(Ljava/lang/String;)Lscala/collection/immutable/WrappedString;
-	invokevirtual	Method accS:(Lscala/collection/Seq;)V
+	astore	4
+	aload	4
+	new	class scala/xml/dtd/Scanner$$anonfun$accS$1
+	dup
+	aload_0
+	invokespecial	Method scala/xml/dtd/Scanner$$anonfun$accS$1."<init>":(Lscala/xml/dtd/Scanner;)V
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.foreach:(Lscala/Function1;)V
 	iconst_0
 	goto	l4 // ireturn
 	ldc	int 10
@@ -828,12 +841,12 @@ l4	ireturn
    	l3 = 13 // aload_0
    	l2 = 45 // ldc
    	l1 = 50 // aload_0
-   	l5 = 160 // getstatic
-   	l4 = 274 // ireturn
+   	l5 = 160 // new
+   	l4 = 292 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      275      0    this       Lscala/xml/dtd/Scanner;
-   55      219      1    temp1       C
+   0      293      0    this       Lscala/xml/dtd/Scanner;
+   55      237      1    temp1       C
 
 
 public final int name();
@@ -882,8 +895,6 @@ public scala.xml.dtd.Scanner();
 	ldc	int 10
 	putfield	Field token:I
 	aload_0
-	aconst_null
-	pop
 	aconst_null
 	putfield	Field it:Lscala/collection/Iterator;
 	aload_0

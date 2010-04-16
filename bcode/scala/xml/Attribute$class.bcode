@@ -76,7 +76,6 @@ Asciz	canEqual;
 Asciz	(Lscala/xml/Attribute;Ljava/lang/Object;)Z;
 Asciz	other;
 Asciz	Ljava/lang/Object;;
-Asciz	temp19;
 Asciz	strict_$eq$eq;
 Asciz	(Lscala/xml/Attribute;Lscala/xml/Equality;)Z;
 Asciz	value;
@@ -90,9 +89,7 @@ Asciz	(Lscala/collection/Iterable;)Z;
 NameAndType	sameElements:(Lscala/collection/Iterable;)Z
 InterfaceMethod	scala/collection/IterableLike.sameElements:(Lscala/collection/Iterable;)Z
 Asciz	Lscala/xml/Equality;;
-Asciz	temp21;
 Asciz	temp22;
-Asciz	x;
 Asciz	basisForHashCode;
 Asciz	(Lscala/xml/Attribute;)Lscala/collection/immutable/List;;
 Asciz	scala/collection/immutable/List$;
@@ -170,21 +167,19 @@ class	scala/xml/Attribute$class
 public static scala.xml.MetaData remove(scala.xml.Attribute, java.lang.String);
   Signature: (Lscala/xml/Attribute;Ljava/lang/String;)Lscala/xml/MetaData;
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=2, Args_size=2
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.isPrefixed:()Z
 	ifne	l1 // aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.key:()Ljava/lang/String;
-	aload_1
-	astore_2
 	dup
-	ifnonnull	l2 // aload_2
+	ifnonnull	l2 // aload_1
 	pop
-	aload_2
+	aload_1
 	ifnull	l3 // aload_0
 	goto	l1 // aload_0
-l2	aload_2
+l2	aload_1
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l1 // aload_0
 l3	aload_0
@@ -199,49 +194,45 @@ l1	aload_0
 	checkcast	class scala/xml/MetaData
 l4	areturn
   Labels:
-   	l2 = 29 // aload_2
-   	l3 = 36 // aload_0
-   	l1 = 45 // aload_0
-   	l4 = 64 // areturn
+   	l2 = 27 // aload_1
+   	l3 = 34 // aload_0
+   	l1 = 43 // aload_0
+   	l4 = 62 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      65      0    $this       Lscala/xml/Attribute;
-   0      65      1    key       Ljava/lang/String;
+   0      63      0    $this       Lscala/xml/Attribute;
+   0      63      1    key       Ljava/lang/String;
 
 
 public static scala.xml.MetaData remove(scala.xml.Attribute, java.lang.String, scala.xml.NamespaceBinding, java.lang.String);
   Signature: (Lscala/xml/Attribute;Ljava/lang/String;Lscala/xml/NamespaceBinding;Ljava/lang/String;)Lscala/xml/MetaData;
   Code:
-   Stack=4, Locals=6, Args_size=4
+   Stack=4, Locals=4, Args_size=4
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.isPrefixed:()Z
 	ifeq	l1 // aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.key:()Ljava/lang/String;
-	aload_3
-	astore	4
 	dup
-	ifnonnull	l2 // aload
+	ifnonnull	l2 // aload_3
 	pop
-	aload	4
+	aload_3
 	ifnull	l3 // aload_2
 	goto	l1 // aload_0
-l2	aload	4
+l2	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l1 // aload_0
 l3	aload_2
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.pre:()Ljava/lang/String;
 	invokevirtual	Method scala/xml/NamespaceBinding.getURI:(Ljava/lang/String;)Ljava/lang/String;
-	aload_1
-	astore	5
 	dup
-	ifnonnull	l4 // aload
+	ifnonnull	l4 // aload_1
 	pop
-	aload	5
+	aload_1
 	ifnull	l5 // aload_0
 	goto	l1 // aload_0
-l4	aload	5
+l4	aload_1
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l1 // aload_0
 l5	aload_0
@@ -255,18 +246,18 @@ l1	aload_0
 	invokevirtual	Method scala/xml/MetaData.remove:(Ljava/lang/String;Lscala/xml/NamespaceBinding;Ljava/lang/String;)Lscala/xml/MetaData;
 l6	areturn
   Labels:
-   	l2 = 31 // aload
-   	l3 = 39 // aload_2
-   	l4 = 65 // aload
-   	l5 = 73 // aload_0
-   	l1 = 82 // aload_0
-   	l6 = 94 // areturn
+   	l2 = 27 // aload_3
+   	l3 = 34 // aload_2
+   	l4 = 56 // aload_1
+   	l5 = 63 // aload_0
+   	l1 = 72 // aload_0
+   	l6 = 84 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      95      0    $this       Lscala/xml/Attribute;
-   0      95      1    namespace       Ljava/lang/String;
-   0      95      2    scope       Lscala/xml/NamespaceBinding;
-   0      95      3    key       Ljava/lang/String;
+   0      85      0    $this       Lscala/xml/Attribute;
+   0      85      1    namespace       Ljava/lang/String;
+   0      85      2    scope       Lscala/xml/NamespaceBinding;
+   0      85      3    key       Ljava/lang/String;
 
 
 public static boolean isPrefixed(scala.xml.Attribute);
@@ -308,8 +299,6 @@ public static boolean wellformed(scala.xml.Attribute, scala.xml.NamespaceBinding
 	invokevirtual	Method scala/xml/NamespaceBinding.getURI:(Ljava/lang/String;)Ljava/lang/String;
 	goto	l2 // astore_2
 l1	aconst_null
-	pop
-	aconst_null
 l2	astore_2
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.next:()Lscala/xml/MetaData;
@@ -336,74 +325,67 @@ l4	iconst_0
 l5	ireturn
   Labels:
    	l1 = 22 // aconst_null
-   	l2 = 25 // astore_2
-   	l3 = 56 // aload_0
-   	l4 = 73 // iconst_0
-   	l5 = 74 // ireturn
+   	l2 = 23 // astore_2
+   	l3 = 54 // aload_0
+   	l4 = 71 // iconst_0
+   	l5 = 72 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      75      0    $this       Lscala/xml/Attribute;
-   0      75      1    scope       Lscala/xml/NamespaceBinding;
-   26      49      2    arg       Ljava/lang/String;
+   0      73      0    $this       Lscala/xml/Attribute;
+   0      73      1    scope       Lscala/xml/NamespaceBinding;
+   24      49      2    arg       Ljava/lang/String;
 
 
 public static boolean canEqual(scala.xml.Attribute, java.lang.Object);
   Signature: (Lscala/xml/Attribute;Ljava/lang/Object;)Z
   Code:
-   Stack=1, Locals=3, Args_size=2
+   Stack=1, Locals=2, Args_size=2
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class scala/xml/Attribute
 	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      7      0    $this       Lscala/xml/Attribute;
-   0      7      1    other       Ljava/lang/Object;
-   2      4      2    temp19       Ljava/lang/Object;
+   0      5      0    $this       Lscala/xml/Attribute;
+   0      5      1    other       Ljava/lang/Object;
 
 
 public static boolean strict_$eq$eq(scala.xml.Attribute, scala.xml.Equality);
   Signature: (Lscala/xml/Attribute;Lscala/xml/Equality;)Z
   Code:
-   Stack=2, Locals=7, Args_size=2
+   Stack=2, Locals=5, Args_size=2
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class scala/xml/Attribute
 	ifeq	l1 // iconst_0
-	aload_2
+	aload_1
 	checkcast	class scala/xml/Attribute
-	astore_3
-	aload_3
 	astore	4
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.pre:()Ljava/lang/String;
 	aload	4
 	invokeinterface	InterfaceMethod scala/xml/Attribute.pre:()Ljava/lang/String;
-	astore	5
+	astore_2
 	dup
-	ifnonnull	l2 // aload
+	ifnonnull	l2 // aload_2
 	pop
-	aload	5
+	aload_2
 	ifnull	l3 // aload_0
 	goto	l4 // iconst_0
-l2	aload	5
+l2	aload_2
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l4 // iconst_0
 l3	aload_0
 	invokeinterface	InterfaceMethod scala/xml/Attribute.key:()Ljava/lang/String;
 	aload	4
 	invokeinterface	InterfaceMethod scala/xml/Attribute.key:()Ljava/lang/String;
-	astore	6
+	astore_3
 	dup
-	ifnonnull	l5 // aload
+	ifnonnull	l5 // aload_3
 	pop
-	aload	6
+	aload_3
 	ifnull	l6 // aload_0
 	goto	l4 // iconst_0
-l5	aload	6
+l5	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l4 // iconst_0
 l6	aload_0
@@ -419,20 +401,18 @@ l4	iconst_0
 l1	iconst_0
 l7	ireturn
   Labels:
-   	l2 = 45 // aload
-   	l3 = 53 // aload_0
-   	l5 = 81 // aload
-   	l6 = 89 // aload_0
-   	l4 = 114 // iconst_0
-   	l1 = 118 // iconst_0
-   	l7 = 119 // ireturn
+   	l2 = 39 // aload_2
+   	l3 = 46 // aload_0
+   	l5 = 72 // aload_3
+   	l6 = 79 // aload_0
+   	l4 = 104 // iconst_0
+   	l1 = 108 // iconst_0
+   	l7 = 109 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      120      0    $this       Lscala/xml/Attribute;
-   0      120      1    other       Lscala/xml/Equality;
-   2      118      2    temp21       Lscala/xml/Equality;
-   14      104      3    temp22       Lscala/xml/Attribute;
-   17      101      4    x       Lscala/xml/Attribute;
+   0      110      0    $this       Lscala/xml/Attribute;
+   0      110      1    other       Lscala/xml/Equality;
+   13      95      4    temp22       Lscala/xml/Attribute;
 
 
 public static scala.collection.immutable.List basisForHashCode(scala.xml.Attribute);

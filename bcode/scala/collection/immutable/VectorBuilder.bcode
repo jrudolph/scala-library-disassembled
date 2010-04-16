@@ -2,7 +2,7 @@ Compiled from "Vector.scala"
 public final class scala.collection.immutable.VectorBuilder extends java.lang.Object implements scala.collection.mutable.Builder,scala.collection.immutable.VectorPointer,scala.ScalaObject
   SourceFile: "Vector.scala"
   Signature: length = 0x2
-   00 FFFFFFE9 
+   00 FFFFFFE5 
   ScalaSig: length = 0x25E
    05 00 61 06 04 01 02 02 09 02 0D 56 65 63 74 6F
    72 42 75 69 6C 64 65 72 0A 02 03 04 01 09 69 6D
@@ -221,8 +221,6 @@ NameAndType	blockIndex_$eq:(I)V
 Method	scala/collection/immutable/VectorBuilder.blockIndex_$eq:(I)V
 NameAndType	lo_$eq:(I)V
 Method	scala/collection/immutable/VectorBuilder.lo_$eq:(I)V
-NameAndType	display0:()[Ljava/lang/Object;
-InterfaceMethod	scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
 Asciz	elem;
 Asciz	newBlockIndex;
 Asciz	(TA;)Lscala/collection/immutable/VectorBuilder<TA;>;;
@@ -235,9 +233,9 @@ Asciz	MODULE$;
 Asciz	Lscala/collection/immutable/Vector$;;
 NameAndType	MODULE$:Lscala/collection/immutable/Vector$;
 Field	scala/collection/immutable/Vector$.MODULE$:Lscala/collection/immutable/Vector$;
-Asciz	empty;
-NameAndType	empty:()Lscala/collection/immutable/Vector;
-Method	scala/collection/immutable/Vector$.empty:()Lscala/collection/immutable/Vector;
+Asciz	NIL;
+NameAndType	NIL:()Lscala/collection/immutable/Vector;
+Method	scala/collection/immutable/Vector$.NIL:()Lscala/collection/immutable/Vector;
 Asciz	scala/collection/immutable/Vector;
 class	scala/collection/immutable/Vector
 Asciz	<init>;
@@ -245,8 +243,6 @@ NameAndType	"<init>":(III)V
 Method	scala/collection/immutable/Vector."<init>":(III)V
 NameAndType	initFrom:(Lscala/collection/immutable/VectorPointer;)V
 InterfaceMethod	scala/collection/immutable/VectorPointer.initFrom:(Lscala/collection/immutable/VectorPointer;)V
-NameAndType	depth:()I
-InterfaceMethod	scala/collection/immutable/VectorPointer.depth:()I
 NameAndType	gotoPos:(II)V
 InterfaceMethod	scala/collection/immutable/VectorPointer.gotoPos:(II)V
 Asciz	s;
@@ -838,7 +834,7 @@ public scala.collection.immutable.VectorBuilder $plus$eq(java.lang.Object);
 	iconst_0
 	invokespecial	Method lo_$eq:(I)V
 l1	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	getfield	Field display0:[Ljava/lang/Object;
 	aload_0
 	invokespecial	Method lo:()I
 	aload_1
@@ -855,17 +851,17 @@ l1	aload_0
    	l1 = 40 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      64      0    this       Lscala/collection/immutable/VectorBuilder;
-   0      64      1    elem       Ljava/lang/Object;
+   0      62      0    this       Lscala/collection/immutable/VectorBuilder;
+   0      62      1    elem       Ljava/lang/Object;
    17      23      2    newBlockIndex       I
 
   Signature: length = 0x2
-   00 FFFFFFB5 
+   00 FFFFFFB3 
 
 public scala.collection.immutable.Vector result();
   Signature: ()Lscala/collection/immutable/Vector;
   Code:
-   Stack=5, Locals=2, Args_size=1
+   Stack=5, Locals=3, Args_size=1
 	aload_0
 	invokespecial	Method blockIndex:()I
 	aload_0
@@ -874,7 +870,9 @@ public scala.collection.immutable.Vector result();
 	iconst_0
 	if_icmpne	l1 // new
 	getstatic	Field scala/collection/immutable/Vector$.MODULE$:Lscala/collection/immutable/Vector$;
-	invokevirtual	Method scala/collection/immutable/Vector$.empty:()Lscala/collection/immutable/Vector;
+	astore_1
+	aload_1
+	invokevirtual	Method scala/collection/immutable/Vector$.NIL:()Lscala/collection/immutable/Vector;
 	areturn
 l1	new	class scala/collection/immutable/Vector
 	dup
@@ -886,15 +884,15 @@ l1	new	class scala/collection/immutable/Vector
 	iadd
 	iconst_0
 	invokespecial	Method scala/collection/immutable/Vector."<init>":(III)V
-	astore_1
-	aload_1
+	astore_2
+	aload_2
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.initFrom:(Lscala/collection/immutable/VectorPointer;)V
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
+	getfield	Field depth:I
 	iconst_1
-	if_icmple	l2 // aload_1
-	aload_1
+	if_icmple	l2 // aload_2
+	aload_2
 	iconst_0
 	aload_0
 	invokespecial	Method blockIndex:()I
@@ -902,18 +900,18 @@ l1	new	class scala/collection/immutable/Vector
 	invokespecial	Method lo:()I
 	iadd
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.gotoPos:(II)V
-l2	aload_1
+l2	aload_2
 	areturn
   Labels:
-   	l1 = 20 // new
-   	l2 = 72 // aload_1
+   	l1 = 22 // new
+   	l2 = 72 // aload_2
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      74      0    this       Lscala/collection/immutable/VectorBuilder;
-   39      34      1    s       Lscala/collection/immutable/Vector;
+   41      32      2    s       Lscala/collection/immutable/Vector;
 
   Signature: length = 0x2
-   00 FFFFFFCF 
+   00 FFFFFFCB 
 
 public void clear();
   Signature: ()V

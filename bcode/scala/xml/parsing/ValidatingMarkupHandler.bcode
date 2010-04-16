@@ -382,8 +382,9 @@ InterfaceMethod	scala/collection/MapLike.get:(Ljava/lang/Object;)Lscala/Option;
 Asciz	scala/Some;
 class	scala/Some
 Asciz	x;
-NameAndType	x:()Ljava/lang/Object;
-Method	scala/Some.x:()Ljava/lang/Object;
+Asciz	Ljava/lang/Object;;
+NameAndType	x:Ljava/lang/Object;
+Field	scala/Some.x:Ljava/lang/Object;
 Asciz	DTD says, wrong element, expected one of ;
 String	DTD says, wrong element, expected one of 
 Asciz	keysIterator;
@@ -392,10 +393,10 @@ NameAndType	keysIterator:()Lscala/collection/Iterator;
 InterfaceMethod	scala/collection/MapLike.keysIterator:()Lscala/collection/Iterator;
 Asciz	dm;
 Asciz	Lscala/xml/dtd/DFAContentModel;;
-Asciz	trans;
-Asciz	Lscala/collection/Map;;
 Asciz	temp1;
 Asciz	Lscala/Option;;
+Asciz	trans;
+Asciz	Lscala/collection/Map;;
 Asciz	scala/xml/parsing/MarkupHandler;
 class	scala/xml/parsing/MarkupHandler
 Method	scala/xml/parsing/MarkupHandler."<init>":()V
@@ -578,7 +579,7 @@ public void endDTD(java.lang.String);
 public void elemStart(int, java.lang.String, java.lang.String, scala.xml.MetaData, scala.xml.NamespaceBinding);
   Signature: (ILjava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;)V
   Code:
-   Stack=4, Locals=13, Args_size=6
+   Stack=4, Locals=11, Args_size=6
 	aload_0
 	new	class scala/collection/mutable/StringBuilder
 	dup
@@ -587,6 +588,8 @@ public void elemStart(int, java.lang.String, java.lang.String, scala.xml.MetaDat
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokevirtual	Method qCurrent:()I
+	istore	6
+	iload	6
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc	String  visiting 
@@ -607,14 +610,14 @@ public void elemStart(int, java.lang.String, java.lang.String, scala.xml.MetaDat
 	aload_3
 	aload_0
 	invokevirtual	Method rootLabel:()Ljava/lang/String;
-	astore	6
+	astore	7
 	dup
 	ifnonnull	l2 // aload
 	pop
-	aload	6
+	aload	7
 	ifnull	l3 // aload_0
 	goto	l4 // aload_0
-l2	aload	6
+l2	aload	7
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l3 // aload_0
 l4	aload_0
@@ -636,29 +639,25 @@ l1	aload_0
 	aload_0
 	invokevirtual	Method declCurrent:()Lscala/xml/dtd/ElemDecl;
 	invokevirtual	Method scala/xml/dtd/ElemDecl.contentModel:()Lscala/xml/dtd/ContentModel;
-	astore	7
+	astore	10
 	getstatic	Field scala/xml/dtd/ANY$.MODULE$:Lscala/xml/dtd/ANY$;
-	aload	7
-	astore	8
 	dup
 	ifnonnull	l5 // aload
 	pop
-	aload	8
+	aload	10
 	ifnull	l3 // aload_0
 	goto	l6 // getstatic
-l5	aload	8
+l5	aload	10
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l3 // aload_0
 l6	getstatic	Field scala/xml/dtd/EMPTY$.MODULE$:Lscala/xml/dtd/EMPTY$;
-	aload	7
-	astore	9
 	dup
 	ifnonnull	l7 // aload
 	pop
-	aload	9
+	aload	10
 	ifnull	l8 // aload_0
 	goto	l9 // getstatic
-l7	aload	9
+l7	aload	10
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l9 // getstatic
 l8	aload_0
@@ -667,8 +666,6 @@ l8	aload_0
 	invokevirtual	Method reportValidationError:(ILjava/lang/String;)V
 	goto	l3 // aload_0
 l9	getstatic	Field scala/xml/dtd/PCDATA$.MODULE$:Lscala/xml/dtd/PCDATA$;
-	aload	7
-	astore	10
 	dup
 	ifnonnull	l10 // aload
 	pop
@@ -683,21 +680,21 @@ l11	aload_0
 	ldc	String DTD says, no elements allowed here
 	invokevirtual	Method reportValidationError:(ILjava/lang/String;)V
 	goto	l3 // aload_0
-l12	aload	7
+l12	aload	10
 	instanceof	class scala/xml/dtd/MIXED
 	ifeq	l13 // aload
 	aload_0
-	aload	7
+	aload	10
 	checkcast	class scala/xml/dtd/MIXED
 	iload_1
 	aload_3
 	invokespecial	Method advanceDFA$1:(Lscala/xml/dtd/DFAContentModel;ILjava/lang/String;)V
 	goto	l3 // aload_0
-l13	aload	7
+l13	aload	10
 	instanceof	class scala/xml/dtd/ELEMENTS
 	ifeq	l14 // new
 	aload_0
-	aload	7
+	aload	10
 	checkcast	class scala/xml/dtd/ELEMENTS
 	iload_1
 	aload_3
@@ -705,20 +702,20 @@ l13	aload	7
 l3	aload_0
 	aload_0
 	invokevirtual	Method qCurrent:()I
-	istore	11
+	istore	8
 	aload_0
 	invokevirtual	Method qStack:()Lscala/collection/immutable/List;
-	iload	11
+	iload	8
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	invokevirtual	Method qStack_$eq:(Lscala/collection/immutable/List;)V
 	aload_0
 	aload_0
 	invokevirtual	Method declCurrent:()Lscala/xml/dtd/ElemDecl;
-	astore	12
+	astore	9
 	aload_0
 	invokevirtual	Method declStack:()Lscala/collection/immutable/List;
-	aload	12
+	aload	9
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	invokevirtual	Method declStack_$eq:(Lscala/collection/immutable/List;)V
 	aload_0
@@ -735,40 +732,40 @@ l3	aload_0
 	return
 l14	new	class scala/MatchError
 	dup
-	aload	7
+	aload	10
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l2 = 77 // aload
-   	l4 = 85 // aload_0
-   	l1 = 115 // aload_0
+   	l2 = 81 // aload
+   	l4 = 89 // aload_0
+   	l1 = 119 // aload_0
    	l5 = 150 // aload
    	l6 = 158 // getstatic
-   	l7 = 178 // aload
-   	l8 = 186 // aload_0
-   	l9 = 196 // getstatic
-   	l10 = 216 // aload
-   	l11 = 224 // aload_0
-   	l12 = 234 // aload
-   	l13 = 256 // aload
-   	l3 = 275 // aload_0
-   	l14 = 337 // new
+   	l7 = 174 // aload
+   	l8 = 182 // aload_0
+   	l9 = 192 // getstatic
+   	l10 = 208 // aload
+   	l11 = 216 // aload_0
+   	l12 = 226 // aload
+   	l13 = 248 // aload
+   	l3 = 267 // aload_0
+   	l14 = 329 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      347      0    this       Lscala/xml/parsing/ValidatingMarkupHandler;
-   0      347      1    pos$1       I
-   0      347      2    pre       Ljava/lang/String;
-   0      347      3    label$1       Ljava/lang/String;
-   0      347      4    attrs       Lscala/xml/MetaData;
-   0      347      5    scope       Lscala/xml/NamespaceBinding;
-   130      145      7    temp4       Lscala/xml/dtd/ContentModel;
-   337      10      7    temp4       Lscala/xml/dtd/ContentModel;
+   0      339      0    this       Lscala/xml/parsing/ValidatingMarkupHandler;
+   0      339      1    pos$1       I
+   0      339      2    pre       Ljava/lang/String;
+   0      339      3    label$1       Ljava/lang/String;
+   0      339      4    attrs       Lscala/xml/MetaData;
+   0      339      5    scope       Lscala/xml/NamespaceBinding;
+   134      133      10    temp4       Lscala/xml/dtd/ContentModel;
+   329      10      10    temp4       Lscala/xml/dtd/ContentModel;
 
 
 public void elemEnd(int, java.lang.String, java.lang.String);
   Signature: (ILjava/lang/String;Ljava/lang/String;)V
   Code:
-   Stack=3, Locals=4, Args_size=4
+   Stack=3, Locals=5, Args_size=4
 	aload_0
 	ldc	String   elemEnd
 	invokevirtual	Method log:(Ljava/lang/String;)V
@@ -804,6 +801,8 @@ public void elemEnd(int, java.lang.String, java.lang.String);
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokevirtual	Method qCurrent:()I
+	istore	4
+	iload	4
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
@@ -823,10 +822,10 @@ public void elemEnd(int, java.lang.String, java.lang.String);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      126      0    this       Lscala/xml/parsing/ValidatingMarkupHandler;
-   0      126      1    pos       I
-   0      126      2    pre       Ljava/lang/String;
-   0      126      3    label       Ljava/lang/String;
+   0      130      0    this       Lscala/xml/parsing/ValidatingMarkupHandler;
+   0      130      1    pos       I
+   0      130      2    pre       Ljava/lang/String;
+   0      130      3    label       Ljava/lang/String;
 
 
 public final void elemDecl(java.lang.String, java.lang.String);
@@ -964,14 +963,14 @@ public abstract void reportValidationError(int, java.lang.String);
 private final void advanceDFA$1(scala.xml.dtd.DFAContentModel, int, java.lang.String);
   Signature: (Lscala/xml/dtd/DFAContentModel;ILjava/lang/String;)V
   Code:
-   Stack=4, Locals=6, Args_size=4
+   Stack=4, Locals=7, Args_size=4
 	aload_1
 	invokevirtual	Method scala/xml/dtd/DFAContentModel.dfa:()Lscala/util/automata/DetWordAutom;
 	invokevirtual	Method scala/util/automata/DetWordAutom.delta:()[Lscala/collection/Map;
 	aload_0
 	invokevirtual	Method qCurrent:()I
 	aaload
-	astore	4
+	astore	6
 	aload_0
 	new	class scala/collection/mutable/StringBuilder
 	dup
@@ -988,24 +987,26 @@ private final void advanceDFA$1(scala.xml.dtd.DFAContentModel, int, java.lang.St
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc_w	String advanceDFA(trans): 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	4
+	aload	6
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method log:(Ljava/lang/String;)V
-	aload	4
+	aload	6
 	new	class scala/xml/dtd/ContentModel$ElemName
 	dup
 	aload_3
 	invokespecial	Method scala/xml/dtd/ContentModel$ElemName."<init>":(Ljava/lang/String;)V
 	invokeinterface	InterfaceMethod scala/collection/MapLike.get:(Ljava/lang/Object;)Lscala/Option;
-	astore	5
-	aload	5
+	astore	4
+	aload	4
 	instanceof	class scala/Some
 	ifeq	l1 // aload_0
 	aload_0
-	aload	5
+	aload	4
 	checkcast	class scala/Some
-	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
+	astore	5
+	aload	5
+	getfield	Field scala/Some.x:Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	invokevirtual	Method qCurrent_$eq:(I)V
 	goto	l2 // return
@@ -1016,21 +1017,21 @@ l1	aload_0
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc_w	String DTD says, wrong element, expected one of 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	4
+	aload	6
 	invokeinterface	InterfaceMethod scala/collection/MapLike.keysIterator:()Lscala/collection/Iterator;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method reportValidationError:(ILjava/lang/String;)V
 l2	return
   Labels:
-   	l1 = 106 // aload_0
-   	l2 = 137 // return
+   	l1 = 110 // aload_0
+   	l2 = 141 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      138      0    this       Lscala/xml/parsing/ValidatingMarkupHandler;
-   0      138      1    dm       Lscala/xml/dtd/DFAContentModel;
-   14      124      4    trans       Lscala/collection/Map;
-   80      58      5    temp1       Lscala/Option;
+   0      142      0    this       Lscala/xml/parsing/ValidatingMarkupHandler;
+   0      142      1    dm       Lscala/xml/dtd/DFAContentModel;
+   80      62      4    temp1       Lscala/Option;
+   14      128      6    trans       Lscala/collection/Map;
 
 
 public scala.xml.parsing.ValidatingMarkupHandler();
@@ -1049,8 +1050,6 @@ public scala.xml.parsing.ValidatingMarkupHandler();
 	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 	putfield	Field declStack:Lscala/collection/immutable/List;
 	aload_0
-	aconst_null
-	pop
 	aconst_null
 	putfield	Field declCurrent:Lscala/xml/dtd/ElemDecl;
 	return

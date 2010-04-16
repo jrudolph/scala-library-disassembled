@@ -2,7 +2,7 @@ Compiled from "BitSet.scala"
 public abstract class scala.collection.immutable.BitSet extends java.lang.Object implements scala.collection.immutable.Set,scala.collection.BitSet,scala.collection.BitSetLike,scala.ScalaObject,java.io.Serializable
   SourceFile: "BitSet.scala"
   Signature: length = 0x2
-   02 FFFFFFEA 
+   02 FFFFFFED 
   ScalaSig: length = 0x492
    05 00 FFFFFF81 2A 06 08 01 02 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF81 00 09 02 06
    42 69 74 53 65 74 0A 02 03 04 01 09 69 6D 6D 75
@@ -675,21 +675,6 @@ Asciz	[J;
 Asciz	updateWord;
 Asciz	(IJ)Lscala/collection/immutable/BitSet;;
 Asciz	(I)Lscala/collection/immutable/BitSet;;
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	scala/collection/immutable/BitSet$$anonfun$$plus$1;
-class	scala/collection/immutable/BitSet$$anonfun$$plus$1
-Asciz	<init>;
-Asciz	(Lscala/collection/immutable/BitSet;)V;
-NameAndType	"<init>":(Lscala/collection/immutable/BitSet;)V
-Method	scala/collection/immutable/BitSet$$anonfun$$plus$1."<init>":(Lscala/collection/immutable/BitSet;)V
-Asciz	require;
-Asciz	(ZLscala/Function0;)V;
-NameAndType	require:(ZLscala/Function0;)V
-Method	scala/Predef$.require:(ZLscala/Function0;)V
 Asciz	scala/collection/BitSetLike;
 class	scala/collection/BitSetLike
 NameAndType	contains:(I)Z
@@ -708,10 +693,29 @@ NameAndType	word:(I)J
 InterfaceMethod	scala/collection/BitSetLike.word:(I)J
 NameAndType	updateWord:(IJ)Lscala/collection/immutable/BitSet;
 Method	scala/collection/immutable/BitSet.updateWord:(IJ)Lscala/collection/immutable/BitSet;
+Asciz	java/lang/IllegalArgumentException;
+class	java/lang/IllegalArgumentException
+Asciz	scala/collection/mutable/StringBuilder;
+class	scala/collection/mutable/StringBuilder
+Asciz	<init>;
+NameAndType	"<init>":()V
+Method	scala/collection/mutable/StringBuilder."<init>":()V
+Asciz	requirement failed: ;
+String	requirement failed: 
+Asciz	append;
+Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
+NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+Asciz	bitset element must be >= 0;
+String	bitset element must be >= 0
+NameAndType	toString:()Ljava/lang/String;
+Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+Asciz	(Ljava/lang/String;)V;
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+Asciz	requirement0;
+Asciz	Z;
 Asciz	idx;
-Asciz	scala/collection/immutable/BitSet$$anonfun$$minus$1;
-class	scala/collection/immutable/BitSet$$anonfun$$minus$1
-Method	scala/collection/immutable/BitSet$$anonfun$$minus$1."<init>":(Lscala/collection/immutable/BitSet;)V
 long	-1l;
 Asciz	()Lscala/collection/generic/Addable;;
 Asciz	scala/collection/TraversableLike;
@@ -768,7 +772,6 @@ Asciz	()Lscala/collection/Set;;
 Asciz	()Lscala/collection/BitSet;;
 Asciz	java/lang/Object;
 class	java/lang/Object
-NameAndType	"<init>":()V
 Method	java/lang/Object."<init>":()V
 Asciz	$init$;
 Asciz	(Lscala/collection/TraversableLike;)V;
@@ -844,12 +847,16 @@ Asciz	BitSet2;
 Asciz	scala/collection/immutable/BitSet$BitSet1;
 class	scala/collection/immutable/BitSet$BitSet1
 Asciz	BitSet1;
+Asciz	scala/collection/immutable/BitSet$$anonfun$$plus$1;
+class	scala/collection/immutable/BitSet$$anonfun$$plus$1
 Asciz	$anonfun$$plus$1;
 Asciz	scala/Predef$$less$colon$less;
 class	scala/Predef$$less$colon$less
 Asciz	scala/Predef;
 class	scala/Predef
 Asciz	$less$colon$less;
+Asciz	scala/collection/immutable/BitSet$$anonfun$$minus$1;
+class	scala/collection/immutable/BitSet$$anonfun$$minus$1
 Asciz	$anonfun$$minus$1;
 Asciz	scala/collection/TraversableLike$WithFilter;
 class	scala/collection/TraversableLike$WithFilter
@@ -2510,82 +2517,91 @@ public abstract scala.collection.immutable.BitSet updateWord(int, long);
 public scala.collection.immutable.BitSet $plus(int);
   Signature: (I)Lscala/collection/immutable/BitSet;
   Code:
-   Stack=7, Locals=3, Args_size=2
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+   Stack=7, Locals=4, Args_size=2
 	iload_1
 	iconst_0
 	if_icmplt	l1 // iconst_0
 	iconst_1
-	goto	l2 // new
+	goto	l2 // istore_2
 l1	iconst_0
-l2	new	class scala/collection/immutable/BitSet$$anonfun$$plus$1
-	dup
-	aload_0
-	invokespecial	Method scala/collection/immutable/BitSet$$anonfun$$plus$1."<init>":(Lscala/collection/immutable/BitSet;)V
-	invokevirtual	Method scala/Predef$.require:(ZLscala/Function0;)V
+l2	istore_2
+	iload_2
+	ifeq	l3 // new
 	aload_0
 	iload_1
 	invokeinterface	InterfaceMethod scala/collection/BitSetLike.contains:(I)Z
-	ifeq	l3 // iload_1
+	ifeq	l4 // iload_1
 	aload_0
-	goto	l4 // areturn
-l3	iload_1
+	goto	l5 // areturn
+l4	iload_1
 	getstatic	Field scala/collection/BitSetLike$.MODULE$:Lscala/collection/BitSetLike$;
 	invokevirtual	Method scala/collection/BitSetLike$.LogWL:()I
 	ishr
-	istore_2
+	istore_3
 	aload_0
-	iload_2
+	iload_3
 	aload_0
-	iload_2
+	iload_3
 	invokeinterface	InterfaceMethod scala/collection/BitSetLike.word:(I)J
 	lconst_1
 	iload_1
 	lshl
 	lor
 	invokevirtual	Method updateWord:(IJ)Lscala/collection/immutable/BitSet;
-l4	areturn
+l5	areturn
+l3	new	class java/lang/IllegalArgumentException
+	dup
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	ldc_w	String requirement failed: 
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	ldc_w	String bitset element must be >= 0
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+	athrow
   Labels:
-   	l1 = 12 // iconst_0
-   	l2 = 13 // new
-   	l3 = 38 // iload_1
-   	l4 = 63 // areturn
+   	l1 = 9 // iconst_0
+   	l2 = 10 // istore_2
+   	l4 = 29 // iload_1
+   	l5 = 54 // areturn
+   	l3 = 55 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      64      0    this       Lscala/collection/immutable/BitSet;
-   0      64      1    elem       I
-   47      16      2    idx       I
+   0      85      0    this       Lscala/collection/immutable/BitSet;
+   0      85      1    elem       I
+   15      10      2    requirement0       Z
+   55      30      2    requirement0       Z
+   38      16      3    idx       I
 
 
 public scala.collection.immutable.BitSet $minus(int);
   Signature: (I)Lscala/collection/immutable/BitSet;
   Code:
-   Stack=8, Locals=3, Args_size=2
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+   Stack=8, Locals=4, Args_size=2
 	iload_1
 	iconst_0
 	if_icmplt	l1 // iconst_0
 	iconst_1
-	goto	l2 // new
+	goto	l2 // istore_2
 l1	iconst_0
-l2	new	class scala/collection/immutable/BitSet$$anonfun$$minus$1
-	dup
-	aload_0
-	invokespecial	Method scala/collection/immutable/BitSet$$anonfun$$minus$1."<init>":(Lscala/collection/immutable/BitSet;)V
-	invokevirtual	Method scala/Predef$.require:(ZLscala/Function0;)V
+l2	istore_2
+	iload_2
+	ifeq	l3 // new
 	aload_0
 	iload_1
 	invokeinterface	InterfaceMethod scala/collection/BitSetLike.contains:(I)Z
-	ifeq	l3 // aload_0
+	ifeq	l4 // aload_0
 	iload_1
 	getstatic	Field scala/collection/BitSetLike$.MODULE$:Lscala/collection/BitSetLike$;
 	invokevirtual	Method scala/collection/BitSetLike$.LogWL:()I
 	ishr
-	istore_2
+	istore_3
 	aload_0
-	iload_2
+	iload_3
 	aload_0
-	iload_2
+	iload_3
 	invokeinterface	InterfaceMethod scala/collection/BitSetLike.word:(I)J
 	lconst_1
 	iload_1
@@ -2594,19 +2610,34 @@ l2	new	class scala/collection/immutable/BitSet$$anonfun$$minus$1
 	lxor
 	land
 	invokevirtual	Method updateWord:(IJ)Lscala/collection/immutable/BitSet;
-	goto	l4 // areturn
-l3	aload_0
-l4	areturn
+	goto	l5 // areturn
+l4	aload_0
+l5	areturn
+l3	new	class java/lang/IllegalArgumentException
+	dup
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	ldc_w	String requirement failed: 
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	ldc_w	String bitset element must be >= 0
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+	athrow
   Labels:
-   	l1 = 12 // iconst_0
-   	l2 = 13 // new
-   	l3 = 66 // aload_0
-   	l4 = 67 // areturn
+   	l1 = 9 // iconst_0
+   	l2 = 10 // istore_2
+   	l4 = 57 // aload_0
+   	l5 = 58 // areturn
+   	l3 = 59 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      68      0    this       Lscala/collection/immutable/BitSet;
-   0      68      1    elem       I
-   43      20      2    idx       I
+   0      89      0    this       Lscala/collection/immutable/BitSet;
+   0      89      1    elem       I
+   15      10      2    requirement0       Z
+   59      30      2    requirement0       Z
+   34      20      3    idx       I
 
 
 public scala.collection.generic.Addable repr();
@@ -2682,17 +2713,19 @@ public scala.collection.Traversable thisCollection();
 public java.lang.Object apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/SetLike.apply:(Ljava/lang/Object;)Z
+	istore_2
+	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      11      0    this       Lscala/collection/immutable/BitSet;
-   0      11      1    v1       Ljava/lang/Object;
+   0      13      0    this       Lscala/collection/immutable/BitSet;
+   0      13      1    v1       Ljava/lang/Object;
 
 
 public boolean contains(java.lang.Object);

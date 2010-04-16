@@ -1013,10 +1013,8 @@ InterfaceMethod	scala/collection/IndexedSeqLike.copyToArray:(Ljava/lang/Object;I
 Asciz	(Lscala/collection/generic/Growable;Lscala/collection/Traversable;)Lscala/collection/generic/Growable;;
 NameAndType	$plus$plus$eq:(Lscala/collection/generic/Growable;Lscala/collection/Traversable;)Lscala/collection/generic/Growable;
 Method	scala/collection/generic/Growable$class.$plus$plus$eq:(Lscala/collection/generic/Growable;Lscala/collection/Traversable;)Lscala/collection/generic/Growable;
-Asciz	temp1;
 Asciz	temp2;
 Asciz	Lscala/collection/mutable/IndexedSeq;;
-Asciz	v;
 Asciz	(Lscala/collection/Traversable<TA;>;)Lscala/collection/mutable/ArrayBuffer<TA;>;;
 Asciz	$plus$eq$colon;
 NameAndType	copy:(III)V
@@ -1051,20 +1049,23 @@ Asciz	seq;
 Asciz	Lscala/collection/immutable/List;;
 Asciz	(ILscala/collection/Traversable<TA;>;)V;
 Asciz	remove;
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	scala/collection/mutable/ArrayBuffer$$anonfun$remove$1;
-class	scala/collection/mutable/ArrayBuffer$$anonfun$remove$1
-Asciz	(Lscala/collection/mutable/ArrayBuffer;)V;
-NameAndType	"<init>":(Lscala/collection/mutable/ArrayBuffer;)V
-Method	scala/collection/mutable/ArrayBuffer$$anonfun$remove$1."<init>":(Lscala/collection/mutable/ArrayBuffer;)V
-Asciz	require;
-Asciz	(ZLscala/Function0;)V;
-NameAndType	require:(ZLscala/Function0;)V
-Method	scala/Predef$.require:(ZLscala/Function0;)V
+Asciz	java/lang/IllegalArgumentException;
+class	java/lang/IllegalArgumentException
+Asciz	scala/collection/mutable/StringBuilder;
+class	scala/collection/mutable/StringBuilder
+NameAndType	"<init>":()V
+Method	scala/collection/mutable/StringBuilder."<init>":()V
+Asciz	requirement failed: ;
+String	requirement failed: 
+Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
+NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+Asciz	removing negative number of elements;
+String	removing negative number of elements
+Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+Method	java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+Asciz	requirement0;
+Asciz	Z;
 NameAndType	apply:(I)Ljava/lang/Object;
 InterfaceMethod	scala/collection/mutable/ResizableArray.apply:(I)Ljava/lang/Object;
 NameAndType	remove:(II)V
@@ -1072,7 +1073,6 @@ Method	scala/collection/mutable/ArrayBuffer.remove:(II)V
 Asciz	result;
 Asciz	(I)TA;;
 Asciz	()Lscala/collection/mutable/ArrayBuffer;;
-NameAndType	"<init>":()V
 Method	scala/collection/mutable/ArrayBuffer."<init>":()V
 NameAndType	$plus$plus$eq:(Lscala/collection/Traversable;)Lscala/collection/mutable/ArrayBuffer;
 Method	scala/collection/mutable/ArrayBuffer.$plus$plus$eq:(Lscala/collection/Traversable;)Lscala/collection/mutable/ArrayBuffer;
@@ -1272,6 +1272,8 @@ Asciz	$less$colon$less;
 Asciz	scala/collection/TraversableLike$WithFilter;
 class	scala/collection/TraversableLike$WithFilter
 Asciz	WithFilter;
+Asciz	scala/collection/mutable/ArrayBuffer$$anonfun$remove$1;
+class	scala/collection/mutable/ArrayBuffer$$anonfun$remove$1
 Asciz	$anonfun$remove$1;
 Asciz	scala/collection/mutable/Buffer;
 class	scala/collection/mutable/Buffer
@@ -4095,37 +4097,33 @@ public scala.collection.mutable.ArrayBuffer $plus$eq(java.lang.Object);
 public scala.collection.mutable.ArrayBuffer $plus$plus$eq(scala.collection.Traversable);
   Signature: (Lscala/collection/Traversable;)Lscala/collection/mutable/ArrayBuffer;
   Code:
-   Stack=4, Locals=6, Args_size=2
+   Stack=4, Locals=4, Args_size=2
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class scala/collection/mutable/IndexedSeq
 	ifeq	l1 // aload_0
-	aload_2
+	aload_1
 	checkcast	class scala/collection/mutable/IndexedSeq
-	astore_3
-	aload_3
-	astore	4
-	aload	4
+	astore_2
+	aload_2
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	istore	5
+	istore_3
 	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
-	iload	5
+	iload_3
 	iadd
 	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.ensureSize:(I)V
-	aload	4
+	aload_2
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.array:()[Ljava/lang/Object;
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
-	iload	5
+	iload_3
 	invokeinterface	InterfaceMethod scala/collection/IndexedSeqLike.copyToArray:(Ljava/lang/Object;II)V
 	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
-	iload	5
+	iload_3
 	iadd
 	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0_$eq:(I)V
 	aload_0
@@ -4136,19 +4134,17 @@ l1	aload_0
 	checkcast	class scala/collection/mutable/ArrayBuffer
 l2	areturn
   Labels:
-   	l1 = 81 // aload_0
-   	l2 = 89 // areturn
+   	l1 = 70 // aload_0
+   	l2 = 78 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      90      0    this       Lscala/collection/mutable/ArrayBuffer;
-   0      90      1    iter       Lscala/collection/Traversable;
-   2      88      2    temp1       Lscala/collection/Traversable;
-   14      64      3    temp2       Lscala/collection/mutable/IndexedSeq;
-   17      61      4    v       Lscala/collection/mutable/IndexedSeq;
-   26      52      5    n       I
+   0      79      0    this       Lscala/collection/mutable/ArrayBuffer;
+   0      79      1    iter       Lscala/collection/Traversable;
+   12      55      2    temp2       Lscala/collection/mutable/IndexedSeq;
+   19      48      3    n       I
 
   Signature: length = 0x2
-   03 FFFFFFA0 
+   03 FFFFFF9E 
 
 public scala.collection.mutable.ArrayBuffer $plus$eq$colon(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/mutable/ArrayBuffer;
@@ -4205,7 +4201,7 @@ public scala.collection.mutable.ArrayBuffer $plus$plus$eq$colon(scala.collection
    0      8      1    iter       Lscala/collection/Traversable;
 
   Signature: length = 0x2
-   03 FFFFFFA0 
+   03 FFFFFF9E 
 
 public void insertAll(int, scala.collection.Traversable);
   Signature: (ILscala/collection/Traversable;)V
@@ -4271,41 +4267,38 @@ l2	aload_2
    45      62      4    len       I
 
   Signature: length = 0x2
-   03 FFFFFFC0 
+   03 FFFFFFBE 
 
 public void remove(int, int);
   Signature: (II)V
   Code:
-   Stack=6, Locals=3, Args_size=3
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+   Stack=6, Locals=4, Args_size=3
 	iload_2
 	iconst_0
 	if_icmplt	l1 // iconst_0
 	iconst_1
-	goto	l2 // new
+	goto	l2 // istore_3
 l1	iconst_0
-l2	new	class scala/collection/mutable/ArrayBuffer$$anonfun$remove$1
-	dup
-	aload_0
-	invokespecial	Method scala/collection/mutable/ArrayBuffer$$anonfun$remove$1."<init>":(Lscala/collection/mutable/ArrayBuffer;)V
-	invokevirtual	Method scala/Predef$.require:(ZLscala/Function0;)V
+l2	istore_3
+	iload_3
+	ifeq	l3 // new
 	iload_1
 	iconst_0
-	if_icmplt	l3 // new
+	if_icmplt	l4 // new
 	iload_1
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.size0:()I
 	iload_2
 	isub
-	if_icmple	l4 // aload_0
-l3	new	class java/lang/IndexOutOfBoundsException
+	if_icmple	l5 // aload_0
+l4	new	class java/lang/IndexOutOfBoundsException
 	dup
 	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
-l4	aload_0
+l5	aload_0
 	iload_1
 	iload_2
 	iadd
@@ -4324,16 +4317,31 @@ l4	aload_0
 	isub
 	invokeinterface	InterfaceMethod scala/collection/mutable/ResizableArray.reduceToSize:(I)V
 	return
+l3	new	class java/lang/IllegalArgumentException
+	dup
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	ldc_w	String requirement failed: 
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	ldc_w	String removing negative number of elements
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+	athrow
   Labels:
-   	l1 = 12 // iconst_0
-   	l2 = 13 // new
-   	l3 = 41 // new
-   	l4 = 56 // aload_0
+   	l1 = 9 // iconst_0
+   	l2 = 10 // istore_3
+   	l4 = 32 // new
+   	l5 = 47 // aload_0
+   	l3 = 82 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      91      0    this       Lscala/collection/mutable/ArrayBuffer;
-   0      91      1    n       I
-   0      91      2    count       I
+   0      112      0    this       Lscala/collection/mutable/ArrayBuffer;
+   0      112      1    n       I
+   0      112      2    count       I
+   15      5      3    requirement0       Z
+   82      30      3    requirement0       Z
 
 
 public java.lang.Object remove(int);
@@ -4358,7 +4366,7 @@ public java.lang.Object remove(int);
    8      7      2    result       Ljava/lang/Object;
 
   Signature: length = 0x2
-   03 FFFFFFD5 
+   03 FFFFFFD6 
 
 public scala.collection.mutable.ArrayBuffer clone();
   Signature: ()Lscala/collection/mutable/ArrayBuffer;

@@ -27,12 +27,25 @@ Asciz	(Ljava/lang/Object;)Z;
 Asciz	LineNumberTable;
 NameAndType	eta$0$1$1:Ljava/lang/Object;
 Field	scala/collection/immutable/Stream$$anonfun$distinct$1$$anonfun$apply$1.eta$0$1$1:Ljava/lang/Object;
+Asciz	java/lang/Number;
+class	java/lang/Number
+Asciz	java/lang/Character;
+class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals;
+Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	java/lang/Object;
+class	java/lang/Object
+Asciz	equals;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	this;
+Asciz	Lscala/collection/immutable/Stream$$anonfun$distinct$1$$anonfun$apply$1;;
+Asciz	x0;
+Asciz	LocalVariableTable;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	apply:(Ljava/lang/Object;)Z
 Method	scala/collection/immutable/Stream$$anonfun$distinct$1$$anonfun$apply$1.apply:(Ljava/lang/Object;)Z
@@ -40,10 +53,7 @@ Asciz	boxToBoolean;
 Asciz	(Z)Ljava/lang/Boolean;;
 NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
 Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
-Asciz	this;
-Asciz	Lscala/collection/immutable/Stream$$anonfun$distinct$1$$anonfun$apply$1;;
 Asciz	v1;
-Asciz	LocalVariableTable;
 Asciz	<init>;
 Asciz	(Lscala/collection/immutable/Stream$$anonfun$distinct$1;Ljava/lang/Object;)V;
 Asciz	scala/runtime/AbstractFunction1;
@@ -69,7 +79,7 @@ class	java/io/Serializable
 public static final long serialVersionUID;
   Signature: J
 
-private final java.lang.Object eta$0$1$1;
+public final java.lang.Object eta$0$1$1;
   Signature: Ljava/lang/Object;
 
 public static {};
@@ -84,34 +94,67 @@ public static {};
 public final boolean apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	getfield	Field eta$0$1$1:Ljava/lang/Object;
+	astore_2
+	aload_2
 	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l1 // iconst_1
+	if_acmpne	l1 // aload_2
+	iconst_1
+	goto	l2 // ifeq
+l1	aload_2
+	ifnonnull	l3 // aload_2
 	iconst_0
-	goto	l2 // ireturn
-l1	iconst_1
-l2	ireturn
+	goto	l2 // ifeq
+l3	aload_2
+	instanceof	class java/lang/Number
+	ifne	l4 // aload_2
+	aload_2
+	instanceof	class java/lang/Character
+	ifeq	l5 // aload_2
+l4	aload_2
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l2 // ifeq
+l5	aload_2
+	aload_1
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l2	ifeq	l6 // iconst_1
+	iconst_0
+	goto	l7 // ireturn
+l6	iconst_1
+l7	ireturn
   Labels:
-   	l1 = 15 // iconst_1
-   	l2 = 16 // ireturn
+   	l1 = 14 // aload_2
+   	l3 = 22 // aload_2
+   	l4 = 36 // aload_2
+   	l5 = 44 // aload_2
+   	l2 = 49 // ifeq
+   	l6 = 56 // iconst_1
+   	l7 = 57 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      58      0    this       Lscala/collection/immutable/Stream$$anonfun$distinct$1$$anonfun$apply$1;
+   10      42      2    x0       Ljava/lang/Object;
+
 
 public final java.lang.Object apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	aload_1
 	invokevirtual	Method apply:(Ljava/lang/Object;)Z
+	istore_2
+	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      9      0    this       Lscala/collection/immutable/Stream$$anonfun$distinct$1$$anonfun$apply$1;
-   0      9      1    v1       Ljava/lang/Object;
+   0      11      0    this       Lscala/collection/immutable/Stream$$anonfun$distinct$1$$anonfun$apply$1;
+   0      11      1    v1       Ljava/lang/Object;
 
 
 public scala.collection.immutable.Stream$$anonfun$distinct$1$$anonfun$apply$1(scala.collection.immutable.Stream$$anonfun$distinct$1, java.lang.Object);
@@ -131,7 +174,7 @@ public scala.collection.immutable.Stream$$anonfun$distinct$1$$anonfun$apply$1(sc
    0      10      1    $outer       Lscala/collection/immutable/Stream$$anonfun$distinct$1;
 
   Signature: length = 0x2
-   00 2C 
+   00 36 
 
 }
 

@@ -37,9 +37,9 @@ class	scala/Some
 Asciz	scala/collection/mutable/DefaultEntry;
 class	scala/collection/mutable/DefaultEntry
 Asciz	value;
-Asciz	()Ljava/lang/Object;;
-NameAndType	value:()Ljava/lang/Object;
-Method	scala/collection/mutable/DefaultEntry.value:()Ljava/lang/Object;
+Asciz	Ljava/lang/Object;;
+NameAndType	value:Ljava/lang/Object;
+Field	scala/collection/mutable/DefaultEntry.value:Ljava/lang/Object;
 Asciz	<init>;
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
@@ -47,7 +47,6 @@ Method	scala/Some."<init>":(Ljava/lang/Object;)V
 Asciz	$this;
 Asciz	Lscala/collection/mutable/DefaultMapModel;;
 Asciz	key;
-Asciz	Ljava/lang/Object;;
 Asciz	e;
 Asciz	Lscala/collection/mutable/DefaultEntry;;
 Asciz	LocalVariableTable;
@@ -60,15 +59,13 @@ Asciz	addEntry;
 Asciz	(Lscala/collection/mutable/DefaultEntry;)V;
 NameAndType	addEntry:(Lscala/collection/mutable/DefaultEntry;)V
 InterfaceMethod	scala/collection/mutable/DefaultMapModel.addEntry:(Lscala/collection/mutable/DefaultEntry;)V
-Asciz	value_$eq;
-NameAndType	value_$eq:(Ljava/lang/Object;)V
-Method	scala/collection/mutable/DefaultEntry.value_$eq:(Ljava/lang/Object;)V
 Asciz	v;
 Asciz	$plus$eq;
 Asciz	(Lscala/collection/mutable/DefaultMapModel;Lscala/Tuple2;)Lscala/collection/mutable/DefaultMapModel;;
 Asciz	scala/Tuple2;
 class	scala/Tuple2
 Asciz	_1;
+Asciz	()Ljava/lang/Object;;
 NameAndType	_1:()Ljava/lang/Object;
 Method	scala/Tuple2._1:()Ljava/lang/Object;
 Asciz	_2;
@@ -107,16 +104,16 @@ class	scala/collection/mutable/DefaultMapModel$class
 public static scala.Option get(scala.collection.mutable.DefaultMapModel, java.lang.Object);
   Signature: (Lscala/collection/mutable/DefaultMapModel;Ljava/lang/Object;)Lscala/Option;
   Code:
-   Stack=3, Locals=4, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/mutable/DefaultMapModel.findEntry:(Ljava/lang/Object;)Lscala/collection/mutable/DefaultEntry;
 	astore_2
 	aload_2
 	dup
-	astore_3
+	pop
 	ifnull	l1 // getstatic
-	aload_3
+	aload_2
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // new
@@ -125,7 +122,7 @@ l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 l2	new	class scala/Some
 	dup
 	aload_2
-	invokevirtual	Method scala/collection/mutable/DefaultEntry.value:()Ljava/lang/Object;
+	getfield	Field scala/collection/mutable/DefaultEntry.value:Ljava/lang/Object;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 l3	areturn
   Labels:
@@ -142,16 +139,16 @@ l3	areturn
 public static scala.Option put(scala.collection.mutable.DefaultMapModel, java.lang.Object, java.lang.Object);
   Signature: (Lscala/collection/mutable/DefaultMapModel;Ljava/lang/Object;Ljava/lang/Object;)Lscala/Option;
   Code:
-   Stack=5, Locals=6, Args_size=3
+   Stack=5, Locals=5, Args_size=3
 	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/mutable/DefaultMapModel.findEntry:(Ljava/lang/Object;)Lscala/collection/mutable/DefaultEntry;
 	astore_3
 	aload_3
 	dup
-	astore	4
+	pop
 	ifnull	l1 // aload_0
-	aload	4
+	aload_3
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // aload_3
@@ -165,27 +162,27 @@ l1	aload_0
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	goto	l3 // areturn
 l2	aload_3
-	invokevirtual	Method scala/collection/mutable/DefaultEntry.value:()Ljava/lang/Object;
-	astore	5
+	getfield	Field scala/collection/mutable/DefaultEntry.value:Ljava/lang/Object;
+	astore	4
 	aload_3
 	aload_2
-	invokevirtual	Method scala/collection/mutable/DefaultEntry.value_$eq:(Ljava/lang/Object;)V
+	putfield	Field scala/collection/mutable/DefaultEntry.value:Ljava/lang/Object;
 	new	class scala/Some
 	dup
-	aload	5
+	aload	4
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 l3	areturn
   Labels:
-   	l1 = 24 // aload_0
-   	l2 = 45 // aload_3
-   	l3 = 65 // areturn
+   	l1 = 22 // aload_0
+   	l2 = 43 // aload_3
+   	l3 = 63 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      66      0    $this       Lscala/collection/mutable/DefaultMapModel;
-   0      66      1    key       Ljava/lang/Object;
-   0      66      2    value       Ljava/lang/Object;
-   8      58      3    e       Lscala/collection/mutable/DefaultEntry;
-   51      14      5    v       Ljava/lang/Object;
+   0      64      0    $this       Lscala/collection/mutable/DefaultMapModel;
+   0      64      1    key       Ljava/lang/Object;
+   0      64      2    value       Ljava/lang/Object;
+   8      56      3    e       Lscala/collection/mutable/DefaultEntry;
+   49      14      4    v       Ljava/lang/Object;
 
 
 public static scala.collection.mutable.DefaultMapModel $plus$eq(scala.collection.mutable.DefaultMapModel, scala.Tuple2);

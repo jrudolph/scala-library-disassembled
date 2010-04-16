@@ -141,19 +141,13 @@ Field	scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 Asciz	scala/collection/mutable/StringBuilder;
 class	scala/collection/mutable/StringBuilder
 Method	scala/collection/mutable/StringBuilder."<init>":()V
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	any2stringadd;
-Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
-NameAndType	any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
-Method	scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
-Asciz	: starting new ;
-String	: starting new 
 Asciz	scala/runtime/StringAdd;
 class	scala/runtime/StringAdd
+Asciz	(Ljava/lang/Object;)V;
+NameAndType	"<init>":(Ljava/lang/Object;)V
+Method	scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+Asciz	: starting new ;
+String	: starting new 
 Asciz	$plus;
 Asciz	(Ljava/lang/String;)Ljava/lang/String;;
 NameAndType	$plus:(Ljava/lang/String;)Ljava/lang/String;
@@ -181,21 +175,17 @@ Asciz	(Ljava/lang/String;)V;
 NameAndType	info:(Ljava/lang/String;)V
 Method	scala/actors/Debug$.info:(Ljava/lang/String;)V
 Asciz	s;
-Asciz	Lscala/actors/scheduler/ResizableThreadPoolScheduler;;
 Asciz	Lscala/actors/scheduler/ForkJoinScheduler;;
+Asciz	Lscala/actors/scheduler/ResizableThreadPoolScheduler;;
 Asciz	snapshot;
-Asciz	scala/actors/scheduler/DelegatingScheduler;
-class	scala/actors/scheduler/DelegatingScheduler
-NameAndType	sched:()Lscala/actors/IScheduler;
-InterfaceMethod	scala/actors/scheduler/DelegatingScheduler.sched:()Lscala/actors/IScheduler;
 NameAndType	snapshot:()V
 Method	scala/actors/scheduler/ForkJoinScheduler.snapshot:()V
 Asciz	scheduler does not implement snapshot;
 String	scheduler does not implement snapshot
-Asciz	error;
-Asciz	(Ljava/lang/String;)Lscala/runtime/Nothing$;;
-NameAndType	error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
-Method	scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+Asciz	java/lang/RuntimeException;
+class	java/lang/RuntimeException
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 Asciz	restart;
 NameAndType	restart:()V
 Method	scala/actors/scheduler/ForkJoinScheduler.restart:()V
@@ -213,6 +203,8 @@ Asciz	initializing ;
 String	initializing 
 Asciz	...;
 String	...
+Asciz	scala/actors/scheduler/DelegatingScheduler;
+class	scala/actors/scheduler/DelegatingScheduler
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -463,18 +455,18 @@ public void printActorDump();
 public scala.actors.IScheduler makeNewScheduler();
   Signature: ()Lscala/actors/IScheduler;
   Code:
-   Stack=4, Locals=4, Args_size=1
+   Stack=5, Locals=4, Args_size=1
 	getstatic	Field scala/actors/scheduler/ThreadPoolConfig$.MODULE$:Lscala/actors/scheduler/ThreadPoolConfig$;
 	invokevirtual	Method scala/actors/scheduler/ThreadPoolConfig$.useForkJoin:()Z
 	ifeq	l1 // new
 	new	class scala/actors/scheduler/ForkJoinScheduler
 	dup
 	invokespecial	Method scala/actors/scheduler/ForkJoinScheduler."<init>":()V
-	astore_3
-	aload_3
+	astore_1
+	aload_1
 	invokevirtual	Method scala/actors/scheduler/ForkJoinScheduler.start:()V
-	aload_3
-	goto	l2 // astore_1
+	aload_1
+	goto	l2 // astore_3
 l1	new	class scala/actors/scheduler/ResizableThreadPoolScheduler
 	dup
 	iconst_0
@@ -483,81 +475,96 @@ l1	new	class scala/actors/scheduler/ResizableThreadPoolScheduler
 	aload_2
 	invokevirtual	Method scala/actors/scheduler/ResizableThreadPoolScheduler.start:()V
 	aload_2
-l2	astore_1
+l2	astore_3
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	new	class scala/runtime/StringAdd
+	dup
 	aload_0
-	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
 	ldc	String : starting new 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload_1
+	aload_3
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc	String  [
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload_1
+	aload_3
 	invokevirtual	Method java/lang/Object.getClass:()Ljava/lang/Class;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc	String ]
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
-	aload_1
+	aload_3
 	areturn
   Labels:
    	l1 = 25 // new
-   	l2 = 39 // astore_1
+   	l2 = 39 // astore_3
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      94      0    this       Lscala/actors/Scheduler$;
-   40      53      1    sched       Lscala/actors/IScheduler;
+   0      95      0    this       Lscala/actors/Scheduler$;
+   17      5      1    s       Lscala/actors/scheduler/ForkJoinScheduler;
    34      5      2    s       Lscala/actors/scheduler/ResizableThreadPoolScheduler;
-   17      5      3    s       Lscala/actors/scheduler/ForkJoinScheduler;
+   40      54      3    sched       Lscala/actors/IScheduler;
 
 
 public void snapshot();
   Signature: ()V
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=3, Locals=2, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/scheduler/DelegatingScheduler.sched:()Lscala/actors/IScheduler;
+	getfield	Field sched:Lscala/actors/IScheduler;
 	instanceof	class scala/actors/scheduler/ForkJoinScheduler
-	ifeq	l1 // getstatic
+	ifeq	l1 // ldc
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/scheduler/DelegatingScheduler.sched:()Lscala/actors/IScheduler;
+	getfield	Field sched:Lscala/actors/IScheduler;
 	checkcast	class scala/actors/scheduler/ForkJoinScheduler
 	invokevirtual	Method scala/actors/scheduler/ForkJoinScheduler.snapshot:()V
 	return
-l1	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	ldc	String scheduler does not implement snapshot
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+l1	ldc	String scheduler does not implement snapshot
+	astore_1
+	new	class java/lang/RuntimeException
+	dup
+	aload_1
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 25 // getstatic
+   	l1 = 21 // ldc
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      33      0    this       Lscala/actors/Scheduler$;
+
   Deprecated: true
 
 public void restart();
   Signature: ()V
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=3, Locals=2, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/scheduler/DelegatingScheduler.sched:()Lscala/actors/IScheduler;
+	getfield	Field sched:Lscala/actors/IScheduler;
 	instanceof	class scala/actors/scheduler/ForkJoinScheduler
-	ifeq	l1 // getstatic
+	ifeq	l1 // ldc
 	aload_0
-	invokeinterface	InterfaceMethod scala/actors/scheduler/DelegatingScheduler.sched:()Lscala/actors/IScheduler;
+	getfield	Field sched:Lscala/actors/IScheduler;
 	checkcast	class scala/actors/scheduler/ForkJoinScheduler
 	invokevirtual	Method scala/actors/scheduler/ForkJoinScheduler.restart:()V
 	return
-l1	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	ldc	String scheduler does not implement restart
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+l1	ldc	String scheduler does not implement restart
+	astore_1
+	new	class java/lang/RuntimeException
+	dup
+	aload_1
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 25 // getstatic
+   	l1 = 21 // ldc
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      33      0    this       Lscala/actors/Scheduler$;
+
   Deprecated: true
 
 private scala.actors.Scheduler$();

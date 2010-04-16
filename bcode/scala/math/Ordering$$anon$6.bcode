@@ -108,17 +108,17 @@ Asciz	MODULE$;
 Asciz	Lscala/math/Ordering$Boolean$;;
 NameAndType	MODULE$:Lscala/math/Ordering$Boolean$;
 Field	scala/math/Ordering$Boolean$.MODULE$:Lscala/math/Ordering$Boolean$;
-Asciz	scala/math/Ordering$BooleanOrdering;
-class	scala/math/Ordering$BooleanOrdering
-Asciz	(ZZ)I;
-NameAndType	compare:(ZZ)I
-InterfaceMethod	scala/math/Ordering$BooleanOrdering.compare:(ZZ)I
+Asciz	scala/math/Ordering$BooleanOrdering$class;
+class	scala/math/Ordering$BooleanOrdering$class
+Asciz	(Lscala/math/Ordering$BooleanOrdering;ZZ)I;
+NameAndType	compare:(Lscala/math/Ordering$BooleanOrdering;ZZ)I
+Method	scala/math/Ordering$BooleanOrdering$class.compare:(Lscala/math/Ordering$BooleanOrdering;ZZ)I
 Asciz	Lscala/collection/Iterable;;
+Asciz	res;
+Asciz	I;
 Asciz	xe;
 Asciz	Lscala/collection/Iterator;;
 Asciz	ye;
-Asciz	res;
-Asciz	I;
 Asciz	(Lscala/collection/Iterable<TT;>;Lscala/collection/Iterable<TT;>;)I;
 Asciz	()Lscala/math/PartialOrdering;;
 NameAndType	reverse:()Lscala/math/Ordering;
@@ -152,10 +152,12 @@ Asciz	scala/math/Ordering$Ops;
 class	scala/math/Ordering$Ops
 Asciz	Ops;
 Asciz	$anon$6;
+Asciz	scala/math/Ordering$BooleanOrdering;
+class	scala/math/Ordering$BooleanOrdering
 Asciz	BooleanOrdering;
 
 {
-private final scala.math.Ordering ord$1;
+public final scala.math.Ordering ord$1;
   Signature: Lscala/math/Ordering;
 
 public scala.Some tryCompare(java.lang.Object, java.lang.Object);
@@ -338,50 +340,56 @@ public scala.math.Ordering$Ops mkOrderingOps(java.lang.Object);
 public int compare(scala.collection.Iterable, scala.collection.Iterable);
   Signature: (Lscala/collection/Iterable;Lscala/collection/Iterable;)I
   Code:
-   Stack=3, Locals=6, Args_size=3
+   Stack=3, Locals=9, Args_size=3
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
-	astore_3
+	astore	4
 	aload_2
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
-	astore	4
-l2	aload_3
+	astore	5
+l2	aload	4
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
 	ifeq	l1 // getstatic
-	aload	4
+	aload	5
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
 	ifeq	l1 // getstatic
 	aload_0
 	getfield	Field ord$1:Lscala/math/Ordering;
-	aload_3
-	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
 	aload	4
+	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
+	aload	5
 	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/math/Ordering.compare:(Ljava/lang/Object;Ljava/lang/Object;)I
-	istore	5
-	iload	5
+	istore_3
+	iload_3
 	iconst_0
-	if_icmpeq	l2 // aload_3
-	iload	5
+	if_icmpeq	l2 // aload
+	iload_3
 	ireturn
 l1	getstatic	Field scala/math/Ordering$Boolean$.MODULE$:Lscala/math/Ordering$Boolean$;
-	aload_3
-	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
 	aload	4
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	invokeinterface	InterfaceMethod scala/math/Ordering$BooleanOrdering.compare:(ZZ)I
+	aload	5
+	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
+	istore	8
+	istore	7
+	astore	6
+	aload	6
+	iload	7
+	iload	8
+	invokestatic	Method scala/math/Ordering$BooleanOrdering$class.compare:(Lscala/math/Ordering$BooleanOrdering;ZZ)I
 	ireturn
   Labels:
-   	l2 = 15 // aload_3
+   	l2 = 16 // aload
    	l1 = 67 // getstatic
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      89      0    this       Lscala/math/Ordering$$anon$6;
-   0      89      1    x       Lscala/collection/Iterable;
-   0      89      2    y       Lscala/collection/Iterable;
-   7      81      3    xe       Lscala/collection/Iterator;
-   15      73      4    ye       Lscala/collection/Iterator;
-   58      9      5    res       I
+   0      100      0    this       Lscala/math/Ordering$$anon$6;
+   0      100      1    x       Lscala/collection/Iterable;
+   0      100      2    y       Lscala/collection/Iterable;
+   60      7      3    res       I
+   8      91      4    xe       Lscala/collection/Iterator;
+   16      83      5    ye       Lscala/collection/Iterator;
 
   Signature: length = 0x2
    00 6C 

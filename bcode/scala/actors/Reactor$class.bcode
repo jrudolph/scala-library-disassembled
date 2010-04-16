@@ -112,10 +112,10 @@ Asciz	msg;
 Asciz	Ljava/lang/Object;;
 Asciz	replyTo;
 Asciz	Lscala/actors/OutputChannel;;
-Asciz	todo;
-Asciz	Lscala/Function0;;
 Asciz	savedWaitingFor;
 Asciz	Lscala/PartialFunction;;
+Asciz	todo;
+Asciz	Lscala/Function0;;
 Asciz	(Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/PartialFunction;)Lscala/Function0;;
 Asciz	scala/actors/Reactor$$anonfun$startSearch$1;
 class	scala/actors/Reactor$$anonfun$startSearch$1
@@ -198,12 +198,6 @@ NameAndType	"<init>":(Ljava/lang/String;)V
 Method	scala/actors/MQueue."<init>":(Ljava/lang/String;)V
 NameAndType	drainSendBuffer:(Lscala/actors/MQueue;)V
 InterfaceMethod	scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	scala/actors/MQueueElement;
 class	scala/actors/MQueueElement
 NameAndType	msg:()Ljava/lang/Object;
@@ -221,9 +215,9 @@ InterfaceMethod	scala/actors/Reactor.resumeReceiver:(Lscala/Tuple2;Lscala/Partia
 Asciz	startMbox;
 Asciz	resumeOnSameThread;
 Asciz	tmpMbox;
-Asciz	done;
 Asciz	qel;
 Asciz	Lscala/actors/MQueueElement;;
+Asciz	done;
 Asciz	react;
 Asciz	(Lscala/actors/Reactor;Lscala/PartialFunction;)Lscala/runtime/Nothing$;;
 Asciz	(Lscala/actors/MQueue;Lscala/PartialFunction;Z)V;
@@ -411,10 +405,10 @@ public static int mailboxSize(scala.actors.Reactor);
 public static void send(scala.actors.Reactor, java.lang.Object, scala.actors.OutputChannel);
   Signature: (Lscala/actors/Reactor;Ljava/lang/Object;Lscala/actors/OutputChannel;)V
   Code:
-   Stack=4, Locals=7, Args_size=3
+   Stack=4, Locals=6, Args_size=3
 	aload_0
 	dup
-	astore	4
+	pop
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor:()Lscala/PartialFunction;
@@ -423,7 +417,7 @@ public static void send(scala.actors.Reactor, java.lang.Object, scala.actors.Out
 	if_acmpeq	l1 // aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor:()Lscala/PartialFunction;
-	astore	6
+	astore_3
 	aload_0
 	getstatic	Field scala/actors/Reactor$.MODULE$:Lscala/actors/Reactor$;
 	invokevirtual	Method scala/actors/Reactor$.waitingForNone:()Lscala/PartialFunction;
@@ -431,7 +425,7 @@ public static void send(scala.actors.Reactor, java.lang.Object, scala.actors.Out
 	aload_0
 	aload_1
 	aload_2
-	aload	6
+	aload_3
 	invokeinterface	InterfaceMethod scala/actors/Reactor.startSearch:(Ljava/lang/Object;Lscala/actors/OutputChannel;Lscala/PartialFunction;)Lscala/Function0;
 	goto	l2 // astore
 l1	aload_0
@@ -443,32 +437,32 @@ l1	aload_0
 	dup
 	aload_0
 	invokespecial	Method scala/actors/Reactor$$anonfun$1."<init>":(Lscala/actors/Reactor;)V
-l2	astore	5
-	aload	4
+l2	astore	4
+	aload_0
 	monitorexit
-	aload	5
+	aload	4
 	checkcast	class scala/Function0
-	astore_3
-	aload_3
+	astore	5
+	aload	5
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
 	pop
 	return
-	aload	4
+	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l1 = 53 // aload_0
-   	l2 = 72 // astore
+   	l1 = 50 // aload_0
+   	l2 = 69 // astore
   Exception table:
    from   to  target type
-     5    77    91   any
+     4    73    89   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      95      0    $this       Lscala/actors/Reactor;
-   0      95      1    msg       Ljava/lang/Object;
-   0      95      2    replyTo       Lscala/actors/OutputChannel;
-   83      7      3    todo       Lscala/Function0;
-   28      22      6    savedWaitingFor       Lscala/PartialFunction;
+   0      92      0    $this       Lscala/actors/Reactor;
+   0      92      1    msg       Ljava/lang/Object;
+   0      92      2    replyTo       Lscala/actors/OutputChannel;
+   26      21      3    savedWaitingFor       Lscala/PartialFunction;
+   80      8      5    todo       Lscala/Function0;
 
 
 public static scala.Function0 startSearch(scala.actors.Reactor, java.lang.Object, scala.actors.OutputChannel, scala.PartialFunction);
@@ -546,15 +540,13 @@ public static void $bang(scala.actors.Reactor, java.lang.Object);
 	aload_0
 	aload_1
 	aconst_null
-	pop
-	aconst_null
 	invokeinterface	InterfaceMethod scala/actors/Reactor.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      11      0    $this       Lscala/actors/Reactor;
-   0      11      1    msg       Ljava/lang/Object;
+   0      9      0    $this       Lscala/actors/Reactor;
+   0      9      1    msg       Ljava/lang/Object;
 
 
 public static void forward(scala.actors.Reactor, java.lang.Object);
@@ -564,15 +556,13 @@ public static void forward(scala.actors.Reactor, java.lang.Object);
 	aload_0
 	aload_1
 	aconst_null
-	pop
-	aconst_null
 	invokeinterface	InterfaceMethod scala/actors/Reactor.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      11      0    $this       Lscala/actors/Reactor;
-   0      11      1    msg       Ljava/lang/Object;
+   0      9      0    $this       Lscala/actors/Reactor;
+   0      9      1    msg       Ljava/lang/Object;
 
 
 public static scala.actors.Actor receiver(scala.actors.Reactor);
@@ -607,18 +597,18 @@ public static void drainSendBuffer(scala.actors.Reactor, scala.actors.MQueue);
 public static void searchMailbox(scala.actors.Reactor, scala.actors.MQueue, scala.PartialFunction, boolean);
   Signature: (Lscala/actors/Reactor;Lscala/actors/MQueue;Lscala/PartialFunction;Z)V
   Code:
-   Stack=5, Locals=9, Args_size=4
+   Stack=5, Locals=7, Args_size=4
 	aload_1
 	astore	4
 	iconst_0
-	istore	5
-l6	iload	5
+	istore	6
+l6	iload	6
 	ifeq	l1 // aload
 	return
 l1	aload	4
 	aload_2
 	invokevirtual	Method scala/actors/MQueue.extractFirst:(Lscala/PartialFunction;)Lscala/actors/MQueueElement;
-	astore	6
+	astore	5
 	aload	4
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
@@ -627,11 +617,11 @@ l1	aload	4
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	invokevirtual	Method scala/actors/MQueue.foreachAppend:(Lscala/actors/MQueue;)V
-l2	aload	6
+l2	aload	5
 	ifnonnull	l3 // aload_0
 	aload_0
 	dup
-	astore	7
+	pop
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.sendBuffer:()Lscala/actors/MQueue;
@@ -651,68 +641,61 @@ l4	new	class scala/actors/MQueue
 	aload_0
 	aload	4
 	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
-	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	astore	8
-	aload	7
+	aload_0
 	monitorexit
-	aload	8
-	goto	l5 // pop
+	goto	l5 // goto
 l3	aload_0
 	new	class scala/Tuple2
 	dup
-	aload	6
+	aload	5
 	invokevirtual	Method scala/actors/MQueueElement.msg:()Ljava/lang/Object;
-	aload	6
+	aload	5
 	invokevirtual	Method scala/actors/MQueueElement.session:()Lscala/actors/OutputChannel;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	aload_2
 	iload_3
 	invokeinterface	InterfaceMethod scala/actors/Reactor.resumeReceiver:(Lscala/Tuple2;Lscala/PartialFunction;Z)V
 	iconst_1
-	istore	5
-	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-l5	pop
-	goto	l6 // iload
-	aload	7
+	istore	6
+l5	goto	l6 // iload
+	aload_0
 	monitorexit
 	athrow
   Labels:
    	l6 = 6 // iload
    	l1 = 12 // aload
    	l2 = 42 // aload
-   	l4 = 78 // new
-   	l3 = 110 // aload_0
-   	l5 = 141 // pop
+   	l4 = 77 // new
+   	l3 = 101 // aload_0
+   	l5 = 129 // goto
   Exception table:
    from   to  target type
-    52   105   145   any
+    51    98   132   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      149      0    $this       Lscala/actors/Reactor;
-   0      149      1    startMbox       Lscala/actors/MQueue;
-   0      149      2    handler       Lscala/PartialFunction;
-   0      149      3    resumeOnSameThread       Z
-   3      146      4    tmpMbox       Lscala/actors/MQueue;
-   6      143      5    done       Z
-   20      122      6    qel       Lscala/actors/MQueueElement;
-   145      4      6    qel       Lscala/actors/MQueueElement;
+   0      135      0    $this       Lscala/actors/Reactor;
+   0      135      1    startMbox       Lscala/actors/MQueue;
+   0      135      2    handler       Lscala/PartialFunction;
+   0      135      3    resumeOnSameThread       Z
+   3      132      4    tmpMbox       Lscala/actors/MQueue;
+   20      109      5    qel       Lscala/actors/MQueueElement;
+   132      3      5    qel       Lscala/actors/MQueueElement;
+   6      129      6    done       Z
 
 
 public static scala.runtime.Nothing$ react(scala.actors.Reactor, scala.PartialFunction);
   Signature: (Lscala/actors/Reactor;Lscala/PartialFunction;)Lscala/runtime/Nothing$;
   Code:
-   Stack=4, Locals=3, Args_size=2
+   Stack=4, Locals=2, Args_size=2
 	aload_0
 	dup
-	astore_2
+	pop
 	monitorenter
 	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
-	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_2
+	aload_0
 	monitorexit
 	aload_0
 	aload_0
@@ -723,17 +706,17 @@ public static scala.runtime.Nothing$ react(scala.actors.Reactor, scala.PartialFu
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	invokevirtual	Method scala/actors/Actor$.suspendException:()Lscala/actors/SuspendActorControl;
 	athrow
-	aload_2
+	aload_0
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    22    43   any
+     4    18    39   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      46      0    $this       Lscala/actors/Reactor;
-   0      46      1    handler       Lscala/PartialFunction;
+   0      42      0    $this       Lscala/actors/Reactor;
+   0      42      1    handler       Lscala/PartialFunction;
 
 
 public static void scheduleActor(scala.actors.Reactor, scala.PartialFunction, java.lang.Object);
@@ -766,23 +749,23 @@ public static void scheduleActor(scala.actors.Reactor, scala.PartialFunction, ja
 public static scala.actors.Reactor start(scala.actors.Reactor);
   Signature: (Lscala/actors/Reactor;)Lscala/actors/Reactor;
   Code:
-   Stack=5, Locals=4, Args_size=1
+   Stack=5, Locals=2, Args_size=1
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor._state:()Lscala/Enumeration$Value;
 	getstatic	Field scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
 	invokevirtual	Method scala/actors/Actor$State$.New:()Lscala/Enumeration$Value;
-	astore_3
+	astore_1
 	dup
-	ifnonnull	l1 // aload_3
+	ifnonnull	l1 // aload_1
 	pop
-	aload_3
+	aload_1
 	ifnull	l2 // aload_0
 	goto	l3 // aload_0
-l1	aload_3
+l1	aload_1
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload_0
 l2	aload_0
@@ -802,38 +785,34 @@ l2	aload_0
 	invokespecial	Method scala/actors/Reactor$$anonfun$start$1."<init>":(Lscala/actors/Reactor;)V
 	invokeinterface	InterfaceMethod scala/actors/Reactor.makeReaction:(Lscala/Function0;)Ljava/lang/Runnable;
 	invokeinterface	InterfaceMethod scala/actors/IScheduler.execute:(Ljava/lang/Runnable;)V
-	aload_0
-	goto	l4 // astore_2
+	goto	l3 // aload_0
 l3	aload_0
-l4	astore_2
-	aload_1
 	monitorexit
-	aload_2
+	aload_0
 	checkcast	class scala/actors/Reactor
 	areturn
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l1 = 29 // aload_3
+   	l1 = 29 // aload_1
    	l2 = 36 // aload_0
-   	l3 = 89 // aload_0
-   	l4 = 90 // astore_2
+   	l3 = 88 // aload_0
   Exception table:
    from   to  target type
-     4    93    98   any
+     4    90    95   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      101      0    $this       Lscala/actors/Reactor;
+   0      98      0    $this       Lscala/actors/Reactor;
 
 
 public static scala.Enumeration$Value getState(scala.actors.Reactor);
   Signature: (Lscala/actors/Reactor;)Lscala/Enumeration$Value;
   Code:
-   Stack=2, Locals=3, Args_size=1
+   Stack=2, Locals=2, Args_size=1
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor:()Lscala/PartialFunction;
@@ -842,21 +821,21 @@ public static scala.Enumeration$Value getState(scala.actors.Reactor);
 	if_acmpeq	l1 // aload_0
 	getstatic	Field scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
 	invokevirtual	Method scala/actors/Actor$State$.Suspended:()Lscala/Enumeration$Value;
-	goto	l2 // astore_2
+	goto	l2 // astore_1
 l1	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor._state:()Lscala/Enumeration$Value;
-l2	astore_2
-	aload_1
+l2	astore_1
+	aload_0
 	monitorexit
-	aload_2
+	aload_1
 	checkcast	class scala/Enumeration$Value
 	areturn
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
    	l1 = 28 // aload_0
-   	l2 = 34 // astore_2
+   	l2 = 34 // astore_1
   Exception table:
    from   to  target type
      4    37    42   any
@@ -931,34 +910,32 @@ public static scala.runtime.Nothing$ exit(scala.actors.Reactor);
 public static void terminated(scala.actors.Reactor);
   Signature: (Lscala/actors/Reactor;)V
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=1, Args_size=1
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	getstatic	Field scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
 	invokevirtual	Method scala/actors/Actor$State$.Terminated:()Lscala/Enumeration$Value;
 	invokeinterface	InterfaceMethod scala/actors/Reactor._state_$eq:(Lscala/Enumeration$Value;)V
-	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_1
+	aload_0
 	monitorexit
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.scheduler:()Lscala/actors/IScheduler;
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/IScheduler.terminated:(Lscala/actors/Reactor;)V
 	return
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    22    35   any
+     4    18    31   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      38      0    $this       Lscala/actors/Reactor;
+   0      34      0    $this       Lscala/actors/Reactor;
 
 
 public static void $init$(scala.actors.Reactor);

@@ -2,7 +2,7 @@ Compiled from "OpenHashMap.scala"
 public final class scala.collection.mutable.OpenHashMap$$anon$1 extends java.lang.Object implements scala.collection.Iterator
   SourceFile: "OpenHashMap.scala"
   Signature: length = 0x2
-   01 FFFFFF9A 
+   01 FFFFFF99 
   Scala: length = 0x
    
   InnerClass: 
@@ -347,18 +347,14 @@ class	scala/collection/mutable/OpenHashMap
 Asciz	scala$collection$mutable$OpenHashMap$$modCount;
 NameAndType	scala$collection$mutable$OpenHashMap$$modCount:I
 Field	scala/collection/mutable/OpenHashMap.scala$collection$mutable$OpenHashMap$$modCount:I
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	MODULE$;
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
 Asciz	Concurrent modification;
 String	Concurrent modification
-Asciz	error;
-Asciz	(Ljava/lang/String;)Lscala/runtime/Nothing$;;
-NameAndType	error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
-Method	scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+Asciz	java/lang/RuntimeException;
+class	java/lang/RuntimeException
+Asciz	<init>;
+Asciz	(Ljava/lang/String;)V;
+NameAndType	"<init>":(Ljava/lang/String;)V
+Method	java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 NameAndType	index:()I
 Method	scala/collection/mutable/OpenHashMap$$anon$1.index:()I
 Asciz	scala$collection$mutable$OpenHashMap$$mask;
@@ -376,11 +372,12 @@ Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/collection/mutable/OpenHashMap$OpenEntry;
 class	scala/collection/mutable/OpenHashMap$OpenEntry
 Asciz	value;
-Asciz	()Lscala/Option;;
-NameAndType	value:()Lscala/Option;
-Method	scala/collection/mutable/OpenHashMap$OpenEntry.value:()Lscala/Option;
+Asciz	Lscala/Option;;
+NameAndType	value:Lscala/Option;
+Field	scala/collection/mutable/OpenHashMap$OpenEntry.value:Lscala/Option;
 Asciz	scala/None$;
 class	scala/None$
+Asciz	MODULE$;
 Asciz	Lscala/None$;;
 NameAndType	MODULE$:Lscala/None$;
 Field	scala/None$.MODULE$:Lscala/None$;
@@ -397,12 +394,14 @@ Asciz	key;
 Asciz	()Ljava/lang/Object;;
 NameAndType	key:()Ljava/lang/Object;
 Method	scala/collection/mutable/OpenHashMap$OpenEntry.key:()Ljava/lang/Object;
+Asciz	()Lscala/Option;;
+NameAndType	value:()Lscala/Option;
+Method	scala/collection/mutable/OpenHashMap$OpenEntry.value:()Lscala/Option;
 Asciz	scala/Option;
 class	scala/Option
 Asciz	get;
 NameAndType	get:()Ljava/lang/Object;
 Method	scala/Option.get:()Ljava/lang/Object;
-Asciz	<init>;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Method	scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
@@ -1403,16 +1402,19 @@ private int initialModCount();
 private void advance();
   Signature: ()V
   Code:
-   Stack=3, Locals=3, Args_size=1
+   Stack=3, Locals=5, Args_size=1
 	aload_0
 	invokespecial	Method initialModCount:()I
 	aload_0
 	getfield	Field $outer:Lscala/collection/mutable/OpenHashMap;
 	getfield	Field scala/collection/mutable/OpenHashMap.scala$collection$mutable$OpenHashMap$$modCount:I
 	if_icmpeq	l1 // aload_0
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	ldc_w	String Concurrent modification
-	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+	astore_1
+	new	class java/lang/RuntimeException
+	dup
+	aload_1
+	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
 	athrow
 l1	aload_0
 	invokespecial	Method index:()I
@@ -1427,9 +1429,9 @@ l1	aload_0
 	invokespecial	Method index:()I
 	aaload
 	dup
-	astore_1
+	astore_2
 	ifnull	l3 // aload_0
-	aload_1
+	aload_2
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l3 // aload_0
@@ -1439,16 +1441,18 @@ l1	aload_0
 	aload_0
 	invokespecial	Method index:()I
 	aaload
-	invokevirtual	Method scala/collection/mutable/OpenHashMap$OpenEntry.value:()Lscala/Option;
+	astore_3
+	aload_3
+	getfield	Field scala/collection/mutable/OpenHashMap$OpenEntry.value:Lscala/Option;
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	astore_2
+	astore	4
 	dup
-	ifnonnull	l4 // aload_2
+	ifnonnull	l4 // aload
 	pop
-	aload_2
+	aload	4
 	ifnull	l3 // aload_0
 	goto	l2 // return
-l4	aload_2
+l4	aload	4
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // return
 l3	aload_0
@@ -1460,10 +1464,14 @@ l3	aload_0
 	goto	l1 // aload_0
 l2	return
   Labels:
-   	l1 = 24 // aload_0
-   	l4 = 94 // aload_2
-   	l3 = 101 // aload_0
-   	l2 = 114 // return
+   	l1 = 27 // aload_0
+   	l4 = 101 // aload
+   	l3 = 109 // aload_0
+   	l2 = 122 // return
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      123      0    this       Lscala/collection/mutable/OpenHashMap$$anon$1;
+
 
 public boolean hasNext();
   Signature: ()Z
@@ -1520,7 +1528,7 @@ public scala.Tuple2 next();
    17      28      1    result       Lscala/collection/mutable/OpenHashMap$OpenEntry;
 
   Signature: length = 0x2
-   01 FFFFFF8C 
+   01 FFFFFF8B 
 
 public java.lang.Object next();
   Signature: ()Ljava/lang/Object;
@@ -1564,7 +1572,7 @@ l1	aload_0
    0      39      1    $outer       Lscala/collection/mutable/OpenHashMap;
 
   Signature: length = 0x2
-   01 FFFFFF99 
+   01 FFFFFF98 
 
 }
 

@@ -111,7 +111,6 @@ Asciz	this;
 Asciz	Lscala/xml/Group;;
 Asciz	other;
 Asciz	Ljava/lang/Object;;
-Asciz	temp1;
 Asciz	LocalVariableTable;
 Asciz	strict_$eq$eq;
 Asciz	(Lscala/xml/Equality;)Z;
@@ -122,7 +121,6 @@ Asciz	(Lscala/collection/Iterable;)Z;
 NameAndType	sameElements:(Lscala/collection/Iterable;)Z
 InterfaceMethod	scala/collection/IterableLike.sameElements:(Lscala/collection/Iterable;)Z
 Asciz	Lscala/xml/Equality;;
-Asciz	temp4;
 Asciz	basisForHashCode;
 Asciz	fail;
 Asciz	(Ljava/lang/String;)Lscala/runtime/Nothing$;;
@@ -200,12 +198,9 @@ Asciz	toString;
 NameAndType	toString:()Ljava/lang/String;
 Method	java/lang/Object.toString:()Ljava/lang/String;
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
-Asciz	temp7;
-Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	nodes
-Asciz	temp8;
 NameAndType	child:()Lscala/runtime/Nothing$;
 Method	scala/xml/Group.child:()Lscala/runtime/Nothing$;
 NameAndType	namespace:()Lscala/runtime/Nothing$;
@@ -234,7 +229,7 @@ Asciz	java/io/Serializable;
 class	java/io/Serializable
 
 {
-private final scala.collection.Seq nodes;
+public final scala.collection.Seq nodes;
   Signature: Lscala/collection/Seq;
   Signature: length = 0x2
    00 05 
@@ -292,18 +287,15 @@ public scala.collection.Seq theSeq();
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=1, Locals=3, Args_size=2
+   Stack=1, Locals=2, Args_size=2
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class scala/xml/Group
 	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      7      0    this       Lscala/xml/Group;
-   0      7      1    other       Ljava/lang/Object;
-   2      4      2    temp1       Ljava/lang/Object;
+   0      5      0    this       Lscala/xml/Group;
+   0      5      1    other       Ljava/lang/Object;
 
 
 public boolean strict_$eq$eq(scala.xml.Equality);
@@ -311,15 +303,15 @@ public boolean strict_$eq$eq(scala.xml.Equality);
   Code:
    Stack=2, Locals=3, Args_size=2
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class scala/xml/Group
 	ifeq	l1 // iconst_0
 	aload_0
-	invokevirtual	Method nodes:()Lscala/collection/Seq;
-	aload_2
+	getfield	Field nodes:Lscala/collection/Seq;
+	aload_1
 	checkcast	class scala/xml/Group
-	invokevirtual	Method nodes:()Lscala/collection/Seq;
+	astore_2
+	aload_2
+	getfield	Field nodes:Lscala/collection/Seq;
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.sameElements:(Lscala/collection/Iterable;)Z
 	goto	l2 // ireturn
 l1	iconst_0
@@ -331,7 +323,6 @@ l2	ireturn
    Start  Length  Slot  Name   Signature
    0      30      0    this       Lscala/xml/Group;
    0      30      1    other       Lscala/xml/Equality;
-   2      28      2    temp4       Lscala/xml/Equality;
 
 
 public scala.collection.Seq basisForHashCode();
@@ -462,14 +453,12 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=2, Args_size=2
 	iload_1
-	istore_2
-	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	aload_0
-	invokevirtual	Method nodes:()Lscala/collection/Seq;
+	getfield	Field nodes:Lscala/collection/Seq;
 	areturn
 l1	new	class java/lang/IndexOutOfBoundsException
 	dup
@@ -479,20 +468,13 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 12 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      27      0    this       Lscala/xml/Group;
-   2      25      2    temp7       I
-
+   	l1 = 10 // new
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=2, Args_size=2
 	iload_1
-	istore_2
-	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	ldc	String nodes
@@ -505,12 +487,7 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 10 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      25      0    this       Lscala/xml/Group;
-   2      23      2    temp8       I
-
+   	l1 = 8 // new
 
 public scala.collection.Seq child();
   Signature: ()Lscala/collection/Seq;
@@ -567,7 +544,7 @@ public scala.xml.Group(scala.collection.Seq);
    0      14      1    nodes       Lscala/collection/Seq;
 
   Signature: length = 0x2
-   00 FFFFFF95 
+   00 FFFFFF90 
 
 }
 

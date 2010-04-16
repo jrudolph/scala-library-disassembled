@@ -2,7 +2,7 @@ Compiled from "Atom.scala"
 public class scala.xml.Atom extends scala.xml.SpecialNode implements scala.ScalaObject,java.io.Serializable
   SourceFile: "Atom.scala"
   Signature: length = 0x2
-   00 65 
+   00 6A 
   ScalaSig: length = 0x27B
    05 00 69 06 04 01 02 00 07 02 04 41 74 6F 6D 0A
    02 03 04 01 03 78 6D 6C 0A 01 05 01 05 73 63 61
@@ -91,21 +91,28 @@ class	scala/collection/Seq
 Asciz	()Lscala/collection/Seq<Ljava/lang/Object;>;;
 Asciz	strict_$eq$eq;
 Asciz	(Lscala/xml/Equality;)Z;
+Asciz	java/lang/Number;
+class	java/lang/Number
+Asciz	java/lang/Character;
+class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals;
+Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equals;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	this;
 Asciz	Lscala/xml/Atom;;
 Asciz	other;
 Asciz	Lscala/xml/Equality;;
-Asciz	temp1;
+Asciz	x0;
+Asciz	y0;
 Asciz	LocalVariableTable;
 Asciz	canEqual;
-Asciz	(Ljava/lang/Object;)Z;
-Asciz	temp3;
 Asciz	doCollectNamespaces;
 Asciz	()Z;
 Asciz	doTransform;
@@ -137,8 +144,6 @@ class	scala/xml/SpecialNode
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	scala/xml/SpecialNode."<init>":()V
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	java/lang/IllegalArgumentException;
 class	java/lang/IllegalArgumentException
 Asciz	cannot construct Atom(null);
@@ -195,51 +200,75 @@ public scala.collection.Seq basisForHashCode();
 public boolean strict_$eq$eq(scala.xml.Equality);
   Signature: (Lscala/xml/Equality;)Z
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=4, Args_size=2
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class scala/xml/Atom
 	ifeq	l1 // iconst_0
 	aload_0
 	invokevirtual	Method data:()Ljava/lang/Object;
-	aload_2
+	aload_1
 	checkcast	class scala/xml/Atom
 	invokevirtual	Method data:()Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	ifeq	l2 // iconst_0
+	astore_3
+	astore_2
+	aload_2
+	aload_3
+	if_acmpne	l2 // aload_2
 	iconst_1
-	goto	l3 // ireturn
-l2	iconst_0
-	goto	l3 // ireturn
+	goto	l3 // ifeq
+l2	aload_2
+	ifnonnull	l4 // aload_2
+	iconst_0
+	goto	l3 // ifeq
+l4	aload_2
+	instanceof	class java/lang/Number
+	ifne	l5 // aload_2
+	aload_2
+	instanceof	class java/lang/Character
+	ifeq	l6 // aload_2
+l5	aload_2
+	aload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	goto	l3 // ifeq
+l6	aload_2
+	aload_3
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+l3	ifeq	l7 // iconst_0
+	iconst_1
+	goto	l8 // ireturn
+l7	iconst_0
+	goto	l8 // ireturn
 l1	iconst_0
-l3	ireturn
+l8	ireturn
   Labels:
-   	l2 = 30 // iconst_0
-   	l1 = 34 // iconst_0
-   	l3 = 35 // ireturn
+   	l2 = 29 // aload_2
+   	l4 = 37 // aload_2
+   	l5 = 51 // aload_2
+   	l6 = 59 // aload_2
+   	l3 = 64 // ifeq
+   	l7 = 71 // iconst_0
+   	l1 = 75 // iconst_0
+   	l8 = 76 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      36      0    this       Lscala/xml/Atom;
-   0      36      1    other       Lscala/xml/Equality;
-   2      34      2    temp1       Lscala/xml/Equality;
+   0      77      0    this       Lscala/xml/Atom;
+   0      77      1    other       Lscala/xml/Equality;
+   25      42      2    x0       Ljava/lang/Object;
+   25      42      3    y0       Ljava/lang/Object;
 
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=1, Locals=3, Args_size=2
+   Stack=1, Locals=2, Args_size=2
 	aload_1
-	astore_2
-	aload_2
 	instanceof	class scala/xml/Atom
 	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      7      0    this       Lscala/xml/Atom;
-   0      7      1    other       Ljava/lang/Object;
-   2      4      2    temp3       Ljava/lang/Object;
+   0      5      0    this       Lscala/xml/Atom;
+   0      5      1    other       Ljava/lang/Object;
 
 
 public final boolean doCollectNamespaces();
@@ -297,7 +326,7 @@ public java.lang.String text();
 public scala.xml.Atom(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=2, Args_size=2
 	aload_0
 	aload_1
 	putfield	Field data:Ljava/lang/Object;
@@ -305,9 +334,9 @@ public scala.xml.Atom(java.lang.Object);
 	invokespecial	Method scala/xml/SpecialNode."<init>":()V
 	aload_1
 	dup
-	astore_2
+	pop
 	ifnull	l1 // new
-	aload_2
+	aload_1
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // return
@@ -326,7 +355,7 @@ l2	return
    0      34      1    data       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 64 
+   00 69 
 
 }
 

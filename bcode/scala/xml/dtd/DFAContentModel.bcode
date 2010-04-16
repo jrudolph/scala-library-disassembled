@@ -69,12 +69,6 @@ NameAndType	determinize:()Lscala/util/automata/DetWordAutom;
 Method	scala/util/automata/SubsetConstruction.determinize:()Lscala/util/automata/DetWordAutom;
 NameAndType	dfa:Lscala/util/automata/DetWordAutom;
 Field	scala/xml/dtd/DFAContentModel.dfa:Lscala/util/automata/DetWordAutom;
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	this;
 Asciz	Lscala/xml/dtd/DFAContentModel;;
 Asciz	nfa;
@@ -111,7 +105,7 @@ public abstract scala.util.regexp.Base$RegExp r();
 public scala.util.automata.DetWordAutom dfa();
   Signature: ()Lscala/util/automata/DetWordAutom;
   Code:
-   Stack=4, Locals=3, Args_size=1
+   Stack=4, Locals=2, Args_size=1
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
@@ -120,24 +114,24 @@ public scala.util.automata.DetWordAutom dfa();
 	if_icmpne	l1 // aload_0
 	aload_0
 	dup
-	astore_1
+	pop
 	monitorenter
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
 	iand
 	iconst_0
-	if_icmpne	l2 // getstatic
+	if_icmpne	l2 // aload_0
 	aload_0
 	getstatic	Field scala/xml/dtd/ContentModel$Translator$.MODULE$:Lscala/xml/dtd/ContentModel$Translator$;
 	aload_0
 	invokevirtual	Method r:()Lscala/util/regexp/Base$RegExp;
 	iconst_1
 	invokevirtual	Method scala/xml/dtd/ContentModel$Translator$.automatonFrom:(Lscala/util/regexp/Base$RegExp;I)Lscala/util/automata/NondetWordAutom;
-	astore_2
+	astore_1
 	new	class scala/util/automata/SubsetConstruction
 	dup
-	aload_2
+	aload_1
 	invokespecial	Method scala/util/automata/SubsetConstruction."<init>":(Lscala/util/automata/NondetWordAutom;)V
 	invokevirtual	Method scala/util/automata/SubsetConstruction.determinize:()Lscala/util/automata/DetWordAutom;
 	putfield	Field dfa:Lscala/util/automata/DetWordAutom;
@@ -147,29 +141,27 @@ public scala.util.automata.DetWordAutom dfa();
 	iconst_1
 	ior
 	putfield	Field bitmap$0:I
-l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-	pop
-	aload_1
+l2	aload_0
 	monitorexit
 l1	aload_0
 	getfield	Field dfa:Lscala/util/automata/DetWordAutom;
 	areturn
-	aload_1
+	aload_0
 	monitorexit
 	athrow
   Labels:
-   	l2 = 61 // getstatic
-   	l1 = 67 // aload_0
+   	l2 = 61 // aload_0
+   	l1 = 63 // aload_0
   Exception table:
    from   to  target type
-    14    67    72   any
+    14    63    68   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      75      0    this       Lscala/xml/dtd/DFAContentModel;
-   37      11      2    nfa       Lscala/util/automata/NondetWordAutom;
+   0      71      0    this       Lscala/xml/dtd/DFAContentModel;
+   37      11      1    nfa       Lscala/util/automata/NondetWordAutom;
 
   Signature: length = 0x2
-   00 34 
+   00 2E 
 
 public scala.xml.dtd.DFAContentModel();
   Signature: ()V
