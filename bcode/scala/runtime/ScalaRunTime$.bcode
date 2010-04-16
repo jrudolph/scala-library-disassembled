@@ -392,6 +392,11 @@ NameAndType	sameElements:(Lscala/collection/Iterator;)Z
 InterfaceMethod	scala/collection/Iterator.sameElements:(Lscala/collection/Iterator;)Z
 Asciz	x$1;
 Asciz	temp52;
+Asciz	hash;
+Asciz	hashFromNumber;
+Asciz	(Ljava/lang/Number;)I;
+NameAndType	hashFromNumber:(Ljava/lang/Number;)I
+Method	scala/runtime/BoxesRunTime.hashFromNumber:(Ljava/lang/Number;)I
 Asciz	stringOf;
 Asciz	(Ljava/lang/Object;)Ljava/lang/String;;
 Asciz	inner$1;
@@ -1425,6 +1430,29 @@ l3	ireturn
    0      47      1    x$1       Lscala/Product;
    0      47      2    y       Ljava/lang/Object;
    12      33      3    temp52       Lscala/Product;
+
+
+public int hash(java.lang.Object);
+  Signature: (Ljava/lang/Object;)I
+  Code:
+   Stack=1, Locals=2, Args_size=2
+	aload_1
+	instanceof	class java/lang/Number
+	ifeq	l1 // aload_1
+	aload_1
+	checkcast	class java/lang/Number
+	invokestatic	Method scala/runtime/BoxesRunTime.hashFromNumber:(Ljava/lang/Number;)I
+	goto	l2 // ireturn
+l1	aload_1
+	invokevirtual	Method java/lang/Object.hashCode:()I
+l2	ireturn
+  Labels:
+   	l1 = 17 // aload_1
+   	l2 = 21 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      22      0    this       Lscala/runtime/ScalaRunTime$;
+   0      22      1    x       Ljava/lang/Object;
 
 
 public java.lang.String stringOf(java.lang.Object);
