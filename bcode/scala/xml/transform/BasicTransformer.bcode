@@ -185,8 +185,8 @@ Method	scala/xml/Node.doTransform:()Z
 Asciz	scala/xml/Group;
 class	scala/xml/Group
 Asciz	nodes;
-NameAndType	nodes:()Lscala/collection/Seq;
-Method	scala/xml/Group.nodes:()Lscala/collection/Seq;
+NameAndType	nodes:Lscala/collection/Seq;
+Field	scala/xml/Group.nodes:Lscala/collection/Seq;
 Asciz	(Lscala/collection/Seq;)V;
 NameAndType	"<init>":(Lscala/collection/Seq;)V
 Method	scala/xml/Group."<init>":(Lscala/collection/Seq;)V
@@ -436,7 +436,7 @@ l1	new	class scala/MatchError
 public scala.collection.Seq transform(scala.xml.Node);
   Signature: (Lscala/xml/Node;)Lscala/collection/Seq;
   Code:
-   Stack=7, Locals=8, Args_size=2
+   Stack=7, Locals=9, Args_size=2
 	aload_1
 	invokevirtual	Method scala/xml/Node.doTransform:()Z
 	ifeq	l1 // aload_1
@@ -448,19 +448,21 @@ public scala.collection.Seq transform(scala.xml.Node);
 	aload_0
 	aload_1
 	checkcast	class scala/xml/Group
-	invokevirtual	Method scala/xml/Group.nodes:()Lscala/collection/Seq;
+	astore_2
+	aload_2
+	getfield	Field scala/xml/Group.nodes:Lscala/collection/Seq;
 	invokevirtual	Method transform:(Lscala/collection/Seq;)Lscala/collection/Seq;
 	invokespecial	Method scala/xml/Group."<init>":(Lscala/collection/Seq;)V
 	goto	l3 // areturn
 l2	aload_1
 	invokevirtual	Method scala/xml/Node.child:()Lscala/collection/Seq;
-	astore_2
+	astore_3
 	aload_0
-	aload_2
+	aload_3
 	invokevirtual	Method transform:(Lscala/collection/Seq;)Lscala/collection/Seq;
-	astore	7
-	aload_2
-	aload	7
+	astore	8
+	aload_3
+	aload	8
 	if_acmpne	l4 // aload_1
 	aload_1
 	goto	l3 // areturn
@@ -472,32 +474,32 @@ l4	aload_1
 	invokevirtual	Method scala/xml/Node.attributes:()Lscala/xml/MetaData;
 	aload_1
 	invokevirtual	Method scala/xml/Node.scope:()Lscala/xml/NamespaceBinding;
+	astore	7
 	astore	6
 	astore	5
 	astore	4
-	astore_3
 	new	class scala/xml/Elem
 	dup
-	aload_3
 	aload	4
 	aload	5
 	aload	6
 	aload	7
+	aload	8
 	invokespecial	Method scala/xml/Elem."<init>":(Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Seq;)V
 	goto	l3 // areturn
 l1	aload_1
 l3	areturn
   Labels:
-   	l2 = 35 // aload_1
-   	l4 = 57 // aload_1
-   	l1 = 99 // aload_1
-   	l3 = 100 // areturn
+   	l2 = 37 // aload_1
+   	l4 = 59 // aload_1
+   	l1 = 103 // aload_1
+   	l3 = 104 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      101      0    this       Lscala/xml/transform/BasicTransformer;
-   0      101      1    n       Lscala/xml/Node;
-   40      59      2    ch       Lscala/collection/Seq;
-   47      52      7    nch       Lscala/collection/Seq;
+   0      105      0    this       Lscala/xml/transform/BasicTransformer;
+   0      105      1    n       Lscala/xml/Node;
+   42      61      3    ch       Lscala/collection/Seq;
+   49      54      8    nch       Lscala/collection/Seq;
 
   Signature: length = 0x2
    00 FFFFFFAF 

@@ -6,6 +6,7 @@ public abstract class scala.testing.SUnit$Assert$class extends java.lang.Object
   InnerClass: 
    public abstract Assert=class scala/testing/SUnit$Assert of class scala/testing/SUnit
    public AssertFailed=class scala/testing/SUnit$AssertFailed of class scala/testing/SUnit
+   public final $anonfun$assertSameElementsXML$1=class scala/testing/SUnit$Assert$$anonfun$assertSameElementsXML$1 of class scala/testing/SUnit$Assert
   minor version: 0
   major version: 49
   Constant pool:
@@ -99,13 +100,58 @@ InterfaceMethod	scala/testing/SUnit$Assert.assertEq:(Ljava/lang/String;Ljava/lan
 Asciz	assertTrue;
 NameAndType	assertTrue:(Ljava/lang/String;Z)V
 InterfaceMethod	scala/testing/SUnit$Assert.assertTrue:(Ljava/lang/String;Z)V
+Asciz	assertEqualsXML;
+Asciz	(Lscala/testing/SUnit$Assert;Ljava/lang/String;Lscala/xml/NodeSeq;Lscala/xml/NodeSeq;)V;
+Asciz	scala/xml/Equality;
+class	scala/xml/Equality
+Asciz	xml_$eq$eq;
+NameAndType	xml_$eq$eq:(Ljava/lang/Object;)Z
+InterfaceMethod	scala/xml/Equality.xml_$eq$eq:(Ljava/lang/Object;)Z
+Asciz	Lscala/xml/NodeSeq;;
+Asciz	(Lscala/testing/SUnit$Assert;Ljava/lang/String;Lscala/collection/Seq;Lscala/collection/Seq;)V;
+Asciz	scala/xml/NodeSeq$;
+class	scala/xml/NodeSeq$
+Asciz	MODULE$;
+Asciz	Lscala/xml/NodeSeq$;;
+NameAndType	MODULE$:Lscala/xml/NodeSeq$;
+Field	scala/xml/NodeSeq$.MODULE$:Lscala/xml/NodeSeq$;
+Asciz	seqToNodeSeq;
+Asciz	(Lscala/collection/Seq;)Lscala/xml/NodeSeq;;
+NameAndType	seqToNodeSeq:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+Method	scala/xml/NodeSeq$.seqToNodeSeq:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+Asciz	(Ljava/lang/String;Lscala/xml/NodeSeq;Lscala/xml/NodeSeq;)V;
+NameAndType	assertEqualsXML:(Ljava/lang/String;Lscala/xml/NodeSeq;Lscala/xml/NodeSeq;)V
+InterfaceMethod	scala/testing/SUnit$Assert.assertEqualsXML:(Ljava/lang/String;Lscala/xml/NodeSeq;Lscala/xml/NodeSeq;)V
+Asciz	(Lscala/testing/SUnit$Assert;Lscala/xml/NodeSeq;Lscala/xml/NodeSeq;)V;
+Asciz	assertSameElementsXML;
+Asciz	scala/xml/NodeSeq;
+class	scala/xml/NodeSeq
+Asciz	xml_sameElements;
+NameAndType	xml_sameElements:(Lscala/collection/Iterable;)Z
+Method	scala/xml/NodeSeq.xml_sameElements:(Lscala/collection/Iterable;)Z
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	scala/testing/SUnit$Assert$$anonfun$assertSameElementsXML$1;
+class	scala/testing/SUnit$Assert$$anonfun$assertSameElementsXML$1
+Asciz	<init>;
+NameAndType	"<init>":(Lscala/testing/SUnit$Assert;Lscala/collection/Seq;Lscala/collection/Seq;)V
+Method	scala/testing/SUnit$Assert$$anonfun$assertSameElementsXML$1."<init>":(Lscala/testing/SUnit$Assert;Lscala/collection/Seq;Lscala/collection/Seq;)V
+Asciz	assert;
+Asciz	(ZLscala/Function0;)V;
+NameAndType	assert:(ZLscala/Function0;)V
+Method	scala/Predef$.assert:(ZLscala/Function0;)V
+Asciz	actual$1;
+Asciz	expected$1;
+Asciz	res;
 Asciz	(Lscala/testing/SUnit$Assert;Ljava/lang/String;)V;
 Asciz	scala/testing/SUnit$AssertFailed;
 class	scala/testing/SUnit$AssertFailed
 Asciz	()Z;
 NameAndType	enableStackTrace:()Z
 InterfaceMethod	scala/testing/SUnit$Assert.enableStackTrace:()Z
-Asciz	<init>;
 NameAndType	"<init>":(Ljava/lang/String;Z)V
 Method	scala/testing/SUnit$AssertFailed."<init>":(Ljava/lang/String;Z)V
 Asciz	scala/collection/mutable/StringBuilder;
@@ -130,6 +176,7 @@ Asciz	scala/testing/SUnit;
 class	scala/testing/SUnit
 Asciz	Assert;
 Asciz	AssertFailed;
+Asciz	$anonfun$assertSameElementsXML$1;
 Asciz	scala/testing/SUnit$Assert$class;
 class	scala/testing/SUnit$Assert$class
 
@@ -459,6 +506,100 @@ public static void assertTrue(scala.testing.SUnit$Assert, boolean);
    Start  Length  Slot  Name   Signature
    0      10      0    $this       Lscala/testing/SUnit$Assert;
    0      10      1    actual       Z
+
+
+public static void assertEqualsXML(scala.testing.SUnit$Assert, java.lang.String, scala.xml.NodeSeq, scala.xml.NodeSeq);
+  Signature: (Lscala/testing/SUnit$Assert;Ljava/lang/String;Lscala/xml/NodeSeq;Lscala/xml/NodeSeq;)V
+  Code:
+   Stack=4, Locals=4, Args_size=4
+	aload_2
+	aload_3
+	invokeinterface	InterfaceMethod scala/xml/Equality.xml_$eq$eq:(Ljava/lang/Object;)Z
+	ifne	l1 // return
+	aload_0
+	aload_1
+	aload_2
+	aload_3
+	invokeinterface	InterfaceMethod scala/testing/SUnit$Assert.fail:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+l1	return
+  Labels:
+   	l1 = 19 // return
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      20      0    $this       Lscala/testing/SUnit$Assert;
+   0      20      1    msg       Ljava/lang/String;
+   0      20      2    expected       Lscala/xml/NodeSeq;
+   0      20      3    actual       Lscala/xml/NodeSeq;
+
+
+public static void assertEqualsXML(scala.testing.SUnit$Assert, java.lang.String, scala.collection.Seq, scala.collection.Seq);
+  Signature: (Lscala/testing/SUnit$Assert;Ljava/lang/String;Lscala/collection/Seq;Lscala/collection/Seq;)V
+  Code:
+   Stack=5, Locals=4, Args_size=4
+	aload_0
+	aload_1
+	getstatic	Field scala/xml/NodeSeq$.MODULE$:Lscala/xml/NodeSeq$;
+	aload_2
+	invokevirtual	Method scala/xml/NodeSeq$.seqToNodeSeq:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+	getstatic	Field scala/xml/NodeSeq$.MODULE$:Lscala/xml/NodeSeq$;
+	aload_3
+	invokevirtual	Method scala/xml/NodeSeq$.seqToNodeSeq:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+	invokeinterface	InterfaceMethod scala/testing/SUnit$Assert.assertEqualsXML:(Ljava/lang/String;Lscala/xml/NodeSeq;Lscala/xml/NodeSeq;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      22      0    $this       Lscala/testing/SUnit$Assert;
+   0      22      1    msg       Ljava/lang/String;
+   0      22      2    expected       Lscala/collection/Seq;
+   0      22      3    actual       Lscala/collection/Seq;
+
+
+public static void assertEqualsXML(scala.testing.SUnit$Assert, scala.xml.NodeSeq, scala.xml.NodeSeq);
+  Signature: (Lscala/testing/SUnit$Assert;Lscala/xml/NodeSeq;Lscala/xml/NodeSeq;)V
+  Code:
+   Stack=4, Locals=3, Args_size=3
+	aload_0
+	ldc	String (no message)
+	aload_1
+	aload_2
+	invokeinterface	InterfaceMethod scala/testing/SUnit$Assert.assertEqualsXML:(Ljava/lang/String;Lscala/xml/NodeSeq;Lscala/xml/NodeSeq;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      11      0    $this       Lscala/testing/SUnit$Assert;
+   0      11      1    expected       Lscala/xml/NodeSeq;
+   0      11      2    actual       Lscala/xml/NodeSeq;
+
+
+public static void assertSameElementsXML(scala.testing.SUnit$Assert, scala.collection.Seq, scala.collection.Seq);
+  Signature: (Lscala/testing/SUnit$Assert;Lscala/collection/Seq;Lscala/collection/Seq;)V
+  Code:
+   Stack=7, Locals=4, Args_size=3
+	getstatic	Field scala/xml/NodeSeq$.MODULE$:Lscala/xml/NodeSeq$;
+	aload_1
+	invokevirtual	Method scala/xml/NodeSeq$.seqToNodeSeq:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+	aload_2
+	invokevirtual	Method scala/xml/NodeSeq.xml_sameElements:(Lscala/collection/Iterable;)Z
+	istore_3
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iload_3
+	new	class scala/testing/SUnit$Assert$$anonfun$assertSameElementsXML$1
+	dup
+	aload_0
+	aload_1
+	aload_2
+	invokespecial	Method scala/testing/SUnit$Assert$$anonfun$assertSameElementsXML$1."<init>":(Lscala/testing/SUnit$Assert;Lscala/collection/Seq;Lscala/collection/Seq;)V
+	invokevirtual	Method scala/Predef$.assert:(ZLscala/Function0;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      30      0    $this       Lscala/testing/SUnit$Assert;
+   0      30      1    actual$1       Lscala/collection/Seq;
+   0      30      2    expected$1       Lscala/collection/Seq;
+   12      17      3    res       Z
 
 
 public static void fail(scala.testing.SUnit$Assert, java.lang.String);
