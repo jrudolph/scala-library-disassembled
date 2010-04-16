@@ -6,6 +6,8 @@ public final class scala.util.continuations.package$ extends java.lang.Object im
   InnerClass: 
    public final $anonfun$run$1=class scala/util/continuations/package$$anonfun$run$1 of class scala/util/continuations/package
    public final $anonfun$reset$1=class scala/util/continuations/package$$anonfun$reset$1 of class scala/util/continuations/package
+   public final $anonfun$shiftR$1=class scala/util/continuations/package$$anonfun$shiftR$1 of class scala/util/continuations/package
+   public final $anonfun$foreach$1=class scala/util/continuations/ControlContext$$anonfun$foreach$1 of class scala/util/continuations/ControlContext
   minor version: 0
   major version: 49
   Constant pool:
@@ -59,18 +61,25 @@ Field	scala/util/continuations/ControlContext.x:Ljava/lang/Object;
 Asciz	scala/util/continuations/package$$anonfun$reset$1;
 class	scala/util/continuations/package$$anonfun$reset$1
 Method	scala/util/continuations/package$$anonfun$reset$1."<init>":()V
-NameAndType	fun:Lscala/Function1;
-Field	scala/util/continuations/ControlContext.fun:Lscala/Function1;
-Asciz	scala/Function1;
-class	scala/Function1
-Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
-NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
-InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+Asciz	scala/util/continuations/ControlContext$$anonfun$foreach$1;
+class	scala/util/continuations/ControlContext$$anonfun$foreach$1
+Asciz	(Lscala/util/continuations/ControlContext;)V;
+NameAndType	"<init>":(Lscala/util/continuations/ControlContext;)V
+Method	scala/util/continuations/ControlContext$$anonfun$foreach$1."<init>":(Lscala/util/continuations/ControlContext;)V
+Asciz	Lscala/Function2;;
+NameAndType	fun:Lscala/Function2;
+Field	scala/util/continuations/ControlContext.fun:Lscala/Function2;
+Asciz	scala/Function2;
+class	scala/Function2
+Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;;
+NameAndType	apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+InterfaceMethod	scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 Asciz	ctx;
 Asciz	Lscala/Function0;;
 Asciz	ctxR;
 Asciz	Lscala/util/continuations/ControlContext;;
 Asciz	f0;
+Asciz	g0;
 Asciz	<A:Ljava/lang/Object;C:Ljava/lang/Object;>(Lscala/Function0<Lscala/util/continuations/ControlContext<TA;TA;TC;>;>;)TC;;
 Asciz	reset0;
 NameAndType	reset:(Lscala/Function0;)Ljava/lang/Object;
@@ -98,10 +107,16 @@ Asciz	<A:Ljava/lang/Object;B:Ljava/lang/Object;C:Ljava/lang/Object;>(TA;)Lscala/
 Asciz	reify;
 Asciz	(Lscala/Function0;)Lscala/util/continuations/ControlContext;;
 Asciz	<A:Ljava/lang/Object;B:Ljava/lang/Object;C:Ljava/lang/Object;>(Lscala/Function0<Lscala/util/continuations/ControlContext<TA;TB;TC;>;>;)Lscala/util/continuations/ControlContext<TA;TB;TC;>;;
-Asciz	(Lscala/Function1;Ljava/lang/Object;)V;
-NameAndType	"<init>":(Lscala/Function1;Ljava/lang/Object;)V
-Method	scala/util/continuations/ControlContext."<init>":(Lscala/Function1;Ljava/lang/Object;)V
+Asciz	(Lscala/Function2;Ljava/lang/Object;)V;
+NameAndType	"<init>":(Lscala/Function2;Ljava/lang/Object;)V
+Method	scala/util/continuations/ControlContext."<init>":(Lscala/Function2;Ljava/lang/Object;)V
 Asciz	shiftR;
+Asciz	scala/util/continuations/package$$anonfun$shiftR$1;
+class	scala/util/continuations/package$$anonfun$shiftR$1
+Asciz	(Lscala/Function1;)V;
+NameAndType	"<init>":(Lscala/Function1;)V
+Method	scala/util/continuations/package$$anonfun$shiftR$1."<init>":(Lscala/Function1;)V
+Asciz	fun$1;
 Asciz	reifyR;
 Asciz	java/lang/Object;
 class	java/lang/Object
@@ -113,6 +128,8 @@ Asciz	scala/util/continuations/package;
 class	scala/util/continuations/package
 Asciz	$anonfun$run$1;
 Asciz	$anonfun$reset$1;
+Asciz	$anonfun$shiftR$1;
+Asciz	$anonfun$foreach$1;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -150,7 +167,7 @@ public scala.util.continuations.ControlContext shift(scala.Function1);
 public java.lang.Object reset(scala.Function0);
   Signature: (Lscala/Function0;)Ljava/lang/Object;
   Code:
-   Stack=2, Locals=5, Args_size=2
+   Stack=3, Locals=6, Args_size=2
 	aload_1
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
 	checkcast	class scala/util/continuations/ControlContext
@@ -165,8 +182,13 @@ l1	new	class scala/util/continuations/package$$anonfun$reset$1
 	dup
 	invokespecial	Method scala/util/continuations/package$$anonfun$reset$1."<init>":()V
 	astore	4
+	new	class scala/util/continuations/ControlContext$$anonfun$foreach$1
+	dup
 	aload_3
-	getfield	Field scala/util/continuations/ControlContext.fun:Lscala/Function1;
+	invokespecial	Method scala/util/continuations/ControlContext$$anonfun$foreach$1."<init>":(Lscala/util/continuations/ControlContext;)V
+	astore	5
+	aload_3
+	getfield	Field scala/util/continuations/ControlContext.fun:Lscala/Function2;
 	ifnonnull	l3 // aload_3
 	aload_3
 	getfield	Field scala/util/continuations/ControlContext.x:Ljava/lang/Object;
@@ -174,23 +196,25 @@ l1	new	class scala/util/continuations/package$$anonfun$reset$1
 	aload_2
 	goto	l2 // areturn
 l3	aload_3
-	getfield	Field scala/util/continuations/ControlContext.fun:Lscala/Function1;
+	getfield	Field scala/util/continuations/ControlContext.fun:Lscala/Function2;
 	aload	4
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+	aload	5
+	invokeinterface	InterfaceMethod scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 l2	areturn
   Labels:
    	l1 = 24 // new
-   	l3 = 49 // aload_3
-   	l2 = 60 // areturn
+   	l3 = 59 // aload_3
+   	l2 = 72 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      61      0    this       Lscala/util/continuations/package$;
-   0      61      1    ctx       Lscala/Function0;
-   10      51      3    ctxR       Lscala/util/continuations/ControlContext;
-   40      20      4    f0       Lscala/Function1;
+   0      73      0    this       Lscala/util/continuations/package$;
+   0      73      1    ctx       Lscala/Function0;
+   10      63      3    ctxR       Lscala/util/continuations/ControlContext;
+   50      22      4    f0       Lscala/Function1;
+   50      22      5    g0       Lscala/Function1;
 
   Signature: length = 0x2
-   00 3F 
+   00 46 
 
 public java.lang.Object reset0(scala.Function0);
   Signature: (Lscala/Function0;)Ljava/lang/Object;
@@ -207,12 +231,12 @@ public java.lang.Object reset0(scala.Function0);
    0      6      1    ctx       Lscala/Function0;
 
   Signature: length = 0x2
-   00 43 
+   00 4A 
 
 public java.lang.Object run(scala.Function0);
   Signature: (Lscala/Function0;)Ljava/lang/Object;
   Code:
-   Stack=2, Locals=4, Args_size=2
+   Stack=3, Locals=5, Args_size=2
 	aload_1
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
 	checkcast	class scala/util/continuations/ControlContext
@@ -227,29 +251,36 @@ l1	new	class scala/util/continuations/package$$anonfun$run$1
 	dup
 	invokespecial	Method scala/util/continuations/package$$anonfun$run$1."<init>":()V
 	astore_3
+	new	class scala/util/continuations/ControlContext$$anonfun$foreach$1
+	dup
 	aload_2
-	getfield	Field scala/util/continuations/ControlContext.fun:Lscala/Function1;
+	invokespecial	Method scala/util/continuations/ControlContext$$anonfun$foreach$1."<init>":(Lscala/util/continuations/ControlContext;)V
+	astore	4
+	aload_2
+	getfield	Field scala/util/continuations/ControlContext.fun:Lscala/Function2;
 	ifnonnull	l3 // aload_2
 	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 	goto	l2 // areturn
 l3	aload_2
-	getfield	Field scala/util/continuations/ControlContext.fun:Lscala/Function1;
+	getfield	Field scala/util/continuations/ControlContext.fun:Lscala/Function2;
 	aload_3
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+	aload	4
+	invokeinterface	InterfaceMethod scala/Function2.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 l2	areturn
   Labels:
    	l1 = 24 // new
-   	l3 = 45 // aload_2
-   	l2 = 55 // areturn
+   	l3 = 55 // aload_2
+   	l2 = 67 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      56      0    this       Lscala/util/continuations/package$;
-   0      56      1    ctx       Lscala/Function0;
-   10      46      2    ctxR       Lscala/util/continuations/ControlContext;
-   39      16      3    f0       Lscala/Function1;
+   0      68      0    this       Lscala/util/continuations/package$;
+   0      68      1    ctx       Lscala/Function0;
+   10      58      2    ctxR       Lscala/util/continuations/ControlContext;
+   49      18      3    f0       Lscala/Function1;
+   49      18      4    g0       Lscala/Function1;
 
   Signature: length = 0x2
-   00 4E 
+   00 55 
 
 public scala.util.continuations.ControlContext shiftUnit0(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/util/continuations/ControlContext;
@@ -266,7 +297,7 @@ public scala.util.continuations.ControlContext shiftUnit0(java.lang.Object);
    0      6      1    x       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 54 
+   00 5B 
 
 public scala.util.continuations.ControlContext shiftUnit(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/util/continuations/ControlContext;
@@ -284,7 +315,7 @@ public scala.util.continuations.ControlContext shiftUnit(java.lang.Object);
    0      10      1    x       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 56 
+   00 5D 
 
 public scala.util.continuations.ControlContext reify(scala.Function0);
   Signature: (Lscala/Function0;)Lscala/util/continuations/ControlContext;
@@ -302,7 +333,7 @@ public scala.util.continuations.ControlContext reify(scala.Function0);
    0      10      1    ctx       Lscala/Function0;
 
   Signature: length = 0x2
-   00 59 
+   00 60 
 
 public scala.util.continuations.ControlContext shiftUnitR(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/util/continuations/ControlContext;
@@ -312,7 +343,7 @@ public scala.util.continuations.ControlContext shiftUnitR(java.lang.Object);
 	dup
 	aconst_null
 	aload_1
-	invokespecial	Method scala/util/continuations/ControlContext."<init>":(Lscala/Function1;Ljava/lang/Object;)V
+	invokespecial	Method scala/util/continuations/ControlContext."<init>":(Lscala/Function2;Ljava/lang/Object;)V
 	areturn
   Labels:
   LocalVariableTable: 
@@ -321,23 +352,26 @@ public scala.util.continuations.ControlContext shiftUnitR(java.lang.Object);
    0      10      1    x       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 54 
+   00 5B 
 
 public scala.util.continuations.ControlContext shiftR(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/util/continuations/ControlContext;
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=5, Locals=2, Args_size=2
 	new	class scala/util/continuations/ControlContext
 	dup
+	new	class scala/util/continuations/package$$anonfun$shiftR$1
+	dup
 	aload_1
+	invokespecial	Method scala/util/continuations/package$$anonfun$shiftR$1."<init>":(Lscala/Function1;)V
 	aconst_null
-	invokespecial	Method scala/util/continuations/ControlContext."<init>":(Lscala/Function1;Ljava/lang/Object;)V
+	invokespecial	Method scala/util/continuations/ControlContext."<init>":(Lscala/Function2;Ljava/lang/Object;)V
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      10      0    this       Lscala/util/continuations/package$;
-   0      10      1    fun       Lscala/Function1;
+   0      17      0    this       Lscala/util/continuations/package$;
+   0      17      1    fun$1       Lscala/Function1;
 
   Signature: length = 0x2
    00 1C 
@@ -357,7 +391,7 @@ public scala.util.continuations.ControlContext reifyR(scala.Function0);
    0      10      1    ctx       Lscala/Function0;
 
   Signature: length = 0x2
-   00 59 
+   00 60 
 
 private scala.util.continuations.package$();
   Signature: ()V

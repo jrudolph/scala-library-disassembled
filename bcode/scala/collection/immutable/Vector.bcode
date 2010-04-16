@@ -2,7 +2,7 @@ Compiled from "Vector.scala"
 public final class scala.collection.immutable.Vector extends java.lang.Object implements scala.collection.immutable.Seq,scala.collection.generic.GenericTraversableTemplate,scala.collection.SeqLike,scala.collection.immutable.VectorPointer,scala.ScalaObject,java.io.Serializable
   SourceFile: "Vector.scala"
   Signature: length = 0x2
-   04 FFFFFF85 
+   04 FFFFFF84 
   ScalaSig: length = 0xB76
    05 00 FFFFFF82 7E 07 05 01 02 FFFFFF88 02 09 01 06 56 65 63
    74 6F 72 0A 02 03 04 01 09 69 6D 6D 75 74 61 62
@@ -1123,9 +1123,6 @@ NameAndType	appendBack:(Ljava/lang/Object;)Lscala/collection/immutable/Vector;
 Method	scala/collection/immutable/Vector.appendBack:(Ljava/lang/Object;)Lscala/collection/immutable/Vector;
 Asciz	take;
 Asciz	(I)Lscala/collection/immutable/Vector;;
-Asciz	java/lang/IllegalArgumentException;
-class	java/lang/IllegalArgumentException
-Method	java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
 Asciz	dropBack0;
 NameAndType	dropBack0:(I)Lscala/collection/immutable/Vector;
 Method	scala/collection/immutable/Vector.dropBack0:(I)Lscala/collection/immutable/Vector;
@@ -1239,6 +1236,8 @@ int	1073741824;
 NameAndType	display5:()[Ljava/lang/Object;
 InterfaceMethod	scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
 int	25;
+Asciz	java/lang/IllegalArgumentException;
+class	java/lang/IllegalArgumentException
 NameAndType	"<init>":()V
 Method	java/lang/IllegalArgumentException."<init>":()V
 Asciz	cutIndex;
@@ -4267,44 +4266,42 @@ public java.lang.Object $colon$plus(java.lang.Object, scala.collection.generic.C
 public scala.collection.immutable.Vector take(int);
   Signature: (I)Lscala/collection/immutable/Vector;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
 	iconst_0
-	if_icmpge	l1 // aload_0
-	new	class java/lang/IllegalArgumentException
-	dup
-	iload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
-	athrow
+	if_icmpgt	l1 // aload_0
+	getstatic	Field scala/collection/immutable/Vector$.MODULE$:Lscala/collection/immutable/Vector$;
+	astore_2
+	aload_2
+	invokevirtual	Method scala/collection/immutable/Vector$.NIL:()Lscala/collection/immutable/Vector;
+	goto	l2 // areturn
 l1	aload_0
 	getfield	Field startIndex:I
 	iload_1
 	iadd
 	aload_0
 	getfield	Field endIndex:I
-	if_icmpge	l2 // aload_0
+	if_icmpge	l3 // aload_0
 	aload_0
 	aload_0
 	getfield	Field startIndex:I
 	iload_1
 	iadd
 	invokespecial	Method dropBack0:(I)Lscala/collection/immutable/Vector;
-	goto	l3 // areturn
-l2	aload_0
-l3	areturn
+	goto	l2 // areturn
+l3	aload_0
+l2	areturn
   Labels:
-   	l1 = 20 // aload_0
-   	l2 = 46 // aload_0
-   	l3 = 47 // areturn
+   	l1 = 16 // aload_0
+   	l3 = 42 // aload_0
+   	l2 = 43 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      48      0    this       Lscala/collection/immutable/Vector;
-   0      48      1    n       I
+   0      44      0    this       Lscala/collection/immutable/Vector;
+   0      44      1    n       I
 
   Signature: length = 0x2
-   03 FFFFFFA5 
+   03 FFFFFFA2 
 
 public scala.collection.immutable.Vector drop(int);
   Signature: (I)Lscala/collection/immutable/Vector;
@@ -4312,86 +4309,79 @@ public scala.collection.immutable.Vector drop(int);
    Stack=3, Locals=3, Args_size=2
 	iload_1
 	iconst_0
-	if_icmpge	l1 // aload_0
-	new	class java/lang/IllegalArgumentException
-	dup
-	iload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
-	athrow
+	if_icmpgt	l1 // aload_0
+	aload_0
+	goto	l2 // areturn
 l1	aload_0
 	getfield	Field startIndex:I
 	iload_1
 	iadd
 	aload_0
 	getfield	Field endIndex:I
-	if_icmpge	l2 // getstatic
+	if_icmpge	l3 // getstatic
 	aload_0
 	aload_0
 	getfield	Field startIndex:I
 	iload_1
 	iadd
 	invokespecial	Method dropFront0:(I)Lscala/collection/immutable/Vector;
-	goto	l3 // areturn
-l2	getstatic	Field scala/collection/immutable/Vector$.MODULE$:Lscala/collection/immutable/Vector$;
+	goto	l2 // areturn
+l3	getstatic	Field scala/collection/immutable/Vector$.MODULE$:Lscala/collection/immutable/Vector$;
 	astore_2
 	aload_2
 	invokevirtual	Method scala/collection/immutable/Vector$.NIL:()Lscala/collection/immutable/Vector;
-l3	areturn
+l2	areturn
   Labels:
-   	l1 = 20 // aload_0
-   	l2 = 46 // getstatic
-   	l3 = 54 // areturn
+   	l1 = 9 // aload_0
+   	l3 = 35 // getstatic
+   	l2 = 43 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      55      0    this       Lscala/collection/immutable/Vector;
-   0      55      1    n       I
+   0      44      0    this       Lscala/collection/immutable/Vector;
+   0      44      1    n       I
 
   Signature: length = 0x2
-   03 FFFFFFA5 
+   03 FFFFFFA2 
 
 public scala.collection.immutable.Vector takeRight(int);
   Signature: (I)Lscala/collection/immutable/Vector;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
 	iconst_0
-	if_icmpge	l1 // aload_0
-	new	class java/lang/IllegalArgumentException
-	dup
-	iload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
-	athrow
+	if_icmpgt	l1 // aload_0
+	getstatic	Field scala/collection/immutable/Vector$.MODULE$:Lscala/collection/immutable/Vector$;
+	astore_2
+	aload_2
+	invokevirtual	Method scala/collection/immutable/Vector$.NIL:()Lscala/collection/immutable/Vector;
+	goto	l2 // areturn
 l1	aload_0
 	getfield	Field endIndex:I
 	iload_1
 	isub
 	aload_0
 	getfield	Field startIndex:I
-	if_icmple	l2 // aload_0
+	if_icmple	l3 // aload_0
 	aload_0
 	aload_0
 	getfield	Field endIndex:I
 	iload_1
 	isub
 	invokespecial	Method dropFront0:(I)Lscala/collection/immutable/Vector;
-	goto	l3 // areturn
-l2	aload_0
-l3	areturn
+	goto	l2 // areturn
+l3	aload_0
+l2	areturn
   Labels:
-   	l1 = 20 // aload_0
-   	l2 = 46 // aload_0
-   	l3 = 47 // areturn
+   	l1 = 16 // aload_0
+   	l3 = 42 // aload_0
+   	l2 = 43 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      48      0    this       Lscala/collection/immutable/Vector;
-   0      48      1    n       I
+   0      44      0    this       Lscala/collection/immutable/Vector;
+   0      44      1    n       I
 
   Signature: length = 0x2
-   03 FFFFFFA5 
+   03 FFFFFFA2 
 
 public scala.collection.immutable.Vector dropRight(int);
   Signature: (I)Lscala/collection/immutable/Vector;
@@ -4399,44 +4389,39 @@ public scala.collection.immutable.Vector dropRight(int);
    Stack=3, Locals=3, Args_size=2
 	iload_1
 	iconst_0
-	if_icmpge	l1 // aload_0
-	new	class java/lang/IllegalArgumentException
-	dup
-	iload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
-	athrow
+	if_icmpgt	l1 // aload_0
+	aload_0
+	goto	l2 // areturn
 l1	aload_0
 	getfield	Field endIndex:I
 	iload_1
 	isub
 	aload_0
 	getfield	Field startIndex:I
-	if_icmple	l2 // getstatic
+	if_icmple	l3 // getstatic
 	aload_0
 	aload_0
 	getfield	Field endIndex:I
 	iload_1
 	isub
 	invokespecial	Method dropBack0:(I)Lscala/collection/immutable/Vector;
-	goto	l3 // areturn
-l2	getstatic	Field scala/collection/immutable/Vector$.MODULE$:Lscala/collection/immutable/Vector$;
+	goto	l2 // areturn
+l3	getstatic	Field scala/collection/immutable/Vector$.MODULE$:Lscala/collection/immutable/Vector$;
 	astore_2
 	aload_2
 	invokevirtual	Method scala/collection/immutable/Vector$.NIL:()Lscala/collection/immutable/Vector;
-l3	areturn
+l2	areturn
   Labels:
-   	l1 = 20 // aload_0
-   	l2 = 46 // getstatic
-   	l3 = 54 // areturn
+   	l1 = 9 // aload_0
+   	l3 = 35 // getstatic
+   	l2 = 43 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      55      0    this       Lscala/collection/immutable/Vector;
-   0      55      1    n       I
+   0      44      0    this       Lscala/collection/immutable/Vector;
+   0      44      1    n       I
 
   Signature: length = 0x2
-   03 FFFFFFA5 
+   03 FFFFFFA2 
 
 public scala.collection.immutable.Vector updateAt(int, java.lang.Object);
   Signature: (ILjava/lang/Object;)Lscala/collection/immutable/Vector;
@@ -4490,7 +4475,7 @@ public scala.collection.immutable.Vector updateAt(int, java.lang.Object);
    24      49      4    s       Lscala/collection/immutable/Vector;
 
   Signature: length = 0x2
-   03 FFFFFFB8 
+   03 FFFFFFB5 
 
 private void gotoPosWritable(int, int, int);
   Signature: (III)V
@@ -4935,7 +4920,7 @@ l3	areturn
    633      19      24    s       Lscala/collection/immutable/Vector;
 
   Signature: length = 0x2
-   03 FFFFFFD8 
+   03 FFFFFFD5 
 
 public scala.collection.immutable.Vector appendBack(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/Vector;
@@ -5235,7 +5220,7 @@ l3	areturn
    505      19      19    s       Lscala/collection/immutable/Vector;
 
   Signature: length = 0x2
-   03 FFFFFFD8 
+   03 FFFFFFD5 
 
 private void shiftTopLevel(int, int);
   Signature: (II)V
@@ -6348,7 +6333,7 @@ private scala.collection.immutable.Vector dropFront0(int);
    62      51      6    s       Lscala/collection/immutable/Vector;
 
   Signature: length = 0x2
-   03 FFFFFFA5 
+   03 FFFFFFA2 
 
 private scala.collection.immutable.Vector dropBack0(int);
   Signature: (I)Lscala/collection/immutable/Vector;
@@ -6438,7 +6423,7 @@ private scala.collection.immutable.Vector dropBack0(int);
    67      51      6    s       Lscala/collection/immutable/Vector;
 
   Signature: length = 0x2
-   03 FFFFFFA5 
+   03 FFFFFFA2 
 
 public scala.Function1 andThen(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Function1;

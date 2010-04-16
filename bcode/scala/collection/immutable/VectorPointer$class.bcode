@@ -112,6 +112,23 @@ Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	copyOf;
 Asciz	(Lscala/collection/immutable/VectorPointer;[Ljava/lang/Object;)[Ljava/lang/Object;;
+Asciz	NULL;
+String	NULL
+Asciz	scala/Console$;
+class	scala/Console$
+Asciz	MODULE$;
+Asciz	Lscala/Console$;;
+NameAndType	MODULE$:Lscala/Console$;
+Field	scala/Console$.MODULE$:Lscala/Console$;
+Asciz	out;
+Asciz	()Ljava/io/PrintStream;;
+NameAndType	out:()Ljava/io/PrintStream;
+Method	scala/Console$.out:()Ljava/io/PrintStream;
+Asciz	java/io/PrintStream;
+class	java/io/PrintStream
+Asciz	println;
+NameAndType	println:(Ljava/lang/Object;)V
+Method	java/io/PrintStream.println:(Ljava/lang/Object;)V
 Asciz	java/lang/System;
 class	java/lang/System
 Asciz	arraycopy;
@@ -143,7 +160,6 @@ Asciz	copyRange;
 Asciz	(Lscala/collection/immutable/VectorPointer;[Ljava/lang/Object;II)[Ljava/lang/Object;;
 Asciz	scala/math/package$;
 class	scala/math/package$
-Asciz	MODULE$;
 Asciz	Lscala/math/package$;;
 NameAndType	MODULE$:Lscala/math/package$;
 Field	scala/math/package$.MODULE$:Lscala/math/package$;
@@ -1240,32 +1256,43 @@ l10	new	class java/lang/IllegalArgumentException
 public static final java.lang.Object[] copyOf(scala.collection.immutable.VectorPointer, java.lang.Object[]);
   Signature: (Lscala/collection/immutable/VectorPointer;[Ljava/lang/Object;)[Ljava/lang/Object;
   Code:
-   Stack=5, Locals=6, Args_size=2
+   Stack=5, Locals=8, Args_size=2
 	aload_1
+	ifnonnull	l1 // aload_1
+	ldc	String NULL
+	astore_3
+	getstatic	Field scala/Console$.MODULE$:Lscala/Console$;
+	astore_2
+	aload_2
+	invokevirtual	Method scala/Console$.out:()Ljava/io/PrintStream;
+	aload_3
+	invokevirtual	Method java/io/PrintStream.println:(Ljava/lang/Object;)V
+l1	aload_1
 	arraylength
 	anewarray	class java/lang/Object
-	astore	5
+	astore	7
 	iconst_0
 	iconst_0
 	aload_1
 	arraylength
+	istore	6
+	istore	5
 	istore	4
-	istore_3
-	istore_2
 	aload_1
-	iload_2
-	aload	5
-	iload_3
 	iload	4
+	aload	7
+	iload	5
+	iload	6
 	invokestatic	Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
-	aload	5
+	aload	7
 	areturn
   Labels:
+   	l1 = 19 // aload_1
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      28      0    $this       Lscala/collection/immutable/VectorPointer;
-   0      28      1    a       [Ljava/lang/Object;
-   7      20      5    b       [Ljava/lang/Object;
+   0      51      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      51      1    a       [Ljava/lang/Object;
+   26      24      7    b       [Ljava/lang/Object;
 
 
 public static final java.lang.Object[] nullSlotAndCopy(scala.collection.immutable.VectorPointer, java.lang.Object[], int);
