@@ -2,13 +2,13 @@ Compiled from "HashMap.scala"
 public class scala.collection.immutable.HashMap$HashMap1 extends scala.collection.immutable.HashMap implements scala.ScalaObject
   SourceFile: "HashMap.scala"
   Signature: length = 0x2
-   00 FFFFFFCD 
+   00 FFFFFFC8 
   Scala: length = 0x
    
   InnerClass: 
    public HashMap1=class scala/collection/immutable/HashMap$HashMap1 of class scala/collection/immutable/HashMap
    public HashTrieMap=class scala/collection/immutable/HashMap$HashTrieMap of class scala/collection/immutable/HashMap
-   public final $anonfun$updated0$1=class scala/collection/immutable/HashMap$HashMap1$$anonfun$updated0$1 of class scala/collection/immutable/HashMap$HashMap1
+   public HashMapCollision1=class scala/collection/immutable/HashMap$HashMapCollision1 of class scala/collection/immutable/HashMap
   minor version: 0
   major version: 49
   Constant pool:
@@ -112,30 +112,25 @@ Method	scala/collection/immutable/HashMap$HashMap1.kv:()Lscala/Tuple2;
 NameAndType	updated0:(Ljava/lang/Object;IILjava/lang/Object;Lscala/Tuple2;)Lscala/collection/immutable/HashMap;
 Method	scala/collection/immutable/HashMap$HashTrieMap.updated0:(Ljava/lang/Object;IILjava/lang/Object;Lscala/Tuple2;)Lscala/collection/immutable/HashMap;
 Method	scala/collection/immutable/HashMap.updated0:(Ljava/lang/Object;IILjava/lang/Object;Lscala/Tuple2;)Lscala/collection/immutable/HashMap;
-Asciz	java/lang/AssertionError;
-class	java/lang/AssertionError
-Asciz	scala/collection/mutable/StringBuilder;
-class	scala/collection/mutable/StringBuilder
+Asciz	scala/collection/immutable/HashMap$HashMapCollision1;
+class	scala/collection/immutable/HashMap$HashMapCollision1
+Asciz	scala/collection/immutable/ListMap;
+class	scala/collection/immutable/ListMap
 Asciz	()V;
 NameAndType	"<init>":()V
-Method	scala/collection/mutable/StringBuilder."<init>":()V
-Asciz	assertion failed: ;
-String	assertion failed: 
-Asciz	append;
-Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
-NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-Asciz	32-bit hash collisions not handled yet;
-String	32-bit hash collisions not handled yet
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
-NameAndType	toString:()Ljava/lang/String;
-Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-Method	java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
-Asciz	assertion0;
-Asciz	Z;
+Method	scala/collection/immutable/ListMap."<init>":()V
+Asciz	updated;
+Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/ListMap;;
+NameAndType	updated:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/ListMap;
+Method	scala/collection/immutable/ListMap.updated:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/ListMap;
+Asciz	(ILscala/collection/immutable/ListMap;)V;
+NameAndType	"<init>":(ILscala/collection/immutable/ListMap;)V
+Method	scala/collection/immutable/HashMap$HashMapCollision1."<init>":(ILscala/collection/immutable/ListMap;)V
+int	31;
 Asciz	m;
 Asciz	Lscala/collection/immutable/HashMap$HashTrieMap;;
+Asciz	elems;
+Asciz	[Lscala/collection/immutable/HashMap;;
 Asciz	<B1:Ljava/lang/Object;>(TA;IITB1;Lscala/Tuple2<TA;TB1;>;)Lscala/collection/immutable/HashMap<TA;TB1;>;;
 Asciz	removed0;
 Asciz	(Ljava/lang/Object;II)Lscala/collection/immutable/HashMap;;
@@ -221,9 +216,7 @@ Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	HashMap1;
 Asciz	HashTrieMap;
-Asciz	scala/collection/immutable/HashMap$HashMap1$$anonfun$updated0$1;
-class	scala/collection/immutable/HashMap$HashMap1$$anonfun$updated0$1
-Asciz	$anonfun$updated0$1;
+Asciz	HashMapCollision1;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -406,7 +399,7 @@ l7	areturn
 public scala.collection.immutable.HashMap updated0(java.lang.Object, int, int, java.lang.Object, scala.Tuple2);
   Signature: (Ljava/lang/Object;IILjava/lang/Object;Lscala/Tuple2;)Lscala/collection/immutable/HashMap;
   Code:
-   Stack=6, Locals=9, Args_size=6
+   Stack=8, Locals=9, Args_size=6
 	iload_2
 	aload_0
 	invokevirtual	Method hash:()I
@@ -448,13 +441,7 @@ l3	ifeq	l1 // iload_2
 l1	iload_2
 	aload_0
 	invokevirtual	Method hash:()I
-	if_icmpeq	l8 // iconst_0
-	iconst_1
-	goto	l9 // istore
-l8	iconst_0
-l9	istore	7
-	iload	7
-	ifeq	l10 // new
+	if_icmpeq	l8 // iconst_1
 	new	class scala/collection/immutable/HashMap$HashTrieMap
 	dup
 	iconst_0
@@ -462,8 +449,8 @@ l9	istore	7
 	anewarray	class scala/collection/immutable/HashMap
 	iconst_0
 	invokespecial	Method scala/collection/immutable/HashMap$HashTrieMap."<init>":(I[Lscala/collection/immutable/HashMap;I)V
-	astore	8
-	aload	8
+	astore	7
+	aload	7
 	aload_0
 	invokespecial	Method key:()Ljava/lang/Object;
 	aload_0
@@ -480,19 +467,41 @@ l9	istore	7
 	aload	4
 	aload	5
 	invokevirtual	Method scala/collection/immutable/HashMap.updated0:(Ljava/lang/Object;IILjava/lang/Object;Lscala/Tuple2;)Lscala/collection/immutable/HashMap;
+	goto	l7 // areturn
+l8	iconst_1
+	anewarray	class scala/collection/immutable/HashMap
+	astore	8
+	aload	8
+	iconst_0
+	new	class scala/collection/immutable/HashMap$HashMapCollision1
+	dup
+	iload_2
+	new	class scala/collection/immutable/ListMap
+	dup
+	invokespecial	Method scala/collection/immutable/ListMap."<init>":()V
+	aload_0
+	invokespecial	Method key:()Ljava/lang/Object;
+	aload_0
+	invokespecial	Method value:()Ljava/lang/Object;
+	invokevirtual	Method scala/collection/immutable/ListMap.updated:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/ListMap;
+	aload_1
+	aload	4
+	invokevirtual	Method scala/collection/immutable/ListMap.updated:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/ListMap;
+	invokespecial	Method scala/collection/immutable/HashMap$HashMapCollision1."<init>":(ILscala/collection/immutable/ListMap;)V
+	aastore
+	new	class scala/collection/immutable/HashMap$HashTrieMap
+	dup
+	iconst_1
+	iload_2
+	iload_3
+	iushr
+	ldc	int 31
+	iand
+	ishl
+	aload	8
+	iconst_2
+	invokespecial	Method scala/collection/immutable/HashMap$HashTrieMap."<init>":(I[Lscala/collection/immutable/HashMap;I)V
 l7	areturn
-l10	new	class java/lang/AssertionError
-	dup
-	new	class scala/collection/mutable/StringBuilder
-	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	ldc	String assertion failed: 
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	ldc	String 32-bit hash collisions not handled yet
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
-	athrow
   Labels:
    	l2 = 24 // aload_1
    	l4 = 32 // aload_1
@@ -500,25 +509,22 @@ l10	new	class java/lang/AssertionError
    	l6 = 55 // aload_1
    	l3 = 61 // ifeq
    	l1 = 80 // iload_2
-   	l8 = 92 // iconst_0
-   	l9 = 93 // istore
-   	l7 = 147 // areturn
-   	l10 = 148 // new
+   	l8 = 138 // iconst_1
+   	l7 = 198 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      176      0    this       Lscala/collection/immutable/HashMap$HashMap1;
-   0      176      1    key       Ljava/lang/Object;
-   0      176      2    hash       I
-   0      176      3    level       I
-   0      176      4    value       Ljava/lang/Object;
-   0      176      5    kv       Lscala/Tuple2;
+   0      199      0    this       Lscala/collection/immutable/HashMap$HashMap1;
+   0      199      1    key       Ljava/lang/Object;
+   0      199      2    hash       I
+   0      199      3    level       I
+   0      199      4    value       Ljava/lang/Object;
+   0      199      5    kv       Lscala/Tuple2;
    20      44      6    y0       Ljava/lang/Object;
-   100      47      7    assertion0       Z
-   148      28      7    assertion0       Z
-   115      32      8    m       Lscala/collection/immutable/HashMap$HashTrieMap;
+   103      32      7    m       Lscala/collection/immutable/HashMap$HashTrieMap;
+   144      54      8    elems       [Lscala/collection/immutable/HashMap;
 
   Signature: length = 0x2
-   00 7D 
+   00 78 
 
 public scala.collection.immutable.HashMap removed0(java.lang.Object, int, int);
   Signature: (Ljava/lang/Object;II)Lscala/collection/immutable/HashMap;
@@ -575,7 +581,7 @@ l7	areturn
    20      44      4    y0       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 FFFFFF85 
+   00 FFFFFF80 
 
 public scala.collection.Iterator iterator();
   Signature: ()Lscala/collection/Iterator;
@@ -596,7 +602,7 @@ public scala.collection.Iterator iterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFA1 
+   00 FFFFFF9C 
 
 public void foreach(scala.Function1);
   Signature: (Lscala/Function1;)V
@@ -615,7 +621,7 @@ public void foreach(scala.Function1);
    0      12      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFFAB 
+   00 FFFFFFA6 
 
 private scala.Tuple2 ensurePair();
   Signature: ()Lscala/Tuple2;
@@ -720,7 +726,7 @@ public scala.collection.immutable.HashMap$HashMap1(java.lang.Object, int, java.l
    0      26      4    kv       Lscala/Tuple2;
 
   Signature: length = 0x2
-   00 FFFFFFCC 
+   00 FFFFFFC7 
 
 }
 

@@ -17,7 +17,7 @@ public final class scala.collection.immutable.MapLike$$anon$2 extends java.lang.
   Constant pool:
 Asciz	SourceFile;
 Asciz	MapLike.scala;
-Asciz	f$1;
+Asciz	f$2;
 Asciz	Lscala/Function1;;
 Asciz	$outer;
 Asciz	Lscala/collection/immutable/MapLike;;
@@ -96,6 +96,14 @@ Asciz	mapValues;
 NameAndType	mapValues:(Lscala/collection/immutable/MapLike;Lscala/Function1;)Lscala/collection/immutable/Map;
 Method	scala/collection/immutable/MapLike$class.mapValues:(Lscala/collection/immutable/MapLike;Lscala/Function1;)Lscala/collection/immutable/Map;
 Asciz	f;
+Asciz	transform;
+Asciz	(Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
+Asciz	(Lscala/collection/immutable/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
+NameAndType	transform:(Lscala/collection/immutable/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+Method	scala/collection/immutable/MapLike$class.transform:(Lscala/collection/immutable/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+Asciz	Lscala/Function2;;
+Asciz	bf;
+Asciz	Lscala/collection/generic/CanBuildFrom;;
 Asciz	update;
 NameAndType	update:(Lscala/collection/immutable/MapLike;Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/Map;
 Method	scala/collection/immutable/MapLike$class.update:(Lscala/collection/immutable/MapLike;Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/Map;
@@ -160,14 +168,6 @@ Asciz	(Lscala/Function1;)Lscala/collection/Map;;
 Asciz	(Lscala/collection/MapLike;Lscala/Function1;)Lscala/collection/Map;;
 NameAndType	mapElements:(Lscala/collection/MapLike;Lscala/Function1;)Lscala/collection/Map;
 Method	scala/collection/MapLike$class.mapElements:(Lscala/collection/MapLike;Lscala/Function1;)Lscala/collection/Map;
-Asciz	transform;
-Asciz	(Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
-Asciz	(Lscala/collection/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
-NameAndType	transform:(Lscala/collection/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-Method	scala/collection/MapLike$class.transform:(Lscala/collection/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-Asciz	Lscala/Function2;;
-Asciz	bf;
-Asciz	Lscala/collection/generic/CanBuildFrom;;
 Asciz	filterNot;
 NameAndType	filterNot:(Lscala/collection/MapLike;Lscala/Function1;)Lscala/collection/Map;
 Method	scala/collection/MapLike$class.filterNot:(Lscala/collection/MapLike;Lscala/Function1;)Lscala/collection/Map;
@@ -666,8 +666,8 @@ Asciz	get;
 Asciz	(Ljava/lang/Object;)Lscala/Option;;
 NameAndType	get:(Ljava/lang/Object;)Lscala/Option;
 InterfaceMethod	scala/collection/MapLike.get:(Ljava/lang/Object;)Lscala/Option;
-NameAndType	f$1:Lscala/Function1;
-Field	scala/collection/immutable/MapLike$$anon$2.f$1:Lscala/Function1;
+NameAndType	f$2:Lscala/Function1;
+Field	scala/collection/immutable/MapLike$$anon$2.f$2:Lscala/Function1;
 Asciz	scala/Option;
 class	scala/Option
 NameAndType	map:(Lscala/Function1;)Lscala/Option;
@@ -812,7 +812,7 @@ Asciz	$anonfun$foreach$2;
 Asciz	$anonfun$iterator$2;
 
 {
-public final scala.Function1 f$1;
+public final scala.Function1 f$2;
   Signature: Lscala/Function1;
 
 private final scala.collection.immutable.MapLike $outer;
@@ -981,6 +981,23 @@ public scala.collection.immutable.Map mapValues(scala.Function1);
    Start  Length  Slot  Name   Signature
    0      6      0    this       Lscala/collection/immutable/MapLike$$anon$2;
    0      6      1    f       Lscala/Function1;
+
+
+public java.lang.Object transform(scala.Function2, scala.collection.generic.CanBuildFrom);
+  Signature: (Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	aload_1
+	aload_2
+	invokestatic	Method scala/collection/immutable/MapLike$class.transform:(Lscala/collection/immutable/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/immutable/MapLike$$anon$2;
+   0      7      1    f       Lscala/Function2;
+   0      7      2    bf       Lscala/collection/generic/CanBuildFrom;
 
 
 public scala.collection.immutable.Map update(java.lang.Object, java.lang.Object);
@@ -1152,23 +1169,6 @@ public scala.collection.Map mapElements(scala.Function1);
    0      6      1    f       Lscala/Function1;
 
   Deprecated: true
-
-public java.lang.Object transform(scala.Function2, scala.collection.generic.CanBuildFrom);
-  Signature: (Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-  Code:
-   Stack=3, Locals=3, Args_size=3
-	aload_0
-	aload_1
-	aload_2
-	invokestatic	Method scala/collection/MapLike$class.transform:(Lscala/collection/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      7      0    this       Lscala/collection/immutable/MapLike$$anon$2;
-   0      7      1    f       Lscala/Function2;
-   0      7      2    bf       Lscala/collection/generic/CanBuildFrom;
-
 
 public scala.collection.Map filterNot(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/Map;
@@ -2554,7 +2554,7 @@ public scala.Option get(java.lang.Object);
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/MapLike.get:(Ljava/lang/Object;)Lscala/Option;
 	aload_0
-	getfield	Field f$1:Lscala/Function1;
+	getfield	Field f$2:Lscala/Function1;
 	invokevirtual	Method scala/Option.map:(Lscala/Function1;)Lscala/Option;
 	areturn
   Labels:
@@ -2821,7 +2821,7 @@ l1	aload_0
 	putfield	Field $outer:Lscala/collection/immutable/MapLike;
 	aload_0
 	aload_2
-	putfield	Field f$1:Lscala/Function1;
+	putfield	Field f$2:Lscala/Function1;
 	aload_0
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
