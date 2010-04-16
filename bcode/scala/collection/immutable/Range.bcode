@@ -4,9 +4,9 @@ public class scala.collection.immutable.Range extends java.lang.Object implement
   ScalaSig: length = 0x3
    05 00 00 
   Signature: length = 0x2
-   03 FFFFFF87 
+   03 7A 
   RuntimeVisibleAnnotations: length = 0xB
-   00 01 03 FFFFFF88 00 01 03 FFFFFF89 73 03 FFFFFF8A 
+   00 01 03 7B 00 01 03 7C 73 03 7D 
   InnerClass: 
    public abstract ByOne=class scala/collection/immutable/Range$ByOne of class scala/collection/immutable/Range
    public final $anon$1=class scala/collection/immutable/Range$$anon$1 of class scala/collection/immutable/Range
@@ -35,8 +35,6 @@ Asciz	start;
 Asciz	I;
 Asciz	end;
 Asciz	step;
-Asciz	length;
-Asciz	bitmap$0;
 Asciz	companion;
 Asciz	()Lscala/collection/generic/GenericCompanion;;
 Asciz	LineNumberTable;
@@ -490,9 +488,6 @@ Method	scala/collection/TraversableLike$class.headOption:(Lscala/collection/Trav
 Asciz	tail;
 NameAndType	tail:(Lscala/collection/TraversableLike;)Ljava/lang/Object;
 Method	scala/collection/TraversableLike$class.tail:(Lscala/collection/TraversableLike;)Ljava/lang/Object;
-Asciz	last;
-NameAndType	last:(Lscala/collection/TraversableLike;)Ljava/lang/Object;
-Method	scala/collection/TraversableLike$class.last:(Lscala/collection/TraversableLike;)Ljava/lang/Object;
 Asciz	lastOption;
 NameAndType	lastOption:(Lscala/collection/TraversableLike;)Lscala/Option;
 Method	scala/collection/TraversableLike$class.lastOption:(Lscala/collection/TraversableLike;)Lscala/Option;
@@ -663,13 +658,15 @@ Method	scala/collection/immutable/Range.end:()I
 NameAndType	copy:(III)Lscala/collection/immutable/Range;
 Method	scala/collection/immutable/Range.copy:(III)Lscala/collection/immutable/Range;
 Asciz	isInclusive;
-Asciz	limit;
 Asciz	foreach;
 Asciz	(Lscala/Function1;)V;
-NameAndType	step:()I
-Method	scala/collection/immutable/Range.step:()I
-NameAndType	limit:()I
-Method	scala/collection/immutable/Range.limit:()I
+Asciz	fullLength;
+Asciz	()J;
+NameAndType	fullLength:()J
+Method	scala/collection/immutable/Range.fullLength:()J
+Asciz	last;
+NameAndType	last:()I
+Method	scala/collection/immutable/Range.last:()I
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
 Asciz	boxToInteger;
@@ -682,16 +679,12 @@ Asciz	apply;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
 InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+NameAndType	step:()I
+Method	scala/collection/immutable/Range.step:()I
 Asciz	i;
 Asciz	<U:Ljava/lang/Object;>(Lscala/Function1<Ljava/lang/Integer;TU;>;)V;
-NameAndType	bitmap$0:I
-Field	scala/collection/immutable/Range.bitmap$0:I
-Asciz	plen$1;
-Asciz	(III)I;
-NameAndType	plen$1:(III)I
-Method	scala/collection/immutable/Range.plen$1:(III)I
-NameAndType	length:I
-Field	scala/collection/immutable/Range.length:I
+Asciz	inclusiveLast;
+Asciz	length;
 Asciz	isEmpty;
 NameAndType	length:()I
 Method	scala/collection/immutable/Range.length:()I
@@ -706,30 +699,24 @@ Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 Asciz	locationAfterN;
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	MODULE$;
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	intWrapper;
-Asciz	(I)Lscala/runtime/RichInt;;
-NameAndType	intWrapper:(I)Lscala/runtime/RichInt;
-Method	scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
-Asciz	scala/runtime/RichInt;
-class	scala/runtime/RichInt
-NameAndType	max:(I)I
-Method	scala/runtime/RichInt.max:(I)I
-NameAndType	min:(I)I
-Method	scala/runtime/RichInt.min:(I)I
+Asciz	scala/runtime/RichLong;
+class	scala/runtime/RichLong
+Asciz	(J)V;
+NameAndType	"<init>":(J)V
+Method	scala/runtime/RichLong."<init>":(J)V
+Asciz	(J)J;
+NameAndType	min:(J)J
+Method	scala/runtime/RichLong.min:(J)J
+NameAndType	max:(J)J
+Method	scala/runtime/RichLong.max:(J)J
 Asciz	n;
 Asciz	take;
 NameAndType	locationAfterN:(I)I
 Method	scala/collection/immutable/Range.locationAfterN:(I)I
-Asciz	(I)V;
-NameAndType	"<init>":(I)V
-Method	scala/runtime/RichInt."<init>":(I)V
-Asciz	limit1;
+Asciz	inclusive;
+Asciz	()Lscala/collection/immutable/Range$Inclusive;;
+NameAndType	inclusive:()Lscala/collection/immutable/Range$Inclusive;
+Method	scala/collection/immutable/Range.inclusive:()Lscala/collection/immutable/Range$Inclusive;
 Asciz	drop;
 Asciz	init;
 NameAndType	take:(I)Lscala/collection/immutable/Range;
@@ -748,6 +735,7 @@ Asciz	takeWhile;
 Asciz	(Lscala/Function1;)Lscala/collection/immutable/Range;;
 Asciz	scala/collection/immutable/Range$;
 class	scala/collection/immutable/Range$
+Asciz	MODULE$;
 Asciz	Lscala/collection/immutable/Range$;;
 NameAndType	MODULE$:Lscala/collection/immutable/Range$;
 Field	scala/collection/immutable/Range$.MODULE$:Lscala/collection/immutable/Range$;
@@ -773,16 +761,7 @@ Asciz	dropRight;
 Asciz	reverse;
 Asciz	scala/collection/immutable/Range$Inclusive;
 class	scala/collection/immutable/Range$Inclusive
-Asciz	scala/collection/TraversableLike;
-class	scala/collection/TraversableLike
-NameAndType	last:()Ljava/lang/Object;
-InterfaceMethod	scala/collection/TraversableLike.last:()Ljava/lang/Object;
-Asciz	unboxToInt;
-NameAndType	unboxToInt:(Ljava/lang/Object;)I
-Method	scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 Method	scala/collection/immutable/Range$Inclusive."<init>":(III)V
-Asciz	inclusive;
-Asciz	()Lscala/collection/immutable/Range$Inclusive;;
 Asciz	x;
 Asciz	equals;
 NameAndType	equals:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
@@ -821,6 +800,9 @@ Asciz	(II)Lscala/collection/IterableView;;
 Asciz	()Lscala/collection/TraversableView;;
 NameAndType	view:()Lscala/collection/SeqView;
 InterfaceMethod	scala/collection/SeqLike.view:()Lscala/collection/SeqView;
+Asciz	unboxToInt;
+NameAndType	unboxToInt:(Ljava/lang/Object;)I
+Method	scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 NameAndType	isDefinedAt:(I)Z
 InterfaceMethod	scala/collection/SeqLike.isDefinedAt:(I)Z
 Asciz	(Ljava/lang/Object;)Lscala/collection/Traversable;;
@@ -915,6 +897,11 @@ Method	scala/collection/IndexedSeq$class.$init$:(Lscala/collection/IndexedSeq;)V
 Asciz	(Lscala/collection/immutable/IndexedSeq;)V;
 NameAndType	$init$:(Lscala/collection/immutable/IndexedSeq;)V
 Method	scala/collection/immutable/IndexedSeq$class.$init$:(Lscala/collection/immutable/IndexedSeq;)V
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
 Asciz	require;
 Asciz	(Z)V;
 NameAndType	require:(Z)V
@@ -923,7 +910,7 @@ Asciz	ScalaSig;
 Asciz	Ljava/lang/Object;Lscala/collection/immutable/IndexedSeq<Ljava/lang/Integer;>;Lscala/ScalaObject;;
 Asciz	Lscala/reflect/ScalaSignature;;
 Asciz	bytes;
-Asciz	\r-dC\t\tAIgnZ3\r!!C5n[V$M7f\t)a!d_2dWm;j_:TaBgG.Y'!B-R\"5q7b]TaDU4-\t1qJ6fGR2aBA)IeZ3yKV-\t/aiAB31!8u!\t92$\r\tY1kY1mC>'.Z2u!qA!b\ny!B:uCJ$X#\t!!Q\nY\taa;beRCIAtG\r&\t\t!)g\t!Q1A}\tAa;fa\"ABB%a#AtiC,A&=S:LGO[9z!)aDa-!)1Ea-!)qEa-!)!C\tg!1m9z)iC'\ty\t\t\r\n\t\n\taAA\tLHCA;9s1a\">-I7/8dYVN^3y\"aF \n3!a\"p_2,M!\tbHY&l\t!\t%RM>X-Y2i+\t1HBqSA!8ji\")1ja\ta\rZyB(%1UO\2uS>tQ#2A*D\t)A*U\"V,])B,qu5j]\"a-\ne3!aA!os\"A1ECq$mK:<G\t;A\t)Q-9A.8hi\"\"B0\tjaB5t6H/C!)AYCBH.-\rDQ1AY\t1!3yQ\tg\rO&NS:dN\3\t)AB61|7-;j_:e\r^3sRa[&\rAF]\")qC#a!A/Y6f)\tiCn]aCtC/ee>HCAvi'19\"yIg.;5BQAFmQa7jG$2!?i11'o\7\t}LUtG/7\t\r\"!1o[5q)\r1q\t\t\t1\tZqbBAC\ni\Wm5jY$2!LA\n!\tI!!A-bBAD\nIJ|o5jY$2!LA!\tI!!A-bBAEgBg$%#B&5jbAA\r\t1A+9mKJB\"!1[AQIA\5uR$B!a\t2!1Q.aAYAq!!\t\n9$AuC.,'+[4iiRQ&!\t\r51\tiC#\t:paJKw\r;5\n\tnw\rAAQ\t=I,g/:tK\"9\n-!C5oG2,8/<f+\t\tiPdbA\nR91\tU!*b],cA\nXIAC#L\n/R!C,/\"\t!!UBCA1/\r\"?IQ*-`!JKe\n\tK\n9)A-QQ*-`!JKe\n%qC1\n:G.^:jmB!a.5!Qa$aIAF\t\r\n9G!A!1\"(O\t)A-BqaKA4\t\t)xmQPA@!\tI(a]Bta$g\rAOM\t\rq\n9\">!q\rb\n#zCADO\r1LW.;!q\rC)#r!LAG\t\n\rAG%\t\r\nI\t1\tqC+#r!LAL3Y\n'\rAGM\t\r\n\n1\tqC?#b!!)D'#BAR[faCAS/\"\t!ACA:fM&tW-\3oizB!!*Y1VA,\tCAAWp8f'\tI+\tECgaJ5oSR$C#A$\tI\"8V!XAa)\r91UAA_!9RJFA`!\r\n%UF!ACMCaAHAO1BBaJ]CAAe)!\ti%a3N=BHa$\rAO\t%qC'$b!!6Zm'CBAl\n9KB&]C!AUBRa$#\rAF\t?9#b1!)[4J]RB!!dYQ]A,\t\tRAAtnZ%oiN!1Y1CW$\"!!9\t\"pRAB/Iteq 'UbAA|aa*^7fe&'+8hK&!1`A%)p7vg&4XMCx\nBA!9!!1B)Aa\t!bB1AH]8pizJaB1a9bG.w-ZKBCAqAHAw\tyC$[\r!a@\t\ni1 \"AJAr\ti \t\r\"QB!\tP!\t &!NAq\"1aDqa\tB\tyC(7\r!a@\t-qE[\tAT8oOB!B\r-\t$aE)Aa\r\t1{gnZ\n_Q!C,_!\tAa\t5bB10!1\t{E!HA11_A}2aB!\r\tD=\teB #aAqa\nByJ\t=BB&)!iEaR\tMCBAzCyC\rAa\t\rI1@!9qE!A\t}rB,/B)A!\tKw\rR3dS6Gz\tmcaB//\"\t!E?!BQ5h\t.\1m'YF\t-Y\"dQ!OYF1A\t%2jO+7-Q:J]R,wM]1m+\tYGn\tMdB_JAA!9a*^7fe&B;o\naCQ5h\t.\1mNLe-8uK\rcIHC|\tA!\1uQ\"I!qB.A%!1NE&<G)Z2Bg&sG/Z4sC2bB1\!1\tYI!$B11_A}BA!\n&!!QB\nq\"aCqa\tBA9\tC(\rAa\"\t%#1C'#B!&\ne%1\tg\tCa\"\ty\t\n1\"91E!%A\tbB!qQ\t?9#\"1Ai\;cYB!!$Y!QUA,\t\tRBT!u.2mKN!!1Y#1CW#\"A!)\t\t$1b\nIC \t\r!l!Q!1BR%A!.!|WO7fNLe^3hedWCB\iG!/\n\t\tm&qO\t>,(\r\3Bg&3J;fOJGC@\n\r!8\tBm\;cY5/8uK\r\t\t\r'1CA^8C\tR!!qBd!IM!1A\t-!=]i-C&Aq!BR\t\tT\ne'1Bo!\"QBf\r9N\rVlWM]5d%tw-=\t=Bf#qaDqa\nBhY\rJ\t\rFBq)!Na9f\nb`!1G\t}Bf9#qa4qAa;XiOAQCJ$.7\r\t=(qB'IO\t-IO!A!\nU(1 \t!\n]HAB}S$\t!b'\n\tAEQ{$BBu\t)A*\t-I\"Q!11AB!!\tIH!;v\nmbB& !1q\t%HAB)Ypa\t\t%7qak<baX!1C:$BA='1!\"GA,\t\tRAB'B\t-\"Q1CMAAB)!yb!\t$\r#BAzs4Ba$7\rAO\rm\t%31CS!ba.\r=2\tg\tC=\r\t\r\r9193qa-!91Q\r]C2p]RN\:yICJM\t\ru\"@1Q-];bYN$2APB!eaA]Qa;iKJDqaa\tI%u_N#(/8h)\tYN\rMcbAP%1\rAX\rZ3g)fa\rM#(/8h\r\tF\rm3\r\t/\rubAB0\r\t2+:jC24VM]:j_:,\n\tSnKkk3!a!]9'CjAb]3sSdN_1cY;
+Asciz	\r-dC\t\tAIgnZ3\r!!C5n[V$M7f\t)a!d_2dWm;j_:TaBgG.Y'!B-R\"5q7b]TaDU4-\t1qJ6fGR2aBA)IeZ3yKV-\t/aiAB31!8u!\t92$\r\tY1kY1mC>'.Z2u!qA!b\ny!B:uCJ$X#\t!!Q\nY\taa;beRCIAtG\r&\t\t!)g\t!Q1A}\tAa;fa\"ABB%a#AtiC,A&=S:LGO[9z!)aDa-!)1Ea-!)qEa-!)!C\tg!1m9z)iC'\ty\t\t\r\n\t\n\taAA\tLHCA;9s1a\">-I7/8dYVN^3y\"aF \n3!a\"p_2,M!\teQM>X-Y2i+\t!u\nFBqCRA!8ji\")*a\ta\rZiB'%1UO\2uS>tO2A)B\t)A)U\"AU+]B+qu5j]\"a,\n]3!aA!os\")C!?!A.Y:uY\" aWM\4uQ\")QC\t=Qa-7mtw\r5}\"a1\n4!'p]DQaFu\nq![:F[B$Cfa-AbaBdO\")a-=)TCAl\tagAj]2Lg.]!Ia\Y>\r^5p]3G/:O)\t1Cr[a#Ao\"u!m[35*\"B9s1\"B<\tB3s_B$\"!L=\tE4\tmAQ\t?\t%t^[!)aC#)1\5dKR)Q&!!11A?AY\tAA:p[\"1qA?AY\tQ!8uS2Dq!a\t\ti!tW&Hc!ACA\t\"Aq!92J \t]\"IA/Y6f/\"LG.[mCA\t+\r!a\t}\"\"IAM]8q/\"LG.[\rCA\t;\r!a\t\"*!1]1o)\tY#!\r]\ti#L\n=bAUkBdWM\r\t#\t)1!9QF]aB:qY&$\tW\tIrg\rA{AQIA %!m[3SSDGF.Ba!]A1bBA#qI\nIJ|OU5hQR$2!LA%\t1\ta-!1Q\nFqqA]3wKJX\rCR!\t!a%t7\r\;tSZ,WCAA+!\t9&aM\tIfB\\tA)!!IgnZ3M\tyFB\t#bM!qYqCK\"\"!!\t%qb\nq$ANb{KU%O)\"AQNA0A%a#Nb{KU%O)21\"!`\t!t\tIJ\2mkNLg/Z\n_j#_\t)A-uA!bIA8#)9qBB%aC\nW=DAA?)!\ty(a!BAA_j!!a\t\ry\tY11a-!1q%aAYAaPA8\tjbpEQ[=SAJq1a-!11%a#AYAaaJAF1BB-ps^_\"\tFK}CAAN)iQTAPCCaAHAM1BBa(3\rAK}CAAS)\t9+!3LJ)V.Y1VA0\t\tAAT1a$/4j]lWM;?!\t\t)a,EqC1f|e.Z\n_k#8=FAA]!N\5uIQ\tQ\tCC_#)%!0\t}qbB%<1\t/-3Q\tG!)<\tQ1Rq1a-!11%a)AYA\"!`q\t+\n\t.a5V\"1a$!4AYAaaIAg1BBNaR}CAAm)\tY.a8bJ1Q\A+[31\"a+`\t!\\"1a$a6AYAaaIAl1rCAs?B)!a:\r\tKw-8u!\t\t)!;-qC#Q&<J;\t%(BW%HAAy)\t\t9CfS$\t!!>](1B?b!!? \nabA\n|&Q 9+X.:jGJgnZ3\n\t\t!1\nbG.^:jmT1!!@!9Aa\t\t%!1\t\")!q\rqxn;?9bB\r9/Y2lC,BAv3Q1A!q1aAqaIAz)C(g\rA!\tECG!B!\n*\t-\"Q\ts9C!\n\tE$1=\tB#aAqa\nB)a2}RBauN\4\t%QC}C!A\t\t]2BiAqaB\tY4!9QM!\t}BB!)Eaeq`0\t\ryi1`#Qa?\"1qE!A}C\"!6!1\n\tyE!TA) B?\"1aD!A}Caa\tB%yBBJqlX}RB-)n#fG&l\r\tYFB^}C!A\t\t}#A\"jO+7-[7bYN!!1Y#1CG\"\"A!\t\t$1b\nI'\tcS$UmY!t:$Xm:bYV!1[H\t=B93\tqAT;nKJL7-v\t]A\"jO+7-[7bYJZ%oi<'/7\t\tE$w2B7bi\"DBa \IAa#\tLw\rR3dNLe^3hedCf7\"\tAa!\t%1BGb!!? \nBKAA!!9aD!!A\tbB!qO\tBD!\t\tFa\tMEBK/IJa'\re(qBDq\"aCqa\tBI9\tC(#\rAa\"\t}qECaR8vE2,BAAG31B!*`\t#(\n1Ai\;cYBAa)5!91Fa)\t-FCBQ)9Ga)C\r!\n)AWB!Ba-$\nI1B[A!w.2mKJ;fOJG.8:!!QB]YLa%{WO7fNLe-8uK\r\n)AoZ8vE2,i]%oi<'/7!!Ma)\t;p#BAa\"H\"A!BaY-Ay!\r9\"QZK3bB3$!\t'INa7^B)1C!6L&!q9+X.:jGJgnZ3\tyy\r1L\"91Ea4A\t-bBP!1\t#\"bRA!1BrK9C?\rAa3\t\ry1L\"9qEa8A\t-gaBv?!Q!H/[1m+yOa>~N!!)I%BB%!1\t/-)Pa?99z\n%H!ACE\t\nuH!)j\tQ1RY#C!BaaAABukYCJ\rAa=\taI\"\nQ!!1`B!ImaA\tUxCB?B)a!%sGMaAC\r`\t#M!11Y31C3!\"a!\t\"QA1qDBG)Ez}h7\rAG\rm\t\rY1!\t\tfa\r%BCB[yc!\re(q\t\ry913qa-!1qea\nAYAqa!\t9$d_:$-8t)\rq41iC!\ta!Z9vC2Hc B!911IB)!B8uQbBB$3J\ti>FO]5oOR11\n\tFDJ1a!&/3fM&!1QKB,FO]5oO*1)Yf!]i&C`cU3sSdg+:tS>tW+#%\<VVe5A3AB3!\r92qMS2!D:fe&G.>bE2,;
 Asciz	RuntimeVisibleAnnotations;
 Asciz	InnerClasses;
 Asciz	scala/collection/immutable/Range$ByOne;
@@ -949,6 +936,8 @@ class	scala/Predef
 Asciz	$less$colon$less;
 Asciz	scala/collection/TraversableLike$WithFilter;
 class	scala/collection/TraversableLike$WithFilter
+Asciz	scala/collection/TraversableLike;
+class	scala/collection/TraversableLike
 Asciz	WithFilter;
 Asciz	scala/collection/immutable/IndexedSeq;
 class	scala/collection/immutable/IndexedSeq
@@ -968,12 +957,6 @@ private final int end;
   Signature: I
 
 private final int step;
-  Signature: I
-
-private int length;
-  Signature: I
-
-public volatile int bitmap$0;
   Signature: I
 
 public static {};
@@ -2339,15 +2322,6 @@ public java.lang.Object tail();
 	areturn
   Labels:
 
-public java.lang.Object last();
-  Signature: ()Ljava/lang/Object;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokestatic	Method scala/collection/TraversableLike$class.last:(Lscala/collection/TraversableLike;)Ljava/lang/Object;
-	areturn
-  Labels:
-
 public scala.Option lastOption();
   Signature: ()Lscala/Option;
   Code:
@@ -2399,7 +2373,7 @@ public scala.collection.TraversableLike$WithFilter withFilter(scala.Function1);
    0      6      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   01 FFFFFFEE 
+   01 FFFFFFE9 
 
 public scala.collection.immutable.List reversed();
   Signature: ()Lscala/collection/immutable/List;
@@ -2864,168 +2838,197 @@ public boolean isInclusive();
 	ireturn
   Labels:
 
-public int limit();
-  Signature: ()I
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method end:()I
-	ireturn
-  Labels:
-
 public void foreach(scala.Function1);
   Signature: (Lscala/Function1;)V
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=4, Locals=4, Args_size=2
+	aload_0
+	invokevirtual	Method fullLength:()J
+	lconst_0
+	lcmp
+	ifle	l1 // return
+	aload_0
+	invokevirtual	Method last:()I
+	istore_2
 	aload_0
 	invokevirtual	Method start:()I
-	istore_2
-l6	aload_0
-	invokevirtual	Method step:()I
-	iconst_0
-	if_icmple	l1 // iload_2
+	istore_3
+l3	iload_3
 	iload_2
-	aload_0
-	invokevirtual	Method limit:()I
-	if_icmpge	l2 // iconst_0
-	iconst_1
-	goto	l3 // ifeq
-l2	iconst_0
-	goto	l3 // ifeq
-l1	iload_2
-	aload_0
-	invokevirtual	Method limit:()I
-	if_icmple	l4 // iconst_0
-	iconst_1
-	goto	l3 // ifeq
-l4	iconst_0
-l3	ifeq	l5 // return
+	if_icmpeq	l2 // aload_1
 	aload_1
-	iload_2
+	iload_3
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	pop
-	iload_2
+	iload_3
 	aload_0
 	invokevirtual	Method step:()I
 	iadd
-	istore_2
-	goto	l6 // aload_0
-l5	return
+	istore_3
+	goto	l3 // iload_3
+l2	aload_1
+	iload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+	pop
+l1	return
   Labels:
-   	l6 = 5 // aload_0
-   	l2 = 25 // iconst_0
-   	l1 = 29 // iload_2
-   	l4 = 41 // iconst_0
-   	l3 = 42 // ifeq
-   	l5 = 66 // return
+   	l3 = 19 // iload_3
+   	l2 = 45 // aload_1
+   	l1 = 56 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      67      0    this       Lscala/collection/immutable/Range;
-   0      67      1    f       Lscala/Function1;
-   5      62      2    i       I
+   0      57      0    this       Lscala/collection/immutable/Range;
+   0      57      1    f       Lscala/Function1;
+   14      42      2    last       I
+   19      37      3    i       I
 
   Signature: length = 0x2
-   02 FFFFFF9A 
+   02 FFFFFF99 
+
+public int last();
+  Signature: ()I
+  Code:
+   Stack=4, Locals=4, Args_size=1
+	aload_0
+	invokevirtual	Method step:()I
+	iconst_1
+	if_icmpeq	l1 // aload_0
+	aload_0
+	invokevirtual	Method step:()I
+	iconst_m1
+	if_icmpne	l2 // aload_0
+l1	aload_0
+	invokevirtual	Method end:()I
+	aload_0
+	invokevirtual	Method step:()I
+	isub
+	goto	l3 // ireturn
+l2	aload_0
+	invokevirtual	Method end:()I
+	i2l
+	aload_0
+	invokevirtual	Method start:()I
+	i2l
+	lsub
+	lstore_1
+	lload_1
+	aload_0
+	invokevirtual	Method step:()I
+	i2l
+	ldiv
+	aload_0
+	invokevirtual	Method step:()I
+	i2l
+	lmul
+	aload_0
+	invokevirtual	Method start:()I
+	i2l
+	ladd
+	l2i
+	istore_3
+	lload_1
+	aload_0
+	invokevirtual	Method step:()I
+	i2l
+	lrem
+	lconst_0
+	lcmp
+	ifne	l4 // iload_3
+	iload_3
+	aload_0
+	invokevirtual	Method step:()I
+	isub
+	goto	l3 // ireturn
+l4	iload_3
+l3	ireturn
+  Labels:
+   	l1 = 16 // aload_0
+   	l2 = 28 // aload_0
+   	l4 = 82 // iload_3
+   	l3 = 83 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      84      0    this       Lscala/collection/immutable/Range;
+   40      43      1    size       J
+   61      22      3    inclusiveLast       I
+
 
 public int length();
   Signature: ()I
   Code:
-   Stack=5, Locals=1, Args_size=1
+   Stack=2, Locals=1, Args_size=1
 	aload_0
-	getfield	Field bitmap$0:I
-	iconst_1
-	iand
-	iconst_0
-	if_icmpne	l1 // aload_0
-	aload_0
-	dup
-	pop
-	monitorenter
-	aload_0
-	getfield	Field bitmap$0:I
-	iconst_1
-	iand
-	iconst_0
-	if_icmpne	l2 // aload_0
-	aload_0
-	aload_0
-	invokevirtual	Method step:()I
-	iconst_0
-	if_icmple	l3 // aload_0
-	aload_0
-	aload_0
-	invokevirtual	Method start:()I
-	aload_0
-	invokevirtual	Method limit:()I
-	aload_0
-	invokevirtual	Method step:()I
-	invokespecial	Method plen$1:(III)I
-	goto	l4 // putfield
-l3	aload_0
-	aload_0
-	invokevirtual	Method limit:()I
-	aload_0
-	invokevirtual	Method start:()I
-	aload_0
-	invokevirtual	Method step:()I
-	ineg
-	invokespecial	Method plen$1:(III)I
-l4	putfield	Field length:I
-	aload_0
-	aload_0
-	getfield	Field bitmap$0:I
-	iconst_1
-	ior
-	putfield	Field bitmap$0:I
-l2	aload_0
-	monitorexit
-l1	aload_0
-	getfield	Field length:I
+	invokevirtual	Method fullLength:()J
+	l2i
 	ireturn
-	aload_0
-	monitorexit
-	athrow
   Labels:
-   	l3 = 52 // aload_0
-   	l4 = 69 // putfield
-   	l2 = 82 // aload_0
-   	l1 = 84 // aload_0
-  Exception table:
-   from   to  target type
-    14    84    89   any
+
+public long fullLength();
+  Signature: ()J
+  Code:
+   Stack=4, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method end:()I
+	aload_0
+	invokevirtual	Method start:()I
+	if_icmple	l1 // iconst_0
+	iconst_1
+	goto	l2 // aload_0
+l1	iconst_0
+l2	aload_0
+	invokevirtual	Method step:()I
+	iconst_0
+	if_icmple	l3 // iconst_0
+	iconst_1
+	goto	l4 // if_icmpne
+l3	iconst_0
+l4	if_icmpne	l5 // lconst_0
+	aload_0
+	invokevirtual	Method start:()I
+	aload_0
+	invokevirtual	Method end:()I
+	if_icmpeq	l5 // lconst_0
+	aload_0
+	invokevirtual	Method last:()I
+	i2l
+	aload_0
+	invokevirtual	Method start:()I
+	i2l
+	lsub
+	aload_0
+	invokevirtual	Method step:()I
+	i2l
+	ldiv
+	lconst_1
+	ladd
+	goto	l6 // lreturn
+l5	lconst_0
+l6	lreturn
+  Labels:
+   	l1 = 15 // iconst_0
+   	l2 = 16 // aload_0
+   	l3 = 28 // iconst_0
+   	l4 = 29 // if_icmpne
+   	l5 = 65 // lconst_0
+   	l6 = 66 // lreturn
 
 public final boolean isEmpty();
   Signature: ()Z
   Code:
    Stack=2, Locals=1, Args_size=1
 	aload_0
-	invokevirtual	Method step:()I
+	invokevirtual	Method length:()I
 	iconst_0
-	if_icmple	l1 // aload_0
-	aload_0
-	invokevirtual	Method start:()I
-	aload_0
-	invokevirtual	Method limit:()I
-	if_icmplt	l2 // iconst_0
+	if_icmpne	l1 // iconst_0
 	iconst_1
-	goto	l3 // ireturn
-l2	iconst_0
-	goto	l3 // ireturn
-l1	aload_0
-	invokevirtual	Method start:()I
-	aload_0
-	invokevirtual	Method limit:()I
-	if_icmpgt	l4 // iconst_0
-	iconst_1
-	goto	l3 // ireturn
-l4	iconst_0
-l3	ireturn
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
   Labels:
-   	l2 = 23 // iconst_0
-   	l1 = 27 // aload_0
-   	l4 = 42 // iconst_0
-   	l3 = 43 // ireturn
+   	l1 = 12 // iconst_0
+   	l2 = 13 // ireturn
 
 public final int apply(int);
   Signature: (I)I
@@ -3065,52 +3068,87 @@ l2	aload_0
 private int locationAfterN(int);
   Signature: (I)I
   Code:
-   Stack=5, Locals=2, Args_size=2
-	aload_0
-	invokevirtual	Method start:()I
+   Stack=6, Locals=6, Args_size=2
+	iload_1
+	iconst_0
+	if_icmple	l1 // aload_0
 	aload_0
 	invokevirtual	Method step:()I
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_0
-	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
-	iload_1
-	invokevirtual	Method scala/runtime/RichInt.max:(I)I
-	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
+	if_icmple	l2 // aload_0
 	aload_0
-	invokevirtual	Method length:()I
-	invokevirtual	Method scala/runtime/RichInt.min:(I)I
-	imul
-	iadd
-	ireturn
+	invokevirtual	Method start:()I
+	i2l
+	aload_0
+	invokevirtual	Method step:()I
+	i2l
+	iload_1
+	i2l
+	lmul
+	ladd
+	lstore_2
+	new	class scala/runtime/RichLong
+	dup
+	lload_2
+	invokespecial	Method scala/runtime/RichLong."<init>":(J)V
+	aload_0
+	invokevirtual	Method last:()I
+	i2l
+	invokevirtual	Method scala/runtime/RichLong.min:(J)J
+	l2i
+	goto	l3 // ireturn
+l2	aload_0
+	invokevirtual	Method start:()I
+	i2l
+	aload_0
+	invokevirtual	Method step:()I
+	i2l
+	iload_1
+	i2l
+	lmul
+	ladd
+	lstore	4
+	new	class scala/runtime/RichLong
+	dup
+	lload	4
+	invokespecial	Method scala/runtime/RichLong."<init>":(J)V
+	aload_0
+	invokevirtual	Method last:()I
+	i2l
+	invokevirtual	Method scala/runtime/RichLong.max:(J)J
+	l2i
+	goto	l3 // ireturn
+l1	aload_0
+	invokevirtual	Method start:()I
+l3	ireturn
   Labels:
+   	l2 = 48 // aload_0
+   	l1 = 85 // aload_0
+   	l3 = 89 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      35      0    this       Lscala/collection/immutable/Range;
-   0      35      1    n       I
+   0      90      0    this       Lscala/collection/immutable/Range;
+   0      90      1    n       I
 
 
 public final scala.collection.immutable.Range take(int);
   Signature: (I)Lscala/collection/immutable/Range;
   Code:
-   Stack=5, Locals=9, Args_size=2
-	aload_0
+   Stack=5, Locals=8, Args_size=2
 	iload_1
-	invokespecial	Method locationAfterN:(I)I
-	istore	5
+	iconst_0
+	if_icmple	l1 // aload_0
 	aload_0
-	invokevirtual	Method step:()I
+	invokevirtual	Method length:()I
 	iconst_0
 	if_icmple	l1 // aload_0
 	aload_0
 	invokevirtual	Method start:()I
-	new	class scala/runtime/RichInt
-	dup
-	iload	5
-	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
 	aload_0
-	invokevirtual	Method limit:()I
-	invokevirtual	Method scala/runtime/RichInt.min:(I)I
+	iload_1
+	iconst_1
+	isub
+	invokespecial	Method locationAfterN:(I)I
 	aload_0
 	invokevirtual	Method step:()I
 	istore	4
@@ -3122,36 +3160,31 @@ public final scala.collection.immutable.Range take(int);
 	iload_3
 	iload	4
 	invokespecial	Method "<init>":(III)V
+	invokevirtual	Method inclusive:()Lscala/collection/immutable/Range$Inclusive;
 	goto	l2 // areturn
 l1	aload_0
 	invokevirtual	Method start:()I
-	new	class scala/runtime/RichInt
-	dup
-	iload	5
-	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
 	aload_0
-	invokevirtual	Method limit:()I
-	invokevirtual	Method scala/runtime/RichInt.max:(I)I
+	invokevirtual	Method start:()I
 	aload_0
 	invokevirtual	Method step:()I
-	istore	8
 	istore	7
 	istore	6
+	istore	5
 	new	class scala/collection/immutable/Range
 	dup
+	iload	5
 	iload	6
 	iload	7
-	iload	8
 	invokespecial	Method "<init>":(III)V
 l2	areturn
   Labels:
-   	l1 = 57 // aload_0
-   	l2 = 100 // areturn
+   	l1 = 49 // aload_0
+   	l2 = 80 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      101      0    this       Lscala/collection/immutable/Range;
-   0      101      1    n       I
-   7      94      5    limit1       I
+   0      81      0    this       Lscala/collection/immutable/Range;
+   0      81      1    n       I
 
 
 public final scala.collection.immutable.Range drop(int);
@@ -3211,59 +3244,65 @@ public final scala.collection.immutable.Range slice(int, int);
 private int skip(scala.Function1);
   Signature: (Lscala/Function1;)I
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=4, Args_size=2
 	aload_0
 	invokevirtual	Method start:()I
+	istore_3
+	aload_0
+	invokevirtual	Method length:()I
+	iconst_0
+	if_icmple	l1 // iload_3
+	aload_0
+	invokevirtual	Method last:()I
 	istore_2
 l6	aload_0
 	invokevirtual	Method step:()I
 	iconst_0
-	if_icmple	l1 // iload_2
+	if_icmple	l2 // iload_3
+	iload_3
 	iload_2
-	aload_0
-	invokevirtual	Method limit:()I
-	if_icmpge	l2 // iconst_0
+	if_icmpgt	l3 // iconst_0
 	iconst_1
-	goto	l3 // ifeq
-l2	iconst_0
-	goto	l3 // ifeq
-l1	iload_2
-	aload_0
-	invokevirtual	Method limit:()I
-	if_icmple	l4 // iconst_0
+	goto	l4 // ifeq
+l3	iconst_0
+	goto	l4 // ifeq
+l2	iload_3
+	iload_2
+	if_icmplt	l5 // iconst_0
 	iconst_1
-	goto	l3 // ifeq
-l4	iconst_0
-l3	ifeq	l5 // iload_2
+	goto	l4 // ifeq
+l5	iconst_0
+l4	ifeq	l1 // iload_3
 	aload_1
-	iload_2
+	iload_3
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
-	ifeq	l5 // iload_2
-	iload_2
+	ifeq	l1 // iload_3
+	iload_3
 	aload_0
 	invokevirtual	Method step:()I
 	iadd
-	istore_2
+	istore_3
 	goto	l6 // aload_0
-l5	iload_2
+l1	iload_3
 	ireturn
   Labels:
-   	l6 = 5 // aload_0
-   	l2 = 25 // iconst_0
-   	l1 = 29 // iload_2
-   	l4 = 41 // iconst_0
-   	l3 = 42 // ifeq
-   	l5 = 71 // iload_2
+   	l6 = 18 // aload_0
+   	l3 = 35 // iconst_0
+   	l2 = 39 // iload_3
+   	l5 = 48 // iconst_0
+   	l4 = 49 // ifeq
+   	l1 = 78 // iload_3
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      73      0    this       Lscala/collection/immutable/Range;
-   0      73      1    p       Lscala/Function1;
-   5      67      2    s       I
+   0      80      0    this       Lscala/collection/immutable/Range;
+   0      80      1    p       Lscala/Function1;
+   18      60      2    last       I
+   5      74      3    s       I
 
   Signature: length = 0x2
-   02 FFFFFFD6 
+   02 FFFFFFC9 
 
 public final scala.collection.immutable.Range takeWhile(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/immutable/Range;
@@ -3286,7 +3325,7 @@ public final scala.collection.immutable.Range takeWhile(scala.Function1);
    0      20      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   02 FFFFFFE2 
+   02 FFFFFFD6 
 
 public final scala.collection.immutable.Range dropWhile(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/collection/immutable/Range;
@@ -3309,7 +3348,7 @@ public final scala.collection.immutable.Range dropWhile(scala.Function1);
    0      18      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   02 FFFFFFE2 
+   02 FFFFFFD6 
 
 public final scala.Tuple2 span(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Tuple2;
@@ -3345,7 +3384,7 @@ public final scala.Tuple2 span(scala.Function1);
    6      35      2    split       I
 
   Signature: length = 0x2
-   02 FFFFFFEB 
+   02 FFFFFFDF 
 
 public final scala.Tuple2 splitAt(int);
   Signature: (I)Lscala/Tuple2;
@@ -3368,7 +3407,7 @@ public final scala.Tuple2 splitAt(int);
    0      18      1    n       I
 
   Signature: length = 0x2
-   02 FFFFFFEE 
+   02 FFFFFFE2 
 
 public final scala.collection.immutable.Range takeRight(int);
   Signature: (I)Lscala/collection/immutable/Range;
@@ -3413,12 +3452,11 @@ public final scala.collection.immutable.Range reverse();
 	aload_0
 	invokevirtual	Method length:()I
 	iconst_0
-	if_icmple	l1 // new
+	if_icmple	l1 // aload_0
 	new	class scala/collection/immutable/Range$Inclusive
 	dup
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.last:()Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
+	invokevirtual	Method last:()I
 	aload_0
 	invokevirtual	Method start:()I
 	aload_0
@@ -3426,20 +3464,11 @@ public final scala.collection.immutable.Range reverse();
 	ineg
 	invokespecial	Method scala/collection/immutable/Range$Inclusive."<init>":(III)V
 	goto	l2 // areturn
-l1	new	class scala/collection/immutable/Range
-	dup
-	aload_0
-	invokevirtual	Method end:()I
-	aload_0
-	invokevirtual	Method start:()I
-	aload_0
-	invokevirtual	Method step:()I
-	ineg
-	invokespecial	Method "<init>":(III)V
+l1	aload_0
 l2	areturn
   Labels:
-   	l1 = 36 // new
-   	l2 = 56 // areturn
+   	l1 = 31 // aload_0
+   	l2 = 32 // areturn
 
 public scala.collection.immutable.Range$Inclusive inclusive();
   Signature: ()Lscala/collection/immutable/Range$Inclusive;
@@ -3457,22 +3486,26 @@ public scala.collection.immutable.Range$Inclusive inclusive();
 	areturn
   Labels:
 
-public boolean contains(int);
+public final boolean contains(int);
   Signature: (I)Z
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
+	invokevirtual	Method length:()I
+	iconst_0
+	if_icmple	l1 // iconst_0
+	aload_0
 	invokevirtual	Method step:()I
 	iconst_0
-	if_icmple	l1 // aload_0
+	if_icmple	l2 // aload_0
 	aload_0
 	invokevirtual	Method start:()I
 	iload_1
-	if_icmpgt	l2 // iconst_0
+	if_icmpgt	l3 // iconst_0
 	iload_1
 	aload_0
-	invokevirtual	Method limit:()I
-	if_icmpge	l2 // iconst_0
+	invokevirtual	Method last:()I
+	if_icmpgt	l3 // iconst_0
 	iload_1
 	aload_0
 	invokevirtual	Method start:()I
@@ -3481,19 +3514,19 @@ public boolean contains(int);
 	invokevirtual	Method step:()I
 	irem
 	iconst_0
-	if_icmpne	l2 // iconst_0
+	if_icmpne	l3 // iconst_0
 	iconst_1
-	goto	l3 // ireturn
-l2	iconst_0
-	goto	l3 // ireturn
-l1	aload_0
+	goto	l4 // ireturn
+l3	iconst_0
+	goto	l4 // ireturn
+l2	aload_0
 	invokevirtual	Method start:()I
 	iload_1
-	if_icmplt	l4 // iconst_0
+	if_icmplt	l5 // iconst_0
 	iload_1
 	aload_0
-	invokevirtual	Method limit:()I
-	if_icmple	l4 // iconst_0
+	invokevirtual	Method last:()I
+	if_icmplt	l5 // iconst_0
 	aload_0
 	invokevirtual	Method start:()I
 	iload_1
@@ -3502,20 +3535,23 @@ l1	aload_0
 	invokevirtual	Method step:()I
 	irem
 	iconst_0
-	if_icmpne	l4 // iconst_0
+	if_icmpne	l5 // iconst_0
 	iconst_1
-	goto	l3 // ireturn
-l4	iconst_0
-l3	ireturn
+	goto	l4 // ireturn
+l5	iconst_0
+	goto	l4 // ireturn
+l1	iconst_0
+l4	ireturn
   Labels:
-   	l2 = 43 // iconst_0
-   	l1 = 47 // aload_0
-   	l4 = 82 // iconst_0
-   	l3 = 83 // ireturn
+   	l3 = 51 // iconst_0
+   	l2 = 55 // aload_0
+   	l5 = 90 // iconst_0
+   	l1 = 94 // iconst_0
+   	l4 = 95 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      84      0    this       Lscala/collection/immutable/Range;
-   0      84      1    x       I
+   0      96      0    this       Lscala/collection/immutable/Range;
+   0      96      1    x       I
 
 
 public boolean equals(java.lang.Object);
@@ -3928,35 +3964,17 @@ public final java.lang.Object apply(int);
    0      11      1    idx       I
 
 
-private final int plen$1(int, int, int);
-  Signature: (III)I
+public java.lang.Object last();
+  Signature: ()Ljava/lang/Object;
   Code:
-   Stack=2, Locals=4, Args_size=4
-	iload_2
+   Stack=1, Locals=2, Args_size=1
+	aload_0
+	invokevirtual	Method last:()I
+	istore_1
 	iload_1
-	if_icmpgt	l1 // iload_2
-	iconst_0
-	goto	l2 // ireturn
-l1	iload_2
-	iload_1
-	isub
-	iconst_1
-	isub
-	iload_3
-	idiv
-	iconst_1
-	iadd
-l2	ireturn
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	areturn
   Labels:
-   	l1 = 9 // iload_2
-   	l2 = 18 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      19      0    this       Lscala/collection/immutable/Range;
-   0      19      1    start       I
-   0      19      2    limit       I
-   0      19      3    step       I
-
 
 public scala.collection.immutable.Range(int, int, int);
   Signature: (III)V

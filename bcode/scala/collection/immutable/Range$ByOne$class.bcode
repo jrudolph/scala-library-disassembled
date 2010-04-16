@@ -16,13 +16,16 @@ Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/collection/immutable/Range;
 class	scala/collection/immutable/Range
-Asciz	start;
+Asciz	length;
 Asciz	()I;
+NameAndType	length:()I
+Method	scala/collection/immutable/Range.length:()I
+Asciz	last;
+NameAndType	last:()I
+Method	scala/collection/immutable/Range.last:()I
+Asciz	start;
 NameAndType	start:()I
 Method	scala/collection/immutable/Range.start:()I
-Asciz	limit;
-NameAndType	limit:()I
-Method	scala/collection/immutable/Range.limit:()I
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
 Asciz	boxToInteger;
@@ -39,7 +42,6 @@ Asciz	$this;
 Asciz	Lscala/collection/immutable/Range$ByOne;;
 Asciz	f;
 Asciz	Lscala/Function1;;
-Asciz	l;
 Asciz	I;
 Asciz	i;
 Asciz	LocalVariableTable;
@@ -62,15 +64,20 @@ public static final void foreach(scala.collection.immutable.Range$ByOne, scala.F
    Stack=2, Locals=4, Args_size=2
 	aload_0
 	checkcast	class scala/collection/immutable/Range
-	invokevirtual	Method scala/collection/immutable/Range.start:()I
-	istore_3
+	invokevirtual	Method scala/collection/immutable/Range.length:()I
+	iconst_0
+	if_icmple	l1 // return
 	aload_0
 	checkcast	class scala/collection/immutable/Range
-	invokevirtual	Method scala/collection/immutable/Range.limit:()I
+	invokevirtual	Method scala/collection/immutable/Range.last:()I
 	istore_2
-l2	iload_3
+	aload_0
+	checkcast	class scala/collection/immutable/Range
+	invokevirtual	Method scala/collection/immutable/Range.start:()I
+	istore_3
+l3	iload_3
 	iload_2
-	if_icmpge	l1 // return
+	if_icmpeq	l2 // aload_1
 	aload_1
 	iload_3
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
@@ -80,17 +87,23 @@ l2	iload_3
 	iconst_1
 	iadd
 	istore_3
-	goto	l2 // iload_3
+	goto	l3 // iload_3
+l2	aload_1
+	iload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+	pop
 l1	return
   Labels:
-   	l2 = 16 // iload_3
-   	l1 = 39 // return
+   	l3 = 27 // iload_3
+   	l2 = 50 // aload_1
+   	l1 = 61 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      40      0    $this       Lscala/collection/immutable/Range$ByOne;
-   0      40      1    f       Lscala/Function1;
-   16      24      2    l       I
-   8      32      3    i       I
+   0      62      0    $this       Lscala/collection/immutable/Range$ByOne;
+   0      62      1    f       Lscala/Function1;
+   19      42      2    last       I
+   27      34      3    i       I
 
 
 public static void $init$(scala.collection.immutable.Range$ByOne);

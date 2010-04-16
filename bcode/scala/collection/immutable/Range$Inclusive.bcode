@@ -10,19 +10,14 @@ public class scala.collection.immutable.Range$Inclusive extends scala.collection
   Constant pool:
 Asciz	SourceFile;
 Asciz	Range.scala;
-Asciz	limit;
-Asciz	I;
 Asciz	isInclusive;
 Asciz	()Z;
 Asciz	Code;
 Asciz	LineNumberTable;
-Asciz	()I;
-Asciz	scala/collection/immutable/Range$Inclusive;
-class	scala/collection/immutable/Range$Inclusive
-NameAndType	limit:I
-Field	scala/collection/immutable/Range$Inclusive.limit:I
 Asciz	copy;
 Asciz	(III)Lscala/collection/immutable/Range;;
+Asciz	scala/collection/immutable/Range$Inclusive;
+class	scala/collection/immutable/Range$Inclusive
 Asciz	<init>;
 Asciz	(III)V;
 NameAndType	"<init>":(III)V
@@ -30,28 +25,32 @@ Method	scala/collection/immutable/Range$Inclusive."<init>":(III)V
 Asciz	this;
 Asciz	Lscala/collection/immutable/Range$Inclusive;;
 Asciz	start;
+Asciz	I;
 Asciz	end;
 Asciz	step;
 Asciz	LocalVariableTable;
+Asciz	last;
+Asciz	()I;
 Asciz	scala/collection/immutable/Range;
 class	scala/collection/immutable/Range
-Method	scala/collection/immutable/Range."<init>":(III)V
-NameAndType	end:()I
-Method	scala/collection/immutable/Range.end:()I
-Asciz	scala/math/package$;
-class	scala/math/package$
-Asciz	MODULE$;
-Asciz	Lscala/math/package$;;
-NameAndType	MODULE$:Lscala/math/package$;
-Field	scala/math/package$.MODULE$:Lscala/math/package$;
 NameAndType	step:()I
 Method	scala/collection/immutable/Range.step:()I
-Asciz	scala/MathCommon;
-class	scala/MathCommon
-Asciz	signum;
-Asciz	(I)I;
-NameAndType	signum:(I)I
-InterfaceMethod	scala/MathCommon.signum:(I)I
+NameAndType	end:()I
+Method	scala/collection/immutable/Range.end:()I
+NameAndType	start:()I
+Method	scala/collection/immutable/Range.start:()I
+Asciz	fullLength;
+Asciz	()J;
+NameAndType	last:()I
+Method	scala/collection/immutable/Range$Inclusive.last:()I
+Asciz	()Ljava/lang/Object;;
+Asciz	scala/runtime/BoxesRunTime;
+class	scala/runtime/BoxesRunTime
+Asciz	boxToInteger;
+Asciz	(I)Ljava/lang/Integer;;
+NameAndType	boxToInteger:(I)Ljava/lang/Integer;
+Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+Method	scala/collection/immutable/Range."<init>":(III)V
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	Inclusive;
@@ -59,23 +58,11 @@ Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
 {
-private final int limit;
-  Signature: I
-
 public boolean isInclusive();
   Signature: ()Z
   Code:
    Stack=1, Locals=1, Args_size=1
 	iconst_1
-	ireturn
-  Labels:
-
-public int limit();
-  Signature: ()I
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field limit:I
 	ireturn
   Labels:
 
@@ -99,6 +86,109 @@ public scala.collection.immutable.Range copy(int, int, int);
    0      11      3    step       I
 
 
+public int last();
+  Signature: ()I
+  Code:
+   Stack=4, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method scala/collection/immutable/Range.step:()I
+	iconst_1
+	if_icmpeq	l1 // aload_0
+	aload_0
+	invokespecial	Method scala/collection/immutable/Range.step:()I
+	iconst_m1
+	if_icmpne	l2 // aload_0
+l1	aload_0
+	invokespecial	Method scala/collection/immutable/Range.end:()I
+	goto	l3 // ireturn
+l2	aload_0
+	invokespecial	Method scala/collection/immutable/Range.end:()I
+	i2l
+	aload_0
+	invokespecial	Method scala/collection/immutable/Range.start:()I
+	i2l
+	lsub
+	aload_0
+	invokespecial	Method scala/collection/immutable/Range.step:()I
+	i2l
+	ldiv
+	aload_0
+	invokespecial	Method scala/collection/immutable/Range.step:()I
+	i2l
+	lmul
+	aload_0
+	invokespecial	Method scala/collection/immutable/Range.start:()I
+	i2l
+	ladd
+	l2i
+l3	ireturn
+  Labels:
+   	l1 = 16 // aload_0
+   	l2 = 23 // aload_0
+   	l3 = 53 // ireturn
+
+public long fullLength();
+  Signature: ()J
+  Code:
+   Stack=4, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method scala/collection/immutable/Range.end:()I
+	aload_0
+	invokespecial	Method scala/collection/immutable/Range.start:()I
+	if_icmple	l1 // iconst_0
+	iconst_1
+	goto	l2 // aload_0
+l1	iconst_0
+l2	aload_0
+	invokespecial	Method scala/collection/immutable/Range.step:()I
+	iconst_0
+	if_icmple	l3 // iconst_0
+	iconst_1
+	goto	l4 // if_icmpeq
+l3	iconst_0
+l4	if_icmpeq	l5 // aload_0
+	aload_0
+	invokespecial	Method scala/collection/immutable/Range.start:()I
+	aload_0
+	invokespecial	Method scala/collection/immutable/Range.end:()I
+	if_icmpne	l6 // lconst_0
+l5	aload_0
+	invokevirtual	Method last:()I
+	i2l
+	aload_0
+	invokespecial	Method scala/collection/immutable/Range.start:()I
+	i2l
+	lsub
+	aload_0
+	invokespecial	Method scala/collection/immutable/Range.step:()I
+	i2l
+	ldiv
+	lconst_1
+	ladd
+	goto	l7 // lreturn
+l6	lconst_0
+l7	lreturn
+  Labels:
+   	l1 = 15 // iconst_0
+   	l2 = 16 // aload_0
+   	l3 = 28 // iconst_0
+   	l4 = 29 // if_icmpeq
+   	l5 = 43 // aload_0
+   	l6 = 65 // lconst_0
+   	l7 = 66 // lreturn
+
+public java.lang.Object last();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=1, Locals=2, Args_size=1
+	aload_0
+	invokevirtual	Method last:()I
+	istore_1
+	iload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	areturn
+  Labels:
+
 public scala.collection.immutable.Range$Inclusive(int, int, int);
   Signature: (III)V
   Code:
@@ -108,23 +198,14 @@ public scala.collection.immutable.Range$Inclusive(int, int, int);
 	iload_2
 	iload_3
 	invokespecial	Method scala/collection/immutable/Range."<init>":(III)V
-	aload_0
-	aload_0
-	invokespecial	Method scala/collection/immutable/Range.end:()I
-	getstatic	Field scala/math/package$.MODULE$:Lscala/math/package$;
-	aload_0
-	invokespecial	Method scala/collection/immutable/Range.step:()I
-	invokeinterface	InterfaceMethod scala/MathCommon.signum:(I)I
-	iadd
-	putfield	Field limit:I
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      29      0    this       Lscala/collection/immutable/Range$Inclusive;
-   0      29      1    start       I
-   0      29      2    end       I
-   0      29      3    step       I
+   0      8      0    this       Lscala/collection/immutable/Range$Inclusive;
+   0      8      1    start       I
+   0      8      2    end       I
+   0      8      3    step       I
 
 
 }
