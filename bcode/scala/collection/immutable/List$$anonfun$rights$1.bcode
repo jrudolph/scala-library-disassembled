@@ -27,9 +27,9 @@ class	scala/Left
 Asciz	scala/Right;
 class	scala/Right
 Asciz	b;
-Asciz	Ljava/lang/Object;;
-NameAndType	b:Ljava/lang/Object;
-Field	scala/Right.b:Ljava/lang/Object;
+Asciz	()Ljava/lang/Object;;
+NameAndType	b:()Ljava/lang/Object;
+Method	scala/Right.b:()Ljava/lang/Object;
 Asciz	scala/collection/immutable/List;
 class	scala/collection/immutable/List
 Asciz	$colon$colon;
@@ -48,9 +48,11 @@ Asciz	e;
 Asciz	Lscala/Either;;
 Asciz	bs;
 Asciz	Lscala/collection/immutable/List;;
+Asciz	temp38;
 Asciz	temp41;
 Asciz	Lscala/Right;;
 Asciz	temp42;
+Asciz	Ljava/lang/Object;;
 Asciz	LocalVariableTable;
 Asciz	(Lscala/Either<TA;TB;>;Lscala/collection/immutable/List<TB;>;)Lscala/collection/immutable/List<TB;>;;
 Asciz	Signature;
@@ -87,44 +89,52 @@ public static {};
 public final scala.collection.immutable.List apply(scala.Either, scala.collection.immutable.List);
   Signature: (Lscala/Either;Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
   Code:
-   Stack=3, Locals=5, Args_size=3
+   Stack=3, Locals=8, Args_size=3
 	aload_1
-	instanceof	class scala/Left
-	ifeq	l1 // aload_1
-	aload_2
-	goto	l2 // areturn
-l1	aload_1
-	instanceof	class scala/Right
-	ifeq	l3 // new
-	aload_1
-	checkcast	class scala/Right
 	astore_3
 	aload_3
-	getfield	Field scala/Right.b:Ljava/lang/Object;
-	astore	4
+	instanceof	class scala/Left
+	ifeq	l1 // aload_3
 	aload_2
+	goto	l2 // areturn
+l1	aload_3
+	instanceof	class scala/Right
+	ifeq	l3 // new
+	aload_3
+	checkcast	class scala/Right
+	astore	4
 	aload	4
+	invokevirtual	Method scala/Right.b:()Ljava/lang/Object;
+	astore	5
+	aload	5
+	astore	6
+	aload	6
+	astore	7
+	aload_2
+	aload	7
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 l2	areturn
 l3	new	class scala/MatchError
 	dup
-	aload_1
+	aload_3
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 11 // aload_1
-   	l2 = 35 // areturn
-   	l3 = 36 // new
+   	l1 = 13 // aload_3
+   	l2 = 47 // areturn
+   	l3 = 48 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      45      0    this       Lscala/collection/immutable/List$$anonfun$rights$1;
-   0      45      1    e       Lscala/Either;
-   0      45      2    bs       Lscala/collection/immutable/List;
-   23      12      3    temp41       Lscala/Right;
-   29      6      4    temp42       Ljava/lang/Object;
+   0      57      0    this       Lscala/collection/immutable/List$$anonfun$rights$1;
+   0      57      1    e       Lscala/Either;
+   0      57      2    bs       Lscala/collection/immutable/List;
+   2      55      3    temp38       Lscala/Either;
+   26      21      4    temp41       Lscala/Right;
+   33      14      5    temp42       Ljava/lang/Object;
+   37      10      6    b       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 2D 
+   00 2F 
 
 public final java.lang.Object apply(java.lang.Object, java.lang.Object);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;

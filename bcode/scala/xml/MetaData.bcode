@@ -2,7 +2,7 @@ Compiled from "MetaData.scala"
 public abstract class scala.xml.MetaData extends java.lang.Object implements scala.collection.Iterable,scala.xml.Equality,scala.ScalaObject,java.io.Serializable
   SourceFile: "MetaData.scala"
   Signature: length = 0x2
-   02 FFFFFFD8 
+   02 FFFFFFE8 
   ScalaSig: length = 0x766
    05 00 FFFFFF82 0C 07 05 01 02 FFFFFF88 02 07 01 08 4D 65 74
    61 44 61 74 61 0A 02 03 04 01 03 78 6D 6C 0A 01
@@ -657,11 +657,13 @@ Method	scala/xml/MetaData.length:(I)I
 Asciz	i;
 Asciz	isPrefixed;
 Asciz	canEqual;
+Asciz	temp4;
 Asciz	strict_$eq$eq;
 Asciz	scala/collection/TraversableLike;
 class	scala/collection/TraversableLike
 NameAndType	toSet:()Lscala/collection/immutable/Set;
 InterfaceMethod	scala/collection/TraversableLike.toSet:()Lscala/collection/immutable/Set;
+Asciz	temp6;
 Asciz	basisForHashCode;
 Asciz	scala/collection/immutable/List$;
 class	scala/collection/immutable/List$
@@ -761,8 +763,10 @@ Method	scala/xml/MetaData.key:()Ljava/lang/String;
 Asciz	toString;
 NameAndType	toString:()Ljava/lang/String;
 Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+Asciz	temp8;
 Asciz	temp9;
 Asciz	Lscala/xml/Attribute;;
+Asciz	x;
 Asciz	asAttrMap;
 Asciz	()Lscala/collection/immutable/Map;;
 Asciz	scala/xml/MetaData$$anonfun$asAttrMap$1;
@@ -799,19 +803,31 @@ Asciz	uri;
 Asciz	(Ljava/lang/String;Lscala/xml/Node;Ljava/lang/String;)Lscala/Option<Lscala/collection/Seq<Lscala/xml/Node;>;>;;
 Asciz	(Ljava/lang/String;Lscala/xml/NamespaceBinding;Ljava/lang/String;)Lscala/Option<Lscala/collection/Seq<Lscala/xml/Node;>;>;;
 Asciz	toString1;
-Method	scala/collection/mutable/StringBuilder."<init>":()V
+Asciz	scala/xml/Utility$;
+class	scala/xml/Utility$
+Asciz	Lscala/xml/Utility$;;
+NameAndType	MODULE$:Lscala/xml/Utility$;
+Field	scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
+Asciz	scala/xml/MetaData$$anonfun$toString1$1;
+class	scala/xml/MetaData$$anonfun$toString1$1
+Method	scala/xml/MetaData$$anonfun$toString1$1."<init>":(Lscala/xml/MetaData;)V
+Asciz	sbToString;
+Asciz	(Lscala/Function1;)Ljava/lang/String;;
+NameAndType	sbToString:(Lscala/Function1;)Ljava/lang/String;
+Method	scala/xml/Utility$.sbToString:(Lscala/Function1;)Ljava/lang/String;
 Asciz	(Lscala/collection/mutable/StringBuilder;)V;
-NameAndType	toString1:(Lscala/collection/mutable/StringBuilder;)V
-Method	scala/xml/MetaData.toString1:(Lscala/collection/mutable/StringBuilder;)V
-Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-Asciz	sb0;
+Asciz	scala/xml/MetaData$$anonfun$toString$1;
+class	scala/xml/MetaData$$anonfun$toString$1
+Method	scala/xml/MetaData$$anonfun$toString$1."<init>":(Lscala/xml/MetaData;)V
 Asciz	buildString;
-NameAndType	buildString:(Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
-Method	scala/xml/MetaData.buildString:(Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
 int	32;
 Asciz	(C)Lscala/collection/mutable/StringBuilder;;
 NameAndType	append:(C)Lscala/collection/mutable/StringBuilder;
 Method	scala/collection/mutable/StringBuilder.append:(C)Lscala/collection/mutable/StringBuilder;
+NameAndType	toString1:(Lscala/collection/mutable/StringBuilder;)V
+Method	scala/xml/MetaData.toString1:(Lscala/collection/mutable/StringBuilder;)V
+NameAndType	buildString:(Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
+Method	scala/xml/MetaData.buildString:(Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
 Asciz	sb;
 Asciz	wellformed;
 Asciz	(Lscala/xml/NamespaceBinding;)Z;
@@ -871,12 +887,8 @@ Asciz	$less$colon$less;
 Asciz	scala/collection/TraversableLike$WithFilter;
 class	scala/collection/TraversableLike$WithFilter
 Asciz	WithFilter;
-Asciz	scala/xml/MetaData$$anonfun$toString$1;
-class	scala/xml/MetaData$$anonfun$toString$1
 Asciz	$anonfun$toString$1;
 Asciz	$anonfun$iterator$1;
-Asciz	scala/xml/MetaData$$anonfun$toString1$1;
-class	scala/xml/MetaData$$anonfun$toString1$1
 Asciz	$anonfun$toString1$1;
 Asciz	$anonfun$asAttrMap$1;
 Asciz	scala/collection/Iterable;
@@ -2297,37 +2309,42 @@ public abstract boolean isPrefixed();
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=1, Locals=2, Args_size=2
+   Stack=1, Locals=3, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/xml/MetaData
 	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      5      0    this       Lscala/xml/MetaData;
-   0      5      1    other       Ljava/lang/Object;
+   0      7      0    this       Lscala/xml/MetaData;
+   0      7      1    other       Ljava/lang/Object;
+   2      4      2    temp4       Ljava/lang/Object;
 
 
 public boolean strict_$eq$eq(scala.xml.Equality);
   Signature: (Lscala/xml/Equality;)Z
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=4, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/xml/MetaData
 	ifeq	l1 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toSet:()Lscala/collection/immutable/Set;
-	aload_1
+	aload_2
 	checkcast	class scala/xml/MetaData
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toSet:()Lscala/collection/immutable/Set;
-	astore_2
+	astore_3
 	dup
-	ifnonnull	l2 // aload_2
+	ifnonnull	l2 // aload_3
 	pop
-	aload_2
+	aload_3
 	ifnull	l3 // iconst_1
 	goto	l4 // iconst_0
-l2	aload_2
+l2	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l4 // iconst_0
 l3	iconst_1
@@ -2337,15 +2354,16 @@ l4	iconst_0
 l1	iconst_0
 l5	ireturn
   Labels:
-   	l2 = 35 // aload_2
-   	l3 = 42 // iconst_1
-   	l4 = 46 // iconst_0
-   	l1 = 50 // iconst_0
-   	l5 = 51 // ireturn
+   	l2 = 37 // aload_3
+   	l3 = 44 // iconst_1
+   	l4 = 48 // iconst_0
+   	l1 = 52 // iconst_0
+   	l5 = 53 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      52      0    this       Lscala/xml/MetaData;
-   0      52      1    other       Lscala/xml/Equality;
+   0      54      0    this       Lscala/xml/MetaData;
+   0      54      1    other       Lscala/xml/Equality;
+   2      52      2    temp6       Lscala/xml/Equality;
 
 
 public scala.collection.Seq basisForHashCode();
@@ -2367,7 +2385,7 @@ public scala.collection.Seq basisForHashCode();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 28 
+   02 2A 
 
 public scala.collection.Iterator iterator();
   Signature: ()Lscala/collection/Iterator;
@@ -2385,7 +2403,7 @@ public scala.collection.Iterator iterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 44 
+   02 46 
 
 public int size();
   Signature: ()I
@@ -2429,7 +2447,7 @@ l2	areturn
    0      37      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   02 59 
+   02 5B 
 
 public abstract java.lang.String key();
   Signature: ()Ljava/lang/String;
@@ -2437,26 +2455,30 @@ public abstract java.lang.String key();
 public abstract scala.collection.Seq value();
   Signature: ()Lscala/collection/Seq;
   Signature: length = 0x2
-   02 5B 
+   02 5D 
 
 public java.lang.String prefixedKey();
   Signature: ()Ljava/lang/String;
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=4, Args_size=1
 	aload_0
+	astore_1
+	aload_1
 	instanceof	class scala/xml/Attribute
 	ifeq	l1 // aload_0
-	aload_0
-	checkcast	class scala/xml/Attribute
-	astore_1
-	aload_0
 	aload_1
+	checkcast	class scala/xml/Attribute
+	astore_2
+	aload_2
+	astore_3
+	aload_0
+	aload_3
 	invokespecial	Method gd1$1:(Lscala/xml/Attribute;)Z
 	ifeq	l1 // aload_0
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	aload_1
+	aload_2
 	invokeinterface	InterfaceMethod scala/xml/Attribute.pre:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc_w	String :
@@ -2470,12 +2492,14 @@ l1	aload_0
 	invokevirtual	Method key:()Ljava/lang/String;
 l2	areturn
   Labels:
-   	l1 = 55 // aload_0
-   	l2 = 59 // areturn
+   	l1 = 59 // aload_0
+   	l2 = 63 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      60      0    this       Lscala/xml/MetaData;
-   12      47      1    temp9       Lscala/xml/Attribute;
+   0      64      0    this       Lscala/xml/MetaData;
+   2      62      1    temp8       Lscala/xml/MetaData;
+   14      49      2    temp9       Lscala/xml/Attribute;
+   16      47      3    x       Lscala/xml/Attribute;
 
 
 public scala.collection.immutable.Map asAttrMap();
@@ -2495,7 +2519,7 @@ public scala.collection.immutable.Map asAttrMap();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 FFFFFF85 
+   02 FFFFFF89 
 
 public abstract scala.xml.MetaData next();
   Signature: ()Lscala/xml/MetaData;
@@ -2517,7 +2541,7 @@ public final scala.Option get(java.lang.String);
    0      12      1    key       Ljava/lang/String;
 
   Signature: length = 0x2
-   02 FFFFFF92 
+   02 FFFFFF96 
 
 public final scala.Option get(java.lang.String, scala.xml.Node, java.lang.String);
   Signature: (Ljava/lang/String;Lscala/xml/Node;Ljava/lang/String;)Lscala/Option;
@@ -2539,7 +2563,7 @@ public final scala.Option get(java.lang.String, scala.xml.Node, java.lang.String
    0      11      3    key       Ljava/lang/String;
 
   Signature: length = 0x2
-   02 FFFFFF98 
+   02 FFFFFF9C 
 
 public final scala.Option get(java.lang.String, scala.xml.NamespaceBinding, java.lang.String);
   Signature: (Ljava/lang/String;Lscala/xml/NamespaceBinding;Ljava/lang/String;)Lscala/Option;
@@ -2562,31 +2586,20 @@ public final scala.Option get(java.lang.String, scala.xml.NamespaceBinding, java
    0      14      3    key       Ljava/lang/String;
 
   Signature: length = 0x2
-   02 FFFFFF99 
+   02 FFFFFF9D 
 
 public java.lang.String toString1();
   Signature: ()Ljava/lang/String;
   Code:
-   Stack=2, Locals=3, Args_size=1
-	new	class scala/collection/mutable/StringBuilder
+   Stack=4, Locals=1, Args_size=1
+	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
+	new	class scala/xml/MetaData$$anonfun$toString1$1
 	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	astore_2
-	aload_2
-	checkcast	class scala/collection/mutable/StringBuilder
-	astore_1
 	aload_0
-	aload_1
-	invokevirtual	Method toString1:(Lscala/collection/mutable/StringBuilder;)V
-	aload_2
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokespecial	Method scala/xml/MetaData$$anonfun$toString1$1."<init>":(Lscala/xml/MetaData;)V
+	invokevirtual	Method scala/xml/Utility$.sbToString:(Lscala/Function1;)Ljava/lang/String;
 	areturn
   Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      23      0    this       Lscala/xml/MetaData;
-   8      14      2    sb0       Lscala/collection/mutable/StringBuilder;
-
 
 public abstract void toString1(scala.collection.mutable.StringBuilder);
   Signature: (Lscala/collection/mutable/StringBuilder;)V
@@ -2594,27 +2607,15 @@ public abstract void toString1(scala.collection.mutable.StringBuilder);
 public java.lang.String toString();
   Signature: ()Ljava/lang/String;
   Code:
-   Stack=2, Locals=3, Args_size=1
-	new	class scala/collection/mutable/StringBuilder
+   Stack=4, Locals=1, Args_size=1
+	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
+	new	class scala/xml/MetaData$$anonfun$toString$1
 	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	astore_2
-	aload_2
-	checkcast	class scala/collection/mutable/StringBuilder
-	astore_1
 	aload_0
-	aload_1
-	invokevirtual	Method buildString:(Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;
-	pop
-	aload_2
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokespecial	Method scala/xml/MetaData$$anonfun$toString$1."<init>":(Lscala/xml/MetaData;)V
+	invokevirtual	Method scala/xml/Utility$.sbToString:(Lscala/Function1;)Ljava/lang/String;
 	areturn
   Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      24      0    this       Lscala/xml/MetaData;
-   8      15      2    sb0       Lscala/collection/mutable/StringBuilder;
-
 
 public scala.collection.mutable.StringBuilder buildString(scala.collection.mutable.StringBuilder);
   Signature: (Lscala/collection/mutable/StringBuilder;)Lscala/collection/mutable/StringBuilder;

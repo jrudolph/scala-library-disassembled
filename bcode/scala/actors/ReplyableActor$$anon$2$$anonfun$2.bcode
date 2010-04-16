@@ -77,7 +77,10 @@ Asciz	<init>;
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/MatchError."<init>":(Ljava/lang/Object;)V
+Asciz	temp8;
+Asciz	Ljava/lang/Object;;
 Asciz	isDefinedAt;
+Asciz	temp10;
 Asciz	scala/PartialFunction;
 class	scala/PartialFunction
 NameAndType	andThen:(Lscala/Function1;)Lscala/PartialFunction;
@@ -92,7 +95,6 @@ Asciz	(Z)Ljava/lang/Boolean;;
 NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
 Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 Asciz	v1;
-Asciz	Ljava/lang/Object;;
 Asciz	(Lscala/actors/ReplyableActor$$anon$2;)V;
 NameAndType	"<init>":()V
 Method	java/lang/Object."<init>":()V
@@ -195,41 +197,54 @@ public scala.Function1 compose(scala.Function1);
 public final boolean apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=3, Locals=2, Args_size=2
-	getstatic	Field scala/actors/TIMEOUT$.MODULE$:Lscala/actors/TIMEOUT$;
-	dup
-	ifnonnull	l1 // aload_1
-	pop
+   Stack=3, Locals=4, Args_size=2
 	aload_1
+	astore_2
+	getstatic	Field scala/actors/TIMEOUT$.MODULE$:Lscala/actors/TIMEOUT$;
+	aload_2
+	astore_3
+	dup
+	ifnonnull	l1 // aload_3
+	pop
+	aload_3
 	ifnull	l2 // iconst_0
 	goto	l3 // new
-l1	aload_1
+l1	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // new
 l2	iconst_0
 	ireturn
 l3	new	class scala/MatchError
 	dup
-	aload_1
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 15 // aload_1
-   	l2 = 22 // iconst_0
-   	l3 = 24 // new
+   	l1 = 19 // aload_3
+   	l2 = 26 // iconst_0
+   	l3 = 28 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      37      0    this       Lscala/actors/ReplyableActor$$anon$2$$anonfun$2;
+   2      35      2    temp8       Ljava/lang/Object;
+
 
 public final boolean isDefinedAt(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=2, Args_size=2
-	getstatic	Field scala/actors/TIMEOUT$.MODULE$:Lscala/actors/TIMEOUT$;
-	dup
-	ifnonnull	l1 // aload_1
-	pop
+   Stack=2, Locals=4, Args_size=2
 	aload_1
+	astore_2
+	getstatic	Field scala/actors/TIMEOUT$.MODULE$:Lscala/actors/TIMEOUT$;
+	aload_2
+	astore_3
+	dup
+	ifnonnull	l1 // aload_3
+	pop
+	aload_3
 	ifnull	l2 // iconst_1
 	goto	l3 // iconst_0
-l1	aload_1
+l1	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 l2	iconst_1
@@ -237,10 +252,15 @@ l2	iconst_1
 l3	iconst_0
 l4	ireturn
   Labels:
-   	l1 = 15 // aload_1
-   	l2 = 22 // iconst_1
-   	l3 = 26 // iconst_0
-   	l4 = 27 // ireturn
+   	l1 = 19 // aload_3
+   	l2 = 26 // iconst_1
+   	l3 = 30 // iconst_0
+   	l4 = 31 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      32      0    this       Lscala/actors/ReplyableActor$$anon$2$$anonfun$2;
+   2      30      2    temp10       Ljava/lang/Object;
+
 
 public scala.Function1 andThen(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Function1;
@@ -260,19 +280,17 @@ public scala.Function1 andThen(scala.Function1);
 public final java.lang.Object apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
 	invokevirtual	Method apply:(Ljava/lang/Object;)Z
-	istore_2
-	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      11      0    this       Lscala/actors/ReplyableActor$$anon$2$$anonfun$2;
-   0      11      1    v1       Ljava/lang/Object;
+   0      9      0    this       Lscala/actors/ReplyableActor$$anon$2$$anonfun$2;
+   0      9      1    v1       Ljava/lang/Object;
 
 
 public scala.actors.ReplyableActor$$anon$2$$anonfun$2(scala.actors.ReplyableActor$$anon$2);

@@ -93,9 +93,13 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp1;
+Asciz	Ljava/lang/Object;;
 Asciz	temp2;
 Asciz	temp3;
 Asciz	temp4;
+Asciz	stackTrace$1;
+Asciz	msg$1;
 Asciz	productPrefix;
 Asciz	AssertFailed;
 String	AssertFailed
@@ -120,10 +124,13 @@ Asciz	boxToBoolean;
 Asciz	(Z)Ljava/lang/Boolean;;
 NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
 Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+Asciz	temp5;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	stackTrace
 String	msg
+Asciz	temp6;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	java/lang/RuntimeException;
@@ -325,25 +332,31 @@ public int hashCode();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=3, Locals=5, Args_size=2
+   Stack=3, Locals=8, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/testing/SUnit$AssertFailed
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/testing/SUnit$AssertFailed
 	astore_2
 	aload_2
-	invokevirtual	Method msg:()Ljava/lang/String;
-	astore_3
+	instanceof	class scala/testing/SUnit$AssertFailed
+	ifeq	l2 // iconst_0
 	aload_2
-	invokevirtual	Method stackTrace:()Z
-	istore	4
-	aload_0
+	checkcast	class scala/testing/SUnit$AssertFailed
+	astore_3
 	aload_3
-	iload	4
+	invokevirtual	Method msg:()Ljava/lang/String;
+	astore	4
+	aload_3
+	invokevirtual	Method stackTrace:()Z
+	istore	5
+	iload	5
+	istore	6
+	aload	4
+	astore	7
+	aload_0
+	aload	7
+	iload	6
 	invokespecial	Method gd1$1:(Ljava/lang/String;Z)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -360,18 +373,21 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 51 // iconst_0
-   	l2 = 55 // iconst_0
-   	l4 = 56 // ifeq
-   	l1 = 59 // iconst_1
-   	l5 = 63 // iconst_0
-   	l6 = 64 // ireturn
+   	l3 = 63 // iconst_0
+   	l2 = 67 // iconst_0
+   	l4 = 68 // ifeq
+   	l1 = 71 // iconst_1
+   	l5 = 75 // iconst_0
+   	l6 = 76 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      65      0    this       Lscala/testing/SUnit$AssertFailed;
-   17      38      2    temp2       Lscala/testing/SUnit$AssertFailed;
-   22      33      3    temp3       Ljava/lang/String;
-   28      27      4    temp4       Z
+   0      77      0    this       Lscala/testing/SUnit$AssertFailed;
+   7      64      2    temp1       Ljava/lang/Object;
+   19      48      3    temp2       Lscala/testing/SUnit$AssertFailed;
+   25      42      4    temp3       Ljava/lang/String;
+   31      36      5    temp4       Z
+   35      32      6    stackTrace$1       Z
+   39      28      7    msg$1       Ljava/lang/String;
 
 
 public java.lang.String productPrefix();
@@ -395,8 +411,10 @@ public java.lang.Object productElement(int);
   Code:
    Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
-		0: 51;
+		0: 49;
 		1: 39;
 		default: 24 }
 	new	class java/lang/IndexOutOfBoundsException
@@ -408,21 +426,26 @@ public java.lang.Object productElement(int);
 	athrow
 	aload_0
 	invokevirtual	Method stackTrace:()Z
-	istore_2
-	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 	goto	l1 // areturn
 	aload_0
 	invokevirtual	Method msg:()Ljava/lang/String;
 l1	areturn
   Labels:
-   	l1 = 55 // areturn
+   	l1 = 53 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      54      0    this       Lscala/testing/SUnit$AssertFailed;
+   2      52      2    temp5       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
 		0: 44;
 		1: 39;
@@ -440,6 +463,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 46 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      47      0    this       Lscala/testing/SUnit$AssertFailed;
+   2      45      2    temp6       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z

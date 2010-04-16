@@ -2,7 +2,7 @@ Compiled from "Parsers.scala"
 public class scala.util.parsing.combinator.Parsers$$tilde extends java.lang.Object implements scala.ScalaObject,scala.Product,java.io.Serializable
   SourceFile: "Parsers.scala"
   Signature: length = 0x2
-   00 FFFFFF8D 
+   00 FFFFFF8A 
   Scala: length = 0x
    
   InnerClass: 
@@ -103,9 +103,12 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp117;
 Asciz	temp118;
 Asciz	temp119;
 Asciz	temp120;
+Asciz	_2$1;
+Asciz	_1$1;
 Asciz	productPrefix;
 Asciz	productArity;
 Asciz	productElement;
@@ -124,23 +127,17 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp121;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	_2
 String	_1
+Asciz	temp122;
 NameAndType	$outer:Lscala/util/parsing/combinator/Parsers;
 Field	scala/util/parsing/combinator/Parsers$$tilde.$outer:Lscala/util/parsing/combinator/Parsers;
-Asciz	java/lang/Number;
-class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
-Asciz	equals2;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
-Asciz	y0;
-Asciz	y1;
+NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Asciz	java/lang/NullPointerException;
 class	java/lang/NullPointerException
 Method	java/lang/NullPointerException."<init>":()V
@@ -292,31 +289,37 @@ public int hashCode();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=3, Locals=5, Args_size=2
+   Stack=3, Locals=8, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/util/parsing/combinator/Parsers$$tilde
 	ifeq	l2 // iconst_0
-	aload_1
+	aload_2
 	checkcast	class scala/util/parsing/combinator/Parsers$$tilde
 	invokevirtual	Method scala$util$parsing$combinator$Parsers$$tilde$$$outer:()Lscala/util/parsing/combinator/Parsers;
 	aload_0
 	invokevirtual	Method scala$util$parsing$combinator$Parsers$$tilde$$$outer:()Lscala/util/parsing/combinator/Parsers;
 	if_acmpne	l2 // iconst_0
-	aload_1
+	aload_2
 	checkcast	class scala/util/parsing/combinator/Parsers$$tilde
-	astore_2
-	aload_2
-	invokevirtual	Method _1:()Ljava/lang/Object;
 	astore_3
-	aload_2
-	invokevirtual	Method _2:()Ljava/lang/Object;
-	astore	4
-	aload_0
 	aload_3
+	invokevirtual	Method _1:()Ljava/lang/Object;
+	astore	4
+	aload_3
+	invokevirtual	Method _2:()Ljava/lang/Object;
+	astore	5
+	aload	5
+	astore	6
 	aload	4
+	astore	7
+	aload_0
+	aload	7
+	aload	6
 	invokespecial	Method gd4$1:(Ljava/lang/Object;Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -333,18 +336,21 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 65 // iconst_0
-   	l2 = 69 // iconst_0
-   	l4 = 70 // ifeq
-   	l1 = 73 // iconst_1
-   	l5 = 77 // iconst_0
-   	l6 = 78 // ireturn
+   	l3 = 77 // iconst_0
+   	l2 = 81 // iconst_0
+   	l4 = 82 // ifeq
+   	l1 = 85 // iconst_1
+   	l5 = 89 // iconst_0
+   	l6 = 90 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      79      0    this       Lscala/util/parsing/combinator/Parsers$$tilde;
-   31      38      2    temp118       Lscala/util/parsing/combinator/Parsers$$tilde;
-   36      33      3    temp119       Ljava/lang/Object;
-   42      27      4    temp120       Ljava/lang/Object;
+   0      91      0    this       Lscala/util/parsing/combinator/Parsers$$tilde;
+   7      78      2    temp117       Ljava/lang/Object;
+   33      48      3    temp118       Lscala/util/parsing/combinator/Parsers$$tilde;
+   39      42      4    temp119       Ljava/lang/Object;
+   45      36      5    temp120       Ljava/lang/Object;
+   49      32      6    _2$1       Ljava/lang/Object;
+   53      28      7    _1$1       Ljava/lang/Object;
 
 
 public java.lang.String productPrefix();
@@ -366,8 +372,10 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
 		0: 46;
 		1: 39;
@@ -387,12 +395,19 @@ public java.lang.Object productElement(int);
 l1	areturn
   Labels:
    	l1 = 50 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      51      0    this       Lscala/util/parsing/combinator/Parsers$$tilde;
+   2      49      2    temp121       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
 		0: 44;
 		1: 39;
@@ -410,6 +425,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 46 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      47      0    this       Lscala/util/parsing/combinator/Parsers$$tilde;
+   2      45      2    temp122       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -432,82 +452,24 @@ public scala.util.parsing.combinator.Parsers scala$util$parsing$combinator$Parse
 private final boolean gd4$1(java.lang.Object, java.lang.Object);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=5, Args_size=3
+   Stack=2, Locals=3, Args_size=3
+	aload_1
 	aload_0
 	invokevirtual	Method _1:()Ljava/lang/Object;
-	astore_3
-	aload_1
-	aload_3
-	if_acmpne	l1 // aload_1
-	iconst_1
-	goto	l2 // ifeq
-l1	aload_1
-	ifnonnull	l3 // aload_1
-	iconst_0
-	goto	l2 // ifeq
-l3	aload_1
-	instanceof	class java/lang/Number
-	ifne	l4 // aload_1
-	aload_1
-	instanceof	class java/lang/Character
-	ifeq	l5 // aload_1
-l4	aload_1
-	aload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l2 // ifeq
-l5	aload_1
-	aload_3
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l2	ifeq	l6 // iconst_0
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l1 // iconst_0
+	aload_2
 	aload_0
 	invokevirtual	Method _2:()Ljava/lang/Object;
-	astore	4
-	aload_2
-	aload	4
-	if_acmpne	l7 // aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l1 // iconst_0
 	iconst_1
-	goto	l8 // ifeq
-l7	aload_2
-	ifnonnull	l9 // aload_2
-	iconst_0
-	goto	l8 // ifeq
-l9	aload_2
-	instanceof	class java/lang/Number
-	ifne	l10 // aload_2
-	aload_2
-	instanceof	class java/lang/Character
-	ifeq	l11 // aload_2
-l10	aload_2
-	aload	4
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l8 // ifeq
-l11	aload_2
-	aload	4
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l8	ifeq	l6 // iconst_0
-	iconst_1
-	goto	l12 // ireturn
-l6	iconst_0
-l12	ireturn
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
   Labels:
-   	l1 = 14 // aload_1
-   	l3 = 22 // aload_1
-   	l4 = 36 // aload_1
-   	l5 = 44 // aload_1
-   	l2 = 49 // ifeq
-   	l7 = 68 // aload_2
-   	l9 = 76 // aload_2
-   	l10 = 90 // aload_2
-   	l11 = 99 // aload_2
-   	l8 = 105 // ifeq
-   	l6 = 112 // iconst_0
-   	l12 = 113 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      114      0    this       Lscala/util/parsing/combinator/Parsers$$tilde;
-   10      42      3    y0       Ljava/lang/Object;
-   64      44      4    y1       Ljava/lang/Object;
-
+   	l1 = 26 // iconst_0
+   	l2 = 27 // ireturn
 
 public scala.util.parsing.combinator.Parsers$$tilde(scala.util.parsing.combinator.Parsers, java.lang.Object, java.lang.Object);
   Signature: (Lscala/util/parsing/combinator/Parsers;Ljava/lang/Object;Ljava/lang/Object;)V
@@ -543,7 +505,7 @@ l1	aload_0
    0      36      3    _2       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 FFFFFF8C 
+   00 FFFFFF89 
 
 }
 

@@ -425,10 +425,12 @@ Asciz	this;
 Asciz	Lscala/reflect/generic/Trees$Traverser;;
 Asciz	tree;
 Asciz	Lscala/reflect/generic/Trees$Tree;;
+Asciz	temp120;
 Asciz	temp121;
 Asciz	Lscala/reflect/generic/Trees$PackageDef;;
 Asciz	temp123;
 Asciz	Lscala/collection/immutable/List;;
+Asciz	stats$1;
 Asciz	temp124;
 Asciz	Lscala/reflect/generic/Trees$ClassDef;;
 Asciz	temp125;
@@ -436,15 +438,23 @@ Asciz	Lscala/reflect/generic/Trees$Modifiers;;
 Asciz	temp127;
 Asciz	temp128;
 Asciz	Lscala/reflect/generic/Trees$Template;;
+Asciz	mods$1;
+Asciz	tparams$1;
+Asciz	impl$1;
 Asciz	temp129;
 Asciz	Lscala/reflect/generic/Trees$ModuleDef;;
 Asciz	temp130;
 Asciz	temp132;
+Asciz	mods$2;
+Asciz	impl$2;
 Asciz	temp133;
 Asciz	Lscala/reflect/generic/Trees$ValDef;;
 Asciz	temp134;
 Asciz	temp136;
 Asciz	temp137;
+Asciz	mods$3;
+Asciz	tpt$1;
+Asciz	rhs$1;
 Asciz	temp138;
 Asciz	Lscala/reflect/generic/Trees$DefDef;;
 Asciz	temp139;
@@ -452,17 +462,25 @@ Asciz	temp141;
 Asciz	temp142;
 Asciz	temp143;
 Asciz	temp144;
+Asciz	mods$4;
+Asciz	tparams$2;
+Asciz	vparamss$1;
+Asciz	tpt$2;
+Asciz	rhs$2;
 Asciz	temp145;
 Asciz	Lscala/reflect/generic/Trees$TypeDef;;
 Asciz	temp146;
 Asciz	temp148;
 Asciz	temp149;
+Asciz	mods$5;
+Asciz	tparams$3;
+Asciz	rhs$3;
 Asciz	temp150;
 Asciz	Lscala/reflect/generic/Trees$LabelDef;;
 Asciz	temp157;
 Asciz	Lscala/reflect/generic/Trees$Annotated;;
-Asciz	temp162;
 Asciz	temp160;
+Asciz	temp162;
 Asciz	temp164;
 Asciz	Lscala/reflect/generic/Trees$Block;;
 Asciz	temp167;
@@ -475,6 +493,8 @@ Asciz	temp184;
 Asciz	Lscala/reflect/generic/Trees$Function;;
 Asciz	temp185;
 Asciz	temp186;
+Asciz	vparams$1;
+Asciz	body$1;
 Asciz	temp187;
 Asciz	Lscala/reflect/generic/Trees$Assign;;
 Asciz	temp190;
@@ -657,32 +677,36 @@ public void currentOwner_$eq(scala.reflect.generic.Symbols$AbsSymbol);
 public void traverse(scala.reflect.generic.Trees$Tree);
   Signature: (Lscala/reflect/generic/Trees$Tree;)V
   Code:
-   Stack=10, Locals=48, Args_size=2
+   Stack=10, Locals=69, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	aload_0
 	invokevirtual	Method scala$reflect$generic$Trees$Traverser$$$outer:()Lscala/reflect/generic/Universe;
 	invokeinterface	InterfaceMethod scala/reflect/generic/Trees.EmptyTree:()Lscala/reflect/generic/Trees$EmptyTree$;
-	astore_2
+	astore_3
 	dup
-	ifnonnull	l1 // aload_2
+	ifnonnull	l1 // aload_3
 	pop
-	aload_2
+	aload_3
 	ifnull	l2 // return
-	goto	l3 // aload_1
-l1	aload_2
+	goto	l3 // aload_2
+l1	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l2 // return
-l3	aload_1
+l3	aload_2
 	instanceof	class scala/reflect/generic/Trees$PackageDef
-	ifeq	l4 // aload_1
-	aload_1
+	ifeq	l4 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$PackageDef
-	astore_3
-	aload_3
-	invokevirtual	Method scala/reflect/generic/Trees$PackageDef.stats:()Lscala/collection/immutable/List;
 	astore	4
+	aload	4
+	invokevirtual	Method scala/reflect/generic/Trees$PackageDef.stats:()Lscala/collection/immutable/List;
+	astore	5
+	aload	5
+	astore	6
 	aload_0
-	aload_3
+	aload	4
 	invokevirtual	Method scala/reflect/generic/Trees$PackageDef.pid:()Lscala/reflect/generic/Trees$RefTree;
 	checkcast	class scala/reflect/generic/Trees$Tree
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
@@ -693,49 +717,59 @@ l3	aload_1
 	new	class scala/reflect/generic/Trees$Traverser$$anonfun$traverse$1
 	dup
 	aload_0
-	aload	4
+	aload	6
 	invokespecial	Method scala/reflect/generic/Trees$Traverser$$anonfun$traverse$1."<init>":(Lscala/reflect/generic/Trees$Traverser;Lscala/collection/immutable/List;)V
 	invokevirtual	Method atOwner:(Lscala/reflect/generic/Symbols$AbsSymbol;Lscala/Function0;)V
 	goto	l2 // return
-l4	aload_1
+l4	aload_2
 	instanceof	class scala/reflect/generic/Trees$ClassDef
-	ifeq	l5 // aload_1
-	aload_1
+	ifeq	l5 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$ClassDef
-	astore	5
-	aload	5
-	invokevirtual	Method scala/reflect/generic/Trees$ClassDef.mods:()Lscala/reflect/generic/Trees$Modifiers;
-	astore	6
-	aload	5
-	invokevirtual	Method scala/reflect/generic/Trees$ClassDef.tparams:()Lscala/collection/immutable/List;
 	astore	7
-	aload	5
-	invokevirtual	Method scala/reflect/generic/Trees$ClassDef.impl:()Lscala/reflect/generic/Trees$Template;
+	aload	7
+	invokevirtual	Method scala/reflect/generic/Trees$ClassDef.mods:()Lscala/reflect/generic/Trees$Modifiers;
 	astore	8
+	aload	7
+	invokevirtual	Method scala/reflect/generic/Trees$ClassDef.tparams:()Lscala/collection/immutable/List;
+	astore	9
+	aload	7
+	invokevirtual	Method scala/reflect/generic/Trees$ClassDef.impl:()Lscala/reflect/generic/Trees$Template;
+	astore	10
+	aload	8
+	astore	11
+	aload	9
+	astore	12
+	aload	10
+	astore	13
 	aload_0
 	aload_1
 	invokevirtual	Method scala/reflect/generic/Trees$Tree.symbol:()Lscala/reflect/generic/Symbols$AbsSymbol;
 	new	class scala/reflect/generic/Trees$Traverser$$anonfun$traverse$2
 	dup
 	aload_0
-	aload	6
-	aload	7
-	aload	8
+	aload	11
+	aload	12
+	aload	13
 	invokespecial	Method scala/reflect/generic/Trees$Traverser$$anonfun$traverse$2."<init>":(Lscala/reflect/generic/Trees$Traverser;Lscala/reflect/generic/Trees$Modifiers;Lscala/collection/immutable/List;Lscala/reflect/generic/Trees$Template;)V
 	invokevirtual	Method atOwner:(Lscala/reflect/generic/Symbols$AbsSymbol;Lscala/Function0;)V
 	goto	l2 // return
-l5	aload_1
+l5	aload_2
 	instanceof	class scala/reflect/generic/Trees$ModuleDef
-	ifeq	l6 // aload_1
-	aload_1
+	ifeq	l6 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$ModuleDef
-	astore	9
-	aload	9
+	astore	14
+	aload	14
 	invokevirtual	Method scala/reflect/generic/Trees$ModuleDef.mods:()Lscala/reflect/generic/Trees$Modifiers;
-	astore	10
-	aload	9
+	astore	15
+	aload	14
 	invokevirtual	Method scala/reflect/generic/Trees$ModuleDef.impl:()Lscala/reflect/generic/Trees$Template;
-	astore	11
+	astore	16
+	aload	15
+	astore	17
+	aload	16
+	astore	18
 	aload_0
 	aload_1
 	invokevirtual	Method scala/reflect/generic/Trees$Tree.symbol:()Lscala/reflect/generic/Symbols$AbsSymbol;
@@ -743,648 +777,697 @@ l5	aload_1
 	new	class scala/reflect/generic/Trees$Traverser$$anonfun$traverse$3
 	dup
 	aload_0
-	aload	10
-	aload	11
+	aload	17
+	aload	18
 	invokespecial	Method scala/reflect/generic/Trees$Traverser$$anonfun$traverse$3."<init>":(Lscala/reflect/generic/Trees$Traverser;Lscala/reflect/generic/Trees$Modifiers;Lscala/reflect/generic/Trees$Template;)V
 	invokevirtual	Method atOwner:(Lscala/reflect/generic/Symbols$AbsSymbol;Lscala/Function0;)V
 	goto	l2 // return
-l6	aload_1
+l6	aload_2
 	instanceof	class scala/reflect/generic/Trees$ValDef
-	ifeq	l7 // aload_1
-	aload_1
+	ifeq	l7 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$ValDef
-	astore	12
-	aload	12
+	astore	19
+	aload	19
 	invokevirtual	Method scala/reflect/generic/Trees$ValDef.mods:()Lscala/reflect/generic/Trees$Modifiers;
-	astore	13
-	aload	12
+	astore	20
+	aload	19
 	invokevirtual	Method scala/reflect/generic/Trees$ValDef.tpt:()Lscala/reflect/generic/Trees$Tree;
-	astore	14
-	aload	12
+	astore	21
+	aload	19
 	invokevirtual	Method scala/reflect/generic/Trees$ValDef.rhs:()Lscala/reflect/generic/Trees$Tree;
-	astore	15
+	astore	22
+	aload	20
+	astore	23
+	aload	21
+	astore	24
+	aload	22
+	astore	25
 	aload_0
 	aload_1
 	invokevirtual	Method scala/reflect/generic/Trees$Tree.symbol:()Lscala/reflect/generic/Symbols$AbsSymbol;
 	new	class scala/reflect/generic/Trees$Traverser$$anonfun$traverse$4
 	dup
 	aload_0
-	aload	13
-	aload	14
-	aload	15
+	aload	23
+	aload	24
+	aload	25
 	invokespecial	Method scala/reflect/generic/Trees$Traverser$$anonfun$traverse$4."<init>":(Lscala/reflect/generic/Trees$Traverser;Lscala/reflect/generic/Trees$Modifiers;Lscala/reflect/generic/Trees$Tree;Lscala/reflect/generic/Trees$Tree;)V
 	invokevirtual	Method atOwner:(Lscala/reflect/generic/Symbols$AbsSymbol;Lscala/Function0;)V
 	goto	l2 // return
-l7	aload_1
+l7	aload_2
 	instanceof	class scala/reflect/generic/Trees$DefDef
-	ifeq	l8 // aload_1
-	aload_1
+	ifeq	l8 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$DefDef
-	astore	16
-	aload	16
+	astore	26
+	aload	26
 	invokevirtual	Method scala/reflect/generic/Trees$DefDef.mods:()Lscala/reflect/generic/Trees$Modifiers;
-	astore	17
-	aload	16
+	astore	27
+	aload	26
 	invokevirtual	Method scala/reflect/generic/Trees$DefDef.tparams:()Lscala/collection/immutable/List;
-	astore	18
-	aload	16
+	astore	28
+	aload	26
 	invokevirtual	Method scala/reflect/generic/Trees$DefDef.vparamss:()Lscala/collection/immutable/List;
-	astore	19
-	aload	16
+	astore	29
+	aload	26
 	invokevirtual	Method scala/reflect/generic/Trees$DefDef.tpt:()Lscala/reflect/generic/Trees$Tree;
-	astore	20
-	aload	16
+	astore	30
+	aload	26
 	invokevirtual	Method scala/reflect/generic/Trees$DefDef.rhs:()Lscala/reflect/generic/Trees$Tree;
-	astore	21
+	astore	31
+	aload	27
+	astore	32
+	aload	28
+	astore	33
+	aload	29
+	astore	34
+	aload	30
+	astore	35
+	aload	31
+	astore	36
 	aload_0
 	aload_1
 	invokevirtual	Method scala/reflect/generic/Trees$Tree.symbol:()Lscala/reflect/generic/Symbols$AbsSymbol;
 	new	class scala/reflect/generic/Trees$Traverser$$anonfun$traverse$5
 	dup
 	aload_0
-	aload	17
-	aload	18
-	aload	19
-	aload	20
-	aload	21
+	aload	32
+	aload	33
+	aload	34
+	aload	35
+	aload	36
 	invokespecial	Method scala/reflect/generic/Trees$Traverser$$anonfun$traverse$5."<init>":(Lscala/reflect/generic/Trees$Traverser;Lscala/reflect/generic/Trees$Modifiers;Lscala/collection/immutable/List;Lscala/collection/immutable/List;Lscala/reflect/generic/Trees$Tree;Lscala/reflect/generic/Trees$Tree;)V
 	invokevirtual	Method atOwner:(Lscala/reflect/generic/Symbols$AbsSymbol;Lscala/Function0;)V
 	goto	l2 // return
-l8	aload_1
+l8	aload_2
 	instanceof	class scala/reflect/generic/Trees$TypeDef
-	ifeq	l9 // aload_1
-	aload_1
+	ifeq	l9 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$TypeDef
-	astore	22
-	aload	22
+	astore	37
+	aload	37
 	invokevirtual	Method scala/reflect/generic/Trees$TypeDef.mods:()Lscala/reflect/generic/Trees$Modifiers;
-	astore	23
-	aload	22
+	astore	38
+	aload	37
 	invokevirtual	Method scala/reflect/generic/Trees$TypeDef.tparams:()Lscala/collection/immutable/List;
-	astore	24
-	aload	22
+	astore	39
+	aload	37
 	invokevirtual	Method scala/reflect/generic/Trees$TypeDef.rhs:()Lscala/reflect/generic/Trees$Tree;
-	astore	25
+	astore	40
+	aload	38
+	astore	41
+	aload	39
+	astore	42
+	aload	40
+	astore	43
 	aload_0
 	aload_1
 	invokevirtual	Method scala/reflect/generic/Trees$Tree.symbol:()Lscala/reflect/generic/Symbols$AbsSymbol;
 	new	class scala/reflect/generic/Trees$Traverser$$anonfun$traverse$6
 	dup
 	aload_0
-	aload	23
-	aload	24
-	aload	25
+	aload	41
+	aload	42
+	aload	43
 	invokespecial	Method scala/reflect/generic/Trees$Traverser$$anonfun$traverse$6."<init>":(Lscala/reflect/generic/Trees$Traverser;Lscala/reflect/generic/Trees$Modifiers;Lscala/collection/immutable/List;Lscala/reflect/generic/Trees$Tree;)V
 	invokevirtual	Method atOwner:(Lscala/reflect/generic/Symbols$AbsSymbol;Lscala/Function0;)V
 	goto	l2 // return
-l9	aload_1
+l9	aload_2
 	instanceof	class scala/reflect/generic/Trees$LabelDef
-	ifeq	l10 // aload_1
-	aload_1
+	ifeq	l10 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$LabelDef
-	astore	26
+	astore	44
 	aload_0
-	aload	26
+	aload	44
 	invokevirtual	Method scala/reflect/generic/Trees$LabelDef.params:()Lscala/collection/immutable/List;
 	invokevirtual	Method traverseTrees:(Lscala/collection/immutable/List;)V
 	aload_0
-	aload	26
+	aload	44
 	invokevirtual	Method scala/reflect/generic/Trees$LabelDef.rhs:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l10	aload_1
+l10	aload_2
 	instanceof	class scala/reflect/generic/Trees$Import
-	ifeq	l11 // aload_1
+	ifeq	l11 // aload_2
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Import
 	invokevirtual	Method scala/reflect/generic/Trees$Import.expr:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l11	aload_1
+l11	aload_2
 	instanceof	class scala/reflect/generic/Trees$Annotated
-	ifeq	l12 // aload_1
-	aload_1
+	ifeq	l12 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Annotated
-	astore	27
+	astore	45
 	aload_0
-	aload	27
+	aload	45
 	invokevirtual	Method scala/reflect/generic/Trees$Annotated.annot:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	27
+	aload	45
 	invokevirtual	Method scala/reflect/generic/Trees$Annotated.arg:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l12	aload_1
+l12	aload_2
 	instanceof	class scala/reflect/generic/Trees$Template
-	ifeq	l13 // aload_1
-	aload_1
+	ifeq	l13 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Template
-	astore	29
-	aload	29
+	astore	46
+	aload	46
 	invokevirtual	Method scala/reflect/generic/Trees$Template.self:()Lscala/reflect/generic/Trees$ValDef;
-	astore	28
+	astore	47
+	aload	47
+	astore	48
 	aload_0
-	aload	29
+	aload	46
 	invokevirtual	Method scala/reflect/generic/Trees$Template.parents:()Lscala/collection/immutable/List;
 	invokevirtual	Method traverseTrees:(Lscala/collection/immutable/List;)V
-	aload	28
+	aload	48
 	invokevirtual	Method scala/reflect/generic/Trees$ValDef.isEmpty:()Z
 	ifne	l14 // aload_0
 	aload_0
-	aload	28
+	aload	48
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 l14	aload_0
-	aload	29
+	aload	46
 	invokevirtual	Method scala/reflect/generic/Trees$Template.body:()Lscala/collection/immutable/List;
 	aload_1
 	invokevirtual	Method scala/reflect/generic/Trees$Tree.symbol:()Lscala/reflect/generic/Symbols$AbsSymbol;
 	invokevirtual	Method traverseStats:(Lscala/collection/immutable/List;Lscala/reflect/generic/Symbols$AbsSymbol;)V
 	goto	l2 // return
-l13	aload_1
+l13	aload_2
 	instanceof	class scala/reflect/generic/Trees$Block
-	ifeq	l15 // aload_1
-	aload_1
+	ifeq	l15 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Block
-	astore	30
+	astore	49
 	aload_0
-	aload	30
+	aload	49
 	invokevirtual	Method scala/reflect/generic/Trees$Block.stats:()Lscala/collection/immutable/List;
 	invokevirtual	Method traverseTrees:(Lscala/collection/immutable/List;)V
 	aload_0
-	aload	30
+	aload	49
 	invokevirtual	Method scala/reflect/generic/Trees$Block.expr:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l15	aload_1
+l15	aload_2
 	instanceof	class scala/reflect/generic/Trees$CaseDef
-	ifeq	l16 // aload_1
-	aload_1
+	ifeq	l16 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$CaseDef
-	astore	31
+	astore	50
 	aload_0
-	aload	31
+	aload	50
 	invokevirtual	Method scala/reflect/generic/Trees$CaseDef.pat:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	31
+	aload	50
 	invokevirtual	Method scala/reflect/generic/Trees$CaseDef.guard:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	31
+	aload	50
 	invokevirtual	Method scala/reflect/generic/Trees$CaseDef.body:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l16	aload_1
+l16	aload_2
 	instanceof	class scala/reflect/generic/Trees$Alternative
-	ifeq	l17 // aload_1
+	ifeq	l17 // aload_2
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Alternative
 	invokevirtual	Method scala/reflect/generic/Trees$Alternative.trees:()Lscala/collection/immutable/List;
 	invokevirtual	Method traverseTrees:(Lscala/collection/immutable/List;)V
 	goto	l2 // return
-l17	aload_1
+l17	aload_2
 	instanceof	class scala/reflect/generic/Trees$Star
-	ifeq	l18 // aload_1
+	ifeq	l18 // aload_2
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Star
 	invokevirtual	Method scala/reflect/generic/Trees$Star.elem:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l18	aload_1
+l18	aload_2
 	instanceof	class scala/reflect/generic/Trees$Bind
-	ifeq	l19 // aload_1
+	ifeq	l19 // aload_2
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Bind
 	invokevirtual	Method scala/reflect/generic/Trees$Bind.body:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l19	aload_1
+l19	aload_2
 	instanceof	class scala/reflect/generic/Trees$UnApply
-	ifeq	l20 // aload_1
-	aload_1
+	ifeq	l20 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$UnApply
-	astore	32
+	astore	51
 	aload_0
-	aload	32
+	aload	51
 	invokevirtual	Method scala/reflect/generic/Trees$UnApply.fun:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	32
+	aload	51
 	invokevirtual	Method scala/reflect/generic/Trees$UnApply.args:()Lscala/collection/immutable/List;
 	invokevirtual	Method traverseTrees:(Lscala/collection/immutable/List;)V
 	goto	l2 // return
-l20	aload_1
+l20	aload_2
 	instanceof	class scala/reflect/generic/Trees$ArrayValue
-	ifeq	l21 // aload_1
-	aload_1
+	ifeq	l21 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$ArrayValue
-	astore	33
+	astore	52
 	aload_0
-	aload	33
+	aload	52
 	invokevirtual	Method scala/reflect/generic/Trees$ArrayValue.elemtpt:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	33
+	aload	52
 	invokevirtual	Method scala/reflect/generic/Trees$ArrayValue.elems:()Lscala/collection/immutable/List;
 	invokevirtual	Method traverseTrees:(Lscala/collection/immutable/List;)V
 	goto	l2 // return
-l21	aload_1
+l21	aload_2
 	instanceof	class scala/reflect/generic/Trees$Function
-	ifeq	l22 // aload_1
-	aload_1
+	ifeq	l22 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Function
-	astore	34
-	aload	34
+	astore	53
+	aload	53
 	invokevirtual	Method scala/reflect/generic/Trees$Function.vparams:()Lscala/collection/immutable/List;
-	astore	35
-	aload	34
+	astore	54
+	aload	53
 	invokevirtual	Method scala/reflect/generic/Trees$Function.body:()Lscala/reflect/generic/Trees$Tree;
-	astore	36
+	astore	55
+	aload	54
+	astore	56
+	aload	55
+	astore	57
 	aload_0
 	aload_1
 	invokevirtual	Method scala/reflect/generic/Trees$Tree.symbol:()Lscala/reflect/generic/Symbols$AbsSymbol;
 	new	class scala/reflect/generic/Trees$Traverser$$anonfun$traverse$7
 	dup
 	aload_0
-	aload	35
-	aload	36
+	aload	56
+	aload	57
 	invokespecial	Method scala/reflect/generic/Trees$Traverser$$anonfun$traverse$7."<init>":(Lscala/reflect/generic/Trees$Traverser;Lscala/collection/immutable/List;Lscala/reflect/generic/Trees$Tree;)V
 	invokevirtual	Method atOwner:(Lscala/reflect/generic/Symbols$AbsSymbol;Lscala/Function0;)V
 	goto	l2 // return
-l22	aload_1
+l22	aload_2
 	instanceof	class scala/reflect/generic/Trees$Assign
-	ifeq	l23 // aload_1
-	aload_1
+	ifeq	l23 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Assign
-	astore	37
+	astore	58
 	aload_0
-	aload	37
+	aload	58
 	invokevirtual	Method scala/reflect/generic/Trees$Assign.lhs:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	37
+	aload	58
 	invokevirtual	Method scala/reflect/generic/Trees$Assign.rhs:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l23	aload_1
+l23	aload_2
 	instanceof	class scala/reflect/generic/Trees$If
-	ifeq	l24 // aload_1
-	aload_1
+	ifeq	l24 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$If
-	astore	38
+	astore	59
 	aload_0
-	aload	38
+	aload	59
 	invokevirtual	Method scala/reflect/generic/Trees$If.cond:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	38
+	aload	59
 	invokevirtual	Method scala/reflect/generic/Trees$If.thenp:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	38
+	aload	59
 	invokevirtual	Method scala/reflect/generic/Trees$If.elsep:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l24	aload_1
+l24	aload_2
 	instanceof	class scala/reflect/generic/Trees$Match
-	ifeq	l25 // aload_1
-	aload_1
+	ifeq	l25 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Match
-	astore	39
+	astore	60
 	aload_0
-	aload	39
+	aload	60
 	invokevirtual	Method scala/reflect/generic/Trees$Match.selector:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	39
+	aload	60
 	invokevirtual	Method scala/reflect/generic/Trees$Match.cases:()Lscala/collection/immutable/List;
 	invokevirtual	Method traverseTrees:(Lscala/collection/immutable/List;)V
 	goto	l2 // return
-l25	aload_1
+l25	aload_2
 	instanceof	class scala/reflect/generic/Trees$Return
-	ifeq	l26 // aload_1
+	ifeq	l26 // aload_2
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Return
 	invokevirtual	Method scala/reflect/generic/Trees$Return.expr:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l26	aload_1
+l26	aload_2
 	instanceof	class scala/reflect/generic/Trees$Try
-	ifeq	l27 // aload_1
-	aload_1
+	ifeq	l27 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Try
-	astore	40
+	astore	61
 	aload_0
-	aload	40
+	aload	61
 	invokevirtual	Method scala/reflect/generic/Trees$Try.block:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	40
+	aload	61
 	invokevirtual	Method scala/reflect/generic/Trees$Try.catches:()Lscala/collection/immutable/List;
 	invokevirtual	Method traverseTrees:(Lscala/collection/immutable/List;)V
 	aload_0
-	aload	40
+	aload	61
 	invokevirtual	Method scala/reflect/generic/Trees$Try.finalizer:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l27	aload_1
+l27	aload_2
 	instanceof	class scala/reflect/generic/Trees$Throw
-	ifeq	l28 // aload_1
+	ifeq	l28 // aload_2
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Throw
 	invokevirtual	Method scala/reflect/generic/Trees$Throw.expr:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l28	aload_1
+l28	aload_2
 	instanceof	class scala/reflect/generic/Trees$New
-	ifeq	l29 // aload_1
+	ifeq	l29 // aload_2
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$New
 	invokevirtual	Method scala/reflect/generic/Trees$New.tpt:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l29	aload_1
+l29	aload_2
 	instanceof	class scala/reflect/generic/Trees$Typed
-	ifeq	l30 // aload_1
-	aload_1
+	ifeq	l30 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Typed
-	astore	41
+	astore	62
 	aload_0
-	aload	41
+	aload	62
 	invokevirtual	Method scala/reflect/generic/Trees$Typed.expr:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	41
+	aload	62
 	invokevirtual	Method scala/reflect/generic/Trees$Typed.tpt:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l30	aload_1
+l30	aload_2
 	instanceof	class scala/reflect/generic/Trees$TypeApply
-	ifeq	l31 // aload_1
-	aload_1
+	ifeq	l31 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$TypeApply
-	astore	42
+	astore	63
 	aload_0
-	aload	42
+	aload	63
 	invokevirtual	Method scala/reflect/generic/Trees$TypeApply.fun:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	42
+	aload	63
 	invokevirtual	Method scala/reflect/generic/Trees$TypeApply.args:()Lscala/collection/immutable/List;
 	invokevirtual	Method traverseTrees:(Lscala/collection/immutable/List;)V
 	goto	l2 // return
-l31	aload_1
+l31	aload_2
 	instanceof	class scala/reflect/generic/Trees$Apply
-	ifeq	l32 // aload_1
-	aload_1
+	ifeq	l32 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Apply
-	astore	43
+	astore	64
 	aload_0
-	aload	43
+	aload	64
 	invokevirtual	Method scala/reflect/generic/Trees$Apply.fun:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	43
+	aload	64
 	invokevirtual	Method scala/reflect/generic/Trees$Apply.args:()Lscala/collection/immutable/List;
 	invokevirtual	Method traverseTrees:(Lscala/collection/immutable/List;)V
 	goto	l2 // return
-l32	aload_1
+l32	aload_2
 	instanceof	class scala/reflect/generic/Trees$ApplyDynamic
-	ifeq	l33 // aload_1
-	aload_1
+	ifeq	l33 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$ApplyDynamic
-	astore	44
+	astore	65
 	aload_0
-	aload	44
+	aload	65
 	invokevirtual	Method scala/reflect/generic/Trees$ApplyDynamic.qual:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	44
+	aload	65
 	invokevirtual	Method scala/reflect/generic/Trees$ApplyDynamic.args:()Lscala/collection/immutable/List;
 	invokevirtual	Method traverseTrees:(Lscala/collection/immutable/List;)V
 	goto	l2 // return
-l33	aload_1
+l33	aload_2
 	instanceof	class scala/reflect/generic/Trees$Super
 	ifne	l2 // return
-	aload_1
+	aload_2
 	instanceof	class scala/reflect/generic/Trees$This
 	ifne	l2 // return
-	aload_1
+	aload_2
 	instanceof	class scala/reflect/generic/Trees$Select
-	ifeq	l34 // aload_1
+	ifeq	l34 // aload_2
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Select
 	invokevirtual	Method scala/reflect/generic/Trees$Select.qualifier:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l34	aload_1
+l34	aload_2
 	instanceof	class scala/reflect/generic/Trees$Ident
 	ifne	l2 // return
-	aload_1
+	aload_2
 	instanceof	class scala/reflect/generic/Trees$Literal
 	ifne	l2 // return
-	aload_1
+	aload_2
 	instanceof	class scala/reflect/generic/Trees$AbsTypeTree
-	ifeq	l35 // aload_1
+	ifeq	l35 // aload_2
 	aload_0
 	invokevirtual	Method scala$reflect$generic$Trees$Traverser$$$outer:()Lscala/reflect/generic/Universe;
 	invokeinterface	InterfaceMethod scala/reflect/generic/Trees.TypeTree:()Lscala/reflect/generic/Trees$TypeTreeExtractor;
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$AbsTypeTree
 	invokevirtual	Method scala/reflect/generic/Trees$TypeTreeExtractor.unapply:(Lscala/reflect/generic/Trees$AbsTypeTree;)Z
 	ifne	l2 // return
 	new	class scala/MatchError
 	dup
-	aload_1
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
-l35	aload_1
+l35	aload_2
 	instanceof	class scala/reflect/generic/Trees$SingletonTypeTree
-	ifeq	l36 // aload_1
+	ifeq	l36 // aload_2
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$SingletonTypeTree
 	invokevirtual	Method scala/reflect/generic/Trees$SingletonTypeTree.ref:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l36	aload_1
+l36	aload_2
 	instanceof	class scala/reflect/generic/Trees$SelectFromTypeTree
-	ifeq	l37 // aload_1
+	ifeq	l37 // aload_2
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$SelectFromTypeTree
 	invokevirtual	Method scala/reflect/generic/Trees$SelectFromTypeTree.qualifier:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l37	aload_1
+l37	aload_2
 	instanceof	class scala/reflect/generic/Trees$CompoundTypeTree
-	ifeq	l38 // aload_1
+	ifeq	l38 // aload_2
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$CompoundTypeTree
 	invokevirtual	Method scala/reflect/generic/Trees$CompoundTypeTree.templ:()Lscala/reflect/generic/Trees$Template;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l38	aload_1
+l38	aload_2
 	instanceof	class scala/reflect/generic/Trees$AppliedTypeTree
-	ifeq	l39 // aload_1
-	aload_1
+	ifeq	l39 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$AppliedTypeTree
-	astore	45
+	astore	66
 	aload_0
-	aload	45
+	aload	66
 	invokevirtual	Method scala/reflect/generic/Trees$AppliedTypeTree.tpt:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	45
+	aload	66
 	invokevirtual	Method scala/reflect/generic/Trees$AppliedTypeTree.args:()Lscala/collection/immutable/List;
 	invokevirtual	Method traverseTrees:(Lscala/collection/immutable/List;)V
 	goto	l2 // return
-l39	aload_1
+l39	aload_2
 	instanceof	class scala/reflect/generic/Trees$TypeBoundsTree
-	ifeq	l40 // aload_1
-	aload_1
+	ifeq	l40 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$TypeBoundsTree
-	astore	46
+	astore	67
 	aload_0
-	aload	46
+	aload	67
 	invokevirtual	Method scala/reflect/generic/Trees$TypeBoundsTree.lo:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	46
+	aload	67
 	invokevirtual	Method scala/reflect/generic/Trees$TypeBoundsTree.hi:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	goto	l2 // return
-l40	aload_1
+l40	aload_2
 	instanceof	class scala/reflect/generic/Trees$ExistentialTypeTree
-	ifeq	l41 // aload_1
-	aload_1
+	ifeq	l41 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$ExistentialTypeTree
-	astore	47
+	astore	68
 	aload_0
-	aload	47
+	aload	68
 	invokevirtual	Method scala/reflect/generic/Trees$ExistentialTypeTree.tpt:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 	aload_0
-	aload	47
+	aload	68
 	invokevirtual	Method scala/reflect/generic/Trees$ExistentialTypeTree.whereClauses:()Lscala/collection/immutable/List;
 	invokevirtual	Method traverseTrees:(Lscala/collection/immutable/List;)V
 	goto	l2 // return
-l41	aload_1
+l41	aload_2
 	instanceof	class scala/reflect/generic/Trees$SelectFromArray
 	ifeq	l42 // new
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$SelectFromArray
 	invokevirtual	Method scala/reflect/generic/Trees$SelectFromArray.qualifier:()Lscala/reflect/generic/Trees$Tree;
 	invokevirtual	Method traverse:(Lscala/reflect/generic/Trees$Tree;)V
 l2	return
 l42	new	class scala/MatchError
 	dup
-	aload_1
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 23 // aload_2
-   	l3 = 30 // aload_1
-   	l4 = 83 // aload_1
-   	l5 = 142 // aload_1
-   	l6 = 195 // aload_1
-   	l7 = 254 // aload_1
-   	l8 = 331 // aload_1
-   	l9 = 390 // aload_1
-   	l10 = 424 // aload_1
-   	l11 = 445 // aload_1
-   	l12 = 479 // aload_1
-   	l14 = 522 // aload_0
-   	l13 = 538 // aload_1
-   	l15 = 572 // aload_1
-   	l16 = 615 // aload_1
-   	l17 = 636 // aload_1
-   	l18 = 657 // aload_1
-   	l19 = 678 // aload_1
-   	l20 = 712 // aload_1
-   	l21 = 746 // aload_1
-   	l22 = 796 // aload_1
-   	l23 = 830 // aload_1
-   	l24 = 873 // aload_1
-   	l25 = 907 // aload_1
-   	l26 = 928 // aload_1
-   	l27 = 971 // aload_1
-   	l28 = 992 // aload_1
-   	l29 = 1013 // aload_1
-   	l30 = 1047 // aload_1
-   	l31 = 1081 // aload_1
-   	l32 = 1115 // aload_1
-   	l33 = 1149 // aload_1
-   	l34 = 1184 // aload_1
-   	l35 = 1233 // aload_1
-   	l36 = 1254 // aload_1
-   	l37 = 1275 // aload_1
-   	l38 = 1296 // aload_1
-   	l39 = 1330 // aload_1
-   	l40 = 1364 // aload_1
-   	l41 = 1398 // aload_1
-   	l2 = 1416 // return
-   	l42 = 1417 // new
+   	l1 = 25 // aload_3
+   	l3 = 32 // aload_2
+   	l4 = 92 // aload_2
+   	l5 = 163 // aload_2
+   	l6 = 224 // aload_2
+   	l7 = 295 // aload_2
+   	l8 = 392 // aload_2
+   	l9 = 463 // aload_2
+   	l10 = 497 // aload_2
+   	l11 = 518 // aload_2
+   	l12 = 552 // aload_2
+   	l14 = 599 // aload_0
+   	l13 = 615 // aload_2
+   	l15 = 649 // aload_2
+   	l16 = 692 // aload_2
+   	l17 = 713 // aload_2
+   	l18 = 734 // aload_2
+   	l19 = 755 // aload_2
+   	l20 = 789 // aload_2
+   	l21 = 823 // aload_2
+   	l22 = 881 // aload_2
+   	l23 = 915 // aload_2
+   	l24 = 958 // aload_2
+   	l25 = 992 // aload_2
+   	l26 = 1013 // aload_2
+   	l27 = 1056 // aload_2
+   	l28 = 1077 // aload_2
+   	l29 = 1098 // aload_2
+   	l30 = 1132 // aload_2
+   	l31 = 1166 // aload_2
+   	l32 = 1200 // aload_2
+   	l33 = 1234 // aload_2
+   	l34 = 1269 // aload_2
+   	l35 = 1318 // aload_2
+   	l36 = 1339 // aload_2
+   	l37 = 1360 // aload_2
+   	l38 = 1381 // aload_2
+   	l39 = 1415 // aload_2
+   	l40 = 1449 // aload_2
+   	l41 = 1483 // aload_2
+   	l2 = 1501 // return
+   	l42 = 1502 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      1426      0    this       Lscala/reflect/generic/Trees$Traverser;
-   0      1426      1    tree       Lscala/reflect/generic/Trees$Tree;
-   42      38      3    temp121       Lscala/reflect/generic/Trees$PackageDef;
-   48      32      4    temp123       Lscala/collection/immutable/List;
-   96      43      5    temp124       Lscala/reflect/generic/Trees$ClassDef;
-   103      36      6    temp125       Lscala/reflect/generic/Trees$Modifiers;
-   110      29      7    temp127       Lscala/collection/immutable/List;
-   117      22      8    temp128       Lscala/reflect/generic/Trees$Template;
-   155      37      9    temp129       Lscala/reflect/generic/Trees$ModuleDef;
-   162      30      10    temp130       Lscala/reflect/generic/Trees$Modifiers;
-   169      23      11    temp132       Lscala/reflect/generic/Trees$Template;
-   208      43      12    temp133       Lscala/reflect/generic/Trees$ValDef;
-   215      36      13    temp134       Lscala/reflect/generic/Trees$Modifiers;
-   222      29      14    temp136       Lscala/reflect/generic/Trees$Tree;
-   229      22      15    temp137       Lscala/reflect/generic/Trees$Tree;
-   267      61      16    temp138       Lscala/reflect/generic/Trees$DefDef;
-   274      54      17    temp139       Lscala/reflect/generic/Trees$Modifiers;
-   281      47      18    temp141       Lscala/collection/immutable/List;
-   288      40      19    temp142       Lscala/collection/immutable/List;
-   295      33      20    temp143       Lscala/reflect/generic/Trees$Tree;
-   302      26      21    temp144       Lscala/reflect/generic/Trees$Tree;
-   344      43      22    temp145       Lscala/reflect/generic/Trees$TypeDef;
-   351      36      23    temp146       Lscala/reflect/generic/Trees$Modifiers;
-   358      29      24    temp148       Lscala/collection/immutable/List;
-   365      22      25    temp149       Lscala/reflect/generic/Trees$Tree;
-   403      18      26    temp150       Lscala/reflect/generic/Trees$LabelDef;
-   458      18      27    temp157       Lscala/reflect/generic/Trees$Annotated;
-   499      36      28    temp162       Lscala/reflect/generic/Trees$ValDef;
-   492      43      29    temp160       Lscala/reflect/generic/Trees$Template;
-   551      18      30    temp164       Lscala/reflect/generic/Trees$Block;
-   585      27      31    temp167       Lscala/reflect/generic/Trees$CaseDef;
-   691      18      32    temp178       Lscala/reflect/generic/Trees$UnApply;
-   725      18      33    temp181       Lscala/reflect/generic/Trees$ArrayValue;
-   759      34      34    temp184       Lscala/reflect/generic/Trees$Function;
-   766      27      35    temp185       Lscala/collection/immutable/List;
-   773      20      36    temp186       Lscala/reflect/generic/Trees$Tree;
-   809      18      37    temp187       Lscala/reflect/generic/Trees$Assign;
-   843      27      38    temp190       Lscala/reflect/generic/Trees$If;
-   886      18      39    temp194       Lscala/reflect/generic/Trees$Match;
-   941      27      40    temp199       Lscala/reflect/generic/Trees$Try;
-   1026      18      41    temp207       Lscala/reflect/generic/Trees$Typed;
-   1060      18      42    temp210       Lscala/reflect/generic/Trees$TypeApply;
-   1094      18      43    temp213       Lscala/reflect/generic/Trees$Apply;
-   1128      18      44    temp216       Lscala/reflect/generic/Trees$ApplyDynamic;
-   1309      18      45    temp240       Lscala/reflect/generic/Trees$AppliedTypeTree;
-   1343      18      46    temp243       Lscala/reflect/generic/Trees$TypeBoundsTree;
-   1377      18      47    temp246       Lscala/reflect/generic/Trees$ExistentialTypeTree;
+   0      1511      0    this       Lscala/reflect/generic/Trees$Traverser;
+   0      1511      1    tree       Lscala/reflect/generic/Trees$Tree;
+   2      1509      2    temp120       Lscala/reflect/generic/Trees$Tree;
+   45      44      4    temp121       Lscala/reflect/generic/Trees$PackageDef;
+   52      37      5    temp123       Lscala/collection/immutable/List;
+   56      33      6    stats$1       Lscala/collection/immutable/List;
+   105      55      7    temp124       Lscala/reflect/generic/Trees$ClassDef;
+   112      48      8    temp125       Lscala/reflect/generic/Trees$Modifiers;
+   119      41      9    temp127       Lscala/collection/immutable/List;
+   126      34      10    temp128       Lscala/reflect/generic/Trees$Template;
+   130      30      11    mods$1       Lscala/reflect/generic/Trees$Modifiers;
+   134      26      12    tparams$1       Lscala/collection/immutable/List;
+   138      22      13    impl$1       Lscala/reflect/generic/Trees$Template;
+   176      45      14    temp129       Lscala/reflect/generic/Trees$ModuleDef;
+   183      38      15    temp130       Lscala/reflect/generic/Trees$Modifiers;
+   190      31      16    temp132       Lscala/reflect/generic/Trees$Template;
+   194      27      17    mods$2       Lscala/reflect/generic/Trees$Modifiers;
+   198      23      18    impl$2       Lscala/reflect/generic/Trees$Template;
+   237      55      19    temp133       Lscala/reflect/generic/Trees$ValDef;
+   244      48      20    temp134       Lscala/reflect/generic/Trees$Modifiers;
+   251      41      21    temp136       Lscala/reflect/generic/Trees$Tree;
+   258      34      22    temp137       Lscala/reflect/generic/Trees$Tree;
+   262      30      23    mods$3       Lscala/reflect/generic/Trees$Modifiers;
+   266      26      24    tpt$1       Lscala/reflect/generic/Trees$Tree;
+   270      22      25    rhs$1       Lscala/reflect/generic/Trees$Tree;
+   308      81      26    temp138       Lscala/reflect/generic/Trees$DefDef;
+   315      74      27    temp139       Lscala/reflect/generic/Trees$Modifiers;
+   322      67      28    temp141       Lscala/collection/immutable/List;
+   329      60      29    temp142       Lscala/collection/immutable/List;
+   336      53      30    temp143       Lscala/reflect/generic/Trees$Tree;
+   343      46      31    temp144       Lscala/reflect/generic/Trees$Tree;
+   347      42      32    mods$4       Lscala/reflect/generic/Trees$Modifiers;
+   351      38      33    tparams$2       Lscala/collection/immutable/List;
+   355      34      34    vparamss$1       Lscala/collection/immutable/List;
+   359      30      35    tpt$2       Lscala/reflect/generic/Trees$Tree;
+   363      26      36    rhs$2       Lscala/reflect/generic/Trees$Tree;
+   405      55      37    temp145       Lscala/reflect/generic/Trees$TypeDef;
+   412      48      38    temp146       Lscala/reflect/generic/Trees$Modifiers;
+   419      41      39    temp148       Lscala/collection/immutable/List;
+   426      34      40    temp149       Lscala/reflect/generic/Trees$Tree;
+   430      30      41    mods$5       Lscala/reflect/generic/Trees$Modifiers;
+   434      26      42    tparams$3       Lscala/collection/immutable/List;
+   438      22      43    rhs$3       Lscala/reflect/generic/Trees$Tree;
+   476      18      44    temp150       Lscala/reflect/generic/Trees$LabelDef;
+   531      18      45    temp157       Lscala/reflect/generic/Trees$Annotated;
+   565      47      46    temp160       Lscala/reflect/generic/Trees$Template;
+   572      40      47    temp162       Lscala/reflect/generic/Trees$ValDef;
+   576      36      48    self       Lscala/reflect/generic/Trees$ValDef;
+   628      18      49    temp164       Lscala/reflect/generic/Trees$Block;
+   662      27      50    temp167       Lscala/reflect/generic/Trees$CaseDef;
+   768      18      51    temp178       Lscala/reflect/generic/Trees$UnApply;
+   802      18      52    temp181       Lscala/reflect/generic/Trees$ArrayValue;
+   836      42      53    temp184       Lscala/reflect/generic/Trees$Function;
+   843      35      54    temp185       Lscala/collection/immutable/List;
+   850      28      55    temp186       Lscala/reflect/generic/Trees$Tree;
+   854      24      56    vparams$1       Lscala/collection/immutable/List;
+   858      20      57    body$1       Lscala/reflect/generic/Trees$Tree;
+   894      18      58    temp187       Lscala/reflect/generic/Trees$Assign;
+   928      27      59    temp190       Lscala/reflect/generic/Trees$If;
+   971      18      60    temp194       Lscala/reflect/generic/Trees$Match;
+   1026      27      61    temp199       Lscala/reflect/generic/Trees$Try;
+   1111      18      62    temp207       Lscala/reflect/generic/Trees$Typed;
+   1145      18      63    temp210       Lscala/reflect/generic/Trees$TypeApply;
+   1179      18      64    temp213       Lscala/reflect/generic/Trees$Apply;
+   1213      18      65    temp216       Lscala/reflect/generic/Trees$ApplyDynamic;
+   1394      18      66    temp240       Lscala/reflect/generic/Trees$AppliedTypeTree;
+   1428      18      67    temp243       Lscala/reflect/generic/Trees$TypeBoundsTree;
+   1462      18      68    temp246       Lscala/reflect/generic/Trees$ExistentialTypeTree;
 
 
 public void traverseTrees(scala.collection.immutable.List);
@@ -1405,7 +1488,7 @@ public void traverseTrees(scala.collection.immutable.List);
    0      15      1    trees       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   01 FFFFFFBC 
+   01 FFFFFFD0 
 
 public void traverseTreess(scala.collection.immutable.List);
   Signature: (Lscala/collection/immutable/List;)V
@@ -1425,7 +1508,7 @@ public void traverseTreess(scala.collection.immutable.List);
    0      15      1    treess       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   01 FFFFFFC3 
+   01 FFFFFFD7 
 
 public void traverseStats(scala.collection.immutable.List, scala.reflect.generic.Symbols$AbsSymbol);
   Signature: (Lscala/collection/immutable/List;Lscala/reflect/generic/Symbols$AbsSymbol;)V
@@ -1447,7 +1530,7 @@ public void traverseStats(scala.collection.immutable.List, scala.reflect.generic
    0      16      2    exprOwner$1       Lscala/reflect/generic/Symbols$AbsSymbol;
 
   Signature: length = 0x2
-   01 FFFFFFCA 
+   01 FFFFFFDE 
 
 public void atOwner(scala.reflect.generic.Symbols$AbsSymbol, scala.Function0);
   Signature: (Lscala/reflect/generic/Symbols$AbsSymbol;Lscala/Function0;)V
@@ -1475,7 +1558,7 @@ public void atOwner(scala.reflect.generic.Symbols$AbsSymbol, scala.Function0);
    5      17      3    prevOwner       Lscala/reflect/generic/Symbols$AbsSymbol;
 
   Signature: length = 0x2
-   01 FFFFFFD8 
+   01 FFFFFFEC 
 
 public scala.reflect.generic.Universe scala$reflect$generic$Trees$Traverser$$$outer();
   Signature: ()Lscala/reflect/generic/Universe;

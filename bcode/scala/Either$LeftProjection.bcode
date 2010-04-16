@@ -2,7 +2,7 @@ Compiled from "Either.scala"
 public final class scala.Either$LeftProjection extends java.lang.Object implements scala.ScalaObject,scala.Product,java.io.Serializable
   SourceFile: "Either.scala"
   Signature: length = 0x2
-   00 FFFFFFDB 
+   00 FFFFFFE4 
   Scala: length = 0x
    
   InnerClass: 
@@ -43,9 +43,8 @@ Asciz	()Ljava/lang/Object;;
 Asciz	scala/Left;
 class	scala/Left
 Asciz	a;
-Asciz	Ljava/lang/Object;;
-NameAndType	a:Ljava/lang/Object;
-Field	scala/Left.a:Ljava/lang/Object;
+NameAndType	a:()Ljava/lang/Object;
+Method	scala/Left.a:()Ljava/lang/Object;
 Asciz	scala/Right;
 class	scala/Right
 Asciz	java/util/NoSuchElementException;
@@ -111,8 +110,8 @@ Asciz	(Lscala/Function1;)Lscala/Either;;
 Asciz	scala/Either;
 class	scala/Either
 Asciz	b;
-NameAndType	b:Ljava/lang/Object;
-Field	scala/Right.b:Ljava/lang/Object;
+NameAndType	b:()Ljava/lang/Object;
+Method	scala/Right.b:()Ljava/lang/Object;
 Method	scala/Right."<init>":(Ljava/lang/Object;)V
 Asciz	temp61;
 Asciz	<BB:Ljava/lang/Object;X:Ljava/lang/Object;>(Lscala/Function1<TA;Lscala/Either<TX;TBB;>;>;)Lscala/Either<TX;TBB;>;;
@@ -132,10 +131,11 @@ Asciz	Lscala/None$;;
 NameAndType	MODULE$:Lscala/None$;
 Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	p;
+Asciz	temp71;
 Asciz	temp72;
 Asciz	Lscala/Left;;
 Asciz	temp73;
-Asciz	temp71;
+Asciz	Ljava/lang/Object;;
 Asciz	<Y:Ljava/lang/Object;>(Lscala/Function1<TA;Ljava/lang/Boolean;>;)Lscala/Option<Lscala/Either<TA;TY;>;>;;
 Asciz	toSeq;
 Asciz	()Lscala/collection/Seq;;
@@ -197,8 +197,15 @@ Asciz	gd3$1;
 Asciz	(Lscala/Either;)Z;
 NameAndType	gd3$1:(Lscala/Either;)Z
 Method	scala/Either$LeftProjection.gd3$1:(Lscala/Either;)Z
+Asciz	scala/Equals;
+class	scala/Equals
+Asciz	canEqual;
+NameAndType	canEqual:(Ljava/lang/Object;)Z
+InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp86;
 Asciz	temp87;
 Asciz	temp88;
+Asciz	e$1;
 Asciz	productPrefix;
 Asciz	LeftProjection;
 String	LeftProjection
@@ -214,10 +221,12 @@ Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 NameAndType	toString:()Ljava/lang/String;
 Method	java/lang/Object.toString:()Ljava/lang/String;
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp89;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	e
-Asciz	canEqual;
+Asciz	temp90;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	()V;
@@ -239,7 +248,7 @@ Asciz	java/io/Serializable;
 class	java/io/Serializable
 
 {
-public final scala.Either e;
+private final scala.Either e;
   Signature: Lscala/Either;
   Signature: length = 0x2
    00 05 
@@ -286,20 +295,18 @@ public scala.Either e();
 public java.lang.Object get();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=3, Locals=3, Args_size=1
+   Stack=3, Locals=2, Args_size=1
 	aload_0
-	getfield	Field e:Lscala/Either;
-	astore_2
-	aload_2
-	instanceof	class scala/Left
-	ifeq	l1 // aload_2
-	aload_2
-	checkcast	class scala/Left
+	invokevirtual	Method e:()Lscala/Either;
 	astore_1
 	aload_1
-	getfield	Field scala/Left.a:Ljava/lang/Object;
+	instanceof	class scala/Left
+	ifeq	l1 // aload_1
+	aload_1
+	checkcast	class scala/Left
+	invokevirtual	Method scala/Left.a:()Ljava/lang/Object;
 	areturn
-l1	aload_2
+l1	aload_1
 	instanceof	class scala/Right
 	ifeq	l2 // new
 	new	class java/util/NoSuchElementException
@@ -309,78 +316,74 @@ l1	aload_2
 	athrow
 l2	new	class scala/MatchError
 	dup
-	aload_2
+	aload_1
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 22 // aload_2
-   	l2 = 39 // new
+   	l1 = 20 // aload_1
+   	l2 = 37 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      48      0    this       Lscala/Either$LeftProjection;
-   5      43      2    temp36       Lscala/Either;
+   0      46      0    this       Lscala/Either$LeftProjection;
+   5      41      1    temp36       Lscala/Either;
 
   Signature: length = 0x2
-   00 38 
+   00 37 
 
 public java.lang.Object foreach(scala.Function1);
   Signature: (Lscala/Function1;)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=4, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	aload_0
-	getfield	Field e:Lscala/Either;
-	astore_3
-	aload_3
-	instanceof	class scala/Left
-	ifeq	l1 // aload_3
-	aload_1
-	aload_3
-	checkcast	class scala/Left
+	invokevirtual	Method e:()Lscala/Either;
 	astore_2
 	aload_2
-	getfield	Field scala/Left.a:Ljava/lang/Object;
+	instanceof	class scala/Left
+	ifeq	l1 // aload_2
+	aload_1
+	aload_2
+	checkcast	class scala/Left
+	invokevirtual	Method scala/Left.a:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	goto	l2 // areturn
-l1	aload_3
+l1	aload_2
 	instanceof	class scala/Right
 	ifeq	l3 // new
 	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 l2	areturn
 l3	new	class scala/MatchError
 	dup
-	aload_3
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 30 // aload_3
-   	l2 = 40 // areturn
-   	l3 = 41 // new
+   	l1 = 28 // aload_2
+   	l2 = 38 // areturn
+   	l3 = 39 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      50      0    this       Lscala/Either$LeftProjection;
-   0      50      1    f       Lscala/Function1;
-   5      45      3    temp41       Lscala/Either;
+   0      48      0    this       Lscala/Either$LeftProjection;
+   0      48      1    f       Lscala/Function1;
+   5      43      2    temp41       Lscala/Either;
 
   Signature: length = 0x2
-   00 4A 
+   00 49 
 
 public java.lang.Object getOrElse(scala.Function0);
   Signature: (Lscala/Function0;)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=4, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	aload_0
-	getfield	Field e:Lscala/Either;
-	astore_3
-	aload_3
-	instanceof	class scala/Left
-	ifeq	l1 // aload_3
-	aload_3
-	checkcast	class scala/Left
+	invokevirtual	Method e:()Lscala/Either;
 	astore_2
 	aload_2
-	getfield	Field scala/Left.a:Ljava/lang/Object;
+	instanceof	class scala/Left
+	ifeq	l1 // aload_2
+	aload_2
+	checkcast	class scala/Left
+	invokevirtual	Method scala/Left.a:()Ljava/lang/Object;
 	goto	l2 // areturn
-l1	aload_3
+l1	aload_2
 	instanceof	class scala/Right
 	ifeq	l3 // new
 	aload_1
@@ -388,336 +391,128 @@ l1	aload_3
 l2	areturn
 l3	new	class scala/MatchError
 	dup
-	aload_3
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 24 // aload_3
-   	l2 = 37 // areturn
-   	l3 = 38 // new
+   	l1 = 22 // aload_2
+   	l2 = 35 // areturn
+   	l3 = 36 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      47      0    this       Lscala/Either$LeftProjection;
-   0      47      1    or       Lscala/Function0;
-   5      42      3    temp46       Lscala/Either;
+   0      45      0    this       Lscala/Either$LeftProjection;
+   0      45      1    or       Lscala/Function0;
+   5      40      2    temp46       Lscala/Either;
 
   Signature: length = 0x2
-   00 54 
+   00 53 
 
 public boolean forall(scala.Function1);
   Signature: (Lscala/Function1;)Z
   Code:
-   Stack=3, Locals=4, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	aload_0
-	getfield	Field e:Lscala/Either;
-	astore_3
-	aload_3
-	instanceof	class scala/Left
-	ifeq	l1 // aload_3
-	aload_1
-	aload_3
-	checkcast	class scala/Left
+	invokevirtual	Method e:()Lscala/Either;
 	astore_2
 	aload_2
-	getfield	Field scala/Left.a:Ljava/lang/Object;
+	instanceof	class scala/Left
+	ifeq	l1 // aload_2
+	aload_1
+	aload_2
+	checkcast	class scala/Left
+	invokevirtual	Method scala/Left.a:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 	goto	l2 // ireturn
-l1	aload_3
+l1	aload_2
 	instanceof	class scala/Right
 	ifeq	l3 // new
 	iconst_1
 l2	ireturn
 l3	new	class scala/MatchError
 	dup
-	aload_3
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 33 // aload_3
-   	l2 = 41 // ireturn
-   	l3 = 42 // new
+   	l1 = 31 // aload_2
+   	l2 = 39 // ireturn
+   	l3 = 40 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      51      0    this       Lscala/Either$LeftProjection;
-   0      51      1    f       Lscala/Function1;
-   5      46      3    temp51       Lscala/Either;
+   0      49      0    this       Lscala/Either$LeftProjection;
+   0      49      1    f       Lscala/Function1;
+   5      44      2    temp51       Lscala/Either;
 
   Signature: length = 0x2
-   00 5E 
+   00 5D 
 
 public boolean exists(scala.Function1);
   Signature: (Lscala/Function1;)Z
   Code:
-   Stack=3, Locals=4, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	aload_0
-	getfield	Field e:Lscala/Either;
-	astore_3
-	aload_3
-	instanceof	class scala/Left
-	ifeq	l1 // aload_3
-	aload_1
-	aload_3
-	checkcast	class scala/Left
+	invokevirtual	Method e:()Lscala/Either;
 	astore_2
 	aload_2
-	getfield	Field scala/Left.a:Ljava/lang/Object;
+	instanceof	class scala/Left
+	ifeq	l1 // aload_2
+	aload_1
+	aload_2
+	checkcast	class scala/Left
+	invokevirtual	Method scala/Left.a:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 	goto	l2 // ireturn
-l1	aload_3
+l1	aload_2
 	instanceof	class scala/Right
 	ifeq	l3 // new
 	iconst_0
 l2	ireturn
 l3	new	class scala/MatchError
 	dup
-	aload_3
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 33 // aload_3
-   	l2 = 41 // ireturn
-   	l3 = 42 // new
+   	l1 = 31 // aload_2
+   	l2 = 39 // ireturn
+   	l3 = 40 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      51      0    this       Lscala/Either$LeftProjection;
-   0      51      1    f       Lscala/Function1;
-   5      46      3    temp56       Lscala/Either;
+   0      49      0    this       Lscala/Either$LeftProjection;
+   0      49      1    f       Lscala/Function1;
+   5      44      2    temp56       Lscala/Either;
 
   Signature: length = 0x2
-   00 5E 
+   00 5D 
 
 public scala.Either flatMap(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Either;
   Code:
-   Stack=3, Locals=5, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	aload_0
-	getfield	Field e:Lscala/Either;
-	astore	4
-	aload	4
-	instanceof	class scala/Left
-	ifeq	l1 // aload
-	aload_1
-	aload	4
-	checkcast	class scala/Left
+	invokevirtual	Method e:()Lscala/Either;
 	astore_2
 	aload_2
-	getfield	Field scala/Left.a:Ljava/lang/Object;
+	instanceof	class scala/Left
+	ifeq	l1 // aload_2
+	aload_1
+	aload_2
+	checkcast	class scala/Left
+	invokevirtual	Method scala/Left.a:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	checkcast	class scala/Either
 	goto	l2 // areturn
-l1	aload	4
+l1	aload_2
 	instanceof	class scala/Right
 	ifeq	l3 // new
 	new	class scala/Right
 	dup
-	aload	4
+	aload_2
 	checkcast	class scala/Right
-	astore_3
-	aload_3
-	getfield	Field scala/Right.b:Ljava/lang/Object;
+	invokevirtual	Method scala/Right.b:()Ljava/lang/Object;
 	invokespecial	Method scala/Right."<init>":(Ljava/lang/Object;)V
-l2	areturn
-l3	new	class scala/MatchError
-	dup
-	aload	4
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
-	athrow
-  Labels:
-   	l1 = 36 // aload
-   	l2 = 61 // areturn
-   	l3 = 62 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      72      0    this       Lscala/Either$LeftProjection;
-   0      72      1    f       Lscala/Function1;
-   6      66      4    temp61       Lscala/Either;
-
-  Signature: length = 0x2
-   00 6A 
-
-public scala.Either map(scala.Function1);
-  Signature: (Lscala/Function1;)Lscala/Either;
-  Code:
-   Stack=4, Locals=5, Args_size=2
-	aload_0
-	getfield	Field e:Lscala/Either;
-	astore	4
-	aload	4
-	instanceof	class scala/Left
-	ifeq	l1 // aload
-	new	class scala/Left
-	dup
-	aload_1
-	aload	4
-	checkcast	class scala/Left
-	astore_2
-	aload_2
-	getfield	Field scala/Left.a:Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	invokespecial	Method scala/Left."<init>":(Ljava/lang/Object;)V
-	goto	l2 // areturn
-l1	aload	4
-	instanceof	class scala/Right
-	ifeq	l3 // new
-	new	class scala/Right
-	dup
-	aload	4
-	checkcast	class scala/Right
-	astore_3
-	aload_3
-	getfield	Field scala/Right.b:Ljava/lang/Object;
-	invokespecial	Method scala/Right."<init>":(Ljava/lang/Object;)V
-l2	areturn
-l3	new	class scala/MatchError
-	dup
-	aload	4
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
-	athrow
-  Labels:
-   	l1 = 40 // aload
-   	l2 = 65 // areturn
-   	l3 = 66 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      76      0    this       Lscala/Either$LeftProjection;
-   0      76      1    f       Lscala/Function1;
-   6      70      4    temp66       Lscala/Either;
-
-  Signature: length = 0x2
-   00 6E 
-
-public scala.Option filter(scala.Function1);
-  Signature: (Lscala/Function1;)Lscala/Option;
-  Code:
-   Stack=5, Locals=5, Args_size=2
-	aload_0
-	getfield	Field e:Lscala/Either;
-	astore	4
-	aload	4
-	instanceof	class scala/Left
-	ifeq	l1 // aload
-	aload	4
-	checkcast	class scala/Left
-	astore_2
-	aload_2
-	getfield	Field scala/Left.a:Ljava/lang/Object;
-	astore_3
-	aload_1
-	aload_3
-	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
-	ifeq	l2 // getstatic
-	new	class scala/Some
-	dup
-	new	class scala/Left
-	dup
-	aload_3
-	invokespecial	Method scala/Left."<init>":(Ljava/lang/Object;)V
-	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	goto	l3 // areturn
-l2	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	goto	l3 // areturn
-l1	aload	4
-	instanceof	class scala/Right
-	ifeq	l4 // new
-	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-l3	areturn
-l4	new	class scala/MatchError
-	dup
-	aload	4
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
-	athrow
-  Labels:
-   	l2 = 56 // getstatic
-   	l1 = 62 // aload
-   	l3 = 73 // areturn
-   	l4 = 74 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      84      0    this       Lscala/Either$LeftProjection;
-   0      84      1    p       Lscala/Function1;
-   20      42      2    temp72       Lscala/Left;
-   25      37      3    temp73       Ljava/lang/Object;
-   6      78      4    temp71       Lscala/Either;
-
-  Signature: length = 0x2
-   00 7F 
-
-public scala.collection.Seq toSeq();
-  Signature: ()Lscala/collection/Seq;
-  Code:
-   Stack=6, Locals=3, Args_size=1
-	aload_0
-	getfield	Field e:Lscala/Either;
-	astore_2
-	aload_2
-	instanceof	class scala/Left
-	ifeq	l1 // aload_2
-	getstatic	Field scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	iconst_1
-	anewarray	class java/lang/Object
-	dup
-	iconst_0
-	aload_2
-	checkcast	class scala/Left
-	astore_1
-	aload_1
-	getfield	Field scala/Left.a:Ljava/lang/Object;
-	aastore
-	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	invokevirtual	Method scala/collection/Seq$.apply:(Lscala/collection/Seq;)Lscala/collection/Traversable;
-	checkcast	class scala/collection/Seq
-	goto	l2 // areturn
-l1	aload_2
-	instanceof	class scala/Right
-	ifeq	l3 // new
-	getstatic	Field scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
-	invokevirtual	Method scala/collection/Seq$.empty:()Lscala/collection/Traversable;
-	checkcast	class scala/collection/Seq
-l2	areturn
-l3	new	class scala/MatchError
-	dup
-	aload_2
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
-	athrow
-  Labels:
-   	l1 = 46 // aload_2
-   	l2 = 62 // areturn
-   	l3 = 63 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      72      0    this       Lscala/Either$LeftProjection;
-   5      67      2    temp76       Lscala/Either;
-
-  Signature: length = 0x2
-   00 FFFFFF9C 
-
-public scala.Option toOption();
-  Signature: ()Lscala/Option;
-  Code:
-   Stack=3, Locals=3, Args_size=1
-	aload_0
-	getfield	Field e:Lscala/Either;
-	astore_2
-	aload_2
-	instanceof	class scala/Left
-	ifeq	l1 // aload_2
-	new	class scala/Some
-	dup
-	aload_2
-	checkcast	class scala/Left
-	astore_1
-	aload_1
-	getfield	Field scala/Left.a:Ljava/lang/Object;
-	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	goto	l2 // areturn
-l1	aload_2
-	instanceof	class scala/Right
-	ifeq	l3 // new
-	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 l2	areturn
 l3	new	class scala/MatchError
 	dup
@@ -726,12 +521,207 @@ l3	new	class scala/MatchError
 	athrow
   Labels:
    	l1 = 31 // aload_2
-   	l2 = 41 // areturn
-   	l3 = 42 // new
+   	l2 = 52 // areturn
+   	l3 = 53 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      51      0    this       Lscala/Either$LeftProjection;
-   5      46      2    temp81       Lscala/Either;
+   0      62      0    this       Lscala/Either$LeftProjection;
+   0      62      1    f       Lscala/Function1;
+   5      57      2    temp61       Lscala/Either;
+
+  Signature: length = 0x2
+   00 69 
+
+public scala.Either map(scala.Function1);
+  Signature: (Lscala/Function1;)Lscala/Either;
+  Code:
+   Stack=4, Locals=3, Args_size=2
+	aload_0
+	invokevirtual	Method e:()Lscala/Either;
+	astore_2
+	aload_2
+	instanceof	class scala/Left
+	ifeq	l1 // aload_2
+	new	class scala/Left
+	dup
+	aload_1
+	aload_2
+	checkcast	class scala/Left
+	invokevirtual	Method scala/Left.a:()Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+	invokespecial	Method scala/Left."<init>":(Ljava/lang/Object;)V
+	goto	l2 // areturn
+l1	aload_2
+	instanceof	class scala/Right
+	ifeq	l3 // new
+	new	class scala/Right
+	dup
+	aload_2
+	checkcast	class scala/Right
+	invokevirtual	Method scala/Right.b:()Ljava/lang/Object;
+	invokespecial	Method scala/Right."<init>":(Ljava/lang/Object;)V
+l2	areturn
+l3	new	class scala/MatchError
+	dup
+	aload_2
+	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
+	athrow
+  Labels:
+   	l1 = 35 // aload_2
+   	l2 = 56 // areturn
+   	l3 = 57 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      66      0    this       Lscala/Either$LeftProjection;
+   0      66      1    f       Lscala/Function1;
+   5      61      2    temp66       Lscala/Either;
+
+  Signature: length = 0x2
+   00 6D 
+
+public scala.Option filter(scala.Function1);
+  Signature: (Lscala/Function1;)Lscala/Option;
+  Code:
+   Stack=5, Locals=6, Args_size=2
+	aload_0
+	invokevirtual	Method e:()Lscala/Either;
+	astore_2
+	aload_2
+	instanceof	class scala/Left
+	ifeq	l1 // aload_2
+	aload_2
+	checkcast	class scala/Left
+	astore_3
+	aload_3
+	invokevirtual	Method scala/Left.a:()Ljava/lang/Object;
+	astore	4
+	aload	4
+	astore	5
+	aload_1
+	aload	5
+	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
+	ifeq	l2 // getstatic
+	new	class scala/Some
+	dup
+	new	class scala/Left
+	dup
+	aload	5
+	invokespecial	Method scala/Left."<init>":(Ljava/lang/Object;)V
+	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
+	goto	l3 // areturn
+l2	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	goto	l3 // areturn
+l1	aload_2
+	instanceof	class scala/Right
+	ifeq	l4 // new
+	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+l3	areturn
+l4	new	class scala/MatchError
+	dup
+	aload_2
+	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
+	athrow
+  Labels:
+   	l2 = 60 // getstatic
+   	l1 = 66 // aload_2
+   	l3 = 76 // areturn
+   	l4 = 77 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      86      0    this       Lscala/Either$LeftProjection;
+   0      86      1    p       Lscala/Function1;
+   5      81      2    temp71       Lscala/Either;
+   17      49      3    temp72       Lscala/Left;
+   23      43      4    temp73       Ljava/lang/Object;
+   27      39      5    a       Ljava/lang/Object;
+
+  Signature: length = 0x2
+   00 7F 
+
+public scala.collection.Seq toSeq();
+  Signature: ()Lscala/collection/Seq;
+  Code:
+   Stack=6, Locals=2, Args_size=1
+	aload_0
+	invokevirtual	Method e:()Lscala/Either;
+	astore_1
+	aload_1
+	instanceof	class scala/Left
+	ifeq	l1 // aload_1
+	getstatic	Field scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iconst_1
+	anewarray	class java/lang/Object
+	dup
+	iconst_0
+	aload_1
+	checkcast	class scala/Left
+	invokevirtual	Method scala/Left.a:()Ljava/lang/Object;
+	aastore
+	invokevirtual	Method scala/Predef$.genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+	invokevirtual	Method scala/collection/Seq$.apply:(Lscala/collection/Seq;)Lscala/collection/Traversable;
+	checkcast	class scala/collection/Seq
+	goto	l2 // areturn
+l1	aload_1
+	instanceof	class scala/Right
+	ifeq	l3 // new
+	getstatic	Field scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
+	invokevirtual	Method scala/collection/Seq$.empty:()Lscala/collection/Traversable;
+	checkcast	class scala/collection/Seq
+l2	areturn
+l3	new	class scala/MatchError
+	dup
+	aload_1
+	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
+	athrow
+  Labels:
+   	l1 = 44 // aload_1
+   	l2 = 60 // areturn
+   	l3 = 61 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      70      0    this       Lscala/Either$LeftProjection;
+   5      65      1    temp76       Lscala/Either;
+
+  Signature: length = 0x2
+   00 FFFFFF9C 
+
+public scala.Option toOption();
+  Signature: ()Lscala/Option;
+  Code:
+   Stack=3, Locals=2, Args_size=1
+	aload_0
+	invokevirtual	Method e:()Lscala/Either;
+	astore_1
+	aload_1
+	instanceof	class scala/Left
+	ifeq	l1 // aload_1
+	new	class scala/Some
+	dup
+	aload_1
+	checkcast	class scala/Left
+	invokevirtual	Method scala/Left.a:()Ljava/lang/Object;
+	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
+	goto	l2 // areturn
+l1	aload_1
+	instanceof	class scala/Right
+	ifeq	l3 // new
+	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+l2	areturn
+l3	new	class scala/MatchError
+	dup
+	aload_1
+	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
+	athrow
+  Labels:
+   	l1 = 29 // aload_1
+   	l2 = 39 // areturn
+   	l3 = 40 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      49      0    this       Lscala/Either$LeftProjection;
+   5      44      1    temp81       Lscala/Either;
 
   Signature: length = 0x2
    00 FFFFFFA0 
@@ -775,25 +765,31 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=4, Args_size=2
+   Stack=2, Locals=6, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/Either$LeftProjection
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/Either$LeftProjection
 	astore_2
 	aload_2
-	getfield	Field e:Lscala/Either;
+	instanceof	class scala/Either$LeftProjection
+	ifeq	l2 // iconst_0
+	aload_2
+	checkcast	class scala/Either$LeftProjection
 	astore_3
-	aload_0
 	aload_3
+	invokevirtual	Method e:()Lscala/Either;
+	astore	4
+	aload	4
+	astore	5
+	aload_0
+	aload	5
 	invokespecial	Method gd3$1:(Lscala/Either;)Z
 	ifeq	l3 // iconst_0
+	aload_1
+	checkcast	class scala/Either$LeftProjection
 	aload_0
-	instanceof	class scala/Either$LeftProjection
+	invokeinterface	InterfaceMethod scala/Equals.canEqual:(Ljava/lang/Object;)Z
 	goto	l4 // ifeq
 l3	iconst_0
 	goto	l4 // ifeq
@@ -804,17 +800,19 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 37 // iconst_0
-   	l2 = 41 // iconst_0
-   	l4 = 42 // ifeq
-   	l1 = 45 // iconst_1
-   	l5 = 49 // iconst_0
-   	l6 = 50 // ireturn
+   	l3 = 51 // iconst_0
+   	l2 = 55 // iconst_0
+   	l4 = 56 // ifeq
+   	l1 = 59 // iconst_1
+   	l5 = 63 // iconst_0
+   	l6 = 64 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      51      0    this       Lscala/Either$LeftProjection;
-   17      24      2    temp87       Lscala/Either$LeftProjection;
-   22      19      3    temp88       Lscala/Either;
+   0      65      0    this       Lscala/Either$LeftProjection;
+   7      52      2    temp86       Ljava/lang/Object;
+   19      36      3    temp87       Lscala/Either$LeftProjection;
+   25      30      4    temp88       Lscala/Either;
+   29      26      5    e$1       Lscala/Either;
 
 
 public java.lang.String productPrefix();
@@ -836,12 +834,14 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	aload_0
-	getfield	Field e:Lscala/Either;
+	invokevirtual	Method e:()Lscala/Either;
 	areturn
 l1	new	class java/lang/IndexOutOfBoundsException
 	dup
@@ -851,13 +851,20 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 10 // new
+   	l1 = 12 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      27      0    this       Lscala/Either$LeftProjection;
+   2      25      2    temp89       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	ldc	String e
@@ -870,7 +877,12 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 8 // new
+   	l1 = 10 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      25      0    this       Lscala/Either$LeftProjection;
+   2      23      2    temp90       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -887,7 +899,7 @@ private final boolean gd3$1(scala.Either);
    Stack=2, Locals=3, Args_size=2
 	aload_1
 	aload_0
-	getfield	Field e:Lscala/Either;
+	invokevirtual	Method e:()Lscala/Either;
 	astore_2
 	dup
 	ifnonnull	l1 // aload_2
@@ -927,7 +939,7 @@ public scala.Either$LeftProjection(scala.Either);
    0      14      1    e       Lscala/Either;
 
   Signature: length = 0x2
-   00 FFFFFFDA 
+   00 FFFFFFE3 
 
 }
 

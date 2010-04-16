@@ -2,7 +2,7 @@ Compiled from "ArrayBuilder.scala"
 public class scala.collection.mutable.ArrayBuilder$ofBoolean extends scala.collection.mutable.ArrayBuilder implements scala.ScalaObject
   SourceFile: "ArrayBuilder.scala"
   Signature: length = 0x2
-   00 78 
+   00 7C 
   Scala: length = 0x
    
   InnerClass: 
@@ -82,9 +82,10 @@ Asciz	$plus$plus$eq;
 Asciz	(Lscala/collection/Traversable;)Lscala/collection/mutable/ArrayBuilder$ofBoolean;;
 Asciz	scala/collection/mutable/WrappedArray$ofBoolean;
 class	scala/collection/mutable/WrappedArray$ofBoolean
+Asciz	length;
+NameAndType	length:()I
+Method	scala/collection/mutable/WrappedArray$ofBoolean.length:()I
 Asciz	array;
-NameAndType	array:[Z
-Field	scala/collection/mutable/WrappedArray$ofBoolean.array:[Z
 NameAndType	array:()[Z
 Method	scala/collection/mutable/WrappedArray$ofBoolean.array:()[Z
 Asciz	scala/collection/generic/Growable$class;
@@ -94,6 +95,7 @@ NameAndType	$plus$plus$eq:(Lscala/collection/generic/Growable;Lscala/collection/
 Method	scala/collection/generic/Growable$class.$plus$plus$eq:(Lscala/collection/generic/Growable;Lscala/collection/Traversable;)Lscala/collection/generic/Growable;
 Asciz	xs;
 Asciz	Lscala/collection/Traversable;;
+Asciz	temp33;
 Asciz	temp34;
 Asciz	Lscala/collection/mutable/WrappedArray$ofBoolean;;
 Asciz	(Lscala/collection/Traversable<Ljava/lang/Boolean;>;)Lscala/collection/mutable/ArrayBuilder$ofBoolean;;
@@ -105,7 +107,9 @@ Asciz	equals;
 Asciz	(Ljava/lang/Object;)Z;
 Asciz	other;
 Asciz	Ljava/lang/Object;;
+Asciz	temp35;
 Asciz	temp36;
+Asciz	x;
 Asciz	toString;
 Asciz	()Ljava/lang/String;;
 Asciz	ArrayBuilder.ofBoolean;
@@ -355,39 +359,40 @@ public scala.collection.mutable.ArrayBuilder$ofBoolean $plus$eq(boolean);
 public scala.collection.mutable.ArrayBuilder$ofBoolean $plus$plus$eq(scala.collection.Traversable);
   Signature: (Lscala/collection/Traversable;)Lscala/collection/mutable/ArrayBuilder$ofBoolean;
   Code:
-   Stack=6, Locals=3, Args_size=2
+   Stack=6, Locals=5, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/collection/mutable/WrappedArray$ofBoolean
 	ifeq	l1 // aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/collection/mutable/WrappedArray$ofBoolean
-	astore_2
+	astore_3
+	aload_3
+	astore	4
 	aload_0
 	aload_0
 	invokespecial	Method size:()I
-	aload_2
-	getfield	Field scala/collection/mutable/WrappedArray$ofBoolean.array:[Z
-	arraylength
+	aload	4
+	invokevirtual	Method scala/collection/mutable/WrappedArray$ofBoolean.length:()I
 	iadd
 	invokespecial	Method ensureSize:(I)V
 	getstatic	Field scala/Array$.MODULE$:Lscala/Array$;
-	aload_2
-	getfield	Field scala/collection/mutable/WrappedArray$ofBoolean.array:[Z
+	aload	4
+	invokevirtual	Method scala/collection/mutable/WrappedArray$ofBoolean.array:()[Z
 	iconst_0
 	aload_0
 	invokespecial	Method elems:()[Z
 	aload_0
 	invokespecial	Method size:()I
-	aload_2
-	getfield	Field scala/collection/mutable/WrappedArray$ofBoolean.array:[Z
-	arraylength
+	aload	4
+	invokevirtual	Method scala/collection/mutable/WrappedArray$ofBoolean.length:()I
 	invokevirtual	Method scala/Array$.copy:(Ljava/lang/Object;ILjava/lang/Object;II)V
 	aload_0
 	aload_0
 	invokespecial	Method size:()I
-	aload_2
-	invokevirtual	Method scala/collection/mutable/WrappedArray$ofBoolean.array:()[Z
-	arraylength
+	aload	4
+	invokevirtual	Method scala/collection/mutable/WrappedArray$ofBoolean.length:()I
 	iadd
 	invokespecial	Method size_$eq:(I)V
 	aload_0
@@ -398,16 +403,18 @@ l1	aload_0
 	checkcast	class scala/collection/mutable/ArrayBuilder$ofBoolean
 l2	areturn
   Labels:
-   	l1 = 68 // aload_0
-   	l2 = 76 // areturn
+   	l1 = 74 // aload_0
+   	l2 = 82 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      77      0    this       Lscala/collection/mutable/ArrayBuilder$ofBoolean;
-   0      77      1    xs       Lscala/collection/Traversable;
-   12      53      2    temp34       Lscala/collection/mutable/WrappedArray$ofBoolean;
+   0      83      0    this       Lscala/collection/mutable/ArrayBuilder$ofBoolean;
+   0      83      1    xs       Lscala/collection/Traversable;
+   2      81      2    temp33       Lscala/collection/Traversable;
+   14      57      3    temp34       Lscala/collection/mutable/WrappedArray$ofBoolean;
+   17      54      4    xs       Lscala/collection/mutable/WrappedArray$ofBoolean;
 
   Signature: length = 0x2
-   00 56 
+   00 58 
 
 public void clear();
   Signature: ()V
@@ -447,21 +454,25 @@ l2	areturn
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=5, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/collection/mutable/ArrayBuilder$ofBoolean
 	ifeq	l1 // iconst_0
-	aload_1
+	aload_2
 	checkcast	class scala/collection/mutable/ArrayBuilder$ofBoolean
-	astore_2
+	astore_3
+	aload_3
+	astore	4
 	aload_0
 	invokespecial	Method size:()I
-	aload_2
+	aload	4
 	invokespecial	Method size:()I
 	if_icmpne	l2 // iconst_0
 	aload_0
 	invokespecial	Method elems:()[Z
-	aload_2
+	aload	4
 	invokespecial	Method elems:()[Z
 	if_acmpne	l2 // iconst_0
 	iconst_1
@@ -471,14 +482,16 @@ l2	iconst_0
 l1	iconst_0
 l3	ireturn
   Labels:
-   	l2 = 38 // iconst_0
-   	l1 = 42 // iconst_0
-   	l3 = 43 // ireturn
+   	l2 = 45 // iconst_0
+   	l1 = 49 // iconst_0
+   	l3 = 50 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      44      0    this       Lscala/collection/mutable/ArrayBuilder$ofBoolean;
-   0      44      1    other       Ljava/lang/Object;
-   12      30      2    temp36       Lscala/collection/mutable/ArrayBuilder$ofBoolean;
+   0      51      0    this       Lscala/collection/mutable/ArrayBuilder$ofBoolean;
+   0      51      1    other       Ljava/lang/Object;
+   2      49      2    temp35       Ljava/lang/Object;
+   14      35      3    temp36       Lscala/collection/mutable/ArrayBuilder$ofBoolean;
+   17      32      4    x       Lscala/collection/mutable/ArrayBuilder$ofBoolean;
 
 
 public java.lang.String toString();

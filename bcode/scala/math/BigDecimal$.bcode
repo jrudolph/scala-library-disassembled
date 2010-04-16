@@ -48,6 +48,12 @@ Asciz	scala/math/BigDecimal;
 class	scala/math/BigDecimal
 NameAndType	cache:[Lscala/math/BigDecimal;
 Field	scala/math/BigDecimal$.cache:[Lscala/math/BigDecimal;
+Asciz	scala/runtime/BoxedUnit;
+class	scala/runtime/BoxedUnit
+Asciz	UNIT;
+Asciz	Lscala/runtime/BoxedUnit;;
+NameAndType	UNIT:Lscala/runtime/BoxedUnit;
+Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	()Ljava/math/MathContext;;
 NameAndType	defaultMathContext:Ljava/math/MathContext;
 Field	scala/math/BigDecimal$.defaultMathContext:Ljava/math/MathContext;
@@ -90,6 +96,8 @@ Asciz	offset;
 Asciz	n;
 Asciz	Lscala/math/BigDecimal;;
 Asciz	(J)Lscala/math/BigDecimal;;
+NameAndType	apply:(I)Lscala/math/BigDecimal;
+Method	scala/math/BigDecimal$.apply:(I)Lscala/math/BigDecimal;
 Asciz	l;
 Asciz	J;
 Asciz	(JLjava/math/MathContext;)Lscala/math/BigDecimal;;
@@ -171,8 +179,6 @@ Method	java/math/BigDecimal."<init>":(Ljava/math/BigInteger;ILjava/math/MathCont
 Asciz	bd;
 Asciz	Ljava/math/BigDecimal;;
 Asciz	int2bigDecimal;
-NameAndType	apply:(I)Lscala/math/BigDecimal;
-Method	scala/math/BigDecimal$.apply:(I)Lscala/math/BigDecimal;
 Asciz	long2bigDecimal;
 NameAndType	apply:(J)Lscala/math/BigDecimal;
 Method	scala/math/BigDecimal$.apply:(J)Lscala/math/BigDecimal;
@@ -253,7 +259,7 @@ private int maxCached();
 private scala.math.BigDecimal[] cache();
   Signature: ()[Lscala/math/BigDecimal;
   Code:
-   Stack=3, Locals=1, Args_size=1
+   Stack=3, Locals=2, Args_size=1
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
@@ -262,14 +268,14 @@ private scala.math.BigDecimal[] cache();
 	if_icmpne	l1 // aload_0
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
 	iand
 	iconst_0
-	if_icmpne	l2 // aload_0
+	if_icmpne	l2 // getstatic
 	aload_0
 	aload_0
 	invokespecial	Method maxCached:()I
@@ -286,20 +292,22 @@ private scala.math.BigDecimal[] cache();
 	iconst_1
 	ior
 	putfield	Field bitmap$0:I
-l2	aload_0
+l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_1
 	monitorexit
 l1	aload_0
 	getfield	Field cache:[Lscala/math/BigDecimal;
 	areturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
-   	l2 = 52 // aload_0
-   	l1 = 54 // aload_0
+   	l2 = 52 // getstatic
+   	l1 = 58 // aload_0
   Exception table:
    from   to  target type
-    14    54    59   any
+    14    58    63   any
 
 public java.math.MathContext defaultMathContext();
   Signature: ()Ljava/math/MathContext;
@@ -424,7 +432,7 @@ l3	areturn
 public scala.math.BigDecimal apply(long);
   Signature: (J)Lscala/math/BigDecimal;
   Code:
-   Stack=4, Locals=4, Args_size=2
+   Stack=4, Locals=3, Args_size=2
 	aload_0
 	invokespecial	Method minCached:()I
 	i2l
@@ -437,30 +445,26 @@ public scala.math.BigDecimal apply(long);
 	i2l
 	lcmp
 	ifgt	l1 // new
+	aload_0
 	lload_1
 	l2i
-	istore_3
-	aload_0
-	iload_3
-	aload_0
-	getfield	Field defaultMathContext:Ljava/math/MathContext;
-	invokevirtual	Method apply:(ILjava/math/MathContext;)Lscala/math/BigDecimal;
+	invokevirtual	Method apply:(I)Lscala/math/BigDecimal;
 	goto	l2 // areturn
 l1	new	class scala/math/BigDecimal
 	dup
 	lload_1
 	invokestatic	Method java/math/BigDecimal.valueOf:(J)Ljava/math/BigDecimal;
 	aload_0
-	getfield	Field defaultMathContext:Ljava/math/MathContext;
+	invokevirtual	Method defaultMathContext:()Ljava/math/MathContext;
 	invokespecial	Method scala/math/BigDecimal."<init>":(Ljava/math/BigDecimal;Ljava/math/MathContext;)V
 l2	areturn
   Labels:
-   	l1 = 35 // new
-   	l2 = 50 // areturn
+   	l1 = 29 // new
+   	l2 = 44 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      51      0    this       Lscala/math/BigDecimal$;
-   0      51      1    l       J
+   0      45      0    this       Lscala/math/BigDecimal$;
+   0      45      1    l       J
 
 
 public scala.math.BigDecimal apply(long, java.math.MathContext);

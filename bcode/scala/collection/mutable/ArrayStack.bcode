@@ -2,7 +2,7 @@ Compiled from "ArrayStack.scala"
 public class scala.collection.mutable.ArrayStack extends java.lang.Object implements scala.collection.Seq,scala.collection.mutable.Cloneable,scala.ScalaObject,java.lang.Cloneable,java.io.Serializable
   SourceFile: "ArrayStack.scala"
   Signature: length = 0x2
-   03 58 
+   03 56 
   ScalaSig: length = 0x507
    05 00 FFFFFF81 42 06 04 01 02 00 09 02 0A 41 72 72 61
    79 53 74 61 63 6B 0A 02 03 04 01 07 6D 75 74 61
@@ -762,31 +762,34 @@ Method	scala/collection/mutable/ArrayStack.scala$collection$mutable$ArrayStack$$
 Asciz	(I)TT;;
 Asciz	length;
 Asciz	push;
-Asciz	scala/Array$;
-class	scala/Array$
+Asciz	scala/collection/mutable/Utils$;
+class	scala/collection/mutable/Utils$
 Asciz	MODULE$;
-Asciz	Lscala/Array$;;
-NameAndType	MODULE$:Lscala/Array$;
-Field	scala/Array$.MODULE$:Lscala/Array$;
-Asciz	copy;
-Asciz	(Ljava/lang/Object;ILjava/lang/Object;II)V;
-NameAndType	copy:(Ljava/lang/Object;ILjava/lang/Object;II)V
-Method	scala/Array$.copy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+Asciz	Lscala/collection/mutable/Utils$;;
+NameAndType	MODULE$:Lscala/collection/mutable/Utils$;
+Field	scala/collection/mutable/Utils$.MODULE$:Lscala/collection/mutable/Utils$;
+Asciz	growArray;
+Asciz	([Ljava/lang/Object;)[Ljava/lang/Object;;
+NameAndType	growArray:([Ljava/lang/Object;)[Ljava/lang/Object;
+Method	scala/collection/mutable/Utils$.growArray:([Ljava/lang/Object;)[Ljava/lang/Object;
 NameAndType	scala$collection$mutable$ArrayStack$$table_$eq:([Ljava/lang/Object;)V
 Method	scala/collection/mutable/ArrayStack.scala$collection$mutable$ArrayStack$$table_$eq:([Ljava/lang/Object;)V
 NameAndType	scala$collection$mutable$ArrayStack$$index_$eq:(I)V
 Method	scala/collection/mutable/ArrayStack.scala$collection$mutable$ArrayStack$$index_$eq:(I)V
 Asciz	x;
-Asciz	y0;
 Asciz	(TT;)V;
 Asciz	pop;
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
 Asciz	Stack empty;
 String	Stack empty
-Asciz	java/lang/RuntimeException;
-class	java/lang/RuntimeException
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+Asciz	error;
+Asciz	(Ljava/lang/String;)Lscala/runtime/Nothing$;;
+NameAndType	error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+Method	scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
 Asciz	()TT;;
 Asciz	peek;
 Asciz	top;
@@ -848,14 +851,17 @@ NameAndType	combine:(Lscala/Function2;)V
 Method	scala/collection/mutable/ArrayStack.combine:(Lscala/Function2;)V
 Asciz	preserving;
 Asciz	(Lscala/Function0;)Ljava/lang/Object;;
+NameAndType	clone:([Ljava/lang/Object;)[Ljava/lang/Object;
+Method	scala/collection/mutable/Utils$.clone:([Ljava/lang/Object;)[Ljava/lang/Object;
 Asciz	scala/Function0;
 class	scala/Function0
 NameAndType	apply:()Ljava/lang/Object;
 InterfaceMethod	scala/Function0.apply:()Ljava/lang/Object;
 Asciz	action;
 Asciz	Lscala/Function0;;
-Asciz	exceptionResult1;
 Asciz	oldIndex;
+Asciz	oldTable;
+Asciz	exceptionResult1;
 Asciz	<T:Ljava/lang/Object;>(Lscala/Function0<TT;>;)TT;;
 Asciz	iterator;
 Asciz	scala/collection/mutable/ArrayStack$$anon$1;
@@ -865,14 +871,6 @@ Asciz	()Lscala/collection/Iterator<TT;>;;
 Asciz	currentIndex;
 Asciz	<U:Ljava/lang/Object;>(Lscala/Function1<TT;TU;>;)V;
 Asciz	()Lscala/collection/mutable/ArrayStack;;
-Asciz	scala/collection/mutable/Utils$;
-class	scala/collection/mutable/Utils$
-Asciz	Lscala/collection/mutable/Utils$;;
-NameAndType	MODULE$:Lscala/collection/mutable/Utils$;
-Field	scala/collection/mutable/Utils$.MODULE$:Lscala/collection/mutable/Utils$;
-Asciz	([Ljava/lang/Object;)[Ljava/lang/Object;;
-NameAndType	clone:([Ljava/lang/Object;)[Ljava/lang/Object;
-Method	scala/collection/mutable/Utils$.clone:([Ljava/lang/Object;)[Ljava/lang/Object;
 Asciz	()Lscala/collection/mutable/ArrayStack<TT;>;;
 Asciz	scala/PartialFunction;
 class	scala/PartialFunction
@@ -979,10 +977,10 @@ class	java/io/Serializable
 public static final long serialVersionUID;
   Signature: J
 
-public int scala$collection$mutable$ArrayStack$$index;
+private int scala$collection$mutable$ArrayStack$$index;
   Signature: I
 
-public java.lang.Object[] scala$collection$mutable$ArrayStack$$table;
+private java.lang.Object[] scala$collection$mutable$ArrayStack$$table;
   Signature: [Ljava/lang/Object;
 
 public static {};
@@ -2998,101 +2996,83 @@ public int length();
 public void push(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
   Code:
-   Stack=7, Locals=4, Args_size=2
+   Stack=3, Locals=2, Args_size=2
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$index:I
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$index:()I
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$table:[Ljava/lang/Object;
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$table:()[Ljava/lang/Object;
 	arraylength
 	if_icmpne	l1 // aload_0
 	aload_0
+	getstatic	Field scala/collection/mutable/Utils$.MODULE$:Lscala/collection/mutable/Utils$;
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$table:[Ljava/lang/Object;
-	astore_2
-	aload_2
-	arraylength
-	iconst_2
-	imul
-	anewarray	class java/lang/Object
-	astore_3
-	getstatic	Field scala/Array$.MODULE$:Lscala/Array$;
-	aload_2
-	iconst_0
-	aload_3
-	iconst_0
-	aload_2
-	arraylength
-	invokevirtual	Method scala/Array$.copy:(Ljava/lang/Object;ILjava/lang/Object;II)V
-	aload_3
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$table:()[Ljava/lang/Object;
+	invokevirtual	Method scala/collection/mutable/Utils$.growArray:([Ljava/lang/Object;)[Ljava/lang/Object;
 	invokespecial	Method scala$collection$mutable$ArrayStack$$table_$eq:([Ljava/lang/Object;)V
 l1	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$table:[Ljava/lang/Object;
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$table:()[Ljava/lang/Object;
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$index:I
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$index:()I
 	aload_1
 	aastore
 	aload_0
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$index:I
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$index:()I
 	iconst_1
 	iadd
 	invokespecial	Method scala$collection$mutable$ArrayStack$$index_$eq:(I)V
 	return
   Labels:
-   	l1 = 42 // aload_0
+   	l1 = 26 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      63      0    this       Lscala/collection/mutable/ArrayStack;
-   0      63      1    x       Ljava/lang/Object;
-   26      13      3    y0       [Ljava/lang/Object;
+   0      47      0    this       Lscala/collection/mutable/ArrayStack;
+   0      47      1    x       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 FFFFFFAE 
+   02 FFFFFFAD 
 
 public java.lang.Object pop();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=3, Locals=3, Args_size=1
+   Stack=3, Locals=2, Args_size=1
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$index:I
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$index:()I
 	iconst_0
 	if_icmpne	l1 // aload_0
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	ldc_w	String Stack empty
-	astore_1
-	new	class java/lang/RuntimeException
-	dup
-	aload_1
-	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
 	athrow
 l1	aload_0
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$index:I
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$index:()I
 	iconst_1
 	isub
 	invokespecial	Method scala$collection$mutable$ArrayStack$$index_$eq:(I)V
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$table:[Ljava/lang/Object;
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$table:()[Ljava/lang/Object;
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$index:I
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$index:()I
 	aaload
-	astore_2
+	astore_1
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$table:[Ljava/lang/Object;
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$table:()[Ljava/lang/Object;
 	aload_0
 	invokevirtual	Method scala$collection$mutable$ArrayStack$$index:()I
 	aconst_null
 	aastore
-	aload_2
+	aload_1
 	areturn
   Labels:
-   	l1 = 21 // aload_0
+   	l1 = 18 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      53      0    this       Lscala/collection/mutable/ArrayStack;
-   41      11      2    x       Ljava/lang/Object;
+   0      50      0    this       Lscala/collection/mutable/ArrayStack;
+   38      11      1    x       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 FFFFFFB7 
+   02 FFFFFFBA 
 
 public java.lang.Object peek();
   Signature: ()Ljava/lang/Object;
@@ -3103,7 +3083,7 @@ public java.lang.Object peek();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 FFFFFFB7 
+   02 FFFFFFBA 
   Deprecated: true
 
 public java.lang.Object top();
@@ -3120,7 +3100,7 @@ public java.lang.Object top();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 FFFFFFB7 
+   02 FFFFFFBA 
 
 public void dup();
   Signature: ()V
@@ -3170,7 +3150,7 @@ l1	aload_1
    0      22      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   02 FFFFFFCC 
+   02 FFFFFFCF 
 
 public scala.collection.mutable.ArrayStack $plus$plus$eq(scala.collection.Iterable);
   Signature: (Lscala/collection/Iterable;)Lscala/collection/mutable/ArrayStack;
@@ -3191,7 +3171,7 @@ public scala.collection.mutable.ArrayStack $plus$plus$eq(scala.collection.Iterab
    0      16      1    x       Lscala/collection/Iterable;
 
   Signature: length = 0x2
-   02 FFFFFFD9 
+   02 FFFFFFDC 
 
 public scala.collection.mutable.ArrayStack $plus$plus$eq(scala.collection.Iterator);
   Signature: (Lscala/collection/Iterator;)Lscala/collection/mutable/ArrayStack;
@@ -3212,7 +3192,7 @@ public scala.collection.mutable.ArrayStack $plus$plus$eq(scala.collection.Iterat
    0      16      1    x       Lscala/collection/Iterator;
 
   Signature: length = 0x2
-   02 FFFFFFE1 
+   02 FFFFFFE4 
 
 public scala.collection.mutable.ArrayStack $plus$eq(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/mutable/ArrayStack;
@@ -3230,7 +3210,7 @@ public scala.collection.mutable.ArrayStack $plus$eq(java.lang.Object);
    0      7      1    x       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 FFFFFFE4 
+   02 FFFFFFE7 
 
 public void combine(scala.Function2);
   Signature: (Lscala/Function2;)V
@@ -3252,7 +3232,7 @@ public void combine(scala.Function2);
    0      19      1    f       Lscala/Function2;
 
   Signature: length = 0x2
-   02 FFFFFFEC 
+   02 FFFFFFEF 
 
 public void reduceWith(scala.Function2);
   Signature: (Lscala/Function2;)V
@@ -3276,7 +3256,7 @@ l1	return
    0      17      1    f       Lscala/Function2;
 
   Signature: length = 0x2
-   02 FFFFFFEC 
+   02 FFFFFFEF 
 
 public int size();
   Signature: ()I
@@ -3290,68 +3270,61 @@ public int size();
 public java.lang.Object preserving(scala.Function0);
   Signature: (Lscala/Function0;)Ljava/lang/Object;
   Code:
-   Stack=6, Locals=7, Args_size=2
+   Stack=2, Locals=6, Args_size=2
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$index:I
-	istore	4
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$index:()I
+	istore_2
+	getstatic	Field scala/collection/mutable/Utils$.MODULE$:Lscala/collection/mutable/Utils$;
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$table:[Ljava/lang/Object;
-	astore_2
-	aload_2
-	arraylength
-	anewarray	class java/lang/Object
-	astore	5
-	getstatic	Field scala/Array$.MODULE$:Lscala/Array$;
-	aload_2
-	iconst_0
-	aload	5
-	iconst_0
-	aload_2
-	arraylength
-	invokevirtual	Method scala/Array$.copy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$table:()[Ljava/lang/Object;
+	invokevirtual	Method scala/collection/mutable/Utils$.clone:([Ljava/lang/Object;)[Ljava/lang/Object;
+	astore_3
+	aconst_null
+	astore	4
 	aload_1
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
-	astore_3
+	astore	4
 	aload_0
-	iload	4
+	iload_2
 	invokespecial	Method scala$collection$mutable$ArrayStack$$index_$eq:(I)V
 	aload_0
-	aload	5
-	invokespecial	Method scala$collection$mutable$ArrayStack$$table_$eq:([Ljava/lang/Object;)V
 	aload_3
+	invokespecial	Method scala$collection$mutable$ArrayStack$$table_$eq:([Ljava/lang/Object;)V
+	aload	4
 	areturn
-	astore	6
+	astore	5
 	aload_0
-	iload	4
+	iload_2
 	invokespecial	Method scala$collection$mutable$ArrayStack$$index_$eq:(I)V
 	aload_0
-	aload	5
+	aload_3
 	invokespecial	Method scala$collection$mutable$ArrayStack$$table_$eq:([Ljava/lang/Object;)V
-	aload	6
+	aload	5
 	athrow
   Labels:
   Exception table:
    from   to  target type
-    31    38    52   any
+    19    27    40   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      69      0    this       Lscala/collection/mutable/ArrayStack;
-   0      69      1    action       Lscala/Function0;
-   31      20      3    exceptionResult1       Ljava/lang/Object;
-   52      17      3    exceptionResult1       Ljava/lang/Object;
-   6      45      4    oldIndex       I
-   52      17      4    oldIndex       I
-   18      13      5    y0       [Ljava/lang/Object;
+   0      55      0    this       Lscala/collection/mutable/ArrayStack;
+   0      55      1    action       Lscala/Function0;
+   5      34      2    oldIndex       I
+   40      15      2    oldIndex       I
+   16      23      3    oldTable       [Ljava/lang/Object;
+   40      15      3    oldTable       [Ljava/lang/Object;
+   19      20      4    exceptionResult1       Ljava/lang/Object;
+   40      15      4    exceptionResult1       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 FFFFFFFC 
+   03 02 
 
 public boolean isEmpty();
   Signature: ()Z
   Code:
    Stack=2, Locals=1, Args_size=1
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$index:I
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$index:()I
 	iconst_0
 	if_icmpne	l1 // iconst_0
 	iconst_1
@@ -3373,14 +3346,14 @@ public scala.collection.Iterator iterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   03 01 
+   03 07 
 
 public void foreach(scala.Function1);
   Signature: (Lscala/Function1;)V
   Code:
    Stack=3, Locals=3, Args_size=2
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$index:I
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$index:()I
 	istore_2
 l2	iload_2
 	iconst_0
@@ -3391,7 +3364,7 @@ l2	iload_2
 	istore_2
 	aload_1
 	aload_0
-	getfield	Field scala$collection$mutable$ArrayStack$$table:[Ljava/lang/Object;
+	invokevirtual	Method scala$collection$mutable$ArrayStack$$table:()[Ljava/lang/Object;
 	iload_2
 	aaload
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
@@ -3408,7 +3381,7 @@ l1	return
    5      26      2    currentIndex       I
 
   Signature: length = 0x2
-   03 03 
+   03 09 
 
 public scala.collection.mutable.ArrayStack clone();
   Signature: ()Lscala/collection/mutable/ArrayStack;
@@ -3426,7 +3399,7 @@ public scala.collection.mutable.ArrayStack clone();
 	areturn
   Labels:
   Signature: length = 0x2
-   03 0D 
+   03 0B 
 
 public scala.Function1 andThen(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Function1;

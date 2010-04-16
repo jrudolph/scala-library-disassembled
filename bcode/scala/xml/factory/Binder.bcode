@@ -51,7 +51,6 @@ public abstract class scala.xml.factory.Binder extends scala.xml.parsing.Validat
    69 64 61 74 65 14 02 6C 72 08 05 5F 6F FFFFFFC0 00 6C
    
   InnerClass: 
-   public final $anon$1=class scala/xml/NodeSeq$$anon$1 of class scala/xml/NodeSeq
    public final $anonfun$traverse$1=class scala/xml/factory/Binder$$anonfun$traverse$1 of class scala/xml/factory/Binder
   minor version: 0
   major version: 49
@@ -120,6 +119,8 @@ NameAndType	target:()Ljava/lang/String;
 Method	scala/xml/ProcInstr.target:()Ljava/lang/String;
 NameAndType	text:()Ljava/lang/String;
 Method	scala/xml/ProcInstr.text:()Ljava/lang/String;
+NameAndType	procInstr:(ILjava/lang/String;Ljava/lang/String;)Lscala/xml/ProcInstr;
+Method	scala/xml/factory/Binder.procInstr:(ILjava/lang/String;Ljava/lang/String;)Lscala/xml/ProcInstr;
 Asciz	scala/xml/NodeBuffer;
 class	scala/xml/NodeBuffer
 Asciz	$amp$plus;
@@ -127,15 +128,21 @@ Asciz	(Ljava/lang/Object;)Lscala/xml/NodeBuffer;;
 NameAndType	$amp$plus:(Ljava/lang/Object;)Lscala/xml/NodeBuffer;
 Method	scala/xml/NodeBuffer.$amp$plus:(Ljava/lang/Object;)Lscala/xml/NodeBuffer;
 Method	scala/xml/Comment.text:()Ljava/lang/String;
+NameAndType	comment:(ILjava/lang/String;)Lscala/xml/Comment;
+Method	scala/xml/factory/Binder.comment:(ILjava/lang/String;)Lscala/xml/Comment;
 Asciz	data;
 Asciz	()Ljava/lang/Object;;
 NameAndType	data:()Ljava/lang/Object;
 Method	scala/xml/Text.data:()Ljava/lang/Object;
 Asciz	java/lang/String;
 class	java/lang/String
+NameAndType	text:(ILjava/lang/String;)Lscala/xml/Text;
+Method	scala/xml/factory/Binder.text:(ILjava/lang/String;)Lscala/xml/Text;
 Asciz	entityName;
 NameAndType	entityName:()Ljava/lang/String;
 Method	scala/xml/EntityRef.entityName:()Ljava/lang/String;
+NameAndType	entityRef:(ILjava/lang/String;)Lscala/xml/EntityRef;
+Method	scala/xml/factory/Binder.entityRef:(ILjava/lang/String;)Lscala/xml/EntityRef;
 Asciz	scala/xml/Node;
 class	scala/xml/Node
 Asciz	prefix;
@@ -176,11 +183,16 @@ Asciz	foreach;
 Asciz	(Lscala/Function1;)V;
 NameAndType	foreach:(Lscala/Function1;)V
 InterfaceMethod	scala/collection/IterableLike.foreach:(Lscala/Function1;)V
-Asciz	scala/xml/NodeSeq$$anon$1;
-class	scala/xml/NodeSeq$$anon$1
-Asciz	(Lscala/collection/Seq;)V;
-NameAndType	"<init>":(Lscala/collection/Seq;)V
-Method	scala/xml/NodeSeq$$anon$1."<init>":(Lscala/collection/Seq;)V
+Asciz	scala/xml/NodeSeq$;
+class	scala/xml/NodeSeq$
+Asciz	MODULE$;
+Asciz	Lscala/xml/NodeSeq$;;
+NameAndType	MODULE$:Lscala/xml/NodeSeq$;
+Field	scala/xml/NodeSeq$.MODULE$:Lscala/xml/NodeSeq$;
+Asciz	fromSeq;
+Asciz	(Lscala/collection/Seq;)Lscala/xml/NodeSeq;;
+NameAndType	fromSeq:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
+Method	scala/xml/NodeSeq$.fromSeq:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
 Asciz	elem;
 Asciz	(ILjava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/xml/NodeSeq;)Lscala/xml/NodeSeq;;
 NameAndType	elem:(ILjava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/xml/NodeSeq;)Lscala/xml/NodeSeq;
@@ -196,8 +208,10 @@ Asciz	(ILjava/lang/String;Ljava/lang/String;)V;
 NameAndType	elemEnd:(ILjava/lang/String;Ljava/lang/String;)V
 Method	scala/xml/factory/Binder.elemEnd:(ILjava/lang/String;Ljava/lang/String;)V
 Asciz	Lscala/xml/Node;;
+Asciz	temp1;
 Asciz	temp2;
 Asciz	Lscala/xml/ProcInstr;;
+Asciz	x;
 Asciz	old;
 Asciz	validate;
 Asciz	(Lscala/xml/Node;)Lscala/xml/Node;;
@@ -213,24 +227,13 @@ Asciz	(I)Ljava/lang/Object;;
 NameAndType	apply:(I)Ljava/lang/Object;
 InterfaceMethod	scala/collection/mutable/ResizableArray.apply:(I)Ljava/lang/Object;
 Asciz	(ILjava/lang/String;)Lscala/xml/NodeSeq;;
-NameAndType	text:(ILjava/lang/String;)Lscala/xml/Text;
-Method	scala/xml/factory/Binder.text:(ILjava/lang/String;)Lscala/xml/Text;
-NameAndType	entityRef:(ILjava/lang/String;)Lscala/xml/EntityRef;
-Method	scala/xml/factory/Binder.entityRef:(ILjava/lang/String;)Lscala/xml/EntityRef;
-NameAndType	comment:(ILjava/lang/String;)Lscala/xml/Comment;
-Method	scala/xml/factory/Binder.comment:(ILjava/lang/String;)Lscala/xml/Comment;
 Asciz	(ILjava/lang/String;Ljava/lang/String;)Lscala/xml/NodeSeq;;
-NameAndType	procInstr:(ILjava/lang/String;Ljava/lang/String;)Lscala/xml/ProcInstr;
-Method	scala/xml/factory/Binder.procInstr:(ILjava/lang/String;Ljava/lang/String;)Lscala/xml/ProcInstr;
 Asciz	(Z)V;
 Asciz	scala/xml/parsing/ValidatingMarkupHandler;
 class	scala/xml/parsing/ValidatingMarkupHandler
 Method	scala/xml/parsing/ValidatingMarkupHandler."<init>":()V
 Asciz	ScalaSig;
 Asciz	InnerClasses;
-Asciz	scala/xml/NodeSeq;
-class	scala/xml/NodeSeq
-Asciz	$anon$1;
 Asciz	$anonfun$traverse$1;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
@@ -356,75 +359,69 @@ public final scala.xml.Text text(int, java.lang.String);
 public final void traverse(scala.xml.Node);
   Signature: (Lscala/xml/Node;)V
   Code:
-   Stack=11, Locals=10, Args_size=2
+   Stack=10, Locals=6, Args_size=2
 	aload_1
-	instanceof	class scala/xml/ProcInstr
-	ifeq	l1 // aload_1
-	aload_1
-	checkcast	class scala/xml/ProcInstr
 	astore_2
+	aload_2
+	instanceof	class scala/xml/ProcInstr
+	ifeq	l1 // aload_2
+	aload_2
+	checkcast	class scala/xml/ProcInstr
+	astore_3
+	aload_3
+	astore	4
 	aload_0
 	invokevirtual	Method result:()Lscala/xml/NodeBuffer;
-	aload_2
-	invokevirtual	Method scala/xml/ProcInstr.target:()Ljava/lang/String;
-	aload_2
-	invokevirtual	Method scala/xml/ProcInstr.text:()Ljava/lang/String;
-	astore	4
-	astore_3
-	new	class scala/xml/ProcInstr
-	dup
-	aload_3
+	aload_0
+	iconst_0
 	aload	4
-	invokespecial	Method scala/xml/ProcInstr."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+	invokevirtual	Method scala/xml/ProcInstr.target:()Ljava/lang/String;
+	aload	4
+	invokevirtual	Method scala/xml/ProcInstr.text:()Ljava/lang/String;
+	invokevirtual	Method procInstr:(ILjava/lang/String;Ljava/lang/String;)Lscala/xml/ProcInstr;
 	invokevirtual	Method scala/xml/NodeBuffer.$amp$plus:(Ljava/lang/Object;)Lscala/xml/NodeBuffer;
 	pop
 	goto	l2 // return
-l1	aload_1
+l1	aload_2
 	instanceof	class scala/xml/Comment
-	ifeq	l3 // aload_1
+	ifeq	l3 // aload_2
 	aload_0
 	invokevirtual	Method result:()Lscala/xml/NodeBuffer;
-	aload_1
+	aload_0
+	iconst_0
+	aload_2
 	checkcast	class scala/xml/Comment
 	invokevirtual	Method scala/xml/Comment.text:()Ljava/lang/String;
-	astore	5
-	new	class scala/xml/Comment
-	dup
-	aload	5
-	invokespecial	Method scala/xml/Comment."<init>":(Ljava/lang/String;)V
+	invokevirtual	Method comment:(ILjava/lang/String;)Lscala/xml/Comment;
 	invokevirtual	Method scala/xml/NodeBuffer.$amp$plus:(Ljava/lang/Object;)Lscala/xml/NodeBuffer;
 	pop
 	goto	l2 // return
-l3	aload_1
+l3	aload_2
 	instanceof	class scala/xml/Text
-	ifeq	l4 // aload_1
+	ifeq	l4 // aload_2
 	aload_0
 	invokevirtual	Method result:()Lscala/xml/NodeBuffer;
-	aload_1
+	aload_0
+	iconst_0
+	aload_2
 	checkcast	class scala/xml/Text
 	invokevirtual	Method scala/xml/Text.data:()Ljava/lang/Object;
 	checkcast	class java/lang/String
-	astore	6
-	new	class scala/xml/Text
-	dup
-	aload	6
-	invokespecial	Method scala/xml/Text."<init>":(Ljava/lang/String;)V
+	invokevirtual	Method text:(ILjava/lang/String;)Lscala/xml/Text;
 	invokevirtual	Method scala/xml/NodeBuffer.$amp$plus:(Ljava/lang/Object;)Lscala/xml/NodeBuffer;
 	pop
 	goto	l2 // return
-l4	aload_1
+l4	aload_2
 	instanceof	class scala/xml/EntityRef
 	ifeq	l5 // aload_0
 	aload_0
 	invokevirtual	Method result:()Lscala/xml/NodeBuffer;
-	aload_1
+	aload_0
+	iconst_0
+	aload_2
 	checkcast	class scala/xml/EntityRef
 	invokevirtual	Method scala/xml/EntityRef.entityName:()Ljava/lang/String;
-	astore	7
-	new	class scala/xml/EntityRef
-	dup
-	aload	7
-	invokespecial	Method scala/xml/EntityRef."<init>":(Ljava/lang/String;)V
+	invokevirtual	Method entityRef:(ILjava/lang/String;)Lscala/xml/EntityRef;
 	invokevirtual	Method scala/xml/NodeBuffer.$amp$plus:(Ljava/lang/Object;)Lscala/xml/NodeBuffer;
 	pop
 	goto	l2 // return
@@ -441,7 +438,7 @@ l5	aload_0
 	invokevirtual	Method elemStart:(ILjava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;)V
 	aload_0
 	invokevirtual	Method result:()Lscala/xml/NodeBuffer;
-	astore	8
+	astore	5
 	aload_0
 	new	class scala/xml/NodeBuffer
 	dup
@@ -455,7 +452,7 @@ l5	aload_0
 	invokespecial	Method scala/xml/factory/Binder$$anonfun$traverse$1."<init>":(Lscala/xml/factory/Binder;)V
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.foreach:(Lscala/Function1;)V
 	aload_0
-	aload	8
+	aload	5
 	aload_0
 	iconst_0
 	aload_1
@@ -466,13 +463,10 @@ l5	aload_0
 	invokevirtual	Method scala/xml/Node.attributes:()Lscala/xml/MetaData;
 	aload_1
 	invokevirtual	Method scala/xml/Node.scope:()Lscala/xml/NamespaceBinding;
+	getstatic	Field scala/xml/NodeSeq$.MODULE$:Lscala/xml/NodeSeq$;
 	aload_0
 	invokevirtual	Method result:()Lscala/xml/NodeBuffer;
-	astore	9
-	new	class scala/xml/NodeSeq$$anon$1
-	dup
-	aload	9
-	invokespecial	Method scala/xml/NodeSeq$$anon$1."<init>":(Lscala/collection/Seq;)V
+	invokevirtual	Method scala/xml/NodeSeq$.fromSeq:(Lscala/collection/Seq;)Lscala/xml/NodeSeq;
 	invokevirtual	Method elem:(ILjava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/xml/NodeSeq;)Lscala/xml/NodeSeq;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
 	invokevirtual	Method scala/xml/NodeBuffer.$amp$plus:(Ljava/lang/Object;)Lscala/xml/NodeBuffer;
@@ -486,17 +480,19 @@ l5	aload_0
 	invokevirtual	Method elemEnd:(ILjava/lang/String;Ljava/lang/String;)V
 l2	return
   Labels:
-   	l1 = 44 // aload_1
-   	l3 = 80 // aload_1
-   	l4 = 119 // aload_1
-   	l5 = 155 // aload_0
-   	l2 = 273 // return
+   	l1 = 43 // aload_2
+   	l3 = 73 // aload_2
+   	l4 = 106 // aload_2
+   	l5 = 136 // aload_0
+   	l2 = 249 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      274      0    this       Lscala/xml/factory/Binder;
-   0      274      1    n       Lscala/xml/Node;
-   12      29      2    temp2       Lscala/xml/ProcInstr;
-   182      91      8    old       Lscala/xml/NodeBuffer;
+   0      250      0    this       Lscala/xml/factory/Binder;
+   0      250      1    n       Lscala/xml/Node;
+   2      248      2    temp1       Lscala/xml/Node;
+   14      26      3    temp2       Lscala/xml/ProcInstr;
+   17      23      4    x       Lscala/xml/ProcInstr;
+   163      86      5    old       Lscala/xml/NodeBuffer;
 
 
 public final scala.xml.Node validate(scala.xml.Node);

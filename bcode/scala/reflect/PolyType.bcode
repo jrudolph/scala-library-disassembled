@@ -180,10 +180,15 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp45;
+Asciz	Ljava/lang/Object;;
 Asciz	temp46;
 Asciz	temp47;
 Asciz	temp48;
 Asciz	temp49;
+Asciz	resultType$1;
+Asciz	typeBounds$1;
+Asciz	typeParams$1;
 Asciz	productPrefix;
 Asciz	PolyType;
 String	PolyType
@@ -205,11 +210,14 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp50;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	resultType
 String	typeBounds
 String	typeParams
+Asciz	temp51;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/reflect/Type;
@@ -392,29 +400,37 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=4, Locals=6, Args_size=2
+   Stack=4, Locals=10, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/reflect/PolyType
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/reflect/PolyType
 	astore_2
 	aload_2
-	invokevirtual	Method typeParams:()Lscala/collection/immutable/List;
+	instanceof	class scala/reflect/PolyType
+	ifeq	l2 // iconst_0
+	aload_2
+	checkcast	class scala/reflect/PolyType
 	astore_3
-	aload_2
-	invokevirtual	Method typeBounds:()Lscala/collection/immutable/List;
-	astore	4
-	aload_2
-	invokevirtual	Method resultType:()Lscala/reflect/Type;
-	astore	5
-	aload_0
 	aload_3
-	aload	4
+	invokevirtual	Method typeParams:()Lscala/collection/immutable/List;
+	astore	4
+	aload_3
+	invokevirtual	Method typeBounds:()Lscala/collection/immutable/List;
+	astore	5
+	aload_3
+	invokevirtual	Method resultType:()Lscala/reflect/Type;
+	astore	6
+	aload	6
+	astore	7
 	aload	5
+	astore	8
+	aload	4
+	astore	9
+	aload_0
+	aload	9
+	aload	8
+	aload	7
 	invokespecial	Method gd8$1:(Lscala/collection/immutable/List;Lscala/collection/immutable/List;Lscala/reflect/Type;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -431,19 +447,23 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 59 // iconst_0
-   	l2 = 63 // iconst_0
-   	l4 = 64 // ifeq
-   	l1 = 67 // iconst_1
-   	l5 = 71 // iconst_0
-   	l6 = 72 // ireturn
+   	l3 = 75 // iconst_0
+   	l2 = 79 // iconst_0
+   	l4 = 80 // ifeq
+   	l1 = 83 // iconst_1
+   	l5 = 87 // iconst_0
+   	l6 = 88 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      73      0    this       Lscala/reflect/PolyType;
-   17      46      2    temp46       Lscala/reflect/PolyType;
-   22      41      3    temp47       Lscala/collection/immutable/List;
-   28      35      4    temp48       Lscala/collection/immutable/List;
-   34      29      5    temp49       Lscala/reflect/Type;
+   0      89      0    this       Lscala/reflect/PolyType;
+   7      76      2    temp45       Ljava/lang/Object;
+   19      60      3    temp46       Lscala/reflect/PolyType;
+   25      54      4    temp47       Lscala/collection/immutable/List;
+   31      48      5    temp48       Lscala/collection/immutable/List;
+   37      42      6    temp49       Lscala/reflect/Type;
+   41      38      7    resultType$1       Lscala/reflect/Type;
+   45      34      8    typeBounds$1       Lscala/collection/immutable/List;
+   49      30      9    typeParams$1       Lscala/collection/immutable/List;
 
 
 public java.lang.String productPrefix();
@@ -465,8 +485,10 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 2
 		0: 57;
 		1: 50;
@@ -490,12 +512,19 @@ public java.lang.Object productElement(int);
 l1	areturn
   Labels:
    	l1 = 61 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      62      0    this       Lscala/reflect/PolyType;
+   2      60      2    temp50       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 2
 		0: 53;
 		1: 48;
@@ -516,6 +545,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 55 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      56      0    this       Lscala/reflect/PolyType;
+   2      54      2    temp51       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -610,7 +644,7 @@ public scala.reflect.PolyType(scala.collection.immutable.List, scala.collection.
    0      24      3    resultType       Lscala/reflect/Type;
 
   Signature: length = 0x2
-   00 FFFFFF8B 
+   00 FFFFFF93 
 
 }
 

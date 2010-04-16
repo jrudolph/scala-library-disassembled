@@ -155,9 +155,13 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp31;
+Asciz	Ljava/lang/Object;;
 Asciz	temp32;
 Asciz	temp33;
 Asciz	temp34;
+Asciz	name$1;
+Asciz	node$1;
 Asciz	productPrefix;
 Asciz	Locator;
 String	Locator
@@ -179,10 +183,13 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp35;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	name
 String	node
+Asciz	temp36;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	()V;
@@ -331,25 +338,31 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=3, Locals=5, Args_size=2
+   Stack=3, Locals=8, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/actors/remote/Locator
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/actors/remote/Locator
 	astore_2
 	aload_2
-	invokevirtual	Method node:()Lscala/actors/remote/Node;
-	astore_3
+	instanceof	class scala/actors/remote/Locator
+	ifeq	l2 // iconst_0
 	aload_2
-	invokevirtual	Method name:()Lscala/Symbol;
-	astore	4
-	aload_0
+	checkcast	class scala/actors/remote/Locator
+	astore_3
 	aload_3
+	invokevirtual	Method node:()Lscala/actors/remote/Node;
+	astore	4
+	aload_3
+	invokevirtual	Method name:()Lscala/Symbol;
+	astore	5
+	aload	5
+	astore	6
 	aload	4
+	astore	7
+	aload_0
+	aload	7
+	aload	6
 	invokespecial	Method gd5$1:(Lscala/actors/remote/Node;Lscala/Symbol;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -366,18 +379,21 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 51 // iconst_0
-   	l2 = 55 // iconst_0
-   	l4 = 56 // ifeq
-   	l1 = 59 // iconst_1
-   	l5 = 63 // iconst_0
-   	l6 = 64 // ireturn
+   	l3 = 63 // iconst_0
+   	l2 = 67 // iconst_0
+   	l4 = 68 // ifeq
+   	l1 = 71 // iconst_1
+   	l5 = 75 // iconst_0
+   	l6 = 76 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      65      0    this       Lscala/actors/remote/Locator;
-   17      38      2    temp32       Lscala/actors/remote/Locator;
-   22      33      3    temp33       Lscala/actors/remote/Node;
-   28      27      4    temp34       Lscala/Symbol;
+   0      77      0    this       Lscala/actors/remote/Locator;
+   7      64      2    temp31       Ljava/lang/Object;
+   19      48      3    temp32       Lscala/actors/remote/Locator;
+   25      42      4    temp33       Lscala/actors/remote/Node;
+   31      36      5    temp34       Lscala/Symbol;
+   35      32      6    name$1       Lscala/Symbol;
+   39      28      7    node$1       Lscala/actors/remote/Node;
 
 
 public java.lang.String productPrefix();
@@ -399,8 +415,10 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
 		0: 46;
 		1: 39;
@@ -420,12 +438,19 @@ public java.lang.Object productElement(int);
 l1	areturn
   Labels:
    	l1 = 50 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      51      0    this       Lscala/actors/remote/Locator;
+   2      49      2    temp35       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
 		0: 44;
 		1: 39;
@@ -443,6 +468,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 46 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      47      0    this       Lscala/actors/remote/Locator;
+   2      45      2    temp36       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z

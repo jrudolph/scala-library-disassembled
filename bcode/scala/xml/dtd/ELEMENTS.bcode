@@ -151,8 +151,11 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp64;
+Asciz	Ljava/lang/Object;;
 Asciz	temp65;
 Asciz	temp66;
+Asciz	r$2;
 Asciz	productPrefix;
 Asciz	()Ljava/lang/String;;
 Asciz	ELEMENTS;
@@ -176,9 +179,12 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp67;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	r
+Asciz	temp68;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/xml/dtd/DFAContentModel;
@@ -311,21 +317,25 @@ public int hashCode();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=4, Args_size=2
+   Stack=2, Locals=6, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/xml/dtd/ELEMENTS
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/xml/dtd/ELEMENTS
 	astore_2
 	aload_2
-	invokevirtual	Method r:()Lscala/util/regexp/Base$RegExp;
+	instanceof	class scala/xml/dtd/ELEMENTS
+	ifeq	l2 // iconst_0
+	aload_2
+	checkcast	class scala/xml/dtd/ELEMENTS
 	astore_3
-	aload_0
 	aload_3
+	invokevirtual	Method r:()Lscala/util/regexp/Base$RegExp;
+	astore	4
+	aload	4
+	astore	5
+	aload_0
+	aload	5
 	invokespecial	Method gd3$1:(Lscala/util/regexp/Base$RegExp;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -342,17 +352,19 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 43 // iconst_0
-   	l2 = 47 // iconst_0
-   	l4 = 48 // ifeq
-   	l1 = 51 // iconst_1
-   	l5 = 55 // iconst_0
-   	l6 = 56 // ireturn
+   	l3 = 51 // iconst_0
+   	l2 = 55 // iconst_0
+   	l4 = 56 // ifeq
+   	l1 = 59 // iconst_1
+   	l5 = 63 // iconst_0
+   	l6 = 64 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      57      0    this       Lscala/xml/dtd/ELEMENTS;
-   17      30      2    temp65       Lscala/xml/dtd/ELEMENTS;
-   22      25      3    temp66       Lscala/util/regexp/Base$RegExp;
+   0      65      0    this       Lscala/xml/dtd/ELEMENTS;
+   7      52      2    temp64       Ljava/lang/Object;
+   19      36      3    temp65       Lscala/xml/dtd/ELEMENTS;
+   25      30      4    temp66       Lscala/util/regexp/Base$RegExp;
+   29      26      5    r$2       Lscala/util/regexp/Base$RegExp;
 
 
 public java.lang.String productPrefix();
@@ -374,8 +386,10 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	aload_0
@@ -389,13 +403,20 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 10 // new
+   	l1 = 12 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      27      0    this       Lscala/xml/dtd/ELEMENTS;
+   2      25      2    temp67       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	ldc	String r
@@ -408,7 +429,12 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 8 // new
+   	l1 = 10 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      25      0    this       Lscala/xml/dtd/ELEMENTS;
+   2      23      2    temp68       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z

@@ -226,6 +226,7 @@ Asciz	scala/xml/Group;
 class	scala/xml/Group
 Asciz	other;
 Asciz	Ljava/lang/Object;;
+Asciz	temp1;
 Asciz	basisForHashCode;
 NameAndType	label:()Ljava/lang/String;
 Method	scala/xml/Node.label:()Ljava/lang/String;
@@ -246,7 +247,9 @@ Asciz	(Lscala/collection/Iterable;)Z;
 NameAndType	sameElements:(Lscala/collection/Iterable;)Z
 InterfaceMethod	scala/collection/IterableLike.sameElements:(Lscala/collection/Iterable;)Z
 Asciz	Lscala/xml/Equality;;
+Asciz	temp5;
 Asciz	temp8;
+Asciz	x;
 Asciz	theSeq;
 Asciz	scala/collection/immutable/Nil$;
 class	scala/collection/immutable/Nil$
@@ -288,6 +291,8 @@ NameAndType	toString:()Ljava/lang/String;
 Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 Asciz	stripComments;
 Asciz	Z;
+Asciz	x$8;
+Asciz	x$9;
 Asciz	x$10;
 Asciz	Lscala/xml/NamespaceBinding;;
 Asciz	x$11;
@@ -367,6 +372,8 @@ public java.lang.String prefix();
   Code:
    Stack=1, Locals=1, Args_size=1
 	aconst_null
+	pop
+	aconst_null
 	areturn
   Labels:
 
@@ -425,6 +432,8 @@ public java.lang.String getNamespace(java.lang.String);
 	invokevirtual	Method scope:()Lscala/xml/NamespaceBinding;
 	ifnonnull	l1 // aload_0
 	aconst_null
+	pop
+	aconst_null
 	goto	l2 // areturn
 l1	aload_0
 	invokevirtual	Method scope:()Lscala/xml/NamespaceBinding;
@@ -432,12 +441,12 @@ l1	aload_0
 	invokevirtual	Method scala/xml/NamespaceBinding.getURI:(Ljava/lang/String;)Ljava/lang/String;
 l2	areturn
   Labels:
-   	l1 = 11 // aload_0
-   	l2 = 19 // areturn
+   	l1 = 13 // aload_0
+   	l2 = 21 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      20      0    this       Lscala/xml/Node;
-   0      20      1    pre       Ljava/lang/String;
+   0      22      0    this       Lscala/xml/Node;
+   0      22      1    pre       Ljava/lang/String;
 
 
 public final scala.Option attribute(java.lang.String);
@@ -532,10 +541,12 @@ public scala.collection.immutable.List descendant();
 public scala.collection.immutable.List descendant_or_self();
   Signature: ()Lscala/collection/immutable/List;
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=2, Locals=2, Args_size=1
+	aload_0
+	astore_1
 	aload_0
 	invokevirtual	Method descendant:()Lscala/collection/immutable/List;
-	aload_0
+	aload_1
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	areturn
   Labels:
@@ -545,22 +556,25 @@ public scala.collection.immutable.List descendant_or_self();
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=1, Locals=2, Args_size=2
+   Stack=1, Locals=3, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/xml/Group
-	ifeq	l1 // aload_1
+	ifeq	l1 // aload_2
 	iconst_0
 	goto	l2 // ireturn
-l1	aload_1
+l1	aload_2
 	instanceof	class scala/xml/Node
 l2	ireturn
   Labels:
-   	l1 = 11 // aload_1
-   	l2 = 15 // ireturn
+   	l1 = 13 // aload_2
+   	l2 = 17 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      16      0    this       Lscala/xml/Node;
-   0      16      1    other       Ljava/lang/Object;
+   0      18      0    this       Lscala/xml/Node;
+   0      18      1    other       Ljava/lang/Object;
+   2      16      2    temp1       Ljava/lang/Object;
 
 
 public scala.collection.Seq basisForHashCode();
@@ -588,68 +602,72 @@ public scala.collection.Seq basisForHashCode();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFF92 
+   00 FFFFFF93 
 
 public boolean strict_$eq$eq(scala.xml.Equality);
   Signature: (Lscala/xml/Equality;)Z
   Code:
-   Stack=2, Locals=6, Args_size=2
+   Stack=2, Locals=8, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/xml/Group
-	ifeq	l1 // aload_1
+	ifeq	l1 // aload_2
 	iconst_0
 	goto	l2 // ireturn
-l1	aload_1
+l1	aload_2
 	instanceof	class scala/xml/Node
 	ifeq	l3 // iconst_0
-	aload_1
+	aload_2
 	checkcast	class scala/xml/Node
-	astore	5
+	astore_3
+	aload_3
+	astore	4
 	aload_0
 	invokevirtual	Method prefix:()Ljava/lang/String;
-	aload	5
+	aload	4
 	invokevirtual	Method prefix:()Ljava/lang/String;
-	astore_2
+	astore	5
 	dup
-	ifnonnull	l4 // aload_2
+	ifnonnull	l4 // aload
 	pop
-	aload_2
+	aload	5
 	ifnull	l5 // aload_0
 	goto	l6 // iconst_0
-l4	aload_2
+l4	aload	5
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l6 // iconst_0
 l5	aload_0
 	invokevirtual	Method label:()Ljava/lang/String;
-	aload	5
+	aload	4
 	invokevirtual	Method label:()Ljava/lang/String;
-	astore_3
+	astore	6
 	dup
-	ifnonnull	l7 // aload_3
+	ifnonnull	l7 // aload
 	pop
-	aload_3
+	aload	6
 	ifnull	l8 // aload_0
 	goto	l6 // iconst_0
-l7	aload_3
+l7	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l6 // iconst_0
 l8	aload_0
 	invokevirtual	Method attributes:()Lscala/xml/MetaData;
-	aload	5
+	aload	4
 	invokevirtual	Method attributes:()Lscala/xml/MetaData;
-	astore	4
+	astore	7
 	dup
 	ifnonnull	l9 // aload
 	pop
-	aload	4
+	aload	7
 	ifnull	l10 // aload_0
 	goto	l6 // iconst_0
-l9	aload	4
+l9	aload	7
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l6 // iconst_0
 l10	aload_0
 	invokevirtual	Method nonEmptyChildren:()Lscala/collection/Seq;
-	aload	5
+	aload	4
 	invokevirtual	Method nonEmptyChildren:()Lscala/collection/Seq;
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.sameElements:(Lscala/collection/Iterable;)Z
 	ifeq	l6 // iconst_0
@@ -660,29 +678,33 @@ l6	iconst_0
 l3	iconst_0
 l2	ireturn
   Labels:
-   	l1 = 11 // aload_1
-   	l4 = 46 // aload_2
-   	l5 = 53 // aload_0
-   	l7 = 75 // aload_3
-   	l8 = 82 // aload_0
-   	l9 = 106 // aload
-   	l10 = 114 // aload_0
-   	l6 = 135 // iconst_0
-   	l3 = 139 // iconst_0
-   	l2 = 140 // ireturn
+   	l1 = 13 // aload_2
+   	l4 = 52 // aload
+   	l5 = 60 // aload_0
+   	l7 = 84 // aload
+   	l8 = 92 // aload_0
+   	l9 = 116 // aload
+   	l10 = 124 // aload_0
+   	l6 = 145 // iconst_0
+   	l3 = 149 // iconst_0
+   	l2 = 150 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      141      0    this       Lscala/xml/Node;
-   0      141      1    other       Lscala/xml/Equality;
-   24      115      5    temp8       Lscala/xml/Node;
+   0      151      0    this       Lscala/xml/Node;
+   0      151      1    other       Lscala/xml/Equality;
+   2      149      2    temp5       Lscala/xml/Equality;
+   25      124      3    temp8       Lscala/xml/Node;
+   28      121      4    x       Lscala/xml/Node;
 
 
 public scala.collection.Seq theSeq();
   Signature: ()Lscala/collection/Seq;
   Code:
-   Stack=2, Locals=1, Args_size=1
-	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+   Stack=2, Locals=2, Args_size=1
 	aload_0
+	astore_1
+	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+	aload_1
 	invokevirtual	Method scala/collection/immutable/Nil$.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	areturn
   Labels:
@@ -692,43 +714,49 @@ public scala.collection.Seq theSeq();
 public java.lang.String buildString(boolean);
   Signature: (Z)Ljava/lang/String;
   Code:
-   Stack=8, Locals=7, Args_size=2
+   Stack=8, Locals=9, Args_size=2
+	aload_0
+	astore_2
+	iload_1
+	istore_3
 	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
 	invokevirtual	Method scala/xml/Utility$.toXML$default$2:()Lscala/xml/NamespaceBinding;
-	astore_2
+	astore	4
 	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
 	invokevirtual	Method scala/xml/Utility$.toXML$default$3:()Lscala/collection/mutable/StringBuilder;
-	astore_3
+	astore	5
 	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
 	invokevirtual	Method scala/xml/Utility$.toXML$default$5:()Z
-	istore	4
-	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
-	invokevirtual	Method scala/xml/Utility$.toXML$default$6:()Z
-	istore	5
-	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
-	invokevirtual	Method scala/xml/Utility$.toXML$default$7:()Z
 	istore	6
 	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
-	aload_0
+	invokevirtual	Method scala/xml/Utility$.toXML$default$6:()Z
+	istore	7
+	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
+	invokevirtual	Method scala/xml/Utility$.toXML$default$7:()Z
+	istore	8
+	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
 	aload_2
-	aload_3
-	iload_1
-	iload	4
-	iload	5
+	aload	4
+	aload	5
+	iload_3
 	iload	6
+	iload	7
+	iload	8
 	invokevirtual	Method scala/xml/Utility$.toXML:(Lscala/xml/Node;Lscala/xml/NamespaceBinding;Lscala/collection/mutable/StringBuilder;ZZZZ)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      58      0    this       Lscala/xml/Node;
-   0      58      1    stripComments       Z
-   7      47      2    x$10       Lscala/xml/NamespaceBinding;
-   14      40      3    x$11       Lscala/collection/mutable/StringBuilder;
-   22      32      4    x$12       Z
-   30      24      5    x$13       Z
-   38      16      6    x$14       Z
+   0      66      0    this       Lscala/xml/Node;
+   0      66      1    stripComments       Z
+   2      60      2    x$8       Lscala/xml/Node;
+   4      58      3    x$9       Z
+   12      50      4    x$10       Lscala/xml/NamespaceBinding;
+   20      42      5    x$11       Lscala/collection/mutable/StringBuilder;
+   28      34      6    x$12       Z
+   36      26      7    x$13       Z
+   44      18      8    x$14       Z
 
 
 public java.lang.String toString();
@@ -777,6 +805,8 @@ public scala.xml.TypeSymbol xmlType();
   Signature: ()Lscala/xml/TypeSymbol;
   Code:
    Stack=1, Locals=1, Args_size=1
+	aconst_null
+	pop
 	aconst_null
 	areturn
   Labels:

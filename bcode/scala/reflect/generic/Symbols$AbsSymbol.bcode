@@ -218,7 +218,9 @@ long	33554432l;
 NameAndType	hasFlag:(J)Z
 Method	scala/reflect/generic/Symbols$AbsSymbol.hasFlag:(J)Z
 Asciz	hasDefault;
-long	8192l;
+Asciz	isParameter;
+NameAndType	isParameter:()Z
+Method	scala/reflect/generic/Symbols$AbsSymbol.isParameter:()Z
 Asciz	isAbstractClass;
 long	8l;
 Asciz	isAbstractOverride;
@@ -268,7 +270,7 @@ long	8589934592l;
 Asciz	isOverride;
 Asciz	isParamAccessor;
 long	536870912l;
-Asciz	isParameter;
+long	8192l;
 Asciz	isRefinementClass;
 NameAndType	name:()Ljava/lang/Object;
 Method	scala/reflect/generic/Symbols$AbsSymbol.name:()Ljava/lang/Object;
@@ -281,16 +283,9 @@ Asciz	mkTypeName;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	mkTypeName:(Ljava/lang/Object;)Ljava/lang/Object;
 InterfaceMethod	scala/reflect/generic/Names.mkTypeName:(Ljava/lang/Object;)Ljava/lang/Object;
-Asciz	java/lang/Number;
-class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
-Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Asciz	x0;
-Asciz	y0;
+NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Asciz	isSealed;
 long	1024l;
 Asciz	scala/reflect/generic/StandardDefinitions;
@@ -923,8 +918,7 @@ public final boolean hasDefault();
   Code:
    Stack=3, Locals=1, Args_size=1
 	aload_0
-	ldc2_w	long 8192l
-	invokevirtual	Method hasFlag:(J)Z
+	invokevirtual	Method isParameter:()Z
 	ifeq	l1 // iconst_0
 	aload_0
 	ldc2_w	long 33554432l
@@ -935,8 +929,8 @@ public final boolean hasDefault();
 l1	iconst_0
 l2	ireturn
   Labels:
-   	l1 = 24 // iconst_0
-   	l2 = 25 // ireturn
+   	l1 = 21 // iconst_0
+   	l2 = 22 // ireturn
 
 public final boolean isAbstractClass();
   Signature: ()Z
@@ -1294,7 +1288,7 @@ public final boolean isParameter();
 public final boolean isRefinementClass();
   Signature: ()Z
   Code:
-   Stack=3, Locals=3, Args_size=1
+   Stack=3, Locals=1, Args_size=1
 	aload_0
 	invokevirtual	Method isClass:()Z
 	ifeq	l1 // iconst_0
@@ -1307,49 +1301,15 @@ public final boolean isRefinementClass();
 	invokeinterface	InterfaceMethod scala/reflect/generic/StdNames.nme:()Lscala/reflect/generic/StdNames$StandardNames;
 	invokevirtual	Method scala/reflect/generic/StdNames$StandardNames.REFINE_CLASS_NAME:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/reflect/generic/Names.mkTypeName:(Ljava/lang/Object;)Ljava/lang/Object;
-	astore_2
-	astore_1
-	aload_1
-	aload_2
-	if_acmpne	l2 // aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l1 // iconst_0
 	iconst_1
-	goto	l3 // ifeq
-l2	aload_1
-	ifnonnull	l4 // aload_1
-	iconst_0
-	goto	l3 // ifeq
-l4	aload_1
-	instanceof	class java/lang/Number
-	ifne	l5 // aload_1
-	aload_1
-	instanceof	class java/lang/Character
-	ifeq	l6 // aload_1
-l5	aload_1
-	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l3 // ifeq
-l6	aload_1
-	aload_2
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l3	ifeq	l1 // iconst_0
-	iconst_1
-	goto	l7 // ireturn
+	goto	l2 // ireturn
 l1	iconst_0
-l7	ireturn
+l2	ireturn
   Labels:
-   	l2 = 43 // aload_1
-   	l4 = 51 // aload_1
-   	l5 = 65 // aload_1
-   	l6 = 73 // aload_1
-   	l3 = 78 // ifeq
-   	l1 = 85 // iconst_0
-   	l7 = 86 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      87      0    this       Lscala/reflect/generic/Symbols$AbsSymbol;
-   39      42      1    x0       Ljava/lang/Object;
-   39      42      2    y0       Ljava/lang/Object;
-
+   	l1 = 42 // iconst_0
+   	l2 = 43 // ireturn
 
 public final boolean isSealed();
   Signature: ()Z
@@ -1422,13 +1382,12 @@ public final boolean isSynthetic();
 public final boolean isTypeParameter();
   Signature: ()Z
   Code:
-   Stack=3, Locals=1, Args_size=1
+   Stack=1, Locals=1, Args_size=1
 	aload_0
 	invokevirtual	Method isType:()Z
 	ifeq	l1 // iconst_0
 	aload_0
-	ldc2_w	long 8192l
-	invokevirtual	Method hasFlag:(J)Z
+	invokevirtual	Method isParameter:()Z
 	ifeq	l1 // iconst_0
 	aload_0
 	invokevirtual	Method isSkolem:()Z
@@ -1438,8 +1397,8 @@ public final boolean isTypeParameter();
 l1	iconst_0
 l2	ireturn
   Labels:
-   	l1 = 28 // iconst_0
-   	l2 = 29 // ireturn
+   	l1 = 25 // iconst_0
+   	l2 = 26 // ireturn
 
 public final boolean isPrivate();
   Signature: ()Z
@@ -1537,7 +1496,7 @@ l4	ireturn
 public final boolean isEmptyPackage();
   Signature: ()Z
   Code:
-   Stack=2, Locals=3, Args_size=1
+   Stack=2, Locals=1, Args_size=1
 	aload_0
 	invokevirtual	Method isPackage:()Z
 	ifeq	l1 // iconst_0
@@ -1547,54 +1506,20 @@ public final boolean isEmptyPackage();
 	invokevirtual	Method scala$reflect$generic$Symbols$AbsSymbol$$$outer:()Lscala/reflect/generic/Universe;
 	invokeinterface	InterfaceMethod scala/reflect/generic/StdNames.nme:()Lscala/reflect/generic/StdNames$StandardNames;
 	invokevirtual	Method scala/reflect/generic/StdNames$StandardNames.EMPTY_PACKAGE_NAME:()Ljava/lang/Object;
-	astore_2
-	astore_1
-	aload_1
-	aload_2
-	if_acmpne	l2 // aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l1 // iconst_0
 	iconst_1
-	goto	l3 // ifeq
-l2	aload_1
-	ifnonnull	l4 // aload_1
-	iconst_0
-	goto	l3 // ifeq
-l4	aload_1
-	instanceof	class java/lang/Number
-	ifne	l5 // aload_1
-	aload_1
-	instanceof	class java/lang/Character
-	ifeq	l6 // aload_1
-l5	aload_1
-	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l3 // ifeq
-l6	aload_1
-	aload_2
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l3	ifeq	l1 // iconst_0
-	iconst_1
-	goto	l7 // ireturn
+	goto	l2 // ireturn
 l1	iconst_0
-l7	ireturn
+l2	ireturn
   Labels:
-   	l2 = 34 // aload_1
-   	l4 = 42 // aload_1
-   	l5 = 56 // aload_1
-   	l6 = 64 // aload_1
-   	l3 = 69 // ifeq
-   	l1 = 76 // iconst_0
-   	l7 = 77 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      78      0    this       Lscala/reflect/generic/Symbols$AbsSymbol;
-   30      42      1    x0       Ljava/lang/Object;
-   30      42      2    y0       Ljava/lang/Object;
-
+   	l1 = 33 // iconst_0
+   	l2 = 34 // ireturn
 
 public final boolean isEmptyPackageClass();
   Signature: ()Z
   Code:
-   Stack=3, Locals=3, Args_size=1
+   Stack=3, Locals=1, Args_size=1
 	aload_0
 	invokevirtual	Method isPackageClass:()Z
 	ifeq	l1 // iconst_0
@@ -1607,49 +1532,15 @@ public final boolean isEmptyPackageClass();
 	invokeinterface	InterfaceMethod scala/reflect/generic/StdNames.nme:()Lscala/reflect/generic/StdNames$StandardNames;
 	invokevirtual	Method scala/reflect/generic/StdNames$StandardNames.EMPTY_PACKAGE_NAME:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/reflect/generic/Names.mkTypeName:(Ljava/lang/Object;)Ljava/lang/Object;
-	astore_2
-	astore_1
-	aload_1
-	aload_2
-	if_acmpne	l2 // aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l1 // iconst_0
 	iconst_1
-	goto	l3 // ifeq
-l2	aload_1
-	ifnonnull	l4 // aload_1
-	iconst_0
-	goto	l3 // ifeq
-l4	aload_1
-	instanceof	class java/lang/Number
-	ifne	l5 // aload_1
-	aload_1
-	instanceof	class java/lang/Character
-	ifeq	l6 // aload_1
-l5	aload_1
-	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l3 // ifeq
-l6	aload_1
-	aload_2
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l3	ifeq	l1 // iconst_0
-	iconst_1
-	goto	l7 // ireturn
+	goto	l2 // ireturn
 l1	iconst_0
-l7	ireturn
+l2	ireturn
   Labels:
-   	l2 = 43 // aload_1
-   	l4 = 51 // aload_1
-   	l5 = 65 // aload_1
-   	l6 = 73 // aload_1
-   	l3 = 78 // ifeq
-   	l1 = 85 // iconst_0
-   	l7 = 86 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      87      0    this       Lscala/reflect/generic/Symbols$AbsSymbol;
-   39      42      1    x0       Ljava/lang/Object;
-   39      42      2    y0       Ljava/lang/Object;
-
+   	l1 = 42 // iconst_0
+   	l2 = 43 // ireturn
 
 public final boolean isPackage();
   Signature: ()Z

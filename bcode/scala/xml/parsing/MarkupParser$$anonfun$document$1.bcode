@@ -84,6 +84,7 @@ Asciz	this;
 Asciz	Lscala/xml/parsing/MarkupParser$$anonfun$document$1;;
 Asciz	c;
 Asciz	Lscala/xml/Node;;
+Asciz	temp23;
 Asciz	LocalVariableTable;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 Asciz	scala/xml/Node;
@@ -115,13 +116,13 @@ class	java/io/Serializable
 public static final long serialVersionUID;
   Signature: J
 
-public final scala.runtime.ObjectRef theNode$1;
+private final scala.runtime.ObjectRef theNode$1;
   Signature: Lscala/runtime/ObjectRef;
 
-public final scala.runtime.IntRef elemCount$1;
+private final scala.runtime.IntRef elemCount$1;
   Signature: Lscala/runtime/IntRef;
 
-public final scala.xml.parsing.MarkupHandler $outer;
+private final scala.xml.parsing.MarkupHandler $outer;
   Signature: Lscala/xml/parsing/MarkupHandler;
 
 public static {};
@@ -136,26 +137,28 @@ public static {};
 public final void apply(scala.xml.Node);
   Signature: (Lscala/xml/Node;)V
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/xml/ProcInstr
 	ifne	l1 // return
-	aload_1
+	aload_2
 	instanceof	class scala/xml/Comment
 	ifne	l1 // return
-	aload_1
+	aload_2
 	instanceof	class scala/xml/EntityRef
-	ifeq	l2 // aload_1
+	ifeq	l2 // aload_2
 	aload_0
 	getfield	Field $outer:Lscala/xml/parsing/MarkupHandler;
 	checkcast	class scala/xml/parsing/MarkupParser
 	ldc	String no entity references alllowed here
 	invokeinterface	InterfaceMethod scala/xml/parsing/MarkupParser.reportSyntaxError:(Ljava/lang/String;)V
 	goto	l1 // return
-l2	aload_1
+l2	aload_2
 	instanceof	class scala/xml/SpecialNode
-	ifeq	l3 // aload_1
-	aload_1
+	ifeq	l3 // aload_2
+	aload_2
 	checkcast	class scala/xml/SpecialNode
 	invokevirtual	Method scala/xml/SpecialNode.toString:()Ljava/lang/String;
 	invokevirtual	Method java/lang/String.trim:()Ljava/lang/String;
@@ -171,7 +174,7 @@ l2	aload_1
 	iadd
 	putfield	Field scala/runtime/IntRef.elem:I
 	goto	l1 // return
-l3	aload_1
+l3	aload_2
 	ifnull	l4 // new
 	aload_0
 	getfield	Field elemCount$1:Lscala/runtime/IntRef;
@@ -183,23 +186,24 @@ l3	aload_1
 	putfield	Field scala/runtime/IntRef.elem:I
 	aload_0
 	getfield	Field theNode$1:Lscala/runtime/ObjectRef;
-	aload_1
+	aload_2
 	putfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 l1	return
 l4	new	class scala/MatchError
 	dup
-	aload_1
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l2 = 38 // aload_1
-   	l3 = 81 // aload_1
-   	l1 = 109 // return
-   	l4 = 110 // new
+   	l2 = 40 // aload_2
+   	l3 = 83 // aload_2
+   	l1 = 111 // return
+   	l4 = 112 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      119      0    this       Lscala/xml/parsing/MarkupParser$$anonfun$document$1;
-   0      119      1    c       Lscala/xml/Node;
+   0      121      0    this       Lscala/xml/parsing/MarkupParser$$anonfun$document$1;
+   0      121      1    c       Lscala/xml/Node;
+   2      119      2    temp23       Lscala/xml/Node;
 
 
 public final java.lang.Object apply(java.lang.Object);

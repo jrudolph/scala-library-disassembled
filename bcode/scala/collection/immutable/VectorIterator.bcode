@@ -2,7 +2,7 @@ Compiled from "Vector.scala"
 public final class scala.collection.immutable.VectorIterator extends java.lang.Object implements scala.collection.Iterator,scala.collection.immutable.VectorPointer,scala.ScalaObject
   SourceFile: "Vector.scala"
   Signature: length = 0x2
-   02 06 
+   02 05 
   ScalaSig: length = 0x3A3
    05 00 FFFFFF81 07 06 04 01 02 02 09 02 0E 56 65 63 74
    6F 72 49 74 65 72 61 74 6F 72 0A 02 03 04 01 09
@@ -514,6 +514,10 @@ Asciz	_hasNext_$eq;
 Asciz	(Z)V;
 Asciz	next;
 Asciz	()Ljava/lang/Object;;
+Asciz	scala/collection/immutable/VectorPointer;
+class	scala/collection/immutable/VectorPointer
+NameAndType	display0:()[Ljava/lang/Object;
+InterfaceMethod	scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
 NameAndType	lo:()I
 Method	scala/collection/immutable/VectorIterator.lo:()I
 NameAndType	lo_$eq:(I)V
@@ -525,8 +529,6 @@ Method	scala/collection/immutable/VectorIterator.blockIndex:()I
 NameAndType	endIndex:()I
 Method	scala/collection/immutable/VectorIterator.endIndex:()I
 int	32;
-Asciz	scala/collection/immutable/VectorPointer;
-class	scala/collection/immutable/VectorPointer
 NameAndType	gotoNextBlockStart:(II)V
 InterfaceMethod	scala/collection/immutable/VectorPointer.gotoNextBlockStart:(II)V
 NameAndType	blockIndex_$eq:(I)V
@@ -537,12 +539,12 @@ Asciz	MODULE$;
 Asciz	Lscala/math/package$;;
 NameAndType	MODULE$:Lscala/math/package$;
 Field	scala/math/package$.MODULE$:Lscala/math/package$;
-Asciz	scala/MathCommon$class;
-class	scala/MathCommon$class
+Asciz	scala/MathCommon;
+class	scala/MathCommon
 Asciz	min;
-Asciz	(Lscala/MathCommon;II)I;
-NameAndType	min:(Lscala/MathCommon;II)I
-Method	scala/MathCommon$class.min:(Lscala/MathCommon;II)I
+Asciz	(II)I;
+NameAndType	min:(II)I
+InterfaceMethod	scala/MathCommon.min:(II)I
 NameAndType	endLo_$eq:(I)V
 Method	scala/collection/immutable/VectorIterator.endLo_$eq:(I)V
 NameAndType	_hasNext_$eq:(Z)V
@@ -555,10 +557,12 @@ Asciz	<init>;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
-Asciz	newBlockIndex;
 Asciz	res;
+Asciz	newBlockIndex;
 Asciz	()TA;;
 Asciz	foreach0;
+NameAndType	hasNext:()Z
+Method	scala/collection/immutable/VectorIterator.hasNext:()Z
 NameAndType	next:()Ljava/lang/Object;
 Method	scala/collection/immutable/VectorIterator.next:()Ljava/lang/Object;
 Asciz	scala/Function1;
@@ -579,11 +583,6 @@ Method	scala/collection/Iterator$class.$init$:(Lscala/collection/Iterator;)V
 NameAndType	$init$:(Lscala/collection/immutable/VectorPointer;)V
 Method	scala/collection/immutable/VectorPointer$class.$init$:(Lscala/collection/immutable/VectorPointer;)V
 int	31;
-Asciz	scala/MathCommon;
-class	scala/MathCommon
-Asciz	(II)I;
-NameAndType	min:(II)I
-InterfaceMethod	scala/MathCommon.min:(II)I
 Asciz	_startIndex;
 Asciz	_endIndex;
 Asciz	<A:Ljava/lang/Object;>Ljava/lang/Object;Lscala/collection/Iterator<TA;>;Lscala/collection/immutable/VectorPointer<TA;>;Lscala/ScalaObject;;
@@ -2052,16 +2051,16 @@ private void _hasNext_$eq(boolean);
 public java.lang.Object next();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=4, Locals=6, Args_size=1
+   Stack=4, Locals=3, Args_size=1
 	aload_0
 	invokespecial	Method _hasNext:()Z
 	ifeq	l1 // new
 	aload_0
-	getfield	Field display0:[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
 	aload_0
 	invokespecial	Method lo:()I
 	aaload
-	astore	5
+	astore_1
 	aload_0
 	aload_0
 	invokespecial	Method lo:()I
@@ -2072,7 +2071,7 @@ public java.lang.Object next();
 	invokespecial	Method lo:()I
 	aload_0
 	invokespecial	Method endLo:()I
-	if_icmpne	l2 // aload
+	if_icmpne	l2 // aload_1
 	aload_0
 	invokespecial	Method blockIndex:()I
 	aload_0
@@ -2085,16 +2084,16 @@ public java.lang.Object next();
 	invokespecial	Method blockIndex:()I
 	ldc_w	int 32
 	iadd
-	istore_1
+	istore_2
 	aload_0
-	iload_1
+	iload_2
 	aload_0
 	invokespecial	Method blockIndex:()I
-	iload_1
+	iload_2
 	ixor
 	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.gotoNextBlockStart:(II)V
 	aload_0
-	iload_1
+	iload_2
 	invokespecial	Method blockIndex_$eq:(I)V
 	aload_0
 	getstatic	Field scala/math/package$.MODULE$:Lscala/math/package$;
@@ -2104,22 +2103,16 @@ public java.lang.Object next();
 	invokespecial	Method blockIndex:()I
 	isub
 	ldc_w	int 32
-	istore	4
-	istore_3
-	astore_2
-	aload_2
-	iload_3
-	iload	4
-	invokestatic	Method scala/MathCommon$class.min:(Lscala/MathCommon;II)I
+	invokeinterface	InterfaceMethod scala/MathCommon.min:(II)I
 	invokespecial	Method endLo_$eq:(I)V
 	aload_0
 	iconst_0
 	invokespecial	Method lo_$eq:(I)V
-	goto	l2 // aload
+	goto	l2 // aload_1
 l3	aload_0
 	iconst_0
 	invokespecial	Method _hasNext_$eq:(Z)V
-l2	aload	5
+l2	aload_1
 	areturn
 l1	new	class java/util/NoSuchElementException
 	dup
@@ -2127,24 +2120,24 @@ l1	new	class java/util/NoSuchElementException
 	invokespecial	Method java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l3 = 120 // aload_0
-   	l2 = 125 // aload
-   	l1 = 128 // new
+   	l3 = 115 // aload_0
+   	l2 = 120 // aload_1
+   	l1 = 122 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      139      0    this       Lscala/collection/immutable/VectorIterator;
-   64      53      1    newBlockIndex       I
-   18      109      5    res       Ljava/lang/Object;
+   0      133      0    this       Lscala/collection/immutable/VectorIterator;
+   19      102      1    res       Ljava/lang/Object;
+   65      47      2    newBlockIndex       I
 
   Signature: length = 0x2
-   01 FFFFFFE9 
+   01 FFFFFFEB 
 
 public void foreach0(scala.Function1);
   Signature: (Lscala/Function1;)V
   Code:
    Stack=2, Locals=2, Args_size=2
 l2	aload_0
-	invokespecial	Method _hasNext:()Z
+	invokevirtual	Method hasNext:()Z
 	ifeq	l1 // return
 	aload_1
 	aload_0
@@ -2162,7 +2155,7 @@ l1	return
    0      22      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   01 FFFFFFF3 
+   01 FFFFFFF7 
 
 public scala.collection.immutable.VectorIterator(int, int);
   Signature: (II)V

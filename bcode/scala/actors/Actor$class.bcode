@@ -13,11 +13,16 @@ public abstract class scala.actors.Actor$class extends java.lang.Object
    public final $anonfun$2=class scala/actors/Actor$$anonfun$2 of class scala/actors/Actor
    public final $anonfun$1=class scala/actors/Actor$$anonfun$1 of class scala/actors/Actor
    public abstract Value=class scala/Enumeration$Value of class scala/Enumeration
+   public final $anonfun$link$2=class scala/actors/Actor$$anonfun$link$2 of class scala/actors/Actor
+   public final $anonfun$link$1=class scala/actors/Actor$$anonfun$link$1 of class scala/actors/Actor
+   public final $anonfun$unlink$1=class scala/actors/Actor$$anonfun$unlink$1 of class scala/actors/Actor
    public final $anonfun$$qmark$1=class scala/actors/Actor$$anonfun$$qmark$1 of class scala/actors/Actor
+   public final $anonfun$receive$1=class scala/actors/Actor$$anonfun$receive$1 of class scala/actors/Actor
    public final $anonfun$exitLinked$1=class scala/actors/Actor$$anonfun$exitLinked$1 of class scala/actors/Actor
    public final $anonfun$unlinkFrom$1=class scala/actors/Actor$$anonfun$unlinkFrom$1 of class scala/actors/Actor
    public final $anonfun$startSearch$1=class scala/actors/Actor$$anonfun$startSearch$1 of class scala/actors/Actor
    public final $anonfun$receiveWithin$2=class scala/actors/Actor$$anonfun$receiveWithin$2 of class scala/actors/Actor
+   public final $anonfun$receiveWithin$1=class scala/actors/Actor$$anonfun$receiveWithin$1 of class scala/actors/Actor
   minor version: 0
   major version: 49
   Constant pool:
@@ -92,6 +97,11 @@ Asciz	fun;
 Asciz	Lscala/Function0;;
 Asciz	receive;
 Asciz	(Lscala/actors/Actor;Lscala/PartialFunction;)Ljava/lang/Object;;
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
 Asciz	scala/actors/Actor$;
 class	scala/actors/Actor$
 Asciz	Lscala/actors/Actor$;;
@@ -100,37 +110,25 @@ Field	scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 Asciz	()Lscala/actors/IScheduler;;
 NameAndType	scheduler:()Lscala/actors/IScheduler;
 InterfaceMethod	scala/actors/Actor.scheduler:()Lscala/actors/IScheduler;
-Asciz	rawSelf;
-Asciz	(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;;
-NameAndType	rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
-Method	scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
+Asciz	self;
+Asciz	(Lscala/actors/IScheduler;)Lscala/actors/Actor;;
+NameAndType	self:(Lscala/actors/IScheduler;)Lscala/actors/Actor;
+Method	scala/actors/Actor$.self:(Lscala/actors/IScheduler;)Lscala/actors/Actor;
 Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	equals;
 Asciz	(Ljava/lang/Object;)Z;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
-Asciz	java/lang/AssertionError;
-class	java/lang/AssertionError
-Asciz	scala/collection/mutable/StringBuilder;
-class	scala/collection/mutable/StringBuilder
-NameAndType	"<init>":()V
-Method	scala/collection/mutable/StringBuilder."<init>":()V
-Asciz	assertion failed: ;
-String	assertion failed: 
-Asciz	append;
-Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
-NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-Asciz	receive from channel belonging to other actor;
-String	receive from channel belonging to other actor
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
-NameAndType	toString:()Ljava/lang/String;
-Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-Asciz	(Ljava/lang/Object;)V;
-NameAndType	"<init>":(Ljava/lang/Object;)V
-Method	java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
+Asciz	scala/actors/Actor$$anonfun$receive$1;
+class	scala/actors/Actor$$anonfun$receive$1
+Asciz	(Lscala/actors/Actor;)V;
+NameAndType	"<init>":(Lscala/actors/Actor;)V
+Method	scala/actors/Actor$$anonfun$receive$1."<init>":(Lscala/actors/Actor;)V
+Asciz	assert;
+Asciz	(ZLscala/Function0;)V;
+NameAndType	assert:(ZLscala/Function0;)V
+Method	scala/Predef$.assert:(ZLscala/Function0;)V
 Asciz	shouldExit;
 NameAndType	shouldExit:()Z
 InterfaceMethod	scala/actors/Actor.shouldExit:()Z
@@ -148,6 +146,12 @@ Asciz	drainSendBuffer;
 Asciz	(Lscala/actors/MQueue;)V;
 NameAndType	drainSendBuffer:(Lscala/actors/MQueue;)V
 InterfaceMethod	scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
+Asciz	scala/runtime/BoxedUnit;
+class	scala/runtime/BoxedUnit
+Asciz	UNIT;
+Asciz	Lscala/runtime/BoxedUnit;;
+NameAndType	UNIT:Lscala/runtime/BoxedUnit;
+Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	scala$actors$Actor$$received;
 Asciz	()Lscala/Option;;
 NameAndType	scala$actors$Actor$$received:()Lscala/Option;
@@ -229,6 +233,8 @@ class	scala/actors/MQueueElement
 Asciz	msg;
 NameAndType	msg:()Ljava/lang/Object;
 Method	scala/actors/MQueueElement.msg:()Ljava/lang/Object;
+Asciz	(Ljava/lang/Object;)V;
+NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/Some."<init>":(Ljava/lang/Object;)V
 Asciz	session;
 Asciz	()Lscala/actors/OutputChannel;;
@@ -239,17 +245,18 @@ Asciz	(Ljava/lang/Object;)Lscala/collection/immutable/List;;
 NameAndType	$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 Method	scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 Asciz	f$1;
-Asciz	result;
-Asciz	qel;
-Asciz	Lscala/actors/MQueueElement;;
 Asciz	done;
 Asciz	Z;
+Asciz	qel;
+Asciz	Lscala/actors/MQueueElement;;
+Asciz	result;
 Asciz	receiveWithin;
 Asciz	(Lscala/actors/Actor;JLscala/PartialFunction;)Ljava/lang/Object;;
+Asciz	scala/actors/Actor$$anonfun$receiveWithin$1;
+class	scala/actors/Actor$$anonfun$receiveWithin$1
+Method	scala/actors/Actor$$anonfun$receiveWithin$1."<init>":(Lscala/actors/Actor;)V
 Asciz	scala/actors/Actor$$anonfun$receiveWithin$2;
 class	scala/actors/Actor$$anonfun$receiveWithin$2
-Asciz	(Lscala/actors/Actor;)V;
-NameAndType	"<init>":(Lscala/actors/Actor;)V
 Method	scala/actors/Actor$$anonfun$receiveWithin$2."<init>":(Lscala/actors/Actor;)V
 Asciz	scala/actors/Actor$$anonfun$2;
 class	scala/actors/Actor$$anonfun$2
@@ -294,17 +301,12 @@ Method	scala/Option.isEmpty:()Z
 Asciz	cancel;
 NameAndType	cancel:()Z
 Method	java/util/TimerTask.cancel:()Z
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	msec;
 Asciz	J;
 Asciz	f$2;
 Asciz	receiveTimeout;
 Asciz	todo;
+Asciz	thisActor$1;
 Asciz	react;
 Asciz	(Lscala/actors/Actor;Lscala/PartialFunction;)Lscala/runtime/Nothing$;;
 Asciz	scala$actors$Actor$$super$react;
@@ -360,6 +362,15 @@ Field	scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
 Asciz	Terminated;
 NameAndType	Terminated:()Lscala/Enumeration$Value;
 Method	scala/actors/Actor$State$.Terminated:()Lscala/Enumeration$Value;
+Asciz	scala/runtime/BoxesRunTime;
+class	scala/runtime/BoxesRunTime
+Asciz	boxToBoolean;
+Asciz	(Z)Ljava/lang/Boolean;;
+NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
+Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+Asciz	unboxToBoolean;
+NameAndType	unboxToBoolean:(Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 Asciz	start;
 Asciz	(Lscala/actors/Actor;)Lscala/actors/Actor;;
 Asciz	New;
@@ -401,8 +412,9 @@ Asciz	scala/Enumeration$Value;
 class	scala/Enumeration$Value
 Asciz	link;
 Asciz	(Lscala/actors/Actor;Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;;
-Asciz	link called on actor different from self;
-String	link called on actor different from self
+Asciz	scala/actors/Actor$$anonfun$link$1;
+class	scala/actors/Actor$$anonfun$link$1
+Method	scala/actors/Actor$$anonfun$link$1."<init>":(Lscala/actors/Actor;)V
 Asciz	linkTo;
 Asciz	(Lscala/actors/AbstractActor;)V;
 NameAndType	linkTo:(Lscala/actors/AbstractActor;)V
@@ -413,14 +425,18 @@ InterfaceMethod	scala/actors/AbstractActor.linkTo:(Lscala/actors/AbstractActor;)
 Asciz	to;
 Asciz	Lscala/actors/AbstractActor;;
 Asciz	(Lscala/actors/Actor;Lscala/Function0;)Lscala/actors/Actor;;
+Asciz	scala/actors/Actor$$anonfun$link$2;
+class	scala/actors/Actor$$anonfun$link$2
+Method	scala/actors/Actor$$anonfun$link$2."<init>":(Lscala/actors/Actor;)V
 Asciz	scala/actors/Actor$$anon$3;
 class	scala/actors/Actor$$anon$3
 Method	scala/actors/Actor$$anon$3."<init>":(Lscala/actors/Actor;Lscala/Function0;)V
 Asciz	(Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;;
 NameAndType	link:(Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;
 InterfaceMethod	scala/actors/Actor.link:(Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;
-NameAndType	start:(Lscala/actors/Actor;)Lscala/actors/Actor;
-Method	scala/actors/Actor$class.start:(Lscala/actors/Actor;)Lscala/actors/Actor;
+Asciz	()Lscala/actors/Actor;;
+NameAndType	start:()Lscala/actors/Actor;
+InterfaceMethod	scala/actors/Actor.start:()Lscala/actors/Actor;
 Asciz	body$4;
 Asciz	a;
 Asciz	(Lscala/actors/Actor;Lscala/actors/AbstractActor;)V;
@@ -431,8 +447,9 @@ Asciz	links_$eq;
 NameAndType	links_$eq:(Lscala/collection/immutable/List;)V
 InterfaceMethod	scala/actors/Actor.links_$eq:(Lscala/collection/immutable/List;)V
 Asciz	unlink;
-Asciz	unlink called on actor different from self;
-String	unlink called on actor different from self
+Asciz	scala/actors/Actor$$anonfun$unlink$1;
+class	scala/actors/Actor$$anonfun$unlink$1
+Method	scala/actors/Actor$$anonfun$unlink$1."<init>":(Lscala/actors/Actor;)V
 Asciz	unlinkFrom;
 NameAndType	unlinkFrom:(Lscala/actors/AbstractActor;)V
 InterfaceMethod	scala/actors/Actor.unlinkFrom:(Lscala/actors/AbstractActor;)V
@@ -534,11 +551,16 @@ Asciz	$anonfun$1;
 Asciz	scala/Enumeration;
 class	scala/Enumeration
 Asciz	Value;
+Asciz	$anonfun$link$2;
+Asciz	$anonfun$link$1;
+Asciz	$anonfun$unlink$1;
 Asciz	$anonfun$$qmark$1;
+Asciz	$anonfun$receive$1;
 Asciz	$anonfun$exitLinked$1;
 Asciz	$anonfun$unlinkFrom$1;
 Asciz	$anonfun$startSearch$1;
 Asciz	$anonfun$receiveWithin$2;
+Asciz	$anonfun$receiveWithin$1;
 
 {
 private static final scala.Symbol symbol$1;
@@ -619,69 +641,59 @@ public static java.lang.Runnable makeReaction(scala.actors.Actor, scala.Function
 public static java.lang.Object receive(scala.actors.Actor, scala.PartialFunction);
   Signature: (Lscala/actors/Actor;Lscala/PartialFunction;)Ljava/lang/Object;
   Code:
-   Stack=5, Locals=9, Args_size=2
+   Stack=5, Locals=10, Args_size=2
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scheduler:()Lscala/actors/IScheduler;
-	astore_3
-	astore_2
-	aload_2
-	aload_3
-	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
-	checkcast	class scala/actors/Actor
-	dup
-	ifnonnull	l1 // aload_0
-	pop
+	invokevirtual	Method scala/actors/Actor$.self:(Lscala/actors/IScheduler;)Lscala/actors/Actor;
 	aload_0
+	astore_2
+	dup
+	ifnonnull	l1 // aload_2
+	pop
+	aload_2
 	ifnull	l2 // iconst_1
 	goto	l3 // iconst_0
-l1	aload_0
+l1	aload_2
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 l2	iconst_1
-	goto	l4 // istore
+	goto	l4 // new
 l3	iconst_0
-l4	istore	4
-	iload	4
-	ifne	l5 // aload_0
-	new	class java/lang/AssertionError
+l4	new	class scala/actors/Actor$$anonfun$receive$1
 	dup
-	new	class scala/collection/mutable/StringBuilder
+	aload_0
+	invokespecial	Method scala/actors/Actor$$anonfun$receive$1."<init>":(Lscala/actors/Actor;)V
+	invokevirtual	Method scala/Predef$.assert:(ZLscala/Function0;)V
+	aload_0
 	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	ldc	String assertion failed: 
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	ldc	String receive from channel belonging to other actor
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
-	athrow
-l5	aload_0
-	dup
-	pop
+	astore_3
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.shouldExit:()Z
-	ifeq	l6 // aload_0
+	ifeq	l5 // aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.exit:()Lscala/runtime/Nothing$;
 	athrow
-l6	aload_0
+l5	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
-	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_3
 	monitorexit
 	iconst_0
-	istore	8
-l12	iload	8
-	ifeq	l7 // aload_0
+	istore	4
+l11	iload	4
+	ifeq	l6 // aload_0
 	aload_1
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$received:()Lscala/Option;
 	invokevirtual	Method scala/Option.get:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	astore	5
+	astore	9
 	aload_0
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$received_$eq:(Lscala/Option;)V
@@ -691,9 +703,9 @@ l12	iload	8
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
-	aload	5
+	aload	9
 	areturn
-l7	aload_0
+l6	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	new	class scala/actors/Actor$$anonfun$1
 	dup
@@ -701,17 +713,17 @@ l7	aload_0
 	aload_1
 	invokespecial	Method scala/actors/Actor$$anonfun$1."<init>":(Lscala/actors/Actor;Lscala/PartialFunction;)V
 	invokevirtual	Method scala/actors/MQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MQueueElement;
-	astore	6
-	aload	6
-	ifnonnull	l8 // aload_0
+	astore	5
+	aload	5
+	ifnonnull	l7 // aload_0
 	aload_0
 	dup
-	pop
+	astore	6
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.sendBuffer:()Lscala/actors/MQueue;
 	invokevirtual	Method scala/actors/MQueue.isEmpty:()Z
-	ifeq	l9 // aload_0
+	ifeq	l8 // aload_0
 	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor_$eq:(Lscala/PartialFunction;)V
@@ -727,123 +739,118 @@ l7	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
-	goto	l10 // aload_0
-l9	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	goto	l9 // astore
+l8	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
-l10	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+l9	astore	7
+	aload	6
 	monitorexit
-	goto	l11 // goto
-l8	aload_0
+	aload	7
+	goto	l10 // pop
+l7	aload_0
 	new	class scala/Some
 	dup
-	aload	6
+	aload	5
 	invokevirtual	Method scala/actors/MQueueElement.msg:()Ljava/lang/Object;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$received_$eq:(Lscala/Option;)V
 	aload_0
-	aload	6
+	aload	5
 	invokevirtual	Method scala/actors/MQueueElement.session:()Lscala/actors/OutputChannel;
-	astore	7
+	astore	8
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders:()Lscala/collection/immutable/List;
-	aload	7
+	aload	8
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
 	iconst_1
-	istore	8
-l11	goto	l12 // iload
-	aload_0
+	istore	4
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+l10	pop
+	goto	l11 // iload
+	aload_3
 	monitorexit
 	athrow
-	aload_0
+	aload	6
 	monitorexit
 	athrow
   Labels:
-   	l1 = 31 // aload_0
-   	l2 = 38 // iconst_1
-   	l3 = 42 // iconst_0
-   	l4 = 43 // istore
-   	l5 = 78 // aload_0
-   	l6 = 98 // aload_0
-   	l12 = 115 // iload
-   	l7 = 169 // aload_0
-   	l9 = 256 // aload_0
-   	l10 = 268 // aload_0
-   	l8 = 273 // aload_0
-   	l11 = 318 // goto
+   	l1 = 29 // aload_2
+   	l2 = 36 // iconst_1
+   	l3 = 40 // iconst_0
+   	l4 = 41 // new
+   	l5 = 72 // aload_0
+   	l11 = 93 // iload
+   	l6 = 147 // aload_0
+   	l8 = 238 // aload_0
+   	l9 = 253 // astore
+   	l7 = 263 // aload_0
+   	l10 = 311 // pop
   Exception table:
    from   to  target type
-   198   270   324   any
-    82   112   321   any
+   177   258   318   any
+    56    90   315   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      327      0    $this       Lscala/actors/Actor;
-   0      327      1    f$1       Lscala/PartialFunction;
-   137      31      5    result       Ljava/lang/Object;
-   189      129      6    qel       Lscala/actors/MQueueElement;
-   324      3      6    qel       Lscala/actors/MQueueElement;
-   115      53      8    done       Z
-   169      152      8    done       Z
-   324      3      8    done       Z
+   0      322      0    $this       Lscala/actors/Actor;
+   0      322      1    f$1       Lscala/PartialFunction;
+   93      53      4    done       Z
+   147      168      4    done       Z
+   318      4      4    done       Z
+   167      145      5    qel       Lscala/actors/MQueueElement;
+   318      4      5    qel       Lscala/actors/MQueueElement;
+   115      31      9    result       Ljava/lang/Object;
 
 
 public static java.lang.Object receiveWithin(scala.actors.Actor, long, scala.PartialFunction);
   Signature: (Lscala/actors/Actor;JLscala/PartialFunction;)Ljava/lang/Object;
   Code:
-   Stack=7, Locals=14, Args_size=3
+   Stack=7, Locals=16, Args_size=3
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scheduler:()Lscala/actors/IScheduler;
-	astore	5
-	astore	4
-	aload	4
-	aload	5
-	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
-	checkcast	class scala/actors/Actor
-	dup
-	ifnonnull	l1 // aload_0
-	pop
+	invokevirtual	Method scala/actors/Actor$.self:(Lscala/actors/IScheduler;)Lscala/actors/Actor;
 	aload_0
+	astore	4
+	dup
+	ifnonnull	l1 // aload
+	pop
+	aload	4
 	ifnull	l2 // iconst_1
 	goto	l3 // iconst_0
-l1	aload_0
+l1	aload	4
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 l2	iconst_1
-	goto	l4 // istore
+	goto	l4 // new
 l3	iconst_0
-l4	istore	6
-	iload	6
-	ifne	l5 // aload_0
-	new	class java/lang/AssertionError
+l4	new	class scala/actors/Actor$$anonfun$receiveWithin$1
 	dup
-	new	class scala/collection/mutable/StringBuilder
+	aload_0
+	invokespecial	Method scala/actors/Actor$$anonfun$receiveWithin$1."<init>":(Lscala/actors/Actor;)V
+	invokevirtual	Method scala/Predef$.assert:(ZLscala/Function0;)V
+	aload_0
 	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	ldc	String assertion failed: 
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	ldc	String receive from channel belonging to other actor
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
-	athrow
-l5	aload_0
-	dup
-	pop
+	astore	5
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.shouldExit:()Z
-	ifeq	l6 // aload_0
+	ifeq	l5 // aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.exit:()Lscala/runtime/Nothing$;
 	athrow
-l6	aload_0
+l5	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
-	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload	5
 	monitorexit
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
@@ -858,17 +865,17 @@ l6	aload_0
 	aload_0
 	aload_3
 	invokespecial	Method scala/actors/Actor$$anonfun$2."<init>":(Lscala/actors/Actor;Lscala/PartialFunction;)V
-	astore	8
+	astore	6
 	iconst_0
-	istore	13
-l15	iload	13
-	ifeq	l7 // aload_0
+	istore	7
+l14	iload	7
+	ifeq	l6 // aload_0
 	aload_3
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$received:()Lscala/Option;
 	invokevirtual	Method scala/Option.get:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	astore	7
+	astore	15
 	aload_0
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$received_$eq:(Lscala/Option;)V
@@ -878,9 +885,9 @@ l15	iload	13
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
-	aload	7
+	aload	15
 	areturn
-l7	aload_0
+l6	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	new	class scala/actors/Actor$$anonfun$3
 	dup
@@ -888,26 +895,26 @@ l7	aload_0
 	aload_3
 	invokespecial	Method scala/actors/Actor$$anonfun$3."<init>":(Lscala/actors/Actor;Lscala/PartialFunction;)V
 	invokevirtual	Method scala/actors/MQueue.extractFirst:(Lscala/Function2;)Lscala/actors/MQueueElement;
-	astore	11
-	aload	11
-	ifnonnull	l8 // aload_0
+	astore	8
+	aload	8
+	ifnonnull	l7 // aload_0
 	aload_0
 	dup
-	pop
+	astore	10
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.sendBuffer:()Lscala/actors/MQueue;
 	invokevirtual	Method scala/actors/MQueue.isEmpty:()Z
-	ifeq	l9 // aload_0
+	ifeq	l8 // aload_0
 	lload_1
 	lconst_0
 	lcmp
-	ifne	l10 // aload_0
+	ifne	l9 // aload_0
 	iconst_1
-	istore	13
-	aload	8
-	goto	l11 // astore
-l10	aload_0
+	istore	7
+	aload	6
+	goto	l10 // astore
+l9	aload_0
 	aload_3
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor_$eq:(Lscala/PartialFunction;)V
 	aload_0
@@ -917,12 +924,14 @@ l10	aload_0
 	iconst_1
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$isSuspended_$eq:(Z)V
 	aload_0
+	astore	12
+	aload_0
 	new	class scala/Some
 	dup
 	new	class scala/actors/Actor$$anon$5
 	dup
 	aload_0
-	aload_0
+	aload	12
 	invokespecial	Method scala/actors/Actor$$anon$5."<init>":(Lscala/actors/Actor;Lscala/actors/Actor;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.onTimeout_$eq:(Lscala/Option;)V
@@ -947,8 +956,8 @@ l10	aload_0
 	dup
 	aload_0
 	invokespecial	Method scala/actors/Actor$$anonfun$5."<init>":(Lscala/actors/Actor;)V
-	goto	l11 // astore
-l9	aload_0
+	goto	l10 // astore
+l8	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.mailbox:()Lscala/actors/MQueue;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.drainSendBuffer:(Lscala/actors/MQueue;)V
@@ -956,25 +965,26 @@ l9	aload_0
 	dup
 	aload_0
 	invokespecial	Method scala/actors/Actor$$anonfun$4."<init>":(Lscala/actors/Actor;)V
-l11	astore	9
-	aload_0
-	monitorexit
-	aload	9
-	checkcast	class scala/Function0
-	astore	10
+l10	astore	11
 	aload	10
+	monitorexit
+	aload	11
+	checkcast	class scala/Function0
+	astore	9
+	aload	9
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
-	goto	l12 // pop
-l8	aload_0
+	goto	l11 // pop
+l7	aload_0
 	dup
-	pop
+	astore	13
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.onTimeout:()Lscala/Option;
 	invokevirtual	Method scala/Option.isEmpty:()Z
-	ifeq	l13 // aload_0
-	goto	l14 // aload_0
-l13	aload_0
+	ifeq	l12 // aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	goto	l13 // pop
+l12	aload_0
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.onTimeout:()Lscala/Option;
 	invokevirtual	Method scala/Option.get:()Ljava/lang/Object;
 	checkcast	class java/util/TimerTask
@@ -983,144 +993,150 @@ l13	aload_0
 	aload_0
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.onTimeout_$eq:(Lscala/Option;)V
-l14	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+l13	pop
+	aload	13
 	monitorexit
 	aload_0
 	new	class scala/Some
 	dup
-	aload	11
+	aload	8
 	invokevirtual	Method scala/actors/MQueueElement.msg:()Ljava/lang/Object;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$received_$eq:(Lscala/Option;)V
 	aload_0
-	aload	11
+	aload	8
 	invokevirtual	Method scala/actors/MQueueElement.session:()Lscala/actors/OutputChannel;
-	astore	12
+	astore	14
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders:()Lscala/collection/immutable/List;
-	aload	12
+	aload	14
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	invokeinterface	InterfaceMethod scala/actors/ReplyReactor.senders_$eq:(Lscala/collection/immutable/List;)V
 	iconst_1
-	istore	13
+	istore	7
 	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
-l12	pop
-	goto	l15 // iload
-	aload_0
+l11	pop
+	goto	l14 // iload
+	aload	5
 	monitorexit
 	athrow
-	aload_0
+	aload	10
 	monitorexit
 	athrow
-	aload_0
+	aload	13
 	monitorexit
 	athrow
   Labels:
-   	l1 = 35 // aload_0
-   	l2 = 42 // iconst_1
-   	l3 = 46 // iconst_0
-   	l4 = 47 // istore
-   	l5 = 82 // aload_0
-   	l6 = 102 // aload_0
-   	l15 = 148 // iload
-   	l7 = 202 // aload_0
-   	l10 = 257 // aload_0
-   	l9 = 364 // aload_0
-   	l11 = 384 // astore
-   	l8 = 405 // aload_0
-   	l13 = 424 // aload_0
-   	l14 = 449 // aload_0
-   	l12 = 499 // pop
+   	l1 = 31 // aload
+   	l2 = 39 // iconst_1
+   	l3 = 43 // iconst_0
+   	l4 = 44 // new
+   	l5 = 76 // aload_0
+   	l14 = 127 // iload
+   	l6 = 181 // aload_0
+   	l9 = 237 // aload_0
+   	l8 = 348 // aload_0
+   	l10 = 368 // astore
+   	l7 = 390 // aload_0
+   	l12 = 413 // aload_0
+   	l13 = 441 // pop
+   	l11 = 493 // pop
   Exception table:
    from   to  target type
-   409   451   509   any
-   231   388   506   any
-    86   116   503   any
+   395   445   505   any
+   211   373   501   any
+    60    95   497   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      512      0    $this       Lscala/actors/Actor;
-   0      512      1    msec       J
-   0      512      3    f$2       Lscala/PartialFunction;
-   170      31      7    result       Ljava/lang/Object;
-   145      56      8    receiveTimeout       Lscala/Function0;
-   202      301      8    receiveTimeout       Lscala/Function0;
-   506      6      8    receiveTimeout       Lscala/Function0;
-   395      7      10    todo       Lscala/Function0;
-   222      278      11    qel       Lscala/actors/MQueueElement;
-   506      6      11    qel       Lscala/actors/MQueueElement;
-   148      53      13    done       Z
-   202      301      13    done       Z
-   506      6      13    done       Z
+   0      509      0    $this       Lscala/actors/Actor;
+   0      509      1    msec       J
+   0      509      3    f$2       Lscala/PartialFunction;
+   124      56      6    receiveTimeout       Lscala/Function0;
+   181      316      6    receiveTimeout       Lscala/Function0;
+   501      8      6    receiveTimeout       Lscala/Function0;
+   127      53      7    done       Z
+   181      316      7    done       Z
+   501      8      7    done       Z
+   201      293      8    qel       Lscala/actors/MQueueElement;
+   501      8      8    qel       Lscala/actors/MQueueElement;
+   380      7      9    todo       Lscala/Function0;
+   263      82      12    thisActor$1       Lscala/actors/Actor;
+   149      31      15    result       Ljava/lang/Object;
 
 
 public static scala.runtime.Nothing$ react(scala.actors.Actor, scala.PartialFunction);
   Signature: (Lscala/actors/Actor;Lscala/PartialFunction;)Lscala/runtime/Nothing$;
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	dup
-	pop
+	astore_2
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.shouldExit:()Z
-	ifeq	l1 // aload_0
+	ifeq	l1 // getstatic
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.exit:()Lscala/runtime/Nothing$;
 	athrow
-l1	aload_0
+l1	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_2
 	monitorexit
 	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$super$react:(Lscala/PartialFunction;)Lscala/runtime/Nothing$;
 	areturn
-	aload_0
+	aload_2
 	monitorexit
 	athrow
   Labels:
-   	l1 = 20 // aload_0
+   	l1 = 20 // getstatic
   Exception table:
    from   to  target type
-     4    22    30   any
+     4    26    34   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      33      0    $this       Lscala/actors/Actor;
-   0      33      1    handler       Lscala/PartialFunction;
+   0      37      0    $this       Lscala/actors/Actor;
+   0      37      1    handler       Lscala/PartialFunction;
 
 
 public static scala.runtime.Nothing$ reactWithin(scala.actors.Actor, long, scala.PartialFunction);
   Signature: (Lscala/actors/Actor;JLscala/PartialFunction;)Lscala/runtime/Nothing$;
   Code:
-   Stack=4, Locals=4, Args_size=3
+   Stack=4, Locals=5, Args_size=3
 	aload_0
 	dup
-	pop
+	astore	4
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.shouldExit:()Z
-	ifeq	l1 // aload_0
+	ifeq	l1 // getstatic
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.exit:()Lscala/runtime/Nothing$;
 	athrow
-l1	aload_0
+l1	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload	4
 	monitorexit
 	aload_0
 	lload_1
 	aload_3
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$super$reactWithin:(JLscala/PartialFunction;)Lscala/runtime/Nothing$;
 	areturn
-	aload_0
+	aload	4
 	monitorexit
 	athrow
   Labels:
-   	l1 = 20 // aload_0
+   	l1 = 21 // getstatic
   Exception table:
    from   to  target type
-     4    22    31   any
+     5    28    37   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      34      0    $this       Lscala/actors/Actor;
-   0      34      1    msec       J
-   0      34      3    handler       Lscala/PartialFunction;
+   0      41      0    $this       Lscala/actors/Actor;
+   0      41      1    msec       J
+   0      41      3    handler       Lscala/PartialFunction;
 
 
 public static java.lang.Object $qmark(scala.actors.Actor);
@@ -1171,10 +1187,10 @@ l1	return
 public static final void scala$actors$Actor$$suspendActor(scala.actors.Actor);
   Signature: (Lscala/actors/Actor;)V
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=2, Locals=2, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 l2	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$isSuspended:()Z
@@ -1184,26 +1200,28 @@ l2	aload_0
 	goto	l2 // aload_0
 l1	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.shouldExit:()Z
-	ifeq	l3 // aload_0
+	ifeq	l3 // getstatic
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.exit:()Lscala/runtime/Nothing$;
 	athrow
-l3	aload_0
+l3	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_1
 	monitorexit
 	return
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
    	l2 = 4 // aload_0
    	l1 = 20 // aload_0
-   	l3 = 36 // aload_0
+   	l3 = 36 // getstatic
   Exception table:
    from   to  target type
-     4    38    39   any
+     4    42    43   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      42      0    $this       Lscala/actors/Actor;
+   0      46      0    $this       Lscala/actors/Actor;
 
 
 public static final void scala$actors$Actor$$resumeActor(scala.actors.Actor);
@@ -1225,69 +1243,71 @@ public static final void scala$actors$Actor$$resumeActor(scala.actors.Actor);
 public static boolean exiting(scala.actors.Actor);
   Signature: (Lscala/actors/Actor;)Z
   Code:
-   Stack=2, Locals=3, Args_size=1
+   Stack=2, Locals=4, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor._state:()Lscala/Enumeration$Value;
 	getstatic	Field scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
 	invokevirtual	Method scala/actors/Actor$State$.Terminated:()Lscala/Enumeration$Value;
-	astore_1
+	astore_3
 	dup
-	ifnonnull	l1 // aload_1
+	ifnonnull	l1 // aload_3
 	pop
-	aload_1
+	aload_3
 	ifnull	l2 // iconst_1
 	goto	l3 // iconst_0
-l1	aload_1
+l1	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 l2	iconst_1
-	goto	l4 // istore_2
+	goto	l4 // invokestatic
 l3	iconst_0
-l4	istore_2
-	aload_0
+l4	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+	astore_2
+	aload_1
 	monitorexit
-	iload_2
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 	ireturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
-   	l1 = 29 // aload_1
+   	l1 = 29 // aload_3
    	l2 = 36 // iconst_1
    	l3 = 40 // iconst_0
-   	l4 = 41 // istore_2
+   	l4 = 41 // invokestatic
   Exception table:
    from   to  target type
-     4    44    46   any
+     4    47    52   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      49      0    $this       Lscala/actors/Actor;
+   0      55      0    $this       Lscala/actors/Actor;
 
 
 public static scala.actors.Actor start(scala.actors.Actor);
   Signature: (Lscala/actors/Actor;)Lscala/actors/Actor;
   Code:
-   Stack=4, Locals=2, Args_size=1
+   Stack=4, Locals=4, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor._state:()Lscala/Enumeration$Value;
 	getstatic	Field scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
 	invokevirtual	Method scala/actors/Actor$State$.New:()Lscala/Enumeration$Value;
-	astore_1
+	astore_3
 	dup
-	ifnonnull	l1 // aload_1
+	ifnonnull	l1 // aload_3
 	pop
-	aload_1
+	aload_3
 	ifnull	l2 // aload_0
 	goto	l3 // aload_0
-l1	aload_1
+l1	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload_0
 l2	aload_0
@@ -1311,34 +1331,38 @@ l2	aload_0
 	aload_0
 	invokespecial	Method scala/actors/Reaction."<init>":(Lscala/actors/Actor;)V
 	invokeinterface	InterfaceMethod scala/actors/IScheduler.execute:(Ljava/lang/Runnable;)V
-	goto	l3 // aload_0
-l3	aload_0
-	monitorexit
 	aload_0
+	goto	l4 // astore_2
+l3	aload_0
+l4	astore_2
+	aload_1
+	monitorexit
+	aload_2
 	checkcast	class scala/actors/Actor
 	areturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
-   	l1 = 29 // aload_1
+   	l1 = 29 // aload_3
    	l2 = 36 // aload_0
-   	l3 = 98 // aload_0
+   	l3 = 99 // aload_0
+   	l4 = 100 // astore_2
   Exception table:
    from   to  target type
-     4   100   105   any
+     4   103   108   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      108      0    $this       Lscala/actors/Actor;
+   0      111      0    $this       Lscala/actors/Actor;
 
 
 public static scala.Enumeration$Value getState(scala.actors.Actor);
   Signature: (Lscala/actors/Actor;)Lscala/Enumeration$Value;
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=3, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$isSuspended:()Z
@@ -1349,25 +1373,25 @@ public static scala.Enumeration$Value getState(scala.actors.Actor);
 	ifeq	l2 // getstatic
 	getstatic	Field scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
 	invokevirtual	Method scala/actors/Actor$State$.Blocked:()Lscala/Enumeration$Value;
-	goto	l3 // astore_1
+	goto	l3 // astore_2
 l2	getstatic	Field scala/actors/Actor$State$.MODULE$:Lscala/actors/Actor$State$;
 	invokevirtual	Method scala/actors/Actor$State$.TimedBlocked:()Lscala/Enumeration$Value;
-	goto	l3 // astore_1
+	goto	l3 // astore_2
 l1	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$super$getState:()Lscala/Enumeration$Value;
-l3	astore_1
-	aload_0
-	monitorexit
+l3	astore_2
 	aload_1
+	monitorexit
+	aload_2
 	checkcast	class scala/Enumeration$Value
 	areturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
    	l2 = 34 // getstatic
    	l1 = 43 // aload_0
-   	l3 = 49 // astore_1
+   	l3 = 49 // astore_2
   Exception table:
    from   to  target type
      4    52    57   any
@@ -1379,44 +1403,32 @@ l3	astore_1
 public static scala.actors.AbstractActor link(scala.actors.Actor, scala.actors.AbstractActor);
   Signature: (Lscala/actors/Actor;Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;
   Code:
-   Stack=4, Locals=5, Args_size=2
+   Stack=5, Locals=3, Args_size=2
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scheduler:()Lscala/actors/IScheduler;
-	astore_3
-	astore_2
-	aload_2
-	aload_3
-	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
-	checkcast	class scala/actors/Actor
-	dup
-	ifnonnull	l1 // aload_0
-	pop
+	invokevirtual	Method scala/actors/Actor$.self:(Lscala/actors/IScheduler;)Lscala/actors/Actor;
 	aload_0
+	astore_2
+	dup
+	ifnonnull	l1 // aload_2
+	pop
+	aload_2
 	ifnull	l2 // iconst_1
 	goto	l3 // iconst_0
-l1	aload_0
+l1	aload_2
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 l2	iconst_1
-	goto	l4 // istore
+	goto	l4 // new
 l3	iconst_0
-l4	istore	4
-	iload	4
-	ifne	l5 // aload_0
-	new	class java/lang/AssertionError
+l4	new	class scala/actors/Actor$$anonfun$link$1
 	dup
-	new	class scala/collection/mutable/StringBuilder
-	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	ldc	String assertion failed: 
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	ldc_w	String link called on actor different from self
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
-	athrow
-l5	aload_0
+	aload_0
+	invokespecial	Method scala/actors/Actor$$anonfun$link$1."<init>":(Lscala/actors/Actor;)V
+	invokevirtual	Method scala/Predef$.assert:(ZLscala/Function0;)V
+	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/actors/Actor.linkTo:(Lscala/actors/AbstractActor;)V
 	aload_1
@@ -1425,156 +1437,134 @@ l5	aload_0
 	aload_1
 	areturn
   Labels:
-   	l1 = 31 // aload_0
-   	l2 = 38 // iconst_1
-   	l3 = 42 // iconst_0
-   	l4 = 43 // istore
-   	l5 = 79 // aload_0
+   	l1 = 29 // aload_2
+   	l2 = 36 // iconst_1
+   	l3 = 40 // iconst_0
+   	l4 = 41 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      95      0    $this       Lscala/actors/Actor;
-   0      95      1    to       Lscala/actors/AbstractActor;
+   0      68      0    $this       Lscala/actors/Actor;
+   0      68      1    to       Lscala/actors/AbstractActor;
 
 
 public static scala.actors.Actor link(scala.actors.Actor, scala.Function0);
   Signature: (Lscala/actors/Actor;Lscala/Function0;)Lscala/actors/Actor;
   Code:
-   Stack=4, Locals=6, Args_size=2
+   Stack=5, Locals=4, Args_size=2
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scheduler:()Lscala/actors/IScheduler;
-	astore_3
-	astore_2
-	aload_2
-	aload_3
-	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
-	checkcast	class scala/actors/Actor
-	dup
-	ifnonnull	l1 // aload_0
-	pop
+	invokevirtual	Method scala/actors/Actor$.self:(Lscala/actors/IScheduler;)Lscala/actors/Actor;
 	aload_0
+	astore_2
+	dup
+	ifnonnull	l1 // aload_2
+	pop
+	aload_2
 	ifnull	l2 // iconst_1
 	goto	l3 // iconst_0
-l1	aload_0
+l1	aload_2
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 l2	iconst_1
-	goto	l4 // istore
+	goto	l4 // new
 l3	iconst_0
-l4	istore	4
-	iload	4
-	ifne	l5 // new
-	new	class java/lang/AssertionError
+l4	new	class scala/actors/Actor$$anonfun$link$2
 	dup
-	new	class scala/collection/mutable/StringBuilder
-	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	ldc	String assertion failed: 
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	ldc_w	String link called on actor different from self
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
-	athrow
-l5	new	class scala/actors/Actor$$anon$3
+	aload_0
+	invokespecial	Method scala/actors/Actor$$anonfun$link$2."<init>":(Lscala/actors/Actor;)V
+	invokevirtual	Method scala/Predef$.assert:(ZLscala/Function0;)V
+	new	class scala/actors/Actor$$anon$3
 	dup
 	aload_0
 	aload_1
 	invokespecial	Method scala/actors/Actor$$anon$3."<init>":(Lscala/actors/Actor;Lscala/Function0;)V
-	astore	5
+	astore_3
 	aload_0
-	aload	5
+	aload_3
 	invokeinterface	InterfaceMethod scala/actors/Actor.link:(Lscala/actors/AbstractActor;)Lscala/actors/AbstractActor;
 	pop
-	aload	5
-	invokestatic	Method start:(Lscala/actors/Actor;)Lscala/actors/Actor;
+	aload_3
+	invokeinterface	InterfaceMethod scala/actors/Actor.start:()Lscala/actors/Actor;
 	pop
-	aload	5
+	aload_3
 	areturn
   Labels:
-   	l1 = 31 // aload_0
-   	l2 = 38 // iconst_1
-   	l3 = 42 // iconst_0
-   	l4 = 43 // istore
-   	l5 = 79 // new
+   	l1 = 29 // aload_2
+   	l2 = 36 // iconst_1
+   	l3 = 40 // iconst_0
+   	l4 = 41 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      108      0    $this       Lscala/actors/Actor;
-   0      108      1    body$4       Lscala/Function0;
-   90      17      5    a       Lscala/actors/Actor;
+   0      79      0    $this       Lscala/actors/Actor;
+   0      79      1    body$4       Lscala/Function0;
+   62      16      3    a       Lscala/actors/Actor;
 
 
 public static void linkTo(scala.actors.Actor, scala.actors.AbstractActor);
   Signature: (Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=4, Args_size=2
 	aload_0
 	dup
-	pop
+	astore_2
 	monitorenter
 	aload_0
+	aload_1
+	astore_3
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.links:()Lscala/collection/immutable/List;
-	aload_1
+	aload_3
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	invokeinterface	InterfaceMethod scala/actors/Actor.links_$eq:(Lscala/collection/immutable/List;)V
-	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_2
 	monitorexit
 	return
-	aload_0
+	aload_2
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    22    23   any
+     4    28    29   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      26      0    $this       Lscala/actors/Actor;
-   0      26      1    to       Lscala/actors/AbstractActor;
+   0      32      0    $this       Lscala/actors/Actor;
+   0      32      1    to       Lscala/actors/AbstractActor;
 
 
 public static void unlink(scala.actors.Actor, scala.actors.AbstractActor);
   Signature: (Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
   Code:
-   Stack=4, Locals=5, Args_size=2
+   Stack=5, Locals=3, Args_size=2
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scheduler:()Lscala/actors/IScheduler;
-	astore_3
-	astore_2
-	aload_2
-	aload_3
-	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
-	checkcast	class scala/actors/Actor
-	dup
-	ifnonnull	l1 // aload_0
-	pop
+	invokevirtual	Method scala/actors/Actor$.self:(Lscala/actors/IScheduler;)Lscala/actors/Actor;
 	aload_0
+	astore_2
+	dup
+	ifnonnull	l1 // aload_2
+	pop
+	aload_2
 	ifnull	l2 // iconst_1
 	goto	l3 // iconst_0
-l1	aload_0
+l1	aload_2
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 l2	iconst_1
-	goto	l4 // istore
+	goto	l4 // new
 l3	iconst_0
-l4	istore	4
-	iload	4
-	ifne	l5 // aload_0
-	new	class java/lang/AssertionError
+l4	new	class scala/actors/Actor$$anonfun$unlink$1
 	dup
-	new	class scala/collection/mutable/StringBuilder
-	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	ldc	String assertion failed: 
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	ldc_w	String unlink called on actor different from self
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
-	athrow
-l5	aload_0
+	aload_0
+	invokespecial	Method scala/actors/Actor$$anonfun$unlink$1."<init>":(Lscala/actors/Actor;)V
+	invokevirtual	Method scala/Predef$.assert:(ZLscala/Function0;)V
+	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/actors/Actor.unlinkFrom:(Lscala/actors/AbstractActor;)V
 	aload_1
@@ -1582,24 +1572,23 @@ l5	aload_0
 	invokeinterface	InterfaceMethod scala/actors/AbstractActor.unlinkFrom:(Lscala/actors/AbstractActor;)V
 	return
   Labels:
-   	l1 = 31 // aload_0
-   	l2 = 38 // iconst_1
-   	l3 = 42 // iconst_0
-   	l4 = 43 // istore
-   	l5 = 79 // aload_0
+   	l1 = 29 // aload_2
+   	l2 = 36 // iconst_1
+   	l3 = 40 // iconst_0
+   	l4 = 41 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      94      0    $this       Lscala/actors/Actor;
-   0      94      1    from       Lscala/actors/AbstractActor;
+   0      67      0    $this       Lscala/actors/Actor;
+   0      67      1    from       Lscala/actors/AbstractActor;
 
 
 public static void unlinkFrom(scala.actors.Actor, scala.actors.AbstractActor);
   Signature: (Lscala/actors/Actor;Lscala/actors/AbstractActor;)V
   Code:
-   Stack=6, Locals=2, Args_size=2
+   Stack=6, Locals=3, Args_size=2
 	aload_0
 	dup
-	pop
+	astore_2
 	monitorenter
 	aload_0
 	aload_0
@@ -1612,29 +1601,31 @@ public static void unlinkFrom(scala.actors.Actor, scala.actors.AbstractActor);
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.filterNot:(Lscala/Function1;)Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
 	invokeinterface	InterfaceMethod scala/actors/Actor.links_$eq:(Lscala/collection/immutable/List;)V
-	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_2
 	monitorexit
 	return
-	aload_0
+	aload_2
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    35    36   any
+     4    39    40   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      39      0    $this       Lscala/actors/Actor;
-   0      39      1    from$2       Lscala/actors/AbstractActor;
+   0      43      0    $this       Lscala/actors/Actor;
+   0      43      1    from$2       Lscala/actors/AbstractActor;
 
 
 public static scala.runtime.Nothing$ exit(scala.actors.Actor, java.lang.Object);
   Signature: (Lscala/actors/Actor;Ljava/lang/Object;)Lscala/runtime/Nothing$;
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=4, Args_size=2
 	aload_0
 	dup
-	pop
+	astore_2
 	monitorenter
 	aload_0
 	aload_1
@@ -1642,7 +1633,7 @@ public static scala.runtime.Nothing$ exit(scala.actors.Actor, java.lang.Object);
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.exit:()Lscala/runtime/Nothing$;
 	athrow
-	aload_0
+	aload_2
 	monitorexit
 	athrow
   Labels:
@@ -1658,10 +1649,10 @@ public static scala.runtime.Nothing$ exit(scala.actors.Actor, java.lang.Object);
 public static scala.runtime.Nothing$ exit(scala.actors.Actor);
   Signature: (Lscala/actors/Actor;)Lscala/runtime/Nothing$;
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=2, Locals=3, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.links:()Lscala/collection/immutable/List;
@@ -1672,7 +1663,7 @@ public static scala.runtime.Nothing$ exit(scala.actors.Actor);
 l1	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.scala$actors$Actor$$super$exit:()Lscala/runtime/Nothing$;
 	athrow
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
@@ -1736,7 +1727,7 @@ public static void exitLinked(scala.actors.Actor, java.lang.Object);
 public static void exit(scala.actors.Actor, scala.actors.AbstractActor, java.lang.Object);
   Signature: (Lscala/actors/Actor;Lscala/actors/AbstractActor;Ljava/lang/Object;)V
   Code:
-   Stack=5, Locals=4, Args_size=3
+   Stack=5, Locals=5, Args_size=3
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Actor.trapExit:()Z
 	ifeq	l1 // aload_2
@@ -1762,7 +1753,7 @@ l3	aload_3
 	ifne	l2 // return
 l4	aload_0
 	dup
-	pop
+	astore	4
 	monitorenter
 	aload_0
 	iconst_1
@@ -1775,39 +1766,46 @@ l4	aload_0
 	ifeq	l5 // aload_0
 	aload_0
 	invokestatic	Method scala$actors$Actor$$resumeActor:(Lscala/actors/Actor;)V
-	goto	l6 // aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	goto	l6 // pop
 l5	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor:()Lscala/PartialFunction;
 	getstatic	Field scala/actors/Reactor$.MODULE$:Lscala/actors/Reactor$;
 	invokevirtual	Method scala/actors/Reactor$.waitingForNone:()Lscala/PartialFunction;
-	if_acmpeq	l6 // aload_0
+	if_acmpeq	l7 // getstatic
 	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/actors/Reactor.waitingFor:()Lscala/PartialFunction;
 	aconst_null
+	pop
+	aconst_null
 	invokeinterface	InterfaceMethod scala/actors/Actor.scheduleActor:(Lscala/PartialFunction;Ljava/lang/Object;)V
-	goto	l6 // aload_0
-l6	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	goto	l6 // pop
+l7	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+l6	pop
+	aload	4
 	monitorexit
 l2	return
-	aload_0
+	aload	4
 	monitorexit
 	athrow
   Labels:
    	l1 = 27 // aload_2
    	l3 = 44 // aload_3
    	l4 = 51 // aload_0
-   	l5 = 85 // aload_0
-   	l6 = 116 // aload_0
-   	l2 = 118 // return
+   	l5 = 89 // aload_0
+   	l7 = 125 // getstatic
+   	l6 = 128 // pop
+   	l2 = 132 // return
   Exception table:
    from   to  target type
-    55   118   119   any
+    56   132   133   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      122      0    $this       Lscala/actors/Actor;
-   0      122      1    from       Lscala/actors/AbstractActor;
-   0      122      2    reason       Ljava/lang/Object;
+   0      137      0    $this       Lscala/actors/Actor;
+   0      137      1    from       Lscala/actors/AbstractActor;
+   0      137      2    reason       Ljava/lang/Object;
 
 
 public static void onTerminate(scala.actors.Actor, scala.Function0);

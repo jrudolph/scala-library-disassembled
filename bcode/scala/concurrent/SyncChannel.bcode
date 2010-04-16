@@ -2,7 +2,7 @@ Compiled from "SyncChannel.scala"
 public class scala.concurrent.SyncChannel extends java.lang.Object implements scala.ScalaObject
   SourceFile: "SyncChannel.scala"
   Signature: length = 0x2
-   00 7F 
+   00 FFFFFF89 
   ScalaSig: length = 0x22F
    05 00 56 06 04 01 02 00 07 02 0B 53 79 6E 63 43
    68 61 6E 6E 65 6C 0A 02 03 04 01 0A 63 6F 6E 63
@@ -84,9 +84,14 @@ NameAndType	isEmpty:()Z
 InterfaceMethod	scala/collection/IterableLike.isEmpty:()Z
 NameAndType	pendingWrites:()Lscala/collection/immutable/List;
 Method	scala/concurrent/SyncChannel.pendingWrites:()Lscala/collection/immutable/List;
+Asciz	scala/collection/immutable/List$;
+class	scala/collection/immutable/List$
+Asciz	MODULE$;
+Asciz	Lscala/collection/immutable/List$;;
+NameAndType	MODULE$:Lscala/collection/immutable/List$;
+Field	scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
 Asciz	scala/Predef$;
 class	scala/Predef$
-Asciz	MODULE$;
 Asciz	Lscala/Predef$;;
 NameAndType	MODULE$:Lscala/Predef$;
 Field	scala/Predef$.MODULE$:Lscala/Predef$;
@@ -101,11 +106,10 @@ Asciz	wrapRefArray;
 Asciz	([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
 NameAndType	wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 Method	scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-Asciz	scala/collection/TraversableLike;
-class	scala/collection/TraversableLike
-Asciz	toList;
-NameAndType	toList:()Lscala/collection/immutable/List;
-InterfaceMethod	scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+Asciz	apply;
+Asciz	(Lscala/collection/Seq;)Lscala/collection/immutable/List;;
+NameAndType	apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
+Method	scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
 Asciz	scala/collection/immutable/List;
 class	scala/collection/immutable/List
 Asciz	$colon$colon$colon;
@@ -114,10 +118,18 @@ NameAndType	$colon$colon$colon:(Lscala/collection/immutable/List;)Lscala/collect
 Method	scala/collection/immutable/List.$colon$colon$colon:(Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
 NameAndType	pendingWrites_$eq:(Lscala/collection/immutable/List;)V
 Method	scala/concurrent/SyncChannel.pendingWrites_$eq:(Lscala/collection/immutable/List;)V
+Asciz	scala/runtime/BoxedUnit;
+class	scala/runtime/BoxedUnit
+Asciz	UNIT;
+Asciz	Lscala/runtime/BoxedUnit;;
+NameAndType	UNIT:Lscala/runtime/BoxedUnit;
+Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	head;
 Asciz	()Ljava/lang/Object;;
 NameAndType	head:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/IterableLike.head:()Ljava/lang/Object;
+Asciz	scala/collection/TraversableLike;
+class	scala/collection/TraversableLike
 Asciz	tail;
 NameAndType	tail:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/TraversableLike.tail:()Ljava/lang/Object;
@@ -139,11 +151,9 @@ Asciz	this;
 Asciz	Lscala/concurrent/SyncChannel;;
 Asciz	data;
 Asciz	Ljava/lang/Object;;
-Asciz	xs0;
-Asciz	Lscala/collection/Seq;;
-Asciz	readReq;
-Asciz	Lscala/concurrent/SyncVar;;
 Asciz	writeReq;
+Asciz	Lscala/concurrent/SyncVar;;
+Asciz	readReq;
 Asciz	LocalVariableTable;
 Asciz	(TA;)V;
 Asciz	read;
@@ -233,14 +243,14 @@ private void pendingReads_$eq(scala.collection.immutable.List);
 public void write(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
   Code:
-   Stack=9, Locals=7, Args_size=2
+   Stack=10, Locals=6, Args_size=2
 	new	class scala/concurrent/SyncVar
 	dup
 	invokespecial	Method scala/concurrent/SyncVar."<init>":()V
-	astore	6
+	astore_2
 	aload_0
 	dup
-	pop
+	astore_3
 	monitorenter
 	aload_0
 	invokespecial	Method pendingReads:()Lscala/collection/immutable/List;
@@ -249,7 +259,8 @@ public void write(java.lang.Object);
 	aload_0
 	aload_0
 	invokespecial	Method pendingWrites:()Lscala/collection/immutable/List;
-	astore_3
+	astore	5
+	getstatic	Field scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_1
 	anewarray	class scala/Tuple2
@@ -258,18 +269,17 @@ public void write(java.lang.Object);
 	new	class scala/Tuple2
 	dup
 	aload_1
-	aload	6
+	aload_2
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	aastore
 	checkcast	class "[Ljava/lang/Object;"
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	astore_2
-	aload_2
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
-	aload_3
+	invokevirtual	Method scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
+	aload	5
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon$colon:(Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
 	invokespecial	Method pendingWrites_$eq:(Lscala/collection/immutable/List;)V
-	goto	l2 // aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	goto	l2 // pop
 l1	aload_0
 	invokespecial	Method pendingReads:()Lscala/collection/immutable/List;
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.head:()Ljava/lang/Object;
@@ -284,50 +294,49 @@ l1	aload_0
 	aload	4
 	aload_1
 	invokevirtual	Method scala/concurrent/SyncVar.set:(Ljava/lang/Object;)V
-	aload	6
+	aload_2
 	iconst_1
-	istore	5
-	iload	5
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 	invokevirtual	Method scala/concurrent/SyncVar.set:(Ljava/lang/Object;)V
-l2	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+l2	pop
+	aload_3
 	monitorexit
-	aload	6
+	aload_2
 	invokevirtual	Method scala/concurrent/SyncVar.get:()Ljava/lang/Object;
 	pop
 	return
-	aload_0
+	aload_3
 	monitorexit
 	athrow
   Labels:
-   	l1 = 74 // aload_0
-   	l2 = 123 // aload_0
+   	l1 = 76 // aload_0
+   	l2 = 123 // pop
   Exception table:
    from   to  target type
-    13   125   132   any
+    12   126   132   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      135      0    this       Lscala/concurrent/SyncChannel;
    0      135      1    data       Ljava/lang/Object;
-   58      6      2    xs0       Lscala/collection/Seq;
-   88      35      4    readReq       Lscala/concurrent/SyncVar;
-   9      122      6    writeReq       Lscala/concurrent/SyncVar;
-   132      3      6    writeReq       Lscala/concurrent/SyncVar;
+   8      123      2    writeReq       Lscala/concurrent/SyncVar;
+   132      3      2    writeReq       Lscala/concurrent/SyncVar;
+   90      33      4    readReq       Lscala/concurrent/SyncVar;
 
   Signature: length = 0x2
-   00 68 
+   00 72 
 
 public java.lang.Object read();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=6, Locals=9, Args_size=1
+   Stack=7, Locals=8, Args_size=1
 	new	class scala/concurrent/SyncVar
 	dup
 	invokespecial	Method scala/concurrent/SyncVar."<init>":()V
-	astore	7
+	astore_1
 	aload_0
 	dup
-	pop
+	astore_2
 	monitorenter
 	aload_0
 	invokespecial	Method pendingWrites:()Lscala/collection/immutable/List;
@@ -336,94 +345,93 @@ public java.lang.Object read();
 	aload_0
 	aload_0
 	invokespecial	Method pendingReads:()Lscala/collection/immutable/List;
-	astore_2
+	astore	7
+	getstatic	Field scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_1
 	anewarray	class scala/concurrent/SyncVar
 	dup
 	iconst_0
-	aload	7
+	aload_1
 	aastore
 	checkcast	class "[Ljava/lang/Object;"
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	astore_1
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
-	aload_2
+	invokevirtual	Method scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
+	aload	7
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon$colon:(Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
 	invokespecial	Method pendingReads_$eq:(Lscala/collection/immutable/List;)V
-	goto	l2 // aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	goto	l2 // pop
 l1	aload_0
 	invokespecial	Method pendingWrites:()Lscala/collection/immutable/List;
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.head:()Ljava/lang/Object;
 	checkcast	class scala/Tuple2
-	astore	8
-	aload	8
+	astore	4
+	aload	4
 	ifnull	l3 // new
 	new	class scala/Tuple2
 	dup
-	aload	8
+	aload	4
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
-	aload	8
+	aload	4
 	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	astore_3
 	aload_3
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
-	astore	6
+	astore	5
 	aload_3
 	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
 	checkcast	class scala/concurrent/SyncVar
-	astore	4
+	astore	6
 	aload_0
 	aload_0
 	invokespecial	Method pendingWrites:()Lscala/collection/immutable/List;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
 	invokespecial	Method pendingWrites_$eq:(Lscala/collection/immutable/List;)V
-	aload	4
+	aload	6
 	iconst_1
-	istore	5
-	iload	5
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 	invokevirtual	Method scala/concurrent/SyncVar.set:(Ljava/lang/Object;)V
-	aload	7
-	aload	6
+	aload_1
+	aload	5
 	invokevirtual	Method scala/concurrent/SyncVar.set:(Ljava/lang/Object;)V
-l2	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+l2	pop
+	aload_2
 	monitorexit
-	aload	7
+	aload_1
 	invokevirtual	Method scala/concurrent/SyncVar.get:()Ljava/lang/Object;
 	areturn
 l3	new	class scala/MatchError
 	dup
-	aload	8
+	aload	4
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
-	aload_0
+	aload_2
 	monitorexit
 	athrow
   Labels:
-   	l1 = 66 // aload_0
-   	l2 = 154 // aload_0
+   	l1 = 68 // aload_0
+   	l2 = 154 // pop
    	l3 = 162 // new
   Exception table:
    from   to  target type
-    13   156   172   any
+    12   157   172   any
    162   172   172   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      175      0    this       Lscala/concurrent/SyncChannel;
-   50      6      1    xs0       Lscala/collection/Seq;
-   118      36      4    writeReq       Lscala/concurrent/SyncVar;
-   109      45      6    data       Ljava/lang/Object;
-   9      152      7    readReq       Lscala/concurrent/SyncVar;
-   162      13      7    readReq       Lscala/concurrent/SyncVar;
-   80      74      8    temp1       Lscala/Tuple2;
-   162      10      8    temp1       Lscala/Tuple2;
+   8      153      1    readReq       Lscala/concurrent/SyncVar;
+   162      13      1    readReq       Lscala/concurrent/SyncVar;
+   82      72      4    temp1       Lscala/Tuple2;
+   162      10      4    temp1       Lscala/Tuple2;
+   111      43      5    data       Ljava/lang/Object;
+   120      34      6    writeReq       Lscala/concurrent/SyncVar;
 
   Signature: length = 0x2
-   00 76 
+   00 FFFFFF80 
 
 public scala.concurrent.SyncChannel();
   Signature: ()V

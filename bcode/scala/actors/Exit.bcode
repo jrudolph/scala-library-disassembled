@@ -154,9 +154,12 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp4;
 Asciz	temp5;
 Asciz	temp6;
 Asciz	temp7;
+Asciz	reason$1;
+Asciz	from$1;
 Asciz	productPrefix;
 Asciz	Exit;
 String	Exit
@@ -178,20 +181,18 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp8;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	reason
 String	from
+Asciz	temp9;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
-Asciz	java/lang/Number;
-class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
-Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	java/lang/Object."<init>":()V
@@ -338,25 +339,31 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=3, Locals=5, Args_size=2
+   Stack=3, Locals=8, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/actors/Exit
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/actors/Exit
 	astore_2
 	aload_2
-	invokevirtual	Method from:()Lscala/actors/AbstractActor;
-	astore_3
+	instanceof	class scala/actors/Exit
+	ifeq	l2 // iconst_0
 	aload_2
-	invokevirtual	Method reason:()Ljava/lang/Object;
-	astore	4
-	aload_0
+	checkcast	class scala/actors/Exit
+	astore_3
 	aload_3
+	invokevirtual	Method from:()Lscala/actors/AbstractActor;
+	astore	4
+	aload_3
+	invokevirtual	Method reason:()Ljava/lang/Object;
+	astore	5
+	aload	5
+	astore	6
 	aload	4
+	astore	7
+	aload_0
+	aload	7
+	aload	6
 	invokespecial	Method gd1$1:(Lscala/actors/AbstractActor;Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -373,18 +380,21 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 51 // iconst_0
-   	l2 = 55 // iconst_0
-   	l4 = 56 // ifeq
-   	l1 = 59 // iconst_1
-   	l5 = 63 // iconst_0
-   	l6 = 64 // ireturn
+   	l3 = 63 // iconst_0
+   	l2 = 67 // iconst_0
+   	l4 = 68 // ifeq
+   	l1 = 71 // iconst_1
+   	l5 = 75 // iconst_0
+   	l6 = 76 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      65      0    this       Lscala/actors/Exit;
-   17      38      2    temp5       Lscala/actors/Exit;
-   22      33      3    temp6       Lscala/actors/AbstractActor;
-   28      27      4    temp7       Ljava/lang/Object;
+   0      77      0    this       Lscala/actors/Exit;
+   7      64      2    temp4       Ljava/lang/Object;
+   19      48      3    temp5       Lscala/actors/Exit;
+   25      42      4    temp6       Lscala/actors/AbstractActor;
+   31      36      5    temp7       Ljava/lang/Object;
+   35      32      6    reason$1       Ljava/lang/Object;
+   39      28      7    from$1       Lscala/actors/AbstractActor;
 
 
 public java.lang.String productPrefix();
@@ -406,8 +416,10 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
 		0: 46;
 		1: 39;
@@ -427,12 +439,19 @@ public java.lang.Object productElement(int);
 l1	areturn
   Labels:
    	l1 = 50 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      51      0    this       Lscala/actors/Exit;
+   2      49      2    temp8       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
 		0: 44;
 		1: 39;
@@ -450,6 +469,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 46 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      47      0    this       Lscala/actors/Exit;
+   2      45      2    temp9       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -463,7 +487,7 @@ public boolean canEqual(java.lang.Object);
 private final boolean gd1$1(scala.actors.AbstractActor, java.lang.Object);
   Signature: (Lscala/actors/AbstractActor;Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=5, Args_size=3
+   Stack=2, Locals=4, Args_size=3
 	aload_1
 	aload_0
 	invokevirtual	Method from:()Lscala/actors/AbstractActor;
@@ -472,54 +496,25 @@ private final boolean gd1$1(scala.actors.AbstractActor, java.lang.Object);
 	ifnonnull	l1 // aload_3
 	pop
 	aload_3
-	ifnull	l2 // aload_0
+	ifnull	l2 // aload_2
 	goto	l3 // iconst_0
 l1	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
-l2	aload_0
+l2	aload_2
+	aload_0
 	invokevirtual	Method reason:()Ljava/lang/Object;
-	astore	4
-	aload_2
-	aload	4
-	if_acmpeq	l4 // iconst_1
-	aload_2
-	ifnull	l5 // iconst_0
-	aload_2
-	instanceof	class java/lang/Number
-	ifne	l6 // aload_2
-	aload_2
-	instanceof	class java/lang/Character
-	ifne	l6 // aload_2
-	aload_2
-	aload	4
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	goto	l7 // ifeq
-l6	aload_2
-	aload	4
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l7 // ifeq
-l5	iconst_0
-	goto	l7 // ifeq
-l4	iconst_1
-l7	ifeq	l3 // iconst_0
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l3 // iconst_0
 	iconst_1
-	goto	l8 // ireturn
+	goto	l4 // ireturn
 l3	iconst_0
-l8	ireturn
+l4	ireturn
   Labels:
    	l1 = 18 // aload_3
-   	l2 = 25 // aload_0
-   	l6 = 64 // aload_2
-   	l5 = 73 // iconst_0
-   	l4 = 77 // iconst_1
-   	l7 = 78 // ifeq
-   	l3 = 85 // iconst_0
-   	l8 = 86 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      87      0    this       Lscala/actors/Exit;
-
+   	l2 = 25 // aload_2
+   	l3 = 40 // iconst_0
+   	l4 = 41 // ireturn
 
 public scala.actors.Exit(scala.actors.AbstractActor, java.lang.Object);
   Signature: (Lscala/actors/AbstractActor;Ljava/lang/Object;)V

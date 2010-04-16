@@ -202,10 +202,15 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp1;
+Asciz	Ljava/lang/Object;;
 Asciz	temp2;
 Asciz	temp3;
 Asciz	temp4;
 Asciz	temp5;
+Asciz	intSubset$1;
+Asciz	extID$1;
+Asciz	name$1;
 Asciz	productPrefix;
 Asciz	DocType;
 String	DocType
@@ -224,11 +229,14 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp6;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	intSubset
 String	extID
 String	name
+Asciz	temp7;
 Asciz	scala/collection/IterableLike;
 class	scala/collection/IterableLike
 Asciz	isEmpty;
@@ -468,29 +476,37 @@ public int hashCode();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=4, Locals=6, Args_size=2
+   Stack=4, Locals=10, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/xml/dtd/DocType
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/xml/dtd/DocType
 	astore_2
 	aload_2
-	invokevirtual	Method name:()Ljava/lang/String;
+	instanceof	class scala/xml/dtd/DocType
+	ifeq	l2 // iconst_0
+	aload_2
+	checkcast	class scala/xml/dtd/DocType
 	astore_3
-	aload_2
-	invokevirtual	Method extID:()Lscala/xml/dtd/ExternalID;
-	astore	4
-	aload_2
-	invokevirtual	Method intSubset:()Lscala/collection/Seq;
-	astore	5
-	aload_0
 	aload_3
-	aload	4
+	invokevirtual	Method name:()Ljava/lang/String;
+	astore	4
+	aload_3
+	invokevirtual	Method extID:()Lscala/xml/dtd/ExternalID;
+	astore	5
+	aload_3
+	invokevirtual	Method intSubset:()Lscala/collection/Seq;
+	astore	6
+	aload	6
+	astore	7
 	aload	5
+	astore	8
+	aload	4
+	astore	9
+	aload_0
+	aload	9
+	aload	8
+	aload	7
 	invokespecial	Method gd1$1:(Ljava/lang/String;Lscala/xml/dtd/ExternalID;Lscala/collection/Seq;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -507,19 +523,23 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 59 // iconst_0
-   	l2 = 63 // iconst_0
-   	l4 = 64 // ifeq
-   	l1 = 67 // iconst_1
-   	l5 = 71 // iconst_0
-   	l6 = 72 // ireturn
+   	l3 = 75 // iconst_0
+   	l2 = 79 // iconst_0
+   	l4 = 80 // ifeq
+   	l1 = 83 // iconst_1
+   	l5 = 87 // iconst_0
+   	l6 = 88 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      73      0    this       Lscala/xml/dtd/DocType;
-   17      46      2    temp2       Lscala/xml/dtd/DocType;
-   22      41      3    temp3       Ljava/lang/String;
-   28      35      4    temp4       Lscala/xml/dtd/ExternalID;
-   34      29      5    temp5       Lscala/collection/Seq;
+   0      89      0    this       Lscala/xml/dtd/DocType;
+   7      76      2    temp1       Ljava/lang/Object;
+   19      60      3    temp2       Lscala/xml/dtd/DocType;
+   25      54      4    temp3       Ljava/lang/String;
+   31      48      5    temp4       Lscala/xml/dtd/ExternalID;
+   37      42      6    temp5       Lscala/collection/Seq;
+   41      38      7    intSubset$1       Lscala/collection/Seq;
+   45      34      8    extID$1       Lscala/xml/dtd/ExternalID;
+   49      30      9    name$1       Ljava/lang/String;
 
 
 public java.lang.String productPrefix();
@@ -541,8 +561,10 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 2
 		0: 57;
 		1: 50;
@@ -566,12 +588,19 @@ public java.lang.Object productElement(int);
 l1	areturn
   Labels:
    	l1 = 61 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      62      0    this       Lscala/xml/dtd/DocType;
+   2      60      2    temp6       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 2
 		0: 53;
 		1: 48;
@@ -592,6 +621,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 55 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      56      0    this       Lscala/xml/dtd/DocType;
+   2      54      2    temp7       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -724,7 +758,7 @@ l1	new	class java/lang/IllegalArgumentException
    0      63      3    intSubset       Lscala/collection/Seq;
 
   Signature: length = 0x2
-   00 FFFFFFC9 
+   00 FFFFFFD1 
 
 }
 

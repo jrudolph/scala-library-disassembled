@@ -2,13 +2,12 @@ Compiled from "Iterator.scala"
 public class scala.collection.Iterator$GroupedIterator extends java.lang.Object implements scala.collection.Iterator,scala.ScalaObject
   SourceFile: "Iterator.scala"
   Signature: length = 0x2
-   02 37 
+   02 41 
   Scala: length = 0x
    
   InnerClass: 
    public abstract $less$colon$less=class scala/Predef$$less$colon$less of class scala/Predef
    public GroupedIterator=class scala/collection/Iterator$GroupedIterator of class scala/collection/Iterator
-   public GenericCanBuildFrom=class scala/collection/generic/TraversableFactory$GenericCanBuildFrom of class scala/collection/generic/TraversableFactory
    public final $anonfun$padding$1=class scala/collection/Iterator$GroupedIterator$$anonfun$padding$1 of class scala/collection/Iterator$GroupedIterator
   minor version: 0
   major version: 49
@@ -452,11 +451,10 @@ class	scala/collection/Seq$
 Asciz	Lscala/collection/Seq$;;
 NameAndType	MODULE$:Lscala/collection/Seq$;
 Field	scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
-Asciz	scala/collection/generic/TraversableFactory$GenericCanBuildFrom;
-class	scala/collection/generic/TraversableFactory$GenericCanBuildFrom
-Asciz	(Lscala/collection/generic/TraversableFactory;)V;
-NameAndType	"<init>":(Lscala/collection/generic/TraversableFactory;)V
-Method	scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
+Asciz	canBuildFrom;
+Asciz	()Lscala/collection/generic/CanBuildFrom;;
+NameAndType	canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
+Method	scala/collection/Seq$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
 Asciz	scala/collection/TraversableLike;
 class	scala/collection/TraversableLike
 Asciz	(Lscala/collection/Traversable;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
@@ -478,7 +476,6 @@ Asciz	len$3;
 Asciz	(Lscala/collection/Seq;Lscala/runtime/IntRef;Lscala/runtime/IntRef;)I;
 NameAndType	len$3:(Lscala/collection/Seq;Lscala/runtime/IntRef;Lscala/runtime/IntRef;)I
 Method	scala/collection/Iterator$GroupedIterator.len$3:(Lscala/collection/Seq;Lscala/runtime/IntRef;Lscala/runtime/IntRef;)I
-Method	scala/runtime/RichInt."<init>":(I)V
 Asciz	min;
 NameAndType	min:(I)I
 Method	scala/runtime/RichInt.min:(I)I
@@ -494,16 +491,16 @@ Asciz	isFirst$1;
 NameAndType	isFirst$1:(I)Z
 Method	scala/collection/Iterator$GroupedIterator.isFirst$1:(I)Z
 Asciz	count$1;
-Asciz	shortBy;
-Asciz	res;
-Asciz	Lscala/collection/Seq;;
-Asciz	incomplete$lzy$1;
-Asciz	Lscala/runtime/BooleanRef;;
+Asciz	bitmap$0$1;
+Asciz	Lscala/runtime/IntRef;;
 Asciz	prevSize$1;
 Asciz	xs$1;
+Asciz	Lscala/collection/Seq;;
+Asciz	res;
+Asciz	shortBy;
 Asciz	len$lzy$1;
-Asciz	Lscala/runtime/IntRef;;
-Asciz	bitmap$0$1;
+Asciz	incomplete$lzy$1;
+Asciz	Lscala/runtime/BooleanRef;;
 Asciz	scala/collection/IndexedSeqLike;
 class	scala/collection/IndexedSeqLike
 InterfaceMethod	scala/collection/IndexedSeqLike.isEmpty:()Z
@@ -513,6 +510,18 @@ NameAndType	filled:Z
 Field	scala/collection/Iterator$GroupedIterator.filled:Z
 NameAndType	fill:()Z
 Method	scala/collection/Iterator$GroupedIterator.fill:()Z
+Asciz	scala/runtime/BoxedUnit;
+class	scala/runtime/BoxedUnit
+Asciz	UNIT;
+Asciz	Lscala/runtime/BoxedUnit;;
+NameAndType	UNIT:Lscala/runtime/BoxedUnit;
+Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+Asciz	scala/runtime/BoxesRunTime;
+class	scala/runtime/BoxesRunTime
+Asciz	boxToBoolean;
+Asciz	(Z)Ljava/lang/Boolean;;
+NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
+Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 NameAndType	toList:()Lscala/collection/immutable/List;
 InterfaceMethod	scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
 Asciz	java/util/NoSuchElementException;
@@ -588,9 +597,6 @@ Asciz	scala/Predef;
 class	scala/Predef
 Asciz	$less$colon$less;
 Asciz	GroupedIterator;
-Asciz	scala/collection/generic/TraversableFactory;
-class	scala/collection/generic/TraversableFactory
-Asciz	GenericCanBuildFrom;
 Asciz	$anonfun$padding$1;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
@@ -1679,20 +1685,20 @@ private int gap();
 private boolean go(int);
   Signature: (I)Z
   Code:
-   Stack=6, Locals=12, Args_size=2
+   Stack=6, Locals=9, Args_size=2
 	new	class scala/runtime/IntRef
 	dup
 	iconst_0
 	invokespecial	Method scala/runtime/IntRef."<init>":(I)V
-	astore	11
+	astore_2
 	aload_0
 	getfield	Field buffer:Lscala/collection/mutable/ArrayBuffer;
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.size:()I
-	istore	8
+	istore_3
 	aload_0
 	iload_1
 	invokespecial	Method takeDestructively:(I)Lscala/collection/Seq;
-	astore	4
+	astore	5
 	aload_0
 	getfield	Field scala$collection$Iterator$GroupedIterator$$pad:Lscala/Option;
 	invokevirtual	Method scala/Option.isDefined:()Z
@@ -1702,41 +1708,37 @@ private boolean go(int);
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
 	ifne	l1 // aload
 	iload_1
-	aload	4
+	aload	5
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
 	isub
-	istore_2
-	iload_2
+	istore	6
+	iload	6
 	iconst_0
 	if_icmple	l2 // aload
-	aload	4
+	aload	5
 	aload_0
-	iload_2
+	iload	6
 	invokespecial	Method padding:(I)Lscala/collection/immutable/List;
 	getstatic	Field scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
-	astore_3
-	new	class scala/collection/generic/TraversableFactory$GenericCanBuildFrom
-	dup
-	aload_3
-	invokespecial	Method scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
+	invokevirtual	Method scala/collection/Seq$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.$plus$plus:(Lscala/collection/Traversable;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 	checkcast	class scala/collection/Seq
 	goto	l3 // astore
-l2	aload	4
+l2	aload	5
 	goto	l3 // astore
-l1	aload	4
-l3	astore	9
+l1	aload	5
+l3	astore	4
 	new	class scala/runtime/IntRef
 	dup
 	iconst_0
 	invokespecial	Method scala/runtime/IntRef."<init>":(I)V
-	astore	10
+	astore	7
 	new	class scala/runtime/BooleanRef
 	dup
 	iconst_0
 	invokespecial	Method scala/runtime/BooleanRef."<init>":(Z)V
-	astore	6
-	aload	9
+	astore	8
+	aload	4
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
 	ifeq	l4 // aload_0
 	iconst_0
@@ -1745,88 +1747,82 @@ l4	aload_0
 	getfield	Field _partial:Z
 	ifeq	l6 // aload_0
 	aload_0
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
-	aload	9
-	aload	10
-	aload	11
+	aload	4
+	aload	7
+	aload_2
 	invokespecial	Method len$3:(Lscala/collection/Seq;Lscala/runtime/IntRef;Lscala/runtime/IntRef;)I
-	istore	5
-	new	class scala/runtime/RichInt
-	dup
-	iload	5
-	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
+	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 	aload_0
 	getfield	Field size:I
 	invokevirtual	Method scala/runtime/RichInt.min:(I)I
-	iload	8
-	aload	9
-	aload	10
-	aload	11
+	iload_3
+	aload	4
+	aload	7
+	aload_2
 	invokespecial	Method deliver$1:(IILscala/collection/Seq;Lscala/runtime/IntRef;Lscala/runtime/IntRef;)Z
 	goto	l5 // ireturn
 l6	aload_0
 	iload_1
-	aload	9
-	aload	10
-	aload	6
-	aload	11
+	aload	4
+	aload	7
+	aload	8
+	aload_2
 	invokespecial	Method incomplete$1:(ILscala/collection/Seq;Lscala/runtime/IntRef;Lscala/runtime/BooleanRef;Lscala/runtime/IntRef;)Z
 	ifeq	l7 // aload_0
 	iconst_0
 	goto	l5 // ireturn
 l7	aload_0
-	iload	8
+	iload_3
 	invokespecial	Method isFirst$1:(I)Z
 	ifeq	l8 // aload_0
 	aload_0
 	aload_0
-	aload	9
-	aload	10
-	aload	11
+	aload	4
+	aload	7
+	aload_2
 	invokespecial	Method len$3:(Lscala/collection/Seq;Lscala/runtime/IntRef;Lscala/runtime/IntRef;)I
-	iload	8
-	aload	9
-	aload	10
-	aload	11
+	iload_3
+	aload	4
+	aload	7
+	aload_2
 	invokespecial	Method deliver$1:(IILscala/collection/Seq;Lscala/runtime/IntRef;Lscala/runtime/IntRef;)Z
 	goto	l5 // ireturn
 l8	aload_0
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
 	getfield	Field step:I
-	istore	7
-	new	class scala/runtime/RichInt
-	dup
-	iload	7
-	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
+	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 	aload_0
 	getfield	Field size:I
 	invokevirtual	Method scala/runtime/RichInt.min:(I)I
-	iload	8
-	aload	9
-	aload	10
-	aload	11
+	iload_3
+	aload	4
+	aload	7
+	aload_2
 	invokespecial	Method deliver$1:(IILscala/collection/Seq;Lscala/runtime/IntRef;Lscala/runtime/IntRef;)Z
 l5	ireturn
   Labels:
-   	l2 = 95 // aload
-   	l1 = 100 // aload
-   	l3 = 102 // astore
-   	l4 = 138 // aload_0
-   	l6 = 188 // aload_0
-   	l7 = 208 // aload_0
-   	l8 = 242 // aload_0
-   	l5 = 276 // ireturn
+   	l2 = 90 // aload
+   	l1 = 95 // aload
+   	l3 = 97 // astore
+   	l4 = 133 // aload_0
+   	l6 = 175 // aload_0
+   	l7 = 194 // aload_0
+   	l8 = 224 // aload_0
+   	l5 = 251 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      277      0    this       Lscala/collection/Iterator$GroupedIterator;
-   0      277      1    count$1       I
-   60      40      2    shortBy       I
-   28      106      4    res       Lscala/collection/Seq;
-   124      153      6    incomplete$lzy$1       Lscala/runtime/BooleanRef;
-   21      256      8    prevSize$1       I
-   104      173      9    xs$1       Lscala/collection/Seq;
-   114      163      10    len$lzy$1       Lscala/runtime/IntRef;
-   10      267      11    bitmap$0$1       Lscala/runtime/IntRef;
+   0      252      0    this       Lscala/collection/Iterator$GroupedIterator;
+   0      252      1    count$1       I
+   9      243      2    bitmap$0$1       Lscala/runtime/IntRef;
+   19      233      3    prevSize$1       I
+   99      153      4    xs$1       Lscala/collection/Seq;
+   26      103      5    res       Lscala/collection/Seq;
+   59      36      6    shortBy       I
+   109      143      7    len$lzy$1       Lscala/runtime/IntRef;
+   119      133      8    incomplete$lzy$1       Lscala/runtime/BooleanRef;
 
 
 private boolean fill();
@@ -1884,11 +1880,13 @@ public scala.collection.immutable.List next();
 	aload_0
 	getfield	Field filled:Z
 	ifeq	l1 // aload_0
-	goto	l2 // aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	goto	l2 // pop
 l1	aload_0
 	invokespecial	Method fill:()Z
-	pop
-l2	aload_0
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+l2	pop
+	aload_0
 	getfield	Field filled:Z
 	ifeq	l3 // new
 	aload_0
@@ -1904,11 +1902,11 @@ l3	new	class java/util/NoSuchElementException
 	invokespecial	Method java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 10 // aload_0
-   	l2 = 15 // aload_0
-   	l3 = 37 // new
+   	l1 = 13 // aload_0
+   	l2 = 20 // pop
+   	l3 = 43 // new
   Signature: length = 0x2
-   01 FFFFFFFE 
+   02 08 
 
 public scala.collection.Iterator scala$collection$Iterator$GroupedIterator$$$outer();
   Signature: ()Lscala/collection/Iterator;
@@ -2008,7 +2006,7 @@ l1	aload	4
 private final boolean deliver$1(int, int, scala.collection.Seq, scala.runtime.IntRef, scala.runtime.IntRef);
   Signature: (IILscala/collection/Seq;Lscala/runtime/IntRef;Lscala/runtime/IntRef;)Z
   Code:
-   Stack=5, Locals=8, Args_size=6
+   Stack=5, Locals=7, Args_size=6
 	iload_1
 	iconst_0
 	if_icmple	l1 // iconst_0
@@ -2026,30 +2024,26 @@ private final boolean deliver$1(int, int, scala.collection.Seq, scala.runtime.In
 	ifne	l2 // aload_0
 	aload_0
 	getfield	Field buffer:Lscala/collection/mutable/ArrayBuffer;
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
 	getfield	Field step:I
-	istore	6
-	new	class scala/runtime/RichInt
-	dup
-	iload	6
-	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
+	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 	iload_2
 	invokevirtual	Method scala/runtime/RichInt.min:(I)I
 	invokeinterface	InterfaceMethod scala/collection/mutable/BufferLike.trimStart:(I)V
 l2	aload_0
 	iload_2
 	invokespecial	Method isFirst$1:(I)Z
-	ifeq	l3 // new
+	ifeq	l3 // getstatic
 	aload_0
 	aload_3
 	aload	4
 	aload	5
 	invokespecial	Method len$3:(Lscala/collection/Seq;Lscala/runtime/IntRef;Lscala/runtime/IntRef;)I
 	goto	l4 // istore
-l3	new	class scala/runtime/RichInt
-	dup
+l3	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iload_1
-	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
+	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 	aload_0
 	aload_3
 	aload	4
@@ -2059,11 +2053,11 @@ l3	new	class scala/runtime/RichInt
 	invokespecial	Method gap:()I
 	isub
 	invokevirtual	Method scala/runtime/RichInt.min:(I)I
-l4	istore	7
+l4	istore	6
 	aload_0
 	getfield	Field buffer:Lscala/collection/mutable/ArrayBuffer;
 	aload_3
-	iload	7
+	iload	6
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.takeRight:(I)Ljava/lang/Object;
 	checkcast	class scala/collection/Traversable
 	invokevirtual	Method scala/collection/mutable/ArrayBuffer.$plus$plus$eq:(Lscala/collection/Traversable;)Lscala/collection/mutable/ArrayBuffer;
@@ -2078,16 +2072,16 @@ l4	istore	7
 l1	iconst_0
 l5	ireturn
   Labels:
-   	l2 = 57 // aload_0
-   	l3 = 77 // new
-   	l4 = 102 // istore
-   	l1 = 136 // iconst_0
-   	l5 = 137 // ireturn
+   	l2 = 52 // aload_0
+   	l3 = 72 // getstatic
+   	l4 = 96 // istore
+   	l1 = 130 // iconst_0
+   	l5 = 131 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      138      0    this       Lscala/collection/Iterator$GroupedIterator;
-   0      138      1    howMany       I
-   104      25      7    available       I
+   0      132      0    this       Lscala/collection/Iterator$GroupedIterator;
+   0      132      1    howMany       I
+   98      25      6    available       I
 
 
 public scala.collection.Iterator$GroupedIterator(scala.collection.Iterator, scala.collection.Iterator, int, int);
@@ -2159,7 +2153,7 @@ l3	invokevirtual	Method scala/Predef$.require:(Z)V
    0      104      4    step       I
 
   Signature: length = 0x2
-   02 36 
+   02 40 
 
 }
 

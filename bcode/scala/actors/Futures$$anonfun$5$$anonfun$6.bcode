@@ -104,13 +104,15 @@ Asciz	<init>;
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/MatchError."<init>":(Ljava/lang/Object;)V
+Asciz	temp24;
+Asciz	Ljava/lang/Object;;
 Asciz	temp25;
 Asciz	Lscala/actors/$bang;;
 Asciz	temp27;
-Asciz	Ljava/lang/Object;;
 Asciz	(Ljava/lang/Object;)Lscala/Tuple2<Ljava/lang/Integer;Ljava/lang/Object;>;;
 Asciz	Signature;
 Asciz	isDefinedAt;
+Asciz	temp29;
 Asciz	scala/PartialFunction;
 class	scala/PartialFunction
 NameAndType	andThen:(Lscala/Function1;)Lscala/PartialFunction;
@@ -146,10 +148,10 @@ class	java/io/Serializable
 public static final long serialVersionUID;
   Signature: J
 
-public final scala.actors.InputChannel FutCh$1;
+private final scala.actors.InputChannel FutCh$1;
   Signature: Lscala/actors/InputChannel;
 
-public final scala.Tuple2 p$1;
+private final scala.Tuple2 p$1;
   Signature: Lscala/Tuple2;
 
 public static {};
@@ -227,28 +229,30 @@ public scala.Function1 compose(scala.Function1);
 public final scala.Tuple2 apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/Tuple2;
   Code:
-   Stack=3, Locals=5, Args_size=2
+   Stack=3, Locals=6, Args_size=2
 	aload_1
-	instanceof	class scala/actors/$bang
-	ifeq	l1 // new
-	aload_1
-	checkcast	class scala/actors/$bang
 	astore_2
 	aload_2
+	instanceof	class scala/actors/$bang
+	ifeq	l1 // new
+	aload_2
+	checkcast	class scala/actors/$bang
+	astore_3
+	aload_3
 	invokevirtual	Method scala/actors/$bang.msg:()Ljava/lang/Object;
 	astore	4
 	aload_0
 	getfield	Field FutCh$1:Lscala/actors/InputChannel;
-	aload_2
-	invokevirtual	Method scala/actors/$bang.ch:()Lscala/actors/Channel;
-	astore_3
-	dup
-	ifnonnull	l2 // aload_3
-	pop
 	aload_3
+	invokevirtual	Method scala/actors/$bang.ch:()Lscala/actors/Channel;
+	astore	5
+	dup
+	ifnonnull	l2 // aload
+	pop
+	aload	5
 	ifnull	l3 // getstatic
 	goto	l4 // new
-l2	aload_3
+l2	aload	5
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l4 // new
 l3	getstatic	Field scala/Predef$Pair$.MODULE$:Lscala/Predef$Pair$;
@@ -260,48 +264,53 @@ l3	getstatic	Field scala/Predef$Pair$.MODULE$:Lscala/Predef$Pair$;
 	areturn
 l4	new	class scala/MatchError
 	dup
-	aload_1
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
 l1	new	class scala/MatchError
 	dup
-	aload_1
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l2 = 39 // aload_3
-   	l3 = 46 // getstatic
-   	l4 = 62 // new
-   	l1 = 71 // new
+   	l2 = 43 // aload
+   	l3 = 51 // getstatic
+   	l4 = 67 // new
+   	l1 = 76 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      80      0    this       Lscala/actors/Futures$$anonfun$5$$anonfun$6;
-   12      59      2    temp25       Lscala/actors/$bang;
-   18      53      4    temp27       Ljava/lang/Object;
+   0      85      0    this       Lscala/actors/Futures$$anonfun$5$$anonfun$6;
+   2      83      2    temp24       Ljava/lang/Object;
+   14      52      3    temp25       Lscala/actors/$bang;
+   67      9      3    temp25       Lscala/actors/$bang;
+   20      46      4    temp27       Ljava/lang/Object;
+   67      9      4    temp27       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 64 
+   00 65 
 
 public final boolean isDefinedAt(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=4, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/actors/$bang
 	ifeq	l1 // iconst_0
 	aload_0
 	getfield	Field FutCh$1:Lscala/actors/InputChannel;
-	aload_1
+	aload_2
 	checkcast	class scala/actors/$bang
 	invokevirtual	Method scala/actors/$bang.ch:()Lscala/actors/Channel;
-	astore_2
+	astore_3
 	dup
-	ifnonnull	l2 // aload_2
+	ifnonnull	l2 // aload_3
 	pop
-	aload_2
+	aload_3
 	ifnull	l3 // iconst_1
 	goto	l4 // iconst_0
-l2	aload_2
+l2	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l4 // iconst_0
 l3	iconst_1
@@ -311,11 +320,16 @@ l4	iconst_0
 l1	iconst_0
 l5	ireturn
   Labels:
-   	l2 = 31 // aload_2
-   	l3 = 38 // iconst_1
-   	l4 = 42 // iconst_0
-   	l1 = 46 // iconst_0
-   	l5 = 47 // ireturn
+   	l2 = 33 // aload_3
+   	l3 = 40 // iconst_1
+   	l4 = 44 // iconst_0
+   	l1 = 48 // iconst_0
+   	l5 = 49 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      50      0    this       Lscala/actors/Futures$$anonfun$5$$anonfun$6;
+   2      48      2    temp29       Ljava/lang/Object;
+
 
 public scala.Function1 andThen(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Function1;

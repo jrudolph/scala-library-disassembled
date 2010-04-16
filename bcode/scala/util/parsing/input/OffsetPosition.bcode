@@ -80,7 +80,6 @@ public class scala.util.parsing.input.OffsetPosition extends java.lang.Object im
    1D FFFFFFC0 00 32 01 03 78 24 30 
   InnerClass: 
    public abstract ByOne=class scala/collection/immutable/Range$ByOne of class scala/collection/immutable/Range
-   public final $anon$2=class scala/collection/immutable/Range$$anon$2 of class scala/collection/immutable/Range
    public final $anonfun$index$1=class scala/util/parsing/input/OffsetPosition$$anonfun$index$1 of class scala/util/parsing/input/OffsetPosition
   minor version: 0
   major version: 49
@@ -172,16 +171,26 @@ Asciz	$plus$eq;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/ArrayBuffer;;
 NameAndType	$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ArrayBuffer;
 Method	scala/collection/mutable/ArrayBuffer.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ArrayBuffer;
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	intWrapper;
+Asciz	(I)Lscala/runtime/RichInt;;
+NameAndType	intWrapper:(I)Lscala/runtime/RichInt;
+Method	scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 Asciz	java/lang/CharSequence;
 class	java/lang/CharSequence
 Asciz	length;
 NameAndType	length:()I
 InterfaceMethod	java/lang/CharSequence.length:()I
-Asciz	scala/collection/immutable/Range$$anon$2;
-class	scala/collection/immutable/Range$$anon$2
-Asciz	(II)V;
-NameAndType	"<init>":(II)V
-Method	scala/collection/immutable/Range$$anon$2."<init>":(II)V
+Asciz	scala/runtime/RichInt;
+class	scala/runtime/RichInt
+Asciz	until;
+Asciz	(I)Lscala/collection/immutable/Range$ByOne;;
+NameAndType	until:(I)Lscala/collection/immutable/Range$ByOne;
+Method	scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
 Asciz	scala/util/parsing/input/OffsetPosition$$anonfun$index$1;
 class	scala/util/parsing/input/OffsetPosition$$anonfun$index$1
 Asciz	(Lscala/util/parsing/input/OffsetPosition;Lscala/runtime/ObjectRef;)V;
@@ -211,10 +220,14 @@ InterfaceMethod	scala/collection/TraversableLike.toArray:(Lscala/reflect/ClassMa
 class	"[I"
 NameAndType	index:[I
 Field	scala/util/parsing/input/OffsetPosition.index:[I
+Asciz	scala/runtime/BoxedUnit;
+class	scala/runtime/BoxedUnit
+Asciz	UNIT;
+Asciz	Lscala/runtime/BoxedUnit;;
+NameAndType	UNIT:Lscala/runtime/BoxedUnit;
+Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	this;
 Asciz	Lscala/util/parsing/input/OffsetPosition;;
-Asciz	start$10;
-Asciz	end0;
 Asciz	lineStarts$1;
 Asciz	Lscala/runtime/ObjectRef;;
 Asciz	LocalVariableTable;
@@ -260,6 +273,7 @@ InterfaceMethod	scala/util/parsing/input/Position.line:()I
 InterfaceMethod	scala/util/parsing/input/Position.column:()I
 Asciz	that;
 Asciz	Lscala/util/parsing/input/Position;;
+Asciz	temp1;
 Asciz	copy;
 Asciz	(Ljava/lang/CharSequence;I)Lscala/util/parsing/input/OffsetPosition;;
 Asciz	(Ljava/lang/CharSequence;I)V;
@@ -286,9 +300,12 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp5;
 Asciz	temp6;
 Asciz	temp7;
 Asciz	temp8;
+Asciz	offset$1;
+Asciz	source$1;
 Asciz	productPrefix;
 Asciz	OffsetPosition;
 String	OffsetPosition
@@ -300,10 +317,12 @@ class	java/lang/IndexOutOfBoundsException
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp9;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	offset
 String	source
+Asciz	temp10;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object."<init>":()V
@@ -319,7 +338,6 @@ Asciz	InnerClasses;
 Asciz	scala/collection/immutable/Range;
 class	scala/collection/immutable/Range
 Asciz	ByOne;
-Asciz	$anon$2;
 Asciz	$anonfun$index$1;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
@@ -436,7 +454,7 @@ public int offset();
 private int[] index();
   Signature: ()[I
   Code:
-   Stack=6, Locals=6, Args_size=1
+   Stack=6, Locals=3, Args_size=1
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
@@ -445,14 +463,14 @@ private int[] index();
 	if_icmpne	l1 // aload_0
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
 	iand
 	iconst_0
-	if_icmpne	l2 // aload_0
+	if_icmpne	l2 // getstatic
 	aload_0
 	new	class scala/runtime/ObjectRef
 	dup
@@ -460,45 +478,37 @@ private int[] index();
 	dup
 	invokespecial	Method scala/collection/mutable/ArrayBuffer."<init>":()V
 	invokespecial	Method scala/runtime/ObjectRef."<init>":(Ljava/lang/Object;)V
-	astore	5
-	aload	5
+	astore_2
+	aload_2
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class scala/collection/mutable/ArrayBuffer
 	iconst_0
-	istore_1
-	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/ArrayBuffer.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ArrayBuffer;
 	pop
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iconst_0
+	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 	aload_0
 	invokevirtual	Method source:()Ljava/lang/CharSequence;
 	invokeinterface	InterfaceMethod java/lang/CharSequence.length:()I
-	istore_3
-	iconst_0
-	istore_2
-	new	class scala/collection/immutable/Range$$anon$2
-	dup
-	iload_2
-	iload_3
-	invokespecial	Method scala/collection/immutable/Range$$anon$2."<init>":(II)V
+	invokevirtual	Method scala/runtime/RichInt.until:(I)Lscala/collection/immutable/Range$ByOne;
 	new	class scala/util/parsing/input/OffsetPosition$$anonfun$index$1
 	dup
 	aload_0
-	aload	5
+	aload_2
 	invokespecial	Method scala/util/parsing/input/OffsetPosition$$anonfun$index$1."<init>":(Lscala/util/parsing/input/OffsetPosition;Lscala/runtime/ObjectRef;)V
 	invokeinterface	InterfaceMethod scala/collection/immutable/Range$ByOne.foreach:(Lscala/Function1;)V
-	aload	5
+	aload_2
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class scala/collection/mutable/ArrayBuffer
 	aload_0
 	invokevirtual	Method source:()Ljava/lang/CharSequence;
 	invokeinterface	InterfaceMethod java/lang/CharSequence.length:()I
-	istore	4
-	iload	4
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/ArrayBuffer.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ArrayBuffer;
 	pop
-	aload	5
+	aload_2
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class scala/collection/mutable/ArrayBuffer
 	getstatic	Field scala/reflect/Manifest$.MODULE$:Lscala/reflect/Manifest$;
@@ -512,26 +522,26 @@ private int[] index();
 	iconst_1
 	ior
 	putfield	Field bitmap$0:I
-l2	aload_0
+l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_1
 	monitorexit
 l1	aload_0
 	getfield	Field index:[I
 	areturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
-   	l2 = 158 // aload_0
-   	l1 = 160 // aload_0
+   	l2 = 145 // getstatic
+   	l1 = 151 // aload_0
   Exception table:
    from   to  target type
-    14   160   165   any
+    14   151   156   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      168      0    this       Lscala/util/parsing/input/OffsetPosition;
-   71      9      2    start$10       I
-   69      11      3    end0       I
-   41      104      5    lineStarts$1       Lscala/runtime/ObjectRef;
+   0      159      0    this       Lscala/util/parsing/input/OffsetPosition;
+   40      92      2    lineStarts$1       Lscala/runtime/ObjectRef;
 
 
 public int line();
@@ -631,7 +641,7 @@ public java.lang.String lineContents();
 public java.lang.String toString();
   Signature: ()Ljava/lang/String;
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=1, Args_size=1
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
@@ -642,8 +652,6 @@ public java.lang.String toString();
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokevirtual	Method column:()I
-	istore_1
-	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
@@ -653,13 +661,15 @@ public java.lang.String toString();
 public boolean $less(scala.util.parsing.input.Position);
   Signature: (Lscala/util/parsing/input/Position;)Z
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/util/parsing/input/OffsetPosition
 	ifeq	l1 // aload_0
 	aload_0
 	invokevirtual	Method offset:()I
-	aload_1
+	aload_2
 	checkcast	class scala/util/parsing/input/OffsetPosition
 	invokevirtual	Method offset:()I
 	if_icmpge	l2 // iconst_0
@@ -687,15 +697,16 @@ l4	iconst_1
 l5	iconst_0
 l3	ireturn
   Labels:
-   	l2 = 25 // iconst_0
-   	l1 = 29 // aload_0
-   	l4 = 68 // iconst_1
-   	l5 = 72 // iconst_0
-   	l3 = 73 // ireturn
+   	l2 = 27 // iconst_0
+   	l1 = 31 // aload_0
+   	l4 = 70 // iconst_1
+   	l5 = 74 // iconst_0
+   	l3 = 75 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      74      0    this       Lscala/util/parsing/input/OffsetPosition;
-   0      74      1    that       Lscala/util/parsing/input/Position;
+   0      76      0    this       Lscala/util/parsing/input/OffsetPosition;
+   0      76      1    that       Lscala/util/parsing/input/Position;
+   2      74      2    temp1       Lscala/util/parsing/input/Position;
 
 
 public scala.util.parsing.input.OffsetPosition copy(java.lang.CharSequence, int);
@@ -729,25 +740,31 @@ public int hashCode();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=3, Locals=5, Args_size=2
+   Stack=3, Locals=8, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/util/parsing/input/OffsetPosition
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/util/parsing/input/OffsetPosition
 	astore_2
 	aload_2
-	invokevirtual	Method source:()Ljava/lang/CharSequence;
-	astore_3
+	instanceof	class scala/util/parsing/input/OffsetPosition
+	ifeq	l2 // iconst_0
 	aload_2
-	invokevirtual	Method offset:()I
-	istore	4
-	aload_0
+	checkcast	class scala/util/parsing/input/OffsetPosition
+	astore_3
 	aload_3
-	iload	4
+	invokevirtual	Method source:()Ljava/lang/CharSequence;
+	astore	4
+	aload_3
+	invokevirtual	Method offset:()I
+	istore	5
+	iload	5
+	istore	6
+	aload	4
+	astore	7
+	aload_0
+	aload	7
+	iload	6
 	invokespecial	Method gd1$1:(Ljava/lang/CharSequence;I)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -764,18 +781,21 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 51 // iconst_0
-   	l2 = 55 // iconst_0
-   	l4 = 56 // ifeq
-   	l1 = 59 // iconst_1
-   	l5 = 63 // iconst_0
-   	l6 = 64 // ireturn
+   	l3 = 63 // iconst_0
+   	l2 = 67 // iconst_0
+   	l4 = 68 // ifeq
+   	l1 = 71 // iconst_1
+   	l5 = 75 // iconst_0
+   	l6 = 76 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      65      0    this       Lscala/util/parsing/input/OffsetPosition;
-   17      38      2    temp6       Lscala/util/parsing/input/OffsetPosition;
-   22      33      3    temp7       Ljava/lang/CharSequence;
-   28      27      4    temp8       I
+   0      77      0    this       Lscala/util/parsing/input/OffsetPosition;
+   7      64      2    temp5       Ljava/lang/Object;
+   19      48      3    temp6       Lscala/util/parsing/input/OffsetPosition;
+   25      42      4    temp7       Ljava/lang/CharSequence;
+   31      36      5    temp8       I
+   35      32      6    offset$1       I
+   39      28      7    source$1       Ljava/lang/CharSequence;
 
 
 public java.lang.String productPrefix();
@@ -799,8 +819,10 @@ public java.lang.Object productElement(int);
   Code:
    Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
-		0: 51;
+		0: 49;
 		1: 39;
 		default: 24 }
 	new	class java/lang/IndexOutOfBoundsException
@@ -812,21 +834,26 @@ public java.lang.Object productElement(int);
 	athrow
 	aload_0
 	invokevirtual	Method offset:()I
-	istore_2
-	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	goto	l1 // areturn
 	aload_0
 	invokevirtual	Method source:()Ljava/lang/CharSequence;
 l1	areturn
   Labels:
-   	l1 = 55 // areturn
+   	l1 = 53 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      54      0    this       Lscala/util/parsing/input/OffsetPosition;
+   2      52      2    temp9       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
 		0: 44;
 		1: 39;
@@ -844,6 +871,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 46 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      47      0    this       Lscala/util/parsing/input/OffsetPosition;
+   2      45      2    temp10       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z

@@ -128,8 +128,9 @@ Asciz	<init>;
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/MatchError."<init>":(Ljava/lang/Object;)V
-Asciz	temp25;
 Asciz	Ljava/lang/Object;;
+Asciz	temp24;
+Asciz	temp25;
 Asciz	transmit;
 Asciz	([B)V;
 Asciz	scala/actors/Debug$;
@@ -138,11 +139,19 @@ Asciz	MODULE$;
 Asciz	Lscala/actors/Debug$;;
 NameAndType	MODULE$:Lscala/actors/Debug$;
 Field	scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
-Asciz	scala/runtime/StringAdd;
-class	scala/runtime/StringAdd
-Method	scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	any2stringadd;
+Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
+NameAndType	any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+Method	scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
 Asciz	: transmitting data...;
 String	: transmitting data...
+Asciz	scala/runtime/StringAdd;
+class	scala/runtime/StringAdd
 Asciz	$plus;
 Asciz	(Ljava/lang/String;)Ljava/lang/String;;
 NameAndType	$plus:(Ljava/lang/String;)Ljava/lang/String;
@@ -163,6 +172,12 @@ Method	java/io/DataOutputStream.write:([B)V
 Asciz	flush;
 NameAndType	flush:()V
 Method	java/io/DataOutputStream.flush:()V
+Asciz	scala/runtime/BoxedUnit;
+class	scala/runtime/BoxedUnit
+Asciz	UNIT;
+Asciz	Lscala/runtime/BoxedUnit;;
+NameAndType	UNIT:Lscala/runtime/BoxedUnit;
+Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	data;
 Asciz	[B;
 Asciz	()Z;
@@ -328,26 +343,30 @@ public void sendNode(scala.actors.remote.Node);
 public void readNode();
   Signature: ()V
   Code:
-   Stack=3, Locals=3, Args_size=1
+   Stack=3, Locals=5, Args_size=1
 	aload_0
 	getfield	Field parent:Lscala/actors/remote/TcpService;
 	invokevirtual	Method scala/actors/remote/TcpService.serializer:()Lscala/actors/remote/JavaSerializer;
 	aload_0
 	invokevirtual	Method datain:()Ljava/io/DataInputStream;
 	invokevirtual	Method scala/actors/remote/JavaSerializer.readObject:(Ljava/io/DataInputStream;)Ljava/lang/Object;
+	astore_1
+	aload_1
 	astore_2
 	aload_2
 	instanceof	class scala/actors/remote/Node
 	ifeq	l1 // new
 	aload_2
 	checkcast	class scala/actors/remote/Node
-	astore_1
+	astore_3
+	aload_3
+	astore	4
 	aload_0
-	aload_1
+	aload	4
 	invokevirtual	Method connectedNode_$eq:(Lscala/actors/remote/Node;)V
 	aload_0
 	getfield	Field parent:Lscala/actors/remote/TcpService;
-	aload_1
+	aload	4
 	aload_0
 	invokevirtual	Method scala/actors/remote/TcpService.addConnection:(Lscala/actors/remote/Node;Lscala/actors/remote/TcpServiceWorker;)Lscala/collection/mutable/HashMap;
 	pop
@@ -358,27 +377,28 @@ l1	new	class scala/MatchError
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 43 // new
+   	l1 = 50 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      52      0    this       Lscala/actors/remote/TcpServiceWorker;
-   27      15      1    temp25       Lscala/actors/remote/Node;
-   15      37      2    node       Ljava/lang/Object;
+   0      59      0    this       Lscala/actors/remote/TcpServiceWorker;
+   15      44      1    node       Ljava/lang/Object;
+   17      42      2    temp24       Ljava/lang/Object;
+   29      20      3    temp25       Lscala/actors/remote/Node;
+   32      17      4    n       Lscala/actors/remote/Node;
 
 
 public void transmit(byte[]);
   Signature: ([B)V
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	aload_0
 	dup
-	pop
+	astore_2
 	monitorenter
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
-	new	class scala/runtime/StringAdd
-	dup
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
-	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
 	ldc	String : transmitting data...
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
@@ -394,20 +414,22 @@ public void transmit(byte[]);
 	aload_0
 	invokevirtual	Method dataout:()Ljava/io/DataOutputStream;
 	invokevirtual	Method java/io/DataOutputStream.flush:()V
-	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_2
 	monitorexit
 	return
-	aload_0
+	aload_2
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    49    50   any
+     4    52    53   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      53      0    this       Lscala/actors/remote/TcpServiceWorker;
-   0      53      1    data       [B
+   0      56      0    this       Lscala/actors/remote/TcpServiceWorker;
+   0      56      1    data       [B
 
 
 public boolean running();
@@ -432,10 +454,10 @@ public void running_$eq(boolean);
 public void halt();
   Signature: ()V
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=2, Locals=2, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	getfield	Field so:Ljava/net/Socket;
@@ -443,21 +465,23 @@ public void halt();
 	aload_0
 	iconst_0
 	invokevirtual	Method running_$eq:(Z)V
-	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_1
 	monitorexit
 	return
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    18    19   any
+     4    22    23   any
 
 public void run();
   Signature: ()V
   Code:
-   Stack=5, Locals=4, Args_size=1
+   Stack=4, Locals=4, Args_size=1
 l2	aload_0
 	invokevirtual	Method running:()Z
 	ifeq	l1 // getstatic
@@ -467,24 +491,44 @@ l2	aload_0
 	aload_0
 	invokevirtual	Method datain:()Ljava/io/DataInputStream;
 	invokevirtual	Method scala/actors/remote/JavaSerializer.readObject:(Ljava/io/DataInputStream;)Ljava/lang/Object;
-	astore_1
+	astore_3
 	aload_0
 	getfield	Field parent:Lscala/actors/remote/TcpService;
 	invokeinterface	InterfaceMethod scala/actors/remote/Service.kernel:()Lscala/actors/remote/NetKernel;
 	aload_0
 	invokevirtual	Method connectedNode:()Lscala/actors/remote/Node;
-	aload_1
+	aload_3
 	invokevirtual	Method scala/actors/remote/NetKernel.processMsg:(Lscala/actors/remote/Node;Ljava/lang/Object;)V
 	goto	l2 // aload_0
+	astore_1
+	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	aload_0
+	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	ldc	String : caught 
+	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	aload_1
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+	aload_0
+	getfield	Field parent:Lscala/actors/remote/TcpService;
+	aload_0
+	invokevirtual	Method connectedNode:()Lscala/actors/remote/Node;
+	invokevirtual	Method scala/actors/remote/TcpService.nodeDown:(Lscala/actors/remote/Node;)V
+	goto	l1 // getstatic
 	astore_2
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	new	class scala/runtime/StringAdd
-	dup
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
-	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
 	ldc	String : caught 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
@@ -497,36 +541,13 @@ l2	aload_0
 	aload_0
 	invokevirtual	Method connectedNode:()Lscala/actors/remote/Node;
 	invokevirtual	Method scala/actors/remote/TcpService.nodeDown:(Lscala/actors/remote/Node;)V
-	goto	l1 // getstatic
-	astore_3
-	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
-	new	class scala/collection/mutable/StringBuilder
-	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	new	class scala/runtime/StringAdd
-	dup
-	aload_0
-	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
-	ldc	String : caught 
-	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload_3
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
-	aload_0
-	getfield	Field parent:Lscala/actors/remote/TcpService;
-	aload_0
-	invokevirtual	Method connectedNode:()Lscala/actors/remote/Node;
-	invokevirtual	Method scala/actors/remote/TcpService.nodeDown:(Lscala/actors/remote/Node;)V
 l1	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	new	class scala/runtime/StringAdd
-	dup
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
-	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
 	ldc	String : service terminated at 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
@@ -539,17 +560,17 @@ l1	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	return
   Labels:
    	l2 = 0 // aload_0
-   	l1 = 141 // getstatic
+   	l1 = 139 // getstatic
   Exception table:
    from   to  target type
-     0    42    93   Class java/io/IOException
+     0    42    92   Class java/io/IOException
 
      0    42    42   Class java/lang/Exception
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      184      0    this       Lscala/actors/remote/TcpServiceWorker;
-   22      17      1    msg       Ljava/lang/Object;
+   0      181      0    this       Lscala/actors/remote/TcpServiceWorker;
+   22      17      3    msg       Ljava/lang/Object;
 
 
 public scala.actors.remote.TcpServiceWorker(scala.actors.remote.TcpService, java.net.Socket);

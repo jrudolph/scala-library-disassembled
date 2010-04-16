@@ -365,6 +365,7 @@ Method	scala/Option.exists:(Lscala/Function1;)Z
 NameAndType	unifiedPrimitiveEquals:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/math/ScalaNumericConversions.unifiedPrimitiveEquals:(Ljava/lang/Object;)Z
 Asciz	that;
+Asciz	temp1;
 Asciz	isWhole;
 Asciz	underlying;
 Asciz	compare;
@@ -904,19 +905,21 @@ l2	ireturn
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=4, Locals=3, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/math/BigInt
-	ifeq	l1 // aload_1
+	ifeq	l1 // aload_2
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/math/BigInt
 	invokevirtual	Method equals:(Lscala/math/BigInt;)Z
 	goto	l2 // ireturn
-l1	aload_1
+l1	aload_2
 	instanceof	class scala/math/BigDecimal
 	ifeq	l3 // aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/math/BigDecimal
 	invokevirtual	Method scala/math/BigDecimal.toBigIntExact:()Lscala/Option;
 	new	class scala/math/BigInt$$anonfun$equals$1
@@ -926,17 +929,18 @@ l1	aload_1
 	invokevirtual	Method scala/Option.exists:(Lscala/Function1;)Z
 	goto	l2 // ireturn
 l3	aload_0
-	aload_1
+	aload_2
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.unifiedPrimitiveEquals:(Ljava/lang/Object;)Z
 l2	ireturn
   Labels:
-   	l1 = 18 // aload_1
-   	l3 = 46 // aload_0
-   	l2 = 53 // ireturn
+   	l1 = 20 // aload_2
+   	l3 = 48 // aload_0
+   	l2 = 55 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      54      0    this       Lscala/math/BigInt;
-   0      54      1    that       Ljava/lang/Object;
+   0      56      0    this       Lscala/math/BigInt;
+   0      56      1    that       Ljava/lang/Object;
+   2      54      2    temp1       Ljava/lang/Object;
 
 
 public boolean isWhole();
@@ -1217,7 +1221,7 @@ public scala.Tuple2 $div$percent(scala.math.BigInt);
    12      27      2    dr       [Ljava/math/BigInteger;
 
   Signature: length = 0x2
-   00 FFFFFFD9 
+   00 FFFFFFDA 
 
 public scala.math.BigInt $less$less(int);
   Signature: (I)Lscala/math/BigInt;
@@ -1735,7 +1739,7 @@ public scala.collection.immutable.NumericRange$Exclusive until(scala.math.BigInt
    0      10      2    step       Lscala/math/BigInt;
 
   Signature: length = 0x2
-   01 54 
+   01 55 
 
 public scala.collection.immutable.NumericRange$Inclusive to(scala.math.BigInt, scala.math.BigInt);
   Signature: (Lscala/math/BigInt;Lscala/math/BigInt;)Lscala/collection/immutable/NumericRange$Inclusive;
@@ -1755,7 +1759,7 @@ public scala.collection.immutable.NumericRange$Inclusive to(scala.math.BigInt, s
    0      10      2    step       Lscala/math/BigInt;
 
   Signature: length = 0x2
-   01 5B 
+   01 5C 
 
 public java.lang.String toString();
   Signature: ()Ljava/lang/String;

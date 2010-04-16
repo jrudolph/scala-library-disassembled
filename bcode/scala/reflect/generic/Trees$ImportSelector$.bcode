@@ -129,7 +129,7 @@ Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
 {
-public final scala.reflect.generic.Universe $outer;
+private final scala.reflect.generic.Universe $outer;
   Signature: Lscala/reflect/generic/Universe;
 
 public java.lang.String toString();
@@ -172,12 +172,12 @@ public scala.Function1 tupled();
 public scala.Option unapply(scala.reflect.generic.Trees$ImportSelector);
   Signature: (Lscala/reflect/generic/Trees$ImportSelector;)Lscala/Option;
   Code:
-   Stack=8, Locals=4, Args_size=2
+   Stack=8, Locals=3, Args_size=2
 	aload_1
 	dup
-	pop
+	astore_2
 	ifnull	l1 // getstatic
-	aload_1
+	aload_2
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // new
@@ -191,15 +191,11 @@ l2	new	class scala/Some
 	invokevirtual	Method scala/reflect/generic/Trees$ImportSelector.name:()Ljava/lang/Object;
 	aload_1
 	invokevirtual	Method scala/reflect/generic/Trees$ImportSelector.namePos:()I
-	istore_2
-	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	aload_1
 	invokevirtual	Method scala/reflect/generic/Trees$ImportSelector.rename:()Ljava/lang/Object;
 	aload_1
 	invokevirtual	Method scala/reflect/generic/Trees$ImportSelector.renamePos:()I
-	istore_3
-	iload_3
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokespecial	Method scala/Tuple4."<init>":(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
@@ -207,11 +203,11 @@ l3	areturn
   Labels:
    	l1 = 14 // getstatic
    	l2 = 20 // new
-   	l3 = 60 // areturn
+   	l3 = 56 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      61      0    this       Lscala/reflect/generic/Trees$ImportSelector$;
-   0      61      1    x$0       Lscala/reflect/generic/Trees$ImportSelector;
+   0      57      0    this       Lscala/reflect/generic/Trees$ImportSelector$;
+   0      57      1    x$0       Lscala/reflect/generic/Trees$ImportSelector;
 
 
 public scala.reflect.generic.Trees$ImportSelector apply(java.lang.Object, int, java.lang.Object, int);

@@ -2,7 +2,7 @@ Compiled from "ListMap.scala"
 public class scala.collection.mutable.ListMap extends java.lang.Object implements scala.collection.mutable.Map,scala.collection.mutable.MapLike,scala.ScalaObject,java.io.Serializable
   SourceFile: "ListMap.scala"
   Signature: length = 0x2
-   03 FFFFFFA5 
+   03 FFFFFF9D 
   ScalaSig: length = 0x43A
    05 00 FFFFFF81 29 06 04 01 02 00 09 02 07 4C 69 73 74
    4D 61 70 0A 02 03 04 01 07 6D 75 74 61 62 6C 65
@@ -851,23 +851,15 @@ NameAndType	isEmpty:()Z
 InterfaceMethod	scala/collection/IterableLike.isEmpty:()Z
 NameAndType	head:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/IterableLike.head:()Ljava/lang/Object;
-Asciz	java/lang/Number;
-class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Asciz	scala/collection/TraversableLike;
 class	scala/collection/TraversableLike
 NameAndType	tail:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/TraversableLike.tail:()Ljava/lang/Object;
-Asciz	x0;
 Asciz	(TA;Lscala/collection/immutable/List<Lscala/Tuple2<TA;TB;>;>;)Lscala/collection/immutable/List<Lscala/Tuple2<TA;TB;>;>;;
 Asciz	clear;
 Asciz	()V;
@@ -3097,7 +3089,7 @@ public scala.collection.Iterator iterator();
 public scala.collection.mutable.ListMap $plus$eq(scala.Tuple2);
   Signature: (Lscala/Tuple2;)Lscala/collection/mutable/ListMap;
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=4, Locals=3, Args_size=2
 	aload_0
 	aload_0
 	aload_1
@@ -3107,9 +3099,11 @@ public scala.collection.mutable.ListMap $plus$eq(scala.Tuple2);
 	invokespecial	Method remove:(Ljava/lang/Object;Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
 	invokespecial	Method elems_$eq:(Lscala/collection/immutable/List;)V
 	aload_0
+	aload_1
+	astore_2
 	aload_0
 	invokespecial	Method elems:()Lscala/collection/immutable/List;
-	aload_1
+	aload_2
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	invokespecial	Method elems_$eq:(Lscala/collection/immutable/List;)V
 	aload_0
@@ -3123,8 +3117,8 @@ public scala.collection.mutable.ListMap $plus$eq(scala.Tuple2);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      40      0    this       Lscala/collection/mutable/ListMap;
-   0      40      1    kv       Lscala/Tuple2;
+   0      42      0    this       Lscala/collection/mutable/ListMap;
+   0      42      1    kv       Lscala/Tuple2;
 
   Signature: length = 0x2
    02 FFFFFFFB 
@@ -3154,7 +3148,7 @@ public scala.collection.mutable.ListMap $minus$eq(java.lang.Object);
 private scala.collection.immutable.List remove(java.lang.Object, scala.collection.immutable.List);
   Signature: (Ljava/lang/Object;Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
   Code:
-   Stack=3, Locals=5, Args_size=3
+   Stack=3, Locals=4, Args_size=3
 	aload_2
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
 	ifeq	l1 // aload_2
@@ -3164,30 +3158,9 @@ l1	aload_2
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.head:()Ljava/lang/Object;
 	checkcast	class scala/Tuple2
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
-	astore_3
-	aload_3
 	aload_1
-	if_acmpne	l3 // aload_3
-	iconst_1
-	goto	l4 // ifeq
-l3	aload_3
-	ifnonnull	l5 // aload_3
-	iconst_0
-	goto	l4 // ifeq
-l5	aload_3
-	instanceof	class java/lang/Number
-	ifne	l6 // aload_3
-	aload_3
-	instanceof	class java/lang/Character
-	ifeq	l7 // aload_3
-l6	aload_3
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l4 // ifeq
-l7	aload_3
-	aload_1
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l4	ifeq	l8 // aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l3 // aload_2
 	aload_0
 	aload_0
 	invokespecial	Method siz:()I
@@ -3198,37 +3171,31 @@ l4	ifeq	l8 // aload_2
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
 	goto	l2 // areturn
-l8	aload_2
+l3	aload_2
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.head:()Ljava/lang/Object;
 	checkcast	class scala/Tuple2
-	astore	4
+	astore_3
 	aload_0
 	aload_1
 	aload_2
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
 	invokespecial	Method remove:(Ljava/lang/Object;Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
-	aload	4
+	aload_3
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 l2	areturn
   Labels:
    	l1 = 13 // aload_2
-   	l3 = 35 // aload_3
-   	l5 = 43 // aload_3
-   	l6 = 57 // aload_3
-   	l7 = 65 // aload_3
-   	l4 = 70 // ifeq
-   	l8 = 95 // aload_2
-   	l2 = 125 // areturn
+   	l3 = 54 // aload_2
+   	l2 = 82 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      126      0    this       Lscala/collection/mutable/ListMap;
-   0      126      1    key       Ljava/lang/Object;
-   0      126      2    elems       Lscala/collection/immutable/List;
-   31      42      3    x0       Ljava/lang/Object;
+   0      83      0    this       Lscala/collection/mutable/ListMap;
+   0      83      1    key       Ljava/lang/Object;
+   0      83      2    elems       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   03 15 
+   03 0D 
 
 public void clear();
   Signature: ()V
@@ -3616,7 +3583,7 @@ public scala.collection.mutable.ListMap();
 	return
   Labels:
   Signature: length = 0x2
-   03 17 
+   03 0F 
 
 }
 

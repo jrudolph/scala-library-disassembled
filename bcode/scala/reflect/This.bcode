@@ -134,8 +134,11 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp35;
+Asciz	Ljava/lang/Object;;
 Asciz	temp36;
 Asciz	temp37;
+Asciz	sym$3;
 Asciz	productPrefix;
 Asciz	This;
 String	This
@@ -157,9 +160,12 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp38;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	sym
+Asciz	temp39;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/reflect/Tree;
@@ -279,21 +285,25 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=4, Args_size=2
+   Stack=2, Locals=6, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/reflect/This
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/reflect/This
 	astore_2
 	aload_2
-	invokevirtual	Method sym:()Lscala/reflect/Symbol;
+	instanceof	class scala/reflect/This
+	ifeq	l2 // iconst_0
+	aload_2
+	checkcast	class scala/reflect/This
 	astore_3
-	aload_0
 	aload_3
+	invokevirtual	Method sym:()Lscala/reflect/Symbol;
+	astore	4
+	aload	4
+	astore	5
+	aload_0
+	aload	5
 	invokespecial	Method gd7$1:(Lscala/reflect/Symbol;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -310,17 +320,19 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 43 // iconst_0
-   	l2 = 47 // iconst_0
-   	l4 = 48 // ifeq
-   	l1 = 51 // iconst_1
-   	l5 = 55 // iconst_0
-   	l6 = 56 // ireturn
+   	l3 = 51 // iconst_0
+   	l2 = 55 // iconst_0
+   	l4 = 56 // ifeq
+   	l1 = 59 // iconst_1
+   	l5 = 63 // iconst_0
+   	l6 = 64 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      57      0    this       Lscala/reflect/This;
-   17      30      2    temp36       Lscala/reflect/This;
-   22      25      3    temp37       Lscala/reflect/Symbol;
+   0      65      0    this       Lscala/reflect/This;
+   7      52      2    temp35       Ljava/lang/Object;
+   19      36      3    temp36       Lscala/reflect/This;
+   25      30      4    temp37       Lscala/reflect/Symbol;
+   29      26      5    sym$3       Lscala/reflect/Symbol;
 
 
 public java.lang.String productPrefix();
@@ -342,8 +354,10 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	aload_0
@@ -357,13 +371,20 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 10 // new
+   	l1 = 12 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      27      0    this       Lscala/reflect/This;
+   2      25      2    temp38       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	ldc	String sym
@@ -376,7 +397,12 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 8 // new
+   	l1 = 10 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      25      0    this       Lscala/reflect/This;
+   2      23      2    temp39       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z

@@ -527,15 +527,15 @@ l2	aload_0
 public void foreach(scala.Function2);
   Signature: (Lscala/Function2;)V
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=4, Args_size=2
 	aload_0
 	invokevirtual	Method first:()Lscala/actors/MQueueElement;
 	astore_2
 l3	aload_2
 	dup
-	pop
+	astore_3
 	ifnull	l1 // return
-	aload_2
+	aload_3
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // aload_1
@@ -567,15 +567,15 @@ l2	aload_1
 public void foreachAppend(scala.actors.MQueue);
   Signature: (Lscala/actors/MQueue;)V
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=4, Args_size=2
 	aload_0
 	invokevirtual	Method first:()Lscala/actors/MQueueElement;
 	astore_2
 l3	aload_2
 	dup
-	pop
+	astore_3
 	ifnull	l1 // return
-	aload_2
+	aload_3
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // aload_1
@@ -603,22 +603,26 @@ l2	aload_1
 public void foreachDequeue(scala.actors.MQueue);
   Signature: (Lscala/actors/MQueue;)V
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=4, Args_size=2
 	aload_0
 	invokevirtual	Method first:()Lscala/actors/MQueueElement;
 	astore_2
 l3	aload_2
 	dup
-	pop
+	astore_3
 	ifnull	l1 // aload_0
-	aload_2
+	aload_3
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // aload_1
 l1	aload_0
 	aconst_null
+	pop
+	aconst_null
 	invokevirtual	Method first_$eq:(Lscala/actors/MQueueElement;)V
 	aload_0
+	aconst_null
+	pop
 	aconst_null
 	invokevirtual	Method last_$eq:(Lscala/actors/MQueueElement;)V
 	aload_0
@@ -635,13 +639,13 @@ l2	aload_1
   Labels:
    	l3 = 5 // aload_2
    	l1 = 19 // aload_0
-   	l2 = 35 // aload_1
+   	l2 = 39 // aload_1
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      48      0    this       Lscala/actors/MQueue;
-   0      48      1    target       Lscala/actors/MQueue;
-   5      29      2    curr       Lscala/actors/MQueueElement;
-   35      13      2    curr       Lscala/actors/MQueueElement;
+   0      52      0    this       Lscala/actors/MQueue;
+   0      52      1    target       Lscala/actors/MQueue;
+   5      33      2    curr       Lscala/actors/MQueueElement;
+   39      13      2    curr       Lscala/actors/MQueueElement;
 
   Signature: length = 0x2
    00 6A 
@@ -649,7 +653,7 @@ l2	aload_1
 public java.lang.Object foldLeft(java.lang.Object, scala.Function2);
   Signature: (Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=5, Args_size=3
+   Stack=3, Locals=6, Args_size=3
 	aload_1
 	astore_3
 	aload_0
@@ -657,9 +661,9 @@ public java.lang.Object foldLeft(java.lang.Object, scala.Function2);
 	astore	4
 l3	aload	4
 	dup
-	pop
+	astore	5
 	ifnull	l1 // aload_3
-	aload	4
+	aload	5
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // aload_2
@@ -677,17 +681,17 @@ l2	aload_2
 	goto	l3 // aload
   Labels:
    	l3 = 8 // aload
-   	l1 = 24 // aload_3
-   	l2 = 26 // aload_2
+   	l1 = 25 // aload_3
+   	l2 = 27 // aload_2
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      49      0    this       Lscala/actors/MQueue;
-   0      49      1    z       Ljava/lang/Object;
-   0      49      2    f       Lscala/Function2;
-   2      23      3    acc       Ljava/lang/Object;
-   26      23      3    acc       Ljava/lang/Object;
-   8      17      4    curr       Lscala/actors/MQueueElement;
-   26      23      4    curr       Lscala/actors/MQueueElement;
+   0      50      0    this       Lscala/actors/MQueue;
+   0      50      1    z       Ljava/lang/Object;
+   0      50      2    f       Lscala/Function2;
+   2      24      3    acc       Ljava/lang/Object;
+   27      23      3    acc       Ljava/lang/Object;
+   8      18      4    curr       Lscala/actors/MQueueElement;
+   27      23      4    curr       Lscala/actors/MQueueElement;
 
   Signature: length = 0x2
    00 70 
@@ -695,7 +699,7 @@ l2	aload_2
 public scala.Option get(int, scala.Function1);
   Signature: (ILscala/Function1;)Lscala/Option;
   Code:
-   Stack=5, Locals=5, Args_size=3
+   Stack=5, Locals=6, Args_size=3
 	new	class scala/runtime/IntRef
 	dup
 	iconst_0
@@ -706,9 +710,9 @@ public scala.Option get(int, scala.Function1);
 	astore	4
 l4	aload	4
 	dup
-	pop
+	astore	5
 	ifnull	l1 // getstatic
-	aload	4
+	aload	5
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // aload_0
@@ -734,18 +738,18 @@ l3	aload	4
 	goto	l4 // aload
   Labels:
    	l4 = 15 // aload
-   	l1 = 31 // getstatic
-   	l2 = 35 // aload_0
-   	l3 = 63 // aload
+   	l1 = 32 // getstatic
+   	l2 = 36 // aload_0
+   	l3 = 64 // aload
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      73      0    this       Lscala/actors/MQueue;
-   0      73      1    n$1       I
-   0      73      2    p$1       Lscala/Function1;
-   9      25      3    pos$1       Lscala/runtime/IntRef;
-   35      38      3    pos$1       Lscala/runtime/IntRef;
-   15      19      4    curr       Lscala/actors/MQueueElement;
-   35      38      4    curr       Lscala/actors/MQueueElement;
+   0      74      0    this       Lscala/actors/MQueue;
+   0      74      1    n$1       I
+   0      74      2    p$1       Lscala/Function1;
+   9      26      3    pos$1       Lscala/runtime/IntRef;
+   36      38      3    pos$1       Lscala/runtime/IntRef;
+   15      20      4    curr       Lscala/actors/MQueueElement;
+   36      38      4    curr       Lscala/actors/MQueueElement;
 
   Signature: length = 0x2
    00 FFFFFF8B 
@@ -799,10 +803,12 @@ public scala.actors.MQueueElement extractFirst(scala.Function2);
 public scala.actors.MQueueElement extractFirst(scala.PartialFunction);
   Signature: (Lscala/PartialFunction;)Lscala/actors/MQueueElement;
   Code:
-   Stack=2, Locals=5, Args_size=2
+   Stack=2, Locals=6, Args_size=2
 	aload_0
 	invokevirtual	Method isEmpty:()Z
 	ifeq	l1 // aload_1
+	aconst_null
+	pop
 	aconst_null
 	areturn
 l1	aload_1
@@ -825,6 +831,8 @@ l1	aload_1
 	if_acmpne	l3 // aload_0
 	aload_0
 	aconst_null
+	pop
+	aconst_null
 	invokevirtual	Method last_$eq:(Lscala/actors/MQueueElement;)V
 l3	aload_0
 	iconst_m1
@@ -834,66 +842,68 @@ l3	aload_0
 l2	aload_0
 	invokevirtual	Method first:()Lscala/actors/MQueueElement;
 	invokevirtual	Method scala/actors/MQueueElement.next:()Lscala/actors/MQueueElement;
-	astore	4
+	astore_3
 	aload_0
 	invokevirtual	Method first:()Lscala/actors/MQueueElement;
-	astore_3
-l9	aload	4
+	astore	4
+l9	aload_3
 	dup
-	pop
+	astore	5
 	ifnull	l5 // aconst_null
-	aload	4
+	aload	5
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l6 // aload_1
 l5	aconst_null
+	pop
+	aconst_null
 l4	areturn
 l6	aload_1
-	aload	4
+	aload_3
 	invokevirtual	Method scala/actors/MQueueElement.msg:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/PartialFunction.isDefinedAt:(Ljava/lang/Object;)Z
-	ifeq	l7 // aload
-	aload_3
+	ifeq	l7 // aload_3
 	aload	4
+	aload_3
 	invokevirtual	Method scala/actors/MQueueElement.next:()Lscala/actors/MQueueElement;
 	invokevirtual	Method scala/actors/MQueueElement.next_$eq:(Lscala/actors/MQueueElement;)V
-	aload	4
+	aload_3
 	aload_0
 	invokevirtual	Method last:()Lscala/actors/MQueueElement;
 	if_acmpne	l8 // aload_0
 	aload_0
-	aload_3
+	aload	4
 	invokevirtual	Method last_$eq:(Lscala/actors/MQueueElement;)V
 l8	aload_0
 	iconst_m1
 	invokevirtual	Method changeSize:(I)V
-	aload	4
+	aload_3
 	areturn
-l7	aload	4
-	astore_3
-	aload	4
-	invokevirtual	Method scala/actors/MQueueElement.next:()Lscala/actors/MQueueElement;
+l7	aload_3
 	astore	4
-	goto	l9 // aload
+	aload_3
+	invokevirtual	Method scala/actors/MQueueElement.next:()Lscala/actors/MQueueElement;
+	astore_3
+	goto	l9 // aload_3
   Labels:
-   	l1 = 9 // aload_1
-   	l3 = 54 // aload_0
-   	l2 = 63 // aload_0
-   	l9 = 77 // aload
-   	l5 = 93 // aconst_null
-   	l4 = 94 // areturn
-   	l6 = 95 // aload_1
-   	l8 = 132 // aload_0
-   	l7 = 140 // aload
+   	l1 = 11 // aload_1
+   	l3 = 58 // aload_0
+   	l2 = 67 // aload_0
+   	l9 = 81 // aload_3
+   	l5 = 97 // aconst_null
+   	l4 = 100 // areturn
+   	l6 = 101 // aload_1
+   	l8 = 137 // aload_0
+   	l7 = 144 // aload_3
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      153      0    this       Lscala/actors/MQueue;
-   0      153      1    pf       Lscala/PartialFunction;
-   30      30      2    res       Lscala/actors/MQueueElement;
-   77      17      3    prev       Lscala/actors/MQueueElement;
-   95      58      3    prev       Lscala/actors/MQueueElement;
-   72      22      4    curr       Lscala/actors/MQueueElement;
-   95      58      4    curr       Lscala/actors/MQueueElement;
+   0      155      0    this       Lscala/actors/MQueue;
+   0      155      1    pf       Lscala/PartialFunction;
+   32      32      2    res       Lscala/actors/MQueueElement;
+   75      25      3    curr       Lscala/actors/MQueueElement;
+   101      54      3    curr       Lscala/actors/MQueueElement;
+   81      19      4    prev       Lscala/actors/MQueueElement;
+   101      54      4    prev       Lscala/actors/MQueueElement;
 
   Signature: length = 0x2
    00 FFFFFFB8 
@@ -901,12 +911,12 @@ l7	aload	4
 private scala.Option removeInternal(int, scala.Function2);
   Signature: (ILscala/Function2;)Lscala/Option;
   Code:
-   Stack=6, Locals=7, Args_size=3
+   Stack=6, Locals=8, Args_size=3
 	new	class scala/runtime/IntRef
 	dup
 	iconst_0
 	invokespecial	Method scala/runtime/IntRef."<init>":(I)V
-	astore	4
+	astore_3
 	aload_0
 	invokevirtual	Method isEmpty:()Z
 	ifeq	l1 // aload_0
@@ -921,97 +931,99 @@ l1	aload_0
 	invokevirtual	Method scala/actors/MQueueElement.session:()Lscala/actors/OutputChannel;
 	iload_1
 	aload_2
-	aload	4
+	aload_3
 	invokespecial	Method test$2:(Ljava/lang/Object;Lscala/actors/OutputChannel;ILscala/Function2;Lscala/runtime/IntRef;)Z
 	ifeq	l2 // aload_0
 	aload_0
 	invokevirtual	Method first:()Lscala/actors/MQueueElement;
-	astore_3
+	astore	4
 	aload_0
 	aload_0
 	invokevirtual	Method first:()Lscala/actors/MQueueElement;
 	invokevirtual	Method scala/actors/MQueueElement.next:()Lscala/actors/MQueueElement;
 	invokevirtual	Method first_$eq:(Lscala/actors/MQueueElement;)V
-	aload_3
+	aload	4
 	aload_0
 	invokevirtual	Method last:()Lscala/actors/MQueueElement;
 	if_acmpne	l3 // aload_0
 	aload_0
 	aconst_null
+	pop
+	aconst_null
 	invokevirtual	Method last_$eq:(Lscala/actors/MQueueElement;)V
 l3	aload_0
-	aload_3
+	aload	4
 	invokespecial	Method foundMsg$1:(Lscala/actors/MQueueElement;)Lscala/Some;
 	goto	l4 // areturn
 l2	aload_0
 	invokevirtual	Method first:()Lscala/actors/MQueueElement;
 	invokevirtual	Method scala/actors/MQueueElement.next:()Lscala/actors/MQueueElement;
-	astore	6
+	astore	5
 	aload_0
 	invokevirtual	Method first:()Lscala/actors/MQueueElement;
-	astore	5
-l9	aload	6
+	astore	6
+l9	aload	5
 	dup
-	pop
+	astore	7
 	ifnull	l5 // getstatic
-	aload	6
+	aload	7
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l6 // aload_0
 l5	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 l4	areturn
 l6	aload_0
-	aload	6
+	aload	5
 	invokevirtual	Method scala/actors/MQueueElement.msg:()Ljava/lang/Object;
-	aload	6
+	aload	5
 	invokevirtual	Method scala/actors/MQueueElement.session:()Lscala/actors/OutputChannel;
 	iload_1
 	aload_2
-	aload	4
+	aload_3
 	invokespecial	Method test$2:(Ljava/lang/Object;Lscala/actors/OutputChannel;ILscala/Function2;Lscala/runtime/IntRef;)Z
 	ifeq	l7 // aload
-	aload	5
 	aload	6
+	aload	5
 	invokevirtual	Method scala/actors/MQueueElement.next:()Lscala/actors/MQueueElement;
 	invokevirtual	Method scala/actors/MQueueElement.next_$eq:(Lscala/actors/MQueueElement;)V
-	aload	6
+	aload	5
 	aload_0
 	invokevirtual	Method last:()Lscala/actors/MQueueElement;
 	if_acmpne	l8 // aload_0
 	aload_0
-	aload	5
+	aload	6
 	invokevirtual	Method last_$eq:(Lscala/actors/MQueueElement;)V
 l8	aload_0
-	aload	6
+	aload	5
 	invokespecial	Method foundMsg$1:(Lscala/actors/MQueueElement;)Lscala/Some;
 	areturn
-l7	aload	6
-	astore	5
-	aload	6
-	invokevirtual	Method scala/actors/MQueueElement.next:()Lscala/actors/MQueueElement;
+l7	aload	5
 	astore	6
+	aload	5
+	invokevirtual	Method scala/actors/MQueueElement.next:()Lscala/actors/MQueueElement;
+	astore	5
 	goto	l9 // aload
   Labels:
-   	l1 = 21 // aload_0
-   	l3 = 75 // aload_0
-   	l2 = 83 // aload_0
-   	l9 = 98 // aload
-   	l5 = 114 // getstatic
-   	l4 = 117 // areturn
-   	l6 = 118 // aload_0
-   	l8 = 164 // aload_0
-   	l7 = 171 // aload
+   	l1 = 20 // aload_0
+   	l3 = 77 // aload_0
+   	l2 = 86 // aload_0
+   	l9 = 101 // aload
+   	l5 = 118 // getstatic
+   	l4 = 121 // areturn
+   	l6 = 122 // aload_0
+   	l8 = 167 // aload_0
+   	l7 = 174 // aload
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      185      0    this       Lscala/actors/MQueue;
-   0      185      1    n$2       I
-   0      185      2    p$2       Lscala/Function2;
-   51      29      3    res       Lscala/actors/MQueueElement;
-   10      175      4    pos$2       Lscala/runtime/IntRef;
-   98      19      5    prev       Lscala/actors/MQueueElement;
-   118      67      5    prev       Lscala/actors/MQueueElement;
-   92      25      6    curr       Lscala/actors/MQueueElement;
-   118      67      6    curr       Lscala/actors/MQueueElement;
+   0      188      0    this       Lscala/actors/MQueue;
+   0      188      1    n$2       I
+   0      188      2    p$2       Lscala/Function2;
+   9      179      3    pos$2       Lscala/runtime/IntRef;
+   50      33      4    res       Lscala/actors/MQueueElement;
+   95      26      5    curr       Lscala/actors/MQueueElement;
+   122      66      5    curr       Lscala/actors/MQueueElement;
+   101      20      6    prev       Lscala/actors/MQueueElement;
+   122      66      6    prev       Lscala/actors/MQueueElement;
 
   Signature: length = 0x2
    00 FFFFFFC4 
@@ -1118,8 +1130,12 @@ public scala.actors.MQueue(java.lang.String);
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
 	aconst_null
+	pop
+	aconst_null
 	putfield	Field first:Lscala/actors/MQueueElement;
 	aload_0
+	aconst_null
+	pop
 	aconst_null
 	putfield	Field last:Lscala/actors/MQueueElement;
 	aload_0
@@ -1129,8 +1145,8 @@ public scala.actors.MQueue(java.lang.String);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      25      0    this       Lscala/actors/MQueue;
-   0      25      1    label       Ljava/lang/String;
+   0      29      0    this       Lscala/actors/MQueue;
+   0      29      1    label       Ljava/lang/String;
 
   Signature: length = 0x2
    00 FFFFFFD3 

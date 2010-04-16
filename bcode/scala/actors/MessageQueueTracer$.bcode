@@ -32,6 +32,16 @@ NameAndType	queueNumberAssigner:()I
 Method	scala/actors/MessageQueueTracer$.queueNumberAssigner:()I
 NameAndType	queueNumberAssigner_$eq:(I)V
 Method	scala/actors/MessageQueueTracer$.queueNumberAssigner_$eq:(I)V
+Asciz	scala/runtime/BoxesRunTime;
+class	scala/runtime/BoxesRunTime
+Asciz	boxToInteger;
+Asciz	(I)Ljava/lang/Integer;;
+NameAndType	boxToInteger:(I)Ljava/lang/Integer;
+Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+Asciz	unboxToInt;
+Asciz	(Ljava/lang/Object;)I;
+NameAndType	unboxToInt:(Ljava/lang/Object;)I
+Method	scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 Asciz	java/lang/Object;
 class	java/lang/Object
 Method	java/lang/Object."<init>":()V
@@ -78,10 +88,10 @@ private void queueNumberAssigner_$eq(int);
 public final int scala$actors$MessageQueueTracer$$getQueueNumber();
   Signature: ()I
   Code:
-   Stack=3, Locals=2, Args_size=1
+   Stack=3, Locals=3, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	aload_0
@@ -91,18 +101,20 @@ public final int scala$actors$MessageQueueTracer$$getQueueNumber();
 	invokespecial	Method queueNumberAssigner_$eq:(I)V
 	aload_0
 	invokespecial	Method queueNumberAssigner:()I
-	istore_1
-	aload_0
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	astore_2
+	aload_1
 	monitorexit
-	iload_1
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	ireturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    21    23   any
+     4    24    29   any
 
 private scala.actors.MessageQueueTracer$();
   Signature: ()V

@@ -23,13 +23,17 @@ Asciz	$outer;
 Asciz	Lscala/testing/Benchmark;;
 Asciz	apply;
 Asciz	(I)J;
-Asciz	java/lang/System;
-class	java/lang/System
-Asciz	currentTimeMillis;
-Asciz	()J;
-NameAndType	currentTimeMillis:()J
-Method	java/lang/System.currentTimeMillis:()J
+Asciz	scala/compat/Platform$;
+class	scala/compat/Platform$
+Asciz	MODULE$;
+Asciz	Lscala/compat/Platform$;;
+NameAndType	MODULE$:Lscala/compat/Platform$;
+Field	scala/compat/Platform$.MODULE$:Lscala/compat/Platform$;
 Asciz	LineNumberTable;
+Asciz	currentTime;
+Asciz	()J;
+NameAndType	currentTime:()J
+Method	scala/compat/Platform$.currentTime:()J
 NameAndType	$outer:Lscala/testing/Benchmark;
 Field	scala/testing/Benchmark$$anonfun$runBenchmark$1.$outer:Lscala/testing/Benchmark;
 Asciz	scala/testing/Benchmark;
@@ -41,15 +45,15 @@ InterfaceMethod	scala/testing/Benchmark.multiplier:()I
 Asciz	run;
 NameAndType	run:()V
 InterfaceMethod	scala/testing/Benchmark.run:()V
-Asciz	gc;
-NameAndType	gc:()V
-Method	java/lang/System.gc:()V
+Asciz	collectGarbage;
+NameAndType	collectGarbage:()V
+Method	scala/compat/Platform$.collectGarbage:()V
 Asciz	this;
 Asciz	Lscala/testing/Benchmark$$anonfun$runBenchmark$1;;
 Asciz	i;
 Asciz	I;
-Asciz	stopTime;
 Asciz	startTime;
+Asciz	stopTime;
 Asciz	LocalVariableTable;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 Asciz	scala/runtime/BoxesRunTime;
@@ -85,7 +89,7 @@ class	java/io/Serializable
 public static final long serialVersionUID;
   Signature: J
 
-public final scala.testing.Benchmark $outer;
+private final scala.testing.Benchmark $outer;
   Signature: Lscala/testing/Benchmark;
 
 public static {};
@@ -101,59 +105,60 @@ public final long apply(int);
   Signature: (I)J
   Code:
    Stack=4, Locals=7, Args_size=2
-	invokestatic	Method java/lang/System.currentTimeMillis:()J
-	lstore	5
+	getstatic	Field scala/compat/Platform$.MODULE$:Lscala/compat/Platform$;
+	invokevirtual	Method scala/compat/Platform$.currentTime:()J
+	lstore_2
 	iconst_0
-	istore_2
-l2	iload_2
+	istore	4
+l2	iload	4
 	aload_0
 	getfield	Field $outer:Lscala/testing/Benchmark;
 	invokeinterface	InterfaceMethod scala/testing/Benchmark.multiplier:()I
-	if_icmpge	l1 // invokestatic
+	if_icmpge	l1 // getstatic
 	aload_0
 	getfield	Field $outer:Lscala/testing/Benchmark;
 	invokeinterface	InterfaceMethod scala/testing/Benchmark.run:()V
-	iload_2
+	iload	4
 	iconst_1
 	iadd
-	istore_2
-	goto	l2 // iload_2
-l1	invokestatic	Method java/lang/System.currentTimeMillis:()J
-	lstore_3
-	invokestatic	Method java/lang/System.gc:()V
-	lload_3
+	istore	4
+	goto	l2 // iload
+l1	getstatic	Field scala/compat/Platform$.MODULE$:Lscala/compat/Platform$;
+	invokevirtual	Method scala/compat/Platform$.currentTime:()J
+	lstore	5
+	getstatic	Field scala/compat/Platform$.MODULE$:Lscala/compat/Platform$;
+	invokevirtual	Method scala/compat/Platform$.collectGarbage:()V
 	lload	5
+	lload_2
 	lsub
 	lreturn
   Labels:
-   	l2 = 7 // iload_2
-   	l1 = 36 // invokestatic
+   	l2 = 10 // iload
+   	l1 = 42 // getstatic
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      48      0    this       Lscala/testing/Benchmark$$anonfun$runBenchmark$1;
-   0      48      1    i       I
-   7      40      2    i       I
-   40      7      3    stopTime       J
-   5      42      5    startTime       J
+   0      61      0    this       Lscala/testing/Benchmark$$anonfun$runBenchmark$1;
+   0      61      1    i       I
+   7      53      2    startTime       J
+   10      50      4    i       I
+   50      10      5    stopTime       J
 
 
 public final java.lang.Object apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
   Code:
-   Stack=2, Locals=4, Args_size=2
+   Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 	invokevirtual	Method apply:(I)J
-	lstore_2
-	lload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToLong:(J)Ljava/lang/Long;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      14      0    this       Lscala/testing/Benchmark$$anonfun$runBenchmark$1;
-   0      14      1    v1       Ljava/lang/Object;
+   0      12      0    this       Lscala/testing/Benchmark$$anonfun$runBenchmark$1;
+   0      12      1    v1       Ljava/lang/Object;
 
 
 public scala.testing.Benchmark$$anonfun$runBenchmark$1(scala.testing.Benchmark);

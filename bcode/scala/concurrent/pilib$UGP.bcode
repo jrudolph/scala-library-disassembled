@@ -99,11 +99,16 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp1;
 Asciz	temp2;
 Asciz	temp3;
 Asciz	temp4;
 Asciz	temp5;
 Asciz	temp6;
+Asciz	c$1;
+Asciz	v$1;
+Asciz	polarity$1;
+Asciz	n$1;
 Asciz	productPrefix;
 Asciz	UGP;
 String	UGP
@@ -129,23 +134,20 @@ Asciz	boxToBoolean;
 Asciz	(Z)Ljava/lang/Boolean;;
 NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
 Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+Asciz	temp7;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	c
 String	v
 String	polarity
 String	n
+Asciz	temp8;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
-Asciz	java/lang/Number;
-class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
-Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Asciz	y0;
+NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	java/lang/Object."<init>":()V
@@ -321,33 +323,43 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=5, Locals=7, Args_size=2
+   Stack=5, Locals=12, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/concurrent/pilib$UGP
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/concurrent/pilib$UGP
 	astore_2
 	aload_2
-	invokevirtual	Method n:()Lscala/concurrent/pilib$UChan;
+	instanceof	class scala/concurrent/pilib$UGP
+	ifeq	l2 // iconst_0
+	aload_2
+	checkcast	class scala/concurrent/pilib$UGP
 	astore_3
-	aload_2
-	invokevirtual	Method polarity:()Z
-	istore	4
-	aload_2
-	invokevirtual	Method v:()Ljava/lang/Object;
-	astore	5
-	aload_2
-	invokevirtual	Method c:()Lscala/Function1;
-	astore	6
-	aload_0
 	aload_3
-	iload	4
-	aload	5
+	invokevirtual	Method n:()Lscala/concurrent/pilib$UChan;
+	astore	4
+	aload_3
+	invokevirtual	Method polarity:()Z
+	istore	5
+	aload_3
+	invokevirtual	Method v:()Ljava/lang/Object;
+	astore	6
+	aload_3
+	invokevirtual	Method c:()Lscala/Function1;
+	astore	7
+	aload	7
+	astore	8
 	aload	6
+	astore	9
+	iload	5
+	istore	10
+	aload	4
+	astore	11
+	aload_0
+	aload	11
+	iload	10
+	aload	9
+	aload	8
 	invokespecial	Method gd1$1:(Lscala/concurrent/pilib$UChan;ZLjava/lang/Object;Lscala/Function1;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -364,20 +376,25 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 67 // iconst_0
-   	l2 = 71 // iconst_0
-   	l4 = 72 // ifeq
-   	l1 = 75 // iconst_1
-   	l5 = 79 // iconst_0
-   	l6 = 80 // ireturn
+   	l3 = 87 // iconst_0
+   	l2 = 91 // iconst_0
+   	l4 = 92 // ifeq
+   	l1 = 95 // iconst_1
+   	l5 = 99 // iconst_0
+   	l6 = 100 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      81      0    this       Lscala/concurrent/pilib$UGP;
-   17      54      2    temp2       Lscala/concurrent/pilib$UGP;
-   22      49      3    temp3       Lscala/concurrent/pilib$UChan;
-   28      43      4    temp4       Z
-   34      37      5    temp5       Ljava/lang/Object;
-   40      31      6    temp6       Lscala/Function1;
+   0      101      0    this       Lscala/concurrent/pilib$UGP;
+   7      88      2    temp1       Ljava/lang/Object;
+   19      72      3    temp2       Lscala/concurrent/pilib$UGP;
+   25      66      4    temp3       Lscala/concurrent/pilib$UChan;
+   31      60      5    temp4       Z
+   37      54      6    temp5       Ljava/lang/Object;
+   43      48      7    temp6       Lscala/Function1;
+   47      44      8    c$1       Lscala/Function1;
+   51      40      9    v$1       Ljava/lang/Object;
+   55      36      10    polarity$1       Z
+   59      32      11    n$1       Lscala/concurrent/pilib$UChan;
 
 
 public java.lang.String productPrefix();
@@ -401,8 +418,10 @@ public java.lang.Object productElement(int);
   Code:
    Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 3
-		0: 73;
+		0: 71;
 		1: 61;
 		2: 54;
 		3: 47;
@@ -422,21 +441,26 @@ public java.lang.Object productElement(int);
 	goto	l1 // areturn
 	aload_0
 	invokevirtual	Method polarity:()Z
-	istore_2
-	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 	goto	l1 // areturn
 	aload_0
 	invokevirtual	Method n:()Lscala/concurrent/pilib$UChan;
 l1	areturn
   Labels:
-   	l1 = 77 // areturn
+   	l1 = 75 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      76      0    this       Lscala/concurrent/pilib$UGP;
+   2      74      2    temp7       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 3
 		0: 62;
 		1: 57;
@@ -460,6 +484,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 64 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      65      0    this       Lscala/concurrent/pilib$UGP;
+   2      63      2    temp8       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -473,7 +502,7 @@ public boolean canEqual(java.lang.Object);
 private final boolean gd1$1(scala.concurrent.pilib$UChan, boolean, java.lang.Object, scala.Function1);
   Signature: (Lscala/concurrent/pilib$UChan;ZLjava/lang/Object;Lscala/Function1;)Z
   Code:
-   Stack=2, Locals=8, Args_size=5
+   Stack=2, Locals=7, Args_size=5
 	aload_1
 	aload_0
 	invokevirtual	Method n:()Lscala/concurrent/pilib$UChan;
@@ -491,66 +520,35 @@ l2	iload_2
 	aload_0
 	invokevirtual	Method polarity:()Z
 	if_icmpne	l3 // iconst_0
+	aload_3
 	aload_0
 	invokevirtual	Method v:()Ljava/lang/Object;
-	astore	6
-	aload_3
-	aload	6
-	if_acmpne	l4 // aload_3
-	iconst_1
-	goto	l5 // ifeq
-l4	aload_3
-	ifnonnull	l6 // aload_3
-	iconst_0
-	goto	l5 // ifeq
-l6	aload_3
-	instanceof	class java/lang/Number
-	ifne	l7 // aload_3
-	aload_3
-	instanceof	class java/lang/Character
-	ifeq	l8 // aload_3
-l7	aload_3
-	aload	6
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l5 // ifeq
-l8	aload_3
-	aload	6
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l5	ifeq	l3 // iconst_0
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l3 // iconst_0
 	aload	4
 	aload_0
 	invokevirtual	Method c:()Lscala/Function1;
-	astore	7
+	astore	6
 	dup
-	ifnonnull	l9 // aload
+	ifnonnull	l4 // aload
 	pop
-	aload	7
-	ifnull	l10 // iconst_1
+	aload	6
+	ifnull	l5 // iconst_1
 	goto	l3 // iconst_0
-l9	aload	7
+l4	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
-l10	iconst_1
-	goto	l11 // ireturn
+l5	iconst_1
+	goto	l6 // ireturn
 l3	iconst_0
-l11	ireturn
+l6	ireturn
   Labels:
    	l1 = 20 // aload
    	l2 = 28 // iload_2
-   	l4 = 52 // aload_3
-   	l6 = 60 // aload_3
-   	l7 = 74 // aload_3
-   	l8 = 83 // aload_3
-   	l5 = 89 // ifeq
-   	l9 = 113 // aload
-   	l10 = 121 // iconst_1
-   	l3 = 125 // iconst_0
-   	l11 = 126 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      127      0    this       Lscala/concurrent/pilib$UGP;
-   48      44      6    y0       Ljava/lang/Object;
-
+   	l4 = 68 // aload
+   	l5 = 76 // iconst_1
+   	l3 = 80 // iconst_0
+   	l6 = 81 // ireturn
 
 public scala.concurrent.pilib$UGP(scala.concurrent.pilib$UChan, boolean, java.lang.Object, scala.Function1);
   Signature: (Lscala/concurrent/pilib$UChan;ZLjava/lang/Object;Lscala/Function1;)V
@@ -583,7 +581,7 @@ public scala.concurrent.pilib$UGP(scala.concurrent.pilib$UChan, boolean, java.la
    0      30      4    c       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFF91 
+   00 FFFFFF93 
 
 }
 

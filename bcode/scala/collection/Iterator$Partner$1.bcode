@@ -2,7 +2,7 @@ Compiled from "Iterator.scala"
 public class scala.collection.Iterator$Partner$1 extends java.lang.Object implements scala.collection.Iterator,scala.ScalaObject
   SourceFile: "Iterator.scala"
   Signature: length = 0x2
-   01 FFFFFF8C 
+   01 FFFFFF96 
   Scala: length = 0x
    
   InnerClass: 
@@ -352,6 +352,15 @@ NameAndType	isEmpty:()Z
 Method	scala/collection/mutable/Queue.isEmpty:()Z
 NameAndType	hasNext:()Z
 InterfaceMethod	scala/collection/Iterator.hasNext:()Z
+Asciz	scala/runtime/BoxesRunTime;
+class	scala/runtime/BoxesRunTime
+Asciz	boxToBoolean;
+Asciz	(Z)Ljava/lang/Boolean;;
+NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
+Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+Asciz	unboxToBoolean;
+NameAndType	unboxToBoolean:(Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 Asciz	next;
 Asciz	()Ljava/lang/Object;;
 NameAndType	next:()Ljava/lang/Object;
@@ -392,6 +401,7 @@ Method	scala/collection/Iterator$Partner$1.compareGap:(Lscala/collection/mutable
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	other;
+Asciz	temp1;
 NameAndType	$outer:Lscala/collection/Iterator;
 Field	scala/collection/Iterator$Partner$1.$outer:Lscala/collection/Iterator;
 Asciz	<init>;
@@ -1363,7 +1373,7 @@ public boolean hasNext();
 	aload_0
 	invokevirtual	Method scala$collection$Iterator$Partner$$$outer:()Lscala/collection/Iterator;
 	dup
-	astore_2
+	astore_1
 	monitorenter
 	aload_0
 	aload_0
@@ -1380,24 +1390,26 @@ l1	aload_0
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
 	ifeq	l3 // iconst_0
 l2	iconst_1
-	goto	l4 // istore_1
+	goto	l4 // invokestatic
 l3	iconst_0
-l4	istore_1
-	aload_2
+l4	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+	astore_2
+	aload_1
 	monitorexit
-	iload_1
-	ireturn
 	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
+	ireturn
+	aload_1
 	monitorexit
 	athrow
   Labels:
    	l1 = 31 // aload_0
    	l2 = 43 // iconst_1
    	l3 = 47 // iconst_0
-   	l4 = 48 // istore_1
+   	l4 = 48 // invokestatic
   Exception table:
    from   to  target type
-     7    51    53   any
+     7    54    59   any
 
 public java.lang.Object next();
   Signature: ()Ljava/lang/Object;
@@ -1463,7 +1475,7 @@ l3	astore_2
    49      22      3    e       Ljava/lang/Object;
 
   Signature: length = 0x2
-   01 6D 
+   01 76 
 
 private boolean compareGap(scala.collection.mutable.Queue);
   Signature: (Lscala/collection/mutable/Queue;)Z
@@ -1486,7 +1498,7 @@ l2	ireturn
    0      14      1    queue       Lscala/collection/mutable/Queue;
 
   Signature: length = 0x2
-   01 71 
+   01 7A 
 
 public int hashCode();
   Signature: ()I
@@ -1501,11 +1513,13 @@ public int hashCode();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/collection/Iterator$Partner$1
 	ifeq	l1 // aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/collection/Iterator$Partner$1
 	aload_0
 	getfield	Field gap$1:Lscala/collection/mutable/Queue;
@@ -1524,13 +1538,14 @@ l1	aload_0
 	invokespecial	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 l3	ireturn
   Labels:
-   	l2 = 35 // iconst_0
-   	l1 = 39 // aload_0
-   	l3 = 44 // ireturn
+   	l2 = 37 // iconst_0
+   	l1 = 41 // aload_0
+   	l3 = 46 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      45      0    this       Lscala/collection/Iterator$Partner$1;
-   0      45      1    other       Ljava/lang/Object;
+   0      47      0    this       Lscala/collection/Iterator$Partner$1;
+   0      47      1    other       Ljava/lang/Object;
+   2      45      2    temp1       Ljava/lang/Object;
 
 
 public scala.collection.Iterator scala$collection$Iterator$Partner$$$outer();
@@ -1574,7 +1589,7 @@ l1	aload_0
    0      36      1    $outer       Lscala/collection/Iterator;
 
   Signature: length = 0x2
-   01 FFFFFF8B 
+   01 FFFFFF95 
 
 }
 

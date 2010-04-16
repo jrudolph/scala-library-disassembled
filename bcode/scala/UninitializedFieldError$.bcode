@@ -57,9 +57,8 @@ class	scala/Some
 Asciz	scala/UninitializedFieldError;
 class	scala/UninitializedFieldError
 Asciz	msg;
-Asciz	Ljava/lang/String;;
-NameAndType	msg:Ljava/lang/String;
-Field	scala/UninitializedFieldError.msg:Ljava/lang/String;
+NameAndType	msg:()Ljava/lang/String;
+Method	scala/UninitializedFieldError.msg:()Ljava/lang/String;
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/Some."<init>":(Ljava/lang/Object;)V
@@ -70,6 +69,7 @@ Asciz	(Ljava/lang/String;)Lscala/UninitializedFieldError;;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	scala/UninitializedFieldError."<init>":(Ljava/lang/String;)V
+Asciz	Ljava/lang/String;;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 Asciz	java/lang/String;
 class	java/lang/String
@@ -144,12 +144,12 @@ public scala.Function1 andThen(scala.Function1);
 public scala.Option unapply(scala.UninitializedFieldError);
   Signature: (Lscala/UninitializedFieldError;)Lscala/Option;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	aload_1
 	dup
-	pop
+	astore_2
 	ifnull	l1 // getstatic
-	aload_1
+	aload_2
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // new
@@ -158,7 +158,7 @@ l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 l2	new	class scala/Some
 	dup
 	aload_1
-	getfield	Field scala/UninitializedFieldError.msg:Ljava/lang/String;
+	invokevirtual	Method scala/UninitializedFieldError.msg:()Ljava/lang/String;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 l3	areturn
   Labels:

@@ -137,25 +137,34 @@ class	scala/concurrent/ops$$anonfun$par$1
 Asciz	(Lscala/Function0;Lscala/concurrent/SyncVar;)V;
 NameAndType	"<init>":(Lscala/Function0;Lscala/concurrent/SyncVar;)V
 Method	scala/concurrent/ops$$anonfun$par$1."<init>":(Lscala/Function0;Lscala/concurrent/SyncVar;)V
-Asciz	scala/concurrent/ops$$anonfun$par$2;
-class	scala/concurrent/ops$$anonfun$par$2
+Asciz	scala/concurrent/ops$$anonfun$1;
+class	scala/concurrent/ops$$anonfun$1
 Asciz	(Lscala/Function0;)V;
 NameAndType	"<init>":(Lscala/Function0;)V
+Method	scala/concurrent/ops$$anonfun$1."<init>":(Lscala/Function0;)V
+NameAndType	spawn$default$2:(Lscala/Function0;)Lscala/concurrent/TaskRunner;
+Method	scala/concurrent/ops$.spawn$default$2:(Lscala/Function0;)Lscala/concurrent/TaskRunner;
+Asciz	scala/concurrent/ops$$anonfun$par$2;
+class	scala/concurrent/ops$$anonfun$par$2
 Method	scala/concurrent/ops$$anonfun$par$2."<init>":(Lscala/Function0;)V
+NameAndType	spawn:(Lscala/Function0;Lscala/concurrent/TaskRunner;)V
+Method	scala/concurrent/ops$.spawn:(Lscala/Function0;Lscala/concurrent/TaskRunner;)V
 Asciz	scala/Tuple2;
 class	scala/Tuple2
 Asciz	get;
 NameAndType	get:()Ljava/lang/Object;
 Method	scala/concurrent/SyncVar.get:()Ljava/lang/Object;
+NameAndType	getOrThrow:(Lscala/Either;)Ljava/lang/Object;
+Method	scala/concurrent/ops$.getOrThrow:(Lscala/Either;)Ljava/lang/Object;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Method	scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Asciz	xp;
 Asciz	yp$1;
-Asciz	x$2$1;
-Asciz	x$3;
 Asciz	y$1;
 Asciz	Lscala/concurrent/SyncVar;;
+Asciz	x$2$1;
+Asciz	x$3;
 Asciz	<A:Ljava/lang/Object;B:Ljava/lang/Object;>(Lscala/Function0<TA;>;Lscala/Function0<TB;>;)Lscala/Tuple2<TA;TB;>;;
 Asciz	replicate;
 Asciz	(IILscala/Function1;)V;
@@ -174,6 +183,9 @@ class	scala/concurrent/ops$$anonfun$replicate$1
 Asciz	(ILscala/Function1;I)V;
 NameAndType	"<init>":(ILscala/Function1;I)V
 Method	scala/concurrent/ops$$anonfun$replicate$1."<init>":(ILscala/Function1;I)V
+Asciz	scala/concurrent/ops$$anonfun$2;
+class	scala/concurrent/ops$$anonfun$2
+Method	scala/concurrent/ops$$anonfun$2."<init>":(Lscala/Function0;)V
 Asciz	scala/concurrent/ops$$anonfun$replicate$2;
 class	scala/concurrent/ops$$anonfun$replicate$2
 Method	scala/concurrent/ops$$anonfun$replicate$2."<init>":(Lscala/Function0;)V
@@ -182,9 +194,9 @@ Asciz	I;
 Asciz	end;
 Asciz	p$1;
 Asciz	Lscala/Function1;;
+Asciz	mid$1;
 Asciz	x$4$1;
 Asciz	x$5;
-Asciz	mid$1;
 Asciz	(IILscala/Function1<Ljava/lang/Integer;Ljava/lang/Object;>;)V;
 Asciz	java/lang/Object;
 class	java/lang/Object
@@ -200,13 +212,9 @@ Asciz	threadRunner;
 NameAndType	threadRunner:()Lscala/concurrent/FutureTaskRunner;
 Method	scala/concurrent/TaskRunners$.threadRunner:()Lscala/concurrent/FutureTaskRunner;
 Asciz	InnerClasses;
-Asciz	scala/concurrent/ops$$anonfun$2;
-class	scala/concurrent/ops$$anonfun$2
 Asciz	scala/concurrent/ops;
 class	scala/concurrent/ops
 Asciz	$anonfun$2;
-Asciz	scala/concurrent/ops$$anonfun$1;
-class	scala/concurrent/ops$$anonfun$1
 Asciz	$anonfun$1;
 Asciz	scala/util/control/Exception;
 class	scala/util/control/Exception
@@ -295,6 +303,8 @@ public scala.Either tryCatchEx(scala.Function0);
   Signature: (Lscala/Function0;)Lscala/Either;
   Code:
    Stack=3, Locals=4, Args_size=2
+	aconst_null
+	astore_2
 	new	class scala/Right
 	dup
 	aload_1
@@ -311,16 +321,16 @@ public scala.Either tryCatchEx(scala.Function0);
 l1	aload_2
 	areturn
   Labels:
-   	l1 = 27 // aload_2
+   	l1 = 29 // aload_2
   Exception table:
    from   to  target type
-     0    17    17   Class java/lang/Exception
+     2    19    19   Class java/lang/Exception
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      29      0    this       Lscala/concurrent/ops$;
-   0      29      1    body       Lscala/Function0;
-   0      28      2    exceptionResult1       Lscala/Either;
+   0      31      0    this       Lscala/concurrent/ops$;
+   0      31      1    body       Lscala/Function0;
+   2      28      2    exceptionResult1       Lscala/Either;
 
   Signature: length = 0x2
    00 44 
@@ -392,60 +402,54 @@ public scala.Function0 future(scala.Function0, scala.concurrent.FutureTaskRunner
 public scala.Tuple2 par(scala.Function0, scala.Function0);
   Signature: (Lscala/Function0;Lscala/Function0;)Lscala/Tuple2;
   Code:
-   Stack=7, Locals=8, Args_size=3
+   Stack=5, Locals=6, Args_size=3
 	new	class scala/concurrent/SyncVar
 	dup
 	invokespecial	Method scala/concurrent/SyncVar."<init>":()V
-	astore	6
+	astore_3
 	new	class scala/concurrent/ops$$anonfun$par$1
 	dup
 	aload_2
-	aload	6
+	aload_3
 	invokespecial	Method scala/concurrent/ops$$anonfun$par$1."<init>":(Lscala/Function0;Lscala/concurrent/SyncVar;)V
-	astore_3
-	aload_0
-	getfield	Field defaultRunner:Lscala/concurrent/FutureTaskRunner;
 	astore	4
+	aload_0
+	new	class scala/concurrent/ops$$anonfun$1
+	dup
+	aload	4
+	invokespecial	Method scala/concurrent/ops$$anonfun$1."<init>":(Lscala/Function0;)V
+	invokevirtual	Method spawn$default$2:(Lscala/Function0;)Lscala/concurrent/TaskRunner;
+	astore	5
+	aload_0
 	new	class scala/concurrent/ops$$anonfun$par$2
 	dup
-	aload_3
+	aload	4
 	invokespecial	Method scala/concurrent/ops$$anonfun$par$2."<init>":(Lscala/Function0;)V
-	astore	5
-	aload	4
-	aload	4
 	aload	5
-	invokeinterface	InterfaceMethod scala/concurrent/TaskRunner.functionAsTask:(Lscala/Function0;)Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/concurrent/TaskRunner.execute:(Ljava/lang/Object;)V
+	invokevirtual	Method spawn:(Lscala/Function0;Lscala/concurrent/TaskRunner;)V
 	new	class scala/Tuple2
 	dup
 	aload_1
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
-	aload	6
+	aload_0
+	aload_3
 	invokevirtual	Method scala/concurrent/SyncVar.get:()Ljava/lang/Object;
 	checkcast	class scala/Either
-	astore	7
-	aload	7
-	new	class scala/concurrent/ops$$anonfun$getOrThrow$1
-	dup
-	invokespecial	Method scala/concurrent/ops$$anonfun$getOrThrow$1."<init>":()V
-	new	class scala/concurrent/ops$$anonfun$getOrThrow$2
-	dup
-	invokespecial	Method scala/concurrent/ops$$anonfun$getOrThrow$2."<init>":()V
-	invokevirtual	Method scala/Either.fold:(Lscala/Function1;Lscala/Function1;)Ljava/lang/Object;
+	invokevirtual	Method getOrThrow:(Lscala/Either;)Ljava/lang/Object;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      95      0    this       Lscala/concurrent/ops$;
-   0      95      1    xp       Lscala/Function0;
-   0      95      2    yp$1       Lscala/Function0;
-   20      32      3    x$2$1       Lscala/Function0;
-   26      26      4    x$3       Lscala/concurrent/TaskRunner;
-   9      85      6    y$1       Lscala/concurrent/SyncVar;
+   0      74      0    this       Lscala/concurrent/ops$;
+   0      74      1    xp       Lscala/Function0;
+   0      74      2    yp$1       Lscala/Function0;
+   8      65      3    y$1       Lscala/concurrent/SyncVar;
+   19      30      4    x$2$1       Lscala/Function0;
+   34      15      5    x$3       Lscala/concurrent/TaskRunner;
 
   Signature: length = 0x2
-   00 FFFFFF8D 
+   00 FFFFFF96 
 
 public void replicate(int, int, scala.Function1);
   Signature: (IILscala/Function1;)V
@@ -470,28 +474,29 @@ l2	iload_1
 	iadd
 	iconst_2
 	idiv
-	istore	7
+	istore	5
 	new	class scala/concurrent/ops$$anonfun$replicate$1
 	dup
 	iload_1
 	aload_3
-	iload	7
+	iload	5
 	invokespecial	Method scala/concurrent/ops$$anonfun$replicate$1."<init>":(ILscala/Function1;I)V
-	astore	4
+	astore	6
 	aload_0
-	getfield	Field defaultRunner:Lscala/concurrent/FutureTaskRunner;
-	astore	5
+	new	class scala/concurrent/ops$$anonfun$2
+	dup
+	aload	6
+	invokespecial	Method scala/concurrent/ops$$anonfun$2."<init>":(Lscala/Function0;)V
+	invokevirtual	Method spawn$default$2:(Lscala/Function0;)Lscala/concurrent/TaskRunner;
+	astore	7
+	aload_0
 	new	class scala/concurrent/ops$$anonfun$replicate$2
 	dup
-	aload	4
-	invokespecial	Method scala/concurrent/ops$$anonfun$replicate$2."<init>":(Lscala/Function0;)V
-	astore	6
-	aload	5
-	aload	5
 	aload	6
-	invokeinterface	InterfaceMethod scala/concurrent/TaskRunner.functionAsTask:(Lscala/Function0;)Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/concurrent/TaskRunner.execute:(Ljava/lang/Object;)V
-	iload	7
+	invokespecial	Method scala/concurrent/ops$$anonfun$replicate$2."<init>":(Lscala/Function0;)V
+	aload	7
+	invokevirtual	Method spawn:(Lscala/Function0;Lscala/concurrent/TaskRunner;)V
+	iload	5
 	istore_1
 	goto	l3 // iload_1
   Labels:
@@ -500,16 +505,16 @@ l2	iload_1
    	l2 = 24 // iload_1
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      83      0    this       Lscala/concurrent/ops$;
-   0      83      1    start$1       I
-   0      83      2    end       I
-   0      83      3    p$1       Lscala/Function1;
-   44      33      4    x$4$1       Lscala/Function0;
-   50      27      5    x$5       Lscala/concurrent/TaskRunner;
-   31      52      7    mid$1       I
+   0      80      0    this       Lscala/concurrent/ops$;
+   0      80      1    start$1       I
+   0      80      2    end       I
+   0      80      3    p$1       Lscala/Function1;
+   31      49      5    mid$1       I
+   44      30      6    x$4$1       Lscala/Function0;
+   59      15      7    x$5       Lscala/concurrent/TaskRunner;
 
   Signature: length = 0x2
-   00 FFFFFFAA 
+   00 FFFFFFB6 
 
 private scala.concurrent.ops$();
   Signature: ()V

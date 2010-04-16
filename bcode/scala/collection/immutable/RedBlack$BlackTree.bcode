@@ -2,7 +2,7 @@ Compiled from "RedBlack.scala"
 public class scala.collection.immutable.RedBlack$BlackTree extends scala.collection.immutable.RedBlack$NonEmpty implements scala.ScalaObject,scala.Product,java.io.Serializable
   SourceFile: "RedBlack.scala"
   Signature: length = 0x2
-   00 FFFFFF9D 
+   00 FFFFFF9E 
   Scala: length = 0x
    
   InnerClass: 
@@ -108,11 +108,16 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp185;
 Asciz	temp186;
 Asciz	temp187;
 Asciz	temp188;
 Asciz	temp189;
 Asciz	temp190;
+Asciz	right$2;
+Asciz	left$2;
+Asciz	value$2;
+Asciz	key$2;
 Asciz	productPrefix;
 Asciz	BlackTree;
 String	BlackTree
@@ -134,30 +139,26 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp191;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	right
 String	left
 String	value
 String	key
+Asciz	temp192;
 Asciz	scala/collection/immutable/RedBlack$Tree;
 class	scala/collection/immutable/RedBlack$Tree
 Asciz	$outer;
 Asciz	Lscala/collection/immutable/RedBlack;;
 NameAndType	$outer:Lscala/collection/immutable/RedBlack;
 Field	scala/collection/immutable/RedBlack$Tree.$outer:Lscala/collection/immutable/RedBlack;
-Asciz	java/lang/Number;
-class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
-Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
-Asciz	y0;
-Asciz	y1;
 Asciz	scala/collection/immutable/RedBlack$NonEmpty;
 class	scala/collection/immutable/RedBlack$NonEmpty
 Asciz	(Lscala/collection/immutable/RedBlack;)V;
@@ -357,39 +358,49 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=5, Locals=7, Args_size=2
+   Stack=5, Locals=12, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/collection/immutable/RedBlack$BlackTree
 	ifeq	l2 // iconst_0
-	aload_1
+	aload_2
 	checkcast	class scala/collection/immutable/RedBlack$BlackTree
 	invokevirtual	Method scala$collection$immutable$RedBlack$BlackTree$$$outer:()Lscala/collection/immutable/RedBlack;
 	aload_0
 	invokevirtual	Method scala$collection$immutable$RedBlack$BlackTree$$$outer:()Lscala/collection/immutable/RedBlack;
 	if_acmpne	l2 // iconst_0
-	aload_1
+	aload_2
 	checkcast	class scala/collection/immutable/RedBlack$BlackTree
-	astore_2
-	aload_2
-	invokevirtual	Method key:()Ljava/lang/Object;
 	astore_3
-	aload_2
-	invokevirtual	Method value:()Ljava/lang/Object;
-	astore	4
-	aload_2
-	invokevirtual	Method left:()Lscala/collection/immutable/RedBlack$Tree;
-	astore	5
-	aload_2
-	invokevirtual	Method right:()Lscala/collection/immutable/RedBlack$Tree;
-	astore	6
-	aload_0
 	aload_3
-	aload	4
-	aload	5
+	invokevirtual	Method key:()Ljava/lang/Object;
+	astore	4
+	aload_3
+	invokevirtual	Method value:()Ljava/lang/Object;
+	astore	5
+	aload_3
+	invokevirtual	Method left:()Lscala/collection/immutable/RedBlack$Tree;
+	astore	6
+	aload_3
+	invokevirtual	Method right:()Lscala/collection/immutable/RedBlack$Tree;
+	astore	7
+	aload	7
+	astore	8
 	aload	6
+	astore	9
+	aload	5
+	astore	10
+	aload	4
+	astore	11
+	aload_0
+	aload	11
+	aload	10
+	aload	9
+	aload	8
 	invokespecial	Method gd4$1:(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/immutable/RedBlack$Tree;Lscala/collection/immutable/RedBlack$Tree;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -406,20 +417,25 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 81 // iconst_0
-   	l2 = 85 // iconst_0
-   	l4 = 86 // ifeq
-   	l1 = 89 // iconst_1
-   	l5 = 93 // iconst_0
-   	l6 = 94 // ireturn
+   	l3 = 101 // iconst_0
+   	l2 = 105 // iconst_0
+   	l4 = 106 // ifeq
+   	l1 = 109 // iconst_1
+   	l5 = 113 // iconst_0
+   	l6 = 114 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      95      0    this       Lscala/collection/immutable/RedBlack$BlackTree;
-   31      54      2    temp186       Lscala/collection/immutable/RedBlack$BlackTree;
-   36      49      3    temp187       Ljava/lang/Object;
-   42      43      4    temp188       Ljava/lang/Object;
-   48      37      5    temp189       Lscala/collection/immutable/RedBlack$Tree;
-   54      31      6    temp190       Lscala/collection/immutable/RedBlack$Tree;
+   0      115      0    this       Lscala/collection/immutable/RedBlack$BlackTree;
+   7      102      2    temp185       Ljava/lang/Object;
+   33      72      3    temp186       Lscala/collection/immutable/RedBlack$BlackTree;
+   39      66      4    temp187       Ljava/lang/Object;
+   45      60      5    temp188       Ljava/lang/Object;
+   51      54      6    temp189       Lscala/collection/immutable/RedBlack$Tree;
+   57      48      7    temp190       Lscala/collection/immutable/RedBlack$Tree;
+   61      44      8    right$2       Lscala/collection/immutable/RedBlack$Tree;
+   65      40      9    left$2       Lscala/collection/immutable/RedBlack$Tree;
+   69      36      10    value$2       Ljava/lang/Object;
+   73      32      11    key$2       Ljava/lang/Object;
 
 
 public java.lang.String productPrefix();
@@ -441,8 +457,10 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 3
 		0: 68;
 		1: 61;
@@ -470,12 +488,19 @@ public java.lang.Object productElement(int);
 l1	areturn
   Labels:
    	l1 = 72 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      73      0    this       Lscala/collection/immutable/RedBlack$BlackTree;
+   2      71      2    temp191       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 3
 		0: 62;
 		1: 57;
@@ -499,6 +524,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 64 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      65      0    this       Lscala/collection/immutable/RedBlack$BlackTree;
+   2      63      2    temp192       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -521,112 +551,54 @@ public scala.collection.immutable.RedBlack scala$collection$immutable$RedBlack$B
 private final boolean gd4$1(java.lang.Object, java.lang.Object, scala.collection.immutable.RedBlack$Tree, scala.collection.immutable.RedBlack$Tree);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/immutable/RedBlack$Tree;Lscala/collection/immutable/RedBlack$Tree;)Z
   Code:
-   Stack=2, Locals=9, Args_size=5
+   Stack=2, Locals=7, Args_size=5
+	aload_1
 	aload_0
 	invokevirtual	Method key:()Ljava/lang/Object;
-	astore	5
-	aload_1
-	aload	5
-	if_acmpne	l1 // aload_1
-	iconst_1
-	goto	l2 // ifeq
-l1	aload_1
-	ifnonnull	l3 // aload_1
-	iconst_0
-	goto	l2 // ifeq
-l3	aload_1
-	instanceof	class java/lang/Number
-	ifne	l4 // aload_1
-	aload_1
-	instanceof	class java/lang/Character
-	ifeq	l5 // aload_1
-l4	aload_1
-	aload	5
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l2 // ifeq
-l5	aload_1
-	aload	5
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l2	ifeq	l6 // iconst_0
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l1 // iconst_0
+	aload_2
 	aload_0
 	invokevirtual	Method value:()Ljava/lang/Object;
-	astore	6
-	aload_2
-	aload	6
-	if_acmpne	l7 // aload_2
-	iconst_1
-	goto	l8 // ifeq
-l7	aload_2
-	ifnonnull	l9 // aload_2
-	iconst_0
-	goto	l8 // ifeq
-l9	aload_2
-	instanceof	class java/lang/Number
-	ifne	l10 // aload_2
-	aload_2
-	instanceof	class java/lang/Character
-	ifeq	l11 // aload_2
-l10	aload_2
-	aload	6
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l8 // ifeq
-l11	aload_2
-	aload	6
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l8	ifeq	l6 // iconst_0
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l1 // iconst_0
 	aload_3
 	aload_0
 	invokevirtual	Method left:()Lscala/collection/immutable/RedBlack$Tree;
-	astore	7
+	astore	5
 	dup
-	ifnonnull	l12 // aload
+	ifnonnull	l2 // aload
 	pop
-	aload	7
-	ifnull	l13 // aload
-	goto	l6 // iconst_0
-l12	aload	7
+	aload	5
+	ifnull	l3 // aload
+	goto	l1 // iconst_0
+l2	aload	5
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l6 // iconst_0
-l13	aload	4
+	ifeq	l1 // iconst_0
+l3	aload	4
 	aload_0
 	invokevirtual	Method right:()Lscala/collection/immutable/RedBlack$Tree;
-	astore	8
+	astore	6
 	dup
-	ifnonnull	l14 // aload
+	ifnonnull	l4 // aload
 	pop
-	aload	8
-	ifnull	l15 // iconst_1
-	goto	l6 // iconst_0
-l14	aload	8
+	aload	6
+	ifnull	l5 // iconst_1
+	goto	l1 // iconst_0
+l4	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l6 // iconst_0
-l15	iconst_1
-	goto	l16 // ireturn
-l6	iconst_0
-l16	ireturn
+	ifeq	l1 // iconst_0
+l5	iconst_1
+	goto	l6 // ireturn
+l1	iconst_0
+l6	ireturn
   Labels:
-   	l1 = 16 // aload_1
-   	l3 = 24 // aload_1
-   	l4 = 38 // aload_1
-   	l5 = 47 // aload_1
-   	l2 = 53 // ifeq
-   	l7 = 72 // aload_2
-   	l9 = 80 // aload_2
-   	l10 = 94 // aload_2
-   	l11 = 103 // aload_2
-   	l8 = 109 // ifeq
-   	l12 = 132 // aload
-   	l13 = 140 // aload
-   	l14 = 161 // aload
-   	l15 = 169 // iconst_1
-   	l6 = 173 // iconst_0
-   	l16 = 174 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      175      0    this       Lscala/collection/immutable/RedBlack$BlackTree;
-   12      44      5    y0       Ljava/lang/Object;
-   68      44      6    y1       Ljava/lang/Object;
-
+   	l2 = 42 // aload
+   	l3 = 50 // aload
+   	l4 = 71 // aload
+   	l5 = 79 // iconst_1
+   	l1 = 83 // iconst_0
+   	l6 = 84 // ireturn
 
 public scala.collection.immutable.RedBlack$BlackTree(scala.collection.immutable.RedBlack, java.lang.Object, java.lang.Object, scala.collection.immutable.RedBlack$Tree, scala.collection.immutable.RedBlack$Tree);
   Signature: (Lscala/collection/immutable/RedBlack;Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/immutable/RedBlack$Tree;Lscala/collection/immutable/RedBlack$Tree;)V
@@ -661,7 +633,7 @@ public scala.collection.immutable.RedBlack$BlackTree(scala.collection.immutable.
    0      32      5    right       Lscala/collection/immutable/RedBlack$Tree;
 
   Signature: length = 0x2
-   00 FFFFFF9C 
+   00 FFFFFF9D 
 
 }
 

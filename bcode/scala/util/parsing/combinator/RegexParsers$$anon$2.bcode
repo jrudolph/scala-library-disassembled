@@ -2,7 +2,7 @@ Compiled from "RegexParsers.scala"
 public final class scala.util.parsing.combinator.RegexParsers$$anon$2 extends scala.util.parsing.combinator.Parsers$Parser
   SourceFile: "RegexParsers.scala"
   Signature: length = 0x2
-   00 FFFFFF90 
+   00 FFFFFF91 
   Scala: length = 0x
    
   InnerClass: 
@@ -65,9 +65,9 @@ Method	scala/util/matching/Regex.findPrefixMatchOf:(Ljava/lang/CharSequence;)Lsc
 Asciz	scala/Some;
 class	scala/Some
 Asciz	x;
-Asciz	Ljava/lang/Object;;
-NameAndType	x:Ljava/lang/Object;
-Field	scala/Some.x:Ljava/lang/Object;
+Asciz	()Ljava/lang/Object;;
+NameAndType	x:()Ljava/lang/Object;
+Method	scala/Some.x:()Ljava/lang/Object;
 Asciz	scala/util/matching/Regex$Match;
 class	scala/util/matching/Regex$Match
 Asciz	scala/util/parsing/combinator/Parsers$Success;
@@ -115,7 +115,6 @@ Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/
 Asciz	' expected but `;
 String	' expected but `
 Asciz	first;
-Asciz	()Ljava/lang/Object;;
 NameAndType	first:()Ljava/lang/Object;
 Method	scala/util/parsing/input/Reader.first:()Ljava/lang/Object;
 Asciz	' found;
@@ -133,15 +132,16 @@ Asciz	this;
 Asciz	Lscala/util/parsing/combinator/RegexParsers$$anon$2;;
 Asciz	in;
 Asciz	Lscala/util/parsing/input/Reader;;
-Asciz	temp6;
-Asciz	Lscala/Some;;
 Asciz	Ljava/lang/CharSequence;;
-Asciz	temp7;
-Asciz	Lscala/util/matching/Regex$Match;;
-Asciz	start;
 Asciz	I;
+Asciz	start;
 Asciz	temp5;
 Asciz	Lscala/Option;;
+Asciz	temp6;
+Asciz	Lscala/Some;;
+Asciz	temp7;
+Asciz	Lscala/util/matching/Regex$Match;;
+Asciz	matched;
 Asciz	LocalVariableTable;
 Asciz	(Lscala/util/parsing/input/Reader<Ljava/lang/Character;>;)Lscala/util/parsing/combinator/Parsers$ParseResult<Ljava/lang/String;>;;
 Asciz	Signature;
@@ -149,6 +149,7 @@ Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	apply:(Lscala/util/parsing/input/Reader;)Lscala/util/parsing/combinator/Parsers$ParseResult;
 Method	scala/util/parsing/combinator/RegexParsers$$anon$2.apply:(Lscala/util/parsing/input/Reader;)Lscala/util/parsing/combinator/Parsers$ParseResult;
 Asciz	v1;
+Asciz	Ljava/lang/Object;;
 Asciz	(Lscala/util/parsing/combinator/RegexParsers;Lscala/util/matching/Regex;)V;
 Asciz	java/lang/NullPointerException;
 class	java/lang/NullPointerException
@@ -173,77 +174,81 @@ Asciz	ParseResult;
 Asciz	$anon$2;
 
 {
-public final scala.util.matching.Regex r$1;
+private final scala.util.matching.Regex r$1;
   Signature: Lscala/util/matching/Regex;
 
-public final scala.util.parsing.combinator.RegexParsers $outer;
+private final scala.util.parsing.combinator.RegexParsers $outer;
   Signature: Lscala/util/parsing/combinator/RegexParsers;
 
 public scala.util.parsing.combinator.Parsers$ParseResult apply(scala.util.parsing.input.Reader);
   Signature: (Lscala/util/parsing/input/Reader;)Lscala/util/parsing/combinator/Parsers$ParseResult;
   Code:
-   Stack=7, Locals=8, Args_size=2
+   Stack=7, Locals=10, Args_size=2
 	aload_1
 	invokevirtual	Method scala/util/parsing/input/Reader.source:()Ljava/lang/CharSequence;
-	astore_3
+	astore_2
 	aload_1
 	invokevirtual	Method scala/util/parsing/input/Reader.offset:()I
-	istore	6
+	istore_3
 	aload_0
 	getfield	Field $outer:Lscala/util/parsing/combinator/RegexParsers;
-	aload_3
-	iload	6
+	aload_2
+	iload_3
 	invokeinterface	InterfaceMethod scala/util/parsing/combinator/RegexParsers.handleWhiteSpace:(Ljava/lang/CharSequence;I)I
-	istore	5
+	istore	4
 	aload_0
 	getfield	Field r$1:Lscala/util/matching/Regex;
-	aload_3
-	iload	5
-	aload_3
+	aload_2
+	iload	4
+	aload_2
 	invokeinterface	InterfaceMethod java/lang/CharSequence.length:()I
 	invokeinterface	InterfaceMethod java/lang/CharSequence.subSequence:(II)Ljava/lang/CharSequence;
 	invokevirtual	Method scala/util/matching/Regex.findPrefixMatchOf:(Ljava/lang/CharSequence;)Lscala/Option;
-	astore	7
-	aload	7
+	astore	5
+	aload	5
 	instanceof	class scala/Some
 	ifeq	l1 // getstatic
-	aload	7
+	aload	5
 	checkcast	class scala/Some
-	astore_2
-	aload_2
-	getfield	Field scala/Some.x:Ljava/lang/Object;
+	astore	6
+	aload	6
+	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/util/matching/Regex$Match
-	astore	4
+	astore	7
+	aload	7
+	astore	8
 	new	class scala/util/parsing/combinator/Parsers$Success
 	dup
 	aload_0
 	getfield	Field $outer:Lscala/util/parsing/combinator/RegexParsers;
-	aload_3
-	iload	5
-	iload	5
-	aload	4
+	aload_2
+	iload	4
+	iload	4
+	aload	8
 	invokevirtual	Method scala/util/matching/Regex$Match.end:()I
 	iadd
 	invokeinterface	InterfaceMethod java/lang/CharSequence.subSequence:(II)Ljava/lang/CharSequence;
 	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
 	aload_1
-	iload	5
-	aload	4
+	iload	4
+	aload	8
 	invokevirtual	Method scala/util/matching/Regex$Match.end:()I
 	iadd
-	iload	6
+	iload_3
 	isub
 	invokevirtual	Method scala/util/parsing/input/Reader.drop:(I)Lscala/util/parsing/input/Reader;
 	invokespecial	Method scala/util/parsing/combinator/Parsers$Success."<init>":(Lscala/util/parsing/combinator/Parsers;Ljava/lang/Object;Lscala/util/parsing/input/Reader;)V
 	goto	l2 // areturn
 l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	aload	5
+	astore	9
 	dup
 	ifnonnull	l3 // aload
 	pop
-	aload	7
+	aload	9
 	ifnull	l4 // new
 	goto	l5 // new
-l3	aload	7
+l3	aload	9
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l5 // new
 l4	new	class scala/util/parsing/combinator/Parsers$Failure
@@ -267,33 +272,34 @@ l4	new	class scala/util/parsing/combinator/Parsers$Failure
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	aload_1
-	iload	5
-	iload	6
+	iload	4
+	iload_3
 	isub
 	invokevirtual	Method scala/util/parsing/input/Reader.drop:(I)Lscala/util/parsing/input/Reader;
 	invokespecial	Method scala/util/parsing/combinator/Parsers$Failure."<init>":(Lscala/util/parsing/combinator/Parsers;Ljava/lang/String;Lscala/util/parsing/input/Reader;)V
 l2	areturn
 l5	new	class scala/MatchError
 	dup
-	aload	7
+	aload	5
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 119 // getstatic
-   	l3 = 135 // aload
-   	l4 = 143 // new
-   	l2 = 202 // areturn
-   	l5 = 203 // new
+   	l1 = 122 // getstatic
+   	l3 = 142 // aload
+   	l4 = 150 // new
+   	l2 = 208 // areturn
+   	l5 = 209 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      213      0    this       Lscala/util/parsing/combinator/RegexParsers$$anon$2;
-   0      213      1    in       Lscala/util/parsing/input/Reader;
-   62      54      2    temp6       Lscala/Some;
-   5      208      3    source       Ljava/lang/CharSequence;
-   71      45      4    temp7       Lscala/util/matching/Regex$Match;
-   25      188      5    start       I
-   11      202      6    offset       I
-   48      165      7    temp5       Lscala/Option;
+   0      219      0    this       Lscala/util/parsing/combinator/RegexParsers$$anon$2;
+   0      219      1    in       Lscala/util/parsing/input/Reader;
+   5      214      2    source       Ljava/lang/CharSequence;
+   10      209      3    offset       I
+   23      196      4    start       I
+   46      173      5    temp5       Lscala/Option;
+   61      58      6    temp6       Lscala/Some;
+   71      48      7    temp7       Lscala/util/matching/Regex$Match;
+   75      44      8    matched       Lscala/util/matching/Regex$Match;
 
   Signature: length = 0x2
    00 FFFFFF81 

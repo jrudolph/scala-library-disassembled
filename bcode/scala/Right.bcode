@@ -2,7 +2,7 @@ Compiled from "Either.scala"
 public final class scala.Right extends scala.Either implements scala.ScalaObject,scala.Product,java.io.Serializable
   SourceFile: "Either.scala"
   Signature: length = 0x2
-   00 70 
+   00 71 
   ScalaSig: length = 0x438
    05 00 FFFFFF81 1E 06 04 01 02 42 05 02 05 52 69 67 68
    74 0A 01 03 01 05 73 63 61 6C 61 03 00 15 03 06
@@ -138,8 +138,15 @@ Asciz	(Ljava/lang/Object;)Z;
 Asciz	gd2$1;
 NameAndType	gd2$1:(Ljava/lang/Object;)Z
 Method	scala/Right.gd2$1:(Ljava/lang/Object;)Z
+Asciz	scala/Equals;
+class	scala/Equals
+Asciz	canEqual;
+NameAndType	canEqual:(Ljava/lang/Object;)Z
+InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp26;
 Asciz	temp27;
 Asciz	temp28;
+Asciz	b$1;
 Asciz	productPrefix;
 Asciz	Right;
 String	Right
@@ -161,21 +168,15 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp29;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	b
-Asciz	canEqual;
-Asciz	java/lang/Number;
-class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
-Asciz	equals2;
+Asciz	temp30;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
-Asciz	y0;
+NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Asciz	scala/Either;
 class	scala/Either
 Asciz	()V;
@@ -196,7 +197,7 @@ Asciz	java/io/Serializable;
 class	java/io/Serializable
 
 {
-public final java.lang.Object b;
+private final java.lang.Object b;
   Signature: Ljava/lang/Object;
   Signature: length = 0x2
    00 05 
@@ -295,25 +296,31 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=4, Args_size=2
+   Stack=2, Locals=6, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/Right
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/Right
 	astore_2
 	aload_2
-	getfield	Field b:Ljava/lang/Object;
+	instanceof	class scala/Right
+	ifeq	l2 // iconst_0
+	aload_2
+	checkcast	class scala/Right
 	astore_3
-	aload_0
 	aload_3
+	invokevirtual	Method b:()Ljava/lang/Object;
+	astore	4
+	aload	4
+	astore	5
+	aload_0
+	aload	5
 	invokespecial	Method gd2$1:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
+	aload_1
+	checkcast	class scala/Right
 	aload_0
-	instanceof	class scala/Right
+	invokeinterface	InterfaceMethod scala/Equals.canEqual:(Ljava/lang/Object;)Z
 	goto	l4 // ifeq
 l3	iconst_0
 	goto	l4 // ifeq
@@ -324,17 +331,19 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 37 // iconst_0
-   	l2 = 41 // iconst_0
-   	l4 = 42 // ifeq
-   	l1 = 45 // iconst_1
-   	l5 = 49 // iconst_0
-   	l6 = 50 // ireturn
+   	l3 = 51 // iconst_0
+   	l2 = 55 // iconst_0
+   	l4 = 56 // ifeq
+   	l1 = 59 // iconst_1
+   	l5 = 63 // iconst_0
+   	l6 = 64 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      51      0    this       Lscala/Right;
-   17      24      2    temp27       Lscala/Right;
-   22      19      3    temp28       Ljava/lang/Object;
+   0      65      0    this       Lscala/Right;
+   7      52      2    temp26       Ljava/lang/Object;
+   19      36      3    temp27       Lscala/Right;
+   25      30      4    temp28       Ljava/lang/Object;
+   29      26      5    b$1       Ljava/lang/Object;
 
 
 public java.lang.String productPrefix();
@@ -356,12 +365,14 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	aload_0
-	getfield	Field b:Ljava/lang/Object;
+	invokevirtual	Method b:()Ljava/lang/Object;
 	areturn
 l1	new	class java/lang/IndexOutOfBoundsException
 	dup
@@ -371,13 +382,20 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 10 // new
+   	l1 = 12 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      27      0    this       Lscala/Right;
+   2      25      2    temp29       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	ldc	String b
@@ -390,7 +408,12 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 8 // new
+   	l1 = 10 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      25      0    this       Lscala/Right;
+   2      23      2    temp30       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -404,50 +427,19 @@ public boolean canEqual(java.lang.Object);
 private final boolean gd2$1(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=2, Args_size=2
+	aload_1
 	aload_0
-	getfield	Field b:Ljava/lang/Object;
-	astore_2
-	aload_1
-	aload_2
-	if_acmpne	l1 // aload_1
+	invokevirtual	Method b:()Ljava/lang/Object;
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l1 // iconst_0
 	iconst_1
-	goto	l2 // ifeq
-l1	aload_1
-	ifnonnull	l3 // aload_1
-	iconst_0
-	goto	l2 // ifeq
-l3	aload_1
-	instanceof	class java/lang/Number
-	ifne	l4 // aload_1
-	aload_1
-	instanceof	class java/lang/Character
-	ifeq	l5 // aload_1
-l4	aload_1
-	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l2 // ifeq
-l5	aload_1
-	aload_2
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l2	ifeq	l6 // iconst_0
-	iconst_1
-	goto	l7 // ireturn
-l6	iconst_0
-l7	ireturn
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
   Labels:
-   	l1 = 14 // aload_1
-   	l3 = 22 // aload_1
-   	l4 = 36 // aload_1
-   	l5 = 44 // aload_1
-   	l2 = 49 // ifeq
-   	l6 = 56 // iconst_0
-   	l7 = 57 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      58      0    this       Lscala/Right;
-   10      42      2    y0       Ljava/lang/Object;
-
+   	l1 = 15 // iconst_0
+   	l2 = 16 // ireturn
 
 public scala.Right(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
@@ -468,7 +460,7 @@ public scala.Right(java.lang.Object);
    0      14      1    b       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 6F 
+   00 70 
 
 }
 

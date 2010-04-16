@@ -117,8 +117,10 @@ NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/MatchError."<init>":(Ljava/lang/Object;)V
 Asciz	attrib;
 Asciz	scope;
+Asciz	temp1;
 Asciz	temp2;
 Asciz	Lscala/xml/PrefixedAttribute;;
+Asciz	prefixed;
 Asciz	update;
 Asciz	(Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/xml/MetaData;)Lscala/xml/MetaData;;
 NameAndType	concatenate:(Lscala/xml/MetaData;Lscala/xml/MetaData;)Lscala/xml/MetaData;
@@ -160,10 +162,10 @@ Asciz	md$1;
 Asciz	normalized_attribs;
 Asciz	set;
 Asciz	Lscala/collection/immutable/Set;;
-Asciz	key$lzy$1;
-Asciz	Lscala/runtime/ObjectRef;;
 Asciz	bitmap$0$1;
 Asciz	Lscala/runtime/IntRef;;
+Asciz	key$lzy$1;
+Asciz	Lscala/runtime/ObjectRef;;
 Asciz	java/lang/Object;
 class	java/lang/Object
 Method	java/lang/Object."<init>":()V
@@ -201,7 +203,7 @@ public static {};
 public scala.xml.MetaData concatenate(scala.xml.MetaData, scala.xml.MetaData);
   Signature: (Lscala/xml/MetaData;Lscala/xml/MetaData;)Lscala/xml/MetaData;
   Code:
-   Stack=3, Locals=3, Args_size=3
+   Stack=3, Locals=4, Args_size=3
 l2	aload_1
 	getstatic	Field scala/xml/Null$.MODULE$:Lscala/xml/Null$;
 	if_acmpne	l1 // aload_1
@@ -255,48 +257,54 @@ public scala.xml.MetaData normalize(scala.xml.MetaData, scala.xml.NamespaceBindi
 public java.lang.String getUniversalKey(scala.xml.MetaData, scala.xml.NamespaceBinding);
   Signature: (Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;)Ljava/lang/String;
   Code:
-   Stack=3, Locals=4, Args_size=3
+   Stack=3, Locals=6, Args_size=3
 	aload_1
-	instanceof	class scala/xml/PrefixedAttribute
-	ifeq	l1 // aload_1
-	aload_1
-	checkcast	class scala/xml/PrefixedAttribute
 	astore_3
+	aload_3
+	instanceof	class scala/xml/PrefixedAttribute
+	ifeq	l1 // aload_3
+	aload_3
+	checkcast	class scala/xml/PrefixedAttribute
+	astore	4
+	aload	4
+	astore	5
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	aload_2
-	aload_3
+	aload	5
 	invokevirtual	Method scala/xml/PrefixedAttribute.pre:()Ljava/lang/String;
 	invokevirtual	Method scala/xml/NamespaceBinding.getURI:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload_3
+	aload	5
 	invokevirtual	Method scala/xml/PrefixedAttribute.key:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	goto	l2 // areturn
-l1	aload_1
+l1	aload_3
 	instanceof	class scala/xml/UnprefixedAttribute
 	ifeq	l3 // new
-	aload_1
+	aload_3
 	checkcast	class scala/xml/UnprefixedAttribute
 	invokevirtual	Method scala/xml/UnprefixedAttribute.key:()Ljava/lang/String;
 l2	areturn
 l3	new	class scala/MatchError
 	dup
-	aload_1
+	aload_3
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 43 // aload_1
-   	l2 = 57 // areturn
-   	l3 = 58 // new
+   	l1 = 52 // aload_3
+   	l2 = 66 // areturn
+   	l3 = 67 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      67      0    this       Lscala/xml/MetaData$;
-   0      67      1    attrib       Lscala/xml/MetaData;
-   0      67      2    scope       Lscala/xml/NamespaceBinding;
-   12      28      3    temp2       Lscala/xml/PrefixedAttribute;
+   0      76      0    this       Lscala/xml/MetaData$;
+   0      76      1    attrib       Lscala/xml/MetaData;
+   0      76      2    scope       Lscala/xml/NamespaceBinding;
+   2      74      3    temp1       Lscala/xml/MetaData;
+   15      34      4    temp2       Lscala/xml/PrefixedAttribute;
+   19      30      5    prefixed       Lscala/xml/PrefixedAttribute;
 
 
 public scala.xml.MetaData update(scala.xml.MetaData, scala.xml.NamespaceBinding, scala.xml.MetaData);
@@ -352,7 +360,7 @@ l1	aload_3
 private final scala.xml.MetaData iterate$1(scala.xml.MetaData, scala.xml.MetaData, scala.collection.immutable.Set, scala.xml.NamespaceBinding);
   Signature: (Lscala/xml/MetaData;Lscala/xml/MetaData;Lscala/collection/immutable/Set;Lscala/xml/NamespaceBinding;)Lscala/xml/MetaData;
   Code:
-   Stack=8, Locals=7, Args_size=5
+   Stack=8, Locals=8, Args_size=5
 l3	new	class scala/runtime/IntRef
 	dup
 	iconst_0
@@ -362,7 +370,7 @@ l3	new	class scala/runtime/IntRef
 	dup
 	aconst_null
 	invokespecial	Method scala/runtime/ObjectRef."<init>":(Ljava/lang/Object;)V
-	astore	5
+	astore	7
 	aload_1
 	getstatic	Field scala/xml/Null$.MODULE$:Lscala/xml/Null$;
 	if_acmpne	l1 // aload_3
@@ -372,7 +380,7 @@ l1	aload_3
 	aload_0
 	aload	4
 	aload_1
-	aload	5
+	aload	7
 	aload	6
 	invokespecial	Method key$1:(Lscala/xml/NamespaceBinding;Lscala/xml/MetaData;Lscala/runtime/ObjectRef;Lscala/runtime/IntRef;)Ljava/lang/String;
 	invokeinterface	InterfaceMethod scala/collection/SetLike.apply:(Ljava/lang/Object;)Z
@@ -390,7 +398,7 @@ l2	aload_1
 	aload_0
 	aload	4
 	aload_1
-	aload	5
+	aload	7
 	aload	6
 	invokespecial	Method key$1:(Lscala/xml/NamespaceBinding;Lscala/xml/MetaData;Lscala/runtime/ObjectRef;Lscala/runtime/IntRef;)Ljava/lang/String;
 	invokeinterface	InterfaceMethod scala/collection/SetLike.$plus:(Ljava/lang/Object;)Lscala/collection/Set;
@@ -409,8 +417,8 @@ l2	aload_1
    0      92      1    md$1       Lscala/xml/MetaData;
    0      92      2    normalized_attribs       Lscala/xml/MetaData;
    0      92      3    set       Lscala/collection/immutable/Set;
-   20      72      5    key$lzy$1       Lscala/runtime/ObjectRef;
    10      82      6    bitmap$0$1       Lscala/runtime/IntRef;
+   20      72      7    key$lzy$1       Lscala/runtime/ObjectRef;
 
 
 private scala.xml.MetaData$();

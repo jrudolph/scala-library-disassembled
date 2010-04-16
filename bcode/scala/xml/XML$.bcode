@@ -4,7 +4,7 @@ public final class scala.xml.XML$ extends java.lang.Object implements scala.xml.
   Scala: length = 0x
    
   Signature: length = 0x2
-   01 03 
+   01 0D 
   InnerClass: 
    public final $anon$1=class scala/xml/XML$$anon$1 of class scala/xml/XML
    public Catch=class scala/util/control/Exception$Catch of class scala/util/control/Exception
@@ -184,21 +184,17 @@ class	scala/xml/XML$$anonfun$save$1
 Asciz	(Ljava/io/Writer;)V;
 NameAndType	"<init>":(Ljava/io/Writer;)V
 Method	scala/xml/XML$$anonfun$save$1."<init>":(Ljava/io/Writer;)V
-Asciz	noCatch;
-Asciz	()Lscala/util/control/Exception$Catch;;
-NameAndType	noCatch:()Lscala/util/control/Exception$Catch;
-Method	scala/util/control/Exception$.noCatch:()Lscala/util/control/Exception$Catch;
-Asciz	scala/util/control/Exception$Catch;
-class	scala/util/control/Exception$Catch
-Asciz	andFinally;
+Asciz	ultimately;
 Asciz	(Lscala/Function0;)Lscala/util/control/Exception$Catch;;
-NameAndType	andFinally:(Lscala/Function0;)Lscala/util/control/Exception$Catch;
-Method	scala/util/control/Exception$Catch.andFinally:(Lscala/Function0;)Lscala/util/control/Exception$Catch;
+NameAndType	ultimately:(Lscala/Function0;)Lscala/util/control/Exception$Catch;
+Method	scala/util/control/Exception$.ultimately:(Lscala/Function0;)Lscala/util/control/Exception$Catch;
 Asciz	scala/xml/XML$$anonfun$save$2;
 class	scala/xml/XML$$anonfun$save$2
 Asciz	(Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;Ljava/io/Writer;)V;
 NameAndType	"<init>":(Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;Ljava/io/Writer;)V
 Method	scala/xml/XML$$anonfun$save$2."<init>":(Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;Ljava/io/Writer;)V
+Asciz	scala/util/control/Exception$Catch;
+class	scala/util/control/Exception$Catch
 Asciz	apply;
 Asciz	(Lscala/Function0;)Ljava/lang/Object;;
 NameAndType	apply:(Lscala/Function0;)Ljava/lang/Object;
@@ -241,12 +237,26 @@ class	scala/xml/Utility$
 Asciz	Lscala/xml/Utility$;;
 NameAndType	MODULE$:Lscala/xml/Utility$;
 Field	scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
-Asciz	scala/xml/TopScope$;
-class	scala/xml/TopScope$
-Asciz	Lscala/xml/TopScope$;;
-NameAndType	MODULE$:Lscala/xml/TopScope$;
-Field	scala/xml/TopScope$.MODULE$:Lscala/xml/TopScope$;
-Method	scala/collection/mutable/StringBuilder."<init>":()V
+Asciz	toXML$default$2;
+Asciz	()Lscala/xml/NamespaceBinding;;
+NameAndType	toXML$default$2:()Lscala/xml/NamespaceBinding;
+Method	scala/xml/Utility$.toXML$default$2:()Lscala/xml/NamespaceBinding;
+Asciz	toXML$default$3;
+Asciz	()Lscala/collection/mutable/StringBuilder;;
+NameAndType	toXML$default$3:()Lscala/collection/mutable/StringBuilder;
+Method	scala/xml/Utility$.toXML$default$3:()Lscala/collection/mutable/StringBuilder;
+Asciz	toXML$default$4;
+NameAndType	toXML$default$4:()Z
+Method	scala/xml/Utility$.toXML$default$4:()Z
+Asciz	toXML$default$5;
+NameAndType	toXML$default$5:()Z
+Method	scala/xml/Utility$.toXML$default$5:()Z
+Asciz	toXML$default$6;
+NameAndType	toXML$default$6:()Z
+Method	scala/xml/Utility$.toXML$default$6:()Z
+Asciz	toXML$default$7;
+NameAndType	toXML$default$7:()Z
+Method	scala/xml/Utility$.toXML$default$7:()Z
 Asciz	toXML;
 Asciz	(Lscala/xml/Node;Lscala/xml/NamespaceBinding;Lscala/collection/mutable/StringBuilder;ZZZZ)Lscala/collection/mutable/StringBuilder;;
 NameAndType	toXML:(Lscala/xml/Node;Lscala/xml/NamespaceBinding;Lscala/collection/mutable/StringBuilder;ZZZZ)Lscala/collection/mutable/StringBuilder;
@@ -517,6 +527,8 @@ public final scala.xml.dtd.DocType save$default$5();
   Code:
    Stack=1, Locals=1, Args_size=1
 	aconst_null
+	pop
+	aconst_null
 	areturn
   Labels:
 
@@ -669,7 +681,7 @@ public final void saveFull(java.lang.String, scala.xml.Node, java.lang.String, b
 public final void save(java.lang.String, scala.xml.Node, java.lang.String, boolean, scala.xml.dtd.DocType);
   Signature: (Ljava/lang/String;Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;)V
   Code:
-   Stack=8, Locals=10, Args_size=6
+   Stack=8, Locals=8, Args_size=6
 	new	class java/io/FileOutputStream
 	dup
 	aload_1
@@ -679,25 +691,20 @@ public final void save(java.lang.String, scala.xml.Node, java.lang.String, boole
 	invokevirtual	Method java/io/FileOutputStream.getChannel:()Ljava/nio/channels/FileChannel;
 	aload_3
 	invokestatic	Method java/nio/channels/Channels.newWriter:(Ljava/nio/channels/WritableByteChannel;Ljava/lang/String;)Ljava/io/Writer;
-	astore	9
+	astore	7
 	getstatic	Field scala/util/control/Exception$.MODULE$:Lscala/util/control/Exception$;
 	new	class scala/xml/XML$$anonfun$save$1
 	dup
-	aload	9
-	invokespecial	Method scala/xml/XML$$anonfun$save$1."<init>":(Ljava/io/Writer;)V
-	astore	8
-	astore	7
 	aload	7
-	invokevirtual	Method scala/util/control/Exception$.noCatch:()Lscala/util/control/Exception$Catch;
-	aload	8
-	invokevirtual	Method scala/util/control/Exception$Catch.andFinally:(Lscala/Function0;)Lscala/util/control/Exception$Catch;
+	invokespecial	Method scala/xml/XML$$anonfun$save$1."<init>":(Ljava/io/Writer;)V
+	invokevirtual	Method scala/util/control/Exception$.ultimately:(Lscala/Function0;)Lscala/util/control/Exception$Catch;
 	new	class scala/xml/XML$$anonfun$save$2
 	dup
 	aload_2
 	aload_3
 	iload	4
 	aload	5
-	aload	9
+	aload	7
 	invokespecial	Method scala/xml/XML$$anonfun$save$2."<init>":(Lscala/xml/Node;Ljava/lang/String;ZLscala/xml/dtd/DocType;Ljava/io/Writer;)V
 	invokevirtual	Method scala/util/control/Exception$Catch.apply:(Lscala/Function0;)Ljava/lang/Object;
 	pop
@@ -705,14 +712,14 @@ public final void save(java.lang.String, scala.xml.Node, java.lang.String, boole
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      67      0    this       Lscala/xml/XML$;
-   0      67      1    filename       Ljava/lang/String;
-   0      67      2    node$1       Lscala/xml/Node;
-   0      67      3    enc$1       Ljava/lang/String;
-   0      67      4    xmlDecl$1       Z
-   0      67      5    doctype$1       Lscala/xml/dtd/DocType;
-   10      56      6    fos       Ljava/io/FileOutputStream;
-   21      45      9    w$1       Ljava/io/Writer;
+   0      56      0    this       Lscala/xml/XML$;
+   0      56      1    filename       Ljava/lang/String;
+   0      56      2    node$1       Lscala/xml/Node;
+   0      56      3    enc$1       Ljava/lang/String;
+   0      56      4    xmlDecl$1       Z
+   0      56      5    doctype$1       Lscala/xml/dtd/DocType;
+   10      45      6    fos       Ljava/io/FileOutputStream;
+   21      34      7    w$1       Ljava/io/Writer;
 
 
 public final void write(java.io.Writer, scala.xml.Node, java.lang.String, boolean, scala.xml.dtd.DocType);
@@ -749,14 +756,18 @@ l1	aload	5
 l2	aload_1
 	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
 	aload_2
-	getstatic	Field scala/xml/TopScope$.MODULE$:Lscala/xml/TopScope$;
-	new	class scala/collection/mutable/StringBuilder
-	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	iconst_0
-	iconst_1
-	iconst_0
-	iconst_0
+	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
+	invokevirtual	Method scala/xml/Utility$.toXML$default$2:()Lscala/xml/NamespaceBinding;
+	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
+	invokevirtual	Method scala/xml/Utility$.toXML$default$3:()Lscala/collection/mutable/StringBuilder;
+	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
+	invokevirtual	Method scala/xml/Utility$.toXML$default$4:()Z
+	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
+	invokevirtual	Method scala/xml/Utility$.toXML$default$5:()Z
+	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
+	invokevirtual	Method scala/xml/Utility$.toXML$default$6:()Z
+	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
+	invokevirtual	Method scala/xml/Utility$.toXML$default$7:()Z
 	invokevirtual	Method scala/xml/Utility$.toXML:(Lscala/xml/Node;Lscala/xml/NamespaceBinding;Lscala/collection/mutable/StringBuilder;ZZZZ)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method java/io/Writer.write:(Ljava/lang/String;)V
@@ -766,12 +777,12 @@ l2	aload_1
    	l2 = 65 // aload_1
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      94      0    this       Lscala/xml/XML$;
-   0      94      1    w       Ljava/io/Writer;
-   0      94      2    node       Lscala/xml/Node;
-   0      94      3    enc       Ljava/lang/String;
-   0      94      4    xmlDecl       Z
-   0      94      5    doctype       Lscala/xml/dtd/DocType;
+   0      116      0    this       Lscala/xml/XML$;
+   0      116      1    w       Ljava/io/Writer;
+   0      116      2    node       Lscala/xml/Node;
+   0      116      3    enc       Ljava/lang/String;
+   0      116      4    xmlDecl       Z
+   0      116      5    doctype       Lscala/xml/dtd/DocType;
 
 
 private scala.xml.XML$();
@@ -785,19 +796,19 @@ private scala.xml.XML$();
 	aload_0
 	invokestatic	Method scala/xml/factory/XMLLoader$class.$init$:(Lscala/xml/factory/XMLLoader;)V
 	aload_0
-	ldc	String xml
+	ldc_w	String xml
 	putfield	Field xml:Ljava/lang/String;
 	aload_0
-	ldc	String xmlns
+	ldc_w	String xmlns
 	putfield	Field xmlns:Ljava/lang/String;
 	aload_0
-	ldc	String http://www.w3.org/XML/1998/namespace
+	ldc_w	String http://www.w3.org/XML/1998/namespace
 	putfield	Field namespace:Ljava/lang/String;
 	aload_0
-	ldc	String preserve
+	ldc_w	String preserve
 	putfield	Field preserve:Ljava/lang/String;
 	aload_0
-	ldc	String space
+	ldc_w	String space
 	putfield	Field space:Ljava/lang/String;
 	aload_0
 	ldc_w	String lang

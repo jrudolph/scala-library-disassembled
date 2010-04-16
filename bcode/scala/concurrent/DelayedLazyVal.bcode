@@ -2,7 +2,7 @@ Compiled from "DelayedLazyVal.scala"
 public class scala.concurrent.DelayedLazyVal extends java.lang.Object implements scala.ScalaObject
   SourceFile: "DelayedLazyVal.scala"
   Signature: length = 0x2
-   00 54 
+   00 5A 
   ScalaSig: length = 0x1B5
    05 00 48 06 04 01 02 00 07 02 0E 44 65 6C 61 79
    65 64 4C 61 7A 79 56 61 6C 0A 02 03 04 01 0A 63
@@ -69,6 +69,12 @@ NameAndType	apply:()Ljava/lang/Object;
 InterfaceMethod	scala/Function0.apply:()Ljava/lang/Object;
 NameAndType	complete:Ljava/lang/Object;
 Field	scala/concurrent/DelayedLazyVal.complete:Ljava/lang/Object;
+Asciz	scala/runtime/BoxedUnit;
+class	scala/runtime/BoxedUnit
+Asciz	UNIT;
+Asciz	Lscala/runtime/BoxedUnit;;
+NameAndType	UNIT:Lscala/runtime/BoxedUnit;
+Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	()TT;;
 Asciz	isDone;
 Asciz	()Z;
@@ -154,7 +160,7 @@ private final scala.Function0 f;
 private java.lang.Object complete();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=3, Locals=1, Args_size=1
+   Stack=3, Locals=2, Args_size=1
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
@@ -163,14 +169,14 @@ private java.lang.Object complete();
 	if_icmpne	l1 // aload_0
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
 	iand
 	iconst_0
-	if_icmpne	l2 // aload_0
+	if_icmpne	l2 // getstatic
 	aload_0
 	aload_0
 	getfield	Field f:Lscala/Function0;
@@ -182,22 +188,24 @@ private java.lang.Object complete();
 	iconst_1
 	ior
 	putfield	Field bitmap$0:I
-l2	aload_0
+l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_1
 	monitorexit
 l1	aload_0
 	getfield	Field complete:Ljava/lang/Object;
 	areturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
-   	l2 = 47 // aload_0
-   	l1 = 49 // aload_0
+   	l2 = 47 // getstatic
+   	l1 = 53 // aload_0
   Exception table:
    from   to  target type
-    14    49    54   any
+    14    53    58   any
   Signature: length = 0x2
-   00 1F 
+   00 25 
 
 public boolean isDone();
   Signature: ()Z
@@ -226,7 +234,7 @@ l2	areturn
    	l1 = 14 // aload_0
    	l2 = 23 // areturn
   Signature: length = 0x2
-   00 1F 
+   00 25 
 
 public scala.concurrent.DelayedLazyVal(scala.Function0, scala.Function0);
   Signature: (Lscala/Function0;Lscala/Function0;)V
@@ -276,7 +284,7 @@ public scala.concurrent.DelayedLazyVal(scala.Function0, scala.Function0);
    45      18      4    x$2       Lscala/concurrent/FutureTaskRunner;
 
   Signature: length = 0x2
-   00 53 
+   00 59 
 
 }
 

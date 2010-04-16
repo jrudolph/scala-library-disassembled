@@ -2,7 +2,7 @@ Compiled from "SynchronizedStack.scala"
 public class scala.collection.mutable.SynchronizedStack extends scala.collection.mutable.Stack implements scala.ScalaObject
   SourceFile: "SynchronizedStack.scala"
   Signature: length = 0x2
-   00 5D 
+   00 6D 
   ScalaSig: length = 0x284
    05 00 6F 06 04 01 02 00 09 02 11 53 79 6E 63 68
    72 6F 6E 69 7A 65 64 53 74 61 63 6B 0A 02 03 04
@@ -58,6 +58,16 @@ Asciz	scala/collection/mutable/Stack;
 class	scala/collection/mutable/Stack
 NameAndType	isEmpty:()Z
 Method	scala/collection/mutable/Stack.isEmpty:()Z
+Asciz	scala/runtime/BoxesRunTime;
+class	scala/runtime/BoxesRunTime
+Asciz	boxToBoolean;
+Asciz	(Z)Ljava/lang/Boolean;;
+NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
+Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+Asciz	unboxToBoolean;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	unboxToBoolean:(Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 Asciz	push;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/SynchronizedStack;;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/Stack;;
@@ -106,6 +116,12 @@ Asciz	clear;
 Asciz	()V;
 NameAndType	clear:()V
 Method	scala/collection/mutable/Stack.clear:()V
+Asciz	scala/runtime/BoxedUnit;
+class	scala/runtime/BoxedUnit
+Asciz	UNIT;
+Asciz	Lscala/runtime/BoxedUnit;;
+NameAndType	UNIT:Lscala/runtime/BoxedUnit;
+Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	iterator;
 Asciz	()Lscala/collection/Iterator;;
 NameAndType	iterator:()Lscala/collection/Iterator;
@@ -149,44 +165,46 @@ class	scala/ScalaObject
 public boolean isEmpty();
   Signature: ()Z
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=3, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	invokespecial	Method scala/collection/mutable/Stack.isEmpty:()Z
-	istore_1
-	aload_0
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+	astore_2
+	aload_1
 	monitorexit
-	iload_1
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 	ireturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    11    13   any
+     4    14    19   any
 
 public scala.collection.mutable.SynchronizedStack push(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/mutable/SynchronizedStack;
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=4, Args_size=2
 	aload_0
 	dup
-	pop
+	astore_2
 	monitorenter
 	aload_0
 	aload_1
 	invokespecial	Method scala/collection/mutable/Stack.push:(Ljava/lang/Object;)Lscala/collection/mutable/Stack;
-	astore_2
-	aload_0
-	monitorexit
+	astore_3
 	aload_2
+	monitorexit
+	aload_3
 	checkcast	class scala/collection/mutable/SynchronizedStack
 	areturn
-	aload_0
+	aload_2
 	monitorexit
 	athrow
   Labels:
@@ -199,62 +217,62 @@ public scala.collection.mutable.SynchronizedStack push(java.lang.Object);
    0      20      1    elem       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 17 
+   00 21 
 
 public scala.collection.mutable.SynchronizedStack push(java.lang.Object, java.lang.Object, scala.collection.Seq);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Seq;)Lscala/collection/mutable/SynchronizedStack;
   Code:
-   Stack=4, Locals=5, Args_size=4
+   Stack=4, Locals=6, Args_size=4
 	aload_0
 	dup
-	pop
+	astore	4
 	monitorenter
 	aload_0
 	aload_1
 	aload_2
 	aload_3
 	invokespecial	Method scala/collection/mutable/Stack.push:(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Seq;)Lscala/collection/mutable/Stack;
-	astore	4
-	aload_0
-	monitorexit
+	astore	5
 	aload	4
+	monitorexit
+	aload	5
 	checkcast	class scala/collection/mutable/SynchronizedStack
 	areturn
-	aload_0
+	aload	4
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    15    21   any
+     5    17    23   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      24      0    this       Lscala/collection/mutable/SynchronizedStack;
-   0      24      1    elem1       Ljava/lang/Object;
-   0      24      2    elem2       Ljava/lang/Object;
-   0      24      3    elems       Lscala/collection/Seq;
+   0      27      0    this       Lscala/collection/mutable/SynchronizedStack;
+   0      27      1    elem1       Ljava/lang/Object;
+   0      27      2    elem2       Ljava/lang/Object;
+   0      27      3    elems       Lscala/collection/Seq;
 
   Signature: length = 0x2
-   00 21 
+   00 2B 
 
 public scala.collection.mutable.SynchronizedStack pushAll(scala.collection.Traversable);
   Signature: (Lscala/collection/Traversable;)Lscala/collection/mutable/SynchronizedStack;
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=4, Args_size=2
 	aload_0
 	dup
-	pop
+	astore_2
 	monitorenter
 	aload_0
 	aload_1
 	invokespecial	Method scala/collection/mutable/Stack.pushAll:(Lscala/collection/Traversable;)Lscala/collection/mutable/Stack;
-	astore_2
-	aload_0
-	monitorexit
+	astore_3
 	aload_2
+	monitorexit
+	aload_3
 	checkcast	class scala/collection/mutable/SynchronizedStack
 	areturn
-	aload_0
+	aload_2
 	monitorexit
 	athrow
   Labels:
@@ -267,26 +285,26 @@ public scala.collection.mutable.SynchronizedStack pushAll(scala.collection.Trave
    0      20      1    elems       Lscala/collection/Traversable;
 
   Signature: length = 0x2
-   00 28 
+   00 32 
 
 public scala.collection.mutable.SynchronizedStack pushAll(scala.collection.Iterator);
   Signature: (Lscala/collection/Iterator;)Lscala/collection/mutable/SynchronizedStack;
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=4, Args_size=2
 	aload_0
 	dup
-	pop
+	astore_2
 	monitorenter
 	aload_0
 	aload_1
 	invokespecial	Method scala/collection/mutable/Stack.pushAll:(Lscala/collection/Iterator;)Lscala/collection/mutable/Stack;
-	astore_2
-	aload_0
-	monitorexit
+	astore_3
 	aload_2
+	monitorexit
+	aload_3
 	checkcast	class scala/collection/mutable/SynchronizedStack
 	areturn
-	aload_0
+	aload_2
 	monitorexit
 	athrow
   Labels:
@@ -299,24 +317,24 @@ public scala.collection.mutable.SynchronizedStack pushAll(scala.collection.Itera
    0      20      1    elems       Lscala/collection/Iterator;
 
   Signature: length = 0x2
-   00 2E 
+   00 38 
 
 public java.lang.Object top();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=3, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	invokespecial	Method scala/collection/mutable/Stack.top:()Ljava/lang/Object;
-	astore_1
-	aload_0
-	monitorexit
+	astore_2
 	aload_1
+	monitorexit
+	aload_2
 	areturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
@@ -324,24 +342,24 @@ public java.lang.Object top();
    from   to  target type
      4    11    13   any
   Signature: length = 0x2
-   00 33 
+   00 3D 
 
 public java.lang.Object pop();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=3, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	invokespecial	Method scala/collection/mutable/Stack.pop:()Ljava/lang/Object;
-	astore_1
-	aload_0
-	monitorexit
+	astore_2
 	aload_1
+	monitorexit
+	aload_2
 	areturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
@@ -349,46 +367,48 @@ public java.lang.Object pop();
    from   to  target type
      4    11    13   any
   Signature: length = 0x2
-   00 33 
+   00 3D 
 
 public void clear();
   Signature: ()V
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=2, Locals=2, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	invokespecial	Method scala/collection/mutable/Stack.clear:()V
-	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_1
 	monitorexit
 	return
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    10    11   any
+     4    14    15   any
 
 public scala.collection.Iterator iterator();
   Signature: ()Lscala/collection/Iterator;
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=3, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	invokespecial	Method scala/collection/mutable/Stack.iterator:()Lscala/collection/Iterator;
-	astore_1
-	aload_0
-	monitorexit
+	astore_2
 	aload_1
+	monitorexit
+	aload_2
 	checkcast	class scala/collection/Iterator
 	areturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
@@ -396,25 +416,25 @@ public scala.collection.Iterator iterator();
    from   to  target type
      4    11    16   any
   Signature: length = 0x2
-   00 41 
+   00 51 
 
 public scala.collection.immutable.List toList();
   Signature: ()Lscala/collection/immutable/List;
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=3, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	invokespecial	Method scala/collection/mutable/Stack.toList:()Lscala/collection/immutable/List;
-	astore_1
-	aload_0
-	monitorexit
+	astore_2
 	aload_1
+	monitorexit
+	aload_2
 	checkcast	class scala/collection/immutable/List
 	areturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
@@ -422,25 +442,25 @@ public scala.collection.immutable.List toList();
    from   to  target type
      4    11    16   any
   Signature: length = 0x2
-   00 48 
+   00 58 
 
 public java.lang.String toString();
   Signature: ()Ljava/lang/String;
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=3, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	invokestatic	Method scala/collection/SeqLike$class.toString:(Lscala/collection/SeqLike;)Ljava/lang/String;
-	astore_1
-	aload_0
-	monitorexit
+	astore_2
 	aload_1
+	monitorexit
+	aload_2
 	checkcast	class java/lang/String
 	areturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
@@ -521,7 +541,7 @@ public scala.collection.mutable.SynchronizedStack();
 	return
   Labels:
   Signature: length = 0x2
-   00 38 
+   00 42 
 
 }
 

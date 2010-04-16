@@ -102,14 +102,16 @@ class	scala/MatchError
 Asciz	<init>;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/MatchError."<init>":(Ljava/lang/Object;)V
+Asciz	temp7;
+Asciz	Ljava/lang/Object;;
 Asciz	temp8;
 Asciz	Lscala/actors/ReactChannel$SendToReactor;;
 Asciz	temp10;
-Asciz	Ljava/lang/Object;;
 Asciz	isDefinedAt;
 Asciz	gd3$1;
 NameAndType	gd3$1:(Ljava/lang/Object;)Z
 Method	scala/actors/ReactChannel$$anonfun$react$1.gd3$1:(Ljava/lang/Object;)Z
+Asciz	temp12;
 Asciz	temp13;
 Asciz	scala/PartialFunction;
 class	scala/PartialFunction
@@ -154,13 +156,13 @@ class	java/io/Serializable
 public static final long serialVersionUID;
   Signature: J
 
-public final scala.actors.ReactChannel C$1;
+private final scala.actors.ReactChannel C$1;
   Signature: Lscala/actors/ReactChannel;
 
 private final scala.PartialFunction f$1;
   Signature: Lscala/PartialFunction;
 
-public final scala.actors.ReactChannel $outer;
+private final scala.actors.ReactChannel $outer;
   Signature: Lscala/actors/ReactChannel;
 
 public static {};
@@ -238,38 +240,42 @@ public scala.Function1 compose(scala.Function1);
 public final void apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
   Code:
-   Stack=3, Locals=5, Args_size=2
+   Stack=3, Locals=7, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/actors/ReactChannel$SendToReactor
 	ifeq	l1 // new
-	aload_1
+	aload_2
 	checkcast	class scala/actors/ReactChannel$SendToReactor
 	invokevirtual	Method scala/actors/ReactChannel$SendToReactor.scala$actors$ReactChannel$SendToReactor$$$outer:()Lscala/actors/ReactChannel;
 	aload_0
 	getfield	Field $outer:Lscala/actors/ReactChannel;
 	if_acmpne	l1 // new
-	aload_1
-	checkcast	class scala/actors/ReactChannel$SendToReactor
-	astore_2
 	aload_2
+	checkcast	class scala/actors/ReactChannel$SendToReactor
+	astore_3
+	aload_3
 	invokevirtual	Method scala/actors/ReactChannel$SendToReactor.msg:()Ljava/lang/Object;
 	astore	4
 	aload_0
 	getfield	Field C$1:Lscala/actors/ReactChannel;
-	aload_2
-	invokevirtual	Method scala/actors/ReactChannel$SendToReactor.channel:()Lscala/actors/ReactChannel;
-	astore_3
-	dup
-	ifnonnull	l2 // aload_3
-	pop
 	aload_3
-	ifnull	l3 // aload_0
+	invokevirtual	Method scala/actors/ReactChannel$SendToReactor.channel:()Lscala/actors/ReactChannel;
+	astore	5
+	dup
+	ifnonnull	l2 // aload
+	pop
+	aload	5
+	ifnull	l3 // aload
 	goto	l4 // new
-l2	aload_3
+l2	aload	5
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l4 // new
-l3	aload_0
-	aload	4
+l3	aload	4
+	astore	6
+	aload_0
+	aload	6
 	invokespecial	Method gd2$1:(Ljava/lang/Object;)Z
 	ifeq	l5 // new
 	aload_0
@@ -280,60 +286,67 @@ l3	aload_0
 	return
 l5	new	class scala/MatchError
 	dup
-	aload_1
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
 l4	new	class scala/MatchError
 	dup
-	aload_1
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
 l1	new	class scala/MatchError
 	dup
-	aload_1
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l2 = 53 // aload_3
-   	l3 = 60 // aload_0
-   	l5 = 82 // new
-   	l4 = 91 // new
-   	l1 = 100 // new
+   	l2 = 57 // aload
+   	l3 = 65 // aload
+   	l5 = 91 // new
+   	l4 = 100 // new
+   	l1 = 109 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      109      0    this       Lscala/actors/ReactChannel$$anonfun$react$1;
-   26      74      2    temp8       Lscala/actors/ReactChannel$SendToReactor;
-   32      68      4    temp10       Ljava/lang/Object;
+   0      118      0    this       Lscala/actors/ReactChannel$$anonfun$react$1;
+   2      116      2    temp7       Ljava/lang/Object;
+   28      62      3    temp8       Lscala/actors/ReactChannel$SendToReactor;
+   91      18      3    temp8       Lscala/actors/ReactChannel$SendToReactor;
+   34      56      4    temp10       Ljava/lang/Object;
+   91      18      4    temp10       Ljava/lang/Object;
+   69      21      6    msg       Ljava/lang/Object;
+   91      9      6    msg       Ljava/lang/Object;
 
 
 public final boolean isDefinedAt(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=4, Args_size=2
+   Stack=2, Locals=5, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/actors/ReactChannel$SendToReactor
 	ifeq	l1 // iconst_0
-	aload_1
+	aload_2
 	checkcast	class scala/actors/ReactChannel$SendToReactor
 	invokevirtual	Method scala/actors/ReactChannel$SendToReactor.scala$actors$ReactChannel$SendToReactor$$$outer:()Lscala/actors/ReactChannel;
 	aload_0
 	getfield	Field $outer:Lscala/actors/ReactChannel;
 	if_acmpne	l1 // iconst_0
-	aload_1
+	aload_2
 	checkcast	class scala/actors/ReactChannel$SendToReactor
 	astore_3
 	aload_0
 	getfield	Field C$1:Lscala/actors/ReactChannel;
 	aload_3
 	invokevirtual	Method scala/actors/ReactChannel$SendToReactor.channel:()Lscala/actors/ReactChannel;
-	astore_2
+	astore	4
 	dup
-	ifnonnull	l2 // aload_2
+	ifnonnull	l2 // aload
 	pop
-	aload_2
+	aload	4
 	ifnull	l3 // aload_0
 	goto	l4 // iconst_0
-l2	aload_2
+l2	aload	4
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l4 // iconst_0
 l3	aload_0
@@ -346,15 +359,16 @@ l4	iconst_0
 l1	iconst_0
 l5	ireturn
   Labels:
-   	l2 = 47 // aload_2
-   	l3 = 54 // aload_0
-   	l4 = 65 // iconst_0
-   	l1 = 69 // iconst_0
-   	l5 = 70 // ireturn
+   	l2 = 51 // aload
+   	l3 = 59 // aload_0
+   	l4 = 70 // iconst_0
+   	l1 = 74 // iconst_0
+   	l5 = 75 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      71      0    this       Lscala/actors/ReactChannel$$anonfun$react$1;
-   26      43      3    temp13       Lscala/actors/ReactChannel$SendToReactor;
+   0      76      0    this       Lscala/actors/ReactChannel$$anonfun$react$1;
+   2      74      2    temp12       Ljava/lang/Object;
+   28      46      3    temp13       Lscala/actors/ReactChannel$SendToReactor;
 
 
 public scala.Function1 andThen(scala.Function1);
@@ -444,7 +458,7 @@ l1	aload_0
    0      40      1    $outer       Lscala/actors/ReactChannel;
 
   Signature: length = 0x2
-   00 FFFFFF83 
+   00 FFFFFF85 
 
 }
 

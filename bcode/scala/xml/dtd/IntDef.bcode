@@ -138,12 +138,12 @@ class	scala/xml/Utility$
 Asciz	Lscala/xml/Utility$;;
 NameAndType	MODULE$:Lscala/xml/Utility$;
 Field	scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
-Asciz	scala/xml/parsing/TokenTests$class;
-class	scala/xml/parsing/TokenTests$class
+Asciz	scala/xml/parsing/TokenTests;
+class	scala/xml/parsing/TokenTests
 Asciz	isName;
-Asciz	(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z;
-NameAndType	isName:(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
-Method	scala/xml/parsing/TokenTests$class.isName:(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
+Asciz	(Ljava/lang/String;)Z;
+NameAndType	isName:(Ljava/lang/String;)Z
+InterfaceMethod	scala/xml/parsing/TokenTests.isName:(Ljava/lang/String;)Z
 Asciz	length;
 Asciz	()I;
 NameAndType	length:()I
@@ -165,10 +165,10 @@ NameAndType	toString:()Ljava/lang/String;
 Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 Asciz	this;
 Asciz	Lscala/xml/dtd/IntDef;;
-Asciz	iz;
-Asciz	I;
 Asciz	tmp;
 Asciz	ix;
+Asciz	I;
+Asciz	iz;
 Asciz	n;
 Asciz	LocalVariableTable;
 Asciz	buildString;
@@ -199,7 +199,6 @@ Method	scala/runtime/ScalaRunTime$._toString:(Lscala/Product;)Ljava/lang/String;
 Asciz	equals;
 Asciz	(Ljava/lang/Object;)Z;
 Asciz	gd8$1;
-Asciz	(Ljava/lang/String;)Z;
 NameAndType	gd8$1:(Ljava/lang/String;)Z
 Method	scala/xml/dtd/IntDef.gd8$1:(Ljava/lang/String;)Z
 Asciz	scala/Equals;
@@ -207,8 +206,11 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp45;
+Asciz	Ljava/lang/Object;;
 Asciz	temp46;
 Asciz	temp47;
+Asciz	value$1;
 Asciz	productPrefix;
 Asciz	IntDef;
 String	IntDef
@@ -227,9 +229,11 @@ Asciz	java/lang/Object;
 class	java/lang/Object
 Method	java/lang/Object.toString:()Ljava/lang/String;
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp48;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	value
+Asciz	temp49;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/xml/dtd/EntityDef;
@@ -313,59 +317,57 @@ public java.lang.String value();
 private void validateValue();
   Signature: ()V
   Code:
-   Stack=4, Locals=6, Args_size=1
+   Stack=4, Locals=5, Args_size=1
 	aload_0
 	invokevirtual	Method value:()Ljava/lang/String;
-	astore_3
-	aload_3
+	astore_1
+	aload_1
 	ldc	int 37
 	invokevirtual	Method java/lang/String.indexOf:(I)I
-	istore	4
-l4	iload	4
+	istore_2
+l4	iload_2
 	iconst_m1
 	if_icmpeq	l1 // return
-	aload_3
+	aload_1
 	ldc	int 59
-	iload	4
+	iload_2
 	invokevirtual	Method java/lang/String.indexOf:(II)I
-	istore_2
-	iload_2
+	istore_3
+	iload_3
 	iconst_m1
-	if_icmpne	l2 // aload_3
+	if_icmpne	l2 // aload_1
+	iload_3
 	iload_2
-	iload	4
 	iconst_1
 	iadd
-	if_icmpne	l2 // aload_3
+	if_icmpne	l2 // aload_1
 	new	class java/lang/IllegalArgumentException
 	dup
 	ldc	String no % allowed in entity value, except for parameter-entity-references
 	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
 	athrow
-l2	aload_3
-	iload	4
+l2	aload_1
 	iload_2
+	iload_3
 	invokevirtual	Method java/lang/String.substring:(II)Ljava/lang/String;
-	astore	5
+	astore	4
 	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
-	astore_1
-	aload_1
-	aload	5
-	invokestatic	Method scala/xml/parsing/TokenTests$class.isName:(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
+	aload	4
+	invokeinterface	InterfaceMethod scala/xml/parsing/TokenTests.isName:(Ljava/lang/String;)Z
 	ifeq	l3 // new
-	aload_3
-	iload_2
+	aload_1
+	iload_3
 	iconst_1
 	iadd
-	aload_3
+	aload_1
 	invokevirtual	Method java/lang/String.length:()I
 	invokevirtual	Method java/lang/String.substring:(II)Ljava/lang/String;
-	astore_3
-	aload_3
+	astore_1
+	aload_1
 	ldc	int 37
 	invokevirtual	Method java/lang/String.indexOf:(I)I
-	istore	4
-	goto	l4 // iload
+	istore_2
+	goto	l4 // iload_2
 l3	new	class java/lang/IllegalArgumentException
 	dup
 	new	class scala/collection/mutable/StringBuilder
@@ -373,7 +375,7 @@ l3	new	class java/lang/IllegalArgumentException
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc	String interal entity def: \"
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	5
+	aload	4
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc	String \" must be an XML Name
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
@@ -382,18 +384,18 @@ l3	new	class java/lang/IllegalArgumentException
 	athrow
 l1	return
   Labels:
-   	l4 = 13 // iload
-   	l2 = 51 // aload_3
-   	l3 = 96 // new
-   	l1 = 129 // return
+   	l4 = 12 // iload_2
+   	l2 = 47 // aload_1
+   	l3 = 90 // new
+   	l1 = 123 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      130      0    this       Lscala/xml/dtd/IntDef;
-   28      101      2    iz       I
-   5      125      3    tmp       Ljava/lang/String;
-   13      117      4    ix       I
-   60      33      5    n       Ljava/lang/String;
-   96      33      5    n       Ljava/lang/String;
+   0      124      0    this       Lscala/xml/dtd/IntDef;
+   5      119      1    tmp       Ljava/lang/String;
+   12      112      2    ix       I
+   25      98      3    iz       I
+   55      32      4    n       Ljava/lang/String;
+   90      33      4    n       Ljava/lang/String;
 
 
 public scala.collection.mutable.StringBuilder buildString(scala.collection.mutable.StringBuilder);
@@ -452,21 +454,25 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=4, Args_size=2
+   Stack=2, Locals=6, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/xml/dtd/IntDef
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/xml/dtd/IntDef
 	astore_2
 	aload_2
-	invokevirtual	Method value:()Ljava/lang/String;
+	instanceof	class scala/xml/dtd/IntDef
+	ifeq	l2 // iconst_0
+	aload_2
+	checkcast	class scala/xml/dtd/IntDef
 	astore_3
-	aload_0
 	aload_3
+	invokevirtual	Method value:()Ljava/lang/String;
+	astore	4
+	aload	4
+	astore	5
+	aload_0
+	aload	5
 	invokespecial	Method gd8$1:(Ljava/lang/String;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -483,17 +489,19 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 43 // iconst_0
-   	l2 = 47 // iconst_0
-   	l4 = 48 // ifeq
-   	l1 = 51 // iconst_1
-   	l5 = 55 // iconst_0
-   	l6 = 56 // ireturn
+   	l3 = 51 // iconst_0
+   	l2 = 55 // iconst_0
+   	l4 = 56 // ifeq
+   	l1 = 59 // iconst_1
+   	l5 = 63 // iconst_0
+   	l6 = 64 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      57      0    this       Lscala/xml/dtd/IntDef;
-   17      30      2    temp46       Lscala/xml/dtd/IntDef;
-   22      25      3    temp47       Ljava/lang/String;
+   0      65      0    this       Lscala/xml/dtd/IntDef;
+   7      52      2    temp45       Ljava/lang/Object;
+   19      36      3    temp46       Lscala/xml/dtd/IntDef;
+   25      30      4    temp47       Ljava/lang/String;
+   29      26      5    value$1       Ljava/lang/String;
 
 
 public java.lang.String productPrefix();
@@ -515,8 +523,10 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	aload_0
@@ -530,13 +540,20 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 10 // new
+   	l1 = 12 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      27      0    this       Lscala/xml/dtd/IntDef;
+   2      25      2    temp48       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	ldc	String value
@@ -549,7 +566,12 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 8 // new
+   	l1 = 10 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      25      0    this       Lscala/xml/dtd/IntDef;
+   2      23      2    temp49       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z

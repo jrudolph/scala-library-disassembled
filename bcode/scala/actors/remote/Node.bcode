@@ -150,9 +150,13 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp9;
+Asciz	Ljava/lang/Object;;
 Asciz	temp10;
 Asciz	temp11;
 Asciz	temp12;
+Asciz	port$1;
+Asciz	address$1;
 Asciz	productPrefix;
 Asciz	Node;
 String	Node
@@ -174,10 +178,12 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp13;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	port
 String	address
+Asciz	temp14;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	()V;
@@ -326,25 +332,31 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=3, Locals=5, Args_size=2
+   Stack=3, Locals=8, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/actors/remote/Node
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/actors/remote/Node
 	astore_2
 	aload_2
-	invokevirtual	Method address:()Ljava/lang/String;
-	astore_3
+	instanceof	class scala/actors/remote/Node
+	ifeq	l2 // iconst_0
 	aload_2
-	invokevirtual	Method port:()I
-	istore	4
-	aload_0
+	checkcast	class scala/actors/remote/Node
+	astore_3
 	aload_3
-	iload	4
+	invokevirtual	Method address:()Ljava/lang/String;
+	astore	4
+	aload_3
+	invokevirtual	Method port:()I
+	istore	5
+	iload	5
+	istore	6
+	aload	4
+	astore	7
+	aload_0
+	aload	7
+	iload	6
 	invokespecial	Method gd1$1:(Ljava/lang/String;I)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -361,18 +373,21 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 51 // iconst_0
-   	l2 = 55 // iconst_0
-   	l4 = 56 // ifeq
-   	l1 = 59 // iconst_1
-   	l5 = 63 // iconst_0
-   	l6 = 64 // ireturn
+   	l3 = 63 // iconst_0
+   	l2 = 67 // iconst_0
+   	l4 = 68 // ifeq
+   	l1 = 71 // iconst_1
+   	l5 = 75 // iconst_0
+   	l6 = 76 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      65      0    this       Lscala/actors/remote/Node;
-   17      38      2    temp10       Lscala/actors/remote/Node;
-   22      33      3    temp11       Ljava/lang/String;
-   28      27      4    temp12       I
+   0      77      0    this       Lscala/actors/remote/Node;
+   7      64      2    temp9       Ljava/lang/Object;
+   19      48      3    temp10       Lscala/actors/remote/Node;
+   25      42      4    temp11       Ljava/lang/String;
+   31      36      5    temp12       I
+   35      32      6    port$1       I
+   39      28      7    address$1       Ljava/lang/String;
 
 
 public java.lang.String productPrefix();
@@ -396,8 +411,10 @@ public java.lang.Object productElement(int);
   Code:
    Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
-		0: 51;
+		0: 49;
 		1: 39;
 		default: 24 }
 	new	class java/lang/IndexOutOfBoundsException
@@ -409,21 +426,26 @@ public java.lang.Object productElement(int);
 	athrow
 	aload_0
 	invokevirtual	Method port:()I
-	istore_2
-	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	goto	l1 // areturn
 	aload_0
 	invokevirtual	Method address:()Ljava/lang/String;
 l1	areturn
   Labels:
-   	l1 = 55 // areturn
+   	l1 = 53 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      54      0    this       Lscala/actors/remote/Node;
+   2      52      2    temp13       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
 		0: 44;
 		1: 39;
@@ -441,6 +463,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 46 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      47      0    this       Lscala/actors/remote/Node;
+   2      45      2    temp14       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z

@@ -369,9 +369,9 @@ Asciz	(Ljava/lang/String;Lscala/Option;)Ljava/lang/String;;
 Asciz	scala/Some;
 class	scala/Some
 Asciz	x;
-Asciz	Ljava/lang/Object;;
-NameAndType	x:Ljava/lang/Object;
-Field	scala/Some.x:Ljava/lang/Object;
+Asciz	()Ljava/lang/Object;;
+NameAndType	x:()Ljava/lang/Object;
+Method	scala/Some.x:()Ljava/lang/Object;
 Asciz	java/lang/Object;
 class	java/lang/Object
 Method	java/lang/Object.toString:()Ljava/lang/String;
@@ -392,6 +392,7 @@ Method	scala/MatchError."<init>":(Ljava/lang/Object;)V
 Asciz	pre;
 Asciz	a;
 Asciz	Lscala/Option;;
+Asciz	temp25;
 int	48;
 Asciz	0;
 String	0
@@ -784,11 +785,9 @@ l2	areturn
 public scala.util.parsing.combinator.Parsers$Parser string();
   Signature: ()Lscala/util/parsing/combinator/Parsers$Parser;
   Code:
-   Stack=4, Locals=2, Args_size=1
+   Stack=4, Locals=1, Args_size=1
 	aload_0
 	ldc	int 34
-	istore_1
-	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
 	invokeinterface	InterfaceMethod scala/util/parsing/combinator/Parsers.accept:(Ljava/lang/Object;)Lscala/util/parsing/combinator/Parsers$Parser;
 	new	class scala/util/parsing/json/Lexer$$anonfun$string$1
@@ -892,11 +891,9 @@ public scala.util.parsing.combinator.Parsers$Parser intList();
 public scala.util.parsing.combinator.Parsers$Parser fracPart();
   Signature: ()Lscala/util/parsing/combinator/Parsers$Parser;
   Code:
-   Stack=4, Locals=2, Args_size=1
+   Stack=4, Locals=1, Args_size=1
 	aload_0
 	ldc	int 46
-	istore_1
-	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
 	invokeinterface	InterfaceMethod scala/util/parsing/combinator/Parsers.accept:(Ljava/lang/Object;)Lscala/util/parsing/combinator/Parsers$Parser;
 	new	class scala/util/parsing/json/Lexer$$anonfun$fracPart$1
@@ -943,8 +940,10 @@ public scala.util.parsing.combinator.Parsers$Parser expPart();
 public final java.lang.String scala$util$parsing$json$Lexer$$optString(java.lang.String, scala.Option);
   Signature: (Ljava/lang/String;Lscala/Option;)Ljava/lang/String;
   Code:
-   Stack=3, Locals=4, Args_size=3
+   Stack=3, Locals=5, Args_size=3
 	aload_2
+	astore_3
+	aload_3
 	instanceof	class scala/Some
 	ifeq	l1 // getstatic
 	new	class scala/collection/mutable/StringBuilder
@@ -952,53 +951,52 @@ public final java.lang.String scala$util$parsing$json$Lexer$$optString(java.lang
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	aload_1
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload_2
-	checkcast	class scala/Some
-	astore_3
 	aload_3
-	getfield	Field scala/Some.x:Ljava/lang/Object;
+	checkcast	class scala/Some
+	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	goto	l2 // areturn
 l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	aload_3
+	astore	4
 	dup
-	ifnonnull	l3 // aload_2
+	ifnonnull	l3 // aload
 	pop
-	aload_2
+	aload	4
 	ifnull	l4 // ldc
 	goto	l5 // new
-l3	aload_2
+l3	aload	4
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l5 // new
 l4	ldc	String 
 l2	areturn
 l5	new	class scala/MatchError
 	dup
-	aload_2
+	aload_3
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
    	l1 = 39 // getstatic
-   	l3 = 54 // aload_2
-   	l4 = 61 // ldc
-   	l2 = 63 // areturn
-   	l5 = 64 // new
+   	l3 = 58 // aload
+   	l4 = 66 // ldc
+   	l2 = 68 // areturn
+   	l5 = 69 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      73      0    this       Lscala/util/parsing/json/Lexer;
-   0      73      1    pre       Ljava/lang/String;
-   0      73      2    a       Lscala/Option;
+   0      78      0    this       Lscala/util/parsing/json/Lexer;
+   0      78      1    pre       Ljava/lang/String;
+   0      78      2    a       Lscala/Option;
+   2      76      3    temp25       Lscala/Option;
 
 
 public scala.util.parsing.combinator.Parsers$Parser zero();
   Signature: ()Lscala/util/parsing/combinator/Parsers$Parser;
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=1, Args_size=1
 	aload_0
 	ldc_w	int 48
-	istore_1
-	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
 	invokeinterface	InterfaceMethod scala/util/parsing/combinator/Parsers.accept:(Ljava/lang/Object;)Lscala/util/parsing/combinator/Parsers$Parser;
 	ldc_w	String 0
@@ -1022,7 +1020,7 @@ public scala.util.parsing.combinator.Parsers$Parser nonzero();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 20 
+   01 21 
 
 public scala.util.parsing.combinator.Parsers$Parser exponent();
   Signature: ()Lscala/util/parsing/combinator/Parsers$Parser;
@@ -1038,7 +1036,7 @@ public scala.util.parsing.combinator.Parsers$Parser exponent();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 20 
+   01 21 
 
 public scala.util.parsing.combinator.Parsers$Parser sign();
   Signature: ()Lscala/util/parsing/combinator/Parsers$Parser;
@@ -1054,16 +1052,14 @@ public scala.util.parsing.combinator.Parsers$Parser sign();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 20 
+   01 21 
 
 public scala.util.parsing.combinator.Parsers$Parser charSeq();
   Signature: ()Lscala/util/parsing/combinator/Parsers$Parser;
   Code:
-   Stack=4, Locals=2, Args_size=1
+   Stack=4, Locals=1, Args_size=1
 	aload_0
 	ldc_w	int 92
-	istore_1
-	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
 	invokeinterface	InterfaceMethod scala/util/parsing/combinator/Parsers.accept:(Ljava/lang/Object;)Lscala/util/parsing/combinator/Parsers$Parser;
 	new	class scala/util/parsing/json/Lexer$$anonfun$charSeq$1
@@ -1127,7 +1123,7 @@ public scala.collection.immutable.Set hexDigits();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 4E 
+   01 4F 
 
 public scala.util.parsing.combinator.Parsers$Parser hexDigit();
   Signature: ()Lscala/util/parsing/combinator/Parsers$Parser;
@@ -1143,7 +1139,7 @@ public scala.util.parsing.combinator.Parsers$Parser hexDigit();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 20 
+   01 21 
 
 public final scala.util.parsing.combinator.Parsers$Parser scala$util$parsing$json$Lexer$$unicodeBlock();
   Signature: ()Lscala/util/parsing/combinator/Parsers$Parser;

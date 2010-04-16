@@ -171,13 +171,19 @@ Field	scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 Asciz	scala/collection/mutable/StringBuilder;
 class	scala/collection/mutable/StringBuilder
 Method	scala/collection/mutable/StringBuilder."<init>":()V
-Asciz	scala/runtime/StringAdd;
-class	scala/runtime/StringAdd
-Asciz	(Ljava/lang/Object;)V;
-NameAndType	"<init>":(Ljava/lang/Object;)V
-Method	scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	any2stringadd;
+Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
+NameAndType	any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+Method	scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
 Asciz	: starting new ;
 String	: starting new 
+Asciz	scala/runtime/StringAdd;
+class	scala/runtime/StringAdd
 Asciz	$plus;
 Asciz	(Ljava/lang/String;)Ljava/lang/String;;
 NameAndType	$plus:(Ljava/lang/String;)Ljava/lang/String;
@@ -204,10 +210,10 @@ Asciz	info;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	info:(Ljava/lang/String;)V
 Method	scala/actors/Debug$.info:(Ljava/lang/String;)V
-Asciz	s;
-Asciz	Lscala/actors/scheduler/ForkJoinScheduler;;
 Asciz	workQueue;
 Asciz	Ljava/util/concurrent/LinkedBlockingQueue;;
+Asciz	s;
+Asciz	Lscala/actors/scheduler/ForkJoinScheduler;;
 Method	java/lang/Object."<init>":()V
 Asciz	$init$;
 NameAndType	$init$:(Lscala/actors/IScheduler;)V
@@ -471,11 +477,11 @@ public scala.actors.IScheduler makeNewScheduler();
 	iconst_0
 	iconst_0
 	invokespecial	Method scala/actors/scheduler/ForkJoinScheduler."<init>":(IIZZ)V
-	astore_1
-	aload_1
+	astore_3
+	aload_3
 	invokevirtual	Method scala/actors/scheduler/ForkJoinScheduler.start:()V
-	aload_1
-	goto	l2 // astore_3
+	aload_3
+	goto	l2 // astore_1
 l1	new	class java/util/concurrent/LinkedBlockingQueue
 	dup
 	invokespecial	Method java/util/concurrent/LinkedBlockingQueue."<init>":()V
@@ -495,40 +501,39 @@ l1	new	class java/util/concurrent/LinkedBlockingQueue
 	invokespecial	Method java/util/concurrent/ThreadPoolExecutor$CallerRunsPolicy."<init>":()V
 	invokespecial	Method java/util/concurrent/ThreadPoolExecutor."<init>":(IIJLjava/util/concurrent/TimeUnit;Ljava/util/concurrent/BlockingQueue;Ljava/util/concurrent/RejectedExecutionHandler;)V
 	invokevirtual	Method scala/actors/scheduler/ExecutorScheduler$.apply:(Ljava/util/concurrent/ExecutorService;)Lscala/actors/scheduler/ExecutorScheduler;
-l2	astore_3
+l2	astore_1
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	new	class scala/runtime/StringAdd
-	dup
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
-	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
 	ldc	String : starting new 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload_3
+	aload_1
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc	String  [
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload_3
+	aload_1
 	invokevirtual	Method java/lang/Object.getClass:()Ljava/lang/Class;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc	String ]
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
-	aload_3
+	aload_1
 	areturn
   Labels:
    	l1 = 39 // new
-   	l2 = 86 // astore_3
+   	l2 = 86 // astore_1
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      142      0    this       Lscala/actors/Reactor$$anon$2;
-   31      5      1    s       Lscala/actors/scheduler/ForkJoinScheduler;
+   0      141      0    this       Lscala/actors/Reactor$$anon$2;
+   87      53      1    sched       Lscala/actors/IScheduler;
    47      39      2    workQueue       Ljava/util/concurrent/LinkedBlockingQueue;
-   87      54      3    sched       Lscala/actors/IScheduler;
+   31      5      3    s       Lscala/actors/scheduler/ForkJoinScheduler;
 
 
 public scala.actors.Reactor$$anon$2();

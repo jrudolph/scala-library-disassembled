@@ -2,7 +2,7 @@ Compiled from "Future.scala"
 public final class scala.actors.Futures$$anon$2 extends java.lang.Object implements scala.PartialFunction
   SourceFile: "Future.scala"
   Signature: length = 0x2
-   00 FFFFFFE6 
+   00 FFFFFFDA 
   Scala: length = 0x
    
   InnerClass: 
@@ -89,6 +89,7 @@ NameAndType	exists:(Lscala/Function1;)Z
 InterfaceMethod	scala/collection/IterableLike.exists:(Lscala/Function1;)Z
 Asciz	msg$1;
 Asciz	Ljava/lang/Object;;
+Asciz	temp34;
 Asciz	apply;
 Asciz	(Ljava/lang/Object;)V;
 Asciz	scala/actors/Futures$$anon$2$$anonfun$7;
@@ -185,32 +186,20 @@ Asciz	length;
 Asciz	()I;
 NameAndType	length:()I
 InterfaceMethod	scala/collection/SeqLike.length:()I
-Asciz	(Lscala/runtime/ObjectRef;Lscala/collection/Seq;)V;
-NameAndType	"<init>":(Lscala/runtime/ObjectRef;Lscala/collection/Seq;)V
-Method	scala/actors/Futures$$anon$2."<init>":(Lscala/runtime/ObjectRef;Lscala/collection/Seq;)V
-Asciz	scala/actors/Actor$;
-class	scala/actors/Actor$
-Asciz	Lscala/actors/Actor$;;
-NameAndType	MODULE$:Lscala/actors/Actor$;
-Field	scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
-Asciz	scala/actors/Scheduler$;
-class	scala/actors/Scheduler$
-Asciz	Lscala/actors/Scheduler$;;
-NameAndType	MODULE$:Lscala/actors/Scheduler$;
-Field	scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
-Asciz	rawSelf;
-Asciz	(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;;
-NameAndType	rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
-Method	scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
-Asciz	scala/actors/Actor;
-class	scala/actors/Actor
-Asciz	receive;
-Asciz	(Lscala/PartialFunction;)Ljava/lang/Object;;
-NameAndType	receive:(Lscala/PartialFunction;)Ljava/lang/Object;
-InterfaceMethod	scala/actors/Actor.receive:(Lscala/PartialFunction;)Ljava/lang/Object;
+Asciz	scala/actors/Futures$;
+class	scala/actors/Futures$
+Asciz	Lscala/actors/Futures$;;
+NameAndType	MODULE$:Lscala/actors/Futures$;
+Field	scala/actors/Futures$.MODULE$:Lscala/actors/Futures$;
+Asciz	awaitWith$1;
+Asciz	(Lscala/collection/Seq;Lscala/runtime/ObjectRef;)V;
+NameAndType	awaitWith$1:(Lscala/collection/Seq;Lscala/runtime/ObjectRef;)V
+Method	scala/actors/Futures$.awaitWith$1:(Lscala/collection/Seq;Lscala/runtime/ObjectRef;)V
 Asciz	msg$2;
+Asciz	temp41;
 Asciz	pfOpt;
 Asciz	Lscala/Option;;
+Asciz	pf$1;
 Asciz	temp36;
 Asciz	Lscala/Tuple2;;
 Asciz	temp37;
@@ -218,9 +207,7 @@ Asciz	temp38;
 Asciz	idx;
 Asciz	I;
 Asciz	subres;
-Asciz	pf$1;
 Asciz	partFunsRest;
-Asciz	reaction0;
 NameAndType	andThen:(Lscala/Function1;)Lscala/PartialFunction;
 InterfaceMethod	scala/PartialFunction.andThen:(Lscala/Function1;)Lscala/PartialFunction;
 NameAndType	apply:(Ljava/lang/Object;)V
@@ -232,6 +219,7 @@ Asciz	Lscala/runtime/BoxedUnit;;
 NameAndType	UNIT:Lscala/runtime/BoxedUnit;
 Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	v1;
+Asciz	(Lscala/runtime/ObjectRef;Lscala/collection/Seq;)V;
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	java/lang/Object."<init>":()V
@@ -254,10 +242,10 @@ Asciz	$anonfun$7;
 Asciz	$anonfun$isDefinedAt$1;
 
 {
-public final scala.collection.Seq partFuns$1;
+private final scala.collection.Seq partFuns$1;
   Signature: Lscala/collection/Seq;
 
-public final scala.runtime.ObjectRef resultsMap$1;
+private final scala.runtime.ObjectRef resultsMap$1;
   Signature: Lscala/runtime/ObjectRef;
 
 public scala.PartialFunction orElse(scala.PartialFunction);
@@ -326,15 +314,19 @@ public scala.Function1 compose(scala.Function1);
 public boolean isDefinedAt(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=5, Locals=2, Args_size=2
-	getstatic	Field scala/actors/TIMEOUT$.MODULE$:Lscala/actors/TIMEOUT$;
-	dup
-	ifnonnull	l1 // aload_1
-	pop
+   Stack=5, Locals=4, Args_size=2
 	aload_1
+	astore_2
+	getstatic	Field scala/actors/TIMEOUT$.MODULE$:Lscala/actors/TIMEOUT$;
+	aload_2
+	astore_3
+	dup
+	ifnonnull	l1 // aload_3
+	pop
+	aload_3
 	ifnull	l2 // iconst_1
 	goto	l3 // aload_0
-l1	aload_1
+l1	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload_0
 l2	iconst_1
@@ -349,28 +341,33 @@ l3	aload_0
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.exists:(Lscala/Function1;)Z
 l4	ireturn
   Labels:
-   	l1 = 15 // aload_1
-   	l2 = 22 // iconst_1
-   	l3 = 26 // aload_0
-   	l4 = 44 // ireturn
+   	l1 = 19 // aload_3
+   	l2 = 26 // iconst_1
+   	l3 = 30 // aload_0
+   	l4 = 48 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      45      0    this       Lscala/actors/Futures$$anon$2;
-   0      45      1    msg$1       Ljava/lang/Object;
+   0      49      0    this       Lscala/actors/Futures$$anon$2;
+   0      49      1    msg$1       Ljava/lang/Object;
+   2      47      2    temp34       Ljava/lang/Object;
 
 
 public void apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
   Code:
-   Stack=5, Locals=15, Args_size=2
-	getstatic	Field scala/actors/TIMEOUT$.MODULE$:Lscala/actors/TIMEOUT$;
-	dup
-	ifnonnull	l1 // aload_1
-	pop
+   Stack=5, Locals=13, Args_size=2
 	aload_1
+	astore_2
+	getstatic	Field scala/actors/TIMEOUT$.MODULE$:Lscala/actors/TIMEOUT$;
+	aload_2
+	astore_3
+	dup
+	ifnonnull	l1 // aload_3
+	pop
+	aload_3
 	ifnull	l2 // return
 	goto	l3 // aload_0
-l1	aload_1
+l1	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l2 // return
 l3	aload_0
@@ -381,56 +378,56 @@ l3	aload_0
 	aload_1
 	invokespecial	Method scala/actors/Futures$$anon$2$$anonfun$7."<init>":(Lscala/actors/Futures$$anon$2;Ljava/lang/Object;)V
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.find:(Lscala/Function1;)Lscala/Option;
-	astore_2
-	aload_2
+	astore	4
+	aload	4
 	invokevirtual	Method scala/Option.get:()Ljava/lang/Object;
 	checkcast	class scala/PartialFunction
-	astore	9
-	aload	9
+	astore	5
+	aload	5
 	aload_1
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	checkcast	class scala/Tuple2
-	astore_3
+	astore	7
 	getstatic	Field scala/Predef$Pair$.MODULE$:Lscala/Predef$Pair$;
-	aload_3
+	aload	7
 	invokevirtual	Method scala/Predef$Pair$.unapply:(Lscala/Tuple2;)Lscala/Option;
-	astore	4
-	aload	4
+	astore	8
+	aload	8
 	invokevirtual	Method scala/Option.isEmpty:()Z
 	ifeq	l4 // aload
 	new	class scala/MatchError
 	dup
-	aload_3
+	aload	7
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
-l4	aload	4
+l4	aload	8
 	invokevirtual	Method scala/Option.get:()Ljava/lang/Object;
 	checkcast	class scala/Tuple2
-	astore	5
+	astore	9
 	new	class scala/Tuple2
 	dup
-	aload	5
+	aload	9
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
-	aload	5
+	aload	9
 	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	astore	6
 	aload	6
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-	istore	7
+	istore	10
 	aload	6
 	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
-	astore	8
+	astore	11
 	aload_0
 	getfield	Field resultsMap$1:Lscala/runtime/ObjectRef;
 	getfield	Field scala/runtime/ObjectRef.elem:Ljava/lang/Object;
 	checkcast	class scala/collection/mutable/Map
-	iload	7
+	iload	10
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	new	class scala/Some
 	dup
-	aload	8
+	aload	11
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	invokeinterface	InterfaceMethod scala/collection/mutable/MapLike.update:(Ljava/lang/Object;Ljava/lang/Object;)V
 	aload_0
@@ -438,54 +435,39 @@ l4	aload	4
 	new	class scala/actors/Futures$$anon$2$$anonfun$8
 	dup
 	aload_0
-	aload	9
+	aload	5
 	invokespecial	Method scala/actors/Futures$$anon$2$$anonfun$8."<init>":(Lscala/actors/Futures$$anon$2;Lscala/PartialFunction;)V
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.filter:(Lscala/Function1;)Ljava/lang/Object;
 	checkcast	class scala/collection/Seq
-	astore	11
-	aload	11
+	astore	12
+	aload	12
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
 	iconst_0
 	if_icmple	l2 // return
+	getstatic	Field scala/actors/Futures$.MODULE$:Lscala/actors/Futures$;
+	aload	12
 	aload_0
 	getfield	Field resultsMap$1:Lscala/runtime/ObjectRef;
-	astore	10
-	new	class scala/actors/Futures$$anon$2
-	dup
-	aload	10
-	aload	11
-	invokespecial	Method "<init>":(Lscala/runtime/ObjectRef;Lscala/collection/Seq;)V
-	astore	14
-	getstatic	Field scala/actors/Actor$.MODULE$:Lscala/actors/Actor$;
-	astore	12
-	getstatic	Field scala/actors/Scheduler$.MODULE$:Lscala/actors/Scheduler$;
-	astore	13
-	aload	12
-	aload	13
-	invokevirtual	Method scala/actors/Actor$.rawSelf:(Lscala/actors/IScheduler;)Lscala/actors/ReplyReactor;
-	checkcast	class scala/actors/Actor
-	aload	14
-	invokeinterface	InterfaceMethod scala/actors/Actor.receive:(Lscala/PartialFunction;)Ljava/lang/Object;
-	pop
+	invokevirtual	Method scala/actors/Futures$.awaitWith$1:(Lscala/collection/Seq;Lscala/runtime/ObjectRef;)V
 l2	return
   Labels:
-   	l1 = 15 // aload_1
-   	l3 = 22 // aload_0
-   	l4 = 88 // aload
-   	l2 = 245 // return
+   	l1 = 19 // aload_3
+   	l3 = 26 // aload_0
+   	l4 = 97 // aload
+   	l2 = 219 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      246      0    this       Lscala/actors/Futures$$anon$2;
-   0      246      1    msg$2       Ljava/lang/Object;
-   41      204      2    pfOpt       Lscala/Option;
-   62      136      3    temp36       Lscala/Tuple2;
-   71      127      4    temp37       Lscala/Option;
-   98      17      5    temp38       Lscala/Tuple2;
-   127      118      7    idx       I
-   134      111      8    subres       Ljava/lang/Object;
-   50      195      9    pf$1       Lscala/PartialFunction;
-   187      58      11    partFunsRest       Lscala/collection/Seq;
-   217      28      14    reaction0       Lscala/PartialFunction;
+   0      220      0    this       Lscala/actors/Futures$$anon$2;
+   0      220      1    msg$2       Ljava/lang/Object;
+   2      218      2    temp41       Ljava/lang/Object;
+   46      173      4    pfOpt       Lscala/Option;
+   56      163      5    pf$1       Lscala/PartialFunction;
+   69      138      7    temp36       Lscala/Tuple2;
+   79      128      8    temp37       Lscala/Option;
+   107      17      9    temp38       Lscala/Tuple2;
+   136      83      10    idx       I
+   143      76      11    subres       Ljava/lang/Object;
+   196      23      12    partFunsRest       Lscala/collection/Seq;
 
 
 public scala.Function1 andThen(scala.Function1);

@@ -2,7 +2,7 @@ Compiled from "SyncVar.scala"
 public class scala.concurrent.SyncVar extends java.lang.Object implements scala.ScalaObject
   SourceFile: "SyncVar.scala"
   Signature: length = 0x2
-   00 71 
+   00 FFFFFF81 
   ScalaSig: length = 0x2D8
    05 00 76 06 04 01 02 00 07 02 07 53 79 6E 63 56
    61 72 0A 02 03 04 01 0A 63 6F 6E 63 75 72 72 65
@@ -143,6 +143,12 @@ Method	scala/concurrent/SyncVar.exception_$eq:(Lscala/Option;)V
 Asciz	notifyAll;
 NameAndType	notifyAll:()V
 Method	scala/concurrent/SyncVar.notifyAll:()V
+Asciz	scala/runtime/BoxedUnit;
+class	scala/runtime/BoxedUnit
+Asciz	UNIT;
+Asciz	Lscala/runtime/BoxedUnit;;
+NameAndType	UNIT:Lscala/runtime/BoxedUnit;
+Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	x;
 Asciz	setException;
 Asciz	(Ljava/lang/Throwable;)V;
@@ -152,6 +158,16 @@ Asciz	put;
 NameAndType	set:(Ljava/lang/Object;)V
 Method	scala/concurrent/SyncVar.set:(Ljava/lang/Object;)V
 Asciz	isSet;
+Asciz	scala/runtime/BoxesRunTime;
+class	scala/runtime/BoxesRunTime
+Asciz	boxToBoolean;
+Asciz	(Z)Ljava/lang/Boolean;;
+NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
+Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+Asciz	unboxToBoolean;
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	unboxToBoolean:(Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 Asciz	unset;
 NameAndType	wait:(J)V
 Method	scala/concurrent/SyncVar.wait:(J)V
@@ -252,10 +268,10 @@ private void exception_$eq(scala.Option);
 public java.lang.Object get();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=3, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 l3	aload_0
 	invokespecial	Method isDefined:()Z
@@ -266,10 +282,10 @@ l3	aload_0
 	ifeq	l2 // aload_0
 	aload_0
 	invokespecial	Method value:()Ljava/lang/Object;
-	astore_1
-	aload_0
-	monitorexit
+	astore_2
 	aload_1
+	monitorexit
+	aload_2
 	areturn
 l2	aload_0
 	invokespecial	Method exception:()Lscala/Option;
@@ -279,7 +295,7 @@ l2	aload_0
 l1	aload_0
 	invokevirtual	Method wait:()V
 	goto	l3 // aload_0
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
@@ -296,10 +312,10 @@ l1	aload_0
 public scala.Option get(long);
   Signature: (J)Lscala/Option;
   Code:
-   Stack=3, Locals=4, Args_size=2
+   Stack=3, Locals=5, Args_size=2
 	aload_0
 	dup
-	pop
+	astore_3
 	monitorenter
 	aload_0
 	invokespecial	Method isDefined:()Z
@@ -319,12 +335,12 @@ l1	aload_0
 	aload_0
 	invokespecial	Method value:()Ljava/lang/Object;
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-	goto	l4 // astore_3
+	goto	l4 // astore
 l3	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-l4	astore_3
-	aload_0
-	monitorexit
+l4	astore	4
 	aload_3
+	monitorexit
+	aload	4
 	checkcast	class scala/Option
 	areturn
 l2	aload_0
@@ -332,22 +348,22 @@ l2	aload_0
 	invokevirtual	Method scala/Option.get:()Ljava/lang/Object;
 	checkcast	class java/lang/Throwable
 	athrow
-	aload_0
+	aload_3
 	monitorexit
 	athrow
   Labels:
    	l1 = 16 // aload_0
    	l3 = 47 // getstatic
-   	l4 = 50 // astore_3
-   	l2 = 58 // aload_0
+   	l4 = 50 // astore
+   	l2 = 60 // aload_0
   Exception table:
    from   to  target type
-     4    53    69   any
-    58    69    69   any
+     4    54    71   any
+    60    71    71   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      72      0    this       Lscala/concurrent/SyncVar;
-   0      72      1    timeout$1       J
+   0      74      0    this       Lscala/concurrent/SyncVar;
+   0      74      1    timeout$1       J
 
   Signature: length = 0x2
    00 4C 
@@ -355,19 +371,19 @@ l2	aload_0
 public java.lang.Object take();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=3, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	invokespecial	Method liftedTree2$1:()Ljava/lang/Object;
-	astore_1
-	aload_0
-	monitorexit
+	astore_2
 	aload_1
+	monitorexit
+	aload_2
 	areturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
@@ -380,10 +396,10 @@ public java.lang.Object take();
 public void set(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	dup
-	pop
+	astore_2
 	monitorenter
 	aload_0
 	aload_1
@@ -396,20 +412,22 @@ public void set(java.lang.Object);
 	invokespecial	Method exception_$eq:(Lscala/Option;)V
 	aload_0
 	invokevirtual	Method notifyAll:()V
-	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_2
 	monitorexit
 	return
-	aload_0
+	aload_2
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    27    28   any
+     4    31    32   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      31      0    this       Lscala/concurrent/SyncVar;
-   0      31      1    x       Ljava/lang/Object;
+   0      35      0    this       Lscala/concurrent/SyncVar;
+   0      35      1    x       Ljava/lang/Object;
 
   Signature: length = 0x2
    00 1B 
@@ -417,10 +435,10 @@ public void set(java.lang.Object);
 private void setException(java.lang.Throwable);
   Signature: (Ljava/lang/Throwable;)V
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=4, Locals=3, Args_size=2
 	aload_0
 	dup
-	pop
+	astore_2
 	monitorenter
 	aload_0
 	new	class scala/Some
@@ -433,29 +451,31 @@ private void setException(java.lang.Throwable);
 	invokespecial	Method isDefined_$eq:(Z)V
 	aload_0
 	invokevirtual	Method notifyAll:()V
-	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_2
 	monitorexit
 	return
-	aload_0
+	aload_2
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    27    28   any
+     4    31    32   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      31      0    this       Lscala/concurrent/SyncVar;
-   0      31      1    e       Ljava/lang/Throwable;
+   0      35      0    this       Lscala/concurrent/SyncVar;
+   0      35      1    e       Ljava/lang/Throwable;
 
 
 public void put(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	dup
-	pop
+	astore_2
 	monitorenter
 l2	aload_0
 	invokespecial	Method isDefined:()Z
@@ -466,10 +486,12 @@ l2	aload_0
 l1	aload_0
 	aload_1
 	invokevirtual	Method set:(Ljava/lang/Object;)V
-	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_2
 	monitorexit
 	return
-	aload_0
+	aload_2
 	monitorexit
 	athrow
   Labels:
@@ -477,11 +499,11 @@ l1	aload_0
    	l1 = 18 // aload_0
   Exception table:
    from   to  target type
-     4    25    26   any
+     4    29    30   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      29      0    this       Lscala/concurrent/SyncVar;
-   0      29      1    x       Ljava/lang/Object;
+   0      33      0    this       Lscala/concurrent/SyncVar;
+   0      33      1    x       Ljava/lang/Object;
 
   Signature: length = 0x2
    00 1B 
@@ -489,49 +511,53 @@ l1	aload_0
 public boolean isSet();
   Signature: ()Z
   Code:
-   Stack=2, Locals=2, Args_size=1
+   Stack=2, Locals=3, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	invokespecial	Method isDefined:()Z
-	istore_1
-	aload_0
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+	astore_2
+	aload_1
 	monitorexit
-	iload_1
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 	ireturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    11    13   any
+     4    14    19   any
 
 public void unset();
   Signature: ()V
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=2, Locals=2, Args_size=1
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	iconst_0
 	invokespecial	Method isDefined_$eq:(Z)V
 	aload_0
 	invokevirtual	Method notifyAll:()V
-	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_1
 	monitorexit
 	return
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-     4    15    16   any
+     4    19    20   any
 
 private final void liftedTree1$1(long);
   Signature: (J)V
@@ -554,6 +580,8 @@ private final java.lang.Object liftedTree2$1();
   Signature: ()Ljava/lang/Object;
   Code:
    Stack=1, Locals=3, Args_size=1
+	aconst_null
+	astore_1
 	aload_0
 	invokevirtual	Method get:()Ljava/lang/Object;
 	astore_1
@@ -569,12 +597,12 @@ private final java.lang.Object liftedTree2$1();
   Labels:
   Exception table:
    from   to  target type
-     0     5    11   any
+     2     7    13   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      18      0    this       Lscala/concurrent/SyncVar;
-   0      10      1    exceptionResult1       Ljava/lang/Object;
-   11      7      1    exceptionResult1       Ljava/lang/Object;
+   0      20      0    this       Lscala/concurrent/SyncVar;
+   2      10      1    exceptionResult1       Ljava/lang/Object;
+   13      7      1    exceptionResult1       Ljava/lang/Object;
 
 
 public scala.concurrent.SyncVar();

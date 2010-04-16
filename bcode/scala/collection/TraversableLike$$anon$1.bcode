@@ -2,7 +2,7 @@ Compiled from "TraversableLike.scala"
 public final class scala.collection.TraversableLike$$anon$1 extends java.lang.Object implements scala.collection.TraversableView
   SourceFile: "TraversableLike.scala"
   Signature: length = 0x2
-   01 FFFFFFD5 
+   01 FFFFFFDB 
   Scala: length = 0x
    
   InnerClass: 
@@ -434,6 +434,12 @@ NameAndType	repr:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/TraversableLike.repr:()Ljava/lang/Object;
 NameAndType	underlying:Ljava/lang/Object;
 Field	scala/collection/TraversableLike$$anon$1.underlying:Ljava/lang/Object;
+Asciz	scala/runtime/BoxedUnit;
+class	scala/runtime/BoxedUnit
+Asciz	UNIT;
+Asciz	Lscala/runtime/BoxedUnit;;
+NameAndType	UNIT:Lscala/runtime/BoxedUnit;
+Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	()TRepr;;
 Asciz	foreach;
 Asciz	(Lscala/Function1;)V;
@@ -1652,7 +1658,7 @@ public scala.collection.TraversableLike$WithFilter withFilter(scala.Function1);
 public java.lang.Object underlying();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=3, Locals=1, Args_size=1
+   Stack=3, Locals=2, Args_size=1
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
@@ -1661,14 +1667,14 @@ public java.lang.Object underlying();
 	if_icmpne	l1 // aload_0
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
 	iand
 	iconst_0
-	if_icmpne	l2 // aload_0
+	if_icmpne	l2 // getstatic
 	aload_0
 	aload_0
 	getfield	Field $outer:Lscala/collection/TraversableLike;
@@ -1680,22 +1686,24 @@ public java.lang.Object underlying();
 	iconst_1
 	ior
 	putfield	Field bitmap$0:I
-l2	aload_0
+l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_1
 	monitorexit
 l1	aload_0
 	getfield	Field underlying:Ljava/lang/Object;
 	areturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
-   	l2 = 47 // aload_0
-   	l1 = 49 // aload_0
+   	l2 = 47 // getstatic
+   	l1 = 53 // aload_0
   Exception table:
    from   to  target type
-    14    49    54   any
+    14    53    58   any
   Signature: length = 0x2
-   01 FFFFFFA6 
+   01 FFFFFFAC 
 
 public void foreach(scala.Function1);
   Signature: (Lscala/Function1;)V
@@ -1713,7 +1721,7 @@ public void foreach(scala.Function1);
    0      11      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   01 FFFFFFAB 
+   01 FFFFFFB1 
 
 public java.lang.Object takeWhile(scala.Function1);
   Signature: (Lscala/Function1;)Ljava/lang/Object;
@@ -1848,7 +1856,7 @@ l1	aload_0
    0      38      1    $outer       Lscala/collection/TraversableLike;
 
   Signature: length = 0x2
-   01 FFFFFFD4 
+   01 FFFFFFDA 
 
 }
 

@@ -184,11 +184,17 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp1;
+Asciz	Ljava/lang/Object;;
 Asciz	temp2;
 Asciz	temp3;
 Asciz	temp4;
 Asciz	temp5;
 Asciz	temp6;
+Asciz	scope$1;
+Asciz	attrs$1;
+Asciz	label$1;
+Asciz	pre$1;
 Asciz	productPrefix;
 Asciz	EvElemStart;
 String	EvElemStart
@@ -210,12 +216,15 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp7;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	scope
 String	attrs
 String	label
 String	pre
+Asciz	temp8;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	()V;
@@ -412,33 +421,43 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=5, Locals=7, Args_size=2
+   Stack=5, Locals=12, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/xml/pull/EvElemStart
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/xml/pull/EvElemStart
 	astore_2
 	aload_2
-	invokevirtual	Method pre:()Ljava/lang/String;
+	instanceof	class scala/xml/pull/EvElemStart
+	ifeq	l2 // iconst_0
+	aload_2
+	checkcast	class scala/xml/pull/EvElemStart
 	astore_3
-	aload_2
-	invokevirtual	Method label:()Ljava/lang/String;
-	astore	4
-	aload_2
-	invokevirtual	Method attrs:()Lscala/xml/MetaData;
-	astore	5
-	aload_2
-	invokevirtual	Method scope:()Lscala/xml/NamespaceBinding;
-	astore	6
-	aload_0
 	aload_3
-	aload	4
-	aload	5
+	invokevirtual	Method pre:()Ljava/lang/String;
+	astore	4
+	aload_3
+	invokevirtual	Method label:()Ljava/lang/String;
+	astore	5
+	aload_3
+	invokevirtual	Method attrs:()Lscala/xml/MetaData;
+	astore	6
+	aload_3
+	invokevirtual	Method scope:()Lscala/xml/NamespaceBinding;
+	astore	7
+	aload	7
+	astore	8
 	aload	6
+	astore	9
+	aload	5
+	astore	10
+	aload	4
+	astore	11
+	aload_0
+	aload	11
+	aload	10
+	aload	9
+	aload	8
 	invokespecial	Method gd1$1:(Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -455,20 +474,25 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 67 // iconst_0
-   	l2 = 71 // iconst_0
-   	l4 = 72 // ifeq
-   	l1 = 75 // iconst_1
-   	l5 = 79 // iconst_0
-   	l6 = 80 // ireturn
+   	l3 = 87 // iconst_0
+   	l2 = 91 // iconst_0
+   	l4 = 92 // ifeq
+   	l1 = 95 // iconst_1
+   	l5 = 99 // iconst_0
+   	l6 = 100 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      81      0    this       Lscala/xml/pull/EvElemStart;
-   17      54      2    temp2       Lscala/xml/pull/EvElemStart;
-   22      49      3    temp3       Ljava/lang/String;
-   28      43      4    temp4       Ljava/lang/String;
-   34      37      5    temp5       Lscala/xml/MetaData;
-   40      31      6    temp6       Lscala/xml/NamespaceBinding;
+   0      101      0    this       Lscala/xml/pull/EvElemStart;
+   7      88      2    temp1       Ljava/lang/Object;
+   19      72      3    temp2       Lscala/xml/pull/EvElemStart;
+   25      66      4    temp3       Ljava/lang/String;
+   31      60      5    temp4       Ljava/lang/String;
+   37      54      6    temp5       Lscala/xml/MetaData;
+   43      48      7    temp6       Lscala/xml/NamespaceBinding;
+   47      44      8    scope$1       Lscala/xml/NamespaceBinding;
+   51      40      9    attrs$1       Lscala/xml/MetaData;
+   55      36      10    label$1       Ljava/lang/String;
+   59      32      11    pre$1       Ljava/lang/String;
 
 
 public java.lang.String productPrefix();
@@ -490,8 +514,10 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 3
 		0: 68;
 		1: 61;
@@ -519,12 +545,19 @@ public java.lang.Object productElement(int);
 l1	areturn
   Labels:
    	l1 = 72 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      73      0    this       Lscala/xml/pull/EvElemStart;
+   2      71      2    temp7       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 3
 		0: 62;
 		1: 57;
@@ -548,6 +581,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 64 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      65      0    this       Lscala/xml/pull/EvElemStart;
+   2      63      2    temp8       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z

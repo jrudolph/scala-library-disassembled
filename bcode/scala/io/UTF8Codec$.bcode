@@ -3,8 +3,6 @@ public final class scala.io.UTF8Codec$ extends java.lang.Object implements scala
   SourceFile: "UTF8Codec.scala"
   Scala: length = 0x
    
-  InnerClass: 
-   public final $anonfun$apply$6=class scala/Array$$anonfun$apply$6 of class scala/Array
   minor version: 0
   major version: 49
   Constant pool:
@@ -40,8 +38,15 @@ Asciz	getType;
 Asciz	(I)I;
 NameAndType	getType:(I)I
 Method	java/lang/Character.getType:(I)I
+NameAndType	UNI_REPLACEMENT_BYTES:()[B
+Method	scala/io/UTF8Codec$.UNI_REPLACEMENT_BYTES:()[B
 Asciz	java/lang/String;
 class	java/lang/String
+Asciz	scala/Array$;
+class	scala/Array$
+Asciz	Lscala/Array$;;
+NameAndType	MODULE$:Lscala/Array$;
+Field	scala/Array$.MODULE$:Lscala/Array$;
 Asciz	scala/Predef$;
 class	scala/Predef$
 Asciz	Lscala/Predef$;;
@@ -51,33 +56,10 @@ Asciz	wrapIntArray;
 Asciz	([I)Lscala/collection/mutable/WrappedArray;;
 NameAndType	wrapIntArray:([I)Lscala/collection/mutable/WrappedArray;
 Method	scala/Predef$.wrapIntArray:([I)Lscala/collection/mutable/WrappedArray;
-Asciz	scala/collection/SeqLike;
-class	scala/collection/SeqLike
-Asciz	length;
-NameAndType	length:()I
-InterfaceMethod	scala/collection/SeqLike.length:()I
-Asciz	scala/runtime/IntRef;
-class	scala/runtime/IntRef
-Asciz	(I)V;
-NameAndType	"<init>":(I)V
-Method	scala/runtime/IntRef."<init>":(I)V
-Asciz	scala/collection/IterableLike;
-class	scala/collection/IterableLike
-Asciz	iterator;
-Asciz	()Lscala/collection/Iterator;;
-NameAndType	iterator:()Lscala/collection/Iterator;
-InterfaceMethod	scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
-Asciz	scala/Array$$anonfun$apply$6;
-class	scala/Array$$anonfun$apply$6
-Asciz	([ILscala/runtime/IntRef;)V;
-NameAndType	"<init>":([ILscala/runtime/IntRef;)V
-Method	scala/Array$$anonfun$apply$6."<init>":([ILscala/runtime/IntRef;)V
-Asciz	scala/collection/Iterator;
-class	scala/collection/Iterator
-Asciz	foreach;
-Asciz	(Lscala/Function1;)V;
-NameAndType	foreach:(Lscala/Function1;)V
-InterfaceMethod	scala/collection/Iterator.foreach:(Lscala/Function1;)V
+Asciz	apply;
+Asciz	(ILscala/collection/Seq;)[I;
+NameAndType	apply:(ILscala/collection/Seq;)[I
+Method	scala/Array$.apply:(ILscala/collection/Seq;)[I
 Asciz	([III)V;
 NameAndType	"<init>":([III)V
 Method	java/lang/String."<init>":([III)V
@@ -91,12 +73,6 @@ Asciz	java/lang/IllegalArgumentException;
 class	java/lang/IllegalArgumentException
 Asciz	this;
 Asciz	ch;
-Asciz	xs0;
-Asciz	Lscala/collection/Seq;;
-Asciz	i$60;
-Asciz	Lscala/runtime/IntRef;;
-Asciz	array$60;
-Asciz	[I;
 Asciz	exceptionResult1;
 Asciz	LocalVariableTable;
 Asciz	Deprecated;
@@ -126,11 +102,6 @@ Asciz	fromUTF8;
 Asciz	(Ljava/lang/CharSequence;)[B;
 NameAndType	fromUTF8:(Ljava/lang/CharSequence;)[B
 Method	scala/io/Codec$.fromUTF8:(Ljava/lang/CharSequence;)[B
-Asciz	scala/Array$;
-class	scala/Array$
-Asciz	Lscala/Array$;;
-NameAndType	MODULE$:Lscala/Array$;
-Field	scala/Array$.MODULE$:Lscala/Array$;
 Asciz	copy;
 Asciz	(Ljava/lang/Object;ILjava/lang/Object;II)V;
 NameAndType	copy:(Ljava/lang/Object;ILjava/lang/Object;II)V
@@ -161,6 +132,8 @@ Asciz	toArray;
 Asciz	(Lscala/reflect/ClassManifest;)Ljava/lang/Object;;
 NameAndType	toArray:(Lscala/reflect/ClassManifest;)Ljava/lang/Object;
 InterfaceMethod	scala/collection/TraversableLike.toArray:(Lscala/reflect/ClassManifest;)Ljava/lang/Object;
+Asciz	length;
+NameAndType	length:()I
 Method	java/lang/String.length:()I
 NameAndType	encode:([CI[BII)I
 Method	scala/io/UTF8Codec$.encode:([CI[BII)I
@@ -196,14 +169,9 @@ Method	scala/Predef$.wrapByteArray:([B)Lscala/collection/mutable/WrappedArray;
 Asciz	Byte;
 NameAndType	Byte:()Lscala/reflect/AnyValManifest;
 Method	scala/reflect/Manifest$.Byte:()Lscala/reflect/AnyValManifest;
-Asciz	apply;
 Asciz	(Lscala/collection/Seq;Lscala/reflect/ClassManifest;)Ljava/lang/Object;;
 NameAndType	apply:(Lscala/collection/Seq;Lscala/reflect/ClassManifest;)Ljava/lang/Object;
 Method	scala/Array$.apply:(Lscala/collection/Seq;Lscala/reflect/ClassManifest;)Ljava/lang/Object;
-Asciz	InnerClasses;
-Asciz	scala/Array;
-class	scala/Array
-Asciz	$anonfun$apply$6;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -247,74 +215,51 @@ public final byte[] UNI_REPLACEMENT_BYTES();
 public byte[] encode(int);
   Signature: (I)[B
   Code:
-   Stack=7, Locals=6, Args_size=2
+   Stack=6, Locals=3, Args_size=2
 	iload_1
 	invokestatic	Method java/lang/Character.getType:(I)I
 	bipush	19
-	if_icmpne	l1 // new
+	if_icmpne	l1 // aconst_null
 	aload_0
-	getfield	Field UNI_REPLACEMENT_BYTES:[B
+	invokevirtual	Method UNI_REPLACEMENT_BYTES:()[B
 	goto	l2 // areturn
-l1	new	class java/lang/String
+l1	aconst_null
+	astore_2
+	new	class java/lang/String
 	dup
+	getstatic	Field scala/Array$.MODULE$:Lscala/Array$;
+	iload_1
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_0
 	newarray int
 	invokevirtual	Method scala/Predef$.wrapIntArray:([I)Lscala/collection/mutable/WrappedArray;
-	astore_2
-	aload_2
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	iconst_1
-	iadd
-	newarray int
-	astore	4
-	aload	4
-	iconst_0
-	iload_1
-	iastore
-	new	class scala/runtime/IntRef
-	dup
-	iconst_1
-	invokespecial	Method scala/runtime/IntRef."<init>":(I)V
-	astore_3
-	aload_2
-	invokeinterface	InterfaceMethod scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
-	new	class scala/Array$$anonfun$apply$6
-	dup
-	aload	4
-	aload_3
-	invokespecial	Method scala/Array$$anonfun$apply$6."<init>":([ILscala/runtime/IntRef;)V
-	invokeinterface	InterfaceMethod scala/collection/Iterator.foreach:(Lscala/Function1;)V
-	aload	4
+	invokevirtual	Method scala/Array$.apply:(ILscala/collection/Seq;)[I
 	iconst_0
 	iconst_1
 	invokespecial	Method java/lang/String."<init>":([III)V
 	ldc	String UTF-8
 	invokevirtual	Method java/lang/String.getBytes:(Ljava/lang/String;)[B
-	astore	5
-	goto	l3 // aload
+	astore_2
+	goto	l3 // aload_2
 	pop
 	aload_0
-	getfield	Field UNI_REPLACEMENT_BYTES:[B
-	astore	5
-l3	aload	5
+	invokevirtual	Method UNI_REPLACEMENT_BYTES:()[B
+	astore_2
+l3	aload_2
 l2	areturn
   Labels:
-   	l1 = 16 // new
-   	l3 = 101 // aload
-   	l2 = 103 // areturn
+   	l1 = 16 // aconst_null
+   	l3 = 58 // aload_2
+   	l2 = 59 // areturn
   Exception table:
    from   to  target type
-    16    94    94   Class java/lang/IllegalArgumentException
+    18    52    52   Class java/lang/IllegalArgumentException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      104      0    this       Lscala/io/UTF8Codec$;
-   0      104      1    ch       I
-   30      49      2    xs0       Lscala/collection/Seq;
-   56      23      3    i$60       Lscala/runtime/IntRef;
-   42      37      4    array$60       [I
-   16      87      5    exceptionResult1       [B
+   0      60      0    this       Lscala/io/UTF8Codec$;
+   0      60      1    ch       I
+   18      41      2    exceptionResult1       [B
 
   Deprecated: true
 

@@ -52,6 +52,7 @@ Method	scala/xml/NodeSeq.text:()Ljava/lang/String;
 Asciz	x1;
 Asciz	x2;
 Asciz	Ljava/lang/String;;
+Asciz	temp1;
 Asciz	(Ljava/lang/Object;Lscala/xml/Node;)Z;
 Asciz	gd1$1;
 Asciz	(Lscala/xml/NodeSeq;)Z;
@@ -62,6 +63,7 @@ Asciz	(I)Lscala/xml/Node;;
 NameAndType	apply:(I)Lscala/xml/Node;
 Method	scala/xml/NodeSeq.apply:(I)Lscala/xml/Node;
 Asciz	Lscala/xml/Node;;
+Asciz	temp4;
 Asciz	temp5;
 Asciz	Lscala/xml/NodeSeq;;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
@@ -73,6 +75,7 @@ Asciz	scala/xml/Node;
 class	scala/xml/Node
 NameAndType	compareBlithely:(Ljava/lang/Object;Lscala/xml/Node;)Z
 Method	scala/xml/Equality$.compareBlithely:(Ljava/lang/Object;Lscala/xml/Node;)Z
+Asciz	temp6;
 Asciz	length;
 Asciz	()I;
 NameAndType	length:()I
@@ -121,39 +124,45 @@ public java.lang.Object asRef(java.lang.Object);
 public boolean compareBlithely(java.lang.Object, java.lang.String);
   Signature: (Ljava/lang/Object;Ljava/lang/String;)Z
   Code:
-   Stack=2, Locals=3, Args_size=3
+   Stack=2, Locals=6, Args_size=3
 	aload_1
+	astore_3
+	aload_3
 	instanceof	class scala/xml/Atom
-	ifeq	l1 // aload_1
-	aload_1
+	ifeq	l1 // aload_3
+	aload_3
 	checkcast	class scala/xml/Atom
 	invokevirtual	Method scala/xml/Atom.data:()Ljava/lang/Object;
-	dup
-	ifnonnull	l2 // aload_2
-	pop
 	aload_2
+	astore	4
+	dup
+	ifnonnull	l2 // aload
+	pop
+	aload	4
 	ifnull	l3 // iconst_1
 	goto	l4 // iconst_0
-l2	aload_2
+l2	aload	4
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l4 // iconst_0
 l3	iconst_1
 	goto	l5 // ireturn
 l4	iconst_0
 	goto	l5 // ireturn
-l1	aload_1
+l1	aload_3
 	instanceof	class scala/xml/NodeSeq
 	ifeq	l6 // iconst_0
-	aload_1
+	aload_3
 	checkcast	class scala/xml/NodeSeq
 	invokevirtual	Method scala/xml/NodeSeq.text:()Ljava/lang/String;
-	dup
-	ifnonnull	l7 // aload_2
-	pop
 	aload_2
+	astore	5
+	dup
+	ifnonnull	l7 // aload
+	pop
+	aload	5
 	ifnull	l8 // iconst_1
 	goto	l9 // iconst_0
-l7	aload_2
+l7	aload	5
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l9 // iconst_0
 l8	iconst_1
@@ -163,48 +172,53 @@ l9	iconst_0
 l6	iconst_0
 l5	ireturn
   Labels:
-   	l2 = 26 // aload_2
-   	l3 = 33 // iconst_1
-   	l4 = 37 // iconst_0
-   	l1 = 41 // aload_1
-   	l7 = 67 // aload_2
-   	l8 = 74 // iconst_1
-   	l9 = 78 // iconst_0
-   	l6 = 82 // iconst_0
-   	l5 = 83 // ireturn
+   	l2 = 32 // aload
+   	l3 = 40 // iconst_1
+   	l4 = 44 // iconst_0
+   	l1 = 48 // aload_3
+   	l7 = 78 // aload
+   	l8 = 86 // iconst_1
+   	l9 = 90 // iconst_0
+   	l6 = 94 // iconst_0
+   	l5 = 95 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      84      0    this       Lscala/xml/Equality$;
-   0      84      1    x1       Ljava/lang/Object;
-   0      84      2    x2       Ljava/lang/String;
+   0      96      0    this       Lscala/xml/Equality$;
+   0      96      1    x1       Ljava/lang/Object;
+   0      96      2    x2       Ljava/lang/String;
+   2      94      3    temp1       Ljava/lang/Object;
 
 
 public boolean compareBlithely(java.lang.Object, scala.xml.Node);
   Signature: (Ljava/lang/Object;Lscala/xml/Node;)Z
   Code:
-   Stack=3, Locals=5, Args_size=3
+   Stack=3, Locals=7, Args_size=3
 	aload_1
+	astore_3
+	aload_3
 	instanceof	class scala/xml/NodeSeq
 	ifeq	l1 // iconst_0
-	aload_1
-	checkcast	class scala/xml/NodeSeq
-	astore_3
-	aload_0
 	aload_3
+	checkcast	class scala/xml/NodeSeq
+	astore	4
+	aload	4
+	astore	5
+	aload_0
+	aload	5
 	invokespecial	Method gd1$1:(Lscala/xml/NodeSeq;)Z
 	ifeq	l2 // iconst_0
 	aload_2
-	aload_3
+	aload	4
 	iconst_0
 	invokevirtual	Method scala/xml/NodeSeq.apply:(I)Lscala/xml/Node;
-	astore	4
+	astore	6
 	dup
 	ifnonnull	l3 // aload
 	pop
-	aload	4
+	aload	6
 	ifnull	l4 // iconst_1
 	goto	l5 // iconst_0
-l3	aload	4
+l3	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l5 // iconst_0
 l4	iconst_1
@@ -216,37 +230,39 @@ l2	iconst_0
 l1	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 41 // aload
-   	l4 = 49 // iconst_1
-   	l5 = 53 // iconst_0
-   	l2 = 57 // iconst_0
-   	l1 = 61 // iconst_0
-   	l6 = 62 // ireturn
+   	l3 = 50 // aload
+   	l4 = 58 // iconst_1
+   	l5 = 62 // iconst_0
+   	l2 = 66 // iconst_0
+   	l1 = 70 // iconst_0
+   	l6 = 71 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      63      0    this       Lscala/xml/Equality$;
-   0      63      1    x1       Ljava/lang/Object;
-   0      63      2    x2       Lscala/xml/Node;
-   12      49      3    temp5       Lscala/xml/NodeSeq;
+   0      72      0    this       Lscala/xml/Equality$;
+   0      72      1    x1       Ljava/lang/Object;
+   0      72      2    x2       Lscala/xml/Node;
+   2      70      3    temp4       Ljava/lang/Object;
+   15      55      4    temp5       Lscala/xml/NodeSeq;
+   19      51      5    x       Lscala/xml/NodeSeq;
 
 
 public boolean compareBlithely(java.lang.Object, java.lang.Object);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;)Z
   Code:
-   Stack=3, Locals=3, Args_size=3
+   Stack=3, Locals=6, Args_size=3
 	aload_1
 	dup
-	pop
+	astore_3
 	ifnull	l1 // aload_1
-	aload_1
+	aload_3
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l1 // aload_1
 	aload_2
 	dup
-	pop
+	astore	4
 	ifnull	l1 // aload_1
-	aload_2
+	aload	4
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // aload_2
@@ -258,38 +274,41 @@ l1	aload_1
 l3	iconst_0
 l4	ireturn
 l2	aload_2
+	astore	5
+	aload	5
 	instanceof	class java/lang/String
-	ifeq	l5 // aload_2
+	ifeq	l5 // aload
 	aload_0
 	aload_1
-	aload_2
+	aload	5
 	checkcast	class java/lang/String
 	invokevirtual	Method compareBlithely:(Ljava/lang/Object;Ljava/lang/String;)Z
 	goto	l6 // ireturn
-l5	aload_2
+l5	aload	5
 	instanceof	class scala/xml/Node
 	ifeq	l7 // iconst_0
 	aload_0
 	aload_1
-	aload_2
+	aload	5
 	checkcast	class scala/xml/Node
 	invokevirtual	Method compareBlithely:(Ljava/lang/Object;Lscala/xml/Node;)Z
 	goto	l6 // ireturn
 l7	iconst_0
 l6	ireturn
   Labels:
-   	l1 = 28 // aload_1
-   	l3 = 37 // iconst_0
-   	l4 = 38 // ireturn
-   	l2 = 39 // aload_2
-   	l5 = 58 // aload_2
-   	l7 = 77 // iconst_0
-   	l6 = 78 // ireturn
+   	l1 = 30 // aload_1
+   	l3 = 39 // iconst_0
+   	l4 = 40 // ireturn
+   	l2 = 41 // aload_2
+   	l5 = 65 // aload
+   	l7 = 86 // iconst_0
+   	l6 = 87 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      79      0    this       Lscala/xml/Equality$;
-   0      79      1    x1       Ljava/lang/Object;
-   0      79      2    x2       Ljava/lang/Object;
+   0      88      0    this       Lscala/xml/Equality$;
+   0      88      1    x1       Ljava/lang/Object;
+   0      88      2    x2       Ljava/lang/Object;
+   44      44      5    temp6       Ljava/lang/Object;
 
 
 private final boolean gd1$1(scala.xml.NodeSeq);

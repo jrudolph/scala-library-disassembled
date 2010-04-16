@@ -176,29 +176,20 @@ NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Method	scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Asciz	sameElements;
 Asciz	(Lscala/collection/LinearSeqLike;Lscala/collection/Iterable;)Z;
-Asciz	java/lang/Number;
-class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Asciz	java/lang/Object;
-class	java/lang/Object
 Asciz	equals;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Asciz	scala$collection$LinearSeqLike$$super$sameElements;
 Asciz	(Lscala/collection/Iterable;)Z;
 NameAndType	scala$collection$LinearSeqLike$$super$sameElements:(Lscala/collection/Iterable;)Z
 InterfaceMethod	scala/collection/LinearSeqLike.scala$collection$LinearSeqLike$$super$sameElements:(Lscala/collection/Iterable;)Z
 Asciz	that;
 Asciz	Lscala/collection/Iterable;;
+Asciz	temp1;
 Asciz	temp2;
 Asciz	Lscala/collection/LinearSeq;;
-Asciz	x0;
-Asciz	y0;
+Asciz	that1;
 Asciz	those;
 Asciz	lengthCompare;
 Asciz	(Lscala/collection/LinearSeqLike;I)I;
@@ -222,6 +213,8 @@ Asciz	InnerClasses;
 Asciz	$anon$1;
 Asciz	scala/collection/LinearSeqLike$class;
 class	scala/collection/LinearSeqLike$class
+Asciz	java/lang/Object;
+class	java/lang/Object
 
 {
 public static scala.collection.LinearSeq thisCollection(scala.collection.LinearSeqLike);
@@ -664,7 +657,7 @@ public static java.lang.Object last(scala.collection.LinearSeqLike);
 	athrow
 l1	aload_0
 	astore_1
-	aload_0
+	aload_1
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/LinearSeqLike
 	astore_2
@@ -976,16 +969,20 @@ public static boolean sameElements(scala.collection.LinearSeqLike, scala.collect
   Code:
    Stack=2, Locals=7, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/collection/LinearSeq
 	ifeq	l1 // aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/collection/LinearSeq
-	astore_2
+	astore_3
+	aload_3
+	astore	4
 	aload_0
 	astore	5
-	aload_2
+	aload	4
 	astore	6
-l8	aload	5
+l3	aload	5
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
 	ifne	l2 // aload
 	aload	6
@@ -995,31 +992,8 @@ l8	aload	5
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.head:()Ljava/lang/Object;
 	aload	6
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.head:()Ljava/lang/Object;
-	astore	4
-	astore_3
-	aload_3
-	aload	4
-	if_acmpne	l3 // aload_3
-	iconst_1
-	goto	l4 // ifeq
-l3	aload_3
-	ifnonnull	l5 // aload_3
-	iconst_0
-	goto	l4 // ifeq
-l5	aload_3
-	instanceof	class java/lang/Number
-	ifne	l6 // aload_3
-	aload_3
-	instanceof	class java/lang/Character
-	ifeq	l7 // aload_3
-l6	aload_3
-	aload	4
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l4 // ifeq
-l7	aload_3
-	aload	4
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l4	ifeq	l2 // aload
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l2 // aload
 	aload	5
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/LinearSeqLike
@@ -1028,41 +1002,36 @@ l4	ifeq	l2 // aload
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/LinearSeq
 	astore	6
-	goto	l8 // aload
+	goto	l3 // aload
 l2	aload	5
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
-	ifeq	l9 // iconst_0
+	ifeq	l4 // iconst_0
 	aload	6
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
-	ifeq	l9 // iconst_0
+	ifeq	l4 // iconst_0
 	iconst_1
-	goto	l10 // ireturn
-l9	iconst_0
-	goto	l10 // ireturn
+	goto	l5 // ireturn
+l4	iconst_0
+	goto	l5 // ireturn
 l1	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/LinearSeqLike.scala$collection$LinearSeqLike$$super$sameElements:(Lscala/collection/Iterable;)Z
-l10	ireturn
+l5	ireturn
   Labels:
-   	l8 = 18 // aload
-   	l3 = 65 // aload_3
-   	l5 = 73 // aload_3
-   	l6 = 87 // aload_3
-   	l7 = 96 // aload_3
-   	l4 = 102 // ifeq
-   	l2 = 132 // aload
-   	l9 = 156 // iconst_0
-   	l1 = 160 // aload_0
-   	l10 = 167 // ireturn
+   	l3 = 24 // aload
+   	l2 = 91 // aload
+   	l4 = 115 // iconst_0
+   	l1 = 119 // aload_0
+   	l5 = 126 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      168      0    $this       Lscala/collection/LinearSeqLike;
-   0      168      1    that       Lscala/collection/Iterable;
-   12      148      2    temp2       Lscala/collection/LinearSeq;
-   61      44      3    x0       Ljava/lang/Object;
-   61      44      4    y0       Ljava/lang/Object;
-   15      145      5    these       Lscala/collection/LinearSeqLike;
-   18      142      6    those       Lscala/collection/LinearSeq;
+   0      127      0    $this       Lscala/collection/LinearSeqLike;
+   0      127      1    that       Lscala/collection/Iterable;
+   2      125      2    temp1       Lscala/collection/Iterable;
+   14      105      3    temp2       Lscala/collection/LinearSeq;
+   17      102      4    that1       Lscala/collection/LinearSeq;
+   20      99      5    these       Lscala/collection/LinearSeqLike;
+   24      95      6    those       Lscala/collection/LinearSeq;
 
 
 public static int lengthCompare(scala.collection.LinearSeqLike, int);

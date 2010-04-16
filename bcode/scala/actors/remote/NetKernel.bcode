@@ -243,9 +243,9 @@ Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/MatchError."<init>":(Ljava/lang/Object;)V
 Asciz	from;
-Asciz	freshName;
 Asciz	temp37;
 Asciz	Lscala/Option;;
+Asciz	freshName;
 Asciz	(Lscala/actors/OutputChannel<Ljava/lang/Object;>;)Lscala/Symbol;;
 Asciz	(Lscala/actors/remote/Node;Lscala/Symbol;Ljava/lang/Object;)V;
 Asciz	(Lscala/actors/remote/Node;Lscala/Symbol;Ljava/lang/Object;Lscala/Symbol;)V;
@@ -331,11 +331,19 @@ Asciz	scala/collection/mutable/StringBuilder;
 class	scala/collection/mutable/StringBuilder
 NameAndType	"<init>":()V
 Method	scala/collection/mutable/StringBuilder."<init>":()V
-Asciz	scala/runtime/StringAdd;
-class	scala/runtime/StringAdd
-Method	scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	any2stringadd;
+Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
+NameAndType	any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+Method	scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
 Asciz	: processing ;
 String	: processing 
+Asciz	scala/runtime/StringAdd;
+class	scala/runtime/StringAdd
 Asciz	$plus;
 Asciz	(Ljava/lang/String;)Ljava/lang/String;;
 NameAndType	$plus:(Ljava/lang/String;)Ljava/lang/String;
@@ -386,31 +394,27 @@ Asciz	liftedTree1$1;
 Asciz	(Lscala/actors/remote/Locator;[BLscala/Symbol;Lscala/actors/OutputChannel;)V;
 NameAndType	liftedTree1$1:(Lscala/actors/remote/Locator;[BLscala/Symbol;Lscala/actors/OutputChannel;)V
 Method	scala/actors/remote/NetKernel.liftedTree1$1:(Lscala/actors/remote/Locator;[BLscala/Symbol;Lscala/actors/OutputChannel;)V
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
-Asciz	any2stringadd;
-Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
-NameAndType	any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
-Method	scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
-Asciz	temp60;
-Asciz	temp59;
-Asciz	senderProxy;
+Asciz	temp57;
 Asciz	temp58;
 Asciz	Lscala/actors/remote/RemoteApply0;;
+Asciz	temp59;
+Asciz	temp60;
 Asciz	temp49;
+Asciz	senderProxy;
 Asciz	temp62;
 Asciz	Lscala/actors/remote/NamedSend;;
-Asciz	temp64;
-Asciz	temp54;
-Asciz	Lscala/Some;;
 Asciz	temp63;
+Asciz	temp64;
 Asciz	temp65;
 Asciz	temp66;
-Asciz	temp55;
+Asciz	senderLoc$3;
+Asciz	data$2;
+Asciz	session$3;
 Asciz	temp53;
+Asciz	temp54;
+Asciz	Lscala/Some;;
+Asciz	temp55;
+Asciz	a$3;
 Asciz	terminate;
 Asciz	valuesIterator;
 Asciz	()Lscala/collection/Iterator;;
@@ -571,10 +575,10 @@ private scala.collection.mutable.HashMap names();
 public void register(scala.Symbol, scala.actors.OutputChannel);
   Signature: (Lscala/Symbol;Lscala/actors/OutputChannel;)V
   Code:
-   Stack=4, Locals=3, Args_size=3
+   Stack=4, Locals=4, Args_size=3
 	aload_0
 	dup
-	pop
+	astore_3
 	monitorenter
 	aload_0
 	invokespecial	Method actors:()Lscala/collection/mutable/HashMap;
@@ -592,10 +596,10 @@ public void register(scala.Symbol, scala.actors.OutputChannel);
 	invokevirtual	Method scala/Predef$Pair$.apply:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/Tuple2;
 	invokevirtual	Method scala/collection/mutable/HashMap.$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/HashMap;
 	pop
-	aload_0
+	aload_3
 	monitorexit
 	return
-	aload_0
+	aload_3
 	monitorexit
 	athrow
   Labels:
@@ -614,57 +618,59 @@ public void register(scala.Symbol, scala.actors.OutputChannel);
 public scala.Symbol getOrCreateName(scala.actors.OutputChannel);
   Signature: (Lscala/actors/OutputChannel;)Lscala/Symbol;
   Code:
-   Stack=3, Locals=4, Args_size=2
+   Stack=3, Locals=5, Args_size=2
 	aload_0
 	invokespecial	Method names:()Lscala/collection/mutable/HashMap;
 	aload_1
 	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
-	astore_3
+	astore_2
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	aload_2
+	astore_3
 	dup
 	ifnonnull	l1 // aload_3
 	pop
 	aload_3
 	ifnull	l2 // getstatic
-	goto	l3 // aload_3
+	goto	l3 // aload_2
 l1	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l3 // aload_3
+	ifeq	l3 // aload_2
 l2	getstatic	Field scala/actors/remote/FreshNameCreator$.MODULE$:Lscala/actors/remote/FreshNameCreator$;
 	ldc	String remotesender
 	invokevirtual	Method scala/actors/remote/FreshNameCreator$.newName:(Ljava/lang/String;)Lscala/Symbol;
-	astore_2
+	astore	4
 	aload_0
-	aload_2
+	aload	4
 	aload_1
 	invokevirtual	Method register:(Lscala/Symbol;Lscala/actors/OutputChannel;)V
-	aload_2
+	aload	4
 	goto	l4 // areturn
-l3	aload_3
+l3	aload_2
 	instanceof	class scala/Some
 	ifeq	l5 // new
-	aload_3
+	aload_2
 	checkcast	class scala/Some
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/Symbol
 l4	areturn
 l5	new	class scala/MatchError
 	dup
-	aload_3
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 24 // aload_3
-   	l2 = 31 // getstatic
-   	l3 = 50 // aload_3
-   	l4 = 67 // areturn
-   	l5 = 68 // new
+   	l1 = 26 // aload_3
+   	l2 = 33 // getstatic
+   	l3 = 55 // aload_2
+   	l4 = 72 // areturn
+   	l5 = 73 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      77      0    this       Lscala/actors/remote/NetKernel;
-   0      77      1    from       Lscala/actors/OutputChannel;
-   40      7      2    freshName       Lscala/Symbol;
-   9      68      3    temp37       Lscala/Option;
+   0      82      0    this       Lscala/actors/remote/NetKernel;
+   0      82      1    from       Lscala/actors/OutputChannel;
+   9      73      2    temp37       Lscala/Option;
+   43      9      4    freshName       Lscala/Symbol;
 
   Signature: length = 0x2
    00 FFFFFFA1 
@@ -865,11 +871,11 @@ public scala.collection.mutable.HashMap proxies();
 public scala.actors.remote.Proxy getOrCreateProxy(scala.actors.remote.Node, scala.Symbol);
   Signature: (Lscala/actors/remote/Node;Lscala/Symbol;)Lscala/actors/remote/Proxy;
   Code:
-   Stack=5, Locals=6, Args_size=3
+   Stack=5, Locals=7, Args_size=3
 	aload_0
 	invokevirtual	Method proxies:()Lscala/collection/mutable/HashMap;
 	dup
-	astore	5
+	astore_3
 	monitorenter
 	aload_0
 	invokevirtual	Method proxies:()Lscala/collection/mutable/HashMap;
@@ -879,69 +885,71 @@ public scala.actors.remote.Proxy getOrCreateProxy(scala.actors.remote.Node, scal
 	aload_2
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
-	astore	4
-	aload	4
+	astore	5
+	aload	5
 	instanceof	class scala/Some
 	ifeq	l1 // getstatic
-	aload	4
+	aload	5
 	checkcast	class scala/Some
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
-	goto	l2 // astore_3
+	goto	l2 // astore
 l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	aload	5
+	astore	6
 	dup
 	ifnonnull	l3 // aload
 	pop
-	aload	4
+	aload	6
 	ifnull	l4 // aload_0
 	goto	l5 // new
-l3	aload	4
+l3	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l5 // new
 l4	aload_0
 	aload_1
 	aload_2
 	invokevirtual	Method createProxy:(Lscala/actors/remote/Node;Lscala/Symbol;)Lscala/actors/remote/Proxy;
-l2	astore_3
-	aload	5
-	monitorexit
+l2	astore	4
 	aload_3
+	monitorexit
+	aload	4
 	checkcast	class scala/actors/remote/Proxy
 	areturn
 l5	new	class scala/MatchError
 	dup
-	aload	4
+	aload	5
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
-	aload	5
+	aload_3
 	monitorexit
 	athrow
   Labels:
-   	l1 = 45 // getstatic
-   	l3 = 61 // aload
-   	l4 = 69 // aload_0
-   	l2 = 75 // astore_3
-   	l5 = 84 // new
+   	l1 = 44 // getstatic
+   	l3 = 64 // aload
+   	l4 = 72 // aload_0
+   	l2 = 78 // astore
+   	l5 = 88 // new
   Exception table:
    from   to  target type
-     8    79    94   any
-    84    94    94   any
+     7    82    98   any
+    88    98    98   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      98      0    this       Lscala/actors/remote/NetKernel;
-   0      98      1    senderNode       Lscala/actors/remote/Node;
-   0      98      2    senderName       Lscala/Symbol;
-   26      53      4    temp41       Lscala/Option;
-   84      10      4    temp41       Lscala/Option;
+   0      101      0    this       Lscala/actors/remote/NetKernel;
+   0      101      1    senderNode       Lscala/actors/remote/Node;
+   0      101      2    senderName       Lscala/Symbol;
+   25      57      5    temp41       Lscala/Option;
+   88      10      5    temp41       Lscala/Option;
 
 
 public void registerProxy(scala.actors.remote.Node, scala.Symbol, scala.actors.remote.Proxy);
   Signature: (Lscala/actors/remote/Node;Lscala/Symbol;Lscala/actors/remote/Proxy;)V
   Code:
-   Stack=6, Locals=6, Args_size=4
+   Stack=6, Locals=7, Args_size=4
 	aload_0
 	invokevirtual	Method proxies:()Lscala/collection/mutable/HashMap;
 	dup
-	astore	5
+	astore	4
 	monitorenter
 	aload_0
 	invokevirtual	Method proxies:()Lscala/collection/mutable/HashMap;
@@ -951,20 +959,22 @@ public void registerProxy(scala.actors.remote.Node, scala.Symbol, scala.actors.r
 	aload_2
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
-	astore	4
-	aload	4
+	astore	5
+	aload	5
 	instanceof	class scala/Some
 	ifeq	l1 // getstatic
 	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 	goto	l2 // pop
 l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	aload	5
+	astore	6
 	dup
 	ifnonnull	l3 // aload
 	pop
-	aload	4
+	aload	6
 	ifnull	l4 // aload_0
 	goto	l5 // new
-l3	aload	4
+l3	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l5 // new
 l4	aload_0
@@ -979,155 +989,74 @@ l4	aload_0
 	invokevirtual	Method scala/Predef$Pair$.apply:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/Tuple2;
 	invokevirtual	Method scala/collection/mutable/HashMap.$plus$eq:(Lscala/Tuple2;)Lscala/collection/mutable/HashMap;
 l2	pop
-	aload	5
+	aload	4
 	monitorexit
 	return
 l5	new	class scala/MatchError
 	dup
-	aload	4
+	aload	5
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
-	aload	5
+	aload	4
 	monitorexit
 	athrow
   Labels:
    	l1 = 40 // getstatic
-   	l3 = 56 // aload
-   	l4 = 64 // aload_0
-   	l2 = 87 // pop
-   	l5 = 92 // new
+   	l3 = 60 // aload
+   	l4 = 68 // aload_0
+   	l2 = 91 // pop
+   	l5 = 96 // new
   Exception table:
    from   to  target type
-     8    91   102   any
-    92   102   102   any
+     8    95   106   any
+    96   106   106   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      106      0    this       Lscala/actors/remote/NetKernel;
-   0      106      1    senderNode       Lscala/actors/remote/Node;
-   0      106      2    senderName       Lscala/Symbol;
-   0      106      3    p       Lscala/actors/remote/Proxy;
-   26      62      4    temp45       Lscala/Option;
-   92      10      4    temp45       Lscala/Option;
+   0      110      0    this       Lscala/actors/remote/NetKernel;
+   0      110      1    senderNode       Lscala/actors/remote/Node;
+   0      110      2    senderName       Lscala/Symbol;
+   0      110      3    p       Lscala/actors/remote/Proxy;
+   26      66      5    temp45       Lscala/Option;
+   96      10      5    temp45       Lscala/Option;
 
 
 public void processMsg(scala.actors.remote.Node, java.lang.Object);
   Signature: (Lscala/actors/remote/Node;Ljava/lang/Object;)V
   Code:
-   Stack=5, Locals=16, Args_size=3
+   Stack=5, Locals=27, Args_size=3
 	aload_0
 	dup
-	pop
+	astore_3
 	monitorenter
 	aload_2
-	instanceof	class scala/actors/remote/RemoteApply0
-	ifeq	l1 // aload_2
-	aload_2
-	checkcast	class scala/actors/remote/RemoteApply0
-	astore	6
-	aload	6
-	invokevirtual	Method scala/actors/remote/RemoteApply0.senderLoc:()Lscala/actors/remote/Locator;
 	astore	4
-	aload	6
-	invokevirtual	Method scala/actors/remote/RemoteApply0.receiverLoc:()Lscala/actors/remote/Locator;
-	astore_3
-	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
-	new	class scala/collection/mutable/StringBuilder
-	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	new	class scala/runtime/StringAdd
-	dup
-	aload_0
-	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
-	ldc	String : processing 
-	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	6
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
-	aload_0
-	invokespecial	Method actors:()Lscala/collection/mutable/HashMap;
-	aload_3
-	invokevirtual	Method scala/actors/remote/Locator.name:()Lscala/Symbol;
-	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
-	astore	7
-	aload	7
-	instanceof	class scala/Some
-	ifeq	l2 // getstatic
-	aload_0
 	aload	4
-	invokevirtual	Method scala/actors/remote/Locator.node:()Lscala/actors/remote/Node;
+	instanceof	class scala/actors/remote/RemoteApply0
+	ifeq	l1 // aload
 	aload	4
-	invokevirtual	Method scala/actors/remote/Locator.name:()Lscala/Symbol;
-	invokevirtual	Method getOrCreateProxy:(Lscala/actors/remote/Node;Lscala/Symbol;)Lscala/actors/remote/Proxy;
+	checkcast	class scala/actors/remote/RemoteApply0
 	astore	5
 	aload	5
-	new	class scala/actors/remote/LocalApply0
-	dup
+	invokevirtual	Method scala/actors/remote/RemoteApply0.senderLoc:()Lscala/actors/remote/Locator;
+	astore	6
+	aload	5
+	invokevirtual	Method scala/actors/remote/RemoteApply0.receiverLoc:()Lscala/actors/remote/Locator;
+	astore	7
 	aload	6
-	invokevirtual	Method scala/actors/remote/RemoteApply0.rfun:()Lscala/Function2;
-	aload	7
-	checkcast	class scala/Some
-	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
-	checkcast	class scala/actors/AbstractActor
-	invokespecial	Method scala/actors/remote/LocalApply0."<init>":(Lscala/Function2;Lscala/actors/AbstractActor;)V
-	aconst_null
-	invokevirtual	Method scala/actors/remote/Proxy.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
-	goto	l3 // aload_0
-l2	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	dup
-	ifnonnull	l4 // aload
-	pop
-	aload	7
-	ifnull	l5 // getstatic
-	goto	l6 // new
-l4	aload	7
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l6 // new
-l5	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
-	new	class scala/runtime/StringAdd
-	dup
-	aload_0
-	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
-	ldc_w	String : lost message
-	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
-	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
-	goto	l3 // aload_0
-l6	new	class scala/MatchError
-	dup
-	aload	7
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
-	athrow
-l1	aload_2
-	instanceof	class scala/actors/remote/NamedSend
-	ifeq	l7 // new
-	aload_2
-	checkcast	class scala/actors/remote/NamedSend
 	astore	8
-	aload	8
-	invokevirtual	Method scala/actors/remote/NamedSend.senderLoc:()Lscala/actors/remote/Locator;
-	astore	11
-	aload	8
-	invokevirtual	Method scala/actors/remote/NamedSend.receiverLoc:()Lscala/actors/remote/Locator;
+	aload	7
 	astore	9
-	aload	8
-	invokevirtual	Method scala/actors/remote/NamedSend.data:()[B
-	astore	12
-	aload	8
-	invokevirtual	Method scala/actors/remote/NamedSend.session:()Lscala/Symbol;
-	astore	13
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	new	class scala/runtime/StringAdd
-	dup
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
-	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
-	ldc	String : processing 
+	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	ldc_w	String : processing 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	8
+	aload	5
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
@@ -1136,32 +1065,135 @@ l1	aload_2
 	aload	9
 	invokevirtual	Method scala/actors/remote/Locator.name:()Lscala/Symbol;
 	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
-	astore	15
-	aload	15
-	instanceof	class scala/Some
-	ifeq	l8 // getstatic
-	aload	15
-	checkcast	class scala/Some
 	astore	10
 	aload	10
+	instanceof	class scala/Some
+	ifeq	l2 // getstatic
+	aload_0
+	aload	8
+	invokevirtual	Method scala/actors/remote/Locator.node:()Lscala/actors/remote/Node;
+	aload	8
+	invokevirtual	Method scala/actors/remote/Locator.name:()Lscala/Symbol;
+	invokevirtual	Method getOrCreateProxy:(Lscala/actors/remote/Node;Lscala/Symbol;)Lscala/actors/remote/Proxy;
+	astore	11
+	aload	11
+	new	class scala/actors/remote/LocalApply0
+	dup
+	aload	5
+	invokevirtual	Method scala/actors/remote/RemoteApply0.rfun:()Lscala/Function2;
+	aload	10
+	checkcast	class scala/Some
+	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
+	checkcast	class scala/actors/AbstractActor
+	invokespecial	Method scala/actors/remote/LocalApply0."<init>":(Lscala/Function2;Lscala/actors/AbstractActor;)V
+	aconst_null
+	pop
+	aconst_null
+	invokevirtual	Method scala/actors/remote/Proxy.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	goto	l3 // pop
+l2	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	aload	10
+	astore	12
+	dup
+	ifnonnull	l4 // aload
+	pop
+	aload	12
+	ifnull	l5 // getstatic
+	goto	l6 // new
+l4	aload	12
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l6 // new
+l5	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	aload_0
+	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	ldc_w	String : lost message
+	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	goto	l3 // pop
+l6	new	class scala/MatchError
+	dup
+	aload	10
+	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
+	athrow
+l1	aload	4
+	instanceof	class scala/actors/remote/NamedSend
+	ifeq	l7 // new
+	aload	4
+	checkcast	class scala/actors/remote/NamedSend
+	astore	13
+	aload	13
+	invokevirtual	Method scala/actors/remote/NamedSend.senderLoc:()Lscala/actors/remote/Locator;
+	astore	14
+	aload	13
+	invokevirtual	Method scala/actors/remote/NamedSend.receiverLoc:()Lscala/actors/remote/Locator;
+	astore	15
+	aload	13
+	invokevirtual	Method scala/actors/remote/NamedSend.data:()[B
+	astore	16
+	aload	13
+	invokevirtual	Method scala/actors/remote/NamedSend.session:()Lscala/Symbol;
+	astore	17
+	aload	14
+	astore	18
+	aload	15
+	astore	19
+	aload	16
+	astore	20
+	aload	17
+	astore	21
+	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
+	new	class scala/collection/mutable/StringBuilder
+	dup
+	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	aload_0
+	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+	ldc_w	String : processing 
+	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	aload	13
+	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
+	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
+	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
+	aload_0
+	invokespecial	Method actors:()Lscala/collection/mutable/HashMap;
+	aload	19
+	invokevirtual	Method scala/actors/remote/Locator.name:()Lscala/Symbol;
+	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
+	astore	22
+	aload	22
+	instanceof	class scala/Some
+	ifeq	l8 // getstatic
+	aload	22
+	checkcast	class scala/Some
+	astore	23
+	aload	23
 	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/actors/OutputChannel
-	astore	14
+	astore	24
+	aload	24
+	astore	25
 	aload_0
-	aload	11
-	aload	12
-	aload	13
-	aload	14
+	aload	18
+	aload	20
+	aload	21
+	aload	25
 	invokespecial	Method liftedTree1$1:(Lscala/actors/remote/Locator;[BLscala/Symbol;Lscala/actors/OutputChannel;)V
-	goto	l3 // aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	goto	l3 // pop
 l8	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	aload	22
+	astore	26
 	dup
 	ifnonnull	l9 // aload
 	pop
-	aload	15
+	aload	26
 	ifnull	l10 // getstatic
 	goto	l11 // new
-l9	aload	15
+l9	aload	26
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l11 // new
 l10	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
@@ -1171,62 +1203,77 @@ l10	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	ldc_w	String : lost message
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
-l3	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+l3	pop
+	aload_3
 	monitorexit
 	return
 l11	new	class scala/MatchError
 	dup
-	aload	15
+	aload	22
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
 l7	new	class scala/MatchError
 	dup
-	aload_2
+	aload	4
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
-	aload_0
+	aload_3
 	monitorexit
 	athrow
   Labels:
-   	l2 = 136 // getstatic
-   	l4 = 152 // aload
-   	l5 = 160 // getstatic
-   	l6 = 183 // new
-   	l1 = 193 // aload_2
-   	l8 = 325 // getstatic
-   	l9 = 341 // aload
-   	l10 = 349 // getstatic
-   	l3 = 368 // aload_0
-   	l11 = 371 // new
-   	l7 = 381 // new
+   	l2 = 156 // getstatic
+   	l4 = 176 // aload
+   	l5 = 184 // getstatic
+   	l6 = 209 // new
+   	l1 = 219 // aload
+   	l8 = 376 // getstatic
+   	l9 = 396 // aload
+   	l10 = 404 // getstatic
+   	l3 = 426 // pop
+   	l11 = 430 // new
+   	l7 = 440 // new
   Exception table:
    from   to  target type
-     4   370   390   any
-   371   390   390   any
+     4   429   450   any
+   430   450   450   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      393      0    this       Lscala/actors/remote/NetKernel;
-   0      393      1    senderNode       Lscala/actors/remote/Node;
-   0      393      2    msg       Ljava/lang/Object;
-   30      163      3    temp60       Lscala/actors/remote/Locator;
-   24      169      4    temp59       Lscala/actors/remote/Locator;
-   104      29      5    senderProxy       Lscala/actors/remote/Proxy;
-   17      176      6    temp58       Lscala/actors/remote/RemoteApply0;
-   80      113      7    temp49       Lscala/Option;
-   206      162      8    temp62       Lscala/actors/remote/NamedSend;
-   371      10      8    temp62       Lscala/actors/remote/NamedSend;
-   220      148      9    temp64       Lscala/actors/remote/Locator;
-   371      10      9    temp64       Lscala/actors/remote/Locator;
-   300      22      10    temp54       Lscala/Some;
-   213      155      11    temp63       Lscala/actors/remote/Locator;
-   371      10      11    temp63       Lscala/actors/remote/Locator;
-   227      141      12    temp65       [B
-   371      10      12    temp65       [B
-   234      134      13    temp66       Lscala/Symbol;
-   371      10      13    temp66       Lscala/Symbol;
-   310      12      14    temp55       Lscala/actors/OutputChannel;
-   285      83      15    temp53       Lscala/Option;
-   371      10      15    temp53       Lscala/Option;
+   0      453      0    this       Lscala/actors/remote/NetKernel;
+   0      453      1    senderNode       Lscala/actors/remote/Node;
+   0      453      2    msg       Ljava/lang/Object;
+   7      420      4    temp57       Ljava/lang/Object;
+   430      20      4    temp57       Ljava/lang/Object;
+   22      197      5    temp58       Lscala/actors/remote/RemoteApply0;
+   29      190      6    temp59       Lscala/actors/remote/Locator;
+   36      183      7    temp60       Lscala/actors/remote/Locator;
+   40      179      8    senderLoc       Lscala/actors/remote/Locator;
+   44      175      9    receiverLoc       Lscala/actors/remote/Locator;
+   95      124      10    temp49       Lscala/Option;
+   119      34      11    senderProxy       Lscala/actors/remote/Proxy;
+   234      192      13    temp62       Lscala/actors/remote/NamedSend;
+   430      10      13    temp62       Lscala/actors/remote/NamedSend;
+   241      185      14    temp63       Lscala/actors/remote/Locator;
+   430      10      14    temp63       Lscala/actors/remote/Locator;
+   248      178      15    temp64       Lscala/actors/remote/Locator;
+   430      10      15    temp64       Lscala/actors/remote/Locator;
+   255      171      16    temp65       [B
+   430      10      16    temp65       [B
+   262      164      17    temp66       Lscala/Symbol;
+   430      10      17    temp66       Lscala/Symbol;
+   266      160      18    senderLoc$3       Lscala/actors/remote/Locator;
+   430      10      18    senderLoc$3       Lscala/actors/remote/Locator;
+   270      156      19    receiverLoc       Lscala/actors/remote/Locator;
+   430      10      19    receiverLoc       Lscala/actors/remote/Locator;
+   274      152      20    data$2       [B
+   430      10      20    data$2       [B
+   278      148      21    session$3       Lscala/Symbol;
+   430      10      21    session$3       Lscala/Symbol;
+   329      97      22    temp53       Lscala/Option;
+   430      10      22    temp53       Lscala/Option;
+   344      29      23    temp54       Lscala/Some;
+   354      19      24    temp55       Lscala/actors/OutputChannel;
+   358      15      25    a$3       Lscala/actors/OutputChannel;
 
 
 public void terminate();
@@ -1263,8 +1310,8 @@ private final void liftedTree1$1(scala.actors.remote.Locator, byte[], scala.Symb
 	aload_1
 	invokevirtual	Method scala/actors/remote/Locator.name:()Lscala/Symbol;
 	invokevirtual	Method getOrCreateProxy:(Lscala/actors/remote/Node;Lscala/Symbol;)Lscala/actors/remote/Proxy;
-	astore	5
-	aload	5
+	astore	7
+	aload	7
 	new	class scala/actors/remote/SendTo
 	dup
 	aload	4
@@ -1272,36 +1319,37 @@ private final void liftedTree1$1(scala.actors.remote.Locator, byte[], scala.Symb
 	aload_3
 	invokespecial	Method scala/actors/remote/SendTo."<init>":(Lscala/actors/OutputChannel;Ljava/lang/Object;Lscala/Symbol;)V
 	aconst_null
+	pop
+	aconst_null
 	invokevirtual	Method scala/actors/remote/Proxy.send:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
 	goto	l1 // return
-	astore	7
+	astore	5
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	new	class scala/runtime/StringAdd
-	dup
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
-	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
 	ldc_w	String : caught 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	7
+	aload	5
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.error:(Ljava/lang/String;)V
 l1	return
   Labels:
-   	l1 = 90 // return
+   	l1 = 91 // return
   Exception table:
    from   to  target type
-     0    50    50   Class java/lang/Exception
+     0    52    52   Class java/lang/Exception
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      91      0    this       Lscala/actors/remote/NetKernel;
-   29      18      5    senderProxy       Lscala/actors/remote/Proxy;
-   15      32      6    msg       Ljava/lang/Object;
+   0      92      0    this       Lscala/actors/remote/NetKernel;
+   15      34      6    msg       Ljava/lang/Object;
+   29      20      7    senderProxy       Lscala/actors/remote/Proxy;
 
 
 public scala.actors.remote.NetKernel(scala.actors.remote.Service);

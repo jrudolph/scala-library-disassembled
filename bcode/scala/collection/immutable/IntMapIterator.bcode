@@ -2,7 +2,7 @@ Compiled from "IntMap.scala"
 public abstract class scala.collection.immutable.IntMapIterator extends java.lang.Object implements scala.collection.Iterator,scala.ScalaObject
   SourceFile: "IntMap.scala"
   Signature: length = 0x2
-   01 FFFFFF93 
+   01 FFFFFF97 
   ScalaSig: length = 0x298
    05 00 70 06 06 01 02 FFFFFF81 00 02 08 02 0E 49 6E 74
    4D 61 70 49 74 65 72 61 74 6F 72 0A 02 03 04 01
@@ -429,23 +429,27 @@ class	java/lang/Object
 Asciz	equals;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
 Asciz	Empty maps not allowed as subtrees;
 String	Empty maps not allowed as subtrees
-Asciz	java/lang/RuntimeException;
-class	java/lang/RuntimeException
-Asciz	<init>;
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+Asciz	error;
+Asciz	(Ljava/lang/String;)Lscala/runtime/Nothing$;;
+NameAndType	error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
+Method	scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
 Asciz	scala/MatchError;
 class	scala/MatchError
+Asciz	<init>;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/MatchError."<init>":(Ljava/lang/Object;)V
+Asciz	temp12;
 Asciz	temp13;
 Asciz	Lscala/collection/immutable/IntMap$Bin;;
-Asciz	temp17;
 Asciz	temp16;
-Asciz	temp12;
+Asciz	temp17;
 Asciz	()TT;;
 Asciz	()V;
 NameAndType	"<init>":()V
@@ -1514,89 +1518,88 @@ l2	ireturn
 public final java.lang.Object next();
   Signature: ()Ljava/lang/Object;
   Code:
-   Stack=3, Locals=6, Args_size=1
+   Stack=3, Locals=7, Args_size=1
 l4	aload_0
 	invokevirtual	Method pop:()Lscala/collection/immutable/IntMap;
-	astore	5
-	aload	5
-	instanceof	class scala/collection/immutable/IntMap$Bin
-	ifeq	l1 // aload
-	aload	5
-	checkcast	class scala/collection/immutable/IntMap$Bin
-	astore_1
-	aload_1
-	invokevirtual	Method scala/collection/immutable/IntMap$Bin.left:()Lscala/collection/immutable/IntMap;
-	astore_3
-	aload_1
-	invokevirtual	Method scala/collection/immutable/IntMap$Bin.right:()Lscala/collection/immutable/IntMap;
 	astore_2
+	aload_2
+	instanceof	class scala/collection/immutable/IntMap$Bin
+	ifeq	l1 // aload_2
+	aload_2
+	checkcast	class scala/collection/immutable/IntMap$Bin
+	astore_3
 	aload_3
+	invokevirtual	Method scala/collection/immutable/IntMap$Bin.left:()Lscala/collection/immutable/IntMap;
+	astore	4
+	aload_3
+	invokevirtual	Method scala/collection/immutable/IntMap$Bin.right:()Lscala/collection/immutable/IntMap;
+	astore	5
+	aload	4
 	instanceof	class scala/collection/immutable/IntMap$Tip
 	ifeq	l2 // aload_0
 	aload_0
-	aload_2
+	aload	5
 	invokevirtual	Method push:(Lscala/collection/immutable/IntMap;)V
 	aload_0
-	aload_3
+	aload	4
 	checkcast	class scala/collection/immutable/IntMap$Tip
 	invokevirtual	Method valueOf:(Lscala/collection/immutable/IntMap$Tip;)Ljava/lang/Object;
 	goto	l3 // areturn
 l2	aload_0
-	aload_2
+	aload	5
 	invokevirtual	Method push:(Lscala/collection/immutable/IntMap;)V
 	aload_0
-	aload_3
+	aload	4
 	invokevirtual	Method push:(Lscala/collection/immutable/IntMap;)V
 	goto	l4 // aload_0
-l1	aload	5
+l1	aload_2
 	instanceof	class scala/collection/immutable/IntMap$Tip
 	ifeq	l5 // getstatic
 	aload_0
-	aload	5
+	aload_2
 	checkcast	class scala/collection/immutable/IntMap$Tip
 	invokevirtual	Method valueOf:(Lscala/collection/immutable/IntMap$Tip;)Ljava/lang/Object;
 l3	areturn
 l5	getstatic	Field scala/collection/immutable/IntMap$Nil$.MODULE$:Lscala/collection/immutable/IntMap$Nil$;
+	aload_2
+	astore	6
 	dup
 	ifnonnull	l6 // aload
 	pop
-	aload	5
-	ifnull	l7 // ldc_w
+	aload	6
+	ifnull	l7 // getstatic
 	goto	l8 // new
-l6	aload	5
+l6	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l8 // new
-l7	ldc_w	String Empty maps not allowed as subtrees
-	astore	4
-	new	class java/lang/RuntimeException
-	dup
-	aload	4
-	invokespecial	Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+l7	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	ldc_w	String Empty maps not allowed as subtrees
+	invokevirtual	Method scala/Predef$.error:(Ljava/lang/String;)Lscala/runtime/Nothing$;
 	athrow
 l8	new	class scala/MatchError
 	dup
-	aload	5
+	aload_2
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
    	l4 = 0 // aload_0
-   	l2 = 53 // aload_0
-   	l1 = 66 // aload
-   	l3 = 83 // areturn
-   	l5 = 84 // getstatic
-   	l6 = 100 // aload
-   	l7 = 108 // ldc_w
+   	l2 = 55 // aload_0
+   	l1 = 70 // aload_2
+   	l3 = 85 // areturn
+   	l5 = 86 // getstatic
+   	l6 = 105 // aload
+   	l7 = 113 // getstatic
    	l8 = 123 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      133      0    this       Lscala/collection/immutable/IntMapIterator;
-   20      46      1    temp13       Lscala/collection/immutable/IntMap$Bin;
-   30      36      2    temp17       Lscala/collection/immutable/IntMap;
-   25      41      3    temp16       Lscala/collection/immutable/IntMap;
-   6      127      5    temp12       Lscala/collection/immutable/IntMap;
+   0      132      0    this       Lscala/collection/immutable/IntMapIterator;
+   5      127      2    temp12       Lscala/collection/immutable/IntMap;
+   17      53      3    temp13       Lscala/collection/immutable/IntMap$Bin;
+   23      47      4    temp16       Lscala/collection/immutable/IntMap;
+   29      41      5    temp17       Lscala/collection/immutable/IntMap;
 
   Signature: length = 0x2
-   01 FFFFFF89 
+   01 FFFFFF8D 
 
 public scala.collection.immutable.IntMapIterator(scala.collection.immutable.IntMap);
   Signature: (Lscala/collection/immutable/IntMap;)V

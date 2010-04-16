@@ -89,10 +89,11 @@ Asciz	this;
 Asciz	Lscala/actors/remote/Serializer;;
 Asciz	inputStream;
 Asciz	Ljava/io/DataInputStream;;
+Asciz	exceptionResult1;
+Asciz	[B;
 Asciz	length;
 Asciz	I;
 Asciz	bytes;
-Asciz	[B;
 Asciz	LocalVariableTable;
 Asciz	java/io/IOException;
 class	java/io/IOException
@@ -161,21 +162,25 @@ public abstract java.lang.Object deserialize(byte[]);
 private byte[] readBytes(java.io.DataInputStream)   throws java.io.IOException;
   Signature: (Ljava/io/DataInputStream;)[B
   Code:
-   Stack=4, Locals=4, Args_size=2
+   Stack=4, Locals=6, Args_size=2
+	aconst_null
+	astore_2
 	aload_1
 	invokevirtual	Method java/io/DataInputStream.readInt:()I
-	istore_2
-	iload_2
+	istore	4
+	iload	4
 	newarray byte
-	astore_3
+	astore	5
 	aload_1
-	aload_3
+	aload	5
 	iconst_0
-	iload_2
+	iload	4
 	invokevirtual	Method java/io/DataInputStream.readFully:([BII)V
-	aload_3
+	aload	5
+	astore_2
+	aload_2
 	areturn
-	pop
+	astore_3
 	new	class java/io/EOFException
 	dup
 	ldc	String Connection closed.
@@ -184,14 +189,16 @@ private byte[] readBytes(java.io.DataInputStream)   throws java.io.IOException;
   Labels:
   Exception table:
    from   to  target type
-     0    16    18   Class java/lang/NullPointerException
+     2    26    28   Class java/lang/NullPointerException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      29      0    this       Lscala/actors/remote/Serializer;
-   0      29      1    inputStream       Ljava/io/DataInputStream;
-   5      11      2    length       I
-   9      7      3    bytes       [B
+   0      39      0    this       Lscala/actors/remote/Serializer;
+   0      39      1    inputStream       Ljava/io/DataInputStream;
+   2      25      2    exceptionResult1       [B
+   28      11      2    exceptionResult1       [B
+   8      17      4    length       I
+   14      11      5    bytes       [B
 
   Exceptions: 
    throws java.io.IOException

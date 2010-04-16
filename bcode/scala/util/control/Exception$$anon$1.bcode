@@ -2,7 +2,7 @@ Compiled from "Exception.scala"
 public final class scala.util.control.Exception$$anon$1 extends java.lang.Object implements scala.PartialFunction
   SourceFile: "Exception.scala"
   Signature: length = 0x2
-   00 63 
+   00 66 
   Scala: length = 0x
    
   InnerClass: 
@@ -64,6 +64,7 @@ NameAndType	gd1$1:(Ljava/lang/Exception;)Z
 Method	scala/util/control/Exception$$anon$1.gd1$1:(Ljava/lang/Exception;)Z
 Asciz	x;
 Asciz	Ljava/lang/Throwable;;
+Asciz	temp1;
 Asciz	apply;
 Asciz	(Ljava/lang/Throwable;)Ljava/lang/Object;;
 Asciz	gd2$1;
@@ -76,8 +77,10 @@ class	scala/Function1
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
 InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+Asciz	temp3;
 Asciz	temp4;
 Asciz	Ljava/lang/Exception;;
+Asciz	e;
 Asciz	(Ljava/lang/Throwable;)TT;;
 Asciz	Signature;
 Asciz	scala/PartialFunction;
@@ -185,60 +188,71 @@ public scala.Function1 compose(scala.Function1);
 public boolean isDefinedAt(java.lang.Throwable);
   Signature: (Ljava/lang/Throwable;)Z
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class java/lang/Exception
 	ifeq	l1 // iconst_0
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class java/lang/Exception
 	invokespecial	Method gd1$1:(Ljava/lang/Exception;)Z
 	goto	l2 // ireturn
 l1	iconst_0
 l2	ireturn
   Labels:
-   	l1 = 18 // iconst_0
-   	l2 = 19 // ireturn
+   	l1 = 20 // iconst_0
+   	l2 = 21 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      20      0    this       Lscala/util/control/Exception$$anon$1;
-   0      20      1    x       Ljava/lang/Throwable;
+   0      22      0    this       Lscala/util/control/Exception$$anon$1;
+   0      22      1    x       Ljava/lang/Throwable;
+   2      20      2    temp1       Ljava/lang/Throwable;
 
 
 public java.lang.Object apply(java.lang.Throwable);
   Signature: (Ljava/lang/Throwable;)Ljava/lang/Object;
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=5, Args_size=2
 	aload_1
-	instanceof	class java/lang/Exception
-	ifeq	l1 // aload_1
-	aload_1
-	checkcast	class java/lang/Exception
 	astore_2
-	aload_0
 	aload_2
+	instanceof	class java/lang/Exception
+	ifeq	l1 // aload_2
+	aload_2
+	checkcast	class java/lang/Exception
+	astore_3
+	aload_3
+	astore	4
+	aload_0
+	aload	4
 	invokespecial	Method gd2$1:(Ljava/lang/Exception;)Z
-	ifeq	l2 // aload_2
+	ifeq	l2 // aload_3
 	aload_0
 	getfield	Field pf$1:Lscala/PartialFunction;
-	aload_2
+	aload_3
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	areturn
-l2	aload_2
+l2	aload_3
 	athrow
-l1	aload_1
+l1	aload_2
 	athrow
   Labels:
-   	l2 = 31 // aload_2
-   	l1 = 33 // aload_1
+   	l2 = 37 // aload_3
+   	l1 = 39 // aload_2
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      35      0    this       Lscala/util/control/Exception$$anon$1;
-   0      35      1    x       Ljava/lang/Throwable;
-   12      21      2    temp4       Ljava/lang/Exception;
+   0      41      0    this       Lscala/util/control/Exception$$anon$1;
+   0      41      1    x       Ljava/lang/Throwable;
+   2      39      2    temp3       Ljava/lang/Throwable;
+   14      22      3    temp4       Ljava/lang/Exception;
+   37      2      3    temp4       Ljava/lang/Exception;
+   17      19      4    e       Ljava/lang/Exception;
+   37      2      4    e       Ljava/lang/Exception;
 
   Signature: length = 0x2
-   00 45 
+   00 48 
 
 public scala.Function1 andThen(scala.Function1);
   Signature: (Lscala/Function1;)Lscala/Function1;

@@ -2,7 +2,7 @@ Compiled from "ReactorTask.scala"
 public class scala.actors.ReactorTask extends scala.concurrent.forkjoin.RecursiveAction implements java.util.concurrent.Callable,java.lang.Runnable,scala.ScalaObject
   SourceFile: "ReactorTask.scala"
   Signature: length = 0x2
-   00 FFFFFF98 
+   00 FFFFFFA3 
   ScalaSig: length = 0x2D2
    05 00 71 06 05 01 02 00 02 06 02 0B 52 65 61 63
    74 6F 72 54 61 73 6B 0A 02 03 04 01 06 61 63 74
@@ -114,6 +114,12 @@ class	scala/Function1
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
 InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+Asciz	scala/runtime/BoxedUnit;
+class	scala/runtime/BoxedUnit
+Asciz	UNIT;
+Asciz	Lscala/runtime/BoxedUnit;;
+NameAndType	UNIT:Lscala/runtime/BoxedUnit;
+Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	kill;
 NameAndType	kill:()Lscala/Function0;
 InterfaceMethod	scala/actors/Reactor.kill:()Lscala/Function0;
@@ -135,13 +141,19 @@ class	scala/collection/mutable/StringBuilder
 Asciz	<init>;
 NameAndType	"<init>":()V
 Method	scala/collection/mutable/StringBuilder."<init>":()V
-Asciz	scala/runtime/StringAdd;
-class	scala/runtime/StringAdd
-Asciz	(Ljava/lang/Object;)V;
-NameAndType	"<init>":(Ljava/lang/Object;)V
-Method	scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	any2stringadd;
+Asciz	(Ljava/lang/Object;)Lscala/runtime/StringAdd;;
+NameAndType	any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
+Method	scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
 Asciz	: caught ;
 String	: caught 
+Asciz	scala/runtime/StringAdd;
+class	scala/runtime/StringAdd
 Asciz	$plus;
 Asciz	(Ljava/lang/String;)Ljava/lang/String;;
 NameAndType	$plus:(Ljava/lang/String;)Ljava/lang/String;
@@ -179,22 +191,21 @@ Asciz	scala/actors/SuspendActorControl;
 class	scala/actors/SuspendActorControl
 Asciz	this;
 Asciz	Lscala/actors/ReactorTask;;
+Asciz	exceptionResult1;
+Asciz	Ljava/lang/Object;;
+Asciz	exceptionResult2;
+Asciz	temp1;
+Asciz	Ljava/lang/Throwable;;
 Asciz	temp2;
 Asciz	Ljava/lang/Exception;;
+Asciz	e;
 Asciz	LocalVariableTable;
 Asciz	call;
 NameAndType	run:()V
 Method	scala/actors/ReactorTask.run:()V
 Asciz	compute;
-Asciz	e;
 NameAndType	call:()V
 Method	scala/actors/ReactorTask.call:()V
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	scala/PartialFunction;
 class	scala/PartialFunction
 Asciz	isDefinedAt;
@@ -277,38 +288,52 @@ public void fun_$eq(scala.Function0);
 public void run();
   Signature: ()V
   Code:
-   Stack=5, Locals=6, Args_size=1
+   Stack=5, Locals=9, Args_size=1
 	aload_0
 	invokevirtual	Method beginExecution:()V
+	aconst_null
+	astore_3
+	aconst_null
+	astore	4
 	aload_0
 	invokevirtual	Method fun:()Lscala/Function0;
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
-	pop
-	goto	l1 // goto
-	astore_2
-	aload_2
+	astore	4
+	goto	l1 // aload
+	astore	5
+	aload	5
+	astore	6
+	aload	6
 	instanceof	class java/lang/Exception
-	ifeq	l2 // aload_2
-	aload_2
+	ifeq	l2 // aload
+	aload	6
 	checkcast	class java/lang/Exception
-	astore_1
+	astore	7
+	aload	7
+	astore	8
 	aload_0
-	aload_1
+	aload	8
 	invokespecial	Method gd1$1:(Ljava/lang/Exception;)Z
-	ifeq	l3 // aload_2
+	ifeq	l3 // aload
 	aload_0
 	invokevirtual	Method reactor:()Lscala/actors/Reactor;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.exceptionHandler:()Lscala/PartialFunction;
-	aload_1
+	aload	7
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	pop
-l1	goto	l4 // aload_0
-l3	aload_2
+	astore	4
+l1	aload	4
+	astore_3
+	goto	l4 // aload_3
+l3	aload	5
 	athrow
-l2	aload_2
+l2	aload	5
 	athrow
 	pop
-l4	aload_0
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	astore_3
+l4	aload_3
+	pop
+	aload_0
 	invokevirtual	Method reactor:()Lscala/actors/Reactor;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.kill:()Lscala/Function0;
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
@@ -317,8 +342,12 @@ l4	aload_0
 	invokevirtual	Method suspendExecution:()V
 	aload_0
 	aconst_null
+	pop
+	aconst_null
 	invokevirtual	Method reactor_$eq:(Lscala/actors/Reactor;)V
 	aload_0
+	aconst_null
+	pop
 	aconst_null
 	invokevirtual	Method fun_$eq:(Lscala/Function0;)V
 	goto	l5 // return
@@ -327,27 +356,28 @@ l4	aload_0
 	invokevirtual	Method suspendExecution:()V
 	aload_0
 	aconst_null
+	pop
+	aconst_null
 	invokevirtual	Method reactor_$eq:(Lscala/actors/Reactor;)V
 	aload_0
 	aconst_null
+	pop
+	aconst_null
 	invokevirtual	Method fun_$eq:(Lscala/Function0;)V
 	goto	l5 // return
-	astore	4
+	astore_1
 	getstatic	Field scala/actors/Debug$.MODULE$:Lscala/actors/Debug$;
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
 	invokevirtual	Method reactor:()Lscala/actors/Reactor;
-	astore_3
-	new	class scala/runtime/StringAdd
-	dup
-	aload_3
-	invokespecial	Method scala/runtime/StringAdd."<init>":(Ljava/lang/Object;)V
+	invokevirtual	Method scala/Predef$.any2stringadd:(Ljava/lang/Object;)Lscala/runtime/StringAdd;
 	ldc	String : caught 
 	invokevirtual	Method scala/runtime/StringAdd.$plus:(Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	4
+	aload_1
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokevirtual	Method scala/actors/Debug$.info:(Ljava/lang/String;)V
@@ -355,58 +385,73 @@ l4	aload_0
 	new	class scala/actors/ReactorTask$$anonfun$run$1
 	dup
 	aload_0
-	aload	4
+	aload_1
 	invokespecial	Method scala/actors/ReactorTask$$anonfun$run$1."<init>":(Lscala/actors/ReactorTask;Ljava/lang/Exception;)V
 	invokevirtual	Method scala/actors/Debug$.doInfo:(Lscala/Function0;)V
 	aload_0
 	invokevirtual	Method reactor:()Lscala/actors/Reactor;
 	invokeinterface	InterfaceMethod scala/actors/Reactor.terminated:()V
 	aload_0
-	aload	4
+	aload_1
 	invokevirtual	Method terminateExecution:(Ljava/lang/Exception;)V
 	aload_0
 	invokevirtual	Method suspendExecution:()V
 	aload_0
 	aconst_null
+	pop
+	aconst_null
 	invokevirtual	Method reactor_$eq:(Lscala/actors/Reactor;)V
 	aload_0
 	aconst_null
+	pop
+	aconst_null
 	invokevirtual	Method fun_$eq:(Lscala/Function0;)V
 l5	return
-	astore	5
+	astore_2
 	aload_0
 	invokevirtual	Method suspendExecution:()V
 	aload_0
 	aconst_null
+	pop
+	aconst_null
 	invokevirtual	Method reactor_$eq:(Lscala/actors/Reactor;)V
 	aload_0
 	aconst_null
+	pop
+	aconst_null
 	invokevirtual	Method fun_$eq:(Lscala/Function0;)V
-	aload	5
+	aload_2
 	athrow
   Labels:
-   	l1 = 54 // goto
-   	l3 = 57 // aload_2
-   	l2 = 59 // aload_2
-   	l4 = 62 // aload_0
-   	l5 = 201 // return
+   	l1 = 75 // aload
+   	l3 = 81 // aload
+   	l2 = 84 // aload
+   	l4 = 92 // aload_3
+   	l5 = 238 // return
   Exception table:
    from   to  target type
-     4    17    17   any
-     4    61    61   Class scala/actors/KillActorControl
+     9    23    23   any
+     6    87    87   Class scala/actors/KillActorControl
 
-     0    77    94   Class scala/actors/SuspendActorControl
+     0   109   130   Class scala/actors/SuspendActorControl
 
-     0    77   112   Class java/lang/Exception
+     0   109   152   Class java/lang/Exception
 
-     0    77   202   any
-    94    95   202   any
-   112   187   202   any
+     0   109   239   any
+   130   131   239   any
+   152   220   239   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      221      0    this       Lscala/actors/ReactorTask;
-   30      24      1    temp2       Ljava/lang/Exception;
-   57      2      1    temp2       Ljava/lang/Exception;
+   0      260      0    this       Lscala/actors/ReactorTask;
+   6      88      3    exceptionResult1       Ljava/lang/Object;
+   9      68      4    exceptionResult2       Ljava/lang/Object;
+   81      6      4    exceptionResult2       Ljava/lang/Object;
+   29      46      6    temp1       Ljava/lang/Throwable;
+   81      6      6    temp1       Ljava/lang/Throwable;
+   44      29      7    temp2       Ljava/lang/Exception;
+   81      3      7    temp2       Ljava/lang/Exception;
+   48      25      8    e       Ljava/lang/Exception;
+   81      3      8    e       Ljava/lang/Exception;
 
 
 public void call();
@@ -496,7 +541,7 @@ public scala.actors.ReactorTask(scala.actors.Reactor, scala.Function0);
    0      15      2    fun       Lscala/Function0;
 
   Signature: length = 0x2
-   00 FFFFFF97 
+   00 FFFFFFA2 
 
 }
 

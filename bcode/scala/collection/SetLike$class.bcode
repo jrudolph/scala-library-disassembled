@@ -156,7 +156,9 @@ class	scala/collection/SetLike$class
 Asciz	liftedTree1$1;
 NameAndType	liftedTree1$1:(Lscala/collection/SetLike;Lscala/collection/Set;)Z
 Method	scala/collection/SetLike$class.liftedTree1$1:(Lscala/collection/SetLike;Lscala/collection/Set;)Z
+Asciz	temp1;
 Asciz	temp2;
+Asciz	that$3;
 Asciz	(Lscala/collection/Set;)Z;
 NameAndType	subsetOf:(Lscala/collection/Set;)Z
 InterfaceMethod	scala/collection/SetLike.subsetOf:(Lscala/collection/Set;)Z
@@ -408,27 +410,31 @@ public static int hashCode(scala.collection.SetLike);
 public static boolean equals(scala.collection.SetLike, java.lang.Object);
   Signature: (Lscala/collection/SetLike;Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=5, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/collection/Set
 	ifeq	l1 // iconst_0
-	aload_1
+	aload_2
 	checkcast	class scala/collection/Set
-	astore_2
+	astore_3
+	aload_3
+	astore	4
 	aload_0
-	aload_2
+	aload	4
 	if_acmpeq	l2 // iconst_1
-	aload_2
+	aload	4
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.canEqual:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.size:()I
-	aload_2
+	aload	4
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.size:()I
 	if_icmpne	l3 // iconst_0
 	aload_0
-	aload_2
+	aload	4
 	invokestatic	Method liftedTree1$1:(Lscala/collection/SetLike;Lscala/collection/Set;)Z
 	ifeq	l3 // iconst_0
 l2	iconst_1
@@ -438,41 +444,45 @@ l3	iconst_0
 l1	iconst_0
 l4	ireturn
   Labels:
-   	l2 = 50 // iconst_1
-   	l3 = 54 // iconst_0
-   	l1 = 58 // iconst_0
-   	l4 = 59 // ireturn
+   	l2 = 59 // iconst_1
+   	l3 = 63 // iconst_0
+   	l1 = 67 // iconst_0
+   	l4 = 68 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      60      0    $this       Lscala/collection/SetLike;
-   0      60      1    that       Ljava/lang/Object;
-   12      46      2    temp2       Lscala/collection/Set;
+   0      69      0    $this       Lscala/collection/SetLike;
+   0      69      1    that       Ljava/lang/Object;
+   2      67      2    temp1       Ljava/lang/Object;
+   14      53      3    temp2       Lscala/collection/Set;
+   17      50      4    that$3       Lscala/collection/Set;
 
 
 private static final boolean liftedTree1$1(scala.collection.SetLike, scala.collection.Set);
   Signature: (Lscala/collection/SetLike;Lscala/collection/Set;)Z
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=4, Args_size=2
+	iconst_0
+	istore_2
 	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/SetLike.subsetOf:(Lscala/collection/Set;)Z
 	istore_2
 	goto	l1 // iload_2
-	pop
+	astore_3
 	iconst_0
 	istore_2
 l1	iload_2
 	ireturn
   Labels:
-   	l1 = 14 // iload_2
+   	l1 = 16 // iload_2
   Exception table:
    from   to  target type
-     0    11    11   Class java/lang/ClassCastException
+     2    13    13   Class java/lang/ClassCastException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      16      0    $this       Lscala/collection/SetLike;
-   0      15      2    exceptionResult1       Z
+   0      18      0    $this       Lscala/collection/SetLike;
+   2      15      2    exceptionResult1       Z
 
 
 public static void $init$(scala.collection.SetLike);

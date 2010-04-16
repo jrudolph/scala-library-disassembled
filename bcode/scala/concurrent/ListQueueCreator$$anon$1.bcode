@@ -2,7 +2,7 @@ Compiled from "MailBox.scala"
 public final class scala.concurrent.ListQueueCreator$$anon$1 extends java.lang.Object implements scala.concurrent.QueueModule
   SourceFile: "MailBox.scala"
   Signature: length = 0x2
-   00 78 
+   00 7B 
   Scala: length = 0x
    
   InnerClass: 
@@ -59,12 +59,13 @@ NameAndType	MODULE$:Lscala/None$;
 Field	scala/None$.MODULE$:Lscala/None$;
 Asciz	scala/collection/immutable/$colon$colon;
 class	scala/collection/immutable/$colon$colon
-Asciz	scala$collection$immutable$$colon$colon$$hd;
-NameAndType	scala$collection$immutable$$colon$colon$$hd:Ljava/lang/Object;
-Field	scala/collection/immutable/$colon$colon.scala$collection$immutable$$colon$colon$$hd:Ljava/lang/Object;
-Asciz	tl;
-NameAndType	tl:Lscala/collection/immutable/List;
-Field	scala/collection/immutable/$colon$colon.tl:Lscala/collection/immutable/List;
+Asciz	hd$1;
+Asciz	()Ljava/lang/Object;;
+NameAndType	hd$1:()Ljava/lang/Object;
+Method	scala/collection/immutable/$colon$colon.hd$1:()Ljava/lang/Object;
+Asciz	tl$1;
+NameAndType	tl$1:()Lscala/collection/immutable/List;
+Method	scala/collection/immutable/$colon$colon.tl$1:()Lscala/collection/immutable/List;
 Asciz	scala/Function1;
 class	scala/Function1
 Asciz	apply;
@@ -91,10 +92,9 @@ Asciz	scala/concurrent/ListQueueCreator$$anon$1;
 class	scala/concurrent/ListQueueCreator$$anon$1
 NameAndType	extractFirst:(Lscala/collection/immutable/List;Lscala/Function1;)Lscala/Option;
 Method	scala/concurrent/ListQueueCreator$$anon$1.extractFirst:(Lscala/collection/immutable/List;Lscala/Function1;)Lscala/Option;
-NameAndType	x:Ljava/lang/Object;
-Field	scala/Some.x:Ljava/lang/Object;
+NameAndType	x:()Ljava/lang/Object;
+Method	scala/Some.x:()Ljava/lang/Object;
 Asciz	_1;
-Asciz	()Ljava/lang/Object;;
 NameAndType	_1:()Ljava/lang/Object;
 Method	scala/Tuple2._1:()Ljava/lang/Object;
 Asciz	_2;
@@ -106,16 +106,19 @@ class	scala/MatchError
 Method	scala/MatchError."<init>":(Ljava/lang/Object;)V
 Asciz	p;
 Asciz	Lscala/Function1;;
+Asciz	temp19;
 Asciz	temp21;
 Asciz	Lscala/collection/immutable/$colon$colon;;
+Asciz	temp22;
 Asciz	temp23;
+Asciz	head;
+Asciz	tail;
+Asciz	temp13;
+Asciz	Lscala/Option;;
 Asciz	temp15;
 Asciz	Lscala/Some;;
 Asciz	temp16;
 Asciz	Lscala/Tuple2;;
-Asciz	temp22;
-Asciz	temp13;
-Asciz	Lscala/Option;;
 Asciz	(Lscala/collection/immutable/List<TA;>;Lscala/Function1<TA;Ljava/lang/Boolean;>;)Lscala/Option<Lscala/Tuple2<TA;Lscala/collection/immutable/List<TA;>;>;>;;
 Asciz	(Ljava/lang/Object;Lscala/Function1;)Lscala/Option;;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;;
@@ -152,19 +155,23 @@ public scala.collection.immutable.List make();
 public scala.collection.immutable.List append(scala.collection.immutable.List, java.lang.Object);
   Signature: (Lscala/collection/immutable/List;Ljava/lang/Object;)Lscala/collection/immutable/List;
   Code:
-   Stack=2, Locals=3, Args_size=3
-	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
-	aload_2
-	invokevirtual	Method scala/collection/immutable/Nil$.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
+   Stack=2, Locals=5, Args_size=3
 	aload_1
+	astore_3
+	aload_2
+	astore	4
+	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+	aload	4
+	invokevirtual	Method scala/collection/immutable/Nil$.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
+	aload_3
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon$colon:(Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      12      0    this       Lscala/concurrent/ListQueueCreator$$anon$1;
-   0      12      1    l       Lscala/collection/immutable/List;
-   0      12      2    x       Ljava/lang/Object;
+   0      18      0    this       Lscala/concurrent/ListQueueCreator$$anon$1;
+   0      18      1    l       Lscala/collection/immutable/List;
+   0      18      2    x       Ljava/lang/Object;
 
   Signature: length = 0x2
    00 22 
@@ -172,33 +179,41 @@ public scala.collection.immutable.List append(scala.collection.immutable.List, j
 public scala.Option extractFirst(scala.collection.immutable.List, scala.Function1);
   Signature: (Lscala/collection/immutable/List;Lscala/Function1;)Lscala/Option;
   Code:
-   Stack=7, Locals=9, Args_size=3
-	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
-	dup
-	ifnonnull	l1 // aload_1
-	pop
+   Stack=7, Locals=15, Args_size=3
 	aload_1
+	astore_3
+	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+	aload_3
+	astore	4
+	dup
+	ifnonnull	l1 // aload
+	pop
+	aload	4
 	ifnull	l2 // getstatic
-	goto	l3 // aload_1
-l1	aload_1
+	goto	l3 // aload_3
+l1	aload	4
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l3 // aload_1
+	ifeq	l3 // aload_3
 l2	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	goto	l4 // areturn
-l3	aload_1
+l3	aload_3
 	instanceof	class scala/collection/immutable/$colon$colon
 	ifeq	l5 // new
-	aload_1
+	aload_3
 	checkcast	class scala/collection/immutable/$colon$colon
-	astore_3
-	aload_3
-	getfield	Field scala/collection/immutable/$colon$colon.scala$collection$immutable$$colon$colon$$hd:Ljava/lang/Object;
+	astore	5
+	aload	5
+	invokevirtual	Method scala/collection/immutable/$colon$colon.hd$1:()Ljava/lang/Object;
+	astore	6
+	aload	5
+	invokevirtual	Method scala/collection/immutable/$colon$colon.tl$1:()Lscala/collection/immutable/List;
 	astore	7
-	aload_3
-	getfield	Field scala/collection/immutable/$colon$colon.tl:Lscala/collection/immutable/List;
-	astore	4
-	aload_2
+	aload	6
+	astore	8
 	aload	7
+	astore	9
+	aload_2
+	aload	8
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 	ifeq	l6 // aload_0
@@ -206,101 +221,110 @@ l3	aload_1
 	dup
 	new	class scala/Tuple2
 	dup
-	aload	7
-	aload	4
+	aload	8
+	aload	9
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	goto	l4 // areturn
 l6	aload_0
-	aload	4
+	aload	9
 	aload_2
 	invokevirtual	Method extractFirst:(Lscala/collection/immutable/List;Lscala/Function1;)Lscala/Option;
-	astore	8
+	astore	10
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	aload	10
+	astore	11
 	dup
 	ifnonnull	l7 // aload
 	pop
-	aload	8
+	aload	11
 	ifnull	l8 // getstatic
 	goto	l9 // aload
-l7	aload	8
+l7	aload	11
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l9 // aload
 l8	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	goto	l4 // areturn
-l9	aload	8
+l9	aload	10
 	instanceof	class scala/Some
 	ifeq	l10 // new
-	aload	8
+	aload	10
 	checkcast	class scala/Some
-	astore	5
-	aload	5
-	getfield	Field scala/Some.x:Ljava/lang/Object;
+	astore	12
+	aload	12
+	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/Tuple2
-	astore	6
-	aload	6
+	astore	13
+	aload	13
 	ifnull	l11 // new
 	new	class scala/Some
 	dup
 	new	class scala/Tuple2
 	dup
-	aload	6
+	aload	13
 	invokevirtual	Method scala/Tuple2._1:()Ljava/lang/Object;
-	aload	6
+	aload	8
+	astore	14
+	aload	13
 	invokevirtual	Method scala/Tuple2._2:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
-	aload	7
+	aload	14
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 l4	areturn
 l11	new	class scala/MatchError
 	dup
-	aload	8
+	aload	10
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
 l10	new	class scala/MatchError
 	dup
-	aload	8
+	aload	10
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
 l5	new	class scala/MatchError
 	dup
-	aload_1
+	aload_3
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
-   	l1 = 15 // aload_1
-   	l2 = 22 // getstatic
-   	l3 = 28 // aload_1
-   	l6 = 87 // aload_0
-   	l7 = 112 // aload
-   	l8 = 120 // getstatic
-   	l9 = 126 // aload
-   	l4 = 188 // areturn
-   	l11 = 189 // new
-   	l10 = 199 // new
-   	l5 = 209 // new
+   	l1 = 21 // aload
+   	l2 = 29 // getstatic
+   	l3 = 35 // aload_3
+   	l6 = 105 // aload_0
+   	l7 = 134 // aload
+   	l8 = 142 // getstatic
+   	l9 = 148 // aload
+   	l4 = 214 // areturn
+   	l11 = 215 // new
+   	l10 = 225 // new
+   	l5 = 235 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      218      0    this       Lscala/concurrent/ListQueueCreator$$anon$1;
-   0      218      1    l       Lscala/collection/immutable/List;
-   0      218      2    p       Lscala/Function1;
-   40      148      3    temp21       Lscala/collection/immutable/$colon$colon;
-   189      20      3    temp21       Lscala/collection/immutable/$colon$colon;
-   52      136      4    temp23       Lscala/collection/immutable/List;
-   189      20      4    temp23       Lscala/collection/immutable/List;
-   141      47      5    temp15       Lscala/Some;
-   189      10      5    temp15       Lscala/Some;
-   151      37      6    temp16       Lscala/Tuple2;
-   189      10      6    temp16       Lscala/Tuple2;
-   46      142      7    temp22       Ljava/lang/Object;
-   189      20      7    temp22       Ljava/lang/Object;
-   96      92      8    temp13       Lscala/Option;
-   189      20      8    temp13       Lscala/Option;
+   0      244      0    this       Lscala/concurrent/ListQueueCreator$$anon$1;
+   0      244      1    l       Lscala/collection/immutable/List;
+   0      244      2    p       Lscala/Function1;
+   2      242      3    temp19       Lscala/collection/immutable/List;
+   48      166      5    temp21       Lscala/collection/immutable/$colon$colon;
+   215      20      5    temp21       Lscala/collection/immutable/$colon$colon;
+   55      159      6    temp22       Ljava/lang/Object;
+   215      20      6    temp22       Ljava/lang/Object;
+   62      152      7    temp23       Lscala/collection/immutable/List;
+   215      20      7    temp23       Lscala/collection/immutable/List;
+   66      148      8    head       Ljava/lang/Object;
+   215      20      8    head       Ljava/lang/Object;
+   70      144      9    tail       Lscala/collection/immutable/List;
+   215      20      9    tail       Lscala/collection/immutable/List;
+   114      100      10    temp13       Lscala/Option;
+   215      20      10    temp13       Lscala/Option;
+   163      51      12    temp15       Lscala/Some;
+   215      10      12    temp15       Lscala/Some;
+   173      41      13    temp16       Lscala/Tuple2;
+   215      10      13    temp16       Lscala/Tuple2;
 
   Signature: length = 0x2
-   00 6B 
+   00 6E 
 
 public scala.Option extractFirst(java.lang.Object, scala.Function1);
   Signature: (Ljava/lang/Object;Lscala/Function1;)Lscala/Option;

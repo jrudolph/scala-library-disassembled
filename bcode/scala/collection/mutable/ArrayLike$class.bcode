@@ -79,6 +79,9 @@ NameAndType	equals:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/collection/SeqLike.equals:(Ljava/lang/Object;)Z
 Asciz	that;
 Asciz	Ljava/lang/Object;;
+Asciz	temp3;
+Asciz	temp4;
+Asciz	x;
 Asciz	getClass;
 Asciz	()Ljava/lang/Class;;
 NameAndType	getClass:()Ljava/lang/Class;
@@ -167,18 +170,24 @@ public static final java.lang.String deepMkString(scala.collection.mutable.Array
 public static final boolean deepEquals(scala.collection.mutable.ArrayLike, java.lang.Object);
   Signature: (Lscala/collection/mutable/ArrayLike;Ljava/lang/Object;)Z
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=5, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class java/lang/Object
 	ifeq	l1 // iconst_0
+	aload_2
+	astore_3
+	aload_3
+	astore	4
 	aload_0
-	aload_1
+	aload	4
 	invokestatic	Method gd2$1:(Lscala/collection/mutable/ArrayLike;Ljava/lang/Object;)Z
 	ifeq	l2 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/ArrayLike.deep:()Lscala/collection/IndexedSeq;
 	getstatic	Field scala/collection/mutable/WrappedArray$.MODULE$:Lscala/collection/mutable/WrappedArray$;
-	aload_1
+	aload_3
 	invokevirtual	Method scala/collection/mutable/WrappedArray$.make:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 	invokeinterface	InterfaceMethod scala/collection/mutable/ArrayLike.deep:()Lscala/collection/IndexedSeq;
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.equals:(Ljava/lang/Object;)Z
@@ -188,13 +197,16 @@ l2	iconst_0
 l1	iconst_0
 l3	ireturn
   Labels:
-   	l2 = 41 // iconst_0
-   	l1 = 45 // iconst_0
-   	l3 = 46 // ireturn
+   	l2 = 49 // iconst_0
+   	l1 = 53 // iconst_0
+   	l3 = 54 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      47      0    $this       Lscala/collection/mutable/ArrayLike;
-   0      47      1    that       Ljava/lang/Object;
+   0      55      0    $this       Lscala/collection/mutable/ArrayLike;
+   0      55      1    that       Ljava/lang/Object;
+   2      53      2    temp3       Ljava/lang/Object;
+   11      42      3    temp4       Ljava/lang/Object;
+   14      39      4    x       Ljava/lang/Object;
 
   Deprecated: true
 

@@ -88,12 +88,16 @@ NameAndType	checkPubID:(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
 Method	scala/xml/parsing/TokenTests$class.checkPubID:(Lscala/xml/parsing/TokenTests;Ljava/lang/String;)Z
 Asciz	quoted;
 Asciz	(Ljava/lang/String;)Ljava/lang/String;;
-Asciz	scala/collection/immutable/StringOps;
-class	scala/collection/immutable/StringOps
-Asciz	<init>;
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	MODULE$;
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	augmentString;
+Asciz	(Ljava/lang/String;)Lscala/collection/immutable/StringOps;;
+NameAndType	augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
+Method	scala/Predef$.augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
 int	34;
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
@@ -101,15 +105,16 @@ Asciz	boxToCharacter;
 Asciz	(C)Ljava/lang/Character;;
 NameAndType	boxToCharacter:(C)Ljava/lang/Character;
 Method	scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
-Asciz	scala/collection/SeqLike$class;
-class	scala/collection/SeqLike$class
+Asciz	scala/collection/SeqLike;
+class	scala/collection/SeqLike
 Asciz	contains;
-Asciz	(Lscala/collection/SeqLike;Ljava/lang/Object;)Z;
-NameAndType	contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
-Method	scala/collection/SeqLike$class.contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
+Asciz	(Ljava/lang/Object;)Z;
+NameAndType	contains:(Ljava/lang/Object;)Z
+InterfaceMethod	scala/collection/SeqLike.contains:(Ljava/lang/Object;)Z
 int	39;
 Asciz	scala/collection/mutable/StringBuilder;
 class	scala/collection/mutable/StringBuilder
+Asciz	<init>;
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	scala/collection/mutable/StringBuilder."<init>":()V
@@ -142,7 +147,6 @@ Method	scala/xml/dtd/ExternalID.publicId:()Ljava/lang/String;
 Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	SYSTEM ;
@@ -367,45 +371,38 @@ public boolean checkPubID(java.lang.String);
 public java.lang.String quoted(java.lang.String);
   Signature: (Ljava/lang/String;)Ljava/lang/String;
   Code:
-   Stack=3, Locals=6, Args_size=2
-	new	class scala/collection/immutable/StringOps
-	dup
+   Stack=2, Locals=3, Args_size=2
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_1
-	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
+	invokevirtual	Method scala/Predef$.augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
 	ldc	int 34
-	istore_2
-	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
-	astore	4
-	astore_3
-	aload_3
-	aload	4
-	invokestatic	Method scala/collection/SeqLike$class.contains:(Lscala/collection/SeqLike;Ljava/lang/Object;)Z
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.contains:(Ljava/lang/Object;)Z
 	ifeq	l1 // ldc
 	ldc	int 39
-	goto	l2 // istore
+	goto	l2 // istore_2
 l1	ldc	int 34
-l2	istore	5
+l2	istore_2
 	new	class scala/collection/mutable/StringBuilder
 	dup
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	iload	5
+	iload_2
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(C)Lscala/collection/mutable/StringBuilder;
 	aload_1
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	iload	5
+	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	areturn
   Labels:
-   	l1 = 32 // ldc
-   	l2 = 34 // istore
+   	l1 = 25 // ldc
+   	l2 = 27 // istore_2
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      64      0    this       Lscala/xml/dtd/ExternalID;
-   0      64      1    s       Ljava/lang/String;
-   36      27      5    c       C
+   0      54      0    this       Lscala/xml/dtd/ExternalID;
+   0      54      1    s       Ljava/lang/String;
+   28      25      2    c       C
 
 
 public java.lang.String toString();

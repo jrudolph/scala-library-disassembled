@@ -192,11 +192,17 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp88;
+Asciz	Ljava/lang/Object;;
 Asciz	temp89;
 Asciz	temp90;
 Asciz	temp91;
 Asciz	temp92;
 Asciz	temp93;
+Asciz	rhs$2;
+Asciz	ret$1;
+Asciz	vparamss$1;
+Asciz	sym$8;
 Asciz	productPrefix;
 Asciz	DefDef;
 String	DefDef
@@ -218,12 +224,15 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp94;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	rhs
 String	ret
 String	vparamss
 String	sym
+Asciz	temp95;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/reflect/Tree;
@@ -425,33 +434,43 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=5, Locals=7, Args_size=2
+   Stack=5, Locals=12, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/reflect/DefDef
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/reflect/DefDef
 	astore_2
 	aload_2
-	invokevirtual	Method sym:()Lscala/reflect/Symbol;
+	instanceof	class scala/reflect/DefDef
+	ifeq	l2 // iconst_0
+	aload_2
+	checkcast	class scala/reflect/DefDef
 	astore_3
-	aload_2
-	invokevirtual	Method vparamss:()Lscala/collection/immutable/List;
-	astore	4
-	aload_2
-	invokevirtual	Method ret:()Lscala/reflect/Type;
-	astore	5
-	aload_2
-	invokevirtual	Method rhs:()Lscala/reflect/Tree;
-	astore	6
-	aload_0
 	aload_3
-	aload	4
-	aload	5
+	invokevirtual	Method sym:()Lscala/reflect/Symbol;
+	astore	4
+	aload_3
+	invokevirtual	Method vparamss:()Lscala/collection/immutable/List;
+	astore	5
+	aload_3
+	invokevirtual	Method ret:()Lscala/reflect/Type;
+	astore	6
+	aload_3
+	invokevirtual	Method rhs:()Lscala/reflect/Tree;
+	astore	7
+	aload	7
+	astore	8
 	aload	6
+	astore	9
+	aload	5
+	astore	10
+	aload	4
+	astore	11
+	aload_0
+	aload	11
+	aload	10
+	aload	9
+	aload	8
 	invokespecial	Method gd16$1:(Lscala/reflect/Symbol;Lscala/collection/immutable/List;Lscala/reflect/Type;Lscala/reflect/Tree;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -468,20 +487,25 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 67 // iconst_0
-   	l2 = 71 // iconst_0
-   	l4 = 72 // ifeq
-   	l1 = 75 // iconst_1
-   	l5 = 79 // iconst_0
-   	l6 = 80 // ireturn
+   	l3 = 87 // iconst_0
+   	l2 = 91 // iconst_0
+   	l4 = 92 // ifeq
+   	l1 = 95 // iconst_1
+   	l5 = 99 // iconst_0
+   	l6 = 100 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      81      0    this       Lscala/reflect/DefDef;
-   17      54      2    temp89       Lscala/reflect/DefDef;
-   22      49      3    temp90       Lscala/reflect/Symbol;
-   28      43      4    temp91       Lscala/collection/immutable/List;
-   34      37      5    temp92       Lscala/reflect/Type;
-   40      31      6    temp93       Lscala/reflect/Tree;
+   0      101      0    this       Lscala/reflect/DefDef;
+   7      88      2    temp88       Ljava/lang/Object;
+   19      72      3    temp89       Lscala/reflect/DefDef;
+   25      66      4    temp90       Lscala/reflect/Symbol;
+   31      60      5    temp91       Lscala/collection/immutable/List;
+   37      54      6    temp92       Lscala/reflect/Type;
+   43      48      7    temp93       Lscala/reflect/Tree;
+   47      44      8    rhs$2       Lscala/reflect/Tree;
+   51      40      9    ret$1       Lscala/reflect/Type;
+   55      36      10    vparamss$1       Lscala/collection/immutable/List;
+   59      32      11    sym$8       Lscala/reflect/Symbol;
 
 
 public java.lang.String productPrefix();
@@ -503,8 +527,10 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 3
 		0: 68;
 		1: 61;
@@ -532,12 +558,19 @@ public java.lang.Object productElement(int);
 l1	areturn
   Labels:
    	l1 = 72 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      73      0    this       Lscala/reflect/DefDef;
+   2      71      2    temp94       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 3
 		0: 62;
 		1: 57;
@@ -561,6 +594,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 64 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      65      0    this       Lscala/reflect/DefDef;
+   2      63      2    temp95       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -674,7 +712,7 @@ public scala.reflect.DefDef(scala.reflect.Symbol, scala.collection.immutable.Lis
    0      30      4    rhs       Lscala/reflect/Tree;
 
   Signature: length = 0x2
-   00 FFFFFF95 
+   00 FFFFFF9E 
 
 }
 

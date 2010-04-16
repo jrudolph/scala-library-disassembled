@@ -41,6 +41,12 @@ NameAndType	scalaProps:(Lscala/util/PropertiesTrait;)Ljava/util/Properties;
 Method	scala/util/PropertiesTrait$class.scalaProps:(Lscala/util/PropertiesTrait;)Ljava/util/Properties;
 NameAndType	scalaProps:Ljava/util/Properties;
 Field	scala/util/Properties$.scalaProps:Ljava/util/Properties;
+Asciz	scala/runtime/BoxedUnit;
+class	scala/runtime/BoxedUnit
+Asciz	UNIT;
+Asciz	Lscala/runtime/BoxedUnit;;
+NameAndType	UNIT:Lscala/runtime/BoxedUnit;
+Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 NameAndType	versionString:Ljava/lang/String;
 Field	scala/util/Properties$.versionString:Ljava/lang/String;
 NameAndType	copyrightString:Ljava/lang/String;
@@ -238,7 +244,7 @@ public java.lang.String propFilename();
 public java.util.Properties scalaProps();
   Signature: ()Ljava/util/Properties;
   Code:
-   Stack=3, Locals=1, Args_size=1
+   Stack=3, Locals=2, Args_size=1
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
@@ -247,14 +253,14 @@ public java.util.Properties scalaProps();
 	if_icmpne	l1 // aload_0
 	aload_0
 	dup
-	pop
+	astore_1
 	monitorenter
 	aload_0
 	getfield	Field bitmap$0:I
 	iconst_1
 	iand
 	iconst_0
-	if_icmpne	l2 // aload_0
+	if_icmpne	l2 // getstatic
 	aload_0
 	aload_0
 	invokestatic	Method scala/util/PropertiesTrait$class.scalaProps:(Lscala/util/PropertiesTrait;)Ljava/util/Properties;
@@ -265,20 +271,22 @@ public java.util.Properties scalaProps();
 	iconst_1
 	ior
 	putfield	Field bitmap$0:I
-l2	aload_0
+l2	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_1
 	monitorexit
 l1	aload_0
 	getfield	Field scalaProps:Ljava/util/Properties;
 	areturn
-	aload_0
+	aload_1
 	monitorexit
 	athrow
   Labels:
-   	l2 = 42 // aload_0
-   	l1 = 44 // aload_0
+   	l2 = 42 // getstatic
+   	l1 = 48 // aload_0
   Exception table:
    from   to  target type
-    14    44    49   any
+    14    48    53   any
 
 public java.lang.String versionString();
   Signature: ()Ljava/lang/String;
@@ -747,7 +755,7 @@ public java.lang.Class pickJarBasedOn();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 FFFFFFB3 
+   00 FFFFFFB9 
 
 private scala.util.Properties$();
   Signature: ()V

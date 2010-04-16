@@ -46,22 +46,12 @@ Asciz	Lscala/collection/Seq;;
 Asciz	expected;
 Asciz	assertEquals;
 Asciz	(Lscala/testing/SUnit$Assert;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V;
-Asciz	java/lang/Number;
-class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Asciz	java/lang/Object;
-class	java/lang/Object
 Asciz	equals;
-Asciz	(Ljava/lang/Object;)Z;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Asciz	msg;
 Asciz	Ljava/lang/String;;
 Asciz	Ljava/lang/Object;;
@@ -105,6 +95,7 @@ Asciz	(Lscala/testing/SUnit$Assert;Ljava/lang/String;Lscala/xml/NodeSeq;Lscala/x
 Asciz	scala/xml/Equality;
 class	scala/xml/Equality
 Asciz	xml_$eq$eq;
+Asciz	(Ljava/lang/Object;)Z;
 NameAndType	xml_$eq$eq:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/xml/Equality.xml_$eq$eq:(Ljava/lang/Object;)Z
 Asciz	Lscala/xml/NodeSeq;;
@@ -179,6 +170,8 @@ Asciz	AssertFailed;
 Asciz	$anonfun$assertSameElementsXML$1;
 Asciz	scala/testing/SUnit$Assert$class;
 class	scala/testing/SUnit$Assert$class
+Asciz	java/lang/Object;
+class	java/lang/Object
 
 {
 public static boolean enableStackTrace(scala.testing.SUnit$Assert);
@@ -224,46 +217,22 @@ public static void assertEquals(scala.testing.SUnit$Assert, java.lang.String, ja
    Stack=4, Locals=4, Args_size=4
 	aload_2
 	aload_3
-	if_acmpne	l1 // aload_2
-	iconst_1
-	goto	l2 // ifne
-l1	aload_2
-	ifnonnull	l3 // aload_2
-	iconst_0
-	goto	l2 // ifne
-l3	aload_2
-	instanceof	class java/lang/Number
-	ifne	l4 // aload_2
-	aload_2
-	instanceof	class java/lang/Character
-	ifeq	l5 // aload_2
-l4	aload_2
-	aload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l2 // ifne
-l5	aload_2
-	aload_3
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l2	ifne	l6 // return
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifne	l1 // return
 	aload_0
 	aload_1
 	aload_2
 	aload_3
 	invokeinterface	InterfaceMethod scala/testing/SUnit$Assert.fail:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-l6	return
+l1	return
   Labels:
-   	l1 = 9 // aload_2
-   	l3 = 17 // aload_2
-   	l4 = 31 // aload_2
-   	l5 = 39 // aload_2
-   	l2 = 44 // ifne
-   	l6 = 56 // return
+   	l1 = 17 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      57      0    $this       Lscala/testing/SUnit$Assert;
-   0      57      1    msg       Ljava/lang/String;
-   0      57      2    expected       Ljava/lang/Object;
-   0      57      3    actual       Ljava/lang/Object;
+   0      18      0    $this       Lscala/testing/SUnit$Assert;
+   0      18      1    msg       Ljava/lang/String;
+   0      18      2    expected       Ljava/lang/Object;
+   0      18      3    actual       Ljava/lang/Object;
 
 
 public static void assertEquals(scala.testing.SUnit$Assert, java.lang.Object, java.lang.Object);
@@ -287,12 +256,10 @@ public static void assertEquals(scala.testing.SUnit$Assert, java.lang.Object, ja
 public static void assertFalse(scala.testing.SUnit$Assert, java.lang.String, boolean);
   Signature: (Lscala/testing/SUnit$Assert;Ljava/lang/String;Z)V
   Code:
-   Stack=4, Locals=4, Args_size=3
+   Stack=4, Locals=3, Args_size=3
 	aload_0
 	aload_1
 	iconst_0
-	istore_3
-	iload_3
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
@@ -301,9 +268,9 @@ public static void assertFalse(scala.testing.SUnit$Assert, java.lang.String, boo
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      18      0    $this       Lscala/testing/SUnit$Assert;
-   0      18      1    msg       Ljava/lang/String;
-   0      18      2    actual       Z
+   0      16      0    $this       Lscala/testing/SUnit$Assert;
+   0      16      1    msg       Ljava/lang/String;
+   0      16      2    actual       Z
 
 
 public static void assertFalse(scala.testing.SUnit$Assert, boolean);
@@ -473,12 +440,10 @@ public static void assertEq(scala.testing.SUnit$Assert, java.lang.Object, java.l
 public static void assertTrue(scala.testing.SUnit$Assert, java.lang.String, boolean);
   Signature: (Lscala/testing/SUnit$Assert;Ljava/lang/String;Z)V
   Code:
-   Stack=4, Locals=4, Args_size=3
+   Stack=4, Locals=3, Args_size=3
 	aload_0
 	aload_1
 	iconst_1
-	istore_3
-	iload_3
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
@@ -487,9 +452,9 @@ public static void assertTrue(scala.testing.SUnit$Assert, java.lang.String, bool
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      18      0    $this       Lscala/testing/SUnit$Assert;
-   0      18      1    msg       Ljava/lang/String;
-   0      18      2    actual       Z
+   0      16      0    $this       Lscala/testing/SUnit$Assert;
+   0      16      1    msg       Ljava/lang/String;
+   0      16      2    actual       Z
 
 
 public static void assertTrue(scala.testing.SUnit$Assert, boolean);

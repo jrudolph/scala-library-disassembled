@@ -151,9 +151,9 @@ Method	scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
 Asciz	scala/Some;
 class	scala/Some
 Asciz	x;
-Asciz	Ljava/lang/Object;;
-NameAndType	x:Ljava/lang/Object;
-Field	scala/Some.x:Ljava/lang/Object;
+Asciz	()Ljava/lang/Object;;
+NameAndType	x:()Ljava/lang/Object;
+Method	scala/Some.x:()Ljava/lang/Object;
 Asciz	scala/xml/factory/NodeFactory$$anonfun$makeNode$1;
 class	scala/xml/factory/NodeFactory$$anonfun$makeNode$1
 Asciz	(Lscala/xml/factory/NodeFactory;Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Seq;)V;
@@ -191,13 +191,14 @@ Asciz	name$1;
 Asciz	attrSeq$1;
 Asciz	scope$1;
 Asciz	children$1;
-Asciz	temp8;
-Asciz	Lscala/Some;;
-Asciz	temp4;
-Asciz	Lscala/Option;;
-Asciz	temp9;
 Asciz	hash$1;
 Asciz	temp7;
+Asciz	Lscala/Option;;
+Asciz	temp8;
+Asciz	Lscala/Some;;
+Asciz	temp9;
+Asciz	list;
+Asciz	temp4;
 Asciz	makeText;
 Asciz	(Lscala/xml/factory/NodeFactory;Ljava/lang/String;)Lscala/xml/Text;;
 Asciz	scala/xml/Text;
@@ -212,6 +213,11 @@ Asciz	ignoreComments;
 Asciz	()Z;
 NameAndType	ignoreComments:()Z
 InterfaceMethod	scala/xml/factory/NodeFactory.ignoreComments:()Z
+Asciz	scala/collection/immutable/List$;
+class	scala/collection/immutable/List$
+Asciz	Lscala/collection/immutable/List$;;
+NameAndType	MODULE$:Lscala/collection/immutable/List$;
+Field	scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
 Asciz	scala/Predef$;
 class	scala/Predef$
 Asciz	Lscala/Predef$;;
@@ -226,12 +232,10 @@ Asciz	wrapRefArray;
 Asciz	([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
 NameAndType	wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 Method	scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-Asciz	scala/collection/TraversableLike;
-class	scala/collection/TraversableLike
-Asciz	toList;
-Asciz	()Lscala/collection/immutable/List;;
-NameAndType	toList:()Lscala/collection/immutable/List;
-InterfaceMethod	scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+Asciz	apply;
+Asciz	(Lscala/collection/Seq;)Lscala/collection/immutable/List;;
+NameAndType	apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
+Method	scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
 Asciz	makeProcInstr;
 Asciz	(Lscala/xml/factory/NodeFactory;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/Seq;;
 Asciz	ignoreProcInstr;
@@ -270,7 +274,7 @@ Asciz	$anonfun$eqElements$1;
 public static scala.xml.Node construct(scala.xml.factory.NodeFactory, int, scala.collection.immutable.List, java.lang.String, java.lang.String, scala.xml.MetaData, scala.xml.NamespaceBinding, scala.collection.Seq);
   Signature: (Lscala/xml/factory/NodeFactory;ILscala/collection/immutable/List;Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Seq;)Lscala/xml/Node;
   Code:
-   Stack=6, Locals=9, Args_size=8
+   Stack=6, Locals=10, Args_size=8
 	aload_0
 	aload_3
 	aload	4
@@ -283,8 +287,10 @@ public static scala.xml.Node construct(scala.xml.factory.NodeFactory, int, scala
 	invokeinterface	InterfaceMethod scala/xml/factory/NodeFactory.cache:()Lscala/collection/mutable/HashMap;
 	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	aload_2
 	aload	8
+	astore	9
+	aload_2
+	aload	9
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	invokevirtual	Method scala/collection/mutable/HashMap.update:(Ljava/lang/Object;Ljava/lang/Object;)V
 	aload	8
@@ -292,15 +298,15 @@ public static scala.xml.Node construct(scala.xml.factory.NodeFactory, int, scala
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      39      0    $this       Lscala/xml/factory/NodeFactory;
-   0      39      1    hash       I
-   0      39      2    old       Lscala/collection/immutable/List;
-   0      39      3    pre       Ljava/lang/String;
-   0      39      4    name       Ljava/lang/String;
-   0      39      5    attrSeq       Lscala/xml/MetaData;
-   0      39      6    scope       Lscala/xml/NamespaceBinding;
-   0      39      7    children       Lscala/collection/Seq;
-   17      21      8    el       Lscala/xml/Node;
+   0      43      0    $this       Lscala/xml/factory/NodeFactory;
+   0      43      1    hash       I
+   0      43      2    old       Lscala/collection/immutable/List;
+   0      43      3    pre       Ljava/lang/String;
+   0      43      4    name       Ljava/lang/String;
+   0      43      5    attrSeq       Lscala/xml/MetaData;
+   0      43      6    scope       Lscala/xml/NamespaceBinding;
+   0      43      7    children       Lscala/collection/Seq;
+   17      25      8    el       Lscala/xml/Node;
 
 
 public static boolean eqElements(scala.xml.factory.NodeFactory, scala.collection.Seq, scala.collection.Seq);
@@ -312,6 +318,10 @@ public static boolean eqElements(scala.xml.factory.NodeFactory, scala.collection
 	aload_2
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.view:()Lscala/collection/SeqView;
 	aconst_null
+	pop
+	aconst_null
+	aconst_null
+	pop
 	aconst_null
 	getstatic	Field scala/collection/SeqView$.MODULE$:Lscala/collection/SeqView$;
 	invokevirtual	Method scala/collection/SeqView$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
@@ -326,46 +336,52 @@ public static boolean eqElements(scala.xml.factory.NodeFactory, scala.collection
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      42      0    $this       Lscala/xml/factory/NodeFactory;
-   0      42      1    ch1       Lscala/collection/Seq;
-   0      42      2    ch2       Lscala/collection/Seq;
+   0      46      0    $this       Lscala/xml/factory/NodeFactory;
+   0      46      1    ch1       Lscala/collection/Seq;
+   0      46      2    ch2       Lscala/collection/Seq;
 
 
 public static boolean nodeEquals(scala.xml.factory.NodeFactory, scala.xml.Node, java.lang.String, java.lang.String, scala.xml.MetaData, scala.xml.NamespaceBinding, scala.collection.Seq);
   Signature: (Lscala/xml/factory/NodeFactory;Lscala/xml/Node;Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Seq;)Z
   Code:
-   Stack=3, Locals=7, Args_size=7
+   Stack=3, Locals=10, Args_size=7
 	aload_1
 	invokevirtual	Method scala/xml/Node.prefix:()Ljava/lang/String;
-	dup
-	ifnonnull	l1 // aload_2
-	pop
 	aload_2
+	astore	7
+	dup
+	ifnonnull	l1 // aload
+	pop
+	aload	7
 	ifnull	l2 // aload_1
 	goto	l3 // iconst_0
-l1	aload_2
+l1	aload	7
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 l2	aload_1
 	invokevirtual	Method scala/xml/Node.label:()Ljava/lang/String;
-	dup
-	ifnonnull	l4 // aload_3
-	pop
 	aload_3
+	astore	8
+	dup
+	ifnonnull	l4 // aload
+	pop
+	aload	8
 	ifnull	l5 // aload_1
 	goto	l3 // iconst_0
-l4	aload_3
+l4	aload	8
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 l5	aload_1
 	invokevirtual	Method scala/xml/Node.attributes:()Lscala/xml/MetaData;
+	aload	4
+	astore	9
 	dup
 	ifnonnull	l6 // aload
 	pop
-	aload	4
+	aload	9
 	ifnull	l7 // aload_0
 	goto	l3 // iconst_0
-l6	aload	4
+l6	aload	9
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
 l7	aload_0
@@ -379,29 +395,29 @@ l7	aload_0
 l3	iconst_0
 l8	ireturn
   Labels:
-   	l1 = 16 // aload_2
-   	l2 = 23 // aload_1
-   	l4 = 39 // aload_3
-   	l5 = 46 // aload_1
-   	l6 = 63 // aload
-   	l7 = 71 // aload_0
-   	l3 = 90 // iconst_0
-   	l8 = 91 // ireturn
+   	l1 = 20 // aload
+   	l2 = 28 // aload_1
+   	l4 = 48 // aload
+   	l5 = 56 // aload_1
+   	l6 = 77 // aload
+   	l7 = 85 // aload_0
+   	l3 = 104 // iconst_0
+   	l8 = 105 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      92      0    $this       Lscala/xml/factory/NodeFactory;
-   0      92      1    n       Lscala/xml/Node;
-   0      92      2    pre       Ljava/lang/String;
-   0      92      3    name       Ljava/lang/String;
-   0      92      4    attrSeq       Lscala/xml/MetaData;
-   0      92      5    scope       Lscala/xml/NamespaceBinding;
-   0      92      6    children       Lscala/collection/Seq;
+   0      106      0    $this       Lscala/xml/factory/NodeFactory;
+   0      106      1    n       Lscala/xml/Node;
+   0      106      2    pre       Ljava/lang/String;
+   0      106      3    name       Ljava/lang/String;
+   0      106      4    attrSeq       Lscala/xml/MetaData;
+   0      106      5    scope       Lscala/xml/NamespaceBinding;
+   0      106      6    children       Lscala/collection/Seq;
 
 
 public static scala.xml.Node makeNode(scala.xml.factory.NodeFactory, java.lang.String, java.lang.String, scala.xml.MetaData, scala.xml.NamespaceBinding, scala.collection.Seq);
   Signature: (Lscala/xml/factory/NodeFactory;Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Seq;)Lscala/xml/Node;
   Code:
-   Stack=9, Locals=12, Args_size=6
+   Stack=9, Locals=13, Args_size=6
 	getstatic	Field scala/xml/Utility$.MODULE$:Lscala/xml/Utility$;
 	aload_1
 	aload_2
@@ -411,24 +427,26 @@ public static scala.xml.Node makeNode(scala.xml.factory.NodeFactory, java.lang.S
 	invokeinterface	InterfaceMethod scala/xml/Equality.hashCode:()I
 	aload	5
 	invokevirtual	Method scala/xml/Utility$.hashCode:(Ljava/lang/String;Ljava/lang/String;IILscala/collection/Seq;)I
-	istore	10
+	istore	6
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/factory/NodeFactory.cache:()Lscala/collection/mutable/HashMap;
-	iload	10
+	iload	6
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/HashMap.get:(Ljava/lang/Object;)Lscala/Option;
-	astore	11
-	aload	11
+	astore	7
+	aload	7
 	instanceof	class scala/Some
 	ifeq	l1 // getstatic
-	aload	11
+	aload	7
 	checkcast	class scala/Some
-	astore	6
-	aload	6
-	getfield	Field scala/Some.x:Ljava/lang/Object;
+	astore	8
+	aload	8
+	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
 	astore	9
 	aload	9
+	astore	10
+	aload	10
 	new	class scala/xml/factory/NodeFactory$$anonfun$makeNode$1
 	dup
 	aload_0
@@ -439,35 +457,35 @@ public static scala.xml.Node makeNode(scala.xml.factory.NodeFactory, java.lang.S
 	aload	5
 	invokespecial	Method scala/xml/factory/NodeFactory$$anonfun$makeNode$1."<init>":(Lscala/xml/factory/NodeFactory;Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Seq;)V
 	invokeinterface	InterfaceMethod scala/collection/LinearSeqLike.find:(Lscala/Function1;)Lscala/Option;
-	astore	7
-	aload	7
+	astore	11
+	aload	11
 	instanceof	class scala/Some
 	ifeq	l2 // aload_0
-	aload	7
+	aload	11
 	checkcast	class scala/Some
-	astore	8
-	aload	8
-	getfield	Field scala/Some.x:Ljava/lang/Object;
+	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
 	checkcast	class scala/xml/Node
 	goto	l3 // areturn
 l2	aload_0
-	aload	9
+	aload	10
 	aload_1
 	aload_2
 	aload_3
 	aload	4
 	aload	5
-	iload	10
+	iload	6
 	invokestatic	Method cons$1:(Lscala/xml/factory/NodeFactory;Lscala/collection/immutable/List;Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Seq;I)Lscala/xml/Node;
 	goto	l3 // areturn
 l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
+	aload	7
+	astore	12
 	dup
 	ifnonnull	l4 // aload
 	pop
-	aload	11
+	aload	12
 	ifnull	l5 // aload_0
 	goto	l6 // new
-l4	aload	11
+l4	aload	12
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l6 // new
 l5	aload_0
@@ -477,34 +495,35 @@ l5	aload_0
 	aload_3
 	aload	4
 	aload	5
-	iload	10
+	iload	6
 	invokestatic	Method cons$1:(Lscala/xml/factory/NodeFactory;Lscala/collection/immutable/List;Ljava/lang/String;Ljava/lang/String;Lscala/xml/MetaData;Lscala/xml/NamespaceBinding;Lscala/collection/Seq;I)Lscala/xml/Node;
 l3	areturn
 l6	new	class scala/MatchError
 	dup
-	aload	11
+	aload	7
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
   Labels:
    	l2 = 116 // aload_0
    	l1 = 134 // getstatic
-   	l4 = 150 // aload
-   	l5 = 158 // aload_0
-   	l3 = 174 // areturn
-   	l6 = 175 // new
+   	l4 = 154 // aload
+   	l5 = 162 // aload_0
+   	l3 = 178 // areturn
+   	l6 = 179 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      185      0    $this       Lscala/xml/factory/NodeFactory;
-   0      185      1    pre$1       Ljava/lang/String;
-   0      185      2    name$1       Ljava/lang/String;
-   0      185      3    attrSeq$1       Lscala/xml/MetaData;
-   0      185      4    scope$1       Lscala/xml/NamespaceBinding;
-   0      185      5    children$1       Lscala/collection/Seq;
-   56      78      6    temp8       Lscala/Some;
-   90      44      7    temp4       Lscala/Option;
+   0      189      0    $this       Lscala/xml/factory/NodeFactory;
+   0      189      1    pre$1       Ljava/lang/String;
+   0      189      2    name$1       Ljava/lang/String;
+   0      189      3    attrSeq$1       Lscala/xml/MetaData;
+   0      189      4    scope$1       Lscala/xml/NamespaceBinding;
+   0      189      5    children$1       Lscala/collection/Seq;
+   25      164      6    hash$1       I
+   41      148      7    temp7       Lscala/Option;
+   56      78      8    temp8       Lscala/Some;
    66      68      9    temp9       Lscala/collection/immutable/List;
-   25      160      10    hash$1       I
-   41      144      11    temp7       Lscala/Option;
+   70      64      10    list       Lscala/collection/immutable/List;
+   94      40      11    temp4       Lscala/Option;
 
 
 public static scala.xml.Text makeText(scala.xml.factory.NodeFactory, java.lang.String);
@@ -526,13 +545,14 @@ public static scala.xml.Text makeText(scala.xml.factory.NodeFactory, java.lang.S
 public static scala.collection.Seq makeComment(scala.xml.factory.NodeFactory, java.lang.String);
   Signature: (Lscala/xml/factory/NodeFactory;Ljava/lang/String;)Lscala/collection/Seq;
   Code:
-   Stack=7, Locals=3, Args_size=2
+   Stack=8, Locals=2, Args_size=2
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/factory/NodeFactory.ignoreComments:()Z
 	ifeq	l1 // getstatic
 	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 	goto	l2 // areturn
-l1	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+l1	getstatic	Field scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_1
 	anewarray	class scala/xml/Comment
 	dup
@@ -544,29 +564,28 @@ l1	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aastore
 	checkcast	class "[Ljava/lang/Object;"
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	astore_2
-	aload_2
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+	invokevirtual	Method scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
 l2	areturn
   Labels:
    	l1 = 15 // getstatic
-   	l2 = 46 // areturn
+   	l2 = 45 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      47      0    $this       Lscala/xml/factory/NodeFactory;
-   0      47      1    s       Ljava/lang/String;
+   0      46      0    $this       Lscala/xml/factory/NodeFactory;
+   0      46      1    s       Ljava/lang/String;
 
 
 public static scala.collection.Seq makeProcInstr(scala.xml.factory.NodeFactory, java.lang.String, java.lang.String);
   Signature: (Lscala/xml/factory/NodeFactory;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/Seq;
   Code:
-   Stack=8, Locals=4, Args_size=3
+   Stack=9, Locals=3, Args_size=3
 	aload_0
 	invokeinterface	InterfaceMethod scala/xml/factory/NodeFactory.ignoreProcInstr:()Z
 	ifeq	l1 // getstatic
 	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 	goto	l2 // areturn
-l1	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+l1	getstatic	Field scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_1
 	anewarray	class scala/xml/ProcInstr
 	dup
@@ -579,18 +598,16 @@ l1	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aastore
 	checkcast	class "[Ljava/lang/Object;"
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	astore_3
-	aload_3
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+	invokevirtual	Method scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
 l2	areturn
   Labels:
    	l1 = 15 // getstatic
-   	l2 = 47 // areturn
+   	l2 = 46 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      48      0    $this       Lscala/xml/factory/NodeFactory;
-   0      48      1    t       Ljava/lang/String;
-   0      48      2    s       Ljava/lang/String;
+   0      47      0    $this       Lscala/xml/factory/NodeFactory;
+   0      47      1    t       Ljava/lang/String;
+   0      47      2    s       Ljava/lang/String;
 
 
 private static final scala.xml.Node cons$1(scala.xml.factory.NodeFactory, scala.collection.immutable.List, java.lang.String, java.lang.String, scala.xml.MetaData, scala.xml.NamespaceBinding, scala.collection.Seq, int);

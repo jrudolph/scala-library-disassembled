@@ -4,7 +4,6 @@ public abstract class scala.reflect.ClassManifest$class extends java.lang.Object
   Scala: length = 0x
    
   InnerClass: 
-   public ofRef=class scala/collection/mutable/ArrayOps$ofRef of class scala/collection/mutable/ArrayOps
    public ofRef=class scala/collection/mutable/ArrayBuilder$ofRef of class scala/collection/mutable/ArrayBuilder
    public final ofRef=class scala/collection/mutable/WrappedArray$ofRef of class scala/collection/mutable/WrappedArray
    public final $anonfun$subargs$1$1=class scala/reflect/ClassManifest$$anonfun$subargs$1$1 of class scala/reflect/ClassManifest
@@ -65,6 +64,7 @@ Method	scala/reflect/ClassManifest$class.subargs$1:(Lscala/reflect/ClassManifest
 Asciz	$this;
 Asciz	Lscala/reflect/ClassManifest;;
 Asciz	that;
+Asciz	temp8;
 Asciz	LocalVariableTable;
 Asciz	$greater$colon$greater;
 Asciz	(Lscala/reflect/ClassManifest;)Z;
@@ -74,10 +74,13 @@ Asciz	canEqual;
 Asciz	(Lscala/reflect/ClassManifest;Ljava/lang/Object;)Z;
 Asciz	other;
 Asciz	Ljava/lang/Object;;
+Asciz	temp10;
 Asciz	gd1$1;
 NameAndType	gd1$1:(Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)Z
 Method	scala/reflect/ClassManifest$class.gd1$1:(Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)Z
+Asciz	temp12;
 Asciz	temp13;
+Asciz	m;
 Asciz	hashCode;
 Asciz	(Lscala/reflect/ClassManifest;)I;
 Asciz	java/lang/Class;
@@ -201,25 +204,35 @@ String
 Asciz	getSuperclass;
 NameAndType	getSuperclass:()Ljava/lang/Class;
 Method	java/lang/Class.getSuperclass:()Ljava/lang/Class;
-Asciz	getInterfaces;
-Asciz	()[Ljava/lang/Class;;
-NameAndType	getInterfaces:()[Ljava/lang/Class;
-Method	java/lang/Class.getInterfaces:()[Ljava/lang/Class;
-Asciz	scala/collection/mutable/ArrayOps$ofRef;
-class	scala/collection/mutable/ArrayOps$ofRef
-Method	scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
-Asciz	toList;
-NameAndType	toList:()Lscala/collection/immutable/List;
-InterfaceMethod	scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
 Asciz	scala/Predef$;
 class	scala/Predef$
 Asciz	Lscala/Predef$;;
 NameAndType	MODULE$:Lscala/Predef$;
 Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	getInterfaces;
+Asciz	()[Ljava/lang/Class;;
+NameAndType	getInterfaces:()[Ljava/lang/Class;
+Method	java/lang/Class.getInterfaces:()[Ljava/lang/Class;
+Asciz	refArrayOps;
+Asciz	([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;;
+NameAndType	refArrayOps:([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;
+Method	scala/Predef$.refArrayOps:([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;
+Asciz	toList;
+NameAndType	toList:()Lscala/collection/immutable/List;
+InterfaceMethod	scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+Asciz	scala/collection/immutable/List$;
+class	scala/collection/immutable/List$
+Asciz	Lscala/collection/immutable/List$;;
+NameAndType	MODULE$:Lscala/collection/immutable/List$;
+Field	scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
 Asciz	wrapRefArray;
 Asciz	([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
 NameAndType	wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 Method	scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+Asciz	apply;
+Asciz	(Lscala/collection/Seq;)Lscala/collection/immutable/List;;
+NameAndType	apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
+Method	scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
 Asciz	scala/collection/immutable/List;
 class	scala/collection/immutable/List
 Asciz	$colon$colon$colon;
@@ -248,11 +261,6 @@ Asciz	subSuperClass;
 Asciz	subSuperInterfaces;
 Asciz	Lscala/collection/immutable/List;;
 Asciz	subSuper;
-Asciz	scala/collection/immutable/List$;
-class	scala/collection/immutable/List$
-Asciz	Lscala/collection/immutable/List$;;
-NameAndType	MODULE$:Lscala/collection/immutable/List$;
-Field	scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
 Asciz	canBuildFrom;
 Asciz	()Lscala/collection/generic/CanBuildFrom;;
 NameAndType	canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
@@ -276,11 +284,9 @@ InterfaceMethod	scala/reflect/ClassManifest.canEqual:(Ljava/lang/Object;)Z
 Asciz	$init$;
 Asciz	Scala;
 Asciz	InnerClasses;
-Asciz	scala/collection/mutable/ArrayOps;
-class	scala/collection/mutable/ArrayOps
-Asciz	ofRef;
 Asciz	scala/collection/mutable/ArrayBuilder;
 class	scala/collection/mutable/ArrayBuilder
+Asciz	ofRef;
 Asciz	scala/collection/mutable/WrappedArray;
 class	scala/collection/mutable/WrappedArray
 Asciz	$anonfun$subargs$1$1;
@@ -290,53 +296,55 @@ Asciz	$anonfun$subtype$1$1;
 public static boolean $less$colon$less(scala.reflect.ClassManifest, scala.reflect.ClassManifest);
   Signature: (Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)Z
   Code:
-   Stack=3, Locals=6, Args_size=2
+   Stack=3, Locals=7, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/reflect/AnyValManifest
-	ifeq	l1 // aload_1
+	ifeq	l1 // aload_2
 	iconst_0
 	goto	l2 // ireturn
-l1	aload_1
+l1	aload_2
 	getstatic	Field scala/reflect/Manifest$.MODULE$:Lscala/reflect/Manifest$;
 	invokevirtual	Method scala/reflect/Manifest$.AnyVal:()Lscala/reflect/Manifest;
-	astore_2
-	dup
-	ifnonnull	l3 // aload_2
-	pop
-	aload_2
-	ifnull	l4 // iconst_0
-	goto	l5 // aload_1
-l3	aload_2
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l5 // aload_1
-l4	iconst_0
-	goto	l2 // ireturn
-l5	aload_1
-	getstatic	Field scala/reflect/Manifest$.MODULE$:Lscala/reflect/Manifest$;
-	invokevirtual	Method scala/reflect/Manifest$.Nothing:()Lscala/reflect/Manifest;
 	astore_3
 	dup
-	ifnonnull	l6 // aload_3
+	ifnonnull	l3 // aload_3
 	pop
 	aload_3
-	ifnull	l7 // iconst_0
-	goto	l8 // aload_1
-l6	aload_3
+	ifnull	l4 // iconst_0
+	goto	l5 // aload_2
+l3	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l8 // aload_1
+	ifeq	l5 // aload_2
+l4	iconst_0
+	goto	l2 // ireturn
+l5	aload_2
+	getstatic	Field scala/reflect/Manifest$.MODULE$:Lscala/reflect/Manifest$;
+	invokevirtual	Method scala/reflect/Manifest$.Nothing:()Lscala/reflect/Manifest;
+	astore	4
+	dup
+	ifnonnull	l6 // aload
+	pop
+	aload	4
+	ifnull	l7 // iconst_0
+	goto	l8 // aload_2
+l6	aload	4
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l8 // aload_2
 l7	iconst_0
 	goto	l2 // ireturn
-l8	aload_1
+l8	aload_2
 	getstatic	Field scala/reflect/Manifest$.MODULE$:Lscala/reflect/Manifest$;
 	invokevirtual	Method scala/reflect/Manifest$.Null:()Lscala/reflect/Manifest;
-	astore	4
+	astore	5
 	dup
 	ifnonnull	l9 // aload
 	pop
-	aload	4
+	aload	5
 	ifnull	l10 // iconst_0
 	goto	l11 // aload_0
-l9	aload	4
+l9	aload	5
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l11 // aload_0
 l10	iconst_0
@@ -345,14 +353,14 @@ l11	aload_0
 	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.erasure:()Ljava/lang/Class;
 	aload_1
 	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.erasure:()Ljava/lang/Class;
-	astore	5
+	astore	6
 	dup
 	ifnonnull	l12 // aload
 	pop
-	aload	5
+	aload	6
 	ifnull	l13 // aload_0
 	goto	l14 // aload_0
-l12	aload	5
+l12	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l13 // aload_0
 l14	aload_0
@@ -374,25 +382,26 @@ l13	aload_0
 l15	iconst_0
 l2	ireturn
   Labels:
-   	l1 = 11 // aload_1
-   	l3 = 31 // aload_2
-   	l4 = 38 // iconst_0
-   	l5 = 42 // aload_1
-   	l6 = 62 // aload_3
-   	l7 = 69 // iconst_0
-   	l8 = 73 // aload_1
-   	l9 = 95 // aload
-   	l10 = 103 // iconst_0
-   	l11 = 107 // aload_0
-   	l12 = 134 // aload
-   	l14 = 142 // aload_0
-   	l13 = 161 // aload_0
-   	l15 = 184 // iconst_0
-   	l2 = 185 // ireturn
+   	l1 = 13 // aload_2
+   	l3 = 33 // aload_3
+   	l4 = 40 // iconst_0
+   	l5 = 44 // aload_2
+   	l6 = 66 // aload
+   	l7 = 74 // iconst_0
+   	l8 = 78 // aload_2
+   	l9 = 100 // aload
+   	l10 = 108 // iconst_0
+   	l11 = 112 // aload_0
+   	l12 = 139 // aload
+   	l14 = 147 // aload_0
+   	l13 = 166 // aload_0
+   	l15 = 189 // iconst_0
+   	l2 = 190 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      186      0    $this       Lscala/reflect/ClassManifest;
-   0      186      1    that       Lscala/reflect/ClassManifest;
+   0      191      0    $this       Lscala/reflect/ClassManifest;
+   0      191      1    that       Lscala/reflect/ClassManifest;
+   2      189      2    temp8       Lscala/reflect/ClassManifest;
 
 
 public static boolean $greater$colon$greater(scala.reflect.ClassManifest, scala.reflect.ClassManifest);
@@ -413,43 +422,50 @@ public static boolean $greater$colon$greater(scala.reflect.ClassManifest, scala.
 public static boolean canEqual(scala.reflect.ClassManifest, java.lang.Object);
   Signature: (Lscala/reflect/ClassManifest;Ljava/lang/Object;)Z
   Code:
-   Stack=1, Locals=2, Args_size=2
+   Stack=1, Locals=3, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/reflect/ClassManifest
 	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      5      0    $this       Lscala/reflect/ClassManifest;
-   0      5      1    other       Ljava/lang/Object;
+   0      7      0    $this       Lscala/reflect/ClassManifest;
+   0      7      1    other       Ljava/lang/Object;
+   2      4      2    temp10       Ljava/lang/Object;
 
 
 public static boolean equals(scala.reflect.ClassManifest, java.lang.Object);
   Signature: (Lscala/reflect/ClassManifest;Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=4, Args_size=2
+   Stack=2, Locals=6, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/reflect/ClassManifest
 	ifeq	l1 // iconst_0
-	aload_1
-	checkcast	class scala/reflect/ClassManifest
-	astore_2
-	aload_0
 	aload_2
+	checkcast	class scala/reflect/ClassManifest
+	astore_3
+	aload_3
+	astore	4
+	aload_0
+	aload	4
 	invokestatic	Method gd1$1:(Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)Z
 	ifeq	l2 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.erasure:()Ljava/lang/Class;
-	aload_2
-	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.erasure:()Ljava/lang/Class;
-	astore_3
-	dup
-	ifnonnull	l3 // aload_3
-	pop
 	aload_3
+	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.erasure:()Ljava/lang/Class;
+	astore	5
+	dup
+	ifnonnull	l3 // aload
+	pop
+	aload	5
 	ifnull	l4 // iconst_1
 	goto	l5 // iconst_0
-l3	aload_3
+l3	aload	5
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l5 // iconst_0
 l4	iconst_1
@@ -461,17 +477,19 @@ l2	iconst_0
 l1	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 45 // aload_3
-   	l4 = 52 // iconst_1
-   	l5 = 56 // iconst_0
-   	l2 = 60 // iconst_0
-   	l1 = 64 // iconst_0
-   	l6 = 65 // ireturn
+   	l3 = 53 // aload
+   	l4 = 61 // iconst_1
+   	l5 = 65 // iconst_0
+   	l2 = 69 // iconst_0
+   	l1 = 73 // iconst_0
+   	l6 = 74 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      66      0    $this       Lscala/reflect/ClassManifest;
-   0      66      1    that       Ljava/lang/Object;
-   12      52      2    temp13       Lscala/reflect/ClassManifest;
+   0      75      0    $this       Lscala/reflect/ClassManifest;
+   0      75      1    that       Ljava/lang/Object;
+   2      73      2    temp12       Ljava/lang/Object;
+   14      59      3    temp13       Lscala/reflect/ClassManifest;
+   17      56      4    m       Lscala/reflect/ClassManifest;
 
 
 public static int hashCode(scala.reflect.ClassManifest);
@@ -719,52 +737,48 @@ l2	areturn
 public static final boolean subtype$1(scala.reflect.ClassManifest, java.lang.Class, java.lang.Class);
   Signature: (Lscala/reflect/ClassManifest;Ljava/lang/Class;Ljava/lang/Class;)Z
   Code:
-   Stack=5, Locals=9, Args_size=3
+   Stack=6, Locals=8, Args_size=3
 	aload_1
 	invokevirtual	Method java/lang/Class.getSuperclass:()Ljava/lang/Class;
-	astore	4
+	astore_3
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_1
 	invokevirtual	Method java/lang/Class.getInterfaces:()[Ljava/lang/Class;
 	checkcast	class "[Ljava/lang/Object;"
-	astore_3
-	new	class scala/collection/mutable/ArrayOps$ofRef
-	dup
-	aload_3
-	invokespecial	Method scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
+	invokevirtual	Method scala/Predef$.refArrayOps:([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
-	astore	6
-	aload	4
+	astore	4
+	aload_3
 	dup
-	pop
+	astore	7
 	ifnull	l1 // getstatic
-	aload	4
+	aload	7
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // getstatic
 l1	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 	goto	l3 // astore
-l2	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+l2	getstatic	Field scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_1
 	anewarray	class java/lang/Class
 	dup
 	iconst_0
-	aload	4
+	aload_3
 	aastore
 	checkcast	class "[Ljava/lang/Object;"
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
+	invokevirtual	Method scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
+l3	astore	6
+	aload	4
+	aload	6
+	invokevirtual	Method scala/collection/immutable/List.$colon$colon$colon:(Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
 	astore	5
 	aload	5
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
-l3	astore	7
-	aload	6
-	aload	7
-	invokevirtual	Method scala/collection/immutable/List.$colon$colon$colon:(Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
-	astore	8
-	aload	8
 	aload_2
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.contains:(Ljava/lang/Object;)Z
 	ifne	l4 // iconst_1
-	aload	8
+	aload	5
 	new	class scala/reflect/ClassManifest$$anonfun$subtype$1$1
 	dup
 	aload_0
@@ -777,20 +791,20 @@ l4	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l1 = 45 // getstatic
-   	l2 = 51 // getstatic
-   	l3 = 78 // astore
-   	l4 = 119 // iconst_1
-   	l5 = 123 // iconst_0
-   	l6 = 124 // ireturn
+   	l1 = 41 // getstatic
+   	l2 = 47 // getstatic
+   	l3 = 70 // astore
+   	l4 = 111 // iconst_1
+   	l5 = 115 // iconst_0
+   	l6 = 116 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      125      0    $this       Lscala/reflect/ClassManifest;
-   0      125      1    sub       Ljava/lang/Class;
-   0      125      2    sup$1       Ljava/lang/Class;
-   6      119      4    subSuperClass       Ljava/lang/Class;
-   29      96      6    subSuperInterfaces       Lscala/collection/immutable/List;
-   89      36      8    subSuper       Lscala/collection/immutable/List;
+   0      117      0    $this       Lscala/reflect/ClassManifest;
+   0      117      1    sub       Ljava/lang/Class;
+   0      117      2    sup$1       Ljava/lang/Class;
+   5      112      3    subSuperClass       Ljava/lang/Class;
+   25      92      4    subSuperInterfaces       Lscala/collection/immutable/List;
+   81      36      5    subSuper       Lscala/collection/immutable/List;
 
 
 private static final boolean subargs$1(scala.reflect.ClassManifest, scala.collection.immutable.List, scala.collection.immutable.List);

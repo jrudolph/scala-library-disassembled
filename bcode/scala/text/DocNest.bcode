@@ -152,9 +152,13 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp15;
+Asciz	Ljava/lang/Object;;
 Asciz	temp16;
 Asciz	temp17;
 Asciz	temp18;
+Asciz	doc$2;
+Asciz	indent$1;
 Asciz	productPrefix;
 Asciz	DocNest;
 String	DocNest
@@ -176,10 +180,12 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp19;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	doc
 String	indent
+Asciz	temp20;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	scala/text/Document;
@@ -330,25 +336,31 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=3, Locals=5, Args_size=2
+   Stack=3, Locals=8, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/text/DocNest
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/text/DocNest
 	astore_2
 	aload_2
-	invokevirtual	Method indent:()I
-	istore_3
+	instanceof	class scala/text/DocNest
+	ifeq	l2 // iconst_0
 	aload_2
+	checkcast	class scala/text/DocNest
+	astore_3
+	aload_3
+	invokevirtual	Method indent:()I
+	istore	4
+	aload_3
 	invokevirtual	Method doc:()Lscala/text/Document;
-	astore	4
+	astore	5
+	aload	5
+	astore	6
+	iload	4
+	istore	7
 	aload_0
-	iload_3
-	aload	4
+	iload	7
+	aload	6
 	invokespecial	Method gd3$1:(ILscala/text/Document;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -365,18 +377,21 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 51 // iconst_0
-   	l2 = 55 // iconst_0
-   	l4 = 56 // ifeq
-   	l1 = 59 // iconst_1
-   	l5 = 63 // iconst_0
-   	l6 = 64 // ireturn
+   	l3 = 63 // iconst_0
+   	l2 = 67 // iconst_0
+   	l4 = 68 // ifeq
+   	l1 = 71 // iconst_1
+   	l5 = 75 // iconst_0
+   	l6 = 76 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      65      0    this       Lscala/text/DocNest;
-   17      38      2    temp16       Lscala/text/DocNest;
-   22      33      3    temp17       I
-   28      27      4    temp18       Lscala/text/Document;
+   0      77      0    this       Lscala/text/DocNest;
+   7      64      2    temp15       Ljava/lang/Object;
+   19      48      3    temp16       Lscala/text/DocNest;
+   25      42      4    temp17       I
+   31      36      5    temp18       Lscala/text/Document;
+   35      32      6    doc$2       Lscala/text/Document;
+   39      28      7    indent$1       I
 
 
 public java.lang.String productPrefix();
@@ -400,6 +415,8 @@ public java.lang.Object productElement(int);
   Code:
    Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
 		0: 46;
 		1: 39;
@@ -416,18 +433,23 @@ public java.lang.Object productElement(int);
 	goto	l1 // areturn
 	aload_0
 	invokevirtual	Method indent:()I
-	istore_2
-	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 l1	areturn
   Labels:
-   	l1 = 55 // areturn
+   	l1 = 53 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      54      0    this       Lscala/text/DocNest;
+   2      52      2    temp19       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
 		0: 44;
 		1: 39;
@@ -445,6 +467,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 46 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      47      0    this       Lscala/text/DocNest;
+   2      45      2    temp20       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z

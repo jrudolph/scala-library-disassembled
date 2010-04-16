@@ -2,7 +2,7 @@ Compiled from "JavaConversions.scala"
 public class scala.collection.JavaConversions$JCollectionWrapper extends java.lang.Object implements scala.collection.Iterable,scala.ScalaObject,scala.Product,java.io.Serializable
   SourceFile: "JavaConversions.scala"
   Signature: length = 0x2
-   02 38 
+   02 3C 
   Scala: length = 0x
    
   InnerClass: 
@@ -517,8 +517,10 @@ Asciz	scala/collection/IterableLike;
 class	scala/collection/IterableLike
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/collection/IterableLike.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp75;
 Asciz	temp76;
 Asciz	temp77;
+Asciz	underlying$6;
 Asciz	productPrefix;
 Asciz	JCollectionWrapper;
 String	JCollectionWrapper
@@ -539,9 +541,11 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp78;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	underlying
+Asciz	temp79;
 Asciz	(II)Lscala/collection/TraversableView;;
 NameAndType	view:(II)Lscala/collection/IterableView;
 InterfaceMethod	scala/collection/IterableLike.view:(II)Lscala/collection/IterableView;
@@ -1922,21 +1926,25 @@ public int hashCode();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=4, Args_size=2
+   Stack=2, Locals=6, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/collection/JavaConversions$JCollectionWrapper
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/collection/JavaConversions$JCollectionWrapper
 	astore_2
 	aload_2
-	invokevirtual	Method underlying:()Ljava/util/Collection;
+	instanceof	class scala/collection/JavaConversions$JCollectionWrapper
+	ifeq	l2 // iconst_0
+	aload_2
+	checkcast	class scala/collection/JavaConversions$JCollectionWrapper
 	astore_3
-	aload_0
 	aload_3
+	invokevirtual	Method underlying:()Ljava/util/Collection;
+	astore	4
+	aload	4
+	astore	5
+	aload_0
+	aload	5
 	invokespecial	Method gd6$1:(Ljava/util/Collection;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -1953,17 +1961,19 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 43 // iconst_0
-   	l2 = 47 // iconst_0
-   	l4 = 48 // ifeq
-   	l1 = 51 // iconst_1
-   	l5 = 55 // iconst_0
-   	l6 = 56 // ireturn
+   	l3 = 51 // iconst_0
+   	l2 = 55 // iconst_0
+   	l4 = 56 // ifeq
+   	l1 = 59 // iconst_1
+   	l5 = 63 // iconst_0
+   	l6 = 64 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      57      0    this       Lscala/collection/JavaConversions$JCollectionWrapper;
-   17      30      2    temp76       Lscala/collection/JavaConversions$JCollectionWrapper;
-   22      25      3    temp77       Ljava/util/Collection;
+   0      65      0    this       Lscala/collection/JavaConversions$JCollectionWrapper;
+   7      52      2    temp75       Ljava/lang/Object;
+   19      36      3    temp76       Lscala/collection/JavaConversions$JCollectionWrapper;
+   25      30      4    temp77       Ljava/util/Collection;
+   29      26      5    underlying$6       Ljava/util/Collection;
 
 
 public java.lang.String productPrefix();
@@ -1985,8 +1995,10 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	aload_0
@@ -2000,13 +2012,20 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 10 // new
+   	l1 = 12 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      27      0    this       Lscala/collection/JavaConversions$JCollectionWrapper;
+   2      25      2    temp78       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	ldc_w	String underlying
@@ -2019,7 +2038,12 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 9 // new
+   	l1 = 11 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      26      0    this       Lscala/collection/JavaConversions$JCollectionWrapper;
+   2      24      2    temp79       I
+
 
 public scala.collection.TraversableView view(int, int);
   Signature: (II)Lscala/collection/TraversableView;
@@ -2127,7 +2151,7 @@ public scala.collection.JavaConversions$JCollectionWrapper(java.util.Collection)
    0      34      1    underlying       Ljava/util/Collection;
 
   Signature: length = 0x2
-   02 37 
+   02 3B 
 
 }
 

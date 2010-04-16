@@ -2,7 +2,7 @@ Compiled from "PagedSeq.scala"
 public class scala.collection.immutable.PagedSeq extends java.lang.Object implements scala.collection.IndexedSeq,scala.ScalaObject
   SourceFile: "PagedSeq.scala"
   Signature: length = 0x2
-   03 FFFFFFA8 
+   03 FFFFFFAC 
   ScalaSig: length = 0x66B
    05 00 FFFFFF81 68 07 05 01 02 FFFFFF88 02 09 01 08 50 61 67
    65 64 53 65 71 0A 02 03 04 01 09 69 6D 6D 75 74
@@ -888,14 +888,12 @@ Asciz	page;
 Asciz	(I)Lscala/collection/immutable/Page;;
 NameAndType	current:()Lscala/collection/immutable/Page;
 Method	scala/collection/immutable/PagedSeq.current:()Lscala/collection/immutable/Page;
-NameAndType	num:()I
-Method	scala/collection/immutable/Page.num:()I
-int	4096;
+NameAndType	start:()I
+Method	scala/collection/immutable/Page.start:()I
 NameAndType	current_$eq:(Lscala/collection/immutable/Page;)V
 Method	scala/collection/immutable/PagedSeq.current_$eq:(Lscala/collection/immutable/Page;)V
-Asciz	filled;
-NameAndType	filled:()I
-Method	scala/collection/immutable/Page.filled:()I
+NameAndType	end:()I
+Method	scala/collection/immutable/Page.end:()I
 Asciz	next;
 NameAndType	next:()Lscala/collection/immutable/Page;
 Method	scala/collection/immutable/Page.next:()Lscala/collection/immutable/Page;
@@ -911,13 +909,19 @@ Method	scala/collection/immutable/PagedSeq.addMore:()Lscala/collection/immutable
 Asciz	absindex;
 Asciz	(I)Lscala/collection/immutable/Page<TT;>;;
 Asciz	length;
-Asciz	scala/runtime/RichInt;
-class	scala/runtime/RichInt
-Asciz	(I)V;
-NameAndType	"<init>":(I)V
-Method	scala/runtime/RichInt."<init>":(I)V
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
+Asciz	intWrapper;
+Asciz	(I)Lscala/runtime/RichInt;;
+NameAndType	intWrapper:(I)Lscala/runtime/RichInt;
+Method	scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 NameAndType	end:I
 Field	scala/collection/immutable/PagedSeq.end:I
+Asciz	scala/runtime/RichInt;
+class	scala/runtime/RichInt
 NameAndType	min:(I)I
 Method	scala/runtime/RichInt.min:(I)I
 NameAndType	start:I
@@ -3356,15 +3360,11 @@ private scala.collection.immutable.Page addMore();
 private scala.collection.immutable.Page page(int);
   Signature: (I)Lscala/collection/immutable/Page;
   Code:
-   Stack=3, Locals=6, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	iload_1
 	aload_0
 	invokespecial	Method current:()Lscala/collection/immutable/Page;
-	astore_2
-	aload_2
-	invokevirtual	Method scala/collection/immutable/Page.num:()I
-	ldc_w	int 4096
-	imul
+	invokevirtual	Method scala/collection/immutable/Page.start:()I
 	if_icmpge	l1 // iload_1
 	aload_0
 	aload_0
@@ -3373,22 +3373,15 @@ private scala.collection.immutable.Page page(int);
 l1	iload_1
 	aload_0
 	invokespecial	Method current:()Lscala/collection/immutable/Page;
-	astore_3
-	aload_3
-	invokevirtual	Method scala/collection/immutable/Page.num:()I
-	ldc_w	int 4096
-	imul
-	aload_3
-	invokevirtual	Method scala/collection/immutable/Page.filled:()I
-	iadd
+	invokevirtual	Method scala/collection/immutable/Page.end:()I
 	if_icmplt	l2 // iload_1
 	aload_0
 	invokespecial	Method current:()Lscala/collection/immutable/Page;
 	invokevirtual	Method scala/collection/immutable/Page.next:()Lscala/collection/immutable/Page;
 	dup
-	astore	4
+	astore_2
 	ifnull	l2 // iload_1
-	aload	4
+	aload_2
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l2 // iload_1
@@ -3401,14 +3394,7 @@ l1	iload_1
 l2	iload_1
 	aload_0
 	invokespecial	Method current:()Lscala/collection/immutable/Page;
-	astore	5
-	aload	5
-	invokevirtual	Method scala/collection/immutable/Page.num:()I
-	ldc_w	int 4096
-	imul
-	aload	5
-	invokevirtual	Method scala/collection/immutable/Page.filled:()I
-	iadd
+	invokevirtual	Method scala/collection/immutable/Page.end:()I
 	if_icmplt	l3 // aload_0
 	aload_0
 	invokespecial	Method current:()Lscala/collection/immutable/Page;
@@ -3423,40 +3409,30 @@ l3	aload_0
 	invokespecial	Method current:()Lscala/collection/immutable/Page;
 	areturn
   Labels:
-   	l1 = 25 // iload_1
-   	l2 = 83 // iload_1
-   	l3 = 129 // aload_0
+   	l1 = 19 // iload_1
+   	l2 = 64 // iload_1
+   	l3 = 96 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      134      0    this       Lscala/collection/immutable/PagedSeq;
-   0      134      1    absindex       I
+   0      101      0    this       Lscala/collection/immutable/PagedSeq;
+   0      101      1    absindex       I
 
   Signature: length = 0x2
-   03 18 
+   03 16 
 
 public int length();
   Signature: ()I
   Code:
-   Stack=3, Locals=3, Args_size=1
+   Stack=2, Locals=1, Args_size=1
 l2	aload_0
 	invokespecial	Method latest:()Lscala/collection/immutable/Page;
 	invokevirtual	Method scala/collection/immutable/Page.isLast:()Z
 	ifeq	l1 // aload_0
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
 	invokespecial	Method latest:()Lscala/collection/immutable/Page;
-	astore_1
-	aload_1
-	invokevirtual	Method scala/collection/immutable/Page.num:()I
-	ldc_w	int 4096
-	imul
-	aload_1
-	invokevirtual	Method scala/collection/immutable/Page.filled:()I
-	iadd
-	istore_2
-	new	class scala/runtime/RichInt
-	dup
-	iload_2
-	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
+	invokevirtual	Method scala/collection/immutable/Page.end:()I
+	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
 	aload_0
 	getfield	Field end:I
 	invokevirtual	Method scala/runtime/RichInt.min:(I)I
@@ -3470,11 +3446,7 @@ l1	aload_0
 	goto	l2 // aload_0
   Labels:
    	l2 = 0 // aload_0
-   	l1 = 50 // aload_0
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      58      0    this       Lscala/collection/immutable/PagedSeq;
-
+   	l1 = 36 // aload_0
 
 public java.lang.Object apply(int);
   Signature: (I)Ljava/lang/Object;
@@ -3511,7 +3483,7 @@ l1	new	class java/lang/IndexOutOfBoundsException
    0      43      1    index       I
 
   Signature: length = 0x2
-   03 3C 
+   03 40 
 
 public boolean isDefinedAt(int);
   Signature: (I)Z
@@ -3539,12 +3511,7 @@ public boolean isDefinedAt(int);
 	getfield	Field start:I
 	iadd
 	aload_2
-	invokevirtual	Method scala/collection/immutable/Page.num:()I
-	ldc_w	int 4096
-	imul
-	aload_2
-	invokevirtual	Method scala/collection/immutable/Page.filled:()I
-	iadd
+	invokevirtual	Method scala/collection/immutable/Page.end:()I
 	if_icmpge	l2 // iconst_0
 	iconst_1
 	goto	l3 // ifeq
@@ -3555,15 +3522,15 @@ l3	ifeq	l1 // iconst_0
 l1	iconst_0
 l4	ireturn
   Labels:
-   	l2 = 55 // iconst_0
-   	l3 = 56 // ifeq
-   	l1 = 63 // iconst_0
-   	l4 = 64 // ireturn
+   	l2 = 46 // iconst_0
+   	l3 = 47 // ifeq
+   	l1 = 54 // iconst_0
+   	l4 = 55 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      65      0    this       Lscala/collection/immutable/PagedSeq;
-   0      65      1    index       I
-   29      30      2    p       Lscala/collection/immutable/Page;
+   0      56      0    this       Lscala/collection/immutable/PagedSeq;
+   0      56      1    index       I
+   29      21      2    p       Lscala/collection/immutable/Page;
 
 
 public scala.collection.immutable.PagedSeq slice(int, int);
@@ -3579,7 +3546,7 @@ public scala.collection.immutable.PagedSeq slice(int, int);
 	getfield	Field start:I
 	iload_1
 	iadd
-	istore	4
+	istore_3
 	iload_2
 	ldc_w	int 2147483647
 	if_icmpne	l1 // aload_0
@@ -3589,53 +3556,48 @@ l1	aload_0
 	getfield	Field start:I
 	iload_2
 	iadd
-l2	istore	5
+l2	istore	4
 	aload_0
 	getfield	Field first1:Lscala/collection/immutable/Page;
-	astore_3
-l4	aload_3
-	invokevirtual	Method scala/collection/immutable/Page.num:()I
-	ldc_w	int 4096
-	imul
-	aload_3
-	invokevirtual	Method scala/collection/immutable/Page.filled:()I
-	iadd
-	iload	4
+	astore	5
+l4	aload	5
+	invokevirtual	Method scala/collection/immutable/Page.end:()I
+	iload_3
 	if_icmpgt	l3 // new
-	aload_3
+	aload	5
 	invokevirtual	Method scala/collection/immutable/Page.isLast:()Z
 	ifne	l3 // new
-	aload_3
+	aload	5
 	invokevirtual	Method scala/collection/immutable/Page.next:()Lscala/collection/immutable/Page;
-	astore_3
-	goto	l4 // aload_3
+	astore	5
+	goto	l4 // aload
 l3	new	class scala/collection/immutable/PagedSeq
 	dup
 	aload_0
 	getfield	Field more:Lscala/Function3;
-	aload_3
+	aload	5
+	iload_3
 	iload	4
-	iload	5
 	aload_0
 	getfield	Field evidence$3:Lscala/reflect/ClassManifest;
 	invokespecial	Method "<init>":(Lscala/Function3;Lscala/collection/immutable/Page;IILscala/reflect/ClassManifest;)V
 	areturn
   Labels:
-   	l1 = 28 // aload_0
-   	l2 = 34 // istore
-   	l4 = 41 // aload_3
-   	l3 = 74 // new
+   	l1 = 27 // aload_0
+   	l2 = 33 // istore
+   	l4 = 41 // aload
+   	l3 = 68 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      95      0    this       Lscala/collection/immutable/PagedSeq;
-   0      95      1    _start       I
-   0      95      2    _end       I
-   41      53      3    f       Lscala/collection/immutable/Page;
-   17      77      4    s       I
-   36      58      5    e       I
+   0      89      0    this       Lscala/collection/immutable/PagedSeq;
+   0      89      1    _start       I
+   0      89      2    _end       I
+   16      72      3    s       I
+   35      53      4    e       I
+   41      47      5    f       Lscala/collection/immutable/Page;
 
   Signature: length = 0x2
-   03 45 
+   03 49 
 
 public scala.collection.immutable.PagedSeq slice(int);
   Signature: (I)Lscala/collection/immutable/PagedSeq;
@@ -3653,7 +3615,7 @@ public scala.collection.immutable.PagedSeq slice(int);
    0      9      1    start       I
 
   Signature: length = 0x2
-   03 49 
+   03 4D 
 
 public java.lang.String toString();
   Signature: ()Ljava/lang/String;
@@ -3962,7 +3924,7 @@ public scala.collection.immutable.PagedSeq(scala.Function3, scala.collection.imm
    0      81      5    evidence$3       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   03 FFFFFFA7 
+   03 FFFFFFAB 
 
 }
 

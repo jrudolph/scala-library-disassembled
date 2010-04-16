@@ -2,7 +2,7 @@ Compiled from "TreeRHS.scala"
 public class scala.util.grammar.LabelledRHS extends scala.util.grammar.TreeRHS implements scala.ScalaObject,scala.Product,java.io.Serializable
   SourceFile: "TreeRHS.scala"
   Signature: length = 0x2
-   00 7B 
+   00 78 
   ScalaSig: length = 0x471
    05 00 FFFFFF81 23 06 04 01 02 40 09 02 0B 4C 61 62 65
    6C 6C 65 64 52 48 53 0A 02 03 04 01 07 67 72 61
@@ -152,9 +152,12 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp1;
 Asciz	temp2;
 Asciz	temp3;
 Asciz	temp4;
+Asciz	hnt$1;
+Asciz	label$1;
 Asciz	productPrefix;
 Asciz	LabelledRHS;
 String	LabelledRHS
@@ -176,21 +179,15 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp5;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	hnt
 String	label
-Asciz	java/lang/Number;
-class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
-Asciz	equals2;
+Asciz	temp6;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
-Asciz	y0;
+NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Asciz	scala/util/grammar/TreeRHS;
 class	scala/util/grammar/TreeRHS
 Asciz	()V;
@@ -317,25 +314,31 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=3, Locals=5, Args_size=2
+   Stack=3, Locals=8, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/util/grammar/LabelledRHS
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/util/grammar/LabelledRHS
 	astore_2
 	aload_2
-	invokevirtual	Method label:()Ljava/lang/Object;
-	astore_3
+	instanceof	class scala/util/grammar/LabelledRHS
+	ifeq	l2 // iconst_0
 	aload_2
-	invokevirtual	Method hnt:()I
-	istore	4
-	aload_0
+	checkcast	class scala/util/grammar/LabelledRHS
+	astore_3
 	aload_3
-	iload	4
+	invokevirtual	Method label:()Ljava/lang/Object;
+	astore	4
+	aload_3
+	invokevirtual	Method hnt:()I
+	istore	5
+	iload	5
+	istore	6
+	aload	4
+	astore	7
+	aload_0
+	aload	7
+	iload	6
 	invokespecial	Method gd1$1:(Ljava/lang/Object;I)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -352,18 +355,21 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 51 // iconst_0
-   	l2 = 55 // iconst_0
-   	l4 = 56 // ifeq
-   	l1 = 59 // iconst_1
-   	l5 = 63 // iconst_0
-   	l6 = 64 // ireturn
+   	l3 = 63 // iconst_0
+   	l2 = 67 // iconst_0
+   	l4 = 68 // ifeq
+   	l1 = 71 // iconst_1
+   	l5 = 75 // iconst_0
+   	l6 = 76 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      65      0    this       Lscala/util/grammar/LabelledRHS;
-   17      38      2    temp2       Lscala/util/grammar/LabelledRHS;
-   22      33      3    temp3       Ljava/lang/Object;
-   28      27      4    temp4       I
+   0      77      0    this       Lscala/util/grammar/LabelledRHS;
+   7      64      2    temp1       Ljava/lang/Object;
+   19      48      3    temp2       Lscala/util/grammar/LabelledRHS;
+   25      42      4    temp3       Ljava/lang/Object;
+   31      36      5    temp4       I
+   35      32      6    hnt$1       I
+   39      28      7    label$1       Ljava/lang/Object;
 
 
 public java.lang.String productPrefix();
@@ -387,8 +393,10 @@ public java.lang.Object productElement(int);
   Code:
    Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
-		0: 51;
+		0: 49;
 		1: 39;
 		default: 24 }
 	new	class java/lang/IndexOutOfBoundsException
@@ -400,21 +408,26 @@ public java.lang.Object productElement(int);
 	athrow
 	aload_0
 	invokevirtual	Method hnt:()I
-	istore_2
-	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	goto	l1 // areturn
 	aload_0
 	invokevirtual	Method label:()Ljava/lang/Object;
 l1	areturn
   Labels:
-   	l1 = 55 // areturn
+   	l1 = 53 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      54      0    this       Lscala/util/grammar/LabelledRHS;
+   2      52      2    temp5       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
 		0: 44;
 		1: 39;
@@ -432,6 +445,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 46 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      47      0    this       Lscala/util/grammar/LabelledRHS;
+   2      45      2    temp6       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -445,54 +463,23 @@ public boolean canEqual(java.lang.Object);
 private final boolean gd1$1(java.lang.Object, int);
   Signature: (Ljava/lang/Object;I)Z
   Code:
-   Stack=2, Locals=4, Args_size=3
+   Stack=2, Locals=3, Args_size=3
+	aload_1
 	aload_0
 	invokevirtual	Method label:()Ljava/lang/Object;
-	astore_3
-	aload_1
-	aload_3
-	if_acmpne	l1 // aload_1
-	iconst_1
-	goto	l2 // ifeq
-l1	aload_1
-	ifnonnull	l3 // aload_1
-	iconst_0
-	goto	l2 // ifeq
-l3	aload_1
-	instanceof	class java/lang/Number
-	ifne	l4 // aload_1
-	aload_1
-	instanceof	class java/lang/Character
-	ifeq	l5 // aload_1
-l4	aload_1
-	aload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l2 // ifeq
-l5	aload_1
-	aload_3
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l2	ifeq	l6 // iconst_0
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l1 // iconst_0
 	iload_2
 	aload_0
 	invokevirtual	Method hnt:()I
-	if_icmpne	l6 // iconst_0
+	if_icmpne	l1 // iconst_0
 	iconst_1
-	goto	l7 // ireturn
-l6	iconst_0
-l7	ireturn
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
   Labels:
-   	l1 = 14 // aload_1
-   	l3 = 22 // aload_1
-   	l4 = 36 // aload_1
-   	l5 = 44 // aload_1
-   	l2 = 49 // ifeq
-   	l6 = 64 // iconst_0
-   	l7 = 65 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      66      0    this       Lscala/util/grammar/LabelledRHS;
-   10      42      3    y0       Ljava/lang/Object;
-
+   	l1 = 23 // iconst_0
+   	l2 = 24 // ireturn
 
 public scala.util.grammar.LabelledRHS(java.lang.Object, int);
   Signature: (Ljava/lang/Object;I)V
@@ -517,7 +504,7 @@ public scala.util.grammar.LabelledRHS(java.lang.Object, int);
    0      19      2    hnt       I
 
   Signature: length = 0x2
-   00 7A 
+   00 77 
 
 }
 

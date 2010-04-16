@@ -10,7 +10,6 @@ public abstract class scala.reflect.generic.Trees$Tree extends java.lang.Object 
    public abstract AbsTreePrinter=class scala/reflect/generic/Trees$AbsTreePrinter of class scala/reflect/generic/Trees
    public final $anonfun$children$1=class scala/reflect/generic/Trees$Tree$$anonfun$children$1 of class scala/reflect/generic/Trees$Tree
    public final $anonfun$subtrees$1$1=class scala/reflect/generic/Trees$Tree$$anonfun$subtrees$1$1 of class scala/reflect/generic/Trees$Tree
-   public GenericCanBuildFrom=class scala/collection/generic/TraversableFactory$GenericCanBuildFrom of class scala/collection/generic/TraversableFactory
   minor version: 0
   major version: 49
   Constant pool:
@@ -206,6 +205,7 @@ Method	java/lang/Object.hashCode:()I
 Asciz	equals;
 Asciz	(Ljava/lang/Object;)Z;
 Asciz	that;
+Asciz	temp12;
 NameAndType	$outer:Lscala/reflect/generic/Universe;
 Field	scala/reflect/generic/Trees$Tree.$outer:Lscala/reflect/generic/Universe;
 Asciz	subtrees$1;
@@ -232,16 +232,15 @@ Asciz	wrapRefArray;
 Asciz	([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
 NameAndType	wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
 Method	scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-InterfaceMethod	scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+Asciz	apply;
+Asciz	(Lscala/collection/Seq;)Lscala/collection/immutable/List;;
+NameAndType	apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
+Method	scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
 Asciz	scala/reflect/generic/Trees$Tree$$anonfun$subtrees$1$1;
 class	scala/reflect/generic/Trees$Tree$$anonfun$subtrees$1$1
 Method	scala/reflect/generic/Trees$Tree$$anonfun$subtrees$1$1."<init>":(Lscala/reflect/generic/Trees$Tree;)V
-Asciz	scala/collection/generic/TraversableFactory$GenericCanBuildFrom;
-class	scala/collection/generic/TraversableFactory$GenericCanBuildFrom
-Asciz	(Lscala/collection/generic/TraversableFactory;)V;
-NameAndType	"<init>":(Lscala/collection/generic/TraversableFactory;)V
-Method	scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
 Asciz	x;
+Asciz	temp9;
 Asciz	(Lscala/reflect/generic/Universe;)V;
 Asciz	java/lang/NullPointerException;
 class	java/lang/NullPointerException
@@ -279,9 +278,6 @@ Asciz	AbsSymbol;
 Asciz	AbsTreePrinter;
 Asciz	$anonfun$children$1;
 Asciz	$anonfun$subtrees$1$1;
-Asciz	scala/collection/generic/TraversableFactory;
-class	scala/collection/generic/TraversableFactory
-Asciz	GenericCanBuildFrom;
 Asciz	scala/ScalaObject;
 class	scala/ScalaObject
 
@@ -449,6 +445,8 @@ public scala.reflect.generic.Symbols$AbsSymbol symbol();
   Signature: ()Lscala/reflect/generic/Symbols$AbsSymbol;
   Code:
    Stack=1, Locals=1, Args_size=1
+	aconst_null
+	pop
 	aconst_null
 	areturn
   Labels:
@@ -620,18 +618,20 @@ public int hashCode();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/reflect/generic/Trees$Tree
 	ifeq	l1 // iconst_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Tree
 	invokevirtual	Method scala$reflect$generic$Trees$Tree$$$outer:()Lscala/reflect/generic/Universe;
 	aload_0
 	invokevirtual	Method scala$reflect$generic$Trees$Tree$$$outer:()Lscala/reflect/generic/Universe;
 	if_acmpne	l1 // iconst_0
 	aload_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Tree
 	if_acmpne	l2 // iconst_0
 	iconst_1
@@ -641,13 +641,14 @@ l2	iconst_0
 l1	iconst_0
 l3	ireturn
   Labels:
-   	l2 = 33 // iconst_0
-   	l1 = 37 // iconst_0
-   	l3 = 38 // ireturn
+   	l2 = 35 // iconst_0
+   	l1 = 39 // iconst_0
+   	l3 = 40 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      39      0    this       Lscala/reflect/generic/Trees$Tree;
-   0      39      1    that       Ljava/lang/Object;
+   0      41      0    this       Lscala/reflect/generic/Trees$Tree;
+   0      41      1    that       Ljava/lang/Object;
+   2      39      2    temp12       Ljava/lang/Object;
 
 
 public scala.reflect.generic.Universe scala$reflect$generic$Trees$Tree$$$outer();
@@ -662,77 +663,75 @@ public scala.reflect.generic.Universe scala$reflect$generic$Trees$Tree$$$outer()
 public final scala.collection.immutable.List subtrees$1(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/List;
   Code:
-   Stack=5, Locals=5, Args_size=2
+   Stack=6, Locals=4, Args_size=2
 	aload_1
+	astore_2
+	aload_2
 	aload_0
 	invokevirtual	Method scala$reflect$generic$Trees$Tree$$$outer:()Lscala/reflect/generic/Universe;
 	invokeinterface	InterfaceMethod scala/reflect/generic/Trees.EmptyTree:()Lscala/reflect/generic/Trees$EmptyTree$;
-	astore_2
+	astore_3
 	dup
-	ifnonnull	l1 // aload_2
+	ifnonnull	l1 // aload_3
 	pop
-	aload_2
+	aload_3
 	ifnull	l2 // getstatic
-	goto	l3 // aload_1
-l1	aload_2
+	goto	l3 // aload_2
+l1	aload_3
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l3 // aload_1
+	ifeq	l3 // aload_2
 l2	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 	goto	l4 // areturn
-l3	aload_1
+l3	aload_2
 	instanceof	class scala/reflect/generic/Trees$Tree
-	ifeq	l5 // aload_1
-	aload_1
+	ifeq	l5 // aload_2
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Tree
 	invokevirtual	Method scala$reflect$generic$Trees$Tree$$$outer:()Lscala/reflect/generic/Universe;
 	aload_0
 	invokevirtual	Method scala$reflect$generic$Trees$Tree$$$outer:()Lscala/reflect/generic/Universe;
-	if_acmpne	l5 // aload_1
+	if_acmpne	l5 // aload_2
+	getstatic	Field scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	iconst_1
 	anewarray	class scala/reflect/generic/Trees$Tree
 	dup
 	iconst_0
-	aload_1
+	aload_2
 	checkcast	class scala/reflect/generic/Trees$Tree
 	aastore
 	checkcast	class "[Ljava/lang/Object;"
 	invokevirtual	Method scala/Predef$.wrapRefArray:([Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
-	astore_3
-	aload_3
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toList:()Lscala/collection/immutable/List;
+	invokevirtual	Method scala/collection/immutable/List$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/List;
 	goto	l4 // areturn
-l5	aload_1
+l5	aload_2
 	instanceof	class scala/collection/immutable/List
 	ifeq	l6 // getstatic
-	aload_1
+	aload_2
 	checkcast	class scala/collection/immutable/List
 	new	class scala/reflect/generic/Trees$Tree$$anonfun$subtrees$1$1
 	dup
 	aload_0
 	invokespecial	Method scala/reflect/generic/Trees$Tree$$anonfun$subtrees$1$1."<init>":(Lscala/reflect/generic/Trees$Tree;)V
 	getstatic	Field scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
-	astore	4
-	new	class scala/collection/generic/TraversableFactory$GenericCanBuildFrom
-	dup
-	aload	4
-	invokespecial	Method scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
+	invokevirtual	Method scala/collection/immutable/List$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.flatMap:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
 	goto	l4 // areturn
 l6	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
 l4	areturn
   Labels:
-   	l1 = 23 // aload_2
-   	l2 = 30 // getstatic
-   	l3 = 36 // aload_1
-   	l5 = 87 // aload_1
-   	l6 = 131 // getstatic
-   	l4 = 134 // areturn
+   	l1 = 25 // aload_3
+   	l2 = 32 // getstatic
+   	l3 = 38 // aload_2
+   	l5 = 88 // aload_2
+   	l6 = 124 // getstatic
+   	l4 = 127 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      135      0    this       Lscala/reflect/generic/Trees$Tree;
-   0      135      1    x       Ljava/lang/Object;
+   0      128      0    this       Lscala/reflect/generic/Trees$Tree;
+   0      128      1    x       Ljava/lang/Object;
+   2      126      2    temp9       Ljava/lang/Object;
 
 
 public scala.reflect.generic.Trees$Tree(scala.reflect.generic.Universe);

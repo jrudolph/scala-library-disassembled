@@ -173,10 +173,14 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp22;
 Asciz	temp23;
 Asciz	temp24;
 Asciz	temp25;
 Asciz	temp26;
+Asciz	session$2;
+Asciz	msg$1;
+Asciz	a$2;
 Asciz	productPrefix;
 Asciz	SendTo;
 String	SendTo
@@ -198,21 +202,19 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp27;
+Asciz	I;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	session
 String	msg
 String	a
+Asciz	temp28;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
-Asciz	java/lang/Number;
-class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
-Asciz	equals2;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Asciz	()V;
 NameAndType	"<init>":()V
 Method	java/lang/Object."<init>":()V
@@ -387,29 +389,37 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=4, Locals=6, Args_size=2
+   Stack=4, Locals=10, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
-	instanceof	class scala/actors/remote/SendTo
-	ifeq	l2 // iconst_0
-	aload_1
-	checkcast	class scala/actors/remote/SendTo
 	astore_2
 	aload_2
-	invokevirtual	Method a:()Lscala/actors/OutputChannel;
+	instanceof	class scala/actors/remote/SendTo
+	ifeq	l2 // iconst_0
+	aload_2
+	checkcast	class scala/actors/remote/SendTo
 	astore_3
-	aload_2
-	invokevirtual	Method msg:()Ljava/lang/Object;
-	astore	4
-	aload_2
-	invokevirtual	Method session:()Lscala/Symbol;
-	astore	5
-	aload_0
 	aload_3
-	aload	4
+	invokevirtual	Method a:()Lscala/actors/OutputChannel;
+	astore	4
+	aload_3
+	invokevirtual	Method msg:()Ljava/lang/Object;
+	astore	5
+	aload_3
+	invokevirtual	Method session:()Lscala/Symbol;
+	astore	6
+	aload	6
+	astore	7
 	aload	5
+	astore	8
+	aload	4
+	astore	9
+	aload_0
+	aload	9
+	aload	8
+	aload	7
 	invokespecial	Method gd4$1:(Lscala/actors/OutputChannel;Ljava/lang/Object;Lscala/Symbol;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -426,19 +436,23 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 59 // iconst_0
-   	l2 = 63 // iconst_0
-   	l4 = 64 // ifeq
-   	l1 = 67 // iconst_1
-   	l5 = 71 // iconst_0
-   	l6 = 72 // ireturn
+   	l3 = 75 // iconst_0
+   	l2 = 79 // iconst_0
+   	l4 = 80 // ifeq
+   	l1 = 83 // iconst_1
+   	l5 = 87 // iconst_0
+   	l6 = 88 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      73      0    this       Lscala/actors/remote/SendTo;
-   17      46      2    temp23       Lscala/actors/remote/SendTo;
-   22      41      3    temp24       Lscala/actors/OutputChannel;
-   28      35      4    temp25       Ljava/lang/Object;
-   34      29      5    temp26       Lscala/Symbol;
+   0      89      0    this       Lscala/actors/remote/SendTo;
+   7      76      2    temp22       Ljava/lang/Object;
+   19      60      3    temp23       Lscala/actors/remote/SendTo;
+   25      54      4    temp24       Lscala/actors/OutputChannel;
+   31      48      5    temp25       Ljava/lang/Object;
+   37      42      6    temp26       Lscala/Symbol;
+   41      38      7    session$2       Lscala/Symbol;
+   45      34      8    msg$1       Ljava/lang/Object;
+   49      30      9    a$2       Lscala/actors/OutputChannel;
 
 
 public java.lang.String productPrefix();
@@ -460,8 +474,10 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 2
 		0: 57;
 		1: 50;
@@ -485,12 +501,19 @@ public java.lang.Object productElement(int);
 l1	areturn
   Labels:
    	l1 = 61 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      62      0    this       Lscala/actors/remote/SendTo;
+   2      60      2    temp27       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 2
 		0: 53;
 		1: 48;
@@ -511,6 +534,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 55 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      56      0    this       Lscala/actors/remote/SendTo;
+   2      54      2    temp28       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
@@ -524,7 +552,7 @@ public boolean canEqual(java.lang.Object);
 private final boolean gd4$1(scala.actors.OutputChannel, java.lang.Object, scala.Symbol);
   Signature: (Lscala/actors/OutputChannel;Ljava/lang/Object;Lscala/Symbol;)Z
   Code:
-   Stack=2, Locals=7, Args_size=4
+   Stack=2, Locals=6, Args_size=4
 	aload_1
 	aload_0
 	invokevirtual	Method a:()Lscala/actors/OutputChannel;
@@ -533,69 +561,40 @@ private final boolean gd4$1(scala.actors.OutputChannel, java.lang.Object, scala.
 	ifnonnull	l1 // aload
 	pop
 	aload	4
-	ifnull	l2 // aload_0
+	ifnull	l2 // aload_2
 	goto	l3 // iconst_0
 l1	aload	4
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
-l2	aload_0
+l2	aload_2
+	aload_0
 	invokevirtual	Method msg:()Ljava/lang/Object;
-	astore	5
-	aload_2
-	aload	5
-	if_acmpeq	l4 // iconst_1
-	aload_2
-	ifnull	l5 // iconst_0
-	aload_2
-	instanceof	class java/lang/Number
-	ifne	l6 // aload_2
-	aload_2
-	instanceof	class java/lang/Character
-	ifne	l6 // aload_2
-	aload_2
-	aload	5
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	goto	l7 // ifeq
-l6	aload_2
-	aload	5
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l7 // ifeq
-l5	iconst_0
-	goto	l7 // ifeq
-l4	iconst_1
-l7	ifeq	l3 // iconst_0
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l3 // iconst_0
 	aload_3
 	aload_0
 	invokevirtual	Method session:()Lscala/Symbol;
-	astore	6
+	astore	5
 	dup
-	ifnonnull	l8 // aload
+	ifnonnull	l4 // aload
 	pop
-	aload	6
-	ifnull	l9 // iconst_1
+	aload	5
+	ifnull	l5 // iconst_1
 	goto	l3 // iconst_0
-l8	aload	6
+l4	aload	5
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // iconst_0
-l9	iconst_1
-	goto	l10 // ireturn
+l5	iconst_1
+	goto	l6 // ireturn
 l3	iconst_0
-l10	ireturn
+l6	ireturn
   Labels:
    	l1 = 20 // aload
-   	l2 = 28 // aload_0
-   	l6 = 67 // aload_2
-   	l5 = 76 // iconst_0
-   	l4 = 80 // iconst_1
-   	l7 = 81 // ifeq
-   	l8 = 104 // aload
-   	l9 = 112 // iconst_1
-   	l3 = 116 // iconst_0
-   	l10 = 117 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      118      0    this       Lscala/actors/remote/SendTo;
-
+   	l2 = 28 // aload_2
+   	l4 = 59 // aload
+   	l5 = 67 // iconst_1
+   	l3 = 71 // iconst_0
+   	l6 = 72 // ireturn
 
 public scala.actors.remote.SendTo(scala.actors.OutputChannel, java.lang.Object, scala.Symbol);
   Signature: (Lscala/actors/OutputChannel;Ljava/lang/Object;Lscala/Symbol;)V
@@ -624,7 +623,7 @@ public scala.actors.remote.SendTo(scala.actors.OutputChannel, java.lang.Object, 
    0      24      3    session       Lscala/Symbol;
 
   Signature: length = 0x2
-   00 FFFFFF91 
+   00 FFFFFF93 
 
 }
 

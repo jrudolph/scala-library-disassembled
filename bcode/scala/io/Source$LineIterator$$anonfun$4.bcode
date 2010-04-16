@@ -55,21 +55,25 @@ Asciz	unboxToChar;
 Asciz	(Ljava/lang/Object;)C;
 NameAndType	unboxToChar:(Ljava/lang/Object;)C
 Method	scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
+Asciz	scala/Predef$;
+class	scala/Predef$
+Asciz	MODULE$;
+Asciz	Lscala/Predef$;;
+NameAndType	MODULE$:Lscala/Predef$;
+Field	scala/Predef$.MODULE$:Lscala/Predef$;
 Asciz	scala$io$Source$LineIterator$$separator;
 Asciz	Ljava/lang/String;;
 NameAndType	scala$io$Source$LineIterator$$separator:Ljava/lang/String;
 Field	scala/io/Source$LineIterator.scala$io$Source$LineIterator$$separator:Ljava/lang/String;
-Asciz	scala/collection/immutable/StringOps;
-class	scala/collection/immutable/StringOps
-Asciz	<init>;
-Asciz	(Ljava/lang/String;)V;
-NameAndType	"<init>":(Ljava/lang/String;)V
-Method	scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
-Asciz	scala/collection/immutable/StringLike$class;
-class	scala/collection/immutable/StringLike$class
-Asciz	(Lscala/collection/immutable/StringLike;I)C;
-NameAndType	apply:(Lscala/collection/immutable/StringLike;I)C
-Method	scala/collection/immutable/StringLike$class.apply:(Lscala/collection/immutable/StringLike;I)C
+Asciz	augmentString;
+Asciz	(Ljava/lang/String;)Lscala/collection/immutable/StringOps;;
+NameAndType	augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
+Method	scala/Predef$.augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
+Asciz	scala/collection/immutable/StringLike;
+class	scala/collection/immutable/StringLike
+Asciz	(I)C;
+NameAndType	apply:(I)C
+InterfaceMethod	scala/collection/immutable/StringLike.apply:(I)C
 Asciz	next;
 NameAndType	next:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/Iterator.next:()Ljava/lang/Object;
@@ -94,6 +98,7 @@ NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
 Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 Asciz	v1;
 Asciz	Ljava/lang/Object;;
+Asciz	<init>;
 Asciz	(Lscala/io/Source$LineIterator;C)V;
 Asciz	java/lang/NullPointerException;
 class	java/lang/NullPointerException
@@ -115,10 +120,10 @@ class	java/io/Serializable
 public static final long serialVersionUID;
   Signature: J
 
-public final char firstCh$1;
+private final char firstCh$1;
   Signature: C
 
-public final scala.io.Source$LineIterator $outer;
+private final scala.io.Source$LineIterator $outer;
   Signature: Lscala/io/Source$LineIterator;
 
 public static {};
@@ -133,7 +138,7 @@ public static {};
 public final boolean apply(char);
   Signature: (C)Z
   Code:
-   Stack=4, Locals=6, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
 	aload_0
 	getfield	Field firstCh$1:C
@@ -148,26 +153,19 @@ public final boolean apply(char);
 	invokevirtual	Method scala/io/Source$LineIterator.iter:()Lscala/collection/BufferedIterator;
 	invokeinterface	InterfaceMethod scala/collection/BufferedIterator.head:()Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
 	getfield	Field $outer:Lscala/io/Source$LineIterator;
 	getfield	Field scala/io/Source$LineIterator.scala$io$Source$LineIterator$$separator:Ljava/lang/String;
-	astore_2
-	new	class scala/collection/immutable/StringOps
-	dup
-	aload_2
-	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
+	invokevirtual	Method scala/Predef$.augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
 	iconst_1
-	istore	4
-	astore_3
-	aload_3
-	iload	4
-	invokestatic	Method scala/collection/immutable/StringLike$class.apply:(Lscala/collection/immutable/StringLike;I)C
+	invokeinterface	InterfaceMethod scala/collection/immutable/StringLike.apply:(I)C
 	if_icmpne	l2 // iconst_0
 	iconst_1
-	goto	l3 // istore
+	goto	l3 // istore_2
 l2	iconst_0
-l3	istore	5
-	iload	5
+l3	istore_2
+	iload_2
 	ifeq	l4 // getstatic
 	aload_0
 	getfield	Field $outer:Lscala/io/Source$LineIterator;
@@ -176,43 +174,41 @@ l3	istore	5
 	goto	l5 // pop
 l4	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 l5	pop
-	iload	5
+	iload_2
 	ifeq	l1 // iconst_0
 	iconst_1
 	goto	l6 // ireturn
 l1	iconst_0
 l6	ireturn
   Labels:
-   	l2 = 71 // iconst_0
-   	l3 = 72 // istore
-   	l4 = 94 // getstatic
-   	l5 = 97 // pop
-   	l1 = 107 // iconst_0
-   	l6 = 108 // ireturn
+   	l2 = 64 // iconst_0
+   	l3 = 65 // istore_2
+   	l4 = 85 // getstatic
+   	l5 = 88 // pop
+   	l1 = 97 // iconst_0
+   	l6 = 98 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      109      0    this       Lscala/io/Source$LineIterator$$anonfun$4;
-   0      109      1    ch       C
-   74      26      5    res       Z
+   0      99      0    this       Lscala/io/Source$LineIterator$$anonfun$4;
+   0      99      1    ch       C
+   66      24      2    res       Z
 
 
 public final java.lang.Object apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
 	invokevirtual	Method apply:(C)Z
-	istore_2
-	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      14      0    this       Lscala/io/Source$LineIterator$$anonfun$4;
-   0      14      1    v1       Ljava/lang/Object;
+   0      12      0    this       Lscala/io/Source$LineIterator$$anonfun$4;
+   0      12      1    v1       Ljava/lang/Object;
 
 
 public scala.io.Source$LineIterator$$anonfun$4(scala.io.Source$LineIterator, char);

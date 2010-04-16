@@ -118,11 +118,14 @@ Asciz	isAssignableFrom;
 Asciz	(Ljava/lang/Class;)Z;
 NameAndType	isAssignableFrom:(Ljava/lang/Class;)Z
 Method	java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
-Asciz	java/lang/System;
-class	java/lang/System
+Asciz	scala/compat/Platform$;
+class	scala/compat/Platform$
+Asciz	Lscala/compat/Platform$;;
+NameAndType	MODULE$:Lscala/compat/Platform$;
+Field	scala/compat/Platform$.MODULE$:Lscala/compat/Platform$;
 Asciz	arraycopy;
 NameAndType	arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
-Method	java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+Method	scala/compat/Platform$.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
 NameAndType	slowcopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
 Method	scala/Array$.slowcopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
 Asciz	srcClass;
@@ -421,10 +424,6 @@ Asciz	Lscala/collection/mutable/ArrayBuilder;;
 Asciz	<T:Ljava/lang/Object;>(Lscala/collection/Seq<[TT;>;Lscala/reflect/ClassManifest<TT;>;)[TT;;
 Asciz	fill;
 Asciz	(ILscala/Function0;Lscala/reflect/ClassManifest;)Ljava/lang/Object;;
-Asciz	newArrayBuilder;
-Asciz	()Lscala/collection/mutable/ArrayBuilder;;
-NameAndType	newArrayBuilder:()Lscala/collection/mutable/ArrayBuilder;
-InterfaceMethod	scala/reflect/ClassManifest.newArrayBuilder:()Lscala/collection/mutable/ArrayBuilder;
 Asciz	scala/Function0;
 class	scala/Function0
 NameAndType	apply:()Ljava/lang/Object;
@@ -817,12 +816,13 @@ public void copy(java.lang.Object, int, java.lang.Object, int, int);
 	aload	6
 	invokevirtual	Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
 	ifeq	l1 // aload_0
+	getstatic	Field scala/compat/Platform$.MODULE$:Lscala/compat/Platform$;
 	aload_1
 	iload_2
 	aload_3
 	iload	4
 	iload	5
-	invokestatic	Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+	invokevirtual	Method scala/compat/Platform$.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
 	goto	l2 // return
 l1	aload_0
 	aload_1
@@ -833,17 +833,17 @@ l1	aload_0
 	invokespecial	Method slowcopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
 l2	return
   Labels:
-   	l1 = 39 // aload_0
-   	l2 = 50 // return
+   	l1 = 42 // aload_0
+   	l2 = 53 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      51      0    this       Lscala/Array$;
-   0      51      1    src       Ljava/lang/Object;
-   0      51      2    srcPos       I
-   0      51      3    dest       Ljava/lang/Object;
-   0      51      4    destPos       I
-   0      51      5    length       I
-   6      45      6    srcClass       Ljava/lang/Class;
+   0      54      0    this       Lscala/Array$;
+   0      54      1    src       Ljava/lang/Object;
+   0      54      2    srcPos       I
+   0      54      3    dest       Ljava/lang/Object;
+   0      54      4    destPos       I
+   0      54      5    length       I
+   6      48      6    srcClass       Ljava/lang/Class;
 
 
 public java.lang.Object empty(scala.reflect.ClassManifest);
@@ -861,7 +861,7 @@ public java.lang.Object empty(scala.reflect.ClassManifest);
    0      8      1    evidence$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   00 64 
+   00 67 
 
 public java.lang.Object apply(scala.collection.Seq, scala.reflect.ClassManifest);
   Signature: (Lscala/collection/Seq;Lscala/reflect/ClassManifest;)Ljava/lang/Object;
@@ -897,7 +897,7 @@ public java.lang.Object apply(scala.collection.Seq, scala.reflect.ClassManifest)
    23      22      4    i$1       Lscala/runtime/IntRef;
 
   Signature: length = 0x2
-   00 FFFFFF88 
+   00 FFFFFF8B 
 
 public boolean[] apply(boolean, scala.collection.Seq);
   Signature: (ZLscala/collection/Seq;)[Z
@@ -938,7 +938,7 @@ public boolean[] apply(boolean, scala.collection.Seq);
    25      22      4    i$2       Lscala/runtime/IntRef;
 
   Signature: length = 0x2
-   00 FFFFFF94 
+   00 FFFFFF97 
 
 public byte[] apply(byte, scala.collection.Seq);
   Signature: (BLscala/collection/Seq;)[B
@@ -979,7 +979,7 @@ public byte[] apply(byte, scala.collection.Seq);
    25      22      4    i$3       Lscala/runtime/IntRef;
 
   Signature: length = 0x2
-   00 FFFFFF9F 
+   00 FFFFFFA2 
 
 public short[] apply(short, scala.collection.Seq);
   Signature: (SLscala/collection/Seq;)[S
@@ -1020,7 +1020,7 @@ public short[] apply(short, scala.collection.Seq);
    25      22      4    i$4       Lscala/runtime/IntRef;
 
   Signature: length = 0x2
-   00 FFFFFFAA 
+   00 FFFFFFAD 
 
 public char[] apply(char, scala.collection.Seq);
   Signature: (CLscala/collection/Seq;)[C
@@ -1061,7 +1061,7 @@ public char[] apply(char, scala.collection.Seq);
    25      22      4    i$5       Lscala/runtime/IntRef;
 
   Signature: length = 0x2
-   00 FFFFFFB5 
+   00 FFFFFFB8 
 
 public int[] apply(int, scala.collection.Seq);
   Signature: (ILscala/collection/Seq;)[I
@@ -1102,7 +1102,7 @@ public int[] apply(int, scala.collection.Seq);
    25      22      4    i$6       Lscala/runtime/IntRef;
 
   Signature: length = 0x2
-   00 FFFFFFBF 
+   00 FFFFFFC2 
 
 public long[] apply(long, scala.collection.Seq);
   Signature: (JLscala/collection/Seq;)[J
@@ -1143,7 +1143,7 @@ public long[] apply(long, scala.collection.Seq);
    27      24      5    i$7       Lscala/runtime/IntRef;
 
   Signature: length = 0x2
-   00 FFFFFFCA 
+   00 FFFFFFCD 
 
 public float[] apply(float, scala.collection.Seq);
   Signature: (FLscala/collection/Seq;)[F
@@ -1184,7 +1184,7 @@ public float[] apply(float, scala.collection.Seq);
    25      22      4    i$8       Lscala/runtime/IntRef;
 
   Signature: length = 0x2
-   00 FFFFFFD5 
+   00 FFFFFFD8 
 
 public double[] apply(double, scala.collection.Seq);
   Signature: (DLscala/collection/Seq;)[D
@@ -1225,7 +1225,7 @@ public double[] apply(double, scala.collection.Seq);
    27      24      5    i$9       Lscala/runtime/IntRef;
 
   Signature: length = 0x2
-   00 FFFFFFE0 
+   00 FFFFFFE3 
 
 public scala.runtime.BoxedUnit[] apply(scala.runtime.BoxedUnit, scala.collection.Seq);
   Signature: (Lscala/runtime/BoxedUnit;Lscala/collection/Seq;)[Lscala/runtime/BoxedUnit;
@@ -1266,7 +1266,7 @@ public scala.runtime.BoxedUnit[] apply(scala.runtime.BoxedUnit, scala.collection
    26      22      4    i$10       Lscala/runtime/IntRef;
 
   Signature: length = 0x2
-   00 FFFFFFED 
+   00 FFFFFFF0 
 
 public java.lang.Object ofDim(int, scala.reflect.ClassManifest);
   Signature: (ILscala/reflect/ClassManifest;)Ljava/lang/Object;
@@ -1284,7 +1284,7 @@ public java.lang.Object ofDim(int, scala.reflect.ClassManifest);
    0      8      2    evidence$3       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   00 FFFFFFF2 
+   00 FFFFFFF5 
 
 public java.lang.Object[] ofDim(int, int, scala.reflect.ClassManifest);
   Signature: (IILscala/reflect/ClassManifest;)[Ljava/lang/Object;
@@ -1318,7 +1318,7 @@ public java.lang.Object[] ofDim(int, int, scala.reflect.ClassManifest);
    9      29      4    arr$1       [Ljava/lang/Object;
 
   Signature: length = 0x2
-   01 13 
+   01 16 
 
 public java.lang.Object[][] ofDim(int, int, int, scala.reflect.ClassManifest);
   Signature: (IIILscala/reflect/ClassManifest;)[[Ljava/lang/Object;
@@ -1350,7 +1350,7 @@ public java.lang.Object[][] ofDim(int, int, int, scala.reflect.ClassManifest);
    0      34      4    evidence$5$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   01 2C 
+   01 2F 
 
 public java.lang.Object[][][] ofDim(int, int, int, int, scala.reflect.ClassManifest);
   Signature: (IIIILscala/reflect/ClassManifest;)[[[Ljava/lang/Object;
@@ -1386,7 +1386,7 @@ public java.lang.Object[][][] ofDim(int, int, int, int, scala.reflect.ClassManif
    0      42      5    evidence$6$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   01 39 
+   01 3C 
 
 public java.lang.Object[][][][] ofDim(int, int, int, int, int, scala.reflect.ClassManifest);
   Signature: (IIIIILscala/reflect/ClassManifest;)[[[[Ljava/lang/Object;
@@ -1426,7 +1426,7 @@ public java.lang.Object[][][][] ofDim(int, int, int, int, int, scala.reflect.Cla
    0      50      6    evidence$7$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   01 47 
+   01 4A 
 
 public java.lang.Object concat(scala.collection.Seq, scala.reflect.ClassManifest);
   Signature: (Lscala/collection/Seq;Lscala/reflect/ClassManifest;)Ljava/lang/Object;
@@ -1467,48 +1467,48 @@ public java.lang.Object concat(scala.collection.Seq, scala.reflect.ClassManifest
    6      59      3    b$1       Lscala/collection/mutable/ArrayBuilder;
 
   Signature: length = 0x2
-   01 7E 
+   01 FFFFFF81 
 
 public java.lang.Object fill(int, scala.Function0, scala.reflect.ClassManifest);
   Signature: (ILscala/Function0;Lscala/reflect/ClassManifest;)Ljava/lang/Object;
   Code:
    Stack=2, Locals=6, Args_size=4
+	aload_0
 	aload_3
-	checkcast	class scala/reflect/ClassManifest
-	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.newArrayBuilder:()Lscala/collection/mutable/ArrayBuilder;
-	astore	5
+	invokevirtual	Method newBuilder:(Lscala/reflect/ClassManifest;)Lscala/collection/mutable/ArrayBuilder;
+	astore	4
 	iconst_0
-	istore	4
-l2	iload	4
+	istore	5
+l2	iload	5
 	iload_1
 	if_icmpge	l1 // aload
-	aload	5
+	aload	4
 	aload_2
 	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
 	pop
-	iload	4
+	iload	5
 	iconst_1
 	iadd
-	istore	4
+	istore	5
 	goto	l2 // iload
-l1	aload	5
+l1	aload	4
 	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.result:()Ljava/lang/Object;
 	areturn
   Labels:
-   	l2 = 14 // iload
-   	l1 = 43 // aload
+   	l2 = 10 // iload
+   	l1 = 39 // aload
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      51      0    this       Lscala/Array$;
-   0      51      1    n       I
-   0      51      2    elem       Lscala/Function0;
-   0      51      3    evidence$9       Lscala/reflect/ClassManifest;
-   14      36      4    i       I
-   11      39      5    b       Lscala/collection/mutable/ArrayBuilder;
+   0      47      0    this       Lscala/Array$;
+   0      47      1    n       I
+   0      47      2    elem       Lscala/Function0;
+   0      47      3    evidence$9       Lscala/reflect/ClassManifest;
+   7      39      4    b       Lscala/collection/mutable/ArrayBuilder;
+   10      36      5    i       I
 
   Signature: length = 0x2
-   01 FFFFFF92 
+   01 FFFFFF91 
 
 public java.lang.Object[] fill(int, int, scala.Function0, scala.reflect.ClassManifest);
   Signature: (IILscala/Function0;Lscala/reflect/ClassManifest;)[Ljava/lang/Object;
@@ -1538,7 +1538,7 @@ public java.lang.Object[] fill(int, int, scala.Function0, scala.reflect.ClassMan
    0      28      4    evidence$10$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   01 FFFFFF9D 
+   01 FFFFFF9C 
 
 public java.lang.Object[][] fill(int, int, int, scala.Function0, scala.reflect.ClassManifest);
   Signature: (IIILscala/Function0;Lscala/reflect/ClassManifest;)[[Ljava/lang/Object;
@@ -1572,7 +1572,7 @@ public java.lang.Object[][] fill(int, int, int, scala.Function0, scala.reflect.C
    0      36      5    evidence$11$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   01 FFFFFFA8 
+   01 FFFFFFA7 
 
 public java.lang.Object[][][] fill(int, int, int, int, scala.Function0, scala.reflect.ClassManifest);
   Signature: (IIIILscala/Function0;Lscala/reflect/ClassManifest;)[[[Ljava/lang/Object;
@@ -1610,7 +1610,7 @@ public java.lang.Object[][][] fill(int, int, int, int, scala.Function0, scala.re
    0      44      6    evidence$12$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   01 FFFFFFB4 
+   01 FFFFFFB3 
 
 public java.lang.Object[][][][] fill(int, int, int, int, int, scala.Function0, scala.reflect.ClassManifest);
   Signature: (IIIIILscala/Function0;Lscala/reflect/ClassManifest;)[[[[Ljava/lang/Object;
@@ -1652,50 +1652,50 @@ public java.lang.Object[][][][] fill(int, int, int, int, int, scala.Function0, s
    0      52      7    evidence$13$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   01 FFFFFFC1 
+   01 FFFFFFC0 
 
 public java.lang.Object tabulate(int, scala.Function1, scala.reflect.ClassManifest);
   Signature: (ILscala/Function1;Lscala/reflect/ClassManifest;)Ljava/lang/Object;
   Code:
    Stack=3, Locals=6, Args_size=4
+	aload_0
 	aload_3
-	checkcast	class scala/reflect/ClassManifest
-	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.newArrayBuilder:()Lscala/collection/mutable/ArrayBuilder;
-	astore	5
+	invokevirtual	Method newBuilder:(Lscala/reflect/ClassManifest;)Lscala/collection/mutable/ArrayBuilder;
+	astore	4
 	iconst_0
-	istore	4
-l2	iload	4
+	istore	5
+l2	iload	5
 	iload_1
 	if_icmpge	l1 // aload
-	aload	5
+	aload	4
 	aload_2
-	iload	4
+	iload	5
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
 	pop
-	iload	4
+	iload	5
 	iconst_1
 	iadd
-	istore	4
+	istore	5
 	goto	l2 // iload
-l1	aload	5
+l1	aload	4
 	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.result:()Ljava/lang/Object;
 	areturn
   Labels:
-   	l2 = 14 // iload
-   	l1 = 48 // aload
+   	l2 = 10 // iload
+   	l1 = 44 // aload
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      56      0    this       Lscala/Array$;
-   0      56      1    n       I
-   0      56      2    f       Lscala/Function1;
-   0      56      3    evidence$14       Lscala/reflect/ClassManifest;
-   14      41      4    i       I
-   11      44      5    b       Lscala/collection/mutable/ArrayBuilder;
+   0      52      0    this       Lscala/Array$;
+   0      52      1    n       I
+   0      52      2    f       Lscala/Function1;
+   0      52      3    evidence$14       Lscala/reflect/ClassManifest;
+   7      44      4    b       Lscala/collection/mutable/ArrayBuilder;
+   10      41      5    i       I
 
   Signature: length = 0x2
-   01 FFFFFFCE 
+   01 FFFFFFCD 
 
 public java.lang.Object[] tabulate(int, int, scala.Function2, scala.reflect.ClassManifest);
   Signature: (IILscala/Function2;Lscala/reflect/ClassManifest;)[Ljava/lang/Object;
@@ -1725,7 +1725,7 @@ public java.lang.Object[] tabulate(int, int, scala.Function2, scala.reflect.Clas
    0      28      4    evidence$15$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   01 FFFFFFD9 
+   01 FFFFFFD8 
 
 public java.lang.Object[][] tabulate(int, int, int, scala.Function3, scala.reflect.ClassManifest);
   Signature: (IIILscala/Function3;Lscala/reflect/ClassManifest;)[[Ljava/lang/Object;
@@ -1759,7 +1759,7 @@ public java.lang.Object[][] tabulate(int, int, int, scala.Function3, scala.refle
    0      36      5    evidence$16$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   01 FFFFFFE5 
+   01 FFFFFFE4 
 
 public java.lang.Object[][][] tabulate(int, int, int, int, scala.Function4, scala.reflect.ClassManifest);
   Signature: (IIIILscala/Function4;Lscala/reflect/ClassManifest;)[[[Ljava/lang/Object;
@@ -1797,7 +1797,7 @@ public java.lang.Object[][][] tabulate(int, int, int, int, scala.Function4, scal
    0      44      6    evidence$17$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   01 FFFFFFF2 
+   01 FFFFFFF1 
 
 public java.lang.Object[][][][] tabulate(int, int, int, int, int, scala.Function5, scala.reflect.ClassManifest);
   Signature: (IIIIILscala/Function5;Lscala/reflect/ClassManifest;)[[[[Ljava/lang/Object;
@@ -1839,7 +1839,7 @@ public java.lang.Object[][][][] tabulate(int, int, int, int, int, scala.Function
    0      52      7    evidence$18$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   02 00 
+   01 FFFFFFFF 
 
 public int[] range(int, int);
   Signature: (II)[I
@@ -1862,22 +1862,20 @@ public int[] range(int, int);
 public int[] range(int, int, int);
   Signature: (III)[I
   Code:
-   Stack=3, Locals=7, Args_size=4
+   Stack=3, Locals=6, Args_size=4
 	iload_3
 	iconst_0
-	if_icmpne	l1 // getstatic
+	if_icmpne	l1 // aload_0
 	new	class java/lang/IllegalArgumentException
 	dup
 	ldc_w	String zero step
 	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
 	athrow
-l1	getstatic	Field scala/reflect/Manifest$.MODULE$:Lscala/reflect/Manifest$;
+l1	aload_0
+	getstatic	Field scala/reflect/Manifest$.MODULE$:Lscala/reflect/Manifest$;
 	invokevirtual	Method scala/reflect/Manifest$.Int:()Lscala/reflect/AnyValManifest;
+	invokevirtual	Method newBuilder:(Lscala/reflect/ClassManifest;)Lscala/collection/mutable/ArrayBuilder;
 	astore	4
-	aload	4
-	checkcast	class scala/reflect/ClassManifest
-	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.newArrayBuilder:()Lscala/collection/mutable/ArrayBuilder;
-	astore	6
 	iload_1
 	istore	5
 l7	iload_3
@@ -1897,7 +1895,7 @@ l2	iload	5
 	goto	l4 // ifeq
 l5	iconst_0
 l4	ifeq	l6 // aload
-	aload	6
+	aload	4
 	iload	5
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
@@ -1907,85 +1905,85 @@ l4	ifeq	l6 // aload
 	iadd
 	istore	5
 	goto	l7 // iload_3
-l6	aload	6
+l6	aload	4
 	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.result:()Ljava/lang/Object;
 	checkcast	class "[I"
 	areturn
   Labels:
-   	l1 = 16 // getstatic
-   	l7 = 39 // iload_3
-   	l3 = 54 // iconst_0
-   	l2 = 58 // iload
-   	l5 = 68 // iconst_0
-   	l4 = 69 // ifeq
-   	l6 = 94 // aload
+   	l1 = 16 // aload_0
+   	l7 = 31 // iload_3
+   	l3 = 46 // iconst_0
+   	l2 = 50 // iload
+   	l5 = 60 // iconst_0
+   	l4 = 61 // ifeq
+   	l6 = 86 // aload
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      105      0    this       Lscala/Array$;
-   0      105      1    start       I
-   0      105      2    end       I
-   0      105      3    step       I
-   39      65      5    i       I
-   36      68      6    b       Lscala/collection/mutable/ArrayBuilder;
+   0      97      0    this       Lscala/Array$;
+   0      97      1    start       I
+   0      97      2    end       I
+   0      97      3    step       I
+   28      68      4    b       Lscala/collection/mutable/ArrayBuilder;
+   31      65      5    i       I
 
 
 public java.lang.Object iterate(java.lang.Object, int, scala.Function1, scala.reflect.ClassManifest);
   Signature: (Ljava/lang/Object;ILscala/Function1;Lscala/reflect/ClassManifest;)Ljava/lang/Object;
   Code:
    Stack=2, Locals=8, Args_size=5
+	aload_0
 	aload	4
-	checkcast	class scala/reflect/ClassManifest
-	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.newArrayBuilder:()Lscala/collection/mutable/ArrayBuilder;
-	astore	7
-	aload_1
+	invokevirtual	Method newBuilder:(Lscala/reflect/ClassManifest;)Lscala/collection/mutable/ArrayBuilder;
 	astore	5
+	aload_1
+	astore	6
 	iconst_0
-	istore	6
-l2	iload	6
+	istore	7
+l2	iload	7
 	iload_2
 	if_icmpge	l1 // aload
-	aload	7
 	aload	5
+	aload	6
 	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/Builder;
 	pop
 	aload_3
-	aload	5
+	aload	6
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
-	astore	5
-	iload	6
+	astore	6
+	iload	7
 	iconst_1
 	iadd
-	istore	6
+	istore	7
 	goto	l2 // iload
-l1	aload	7
+l1	aload	5
 	invokeinterface	InterfaceMethod scala/collection/mutable/Builder.result:()Ljava/lang/Object;
 	areturn
   Labels:
-   	l2 = 18 // iload
-   	l1 = 53 // aload
+   	l2 = 14 // iload
+   	l1 = 49 // aload
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      61      0    this       Lscala/Array$;
-   0      61      1    start       Ljava/lang/Object;
-   0      61      2    len       I
-   0      61      3    f       Lscala/Function1;
-   0      61      4    evidence$19       Lscala/reflect/ClassManifest;
-   15      45      5    acc       Ljava/lang/Object;
-   18      42      6    i       I
-   12      48      7    b       Lscala/collection/mutable/ArrayBuilder;
+   0      57      0    this       Lscala/Array$;
+   0      57      1    start       Ljava/lang/Object;
+   0      57      2    len       I
+   0      57      3    f       Lscala/Function1;
+   0      57      4    evidence$19       Lscala/reflect/ClassManifest;
+   8      48      5    b       Lscala/collection/mutable/ArrayBuilder;
+   11      45      6    acc       Ljava/lang/Object;
+   14      42      7    i       I
 
   Signature: length = 0x2
-   02 1F 
+   02 1E 
 
 public scala.Option unapplySeq(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/Option;
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=4, Locals=3, Args_size=2
 	aload_1
 	dup
-	pop
+	astore_2
 	ifnull	l1 // getstatic
-	aload_1
+	aload_2
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // new
@@ -2009,7 +2007,7 @@ l3	areturn
    0      40      1    x       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 38 
+   02 37 
 
 public java.lang.Object make(int, java.lang.Object, scala.reflect.ClassManifest);
   Signature: (ILjava/lang/Object;Lscala/reflect/ClassManifest;)Ljava/lang/Object;
@@ -2049,7 +2047,7 @@ l1	aload	4
    12      28      5    i       I
 
   Signature: length = 0x2
-   02 3C 
+   02 3B 
   Deprecated: true
 
 public java.lang.Object fromFunction(scala.Function1, int, scala.reflect.ClassManifest);
@@ -2059,26 +2057,26 @@ public java.lang.Object fromFunction(scala.Function1, int, scala.reflect.ClassMa
 	aload_3
 	iload_2
 	invokeinterface	InterfaceMethod scala/reflect/ClassManifest.newArray:(I)Ljava/lang/Object;
-	astore	5
+	astore	4
 	iconst_0
-	istore	4
-l2	iload	4
+	istore	5
+l2	iload	5
 	iload_2
 	if_icmpge	l1 // aload
 	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
-	aload	5
-	iload	4
+	aload	4
+	iload	5
 	aload_1
-	iload	4
+	iload	5
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	invokevirtual	Method scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
-	iload	4
+	iload	5
 	iconst_1
 	iadd
-	istore	4
+	istore	5
 	goto	l2 // iload
-l1	aload	5
+l1	aload	4
 	areturn
   Labels:
    	l2 = 12 // iload
@@ -2089,11 +2087,11 @@ l1	aload	5
    0      51      1    f       Lscala/Function1;
    0      51      2    n       I
    0      51      3    evidence$21       Lscala/reflect/ClassManifest;
-   12      38      4    i       I
-   9      41      5    a       Ljava/lang/Object;
+   9      41      4    a       Ljava/lang/Object;
+   12      38      5    i       I
 
   Signature: length = 0x2
-   02 41 
+   02 40 
   Deprecated: true
 
 public java.lang.Object[] fromFunction(scala.Function2, int, int, scala.reflect.ClassManifest);
@@ -2124,7 +2122,7 @@ public java.lang.Object[] fromFunction(scala.Function2, int, int, scala.reflect.
    0      28      4    evidence$22$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   02 4D 
+   02 4C 
   Deprecated: true
 
 public java.lang.Object[][] fromFunction(scala.Function3, int, int, int, scala.reflect.ClassManifest);
@@ -2159,7 +2157,7 @@ public java.lang.Object[][] fromFunction(scala.Function3, int, int, int, scala.r
    0      36      5    evidence$23$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   02 58 
+   02 57 
   Deprecated: true
 
 public java.lang.Object[][][] fromFunction(scala.Function4, int, int, int, int, scala.reflect.ClassManifest);
@@ -2198,7 +2196,7 @@ public java.lang.Object[][][] fromFunction(scala.Function4, int, int, int, int, 
    0      44      6    evidence$24$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   02 64 
+   02 63 
   Deprecated: true
 
 public java.lang.Object[][][][] fromFunction(scala.Function5, int, int, int, int, int, scala.reflect.ClassManifest);
@@ -2241,7 +2239,7 @@ public java.lang.Object[][][][] fromFunction(scala.Function5, int, int, int, int
    0      52      7    evidence$25$1       Lscala/reflect/ClassManifest;
 
   Signature: length = 0x2
-   02 71 
+   02 70 
   Deprecated: true
 
 private scala.Array$();

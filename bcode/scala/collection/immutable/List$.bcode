@@ -4,7 +4,7 @@ public final class scala.collection.immutable.List$ extends scala.collection.gen
   Scala: length = 0x
    
   Signature: length = 0x2
-   01 48 
+   01 4C 
   InnerClass: 
    public final $anonfun$break$1=class scala/collection/immutable/List$$anonfun$break$1 of class scala/collection/immutable/List
    public final $anonfun$lefts$1=class scala/collection/immutable/List$$anonfun$lefts$1 of class scala/collection/immutable/List
@@ -118,8 +118,8 @@ Asciz	Z;
 Asciz	down;
 Asciz	b;
 Asciz	Lscala/collection/mutable/ListBuffer;;
-Asciz	next;
 Asciz	i;
+Asciz	next;
 Asciz	(IILscala/Function1<Ljava/lang/Integer;Ljava/lang/Integer;>;)Lscala/collection/immutable/List<Ljava/lang/Integer;>;;
 Asciz	Deprecated;
 Asciz	make;
@@ -318,6 +318,8 @@ Asciz	transpose;
 Asciz	scala/collection/immutable/List$$anonfun$transpose$1;
 class	scala/collection/immutable/List$$anonfun$transpose$1
 Method	scala/collection/immutable/List$$anonfun$transpose$1."<init>":()V
+NameAndType	canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
+Method	scala/collection/immutable/List$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
 Asciz	map;
 Asciz	(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
 NameAndType	map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
@@ -335,6 +337,8 @@ Asciz	elems;
 Asciz	()Lscala/collection/Traversable;;
 NameAndType	empty:()Lscala/collection/immutable/List;
 Method	scala/collection/immutable/List$.empty:()Lscala/collection/immutable/List;
+NameAndType	mapConserve:(Lscala/collection/immutable/List;Lscala/Function1;)Lscala/collection/immutable/List;
+Method	scala/collection/immutable/List$.mapConserve:(Lscala/collection/immutable/List;Lscala/Function1;)Lscala/collection/immutable/List;
 Asciz	prependToList;
 NameAndType	prependToList:(Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
 Method	scala/collection/mutable/ListBuffer.prependToList:(Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
@@ -462,33 +466,33 @@ l4	istore	5
 	invokespecial	Method scala/collection/mutable/ListBuffer."<init>":()V
 	astore	6
 	iload_1
-	istore	8
+	istore	7
 l9	iload	4
 	ifeq	l5 // iload
-	iload	8
+	iload	7
 	iload_2
 	if_icmpge	l6 // aload
 l5	iload	5
 	ifeq	l7 // aload
-	iload	8
+	iload	7
 	iload_2
 	if_icmpgt	l7 // aload
 l6	aload	6
 	invokevirtual	Method scala/collection/mutable/ListBuffer.toList:()Lscala/collection/immutable/List;
 	areturn
 l7	aload	6
-	iload	8
+	iload	7
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/ListBuffer.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ListBuffer;
 	pop
 	aload_3
-	iload	8
+	iload	7
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-	istore	7
-	iload	8
+	istore	8
 	iload	7
+	iload	8
 	if_icmpne	l8 // iload
 	new	class java/lang/IllegalArgumentException
 	dup
@@ -497,14 +501,14 @@ l7	aload	6
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc	String the step function did not make any progress on 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	iload	8
+	iload	7
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
 	athrow
-l8	iload	7
-	istore	8
+l8	iload	8
+	istore	7
 	goto	l9 // iload
   Labels:
    	l1 = 21 // iconst_0
@@ -528,9 +532,9 @@ l8	iload	7
    88      72      5    down       Z
    57      30      6    b       Lscala/collection/mutable/ListBuffer;
    88      72      6    b       Lscala/collection/mutable/ListBuffer;
-   115      42      7    next       I
-   60      27      8    i       I
-   88      72      8    i       I
+   60      27      7    i       I
+   88      72      7    i       I
+   115      42      8    next       I
 
   Signature: length = 0x2
    00 66 
@@ -1214,7 +1218,7 @@ l3	aload	4
 public scala.collection.immutable.List transpose(scala.collection.immutable.List);
   Signature: (Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
   Code:
-   Stack=6, Locals=4, Args_size=2
+   Stack=4, Locals=4, Args_size=2
 	new	class scala/collection/mutable/ListBuffer
 	dup
 	invokespecial	Method scala/collection/mutable/ListBuffer."<init>":()V
@@ -1234,10 +1238,8 @@ l1	aload_2
 	new	class scala/collection/immutable/List$$anonfun$transpose$1
 	dup
 	invokespecial	Method scala/collection/immutable/List$$anonfun$transpose$1."<init>":()V
-	new	class scala/collection/generic/TraversableFactory$GenericCanBuildFrom
-	dup
 	aload_0
-	invokespecial	Method scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
+	invokevirtual	Method canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 	invokevirtual	Method scala/collection/mutable/ListBuffer.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ListBuffer;
 	pop
@@ -1245,10 +1247,8 @@ l1	aload_2
 	new	class scala/collection/immutable/List$$anonfun$transpose$2
 	dup
 	invokespecial	Method scala/collection/immutable/List$$anonfun$transpose$2."<init>":()V
-	new	class scala/collection/generic/TraversableFactory$GenericCanBuildFrom
-	dup
 	aload_0
-	invokespecial	Method scala/collection/generic/TraversableFactory$GenericCanBuildFrom."<init>":(Lscala/collection/generic/TraversableFactory;)V
+	invokevirtual	Method canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
 	astore_3
@@ -1258,15 +1258,15 @@ l1	aload_2
    	l1 = 32 // aload_2
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      86      0    this       Lscala/collection/immutable/List$;
-   0      86      1    xss       Lscala/collection/immutable/List;
+   0      78      0    this       Lscala/collection/immutable/List$;
+   0      78      1    xss       Lscala/collection/immutable/List;
    8      23      2    buf       Lscala/collection/mutable/ListBuffer;
-   32      54      2    buf       Lscala/collection/mutable/ListBuffer;
+   32      46      2    buf       Lscala/collection/mutable/ListBuffer;
    10      21      3    yss       Lscala/collection/immutable/List;
-   32      54      3    yss       Lscala/collection/immutable/List;
+   32      46      3    yss       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
-   01 35 
+   01 37 
   Deprecated: true
 
 public scala.collection.Traversable apply(scala.collection.Seq);
@@ -1296,7 +1296,7 @@ public scala.collection.Traversable empty();
 private final scala.collection.immutable.List loop$4(scala.collection.immutable.List, scala.collection.immutable.List, scala.Function1);
   Signature: (Lscala/collection/immutable/List;Lscala/collection/immutable/List;Lscala/Function1;)Lscala/collection/immutable/List;
   Code:
-   Stack=4, Locals=10, Args_size=4
+   Stack=3, Locals=11, Args_size=4
 l4	aload_1
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.isEmpty:()Z
 	ifeq	l1 // aload_1
@@ -1304,76 +1304,75 @@ l4	aload_1
 	goto	l2 // areturn
 l1	aload_1
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.head:()Ljava/lang/Object;
-	astore	4
+	astore	5
 	aload_3
-	aload	4
+	aload	5
 	invokeinterface	InterfaceMethod scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 	astore	6
 	aload	6
-	aload	4
-	if_acmpne	l3 // aload_1
+	aload	5
+	if_acmpne	l3 // aload
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
 	astore_1
 	goto	l4 // aload_1
-l3	aload_1
+l3	aload	6
+	astore	8
+	aload_0
+	aload_1
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
-	astore	5
-	aload_0
-	aload	5
-	aload	5
 	aload_3
-	invokespecial	Method loop$4:(Lscala/collection/immutable/List;Lscala/collection/immutable/List;Lscala/Function1;)Lscala/collection/immutable/List;
-	aload	6
+	invokevirtual	Method mapConserve:(Lscala/collection/immutable/List;Lscala/Function1;)Lscala/collection/immutable/List;
+	aload	8
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
-	astore	9
+	astore	7
 	aload_2
 	aload_1
 	if_acmpne	l5 // new
-	aload	9
+	aload	7
 	goto	l2 // areturn
 l5	new	class scala/collection/mutable/ListBuffer
 	dup
 	invokespecial	Method scala/collection/mutable/ListBuffer."<init>":()V
-	astore	8
+	astore	9
 	aload_2
-	astore	7
-l7	aload	7
+	astore	10
+l7	aload	10
 	aload_1
 	if_acmpeq	l6 // aload
-	aload	8
-	aload	7
+	aload	9
+	aload	10
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.head:()Ljava/lang/Object;
 	invokevirtual	Method scala/collection/mutable/ListBuffer.$plus$eq:(Ljava/lang/Object;)Lscala/collection/mutable/ListBuffer;
 	pop
-	aload	7
+	aload	10
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
-	astore	7
+	astore	10
 	goto	l7 // aload
-l6	aload	8
-	aload	9
+l6	aload	9
+	aload	7
 	invokevirtual	Method scala/collection/mutable/ListBuffer.prependToList:(Lscala/collection/immutable/List;)Lscala/collection/immutable/List;
 l2	areturn
   Labels:
    	l4 = 0 // aload_1
    	l1 = 13 // aload_1
-   	l3 = 51 // aload_1
-   	l5 = 88 // new
-   	l7 = 100 // aload
-   	l6 = 134 // aload
-   	l2 = 141 // areturn
+   	l3 = 51 // aload
+   	l5 = 86 // new
+   	l7 = 98 // aload
+   	l6 = 132 // aload
+   	l2 = 139 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      142      0    this       Lscala/collection/immutable/List$;
-   0      142      1    ys       Lscala/collection/immutable/List;
-   21      120      4    head0       Ljava/lang/Object;
-   31      110      6    head1       Ljava/lang/Object;
-   100      41      7    xc       Lscala/collection/immutable/List;
-   97      44      8    b       Lscala/collection/mutable/ListBuffer;
-   78      63      9    ys1       Lscala/collection/immutable/List;
+   0      140      0    this       Lscala/collection/immutable/List$;
+   0      140      1    ys       Lscala/collection/immutable/List;
+   21      118      5    head0       Ljava/lang/Object;
+   31      108      6    head1       Ljava/lang/Object;
+   76      63      7    ys1       Lscala/collection/immutable/List;
+   95      44      9    b       Lscala/collection/mutable/ListBuffer;
+   98      41      10    xc       Lscala/collection/immutable/List;
 
 
 private scala.collection.immutable.List$();

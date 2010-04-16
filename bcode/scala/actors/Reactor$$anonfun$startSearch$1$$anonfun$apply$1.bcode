@@ -36,9 +36,10 @@ NameAndType	$outer:Lscala/actors/Reactor$$anonfun$startSearch$1;
 Field	scala/actors/Reactor$$anonfun$startSearch$1$$anonfun$apply$1.$outer:Lscala/actors/Reactor$$anonfun$startSearch$1;
 Asciz	scala/actors/Reactor$$anonfun$startSearch$1;
 class	scala/actors/Reactor$$anonfun$startSearch$1
-Asciz	Lscala/actors/Reactor;;
-NameAndType	$outer:Lscala/actors/Reactor;
-Field	scala/actors/Reactor$$anonfun$startSearch$1.$outer:Lscala/actors/Reactor;
+Asciz	scala$actors$Reactor$$anonfun$$$outer;
+Asciz	()Lscala/actors/Reactor;;
+NameAndType	scala$actors$Reactor$$anonfun$$$outer:()Lscala/actors/Reactor;
+Method	scala/actors/Reactor$$anonfun$startSearch$1.scala$actors$Reactor$$anonfun$$$outer:()Lscala/actors/Reactor;
 Asciz	msg$1;
 Asciz	Ljava/lang/Object;;
 NameAndType	msg$1:Ljava/lang/Object;
@@ -51,6 +52,12 @@ Asciz	append;
 Asciz	(Ljava/lang/Object;Lscala/actors/OutputChannel;)V;
 NameAndType	append:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
 Method	scala/actors/MQueue.append:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
+Asciz	scala/runtime/BoxedUnit;
+class	scala/runtime/BoxedUnit
+Asciz	UNIT;
+Asciz	Lscala/runtime/BoxedUnit;;
+NameAndType	UNIT:Lscala/runtime/BoxedUnit;
+Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	handler$1;
 Asciz	Lscala/PartialFunction;;
 NameAndType	handler$1:Lscala/PartialFunction;
@@ -69,12 +76,6 @@ Asciz	LocalVariableTable;
 Asciz	()Ljava/lang/Object;;
 NameAndType	apply:()V
 Method	scala/actors/Reactor$$anonfun$startSearch$1$$anonfun$apply$1.apply:()V
-Asciz	scala/runtime/BoxedUnit;
-class	scala/runtime/BoxedUnit
-Asciz	UNIT;
-Asciz	Lscala/runtime/BoxedUnit;;
-NameAndType	UNIT:Lscala/runtime/BoxedUnit;
-Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	(Lscala/actors/Reactor$$anonfun$startSearch$1;)V;
 Asciz	java/lang/NullPointerException;
 class	java/lang/NullPointerException
@@ -96,7 +97,7 @@ class	java/io/Serializable
 public static final long serialVersionUID;
   Signature: J
 
-public final scala.actors.Reactor$$anonfun$startSearch$1 $outer;
+private final scala.actors.Reactor$$anonfun$startSearch$1 $outer;
   Signature: Lscala/actors/Reactor$$anonfun$startSearch$1;
 
 public static {};
@@ -111,21 +112,19 @@ public static {};
 public final void apply();
   Signature: ()V
   Code:
-   Stack=4, Locals=5, Args_size=1
+   Stack=4, Locals=3, Args_size=1
 	new	class scala/actors/MQueue
 	dup
 	ldc	String Start
 	invokespecial	Method scala/actors/MQueue."<init>":(Ljava/lang/String;)V
-	astore_3
+	astore_1
 	aload_0
 	getfield	Field $outer:Lscala/actors/Reactor$$anonfun$startSearch$1;
-	astore_1
-	aload_1
-	getfield	Field scala/actors/Reactor$$anonfun$startSearch$1.$outer:Lscala/actors/Reactor;
+	invokevirtual	Method scala/actors/Reactor$$anonfun$startSearch$1.scala$actors$Reactor$$anonfun$$$outer:()Lscala/actors/Reactor;
 	dup
-	astore	4
+	astore_2
 	monitorenter
-	aload_3
+	aload_1
 	aload_0
 	getfield	Field $outer:Lscala/actors/Reactor$$anonfun$startSearch$1;
 	getfield	Field scala/actors/Reactor$$anonfun$startSearch$1.msg$1:Ljava/lang/Object;
@@ -133,32 +132,32 @@ public final void apply();
 	getfield	Field $outer:Lscala/actors/Reactor$$anonfun$startSearch$1;
 	getfield	Field scala/actors/Reactor$$anonfun$startSearch$1.replyTo$1:Lscala/actors/OutputChannel;
 	invokevirtual	Method scala/actors/MQueue.append:(Ljava/lang/Object;Lscala/actors/OutputChannel;)V
-	aload	4
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	pop
+	aload_2
 	monitorexit
 	aload_0
 	getfield	Field $outer:Lscala/actors/Reactor$$anonfun$startSearch$1;
-	astore_2
-	aload_2
-	getfield	Field scala/actors/Reactor$$anonfun$startSearch$1.$outer:Lscala/actors/Reactor;
-	aload_3
+	invokevirtual	Method scala/actors/Reactor$$anonfun$startSearch$1.scala$actors$Reactor$$anonfun$$$outer:()Lscala/actors/Reactor;
+	aload_1
 	aload_0
 	getfield	Field $outer:Lscala/actors/Reactor$$anonfun$startSearch$1;
 	getfield	Field scala/actors/Reactor$$anonfun$startSearch$1.handler$1:Lscala/PartialFunction;
 	iconst_1
 	invokeinterface	InterfaceMethod scala/actors/Reactor.searchMailbox:(Lscala/actors/MQueue;Lscala/PartialFunction;Z)V
 	return
-	aload	4
+	aload_2
 	monitorexit
 	athrow
   Labels:
   Exception table:
    from   to  target type
-    23    44    68   any
+    20    44    66   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      72      0    this       Lscala/actors/Reactor$$anonfun$startSearch$1$$anonfun$apply$1;
-   10      57      3    startMbox       Lscala/actors/MQueue;
-   68      4      3    startMbox       Lscala/actors/MQueue;
+   0      69      0    this       Lscala/actors/Reactor$$anonfun$startSearch$1$$anonfun$apply$1;
+   10      55      1    startMbox       Lscala/actors/MQueue;
+   66      3      1    startMbox       Lscala/actors/MQueue;
 
 
 public final java.lang.Object apply();
@@ -195,7 +194,7 @@ l1	aload_0
    0      22      1    $outer       Lscala/actors/Reactor$$anonfun$startSearch$1;
 
   Signature: length = 0x2
-   00 4B 
+   00 4C 
 
 }
 

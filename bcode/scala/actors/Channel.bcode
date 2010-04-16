@@ -2,7 +2,7 @@ Compiled from "Channel.scala"
 public class scala.actors.Channel extends java.lang.Object implements scala.actors.InputChannel,scala.actors.OutputChannel,scala.ScalaObject
   SourceFile: "Channel.scala"
   Signature: length = 0x2
-   00 FFFFFF89 
+   00 FFFFFF8D 
   ScalaSig: length = 0x306
    05 00 7D 06 04 01 02 00 07 02 07 43 68 61 6E 6E
    65 6C 0A 02 03 04 01 06 61 63 74 6F 72 73 0A 01
@@ -134,6 +134,7 @@ NameAndType	receive:(Lscala/PartialFunction;)Ljava/lang/Object;
 InterfaceMethod	scala/actors/Actor.receive:(Lscala/PartialFunction;)Ljava/lang/Object;
 Asciz	f$1;
 Asciz	Lscala/PartialFunction;;
+Asciz	C$1;
 Asciz	recvActor;
 Asciz	<R:Ljava/lang/Object;>(Lscala/PartialFunction<TMsg;TR;>;)TR;;
 Asciz	$qmark;
@@ -155,6 +156,7 @@ InterfaceMethod	scala/actors/Actor.receiveWithin:(JLscala/PartialFunction;)Ljava
 Asciz	msec;
 Asciz	J;
 Asciz	f$2;
+Asciz	C$2;
 Asciz	<R:Ljava/lang/Object;>(JLscala/PartialFunction<Ljava/lang/Object;TR;>;)TR;;
 Asciz	react;
 Asciz	(Lscala/PartialFunction;)Lscala/runtime/Nothing$;;
@@ -164,6 +166,7 @@ Method	scala/actors/Channel$$anonfun$react$1."<init>":(Lscala/actors/Channel;Lsc
 NameAndType	react:(Lscala/PartialFunction;)Lscala/runtime/Nothing$;
 InterfaceMethod	scala/actors/Actor.react:(Lscala/PartialFunction;)Lscala/runtime/Nothing$;
 Asciz	f$3;
+Asciz	C$3;
 Asciz	(Lscala/PartialFunction<TMsg;Ljava/lang/Object;>;)Lscala/runtime/Nothing$;;
 Asciz	reactWithin;
 Asciz	(JLscala/PartialFunction;)Lscala/runtime/Nothing$;;
@@ -173,6 +176,7 @@ Method	scala/actors/Channel$$anonfun$reactWithin$1."<init>":(Lscala/actors/Chann
 NameAndType	reactWithin:(JLscala/PartialFunction;)Lscala/runtime/Nothing$;
 InterfaceMethod	scala/actors/Actor.reactWithin:(JLscala/PartialFunction;)Lscala/runtime/Nothing$;
 Asciz	f$4;
+Asciz	C$4;
 Asciz	(JLscala/PartialFunction<Ljava/lang/Object;Ljava/lang/Object;>;)Lscala/runtime/Nothing$;;
 Asciz	$bang$qmark;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
@@ -314,28 +318,31 @@ public void forward(java.lang.Object);
 public java.lang.Object receive(scala.PartialFunction);
   Signature: (Lscala/PartialFunction;)Ljava/lang/Object;
   Code:
-   Stack=6, Locals=3, Args_size=2
+   Stack=6, Locals=4, Args_size=2
+	aload_0
+	astore_2
 	aload_0
 	invokevirtual	Method receiver:()Lscala/actors/Actor;
-	astore_2
-	aload_2
+	astore_3
+	aload_3
 	new	class scala/actors/Channel$$anonfun$receive$1
 	dup
 	aload_0
 	aload_1
-	aload_0
+	aload_2
 	invokespecial	Method scala/actors/Channel$$anonfun$receive$1."<init>":(Lscala/actors/Channel;Lscala/PartialFunction;Lscala/actors/Channel;)V
 	invokeinterface	InterfaceMethod scala/actors/Actor.receive:(Lscala/PartialFunction;)Ljava/lang/Object;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      22      0    this       Lscala/actors/Channel;
-   0      22      1    f$1       Lscala/PartialFunction;
-   5      16      2    recvActor       Lscala/actors/Actor;
+   0      24      0    this       Lscala/actors/Channel;
+   0      24      1    f$1       Lscala/PartialFunction;
+   2      21      2    C$1       Lscala/actors/Channel;
+   7      16      3    recvActor       Lscala/actors/Actor;
 
   Signature: length = 0x2
-   00 48 
+   00 49 
 
 public java.lang.Object $qmark();
   Signature: ()Ljava/lang/Object;
@@ -350,86 +357,95 @@ public java.lang.Object $qmark();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 51 
+   00 52 
 
 public java.lang.Object receiveWithin(long, scala.PartialFunction);
   Signature: (JLscala/PartialFunction;)Ljava/lang/Object;
   Code:
-   Stack=8, Locals=5, Args_size=3
+   Stack=8, Locals=6, Args_size=3
+	aload_0
+	astore	4
 	aload_0
 	invokevirtual	Method receiver:()Lscala/actors/Actor;
-	astore	4
-	aload	4
+	astore	5
+	aload	5
 	lload_1
 	new	class scala/actors/Channel$$anonfun$receiveWithin$1
 	dup
 	aload_0
 	aload_3
-	aload_0
+	aload	4
 	invokespecial	Method scala/actors/Channel$$anonfun$receiveWithin$1."<init>":(Lscala/actors/Channel;Lscala/PartialFunction;Lscala/actors/Channel;)V
 	invokeinterface	InterfaceMethod scala/actors/Actor.receiveWithin:(JLscala/PartialFunction;)Ljava/lang/Object;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      25      0    this       Lscala/actors/Channel;
-   0      25      1    msec       J
-   0      25      3    f$2       Lscala/PartialFunction;
-   6      18      4    recvActor       Lscala/actors/Actor;
+   0      29      0    this       Lscala/actors/Channel;
+   0      29      1    msec       J
+   0      29      3    f$2       Lscala/PartialFunction;
+   3      25      4    C$2       Lscala/actors/Channel;
+   9      19      5    recvActor       Lscala/actors/Actor;
 
   Signature: length = 0x2
-   00 5C 
+   00 5E 
 
 public scala.runtime.Nothing$ react(scala.PartialFunction);
   Signature: (Lscala/PartialFunction;)Lscala/runtime/Nothing$;
   Code:
-   Stack=6, Locals=2, Args_size=2
+   Stack=6, Locals=3, Args_size=2
+	aload_0
+	astore_2
 	aload_0
 	invokevirtual	Method receiver:()Lscala/actors/Actor;
 	new	class scala/actors/Channel$$anonfun$react$1
 	dup
 	aload_0
 	aload_1
-	aload_0
+	aload_2
 	invokespecial	Method scala/actors/Channel$$anonfun$react$1."<init>":(Lscala/actors/Channel;Lscala/PartialFunction;Lscala/actors/Channel;)V
 	invokeinterface	InterfaceMethod scala/actors/Actor.react:(Lscala/PartialFunction;)Lscala/runtime/Nothing$;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      20      0    this       Lscala/actors/Channel;
-   0      20      1    f$3       Lscala/PartialFunction;
+   0      22      0    this       Lscala/actors/Channel;
+   0      22      1    f$3       Lscala/PartialFunction;
+   2      19      2    C$3       Lscala/actors/Channel;
 
   Signature: length = 0x2
-   00 65 
+   00 68 
 
 public scala.runtime.Nothing$ reactWithin(long, scala.PartialFunction);
   Signature: (JLscala/PartialFunction;)Lscala/runtime/Nothing$;
   Code:
-   Stack=8, Locals=5, Args_size=3
+   Stack=8, Locals=6, Args_size=3
+	aload_0
+	astore	4
 	aload_0
 	invokevirtual	Method receiver:()Lscala/actors/Actor;
-	astore	4
-	aload	4
+	astore	5
+	aload	5
 	lload_1
 	new	class scala/actors/Channel$$anonfun$reactWithin$1
 	dup
 	aload_0
 	aload_3
-	aload_0
+	aload	4
 	invokespecial	Method scala/actors/Channel$$anonfun$reactWithin$1."<init>":(Lscala/actors/Channel;Lscala/PartialFunction;Lscala/actors/Channel;)V
 	invokeinterface	InterfaceMethod scala/actors/Actor.reactWithin:(JLscala/PartialFunction;)Lscala/runtime/Nothing$;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      25      0    this       Lscala/actors/Channel;
-   0      25      1    msec       J
-   0      25      3    f$4       Lscala/PartialFunction;
-   6      18      4    recvActor       Lscala/actors/Actor;
+   0      29      0    this       Lscala/actors/Channel;
+   0      29      1    msec       J
+   0      29      3    f$4       Lscala/PartialFunction;
+   3      25      4    C$4       Lscala/actors/Channel;
+   9      19      5    recvActor       Lscala/actors/Actor;
 
   Signature: length = 0x2
-   00 6E 
+   00 72 
 
 public java.lang.Object $bang$qmark(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
@@ -468,7 +484,7 @@ public java.lang.Object $bang$qmark(java.lang.Object);
    23      31      2    replyCh       Lscala/actors/Channel;
 
   Signature: length = 0x2
-   00 7C 
+   00 FFFFFF80 
 
 public scala.Option $bang$qmark(long, java.lang.Object);
   Signature: (JLjava/lang/Object;)Lscala/Option;
@@ -510,7 +526,7 @@ public scala.Option $bang$qmark(long, java.lang.Object);
    24      37      4    replyCh       Lscala/actors/Channel;
 
   Signature: length = 0x2
-   00 FFFFFF84 
+   00 FFFFFF88 
 
 public scala.actors.Channel(scala.actors.Actor);
   Signature: (Lscala/actors/Actor;)V

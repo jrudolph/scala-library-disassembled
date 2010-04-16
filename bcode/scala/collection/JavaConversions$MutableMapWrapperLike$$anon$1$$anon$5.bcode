@@ -2,7 +2,7 @@ Compiled from "JavaConversions.scala"
 public final class scala.collection.JavaConversions$MutableMapWrapperLike$$anon$1$$anon$5 extends java.lang.Object implements java.util.Iterator
   SourceFile: "JavaConversions.scala"
   Signature: length = 0x2
-   00 FFFFFF89 
+   00 FFFFFF88 
   Scala: length = 0x
    
   InnerClass: 
@@ -93,15 +93,16 @@ Asciz	()V;
 NameAndType	prev:()Lscala/Option;
 Method	scala/collection/JavaConversions$MutableMapWrapperLike$$anon$1$$anon$5.prev:()Lscala/Option;
 Asciz	x;
-NameAndType	x:Ljava/lang/Object;
-Field	scala/Some.x:Ljava/lang/Object;
+NameAndType	x:()Ljava/lang/Object;
+Method	scala/Some.x:()Ljava/lang/Object;
 NameAndType	$outer:Lscala/collection/JavaConversions$MutableMapWrapperLike$$anon$1;
 Field	scala/collection/JavaConversions$MutableMapWrapperLike$$anon$1$$anon$5.$outer:Lscala/collection/JavaConversions$MutableMapWrapperLike$$anon$1;
 Asciz	scala/collection/JavaConversions$MutableMapWrapperLike$$anon$1;
 class	scala/collection/JavaConversions$MutableMapWrapperLike$$anon$1
-Asciz	Lscala/collection/JavaConversions$MutableMapWrapperLike;;
-NameAndType	$outer:Lscala/collection/JavaConversions$MutableMapWrapperLike;
-Field	scala/collection/JavaConversions$MutableMapWrapperLike$$anon$1.$outer:Lscala/collection/JavaConversions$MutableMapWrapperLike;
+Asciz	scala$collection$JavaConversions$MutableMapWrapperLike$$anon$$$outer;
+Asciz	()Lscala/collection/JavaConversions$MutableMapWrapperLike;;
+NameAndType	scala$collection$JavaConversions$MutableMapWrapperLike$$anon$$$outer:()Lscala/collection/JavaConversions$MutableMapWrapperLike;
+Method	scala/collection/JavaConversions$MutableMapWrapperLike$$anon$1.scala$collection$JavaConversions$MutableMapWrapperLike$$anon$$$outer:()Lscala/collection/JavaConversions$MutableMapWrapperLike;
 Asciz	scala/collection/JavaConversions$MutableMapWrapperLike;
 class	scala/collection/JavaConversions$MutableMapWrapperLike
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
@@ -124,6 +125,8 @@ Asciz	temp104;
 Asciz	temp105;
 Asciz	Lscala/Some;;
 Asciz	temp106;
+Asciz	k;
+Asciz	v;
 Asciz	scala$collection$JavaConversions$MutableMapWrapperLike$$anon$$anon$$$outer;
 Asciz	()Lscala/collection/JavaConversions$MutableMapWrapperLike$$anon$1;;
 NameAndType	next:()Ljava/util/Map$Entry;
@@ -136,10 +139,6 @@ Method	java/lang/NullPointerException."<init>":()V
 Asciz	java/lang/Object;
 class	java/lang/Object
 Method	java/lang/Object."<init>":()V
-Asciz	scala$collection$JavaConversions$MutableMapWrapperLike$$anon$$$outer;
-Asciz	()Lscala/collection/JavaConversions$MutableMapWrapperLike;;
-NameAndType	scala$collection$JavaConversions$MutableMapWrapperLike$$anon$$$outer:()Lscala/collection/JavaConversions$MutableMapWrapperLike;
-Method	scala/collection/JavaConversions$MutableMapWrapperLike$$anon$1.scala$collection$JavaConversions$MutableMapWrapperLike$$anon$$$outer:()Lscala/collection/JavaConversions$MutableMapWrapperLike;
 Asciz	scala$collection$JavaConversions$MutableMapWrapperLike$$underlying;
 Asciz	Lscala/collection/mutable/Map;;
 NameAndType	scala$collection$JavaConversions$MutableMapWrapperLike$$underlying:Lscala/collection/mutable/Map;
@@ -168,7 +167,7 @@ Asciz	java/util/Iterator;
 class	java/util/Iterator
 
 {
-public final scala.collection.JavaConversions$MutableMapWrapperLike$$anon$1 $outer;
+private final scala.collection.JavaConversions$MutableMapWrapperLike$$anon$1 $outer;
   Signature: Lscala/collection/JavaConversions$MutableMapWrapperLike$$anon$1;
 
 private scala.Option prev;
@@ -281,7 +280,7 @@ l1	new	class scala/MatchError
 public void remove();
   Signature: ()V
   Code:
-   Stack=3, Locals=5, Args_size=1
+   Stack=3, Locals=6, Args_size=1
 	aload_0
 	invokespecial	Method prev:()Lscala/Option;
 	astore_1
@@ -292,19 +291,21 @@ public void remove();
 	checkcast	class scala/Some
 	astore_2
 	aload_2
-	getfield	Field scala/Some.x:Ljava/lang/Object;
+	invokevirtual	Method scala/Some.x:()Ljava/lang/Object;
+	astore_3
+	aload_3
 	astore	4
 	aload_0
 	getfield	Field $outer:Lscala/collection/JavaConversions$MutableMapWrapperLike$$anon$1;
-	astore_3
-	aload_3
-	getfield	Field scala/collection/JavaConversions$MutableMapWrapperLike$$anon$1.$outer:Lscala/collection/JavaConversions$MutableMapWrapperLike;
+	invokevirtual	Method scala/collection/JavaConversions$MutableMapWrapperLike$$anon$1.scala$collection$JavaConversions$MutableMapWrapperLike$$anon$$$outer:()Lscala/collection/JavaConversions$MutableMapWrapperLike;
 	aload	4
 	invokevirtual	Method scala/collection/JavaConversions$MutableMapWrapperLike.remove:(Ljava/lang/Object;)Ljava/lang/Object;
-	pop
+	astore	5
 	aload_0
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	invokespecial	Method prev_$eq:(Lscala/Option;)V
+	aload	5
+	pop
 	return
 l1	new	class java/lang/IllegalStateException
 	dup
@@ -312,13 +313,15 @@ l1	new	class java/lang/IllegalStateException
 	invokespecial	Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 46 // new
+   	l1 = 50 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      56      0    this       Lscala/collection/JavaConversions$MutableMapWrapperLike$$anon$1$$anon$5;
-   5      51      1    temp104       Lscala/Option;
-   17      28      2    temp105       Lscala/Some;
-   23      22      4    temp106       Ljava/lang/Object;
+   0      60      0    this       Lscala/collection/JavaConversions$MutableMapWrapperLike$$anon$1$$anon$5;
+   5      55      1    temp104       Lscala/Option;
+   17      32      2    temp105       Lscala/Some;
+   22      27      3    temp106       Ljava/lang/Object;
+   25      24      4    k       Ljava/lang/Object;
+   39      10      5    v       Ljava/lang/Object;
 
 
 public scala.collection.JavaConversions$MutableMapWrapperLike$$anon$1 scala$collection$JavaConversions$MutableMapWrapperLike$$anon$$anon$$$outer();
@@ -372,7 +375,7 @@ l1	aload_0
    0      45      1    $outer       Lscala/collection/JavaConversions$MutableMapWrapperLike$$anon$1;
 
   Signature: length = 0x2
-   00 FFFFFF88 
+   00 FFFFFF87 
 
 }
 

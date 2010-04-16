@@ -82,9 +82,13 @@ class	scala/Equals
 Asciz	canEqual;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/Equals.canEqual:(Ljava/lang/Object;)Z
+Asciz	temp3;
+Asciz	Ljava/lang/Object;;
 Asciz	temp4;
 Asciz	temp5;
 Asciz	temp6;
+Asciz	s$1;
+Asciz	col$1;
 Asciz	productPrefix;
 Asciz	Box;
 String	Box
@@ -106,10 +110,12 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp7;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	s
 String	col
+Asciz	temp8;
 Asciz	scala/xml/PrettyPrinter$Item;
 class	scala/xml/PrettyPrinter$Item
 Asciz	$outer;
@@ -242,31 +248,37 @@ public java.lang.String toString();
 public boolean equals(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
-   Stack=3, Locals=5, Args_size=2
+   Stack=3, Locals=8, Args_size=2
 	aload_0
 	aload_1
 	if_acmpeq	l1 // iconst_1
 	aload_1
+	astore_2
+	aload_2
 	instanceof	class scala/xml/PrettyPrinter$Box
 	ifeq	l2 // iconst_0
-	aload_1
+	aload_2
 	checkcast	class scala/xml/PrettyPrinter$Box
 	invokevirtual	Method scala$xml$PrettyPrinter$Box$$$outer:()Lscala/xml/PrettyPrinter;
 	aload_0
 	invokevirtual	Method scala$xml$PrettyPrinter$Box$$$outer:()Lscala/xml/PrettyPrinter;
 	if_acmpne	l2 // iconst_0
-	aload_1
+	aload_2
 	checkcast	class scala/xml/PrettyPrinter$Box
-	astore_2
-	aload_2
+	astore_3
+	aload_3
 	invokevirtual	Method col:()I
-	istore_3
-	aload_2
+	istore	4
+	aload_3
 	invokevirtual	Method s:()Ljava/lang/String;
-	astore	4
+	astore	5
+	aload	5
+	astore	6
+	iload	4
+	istore	7
 	aload_0
-	iload_3
-	aload	4
+	iload	7
+	aload	6
 	invokespecial	Method gd1$1:(ILjava/lang/String;)Z
 	ifeq	l3 // iconst_0
 	aload_1
@@ -283,18 +295,21 @@ l1	iconst_1
 l5	iconst_0
 l6	ireturn
   Labels:
-   	l3 = 65 // iconst_0
-   	l2 = 69 // iconst_0
-   	l4 = 70 // ifeq
-   	l1 = 73 // iconst_1
-   	l5 = 77 // iconst_0
-   	l6 = 78 // ireturn
+   	l3 = 77 // iconst_0
+   	l2 = 81 // iconst_0
+   	l4 = 82 // ifeq
+   	l1 = 85 // iconst_1
+   	l5 = 89 // iconst_0
+   	l6 = 90 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      79      0    this       Lscala/xml/PrettyPrinter$Box;
-   31      38      2    temp4       Lscala/xml/PrettyPrinter$Box;
-   36      33      3    temp5       I
-   42      27      4    temp6       Ljava/lang/String;
+   0      91      0    this       Lscala/xml/PrettyPrinter$Box;
+   7      78      2    temp3       Ljava/lang/Object;
+   33      48      3    temp4       Lscala/xml/PrettyPrinter$Box;
+   39      42      4    temp5       I
+   45      36      5    temp6       Ljava/lang/String;
+   49      32      6    s$1       Ljava/lang/String;
+   53      28      7    col$1       I
 
 
 public java.lang.String productPrefix();
@@ -318,6 +333,8 @@ public java.lang.Object productElement(int);
   Code:
    Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
 		0: 46;
 		1: 39;
@@ -334,18 +351,23 @@ public java.lang.Object productElement(int);
 	goto	l1 // areturn
 	aload_0
 	invokevirtual	Method col:()I
-	istore_2
-	iload_2
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 l1	areturn
   Labels:
-   	l1 = 55 // areturn
+   	l1 = 53 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      54      0    this       Lscala/xml/PrettyPrinter$Box;
+   2      52      2    temp7       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	tableswitch{ //0 to 1
 		0: 44;
 		1: 39;
@@ -363,6 +385,11 @@ public java.lang.String productElementName(int);
 l1	areturn
   Labels:
    	l1 = 46 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      47      0    this       Lscala/xml/PrettyPrinter$Box;
+   2      45      2    temp8       I
+
 
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z

@@ -184,6 +184,8 @@ Asciz	Lscala/xml/include/sax/XIncludeFilter;;
 Asciz	locator;
 Asciz	Lorg/xml/sax/Locator;;
 Asciz	base;
+Asciz	exceptionResult1;
+Asciz	Ljava/lang/Object;;
 Asciz	LocalVariableTable;
 Asciz	()I;
 NameAndType	level:I
@@ -286,12 +288,12 @@ Asciz	localName;
 Asciz	qName;
 Asciz	atts1;
 Asciz	Lorg/xml/sax/Attributes;;
+Asciz	atts;
 Asciz	parentBase;
 Asciz	Ljava/net/URL;;
+Asciz	currentBase;
 Asciz	attsImpl;
 Asciz	Lorg/xml/sax/helpers/AttributesImpl;;
-Asciz	atts;
-Asciz	currentBase;
 Asciz	endElement;
 Asciz	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V;
 Asciz	pop;
@@ -365,11 +367,11 @@ NameAndType	boxToInteger:(I)Ljava/lang/Integer;
 Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 Asciz	, column ;
 String	, column 
+Asciz	locationString;
 Asciz	publicID;
 Asciz	systemID;
-Asciz	line;
 Asciz	column;
-Asciz	locationString;
+Asciz	line;
 Asciz	trim;
 NameAndType	trim:()Ljava/lang/String;
 Method	java/lang/String.trim:()Ljava/lang/String;
@@ -458,19 +460,19 @@ Asciz	java/io/IOException;
 class	java/io/IOException
 Asciz	url;
 Asciz	encoding1;
+Asciz	source;
+Asciz	ex;
+Asciz	Lscala/xml/include/UnavailableResourceException;;
 Asciz	uc;
 Asciz	Ljava/net/URLConnection;;
-Asciz	contentType;
-Asciz	encodingFromHeader;
 Asciz	in;
 Asciz	Ljava/io/BufferedInputStream;;
+Asciz	encodingFromHeader;
+Asciz	contentType;
 Asciz	reader;
 Asciz	Ljava/io/InputStreamReader;;
 Asciz	c;
 Asciz	charsRead;
-Asciz	ex;
-Asciz	Lscala/xml/include/UnavailableResourceException;;
-Asciz	source;
 NameAndType	atRoot:Z
 Field	scala/xml/include/sax/XIncludeFilter.atRoot:Z
 Asciz	org/xml/sax/helpers/XMLReaderFactory;
@@ -529,13 +531,14 @@ class	java/io/PrintStream
 Asciz	println;
 NameAndType	println:(Ljava/lang/String;)V
 Method	java/io/PrintStream.println:(Ljava/lang/String;)V
-Asciz	exceptionResult4;
+Asciz	exceptionResult2;
+Asciz	parser;
 Asciz	Lorg/xml/sax/XMLReader;;
+Asciz	exceptionResult3;
+Asciz	exceptionResult4;
 Asciz	resolver;
 Asciz	Lorg/xml/sax/EntityResolver;;
-Asciz	exceptionResult3;
 Asciz	previousLevel;
-Asciz	exceptionResult2;
 Method	org/xml/sax/helpers/XMLFilterImpl."<init>":()V
 Method	java/util/Stack."<init>":()V
 Asciz	ScalaSig;
@@ -598,7 +601,7 @@ private java.util.Stack locators();
 public void setDocumentLocator(org.xml.sax.Locator);
   Signature: (Lorg/xml/sax/Locator;)V
   Code:
-   Stack=4, Locals=3, Args_size=2
+   Stack=4, Locals=5, Args_size=2
 	aload_0
 	invokespecial	Method locators:()Ljava/util/Stack;
 	aload_1
@@ -607,6 +610,8 @@ public void setDocumentLocator(org.xml.sax.Locator);
 	aload_1
 	invokeinterface	InterfaceMethod org/xml/sax/Locator.getSystemId:()Ljava/lang/String;
 	astore_2
+	aconst_null
+	astore_3
 	aload_0
 	invokespecial	Method bases:()Ljava/util/Stack;
 	new	class java/net/URL
@@ -614,12 +619,14 @@ public void setDocumentLocator(org.xml.sax.Locator);
 	aload_2
 	invokespecial	Method java/net/URL."<init>":(Ljava/lang/String;)V
 	invokevirtual	Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+	astore_3
+	aload_3
 	pop
 	aload_0
 	aload_1
 	invokespecial	Method org/xml/sax/helpers/XMLFilterImpl.setDocumentLocator:(Lorg/xml/sax/Locator;)V
 	return
-	pop
+	astore	4
 	new	class java/lang/UnsupportedOperationException
 	dup
 	new	class scala/collection/mutable/StringBuilder
@@ -635,14 +642,16 @@ public void setDocumentLocator(org.xml.sax.Locator);
   Labels:
   Exception table:
    from   to  target type
-    16    32    38   Class java/net/MalformedURLException
+    18    34    42   Class java/net/MalformedURLException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      66      0    this       Lscala/xml/include/sax/XIncludeFilter;
-   0      66      1    locator       Lorg/xml/sax/Locator;
-   16      21      2    base       Ljava/lang/String;
-   38      28      2    base       Ljava/lang/String;
+   0      71      0    this       Lscala/xml/include/sax/XIncludeFilter;
+   0      71      1    locator       Lorg/xml/sax/Locator;
+   16      25      2    base       Ljava/lang/String;
+   42      29      2    base       Ljava/lang/String;
+   18      18      3    exceptionResult1       Ljava/lang/Object;
+   42      29      3    exceptionResult1       Ljava/lang/Object;
 
 
 private int level();
@@ -683,14 +692,14 @@ l2	ireturn
 public void startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes);
   Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/xml/sax/Attributes;)V
   Code:
-   Stack=6, Locals=14, Args_size=5
+   Stack=6, Locals=17, Args_size=5
 	aload	4
-	astore	11
+	astore	5
 	aload_0
 	invokespecial	Method level:()I
 	iconst_0
 	if_icmpne	l1 // return
-	aload	4
+	aload	5
 	ldc	String http://www.w3.org/XML/1998/namespace
 	ldc	String base
 	invokeinterface	InterfaceMethod org/xml/sax/Attributes.getValue:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
@@ -699,26 +708,26 @@ public void startElement(java.lang.String, java.lang.String, java.lang.String, o
 	invokespecial	Method bases:()Ljava/util/Stack;
 	invokevirtual	Method java/util/Stack.peek:()Ljava/lang/Object;
 	checkcast	class java/net/URL
-	astore	5
-	aload	5
-	astore	12
+	astore	7
+	aload	7
+	astore	8
 	aload	6
 	dup
-	pop
+	astore	9
 	ifnull	l2 // aload_0
-	aload	6
+	aload	9
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l2 // aload_0
 	new	class java/net/URL
 	dup
-	aload	5
+	aload	7
 	aload	6
 	invokespecial	Method java/net/URL."<init>":(Ljava/net/URL;Ljava/lang/String;)V
-	astore	12
+	astore	8
 l2	aload_0
 	invokespecial	Method bases:()Ljava/util/Stack;
-	aload	12
+	aload	8
 	invokevirtual	Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
 	pop
 	aload_1
@@ -729,15 +738,15 @@ l2	aload_0
 	ldc	String include
 	invokevirtual	Method java/lang/String.equals:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload_0
-	aload	4
+	aload	5
 	ldc	String href
 	invokeinterface	InterfaceMethod org/xml/sax/Attributes.getValue:(Ljava/lang/String;)Ljava/lang/String;
-	astore	8
-	aload	8
+	astore	11
+	aload	11
 	dup
-	pop
+	astore	12
 	ifnull	l4 // new
-	aload	8
+	aload	12
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l5 // aload
@@ -746,39 +755,39 @@ l4	new	class org/xml/sax/SAXException
 	ldc	String Missing href attribute
 	invokespecial	Method org/xml/sax/SAXException."<init>":(Ljava/lang/String;)V
 	athrow
-l5	aload	4
+l5	aload	5
 	ldc	String parse
 	invokeinterface	InterfaceMethod org/xml/sax/Attributes.getValue:(Ljava/lang/String;)Ljava/lang/String;
-	astore	9
-	aload	9
+	astore	13
+	aload	13
 	dup
-	pop
+	astore	14
 	ifnull	l6 // ldc
-	aload	9
+	aload	14
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l7 // aload
 l6	ldc	String xml
-	astore	9
-l7	aload	9
+	astore	13
+l7	aload	13
 	ldc	String text
 	invokevirtual	Method java/lang/String.equals:(Ljava/lang/Object;)Z
 	ifeq	l8 // aload
-	aload	4
+	aload	5
 	ldc	String encoding
 	invokeinterface	InterfaceMethod org/xml/sax/Attributes.getValue:(Ljava/lang/String;)Ljava/lang/String;
-	astore	7
+	astore	15
 	aload_0
-	aload	8
-	aload	7
+	aload	11
+	aload	15
 	invokespecial	Method includeTextDocument:(Ljava/lang/String;Ljava/lang/String;)V
 	goto	l9 // aload_0
-l8	aload	9
+l8	aload	13
 	ldc	String xml
 	invokevirtual	Method java/lang/String.equals:(Ljava/lang/Object;)Z
 	ifeq	l10 // new
 	aload_0
-	aload	8
+	aload	11
 	invokespecial	Method includeXMLDocument:(Ljava/lang/String;)V
 l9	aload_0
 	aload_0
@@ -794,7 +803,7 @@ l10	new	class org/xml/sax/SAXException
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc	String Illegal value for parse attribute: 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	9
+	aload	13
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokespecial	Method org/xml/sax/SAXException."<init>":(Ljava/lang/String;)V
@@ -804,19 +813,19 @@ l3	aload_0
 	ifeq	l11 // aload_0
 	new	class org/xml/sax/helpers/AttributesImpl
 	dup
-	aload	4
+	aload	5
 	invokespecial	Method org/xml/sax/helpers/AttributesImpl."<init>":(Lorg/xml/sax/Attributes;)V
-	astore	10
-	aload	10
+	astore	16
+	aload	16
 	ldc	String http://www.w3.org/XML/1998/namespace
 	ldc	String base
 	ldc	String xml:base
 	ldc	String CDATA
-	aload	12
+	aload	8
 	invokevirtual	Method java/net/URL.toExternalForm:()Ljava/lang/String;
 	invokevirtual	Method org/xml/sax/helpers/AttributesImpl.addAttribute:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-	aload	10
-	astore	11
+	aload	16
+	astore	5
 	aload_0
 	iconst_0
 	invokespecial	Method atRoot_$eq:(Z)V
@@ -824,10 +833,10 @@ l11	aload_0
 	aload_1
 	aload_2
 	aload_3
-	aload	11
+	aload	5
 	invokespecial	Method org/xml/sax/helpers/XMLFilterImpl.startElement:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/xml/sax/Attributes;)V
 l1	return
-	astore	13
+	astore	10
 	new	class org/xml/sax/SAXException
 	dup
 	new	class scala/collection/mutable/StringBuilder
@@ -835,48 +844,48 @@ l1	return
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc	String Malformed base URL: 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	12
+	aload	8
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	aload	13
+	aload	10
 	invokespecial	Method org/xml/sax/SAXException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
 	athrow
   Labels:
-   	l2 = 70 // aload_0
-   	l4 = 125 // new
-   	l5 = 135 // aload
-   	l6 = 162 // ldc
-   	l7 = 166 // aload
-   	l8 = 198 // aload
-   	l9 = 214 // aload_0
-   	l10 = 227 // new
-   	l3 = 255 // aload_0
-   	l11 = 300 // aload_0
-   	l1 = 309 // return
+   	l2 = 71 // aload_0
+   	l4 = 127 // new
+   	l5 = 137 // aload
+   	l6 = 165 // ldc
+   	l7 = 169 // aload
+   	l8 = 201 // aload
+   	l9 = 217 // aload_0
+   	l10 = 230 // new
+   	l3 = 258 // aload_0
+   	l11 = 303 // aload_0
+   	l1 = 312 // return
   Exception table:
    from   to  target type
-    57    70   310   Class java/net/MalformedURLException
+    58    71   313   Class java/net/MalformedURLException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      342      0    this       Lscala/xml/include/sax/XIncludeFilter;
-   0      342      1    uri       Ljava/lang/String;
-   0      342      2    localName       Ljava/lang/String;
-   0      342      3    qName       Ljava/lang/String;
-   0      342      4    atts1       Lorg/xml/sax/Attributes;
-   37      272      5    parentBase       Ljava/net/URL;
-   310      32      5    parentBase       Ljava/net/URL;
-   25      284      6    base       Ljava/lang/String;
-   310      32      6    base       Ljava/lang/String;
-   187      8      7    encoding       Ljava/lang/String;
-   109      115      8    href       Ljava/lang/String;
-   227      28      8    href       Ljava/lang/String;
-   146      78      9    parse       Ljava/lang/String;
-   227      28      9    parse       Ljava/lang/String;
-   273      27      10    attsImpl       Lorg/xml/sax/helpers/AttributesImpl;
-   4      338      11    atts       Lorg/xml/sax/Attributes;
-   41      268      12    currentBase       Ljava/net/URL;
-   310      32      12    currentBase       Ljava/net/URL;
+   0      345      0    this       Lscala/xml/include/sax/XIncludeFilter;
+   0      345      1    uri       Ljava/lang/String;
+   0      345      2    localName       Ljava/lang/String;
+   0      345      3    qName       Ljava/lang/String;
+   0      345      4    atts1       Lorg/xml/sax/Attributes;
+   4      341      5    atts       Lorg/xml/sax/Attributes;
+   25      287      6    base       Ljava/lang/String;
+   313      32      6    base       Ljava/lang/String;
+   37      275      7    parentBase       Ljava/net/URL;
+   313      32      7    parentBase       Ljava/net/URL;
+   41      271      8    currentBase       Ljava/net/URL;
+   313      32      8    currentBase       Ljava/net/URL;
+   110      117      11    href       Ljava/lang/String;
+   230      28      11    href       Ljava/lang/String;
+   148      79      13    parse       Ljava/lang/String;
+   230      28      13    parse       Ljava/lang/String;
+   190      8      15    encoding       Ljava/lang/String;
+   276      27      16    attsImpl       Lorg/xml/sax/helpers/AttributesImpl;
 
 
 public void endElement(java.lang.String, java.lang.String, java.lang.String);
@@ -1128,38 +1137,40 @@ l1	return
 private java.lang.String getLocation();
   Signature: ()Ljava/lang/String;
   Code:
-   Stack=2, Locals=7, Args_size=1
+   Stack=2, Locals=8, Args_size=1
+	ldc	String 
+	astore_1
 	aload_0
 	invokespecial	Method locators:()Ljava/util/Stack;
 	invokevirtual	Method java/util/Stack.peek:()Ljava/lang/Object;
 	checkcast	class org/xml/sax/Locator
-	astore_1
-	ldc	String 
 	astore_2
 	ldc	String 
 	astore_3
+	ldc	String 
+	astore	4
 	iconst_m1
 	istore	5
 	iconst_m1
-	istore	4
-	aload_1
+	istore	6
+	aload_2
 	dup
-	pop
+	astore	7
 	ifnull	l1 // new
-	aload_1
+	aload	7
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l1 // new
-	aload_1
+	aload_2
 	invokeinterface	InterfaceMethod org/xml/sax/Locator.getPublicId:()Ljava/lang/String;
-	astore_2
-	aload_1
-	invokeinterface	InterfaceMethod org/xml/sax/Locator.getSystemId:()Ljava/lang/String;
 	astore_3
-	aload_1
+	aload_2
+	invokeinterface	InterfaceMethod org/xml/sax/Locator.getSystemId:()Ljava/lang/String;
+	astore	4
+	aload_2
 	invokeinterface	InterfaceMethod org/xml/sax/Locator.getLineNumber:()I
-	istore	4
-	aload_1
+	istore	6
+	aload_2
 	invokeinterface	InterfaceMethod org/xml/sax/Locator.getColumnNumber:()I
 	istore	5
 l1	new	class scala/collection/mutable/StringBuilder
@@ -1167,15 +1178,15 @@ l1	new	class scala/collection/mutable/StringBuilder
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc	String  in document included from 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload_2
+	aload_3
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc	String  at 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload_3
+	aload	4
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc	String  at line 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	iload	4
+	iload	6
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	ldc_w	String , column 
@@ -1184,147 +1195,153 @@ l1	new	class scala/collection/mutable/StringBuilder
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	astore	6
-	aload	6
+	astore_1
+	aload_1
 	areturn
   Labels:
-   	l1 = 67 // new
+   	l1 = 74 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      127      0    this       Lscala/xml/include/sax/XIncludeFilter;
-   11      115      1    locator       Lorg/xml/sax/Locator;
-   14      112      2    publicID       Ljava/lang/String;
-   17      109      3    systemID       Ljava/lang/String;
-   23      103      4    line       I
-   20      106      5    column       I
-   0      126      6    locationString       Ljava/lang/String;
+   0      133      0    this       Lscala/xml/include/sax/XIncludeFilter;
+   3      129      1    locationString       Ljava/lang/String;
+   14      118      2    locator       Lorg/xml/sax/Locator;
+   17      115      3    publicID       Ljava/lang/String;
+   21      111      4    systemID       Ljava/lang/String;
+   24      108      5    column       I
+   27      105      6    line       I
 
 
 private void includeTextDocument(java.lang.String, java.lang.String);
   Signature: (Ljava/lang/String;Ljava/lang/String;)V
   Code:
-   Stack=4, Locals=17, Args_size=3
+   Stack=4, Locals=20, Args_size=3
 	aload_2
-	astore	15
-	aload_2
+	astore_3
+	aload_3
 	dup
-	pop
+	astore	4
 	ifnull	l1 // ldc_w
-	aload_2
+	aload	4
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l1 // ldc_w
-	aload_2
+	aload_3
 	invokevirtual	Method java/lang/String.trim:()Ljava/lang/String;
 	ldc	String 
 	invokevirtual	Method java/lang/String.equals:(Ljava/lang/Object;)Z
-	ifeq	l2 // aload_0
+	ifeq	l2 // aconst_null
 l1	ldc_w	String UTF-8
-	astore	15
-l2	aload_0
+	astore_3
+l2	aconst_null
+	pop
+	aconst_null
+	astore	5
+	aload_0
 	invokespecial	Method bases:()Ljava/util/Stack;
 	invokevirtual	Method java/util/Stack.peek:()Ljava/lang/Object;
 	checkcast	class java/net/URL
-	astore_3
+	astore	8
 	new	class java/net/URL
 	dup
-	aload_3
+	aload	8
 	aload_1
 	invokespecial	Method java/net/URL."<init>":(Ljava/net/URL;Ljava/lang/String;)V
-	astore	13
-	aload	13
+	astore	5
+	aload	5
 	invokevirtual	Method java/net/URL.openConnection:()Ljava/net/URLConnection;
-	astore	4
+	astore	11
 	new	class java/io/BufferedInputStream
 	dup
-	aload	4
+	aload	11
 	invokevirtual	Method java/net/URLConnection.getInputStream:()Ljava/io/InputStream;
 	invokespecial	Method java/io/BufferedInputStream."<init>":(Ljava/io/InputStream;)V
-	astore	7
-	aload	4
+	astore	12
+	aload	11
 	invokevirtual	Method java/net/URLConnection.getContentEncoding:()Ljava/lang/String;
-	astore	6
-	aload	4
+	astore	13
+	aload	11
 	invokevirtual	Method java/net/URLConnection.getContentType:()Ljava/lang/String;
-	astore	5
-	aload	6
+	astore	14
+	aload	13
 	dup
-	pop
+	astore	15
 	ifnull	l3 // aload
-	aload	6
+	aload	15
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l4 // aload
-l3	aload	5
+l3	aload	14
 	dup
-	pop
+	astore	16
 	ifnull	l5 // new
-	aload	5
+	aload	16
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l5 // new
-	aload	5
+	aload	14
 	invokevirtual	Method java/lang/String.toLowerCase:()Ljava/lang/String;
-	astore	5
-	aload	5
+	astore	14
+	aload	14
 	ldc_w	String text/xml
 	invokevirtual	Method java/lang/String.equals:(Ljava/lang/Object;)Z
 	ifne	l6 // getstatic
-	aload	5
+	aload	14
 	ldc_w	String application/xml
 	invokevirtual	Method java/lang/String.equals:(Ljava/lang/Object;)Z
 	ifne	l6 // getstatic
-	aload	5
+	aload	14
 	ldc_w	String text/
 	invokevirtual	Method java/lang/String.startsWith:(Ljava/lang/String;)Z
 	ifeq	l7 // aload
-	aload	5
+	aload	14
 	ldc_w	String +xml
 	invokevirtual	Method java/lang/String.endsWith:(Ljava/lang/String;)Z
 	ifne	l6 // getstatic
-l7	aload	5
+l7	aload	14
 	ldc_w	String application/
 	invokevirtual	Method java/lang/String.startsWith:(Ljava/lang/String;)Z
 	ifeq	l5 // new
-	aload	5
+	aload	14
 	ldc_w	String +xml
 	invokevirtual	Method java/lang/String.endsWith:(Ljava/lang/String;)Z
 	ifeq	l5 // new
 l6	getstatic	Field scala/xml/include/sax/EncodingHeuristics$.MODULE$:Lscala/xml/include/sax/EncodingHeuristics$;
-	aload	7
+	aload	12
 	invokevirtual	Method scala/xml/include/sax/EncodingHeuristics$.readEncodingFromStream:(Ljava/io/InputStream;)Ljava/lang/String;
-	astore	15
+	astore_3
 	goto	l5 // new
-l4	aload	6
-	astore	15
+l4	aload	13
+	astore_3
 l5	new	class java/io/InputStreamReader
 	dup
-	aload	7
-	aload	15
+	aload	12
+	aload_3
 	invokespecial	Method java/io/InputStreamReader."<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
-	astore	8
+	astore	17
 	ldc_w	int 1024
 	newarray char
-	astore	9
-l9	aload	8
-	aload	9
+	astore	18
+	iconst_0
+	istore	19
+l9	aload	17
+	aload	18
 	iconst_0
 	ldc_w	int 1024
 	invokevirtual	Method java/io/InputStreamReader.read:([CII)I
-	istore	10
-	iload	10
+	istore	19
+	iload	19
 	iconst_0
 	if_icmple	l8 // iload
 	aload_0
-	aload	9
+	aload	18
 	iconst_0
-	iload	10
+	iload	19
 	invokevirtual	Method characters:([CII)V
-l8	iload	10
+l8	iload	19
 	iconst_m1
 	if_icmpne	l9 // aload
 	return
-	astore	11
+	astore	6
 	new	class scala/xml/include/UnavailableResourceException
 	dup
 	new	class scala/collection/mutable/StringBuilder
@@ -1339,9 +1356,9 @@ l8	iload	10
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokespecial	Method scala/xml/include/UnavailableResourceException."<init>":(Ljava/lang/String;)V
-	astore	12
-	aload	12
-	aload	11
+	astore	7
+	aload	7
+	aload	6
 	invokevirtual	Method scala/xml/include/UnavailableResourceException.setRootCause:(Ljava/lang/Throwable;)V
 	new	class org/xml/sax/SAXException
 	dup
@@ -1356,10 +1373,10 @@ l8	iload	10
 	invokespecial	Method getLocation:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	aload	12
+	aload	7
 	invokespecial	Method org/xml/sax/SAXException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
 	athrow
-	astore	14
+	astore	9
 	new	class org/xml/sax/SAXException
 	dup
 	new	class scala/collection/mutable/StringBuilder
@@ -1367,17 +1384,17 @@ l8	iload	10
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc_w	String Document not found: 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	13
+	aload	5
 	invokevirtual	Method java/net/URL.toExternalForm:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokespecial	Method getLocation:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	aload	14
+	aload	9
 	invokespecial	Method org/xml/sax/SAXException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
 	athrow
-	astore	16
+	astore	10
 	new	class org/xml/sax/SAXException
 	dup
 	new	class scala/collection/mutable/StringBuilder
@@ -1385,49 +1402,49 @@ l8	iload	10
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc_w	String Unsupported encoding: 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	15
+	aload_3
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokespecial	Method getLocation:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	aload	16
+	aload	10
 	invokespecial	Method org/xml/sax/SAXException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
 	athrow
   Labels:
-   	l1 = 29 // ldc_w
-   	l2 = 34 // aload_0
-   	l3 = 107 // aload
-   	l7 = 174 // aload
-   	l6 = 196 // getstatic
-   	l4 = 209 // aload
-   	l5 = 213 // new
-   	l9 = 233 // aload
-   	l8 = 261 // iload
+   	l1 = 30 // ldc_w
+   	l2 = 34 // aconst_null
+   	l3 = 115 // aload
+   	l7 = 183 // aload
+   	l6 = 205 // getstatic
+   	l4 = 217 // aload
+   	l5 = 220 // new
+   	l9 = 242 // aload
+   	l8 = 270 // iload
   Exception table:
    from   to  target type
-    56   267   393   Class java/io/UnsupportedEncodingException
+    63   276   402   Class java/io/UnsupportedEncodingException
 
-    56   267   350   Class java/io/IOException
+    63   276   359   Class java/io/IOException
 
-    34    56   268   Class java/net/MalformedURLException
+    39    63   277   Class java/net/MalformedURLException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      433      0    this       Lscala/xml/include/sax/XIncludeFilter;
-   0      433      1    url       Ljava/lang/String;
-   0      433      2    encoding1       Ljava/lang/String;
-   45      11      3    base       Ljava/net/URL;
-   63      204      4    uc       Ljava/net/URLConnection;
-   91      176      5    contentType       Ljava/lang/String;
-   84      183      6    encodingFromHeader       Ljava/lang/String;
-   77      190      7    in       Ljava/io/BufferedInputStream;
-   226      41      8    reader       Ljava/io/InputStreamReader;
-   233      34      9    c       [C
-   233      34      10    charsRead       I
-   306      44      12    ex       Lscala/xml/include/UnavailableResourceException;
-   34      399      13    source       Ljava/net/URL;
-   3      430      15    encoding       Ljava/lang/String;
+   0      441      0    this       Lscala/xml/include/sax/XIncludeFilter;
+   0      441      1    url       Ljava/lang/String;
+   0      441      2    encoding1       Ljava/lang/String;
+   2      439      3    encoding       Ljava/lang/String;
+   39      402      5    source       Ljava/net/URL;
+   315      44      7    ex       Lscala/xml/include/UnavailableResourceException;
+   51      12      8    base       Ljava/net/URL;
+   70      206      11    uc       Ljava/net/URLConnection;
+   84      192      12    in       Ljava/io/BufferedInputStream;
+   91      185      13    encodingFromHeader       Ljava/lang/String;
+   98      178      14    contentType       Ljava/lang/String;
+   232      44      17    reader       Ljava/io/InputStreamReader;
+   239      37      18    c       [C
+   242      34      19    charsRead       I
 
 
 private boolean atRoot();
@@ -1452,7 +1469,9 @@ private void atRoot_$eq(boolean);
 private void includeXMLDocument(java.lang.String);
   Signature: (Ljava/lang/String;)V
   Code:
-   Stack=7, Locals=10, Args_size=2
+   Stack=7, Locals=14, Args_size=2
+	aconst_null
+	astore_3
 	new	class java/net/URL
 	dup
 	aload_0
@@ -1461,11 +1480,15 @@ private void includeXMLDocument(java.lang.String);
 	checkcast	class java/net/URL
 	aload_1
 	invokespecial	Method java/net/URL."<init>":(Ljava/net/URL;Ljava/lang/String;)V
+	astore_3
+	aload_3
+	astore_2
+	aconst_null
 	astore	8
 	invokestatic	Method org/xml/sax/helpers/XMLReaderFactory.createXMLReader:()Lorg/xml/sax/XMLReader;
-	astore	6
+	astore	8
 	goto	l1 // aload
-	astore_2
+	astore	4
 	new	class scala/xml/include/UnavailableResourceException
 	dup
 	new	class scala/collection/mutable/StringBuilder
@@ -1480,9 +1503,9 @@ private void includeXMLDocument(java.lang.String);
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 	invokespecial	Method scala/xml/include/UnavailableResourceException."<init>":(Ljava/lang/String;)V
-	astore_3
-	aload_3
-	aload_2
+	astore	5
+	aload	5
+	aload	4
 	invokevirtual	Method scala/xml/include/UnavailableResourceException.setRootCause:(Ljava/lang/Throwable;)V
 	new	class org/xml/sax/SAXException
 	dup
@@ -1497,42 +1520,46 @@ private void includeXMLDocument(java.lang.String);
 	invokespecial	Method getLocation:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	aload_3
+	aload	5
 	invokespecial	Method org/xml/sax/SAXException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
 	athrow
-	pop
+	astore	9
+	aconst_null
+	astore	10
 	getstatic	Field scala/xml/package$.MODULE$:Lscala/xml/package$;
 	invokevirtual	Method scala/xml/package$.XercesClassName:()Ljava/lang/String;
 	invokestatic	Method org/xml/sax/helpers/XMLReaderFactory.createXMLReader:(Ljava/lang/String;)Lorg/xml/sax/XMLReader;
-	astore	4
-	aload	4
-	astore	6
-l1	aload	6
+	astore	10
+	aload	10
+	astore	8
+l1	aload	8
+	astore	7
+	aload	7
 	aload_0
 	invokeinterface	InterfaceMethod org/xml/sax/XMLReader.setContentHandler:(Lorg/xml/sax/ContentHandler;)V
 	aload_0
 	invokevirtual	Method getEntityResolver:()Lorg/xml/sax/EntityResolver;
-	astore	5
-	aload	5
+	astore	11
+	aload	11
 	dup
-	pop
+	astore	12
 	ifnull	l2 // aload_0
-	aload	5
+	aload	12
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifne	l2 // aload_0
-	aload	6
-	aload	5
+	aload	7
+	aload	11
 	invokeinterface	InterfaceMethod org/xml/sax/XMLReader.setEntityResolver:(Lorg/xml/sax/EntityResolver;)V
 l2	aload_0
 	invokespecial	Method level:()I
-	istore	7
+	istore	13
 	aload_0
 	iconst_0
 	invokespecial	Method level_$eq:(I)V
 	aload_0
 	invokespecial	Method bases:()Ljava/util/Stack;
-	aload	8
+	aload_2
 	invokevirtual	Method java/util/Stack.contains:(Ljava/lang/Object;)Z
 	ifeq	l3 // aload_0
 	new	class org/xml/sax/SAXException
@@ -1545,7 +1572,7 @@ l2	aload_0
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc_w	String Circular XInclude Reference to 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	8
+	aload_2
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokespecial	Method getLocation:()Ljava/lang/String;
@@ -1556,18 +1583,18 @@ l2	aload_0
 	athrow
 l3	aload_0
 	invokespecial	Method bases:()Ljava/util/Stack;
-	aload	8
+	aload_2
 	invokevirtual	Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
 	pop
 	aload_0
 	iconst_1
 	invokespecial	Method atRoot_$eq:(Z)V
-	aload	6
-	aload	8
+	aload	7
+	aload_2
 	invokevirtual	Method java/net/URL.toExternalForm:()Ljava/lang/String;
 	invokeinterface	InterfaceMethod org/xml/sax/XMLReader.parse:(Ljava/lang/String;)V
 	aload_0
-	iload	7
+	iload	13
 	invokespecial	Method level_$eq:(I)V
 	aload_0
 	invokespecial	Method bases:()Ljava/util/Stack;
@@ -1579,7 +1606,7 @@ l3	aload_0
 	ldc_w	String Could not find an XML parser
 	invokevirtual	Method java/io/PrintStream.println:(Ljava/lang/String;)V
 	return
-	astore	9
+	astore	6
 	new	class org/xml/sax/SAXException
 	dup
 	new	class scala/collection/mutable/StringBuilder
@@ -1587,48 +1614,51 @@ l3	aload_0
 	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
 	ldc_w	String Document not found: 
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	aload	8
+	aload_2
 	invokevirtual	Method java/net/URL.toExternalForm:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	aload_0
 	invokespecial	Method getLocation:()Ljava/lang/String;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	aload	9
+	aload	6
 	invokespecial	Method org/xml/sax/SAXException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
 	athrow
   Labels:
-   	l1 = 121 // aload
-   	l2 = 160 // aload_0
-   	l3 = 229 // aload_0
+   	l1 = 136 // aload
+   	l2 = 180 // aload_0
+   	l3 = 247 // aload_0
   Exception table:
    from   to  target type
-   106   117   271   Class org/xml/sax/SAXException
+   121   132   287   Class org/xml/sax/SAXException
 
-    20    28   105   Class org/xml/sax/SAXException
+    26    34   116   Class org/xml/sax/SAXException
 
-    20    28   282   Class java/io/IOException
+    23    34   298   Class java/io/IOException
 
-   105   270   282   Class java/io/IOException
+   116   286   298   Class java/io/IOException
 
-   271   282   282   Class java/io/IOException
+   287   298   298   Class java/io/IOException
 
-     0    20    28   Class java/net/MalformedURLException
+     2    21    34   Class java/net/MalformedURLException
 
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      325      0    this       Lscala/xml/include/sax/XIncludeFilter;
-   0      325      1    url       Ljava/lang/String;
-   64      41      3    ex       Lscala/xml/include/UnavailableResourceException;
-   106      13      4    exceptionResult4       Lorg/xml/sax/XMLReader;
-   271      11      4    exceptionResult4       Lorg/xml/sax/XMLReader;
-   135      135      5    resolver       Lorg/xml/sax/EntityResolver;
-   20      8      6    exceptionResult3       Lorg/xml/sax/XMLReader;
-   105      16      6    exceptionResult3       Lorg/xml/sax/XMLReader;
-   271      11      6    exceptionResult3       Lorg/xml/sax/XMLReader;
-   166      104      7    previousLevel       I
-   0      20      8    exceptionResult2       Ljava/net/URL;
-   28      77      8    exceptionResult2       Ljava/net/URL;
+   0      340      0    this       Lscala/xml/include/sax/XIncludeFilter;
+   0      340      1    url       Ljava/lang/String;
+   23      11      2    source       Ljava/net/URL;
+   116      224      2    source       Ljava/net/URL;
+   2      20      3    exceptionResult2       Ljava/net/URL;
+   34      82      3    exceptionResult2       Ljava/net/URL;
+   72      44      5    ex       Lscala/xml/include/UnavailableResourceException;
+   140      146      7    parser       Lorg/xml/sax/XMLReader;
+   26      8      8    exceptionResult3       Lorg/xml/sax/XMLReader;
+   116      22      8    exceptionResult3       Lorg/xml/sax/XMLReader;
+   287      11      8    exceptionResult3       Lorg/xml/sax/XMLReader;
+   121      13      10    exceptionResult4       Lorg/xml/sax/XMLReader;
+   287      11      10    exceptionResult4       Lorg/xml/sax/XMLReader;
+   154      132      11    resolver       Lorg/xml/sax/EntityResolver;
+   186      100      13    previousLevel       I
 
 
 public scala.xml.include.sax.XIncludeFilter();

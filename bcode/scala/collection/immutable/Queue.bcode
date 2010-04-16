@@ -825,14 +825,14 @@ Asciz	dequeue on empty queue;
 String	dequeue on empty queue
 Asciz	scala/collection/immutable/$colon$colon;
 class	scala/collection/immutable/$colon$colon
-Asciz	scala$collection$immutable$$colon$colon$$hd;
-NameAndType	scala$collection$immutable$$colon$colon$$hd:Ljava/lang/Object;
-Field	scala/collection/immutable/$colon$colon.scala$collection$immutable$$colon$colon$$hd:Ljava/lang/Object;
-Asciz	tl;
-NameAndType	tl:Lscala/collection/immutable/List;
-Field	scala/collection/immutable/$colon$colon.tl:Lscala/collection/immutable/List;
-Asciz	rev;
+Asciz	hd$1;
+NameAndType	hd$1:()Ljava/lang/Object;
+Method	scala/collection/immutable/$colon$colon.hd$1:()Ljava/lang/Object;
+Asciz	tl$1;
+NameAndType	tl$1:()Lscala/collection/immutable/List;
+Method	scala/collection/immutable/$colon$colon.tl$1:()Lscala/collection/immutable/List;
 Asciz	temp1;
+Asciz	rev;
 Asciz	temp3;
 Asciz	Lscala/collection/immutable/$colon$colon;;
 Asciz	()Lscala/Tuple2<TA;Lscala/collection/immutable/Queue<TA;>;>;;
@@ -3044,12 +3044,14 @@ public scala.collection.immutable.Queue $plus(java.lang.Object);
 public scala.collection.immutable.Queue enqueue(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/Queue;
   Code:
-   Stack=4, Locals=2, Args_size=2
+   Stack=4, Locals=3, Args_size=2
 	new	class scala/collection/immutable/Queue
 	dup
+	aload_1
+	astore_2
 	aload_0
 	invokevirtual	Method in:()Lscala/collection/immutable/List;
-	aload_1
+	aload_2
 	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 	aload_0
 	invokevirtual	Method out:()Lscala/collection/immutable/List;
@@ -3058,8 +3060,8 @@ public scala.collection.immutable.Queue enqueue(java.lang.Object);
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      20      0    this       Lscala/collection/immutable/Queue;
-   0      20      1    elem       Ljava/lang/Object;
+   0      22      0    this       Lscala/collection/immutable/Queue;
+   0      22      1    elem       Ljava/lang/Object;
 
   Signature: length = 0x2
    02 FFFFFFB8 
@@ -3113,35 +3115,37 @@ public scala.collection.immutable.Queue enqueue(scala.collection.immutable.Itera
 public scala.Tuple2 dequeue();
   Signature: ()Lscala/Tuple2;
   Code:
-   Stack=7, Locals=4, Args_size=1
+   Stack=7, Locals=5, Args_size=1
 	aload_0
 	invokevirtual	Method out:()Lscala/collection/immutable/List;
-	astore_2
+	astore_1
 	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+	aload_1
+	astore_2
 	dup
 	ifnonnull	l1 // aload_2
 	pop
 	aload_2
 	ifnull	l2 // aload_0
-	goto	l3 // aload_2
+	goto	l3 // aload_1
 l1	aload_2
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	ifeq	l3 // aload_2
+	ifeq	l3 // aload_1
 l2	aload_0
 	invokespecial	Method gd1$1:()Z
 	ifeq	l4 // new
 	aload_0
 	invokevirtual	Method in:()Lscala/collection/immutable/List;
 	invokevirtual	Method scala/collection/immutable/List.reverse:()Lscala/collection/immutable/List;
-	astore_1
+	astore_3
 	new	class scala/Tuple2
 	dup
-	aload_1
+	aload_3
 	invokeinterface	InterfaceMethod scala/collection/IterableLike.head:()Ljava/lang/Object;
 	new	class scala/collection/immutable/Queue
 	dup
 	getstatic	Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
-	aload_1
+	aload_3
 	invokeinterface	InterfaceMethod scala/collection/TraversableLike.tail:()Ljava/lang/Object;
 	checkcast	class scala/collection/immutable/List
 	invokespecial	Method "<init>":(Lscala/collection/immutable/List;Lscala/collection/immutable/List;)V
@@ -3152,22 +3156,22 @@ l4	new	class java/util/NoSuchElementException
 	ldc_w	String dequeue on empty queue
 	invokespecial	Method java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
 	athrow
-l3	aload_2
+l3	aload_1
 	instanceof	class scala/collection/immutable/$colon$colon
 	ifeq	l6 // new
-	aload_2
+	aload_1
 	checkcast	class scala/collection/immutable/$colon$colon
-	astore_3
+	astore	4
 	new	class scala/Tuple2
 	dup
-	aload_3
-	getfield	Field scala/collection/immutable/$colon$colon.scala$collection$immutable$$colon$colon$$hd:Ljava/lang/Object;
+	aload	4
+	invokevirtual	Method scala/collection/immutable/$colon$colon.hd$1:()Ljava/lang/Object;
 	new	class scala/collection/immutable/Queue
 	dup
 	aload_0
 	invokevirtual	Method in:()Lscala/collection/immutable/List;
-	aload_3
-	getfield	Field scala/collection/immutable/$colon$colon.tl:Lscala/collection/immutable/List;
+	aload	4
+	invokevirtual	Method scala/collection/immutable/$colon$colon.tl$1:()Lscala/collection/immutable/List;
 	invokespecial	Method "<init>":(Lscala/collection/immutable/List;Lscala/collection/immutable/List;)V
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 l5	areturn
@@ -3177,18 +3181,18 @@ l6	new	class java/util/NoSuchElementException
 	invokespecial	Method java/util/NoSuchElementException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 20 // aload_2
-   	l2 = 27 // aload_0
-   	l4 = 77 // new
-   	l3 = 88 // aload_2
-   	l5 = 126 // areturn
-   	l6 = 127 // new
+   	l1 = 22 // aload_2
+   	l2 = 29 // aload_0
+   	l4 = 79 // new
+   	l3 = 90 // aload_1
+   	l5 = 131 // areturn
+   	l6 = 132 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      138      0    this       Lscala/collection/immutable/Queue;
-   42      32      1    rev       Lscala/collection/immutable/List;
-   5      133      2    temp1       Lscala/collection/immutable/List;
-   100      26      3    temp3       Lscala/collection/immutable/$colon$colon;
+   0      143      0    this       Lscala/collection/immutable/Queue;
+   5      138      1    temp1       Lscala/collection/immutable/List;
+   44      32      3    rev       Lscala/collection/immutable/List;
+   103      28      4    temp3       Lscala/collection/immutable/$colon$colon;
 
   Signature: length = 0x2
    02 FFFFFFF3 

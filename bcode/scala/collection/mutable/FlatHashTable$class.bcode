@@ -5,9 +5,9 @@ public abstract class scala.collection.mutable.FlatHashTable$class extends java.
    
   InnerClass: 
    public abstract ByOne=class scala/collection/immutable/Range$ByOne of class scala/collection/immutable/Range
-   public ofRef=class scala/collection/mutable/ArrayOps$ofRef of class scala/collection/mutable/ArrayOps
    public final $anon$1=class scala/collection/mutable/FlatHashTable$$anon$1 of class scala/collection/mutable/FlatHashTable
    public final $anonfun$serializeTo$1=class scala/collection/mutable/FlatHashTable$$anonfun$serializeTo$1 of class scala/collection/mutable/FlatHashTable
+   public final $anonfun$newThreshold$1=class scala/collection/mutable/FlatHashTable$$anonfun$newThreshold$1 of class scala/collection/mutable/FlatHashTable
    public final $anonfun$checkConsistent$1=class scala/collection/mutable/FlatHashTable$$anonfun$checkConsistent$1 of class scala/collection/mutable/FlatHashTable
   minor version: 0
   major version: 49
@@ -28,10 +28,18 @@ Asciz	initialSize;
 int	16;
 Asciz	capacity;
 Asciz	(Lscala/collection/mutable/FlatHashTable;I)I;
-int	8;
+Asciz	scala/collection/mutable/HashTable$;
+class	scala/collection/mutable/HashTable$
+Asciz	MODULE$;
+Asciz	Lscala/collection/mutable/HashTable$;;
+NameAndType	MODULE$:Lscala/collection/mutable/HashTable$;
+Field	scala/collection/mutable/HashTable$.MODULE$:Lscala/collection/mutable/HashTable$;
+Asciz	powerOfTwo;
+Asciz	(I)I;
+NameAndType	powerOfTwo:(I)I
+Method	scala/collection/mutable/HashTable$.powerOfTwo:(I)I
 Asciz	expectedSize;
 Asciz	I;
-Asciz	c0;
 Asciz	initialCapacity;
 Asciz	scala/collection/mutable/FlatHashTable;
 class	scala/collection/mutable/FlatHashTable
@@ -59,7 +67,6 @@ NameAndType	_loadFactor_$eq:(I)V
 InterfaceMethod	scala/collection/mutable/FlatHashTable._loadFactor_$eq:(I)V
 Asciz	scala/Predef$;
 class	scala/Predef$
-Asciz	MODULE$;
 Asciz	Lscala/Predef$;;
 NameAndType	MODULE$:Lscala/Predef$;
 Field	scala/Predef$.MODULE$:Lscala/Predef$;
@@ -82,11 +89,10 @@ Asciz	table;
 Asciz	()[Ljava/lang/Object;;
 NameAndType	table:()[Ljava/lang/Object;
 InterfaceMethod	scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
-Asciz	scala/collection/mutable/ArrayOps$ofRef;
-class	scala/collection/mutable/ArrayOps$ofRef
-Asciz	<init>;
-NameAndType	"<init>":([Ljava/lang/Object;)V
-Method	scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
+Asciz	refArrayOps;
+Asciz	([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;;
+NameAndType	refArrayOps:([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;
+Method	scala/Predef$.refArrayOps:([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;
 Asciz	scala/collection/SeqLike;
 class	scala/collection/SeqLike
 Asciz	size;
@@ -116,9 +122,9 @@ Asciz	in;
 Asciz	Ljava/io/ObjectInputStream;;
 Asciz	f;
 Asciz	Lscala/Function1;;
+Asciz	index;
 Asciz	elem;
 Asciz	Ljava/lang/Object;;
-Asciz	index;
 Asciz	serializeTo;
 Asciz	(Lscala/collection/mutable/FlatHashTable;Ljava/io/ObjectOutputStream;)V;
 Asciz	java/io/ObjectOutputStream;
@@ -138,6 +144,7 @@ NameAndType	iterator:()Lscala/collection/Iterator;
 InterfaceMethod	scala/collection/mutable/FlatHashTable.iterator:()Lscala/collection/Iterator;
 Asciz	scala/collection/mutable/FlatHashTable$$anonfun$serializeTo$1;
 class	scala/collection/mutable/FlatHashTable$$anonfun$serializeTo$1
+Asciz	<init>;
 NameAndType	"<init>":(Lscala/collection/mutable/FlatHashTable;Ljava/io/ObjectOutputStream;)V
 Method	scala/collection/mutable/FlatHashTable$$anonfun$serializeTo$1."<init>":(Lscala/collection/mutable/FlatHashTable;Ljava/io/ObjectOutputStream;)V
 Asciz	scala/collection/Iterator;
@@ -154,22 +161,14 @@ Asciz	elemHashCode;
 Asciz	(Ljava/lang/Object;)I;
 NameAndType	elemHashCode:(Ljava/lang/Object;)I
 InterfaceMethod	scala/collection/mutable/FlatHashTable.elemHashCode:(Ljava/lang/Object;)I
-Asciz	(I)I;
 NameAndType	index:(I)I
 InterfaceMethod	scala/collection/mutable/FlatHashTable.index:(I)I
-Asciz	java/lang/Number;
-class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Asciz	equals;
-NameAndType	equals:(Ljava/lang/Object;)Z
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
+NameAndType	equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
 Asciz	scala/None$;
 class	scala/None$
 Asciz	Lscala/None$;;
@@ -199,14 +198,24 @@ Asciz	precedes$1;
 Asciz	(Lscala/collection/mutable/FlatHashTable;II)Z;
 NameAndType	precedes$1:(Lscala/collection/mutable/FlatHashTable;II)Z
 Method	scala/collection/mutable/FlatHashTable$class.precedes$1:(Lscala/collection/mutable/FlatHashTable;II)Z
-Asciz	h2;
 Asciz	h0;
 Asciz	h1;
+Asciz	h2;
 Asciz	(Lscala/collection/mutable/FlatHashTable;)Lscala/collection/Iterator;;
 Asciz	scala/collection/mutable/FlatHashTable$$anon$1;
 class	scala/collection/mutable/FlatHashTable$$anon$1
 NameAndType	"<init>":(Lscala/collection/mutable/FlatHashTable;)V
 Method	scala/collection/mutable/FlatHashTable$$anon$1."<init>":(Lscala/collection/mutable/FlatHashTable;)V
+Asciz	scala/runtime/BoxedUnit;
+class	scala/runtime/BoxedUnit
+Asciz	UNIT;
+Asciz	Lscala/runtime/BoxedUnit;;
+NameAndType	UNIT:Lscala/runtime/BoxedUnit;
+Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+Asciz	boxToBoolean;
+Asciz	(Z)Ljava/lang/Boolean;;
+NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
+Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
 Asciz	oldtable;
 Asciz	[Ljava/lang/Object;;
 Asciz	i;
@@ -228,6 +237,8 @@ Asciz	scala/collection/immutable/Range$ByOne;
 class	scala/collection/immutable/Range$ByOne
 InterfaceMethod	scala/collection/immutable/Range$ByOne.foreach:(Lscala/Function1;)V
 Asciz	(Lscala/collection/mutable/FlatHashTable;Ljava/lang/Object;)I;
+NameAndType	equals:(Ljava/lang/Object;)Z
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	hashCode;
 NameAndType	hashCode:()I
 Method	java/lang/Object.hashCode:()I
@@ -238,27 +249,12 @@ int	10;
 Asciz	hcode;
 NameAndType	improve:(I)I
 InterfaceMethod	scala/collection/mutable/FlatHashTable.improve:(I)I
-Asciz	java/lang/AssertionError;
-class	java/lang/AssertionError
-Asciz	scala/collection/mutable/StringBuilder;
-class	scala/collection/mutable/StringBuilder
-NameAndType	"<init>":()V
-Method	scala/collection/mutable/StringBuilder."<init>":()V
-Asciz	assertion failed: ;
-String	assertion failed: 
-Asciz	append;
-Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
-NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-Asciz	loadFactor too large; must be < 0.5;
-String	loadFactor too large; must be < 0.5
-Asciz	toString;
-Asciz	()Ljava/lang/String;;
-NameAndType	toString:()Ljava/lang/String;
-Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-Method	java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
-Asciz	assertion0;
-Asciz	Z;
+Asciz	scala/collection/mutable/FlatHashTable$$anonfun$newThreshold$1;
+class	scala/collection/mutable/FlatHashTable$$anonfun$newThreshold$1
+Method	scala/collection/mutable/FlatHashTable$$anonfun$newThreshold$1."<init>":(Lscala/collection/mutable/FlatHashTable;)V
+Asciz	(ZLscala/Function0;)V;
+NameAndType	assert:(ZLscala/Function0;)V
+Method	scala/Predef$.assert:(ZLscala/Function0;)V
 Asciz	lf;
 Asciz	clearTable;
 Asciz	j;
@@ -273,11 +269,9 @@ Asciz	InnerClasses;
 Asciz	scala/collection/immutable/Range;
 class	scala/collection/immutable/Range
 Asciz	ByOne;
-Asciz	scala/collection/mutable/ArrayOps;
-class	scala/collection/mutable/ArrayOps
-Asciz	ofRef;
 Asciz	$anon$1;
 Asciz	$anonfun$serializeTo$1;
+Asciz	$anonfun$newThreshold$1;
 Asciz	$anonfun$checkConsistent$1;
 
 {
@@ -320,58 +314,23 @@ public static int initialSize(scala.collection.mutable.FlatHashTable);
 private static int capacity(scala.collection.mutable.FlatHashTable, int);
   Signature: (Lscala/collection/mutable/FlatHashTable;I)I
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=2, Locals=2, Args_size=2
 	iload_1
 	iconst_0
-	if_icmpne	l1 // iload_1
+	if_icmpne	l1 // getstatic
 	iconst_1
 	goto	l2 // ireturn
-l1	iload_1
-	iconst_1
-	isub
-	istore_2
-	iload_2
-	iload_2
-	iconst_1
-	iushr
-	ior
-	istore_2
-	iload_2
-	iload_2
-	iconst_2
-	iushr
-	ior
-	istore_2
-	iload_2
-	iload_2
-	iconst_4
-	iushr
-	ior
-	istore_2
-	iload_2
-	iload_2
-	ldc	int 8
-	iushr
-	ior
-	istore_2
-	iload_2
-	iload_2
-	ldc	int 16
-	iushr
-	ior
-	istore_2
-	iload_2
-	iconst_1
-	iadd
+l1	getstatic	Field scala/collection/mutable/HashTable$.MODULE$:Lscala/collection/mutable/HashTable$;
+	iload_1
+	invokevirtual	Method scala/collection/mutable/HashTable$.powerOfTwo:(I)I
 l2	ireturn
   Labels:
-   	l1 = 9 // iload_1
-   	l2 = 48 // ireturn
+   	l1 = 9 // getstatic
+   	l2 = 16 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      49      0    $this       Lscala/collection/mutable/FlatHashTable;
-   0      49      1    expectedSize       I
-   13      35      2    c0       I
+   0      17      0    $this       Lscala/collection/mutable/FlatHashTable;
+   0      17      1    expectedSize       I
 
 
 private static int initialCapacity(scala.collection.mutable.FlatHashTable);
@@ -392,7 +351,7 @@ private static int initialCapacity(scala.collection.mutable.FlatHashTable);
 public static void init(scala.collection.mutable.FlatHashTable, java.io.ObjectInputStream, scala.Function1);
   Signature: (Lscala/collection/mutable/FlatHashTable;Ljava/io/ObjectInputStream;Lscala/Function1;)V
   Code:
-   Stack=5, Locals=7, Args_size=3
+   Stack=4, Locals=6, Args_size=3
 	aload_1
 	invokevirtual	Method java/io/ObjectInputStream.defaultReadObject:()V
 	aload_0
@@ -410,9 +369,9 @@ l1	iconst_0
 l2	invokevirtual	Method scala/Predef$.assert:(Z)V
 	aload_1
 	invokevirtual	Method java/io/ObjectInputStream.readInt:()I
-	istore	4
+	istore_3
 	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
-	iload	4
+	iload_3
 	iconst_0
 	if_icmplt	l3 // iconst_0
 	iconst_1
@@ -421,7 +380,7 @@ l3	iconst_0
 l4	invokevirtual	Method scala/Predef$.assert:(Z)V
 	aload_0
 	aload_0
-	iload	4
+	iload_3
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.loadFactorDenum:()I
 	imul
@@ -433,20 +392,17 @@ l4	invokevirtual	Method scala/Predef$.assert:(Z)V
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table_$eq:([Ljava/lang/Object;)V
 	aload_0
 	aload_0
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
-	astore_3
-	new	class scala/collection/mutable/ArrayOps$ofRef
-	dup
-	aload_3
-	invokespecial	Method scala/collection/mutable/ArrayOps$ofRef."<init>":([Ljava/lang/Object;)V
+	invokevirtual	Method scala/Predef$.refArrayOps:([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.size:()I
 	invokestatic	Method newThreshold:(Lscala/collection/mutable/FlatHashTable;I)I
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.threshold_$eq:(I)V
 	iconst_0
-	istore	6
-l6	iload	6
-	iload	4
+	istore	4
+l6	iload	4
+	iload_3
 	if_icmpge	l5 // return
 	aload_1
 	invokevirtual	Method java/io/ObjectInputStream.readObject:()Ljava/lang/Object;
@@ -459,27 +415,27 @@ l6	iload	6
 	aload	5
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.addEntry:(Ljava/lang/Object;)Z
 	pop
-	iload	6
+	iload	4
 	iconst_1
 	iadd
-	istore	6
+	istore	4
 	goto	l6 // iload
 l5	return
   Labels:
    	l1 = 31 // iconst_0
    	l2 = 32 // invokevirtual
-   	l3 = 54 // iconst_0
-   	l4 = 55 // invokevirtual
-   	l6 = 120 // iload
-   	l5 = 160 // return
+   	l3 = 52 // iconst_0
+   	l4 = 53 // invokevirtual
+   	l6 = 114 // iload
+   	l5 = 153 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      161      0    $this       Lscala/collection/mutable/FlatHashTable;
-   0      161      1    in       Ljava/io/ObjectInputStream;
-   0      161      2    f       Lscala/Function1;
-   41      120      4    size       I
-   133      24      5    elem       Ljava/lang/Object;
-   120      41      6    index       I
+   0      154      0    $this       Lscala/collection/mutable/FlatHashTable;
+   0      154      1    in       Ljava/io/ObjectInputStream;
+   0      154      2    f       Lscala/Function1;
+   40      114      3    size       I
+   114      40      4    index       I
+   126      24      5    elem       Ljava/lang/Object;
 
 
 public static void serializeTo(scala.collection.mutable.FlatHashTable, java.io.ObjectOutputStream);
@@ -527,41 +483,22 @@ public static scala.Option findEntry(scala.collection.mutable.FlatHashTable, jav
 	iload_2
 	aaload
 	astore_3
-l10	aload_3
+l5	aload_3
 	ifnull	l1 // aload_3
 	aload_3
 	aload_1
-	if_acmpne	l2 // aload_3
-	iconst_1
-	goto	l3 // ifeq
-l2	aload_3
-	ifnonnull	l4 // aload_3
-	iconst_0
-	goto	l3 // ifeq
-l4	aload_3
-	instanceof	class java/lang/Number
-	ifne	l5 // aload_3
-	aload_3
-	instanceof	class java/lang/Character
-	ifeq	l6 // aload_3
-l5	aload_3
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l3 // ifeq
-l6	aload_3
-	aload_1
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l3	ifeq	l7 // iload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l2 // iload_2
 l1	aload_3
-	ifnonnull	l8 // new
+	ifnonnull	l3 // new
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
-	goto	l9 // areturn
-l8	new	class scala/Some
+	goto	l4 // areturn
+l3	new	class scala/Some
 	dup
 	aload_3
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
-l9	areturn
-l7	iload_2
+l4	areturn
+l2	iload_2
 	iconst_1
 	iadd
 	aload_0
@@ -574,24 +511,19 @@ l7	iload_2
 	iload_2
 	aaload
 	astore_3
-	goto	l10 // aload_3
+	goto	l5 // aload_3
   Labels:
-   	l10 = 23 // aload_3
-   	l2 = 36 // aload_3
-   	l4 = 44 // aload_3
-   	l5 = 58 // aload_3
-   	l6 = 66 // aload_3
-   	l3 = 71 // ifeq
-   	l1 = 74 // aload_3
-   	l8 = 84 // new
-   	l9 = 92 // areturn
-   	l7 = 93 // iload_2
+   	l5 = 23 // aload_3
+   	l1 = 35 // aload_3
+   	l3 = 45 // new
+   	l4 = 53 // areturn
+   	l2 = 54 // iload_2
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      117      0    $this       Lscala/collection/mutable/FlatHashTable;
-   0      117      1    elem       Ljava/lang/Object;
-   14      103      2    h       I
-   23      94      3    entry       Ljava/lang/Object;
+   0      78      0    $this       Lscala/collection/mutable/FlatHashTable;
+   0      78      1    elem       Ljava/lang/Object;
+   14      64      2    h       I
+   23      55      3    entry       Ljava/lang/Object;
 
 
 public static boolean containsEntry(scala.collection.mutable.FlatHashTable, java.lang.Object);
@@ -609,38 +541,19 @@ public static boolean containsEntry(scala.collection.mutable.FlatHashTable, java
 	iload_2
 	aaload
 	astore_3
-l10	aload_3
+l5	aload_3
 	ifnull	l1 // aload_3
 	aload_3
 	aload_1
-	if_acmpne	l2 // aload_3
-	iconst_1
-	goto	l3 // ifeq
-l2	aload_3
-	ifnonnull	l4 // aload_3
-	iconst_0
-	goto	l3 // ifeq
-l4	aload_3
-	instanceof	class java/lang/Number
-	ifne	l5 // aload_3
-	aload_3
-	instanceof	class java/lang/Character
-	ifeq	l6 // aload_3
-l5	aload_3
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l3 // ifeq
-l6	aload_3
-	aload_1
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l3	ifeq	l7 // iload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l2 // iload_2
 l1	aload_3
-	ifnonnull	l8 // iconst_1
+	ifnonnull	l3 // iconst_1
 	iconst_0
-	goto	l9 // ireturn
-l8	iconst_1
-l9	ireturn
-l7	iload_2
+	goto	l4 // ireturn
+l3	iconst_1
+l4	ireturn
+l2	iload_2
 	iconst_1
 	iadd
 	aload_0
@@ -653,24 +566,19 @@ l7	iload_2
 	iload_2
 	aaload
 	astore_3
-	goto	l10 // aload_3
+	goto	l5 // aload_3
   Labels:
-   	l10 = 23 // aload_3
-   	l2 = 36 // aload_3
-   	l4 = 44 // aload_3
-   	l5 = 58 // aload_3
-   	l6 = 66 // aload_3
-   	l3 = 71 // ifeq
-   	l1 = 74 // aload_3
-   	l8 = 82 // iconst_1
-   	l9 = 83 // ireturn
-   	l7 = 84 // iload_2
+   	l5 = 23 // aload_3
+   	l1 = 35 // aload_3
+   	l3 = 43 // iconst_1
+   	l4 = 44 // ireturn
+   	l2 = 45 // iload_2
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      108      0    $this       Lscala/collection/mutable/FlatHashTable;
-   0      108      1    elem       Ljava/lang/Object;
-   14      94      2    h       I
-   23      85      3    entry       Ljava/lang/Object;
+   0      69      0    $this       Lscala/collection/mutable/FlatHashTable;
+   0      69      1    elem       Ljava/lang/Object;
+   14      55      2    h       I
+   23      46      3    entry       Ljava/lang/Object;
 
 
 public static boolean addEntry(scala.collection.mutable.FlatHashTable, java.lang.Object);
@@ -688,7 +596,7 @@ public static boolean addEntry(scala.collection.mutable.FlatHashTable, java.lang
 	iload_2
 	aaload
 	astore_3
-l9	aload_3
+l4	aload_3
 	ifnonnull	l1 // aload_3
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
@@ -712,30 +620,11 @@ l2	iconst_1
 	ireturn
 l1	aload_3
 	aload_1
-	if_acmpne	l3 // aload_3
-	iconst_1
-	goto	l4 // ifeq
-l3	aload_3
-	ifnonnull	l5 // aload_3
-	iconst_0
-	goto	l4 // ifeq
-l5	aload_3
-	instanceof	class java/lang/Number
-	ifne	l6 // aload_3
-	aload_3
-	instanceof	class java/lang/Character
-	ifeq	l7 // aload_3
-l6	aload_3
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l4 // ifeq
-l7	aload_3
-	aload_1
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l4	ifeq	l8 // iload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l3 // iload_2
 	iconst_0
 	ireturn
-l8	iload_2
+l3	iload_2
 	iconst_1
 	iadd
 	aload_0
@@ -748,25 +637,20 @@ l8	iload_2
 	iload_2
 	aaload
 	astore_3
-	goto	l9 // aload_3
+	goto	l4 // aload_3
   Labels:
-   	l9 = 23 // aload_3
+   	l4 = 23 // aload_3
    	l2 = 69 // iconst_1
    	l1 = 71 // aload_3
-   	l3 = 80 // aload_3
-   	l5 = 88 // aload_3
-   	l6 = 102 // aload_3
-   	l7 = 110 // aload_3
-   	l4 = 115 // ifeq
-   	l8 = 120 // iload_2
+   	l3 = 81 // iload_2
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      144      0    $this       Lscala/collection/mutable/FlatHashTable;
-   0      144      1    elem       Ljava/lang/Object;
+   0      105      0    $this       Lscala/collection/mutable/FlatHashTable;
+   0      105      1    elem       Ljava/lang/Object;
    14      56      2    h       I
-   71      73      2    h       I
+   71      34      2    h       I
    23      47      3    entry       Ljava/lang/Object;
-   71      73      3    entry       Ljava/lang/Object;
+   71      34      3    entry       Ljava/lang/Object;
 
 
 public static scala.Option removeEntry(scala.collection.mutable.FlatHashTable, java.lang.Object);
@@ -778,57 +662,38 @@ public static scala.Option removeEntry(scala.collection.mutable.FlatHashTable, j
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.elemHashCode:(Ljava/lang/Object;)I
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.index:(I)I
-	istore	5
+	istore_2
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
-	iload	5
+	iload_2
 	aaload
-	astore	6
-l11	aload	6
-	ifnonnull	l1 // aload
+	astore_3
+l6	aload_3
+	ifnonnull	l1 // aload_3
 	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	areturn
-l1	aload	6
+l1	aload_3
 	aload_1
-	if_acmpne	l2 // aload
-	iconst_1
-	goto	l3 // ifeq
-l2	aload	6
-	ifnonnull	l4 // aload
-	iconst_0
-	goto	l3 // ifeq
-l4	aload	6
-	instanceof	class java/lang/Number
-	ifne	l5 // aload
-	aload	6
-	instanceof	class java/lang/Character
-	ifeq	l6 // aload
-l5	aload	6
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l3 // ifeq
-l6	aload	6
-	aload_1
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-l3	ifeq	l7 // iload
-	iload	5
-	istore_3
-	iload	5
+	invokestatic	Method scala/runtime/BoxesRunTime.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	ifeq	l2 // iload_2
+	iload_2
+	istore	4
+	iload	4
 	iconst_1
 	iadd
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
 	arraylength
 	irem
-	istore	4
-l10	aload_0
+	istore	5
+l5	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
-	iload	4
+	iload	5
 	aaload
-	ifnonnull	l8 // aload_0
+	ifnonnull	l3 // aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
-	iload_3
+	iload	4
 	aconst_null
 	aastore
 	aload_0
@@ -839,46 +704,37 @@ l10	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.tableSize_$eq:(I)V
 	new	class scala/Some
 	dup
-	aload	6
+	aload_3
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 	areturn
-l8	aload_0
+l3	aload_0
 	aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
-	iload	4
+	iload	5
 	aaload
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.elemHashCode:(Ljava/lang/Object;)I
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.index:(I)I
-	istore_2
-	iload_2
-	iload	4
-	if_icmpeq	l9 // iload
+	istore	6
+	iload	6
+	iload	5
+	if_icmpeq	l4 // iload
 	aload_0
-	iload_2
-	iload_3
+	iload	6
+	iload	4
 	invokestatic	Method precedes$1:(Lscala/collection/mutable/FlatHashTable;II)Z
-	ifeq	l9 // iload
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
-	iload_3
+	ifeq	l4 // iload
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
 	iload	4
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
+	iload	5
 	aaload
 	aastore
-	iload	4
-	istore_3
-l9	iload	4
-	iconst_1
-	iadd
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
-	arraylength
-	irem
+	iload	5
 	istore	4
-	goto	l10 // aload_0
-l7	iload	5
+l4	iload	5
 	iconst_1
 	iadd
 	aload_0
@@ -886,35 +742,39 @@ l7	iload	5
 	arraylength
 	irem
 	istore	5
+	goto	l5 // aload_0
+l2	iload_2
+	iconst_1
+	iadd
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
-	iload	5
+	arraylength
+	irem
+	istore_2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.table:()[Ljava/lang/Object;
+	iload_2
 	aaload
-	astore	6
-	goto	l11 // aload
+	astore_3
+	goto	l6 // aload_3
   Labels:
-   	l11 = 26 // aload
-   	l1 = 35 // aload
-   	l2 = 45 // aload
-   	l4 = 54 // aload
-   	l5 = 70 // aload
-   	l6 = 79 // aload
-   	l3 = 85 // ifeq
-   	l10 = 105 // aload_0
-   	l8 = 150 // aload_0
-   	l9 = 207 // iload
-   	l7 = 224 // iload
+   	l6 = 23 // aload_3
+   	l1 = 31 // aload_3
+   	l5 = 56 // aload_0
+   	l3 = 101 // aload_0
+   	l4 = 164 // iload
+   	l2 = 181 // iload_2
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      252      0    $this       Lscala/collection/mutable/FlatHashTable;
-   0      252      1    elem       Ljava/lang/Object;
-   172      49      2    h2       I
-   91      133      3    h0       I
-   105      119      4    h1       I
-   15      19      5    h       I
-   35      217      5    h       I
-   26      8      6    entry       Ljava/lang/Object;
-   35      217      6    entry       Ljava/lang/Object;
+   0      205      0    $this       Lscala/collection/mutable/FlatHashTable;
+   0      205      1    elem       Ljava/lang/Object;
+   14      16      2    h       I
+   31      174      2    h       I
+   23      7      3    entry       Ljava/lang/Object;
+   31      174      3    entry       Ljava/lang/Object;
+   42      139      4    h0       I
+   56      125      5    h1       I
+   124      54      6    h2       I
 
 
 public static scala.collection.Iterator iterator(scala.collection.mutable.FlatHashTable);
@@ -958,39 +818,41 @@ private static void growTable(scala.collection.mutable.FlatHashTable);
 	invokestatic	Method newThreshold:(Lscala/collection/mutable/FlatHashTable;I)I
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.threshold_$eq:(I)V
 	iconst_0
-	istore_3
-l4	iload_3
+	istore_2
+l4	iload_2
 	aload_1
 	arraylength
 	if_icmpge	l1 // return
 	aload_1
-	iload_3
+	iload_2
 	aaload
-	astore_2
-	aload_2
+	astore_3
+	aload_3
 	ifnonnull	l2 // aload_0
-	goto	l3 // iload_3
+	getstatic	Field scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
+	goto	l3 // pop
 l2	aload_0
-	aload_2
+	aload_3
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.addEntry:(Ljava/lang/Object;)Z
-	pop
-l3	iload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
+l3	pop
+	iload_2
 	iconst_1
 	iadd
-	istore_3
-	goto	l4 // iload_3
+	istore_2
+	goto	l4 // iload_2
 l1	return
   Labels:
-   	l4 = 51 // iload_3
-   	l2 = 68 // aload_0
-   	l3 = 76 // iload_3
-   	l1 = 83 // return
+   	l4 = 51 // iload_2
+   	l2 = 71 // aload_0
+   	l3 = 81 // pop
+   	l1 = 89 // return
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      84      0    $this       Lscala/collection/mutable/FlatHashTable;
-   7      77      1    oldtable       [Ljava/lang/Object;
-   61      19      2    entry       Ljava/lang/Object;
-   51      33      3    i       I
+   0      90      0    $this       Lscala/collection/mutable/FlatHashTable;
+   7      83      1    oldtable       [Ljava/lang/Object;
+   51      39      2    i       I
+   61      25      3    entry       Ljava/lang/Object;
 
 
 private static void checkConsistent(scala.collection.mutable.FlatHashTable);
@@ -1019,12 +881,12 @@ private static void checkConsistent(scala.collection.mutable.FlatHashTable);
 public static int elemHashCode(scala.collection.mutable.FlatHashTable, java.lang.Object);
   Signature: (Lscala/collection/mutable/FlatHashTable;Ljava/lang/Object;)I
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=3, Args_size=2
 	aload_1
 	dup
-	pop
+	astore_2
 	ifnull	l1 // iconst_0
-	aload_1
+	aload_2
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // aload_1
@@ -1105,25 +967,28 @@ public static final int index(scala.collection.mutable.FlatHashTable, int);
 private static int newThreshold(scala.collection.mutable.FlatHashTable, int);
   Signature: (Lscala/collection/mutable/FlatHashTable;I)I
   Code:
-   Stack=4, Locals=4, Args_size=2
+   Stack=5, Locals=3, Args_size=2
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable._loadFactor:()I
-	istore_3
-	iload_3
+	istore_2
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	iload_2
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/mutable/FlatHashTable.loadFactorDenum:()I
 	iconst_2
 	idiv
 	if_icmpge	l1 // iconst_0
 	iconst_1
-	goto	l2 // istore_2
+	goto	l2 // new
 l1	iconst_0
-l2	istore_2
-	iload_2
-	ifeq	l3 // new
+l2	new	class scala/collection/mutable/FlatHashTable$$anonfun$newThreshold$1
+	dup
+	aload_0
+	invokespecial	Method scala/collection/mutable/FlatHashTable$$anonfun$newThreshold$1."<init>":(Lscala/collection/mutable/FlatHashTable;)V
+	invokevirtual	Method scala/Predef$.assert:(ZLscala/Function0;)V
 	iload_1
 	i2l
-	iload_3
+	iload_2
 	i2l
 	lmul
 	aload_0
@@ -1132,29 +997,14 @@ l2	istore_2
 	ldiv
 	l2i
 	ireturn
-l3	new	class java/lang/AssertionError
-	dup
-	new	class scala/collection/mutable/StringBuilder
-	dup
-	invokespecial	Method scala/collection/mutable/StringBuilder."<init>":()V
-	ldc	String assertion failed: 
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	ldc	String loadFactor too large; must be < 0.5
-	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
-	invokevirtual	Method scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
-	athrow
   Labels:
-   	l1 = 23 // iconst_0
-   	l2 = 24 // istore_2
-   	l3 = 44 // new
+   	l1 = 26 // iconst_0
+   	l2 = 27 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      72      0    $this       Lscala/collection/mutable/FlatHashTable;
-   0      72      1    size       I
-   29      43      2    assertion0       Z
-   7      36      3    lf       I
-   44      28      3    lf       I
+   0      53      0    $this       Lscala/collection/mutable/FlatHashTable;
+   0      53      1    size       I
+   7      45      2    lf       I
 
 
 public static void clearTable(scala.collection.mutable.FlatHashTable);

@@ -2,7 +2,7 @@ Compiled from "JavaConversions.scala"
 public class scala.collection.JavaConversions$JPropertiesWrapper extends java.lang.Object implements scala.collection.mutable.Map,scala.collection.mutable.MapLike,scala.ScalaObject,scala.Product,java.io.Serializable
   SourceFile: "JavaConversions.scala"
   Signature: length = 0x2
-   03 FFFFFFAE 
+   03 FFFFFFB0 
   Scala: length = 0x
    
   InnerClass: 
@@ -798,9 +798,11 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
+Asciz	temp127;
 Asciz	productElementName;
 Asciz	(I)Ljava/lang/String;;
 String	underlying
+Asciz	temp128;
 Asciz	()Lscala/collection/generic/Subtractable;;
 Asciz	scala/collection/TraversableLike;
 class	scala/collection/TraversableLike
@@ -2932,7 +2934,7 @@ public int size();
 public scala.Option get(java.lang.String);
   Signature: (Ljava/lang/String;)Lscala/Option;
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=4, Args_size=2
 	aload_0
 	invokevirtual	Method underlying:()Ljava/util/Properties;
 	aload_1
@@ -2940,9 +2942,9 @@ public scala.Option get(java.lang.String);
 	astore_2
 	aload_2
 	dup
-	pop
+	astore_3
 	ifnull	l1 // getstatic
-	aload_2
+	aload_3
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // new
@@ -3011,7 +3013,7 @@ public scala.collection.JavaConversions$JPropertiesWrapper $minus$eq(java.lang.S
 public scala.Option put(java.lang.String, java.lang.String);
   Signature: (Ljava/lang/String;Ljava/lang/String;)Lscala/Option;
   Code:
-   Stack=3, Locals=4, Args_size=3
+   Stack=3, Locals=5, Args_size=3
 	aload_0
 	invokevirtual	Method underlying:()Ljava/util/Properties;
 	aload_1
@@ -3020,9 +3022,9 @@ public scala.Option put(java.lang.String, java.lang.String);
 	astore_3
 	aload_3
 	dup
-	pop
+	astore	4
 	ifnull	l1 // getstatic
-	aload_3
+	aload	4
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // new
@@ -3035,15 +3037,15 @@ l2	new	class scala/Some
 	invokespecial	Method scala/Some."<init>":(Ljava/lang/Object;)V
 l3	areturn
   Labels:
-   	l1 = 24 // getstatic
-   	l2 = 30 // new
-   	l3 = 41 // areturn
+   	l1 = 26 // getstatic
+   	l2 = 32 // new
+   	l3 = 43 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      42      0    this       Lscala/collection/JavaConversions$JPropertiesWrapper;
-   0      42      1    k       Ljava/lang/String;
-   0      42      2    v       Ljava/lang/String;
-   10      32      3    r       Ljava/lang/Object;
+   0      44      0    this       Lscala/collection/JavaConversions$JPropertiesWrapper;
+   0      44      1    k       Ljava/lang/String;
+   0      44      2    v       Ljava/lang/String;
+   10      34      3    r       Ljava/lang/Object;
 
   Signature: length = 0x2
    02 FFFFFFDF 
@@ -3070,7 +3072,7 @@ public void update(java.lang.String, java.lang.String);
 public scala.Option remove(java.lang.String);
   Signature: (Ljava/lang/String;)Lscala/Option;
   Code:
-   Stack=3, Locals=3, Args_size=2
+   Stack=3, Locals=4, Args_size=2
 	aload_0
 	invokevirtual	Method underlying:()Ljava/util/Properties;
 	aload_1
@@ -3078,9 +3080,9 @@ public scala.Option remove(java.lang.String);
 	astore_2
 	aload_2
 	dup
-	pop
+	astore_3
 	ifnull	l1 // getstatic
-	aload_2
+	aload_3
 	aconst_null
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l2 // new
@@ -3226,8 +3228,10 @@ public int productArity();
 public java.lang.Object productElement(int);
   Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	aload_0
@@ -3241,13 +3245,20 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 10 // new
+   	l1 = 12 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      27      0    this       Lscala/collection/JavaConversions$JPropertiesWrapper;
+   2      25      2    temp127       I
+
 
 public java.lang.String productElementName(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=3, Locals=2, Args_size=2
+   Stack=3, Locals=3, Args_size=2
 	iload_1
+	istore_2
+	iload_2
 	iconst_0
 	if_icmpne	l1 // new
 	ldc_w	String underlying
@@ -3260,7 +3271,12 @@ l1	new	class java/lang/IndexOutOfBoundsException
 	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
 	athrow
   Labels:
-   	l1 = 9 // new
+   	l1 = 11 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      26      0    this       Lscala/collection/JavaConversions$JPropertiesWrapper;
+   2      24      2    temp128       I
+
 
 public scala.collection.generic.Subtractable repr();
   Signature: ()Lscala/collection/generic/Subtractable;
