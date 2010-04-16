@@ -2,7 +2,7 @@ Compiled from "MapProxy.scala"
 public final class scala.collection.immutable.MapProxy$$anon$1 extends java.lang.Object implements scala.collection.immutable.MapProxy
   SourceFile: "MapProxy.scala"
   Signature: length = 0x2
-   03 22 
+   03 25 
   Scala: length = 0x
    
   InnerClass: 
@@ -61,6 +61,17 @@ Asciz	(Ljava/lang/Object;)Lscala/collection/immutable/MapProxy;;
 Asciz	(Lscala/collection/immutable/MapProxy;Ljava/lang/Object;)Lscala/collection/immutable/MapProxy;;
 NameAndType	$minus:(Lscala/collection/immutable/MapProxy;Ljava/lang/Object;)Lscala/collection/immutable/MapProxy;
 Method	scala/collection/immutable/MapProxy$class.$minus:(Lscala/collection/immutable/MapProxy;Ljava/lang/Object;)Lscala/collection/immutable/MapProxy;
+Asciz	filterKeys;
+Asciz	(Lscala/Function1;)Lscala/collection/immutable/Map;;
+Asciz	(Lscala/collection/immutable/MapProxy;Lscala/Function1;)Lscala/collection/immutable/Map;;
+NameAndType	filterKeys:(Lscala/collection/immutable/MapProxy;Lscala/Function1;)Lscala/collection/immutable/Map;
+Method	scala/collection/immutable/MapProxy$class.filterKeys:(Lscala/collection/immutable/MapProxy;Lscala/Function1;)Lscala/collection/immutable/Map;
+Asciz	p;
+Asciz	Lscala/Function1;;
+Asciz	mapValues;
+NameAndType	mapValues:(Lscala/collection/immutable/MapProxy;Lscala/Function1;)Lscala/collection/immutable/Map;
+Method	scala/collection/immutable/MapProxy$class.mapValues:(Lscala/collection/immutable/MapProxy;Lscala/Function1;)Lscala/collection/immutable/Map;
+Asciz	f;
 Asciz	get;
 Asciz	(Ljava/lang/Object;)Lscala/Option;;
 Asciz	scala/collection/MapProxyLike$class;
@@ -122,17 +133,6 @@ NameAndType	values:(Lscala/collection/MapProxyLike;)Lscala/collection/Iterator;
 Method	scala/collection/MapProxyLike$class.values:(Lscala/collection/MapProxyLike;)Lscala/collection/Iterator;
 NameAndType	default:(Lscala/collection/MapProxyLike;Ljava/lang/Object;)Ljava/lang/Object;
 Method	scala/collection/MapProxyLike$class.default:(Lscala/collection/MapProxyLike;Ljava/lang/Object;)Ljava/lang/Object;
-Asciz	filterKeys;
-Asciz	(Lscala/Function1;)Lscala/collection/DefaultMap;;
-Asciz	(Lscala/collection/MapProxyLike;Lscala/Function1;)Lscala/collection/DefaultMap;;
-NameAndType	filterKeys:(Lscala/collection/MapProxyLike;Lscala/Function1;)Lscala/collection/DefaultMap;
-Method	scala/collection/MapProxyLike$class.filterKeys:(Lscala/collection/MapProxyLike;Lscala/Function1;)Lscala/collection/DefaultMap;
-Asciz	p;
-Asciz	Lscala/Function1;;
-Asciz	mapValues;
-NameAndType	mapValues:(Lscala/collection/MapProxyLike;Lscala/Function1;)Lscala/collection/DefaultMap;
-Method	scala/collection/MapProxyLike$class.mapValues:(Lscala/collection/MapProxyLike;Lscala/Function1;)Lscala/collection/DefaultMap;
-Asciz	f;
 Asciz	addString;
 Asciz	(Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;;
 Asciz	(Lscala/collection/MapProxyLike;Lscala/collection/mutable/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lscala/collection/mutable/StringBuilder;;
@@ -449,7 +449,6 @@ Asciz	(Lscala/Proxy;)Ljava/lang/String;;
 NameAndType	toString:(Lscala/Proxy;)Ljava/lang/String;
 Method	scala/Proxy$class.toString:(Lscala/Proxy;)Ljava/lang/String;
 Asciz	withDefault;
-Asciz	(Lscala/Function1;)Lscala/collection/immutable/Map;;
 Asciz	scala/collection/immutable/Map$class;
 class	scala/collection/immutable/Map$class
 Asciz	(Lscala/collection/immutable/Map;Lscala/Function1;)Lscala/collection/immutable/Map;;
@@ -472,11 +471,6 @@ Asciz	(Lscala/collection/immutable/MapLike;Lscala/collection/Iterator;)Lscala/co
 NameAndType	$plus$plus:(Lscala/collection/immutable/MapLike;Lscala/collection/Iterator;)Lscala/collection/immutable/Map;
 Method	scala/collection/immutable/MapLike$class.$plus$plus:(Lscala/collection/immutable/MapLike;Lscala/collection/Iterator;)Lscala/collection/immutable/Map;
 Asciz	iter;
-Asciz	transform;
-Asciz	(Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
-Asciz	(Lscala/collection/immutable/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
-NameAndType	transform:(Lscala/collection/immutable/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-Method	scala/collection/immutable/MapLike$class.transform:(Lscala/collection/immutable/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 Asciz	update;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/Map;;
 Asciz	(Lscala/collection/immutable/MapLike;Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/Map;;
@@ -491,9 +485,14 @@ Asciz	(Lscala/collection/MapLike;)Lscala/collection/mutable/Builder;;
 NameAndType	newBuilder:(Lscala/collection/MapLike;)Lscala/collection/mutable/Builder;
 Method	scala/collection/MapLike$class.newBuilder:(Lscala/collection/MapLike;)Lscala/collection/mutable/Builder;
 Asciz	mapElements;
-Asciz	(Lscala/collection/MapLike;Lscala/Function1;)Lscala/collection/DefaultMap;;
-NameAndType	mapElements:(Lscala/collection/MapLike;Lscala/Function1;)Lscala/collection/DefaultMap;
-Method	scala/collection/MapLike$class.mapElements:(Lscala/collection/MapLike;Lscala/Function1;)Lscala/collection/DefaultMap;
+Asciz	(Lscala/collection/MapLike;Lscala/Function1;)Lscala/collection/Map;;
+NameAndType	mapElements:(Lscala/collection/MapLike;Lscala/Function1;)Lscala/collection/Map;
+Method	scala/collection/MapLike$class.mapElements:(Lscala/collection/MapLike;Lscala/Function1;)Lscala/collection/Map;
+Asciz	transform;
+Asciz	(Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
+Asciz	(Lscala/collection/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
+NameAndType	transform:(Lscala/collection/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+Method	scala/collection/MapLike$class.transform:(Lscala/collection/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Seq;)Lscala/collection/generic/Subtractable;;
 Asciz	scala/collection/generic/Subtractable$class;
 class	scala/collection/generic/Subtractable$class
@@ -695,8 +694,8 @@ NameAndType	tail:()Lscala/collection/Traversable;
 InterfaceMethod	scala/collection/TraversableProxyLike.tail:()Lscala/collection/Traversable;
 NameAndType	filterNot:(Lscala/Function1;)Lscala/collection/Traversable;
 InterfaceMethod	scala/collection/TraversableProxyLike.filterNot:(Lscala/Function1;)Lscala/collection/Traversable;
-Asciz	scala/collection/immutable/Map;
-class	scala/collection/immutable/Map
+Asciz	scala/collection/Map;
+class	scala/collection/Map
 NameAndType	filter:(Lscala/Function1;)Lscala/collection/Traversable;
 InterfaceMethod	scala/collection/TraversableProxyLike.filter:(Lscala/Function1;)Lscala/collection/Traversable;
 Asciz	(II)Lscala/collection/TraversableView;;
@@ -711,9 +710,13 @@ NameAndType	dropRight:(I)Lscala/collection/Iterable;
 InterfaceMethod	scala/collection/IterableProxyLike.dropRight:(I)Lscala/collection/Iterable;
 NameAndType	takeRight:(I)Lscala/collection/Iterable;
 InterfaceMethod	scala/collection/IterableProxyLike.takeRight:(I)Lscala/collection/Iterable;
-Asciz	(Ljava/lang/Object;)Lscala/collection/generic/Subtractable;;
 Asciz	scala/collection/immutable/MapProxy;
 class	scala/collection/immutable/MapProxy
+NameAndType	mapValues:(Lscala/Function1;)Lscala/collection/immutable/Map;
+InterfaceMethod	scala/collection/immutable/MapProxy.mapValues:(Lscala/Function1;)Lscala/collection/immutable/Map;
+NameAndType	filterKeys:(Lscala/Function1;)Lscala/collection/immutable/Map;
+InterfaceMethod	scala/collection/immutable/MapProxy.filterKeys:(Lscala/Function1;)Lscala/collection/immutable/Map;
+Asciz	(Ljava/lang/Object;)Lscala/collection/generic/Subtractable;;
 NameAndType	$minus:(Ljava/lang/Object;)Lscala/collection/immutable/MapProxy;
 InterfaceMethod	scala/collection/immutable/MapProxy.$minus:(Ljava/lang/Object;)Lscala/collection/immutable/MapProxy;
 Asciz	elem;
@@ -918,6 +921,36 @@ public scala.collection.immutable.MapProxy $minus(java.lang.Object);
    0      6      1    key       Ljava/lang/Object;
 
 
+public scala.collection.immutable.Map filterKeys(scala.Function1);
+  Signature: (Lscala/Function1;)Lscala/collection/immutable/Map;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/collection/immutable/MapProxy$class.filterKeys:(Lscala/collection/immutable/MapProxy;Lscala/Function1;)Lscala/collection/immutable/Map;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/immutable/MapProxy$$anon$1;
+   0      6      1    p       Lscala/Function1;
+
+
+public scala.collection.immutable.Map mapValues(scala.Function1);
+  Signature: (Lscala/Function1;)Lscala/collection/immutable/Map;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/collection/immutable/MapProxy$class.mapValues:(Lscala/collection/immutable/MapProxy;Lscala/Function1;)Lscala/collection/immutable/Map;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/immutable/MapProxy$$anon$1;
+   0      6      1    f       Lscala/Function1;
+
+
 public scala.Option get(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/Option;
   Code:
@@ -1080,36 +1113,6 @@ public java.lang.Object default(java.lang.Object);
    Start  Length  Slot  Name   Signature
    0      6      0    this       Lscala/collection/immutable/MapProxy$$anon$1;
    0      6      1    key       Ljava/lang/Object;
-
-
-public scala.collection.DefaultMap filterKeys(scala.Function1);
-  Signature: (Lscala/Function1;)Lscala/collection/DefaultMap;
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	invokestatic	Method scala/collection/MapProxyLike$class.filterKeys:(Lscala/collection/MapProxyLike;Lscala/Function1;)Lscala/collection/DefaultMap;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      6      0    this       Lscala/collection/immutable/MapProxy$$anon$1;
-   0      6      1    p       Lscala/Function1;
-
-
-public scala.collection.DefaultMap mapValues(scala.Function1);
-  Signature: (Lscala/Function1;)Lscala/collection/DefaultMap;
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	invokestatic	Method scala/collection/MapProxyLike$class.mapValues:(Lscala/collection/MapProxyLike;Lscala/Function1;)Lscala/collection/DefaultMap;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      6      0    this       Lscala/collection/immutable/MapProxy$$anon$1;
-   0      6      1    f       Lscala/Function1;
 
 
 public scala.collection.mutable.StringBuilder addString(scala.collection.mutable.StringBuilder, java.lang.String, java.lang.String, java.lang.String);
@@ -2081,23 +2084,6 @@ public scala.collection.immutable.Map $plus$plus(scala.collection.Iterator);
    0      6      1    iter       Lscala/collection/Iterator;
 
 
-public java.lang.Object transform(scala.Function2, scala.collection.generic.CanBuildFrom);
-  Signature: (Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-  Code:
-   Stack=3, Locals=3, Args_size=3
-	aload_0
-	aload_1
-	aload_2
-	invokestatic	Method scala/collection/immutable/MapLike$class.transform:(Lscala/collection/immutable/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      7      0    this       Lscala/collection/immutable/MapProxy$$anon$1;
-   0      7      1    f       Lscala/Function2;
-   0      7      2    bf       Lscala/collection/generic/CanBuildFrom;
-
-
 public scala.collection.immutable.Map update(java.lang.Object, java.lang.Object);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/Map;
   Code:
@@ -2125,13 +2111,13 @@ public scala.collection.mutable.Builder newBuilder();
 	areturn
   Labels:
 
-public scala.collection.DefaultMap mapElements(scala.Function1);
-  Signature: (Lscala/Function1;)Lscala/collection/DefaultMap;
+public scala.collection.Map mapElements(scala.Function1);
+  Signature: (Lscala/Function1;)Lscala/collection/Map;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	invokestatic	Method scala/collection/MapLike$class.mapElements:(Lscala/collection/MapLike;Lscala/Function1;)Lscala/collection/DefaultMap;
+	invokestatic	Method scala/collection/MapLike$class.mapElements:(Lscala/collection/MapLike;Lscala/Function1;)Lscala/collection/Map;
 	areturn
   Labels:
   LocalVariableTable: 
@@ -2140,6 +2126,23 @@ public scala.collection.DefaultMap mapElements(scala.Function1);
    0      6      1    f       Lscala/Function1;
 
   Deprecated: true
+
+public java.lang.Object transform(scala.Function2, scala.collection.generic.CanBuildFrom);
+  Signature: (Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	aload_1
+	aload_2
+	invokestatic	Method scala/collection/MapLike$class.transform:(Lscala/collection/MapLike;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/immutable/MapProxy$$anon$1;
+   0      7      1    f       Lscala/Function2;
+   0      7      2    bf       Lscala/collection/generic/CanBuildFrom;
+
 
 public scala.collection.generic.Subtractable $minus(java.lang.Object, java.lang.Object, scala.collection.Seq);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;Lscala/collection/Seq;)Lscala/collection/generic/Subtractable;
@@ -2547,7 +2550,7 @@ public scala.collection.TraversableLike$WithFilter withFilter(scala.Function1);
    0      6      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   02 79 
+   02 78 
 
 public scala.collection.immutable.Map self();
   Signature: ()Lscala/collection/immutable/Map;
@@ -2558,7 +2561,7 @@ public scala.collection.immutable.Map self();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 FFFFFF82 
+   02 FFFFFF81 
 
 public scala.collection.Traversable toCollection(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/Traversable;
@@ -2739,14 +2742,14 @@ public java.lang.Object filterNot(scala.Function1);
    0      8      1    p       Lscala/Function1;
 
 
-public scala.collection.immutable.Map filterNot(scala.Function1);
-  Signature: (Lscala/Function1;)Lscala/collection/immutable/Map;
+public scala.collection.Map filterNot(scala.Function1);
+  Signature: (Lscala/Function1;)Lscala/collection/Map;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
 	invokeinterface	InterfaceMethod scala/collection/TraversableProxyLike.filterNot:(Lscala/Function1;)Lscala/collection/Traversable;
-	checkcast	class scala/collection/immutable/Map
+	checkcast	class scala/collection/Map
 	areturn
   Labels:
   LocalVariableTable: 
@@ -2824,6 +2827,36 @@ public java.lang.Object takeRight(int);
    Start  Length  Slot  Name   Signature
    0      8      0    this       Lscala/collection/immutable/MapProxy$$anon$1;
    0      8      1    n       I
+
+
+public scala.collection.Map mapValues(scala.Function1);
+  Signature: (Lscala/Function1;)Lscala/collection/Map;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/MapProxy.mapValues:(Lscala/Function1;)Lscala/collection/immutable/Map;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/immutable/MapProxy$$anon$1;
+   0      8      1    f       Lscala/Function1;
+
+
+public scala.collection.Map filterKeys(scala.Function1);
+  Signature: (Lscala/Function1;)Lscala/collection/Map;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/MapProxy.filterKeys:(Lscala/Function1;)Lscala/collection/immutable/Map;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/immutable/MapProxy$$anon$1;
+   0      8      1    p       Lscala/Function1;
 
 
 public scala.collection.generic.Subtractable $minus(java.lang.Object);
@@ -3052,7 +3085,7 @@ public scala.collection.immutable.MapProxy$$anon$1(scala.collection.immutable.Ma
    0      86      1    $outer       Lscala/collection/immutable/MapProxy;
 
   Signature: length = 0x2
-   03 21 
+   03 24 
 
 }
 
