@@ -28,17 +28,14 @@ Asciz	toCollection;
 Asciz	(Lscala/collection/IterableLike;Ljava/lang/Object;)Lscala/collection/Iterable;;
 Asciz	repr;
 Asciz	Ljava/lang/Object;;
-Asciz	elements;
-Asciz	(Lscala/collection/IterableLike;)Lscala/collection/Iterator;;
+Asciz	foreach;
+Asciz	(Lscala/collection/IterableLike;Lscala/Function1;)V;
 Asciz	scala/collection/IterableLike;
 class	scala/collection/IterableLike
 Asciz	iterator;
 Asciz	()Lscala/collection/Iterator;;
 NameAndType	iterator:()Lscala/collection/Iterator;
 InterfaceMethod	scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
-Asciz	Deprecated;
-Asciz	foreach;
-Asciz	(Lscala/collection/IterableLike;Lscala/Function1;)V;
 Asciz	scala/collection/Iterator;
 class	scala/collection/Iterator
 Asciz	(Lscala/Function1;)V;
@@ -258,12 +255,16 @@ Asciz	sameElements;
 Asciz	(Lscala/collection/IterableLike;Lscala/collection/Iterable;)Z;
 Asciz	java/lang/Number;
 class	java/lang/Number
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
 Asciz	java/lang/Character;
 class	java/lang/Character
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	equals;
@@ -294,6 +295,9 @@ NameAndType	slice:(II)Lscala/collection/TraversableView;
 InterfaceMethod	scala/collection/TraversableViewLike.slice:(II)Lscala/collection/TraversableView;
 Asciz	scala/collection/IterableView;
 class	scala/collection/IterableView
+Asciz	elements;
+Asciz	(Lscala/collection/IterableLike;)Lscala/collection/Iterator;;
+Asciz	Deprecated;
 Asciz	first;
 NameAndType	head:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/IterableLike.head:()Ljava/lang/Object;
@@ -345,20 +349,6 @@ public static scala.collection.Iterable toCollection(scala.collection.IterableLi
    0      5      0    $this       Lscala/collection/IterableLike;
    0      5      1    repr       Ljava/lang/Object;
 
-
-public static scala.collection.Iterator elements(scala.collection.IterableLike);
-  Signature: (Lscala/collection/IterableLike;)Lscala/collection/Iterator;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      7      0    $this       Lscala/collection/IterableLike;
-
-  Deprecated: true
 
 public static void foreach(scala.collection.IterableLike, scala.Function1);
   Signature: (Lscala/collection/IterableLike;Lscala/Function1;)V
@@ -1036,13 +1026,19 @@ l2	aload_2
 	goto	l3 // ifne
 l4	aload_2
 	instanceof	class java/lang/Number
-	ifne	l5 // aload_2
+	ifeq	l5 // aload_2
 	aload_2
+	checkcast	class java/lang/Number
+	aload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l3 // ifne
+l5	aload_2
 	instanceof	class java/lang/Character
 	ifeq	l6 // aload_2
-l5	aload_2
+	aload_2
+	checkcast	class java/lang/Character
 	aload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l3 // ifne
 l6	aload_2
 	aload_3
@@ -1064,21 +1060,21 @@ l10	ireturn
    	l7 = 16 // aload
    	l2 = 61 // aload_2
    	l4 = 69 // aload_2
-   	l5 = 83 // aload_2
-   	l6 = 91 // aload_2
-   	l3 = 96 // ifne
-   	l1 = 101 // aload
-   	l8 = 121 // iconst_0
-   	l9 = 125 // iconst_1
-   	l10 = 126 // ireturn
+   	l5 = 87 // aload_2
+   	l6 = 105 // aload_2
+   	l3 = 110 // ifne
+   	l1 = 115 // aload
+   	l8 = 135 // iconst_0
+   	l9 = 139 // iconst_1
+   	l10 = 140 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      127      0    $this       Lscala/collection/IterableLike;
-   0      127      1    that       Lscala/collection/Iterable;
-   57      42      2    x0       Ljava/lang/Object;
-   57      42      3    y0       Ljava/lang/Object;
-   8      119      4    these       Lscala/collection/Iterator;
-   16      111      5    those       Lscala/collection/Iterator;
+   0      141      0    $this       Lscala/collection/IterableLike;
+   0      141      1    that       Lscala/collection/Iterable;
+   57      56      2    x0       Ljava/lang/Object;
+   57      56      3    y0       Ljava/lang/Object;
+   8      133      4    these       Lscala/collection/Iterator;
+   16      125      5    those       Lscala/collection/Iterator;
 
 
 public static scala.collection.immutable.Stream toStream(scala.collection.IterableLike);
@@ -1141,6 +1137,20 @@ public static scala.collection.IterableView view(scala.collection.IterableLike, 
    0      17      1    from       I
    0      17      2    until       I
 
+
+public static scala.collection.Iterator elements(scala.collection.IterableLike);
+  Signature: (Lscala/collection/IterableLike;)Lscala/collection/Iterator;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    $this       Lscala/collection/IterableLike;
+
+  Deprecated: true
 
 public static java.lang.Object first(scala.collection.IterableLike);
   Signature: (Lscala/collection/IterableLike;)Ljava/lang/Object;

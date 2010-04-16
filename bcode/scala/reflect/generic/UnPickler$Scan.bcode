@@ -373,12 +373,16 @@ NameAndType	mkTypeName:(Ljava/lang/Object;)Ljava/lang/Object;
 InterfaceMethod	scala/reflect/generic/Names.mkTypeName:(Ljava/lang/Object;)Ljava/lang/Object;
 Asciz	java/lang/Number;
 class	java/lang/Number
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
 Asciz	java/lang/Character;
 class	java/lang/Character
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	x0;
 Asciz	y0;
 Asciz	savedIndex;
@@ -2035,13 +2039,19 @@ l3	aload_3
 	goto	l4 // ifeq
 l5	aload_3
 	instanceof	class java/lang/Number
-	ifne	l6 // aload_3
+	ifeq	l6 // aload_3
 	aload_3
+	checkcast	class java/lang/Number
+	aload	4
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l4 // ifeq
+l6	aload_3
 	instanceof	class java/lang/Character
 	ifeq	l7 // aload_3
-l6	aload_3
+	aload_3
+	checkcast	class java/lang/Character
 	aload	4
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l4 // ifeq
 l7	aload_3
 	aload	4
@@ -2061,20 +2071,20 @@ l9	istore	6
    	l2 = 35 // invokevirtual
    	l3 = 87 // aload_3
    	l5 = 95 // aload_3
-   	l6 = 109 // aload_3
-   	l7 = 118 // aload_3
-   	l4 = 124 // ifeq
-   	l8 = 131 // iconst_0
-   	l9 = 132 // istore
+   	l6 = 114 // aload_3
+   	l7 = 133 // aload_3
+   	l4 = 139 // ifeq
+   	l8 = 146 // iconst_0
+   	l9 = 147 // istore
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      143      0    this       Lscala/reflect/generic/UnPickler$Scan;
-   0      143      1    i       I
-   21      121      2    tag       I
-   83      44      3    x0       Ljava/lang/Object;
-   83      44      4    y0       Ljava/lang/Object;
-   6      136      5    savedIndex       I
-   134      8      6    result       Z
+   0      158      0    this       Lscala/reflect/generic/UnPickler$Scan;
+   0      158      1    i       I
+   21      136      2    tag       I
+   83      59      3    x0       Ljava/lang/Object;
+   83      59      4    y0       Ljava/lang/Object;
+   6      151      5    savedIndex       I
+   149      8      6    result       Z
 
 
 public java.lang.Object at(int, scala.Function0);
@@ -2153,7 +2163,7 @@ l1	aload	5
    8      100      5    r       Ljava/lang/Object;
 
   Signature: length = 0x2
-   01 15 
+   01 19 
 
 public java.lang.Object readName();
   Signature: ()Ljava/lang/Object;
@@ -2234,9 +2244,9 @@ public scala.reflect.generic.Symbols$AbsSymbol readSymbol();
 	astore	25
 	iload	21
 	lookupswitch{ //3
-		3: 1378;
-		9: 1165;
-		10: 1165;
+		3: 1425;
+		9: 1212;
+		10: 1212;
 		default: 76 }
 	aload_0
 	invokevirtual	Method scala$reflect$generic$UnPickler$Scan$$$outer:()Lscala/reflect/generic/UnPickler;
@@ -2304,10 +2314,10 @@ l1	aload_0
 	istore	16
 l2	iload	21
 	tableswitch{ //4 to 8
-		4: 793;
-		5: 773;
-		6: 574;
-		7: 415;
+		4: 840;
+		5: 820;
+		6: 605;
+		7: 430;
 		8: 257;
 		default: 244 }
 	aload_0
@@ -2333,13 +2343,19 @@ l3	aload	10
 	goto	l4 // ifeq
 l5	aload	10
 	instanceof	class java/lang/Number
-	ifne	l6 // aload
+	ifeq	l6 // aload
 	aload	10
+	checkcast	class java/lang/Number
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l4 // ifeq
+l6	aload	10
 	instanceof	class java/lang/Character
 	ifeq	l7 // aload
-l6	aload	10
+	aload	10
+	checkcast	class java/lang/Character
 	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l4 // ifeq
 l7	aload	10
 	aload_2
@@ -2412,13 +2428,19 @@ l14	aload	10
 	goto	l15 // ifeq
 l16	aload	10
 	instanceof	class java/lang/Number
-	ifne	l17 // aload
+	ifeq	l17 // aload
 	aload	10
+	checkcast	class java/lang/Number
+	aload	4
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l15 // ifeq
+l17	aload	10
 	instanceof	class java/lang/Character
 	ifeq	l18 // aload
-l17	aload	10
+	aload	10
+	checkcast	class java/lang/Character
 	aload	4
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l15 // ifeq
 l18	aload	10
 	aload	4
@@ -2470,13 +2492,19 @@ l23	aload	10
 	goto	l24 // ifeq
 l25	aload	10
 	instanceof	class java/lang/Number
-	ifne	l26 // aload
+	ifeq	l26 // aload
 	aload	10
+	checkcast	class java/lang/Number
+	aload	8
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l24 // ifeq
+l26	aload	10
 	instanceof	class java/lang/Character
 	ifeq	l27 // aload
-l26	aload	10
+	aload	10
+	checkcast	class java/lang/Character
 	aload	8
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l24 // ifeq
 l27	aload	10
 	aload	8
@@ -2799,76 +2827,76 @@ l46	pop
    	l2 = 207 // iload
    	l3 = 277 // aload
    	l5 = 286 // aload
-   	l6 = 302 // aload
-   	l7 = 311 // aload
-   	l4 = 317 // ifeq
-   	l9 = 342 // aload_3
-   	l10 = 349 // getstatic
-   	l8 = 371 // lload
-   	l12 = 397 // aload
-   	l11 = 409 // putfield
-   	l14 = 459 // aload
-   	l16 = 468 // aload
-   	l17 = 484 // aload
-   	l18 = 494 // aload
-   	l15 = 501 // ifeq
-   	l20 = 528 // aload
-   	l21 = 536 // aload_0
-   	l19 = 543 // aload
-   	l22 = 568 // putfield
-   	l23 = 596 // aload
-   	l25 = 605 // aload
-   	l26 = 621 // aload
-   	l27 = 631 // aload
-   	l24 = 638 // ifeq
-   	l29 = 665 // aload
-   	l30 = 673 // lload
-   	l31 = 694 // aload_0
-   	l28 = 701 // lload
-   	l33 = 727 // aload
-   	l32 = 739 // putfield
-   	l13 = 810 // aload
-   	l35 = 876 // new
-   	l34 = 911 // aload
-   	l37 = 944 // iconst_0
-   	l38 = 945 // invokevirtual
-   	l36 = 948 // aload
-   	l39 = 978 // aload_0
-   	l40 = 984 // invokevirtual
-   	l42 = 1031 // aload
-   	l43 = 1039 // aload
-   	l44 = 1066 // aload
-   	l45 = 1074 // aload
-   	l41 = 1159 // getstatic
-   	l47 = 1198 // aload_0
-   	l48 = 1202 // astore
-   	l49 = 1254 // aload
-   	l50 = 1262 // aload
-   	l51 = 1309 // aload
-   	l52 = 1344 // aload
-   	l53 = 1352 // aload
-   	l54 = 1372 // getstatic
-   	l46 = 1398 // pop
+   	l6 = 306 // aload
+   	l7 = 326 // aload
+   	l4 = 332 // ifeq
+   	l9 = 357 // aload_3
+   	l10 = 364 // getstatic
+   	l8 = 386 // lload
+   	l12 = 412 // aload
+   	l11 = 424 // putfield
+   	l14 = 474 // aload
+   	l16 = 483 // aload
+   	l17 = 504 // aload
+   	l18 = 525 // aload
+   	l15 = 532 // ifeq
+   	l20 = 559 // aload
+   	l21 = 567 // aload_0
+   	l19 = 574 // aload
+   	l22 = 599 // putfield
+   	l23 = 627 // aload
+   	l25 = 636 // aload
+   	l26 = 657 // aload
+   	l27 = 678 // aload
+   	l24 = 685 // ifeq
+   	l29 = 712 // aload
+   	l30 = 720 // lload
+   	l31 = 741 // aload_0
+   	l28 = 748 // lload
+   	l33 = 774 // aload
+   	l32 = 786 // putfield
+   	l13 = 857 // aload
+   	l35 = 923 // new
+   	l34 = 958 // aload
+   	l37 = 991 // iconst_0
+   	l38 = 992 // invokevirtual
+   	l36 = 995 // aload
+   	l39 = 1025 // aload_0
+   	l40 = 1031 // invokevirtual
+   	l42 = 1078 // aload
+   	l43 = 1086 // aload
+   	l44 = 1113 // aload
+   	l45 = 1121 // aload
+   	l41 = 1206 // getstatic
+   	l47 = 1245 // aload_0
+   	l48 = 1249 // astore
+   	l49 = 1301 // aload
+   	l50 = 1309 // aload
+   	l51 = 1356 // aload
+   	l52 = 1391 // aload
+   	l53 = 1399 // aload
+   	l54 = 1419 // getstatic
+   	l46 = 1445 // pop
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      1408      0    this       Lscala/reflect/generic/UnPickler$Scan;
-   86      1079      1    nameref       I
-   273      47      2    y0       Ljava/lang/Object;
-   455      49      4    y1       Ljava/lang/Object;
-   437      134      6    clazz       Lscala/reflect/generic/Symbols$AbsSymbol;
-   559      9      7    m       Lscala/reflect/generic/Symbols$AbsSymbol;
-   592      49      8    y2       Ljava/lang/Object;
-   135      1030      10    name       Ljava/lang/Object;
-   141      1024      11    owner       Lscala/reflect/generic/Symbols$AbsSymbol;
-   153      1012      12    flags       J
-   167      998      14    privateWithin       Lscala/reflect/generic/Symbols$AbsSymbol;
-   873      38      15    assertion0       Z
-   173      992      16    inforef       I
-   17      1390      19    end       I
-   6      1401      21    tag$1       I
-   1171      207      23    name       Ljava/lang/Object;
-   1204      174      24    owner$1       Lscala/reflect/generic/Symbols$AbsSymbol;
-   38      1369      25    sym$1       Lscala/runtime/ObjectRef;
+   0      1455      0    this       Lscala/reflect/generic/UnPickler$Scan;
+   86      1126      1    nameref       I
+   273      62      2    y0       Ljava/lang/Object;
+   470      65      4    y1       Ljava/lang/Object;
+   452      150      6    clazz       Lscala/reflect/generic/Symbols$AbsSymbol;
+   590      9      7    m       Lscala/reflect/generic/Symbols$AbsSymbol;
+   623      65      8    y2       Ljava/lang/Object;
+   135      1077      10    name       Ljava/lang/Object;
+   141      1071      11    owner       Lscala/reflect/generic/Symbols$AbsSymbol;
+   153      1059      12    flags       J
+   167      1045      14    privateWithin       Lscala/reflect/generic/Symbols$AbsSymbol;
+   920      38      15    assertion0       Z
+   173      1039      16    inforef       I
+   17      1437      19    end       I
+   6      1448      21    tag$1       I
+   1218      207      23    name       Ljava/lang/Object;
+   1251      174      24    owner$1       Lscala/reflect/generic/Symbols$AbsSymbol;
+   38      1416      25    sym$1       Lscala/runtime/ObjectRef;
 
 
 public scala.runtime.Nothing$ noSuchSymbolTag(int, int, java.lang.Object, scala.reflect.generic.Symbols$AbsSymbol);
@@ -5333,7 +5361,7 @@ public scala.runtime.Nothing$ errorMissingRequirement(java.lang.Object, scala.re
 public abstract void inferMethodAlternative(scala.reflect.generic.Trees$Tree, scala.collection.immutable.List, scala.reflect.generic.Types$AbsType);
   Signature: (Lscala/reflect/generic/Trees$Tree;Lscala/collection/immutable/List;Lscala/reflect/generic/Types$AbsType;)V
   Signature: length = 0x2
-   05 1C 
+   05 20 
 
 public abstract scala.reflect.generic.Types$AbsType newLazyTypeRef(int);
   Signature: (I)Lscala/reflect/generic/Types$AbsType;
@@ -5377,13 +5405,19 @@ l1	aload	4
 	goto	l2 // ifeq
 l3	aload	4
 	instanceof	class java/lang/Number
-	ifne	l4 // aload
+	ifeq	l4 // aload
 	aload	4
+	checkcast	class java/lang/Number
+	aload	5
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l2 // ifeq
+l4	aload	4
 	instanceof	class java/lang/Character
 	ifeq	l5 // aload
-l4	aload	4
+	aload	4
+	checkcast	class java/lang/Character
 	aload	5
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l2 // ifeq
 l5	aload	4
 	aload	5
@@ -5412,13 +5446,19 @@ l8	aload_1
 	goto	l9 // ifeq
 l10	aload_1
 	instanceof	class java/lang/Number
-	ifne	l11 // aload_1
+	ifeq	l11 // aload_1
 	aload_1
+	checkcast	class java/lang/Number
+	aload	6
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l9 // ifeq
+l11	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l12 // aload_1
-l11	aload_1
+	aload_1
+	checkcast	class java/lang/Character
 	aload	6
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l9 // ifeq
 l12	aload_1
 	aload	6
@@ -5447,25 +5487,25 @@ l7	areturn
   Labels:
    	l1 = 43 // aload
    	l3 = 52 // aload
-   	l4 = 68 // aload
-   	l5 = 78 // aload
-   	l2 = 85 // ifeq
-   	l6 = 106 // aload_0
-   	l8 = 133 // aload_1
-   	l10 = 141 // aload_1
-   	l11 = 155 // aload_1
-   	l12 = 164 // aload_1
-   	l9 = 170 // ifeq
-   	l13 = 191 // iload_2
-   	l14 = 209 // aload_3
-   	l7 = 220 // areturn
+   	l4 = 73 // aload
+   	l5 = 94 // aload
+   	l2 = 101 // ifeq
+   	l6 = 122 // aload_0
+   	l8 = 149 // aload_1
+   	l10 = 157 // aload_1
+   	l11 = 176 // aload_1
+   	l12 = 195 // aload_1
+   	l9 = 201 // ifeq
+   	l13 = 222 // iload_2
+   	l14 = 240 // aload_3
+   	l7 = 251 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      221      0    this       Lscala/reflect/generic/UnPickler$Scan;
-   0      221      1    name       Ljava/lang/Object;
-   39      49      4    x0       Ljava/lang/Object;
-   39      49      5    y0       Ljava/lang/Object;
-   129      44      6    y1       Ljava/lang/Object;
+   0      252      0    this       Lscala/reflect/generic/UnPickler$Scan;
+   0      252      1    name       Ljava/lang/Object;
+   39      65      4    x0       Ljava/lang/Object;
+   39      65      5    y0       Ljava/lang/Object;
+   145      59      6    y1       Ljava/lang/Object;
 
 
 private final void setSymModsName$1(scala.runtime.ObjectRef, scala.runtime.ObjectRef, scala.runtime.ObjectRef);

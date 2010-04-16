@@ -616,10 +616,6 @@ Asciz	(Lscala/Function1;Lscala/Function1;)Lscala/Function1;;
 NameAndType	compose:(Lscala/Function1;Lscala/Function1;)Lscala/Function1;
 Method	scala/Function1$class.compose:(Lscala/Function1;Lscala/Function1;)Lscala/Function1;
 Asciz	g;
-Asciz	elements;
-Asciz	(Lscala/collection/IterableLike;)Lscala/collection/Iterator;;
-NameAndType	elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
-Method	scala/collection/IterableLike$class.elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
 Asciz	toIterable;
 Asciz	()Lscala/collection/Iterable;;
 Asciz	(Lscala/collection/IterableLike;)Lscala/collection/Iterable;;
@@ -653,6 +649,10 @@ Asciz	canEqual;
 Asciz	(Lscala/collection/IterableLike;Ljava/lang/Object;)Z;
 NameAndType	canEqual:(Lscala/collection/IterableLike;Ljava/lang/Object;)Z
 Method	scala/collection/IterableLike$class.canEqual:(Lscala/collection/IterableLike;Ljava/lang/Object;)Z
+Asciz	elements;
+Asciz	(Lscala/collection/IterableLike;)Lscala/collection/Iterator;;
+NameAndType	elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
+Method	scala/collection/IterableLike$class.elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
 Asciz	first;
 NameAndType	first:(Lscala/collection/IterableLike;)Ljava/lang/Object;
 Method	scala/collection/IterableLike$class.first:(Lscala/collection/IterableLike;)Ljava/lang/Object;
@@ -2235,6 +2235,7 @@ public int findLastIndexOf(scala.Function1);
    0      6      0    this       Lscala/collection/immutable/Range;
    0      6      1    p       Lscala/Function1;
 
+  Deprecated: true
 
 public boolean equalsWith(scala.collection.Seq, scala.Function2);
   Signature: (Lscala/collection/Seq;Lscala/Function2;)Z
@@ -2317,16 +2318,6 @@ public scala.Function1 compose(scala.Function1);
    0      6      0    this       Lscala/collection/immutable/Range;
    0      6      1    g       Lscala/Function1;
 
-
-public scala.collection.Iterator elements();
-  Signature: ()Lscala/collection/Iterator;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokestatic	Method scala/collection/IterableLike$class.elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
-	areturn
-  Labels:
-  Deprecated: true
 
 public scala.collection.Iterable toIterable();
   Signature: ()Lscala/collection/Iterable;
@@ -2428,6 +2419,16 @@ public boolean canEqual(java.lang.Object);
    0      6      0    this       Lscala/collection/immutable/Range;
    0      6      1    that       Ljava/lang/Object;
 
+
+public scala.collection.Iterator elements();
+  Signature: ()Lscala/collection/Iterator;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/collection/IterableLike$class.elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
+	areturn
+  Labels:
+  Deprecated: true
 
 public java.lang.Object first();
   Signature: ()Ljava/lang/Object;
@@ -3725,6 +3726,10 @@ public final scala.collection.immutable.Range reverse();
   Signature: ()Lscala/collection/immutable/Range;
   Code:
    Stack=5, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method length:()I
+	iconst_0
+	if_icmple	l1 // new
 	new	class scala/collection/immutable/Range$Inclusive
 	dup
 	aload_0
@@ -3736,8 +3741,21 @@ public final scala.collection.immutable.Range reverse();
 	invokevirtual	Method step:()I
 	ineg
 	invokespecial	Method scala/collection/immutable/Range$Inclusive."<init>":(III)V
-	areturn
+	goto	l2 // areturn
+l1	new	class scala/collection/immutable/Range
+	dup
+	aload_0
+	invokevirtual	Method end:()I
+	aload_0
+	invokevirtual	Method start:()I
+	aload_0
+	invokevirtual	Method step:()I
+	ineg
+	invokespecial	Method "<init>":(III)V
+l2	areturn
   Labels:
+   	l1 = 36 // new
+   	l2 = 56 // areturn
 
 public scala.collection.immutable.Range$Inclusive inclusive();
   Signature: ()Lscala/collection/immutable/Range$Inclusive;

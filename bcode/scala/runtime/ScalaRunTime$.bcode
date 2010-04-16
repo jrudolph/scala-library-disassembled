@@ -373,11 +373,16 @@ Asciz	inlinedEquals;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
 Asciz	java/lang/Number;
 class	java/lang/Number
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
 Asciz	java/lang/Character;
 class	java/lang/Character
-Asciz	equals2;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	y;
 Asciz	_equals;
 Asciz	(Lscala/Product;Ljava/lang/Object;)Z;
@@ -396,6 +401,36 @@ Asciz	hashFromNumber;
 Asciz	(Ljava/lang/Number;)I;
 NameAndType	hashFromNumber:(Ljava/lang/Number;)I
 Method	scala/runtime/BoxesRunTime.hashFromNumber:(Ljava/lang/Number;)I
+Asciz	(D)I;
+Asciz	dv;
+Asciz	D;
+Asciz	iv;
+Asciz	lv;
+Asciz	J;
+Asciz	(F)I;
+Asciz	fv;
+Asciz	F;
+Asciz	(J)I;
+Asciz	(I)I;
+Asciz	(S)I;
+Asciz	S;
+Asciz	(B)I;
+Asciz	B;
+Asciz	(C)I;
+Asciz	C;
+Asciz	Ljava/lang/Number;;
+Asciz	(Ljava/lang/Long;)I;
+Asciz	java/lang/Long;
+class	java/lang/Long
+Asciz	intValue;
+NameAndType	intValue:()I
+Method	java/lang/Long.intValue:()I
+Asciz	longValue;
+Asciz	()J;
+NameAndType	longValue:()J
+Method	java/lang/Long.longValue:()J
+Method	java/lang/Long.hashCode:()I
+Asciz	Ljava/lang/Long;;
 Asciz	(Lscala/collection/Seq;Lscala/collection/Seq;)Z;
 Asciz	(Lscala/collection/Iterable;)Z;
 NameAndType	sameElements:(Lscala/collection/Iterable;)Z
@@ -1373,13 +1408,19 @@ l1	aload_1
 	goto	l2 // ireturn
 l3	aload_1
 	instanceof	class java/lang/Number
-	ifne	l4 // aload_1
+	ifeq	l4 // aload_1
 	aload_1
+	checkcast	class java/lang/Number
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l2 // ireturn
+l4	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l5 // aload_1
-l4	aload_1
+	aload_1
+	checkcast	class java/lang/Character
 	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l2 // ireturn
 l5	aload_1
 	aload_2
@@ -1388,14 +1429,14 @@ l2	ireturn
   Labels:
    	l1 = 9 // aload_1
    	l3 = 17 // aload_1
-   	l4 = 31 // aload_1
-   	l5 = 39 // aload_1
-   	l2 = 44 // ireturn
+   	l4 = 35 // aload_1
+   	l5 = 53 // aload_1
+   	l2 = 58 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      45      0    this       Lscala/runtime/ScalaRunTime$;
-   0      45      1    x       Ljava/lang/Object;
-   0      45      2    y       Ljava/lang/Object;
+   0      59      0    this       Lscala/runtime/ScalaRunTime$;
+   0      59      1    x       Ljava/lang/Object;
+   0      59      2    y       Ljava/lang/Object;
 
 
 public boolean _equals(scala.Product, java.lang.Object);
@@ -1458,6 +1499,211 @@ l2	ireturn
    0      22      1    x       Ljava/lang/Object;
 
 
+public int hash(double);
+  Signature: (D)I
+  Code:
+   Stack=4, Locals=6, Args_size=2
+	dload_1
+	d2i
+	istore_3
+	iload_3
+	i2d
+	dload_1
+	dcmpl
+	ifne	l1 // dload_1
+	iload_3
+	ireturn
+l1	dload_1
+	d2l
+	lstore	4
+	lload	4
+	l2d
+	dload_1
+	dcmpl
+	ifne	l2 // dload_1
+	lload	4
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToLong:(J)Ljava/lang/Long;
+	invokevirtual	Method java/lang/Object.hashCode:()I
+	ireturn
+l2	dload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToDouble:(D)Ljava/lang/Double;
+	invokevirtual	Method java/lang/Object.hashCode:()I
+	ireturn
+  Labels:
+   	l1 = 12 // dload_1
+   	l2 = 33 // dload_1
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      41      0    this       Lscala/runtime/ScalaRunTime$;
+   0      41      1    dv       D
+   3      38      3    iv       I
+   16      25      4    lv       J
+
+
+public int hash(float);
+  Signature: (F)I
+  Code:
+   Stack=4, Locals=5, Args_size=2
+	fload_1
+	f2i
+	istore_2
+	iload_2
+	i2f
+	fload_1
+	fcmpl
+	ifne	l1 // fload_1
+	iload_2
+	ireturn
+l1	fload_1
+	f2l
+	lstore_3
+	lload_3
+	l2d
+	fload_1
+	f2d
+	dcmpl
+	ifne	l2 // fload_1
+	lload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToLong:(J)Ljava/lang/Long;
+	invokevirtual	Method java/lang/Object.hashCode:()I
+	ireturn
+l2	fload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToFloat:(F)Ljava/lang/Float;
+	invokevirtual	Method java/lang/Object.hashCode:()I
+	ireturn
+  Labels:
+   	l1 = 12 // fload_1
+   	l2 = 31 // fload_1
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      39      0    this       Lscala/runtime/ScalaRunTime$;
+   0      39      1    fv       F
+   3      36      2    iv       I
+   15      24      3    lv       J
+
+
+public int hash(long);
+  Signature: (J)I
+  Code:
+   Stack=4, Locals=4, Args_size=2
+	lload_1
+	l2i
+	istore_3
+	iload_3
+	i2l
+	lload_1
+	lcmp
+	ifne	l1 // lload_1
+	iload_3
+	goto	l2 // ireturn
+l1	lload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToLong:(J)Ljava/lang/Long;
+	invokevirtual	Method java/lang/Object.hashCode:()I
+l2	ireturn
+  Labels:
+   	l1 = 14 // lload_1
+   	l2 = 21 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      22      0    this       Lscala/runtime/ScalaRunTime$;
+   0      22      1    lv       J
+   3      19      3    iv       I
+
+
+public int hash(int);
+  Signature: (I)I
+  Code:
+   Stack=1, Locals=2, Args_size=2
+	iload_1
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      2      0    this       Lscala/runtime/ScalaRunTime$;
+   0      2      1    x       I
+
+
+public int hash(short);
+  Signature: (S)I
+  Code:
+   Stack=1, Locals=2, Args_size=2
+	iload_1
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      2      0    this       Lscala/runtime/ScalaRunTime$;
+   0      2      1    x       S
+
+
+public int hash(byte);
+  Signature: (B)I
+  Code:
+   Stack=1, Locals=2, Args_size=2
+	iload_1
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      2      0    this       Lscala/runtime/ScalaRunTime$;
+   0      2      1    x       B
+
+
+public int hash(char);
+  Signature: (C)I
+  Code:
+   Stack=1, Locals=2, Args_size=2
+	iload_1
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      2      0    this       Lscala/runtime/ScalaRunTime$;
+   0      2      1    x       C
+
+
+public int hash(java.lang.Number);
+  Signature: (Ljava/lang/Number;)I
+  Code:
+   Stack=1, Locals=2, Args_size=2
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.hashFromNumber:(Ljava/lang/Number;)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      5      0    this       Lscala/runtime/ScalaRunTime$;
+   0      5      1    x       Ljava/lang/Number;
+
+
+public int hash(java.lang.Long);
+  Signature: (Ljava/lang/Long;)I
+  Code:
+   Stack=4, Locals=3, Args_size=2
+	aload_1
+	invokevirtual	Method java/lang/Long.intValue:()I
+	istore_2
+	iload_2
+	i2l
+	aload_1
+	invokevirtual	Method java/lang/Long.longValue:()J
+	lcmp
+	ifne	l1 // aload_1
+	iload_2
+	goto	l2 // ireturn
+l1	aload_1
+	invokevirtual	Method java/lang/Long.hashCode:()I
+l2	ireturn
+  Labels:
+   	l1 = 19 // aload_1
+   	l2 = 23 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      24      0    this       Lscala/runtime/ScalaRunTime$;
+   0      24      1    x       Ljava/lang/Long;
+   5      19      2    iv       I
+
+
 public boolean sameElements(scala.collection.Seq, scala.collection.Seq);
   Signature: (Lscala/collection/Seq;Lscala/collection/Seq;)Z
   Code:
@@ -1474,7 +1720,7 @@ public boolean sameElements(scala.collection.Seq, scala.collection.Seq);
    0      8      2    xs2       Lscala/collection/Seq;
 
   Signature: length = 0x2
-   01 FFFFFF82 
+   01 FFFFFFA5 
 
 public java.lang.String stringOf(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/String;

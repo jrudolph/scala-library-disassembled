@@ -21,12 +21,21 @@ Asciz	polarity;
 Asciz	Z;
 Asciz	n;
 Asciz	Lscala/concurrent/pilib$UChan;;
-Asciz	productIterator;
-Asciz	()Lscala/collection/Iterator;;
+Asciz	productElementName;
+Asciz	(I)Ljava/lang/String;;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/Product$class;
 class	scala/Product$class
+Asciz	(Lscala/Product;I)Ljava/lang/String;;
+NameAndType	productElementName:(Lscala/Product;I)Ljava/lang/String;
+Method	scala/Product$class.productElementName:(Lscala/Product;I)Ljava/lang/String;
+Asciz	this;
+Asciz	Lscala/concurrent/pilib$UGP;;
+Asciz	I;
+Asciz	LocalVariableTable;
+Asciz	productIterator;
+Asciz	()Lscala/collection/Iterator;;
 Asciz	(Lscala/Product;)Lscala/collection/Iterator;;
 NameAndType	productIterator:(Lscala/Product;)Lscala/collection/Iterator;
 Method	scala/Product$class.productIterator:(Lscala/Product;)Lscala/collection/Iterator;
@@ -67,9 +76,6 @@ Asciz	<init>;
 Asciz	(Lscala/concurrent/pilib$UChan;ZLjava/lang/Object;Lscala/Function1;)V;
 NameAndType	"<init>":(Lscala/concurrent/pilib$UChan;ZLjava/lang/Object;Lscala/Function1;)V
 Method	scala/concurrent/pilib$UGP."<init>":(Lscala/concurrent/pilib$UChan;ZLjava/lang/Object;Lscala/Function1;)V
-Asciz	this;
-Asciz	Lscala/concurrent/pilib$UGP;;
-Asciz	LocalVariableTable;
 Asciz	hashCode;
 Asciz	()I;
 Asciz	scala/runtime/ScalaRunTime$;
@@ -129,22 +135,20 @@ Asciz	boxToBoolean;
 Asciz	(Z)Ljava/lang/Boolean;;
 NameAndType	boxToBoolean:(Z)Ljava/lang/Boolean;
 Method	scala/runtime/BoxesRunTime.boxToBoolean:(Z)Ljava/lang/Boolean;
-Asciz	productElementName;
-Asciz	(I)Ljava/lang/String;;
-String	c
-String	v
-String	polarity
-String	n
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	java/lang/Number;
 class	java/lang/Number
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
 Asciz	java/lang/Character;
 class	java/lang/Character
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	y0;
 Asciz	()V;
 NameAndType	"<init>":()V
@@ -182,6 +186,21 @@ private final boolean polarity;
 
 private final scala.concurrent.pilib$UChan n;
   Signature: Lscala/concurrent/pilib$UChan;
+
+public java.lang.String productElementName(int);
+  Signature: (I)Ljava/lang/String;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method scala/Product$class.productElementName:(Lscala/Product;I)Ljava/lang/String;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/concurrent/pilib$UGP;
+   0      6      1    n       I
+
 
 public scala.collection.Iterator productIterator();
   Signature: ()Lscala/collection/Iterator;
@@ -274,7 +293,7 @@ public scala.Function1 c();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 34 
+   00 3D 
 
 public scala.concurrent.pilib$UGP copy(scala.concurrent.pilib$UChan, boolean, java.lang.Object, scala.Function1);
   Signature: (Lscala/concurrent/pilib$UChan;ZLjava/lang/Object;Lscala/Function1;)Lscala/concurrent/pilib$UGP;
@@ -432,35 +451,6 @@ l1	areturn
   Labels:
    	l1 = 77 // areturn
 
-public java.lang.String productElementName(int);
-  Signature: (I)Ljava/lang/String;
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	iload_1
-	tableswitch{ //0 to 3
-		0: 62;
-		1: 57;
-		2: 52;
-		3: 47;
-		default: 32 }
-	new	class java/lang/IndexOutOfBoundsException
-	dup
-	iload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
-	athrow
-	ldc	String c
-	goto	l1 // areturn
-	ldc	String v
-	goto	l1 // areturn
-	ldc	String polarity
-	goto	l1 // areturn
-	ldc	String n
-l1	areturn
-  Labels:
-   	l1 = 64 // areturn
-
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
@@ -505,13 +495,19 @@ l4	aload_3
 	goto	l5 // ifeq
 l6	aload_3
 	instanceof	class java/lang/Number
-	ifne	l7 // aload_3
+	ifeq	l7 // aload_3
 	aload_3
+	checkcast	class java/lang/Number
+	aload	6
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l5 // ifeq
+l7	aload_3
 	instanceof	class java/lang/Character
 	ifeq	l8 // aload_3
-l7	aload_3
+	aload_3
+	checkcast	class java/lang/Character
 	aload	6
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l5 // ifeq
 l8	aload_3
 	aload	6
@@ -539,17 +535,17 @@ l11	ireturn
    	l2 = 28 // iload_2
    	l4 = 52 // aload_3
    	l6 = 60 // aload_3
-   	l7 = 74 // aload_3
-   	l8 = 83 // aload_3
-   	l5 = 89 // ifeq
-   	l9 = 113 // aload
-   	l10 = 121 // iconst_1
-   	l3 = 125 // iconst_0
-   	l11 = 126 // ireturn
+   	l7 = 79 // aload_3
+   	l8 = 98 // aload_3
+   	l5 = 104 // ifeq
+   	l9 = 128 // aload
+   	l10 = 136 // iconst_1
+   	l3 = 140 // iconst_0
+   	l11 = 141 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      127      0    this       Lscala/concurrent/pilib$UGP;
-   48      44      6    y0       Ljava/lang/Object;
+   0      142      0    this       Lscala/concurrent/pilib$UGP;
+   48      59      6    y0       Ljava/lang/Object;
 
 
 public scala.concurrent.pilib$UGP(scala.concurrent.pilib$UChan, boolean, java.lang.Object, scala.Function1);
@@ -583,7 +579,7 @@ public scala.concurrent.pilib$UGP(scala.concurrent.pilib$UChan, boolean, java.la
    0      30      4    c       Lscala/Function1;
 
   Signature: length = 0x2
-   00 FFFFFF91 
+   00 FFFFFF95 
 
 }
 

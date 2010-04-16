@@ -178,12 +178,16 @@ Asciz	sameElements;
 Asciz	(Lscala/collection/LinearSeqLike;Lscala/collection/Iterable;)Z;
 Asciz	java/lang/Number;
 class	java/lang/Number
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
 Asciz	java/lang/Character;
 class	java/lang/Character
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	equals;
@@ -1008,13 +1012,19 @@ l3	aload_3
 	goto	l4 // ifeq
 l5	aload_3
 	instanceof	class java/lang/Number
-	ifne	l6 // aload_3
+	ifeq	l6 // aload_3
 	aload_3
+	checkcast	class java/lang/Number
+	aload	4
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l4 // ifeq
+l6	aload_3
 	instanceof	class java/lang/Character
 	ifeq	l7 // aload_3
-l6	aload_3
+	aload_3
+	checkcast	class java/lang/Character
 	aload	4
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l4 // ifeq
 l7	aload_3
 	aload	4
@@ -1047,22 +1057,22 @@ l10	ireturn
    	l8 = 18 // aload
    	l3 = 65 // aload_3
    	l5 = 73 // aload_3
-   	l6 = 87 // aload_3
-   	l7 = 96 // aload_3
-   	l4 = 102 // ifeq
-   	l2 = 132 // aload
-   	l9 = 156 // iconst_0
-   	l1 = 160 // aload_0
-   	l10 = 167 // ireturn
+   	l6 = 92 // aload_3
+   	l7 = 111 // aload_3
+   	l4 = 117 // ifeq
+   	l2 = 147 // aload
+   	l9 = 171 // iconst_0
+   	l1 = 175 // aload_0
+   	l10 = 182 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      168      0    $this       Lscala/collection/LinearSeqLike;
-   0      168      1    that       Lscala/collection/Iterable;
-   12      148      2    temp2       Lscala/collection/LinearSeq;
-   61      44      3    x0       Ljava/lang/Object;
-   61      44      4    y0       Ljava/lang/Object;
-   15      145      5    these       Lscala/collection/LinearSeqLike;
-   18      142      6    those       Lscala/collection/LinearSeq;
+   0      183      0    $this       Lscala/collection/LinearSeqLike;
+   0      183      1    that       Lscala/collection/Iterable;
+   12      163      2    temp2       Lscala/collection/LinearSeq;
+   61      59      3    x0       Ljava/lang/Object;
+   61      59      4    y0       Ljava/lang/Object;
+   15      160      5    these       Lscala/collection/LinearSeqLike;
+   18      157      6    those       Lscala/collection/LinearSeq;
 
 
 public static int lengthCompare(scala.collection.LinearSeqLike, int);

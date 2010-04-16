@@ -2,7 +2,7 @@ Compiled from "List.scala"
 public abstract class scala.collection.immutable.List extends java.lang.Object implements scala.collection.immutable.LinearSeq,scala.Product,scala.collection.generic.GenericTraversableTemplate,scala.collection.LinearSeqLike,scala.ScalaObject
   SourceFile: "List.scala"
   Signature: length = 0x2
-   04 76 
+   04 7A 
   ScalaSig: length = 0x167F
    05 00 FFFFFF85 00 06 05 01 02 FFFFFF81 10 09 02 04 4C 69 73
    74 0A 02 03 04 01 09 69 6D 6D 75 74 61 62 6C 65
@@ -885,10 +885,6 @@ Asciz	(Lscala/Function1;Lscala/Function1;)Lscala/Function1;;
 NameAndType	compose:(Lscala/Function1;Lscala/Function1;)Lscala/Function1;
 Method	scala/Function1$class.compose:(Lscala/Function1;Lscala/Function1;)Lscala/Function1;
 Asciz	g;
-Asciz	elements;
-Asciz	(Lscala/collection/IterableLike;)Lscala/collection/Iterator;;
-NameAndType	elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
-Method	scala/collection/IterableLike$class.elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
 Asciz	toIterable;
 Asciz	()Lscala/collection/Iterable;;
 Asciz	(Lscala/collection/IterableLike;)Lscala/collection/Iterable;;
@@ -935,6 +931,10 @@ Asciz	canEqual;
 Asciz	(Lscala/collection/IterableLike;Ljava/lang/Object;)Z;
 NameAndType	canEqual:(Lscala/collection/IterableLike;Ljava/lang/Object;)Z
 Method	scala/collection/IterableLike$class.canEqual:(Lscala/collection/IterableLike;Ljava/lang/Object;)Z
+Asciz	elements;
+Asciz	(Lscala/collection/IterableLike;)Lscala/collection/Iterator;;
+NameAndType	elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
+Method	scala/collection/IterableLike$class.elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
 Asciz	first;
 Asciz	(Lscala/collection/IterableLike;)Ljava/lang/Object;;
 NameAndType	first:(Lscala/collection/IterableLike;)Ljava/lang/Object;
@@ -1331,12 +1331,16 @@ Field	scala/runtime/BoxedUnit.UNIT:Lscala/runtime/BoxedUnit;
 Asciz	$minus;
 Asciz	java/lang/Number;
 class	java/lang/Number
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
 Asciz	java/lang/Character;
 class	java/lang/Character
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	java/lang/Object;
 class	java/lang/Object
 NameAndType	equals:(Ljava/lang/Object;)Z
@@ -2975,6 +2979,7 @@ public int findLastIndexOf(scala.Function1);
    0      6      0    this       Lscala/collection/immutable/List;
    0      6      1    p       Lscala/Function1;
 
+  Deprecated: true
 
 public boolean equalsWith(scala.collection.Seq, scala.Function2);
   Signature: (Lscala/collection/Seq;Lscala/Function2;)Z
@@ -3057,16 +3062,6 @@ public scala.Function1 compose(scala.Function1);
    0      6      0    this       Lscala/collection/immutable/List;
    0      6      1    g       Lscala/Function1;
 
-
-public scala.collection.Iterator elements();
-  Signature: ()Lscala/collection/Iterator;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokestatic	Method scala/collection/IterableLike$class.elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
-	areturn
-  Labels:
-  Deprecated: true
 
 public scala.collection.Iterable toIterable();
   Signature: ()Lscala/collection/Iterable;
@@ -3210,6 +3205,16 @@ public boolean canEqual(java.lang.Object);
    0      6      0    this       Lscala/collection/immutable/List;
    0      6      1    that       Ljava/lang/Object;
 
+
+public scala.collection.Iterator elements();
+  Signature: ()Lscala/collection/Iterator;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/collection/IterableLike$class.elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
+	areturn
+  Labels:
+  Deprecated: true
 
 public java.lang.Object first();
   Signature: ()Ljava/lang/Object;
@@ -4566,13 +4571,19 @@ l2	aload_2
 	goto	l3 // ifeq
 l4	aload_2
 	instanceof	class java/lang/Number
-	ifne	l5 // aload_2
+	ifeq	l5 // aload_2
 	aload_2
+	checkcast	class java/lang/Number
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l3 // ifeq
+l5	aload_2
 	instanceof	class java/lang/Character
 	ifeq	l6 // aload_2
-l5	aload_2
+	aload_2
+	checkcast	class java/lang/Character
 	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l3 // ifeq
 l6	aload_2
 	aload_1
@@ -4595,20 +4606,20 @@ l8	pop
    	l1 = 26 // aload
    	l2 = 43 // aload_2
    	l4 = 51 // aload_2
-   	l5 = 65 // aload_2
-   	l6 = 73 // aload_2
-   	l3 = 78 // ifeq
-   	l7 = 87 // aload_3
-   	l8 = 98 // pop
+   	l5 = 69 // aload_2
+   	l6 = 87 // aload_2
+   	l3 = 92 // ifeq
+   	l7 = 101 // aload_3
+   	l8 = 112 // pop
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      114      0    this       Lscala/collection/immutable/List;
-   0      114      1    x       Ljava/lang/Object;
-   39      42      2    x0       Ljava/lang/Object;
+   0      128      0    this       Lscala/collection/immutable/List;
+   0      128      1    x       Ljava/lang/Object;
+   39      56      2    x0       Ljava/lang/Object;
    8      17      3    b       Lscala/collection/mutable/ListBuffer;
-   26      88      3    b       Lscala/collection/mutable/ListBuffer;
+   26      102      3    b       Lscala/collection/mutable/ListBuffer;
    11      14      4    these       Lscala/collection/immutable/List;
-   26      88      4    these       Lscala/collection/immutable/List;
+   26      102      4    these       Lscala/collection/immutable/List;
 
   Signature: length = 0x2
    03 04 
@@ -4643,7 +4654,7 @@ public scala.collection.immutable.List sort(scala.Function2);
    0      7      1    lt$1       Lscala/Function2;
 
   Signature: length = 0x2
-   03 FFFFFFCC 
+   03 FFFFFFD0 
   Deprecated: true
 
 public scala.collection.LinearSeqLike tail();

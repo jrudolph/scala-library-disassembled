@@ -2,7 +2,7 @@ Compiled from "Atom.scala"
 public class scala.xml.Atom extends scala.xml.SpecialNode implements scala.ScalaObject,java.io.Serializable
   SourceFile: "Atom.scala"
   Signature: length = 0x2
-   00 6A 
+   00 6E 
   ScalaSig: length = 0x27B
    05 00 69 06 04 01 02 00 07 02 04 41 74 6F 6D 0A
    02 03 04 01 03 78 6D 6C 0A 01 05 01 05 73 63 61
@@ -93,14 +93,18 @@ Asciz	strict_$eq$eq;
 Asciz	(Lscala/xml/Equality;)Z;
 Asciz	java/lang/Number;
 class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Asciz	java/lang/Character;
+class	java/lang/Character
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	equals;
 Asciz	(Ljava/lang/Object;)Z;
 NameAndType	equals:(Ljava/lang/Object;)Z
@@ -222,13 +226,19 @@ l2	aload_2
 	goto	l3 // ifeq
 l4	aload_2
 	instanceof	class java/lang/Number
-	ifne	l5 // aload_2
+	ifeq	l5 // aload_2
 	aload_2
+	checkcast	class java/lang/Number
+	aload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l3 // ifeq
+l5	aload_2
 	instanceof	class java/lang/Character
 	ifeq	l6 // aload_2
-l5	aload_2
+	aload_2
+	checkcast	class java/lang/Character
 	aload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l3 // ifeq
 l6	aload_2
 	aload_3
@@ -243,18 +253,18 @@ l8	ireturn
   Labels:
    	l2 = 29 // aload_2
    	l4 = 37 // aload_2
-   	l5 = 51 // aload_2
-   	l6 = 59 // aload_2
-   	l3 = 64 // ifeq
-   	l7 = 71 // iconst_0
-   	l1 = 75 // iconst_0
-   	l8 = 76 // ireturn
+   	l5 = 55 // aload_2
+   	l6 = 73 // aload_2
+   	l3 = 78 // ifeq
+   	l7 = 85 // iconst_0
+   	l1 = 89 // iconst_0
+   	l8 = 90 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      77      0    this       Lscala/xml/Atom;
-   0      77      1    other       Lscala/xml/Equality;
-   25      42      2    x0       Ljava/lang/Object;
-   25      42      3    y0       Ljava/lang/Object;
+   0      91      0    this       Lscala/xml/Atom;
+   0      91      1    other       Lscala/xml/Equality;
+   25      56      2    x0       Ljava/lang/Object;
+   25      56      3    y0       Ljava/lang/Object;
 
 
 public boolean canEqual(java.lang.Object);
@@ -355,7 +365,7 @@ l2	return
    0      34      1    data       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 69 
+   00 6D 
 
 }
 

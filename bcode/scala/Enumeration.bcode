@@ -211,6 +211,7 @@ public abstract class scala.Enumeration extends java.lang.Object implements scal
    public final $anonfun$values$1=class scala/Enumeration$$anonfun$values$1 of class scala/Enumeration
    public final $anonfun$valueOf$1=class scala/Enumeration$$anonfun$valueOf$1 of class scala/Enumeration
    public final $anonfun$withName$1=class scala/Enumeration$$anonfun$withName$1 of class scala/Enumeration
+   public final $anonfun$isValDef$1$1=class scala/Enumeration$$anonfun$isValDef$1$1 of class scala/Enumeration
    public GenericCanBuildFrom=class scala/collection/generic/TraversableFactory$GenericCanBuildFrom of class scala/collection/generic/TraversableFactory
    public final $anonfun$scala$Enumeration$$nameOf$2=class scala/Enumeration$$anonfun$scala$Enumeration$$nameOf$2 of class scala/Enumeration
    public final $anonfun$scala$Enumeration$$nameOf$1=class scala/Enumeration$$anonfun$scala$Enumeration$$nameOf$1 of class scala/Enumeration
@@ -515,8 +516,10 @@ class	scala/MatchError
 Asciz	(Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;)V
 Method	scala/MatchError."<init>":(Ljava/lang/Object;)V
+Asciz	$inlThis1;
 Asciz	methods;
 Asciz	[Ljava/lang/reflect/Method;;
+Asciz	xs0;
 Asciz	temp1;
 Asciz	Lscala/Option;;
 Asciz	ValueSet;
@@ -566,6 +569,26 @@ Asciz	filter;
 NameAndType	filter:(Lscala/Function1;)Lscala/collection/Iterator;
 InterfaceMethod	scala/collection/Iterator.filter:(Lscala/Function1;)Lscala/collection/Iterator;
 Asciz	(Lscala/Function1<Lscala/Enumeration$Value;Ljava/lang/Boolean;>;)Lscala/collection/Iterator<Lscala/Enumeration$Value;>;;
+Asciz	isValDef$1;
+Asciz	(Ljava/lang/reflect/Method;)Z;
+Asciz	getDeclaredFields;
+Asciz	()[Ljava/lang/reflect/Field;;
+NameAndType	getDeclaredFields:()[Ljava/lang/reflect/Field;
+Method	java/lang/Class.getDeclaredFields:()[Ljava/lang/reflect/Field;
+Asciz	refArrayOps;
+Asciz	([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;;
+NameAndType	refArrayOps:([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;
+Method	scala/Predef$.refArrayOps:([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;
+Asciz	scala/Enumeration$$anonfun$isValDef$1$1;
+class	scala/Enumeration$$anonfun$isValDef$1$1
+Asciz	(Lscala/Enumeration;Ljava/lang/reflect/Method;)V;
+NameAndType	"<init>":(Lscala/Enumeration;Ljava/lang/reflect/Method;)V
+Method	scala/Enumeration$$anonfun$isValDef$1$1."<init>":(Lscala/Enumeration;Ljava/lang/reflect/Method;)V
+Asciz	scala/collection/IndexedSeqLike;
+class	scala/collection/IndexedSeqLike
+InterfaceMethod	scala/collection/IndexedSeqLike.exists:(Lscala/Function1;)Z
+Asciz	m$1;
+Asciz	Ljava/lang/reflect/Method;;
 NameAndType	"<init>":()V
 Method	java/lang/Object."<init>":()V
 Asciz	scala/collection/mutable/HashMap;
@@ -584,6 +607,7 @@ Asciz	WithFilter;
 Asciz	$anonfun$values$1;
 Asciz	$anonfun$valueOf$1;
 Asciz	$anonfun$withName$1;
+Asciz	$anonfun$isValDef$1$1;
 Asciz	scala/collection/generic/TraversableFactory;
 class	scala/collection/generic/TraversableFactory
 Asciz	GenericCanBuildFrom;
@@ -1028,31 +1052,34 @@ public final scala.Enumeration$Value Value(int, java.lang.String);
 public final java.lang.String scala$Enumeration$$nameOf(int);
   Signature: (I)Ljava/lang/String;
   Code:
-   Stack=4, Locals=6, Args_size=2
+   Stack=4, Locals=7, Args_size=2
+	aload_0
+	dup
+	pop
+	monitorenter
 	aload_0
 	getfield	Field scala$Enumeration$$nmap:Lscala/collection/mutable/Map;
 	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokeinterface	InterfaceMethod scala/collection/MapLike.get:(Ljava/lang/Object;)Lscala/Option;
-	astore	5
-	aload	5
+	astore	6
+	aload	6
 	instanceof	class scala/Some
 	ifeq	l1 // getstatic
-	aload	5
+	aload	6
 	checkcast	class scala/Some
 	astore_2
 	aload_2
 	getfield	Field scala/Some.x:Ljava/lang/Object;
-	checkcast	class java/lang/String
-	goto	l2 // areturn
+	goto	l2 // astore
 l1	getstatic	Field scala/None$.MODULE$:Lscala/None$;
 	dup
 	ifnonnull	l3 // aload
 	pop
-	aload	5
+	aload	6
 	ifnull	l4 // aload_0
 	goto	l5 // new
-l3	aload	5
+l3	aload	6
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ifeq	l5 // new
 l4	aload_0
@@ -1081,25 +1108,39 @@ l4	aload_0
 	iload_1
 	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 	invokeinterface	InterfaceMethod scala/collection/MapLike.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+l2	astore	5
+	aload_0
+	monitorexit
+	aload	5
 	checkcast	class java/lang/String
-l2	areturn
+	areturn
 l5	new	class scala/MatchError
 	dup
-	aload	5
+	aload	6
 	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
 	athrow
+	aload_0
+	monitorexit
+	athrow
   Labels:
-   	l1 = 39 // getstatic
-   	l3 = 55 // aload
-   	l4 = 63 // aload_0
-   	l2 = 126 // areturn
-   	l5 = 127 // new
+   	l1 = 40 // getstatic
+   	l3 = 56 // aload
+   	l4 = 64 // aload_0
+   	l2 = 124 // astore
+   	l5 = 134 // new
+  Exception table:
+   from   to  target type
+     4   128   144   any
+   134   144   144   any
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      137      0    this       Lscala/Enumeration;
-   0      137      1    i       I
-   71      55      3    methods       [Ljava/lang/reflect/Method;
-   15      122      5    temp1       Lscala/Option;
+   0      147      0    this       Lscala/Enumeration;
+   0      147      1    i       I
+   33      7      2    $inlThis1       Ljava/lang/Object;
+   72      52      3    methods       [Ljava/lang/reflect/Method;
+   78      9      4    xs0       [Ljava/lang/Object;
+   19      109      6    temp1       Lscala/Option;
+   134      10      6    temp1       Lscala/Option;
 
 
 public final scala.Enumeration$ValueSet$ ValueSet();
@@ -1151,7 +1192,7 @@ public scala.Option valueOf(java.lang.String);
    0      19      1    s$2       Ljava/lang/String;
 
   Signature: length = 0x2
-   01 40 
+   01 42 
   Deprecated: true
 
 public final scala.collection.Iterator iterator();
@@ -1164,7 +1205,7 @@ public final scala.collection.Iterator iterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   01 44 
+   01 46 
   Deprecated: true
 
 public void foreach(scala.Function1);
@@ -1183,7 +1224,7 @@ public void foreach(scala.Function1);
    0      11      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   01 49 
+   01 4B 
   Deprecated: true
 
 public boolean forall(scala.Function1);
@@ -1202,7 +1243,7 @@ public boolean forall(scala.Function1);
    0      11      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   01 4F 
+   01 51 
   Deprecated: true
 
 public boolean exists(scala.Function1);
@@ -1221,7 +1262,7 @@ public boolean exists(scala.Function1);
    0      11      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   01 4F 
+   01 51 
   Deprecated: true
 
 public scala.collection.Iterator map(scala.Function1);
@@ -1240,7 +1281,7 @@ public scala.collection.Iterator map(scala.Function1);
    0      11      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   01 56 
+   01 58 
   Deprecated: true
 
 public scala.collection.Iterator flatMap(scala.Function1);
@@ -1259,7 +1300,7 @@ public scala.collection.Iterator flatMap(scala.Function1);
    0      11      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   01 5A 
+   01 5C 
   Deprecated: true
 
 public scala.collection.Iterator filter(scala.Function1);
@@ -1278,8 +1319,32 @@ public scala.collection.Iterator filter(scala.Function1);
    0      11      1    p       Lscala/Function1;
 
   Signature: length = 0x2
-   01 5E 
+   01 60 
   Deprecated: true
+
+public final boolean isValDef$1(java.lang.reflect.Method);
+  Signature: (Ljava/lang/reflect/Method;)Z
+  Code:
+   Stack=5, Locals=2, Args_size=2
+	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	aload_0
+	invokevirtual	Method getClass:()Ljava/lang/Class;
+	invokevirtual	Method java/lang/Class.getDeclaredFields:()[Ljava/lang/reflect/Field;
+	checkcast	class "[Ljava/lang/Object;"
+	invokevirtual	Method scala/Predef$.refArrayOps:([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;
+	new	class scala/Enumeration$$anonfun$isValDef$1$1
+	dup
+	aload_0
+	aload_1
+	invokespecial	Method scala/Enumeration$$anonfun$isValDef$1$1."<init>":(Lscala/Enumeration;Ljava/lang/reflect/Method;)V
+	invokeinterface	InterfaceMethod scala/collection/IndexedSeqLike.exists:(Lscala/Function1;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      31      0    this       Lscala/Enumeration;
+   0      31      1    m$1       Ljava/lang/reflect/Method;
+
 
 public scala.Enumeration(int, scala.collection.Seq);
   Signature: (ILscala/collection/Seq;)V
@@ -1322,7 +1387,7 @@ public scala.Enumeration(int, scala.collection.Seq);
    0      57      2    names       Lscala/collection/Seq;
 
   Signature: length = 0x2
-   01 66 
+   01 7C 
 
 }
 

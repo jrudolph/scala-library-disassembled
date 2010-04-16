@@ -49,14 +49,18 @@ NameAndType	x:Ljava/lang/Object;
 Field	scala/Some.x:Ljava/lang/Object;
 Asciz	java/lang/Number;
 class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Asciz	java/lang/Character;
+class	java/lang/Character
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	equals;
@@ -155,13 +159,19 @@ l3	aload	5
 	goto	l4 // ifeq
 l5	aload	5
 	instanceof	class java/lang/Number
-	ifne	l6 // aload
+	ifeq	l6 // aload
 	aload	5
+	checkcast	class java/lang/Number
+	aload	6
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l4 // ifeq
+l6	aload	5
 	instanceof	class java/lang/Character
 	ifeq	l7 // aload
-l6	aload	5
+	aload	5
+	checkcast	class java/lang/Character
 	aload	6
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l4 // ifeq
 l7	aload	5
 	aload	6
@@ -181,24 +191,24 @@ l1	new	class scala/MatchError
   Labels:
    	l3 = 57 // aload
    	l5 = 66 // aload
-   	l6 = 82 // aload
-   	l7 = 92 // aload
-   	l4 = 99 // ifeq
-   	l8 = 106 // iconst_0
-   	l2 = 110 // iconst_0
-   	l9 = 111 // ireturn
-   	l1 = 112 // new
+   	l6 = 87 // aload
+   	l7 = 108 // aload
+   	l4 = 115 // ifeq
+   	l8 = 122 // iconst_0
+   	l2 = 126 // iconst_0
+   	l9 = 127 // ireturn
+   	l1 = 128 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      121      0    this       Lscala/collection/MapLike$$anonfun$liftedTree1$1$1;
-   9      102      2    temp42       Ljava/lang/Object;
-   20      91      3    temp37       Lscala/Option;
-   53      49      4    $inlThis0       Ljava/lang/Object;
-   53      49      5    x0       Ljava/lang/Object;
-   53      49      6    y0       Ljava/lang/Object;
+   0      137      0    this       Lscala/collection/MapLike$$anonfun$liftedTree1$1$1;
+   9      118      2    temp42       Ljava/lang/Object;
+   20      107      3    temp37       Lscala/Option;
+   53      65      4    $inlThis0       Ljava/lang/Object;
+   53      65      5    x0       Ljava/lang/Object;
+   53      65      6    y0       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 47 
+   00 4B 
 
 public final java.lang.Object apply(java.lang.Object);
   Signature: (Ljava/lang/Object;)Ljava/lang/Object;
@@ -236,7 +246,7 @@ public scala.collection.MapLike$$anonfun$liftedTree1$1$1(scala.collection.MapLik
    0      10      1    $outer       Lscala/collection/MapLike;
 
   Signature: length = 0x2
-   00 58 
+   00 5C 
 
 }
 

@@ -2,7 +2,7 @@ Compiled from "ListSet.scala"
 public class scala.collection.immutable.ListSet$Node extends scala.collection.immutable.ListSet implements scala.ScalaObject,java.io.Serializable
   SourceFile: "ListSet.scala"
   Signature: length = 0x2
-   00 59 
+   00 5D 
   Scala: length = 0x
    
   InnerClass: 
@@ -44,14 +44,18 @@ NameAndType	elem:()Ljava/lang/Object;
 Method	scala/collection/immutable/ListSet$Node.elem:()Ljava/lang/Object;
 Asciz	java/lang/Number;
 class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Asciz	java/lang/Character;
+class	java/lang/Character
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	equals;
@@ -165,13 +169,19 @@ l1	aload_1
 	goto	l2 // ifne
 l3	aload_1
 	instanceof	class java/lang/Number
-	ifne	l4 // aload_1
+	ifeq	l4 // aload_1
 	aload_1
+	checkcast	class java/lang/Number
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l2 // ifne
+l4	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l5 // aload_1
-l4	aload_1
+	aload_1
+	checkcast	class java/lang/Character
 	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l2 // ifne
 l5	aload_1
 	aload_2
@@ -189,20 +199,20 @@ l8	ireturn
   Labels:
    	l1 = 14 // aload_1
    	l3 = 22 // aload_1
-   	l4 = 36 // aload_1
-   	l5 = 44 // aload_1
-   	l2 = 49 // ifne
-   	l6 = 63 // iconst_1
-   	l7 = 67 // iconst_0
-   	l8 = 68 // ireturn
+   	l4 = 40 // aload_1
+   	l5 = 58 // aload_1
+   	l2 = 63 // ifne
+   	l6 = 77 // iconst_1
+   	l7 = 81 // iconst_0
+   	l8 = 82 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      69      0    this       Lscala/collection/immutable/ListSet$Node;
-   0      69      1    e       Ljava/lang/Object;
-   10      42      2    y0       Ljava/lang/Object;
+   0      83      0    this       Lscala/collection/immutable/ListSet$Node;
+   0      83      1    e       Ljava/lang/Object;
+   10      56      2    y0       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 37 
+   00 3B 
 
 public scala.collection.immutable.ListSet $plus(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/ListSet;
@@ -229,7 +239,7 @@ l2	areturn
    0      22      1    e       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 3F 
+   00 43 
 
 public scala.collection.immutable.ListSet $minus(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/ListSet;
@@ -249,13 +259,19 @@ l1	aload_1
 	goto	l2 // ifeq
 l3	aload_1
 	instanceof	class java/lang/Number
-	ifne	l4 // aload_1
+	ifeq	l4 // aload_1
 	aload_1
+	checkcast	class java/lang/Number
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l2 // ifeq
+l4	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l5 // aload_1
-l4	aload_1
+	aload_1
+	checkcast	class java/lang/Character
 	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l2 // ifeq
 l5	aload_1
 	aload_2
@@ -279,20 +295,20 @@ l7	areturn
   Labels:
    	l1 = 14 // aload_1
    	l3 = 22 // aload_1
-   	l4 = 36 // aload_1
-   	l5 = 44 // aload_1
-   	l2 = 49 // ifeq
-   	l6 = 59 // aload_0
-   	l7 = 80 // areturn
+   	l4 = 40 // aload_1
+   	l5 = 58 // aload_1
+   	l2 = 63 // ifeq
+   	l6 = 73 // aload_0
+   	l7 = 94 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      81      0    this       Lscala/collection/immutable/ListSet$Node;
-   0      81      1    e       Ljava/lang/Object;
-   10      42      2    y0       Ljava/lang/Object;
-   68      12      3    tail       Lscala/collection/immutable/ListSet;
+   0      95      0    this       Lscala/collection/immutable/ListSet$Node;
+   0      95      1    e       Ljava/lang/Object;
+   10      56      2    y0       Ljava/lang/Object;
+   82      12      3    tail       Lscala/collection/immutable/ListSet;
 
   Signature: length = 0x2
-   00 3F 
+   00 43 
 
 public scala.collection.immutable.ListSet next();
   Signature: ()Lscala/collection/immutable/ListSet;
@@ -303,7 +319,7 @@ public scala.collection.immutable.ListSet next();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 45 
+   00 49 
 
 public java.lang.String stringPrefix();
   Signature: ()Ljava/lang/String;
@@ -410,7 +426,7 @@ l1	aload_0
    0      27      2    elem       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 58 
+   00 5C 
 
 }
 

@@ -82,14 +82,18 @@ NameAndType	next:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/Iterator.next:()Ljava/lang/Object;
 Asciz	java/lang/Number;
 class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Asciz	java/lang/Character;
+class	java/lang/Character
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	equals;
@@ -228,13 +232,19 @@ l2	aload_3
 	goto	l3 // ifeq
 l4	aload_3
 	instanceof	class java/lang/Number
-	ifne	l5 // aload_3
+	ifeq	l5 // aload_3
 	aload_3
+	checkcast	class java/lang/Number
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l3 // ifeq
+l5	aload_3
 	instanceof	class java/lang/Character
 	ifeq	l6 // aload_3
-l5	aload_3
+	aload_3
+	checkcast	class java/lang/Character
 	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l3 // ifeq
 l6	aload_3
 	aload_1
@@ -259,18 +269,18 @@ l9	areturn
    	l1 = 34 // aload_2
    	l2 = 50 // aload_3
    	l4 = 58 // aload_3
-   	l5 = 72 // aload_3
-   	l6 = 80 // aload_3
-   	l3 = 85 // ifeq
-   	l8 = 106 // aload_0
-   	l7 = 121 // aload_0
-   	l9 = 128 // areturn
+   	l5 = 76 // aload_3
+   	l6 = 94 // aload_3
+   	l3 = 99 // ifeq
+   	l8 = 120 // aload_0
+   	l7 = 135 // aload_0
+   	l9 = 142 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      129      0    $this       Lscala/collection/generic/Sorted;
-   0      129      1    to       Ljava/lang/Object;
-   18      111      2    i       Lscala/collection/Iterator;
-   41      88      3    next       Ljava/lang/Object;
+   0      143      0    $this       Lscala/collection/generic/Sorted;
+   0      143      1    to       Ljava/lang/Object;
+   18      125      2    i       Lscala/collection/Iterator;
+   41      102      3    next       Ljava/lang/Object;
 
 
 public static boolean hasAll(scala.collection.generic.Sorted, scala.collection.Iterator);

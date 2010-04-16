@@ -29,14 +29,18 @@ NameAndType	eta$0$1$1:Ljava/lang/Object;
 Field	scala/collection/immutable/Stream$$anonfun$distinct$1$$anonfun$apply$1.eta$0$1$1:Ljava/lang/Object;
 Asciz	java/lang/Number;
 class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Asciz	java/lang/Character;
+class	java/lang/Character
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	equals;
@@ -109,13 +113,19 @@ l1	aload_2
 	goto	l2 // ifeq
 l3	aload_2
 	instanceof	class java/lang/Number
-	ifne	l4 // aload_2
+	ifeq	l4 // aload_2
 	aload_2
+	checkcast	class java/lang/Number
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l2 // ifeq
+l4	aload_2
 	instanceof	class java/lang/Character
 	ifeq	l5 // aload_2
-l4	aload_2
+	aload_2
+	checkcast	class java/lang/Character
 	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l2 // ifeq
 l5	aload_2
 	aload_1
@@ -128,15 +138,15 @@ l7	ireturn
   Labels:
    	l1 = 14 // aload_2
    	l3 = 22 // aload_2
-   	l4 = 36 // aload_2
-   	l5 = 44 // aload_2
-   	l2 = 49 // ifeq
-   	l6 = 56 // iconst_1
-   	l7 = 57 // ireturn
+   	l4 = 40 // aload_2
+   	l5 = 58 // aload_2
+   	l2 = 63 // ifeq
+   	l6 = 70 // iconst_1
+   	l7 = 71 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      58      0    this       Lscala/collection/immutable/Stream$$anonfun$distinct$1$$anonfun$apply$1;
-   10      42      2    x0       Ljava/lang/Object;
+   0      72      0    this       Lscala/collection/immutable/Stream$$anonfun$distinct$1$$anonfun$apply$1;
+   10      56      2    x0       Ljava/lang/Object;
 
 
 public final java.lang.Object apply(java.lang.Object);
@@ -174,7 +184,7 @@ public scala.collection.immutable.Stream$$anonfun$distinct$1$$anonfun$apply$1(sc
    0      10      1    $outer       Lscala/collection/immutable/Stream$$anonfun$distinct$1;
 
   Signature: length = 0x2
-   00 36 
+   00 3A 
 
 }
 

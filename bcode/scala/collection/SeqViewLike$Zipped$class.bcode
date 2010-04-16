@@ -32,14 +32,10 @@ Asciz	Lscala/collection/SeqViewLike$Zipped;;
 Asciz	LocalVariableTable;
 Asciz	length;
 Asciz	(Lscala/collection/SeqViewLike$Zipped;)I;
-Asciz	scala/Predef$;
-class	scala/Predef$
-Asciz	MODULE$;
-Asciz	Lscala/Predef$;;
-NameAndType	MODULE$:Lscala/Predef$;
-Field	scala/Predef$.MODULE$:Lscala/Predef$;
 Asciz	scala/collection/SeqViewLike$Zipped;
 class	scala/collection/SeqViewLike$Zipped
+NameAndType	thatSeq:()Lscala/collection/Seq;
+InterfaceMethod	scala/collection/SeqViewLike$Zipped.thatSeq:()Lscala/collection/Seq;
 Asciz	scala$collection$SeqViewLike$Zipped$$$outer;
 Asciz	()Lscala/collection/SeqViewLike;;
 NameAndType	scala$collection$SeqViewLike$Zipped$$$outer:()Lscala/collection/SeqViewLike;
@@ -49,18 +45,10 @@ class	scala/collection/SeqLike
 Asciz	()I;
 NameAndType	length:()I
 InterfaceMethod	scala/collection/SeqLike.length:()I
-Asciz	intWrapper;
-Asciz	(I)Lscala/runtime/RichInt;;
-NameAndType	intWrapper:(I)Lscala/runtime/RichInt;
-Method	scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
-NameAndType	thatSeq:()Lscala/collection/Seq;
-InterfaceMethod	scala/collection/SeqViewLike$Zipped.thatSeq:()Lscala/collection/Seq;
-Asciz	scala/runtime/RichInt;
-class	scala/runtime/RichInt
-Asciz	min;
+Asciz	lengthCompare;
 Asciz	(I)I;
-NameAndType	min:(I)I
-Method	scala/runtime/RichInt.min:(I)I
+NameAndType	lengthCompare:(I)I
+InterfaceMethod	scala/collection/SeqLike.lengthCompare:(I)I
 Asciz	apply;
 Asciz	(Lscala/collection/SeqViewLike$Zipped;I)Lscala/Tuple2;;
 Asciz	scala/Tuple2;
@@ -107,20 +95,28 @@ public static int length(scala.collection.SeqViewLike$Zipped);
   Signature: (Lscala/collection/SeqViewLike$Zipped;)I
   Code:
    Stack=2, Locals=1, Args_size=1
-	getstatic	Field scala/Predef$.MODULE$:Lscala/Predef$;
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$Zipped.thatSeq:()Lscala/collection/Seq;
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$Zipped.scala$collection$SeqViewLike$Zipped$$$outer:()Lscala/collection/SeqViewLike;
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	invokevirtual	Method scala/Predef$.intWrapper:(I)Lscala/runtime/RichInt;
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.lengthCompare:(I)I
+	iconst_0
+	if_icmpgt	l1 // aload_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$Zipped.thatSeq:()Lscala/collection/Seq;
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	invokevirtual	Method scala/runtime/RichInt.min:(I)I
-	ireturn
+	goto	l2 // ireturn
+l1	aload_0
+	invokeinterface	InterfaceMethod scala/collection/SeqViewLike$Zipped.scala$collection$SeqViewLike$Zipped$$$outer:()Lscala/collection/SeqViewLike;
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
+l2	ireturn
   Labels:
+   	l1 = 40 // aload_0
+   	l2 = 51 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      32      0    $this       Lscala/collection/SeqViewLike$Zipped;
+   0      52      0    $this       Lscala/collection/SeqViewLike$Zipped;
 
 
 public static scala.Tuple2 apply(scala.collection.SeqViewLike$Zipped, int);

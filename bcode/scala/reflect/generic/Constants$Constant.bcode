@@ -20,12 +20,21 @@ Asciz	tag;
 Asciz	I;
 Asciz	value;
 Asciz	Ljava/lang/Object;;
-Asciz	productIterator;
-Asciz	()Lscala/collection/Iterator;;
+Asciz	productElementName;
+Asciz	(I)Ljava/lang/String;;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/Product$class;
 class	scala/Product$class
+Asciz	(Lscala/Product;I)Ljava/lang/String;;
+NameAndType	productElementName:(Lscala/Product;I)Ljava/lang/String;
+Method	scala/Product$class.productElementName:(Lscala/Product;I)Ljava/lang/String;
+Asciz	this;
+Asciz	Lscala/reflect/generic/Constants$Constant;;
+Asciz	n;
+Asciz	LocalVariableTable;
+Asciz	productIterator;
+Asciz	()Lscala/collection/Iterator;;
 Asciz	(Lscala/Product;)Lscala/collection/Iterator;;
 NameAndType	productIterator:(Lscala/Product;)Lscala/collection/Iterator;
 Method	scala/Product$class.productIterator:(Lscala/Product;)Lscala/collection/Iterator;
@@ -128,20 +137,21 @@ Method	scala/reflect/generic/StandardDefinitions$AbsDefinitions.BooleanClass:()L
 Asciz	UnitClass;
 NameAndType	UnitClass:()Lscala/reflect/generic/Symbols$AbsSymbol;
 Method	scala/reflect/generic/StandardDefinitions$AbsDefinitions.UnitClass:()Lscala/reflect/generic/Symbols$AbsSymbol;
-Asciz	this;
-Asciz	Lscala/reflect/generic/Constants$Constant;;
 Asciz	temp1;
-Asciz	LocalVariableTable;
 Asciz	equals;
 Asciz	(Ljava/lang/Object;)Z;
 Asciz	java/lang/Number;
 class	java/lang/Number
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
 Asciz	java/lang/Character;
 class	java/lang/Character
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	java/lang/Object;
 class	java/lang/Object
 NameAndType	equals:(Ljava/lang/Object;)Z
@@ -368,9 +378,6 @@ Asciz	(I)Ljava/lang/Object;;
 Asciz	java/lang/IndexOutOfBoundsException;
 class	java/lang/IndexOutOfBoundsException
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
-Asciz	productElementName;
-Asciz	(I)Ljava/lang/String;;
-String	value
 Asciz	canEqual;
 NameAndType	$outer:Lscala/reflect/generic/Universe;
 Field	scala/reflect/generic/Constants$Constant.$outer:Lscala/reflect/generic/Universe;
@@ -460,6 +467,21 @@ private final int tag;
 
 private final java.lang.Object value;
   Signature: Ljava/lang/Object;
+
+public java.lang.String productElementName(int);
+  Signature: (I)Ljava/lang/String;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method scala/Product$class.productElementName:(Lscala/Product;I)Ljava/lang/String;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/reflect/generic/Constants$Constant;
+   0      6      1    n       I
+
 
 public scala.collection.Iterator productIterator();
   Signature: ()Lscala/collection/Iterator;
@@ -682,13 +704,19 @@ l3	aload_2
 	goto	l4 // ifne
 l5	aload_2
 	instanceof	class java/lang/Number
-	ifne	l6 // aload_2
+	ifeq	l6 // aload_2
 	aload_2
+	checkcast	class java/lang/Number
+	aload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l4 // ifne
+l6	aload_2
 	instanceof	class java/lang/Character
 	ifeq	l7 // aload_2
-l6	aload_2
+	aload_2
+	checkcast	class java/lang/Character
 	aload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l4 // ifne
 l7	aload_2
 	aload_3
@@ -709,20 +737,20 @@ l9	ireturn
   Labels:
    	l3 = 59 // aload_2
    	l5 = 67 // aload_2
-   	l6 = 81 // aload_2
-   	l7 = 89 // aload_2
-   	l4 = 94 // ifne
-   	l8 = 112 // iconst_1
-   	l2 = 116 // iconst_0
-   	l1 = 120 // iconst_0
-   	l9 = 121 // ireturn
+   	l6 = 85 // aload_2
+   	l7 = 103 // aload_2
+   	l4 = 108 // ifne
+   	l8 = 126 // iconst_1
+   	l2 = 130 // iconst_0
+   	l1 = 134 // iconst_0
+   	l9 = 135 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      122      0    this       Lscala/reflect/generic/Constants$Constant;
-   0      122      1    other       Ljava/lang/Object;
-   55      42      2    x0       Ljava/lang/Object;
-   55      42      3    y0       Ljava/lang/Object;
-   27      93      4    temp3       Lscala/reflect/generic/Constants$Constant;
+   0      136      0    this       Lscala/reflect/generic/Constants$Constant;
+   0      136      1    other       Ljava/lang/Object;
+   55      56      2    x0       Ljava/lang/Object;
+   55      56      3    y0       Ljava/lang/Object;
+   27      107      4    temp3       Lscala/reflect/generic/Constants$Constant;
 
 
 public boolean isNaN();
@@ -1361,15 +1389,15 @@ l6	iconst_3
 	if_icmpgt	l7 // aload_2
 	aload_0
 	invokevirtual	Method tag:()I
-	ldc	int 6
+	ldc_w	int 6
 	if_icmpgt	l7 // aload_2
-	ldc	int -128
+	ldc_w	int -128
 	aload_0
 	invokevirtual	Method intValue:()I
 	if_icmpgt	l7 // aload_2
 	aload_0
 	invokevirtual	Method intValue:()I
-	ldc	int 127
+	ldc_w	int 127
 	if_icmpgt	l7 // aload_2
 	new	class scala/reflect/generic/Constants$Constant
 	dup
@@ -1403,7 +1431,7 @@ l9	iconst_3
 	if_icmpgt	l10 // aload_2
 	aload_0
 	invokevirtual	Method tag:()I
-	ldc	int 6
+	ldc_w	int 6
 	if_icmpgt	l10 // aload_2
 	ldc_w	int -32768
 	aload_0
@@ -1445,7 +1473,7 @@ l12	iconst_3
 	if_icmpgt	l13 // aload_2
 	aload_0
 	invokevirtual	Method tag:()I
-	ldc	int 6
+	ldc_w	int 6
 	if_icmpgt	l13 // aload_2
 	iconst_0
 	aload_0
@@ -1487,7 +1515,7 @@ l15	iconst_3
 	if_icmpgt	l16 // aload_2
 	aload_0
 	invokevirtual	Method tag:()I
-	ldc	int 6
+	ldc_w	int 6
 	if_icmpgt	l16 // aload_2
 	new	class scala/reflect/generic/Constants$Constant
 	dup
@@ -1610,31 +1638,31 @@ l4	areturn
    	l3 = 37 // aload_2
    	l5 = 65 // aload
    	l6 = 73 // iconst_3
-   	l7 = 133 // aload_2
-   	l8 = 161 // aload
-   	l9 = 169 // iconst_3
-   	l10 = 231 // aload_2
-   	l11 = 259 // aload
-   	l12 = 267 // iconst_3
-   	l13 = 327 // aload_2
-   	l14 = 355 // aload
-   	l15 = 363 // iconst_3
-   	l16 = 405 // aload_2
-   	l17 = 433 // aload
-   	l18 = 441 // iconst_3
-   	l19 = 484 // aload_2
-   	l20 = 512 // aload
-   	l21 = 520 // iconst_3
-   	l22 = 563 // aload_2
-   	l23 = 591 // aload
-   	l24 = 599 // iconst_3
-   	l25 = 641 // aconst_null
-   	l4 = 642 // areturn
+   	l7 = 136 // aload_2
+   	l8 = 164 // aload
+   	l9 = 172 // iconst_3
+   	l10 = 235 // aload_2
+   	l11 = 263 // aload
+   	l12 = 271 // iconst_3
+   	l13 = 332 // aload_2
+   	l14 = 360 // aload
+   	l15 = 368 // iconst_3
+   	l16 = 411 // aload_2
+   	l17 = 439 // aload
+   	l18 = 447 // iconst_3
+   	l19 = 490 // aload_2
+   	l20 = 518 // aload
+   	l21 = 526 // iconst_3
+   	l22 = 569 // aload_2
+   	l23 = 597 // aload
+   	l24 = 605 // iconst_3
+   	l25 = 647 // aconst_null
+   	l4 = 648 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      643      0    this       Lscala/reflect/generic/Constants$Constant;
-   0      643      1    pt       Lscala/reflect/generic/Types$AbsType;
-   5      638      2    target       Lscala/reflect/generic/Symbols$AbsSymbol;
+   0      649      0    this       Lscala/reflect/generic/Constants$Constant;
+   0      649      1    pt       Lscala/reflect/generic/Types$AbsType;
+   5      644      2    target       Lscala/reflect/generic/Symbols$AbsSymbol;
 
 
 public java.lang.String stringValue();
@@ -1875,25 +1903,6 @@ l1	new	class java/lang/IndexOutOfBoundsException
   Labels:
    	l1 = 10 // new
 
-public java.lang.String productElementName(int);
-  Signature: (I)Ljava/lang/String;
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	iload_1
-	iconst_0
-	if_icmpne	l1 // new
-	ldc_w	String value
-	areturn
-l1	new	class java/lang/IndexOutOfBoundsException
-	dup
-	iload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
-	athrow
-  Labels:
-   	l1 = 9 // new
-
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
@@ -1990,7 +1999,7 @@ l6	aload_2
 l7	aload_2
 	instanceof	class java/lang/Integer
 	ifeq	l8 // aload_2
-	ldc	int 6
+	ldc_w	int 6
 	goto	l3 // putfield
 l8	aload_2
 	instanceof	class java/lang/Long
@@ -2052,21 +2061,21 @@ l16	new	class java/lang/Error
    	l5 = 64 // aload_2
    	l6 = 75 // aload_2
    	l7 = 86 // aload_2
-   	l8 = 98 // aload_2
-   	l9 = 111 // aload_2
-   	l10 = 124 // aload_2
-   	l11 = 136 // aload_2
-   	l12 = 149 // aload_2
-   	l13 = 162 // aload_2
-   	l14 = 175 // aload_2
-   	l15 = 189 // ldc_w
-   	l3 = 192 // putfield
-   	l16 = 196 // new
+   	l8 = 99 // aload_2
+   	l9 = 112 // aload_2
+   	l10 = 125 // aload_2
+   	l11 = 137 // aload_2
+   	l12 = 150 // aload_2
+   	l13 = 163 // aload_2
+   	l14 = 176 // aload_2
+   	l15 = 190 // ldc_w
+   	l3 = 193 // putfield
+   	l16 = 197 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      224      0    this       Lscala/reflect/generic/Constants$Constant;
-   0      224      1    $outer       Lscala/reflect/generic/Universe;
-   0      224      2    value       Ljava/lang/Object;
+   0      225      0    this       Lscala/reflect/generic/Constants$Constant;
+   0      225      1    $outer       Lscala/reflect/generic/Universe;
+   0      225      2    value       Ljava/lang/Object;
 
 
 }

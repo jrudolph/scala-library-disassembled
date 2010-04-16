@@ -2,7 +2,7 @@ Compiled from "Iterator.scala"
 public final class scala.collection.Iterator$$anon$6 extends java.lang.Object implements scala.collection.Iterator
   SourceFile: "Iterator.scala"
   Signature: length = 0x2
-   01 64 
+   01 73 
   Scala: length = 0x
    
   InnerClass: 
@@ -14,6 +14,9 @@ public final class scala.collection.Iterator$$anon$6 extends java.lang.Object im
   Constant pool:
 Asciz	SourceFile;
 Asciz	Iterator.scala;
+Asciz	thatElem$1;
+Asciz	Ljava/lang/Object;;
+Asciz	thisElem$1;
 Asciz	that$3;
 Asciz	Lscala/collection/Iterator;;
 Asciz	$outer;
@@ -103,7 +106,6 @@ NameAndType	padTo:(Lscala/collection/Iterator;ILjava/lang/Object;)Lscala/collect
 Method	scala/collection/Iterator$class.padTo:(Lscala/collection/Iterator;ILjava/lang/Object;)Lscala/collection/Iterator;
 Asciz	len;
 Asciz	elem;
-Asciz	Ljava/lang/Object;;
 Asciz	zipWithIndex;
 Asciz	()Lscala/collection/Iterator;;
 NameAndType	zipWithIndex:(Lscala/collection/Iterator;)Lscala/collection/Iterator;
@@ -350,10 +352,23 @@ Asciz	<init>;
 Asciz	(Ljava/lang/Object;Ljava/lang/Object;)V;
 NameAndType	"<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
 Method	scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-Asciz	()Lscala/Tuple2<TA;TB;>;;
+NameAndType	thatElem$1:Ljava/lang/Object;
+Field	scala/collection/Iterator$$anon$6.thatElem$1:Ljava/lang/Object;
+NameAndType	thisElem$1:Ljava/lang/Object;
+Field	scala/collection/Iterator$$anon$6.thisElem$1:Ljava/lang/Object;
+Asciz	scala/collection/Iterator$;
+class	scala/collection/Iterator$
+Asciz	MODULE$;
+Asciz	Lscala/collection/Iterator$;;
+NameAndType	MODULE$:Lscala/collection/Iterator$;
+Field	scala/collection/Iterator$.MODULE$:Lscala/collection/Iterator$;
+Asciz	empty;
+NameAndType	empty:()Lscala/collection/Iterator;
+Method	scala/collection/Iterator$.empty:()Lscala/collection/Iterator;
+Asciz	()Lscala/Tuple2<TA1;TB1;>;;
 NameAndType	next:()Lscala/Tuple2;
 Method	scala/collection/Iterator$$anon$6.next:()Lscala/Tuple2;
-Asciz	(Lscala/collection/Iterator;Lscala/collection/Iterator;)V;
+Asciz	(Lscala/collection/Iterator;Lscala/collection/Iterator;Ljava/lang/Object;Ljava/lang/Object;)V;
 Asciz	java/lang/NullPointerException;
 class	java/lang/NullPointerException
 Asciz	()V;
@@ -367,7 +382,7 @@ Asciz	(Lscala/collection/Iterator;)V;
 NameAndType	$init$:(Lscala/collection/Iterator;)V
 Method	scala/collection/Iterator$class.$init$:(Lscala/collection/Iterator;)V
 Asciz	(Lscala/collection/Iterator<TA;>;)V;
-Asciz	Ljava/lang/Object;Lscala/collection/Iterator<Lscala/Tuple2<TA;TB;>;>;;
+Asciz	Ljava/lang/Object;Lscala/collection/Iterator<Lscala/Tuple2<TA1;TB1;>;>;;
 Asciz	Scala;
 Asciz	InnerClasses;
 Asciz	$anon$6;
@@ -381,6 +396,12 @@ class	scala/collection/Iterator$GroupedIterator
 Asciz	GroupedIterator;
 
 {
+public final java.lang.Object thatElem$1;
+  Signature: Ljava/lang/Object;
+
+public final java.lang.Object thisElem$1;
+  Signature: Ljava/lang/Object;
+
 public final scala.collection.Iterator that$3;
   Signature: Lscala/collection/Iterator;
 
@@ -910,7 +931,7 @@ public scala.collection.Iterator$GroupedIterator grouped(int);
    0      6      1    size       I
 
   Signature: length = 0x2
-   00 FFFFFFB0 
+   00 FFFFFFB2 
 
 public scala.collection.Iterator$GroupedIterator sliding(int, int);
   Signature: (II)Lscala/collection/Iterator$GroupedIterator;
@@ -929,7 +950,7 @@ public scala.collection.Iterator$GroupedIterator sliding(int, int);
    0      7      2    step       I
 
   Signature: length = 0x2
-   00 FFFFFFB7 
+   00 FFFFFFB9 
 
 public int length();
   Signature: ()I
@@ -1327,23 +1348,32 @@ public boolean hasNext();
 	aload_0
 	getfield	Field $outer:Lscala/collection/Iterator;
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // iconst_0
+	ifne	l1 // iconst_1
 	aload_0
 	getfield	Field that$3:Lscala/collection/Iterator;
 	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
-	ifeq	l1 // iconst_0
-	iconst_1
-	goto	l2 // ireturn
-l1	iconst_0
-l2	ireturn
+	ifeq	l2 // iconst_0
+l1	iconst_1
+	goto	l3 // ireturn
+l2	iconst_0
+l3	ireturn
   Labels:
-   	l1 = 28 // iconst_0
-   	l2 = 29 // ireturn
+   	l1 = 24 // iconst_1
+   	l2 = 28 // iconst_0
+   	l3 = 29 // ireturn
 
 public scala.Tuple2 next();
   Signature: ()Lscala/Tuple2;
   Code:
    Stack=4, Locals=1, Args_size=1
+	aload_0
+	getfield	Field $outer:Lscala/collection/Iterator;
+	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
+	ifeq	l1 // aload_0
+	aload_0
+	getfield	Field that$3:Lscala/collection/Iterator;
+	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
+	ifeq	l2 // new
 	new	class scala/Tuple2
 	dup
 	aload_0
@@ -1353,10 +1383,41 @@ public scala.Tuple2 next();
 	getfield	Field that$3:Lscala/collection/Iterator;
 	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
 	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
-	areturn
+	goto	l3 // areturn
+l2	new	class scala/Tuple2
+	dup
+	aload_0
+	getfield	Field $outer:Lscala/collection/Iterator;
+	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
+	aload_0
+	getfield	Field thatElem$1:Ljava/lang/Object;
+	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+	goto	l3 // areturn
+l1	aload_0
+	getfield	Field that$3:Lscala/collection/Iterator;
+	invokeinterface	InterfaceMethod scala/collection/Iterator.hasNext:()Z
+	ifeq	l4 // getstatic
+	new	class scala/Tuple2
+	dup
+	aload_0
+	getfield	Field thisElem$1:Ljava/lang/Object;
+	aload_0
+	getfield	Field that$3:Lscala/collection/Iterator;
+	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
+	invokespecial	Method scala/Tuple2."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+	goto	l3 // areturn
+l4	getstatic	Field scala/collection/Iterator$.MODULE$:Lscala/collection/Iterator$;
+	invokevirtual	Method scala/collection/Iterator$.empty:()Lscala/collection/Iterator;
+	invokeinterface	InterfaceMethod scala/collection/Iterator.next:()Ljava/lang/Object;
+	checkcast	class scala/Tuple2
+l3	areturn
   Labels:
+   	l2 = 52 // new
+   	l1 = 75 // aload_0
+   	l4 = 110 // getstatic
+   	l3 = 124 // areturn
   Signature: length = 0x2
-   01 53 
+   01 62 
 
 public java.lang.Object next();
   Signature: ()Ljava/lang/Object;
@@ -1367,10 +1428,10 @@ public java.lang.Object next();
 	areturn
   Labels:
 
-public scala.collection.Iterator$$anon$6(scala.collection.Iterator, scala.collection.Iterator);
-  Signature: (Lscala/collection/Iterator;Lscala/collection/Iterator;)V
+public scala.collection.Iterator$$anon$6(scala.collection.Iterator, scala.collection.Iterator, java.lang.Object, java.lang.Object);
+  Signature: (Lscala/collection/Iterator;Lscala/collection/Iterator;Ljava/lang/Object;Ljava/lang/Object;)V
   Code:
-   Stack=2, Locals=3, Args_size=3
+   Stack=2, Locals=5, Args_size=5
 	aload_1
 	ifnonnull	l1 // aload_0
 	new	class java/lang/NullPointerException
@@ -1384,6 +1445,12 @@ l1	aload_0
 	aload_2
 	putfield	Field that$3:Lscala/collection/Iterator;
 	aload_0
+	aload_3
+	putfield	Field thisElem$1:Ljava/lang/Object;
+	aload_0
+	aload	4
+	putfield	Field thatElem$1:Ljava/lang/Object;
+	aload_0
 	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
 	invokestatic	Method scala/collection/Iterator$class.$init$:(Lscala/collection/Iterator;)V
@@ -1392,11 +1459,11 @@ l1	aload_0
    	l1 = 12 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      31      0    this       Lscala/collection/Iterator$$anon$6;
-   0      31      1    $outer       Lscala/collection/Iterator;
+   0      42      0    this       Lscala/collection/Iterator$$anon$6;
+   0      42      1    $outer       Lscala/collection/Iterator;
 
   Signature: length = 0x2
-   01 63 
+   01 72 
 
 }
 

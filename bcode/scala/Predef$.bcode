@@ -81,38 +81,6 @@ class	java/lang/Thread
 NameAndType	currentThread:()Ljava/lang/Thread;
 Method	java/lang/Thread.currentThread:()Ljava/lang/Thread;
 Asciz	locally;
-Asciz	hash;
-Asciz	(Ljava/lang/Object;)I;
-Asciz	java/lang/Number;
-class	java/lang/Number
-Asciz	scala/runtime/BoxesRunTime;
-class	scala/runtime/BoxesRunTime
-Asciz	hashFromNumber;
-Asciz	(Ljava/lang/Number;)I;
-NameAndType	hashFromNumber:(Ljava/lang/Number;)I
-Method	scala/runtime/BoxesRunTime.hashFromNumber:(Ljava/lang/Number;)I
-Asciz	java/lang/Object;
-class	java/lang/Object
-Asciz	hashCode;
-Asciz	()I;
-NameAndType	hashCode:()I
-Method	java/lang/Object.hashCode:()I
-Asciz	Ljava/lang/Number;;
-Asciz	(Ljava/lang/Long;)I;
-Asciz	java/lang/Long;
-class	java/lang/Long
-Asciz	intValue;
-NameAndType	intValue:()I
-Method	java/lang/Long.intValue:()I
-Asciz	longValue;
-Asciz	()J;
-NameAndType	longValue:()J
-Method	java/lang/Long.longValue:()J
-Method	java/lang/Long.hashCode:()I
-Asciz	Ljava/lang/Long;;
-Asciz	iv;
-Asciz	I;
-Asciz	(I)I;
 Asciz	error;
 Asciz	(Ljava/lang/String;)Lscala/runtime/Nothing$;;
 Asciz	java/lang/RuntimeException;
@@ -136,6 +104,7 @@ Asciz	java/lang/Throwable;
 class	java/lang/Throwable
 Method	java/lang/Throwable."<init>":()V
 Asciz	status;
+Asciz	I;
 Asciz	assert;
 Asciz	(Z)V;
 Asciz	java/lang/AssertionError;
@@ -232,6 +201,8 @@ Asciz	(Ljava/lang/String;Lscala/collection/Seq<Ljava/lang/Object;>;)Ljava/lang/S
 Asciz	readLine;
 NameAndType	readLine:()Ljava/lang/String;
 Method	scala/Console$.readLine:()Ljava/lang/String;
+Asciz	java/lang/Object;
+class	java/lang/Object
 Asciz	genericWrapArray;
 Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;;
 NameAndType	genericWrapArray:(Ljava/lang/Object;)Lscala/collection/mutable/WrappedArray;
@@ -256,9 +227,11 @@ Asciz	()C;
 NameAndType	readChar:()C
 Method	scala/Console$.readChar:()C
 Asciz	readInt;
+Asciz	()I;
 NameAndType	readInt:()I
 Method	scala/Console$.readInt:()I
 Asciz	readLong;
+Asciz	()J;
 NameAndType	readLong:()J
 Method	scala/Console$.readLong:()J
 Asciz	readFloat;
@@ -528,6 +501,8 @@ NameAndType	valueOf:(I)Ljava/lang/Integer;
 Method	java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
 Asciz	long2Long;
 Asciz	(J)Ljava/lang/Long;;
+Asciz	java/lang/Long;
+class	java/lang/Long
 NameAndType	valueOf:(J)Ljava/lang/Long;
 Method	java/lang/Long.valueOf:(J)Ljava/lang/Long;
 Asciz	float2Float;
@@ -784,84 +759,6 @@ public java.lang.Object locally(java.lang.Object);
   Signature: length = 0x2
    00 23 
 
-public int hash(java.lang.Object);
-  Signature: (Ljava/lang/Object;)I
-  Code:
-   Stack=1, Locals=2, Args_size=2
-	aload_1
-	instanceof	class java/lang/Number
-	ifeq	l1 // aload_1
-	aload_1
-	checkcast	class java/lang/Number
-	invokestatic	Method scala/runtime/BoxesRunTime.hashFromNumber:(Ljava/lang/Number;)I
-	goto	l2 // ireturn
-l1	aload_1
-	invokevirtual	Method java/lang/Object.hashCode:()I
-l2	ireturn
-  Labels:
-   	l1 = 17 // aload_1
-   	l2 = 21 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      22      0    this       Lscala/Predef$;
-   0      22      1    x       Ljava/lang/Object;
-
-
-public int hash(java.lang.Number);
-  Signature: (Ljava/lang/Number;)I
-  Code:
-   Stack=1, Locals=2, Args_size=2
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.hashFromNumber:(Ljava/lang/Number;)I
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      5      0    this       Lscala/Predef$;
-   0      5      1    x       Ljava/lang/Number;
-
-
-public int hash(java.lang.Long);
-  Signature: (Ljava/lang/Long;)I
-  Code:
-   Stack=4, Locals=3, Args_size=2
-	aload_1
-	invokevirtual	Method java/lang/Long.intValue:()I
-	istore_2
-	iload_2
-	i2l
-	aload_1
-	invokevirtual	Method java/lang/Long.longValue:()J
-	lcmp
-	ifne	l1 // aload_1
-	iload_2
-	goto	l2 // ireturn
-l1	aload_1
-	invokevirtual	Method java/lang/Long.hashCode:()I
-l2	ireturn
-  Labels:
-   	l1 = 19 // aload_1
-   	l2 = 23 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      24      0    this       Lscala/Predef$;
-   0      24      1    x       Ljava/lang/Long;
-   5      19      2    iv       I
-
-
-public int hash(int);
-  Signature: (I)I
-  Code:
-   Stack=1, Locals=2, Args_size=2
-	iload_1
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      2      0    this       Lscala/Predef$;
-   0      2      1    x       I
-
-
 public scala.runtime.Nothing$ error(java.lang.String);
   Signature: (Ljava/lang/String;)Lscala/runtime/Nothing$;
   Code:
@@ -954,7 +851,7 @@ l1	new	class java/lang/AssertionError
    0      37      2    message       Lscala/Function0;
 
   Signature: length = 0x2
-   00 FFFFFF8E 
+   00 6F 
 
 public void assume(boolean);
   Signature: (Z)V
@@ -1005,7 +902,7 @@ l1	new	class java/lang/AssertionError
    0      37      2    message       Lscala/Function0;
 
   Signature: length = 0x2
-   00 FFFFFF8E 
+   00 6F 
 
 public void require(boolean);
   Signature: (Z)V
@@ -1056,7 +953,7 @@ l1	new	class java/lang/IllegalArgumentException
    0      37      2    message       Lscala/Function0;
 
   Signature: length = 0x2
-   00 FFFFFF8E 
+   00 6F 
 
 public scala.Predef$Ensuring any2Ensuring(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/Predef$Ensuring;
@@ -1074,7 +971,7 @@ public scala.Predef$Ensuring any2Ensuring(java.lang.Object);
    0      9      1    x       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 FFFFFFA3 
+   00 FFFFFF84 
 
 public scala.Predef$ArrowAssoc any2ArrowAssoc(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/Predef$ArrowAssoc;
@@ -1092,7 +989,7 @@ public scala.Predef$ArrowAssoc any2ArrowAssoc(java.lang.Object);
    0      9      1    x       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 FFFFFFA9 
+   00 FFFFFF8A 
 
 public void print(java.lang.Object);
   Signature: (Ljava/lang/Object;)V
@@ -1152,7 +1049,7 @@ public void printf(java.lang.String, scala.collection.Seq);
    0      13      2    xs       Lscala/collection/Seq;
 
   Signature: length = 0x2
-   00 FFFFFFC0 
+   00 FFFFFFA1 
 
 public java.lang.String format(java.lang.String, scala.collection.Seq);
   Signature: (Ljava/lang/String;Lscala/collection/Seq;)Ljava/lang/String;
@@ -1172,7 +1069,7 @@ public java.lang.String format(java.lang.String, scala.collection.Seq);
    0      12      2    xs       Lscala/collection/Seq;
 
   Signature: length = 0x2
-   00 FFFFFFCA 
+   00 FFFFFFAB 
 
 public java.lang.String readLine();
   Signature: ()Ljava/lang/String;
@@ -1207,7 +1104,7 @@ public java.lang.String readLine(java.lang.String, scala.collection.Seq);
    0      20      2    args       Lscala/collection/Seq;
 
   Signature: length = 0x2
-   00 FFFFFFCA 
+   00 FFFFFFAB 
 
 public boolean readBoolean();
   Signature: ()Z
@@ -1296,7 +1193,7 @@ public scala.collection.immutable.List readf(java.lang.String);
    0      8      1    format       Ljava/lang/String;
 
   Signature: length = 0x2
-   00 FFFFFFF7 
+   00 FFFFFFDC 
 
 public java.lang.Object readf1(java.lang.String);
   Signature: (Ljava/lang/String;)Ljava/lang/Object;
@@ -1328,7 +1225,7 @@ public scala.Tuple2 readf2(java.lang.String);
    0      8      1    format       Ljava/lang/String;
 
   Signature: length = 0x2
-   01 00 
+   00 FFFFFFE5 
 
 public scala.Tuple3 readf3(java.lang.String);
   Signature: (Ljava/lang/String;)Lscala/Tuple3;
@@ -1345,7 +1242,7 @@ public scala.Tuple3 readf3(java.lang.String);
    0      8      1    format       Ljava/lang/String;
 
   Signature: length = 0x2
-   01 05 
+   00 FFFFFFEA 
 
 public scala.runtime.RichByte byteWrapper(byte);
   Signature: (B)Lscala/runtime/RichByte;
@@ -1633,7 +1530,7 @@ l12	new	class scala/MatchError
    0      261      1    xs       Ljava/lang/Object;
 
   Signature: length = 0x2
-   01 FFFFFF97 
+   01 7C 
 
 public scala.collection.mutable.ArrayOps refArrayOps(java.lang.Object[]);
   Signature: ([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;
@@ -1651,7 +1548,7 @@ public scala.collection.mutable.ArrayOps refArrayOps(java.lang.Object[]);
    0      9      1    xs       [Ljava/lang/Object;
 
   Signature: length = 0x2
-   01 FFFFFF97 
+   01 7C 
 
 public scala.collection.mutable.ArrayOps intArrayOps(int[]);
   Signature: ([I)Lscala/collection/mutable/ArrayOps;
@@ -1669,7 +1566,7 @@ public scala.collection.mutable.ArrayOps intArrayOps(int[]);
    0      9      1    xs       [I
 
   Signature: length = 0x2
-   01 FFFFFF9C 
+   01 FFFFFF81 
 
 public scala.collection.mutable.ArrayOps doubleArrayOps(double[]);
   Signature: ([D)Lscala/collection/mutable/ArrayOps;
@@ -1687,7 +1584,7 @@ public scala.collection.mutable.ArrayOps doubleArrayOps(double[]);
    0      9      1    xs       [D
 
   Signature: length = 0x2
-   01 FFFFFF9F 
+   01 FFFFFF84 
 
 public scala.collection.mutable.ArrayOps longArrayOps(long[]);
   Signature: ([J)Lscala/collection/mutable/ArrayOps;
@@ -1705,7 +1602,7 @@ public scala.collection.mutable.ArrayOps longArrayOps(long[]);
    0      9      1    xs       [J
 
   Signature: length = 0x2
-   01 FFFFFFA2 
+   01 FFFFFF87 
 
 public scala.collection.mutable.ArrayOps floatArrayOps(float[]);
   Signature: ([F)Lscala/collection/mutable/ArrayOps;
@@ -1723,7 +1620,7 @@ public scala.collection.mutable.ArrayOps floatArrayOps(float[]);
    0      9      1    xs       [F
 
   Signature: length = 0x2
-   01 FFFFFFA5 
+   01 FFFFFF8A 
 
 public scala.collection.mutable.ArrayOps charArrayOps(char[]);
   Signature: ([C)Lscala/collection/mutable/ArrayOps;
@@ -1741,7 +1638,7 @@ public scala.collection.mutable.ArrayOps charArrayOps(char[]);
    0      9      1    xs       [C
 
   Signature: length = 0x2
-   01 FFFFFFA8 
+   01 FFFFFF8D 
 
 public scala.collection.mutable.ArrayOps byteArrayOps(byte[]);
   Signature: ([B)Lscala/collection/mutable/ArrayOps;
@@ -1759,7 +1656,7 @@ public scala.collection.mutable.ArrayOps byteArrayOps(byte[]);
    0      9      1    xs       [B
 
   Signature: length = 0x2
-   01 FFFFFFAB 
+   01 FFFFFF90 
 
 public scala.collection.mutable.ArrayOps shortArrayOps(short[]);
   Signature: ([S)Lscala/collection/mutable/ArrayOps;
@@ -1777,7 +1674,7 @@ public scala.collection.mutable.ArrayOps shortArrayOps(short[]);
    0      9      1    xs       [S
 
   Signature: length = 0x2
-   01 FFFFFFAE 
+   01 FFFFFF93 
 
 public scala.collection.mutable.ArrayOps booleanArrayOps(boolean[]);
   Signature: ([Z)Lscala/collection/mutable/ArrayOps;
@@ -1795,7 +1692,7 @@ public scala.collection.mutable.ArrayOps booleanArrayOps(boolean[]);
    0      9      1    xs       [Z
 
   Signature: length = 0x2
-   01 FFFFFFB1 
+   01 FFFFFF96 
 
 public scala.collection.mutable.ArrayOps unitArrayOps(scala.runtime.BoxedUnit[]);
   Signature: ([Lscala/runtime/BoxedUnit;)Lscala/collection/mutable/ArrayOps;
@@ -1813,7 +1710,7 @@ public scala.collection.mutable.ArrayOps unitArrayOps(scala.runtime.BoxedUnit[])
    0      9      1    xs       [Lscala/runtime/BoxedUnit;
 
   Signature: length = 0x2
-   01 FFFFFFB4 
+   01 FFFFFF99 
 
 public short byte2short(byte);
   Signature: (B)S
@@ -2245,7 +2142,7 @@ public scala.collection.generic.CanBuildFrom stringCanBuildFrom();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 1D 
+   02 04 
 
 public java.lang.CharSequence seqToCharSequence(scala.collection.IndexedSeq);
   Signature: (Lscala/collection/IndexedSeq;)Ljava/lang/CharSequence;
@@ -2263,7 +2160,7 @@ public java.lang.CharSequence seqToCharSequence(scala.collection.IndexedSeq);
    0      9      1    xs$2       Lscala/collection/IndexedSeq;
 
   Signature: length = 0x2
-   02 27 
+   02 0E 
 
 public java.lang.CharSequence arrayToCharSequence(char[]);
   Signature: ([C)Ljava/lang/CharSequence;
@@ -2291,7 +2188,7 @@ public scala.Predef$$less$colon$less conforms();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 33 
+   02 1A 
 
 private scala.Predef$();
   Signature: ()V

@@ -2,7 +2,7 @@ Compiled from "BytePickle.scala"
 public final class scala.io.BytePickle$$anon$4 extends scala.io.BytePickle$PU
   SourceFile: "BytePickle.scala"
   Signature: length = 0x2
-   00 49 
+   00 4D 
   Scala: length = 0x
    
   InnerClass: 
@@ -25,14 +25,18 @@ NameAndType	x$4:Ljava/lang/Object;
 Field	scala/io/BytePickle$$anon$4.x$4:Ljava/lang/Object;
 Asciz	java/lang/Number;
 class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Asciz	java/lang/Character;
+class	java/lang/Character
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	equals;
@@ -113,13 +117,19 @@ l1	aload_3
 	goto	l2 // ifeq
 l3	aload_3
 	instanceof	class java/lang/Number
-	ifne	l4 // aload_3
+	ifeq	l4 // aload_3
 	aload_3
+	checkcast	class java/lang/Number
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l2 // ifeq
+l4	aload_3
 	instanceof	class java/lang/Character
 	ifeq	l5 // aload_3
-l4	aload_3
+	aload_3
+	checkcast	class java/lang/Character
 	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l2 // ifeq
 l5	aload_3
 	aload_1
@@ -147,19 +157,19 @@ l6	new	class java/lang/IllegalArgumentException
   Labels:
    	l1 = 14 // aload_3
    	l3 = 22 // aload_3
-   	l4 = 36 // aload_3
-   	l5 = 44 // aload_3
-   	l2 = 49 // ifeq
-   	l6 = 54 // new
+   	l4 = 40 // aload_3
+   	l5 = 58 // aload_3
+   	l2 = 63 // ifeq
+   	l6 = 68 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      93      0    this       Lscala/io/BytePickle$$anon$4;
-   0      93      1    a       Ljava/lang/Object;
-   0      93      2    state       [B
-   10      42      3    x0       Ljava/lang/Object;
+   0      107      0    this       Lscala/io/BytePickle$$anon$4;
+   0      107      1    a       Ljava/lang/Object;
+   0      107      2    state       [B
+   10      56      3    x0       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 3B 
+   00 3F 
 
 public scala.Tuple2 appU(byte[]);
   Signature: ([B)Lscala/Tuple2;
@@ -179,7 +189,7 @@ public scala.Tuple2 appU(byte[]);
    0      13      1    state       [B
 
   Signature: length = 0x2
-   00 44 
+   00 48 
 
 public scala.io.BytePickle$$anon$4(java.lang.Object);
   Signature: (Ljava/lang/Object;)V

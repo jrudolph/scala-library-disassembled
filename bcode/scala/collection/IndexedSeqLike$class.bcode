@@ -71,12 +71,12 @@ Asciz	prefixLength;
 Asciz	(Lscala/Function1;)I;
 NameAndType	prefixLength:(Lscala/Function1;)I
 InterfaceMethod	scala/collection/SeqLike.prefixLength:(Lscala/Function1;)I
-Asciz	p$1;
+Asciz	p$2;
 Asciz	exists;
 Asciz	scala/collection/IndexedSeqLike$$anonfun$exists$1;
 class	scala/collection/IndexedSeqLike$$anonfun$exists$1
 Method	scala/collection/IndexedSeqLike$$anonfun$exists$1."<init>":(Lscala/collection/IndexedSeqLike;Lscala/Function1;)V
-Asciz	p$2;
+Asciz	p$1;
 Asciz	find;
 Asciz	(Lscala/collection/IndexedSeqLike;Lscala/Function1;)Lscala/Option;;
 Asciz	scala/collection/IndexedSeqLike$$anonfun$1;
@@ -244,12 +244,16 @@ Asciz	sameElements;
 Asciz	(Lscala/collection/IndexedSeqLike;Lscala/collection/Iterable;)Z;
 Asciz	java/lang/Number;
 class	java/lang/Number
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
 Asciz	java/lang/Character;
 class	java/lang/Character
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	equals;
@@ -498,7 +502,7 @@ l2	ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      30      0    $this       Lscala/collection/IndexedSeqLike;
-   0      30      1    p$1       Lscala/Function1;
+   0      30      1    p$2       Lscala/Function1;
 
 
 public static boolean exists(scala.collection.IndexedSeqLike, scala.Function1);
@@ -525,7 +529,7 @@ l2	ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      30      0    $this       Lscala/collection/IndexedSeqLike;
-   0      30      1    p$2       Lscala/Function1;
+   0      30      1    p$1       Lscala/Function1;
 
 
 public static scala.Option find(scala.collection.IndexedSeqLike, scala.Function1);
@@ -1209,13 +1213,19 @@ l4	aload_3
 	goto	l5 // ifeq
 l6	aload_3
 	instanceof	class java/lang/Number
-	ifne	l7 // aload_3
+	ifeq	l7 // aload_3
 	aload_3
+	checkcast	class java/lang/Number
+	aload	4
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l5 // ifeq
+l7	aload_3
 	instanceof	class java/lang/Character
 	ifeq	l8 // aload_3
-l7	aload_3
+	aload_3
+	checkcast	class java/lang/Character
 	aload	4
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l5 // ifeq
 l8	aload_3
 	aload	4
@@ -1245,24 +1255,24 @@ l12	ireturn
    	l9 = 34 // iload
    	l4 = 70 // aload_3
    	l6 = 78 // aload_3
-   	l7 = 92 // aload_3
-   	l8 = 101 // aload_3
-   	l5 = 107 // ifeq
-   	l3 = 119 // iload
-   	l10 = 130 // iconst_0
-   	l11 = 131 // ifeq
-   	l2 = 138 // iconst_0
-   	l1 = 142 // aload_0
-   	l12 = 149 // ireturn
+   	l7 = 97 // aload_3
+   	l8 = 116 // aload_3
+   	l5 = 122 // ifeq
+   	l3 = 134 // iload
+   	l10 = 145 // iconst_0
+   	l11 = 146 // ifeq
+   	l2 = 153 // iconst_0
+   	l1 = 157 // aload_0
+   	l12 = 164 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      150      0    $this       Lscala/collection/IndexedSeqLike;
-   0      150      1    that       Lscala/collection/Iterable;
-   12      130      2    temp4       Lscala/collection/IndexedSeq;
-   66      44      3    x0       Ljava/lang/Object;
-   66      44      4    y0       Ljava/lang/Object;
-   34      100      5    i       I
-   20      122      6    len       I
+   0      165      0    $this       Lscala/collection/IndexedSeqLike;
+   0      165      1    that       Lscala/collection/Iterable;
+   12      145      2    temp4       Lscala/collection/IndexedSeq;
+   66      59      3    x0       Ljava/lang/Object;
+   66      59      4    y0       Ljava/lang/Object;
+   34      115      5    i       I
+   20      137      6    len       I
 
 
 public static void copyToArray(scala.collection.IndexedSeqLike, java.lang.Object, int, int);
@@ -1572,13 +1582,19 @@ l3	aload	5
 	goto	l4 // ifeq
 l5	aload	5
 	instanceof	class java/lang/Number
-	ifne	l6 // aload
+	ifeq	l6 // aload
 	aload	5
+	checkcast	class java/lang/Number
+	aload	6
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l4 // ifeq
+l6	aload	5
 	instanceof	class java/lang/Character
 	ifeq	l7 // aload
-l6	aload	5
+	aload	5
+	checkcast	class java/lang/Character
 	aload	6
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l4 // ifeq
 l7	aload	5
 	aload	6
@@ -1632,13 +1648,19 @@ l12	aload	11
 	goto	l13 // ifeq
 l14	aload	11
 	instanceof	class java/lang/Number
-	ifne	l15 // aload
+	ifeq	l15 // aload
 	aload	11
+	checkcast	class java/lang/Number
+	aload	12
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l13 // ifeq
+l15	aload	11
 	instanceof	class java/lang/Character
 	ifeq	l16 // aload
-l15	aload	11
+	aload	11
+	checkcast	class java/lang/Character
 	aload	12
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l13 // ifeq
 l16	aload	11
 	aload	12
@@ -1662,39 +1684,39 @@ l10	ireturn
    	l8 = 35 // iload
    	l3 = 80 // aload
    	l5 = 89 // aload
-   	l6 = 105 // aload
-   	l7 = 115 // aload
-   	l4 = 122 // ifeq
-   	l2 = 140 // iload
-   	l9 = 151 // iconst_0
-   	l1 = 155 // iload_2
-   	l18 = 174 // iload
-   	l12 = 221 // aload
-   	l14 = 230 // aload
-   	l15 = 246 // aload
-   	l16 = 256 // aload
-   	l13 = 263 // ifeq
-   	l17 = 275 // iconst_0
-   	l11 = 277 // aload
-   	l19 = 291 // iconst_1
-   	l10 = 292 // ireturn
+   	l6 = 110 // aload
+   	l7 = 131 // aload
+   	l4 = 138 // ifeq
+   	l2 = 156 // iload
+   	l9 = 167 // iconst_0
+   	l1 = 171 // iload_2
+   	l18 = 190 // iload
+   	l12 = 237 // aload
+   	l14 = 246 // aload
+   	l15 = 267 // aload
+   	l16 = 288 // aload
+   	l13 = 295 // ifeq
+   	l17 = 307 // iconst_0
+   	l11 = 309 // aload
+   	l19 = 323 // iconst_1
+   	l10 = 324 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      293      0    $this       Lscala/collection/IndexedSeqLike;
-   0      293      1    that       Lscala/collection/Seq;
-   0      293      2    offset       I
-   26      129      3    thisLen       I
-   13      142      4    temp6       Lscala/collection/IndexedSeq;
-   76      49      5    x0       Ljava/lang/Object;
-   76      49      6    y0       Ljava/lang/Object;
-   16      139      7    i       I
-   19      136      8    j       I
-   35      120      9    thatLen       I
-   166      126      10    thisLen       I
-   217      49      11    x1       Ljava/lang/Object;
-   217      49      12    y1       Ljava/lang/Object;
-   158      134      13    i       I
-   174      118      14    thatElems       Lscala/collection/Iterator;
+   0      325      0    $this       Lscala/collection/IndexedSeqLike;
+   0      325      1    that       Lscala/collection/Seq;
+   0      325      2    offset       I
+   26      145      3    thisLen       I
+   13      158      4    temp6       Lscala/collection/IndexedSeq;
+   76      65      5    x0       Ljava/lang/Object;
+   76      65      6    y0       Ljava/lang/Object;
+   16      155      7    i       I
+   19      152      8    j       I
+   35      136      9    thatLen       I
+   182      142      10    thisLen       I
+   233      65      11    x1       Ljava/lang/Object;
+   233      65      12    y1       Ljava/lang/Object;
+   174      150      13    i       I
+   190      134      14    thatElems       Lscala/collection/Iterator;
 
 
 public static boolean endsWith(scala.collection.IndexedSeqLike, scala.collection.Seq);
@@ -1742,13 +1764,19 @@ l4	aload_3
 	goto	l5 // ifeq
 l6	aload_3
 	instanceof	class java/lang/Number
-	ifne	l7 // aload_3
+	ifeq	l7 // aload_3
 	aload_3
+	checkcast	class java/lang/Number
+	aload	4
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l5 // ifeq
+l7	aload_3
 	instanceof	class java/lang/Character
 	ifeq	l8 // aload_3
-l7	aload_3
+	aload_3
+	checkcast	class java/lang/Character
 	aload	4
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l5 // ifeq
 l8	aload_3
 	aload	4
@@ -1779,23 +1807,23 @@ l11	ireturn
    	l10 = 39 // iload
    	l4 = 74 // aload_3
    	l6 = 82 // aload_3
-   	l7 = 96 // aload_3
-   	l8 = 105 // aload_3
-   	l5 = 111 // ifeq
-   	l9 = 129 // iconst_0
-   	l3 = 131 // iconst_1
-   	l2 = 139 // iconst_0
-   	l1 = 143 // aload_0
-   	l11 = 150 // ireturn
+   	l7 = 101 // aload_3
+   	l8 = 120 // aload_3
+   	l5 = 126 // ifeq
+   	l9 = 144 // iconst_0
+   	l3 = 146 // iconst_1
+   	l2 = 154 // iconst_0
+   	l1 = 158 // aload_0
+   	l11 = 165 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      151      0    $this       Lscala/collection/IndexedSeqLike;
-   0      151      1    that       Lscala/collection/Seq;
-   12      131      2    temp8       Lscala/collection/IndexedSeq;
-   70      44      3    x0       Ljava/lang/Object;
-   70      44      4    y0       Ljava/lang/Object;
-   22      121      5    i       I
-   32      111      6    j       I
+   0      166      0    $this       Lscala/collection/IndexedSeqLike;
+   0      166      1    that       Lscala/collection/Seq;
+   12      146      2    temp8       Lscala/collection/IndexedSeq;
+   70      59      3    x0       Ljava/lang/Object;
+   70      59      4    y0       Ljava/lang/Object;
+   22      136      5    i       I
+   32      126      6    j       I
 
 
 public static scala.collection.IndexedSeqView view(scala.collection.IndexedSeqLike);

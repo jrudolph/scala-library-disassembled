@@ -220,12 +220,16 @@ NameAndType	$less$eq:(Ljava/lang/Object;)Z
 Method	scala/math/Ordering$Ops.$less$eq:(Ljava/lang/Object;)Z
 Asciz	java/lang/Number;
 class	java/lang/Number
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
 Asciz	java/lang/Character;
 class	java/lang/Character
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	java/lang/Object;
 class	java/lang/Object
 Asciz	equals;
@@ -1225,13 +1229,19 @@ l12	aload	19
 	goto	l13 // ifeq
 l14	aload	19
 	instanceof	class java/lang/Number
-	ifne	l15 // aload
+	ifeq	l15 // aload
 	aload	19
+	checkcast	class java/lang/Number
+	aload	22
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l13 // ifeq
+l15	aload	19
 	instanceof	class java/lang/Character
 	ifeq	l16 // aload
-l15	aload	19
+	aload	19
+	checkcast	class java/lang/Character
 	aload	22
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l13 // ifeq
 l16	aload	19
 	aload	22
@@ -1279,13 +1289,19 @@ l19	aload	21
 	goto	l20 // ifeq
 l21	aload	21
 	instanceof	class java/lang/Number
-	ifne	l22 // aload
+	ifeq	l22 // aload
 	aload	21
+	checkcast	class java/lang/Number
+	aload	22
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l20 // ifeq
+l22	aload	21
 	instanceof	class java/lang/Character
 	ifeq	l23 // aload
-l22	aload	21
+	aload	21
+	checkcast	class java/lang/Character
 	aload	22
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l20 // ifeq
 l23	aload	21
 	aload	22
@@ -1339,47 +1355,47 @@ l25	aload_0
    	l8 = 381 // iload
    	l12 = 434 // aload
    	l14 = 443 // aload
-   	l15 = 459 // aload
-   	l16 = 469 // aload
-   	l13 = 476 // ifeq
-   	l17 = 494 // iload
-   	l11 = 503 // iload
-   	l19 = 556 // aload
-   	l21 = 565 // aload
-   	l22 = 581 // aload
-   	l23 = 591 // aload
-   	l20 = 598 // ifeq
-   	l24 = 616 // iload
-   	l18 = 625 // iload
-   	l25 = 638 // aload_0
+   	l15 = 464 // aload
+   	l16 = 485 // aload
+   	l13 = 492 // ifeq
+   	l17 = 510 // iload
+   	l11 = 519 // iload
+   	l19 = 572 // aload
+   	l21 = 581 // aload
+   	l22 = 602 // aload
+   	l23 = 623 // aload
+   	l20 = 630 // ifeq
+   	l24 = 648 // iload
+   	l18 = 657 // iload
+   	l25 = 670 // aload_0
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      662      0    this       Lscala/util/Sorting$;
-   0      662      1    off       I
-   0      662      2    len       I
+   0      694      0    this       Lscala/util/Sorting$;
+   0      694      1    off       I
+   0      694      2    len       I
    21      65      5    j       I
    9      80      6    i       I
    124      64      7    s       I
    105      98      8    l       I
    112      91      9    n       I
    96      284      10    m       I
-   381      281      10    m       I
+   381      313      10    m       I
    244      136      17    n       I
    273      107      18    s       I
-   430      49      19    x2       Ljava/lang/Object;
+   430      65      19    x2       Ljava/lang/Object;
    217      163      20    a       I
-   381      281      20    a       I
-   552      49      21    x3       Ljava/lang/Object;
+   381      313      20    a       I
+   568      65      21    x3       Ljava/lang/Object;
    214      166      22    v       Ljava/lang/Object;
-   381      281      22    v       Ljava/lang/Object;
+   381      313      22    v       Ljava/lang/Object;
    231      149      23    d       I
-   381      281      23    d       I
+   381      313      23    d       I
    234      146      24    done       Z
-   381      281      24    done       Z
+   381      313      24    done       Z
    227      153      25    c       I
-   381      281      25    c       I
+   381      313      25    c       I
    220      160      26    b       I
-   381      281      26    b       I
+   381      313      26    b       I
 
 
 private final void swap$2(int, int, int[]);

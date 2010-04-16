@@ -19,12 +19,22 @@ Asciz	r;
 Asciz	Lscala/util/regexp/Base$RegExp;;
 Asciz	label;
 Asciz	Ljava/lang/Object;;
-Asciz	productIterator;
-Asciz	()Lscala/collection/Iterator;;
+Asciz	productElementName;
+Asciz	(I)Ljava/lang/String;;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/Product$class;
 class	scala/Product$class
+Asciz	(Lscala/Product;I)Ljava/lang/String;;
+NameAndType	productElementName:(Lscala/Product;I)Ljava/lang/String;
+Method	scala/Product$class.productElementName:(Lscala/Product;I)Ljava/lang/String;
+Asciz	this;
+Asciz	Lscala/util/regexp/PointedHedgeExp$Node;;
+Asciz	n;
+Asciz	I;
+Asciz	LocalVariableTable;
+Asciz	productIterator;
+Asciz	()Lscala/collection/Iterator;;
 Asciz	(Lscala/Product;)Lscala/collection/Iterator;;
 NameAndType	productIterator:(Lscala/Product;)Lscala/collection/Iterator;
 Method	scala/Product$class.productIterator:(Lscala/Product;)Lscala/collection/Iterator;
@@ -57,9 +67,6 @@ Asciz	<init>;
 Asciz	(Lscala/util/regexp/PointedHedgeExp;Ljava/lang/Object;Lscala/util/regexp/Base$RegExp;)V;
 NameAndType	"<init>":(Lscala/util/regexp/PointedHedgeExp;Ljava/lang/Object;Lscala/util/regexp/Base$RegExp;)V
 Method	scala/util/regexp/PointedHedgeExp$Node."<init>":(Lscala/util/regexp/PointedHedgeExp;Ljava/lang/Object;Lscala/util/regexp/Base$RegExp;)V
-Asciz	this;
-Asciz	Lscala/util/regexp/PointedHedgeExp$Node;;
-Asciz	LocalVariableTable;
 Asciz	hashCode;
 Asciz	()I;
 Asciz	scala/runtime/ScalaRunTime$;
@@ -113,20 +120,20 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
-Asciz	productElementName;
-Asciz	(I)Ljava/lang/String;;
-String	r
-String	label
 NameAndType	$outer:Lscala/util/regexp/PointedHedgeExp;
 Field	scala/util/regexp/PointedHedgeExp$Node.$outer:Lscala/util/regexp/PointedHedgeExp;
 Asciz	java/lang/Number;
 class	java/lang/Number
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
 Asciz	java/lang/Character;
 class	java/lang/Character
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	y0;
@@ -170,6 +177,21 @@ private final scala.util.regexp.Base$RegExp r;
 
 private final java.lang.Object label;
   Signature: Ljava/lang/Object;
+
+public java.lang.String productElementName(int);
+  Signature: (I)Ljava/lang/String;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method scala/Product$class.productElementName:(Lscala/Product;I)Ljava/lang/String;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/util/regexp/PointedHedgeExp$Node;
+   0      6      1    n       I
+
 
 public scala.collection.Iterator productIterator();
   Signature: ()Lscala/collection/Iterator;
@@ -373,29 +395,6 @@ l1	areturn
   Labels:
    	l1 = 50 // areturn
 
-public java.lang.String productElementName(int);
-  Signature: (I)Ljava/lang/String;
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	iload_1
-	tableswitch{ //0 to 1
-		0: 44;
-		1: 39;
-		default: 24 }
-	new	class java/lang/IndexOutOfBoundsException
-	dup
-	iload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
-	athrow
-	ldc	String r
-	goto	l1 // areturn
-	ldc	String label
-l1	areturn
-  Labels:
-   	l1 = 46 // areturn
-
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
@@ -432,13 +431,19 @@ l1	aload_1
 	goto	l2 // ifeq
 l3	aload_1
 	instanceof	class java/lang/Number
-	ifne	l4 // aload_1
+	ifeq	l4 // aload_1
 	aload_1
+	checkcast	class java/lang/Number
+	aload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l2 // ifeq
+l4	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l5 // aload_1
-l4	aload_1
+	aload_1
+	checkcast	class java/lang/Character
 	aload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l2 // ifeq
 l5	aload_1
 	aload_3
@@ -464,17 +469,17 @@ l9	ireturn
   Labels:
    	l1 = 14 // aload_1
    	l3 = 22 // aload_1
-   	l4 = 36 // aload_1
-   	l5 = 44 // aload_1
-   	l2 = 49 // ifeq
-   	l7 = 72 // aload
-   	l8 = 80 // iconst_1
-   	l6 = 84 // iconst_0
-   	l9 = 85 // ireturn
+   	l4 = 40 // aload_1
+   	l5 = 58 // aload_1
+   	l2 = 63 // ifeq
+   	l7 = 86 // aload
+   	l8 = 94 // iconst_1
+   	l6 = 98 // iconst_0
+   	l9 = 99 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      86      0    this       Lscala/util/regexp/PointedHedgeExp$Node;
-   10      42      3    y0       Ljava/lang/Object;
+   0      100      0    this       Lscala/util/regexp/PointedHedgeExp$Node;
+   10      56      3    y0       Ljava/lang/Object;
 
 
 public scala.util.regexp.PointedHedgeExp$Node(scala.util.regexp.PointedHedgeExp, java.lang.Object, scala.util.regexp.Base$RegExp);

@@ -420,12 +420,16 @@ NameAndType	remainder:(Lscala/math/BigDecimal;)Lscala/math/BigDecimal;
 Method	scala/math/BigDecimal.remainder:(Lscala/math/BigDecimal;)Lscala/math/BigDecimal;
 Asciz	java/lang/Number;
 class	java/lang/Number
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
 Asciz	java/lang/Character;
 class	java/lang/Character
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Asciz	$inlThis0;
@@ -1059,13 +1063,19 @@ l1	aload	5
 	goto	l2 // ifeq
 l3	aload	5
 	instanceof	class java/lang/Number
-	ifne	l4 // aload
+	ifeq	l4 // aload
 	aload	5
+	checkcast	class java/lang/Number
+	aload	6
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l2 // ifeq
+l4	aload	5
 	instanceof	class java/lang/Character
 	ifeq	l5 // aload
-l4	aload	5
+	aload	5
+	checkcast	class java/lang/Character
 	aload	6
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l2 // ifeq
 l5	aload	5
 	aload	6
@@ -1078,18 +1088,18 @@ l7	ireturn
   Labels:
    	l1 = 52 // aload
    	l3 = 61 // aload
-   	l4 = 77 // aload
-   	l5 = 87 // aload
-   	l2 = 94 // ifeq
-   	l6 = 101 // iconst_0
-   	l7 = 102 // ireturn
+   	l4 = 82 // aload
+   	l5 = 103 // aload
+   	l2 = 110 // ifeq
+   	l6 = 117 // iconst_0
+   	l7 = 118 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      103      0    this       Lscala/math/BigDecimal;
-   48      49      2    $inlThis0       Ljava/lang/Object;
-   48      49      4    $inlThis2       Ljava/lang/Object;
-   48      49      5    x0       Ljava/lang/Object;
-   48      49      6    y0       Ljava/lang/Object;
+   0      119      0    this       Lscala/math/BigDecimal;
+   48      65      2    $inlThis0       Ljava/lang/Object;
+   48      65      4    $inlThis2       Ljava/lang/Object;
+   48      65      5    x0       Ljava/lang/Object;
+   48      65      6    y0       Ljava/lang/Object;
 
 
 public java.math.BigDecimal underlying();
@@ -1373,13 +1383,19 @@ l5	aload	5
 	goto	l6 // ifeq
 l7	aload	5
 	instanceof	class java/lang/Number
-	ifne	l8 // aload
+	ifeq	l8 // aload
 	aload	5
+	checkcast	class java/lang/Number
+	aload	6
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l6 // ifeq
+l8	aload	5
 	instanceof	class java/lang/Character
 	ifeq	l9 // aload
-l8	aload	5
+	aload	5
+	checkcast	class java/lang/Character
 	aload	6
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l6 // ifeq
 l9	aload	5
 	aload	6
@@ -1416,24 +1432,24 @@ l11	new	class scala/MatchError
    	l3 = 72 // aload
    	l5 = 108 // aload
    	l7 = 117 // aload
-   	l8 = 133 // aload
-   	l9 = 143 // aload
-   	l6 = 150 // ifeq
-   	l10 = 157 // iconst_0
-   	l4 = 158 // ifeq
-   	l11 = 199 // new
+   	l8 = 138 // aload
+   	l9 = 159 // aload
+   	l6 = 166 // ifeq
+   	l10 = 173 // iconst_0
+   	l4 = 174 // ifeq
+   	l11 = 215 // new
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      209      0    this       Lscala/math/BigDecimal;
-   0      209      1    that       Lscala/math/BigDecimal;
-   26      183      2    temp5       Lscala/Option;
-   104      49      5    x0       Ljava/lang/Object;
-   104      49      6    y0       Ljava/lang/Object;
-   52      157      7    temp6       Lscala/collection/IndexedSeq;
-   17      192      8    temp4       [Ljava/math/BigDecimal;
+   0      225      0    this       Lscala/math/BigDecimal;
+   0      225      1    that       Lscala/math/BigDecimal;
+   26      199      2    temp5       Lscala/Option;
+   104      65      5    x0       Ljava/lang/Object;
+   104      65      6    y0       Ljava/lang/Object;
+   52      173      7    temp6       Lscala/collection/IndexedSeq;
+   17      208      8    temp4       [Ljava/math/BigDecimal;
 
   Signature: length = 0x2
-   01 13 
+   01 17 
 
 public scala.math.BigDecimal quot(scala.math.BigDecimal);
   Signature: (Lscala/math/BigDecimal;)Lscala/math/BigDecimal;
@@ -1810,7 +1826,7 @@ public scala.collection.immutable.Range$Partial until(scala.math.BigDecimal);
    0      17      1    end$1       Lscala/math/BigDecimal;
 
   Signature: length = 0x2
-   01 FFFFFF82 
+   01 FFFFFF86 
 
 public scala.collection.immutable.NumericRange$Exclusive until(scala.math.BigDecimal, scala.math.BigDecimal);
   Signature: (Lscala/math/BigDecimal;Lscala/math/BigDecimal;)Lscala/collection/immutable/NumericRange$Exclusive;
@@ -1830,7 +1846,7 @@ public scala.collection.immutable.NumericRange$Exclusive until(scala.math.BigDec
    0      10      2    step       Lscala/math/BigDecimal;
 
   Signature: length = 0x2
-   01 FFFFFF8E 
+   01 FFFFFF92 
 
 public scala.collection.immutable.Range$Partial to(scala.math.BigDecimal);
   Signature: (Lscala/math/BigDecimal;)Lscala/collection/immutable/Range$Partial;
@@ -1852,7 +1868,7 @@ public scala.collection.immutable.Range$Partial to(scala.math.BigDecimal);
    0      17      1    end$2       Lscala/math/BigDecimal;
 
   Signature: length = 0x2
-   01 FFFFFF94 
+   01 FFFFFF98 
 
 public scala.collection.immutable.NumericRange$Inclusive to(scala.math.BigDecimal, scala.math.BigDecimal);
   Signature: (Lscala/math/BigDecimal;Lscala/math/BigDecimal;)Lscala/collection/immutable/NumericRange$Inclusive;
@@ -1872,7 +1888,7 @@ public scala.collection.immutable.NumericRange$Inclusive to(scala.math.BigDecima
    0      10      2    step       Lscala/math/BigDecimal;
 
   Signature: length = 0x2
-   01 FFFFFF9A 
+   01 FFFFFF9E 
 
 public scala.math.BigInt toBigInt();
   Signature: ()Lscala/math/BigInt;
@@ -1919,7 +1935,7 @@ l1	aload_1
    0      31      1    exceptionResult1       Lscala/Option;
 
   Signature: length = 0x2
-   01 FFFFFFB2 
+   01 FFFFFFB6 
 
 public java.lang.String toString();
   Signature: ()Ljava/lang/String;

@@ -218,13 +218,18 @@ Asciz	[Lscala/collection/mutable/HashEntry;;
 Asciz	(Lscala/collection/mutable/HashTable;Ljava/lang/Object;Ljava/lang/Object;)Z;
 Asciz	java/lang/Number;
 class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals2;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Asciz	java/lang/Character;
+class	java/lang/Character
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	key1;
 Asciz	key2;
 Asciz	(Lscala/collection/mutable/HashTable;Ljava/lang/Object;)I;
@@ -894,13 +899,19 @@ l1	aload_1
 	goto	l2 // ifeq
 l3	aload_1
 	instanceof	class java/lang/Number
-	ifne	l4 // aload_1
+	ifeq	l4 // aload_1
 	aload_1
+	checkcast	class java/lang/Number
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l2 // ifeq
+l4	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l5 // aload_1
-l4	aload_1
+	aload_1
+	checkcast	class java/lang/Character
 	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l2 // ifeq
 l5	aload_1
 	aload_2
@@ -913,16 +924,16 @@ l7	ireturn
   Labels:
    	l1 = 9 // aload_1
    	l3 = 17 // aload_1
-   	l4 = 31 // aload_1
-   	l5 = 39 // aload_1
-   	l2 = 44 // ifeq
-   	l6 = 51 // iconst_0
-   	l7 = 52 // ireturn
+   	l4 = 35 // aload_1
+   	l5 = 53 // aload_1
+   	l2 = 58 // ifeq
+   	l6 = 65 // iconst_0
+   	l7 = 66 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      53      0    $this       Lscala/collection/mutable/HashTable;
-   0      53      1    key1       Ljava/lang/Object;
-   0      53      2    key2       Ljava/lang/Object;
+   0      67      0    $this       Lscala/collection/mutable/HashTable;
+   0      67      1    key1       Ljava/lang/Object;
+   0      67      2    key2       Ljava/lang/Object;
 
 
 public static int elemHashCode(scala.collection.mutable.HashTable, java.lang.Object);

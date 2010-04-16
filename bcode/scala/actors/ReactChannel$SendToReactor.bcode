@@ -18,12 +18,22 @@ Asciz	TMsg;;
 Asciz	Signature;
 Asciz	channel;
 Asciz	Lscala/actors/ReactChannel<TMsg;>;;
-Asciz	productIterator;
-Asciz	()Lscala/collection/Iterator;;
+Asciz	productElementName;
+Asciz	(I)Ljava/lang/String;;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/Product$class;
 class	scala/Product$class
+Asciz	(Lscala/Product;I)Ljava/lang/String;;
+NameAndType	productElementName:(Lscala/Product;I)Ljava/lang/String;
+Method	scala/Product$class.productElementName:(Lscala/Product;I)Ljava/lang/String;
+Asciz	this;
+Asciz	Lscala/actors/ReactChannel$SendToReactor;;
+Asciz	n;
+Asciz	I;
+Asciz	LocalVariableTable;
+Asciz	productIterator;
+Asciz	()Lscala/collection/Iterator;;
 Asciz	(Lscala/Product;)Lscala/collection/Iterator;;
 NameAndType	productIterator:(Lscala/Product;)Lscala/collection/Iterator;
 Method	scala/Product$class.productIterator:(Lscala/Product;)Lscala/collection/Iterator;
@@ -56,9 +66,6 @@ Asciz	<init>;
 Asciz	(Lscala/actors/ReactChannel;Lscala/actors/ReactChannel;Ljava/lang/Object;)V;
 NameAndType	"<init>":(Lscala/actors/ReactChannel;Lscala/actors/ReactChannel;Ljava/lang/Object;)V
 Method	scala/actors/ReactChannel$SendToReactor."<init>":(Lscala/actors/ReactChannel;Lscala/actors/ReactChannel;Ljava/lang/Object;)V
-Asciz	this;
-Asciz	Lscala/actors/ReactChannel$SendToReactor;;
-Asciz	LocalVariableTable;
 Asciz	hashCode;
 Asciz	()I;
 Asciz	scala/runtime/ScalaRunTime$;
@@ -112,10 +119,6 @@ Method	java/lang/Object.toString:()Ljava/lang/String;
 Asciz	(Ljava/lang/String;)V;
 NameAndType	"<init>":(Ljava/lang/String;)V
 Method	java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
-Asciz	productElementName;
-Asciz	(I)Ljava/lang/String;;
-String	msg
-String	channel
 NameAndType	$outer:Lscala/actors/ReactChannel;
 Field	scala/actors/ReactChannel$SendToReactor.$outer:Lscala/actors/ReactChannel;
 NameAndType	equals:(Ljava/lang/Object;)Z
@@ -124,10 +127,14 @@ Asciz	java/lang/Number;
 class	java/lang/Number
 Asciz	java/lang/Character;
 class	java/lang/Character
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
 Asciz	java/lang/NullPointerException;
 class	java/lang/NullPointerException
 Asciz	()V;
@@ -163,6 +170,21 @@ private final scala.actors.ReactChannel channel;
   Signature: Lscala/actors/ReactChannel;
   Signature: length = 0x2
    00 0A 
+
+public java.lang.String productElementName(int);
+  Signature: (I)Ljava/lang/String;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method scala/Product$class.productElementName:(Lscala/Product;I)Ljava/lang/String;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/actors/ReactChannel$SendToReactor;
+   0      6      1    n       I
+
 
 public scala.collection.Iterator productIterator();
   Signature: ()Lscala/collection/Iterator;
@@ -210,7 +232,7 @@ public scala.actors.ReactChannel channel();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 24 
+   00 2E 
 
 public java.lang.Object msg();
   Signature: ()Ljava/lang/Object;
@@ -221,7 +243,7 @@ public java.lang.Object msg();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 27 
+   00 31 
 
 public scala.actors.ReactChannel$SendToReactor copy(scala.actors.ReactChannel, java.lang.Object);
   Signature: (Lscala/actors/ReactChannel;Ljava/lang/Object;)Lscala/actors/ReactChannel$SendToReactor;
@@ -362,29 +384,6 @@ l1	areturn
   Labels:
    	l1 = 50 // areturn
 
-public java.lang.String productElementName(int);
-  Signature: (I)Ljava/lang/String;
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	iload_1
-	tableswitch{ //0 to 1
-		0: 44;
-		1: 39;
-		default: 24 }
-	new	class java/lang/IndexOutOfBoundsException
-	dup
-	iload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method java/lang/IndexOutOfBoundsException."<init>":(Ljava/lang/String;)V
-	athrow
-	ldc	String msg
-	goto	l1 // areturn
-	ldc	String channel
-l1	areturn
-  Labels:
-   	l1 = 46 // areturn
-
 public boolean canEqual(java.lang.Object);
   Signature: (Ljava/lang/Object;)Z
   Code:
@@ -433,35 +432,42 @@ l2	aload_0
 	ifne	l6 // aload_2
 	aload_2
 	instanceof	class java/lang/Character
-	ifne	l6 // aload_2
+	ifne	l7 // aload_2
 	aload_2
 	aload	4
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	goto	l7 // ifeq
-l6	aload_2
+	goto	l8 // ifeq
+l7	aload_2
+	checkcast	class java/lang/Character
 	aload	4
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-	goto	l7 // ifeq
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+	goto	l8 // ifeq
+l6	aload_2
+	checkcast	class java/lang/Number
+	aload	4
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l8 // ifeq
 l5	iconst_0
-	goto	l7 // ifeq
+	goto	l8 // ifeq
 l4	iconst_1
-l7	ifeq	l3 // iconst_0
+l8	ifeq	l3 // iconst_0
 	iconst_1
-	goto	l8 // ireturn
+	goto	l9 // ireturn
 l3	iconst_0
-l8	ireturn
+l9	ireturn
   Labels:
    	l1 = 18 // aload_3
    	l2 = 25 // aload_0
-   	l6 = 64 // aload_2
-   	l5 = 73 // iconst_0
-   	l4 = 77 // iconst_1
-   	l7 = 78 // ifeq
-   	l3 = 85 // iconst_0
-   	l8 = 86 // ireturn
+   	l7 = 64 // aload_2
+   	l6 = 76 // aload_2
+   	l5 = 88 // iconst_0
+   	l4 = 92 // iconst_1
+   	l8 = 93 // ifeq
+   	l3 = 100 // iconst_0
+   	l9 = 101 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      87      0    this       Lscala/actors/ReactChannel$SendToReactor;
+   0      102      0    this       Lscala/actors/ReactChannel$SendToReactor;
 
 
 public scala.actors.ReactChannel$SendToReactor(scala.actors.ReactChannel, scala.actors.ReactChannel, java.lang.Object);
@@ -498,7 +504,7 @@ l1	aload_0
    0      36      3    msg       Ljava/lang/Object;
 
   Signature: length = 0x2
-   00 FFFFFF83 
+   00 FFFFFF8A 
 
 }
 

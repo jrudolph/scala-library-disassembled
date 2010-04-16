@@ -2,7 +2,7 @@ Compiled from "Map.scala"
 public class scala.collection.immutable.Map$Map2 extends java.lang.Object implements scala.collection.immutable.Map,scala.ScalaObject,java.io.Serializable
   SourceFile: "Map.scala"
   Signature: length = 0x2
-   03 2C 
+   03 30 
   Scala: length = 0x
    
   InnerClass: 
@@ -250,10 +250,6 @@ Asciz	(Lscala/collection/IterableLike;Ljava/lang/Object;)Lscala/collection/Itera
 NameAndType	toCollection:(Lscala/collection/IterableLike;Ljava/lang/Object;)Lscala/collection/Iterable;
 Method	scala/collection/IterableLike$class.toCollection:(Lscala/collection/IterableLike;Ljava/lang/Object;)Lscala/collection/Iterable;
 Asciz	repr;
-Asciz	elements;
-Asciz	(Lscala/collection/IterableLike;)Lscala/collection/Iterator;;
-NameAndType	elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
-Method	scala/collection/IterableLike$class.elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
 Asciz	forall;
 Asciz	(Lscala/Function1;)Z;
 Asciz	(Lscala/collection/IterableLike;Lscala/Function1;)Z;
@@ -374,6 +370,10 @@ Asciz	(II)Lscala/collection/IterableView;;
 Asciz	(Lscala/collection/IterableLike;II)Lscala/collection/IterableView;;
 NameAndType	view:(Lscala/collection/IterableLike;II)Lscala/collection/IterableView;
 Method	scala/collection/IterableLike$class.view:(Lscala/collection/IterableLike;II)Lscala/collection/IterableView;
+Asciz	elements;
+Asciz	(Lscala/collection/IterableLike;)Lscala/collection/Iterator;;
+NameAndType	elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
+Method	scala/collection/IterableLike$class.elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
 Asciz	first;
 NameAndType	first:(Lscala/collection/IterableLike;)Ljava/lang/Object;
 Method	scala/collection/IterableLike$class.first:(Lscala/collection/IterableLike;)Ljava/lang/Object;
@@ -620,14 +620,18 @@ NameAndType	key1:Ljava/lang/Object;
 Field	scala/collection/immutable/Map$Map2.key1:Ljava/lang/Object;
 Asciz	java/lang/Number;
 class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Asciz	java/lang/Character;
+class	java/lang/Character
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	java/lang/Object;
 class	java/lang/Object
 NameAndType	equals:(Ljava/lang/Object;)Z
@@ -1388,16 +1392,6 @@ public scala.collection.Iterable toCollection(java.lang.Object);
    0      6      1    repr       Ljava/lang/Object;
 
 
-public scala.collection.Iterator elements();
-  Signature: ()Lscala/collection/Iterator;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokestatic	Method scala/collection/IterableLike$class.elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
-	areturn
-  Labels:
-  Deprecated: true
-
 public boolean forall(scala.Function1);
   Signature: (Lscala/Function1;)Z
   Code:
@@ -1753,6 +1747,16 @@ public scala.collection.IterableView view(int, int);
    0      7      1    from       I
    0      7      2    until       I
 
+
+public scala.collection.Iterator elements();
+  Signature: ()Lscala/collection/Iterator;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/collection/IterableLike$class.elements:(Lscala/collection/IterableLike;)Lscala/collection/Iterator;
+	areturn
+  Labels:
+  Deprecated: true
 
 public java.lang.Object first();
   Signature: ()Ljava/lang/Object;
@@ -2540,13 +2544,19 @@ l1	aload_1
 	goto	l2 // ifeq
 l3	aload_1
 	instanceof	class java/lang/Number
-	ifne	l4 // aload_1
+	ifeq	l4 // aload_1
 	aload_1
+	checkcast	class java/lang/Number
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l2 // ifeq
+l4	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l5 // aload_1
-l4	aload_1
+	aload_1
+	checkcast	class java/lang/Character
 	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l2 // ifeq
 l5	aload_1
 	aload_2
@@ -2572,13 +2582,19 @@ l8	aload_1
 	goto	l9 // ifeq
 l10	aload_1
 	instanceof	class java/lang/Number
-	ifne	l11 // aload_1
+	ifeq	l11 // aload_1
 	aload_1
+	checkcast	class java/lang/Number
+	aload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l9 // ifeq
+l11	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l12 // aload_1
-l11	aload_1
+	aload_1
+	checkcast	class java/lang/Character
 	aload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l9 // ifeq
 l12	aload_1
 	aload_3
@@ -2595,26 +2611,26 @@ l7	areturn
   Labels:
    	l1 = 14 // aload_1
    	l3 = 22 // aload_1
-   	l4 = 36 // aload_1
-   	l5 = 44 // aload_1
-   	l2 = 49 // ifeq
-   	l6 = 66 // aload_0
-   	l8 = 80 // aload_1
-   	l10 = 88 // aload_1
-   	l11 = 102 // aload_1
-   	l12 = 110 // aload_1
-   	l9 = 115 // ifeq
-   	l13 = 132 // getstatic
-   	l7 = 135 // areturn
+   	l4 = 40 // aload_1
+   	l5 = 58 // aload_1
+   	l2 = 63 // ifeq
+   	l6 = 80 // aload_0
+   	l8 = 94 // aload_1
+   	l10 = 102 // aload_1
+   	l11 = 120 // aload_1
+   	l12 = 138 // aload_1
+   	l9 = 143 // ifeq
+   	l13 = 160 // getstatic
+   	l7 = 163 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      136      0    this       Lscala/collection/immutable/Map$Map2;
-   0      136      1    key       Ljava/lang/Object;
-   10      42      2    y0       Ljava/lang/Object;
-   76      42      3    y1       Ljava/lang/Object;
+   0      164      0    this       Lscala/collection/immutable/Map$Map2;
+   0      164      1    key       Ljava/lang/Object;
+   10      56      2    y0       Ljava/lang/Object;
+   90      56      3    y1       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 7E 
+   02 FFFFFF82 
 
 public scala.collection.Iterator iterator();
   Signature: ()Lscala/collection/Iterator;
@@ -2650,7 +2666,7 @@ public scala.collection.Iterator iterator();
 	areturn
   Labels:
   Signature: length = 0x2
-   02 FFFFFF98 
+   02 FFFFFF9C 
 
 public scala.collection.immutable.Map updated(java.lang.Object, java.lang.Object);
   Signature: (Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/Map;
@@ -2670,13 +2686,19 @@ l1	aload_1
 	goto	l2 // ifeq
 l3	aload_1
 	instanceof	class java/lang/Number
-	ifne	l4 // aload_1
+	ifeq	l4 // aload_1
 	aload_1
+	checkcast	class java/lang/Number
+	aload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l2 // ifeq
+l4	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l5 // aload_1
-l4	aload_1
+	aload_1
+	checkcast	class java/lang/Character
 	aload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l2 // ifeq
 l5	aload_1
 	aload_3
@@ -2707,13 +2729,19 @@ l8	aload_1
 	goto	l9 // ifeq
 l10	aload_1
 	instanceof	class java/lang/Number
-	ifne	l11 // aload_1
+	ifeq	l11 // aload_1
 	aload_1
+	checkcast	class java/lang/Number
+	aload	4
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l9 // ifeq
+l11	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l12 // aload_1
-l11	aload_1
+	aload_1
+	checkcast	class java/lang/Character
 	aload	4
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l9 // ifeq
 l12	aload_1
 	aload	4
@@ -2747,27 +2775,27 @@ l7	areturn
   Labels:
    	l1 = 14 // aload_1
    	l3 = 22 // aload_1
-   	l4 = 36 // aload_1
-   	l5 = 44 // aload_1
-   	l2 = 49 // ifeq
-   	l6 = 75 // aload_0
-   	l8 = 91 // aload_1
-   	l10 = 99 // aload_1
-   	l11 = 113 // aload_1
-   	l12 = 122 // aload_1
-   	l9 = 128 // ifeq
-   	l13 = 154 // new
-   	l7 = 179 // areturn
+   	l4 = 40 // aload_1
+   	l5 = 58 // aload_1
+   	l2 = 63 // ifeq
+   	l6 = 89 // aload_0
+   	l8 = 105 // aload_1
+   	l10 = 113 // aload_1
+   	l11 = 132 // aload_1
+   	l12 = 151 // aload_1
+   	l9 = 157 // ifeq
+   	l13 = 183 // new
+   	l7 = 208 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      180      0    this       Lscala/collection/immutable/Map$Map2;
-   0      180      1    key       Ljava/lang/Object;
-   0      180      2    value       Ljava/lang/Object;
-   10      42      3    y0       Ljava/lang/Object;
-   87      44      4    y1       Ljava/lang/Object;
+   0      209      0    this       Lscala/collection/immutable/Map$Map2;
+   0      209      1    key       Ljava/lang/Object;
+   0      209      2    value       Ljava/lang/Object;
+   10      56      3    y0       Ljava/lang/Object;
+   101      59      4    y1       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 FFFFFFA2 
+   02 FFFFFFA6 
 
 public scala.collection.immutable.Map $plus(scala.Tuple2);
   Signature: (Lscala/Tuple2;)Lscala/collection/immutable/Map;
@@ -2787,7 +2815,7 @@ public scala.collection.immutable.Map $plus(scala.Tuple2);
    0      13      1    kv       Lscala/Tuple2;
 
   Signature: length = 0x2
-   02 FFFFFFAD 
+   02 FFFFFFB1 
 
 public scala.collection.immutable.Map $minus(java.lang.Object);
   Signature: (Ljava/lang/Object;)Lscala/collection/immutable/Map;
@@ -2807,13 +2835,19 @@ l1	aload_1
 	goto	l2 // ifeq
 l3	aload_1
 	instanceof	class java/lang/Number
-	ifne	l4 // aload_1
+	ifeq	l4 // aload_1
 	aload_1
+	checkcast	class java/lang/Number
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l2 // ifeq
+l4	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l5 // aload_1
-l4	aload_1
+	aload_1
+	checkcast	class java/lang/Character
 	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l2 // ifeq
 l5	aload_1
 	aload_2
@@ -2841,13 +2875,19 @@ l8	aload_1
 	goto	l9 // ifeq
 l10	aload_1
 	instanceof	class java/lang/Number
-	ifne	l11 // aload_1
+	ifeq	l11 // aload_1
 	aload_1
+	checkcast	class java/lang/Number
+	aload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l9 // ifeq
+l11	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l12 // aload_1
-l11	aload_1
+	aload_1
+	checkcast	class java/lang/Character
 	aload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l9 // ifeq
 l12	aload_1
 	aload_3
@@ -2866,26 +2906,26 @@ l7	areturn
   Labels:
    	l1 = 14 // aload_1
    	l3 = 22 // aload_1
-   	l4 = 36 // aload_1
-   	l5 = 44 // aload_1
-   	l2 = 49 // ifeq
-   	l6 = 70 // aload_0
-   	l8 = 84 // aload_1
-   	l10 = 92 // aload_1
-   	l11 = 106 // aload_1
-   	l12 = 114 // aload_1
-   	l9 = 119 // ifeq
-   	l13 = 140 // aload_0
-   	l7 = 141 // areturn
+   	l4 = 40 // aload_1
+   	l5 = 58 // aload_1
+   	l2 = 63 // ifeq
+   	l6 = 84 // aload_0
+   	l8 = 98 // aload_1
+   	l10 = 106 // aload_1
+   	l11 = 124 // aload_1
+   	l12 = 142 // aload_1
+   	l9 = 147 // ifeq
+   	l13 = 168 // aload_0
+   	l7 = 169 // areturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      142      0    this       Lscala/collection/immutable/Map$Map2;
-   0      142      1    key       Ljava/lang/Object;
-   10      42      2    y0       Ljava/lang/Object;
-   80      42      3    y1       Ljava/lang/Object;
+   0      170      0    this       Lscala/collection/immutable/Map$Map2;
+   0      170      1    key       Ljava/lang/Object;
+   10      56      2    y0       Ljava/lang/Object;
+   94      56      3    y1       Ljava/lang/Object;
 
   Signature: length = 0x2
-   02 FFFFFFB1 
+   02 FFFFFFB5 
 
 public void foreach(scala.Function1);
   Signature: (Lscala/Function1;)V
@@ -2919,7 +2959,7 @@ public void foreach(scala.Function1);
    0      45      1    f       Lscala/Function1;
 
   Signature: length = 0x2
-   02 FFFFFFB8 
+   02 FFFFFFBC 
 
 public scala.collection.generic.Subtractable repr();
   Signature: ()Lscala/collection/generic/Subtractable;
@@ -3218,7 +3258,7 @@ public scala.collection.immutable.Map$Map2(java.lang.Object, java.lang.Object, j
    0      82      4    value2       Ljava/lang/Object;
 
   Signature: length = 0x2
-   03 2B 
+   03 2F 
 
 }
 

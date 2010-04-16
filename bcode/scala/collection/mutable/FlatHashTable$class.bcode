@@ -159,14 +159,18 @@ NameAndType	index:(I)I
 InterfaceMethod	scala/collection/mutable/FlatHashTable.index:(I)I
 Asciz	java/lang/Number;
 class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Asciz	java/lang/Character;
+class	java/lang/Character
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	equals;
 NameAndType	equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
@@ -540,13 +544,19 @@ l2	aload_3
 	goto	l3 // ifeq
 l4	aload_3
 	instanceof	class java/lang/Number
-	ifne	l5 // aload_3
+	ifeq	l5 // aload_3
 	aload_3
+	checkcast	class java/lang/Number
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l3 // ifeq
+l5	aload_3
 	instanceof	class java/lang/Character
 	ifeq	l6 // aload_3
-l5	aload_3
+	aload_3
+	checkcast	class java/lang/Character
 	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l3 // ifeq
 l6	aload_3
 	aload_1
@@ -579,19 +589,19 @@ l7	iload_2
    	l10 = 23 // aload_3
    	l2 = 36 // aload_3
    	l4 = 44 // aload_3
-   	l5 = 58 // aload_3
-   	l6 = 66 // aload_3
-   	l3 = 71 // ifeq
-   	l1 = 74 // aload_3
-   	l8 = 84 // new
-   	l9 = 92 // areturn
-   	l7 = 93 // iload_2
+   	l5 = 62 // aload_3
+   	l6 = 80 // aload_3
+   	l3 = 85 // ifeq
+   	l1 = 88 // aload_3
+   	l8 = 98 // new
+   	l9 = 106 // areturn
+   	l7 = 107 // iload_2
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      117      0    $this       Lscala/collection/mutable/FlatHashTable;
-   0      117      1    elem       Ljava/lang/Object;
-   14      103      2    h       I
-   23      94      3    entry       Ljava/lang/Object;
+   0      131      0    $this       Lscala/collection/mutable/FlatHashTable;
+   0      131      1    elem       Ljava/lang/Object;
+   14      117      2    h       I
+   23      108      3    entry       Ljava/lang/Object;
 
 
 public static boolean containsEntry(scala.collection.mutable.FlatHashTable, java.lang.Object);
@@ -622,13 +632,19 @@ l2	aload_3
 	goto	l3 // ifeq
 l4	aload_3
 	instanceof	class java/lang/Number
-	ifne	l5 // aload_3
+	ifeq	l5 // aload_3
 	aload_3
+	checkcast	class java/lang/Number
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l3 // ifeq
+l5	aload_3
 	instanceof	class java/lang/Character
 	ifeq	l6 // aload_3
-l5	aload_3
+	aload_3
+	checkcast	class java/lang/Character
 	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l3 // ifeq
 l6	aload_3
 	aload_1
@@ -658,19 +674,19 @@ l7	iload_2
    	l10 = 23 // aload_3
    	l2 = 36 // aload_3
    	l4 = 44 // aload_3
-   	l5 = 58 // aload_3
-   	l6 = 66 // aload_3
-   	l3 = 71 // ifeq
-   	l1 = 74 // aload_3
-   	l8 = 82 // iconst_1
-   	l9 = 83 // ireturn
-   	l7 = 84 // iload_2
+   	l5 = 62 // aload_3
+   	l6 = 80 // aload_3
+   	l3 = 85 // ifeq
+   	l1 = 88 // aload_3
+   	l8 = 96 // iconst_1
+   	l9 = 97 // ireturn
+   	l7 = 98 // iload_2
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      108      0    $this       Lscala/collection/mutable/FlatHashTable;
-   0      108      1    elem       Ljava/lang/Object;
-   14      94      2    h       I
-   23      85      3    entry       Ljava/lang/Object;
+   0      122      0    $this       Lscala/collection/mutable/FlatHashTable;
+   0      122      1    elem       Ljava/lang/Object;
+   14      108      2    h       I
+   23      99      3    entry       Ljava/lang/Object;
 
 
 public static boolean addEntry(scala.collection.mutable.FlatHashTable, java.lang.Object);
@@ -721,13 +737,19 @@ l3	aload_3
 	goto	l4 // ifeq
 l5	aload_3
 	instanceof	class java/lang/Number
-	ifne	l6 // aload_3
+	ifeq	l6 // aload_3
 	aload_3
+	checkcast	class java/lang/Number
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l4 // ifeq
+l6	aload_3
 	instanceof	class java/lang/Character
 	ifeq	l7 // aload_3
-l6	aload_3
+	aload_3
+	checkcast	class java/lang/Character
 	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l4 // ifeq
 l7	aload_3
 	aload_1
@@ -755,18 +777,18 @@ l8	iload_2
    	l1 = 71 // aload_3
    	l3 = 80 // aload_3
    	l5 = 88 // aload_3
-   	l6 = 102 // aload_3
-   	l7 = 110 // aload_3
-   	l4 = 115 // ifeq
-   	l8 = 120 // iload_2
+   	l6 = 106 // aload_3
+   	l7 = 124 // aload_3
+   	l4 = 129 // ifeq
+   	l8 = 134 // iload_2
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      144      0    $this       Lscala/collection/mutable/FlatHashTable;
-   0      144      1    elem       Ljava/lang/Object;
+   0      158      0    $this       Lscala/collection/mutable/FlatHashTable;
+   0      158      1    elem       Ljava/lang/Object;
    14      56      2    h       I
-   71      73      2    h       I
+   71      87      2    h       I
    23      47      3    entry       Ljava/lang/Object;
-   71      73      3    entry       Ljava/lang/Object;
+   71      87      3    entry       Ljava/lang/Object;
 
 
 public static scala.Option removeEntry(scala.collection.mutable.FlatHashTable, java.lang.Object);
@@ -799,13 +821,19 @@ l2	aload	6
 	goto	l3 // ifeq
 l4	aload	6
 	instanceof	class java/lang/Number
-	ifne	l5 // aload
+	ifeq	l5 // aload
 	aload	6
+	checkcast	class java/lang/Number
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l3 // ifeq
+l5	aload	6
 	instanceof	class java/lang/Character
 	ifeq	l6 // aload
-l5	aload	6
+	aload	6
+	checkcast	class java/lang/Character
 	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l3 // ifeq
 l6	aload	6
 	aload_1
@@ -897,24 +925,24 @@ l7	iload	5
    	l1 = 35 // aload
    	l2 = 45 // aload
    	l4 = 54 // aload
-   	l5 = 70 // aload
-   	l6 = 79 // aload
-   	l3 = 85 // ifeq
-   	l10 = 105 // aload_0
-   	l8 = 150 // aload_0
-   	l9 = 207 // iload
-   	l7 = 224 // iload
+   	l5 = 74 // aload
+   	l6 = 94 // aload
+   	l3 = 100 // ifeq
+   	l10 = 120 // aload_0
+   	l8 = 165 // aload_0
+   	l9 = 222 // iload
+   	l7 = 239 // iload
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      252      0    $this       Lscala/collection/mutable/FlatHashTable;
-   0      252      1    elem       Ljava/lang/Object;
-   172      49      2    h2       I
-   91      133      3    h0       I
-   105      119      4    h1       I
+   0      267      0    $this       Lscala/collection/mutable/FlatHashTable;
+   0      267      1    elem       Ljava/lang/Object;
+   187      49      2    h2       I
+   106      133      3    h0       I
+   120      119      4    h1       I
    15      19      5    h       I
-   35      217      5    h       I
+   35      232      5    h       I
    26      8      6    entry       Ljava/lang/Object;
-   35      217      6    entry       Ljava/lang/Object;
+   35      232      6    entry       Ljava/lang/Object;
 
 
 public static scala.collection.Iterator iterator(scala.collection.mutable.FlatHashTable);

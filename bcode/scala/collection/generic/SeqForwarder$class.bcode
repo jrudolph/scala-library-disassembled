@@ -8,8 +8,8 @@ public abstract class scala.collection.generic.SeqForwarder$class extends java.l
   Constant pool:
 Asciz	SourceFile;
 Asciz	SeqForwarder.scala;
-Asciz	apply;
-Asciz	(Lscala/collection/generic/SeqForwarder;I)Ljava/lang/Object;;
+Asciz	length;
+Asciz	(Lscala/collection/generic/SeqForwarder;)I;
 Asciz	Code;
 Asciz	LineNumberTable;
 Asciz	scala/collection/generic/SeqForwarder;
@@ -20,31 +20,31 @@ NameAndType	underlying:()Lscala/collection/Seq;
 InterfaceMethod	scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
 Asciz	scala/collection/SeqLike;
 class	scala/collection/SeqLike
+Asciz	()I;
+NameAndType	length:()I
+InterfaceMethod	scala/collection/SeqLike.length:()I
+Asciz	$this;
+Asciz	Lscala/collection/generic/SeqForwarder;;
+Asciz	LocalVariableTable;
+Asciz	apply;
+Asciz	(Lscala/collection/generic/SeqForwarder;I)Ljava/lang/Object;;
 Asciz	(I)Ljava/lang/Object;;
 NameAndType	apply:(I)Ljava/lang/Object;
 InterfaceMethod	scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
-Asciz	$this;
-Asciz	Lscala/collection/generic/SeqForwarder;;
-Asciz	i;
+Asciz	idx;
 Asciz	I;
-Asciz	LocalVariableTable;
+Asciz	lengthCompare;
+Asciz	(Lscala/collection/generic/SeqForwarder;I)I;
+Asciz	(I)I;
+NameAndType	lengthCompare:(I)I
+InterfaceMethod	scala/collection/SeqLike.lengthCompare:(I)I
+Asciz	len;
 Asciz	isDefinedAt;
 Asciz	(Lscala/collection/generic/SeqForwarder;I)Z;
 Asciz	(I)Z;
 NameAndType	isDefinedAt:(I)Z
 InterfaceMethod	scala/collection/SeqLike.isDefinedAt:(I)Z
 Asciz	x;
-Asciz	length;
-Asciz	(Lscala/collection/generic/SeqForwarder;)I;
-Asciz	()I;
-NameAndType	length:()I
-InterfaceMethod	scala/collection/SeqLike.length:()I
-Asciz	lengthCompare;
-Asciz	(Lscala/collection/generic/SeqForwarder;I)I;
-Asciz	(I)I;
-NameAndType	lengthCompare:(I)I
-InterfaceMethod	scala/collection/SeqLike.lengthCompare:(I)I
-Asciz	l;
 Asciz	segmentLength;
 Asciz	(Lscala/collection/generic/SeqForwarder;Lscala/Function1;I)I;
 Asciz	(Lscala/Function1;I)I;
@@ -59,15 +59,33 @@ Asciz	(Lscala/Function1;)I;
 NameAndType	prefixLength:(Lscala/Function1;)I
 InterfaceMethod	scala/collection/SeqLike.prefixLength:(Lscala/Function1;)I
 Asciz	indexWhere;
+NameAndType	indexWhere:(Lscala/Function1;)I
+InterfaceMethod	scala/collection/SeqLike.indexWhere:(Lscala/Function1;)I
 NameAndType	indexWhere:(Lscala/Function1;I)I
 InterfaceMethod	scala/collection/SeqLike.indexWhere:(Lscala/Function1;I)I
+Asciz	findIndexOf;
 Asciz	indexOf;
+Asciz	(Lscala/collection/generic/SeqForwarder;Ljava/lang/Object;)I;
+Asciz	(Ljava/lang/Object;)I;
+NameAndType	indexOf:(Ljava/lang/Object;)I
+InterfaceMethod	scala/collection/SeqLike.indexOf:(Ljava/lang/Object;)I
+Asciz	elem;
+Asciz	Ljava/lang/Object;;
 Asciz	(Lscala/collection/generic/SeqForwarder;Ljava/lang/Object;I)I;
 Asciz	(Ljava/lang/Object;I)I;
 NameAndType	indexOf:(Ljava/lang/Object;I)I
 InterfaceMethod	scala/collection/SeqLike.indexOf:(Ljava/lang/Object;I)I
-Asciz	elem;
-Asciz	Ljava/lang/Object;;
+Asciz	lastIndexOf;
+NameAndType	lastIndexOf:(Ljava/lang/Object;)I
+InterfaceMethod	scala/collection/SeqLike.lastIndexOf:(Ljava/lang/Object;)I
+NameAndType	lastIndexOf:(Ljava/lang/Object;I)I
+InterfaceMethod	scala/collection/SeqLike.lastIndexOf:(Ljava/lang/Object;I)I
+Asciz	end;
+Asciz	lastIndexWhere;
+NameAndType	lastIndexWhere:(Lscala/Function1;)I
+InterfaceMethod	scala/collection/SeqLike.lastIndexWhere:(Lscala/Function1;)I
+NameAndType	lastIndexWhere:(Lscala/Function1;I)I
+InterfaceMethod	scala/collection/SeqLike.lastIndexWhere:(Lscala/Function1;I)I
 Asciz	reverseIterator;
 Asciz	(Lscala/collection/generic/SeqForwarder;)Lscala/collection/Iterator;;
 Asciz	()Lscala/collection/Iterator;;
@@ -81,9 +99,11 @@ InterfaceMethod	scala/collection/SeqLike.startsWith:(Lscala/collection/Seq;I)Z
 Asciz	that;
 Asciz	Lscala/collection/Seq;;
 Asciz	offset;
-Asciz	endsWith;
 Asciz	(Lscala/collection/generic/SeqForwarder;Lscala/collection/Seq;)Z;
 Asciz	(Lscala/collection/Seq;)Z;
+NameAndType	startsWith:(Lscala/collection/Seq;)Z
+InterfaceMethod	scala/collection/SeqLike.startsWith:(Lscala/collection/Seq;)Z
+Asciz	endsWith;
 NameAndType	endsWith:(Lscala/collection/Seq;)Z
 InterfaceMethod	scala/collection/SeqLike.endsWith:(Lscala/collection/Seq;)Z
 Asciz	indexOfSlice;
@@ -91,11 +111,29 @@ Asciz	(Lscala/collection/generic/SeqForwarder;Lscala/collection/Seq;)I;
 Asciz	(Lscala/collection/Seq;)I;
 NameAndType	indexOfSlice:(Lscala/collection/Seq;)I
 InterfaceMethod	scala/collection/SeqLike.indexOfSlice:(Lscala/collection/Seq;)I
+Asciz	(Lscala/collection/generic/SeqForwarder;Lscala/collection/Seq;I)I;
+Asciz	(Lscala/collection/Seq;I)I;
+NameAndType	indexOfSlice:(Lscala/collection/Seq;I)I
+InterfaceMethod	scala/collection/SeqLike.indexOfSlice:(Lscala/collection/Seq;I)I
+Asciz	lastIndexOfSlice;
+NameAndType	lastIndexOfSlice:(Lscala/collection/Seq;)I
+InterfaceMethod	scala/collection/SeqLike.lastIndexOfSlice:(Lscala/collection/Seq;)I
+NameAndType	lastIndexOfSlice:(Lscala/collection/Seq;I)I
+InterfaceMethod	scala/collection/SeqLike.lastIndexOfSlice:(Lscala/collection/Seq;I)I
+Asciz	containsSlice;
+NameAndType	containsSlice:(Lscala/collection/Seq;)Z
+InterfaceMethod	scala/collection/SeqLike.containsSlice:(Lscala/collection/Seq;)Z
 Asciz	contains;
 Asciz	(Lscala/collection/generic/SeqForwarder;Ljava/lang/Object;)Z;
 Asciz	(Ljava/lang/Object;)Z;
 NameAndType	contains:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/collection/SeqLike.contains:(Ljava/lang/Object;)Z
+Asciz	corresponds;
+Asciz	(Lscala/collection/generic/SeqForwarder;Lscala/collection/Seq;Lscala/Function2;)Z;
+Asciz	(Lscala/collection/Seq;Lscala/Function2;)Z;
+NameAndType	corresponds:(Lscala/collection/Seq;Lscala/Function2;)Z
+InterfaceMethod	scala/collection/SeqLike.corresponds:(Lscala/collection/Seq;Lscala/Function2;)Z
+Asciz	Lscala/Function2;;
 Asciz	indices;
 Asciz	(Lscala/collection/generic/SeqForwarder;)Lscala/collection/immutable/Range;;
 Asciz	()Lscala/collection/immutable/Range;;
@@ -110,6 +148,20 @@ Asciz	java/lang/Object;
 class	java/lang/Object
 
 {
+public static int length(scala.collection.generic.SeqForwarder);
+  Signature: (Lscala/collection/generic/SeqForwarder;)I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      12      0    $this       Lscala/collection/generic/SeqForwarder;
+
+
 public static java.lang.Object apply(scala.collection.generic.SeqForwarder, int);
   Signature: (Lscala/collection/generic/SeqForwarder;I)Ljava/lang/Object;
   Code:
@@ -123,7 +175,23 @@ public static java.lang.Object apply(scala.collection.generic.SeqForwarder, int)
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      13      0    $this       Lscala/collection/generic/SeqForwarder;
-   0      13      1    i       I
+   0      13      1    idx       I
+
+
+public static int lengthCompare(scala.collection.generic.SeqForwarder, int);
+  Signature: (Lscala/collection/generic/SeqForwarder;I)I
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	iload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.lengthCompare:(I)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      13      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      13      1    len       I
 
 
 public static boolean isDefinedAt(scala.collection.generic.SeqForwarder, int);
@@ -140,36 +208,6 @@ public static boolean isDefinedAt(scala.collection.generic.SeqForwarder, int);
    Start  Length  Slot  Name   Signature
    0      13      0    $this       Lscala/collection/generic/SeqForwarder;
    0      13      1    x       I
-
-
-public static int length(scala.collection.generic.SeqForwarder);
-  Signature: (Lscala/collection/generic/SeqForwarder;)I
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      12      0    $this       Lscala/collection/generic/SeqForwarder;
-
-
-public static int lengthCompare(scala.collection.generic.SeqForwarder, int);
-  Signature: (Lscala/collection/generic/SeqForwarder;I)I
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
-	iload_1
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.lengthCompare:(I)I
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      13      0    $this       Lscala/collection/generic/SeqForwarder;
-   0      13      1    l       I
 
 
 public static int segmentLength(scala.collection.generic.SeqForwarder, scala.Function1, int);
@@ -206,6 +244,22 @@ public static int prefixLength(scala.collection.generic.SeqForwarder, scala.Func
    0      13      1    p       Lscala/Function1;
 
 
+public static int indexWhere(scala.collection.generic.SeqForwarder, scala.Function1);
+  Signature: (Lscala/collection/generic/SeqForwarder;Lscala/Function1;)I
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.indexWhere:(Lscala/Function1;)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      13      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      13      1    p       Lscala/Function1;
+
+
 public static int indexWhere(scala.collection.generic.SeqForwarder, scala.Function1, int);
   Signature: (Lscala/collection/generic/SeqForwarder;Lscala/Function1;I)I
   Code:
@@ -224,6 +278,38 @@ public static int indexWhere(scala.collection.generic.SeqForwarder, scala.Functi
    0      14      2    from       I
 
 
+public static int findIndexOf(scala.collection.generic.SeqForwarder, scala.Function1);
+  Signature: (Lscala/collection/generic/SeqForwarder;Lscala/Function1;)I
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.indexWhere:(Lscala/Function1;)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      13      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      13      1    p       Lscala/Function1;
+
+
+public static int indexOf(scala.collection.generic.SeqForwarder, java.lang.Object);
+  Signature: (Lscala/collection/generic/SeqForwarder;Ljava/lang/Object;)I
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.indexOf:(Ljava/lang/Object;)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      13      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      13      1    elem       Ljava/lang/Object;
+
+
 public static int indexOf(scala.collection.generic.SeqForwarder, java.lang.Object, int);
   Signature: (Lscala/collection/generic/SeqForwarder;Ljava/lang/Object;I)I
   Code:
@@ -240,6 +326,74 @@ public static int indexOf(scala.collection.generic.SeqForwarder, java.lang.Objec
    0      14      0    $this       Lscala/collection/generic/SeqForwarder;
    0      14      1    elem       Ljava/lang/Object;
    0      14      2    from       I
+
+
+public static int lastIndexOf(scala.collection.generic.SeqForwarder, java.lang.Object);
+  Signature: (Lscala/collection/generic/SeqForwarder;Ljava/lang/Object;)I
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.lastIndexOf:(Ljava/lang/Object;)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      13      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      13      1    elem       Ljava/lang/Object;
+
+
+public static int lastIndexOf(scala.collection.generic.SeqForwarder, java.lang.Object, int);
+  Signature: (Lscala/collection/generic/SeqForwarder;Ljava/lang/Object;I)I
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	aload_1
+	iload_2
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.lastIndexOf:(Ljava/lang/Object;I)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      14      1    elem       Ljava/lang/Object;
+   0      14      2    end       I
+
+
+public static int lastIndexWhere(scala.collection.generic.SeqForwarder, scala.Function1);
+  Signature: (Lscala/collection/generic/SeqForwarder;Lscala/Function1;)I
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.lastIndexWhere:(Lscala/Function1;)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      13      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      13      1    p       Lscala/Function1;
+
+
+public static int lastIndexWhere(scala.collection.generic.SeqForwarder, scala.Function1, int);
+  Signature: (Lscala/collection/generic/SeqForwarder;Lscala/Function1;I)I
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	aload_1
+	iload_2
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.lastIndexWhere:(Lscala/Function1;I)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      14      1    p       Lscala/Function1;
+   0      14      2    end       I
 
 
 public static scala.collection.Iterator reverseIterator(scala.collection.generic.SeqForwarder);
@@ -274,6 +428,22 @@ public static boolean startsWith(scala.collection.generic.SeqForwarder, scala.co
    0      14      2    offset       I
 
 
+public static boolean startsWith(scala.collection.generic.SeqForwarder, scala.collection.Seq);
+  Signature: (Lscala/collection/generic/SeqForwarder;Lscala/collection/Seq;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.startsWith:(Lscala/collection/Seq;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      13      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      13      1    that       Lscala/collection/Seq;
+
+
 public static boolean endsWith(scala.collection.generic.SeqForwarder, scala.collection.Seq);
   Signature: (Lscala/collection/generic/SeqForwarder;Lscala/collection/Seq;)Z
   Code:
@@ -306,6 +476,74 @@ public static int indexOfSlice(scala.collection.generic.SeqForwarder, scala.coll
    0      13      1    that       Lscala/collection/Seq;
 
 
+public static int indexOfSlice(scala.collection.generic.SeqForwarder, scala.collection.Seq, int);
+  Signature: (Lscala/collection/generic/SeqForwarder;Lscala/collection/Seq;I)I
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	aload_1
+	iload_2
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.indexOfSlice:(Lscala/collection/Seq;I)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      14      1    that       Lscala/collection/Seq;
+   0      14      2    from       I
+
+
+public static int lastIndexOfSlice(scala.collection.generic.SeqForwarder, scala.collection.Seq);
+  Signature: (Lscala/collection/generic/SeqForwarder;Lscala/collection/Seq;)I
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.lastIndexOfSlice:(Lscala/collection/Seq;)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      13      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      13      1    that       Lscala/collection/Seq;
+
+
+public static int lastIndexOfSlice(scala.collection.generic.SeqForwarder, scala.collection.Seq, int);
+  Signature: (Lscala/collection/generic/SeqForwarder;Lscala/collection/Seq;I)I
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	aload_1
+	iload_2
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.lastIndexOfSlice:(Lscala/collection/Seq;I)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      14      1    that       Lscala/collection/Seq;
+   0      14      2    end       I
+
+
+public static boolean containsSlice(scala.collection.generic.SeqForwarder, scala.collection.Seq);
+  Signature: (Lscala/collection/generic/SeqForwarder;Lscala/collection/Seq;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.containsSlice:(Lscala/collection/Seq;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      13      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      13      1    that       Lscala/collection/Seq;
+
+
 public static boolean contains(scala.collection.generic.SeqForwarder, java.lang.Object);
   Signature: (Lscala/collection/generic/SeqForwarder;Ljava/lang/Object;)Z
   Code:
@@ -320,6 +558,24 @@ public static boolean contains(scala.collection.generic.SeqForwarder, java.lang.
    Start  Length  Slot  Name   Signature
    0      13      0    $this       Lscala/collection/generic/SeqForwarder;
    0      13      1    elem       Ljava/lang/Object;
+
+
+public static boolean corresponds(scala.collection.generic.SeqForwarder, scala.collection.Seq, scala.Function2);
+  Signature: (Lscala/collection/generic/SeqForwarder;Lscala/collection/Seq;Lscala/Function2;)Z
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	aload_1
+	aload_2
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.corresponds:(Lscala/collection/Seq;Lscala/Function2;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      14      1    that       Lscala/collection/Seq;
+   0      14      2    p       Lscala/Function2;
 
 
 public static scala.collection.immutable.Range indices(scala.collection.generic.SeqForwarder);

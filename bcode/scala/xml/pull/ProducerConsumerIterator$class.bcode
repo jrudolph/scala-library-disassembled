@@ -112,14 +112,18 @@ NameAndType	EndOfStream:()Ljava/lang/Object;
 InterfaceMethod	scala/xml/pull/ProducerConsumerIterator.EndOfStream:()Ljava/lang/Object;
 Asciz	java/lang/Number;
 class	java/lang/Number
-Asciz	java/lang/Character;
-class	java/lang/Character
 Asciz	scala/runtime/BoxesRunTime;
 class	scala/runtime/BoxesRunTime
-Asciz	equals2;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
-NameAndType	equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
-Method	scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+Asciz	equalsNumObject;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
+NameAndType	equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+Asciz	java/lang/Character;
+class	java/lang/Character
+Asciz	equalsCharObject;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
+NameAndType	equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
+Method	scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 Asciz	x;
 Asciz	Ljava/lang/Object;;
 Asciz	y0;
@@ -294,13 +298,19 @@ l2	aload_1
 	goto	l3 // ifeq
 l4	aload_1
 	instanceof	class java/lang/Number
-	ifne	l5 // aload_1
+	ifeq	l5 // aload_1
 	aload_1
+	checkcast	class java/lang/Number
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l3 // ifeq
+l5	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l6 // aload_1
-l5	aload_1
+	aload_1
+	checkcast	class java/lang/Character
 	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l3 // ifeq
 l6	aload_1
 	aload_2
@@ -313,17 +323,17 @@ l8	ireturn
   Labels:
    	l2 = 30 // aload_1
    	l4 = 38 // aload_1
-   	l5 = 52 // aload_1
-   	l6 = 60 // aload_1
-   	l3 = 65 // ifeq
-   	l1 = 68 // iconst_0
-   	l7 = 72 // iconst_1
-   	l8 = 73 // ireturn
+   	l5 = 56 // aload_1
+   	l6 = 74 // aload_1
+   	l3 = 79 // ifeq
+   	l1 = 82 // iconst_0
+   	l7 = 86 // iconst_1
+   	l8 = 87 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      74      0    $this       Lscala/xml/pull/ProducerConsumerIterator;
-   0      74      1    x       Ljava/lang/Object;
-   26      42      2    y0       Ljava/lang/Object;
+   0      88      0    $this       Lscala/xml/pull/ProducerConsumerIterator;
+   0      88      1    x       Ljava/lang/Object;
+   26      56      2    y0       Ljava/lang/Object;
 
 
 private static boolean eos(scala.xml.pull.ProducerConsumerIterator);
@@ -347,13 +357,19 @@ l1	aload_1
 	goto	l2 // ifeq
 l3	aload_1
 	instanceof	class java/lang/Number
-	ifne	l4 // aload_1
+	ifeq	l4 // aload_1
 	aload_1
+	checkcast	class java/lang/Number
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsNumObject:(Ljava/lang/Number;Ljava/lang/Object;)Z
+	goto	l2 // ifeq
+l4	aload_1
 	instanceof	class java/lang/Character
 	ifeq	l5 // aload_1
-l4	aload_1
+	aload_1
+	checkcast	class java/lang/Character
 	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.equals2:(Ljava/lang/Object;Ljava/lang/Object;)Z
+	invokestatic	Method scala/runtime/BoxesRunTime.equalsCharObject:(Ljava/lang/Character;Ljava/lang/Object;)Z
 	goto	l2 // ifeq
 l5	aload_1
 	aload_2
@@ -366,16 +382,16 @@ l7	ireturn
   Labels:
    	l1 = 23 // aload_1
    	l3 = 31 // aload_1
-   	l4 = 45 // aload_1
-   	l5 = 53 // aload_1
-   	l2 = 58 // ifeq
-   	l6 = 65 // iconst_0
-   	l7 = 66 // ireturn
+   	l4 = 49 // aload_1
+   	l5 = 67 // aload_1
+   	l2 = 72 // ifeq
+   	l6 = 79 // iconst_0
+   	l7 = 80 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      67      0    $this       Lscala/xml/pull/ProducerConsumerIterator;
-   19      42      1    x0       Ljava/lang/Object;
-   19      42      2    y0       Ljava/lang/Object;
+   0      81      0    $this       Lscala/xml/pull/ProducerConsumerIterator;
+   19      56      1    x0       Ljava/lang/Object;
+   19      56      2    y0       Ljava/lang/Object;
 
 
 public static void produce(scala.xml.pull.ProducerConsumerIterator, java.lang.Object);
