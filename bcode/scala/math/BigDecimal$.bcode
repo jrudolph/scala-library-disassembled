@@ -1,0 +1,276 @@
+Compiled from "BigDecimal.scala"
+public final class scala.math.BigDecimal$ extends java.lang.Object
+  InnerClass: 
+   public final $anonfun$equals$1=class scala/math/BigDecimal$$anonfun$equals$1 of class scala/math/BigDecimal
+  Scala: length = 0x
+   
+  SourceFile: "BigDecimal.scala"
+  minor version: 0
+  major version: 49
+  Constant pool:
+int	-512;
+int	512;
+class	java/lang/Object
+class	java/math/BigDecimal
+class	java/math/MathContext
+class	scala/math/BigDecimal
+class	scala/math/BigDecimal$
+class	scala/math/BigDecimal$$anonfun$equals$1
+Field	java/math/MathContext.UNLIMITED:Ljava/math/MathContext;
+Field	scala/math/BigDecimal$.MODULE$:Lscala/math/BigDecimal$;
+Field	scala/math/BigDecimal$.bitmap$0:I
+Field	scala/math/BigDecimal$.cache:[Lscala/math/BigDecimal;
+Field	scala/math/BigDecimal$.defaultMathContext:Ljava/math/MathContext;
+Field	scala/math/BigDecimal$.maxCached:I
+Field	scala/math/BigDecimal$.minCached:I
+Method	java/lang/Object."<init>":()V
+Method	java/math/BigDecimal.valueOf:(J)Ljava/math/BigDecimal;
+Method	scala/math/BigDecimal."<init>":(Ljava/math/BigDecimal;Ljava/math/MathContext;)V
+Method	scala/math/BigDecimal$."<init>":()V
+Method	scala/math/BigDecimal$.cache:()[Lscala/math/BigDecimal;
+Method	scala/math/BigDecimal$.maxCached:()I
+Method	scala/math/BigDecimal$.minCached:()I
+NameAndType	"<init>":()V
+NameAndType	"<init>":(Ljava/math/BigDecimal;Ljava/math/MathContext;)V
+NameAndType	MODULE$:Lscala/math/BigDecimal$;
+NameAndType	UNLIMITED:Ljava/math/MathContext;
+NameAndType	bitmap$0:I
+NameAndType	cache:()[Lscala/math/BigDecimal;
+NameAndType	cache:[Lscala/math/BigDecimal;
+NameAndType	defaultMathContext:Ljava/math/MathContext;
+NameAndType	maxCached:()I
+NameAndType	maxCached:I
+NameAndType	minCached:()I
+NameAndType	minCached:I
+NameAndType	valueOf:(J)Ljava/math/BigDecimal;
+Asciz	$anonfun$equals$1;
+Asciz	()I;
+Asciz	()Ljava/math/MathContext;;
+Asciz	()V;
+Asciz	()[Lscala/math/BigDecimal;;
+Asciz	(ILjava/math/MathContext;)Lscala/math/BigDecimal;;
+Asciz	(J)Ljava/math/BigDecimal;;
+Asciz	(Ljava/math/BigDecimal;Ljava/math/MathContext;)V;
+Asciz	<clinit>;
+Asciz	<init>;
+Asciz	BigDecimal.scala;
+Asciz	Code;
+Asciz	I;
+Asciz	InnerClasses;
+Asciz	LineNumberTable;
+Asciz	Ljava/math/MathContext;;
+Asciz	LocalVariableTable;
+Asciz	Lscala/math/BigDecimal$;;
+Asciz	Lscala/math/BigDecimal;;
+Asciz	MODULE$;
+Asciz	Scala;
+Asciz	SourceFile;
+Asciz	UNLIMITED;
+Asciz	[Lscala/math/BigDecimal;;
+Asciz	apply;
+Asciz	bitmap$0;
+Asciz	cache;
+Asciz	defaultMathContext;
+Asciz	i;
+Asciz	java/lang/Object;
+Asciz	java/math/BigDecimal;
+Asciz	java/math/MathContext;
+Asciz	maxCached;
+Asciz	mc;
+Asciz	minCached;
+Asciz	n;
+Asciz	offset;
+Asciz	scala/math/BigDecimal;
+Asciz	scala/math/BigDecimal$;
+Asciz	scala/math/BigDecimal$$anonfun$equals$1;
+Asciz	this;
+Asciz	valueOf;
+
+{
+public static final scala.math.BigDecimal$ MODULE$;
+  Signature: Lscala/math/BigDecimal$;
+
+public volatile int bitmap$0;
+  Signature: I
+
+private final java.math.MathContext defaultMathContext;
+  Signature: Ljava/math/MathContext;
+
+private scala.math.BigDecimal[] cache;
+  Signature: [Lscala/math/BigDecimal;
+
+private final int maxCached;
+  Signature: I
+
+private final int minCached;
+  Signature: I
+
+public static {};
+  Signature: ()V
+  Code:
+   Stack=1, Locals=0, Args_size=0
+	new	class scala/math/BigDecimal$
+	invokespecial	Method "<init>":()V
+	return
+  Labels:
+
+private scala.math.BigDecimal$();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	putstatic	Field MODULE$:Lscala/math/BigDecimal$;
+	aload_0
+	ldc	int -512
+	putfield	Field minCached:I
+	aload_0
+	ldc	int 512
+	putfield	Field maxCached:I
+	aload_0
+	getstatic	Field java/math/MathContext.UNLIMITED:Ljava/math/MathContext;
+	putfield	Field defaultMathContext:Ljava/math/MathContext;
+	return
+  Labels:
+
+public scala.math.BigDecimal apply(int, java.math.MathContext);
+  Signature: (ILjava/math/MathContext;)Lscala/math/BigDecimal;
+  Code:
+   Stack=4, Locals=5, Args_size=3
+	aload_0
+	invokespecial	Method minCached:()I
+	iload_1
+	if_icmpgt	l1 // new
+	iload_1
+	aload_0
+	invokespecial	Method maxCached:()I
+	if_icmpgt	l1 // new
+	iload_1
+	aload_0
+	invokespecial	Method minCached:()I
+	isub
+	istore_3
+	aload_0
+	invokespecial	Method cache:()[Lscala/math/BigDecimal;
+	iload_3
+	aaload
+	astore	4
+	aload	4
+	ifnonnull	l2 // aload
+	new	class scala/math/BigDecimal
+	dup
+	iload_1
+	i2l
+	invokestatic	Method java/math/BigDecimal.valueOf:(J)Ljava/math/BigDecimal;
+	aload_2
+	invokespecial	Method scala/math/BigDecimal."<init>":(Ljava/math/BigDecimal;Ljava/math/MathContext;)V
+	astore	4
+	aload_0
+	invokespecial	Method cache:()[Lscala/math/BigDecimal;
+	iload_3
+	aload	4
+	aastore
+l2	aload	4
+	goto	l3 // areturn
+l1	new	class scala/math/BigDecimal
+	dup
+	iload_1
+	i2l
+	invokestatic	Method java/math/BigDecimal.valueOf:(J)Ljava/math/BigDecimal;
+	aload_2
+	invokespecial	Method scala/math/BigDecimal."<init>":(Ljava/math/BigDecimal;Ljava/math/MathContext;)V
+l3	areturn
+  Labels:
+   	l2 = 59 // aload
+   	l1 = 64 // new
+   	l3 = 77 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      78      0    this       Lscala/math/BigDecimal$;
+   0      78      1    i       I
+   0      78      2    mc       Ljava/math/MathContext;
+   23      38      3    offset       I
+   31      30      4    n       Lscala/math/BigDecimal;
+
+
+public java.math.MathContext defaultMathContext();
+  Signature: ()Ljava/math/MathContext;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field defaultMathContext:Ljava/math/MathContext;
+	areturn
+  Labels:
+
+private scala.math.BigDecimal[] cache();
+  Signature: ()[Lscala/math/BigDecimal;
+  Code:
+   Stack=3, Locals=1, Args_size=1
+	aload_0
+	getfield	Field bitmap$0:I
+	iconst_1
+	iand
+	iconst_0
+	if_icmpne	l1 // aload_0
+	aload_0
+	dup
+	pop
+	monitorenter
+	aload_0
+	getfield	Field bitmap$0:I
+	iconst_1
+	iand
+	iconst_0
+	if_icmpne	l2 // aload_0
+	aload_0
+	aload_0
+	invokespecial	Method maxCached:()I
+	aload_0
+	invokespecial	Method minCached:()I
+	isub
+	iconst_1
+	iadd
+	anewarray	class scala/math/BigDecimal
+	putfield	Field cache:[Lscala/math/BigDecimal;
+	aload_0
+	aload_0
+	getfield	Field bitmap$0:I
+	iconst_1
+	ior
+	putfield	Field bitmap$0:I
+l2	aload_0
+	monitorexit
+l1	aload_0
+	getfield	Field cache:[Lscala/math/BigDecimal;
+	areturn
+	aload_0
+	monitorexit
+	athrow
+  Labels:
+   	l2 = 52 // aload_0
+   	l1 = 54 // aload_0
+  Exception table:
+   from   to  target type
+    14    54    59   any
+
+private int maxCached();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field maxCached:I
+	ireturn
+  Labels:
+
+private int minCached();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field minCached:I
+	ireturn
+  Labels:
+
+}
+

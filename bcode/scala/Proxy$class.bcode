@@ -11,16 +11,20 @@ class	scala/Proxy
 class	scala/Proxy$class
 Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.hashCode:()I
+Method	java/lang/Object.toString:()Ljava/lang/String;
 InterfaceMethod	scala/Proxy.self:()Ljava/lang/Object;
 NameAndType	equals:(Ljava/lang/Object;)Z
 NameAndType	hashCode:()I
 NameAndType	self:()Ljava/lang/Object;
+NameAndType	toString:()Ljava/lang/String;
 Asciz	$init$;
 Asciz	$this;
 Asciz	()I;
 Asciz	()Ljava/lang/Object;;
+Asciz	()Ljava/lang/String;;
 Asciz	(Ljava/lang/Object;)Z;
 Asciz	(Lscala/Proxy;)I;
+Asciz	(Lscala/Proxy;)Ljava/lang/String;;
 Asciz	(Lscala/Proxy;)V;
 Asciz	(Lscala/Proxy;Ljava/lang/Object;)Z;
 Asciz	Code;
@@ -38,6 +42,7 @@ Asciz	scala/Proxy;
 Asciz	scala/Proxy$class;
 Asciz	self;
 Asciz	that;
+Asciz	toString;
 
 {
 public static void $init$(scala.Proxy);
@@ -51,31 +56,47 @@ public static void $init$(scala.Proxy);
    0      1      0    $this       Lscala/Proxy;
 
 
+public static java.lang.String toString(scala.Proxy);
+  Signature: (Lscala/Proxy;)Ljava/lang/String;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/Proxy.self:()Ljava/lang/Object;
+	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      10      0    $this       Lscala/Proxy;
+
+
 public static boolean equals(scala.Proxy, java.lang.Object);
   Signature: (Lscala/Proxy;Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=3, Args_size=2
+   Stack=2, Locals=2, Args_size=2
 	aload_1
-	astore_2
-	aload_2
-	instanceof	class scala/Proxy
-	ifeq	l1 // iconst_0
+	dup
+	pop
+	ifnull	l1 // iconst_0
+	aload_1
+	aconst_null
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifeq	l2 // aload_1
+l1	iconst_0
+	goto	l3 // ireturn
+l2	aload_1
 	aload_0
 	invokeinterface	InterfaceMethod scala/Proxy.self:()Ljava/lang/Object;
-	aload_2
-	checkcast	class scala/Proxy
-	invokeinterface	InterfaceMethod scala/Proxy.self:()Ljava/lang/Object;
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	goto	l2 // ireturn
-l1	iconst_0
-l2	ireturn
+l3	ireturn
   Labels:
-   	l1 = 30 // iconst_0
-   	l2 = 31 // ireturn
+   	l1 = 14 // iconst_0
+   	l2 = 18 // aload_1
+   	l3 = 28 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      32      0    $this       Lscala/Proxy;
-   0      32      1    that       Ljava/lang/Object;
+   0      29      0    $this       Lscala/Proxy;
+   0      29      1    that       Ljava/lang/Object;
 
 
 public static int hashCode(scala.Proxy);
