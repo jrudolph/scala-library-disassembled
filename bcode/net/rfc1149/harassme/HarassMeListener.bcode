@@ -1,0 +1,566 @@
+Compiled from "HarassMeListener.scala"
+public class net.rfc1149.harassme.HarassMeListener extends net.rfc1149.harassme.CallStatus implements net.rfc1149.harassme.LastCalls,net.rfc1149.harassme.Ringer
+  ScalaSig: length = 0x180
+   04 01 3C 06 08 01 02 FFFFFF84 FFFFFF80 FFFFFF80 FFFFFF80 00 09 02 10 48
+   61 72 61 73 73 4D 65 4C 69 73 74 65 6E 65 72 0A
+   02 03 04 01 08 68 61 72 61 73 73 6D 65 0A 02 05
+   06 01 07 72 66 63 31 31 34 39 0A 01 07 01 03 6E
+   65 74 03 00 13 05 00 0A 0E 11 14 10 02 0B 0C 0D
+   01 02 09 02 0D 02 02 0A 43 61 6C 6C 53 74 61 74
+   75 73 10 02 0B 0F 09 02 10 02 02 09 4C 61 73 74
+   43 61 6C 6C 73 10 02 0B 12 09 02 13 02 02 06 52
+   69 6E 67 65 72 10 02 15 18 0D 01 16 0A 01 17 01
+   05 73 63 61 6C 61 09 02 19 16 02 0B 53 63 61 6C
+   61 4F 62 6A 65 63 74 08 08 1B 00 FFFFFF82 FFFFFFC2 FFFFFF80 FFFFFF84 00
+   1C 01 07 63 6F 6E 74 65 78 74 15 01 1D 10 02 1E
+   23 0D 01 1F 0A 02 20 21 01 07 63 6F 6E 74 65 6E
+   74 0A 01 22 01 07 61 6E 64 72 6F 69 64 09 02 24
+   1F 02 07 43 6F 6E 74 65 78 74 08 08 26 00 FFFFFF82 FFFFFF80
+   FFFFFFA0 FFFFFF80 04 1D 01 08 63 6F 6E 74 65 78 74 20 08 05
+   28 00 FFFFFF84 00 29 01 06 3C 69 6E 69 74 3E 14 02 2A
+   1D 10 02 0B 00 08 05 2C 00 FFFFFF84 20 2D 01 08 6F 6E
+   41 6E 73 77 65 72 14 02 2E 31 10 02 15 2F 09 02
+   30 16 02 04 55 6E 69 74 10 02 32 35 0E 02 15 33
+   09 02 34 16 01 06 50 72 65 64 65 66 09 02 36 37
+   02 06 53 74 72 69 6E 67 0A 02 34 16 08 05 39 00
+   FFFFFF84 20 2D 01 06 6F 6E 52 69 6E 67 08 05 3B 00 FFFFFF84
+   20 2D 01 0C 6F 6E 4D 69 73 73 65 64 43 61 6C 6C
+   
+  SourceFile: "HarassMeListener.scala"
+  minor version: 0
+  major version: 49
+  Constant pool:
+String	
+class	java/lang/Object
+class	net/rfc1149/harassme/CallStatus
+class	net/rfc1149/harassme/HarassMeListener
+class	net/rfc1149/harassme/LastCalls
+class	net/rfc1149/harassme/LastCalls$class
+class	net/rfc1149/harassme/Prefs$class
+class	net/rfc1149/harassme/Ringer
+class	net/rfc1149/harassme/Ringer$class
+Field	net/rfc1149/harassme/HarassMeListener.context:Landroid/content/Context;
+Field	net/rfc1149/harassme/HarassMeListener.net$rfc1149$harassme$LastCalls$$lastCalls:Lscala/List;
+Field	net/rfc1149/harassme/HarassMeListener.net$rfc1149$harassme$Ringer$$audioManager:Landroid/media/AudioManager;
+Field	net/rfc1149/harassme/HarassMeListener.net$rfc1149$harassme$Ringer$$maxVolume:I
+Field	net/rfc1149/harassme/HarassMeListener.net$rfc1149$harassme$Ringer$$previousMode:Lscala/Option;
+Field	net/rfc1149/harassme/HarassMeListener.net$rfc1149$harassme$Ringer$$previousVolume:I
+Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
+Method	net/rfc1149/harassme/CallStatus."<init>":()V
+Method	net/rfc1149/harassme/LastCalls$class.$init$:(Lnet/rfc1149/harassme/LastCalls;)V
+Method	net/rfc1149/harassme/LastCalls$class.recordMissedCall:(Lnet/rfc1149/harassme/LastCalls;Ljava/lang/String;)V
+Method	net/rfc1149/harassme/LastCalls$class.resetCalls:(Lnet/rfc1149/harassme/LastCalls;)V
+Method	net/rfc1149/harassme/LastCalls$class.shouldBeSignaled:(Lnet/rfc1149/harassme/LastCalls;Ljava/lang/String;)Z
+Method	net/rfc1149/harassme/Prefs$class.$init$:(Lnet/rfc1149/harassme/Prefs;)V
+Method	net/rfc1149/harassme/Prefs$class.callCount:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)I
+Method	net/rfc1149/harassme/Prefs$class.minutesCount:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)I
+Method	net/rfc1149/harassme/Prefs$class.serviceActivated:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)Z
+Method	net/rfc1149/harassme/Prefs$class.volume:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)I
+Method	net/rfc1149/harassme/Ringer$class.$init$:(Lnet/rfc1149/harassme/Ringer;)V
+Method	net/rfc1149/harassme/Ringer$class.getRingerMode:(Lnet/rfc1149/harassme/Ringer;)I
+Method	net/rfc1149/harassme/Ringer$class.restoreRingerMode:(Lnet/rfc1149/harassme/Ringer;)V
+Method	net/rfc1149/harassme/Ringer$class.ringPhone:(Lnet/rfc1149/harassme/Ringer;I)V
+InterfaceMethod	net/rfc1149/harassme/LastCalls.recordMissedCall:(Ljava/lang/String;)V
+InterfaceMethod	net/rfc1149/harassme/LastCalls.resetCalls:()V
+InterfaceMethod	net/rfc1149/harassme/LastCalls.shouldBeSignaled:(Ljava/lang/String;)Z
+InterfaceMethod	net/rfc1149/harassme/Ringer.getRingerMode:()I
+InterfaceMethod	net/rfc1149/harassme/Ringer.restoreRingerMode:()V
+InterfaceMethod	net/rfc1149/harassme/Ringer.ringPhone:(I)V
+NameAndType	$init$:(Lnet/rfc1149/harassme/LastCalls;)V
+NameAndType	$init$:(Lnet/rfc1149/harassme/Prefs;)V
+NameAndType	$init$:(Lnet/rfc1149/harassme/Ringer;)V
+NameAndType	"<init>":()V
+NameAndType	callCount:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)I
+NameAndType	context:Landroid/content/Context;
+NameAndType	equals:(Ljava/lang/Object;)Z
+NameAndType	getRingerMode:()I
+NameAndType	getRingerMode:(Lnet/rfc1149/harassme/Ringer;)I
+NameAndType	minutesCount:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)I
+NameAndType	net$rfc1149$harassme$LastCalls$$lastCalls:Lscala/List;
+NameAndType	net$rfc1149$harassme$Ringer$$audioManager:Landroid/media/AudioManager;
+NameAndType	net$rfc1149$harassme$Ringer$$maxVolume:I
+NameAndType	net$rfc1149$harassme$Ringer$$previousMode:Lscala/Option;
+NameAndType	net$rfc1149$harassme$Ringer$$previousVolume:I
+NameAndType	recordMissedCall:(Ljava/lang/String;)V
+NameAndType	recordMissedCall:(Lnet/rfc1149/harassme/LastCalls;Ljava/lang/String;)V
+NameAndType	resetCalls:()V
+NameAndType	resetCalls:(Lnet/rfc1149/harassme/LastCalls;)V
+NameAndType	restoreRingerMode:()V
+NameAndType	restoreRingerMode:(Lnet/rfc1149/harassme/Ringer;)V
+NameAndType	ringPhone:(I)V
+NameAndType	ringPhone:(Lnet/rfc1149/harassme/Ringer;I)V
+NameAndType	serviceActivated:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)Z
+NameAndType	shouldBeSignaled:(Ljava/lang/String;)Z
+NameAndType	shouldBeSignaled:(Lnet/rfc1149/harassme/LastCalls;Ljava/lang/String;)Z
+NameAndType	volume:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)I
+Asciz	;
+Asciz	$init$;
+Asciz	()I;
+Asciz	()Landroid/content/Context;;
+Asciz	()Landroid/media/AudioManager;;
+Asciz	()Lscala/List;;
+Asciz	()Lscala/Option;;
+Asciz	()V;
+Asciz	(I)V;
+Asciz	(Landroid/content/Context;)I;
+Asciz	(Landroid/content/Context;)V;
+Asciz	(Landroid/content/Context;)Z;
+Asciz	(Landroid/media/AudioManager;)V;
+Asciz	(Ljava/lang/Object;)Z;
+Asciz	(Ljava/lang/String;)V;
+Asciz	(Ljava/lang/String;)Z;
+Asciz	(Lnet/rfc1149/harassme/LastCalls;)V;
+Asciz	(Lnet/rfc1149/harassme/LastCalls;Ljava/lang/String;)V;
+Asciz	(Lnet/rfc1149/harassme/LastCalls;Ljava/lang/String;)Z;
+Asciz	(Lnet/rfc1149/harassme/Prefs;)V;
+Asciz	(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)I;
+Asciz	(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)Z;
+Asciz	(Lnet/rfc1149/harassme/Ringer;)I;
+Asciz	(Lnet/rfc1149/harassme/Ringer;)V;
+Asciz	(Lnet/rfc1149/harassme/Ringer;I)V;
+Asciz	(Lscala/List;)V;
+Asciz	(Lscala/Option;)V;
+Asciz	<init>;
+Asciz	Code;
+Asciz	HarassMeListener.scala;
+Asciz	I;
+Asciz	Landroid/content/Context;;
+Asciz	Landroid/media/AudioManager;;
+Asciz	LineNumberTable;
+Asciz	Ljava/lang/String;;
+Asciz	Lnet/rfc1149/harassme/HarassMeListener;;
+Asciz	LocalVariableTable;
+Asciz	Lscala/List;;
+Asciz	Lscala/Option;;
+Asciz	ScalaSig;
+Asciz	SourceFile;
+Asciz	callCount;
+Asciz	context;
+Asciz	equals;
+Asciz	getRingerMode;
+Asciz	incomingNumber;
+Asciz	java/lang/Object;
+Asciz	minutesCount;
+Asciz	net$rfc1149$harassme$LastCalls$$lastCalls;
+Asciz	net$rfc1149$harassme$LastCalls$$lastCalls_$eq;
+Asciz	net$rfc1149$harassme$Ringer$$audioManager;
+Asciz	net$rfc1149$harassme$Ringer$$audioManager_$eq;
+Asciz	net$rfc1149$harassme$Ringer$$maxVolume;
+Asciz	net$rfc1149$harassme$Ringer$$maxVolume_$eq;
+Asciz	net$rfc1149$harassme$Ringer$$previousMode;
+Asciz	net$rfc1149$harassme$Ringer$$previousMode_$eq;
+Asciz	net$rfc1149$harassme$Ringer$$previousVolume;
+Asciz	net$rfc1149$harassme$Ringer$$previousVolume_$eq;
+Asciz	net/rfc1149/harassme/CallStatus;
+Asciz	net/rfc1149/harassme/HarassMeListener;
+Asciz	net/rfc1149/harassme/LastCalls;
+Asciz	net/rfc1149/harassme/LastCalls$class;
+Asciz	net/rfc1149/harassme/Prefs$class;
+Asciz	net/rfc1149/harassme/Ringer;
+Asciz	net/rfc1149/harassme/Ringer$class;
+Asciz	onAnswer;
+Asciz	onMissedCall;
+Asciz	onRing;
+Asciz	recordMissedCall;
+Asciz	resetCalls;
+Asciz	restoreRingerMode;
+Asciz	ringPhone;
+Asciz	ringerMode;
+Asciz	serviceActivated;
+Asciz	shouldBeSignaled;
+Asciz	this;
+Asciz	volume;
+Asciz	x$1;
+
+{
+private scala.List net$rfc1149$harassme$LastCalls$$lastCalls;
+  Signature: Lscala/List;
+
+private int net$rfc1149$harassme$Ringer$$previousVolume;
+  Signature: I
+
+private scala.Option net$rfc1149$harassme$Ringer$$previousMode;
+  Signature: Lscala/Option;
+
+private final int net$rfc1149$harassme$Ringer$$maxVolume;
+  Signature: I
+
+private final android.media.AudioManager net$rfc1149$harassme$Ringer$$audioManager;
+  Signature: Landroid/media/AudioManager;
+
+private final android.content.Context context;
+  Signature: Landroid/content/Context;
+
+public net.rfc1149.harassme.HarassMeListener(android.content.Context);
+  Signature: (Landroid/content/Context;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field context:Landroid/content/Context;
+	aload_0
+	invokespecial	Method net/rfc1149/harassme/CallStatus."<init>":()V
+	aload_0
+	invokestatic	Method net/rfc1149/harassme/Prefs$class.$init$:(Lnet/rfc1149/harassme/Prefs;)V
+	aload_0
+	invokestatic	Method net/rfc1149/harassme/LastCalls$class.$init$:(Lnet/rfc1149/harassme/LastCalls;)V
+	aload_0
+	invokestatic	Method net/rfc1149/harassme/Ringer$class.$init$:(Lnet/rfc1149/harassme/Ringer;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      22      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      22      1    context       Landroid/content/Context;
+
+
+public void onMissedCall(java.lang.String);
+  Signature: (Ljava/lang/String;)V
+  Code:
+   Stack=2, Locals=3, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/Ringer.restoreRingerMode:()V
+	aload_1
+	ldc	String 
+	astore_2
+	dup
+	ifnonnull	l1 // aload_2
+	pop
+	aload_2
+	ifnull	l2 // return
+	goto	l3 // aload_0
+l1	aload_2
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifne	l2 // return
+l3	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.recordMissedCall:(Ljava/lang/String;)V
+l2	return
+  Labels:
+   	l1 = 22 // aload_2
+   	l3 = 29 // aload_0
+   	l2 = 36 // return
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      37      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      37      1    incomingNumber       Ljava/lang/String;
+
+
+public void onRing(java.lang.String);
+  Signature: (Ljava/lang/String;)V
+  Code:
+   Stack=2, Locals=4, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/Ringer.getRingerMode:()I
+	istore_2
+	iload_2
+	iconst_2
+	if_icmpeq	l1 // return
+	aload_1
+	ldc	String 
+	astore_3
+	dup
+	ifnonnull	l2 // aload_3
+	pop
+	aload_3
+	ifnull	l1 // return
+	goto	l3 // aload_0
+l2	aload_3
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ifne	l1 // return
+l3	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.shouldBeSignaled:(Ljava/lang/String;)Z
+	ifeq	l1 // return
+	aload_0
+	iload_2
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/Ringer.ringPhone:(I)V
+l1	return
+  Labels:
+   	l2 = 28 // aload_3
+   	l3 = 35 // aload_0
+   	l1 = 52 // return
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      53      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      53      1    incomingNumber       Ljava/lang/String;
+   0      53      2    ringerMode       I
+
+
+public void onAnswer(java.lang.String);
+  Signature: (Ljava/lang/String;)V
+  Code:
+   Stack=1, Locals=2, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.resetCalls:()V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      7      1    incomingNumber       Ljava/lang/String;
+
+
+public android.content.Context context();
+  Signature: ()Landroid/content/Context;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field context:Landroid/content/Context;
+	areturn
+  Labels:
+
+public int volume(android.content.Context);
+  Signature: (Landroid/content/Context;)I
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method net/rfc1149/harassme/Prefs$class.volume:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      6      1    x$1       Landroid/content/Context;
+
+
+public int minutesCount(android.content.Context);
+  Signature: (Landroid/content/Context;)I
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method net/rfc1149/harassme/Prefs$class.minutesCount:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      6      1    x$1       Landroid/content/Context;
+
+
+public int callCount(android.content.Context);
+  Signature: (Landroid/content/Context;)I
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method net/rfc1149/harassme/Prefs$class.callCount:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      6      1    x$1       Landroid/content/Context;
+
+
+public boolean serviceActivated(android.content.Context);
+  Signature: (Landroid/content/Context;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method net/rfc1149/harassme/Prefs$class.serviceActivated:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      6      1    x$1       Landroid/content/Context;
+
+
+public void recordMissedCall(java.lang.String);
+  Signature: (Ljava/lang/String;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method net/rfc1149/harassme/LastCalls$class.recordMissedCall:(Lnet/rfc1149/harassme/LastCalls;Ljava/lang/String;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      6      1    x$1       Ljava/lang/String;
+
+
+public boolean shouldBeSignaled(java.lang.String);
+  Signature: (Ljava/lang/String;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method net/rfc1149/harassme/LastCalls$class.shouldBeSignaled:(Lnet/rfc1149/harassme/LastCalls;Ljava/lang/String;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      6      1    x$1       Ljava/lang/String;
+
+
+public void resetCalls();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method net/rfc1149/harassme/LastCalls$class.resetCalls:(Lnet/rfc1149/harassme/LastCalls;)V
+	return
+  Labels:
+
+public final void net$rfc1149$harassme$LastCalls$$lastCalls_$eq(scala.List);
+  Signature: (Lscala/List;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field net$rfc1149$harassme$LastCalls$$lastCalls:Lscala/List;
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      6      1    x$1       Lscala/List;
+
+
+public final scala.List net$rfc1149$harassme$LastCalls$$lastCalls();
+  Signature: ()Lscala/List;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field net$rfc1149$harassme$LastCalls$$lastCalls:Lscala/List;
+	areturn
+  Labels:
+
+public int getRingerMode();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method net/rfc1149/harassme/Ringer$class.getRingerMode:(Lnet/rfc1149/harassme/Ringer;)I
+	ireturn
+  Labels:
+
+public void restoreRingerMode();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method net/rfc1149/harassme/Ringer$class.restoreRingerMode:(Lnet/rfc1149/harassme/Ringer;)V
+	return
+  Labels:
+
+public void ringPhone(int);
+  Signature: (I)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method net/rfc1149/harassme/Ringer$class.ringPhone:(Lnet/rfc1149/harassme/Ringer;I)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      6      1    x$1       I
+
+
+public void net$rfc1149$harassme$Ringer$$maxVolume_$eq(int);
+  Signature: (I)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field net$rfc1149$harassme$Ringer$$maxVolume:I
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      6      1    x$1       I
+
+
+public void net$rfc1149$harassme$Ringer$$audioManager_$eq(android.media.AudioManager);
+  Signature: (Landroid/media/AudioManager;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field net$rfc1149$harassme$Ringer$$audioManager:Landroid/media/AudioManager;
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      6      1    x$1       Landroid/media/AudioManager;
+
+
+public final void net$rfc1149$harassme$Ringer$$previousVolume_$eq(int);
+  Signature: (I)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	putfield	Field net$rfc1149$harassme$Ringer$$previousVolume:I
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      6      1    x$1       I
+
+
+public final int net$rfc1149$harassme$Ringer$$previousVolume();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field net$rfc1149$harassme$Ringer$$previousVolume:I
+	ireturn
+  Labels:
+
+public final void net$rfc1149$harassme$Ringer$$previousMode_$eq(scala.Option);
+  Signature: (Lscala/Option;)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field net$rfc1149$harassme$Ringer$$previousMode:Lscala/Option;
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lnet/rfc1149/harassme/HarassMeListener;
+   0      6      1    x$1       Lscala/Option;
+
+
+public final scala.Option net$rfc1149$harassme$Ringer$$previousMode();
+  Signature: ()Lscala/Option;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field net$rfc1149$harassme$Ringer$$previousMode:Lscala/Option;
+	areturn
+  Labels:
+
+public final int net$rfc1149$harassme$Ringer$$maxVolume();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field net$rfc1149$harassme$Ringer$$maxVolume:I
+	ireturn
+  Labels:
+
+public final android.media.AudioManager net$rfc1149$harassme$Ringer$$audioManager();
+  Signature: ()Landroid/media/AudioManager;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field net$rfc1149$harassme$Ringer$$audioManager:Landroid/media/AudioManager;
+	areturn
+  Labels:
+
+}
+
