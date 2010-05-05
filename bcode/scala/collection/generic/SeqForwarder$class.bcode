@@ -11,10 +11,12 @@ class	scala/collection/SeqLike
 class	scala/collection/generic/SeqForwarder
 class	scala/collection/generic/SeqForwarder$class
 InterfaceMethod	scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
+InterfaceMethod	scala/collection/SeqLike.contains:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/collection/SeqLike.prefixLength:(Lscala/Function1;)I
 InterfaceMethod	scala/collection/SeqLike.segmentLength:(Lscala/Function1;I)I
 InterfaceMethod	scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
 NameAndType	apply:(I)Ljava/lang/Object;
+NameAndType	contains:(Ljava/lang/Object;)Z
 NameAndType	prefixLength:(Lscala/Function1;)I
 NameAndType	segmentLength:(Lscala/Function1;I)I
 NameAndType	underlying:()Lscala/collection/Seq;
@@ -22,15 +24,18 @@ Asciz	$init$;
 Asciz	$this;
 Asciz	()Lscala/collection/Seq;;
 Asciz	(I)Ljava/lang/Object;;
+Asciz	(Ljava/lang/Object;)Z;
 Asciz	(Lscala/Function1;)I;
 Asciz	(Lscala/Function1;I)I;
 Asciz	(Lscala/collection/generic/SeqForwarder;)V;
 Asciz	(Lscala/collection/generic/SeqForwarder;I)Ljava/lang/Object;;
+Asciz	(Lscala/collection/generic/SeqForwarder;Ljava/lang/Object;)Z;
 Asciz	(Lscala/collection/generic/SeqForwarder;Lscala/Function1;)I;
 Asciz	(Lscala/collection/generic/SeqForwarder;Lscala/Function1;I)I;
 Asciz	Code;
 Asciz	I;
 Asciz	LineNumberTable;
+Asciz	Ljava/lang/Object;;
 Asciz	LocalVariableTable;
 Asciz	Lscala/Function1;;
 Asciz	Lscala/collection/generic/SeqForwarder;;
@@ -38,8 +43,10 @@ Asciz	Scala;
 Asciz	SeqForwarder.scala;
 Asciz	SourceFile;
 Asciz	apply;
+Asciz	contains;
+Asciz	elem;
 Asciz	from;
-Asciz	i;
+Asciz	idx;
 Asciz	java/lang/Object;
 Asciz	p;
 Asciz	prefixLength;
@@ -50,31 +57,20 @@ Asciz	segmentLength;
 Asciz	underlying;
 
 {
-public static void $init$(scala.collection.generic.SeqForwarder);
-  Signature: (Lscala/collection/generic/SeqForwarder;)V
-  Code:
-   Stack=0, Locals=1, Args_size=1
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      1      0    $this       Lscala/collection/generic/SeqForwarder;
-
-
-public static int prefixLength(scala.collection.generic.SeqForwarder, scala.Function1);
-  Signature: (Lscala/collection/generic/SeqForwarder;Lscala/Function1;)I
+public static java.lang.Object apply(scala.collection.generic.SeqForwarder, int);
+  Signature: (Lscala/collection/generic/SeqForwarder;I)Ljava/lang/Object;
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.prefixLength:(Lscala/Function1;)I
-	ireturn
+	iload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
+	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      13      0    $this       Lscala/collection/generic/SeqForwarder;
-   0      13      1    p       Lscala/Function1;
+   0      13      1    idx       I
 
 
 public static int segmentLength(scala.collection.generic.SeqForwarder, scala.Function1, int);
@@ -95,20 +91,47 @@ public static int segmentLength(scala.collection.generic.SeqForwarder, scala.Fun
    0      14      2    from       I
 
 
-public static java.lang.Object apply(scala.collection.generic.SeqForwarder, int);
-  Signature: (Lscala/collection/generic/SeqForwarder;I)Ljava/lang/Object;
+public static int prefixLength(scala.collection.generic.SeqForwarder, scala.Function1);
+  Signature: (Lscala/collection/generic/SeqForwarder;Lscala/Function1;)I
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
-	iload_1
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.apply:(I)Ljava/lang/Object;
-	areturn
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.prefixLength:(Lscala/Function1;)I
+	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      13      0    $this       Lscala/collection/generic/SeqForwarder;
-   0      13      1    i       I
+   0      13      1    p       Lscala/Function1;
+
+
+public static boolean contains(scala.collection.generic.SeqForwarder, java.lang.Object);
+  Signature: (Lscala/collection/generic/SeqForwarder;Ljava/lang/Object;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/generic/SeqForwarder.underlying:()Lscala/collection/Seq;
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.contains:(Ljava/lang/Object;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      13      0    $this       Lscala/collection/generic/SeqForwarder;
+   0      13      1    elem       Ljava/lang/Object;
+
+
+public static void $init$(scala.collection.generic.SeqForwarder);
+  Signature: (Lscala/collection/generic/SeqForwarder;)V
+  Code:
+   Stack=0, Locals=1, Args_size=1
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    $this       Lscala/collection/generic/SeqForwarder;
 
 
 }

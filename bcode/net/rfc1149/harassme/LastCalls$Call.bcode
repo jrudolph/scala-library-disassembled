@@ -78,14 +78,81 @@ Asciz	number;
 Asciz	this;
 
 {
-public final net.rfc1149.harassme.LastCalls $outer;
-  Signature: Lnet/rfc1149/harassme/LastCalls;
+private final java.lang.String number;
+  Signature: Ljava/lang/String;
 
 private final java.util.Date date;
   Signature: Ljava/util/Date;
 
-private final java.lang.String number;
-  Signature: Ljava/lang/String;
+public final net.rfc1149.harassme.LastCalls $outer;
+  Signature: Lnet/rfc1149/harassme/LastCalls;
+
+public java.lang.String number();
+  Signature: ()Ljava/lang/String;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field number:Ljava/lang/String;
+	areturn
+  Labels:
+
+public java.util.Date date();
+  Signature: ()Ljava/util/Date;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field date:Ljava/util/Date;
+	areturn
+  Labels:
+
+public int maxMilliseconds();
+  Signature: ()I
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method net$rfc1149$harassme$LastCalls$Call$$$outer:()Lnet/rfc1149/harassme/LastCalls;
+	aload_0
+	invokevirtual	Method net$rfc1149$harassme$LastCalls$Call$$$outer:()Lnet/rfc1149/harassme/LastCalls;
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.context:()Landroid/content/Context;
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/Prefs.minutesCount:(Landroid/content/Context;)I
+	ldc	int 60000
+	imul
+	ireturn
+  Labels:
+
+public boolean hasExpired();
+  Signature: ()Z
+  Code:
+   Stack=4, Locals=1, Args_size=1
+	new	class java/util/Date
+	dup
+	invokespecial	Method java/util/Date."<init>":()V
+	invokevirtual	Method java/util/Date.getTime:()J
+	aload_0
+	invokevirtual	Method date:()Ljava/util/Date;
+	invokevirtual	Method java/util/Date.getTime:()J
+	lsub
+	aload_0
+	invokevirtual	Method maxMilliseconds:()I
+	i2l
+	lcmp
+	ifle	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 31 // iconst_0
+   	l2 = 32 // ireturn
+
+public net.rfc1149.harassme.LastCalls net$rfc1149$harassme$LastCalls$Call$$$outer();
+  Signature: ()Lnet/rfc1149/harassme/LastCalls;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field $outer:Lnet/rfc1149/harassme/LastCalls;
+	areturn
+  Labels:
 
 public net.rfc1149.harassme.LastCalls$Call(net.rfc1149.harassme.LastCalls, java.lang.String, java.util.Date);
   Signature: (Lnet/rfc1149/harassme/LastCalls;Ljava/lang/String;Ljava/util/Date;)V
@@ -118,73 +185,6 @@ l1	aload_0
    0      32      2    number       Ljava/lang/String;
    0      32      3    date       Ljava/util/Date;
 
-
-public net.rfc1149.harassme.LastCalls net$rfc1149$harassme$LastCalls$Call$$$outer();
-  Signature: ()Lnet/rfc1149/harassme/LastCalls;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field $outer:Lnet/rfc1149/harassme/LastCalls;
-	areturn
-  Labels:
-
-public boolean hasExpired();
-  Signature: ()Z
-  Code:
-   Stack=4, Locals=1, Args_size=1
-	new	class java/util/Date
-	dup
-	invokespecial	Method java/util/Date."<init>":()V
-	invokevirtual	Method java/util/Date.getTime:()J
-	aload_0
-	invokevirtual	Method date:()Ljava/util/Date;
-	invokevirtual	Method java/util/Date.getTime:()J
-	lsub
-	aload_0
-	invokevirtual	Method maxMilliseconds:()I
-	i2l
-	lcmp
-	ifle	l1 // iconst_0
-	iconst_1
-	goto	l2 // ireturn
-l1	iconst_0
-l2	ireturn
-  Labels:
-   	l1 = 31 // iconst_0
-   	l2 = 32 // ireturn
-
-public int maxMilliseconds();
-  Signature: ()I
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method net$rfc1149$harassme$LastCalls$Call$$$outer:()Lnet/rfc1149/harassme/LastCalls;
-	aload_0
-	invokevirtual	Method net$rfc1149$harassme$LastCalls$Call$$$outer:()Lnet/rfc1149/harassme/LastCalls;
-	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.context:()Landroid/content/Context;
-	invokeinterface	InterfaceMethod net/rfc1149/harassme/Prefs.minutesCount:(Landroid/content/Context;)I
-	ldc	int 60000
-	imul
-	ireturn
-  Labels:
-
-public java.util.Date date();
-  Signature: ()Ljava/util/Date;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field date:Ljava/util/Date;
-	areturn
-  Labels:
-
-public java.lang.String number();
-  Signature: ()Ljava/lang/String;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field number:Ljava/lang/String;
-	areturn
-  Labels:
 
 }
 

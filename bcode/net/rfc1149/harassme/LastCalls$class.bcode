@@ -18,7 +18,7 @@ class	net/rfc1149/harassme/LastCalls$$anonfun$shouldBeSignaled$1
 class	net/rfc1149/harassme/LastCalls$Call
 class	net/rfc1149/harassme/LastCalls$class
 class	net/rfc1149/harassme/Prefs
-class	scala/collection/LinearSeqLike
+class	scala/collection/LinearSeqOptimized
 class	scala/collection/TraversableLike
 class	scala/collection/immutable/List
 class	scala/collection/immutable/Nil$
@@ -34,7 +34,7 @@ InterfaceMethod	net/rfc1149/harassme/LastCalls.context:()Landroid/content/Contex
 InterfaceMethod	net/rfc1149/harassme/LastCalls.net$rfc1149$harassme$LastCalls$$lastCalls:()Lscala/collection/immutable/List;
 InterfaceMethod	net/rfc1149/harassme/LastCalls.net$rfc1149$harassme$LastCalls$$lastCalls_$eq:(Lscala/collection/immutable/List;)V
 InterfaceMethod	net/rfc1149/harassme/Prefs.callCount:(Landroid/content/Context;)I
-InterfaceMethod	scala/collection/LinearSeqLike.count:(Lscala/Function1;)I
+InterfaceMethod	scala/collection/LinearSeqOptimized.count:(Lscala/Function1;)I
 InterfaceMethod	scala/collection/TraversableLike.filter:(Lscala/Function1;)Ljava/lang/Object;
 NameAndType	$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
 NameAndType	"<init>":()V
@@ -103,14 +103,55 @@ Asciz	number$1;
 Asciz	recordMissedCall;
 Asciz	rememberCall;
 Asciz	resetCalls;
-Asciz	scala/collection/LinearSeqLike;
+Asciz	scala/collection/LinearSeqOptimized;
 Asciz	scala/collection/TraversableLike;
 Asciz	scala/collection/immutable/List;
 Asciz	scala/collection/immutable/Nil$;
 Asciz	shouldBeSignaled;
 
 {
-public static void $init$(net.rfc1149.harassme.LastCalls);
+private static void cleanupList(net.rfc1149.harassme.LastCalls);
+  Signature: (Lnet/rfc1149/harassme/LastCalls;)V
+  Code:
+   Stack=5, Locals=1, Args_size=1
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.net$rfc1149$harassme$LastCalls$$lastCalls:()Lscala/collection/immutable/List;
+	new	class net/rfc1149/harassme/LastCalls$$anonfun$cleanupList$1
+	dup
+	aload_0
+	invokespecial	Method net/rfc1149/harassme/LastCalls$$anonfun$cleanupList$1."<init>":(Lnet/rfc1149/harassme/LastCalls;)V
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.filter:(Lscala/Function1;)Ljava/lang/Object;
+	checkcast	class scala/collection/immutable/List
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.net$rfc1149$harassme$LastCalls$$lastCalls_$eq:(Lscala/collection/immutable/List;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      29      0    $this       Lnet/rfc1149/harassme/LastCalls;
+
+
+private static void rememberCall(net.rfc1149.harassme.LastCalls, net.rfc1149.harassme.LastCalls$Call);
+  Signature: (Lnet/rfc1149/harassme/LastCalls;Lnet/rfc1149/harassme/LastCalls$Call;)V
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	aload_0
+	invokestatic	Method cleanupList:(Lnet/rfc1149/harassme/LastCalls;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.net$rfc1149$harassme$LastCalls$$lastCalls:()Lscala/collection/immutable/List;
+	aload_1
+	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.net$rfc1149$harassme$LastCalls$$lastCalls_$eq:(Lscala/collection/immutable/List;)V
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      21      0    $this       Lnet/rfc1149/harassme/LastCalls;
+   0      21      1    c       Lnet/rfc1149/harassme/LastCalls$Call;
+
+
+public static void resetCalls(net.rfc1149.harassme.LastCalls);
   Signature: (Lnet/rfc1149/harassme/LastCalls;)V
   Code:
    Stack=2, Locals=1, Args_size=1
@@ -122,6 +163,40 @@ public static void $init$(net.rfc1149.harassme.LastCalls);
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      10      0    $this       Lnet/rfc1149/harassme/LastCalls;
+
+
+public static boolean shouldBeSignaled(net.rfc1149.harassme.LastCalls, java.lang.String);
+  Signature: (Lnet/rfc1149/harassme/LastCalls;Ljava/lang/String;)Z
+  Code:
+   Stack=5, Locals=2, Args_size=2
+	aload_0
+	invokestatic	Method cleanupList:(Lnet/rfc1149/harassme/LastCalls;)V
+	aload_0
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.net$rfc1149$harassme$LastCalls$$lastCalls:()Lscala/collection/immutable/List;
+	new	class net/rfc1149/harassme/LastCalls$$anonfun$shouldBeSignaled$1
+	dup
+	aload_0
+	aload_1
+	invokespecial	Method net/rfc1149/harassme/LastCalls$$anonfun$shouldBeSignaled$1."<init>":(Lnet/rfc1149/harassme/LastCalls;Ljava/lang/String;)V
+	invokeinterface	InterfaceMethod scala/collection/LinearSeqOptimized.count:(Lscala/Function1;)I
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.context:()Landroid/content/Context;
+	invokeinterface	InterfaceMethod net/rfc1149/harassme/Prefs.callCount:(Landroid/content/Context;)I
+	iconst_1
+	isub
+	if_icmplt	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 45 // iconst_0
+   	l2 = 46 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      47      0    $this       Lnet/rfc1149/harassme/LastCalls;
+   0      47      1    number$1       Ljava/lang/String;
 
 
 public static void recordMissedCall(net.rfc1149.harassme.LastCalls, java.lang.String);
@@ -146,41 +221,7 @@ public static void recordMissedCall(net.rfc1149.harassme.LastCalls, java.lang.St
    0      21      1    number       Ljava/lang/String;
 
 
-public static boolean shouldBeSignaled(net.rfc1149.harassme.LastCalls, java.lang.String);
-  Signature: (Lnet/rfc1149/harassme/LastCalls;Ljava/lang/String;)Z
-  Code:
-   Stack=5, Locals=2, Args_size=2
-	aload_0
-	invokestatic	Method cleanupList:(Lnet/rfc1149/harassme/LastCalls;)V
-	aload_0
-	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.net$rfc1149$harassme$LastCalls$$lastCalls:()Lscala/collection/immutable/List;
-	new	class net/rfc1149/harassme/LastCalls$$anonfun$shouldBeSignaled$1
-	dup
-	aload_0
-	aload_1
-	invokespecial	Method net/rfc1149/harassme/LastCalls$$anonfun$shouldBeSignaled$1."<init>":(Lnet/rfc1149/harassme/LastCalls;Ljava/lang/String;)V
-	invokeinterface	InterfaceMethod scala/collection/LinearSeqLike.count:(Lscala/Function1;)I
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.context:()Landroid/content/Context;
-	invokeinterface	InterfaceMethod net/rfc1149/harassme/Prefs.callCount:(Landroid/content/Context;)I
-	iconst_1
-	isub
-	if_icmplt	l1 // iconst_0
-	iconst_1
-	goto	l2 // ireturn
-l1	iconst_0
-l2	ireturn
-  Labels:
-   	l1 = 45 // iconst_0
-   	l2 = 46 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      47      0    $this       Lnet/rfc1149/harassme/LastCalls;
-   0      47      1    number$1       Ljava/lang/String;
-
-
-public static void resetCalls(net.rfc1149.harassme.LastCalls);
+public static void $init$(net.rfc1149.harassme.LastCalls);
   Signature: (Lnet/rfc1149/harassme/LastCalls;)V
   Code:
    Stack=2, Locals=1, Args_size=1
@@ -192,47 +233,6 @@ public static void resetCalls(net.rfc1149.harassme.LastCalls);
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      10      0    $this       Lnet/rfc1149/harassme/LastCalls;
-
-
-private static void rememberCall(net.rfc1149.harassme.LastCalls, net.rfc1149.harassme.LastCalls$Call);
-  Signature: (Lnet/rfc1149/harassme/LastCalls;Lnet/rfc1149/harassme/LastCalls$Call;)V
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	aload_0
-	invokestatic	Method cleanupList:(Lnet/rfc1149/harassme/LastCalls;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.net$rfc1149$harassme$LastCalls$$lastCalls:()Lscala/collection/immutable/List;
-	aload_1
-	invokevirtual	Method scala/collection/immutable/List.$colon$colon:(Ljava/lang/Object;)Lscala/collection/immutable/List;
-	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.net$rfc1149$harassme$LastCalls$$lastCalls_$eq:(Lscala/collection/immutable/List;)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      21      0    $this       Lnet/rfc1149/harassme/LastCalls;
-   0      21      1    c       Lnet/rfc1149/harassme/LastCalls$Call;
-
-
-private static void cleanupList(net.rfc1149.harassme.LastCalls);
-  Signature: (Lnet/rfc1149/harassme/LastCalls;)V
-  Code:
-   Stack=5, Locals=1, Args_size=1
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.net$rfc1149$harassme$LastCalls$$lastCalls:()Lscala/collection/immutable/List;
-	new	class net/rfc1149/harassme/LastCalls$$anonfun$cleanupList$1
-	dup
-	aload_0
-	invokespecial	Method net/rfc1149/harassme/LastCalls$$anonfun$cleanupList$1."<init>":(Lnet/rfc1149/harassme/LastCalls;)V
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.filter:(Lscala/Function1;)Ljava/lang/Object;
-	checkcast	class scala/collection/immutable/List
-	invokeinterface	InterfaceMethod net/rfc1149/harassme/LastCalls.net$rfc1149$harassme$LastCalls$$lastCalls_$eq:(Lscala/collection/immutable/List;)V
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      29      0    $this       Lnet/rfc1149/harassme/LastCalls;
 
 
 }

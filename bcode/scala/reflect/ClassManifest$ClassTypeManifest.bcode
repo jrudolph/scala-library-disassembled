@@ -5,7 +5,7 @@ public class scala.reflect.ClassManifest$ClassTypeManifest extends java.lang.Obj
   Scala: length = 0x
    
   Signature: length = 0x2
-   00 46 
+   00 51 
   SourceFile: "ClassManifest.scala"
   minor version: 0
   major version: 49
@@ -35,21 +35,27 @@ Method	scala/collection/mutable/StringBuilder.append:(Ljava/lang/Object;)Lscala/
 Method	scala/collection/mutable/StringBuilder.toString:()Ljava/lang/String;
 Method	scala/reflect/ClassManifest$ClassTypeManifest.erasure:()Ljava/lang/Class;
 Method	scala/reflect/ClassManifest$class.$init$:(Lscala/reflect/ClassManifest;)V
+Method	scala/reflect/ClassManifest$class.$less$colon$less:(Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)Z
 Method	scala/reflect/ClassManifest$class.argString:(Lscala/reflect/ClassManifest;)Ljava/lang/String;
+Method	scala/reflect/ClassManifest$class.canEqual:(Lscala/reflect/ClassManifest;Ljava/lang/Object;)Z
 Method	scala/reflect/ClassManifest$class.equals:(Lscala/reflect/ClassManifest;Ljava/lang/Object;)Z
+Method	scala/reflect/ClassManifest$class.hashCode:(Lscala/reflect/ClassManifest;)I
 Method	scala/reflect/ClassManifest$class.newArray:(Lscala/reflect/ClassManifest;I)Ljava/lang/Object;
 Method	scala/reflect/ClassManifest$class.newWrappedArray:(Lscala/reflect/ClassManifest;I)Lscala/collection/mutable/WrappedArray;
 InterfaceMethod	scala/reflect/ClassManifest.argString:()Ljava/lang/String;
 NameAndType	$init$:(Lscala/reflect/ClassManifest;)V
+NameAndType	$less$colon$less:(Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)Z
 NameAndType	"<init>":()V
 NameAndType	append:(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;
 NameAndType	argString:()Ljava/lang/String;
 NameAndType	argString:(Lscala/reflect/ClassManifest;)Ljava/lang/String;
+NameAndType	canEqual:(Lscala/reflect/ClassManifest;Ljava/lang/Object;)Z
 NameAndType	equals:(Lscala/reflect/ClassManifest;Ljava/lang/Object;)Z
 NameAndType	erasure:()Ljava/lang/Class;
 NameAndType	erasure:Ljava/lang/Class;
 NameAndType	get:()Ljava/lang/Object;
 NameAndType	getName:()Ljava/lang/String;
+NameAndType	hashCode:(Lscala/reflect/ClassManifest;)I
 NameAndType	isArray:()Z
 NameAndType	isEmpty:()Z
 NameAndType	newArray:(Lscala/reflect/ClassManifest;I)Ljava/lang/Object;
@@ -60,6 +66,8 @@ NameAndType	typeArguments:Lscala/collection/immutable/List;
 Asciz	;
 Asciz	#;
 Asciz	$init$;
+Asciz	$less$colon$less;
+Asciz	()I;
 Asciz	()Ljava/lang/Class;;
 Asciz	()Ljava/lang/Class<*>;;
 Asciz	()Ljava/lang/Object;;
@@ -74,11 +82,14 @@ Asciz	(Ljava/lang/Object;)Lscala/collection/mutable/StringBuilder;;
 Asciz	(Ljava/lang/Object;)Z;
 Asciz	(Lscala/Option;Ljava/lang/Class;Lscala/collection/immutable/List;)V;
 Asciz	(Lscala/Option<Lscala/reflect/OptManifest<*>;>;Ljava/lang/Class<*>;Lscala/collection/immutable/List<Lscala/reflect/OptManifest<*>;>;)V;
+Asciz	(Lscala/reflect/ClassManifest;)I;
 Asciz	(Lscala/reflect/ClassManifest;)Ljava/lang/String;;
 Asciz	(Lscala/reflect/ClassManifest;)V;
+Asciz	(Lscala/reflect/ClassManifest;)Z;
 Asciz	(Lscala/reflect/ClassManifest;I)Ljava/lang/Object;;
 Asciz	(Lscala/reflect/ClassManifest;I)Lscala/collection/mutable/WrappedArray;;
 Asciz	(Lscala/reflect/ClassManifest;Ljava/lang/Object;)Z;
+Asciz	(Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)Z;
 Asciz	<T:Ljava/lang/Object;>Ljava/lang/Object;Lscala/reflect/ClassManifest<TT;>;;
 Asciz	<init>;
 Asciz	Array;
@@ -97,15 +108,18 @@ Asciz	Lscala/Option<Lscala/reflect/OptManifest<*>;>;;
 Asciz	Lscala/collection/immutable/List;;
 Asciz	Lscala/collection/immutable/List<Lscala/reflect/OptManifest<*>;>;;
 Asciz	Lscala/reflect/ClassManifest$ClassTypeManifest;;
+Asciz	Lscala/reflect/ClassManifest;;
 Asciz	Scala;
 Asciz	Signature;
 Asciz	SourceFile;
 Asciz	append;
 Asciz	argString;
+Asciz	canEqual;
 Asciz	equals;
 Asciz	erasure;
 Asciz	get;
 Asciz	getName;
+Asciz	hashCode;
 Asciz	isArray;
 Asciz	isEmpty;
 Asciz	java/io/Serializable;
@@ -114,6 +128,7 @@ Asciz	java/lang/Object;
 Asciz	len;
 Asciz	newArray;
 Asciz	newWrappedArray;
+Asciz	other;
 Asciz	prefix;
 Asciz	scala/Option;
 Asciz	scala/collection/mutable/StringBuilder;
@@ -126,47 +141,133 @@ Asciz	toString;
 Asciz	typeArguments;
 
 {
-private final scala.collection.immutable.List typeArguments;
-  Signature: Lscala/collection/immutable/List;
+private final scala.Option prefix;
+  Signature: Lscala/Option;
   Signature: length = 0x2
-   00 56 
+   00 5F 
 
 private final java.lang.Class erasure;
   Signature: Ljava/lang/Class;
   Signature: length = 0x2
-   00 50 
+   00 5B 
 
-private final scala.Option prefix;
-  Signature: Lscala/Option;
+private final scala.collection.immutable.List typeArguments;
+  Signature: Lscala/collection/immutable/List;
   Signature: length = 0x2
-   00 54 
+   00 61 
 
-public scala.reflect.ClassManifest$ClassTypeManifest(scala.Option, java.lang.Class, scala.collection.immutable.List);
-  Signature: (Lscala/Option;Ljava/lang/Class;Lscala/collection/immutable/List;)V
+public boolean $less$colon$less(scala.reflect.ClassManifest);
+  Signature: (Lscala/reflect/ClassManifest;)Z
   Code:
-   Stack=2, Locals=4, Args_size=4
+   Stack=2, Locals=2, Args_size=2
 	aload_0
 	aload_1
-	putfield	Field prefix:Lscala/Option;
-	aload_0
-	aload_2
-	putfield	Field erasure:Ljava/lang/Class;
-	aload_0
-	aload_3
-	putfield	Field typeArguments:Lscala/collection/immutable/List;
-	aload_0
-	invokespecial	Method java/lang/Object."<init>":()V
-	aload_0
-	invokestatic	Method scala/reflect/ClassManifest$class.$init$:(Lscala/reflect/ClassManifest;)V
-	return
+	invokestatic	Method scala/reflect/ClassManifest$class.$less$colon$less:(Lscala/reflect/ClassManifest;Lscala/reflect/ClassManifest;)Z
+	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      24      0    this       Lscala/reflect/ClassManifest$ClassTypeManifest;
-   0      24      1    prefix       Lscala/Option;
-   0      24      2    erasure       Ljava/lang/Class;
-   0      24      3    typeArguments       Lscala/collection/immutable/List;
+   0      6      0    this       Lscala/reflect/ClassManifest$ClassTypeManifest;
+   0      6      1    that       Lscala/reflect/ClassManifest;
 
+
+public boolean canEqual(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/reflect/ClassManifest$class.canEqual:(Lscala/reflect/ClassManifest;Ljava/lang/Object;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/reflect/ClassManifest$ClassTypeManifest;
+   0      6      1    other       Ljava/lang/Object;
+
+
+public boolean equals(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method scala/reflect/ClassManifest$class.equals:(Lscala/reflect/ClassManifest;Ljava/lang/Object;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/reflect/ClassManifest$ClassTypeManifest;
+   0      6      1    that       Ljava/lang/Object;
+
+
+public int hashCode();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/reflect/ClassManifest$class.hashCode:(Lscala/reflect/ClassManifest;)I
+	ireturn
+  Labels:
+
+public java.lang.Object newArray(int);
+  Signature: (I)Ljava/lang/Object;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method scala/reflect/ClassManifest$class.newArray:(Lscala/reflect/ClassManifest;I)Ljava/lang/Object;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/reflect/ClassManifest$ClassTypeManifest;
+   0      6      1    len       I
+
+
+public scala.collection.mutable.WrappedArray newWrappedArray(int);
+  Signature: (I)Lscala/collection/mutable/WrappedArray;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	iload_1
+	invokestatic	Method scala/reflect/ClassManifest$class.newWrappedArray:(Lscala/reflect/ClassManifest;I)Lscala/collection/mutable/WrappedArray;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/reflect/ClassManifest$ClassTypeManifest;
+   0      6      1    len       I
+
+
+public java.lang.String argString();
+  Signature: ()Ljava/lang/String;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/reflect/ClassManifest$class.argString:(Lscala/reflect/ClassManifest;)Ljava/lang/String;
+	areturn
+  Labels:
+
+public java.lang.Class erasure();
+  Signature: ()Ljava/lang/Class;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field erasure:Ljava/lang/Class;
+	areturn
+  Labels:
+  Signature: length = 0x2
+   00 3C 
+
+public scala.collection.immutable.List typeArguments();
+  Signature: ()Lscala/collection/immutable/List;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field typeArguments:Lscala/collection/immutable/List;
+	areturn
+  Labels:
   Signature: length = 0x2
    00 40 
 
@@ -216,81 +317,34 @@ l4	invokevirtual	Method scala/collection/mutable/StringBuilder.append:(Ljava/lan
    	l3 = 68 // aload_0
    	l4 = 75 // invokevirtual
 
-public scala.collection.immutable.List typeArguments();
-  Signature: ()Lscala/collection/immutable/List;
+public scala.reflect.ClassManifest$ClassTypeManifest(scala.Option, java.lang.Class, scala.collection.immutable.List);
+  Signature: (Lscala/Option;Ljava/lang/Class;Lscala/collection/immutable/List;)V
   Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field typeArguments:Lscala/collection/immutable/List;
-	areturn
-  Labels:
-  Signature: length = 0x2
-   00 38 
-
-public java.lang.Class erasure();
-  Signature: ()Ljava/lang/Class;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field erasure:Ljava/lang/Class;
-	areturn
-  Labels:
-  Signature: length = 0x2
-   00 34 
-
-public java.lang.String argString();
-  Signature: ()Ljava/lang/String;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokestatic	Method scala/reflect/ClassManifest$class.argString:(Lscala/reflect/ClassManifest;)Ljava/lang/String;
-	areturn
-  Labels:
-
-public scala.collection.mutable.WrappedArray newWrappedArray(int);
-  Signature: (I)Lscala/collection/mutable/WrappedArray;
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	iload_1
-	invokestatic	Method scala/reflect/ClassManifest$class.newWrappedArray:(Lscala/reflect/ClassManifest;I)Lscala/collection/mutable/WrappedArray;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      6      0    this       Lscala/reflect/ClassManifest$ClassTypeManifest;
-   0      6      1    len       I
-
-
-public java.lang.Object newArray(int);
-  Signature: (I)Ljava/lang/Object;
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	iload_1
-	invokestatic	Method scala/reflect/ClassManifest$class.newArray:(Lscala/reflect/ClassManifest;I)Ljava/lang/Object;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      6      0    this       Lscala/reflect/ClassManifest$ClassTypeManifest;
-   0      6      1    len       I
-
-
-public boolean equals(java.lang.Object);
-  Signature: (Ljava/lang/Object;)Z
-  Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=2, Locals=4, Args_size=4
 	aload_0
 	aload_1
-	invokestatic	Method scala/reflect/ClassManifest$class.equals:(Lscala/reflect/ClassManifest;Ljava/lang/Object;)Z
-	ireturn
+	putfield	Field prefix:Lscala/Option;
+	aload_0
+	aload_2
+	putfield	Field erasure:Ljava/lang/Class;
+	aload_0
+	aload_3
+	putfield	Field typeArguments:Lscala/collection/immutable/List;
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	invokestatic	Method scala/reflect/ClassManifest$class.$init$:(Lscala/reflect/ClassManifest;)V
+	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      6      0    this       Lscala/reflect/ClassManifest$ClassTypeManifest;
-   0      6      1    that       Ljava/lang/Object;
+   0      24      0    this       Lscala/reflect/ClassManifest$ClassTypeManifest;
+   0      24      1    prefix       Lscala/Option;
+   0      24      2    erasure       Ljava/lang/Class;
+   0      24      3    typeArguments       Lscala/collection/immutable/List;
 
+  Signature: length = 0x2
+   00 48 
 
 }
 

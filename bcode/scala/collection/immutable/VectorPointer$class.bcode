@@ -17,18 +17,23 @@ int	32768;
 int	1048576;
 int	33554432;
 int	1073741824;
+String	NULL
 class	"[Ljava/lang/Object;"
+class	java/io/PrintStream
 class	java/lang/IllegalArgumentException
 class	java/lang/Object
 class	java/lang/System
+class	scala/Console$
 class	scala/MatchError
 class	scala/collection/immutable/VectorPointer
 class	scala/collection/immutable/VectorPointer$class
 class	scala/runtime/BoxesRunTime
+Field	scala/Console$.MODULE$:Lscala/Console$;
+Method	java/io/PrintStream.println:(Ljava/lang/Object;)V
 Method	java/lang/IllegalArgumentException."<init>":()V
-Method	java/lang/Object.toString:()Ljava/lang/String;
 Method	java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
-Method	scala/MatchError."<init>":(Ljava/lang/String;)V
+Method	scala/Console$.out:()Ljava/io/PrintStream;
+Method	scala/MatchError."<init>":(Ljava/lang/Object;)V
 Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
 InterfaceMethod	scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
 InterfaceMethod	scala/collection/immutable/VectorPointer.depth:()I
@@ -48,7 +53,8 @@ InterfaceMethod	scala/collection/immutable/VectorPointer.display5_$eq:([Ljava/la
 InterfaceMethod	scala/collection/immutable/VectorPointer.initFrom:(Lscala/collection/immutable/VectorPointer;I)V
 InterfaceMethod	scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
 NameAndType	"<init>":()V
-NameAndType	"<init>":(Ljava/lang/String;)V
+NameAndType	"<init>":(Ljava/lang/Object;)V
+NameAndType	MODULE$:Lscala/Console$;
 NameAndType	arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
 NameAndType	boxToInteger:(I)Ljava/lang/Integer;
 NameAndType	copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
@@ -68,17 +74,18 @@ NameAndType	display5:()[Ljava/lang/Object;
 NameAndType	display5_$eq:([Ljava/lang/Object;)V
 NameAndType	initFrom:(Lscala/collection/immutable/VectorPointer;I)V
 NameAndType	nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-NameAndType	toString:()Ljava/lang/String;
+NameAndType	out:()Ljava/io/PrintStream;
+NameAndType	println:(Ljava/lang/Object;)V
 Asciz	$init$;
 Asciz	$this;
 Asciz	()I;
-Asciz	()Ljava/lang/String;;
+Asciz	()Ljava/io/PrintStream;;
 Asciz	()V;
 Asciz	()[Ljava/lang/Object;;
 Asciz	(I)Ljava/lang/Integer;;
 Asciz	(I)V;
+Asciz	(Ljava/lang/Object;)V;
 Asciz	(Ljava/lang/Object;ILjava/lang/Object;II)V;
-Asciz	(Ljava/lang/String;)V;
 Asciz	(Lscala/collection/immutable/VectorPointer;)V;
 Asciz	(Lscala/collection/immutable/VectorPointer;I)V;
 Asciz	(Lscala/collection/immutable/VectorPointer;II)Ljava/lang/Object;;
@@ -97,7 +104,10 @@ Asciz	I;
 Asciz	LineNumberTable;
 Asciz	Ljava/lang/Object;;
 Asciz	LocalVariableTable;
+Asciz	Lscala/Console$;;
 Asciz	Lscala/collection/immutable/VectorPointer;;
+Asciz	MODULE$;
+Asciz	NULL;
 Asciz	Scala;
 Asciz	SourceFile;
 Asciz	Vector.scala;
@@ -130,12 +140,16 @@ Asciz	gotoPosWritable0;
 Asciz	gotoPosWritable1;
 Asciz	index;
 Asciz	initFrom;
+Asciz	java/io/PrintStream;
 Asciz	java/lang/IllegalArgumentException;
 Asciz	java/lang/Object;
 Asciz	java/lang/System;
 Asciz	newIndex;
 Asciz	nullSlotAndCopy;
 Asciz	oldIndex;
+Asciz	out;
+Asciz	println;
+Asciz	scala/Console$;
 Asciz	scala/MatchError;
 Asciz	scala/collection/immutable/VectorPointer;
 Asciz	scala/collection/immutable/VectorPointer$class;
@@ -145,20 +159,1661 @@ Asciz	temp3;
 Asciz	temp4;
 Asciz	temp5;
 Asciz	that;
-Asciz	toString;
 Asciz	x;
 Asciz	xor;
 
 {
-public static void $init$(scala.collection.immutable.VectorPointer);
-  Signature: (Lscala/collection/immutable/VectorPointer;)V
+public static final void initFrom(scala.collection.immutable.VectorPointer, scala.collection.immutable.VectorPointer);
+  Signature: (Lscala/collection/immutable/VectorPointer;Lscala/collection/immutable/VectorPointer;)V
   Code:
-   Stack=0, Locals=1, Args_size=1
+   Stack=3, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.initFrom:(Lscala/collection/immutable/VectorPointer;I)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      1      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      14      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      14      1    that       Lscala/collection/immutable/VectorPointer;
+
+
+public static final void initFrom(scala.collection.immutable.VectorPointer, scala.collection.immutable.VectorPointer, int);
+  Signature: (Lscala/collection/immutable/VectorPointer;Lscala/collection/immutable/VectorPointer;I)V
+  Code:
+   Stack=3, Locals=4, Args_size=3
+	aload_0
+	iload_2
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth_$eq:(I)V
+	iload_2
+	iconst_1
+	isub
+	istore_3
+	iload_3
+	tableswitch{ //-1 to 5
+		-1: 335;
+		0: 323;
+		1: 296;
+		2: 257;
+		3: 206;
+		4: 143;
+		5: 68;
+		default: 56 }
+	new	class scala/MatchError
+	dup
+	iload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
+	athrow
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l1 // return
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l1 // return
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l1 // return
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l1 // return
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l1 // return
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+l1	return
+  Labels:
+   	l1 = 335 // return
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      336      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      336      1    that       Lscala/collection/immutable/VectorPointer;
+   0      336      2    depth       I
+   11      325      3    temp3       I
+
+
+public static final java.lang.Object getElem(scala.collection.immutable.VectorPointer, int, int);
+  Signature: (Lscala/collection/immutable/VectorPointer;II)Ljava/lang/Object;
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	iload_2
+	ldc	int 32
+	if_icmpge	l1 // iload_2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 31
+	iand
+	aaload
+	goto	l2 // areturn
+l1	iload_2
+	ldc	int 1024
+	if_icmpge	l3 // iload_2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	ldc	int 31
+	iand
+	aaload
+	goto	l2 // areturn
+l3	iload_2
+	ldc	int 32768
+	if_icmpge	l4 // iload_2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	ldc	int 31
+	iand
+	aaload
+	goto	l2 // areturn
+l4	iload_2
+	ldc	int 1048576
+	if_icmpge	l5 // iload_2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	ldc	int 31
+	iand
+	aaload
+	goto	l2 // areturn
+l5	iload_2
+	ldc	int 33554432
+	if_icmpge	l6 // iload_2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 20
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	ldc	int 31
+	iand
+	aaload
+	goto	l2 // areturn
+l6	iload_2
+	ldc	int 1073741824
+	if_icmpge	l7 // new
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 25
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	ldc	int 20
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	iload_1
+	ldc	int 31
+	iand
+	aaload
+l2	areturn
+l7	new	class java/lang/IllegalArgumentException
+	dup
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
+	athrow
+  Labels:
+   	l1 = 20 // iload_2
+   	l3 = 50 // iload_2
+   	l4 = 91 // iload_2
+   	l5 = 143 // iload_2
+   	l6 = 206 // iload_2
+   	l2 = 277 // areturn
+   	l7 = 278 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      286      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      286      1    index       I
+   0      286      2    xor       I
+
+
+public static final void gotoPos(scala.collection.immutable.VectorPointer, int, int);
+  Signature: (Lscala/collection/immutable/VectorPointer;II)V
+  Code:
+   Stack=4, Locals=3, Args_size=3
+	iload_2
+	ldc	int 32
+	if_icmplt	l1 // return
+	iload_2
+	ldc	int 1024
+	if_icmpge	l2 // iload_2
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l1 // return
+l2	iload_2
+	ldc	int 32768
+	if_icmpge	l3 // iload_2
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l1 // return
+l3	iload_2
+	ldc	int 1048576
+	if_icmpge	l4 // iload_2
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l1 // return
+l4	iload_2
+	ldc	int 33554432
+	if_icmpge	l5 // iload_2
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 20
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l1 // return
+l5	iload_2
+	ldc	int 1073741824
+	if_icmpge	l6 // new
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 25
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 20
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+l1	return
+l6	new	class java/lang/IllegalArgumentException
+	dup
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
+	athrow
+  Labels:
+   	l2 = 37 // iload_2
+   	l3 = 91 // iload_2
+   	l4 = 168 // iload_2
+   	l5 = 268 // iload_2
+   	l1 = 388 // return
+   	l6 = 389 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      397      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      397      1    index       I
+   0      397      2    xor       I
+
+
+public static final void gotoNextBlockStart(scala.collection.immutable.VectorPointer, int, int);
+  Signature: (Lscala/collection/immutable/VectorPointer;II)V
+  Code:
+   Stack=4, Locals=3, Args_size=3
+	iload_2
+	ldc	int 1024
+	if_icmpge	l1 // iload_2
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l2 // return
+l1	iload_2
+	ldc	int 32768
+	if_icmpge	l3 // iload_2
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iconst_0
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l2 // return
+l3	iload_2
+	ldc	int 1048576
+	if_icmpge	l4 // iload_2
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iconst_0
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iconst_0
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l2 // return
+l4	iload_2
+	ldc	int 33554432
+	if_icmpge	l5 // iload_2
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 20
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iconst_0
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iconst_0
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iconst_0
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l2 // return
+l5	iload_2
+	ldc	int 1073741824
+	if_icmpge	l6 // new
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 25
+	ishr
+	ldc	int 31
+	iand
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	iconst_0
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iconst_0
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iconst_0
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iconst_0
+	aaload
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+l2	return
+l6	new	class java/lang/IllegalArgumentException
+	dup
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
+	athrow
+  Labels:
+   	l1 = 31 // iload_2
+   	l3 = 80 // iload_2
+   	l4 = 146 // iload_2
+   	l5 = 229 // iload_2
+   	l2 = 326 // return
+   	l6 = 327 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      335      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      335      1    index       I
+   0      335      2    xor       I
+
+
+public static final void gotoNextBlockStartWritable(scala.collection.immutable.VectorPointer, int, int);
+  Signature: (Lscala/collection/immutable/VectorPointer;II)V
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	iload_2
+	ldc	int 1024
+	if_icmpge	l1 // iload_2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
+	iconst_1
+	if_icmpne	l2 // aload_0
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iconst_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
+	iconst_1
+	iadd
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth_$eq:(I)V
+l2	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	aastore
+	goto	l3 // return
+l1	iload_2
+	ldc	int 32768
+	if_icmpge	l4 // iload_2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
+	iconst_2
+	if_icmpne	l5 // aload_0
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iconst_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
+	iconst_1
+	iadd
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth_$eq:(I)V
+l5	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	aastore
+	goto	l3 // return
+l4	iload_2
+	ldc	int 1048576
+	if_icmpge	l6 // iload_2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
+	iconst_3
+	if_icmpne	l7 // aload_0
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iconst_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
+	iconst_1
+	iadd
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth_$eq:(I)V
+l7	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	aastore
+	goto	l3 // return
+l6	iload_2
+	ldc	int 33554432
+	if_icmpge	l8 // iload_2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
+	iconst_4
+	if_icmpne	l9 // aload_0
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	iconst_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
+	iconst_1
+	iadd
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth_$eq:(I)V
+l9	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 20
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	aastore
+	goto	l3 // return
+l8	iload_2
+	ldc	int 1073741824
+	if_icmpge	l10 // new
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
+	iconst_5
+	if_icmpne	l11 // aload_0
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
+	iconst_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
+	iconst_1
+	iadd
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth_$eq:(I)V
+l11	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	ldc	int 32
+	anewarray	class java/lang/Object
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 20
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 25
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	aastore
+l3	return
+l10	new	class java/lang/IllegalArgumentException
+	dup
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
+	athrow
+  Labels:
+   	l2 = 55 // aload_0
+   	l1 = 88 // iload_2
+   	l5 = 143 // aload_0
+   	l4 = 207 // iload_2
+   	l7 = 262 // aload_0
+   	l6 = 357 // iload_2
+   	l9 = 412 // aload_0
+   	l8 = 538 // iload_2
+   	l11 = 593 // aload_0
+   	l3 = 747 // return
+   	l10 = 748 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      756      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      756      1    index       I
+   0      756      2    xor       I
+
+
+public static final java.lang.Object[] copyOf(scala.collection.immutable.VectorPointer, java.lang.Object[]);
+  Signature: (Lscala/collection/immutable/VectorPointer;[Ljava/lang/Object;)[Ljava/lang/Object;
+  Code:
+   Stack=5, Locals=8, Args_size=2
+	aload_1
+	ifnonnull	l1 // aload_1
+	ldc	String NULL
+	astore_3
+	getstatic	Field scala/Console$.MODULE$:Lscala/Console$;
+	astore_2
+	aload_2
+	invokevirtual	Method scala/Console$.out:()Ljava/io/PrintStream;
+	aload_3
+	invokevirtual	Method java/io/PrintStream.println:(Ljava/lang/Object;)V
+l1	aload_1
+	arraylength
+	anewarray	class java/lang/Object
+	astore	7
+	iconst_0
+	iconst_0
+	aload_1
+	arraylength
+	istore	6
+	istore	5
+	istore	4
+	aload_1
+	iload	4
+	aload	7
+	iload	5
+	iload	6
+	invokestatic	Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+	aload	7
+	areturn
+  Labels:
+   	l1 = 19 // aload_1
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      51      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      51      1    a       [Ljava/lang/Object;
+   26      24      7    b       [Ljava/lang/Object;
+
+
+public static final java.lang.Object[] nullSlotAndCopy(scala.collection.immutable.VectorPointer, java.lang.Object[], int);
+  Signature: (Lscala/collection/immutable/VectorPointer;[Ljava/lang/Object;I)[Ljava/lang/Object;
+  Code:
+   Stack=3, Locals=4, Args_size=3
+	aload_1
+	iload_2
+	aaload
+	astore_3
+	aload_1
+	iload_2
+	aconst_null
+	aastore
+	aload_0
+	aload_3
+	checkcast	class "[Ljava/lang/Object;"
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      19      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      19      1    array       [Ljava/lang/Object;
+   0      19      2    index       I
+   4      14      3    x       Ljava/lang/Object;
+
+
+public static final void stabilize(scala.collection.immutable.VectorPointer, int);
+  Signature: (Lscala/collection/immutable/VectorPointer;I)V
+  Code:
+   Stack=3, Locals=3, Args_size=2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
+	iconst_1
+	isub
+	istore_2
+	iload_2
+	tableswitch{ //0 to 5
+		0: 637;
+		1: 600;
+		2: 522;
+		3: 406;
+		4: 252;
+		5: 60;
+		default: 48 }
+	new	class scala/MatchError
+	dup
+	iload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
+	athrow
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 25
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 20
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	aastore
+	goto	l1 // return
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 20
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	aastore
+	goto	l1 // return
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	aastore
+	goto	l1 // return
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	aastore
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	aastore
+	goto	l1 // return
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	aastore
+l1	return
+  Labels:
+   	l1 = 637 // return
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      638      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      638      1    index       I
+   9      629      2    temp4       I
+
+
+public static final void gotoPosWritable0(scala.collection.immutable.VectorPointer, int, int);
+  Signature: (Lscala/collection/immutable/VectorPointer;II)V
+  Code:
+   Stack=5, Locals=4, Args_size=3
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
+	iconst_1
+	isub
+	istore_3
+	iload_3
+	tableswitch{ //0 to 5
+		0: 535;
+		1: 490;
+		2: 420;
+		3: 325;
+		4: 205;
+		5: 60;
+		default: 48 }
+	new	class scala/MatchError
+	dup
+	iload_3
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/Object;)V
+	athrow
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 25
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 20
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l1 // return
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 20
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l1 // return
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 15
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l1 // return
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
+	iload_1
+	ldc	int 10
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l1 // return
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
+	iload_1
+	iconst_5
+	ishr
+	ldc	int 31
+	iand
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+	goto	l1 // return
+	aload_0
+	aload_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
+	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
+l1	return
+  Labels:
+   	l1 = 553 // return
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      554      0    $this       Lscala/collection/immutable/VectorPointer;
+   0      554      1    newIndex       I
+   0      554      2    xor       I
+   9      545      3    temp5       I
 
 
 public static final void gotoPosWritable1(scala.collection.immutable.VectorPointer, int, int, int);
@@ -620,1649 +2275,15 @@ l7	new	class java/lang/IllegalArgumentException
    0      1013      3    xor       I
 
 
-public static final void gotoPosWritable0(scala.collection.immutable.VectorPointer, int, int);
-  Signature: (Lscala/collection/immutable/VectorPointer;II)V
+public static void $init$(scala.collection.immutable.VectorPointer);
+  Signature: (Lscala/collection/immutable/VectorPointer;)V
   Code:
-   Stack=5, Locals=4, Args_size=3
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
-	iconst_1
-	isub
-	istore_3
-	iload_3
-	tableswitch{ //0 to 5
-		0: 538;
-		1: 493;
-		2: 423;
-		3: 328;
-		4: 208;
-		5: 63;
-		default: 48 }
-	new	class scala/MatchError
-	dup
-	iload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 25
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 20
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l1 // return
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 20
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l1 // return
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l1 // return
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l1 // return
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.nullSlotAndCopy:([Ljava/lang/Object;I)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l1 // return
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-l1	return
-  Labels:
-   	l1 = 556 // return
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      557      0    $this       Lscala/collection/immutable/VectorPointer;
-   0      557      1    newIndex       I
-   0      557      2    xor       I
-   9      548      3    temp5       I
-
-
-public static final void stabilize(scala.collection.immutable.VectorPointer, int);
-  Signature: (Lscala/collection/immutable/VectorPointer;I)V
-  Code:
-   Stack=3, Locals=3, Args_size=2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
-	iconst_1
-	isub
-	istore_2
-	iload_2
-	tableswitch{ //0 to 5
-		0: 640;
-		1: 603;
-		2: 525;
-		3: 409;
-		4: 255;
-		5: 63;
-		default: 48 }
-	new	class scala/MatchError
-	dup
-	iload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 25
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 20
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	aastore
-	goto	l1 // return
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 20
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	aastore
-	goto	l1 // return
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	aastore
-	goto	l1 // return
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	aastore
-	goto	l1 // return
-	aload_0
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	aastore
-l1	return
-  Labels:
-   	l1 = 640 // return
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      641      0    $this       Lscala/collection/immutable/VectorPointer;
-   0      641      1    index       I
-   9      632      2    temp4       I
-
-
-public static final java.lang.Object[] nullSlotAndCopy(scala.collection.immutable.VectorPointer, java.lang.Object[], int);
-  Signature: (Lscala/collection/immutable/VectorPointer;[Ljava/lang/Object;I)[Ljava/lang/Object;
-  Code:
-   Stack=3, Locals=4, Args_size=3
-	aload_1
-	iload_2
-	aaload
-	astore_3
-	aload_1
-	iload_2
-	aconst_null
-	aastore
-	aload_0
-	aload_3
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.copyOf:([Ljava/lang/Object;)[Ljava/lang/Object;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      19      0    $this       Lscala/collection/immutable/VectorPointer;
-   0      19      1    array       [Ljava/lang/Object;
-   0      19      2    index       I
-   4      14      3    x       Ljava/lang/Object;
-
-
-public static final java.lang.Object[] copyOf(scala.collection.immutable.VectorPointer, java.lang.Object[]);
-  Signature: (Lscala/collection/immutable/VectorPointer;[Ljava/lang/Object;)[Ljava/lang/Object;
-  Code:
-   Stack=5, Locals=6, Args_size=2
-	aload_1
-	arraylength
-	anewarray	class java/lang/Object
-	astore	5
-	iconst_0
-	iconst_0
-	aload_1
-	arraylength
-	istore	4
-	istore_3
-	istore_2
-	aload_1
-	iload_2
-	aload	5
-	iload_3
-	iload	4
-	invokestatic	Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
-	aload	5
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      28      0    $this       Lscala/collection/immutable/VectorPointer;
-   0      28      1    a       [Ljava/lang/Object;
-   7      20      5    b       [Ljava/lang/Object;
-
-
-public static final void gotoNextBlockStartWritable(scala.collection.immutable.VectorPointer, int, int);
-  Signature: (Lscala/collection/immutable/VectorPointer;II)V
-  Code:
-   Stack=3, Locals=3, Args_size=3
-	iload_2
-	ldc	int 1024
-	if_icmpge	l1 // iload_2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
-	iconst_1
-	if_icmpne	l2 // aload_0
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iconst_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
-	iconst_1
-	iadd
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth_$eq:(I)V
-l2	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	aastore
-	goto	l3 // return
-l1	iload_2
-	ldc	int 32768
-	if_icmpge	l4 // iload_2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
-	iconst_2
-	if_icmpne	l5 // aload_0
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iconst_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
-	iconst_1
-	iadd
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth_$eq:(I)V
-l5	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	aastore
-	goto	l3 // return
-l4	iload_2
-	ldc	int 1048576
-	if_icmpge	l6 // iload_2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
-	iconst_3
-	if_icmpne	l7 // aload_0
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iconst_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
-	iconst_1
-	iadd
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth_$eq:(I)V
-l7	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	aastore
-	goto	l3 // return
-l6	iload_2
-	ldc	int 33554432
-	if_icmpge	l8 // iload_2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
-	iconst_4
-	if_icmpne	l9 // aload_0
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	iconst_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
-	iconst_1
-	iadd
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth_$eq:(I)V
-l9	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 20
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	aastore
-	goto	l3 // return
-l8	iload_2
-	ldc	int 1073741824
-	if_icmpge	l10 // new
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
-	iconst_5
-	if_icmpne	l11 // aload_0
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
-	iconst_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
-	iconst_1
-	iadd
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth_$eq:(I)V
-l11	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	ldc	int 32
-	anewarray	class java/lang/Object
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 20
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	aastore
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 25
-	ishr
-	ldc	int 31
-	iand
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	aastore
-l3	return
-l10	new	class java/lang/IllegalArgumentException
-	dup
-	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
-	athrow
-  Labels:
-   	l2 = 55 // aload_0
-   	l1 = 88 // iload_2
-   	l5 = 143 // aload_0
-   	l4 = 207 // iload_2
-   	l7 = 262 // aload_0
-   	l6 = 357 // iload_2
-   	l9 = 412 // aload_0
-   	l8 = 538 // iload_2
-   	l11 = 593 // aload_0
-   	l3 = 747 // return
-   	l10 = 748 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      756      0    $this       Lscala/collection/immutable/VectorPointer;
-   0      756      1    index       I
-   0      756      2    xor       I
-
-
-public static final void gotoNextBlockStart(scala.collection.immutable.VectorPointer, int, int);
-  Signature: (Lscala/collection/immutable/VectorPointer;II)V
-  Code:
-   Stack=4, Locals=3, Args_size=3
-	iload_2
-	ldc	int 1024
-	if_icmpge	l1 // iload_2
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l2 // return
-l1	iload_2
-	ldc	int 32768
-	if_icmpge	l3 // iload_2
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iconst_0
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l2 // return
-l3	iload_2
-	ldc	int 1048576
-	if_icmpge	l4 // iload_2
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iconst_0
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iconst_0
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l2 // return
-l4	iload_2
-	ldc	int 33554432
-	if_icmpge	l5 // iload_2
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 20
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iconst_0
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iconst_0
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iconst_0
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l2 // return
-l5	iload_2
-	ldc	int 1073741824
-	if_icmpge	l6 // new
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 25
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	iconst_0
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iconst_0
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iconst_0
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iconst_0
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-l2	return
-l6	new	class java/lang/IllegalArgumentException
-	dup
-	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
-	athrow
-  Labels:
-   	l1 = 31 // iload_2
-   	l3 = 80 // iload_2
-   	l4 = 146 // iload_2
-   	l5 = 229 // iload_2
-   	l2 = 326 // return
-   	l6 = 327 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      335      0    $this       Lscala/collection/immutable/VectorPointer;
-   0      335      1    index       I
-   0      335      2    xor       I
-
-
-public static final void gotoPos(scala.collection.immutable.VectorPointer, int, int);
-  Signature: (Lscala/collection/immutable/VectorPointer;II)V
-  Code:
-   Stack=4, Locals=3, Args_size=3
-	iload_2
-	ldc	int 32
-	if_icmplt	l1 // return
-	iload_2
-	ldc	int 1024
-	if_icmpge	l2 // iload_2
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l1 // return
-l2	iload_2
-	ldc	int 32768
-	if_icmpge	l3 // iload_2
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l1 // return
-l3	iload_2
-	ldc	int 1048576
-	if_icmpge	l4 // iload_2
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l1 // return
-l4	iload_2
-	ldc	int 33554432
-	if_icmpge	l5 // iload_2
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 20
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l1 // return
-l5	iload_2
-	ldc	int 1073741824
-	if_icmpge	l6 // new
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 25
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 20
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-l1	return
-l6	new	class java/lang/IllegalArgumentException
-	dup
-	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
-	athrow
-  Labels:
-   	l2 = 37 // iload_2
-   	l3 = 91 // iload_2
-   	l4 = 168 // iload_2
-   	l5 = 268 // iload_2
-   	l1 = 388 // return
-   	l6 = 389 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      397      0    $this       Lscala/collection/immutable/VectorPointer;
-   0      397      1    index       I
-   0      397      2    xor       I
-
-
-public static final java.lang.Object getElem(scala.collection.immutable.VectorPointer, int, int);
-  Signature: (Lscala/collection/immutable/VectorPointer;II)Ljava/lang/Object;
-  Code:
-   Stack=3, Locals=3, Args_size=3
-	iload_2
-	ldc	int 32
-	if_icmpge	l1 // iload_2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 31
-	iand
-	aaload
-	goto	l2 // areturn
-l1	iload_2
-	ldc	int 1024
-	if_icmpge	l3 // iload_2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	ldc	int 31
-	iand
-	aaload
-	goto	l2 // areturn
-l3	iload_2
-	ldc	int 32768
-	if_icmpge	l4 // iload_2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	ldc	int 31
-	iand
-	aaload
-	goto	l2 // areturn
-l4	iload_2
-	ldc	int 1048576
-	if_icmpge	l5 // iload_2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	ldc	int 31
-	iand
-	aaload
-	goto	l2 // areturn
-l5	iload_2
-	ldc	int 33554432
-	if_icmpge	l6 // iload_2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 20
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	ldc	int 31
-	iand
-	aaload
-	goto	l2 // areturn
-l6	iload_2
-	ldc	int 1073741824
-	if_icmpge	l7 // new
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
-	iload_1
-	ldc	int 25
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	ldc	int 20
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	ldc	int 15
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	ldc	int 10
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	iconst_5
-	ishr
-	ldc	int 31
-	iand
-	aaload
-	checkcast	class "[Ljava/lang/Object;"
-	iload_1
-	ldc	int 31
-	iand
-	aaload
-l2	areturn
-l7	new	class java/lang/IllegalArgumentException
-	dup
-	invokespecial	Method java/lang/IllegalArgumentException."<init>":()V
-	athrow
-  Labels:
-   	l1 = 20 // iload_2
-   	l3 = 50 // iload_2
-   	l4 = 91 // iload_2
-   	l5 = 143 // iload_2
-   	l6 = 206 // iload_2
-   	l2 = 277 // areturn
-   	l7 = 278 // new
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      286      0    $this       Lscala/collection/immutable/VectorPointer;
-   0      286      1    index       I
-   0      286      2    xor       I
-
-
-public static final void initFrom(scala.collection.immutable.VectorPointer, scala.collection.immutable.VectorPointer, int);
-  Signature: (Lscala/collection/immutable/VectorPointer;Lscala/collection/immutable/VectorPointer;I)V
-  Code:
-   Stack=3, Locals=4, Args_size=3
-	aload_0
-	iload_2
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth_$eq:(I)V
-	iload_2
-	iconst_1
-	isub
-	istore_3
-	iload_3
-	tableswitch{ //-1 to 5
-		-1: 338;
-		0: 326;
-		1: 299;
-		2: 260;
-		3: 209;
-		4: 146;
-		5: 71;
-		default: 56 }
-	new	class scala/MatchError
-	dup
-	iload_3
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	invokevirtual	Method java/lang/Object.toString:()Ljava/lang/String;
-	invokespecial	Method scala/MatchError."<init>":(Ljava/lang/String;)V
-	athrow
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display5_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l1 // return
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display4_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l1 // return
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display3_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l1 // return
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display2_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l1 // return
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display1_$eq:([Ljava/lang/Object;)V
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-	goto	l1 // return
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0:()[Ljava/lang/Object;
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.display0_$eq:([Ljava/lang/Object;)V
-l1	return
-  Labels:
-   	l1 = 338 // return
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      339      0    $this       Lscala/collection/immutable/VectorPointer;
-   0      339      1    that       Lscala/collection/immutable/VectorPointer;
-   0      339      2    depth       I
-   11      328      3    temp3       I
-
-
-public static final void initFrom(scala.collection.immutable.VectorPointer, scala.collection.immutable.VectorPointer);
-  Signature: (Lscala/collection/immutable/VectorPointer;Lscala/collection/immutable/VectorPointer;)V
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.depth:()I
-	invokeinterface	InterfaceMethod scala/collection/immutable/VectorPointer.initFrom:(Lscala/collection/immutable/VectorPointer;I)V
+   Stack=0, Locals=1, Args_size=1
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      14      0    $this       Lscala/collection/immutable/VectorPointer;
-   0      14      1    that       Lscala/collection/immutable/VectorPointer;
+   0      1      0    $this       Lscala/collection/immutable/VectorPointer;
 
 
 }

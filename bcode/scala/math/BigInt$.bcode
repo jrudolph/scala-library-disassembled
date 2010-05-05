@@ -92,20 +92,20 @@ Asciz	valueOf;
 public static final scala.math.BigInt$ MODULE$;
   Signature: Lscala/math/BigInt$;
 
-private final scala.math.BigInt MaxLong;
-  Signature: Lscala/math/BigInt;
-
-private final scala.math.BigInt MinLong;
-  Signature: Lscala/math/BigInt;
-
-private final scala.math.BigInt[] cache;
-  Signature: [Lscala/math/BigInt;
+private final int minCached;
+  Signature: I
 
 private final int maxCached;
   Signature: I
 
-private final int minCached;
-  Signature: I
+private final scala.math.BigInt[] cache;
+  Signature: [Lscala/math/BigInt;
+
+private final scala.math.BigInt MinLong;
+  Signature: Lscala/math/BigInt;
+
+private final scala.math.BigInt MaxLong;
+  Signature: Lscala/math/BigInt;
 
 public static {};
   Signature: ()V
@@ -116,78 +116,50 @@ public static {};
 	return
   Labels:
 
-private scala.math.BigInt$();
-  Signature: ()V
+private int minCached();
+  Signature: ()I
   Code:
-   Stack=4, Locals=1, Args_size=1
+   Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokespecial	Method java/lang/Object."<init>":()V
-	aload_0
-	putstatic	Field MODULE$:Lscala/math/BigInt$;
-	aload_0
-	ldc	int -1024
-	putfield	Field minCached:I
-	aload_0
-	ldc	int 1024
-	putfield	Field maxCached:I
-	aload_0
-	aload_0
-	invokespecial	Method maxCached:()I
-	aload_0
-	invokespecial	Method minCached:()I
-	isub
-	iconst_1
-	iadd
-	anewarray	class scala/math/BigInt
-	putfield	Field cache:[Lscala/math/BigInt;
-	aload_0
-	aload_0
-	ldc2_w	long -9223372036854775808l
-	invokevirtual	Method apply:(J)Lscala/math/BigInt;
-	putfield	Field MinLong:Lscala/math/BigInt;
-	aload_0
-	aload_0
-	ldc2_w	long 9223372036854775807l
-	invokevirtual	Method apply:(J)Lscala/math/BigInt;
-	putfield	Field MaxLong:Lscala/math/BigInt;
-	return
+	getfield	Field minCached:I
+	ireturn
   Labels:
 
-public scala.math.BigInt apply(long);
-  Signature: (J)Lscala/math/BigInt;
+private int maxCached();
+  Signature: ()I
   Code:
-   Stack=4, Locals=3, Args_size=2
+   Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokespecial	Method minCached:()I
-	i2l
-	lload_1
-	lcmp
-	ifgt	l1 // new
-	lload_1
-	aload_0
-	invokespecial	Method maxCached:()I
-	i2l
-	lcmp
-	ifgt	l1 // new
-	aload_0
-	lload_1
-	l2i
-	invokevirtual	Method apply:(I)Lscala/math/BigInt;
-	goto	l2 // areturn
-l1	new	class scala/math/BigInt
-	dup
-	lload_1
-	invokestatic	Method java/math/BigInteger.valueOf:(J)Ljava/math/BigInteger;
-	invokespecial	Method scala/math/BigInt."<init>":(Ljava/math/BigInteger;)V
-l2	areturn
+	getfield	Field maxCached:I
+	ireturn
   Labels:
-   	l1 = 29 // new
-   	l2 = 40 // areturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      41      0    this       Lscala/math/BigInt$;
-   0      41      1    l       J
 
+private scala.math.BigInt[] cache();
+  Signature: ()[Lscala/math/BigInt;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field cache:[Lscala/math/BigInt;
+	areturn
+  Labels:
+
+public scala.math.BigInt MinLong();
+  Signature: ()Lscala/math/BigInt;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field MinLong:Lscala/math/BigInt;
+	areturn
+  Labels:
+
+public scala.math.BigInt MaxLong();
+  Signature: ()Lscala/math/BigInt;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field MaxLong:Lscala/math/BigInt;
+	areturn
+  Labels:
 
 public scala.math.BigInt apply(int);
   Signature: (I)Lscala/math/BigInt;
@@ -246,49 +218,77 @@ l3	areturn
    30      25      3    n       Lscala/math/BigInt;
 
 
-public scala.math.BigInt MaxLong();
-  Signature: ()Lscala/math/BigInt;
+public scala.math.BigInt apply(long);
+  Signature: (J)Lscala/math/BigInt;
   Code:
-   Stack=1, Locals=1, Args_size=1
+   Stack=4, Locals=3, Args_size=2
 	aload_0
-	getfield	Field MaxLong:Lscala/math/BigInt;
-	areturn
+	invokespecial	Method minCached:()I
+	i2l
+	lload_1
+	lcmp
+	ifgt	l1 // new
+	lload_1
+	aload_0
+	invokespecial	Method maxCached:()I
+	i2l
+	lcmp
+	ifgt	l1 // new
+	aload_0
+	lload_1
+	l2i
+	invokevirtual	Method apply:(I)Lscala/math/BigInt;
+	goto	l2 // areturn
+l1	new	class scala/math/BigInt
+	dup
+	lload_1
+	invokestatic	Method java/math/BigInteger.valueOf:(J)Ljava/math/BigInteger;
+	invokespecial	Method scala/math/BigInt."<init>":(Ljava/math/BigInteger;)V
+l2	areturn
   Labels:
+   	l1 = 29 // new
+   	l2 = 40 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      41      0    this       Lscala/math/BigInt$;
+   0      41      1    l       J
 
-public scala.math.BigInt MinLong();
-  Signature: ()Lscala/math/BigInt;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field MinLong:Lscala/math/BigInt;
-	areturn
-  Labels:
 
-private scala.math.BigInt[] cache();
-  Signature: ()[Lscala/math/BigInt;
+private scala.math.BigInt$();
+  Signature: ()V
   Code:
-   Stack=1, Locals=1, Args_size=1
+   Stack=4, Locals=1, Args_size=1
 	aload_0
-	getfield	Field cache:[Lscala/math/BigInt;
-	areturn
-  Labels:
-
-private int maxCached();
-  Signature: ()I
-  Code:
-   Stack=1, Locals=1, Args_size=1
+	invokespecial	Method java/lang/Object."<init>":()V
 	aload_0
-	getfield	Field maxCached:I
-	ireturn
-  Labels:
-
-private int minCached();
-  Signature: ()I
-  Code:
-   Stack=1, Locals=1, Args_size=1
+	putstatic	Field MODULE$:Lscala/math/BigInt$;
 	aload_0
-	getfield	Field minCached:I
-	ireturn
+	ldc	int -1024
+	putfield	Field minCached:I
+	aload_0
+	ldc	int 1024
+	putfield	Field maxCached:I
+	aload_0
+	aload_0
+	invokespecial	Method maxCached:()I
+	aload_0
+	invokespecial	Method minCached:()I
+	isub
+	iconst_1
+	iadd
+	anewarray	class scala/math/BigInt
+	putfield	Field cache:[Lscala/math/BigInt;
+	aload_0
+	aload_0
+	ldc2_w	long -9223372036854775808l
+	invokevirtual	Method apply:(J)Lscala/math/BigInt;
+	putfield	Field MinLong:Lscala/math/BigInt;
+	aload_0
+	aload_0
+	ldc2_w	long 9223372036854775807l
+	invokevirtual	Method apply:(J)Lscala/math/BigInt;
+	putfield	Field MaxLong:Lscala/math/BigInt;
+	return
   Labels:
 
 }

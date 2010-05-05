@@ -2,6 +2,7 @@ Compiled from "SeqLike.scala"
 public abstract class scala.collection.SeqLike$class extends java.lang.Object
   InnerClass: 
    public final $anonfun$hashCode$1=class scala/collection/SeqLike$$anonfun$hashCode$1 of class scala/collection/SeqLike
+   public final $anonfun$contains$1=class scala/collection/SeqLike$$anonfun$contains$1 of class scala/collection/SeqLike
   Scala: length = 0x
    
   SourceFile: "SeqLike.scala"
@@ -15,14 +16,16 @@ class	scala/collection/Iterator
 class	scala/collection/Seq
 class	scala/collection/Seq$
 class	scala/collection/SeqLike
+class	scala/collection/SeqLike$$anonfun$contains$1
 class	scala/collection/SeqLike$$anonfun$hashCode$1
 class	scala/collection/SeqLike$class
-class	scala/collection/TraversableLike
 class	scala/collection/TraversableLike$class
+class	scala/collection/TraversableOnce
 class	scala/math/Ordering
 class	scala/runtime/BoxesRunTime
 Field	scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
 Method	scala/collection/Seq$.hashSeed:()I
+Method	scala/collection/SeqLike$$anonfun$contains$1."<init>":(Lscala/collection/SeqLike;Ljava/lang/Object;)V
 Method	scala/collection/SeqLike$$anonfun$hashCode$1."<init>":(Lscala/collection/SeqLike;)V
 Method	scala/collection/TraversableLike$class.toString:(Lscala/collection/TraversableLike;)Ljava/lang/String;
 Method	scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
@@ -30,6 +33,7 @@ Method	scala/runtime/BoxesRunTime.unboxToBoolean:(Ljava/lang/Object;)Z
 Method	scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
 InterfaceMethod	scala/Function1.apply:(Ljava/lang/Object;)Ljava/lang/Object;
 InterfaceMethod	scala/collection/IterableLike.canEqual:(Ljava/lang/Object;)Z
+InterfaceMethod	scala/collection/IterableLike.exists:(Lscala/Function1;)Z
 InterfaceMethod	scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
 InterfaceMethod	scala/collection/IterableLike.sameElements:(Lscala/collection/Iterable;)Z
 InterfaceMethod	scala/collection/Iterator.drop:(I)Lscala/collection/Iterator;
@@ -37,14 +41,16 @@ InterfaceMethod	scala/collection/Iterator.hasNext:()Z
 InterfaceMethod	scala/collection/Iterator.next:()Ljava/lang/Object;
 InterfaceMethod	scala/collection/SeqLike.length:()I
 InterfaceMethod	scala/collection/SeqLike.segmentLength:(Lscala/Function1;I)I
-InterfaceMethod	scala/collection/TraversableLike.$div$colon:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+InterfaceMethod	scala/collection/TraversableOnce.$div$colon:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
 NameAndType	$div$colon:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
 NameAndType	"<init>":(Lscala/collection/SeqLike;)V
+NameAndType	"<init>":(Lscala/collection/SeqLike;Ljava/lang/Object;)V
 NameAndType	MODULE$:Lscala/collection/Seq$;
 NameAndType	apply:(Ljava/lang/Object;)Ljava/lang/Object;
 NameAndType	boxToInteger:(I)Ljava/lang/Integer;
 NameAndType	canEqual:(Ljava/lang/Object;)Z
 NameAndType	drop:(I)Lscala/collection/Iterator;
+NameAndType	exists:(Lscala/Function1;)Z
 NameAndType	hasNext:()Z
 NameAndType	hashSeed:()I
 NameAndType	iterator:()Lscala/collection/Iterator;
@@ -55,6 +61,7 @@ NameAndType	segmentLength:(Lscala/Function1;I)I
 NameAndType	toString:(Lscala/collection/TraversableLike;)Ljava/lang/String;
 NameAndType	unboxToBoolean:(Ljava/lang/Object;)Z
 NameAndType	unboxToInt:(Ljava/lang/Object;)I
+Asciz	$anonfun$contains$1;
 Asciz	$anonfun$hashCode$1;
 Asciz	$div$colon;
 Asciz	$init$;
@@ -69,12 +76,13 @@ Asciz	(Ljava/lang/Object;)I;
 Asciz	(Ljava/lang/Object;)Ljava/lang/Object;;
 Asciz	(Ljava/lang/Object;)Z;
 Asciz	(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;;
+Asciz	(Lscala/Function1;)Z;
 Asciz	(Lscala/Function1;I)I;
 Asciz	(Lscala/collection/Iterable;)Z;
 Asciz	(Lscala/collection/SeqLike;)I;
 Asciz	(Lscala/collection/SeqLike;)Ljava/lang/String;;
-Asciz	(Lscala/collection/SeqLike;)Lscala/collection/Seq;;
 Asciz	(Lscala/collection/SeqLike;)V;
+Asciz	(Lscala/collection/SeqLike;Ljava/lang/Object;)V;
 Asciz	(Lscala/collection/SeqLike;Ljava/lang/Object;)Z;
 Asciz	(Lscala/collection/SeqLike;Lscala/Function1;)I;
 Asciz	(Lscala/collection/SeqLike;Lscala/Function1;I)I;
@@ -98,8 +106,11 @@ Asciz	SourceFile;
 Asciz	apply;
 Asciz	boxToInteger;
 Asciz	canEqual;
+Asciz	contains;
 Asciz	drop;
+Asciz	elem$4;
 Asciz	equals;
+Asciz	exists;
 Asciz	from;
 Asciz	hasNext;
 Asciz	hashCode;
@@ -119,118 +130,33 @@ Asciz	scala/collection/Iterator;
 Asciz	scala/collection/Seq;
 Asciz	scala/collection/Seq$;
 Asciz	scala/collection/SeqLike;
+Asciz	scala/collection/SeqLike$$anonfun$contains$1;
 Asciz	scala/collection/SeqLike$$anonfun$hashCode$1;
 Asciz	scala/collection/SeqLike$class;
-Asciz	scala/collection/TraversableLike;
 Asciz	scala/collection/TraversableLike$class;
+Asciz	scala/collection/TraversableOnce;
 Asciz	scala/math/Ordering;
 Asciz	scala/runtime/BoxesRunTime;
 Asciz	segmentLength;
 Asciz	size;
 Asciz	temp17;
 Asciz	that;
-Asciz	thisCollection;
 Asciz	toString;
 Asciz	unboxToBoolean;
 Asciz	unboxToInt;
 
 {
-public static void $init$(scala.collection.SeqLike);
-  Signature: (Lscala/collection/SeqLike;)V
-  Code:
-   Stack=0, Locals=1, Args_size=1
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      1      0    $this       Lscala/collection/SeqLike;
-
-
-public static java.lang.String toString(scala.collection.SeqLike);
-  Signature: (Lscala/collection/SeqLike;)Ljava/lang/String;
+public static int size(scala.collection.SeqLike);
+  Signature: (Lscala/collection/SeqLike;)I
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokestatic	Method scala/collection/TraversableLike$class.toString:(Lscala/collection/TraversableLike;)Ljava/lang/String;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      5      0    $this       Lscala/collection/SeqLike;
-
-
-public static boolean equals(scala.collection.SeqLike, java.lang.Object);
-  Signature: (Lscala/collection/SeqLike;Ljava/lang/Object;)Z
-  Code:
-   Stack=2, Locals=3, Args_size=2
-	aload_1
-	instanceof	class scala/collection/Seq
-	ifeq	l1 // iconst_0
-	aload_1
-	checkcast	class scala/collection/Seq
-	astore_2
-	aload_2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/IterableLike.canEqual:(Ljava/lang/Object;)Z
-	ifeq	l2 // iconst_0
-	aload_0
-	aload_2
-	invokeinterface	InterfaceMethod scala/collection/IterableLike.sameElements:(Lscala/collection/Iterable;)Z
-	ifeq	l2 // iconst_0
-	iconst_1
-	goto	l3 // ireturn
-l2	iconst_0
-	goto	l3 // ireturn
-l1	iconst_0
-l3	ireturn
-  Labels:
-   	l2 = 36 // iconst_0
-   	l1 = 40 // iconst_0
-   	l3 = 41 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      42      0    $this       Lscala/collection/SeqLike;
-   0      42      1    that       Ljava/lang/Object;
-   12      28      2    temp17       Lscala/collection/Seq;
-
-
-public static int hashCode(scala.collection.SeqLike);
-  Signature: (Lscala/collection/SeqLike;)I
-  Code:
-   Stack=5, Locals=2, Args_size=1
-	getstatic	Field scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
-	invokevirtual	Method scala/collection/Seq$.hashSeed:()I
-	istore_1
-	aload_0
-	iload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
-	new	class scala/collection/SeqLike$$anonfun$hashCode$1
-	dup
-	aload_0
-	invokespecial	Method scala/collection/SeqLike$$anonfun$hashCode$1."<init>":(Lscala/collection/SeqLike;)V
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.$div$colon:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
 	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      29      0    $this       Lscala/collection/SeqLike;
-
-
-public static int prefixLength(scala.collection.SeqLike, scala.Function1);
-  Signature: (Lscala/collection/SeqLike;Lscala/Function1;)I
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	iconst_0
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.segmentLength:(Lscala/Function1;I)I
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      9      0    $this       Lscala/collection/SeqLike;
-   0      9      1    p       Lscala/Function1;
+   0      7      0    $this       Lscala/collection/SeqLike;
 
 
 public static int segmentLength(scala.collection.SeqLike, scala.Function1, int);
@@ -272,30 +198,121 @@ l1	iload_3
    16      37      4    it       Lscala/collection/Iterator;
 
 
-public static int size(scala.collection.SeqLike);
-  Signature: (Lscala/collection/SeqLike;)I
+public static int prefixLength(scala.collection.SeqLike, scala.Function1);
+  Signature: (Lscala/collection/SeqLike;Lscala/Function1;)I
   Code:
-   Stack=1, Locals=1, Args_size=1
+   Stack=3, Locals=2, Args_size=2
 	aload_0
-	invokeinterface	InterfaceMethod scala/collection/SeqLike.length:()I
+	aload_1
+	iconst_0
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.segmentLength:(Lscala/Function1;I)I
 	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      7      0    $this       Lscala/collection/SeqLike;
+   0      9      0    $this       Lscala/collection/SeqLike;
+   0      9      1    p       Lscala/Function1;
 
 
-public static scala.collection.Seq thisCollection(scala.collection.SeqLike);
-  Signature: (Lscala/collection/SeqLike;)Lscala/collection/Seq;
+public static boolean contains(scala.collection.SeqLike, java.lang.Object);
+  Signature: (Lscala/collection/SeqLike;Ljava/lang/Object;)Z
+  Code:
+   Stack=5, Locals=2, Args_size=2
+	aload_0
+	new	class scala/collection/SeqLike$$anonfun$contains$1
+	dup
+	aload_0
+	aload_1
+	invokespecial	Method scala/collection/SeqLike$$anonfun$contains$1."<init>":(Lscala/collection/SeqLike;Ljava/lang/Object;)V
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.exists:(Lscala/Function1;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      16      0    $this       Lscala/collection/SeqLike;
+   0      16      1    elem$4       Ljava/lang/Object;
+
+
+public static int hashCode(scala.collection.SeqLike);
+  Signature: (Lscala/collection/SeqLike;)I
+  Code:
+   Stack=5, Locals=2, Args_size=1
+	getstatic	Field scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
+	invokevirtual	Method scala/collection/Seq$.hashSeed:()I
+	istore_1
+	aload_0
+	iload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToInteger:(I)Ljava/lang/Integer;
+	new	class scala/collection/SeqLike$$anonfun$hashCode$1
+	dup
+	aload_0
+	invokespecial	Method scala/collection/SeqLike$$anonfun$hashCode$1."<init>":(Lscala/collection/SeqLike;)V
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.$div$colon:(Ljava/lang/Object;Lscala/Function2;)Ljava/lang/Object;
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      29      0    $this       Lscala/collection/SeqLike;
+
+
+public static boolean equals(scala.collection.SeqLike, java.lang.Object);
+  Signature: (Lscala/collection/SeqLike;Ljava/lang/Object;)Z
+  Code:
+   Stack=2, Locals=3, Args_size=2
+	aload_1
+	instanceof	class scala/collection/Seq
+	ifeq	l1 // iconst_0
+	aload_1
+	checkcast	class scala/collection/Seq
+	astore_2
+	aload_2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.canEqual:(Ljava/lang/Object;)Z
+	ifeq	l2 // iconst_0
+	aload_0
+	aload_2
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.sameElements:(Lscala/collection/Iterable;)Z
+	ifeq	l2 // iconst_0
+	iconst_1
+	goto	l3 // ireturn
+l2	iconst_0
+	goto	l3 // ireturn
+l1	iconst_0
+l3	ireturn
+  Labels:
+   	l2 = 36 // iconst_0
+   	l1 = 40 // iconst_0
+   	l3 = 41 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      42      0    $this       Lscala/collection/SeqLike;
+   0      42      1    that       Ljava/lang/Object;
+   12      28      2    temp17       Lscala/collection/Seq;
+
+
+public static java.lang.String toString(scala.collection.SeqLike);
+  Signature: (Lscala/collection/SeqLike;)Ljava/lang/String;
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	checkcast	class scala/collection/Seq
+	invokestatic	Method scala/collection/TraversableLike$class.toString:(Lscala/collection/TraversableLike;)Ljava/lang/String;
 	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      5      0    $this       Lscala/collection/SeqLike;
+
+
+public static void $init$(scala.collection.SeqLike);
+  Signature: (Lscala/collection/SeqLike;)V
+  Code:
+   Stack=0, Locals=1, Args_size=1
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    $this       Lscala/collection/SeqLike;
 
 
 }

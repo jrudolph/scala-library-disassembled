@@ -2,11 +2,8 @@ Compiled from "Iterator.scala"
 public final class scala.collection.Iterator$ extends java.lang.Object
   InnerClass: 
    public final $anon$3=class scala/collection/Iterator$$anon$3 of class scala/collection/Iterator
-   public final $anon$24=class scala/collection/Iterator$$anon$24 of class scala/collection/Iterator
-   public final $anon$21=class scala/collection/Iterator$$anon$21 of class scala/collection/Iterator
-   public final $anon$19=class scala/collection/Iterator$$anon$19 of class scala/collection/Iterator
-   public final $anon$11=class scala/collection/Iterator$$anon$11 of class scala/collection/Iterator
-   public final $anonfun$toStream$1=class scala/collection/Iterator$$anonfun$toStream$1 of class scala/collection/Iterator
+   public final $anon$4=class scala/collection/Iterator$$anon$4 of class scala/collection/Iterator
+   public final $anon$20=class scala/collection/Iterator$$anon$20 of class scala/collection/Iterator
   Scala: length = 0x
    
   SourceFile: "Iterator.scala"
@@ -17,38 +14,38 @@ class	java/lang/Object
 class	scala/collection/IterableLike
 class	scala/collection/Iterator
 class	scala/collection/Iterator$
-class	scala/collection/Iterator$$anon$11
-class	scala/collection/Iterator$$anon$19
-class	scala/collection/Iterator$$anon$21
-class	scala/collection/Iterator$$anon$24
+class	scala/collection/Iterator$$anon$20
 class	scala/collection/Iterator$$anon$3
-class	scala/collection/Iterator$$anonfun$toStream$1
+class	scala/collection/Iterator$$anon$4
 Field	scala/collection/Iterator$.MODULE$:Lscala/collection/Iterator$;
 Field	scala/collection/Iterator$.empty:Lscala/collection/Iterator;
 Method	java/lang/Object."<init>":()V
 Method	scala/collection/Iterator$."<init>":()V
 Method	scala/collection/Iterator$$anon$3."<init>":()V
+Method	scala/collection/Iterator$$anon$4."<init>":(Ljava/lang/Object;)V
 InterfaceMethod	scala/collection/IterableLike.iterator:()Lscala/collection/Iterator;
 NameAndType	"<init>":()V
+NameAndType	"<init>":(Ljava/lang/Object;)V
 NameAndType	MODULE$:Lscala/collection/Iterator$;
 NameAndType	empty:Lscala/collection/Iterator;
 NameAndType	iterator:()Lscala/collection/Iterator;
-Asciz	$anon$11;
-Asciz	$anon$19;
-Asciz	$anon$21;
-Asciz	$anon$24;
+Asciz	$anon$20;
 Asciz	$anon$3;
-Asciz	$anonfun$toStream$1;
+Asciz	$anon$4;
 Asciz	()Lscala/collection/Iterator;;
 Asciz	()V;
+Asciz	(Ljava/lang/Object;)Lscala/collection/Iterator;;
+Asciz	(Ljava/lang/Object;)V;
 Asciz	(Lscala/collection/Seq;)Lscala/collection/Iterator;;
 Asciz	<A:Ljava/lang/Object;>(Lscala/collection/Seq<TA;>;)Lscala/collection/Iterator<TA;>;;
+Asciz	<A:Ljava/lang/Object;>(TA;)Ljava/lang/Object;;
 Asciz	<clinit>;
 Asciz	<init>;
 Asciz	Code;
 Asciz	InnerClasses;
 Asciz	Iterator.scala;
 Asciz	LineNumberTable;
+Asciz	Ljava/lang/Object;;
 Asciz	LocalVariableTable;
 Asciz	Lscala/collection/Iterator$;;
 Asciz	Lscala/collection/Iterator;;
@@ -58,6 +55,7 @@ Asciz	Scala;
 Asciz	Signature;
 Asciz	SourceFile;
 Asciz	apply;
+Asciz	elem$1;
 Asciz	elems;
 Asciz	empty;
 Asciz	iterator;
@@ -65,12 +63,10 @@ Asciz	java/lang/Object;
 Asciz	scala/collection/IterableLike;
 Asciz	scala/collection/Iterator;
 Asciz	scala/collection/Iterator$;
-Asciz	scala/collection/Iterator$$anon$11;
-Asciz	scala/collection/Iterator$$anon$19;
-Asciz	scala/collection/Iterator$$anon$21;
-Asciz	scala/collection/Iterator$$anon$24;
+Asciz	scala/collection/Iterator$$anon$20;
 Asciz	scala/collection/Iterator$$anon$3;
-Asciz	scala/collection/Iterator$$anonfun$toStream$1;
+Asciz	scala/collection/Iterator$$anon$4;
+Asciz	single;
 Asciz	this;
 
 {
@@ -89,21 +85,32 @@ public static {};
 	return
   Labels:
 
-private scala.collection.Iterator$();
-  Signature: ()V
+public scala.collection.Iterator empty();
+  Signature: ()Lscala/collection/Iterator;
   Code:
-   Stack=3, Locals=1, Args_size=1
+   Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokespecial	Method java/lang/Object."<init>":()V
-	aload_0
-	putstatic	Field MODULE$:Lscala/collection/Iterator$;
-	aload_0
-	new	class scala/collection/Iterator$$anon$3
-	dup
-	invokespecial	Method scala/collection/Iterator$$anon$3."<init>":()V
-	putfield	Field empty:Lscala/collection/Iterator;
-	return
+	getfield	Field empty:Lscala/collection/Iterator;
+	areturn
   Labels:
+
+public scala.collection.Iterator single(java.lang.Object);
+  Signature: (Ljava/lang/Object;)Lscala/collection/Iterator;
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	new	class scala/collection/Iterator$$anon$4
+	dup
+	aload_1
+	invokespecial	Method scala/collection/Iterator$$anon$4."<init>":(Ljava/lang/Object;)V
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/collection/Iterator$;
+   0      9      1    elem$1       Ljava/lang/Object;
+
+  Signature: length = 0x2
+   00 1D 
 
 public scala.collection.Iterator apply(scala.collection.Seq);
   Signature: (Lscala/collection/Seq;)Lscala/collection/Iterator;
@@ -119,15 +126,22 @@ public scala.collection.Iterator apply(scala.collection.Seq);
    0      7      1    elems       Lscala/collection/Seq;
 
   Signature: length = 0x2
-   00 1E 
+   00 1C 
 
-public scala.collection.Iterator empty();
-  Signature: ()Lscala/collection/Iterator;
+private scala.collection.Iterator$();
+  Signature: ()V
   Code:
-   Stack=1, Locals=1, Args_size=1
+   Stack=3, Locals=1, Args_size=1
 	aload_0
-	getfield	Field empty:Lscala/collection/Iterator;
-	areturn
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	putstatic	Field MODULE$:Lscala/collection/Iterator$;
+	aload_0
+	new	class scala/collection/Iterator$$anon$3
+	dup
+	invokespecial	Method scala/collection/Iterator$$anon$3."<init>":()V
+	putfield	Field empty:Lscala/collection/Iterator;
+	return
   Labels:
 
 }

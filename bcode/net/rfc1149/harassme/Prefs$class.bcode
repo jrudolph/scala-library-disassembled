@@ -77,18 +77,39 @@ Asciz	toInt;
 Asciz	volume;
 
 {
-public static void $init$(net.rfc1149.harassme.Prefs);
-  Signature: (Lnet/rfc1149/harassme/Prefs;)V
+private static android.content.SharedPreferences sp(net.rfc1149.harassme.Prefs, android.content.Context);
+  Signature: (Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)Landroid/content/SharedPreferences;
   Code:
-   Stack=0, Locals=1, Args_size=1
-	return
+   Stack=1, Locals=2, Args_size=2
+	aload_1
+	invokestatic	Method android/preference/PreferenceManager.getDefaultSharedPreferences:(Landroid/content/Context;)Landroid/content/SharedPreferences;
+	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      1      0    $this       Lnet/rfc1149/harassme/Prefs;
+   0      5      0    $this       Lnet/rfc1149/harassme/Prefs;
+   0      5      1    context       Landroid/content/Context;
 
 
-public static int volume(net.rfc1149.harassme.Prefs, android.content.Context);
+public static boolean serviceActivated(net.rfc1149.harassme.Prefs, android.content.Context);
+  Signature: (Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)Z
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokestatic	Method sp:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)Landroid/content/SharedPreferences;
+	ldc	String serviceactivated
+	iconst_0
+	invokeinterface	InterfaceMethod android/content/SharedPreferences.getBoolean:(Ljava/lang/String;Z)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      14      0    $this       Lnet/rfc1149/harassme/Prefs;
+   0      14      1    context       Landroid/content/Context;
+
+
+public static int callCount(net.rfc1149.harassme.Prefs, android.content.Context);
   Signature: (Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)I
   Code:
    Stack=4, Locals=2, Args_size=2
@@ -96,8 +117,8 @@ public static int volume(net.rfc1149.harassme.Prefs, android.content.Context);
 	aload_0
 	aload_1
 	invokestatic	Method sp:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)Landroid/content/SharedPreferences;
-	ldc	String volume
-	ldc	String 75
+	ldc	String callcount
+	ldc	String 3
 	invokeinterface	InterfaceMethod android/content/SharedPreferences.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/Predef$.augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
 	invokeinterface	InterfaceMethod scala/collection/immutable/StringLike.toInt:()I
@@ -130,7 +151,7 @@ public static int minutesCount(net.rfc1149.harassme.Prefs, android.content.Conte
    0      26      1    context       Landroid/content/Context;
 
 
-public static int callCount(net.rfc1149.harassme.Prefs, android.content.Context);
+public static int volume(net.rfc1149.harassme.Prefs, android.content.Context);
   Signature: (Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)I
   Code:
    Stack=4, Locals=2, Args_size=2
@@ -138,8 +159,8 @@ public static int callCount(net.rfc1149.harassme.Prefs, android.content.Context)
 	aload_0
 	aload_1
 	invokestatic	Method sp:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)Landroid/content/SharedPreferences;
-	ldc	String callcount
-	ldc	String 3
+	ldc	String volume
+	ldc	String 75
 	invokeinterface	InterfaceMethod android/content/SharedPreferences.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	invokevirtual	Method scala/Predef$.augmentString:(Ljava/lang/String;)Lscala/collection/immutable/StringOps;
 	invokeinterface	InterfaceMethod scala/collection/immutable/StringLike.toInt:()I
@@ -151,36 +172,15 @@ public static int callCount(net.rfc1149.harassme.Prefs, android.content.Context)
    0      26      1    context       Landroid/content/Context;
 
 
-public static boolean serviceActivated(net.rfc1149.harassme.Prefs, android.content.Context);
-  Signature: (Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)Z
+public static void $init$(net.rfc1149.harassme.Prefs);
+  Signature: (Lnet/rfc1149/harassme/Prefs;)V
   Code:
-   Stack=3, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	invokestatic	Method sp:(Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)Landroid/content/SharedPreferences;
-	ldc	String serviceactivated
-	iconst_0
-	invokeinterface	InterfaceMethod android/content/SharedPreferences.getBoolean:(Ljava/lang/String;Z)Z
-	ireturn
+   Stack=0, Locals=1, Args_size=1
+	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      14      0    $this       Lnet/rfc1149/harassme/Prefs;
-   0      14      1    context       Landroid/content/Context;
-
-
-private static android.content.SharedPreferences sp(net.rfc1149.harassme.Prefs, android.content.Context);
-  Signature: (Lnet/rfc1149/harassme/Prefs;Landroid/content/Context;)Landroid/content/SharedPreferences;
-  Code:
-   Stack=1, Locals=2, Args_size=2
-	aload_1
-	invokestatic	Method android/preference/PreferenceManager.getDefaultSharedPreferences:(Landroid/content/Context;)Landroid/content/SharedPreferences;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      5      0    $this       Lnet/rfc1149/harassme/Prefs;
-   0      5      1    context       Landroid/content/Context;
+   0      1      0    $this       Lnet/rfc1149/harassme/Prefs;
 
 
 }

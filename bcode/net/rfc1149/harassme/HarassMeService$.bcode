@@ -80,48 +80,40 @@ public static {};
 	return
   Labels:
 
-private net.rfc1149.harassme.HarassMeService$();
-  Signature: ()V
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	invokespecial	Method java/lang/Object."<init>":()V
-	aload_0
-	putstatic	Field MODULE$:Lnet/rfc1149/harassme/HarassMeService$;
-	aload_0
-	iconst_0
-	putfield	Field serviceStarted:Z
-	return
-  Labels:
-
-public boolean serviceRunning();
+private boolean serviceStarted();
   Signature: ()Z
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokespecial	Method serviceStarted:()Z
+	getfield	Field serviceStarted:Z
 	ireturn
   Labels:
 
-public void stopService(android.content.Context);
-  Signature: (Landroid/content/Context;)V
+private void serviceStarted_$eq(boolean);
+  Signature: (Z)V
   Code:
-   Stack=3, Locals=2, Args_size=2
-	aload_1
+   Stack=2, Locals=2, Args_size=2
 	aload_0
-	aload_1
-	invokespecial	Method intent:(Landroid/content/Context;)Landroid/content/Intent;
-	invokevirtual	Method android/content/Context.stopService:(Landroid/content/Intent;)Z
-	pop
-	aload_0
-	iconst_0
-	invokespecial	Method serviceStarted_$eq:(Z)V
+	iload_1
+	putfield	Field serviceStarted:Z
 	return
+  Labels:
+
+private android.content.Intent intent(android.content.Context);
+  Signature: (Landroid/content/Context;)Landroid/content/Intent;
+  Code:
+   Stack=4, Locals=2, Args_size=2
+	new	class android/content/Intent
+	dup
+	aload_1
+	ldc	class net/rfc1149/harassme/HarassMeService
+	invokespecial	Method android/content/Intent."<init>":(Landroid/content/Context;Ljava/lang/Class;)V
+	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      16      0    this       Lnet/rfc1149/harassme/HarassMeService$;
-   0      16      1    context       Landroid/content/Context;
+   0      11      0    this       Lnet/rfc1149/harassme/HarassMeService$;
+   0      11      1    context       Landroid/content/Context;
 
 
 public void startService(android.content.Context);
@@ -145,40 +137,48 @@ public void startService(android.content.Context);
    0      16      1    context       Landroid/content/Context;
 
 
-private android.content.Intent intent(android.content.Context);
-  Signature: (Landroid/content/Context;)Landroid/content/Intent;
+public void stopService(android.content.Context);
+  Signature: (Landroid/content/Context;)V
   Code:
-   Stack=4, Locals=2, Args_size=2
-	new	class android/content/Intent
-	dup
+   Stack=3, Locals=2, Args_size=2
 	aload_1
-	ldc	class net/rfc1149/harassme/HarassMeService
-	invokespecial	Method android/content/Intent."<init>":(Landroid/content/Context;Ljava/lang/Class;)V
-	areturn
+	aload_0
+	aload_1
+	invokespecial	Method intent:(Landroid/content/Context;)Landroid/content/Intent;
+	invokevirtual	Method android/content/Context.stopService:(Landroid/content/Intent;)Z
+	pop
+	aload_0
+	iconst_0
+	invokespecial	Method serviceStarted_$eq:(Z)V
+	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      11      0    this       Lnet/rfc1149/harassme/HarassMeService$;
-   0      11      1    context       Landroid/content/Context;
+   0      16      0    this       Lnet/rfc1149/harassme/HarassMeService$;
+   0      16      1    context       Landroid/content/Context;
 
 
-private void serviceStarted_$eq(boolean);
-  Signature: (Z)V
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	iload_1
-	putfield	Field serviceStarted:Z
-	return
-  Labels:
-
-private boolean serviceStarted();
+public boolean serviceRunning();
   Signature: ()Z
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
-	getfield	Field serviceStarted:Z
+	invokespecial	Method serviceStarted:()Z
 	ireturn
+  Labels:
+
+private net.rfc1149.harassme.HarassMeService$();
+  Signature: ()V
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method java/lang/Object."<init>":()V
+	aload_0
+	putstatic	Field MODULE$:Lnet/rfc1149/harassme/HarassMeService$;
+	aload_0
+	iconst_0
+	putfield	Field serviceStarted:Z
+	return
   Labels:
 
 }

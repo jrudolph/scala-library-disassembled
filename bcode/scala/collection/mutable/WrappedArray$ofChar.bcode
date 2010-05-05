@@ -94,57 +94,86 @@ Asciz	v1;
 public final char[] array;
   Signature: [C
 
-public scala.collection.mutable.WrappedArray$ofChar(char[]);
-  Signature: ([C)V
+public char[] array();
+  Signature: ()[C
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field array:[C
+	areturn
+  Labels:
+
+public scala.reflect.AnyValManifest elemManifest();
+  Signature: ()Lscala/reflect/AnyValManifest;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	getstatic	Field scala/reflect/ClassManifest$.MODULE$:Lscala/reflect/ClassManifest$;
+	invokevirtual	Method scala/reflect/ClassManifest$.Char:()Lscala/reflect/AnyValManifest;
+	areturn
+  Labels:
+  Signature: length = 0x2
+   00 1F 
+
+public int length();
+  Signature: ()I
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method array:()[C
+	arraylength
+	ireturn
+  Labels:
+
+public char apply(int);
+  Signature: (I)C
   Code:
    Stack=2, Locals=2, Args_size=2
 	aload_0
-	aload_1
-	putfield	Field array:[C
+	invokevirtual	Method array:()[C
+	iload_1
+	caload
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/mutable/WrappedArray$ofChar;
+   0      7      1    index       I
+
+
+public void update(int, char);
+  Signature: (IC)V
+  Code:
+   Stack=3, Locals=3, Args_size=3
 	aload_0
-	invokespecial	Method scala/collection/mutable/WrappedArray."<init>":()V
+	invokevirtual	Method array:()[C
+	iload_1
+	iload_2
+	castore
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    this       Lscala/collection/mutable/WrappedArray$ofChar;
+   0      8      1    index       I
+   0      8      2    elem       C
+
+
+public void update(int, java.lang.Object);
+  Signature: (ILjava/lang/Object;)V
+  Code:
+   Stack=3, Locals=3, Args_size=3
+	aload_0
+	iload_1
+	aload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
+	invokevirtual	Method update:(IC)V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      10      0    this       Lscala/collection/mutable/WrappedArray$ofChar;
-   0      10      1    array       [C
-
-
-public java.lang.Object array();
-  Signature: ()Ljava/lang/Object;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method array:()[C
-	areturn
-  Labels:
-
-public scala.reflect.ClassManifest elemManifest();
-  Signature: ()Lscala/reflect/ClassManifest;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method elemManifest:()Lscala/reflect/AnyValManifest;
-	areturn
-  Labels:
-
-public java.lang.Object apply(int);
-  Signature: (I)Ljava/lang/Object;
-  Code:
-   Stack=2, Locals=3, Args_size=2
-	aload_0
-	iload_1
-	invokevirtual	Method apply:(I)C
-	istore_2
-	iload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      11      0    this       Lscala/collection/mutable/WrappedArray$ofChar;
-   0      11      1    index       I
+   0      10      1    index       I
+   0      10      2    elem       Ljava/lang/Object;
 
 
 public java.lang.Object apply(java.lang.Object);
@@ -166,87 +195,58 @@ public java.lang.Object apply(java.lang.Object);
    0      14      1    v1       Ljava/lang/Object;
 
 
-public void update(int, java.lang.Object);
-  Signature: (ILjava/lang/Object;)V
+public java.lang.Object apply(int);
+  Signature: (I)Ljava/lang/Object;
   Code:
-   Stack=3, Locals=3, Args_size=3
+   Stack=2, Locals=3, Args_size=2
 	aload_0
 	iload_1
-	aload_2
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
-	invokevirtual	Method update:(IC)V
+	invokevirtual	Method apply:(I)C
+	istore_2
+	iload_2
+	invokestatic	Method scala/runtime/BoxesRunTime.boxToCharacter:(C)Ljava/lang/Character;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      11      0    this       Lscala/collection/mutable/WrappedArray$ofChar;
+   0      11      1    index       I
+
+
+public scala.reflect.ClassManifest elemManifest();
+  Signature: ()Lscala/reflect/ClassManifest;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method elemManifest:()Lscala/reflect/AnyValManifest;
+	areturn
+  Labels:
+
+public java.lang.Object array();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method array:()[C
+	areturn
+  Labels:
+
+public scala.collection.mutable.WrappedArray$ofChar(char[]);
+  Signature: ([C)V
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	putfield	Field array:[C
+	aload_0
+	invokespecial	Method scala/collection/mutable/WrappedArray."<init>":()V
 	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      10      0    this       Lscala/collection/mutable/WrappedArray$ofChar;
-   0      10      1    index       I
-   0      10      2    elem       Ljava/lang/Object;
+   0      10      1    array       [C
 
-
-public void update(int, char);
-  Signature: (IC)V
-  Code:
-   Stack=3, Locals=3, Args_size=3
-	aload_0
-	invokevirtual	Method array:()[C
-	iload_1
-	iload_2
-	castore
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      8      0    this       Lscala/collection/mutable/WrappedArray$ofChar;
-   0      8      1    index       I
-   0      8      2    elem       C
-
-
-public char apply(int);
-  Signature: (I)C
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	invokevirtual	Method array:()[C
-	iload_1
-	caload
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      7      0    this       Lscala/collection/mutable/WrappedArray$ofChar;
-   0      7      1    index       I
-
-
-public int length();
-  Signature: ()I
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method array:()[C
-	arraylength
-	ireturn
-  Labels:
-
-public scala.reflect.AnyValManifest elemManifest();
-  Signature: ()Lscala/reflect/AnyValManifest;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	getstatic	Field scala/reflect/ClassManifest$.MODULE$:Lscala/reflect/ClassManifest$;
-	invokevirtual	Method scala/reflect/ClassManifest$.Char:()Lscala/reflect/AnyValManifest;
-	areturn
-  Labels:
-  Signature: length = 0x2
-   00 1F 
-
-public char[] array();
-  Signature: ()[C
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field array:[C
-	areturn
-  Labels:
 
 }
 

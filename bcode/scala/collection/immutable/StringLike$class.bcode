@@ -15,6 +15,7 @@ class	java/lang/String
 class	scala/collection/Seq$
 class	scala/collection/SeqLike
 class	scala/collection/TraversableLike
+class	scala/collection/TraversableOnce
 class	scala/collection/immutable/StringLike
 class	scala/collection/immutable/StringLike$$anonfun$format$1
 class	scala/collection/immutable/StringLike$class
@@ -33,7 +34,7 @@ Method	scala/math/ScalaNumber.underlying:()Ljava/lang/Object;
 Method	scala/reflect/Manifest$.Object:()Lscala/reflect/Manifest;
 InterfaceMethod	scala/collection/SeqLike.toString:()Ljava/lang/String;
 InterfaceMethod	scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-InterfaceMethod	scala/collection/TraversableLike.toArray:(Lscala/reflect/ClassManifest;)Ljava/lang/Object;
+InterfaceMethod	scala/collection/TraversableOnce.toArray:(Lscala/reflect/ClassManifest;)Ljava/lang/Object;
 NameAndType	"<init>":(Lscala/collection/immutable/StringLike;)V
 NameAndType	MODULE$:Lscala/collection/Seq$;
 NameAndType	MODULE$:Lscala/reflect/Manifest$;
@@ -61,6 +62,7 @@ Asciz	(Ljava/lang/String;)I;
 Asciz	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;;
 Asciz	(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;;
 Asciz	(Lscala/collection/immutable/StringLike;)I;
+Asciz	(Lscala/collection/immutable/StringLike;)Ljava/lang/String;;
 Asciz	(Lscala/collection/immutable/StringLike;)V;
 Asciz	(Lscala/collection/immutable/StringLike;I)C;
 Asciz	(Lscala/collection/immutable/StringLike;Ljava/lang/Object;)Ljava/lang/Object;;
@@ -78,7 +80,6 @@ Asciz	LocalVariableTable;
 Asciz	Lscala/collection/Seq$;;
 Asciz	Lscala/collection/Seq;;
 Asciz	Lscala/collection/immutable/StringLike;;
-Asciz	Lscala/math/ScalaNumber;;
 Asciz	Lscala/reflect/Manifest$;;
 Asciz	MODULE$;
 Asciz	Object;
@@ -99,6 +100,7 @@ Asciz	java/lang/Object;
 Asciz	java/lang/String;
 Asciz	length;
 Asciz	map;
+Asciz	mkString;
 Asciz	n;
 Asciz	other;
 Asciz	parseInt;
@@ -106,94 +108,59 @@ Asciz	scala$collection$immutable$StringLike$$unwrapArg;
 Asciz	scala/collection/Seq$;
 Asciz	scala/collection/SeqLike;
 Asciz	scala/collection/TraversableLike;
+Asciz	scala/collection/TraversableOnce;
 Asciz	scala/collection/immutable/StringLike;
 Asciz	scala/collection/immutable/StringLike$$anonfun$format$1;
 Asciz	scala/collection/immutable/StringLike$class;
 Asciz	scala/math/ScalaNumber;
 Asciz	scala/reflect/Manifest$;
-Asciz	temp5;
 Asciz	toArray;
 Asciz	toInt;
 Asciz	toString;
 Asciz	underlying;
 
 {
-public static void $init$(scala.collection.immutable.StringLike);
-  Signature: (Lscala/collection/immutable/StringLike;)V
+public static char apply(scala.collection.immutable.StringLike, int);
+  Signature: (Lscala/collection/immutable/StringLike;I)C
   Code:
-   Stack=0, Locals=1, Args_size=1
-	return
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      1      0    $this       Lscala/collection/immutable/StringLike;
-
-
-public static java.lang.String format(scala.collection.immutable.StringLike, scala.collection.Seq);
-  Signature: (Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
-  Code:
-   Stack=5, Locals=2, Args_size=2
+   Stack=2, Locals=2, Args_size=2
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.toString:()Ljava/lang/String;
-	aload_1
-	new	class scala/collection/immutable/StringLike$$anonfun$format$1
-	dup
-	aload_0
-	invokespecial	Method scala/collection/immutable/StringLike$$anonfun$format$1."<init>":(Lscala/collection/immutable/StringLike;)V
-	getstatic	Field scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
-	invokevirtual	Method scala/collection/Seq$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-	checkcast	class scala/collection/TraversableLike
-	getstatic	Field scala/reflect/Manifest$.MODULE$:Lscala/reflect/Manifest$;
-	invokevirtual	Method scala/reflect/Manifest$.Object:()Lscala/reflect/Manifest;
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.toArray:(Lscala/reflect/ClassManifest;)Ljava/lang/Object;
-	checkcast	class "[Ljava/lang/Object;"
-	invokestatic	Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-	areturn
+	iload_1
+	invokevirtual	Method java/lang/String.charAt:(I)C
+	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      47      0    $this       Lscala/collection/immutable/StringLike;
-   0      47      1    args       Lscala/collection/Seq;
+   0      11      0    $this       Lscala/collection/immutable/StringLike;
+   0      11      1    n       I
 
 
-public static final java.lang.Object scala$collection$immutable$StringLike$$unwrapArg(scala.collection.immutable.StringLike, java.lang.Object);
-  Signature: (Lscala/collection/immutable/StringLike;Ljava/lang/Object;)Ljava/lang/Object;
-  Code:
-   Stack=1, Locals=3, Args_size=2
-	aload_1
-	instanceof	class scala/math/ScalaNumber
-	ifeq	l1 // aload_1
-	aload_1
-	checkcast	class scala/math/ScalaNumber
-	astore_2
-	aload_2
-	invokevirtual	Method scala/math/ScalaNumber.underlying:()Ljava/lang/Object;
-	goto	l2 // areturn
-l1	aload_1
-l2	areturn
-  Labels:
-   	l1 = 19 // aload_1
-   	l2 = 20 // areturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      21      0    $this       Lscala/collection/immutable/StringLike;
-   0      21      1    arg       Ljava/lang/Object;
-   12      4      2    temp5       Lscala/math/ScalaNumber;
-
-
-public static int toInt(scala.collection.immutable.StringLike);
+public static int length(scala.collection.immutable.StringLike);
   Signature: (Lscala/collection/immutable/StringLike;)I
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.toString:()Ljava/lang/String;
-	invokestatic	Method java/lang/Integer.parseInt:(Ljava/lang/String;)I
+	invokevirtual	Method java/lang/String.length:()I
 	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
    0      10      0    $this       Lscala/collection/immutable/StringLike;
+
+
+public static java.lang.String mkString(scala.collection.immutable.StringLike);
+  Signature: (Lscala/collection/immutable/StringLike;)Ljava/lang/String;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/SeqLike.toString:()Ljava/lang/String;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    $this       Lscala/collection/immutable/StringLike;
 
 
 public static int compare(scala.collection.immutable.StringLike, java.lang.String);
@@ -212,13 +179,13 @@ public static int compare(scala.collection.immutable.StringLike, java.lang.Strin
    0      11      1    other       Ljava/lang/String;
 
 
-public static int length(scala.collection.immutable.StringLike);
+public static int toInt(scala.collection.immutable.StringLike);
   Signature: (Lscala/collection/immutable/StringLike;)I
   Code:
    Stack=1, Locals=1, Args_size=1
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.toString:()Ljava/lang/String;
-	invokevirtual	Method java/lang/String.length:()I
+	invokestatic	Method java/lang/Integer.parseInt:(Ljava/lang/String;)I
 	ireturn
   Labels:
   LocalVariableTable: 
@@ -226,20 +193,65 @@ public static int length(scala.collection.immutable.StringLike);
    0      10      0    $this       Lscala/collection/immutable/StringLike;
 
 
-public static char apply(scala.collection.immutable.StringLike, int);
-  Signature: (Lscala/collection/immutable/StringLike;I)C
+public static final java.lang.Object scala$collection$immutable$StringLike$$unwrapArg(scala.collection.immutable.StringLike, java.lang.Object);
+  Signature: (Lscala/collection/immutable/StringLike;Ljava/lang/Object;)Ljava/lang/Object;
   Code:
-   Stack=2, Locals=2, Args_size=2
+   Stack=1, Locals=2, Args_size=2
+	aload_1
+	instanceof	class scala/math/ScalaNumber
+	ifeq	l1 // aload_1
+	aload_1
+	checkcast	class scala/math/ScalaNumber
+	invokevirtual	Method scala/math/ScalaNumber.underlying:()Ljava/lang/Object;
+	goto	l2 // areturn
+l1	aload_1
+l2	areturn
+  Labels:
+   	l1 = 17 // aload_1
+   	l2 = 18 // areturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      19      0    $this       Lscala/collection/immutable/StringLike;
+   0      19      1    arg       Ljava/lang/Object;
+
+
+public static java.lang.String format(scala.collection.immutable.StringLike, scala.collection.Seq);
+  Signature: (Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Ljava/lang/String;
+  Code:
+   Stack=5, Locals=2, Args_size=2
 	aload_0
 	invokeinterface	InterfaceMethod scala/collection/SeqLike.toString:()Ljava/lang/String;
-	iload_1
-	invokevirtual	Method java/lang/String.charAt:(I)C
-	ireturn
+	aload_1
+	new	class scala/collection/immutable/StringLike$$anonfun$format$1
+	dup
+	aload_0
+	invokespecial	Method scala/collection/immutable/StringLike$$anonfun$format$1."<init>":(Lscala/collection/immutable/StringLike;)V
+	getstatic	Field scala/collection/Seq$.MODULE$:Lscala/collection/Seq$;
+	invokevirtual	Method scala/collection/Seq$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+	checkcast	class scala/collection/TraversableOnce
+	getstatic	Field scala/reflect/Manifest$.MODULE$:Lscala/reflect/Manifest$;
+	invokevirtual	Method scala/reflect/Manifest$.Object:()Lscala/reflect/Manifest;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.toArray:(Lscala/reflect/ClassManifest;)Ljava/lang/Object;
+	checkcast	class "[Ljava/lang/Object;"
+	invokestatic	Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      11      0    $this       Lscala/collection/immutable/StringLike;
-   0      11      1    n       I
+   0      47      0    $this       Lscala/collection/immutable/StringLike;
+   0      47      1    args       Lscala/collection/Seq;
+
+
+public static void $init$(scala.collection.immutable.StringLike);
+  Signature: (Lscala/collection/immutable/StringLike;)V
+  Code:
+   Stack=0, Locals=1, Args_size=1
+	return
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      1      0    $this       Lscala/collection/immutable/StringLike;
 
 
 }

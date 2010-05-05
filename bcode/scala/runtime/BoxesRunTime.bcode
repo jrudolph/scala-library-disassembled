@@ -1,4 +1,4 @@
-public class scala.runtime.BoxesRunTime extends java.lang.Object
+public final class scala.runtime.BoxesRunTime extends java.lang.Object
   minor version: 0
   major version: 49
   Constant pool:
@@ -19,6 +19,7 @@ Method	java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
 Method	java/lang/Byte.byteValue:()B
 Method	java/lang/Byte.valueOf:(B)Ljava/lang/Byte;
 Method	java/lang/Character.charValue:()C
+Method	java/lang/Character.equals:(Ljava/lang/Object;)Z
 Method	java/lang/Character.valueOf:(C)Ljava/lang/Character;
 Method	java/lang/Double.doubleValue:()D
 Method	java/lang/Double.valueOf:(D)Ljava/lang/Double;
@@ -38,6 +39,7 @@ Method	java/lang/Short.shortValue:()S
 Method	java/lang/Short.valueOf:(S)Ljava/lang/Short;
 Method	scala/runtime/BoxesRunTime.eqTypeCode:(Ljava/lang/Number;)I
 Method	scala/runtime/BoxesRunTime.equalsNumChar:(Ljava/lang/Number;Ljava/lang/Character;)Z
+Method	scala/runtime/BoxesRunTime.equalsNumNum:(Ljava/lang/Number;Ljava/lang/Number;)Z
 NameAndType	"<init>":()V
 NameAndType	booleanValue:()Z
 NameAndType	byteValue:()B
@@ -46,6 +48,7 @@ NameAndType	doubleValue:()D
 NameAndType	eqTypeCode:(Ljava/lang/Number;)I
 NameAndType	equals:(Ljava/lang/Object;)Z
 NameAndType	equalsNumChar:(Ljava/lang/Number;Ljava/lang/Character;)Z
+NameAndType	equalsNumNum:(Ljava/lang/Number;Ljava/lang/Number;)Z
 NameAndType	floatValue:()F
 NameAndType	intValue:()I
 NameAndType	longValue:()J
@@ -73,8 +76,11 @@ Asciz	(D)Ljava/lang/Double;;
 Asciz	(F)Ljava/lang/Float;;
 Asciz	(I)Ljava/lang/Integer;;
 Asciz	(J)Ljava/lang/Long;;
+Asciz	(Ljava/lang/Character;Ljava/lang/Object;)Z;
 Asciz	(Ljava/lang/Number;)I;
 Asciz	(Ljava/lang/Number;Ljava/lang/Character;)Z;
+Asciz	(Ljava/lang/Number;Ljava/lang/Number;)Z;
+Asciz	(Ljava/lang/Number;Ljava/lang/Object;)Z;
 Asciz	(Ljava/lang/Object;)B;
 Asciz	(Ljava/lang/Object;)C;
 Asciz	(Ljava/lang/Object;)D;
@@ -83,7 +89,6 @@ Asciz	(Ljava/lang/Object;)I;
 Asciz	(Ljava/lang/Object;)J;
 Asciz	(Ljava/lang/Object;)S;
 Asciz	(Ljava/lang/Object;)Z;
-Asciz	(Ljava/lang/Object;Ljava/lang/Object;)Z;
 Asciz	(S)Ljava/lang/Short;;
 Asciz	(Z)Ljava/lang/Boolean;;
 Asciz	<init>;
@@ -102,8 +107,10 @@ Asciz	charValue;
 Asciz	doubleValue;
 Asciz	eqTypeCode;
 Asciz	equals;
-Asciz	equals2;
+Asciz	equalsCharObject;
 Asciz	equalsNumChar;
+Asciz	equalsNumNum;
+Asciz	equalsNumObject;
 Asciz	floatValue;
 Asciz	intValue;
 Asciz	java/lang/Boolean;
@@ -382,149 +389,156 @@ l6	bipush	7
    	l5 = 44 // aload_0
    	l6 = 53 // bipush
 
-public static boolean equals2(java.lang.Object, java.lang.Object);
-  Signature: (Ljava/lang/Object;Ljava/lang/Object;)Z
+public static boolean equalsNumObject(java.lang.Number, java.lang.Object);
+  Signature: (Ljava/lang/Number;Ljava/lang/Object;)Z
   Code:
-   Stack=4, Locals=6, Args_size=2
-	aload_0
-	instanceof	class java/lang/Number
-	ifeq	l1 // aload_0
-	aload_0
-	checkcast	class java/lang/Number
-	astore_2
+   Stack=2, Locals=2, Args_size=2
 	aload_1
 	instanceof	class java/lang/Number
-	ifeq	l2 // aload_1
+	ifeq	l1 // aload_1
+	aload_0
 	aload_1
 	checkcast	class java/lang/Number
-	astore_3
-	aload_2
+	invokestatic	Method equalsNumNum:(Ljava/lang/Number;Ljava/lang/Number;)Z
+	ireturn
+l1	aload_1
+	instanceof	class java/lang/Character
+	ifeq	l2 // aload_0
+	aload_0
+	aload_1
+	checkcast	class java/lang/Character
+	invokestatic	Method equalsNumChar:(Ljava/lang/Number;Ljava/lang/Character;)Z
+	ireturn
+l2	aload_0
+	aload_1
+	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+	ireturn
+  Labels:
+   	l1 = 16 // aload_1
+   	l2 = 32 // aload_0
+
+public static boolean equalsNumNum(java.lang.Number, java.lang.Number);
+  Signature: (Ljava/lang/Number;Ljava/lang/Number;)Z
+  Code:
+   Stack=4, Locals=4, Args_size=2
+	aload_0
 	invokestatic	Method eqTypeCode:(Ljava/lang/Number;)I
-	istore	4
-	aload_3
+	istore_2
+	aload_1
 	invokestatic	Method eqTypeCode:(Ljava/lang/Number;)I
-	istore	5
-	iload	5
-	iload	4
-	if_icmple	l3 // iload
-	iload	5
-	goto	l4 // tableswitch
-l3	iload	4
-l4	tableswitch{ //3 to 6
-		3: 80;
-		4: 97;
-		5: 115;
-		6: 133;
-		default: 151 }
-	aload_2
+	istore_3
+	iload_3
+	iload_2
+	if_icmple	l1 // iload_2
+	iload_3
+	goto	l2 // tableswitch
+l1	iload_2
+l2	tableswitch{ //3 to 6
+		3: 52;
+		4: 69;
+		5: 87;
+		6: 105;
+		default: 123 }
+	aload_0
 	invokevirtual	Method java/lang/Number.intValue:()I
-	aload_3
+	aload_1
 	invokevirtual	Method java/lang/Number.intValue:()I
-	if_icmpne	l5 // iconst_0
+	if_icmpne	l3 // iconst_0
+	iconst_1
+	goto	l4 // ireturn
+l3	iconst_0
+l4	ireturn
+	aload_0
+	invokevirtual	Method java/lang/Number.longValue:()J
+	aload_1
+	invokevirtual	Method java/lang/Number.longValue:()J
+	lcmp
+	ifne	l5 // iconst_0
 	iconst_1
 	goto	l6 // ireturn
 l5	iconst_0
 l6	ireturn
-	aload_2
-	invokevirtual	Method java/lang/Number.longValue:()J
-	aload_3
-	invokevirtual	Method java/lang/Number.longValue:()J
-	lcmp
+	aload_0
+	invokevirtual	Method java/lang/Number.floatValue:()F
+	aload_1
+	invokevirtual	Method java/lang/Number.floatValue:()F
+	fcmpl
 	ifne	l7 // iconst_0
 	iconst_1
 	goto	l8 // ireturn
 l7	iconst_0
 l8	ireturn
-	aload_2
-	invokevirtual	Method java/lang/Number.floatValue:()F
-	aload_3
-	invokevirtual	Method java/lang/Number.floatValue:()F
-	fcmpl
+	aload_0
+	invokevirtual	Method java/lang/Number.doubleValue:()D
+	aload_1
+	invokevirtual	Method java/lang/Number.doubleValue:()D
+	dcmpl
 	ifne	l9 // iconst_0
 	iconst_1
 	goto	l10 // ireturn
 l9	iconst_0
 l10	ireturn
-	aload_2
-	invokevirtual	Method java/lang/Number.doubleValue:()D
-	aload_3
-	invokevirtual	Method java/lang/Number.doubleValue:()D
-	dcmpl
-	ifne	l11 // iconst_0
-	iconst_1
-	goto	l12 // ireturn
-l11	iconst_0
-l12	ireturn
-	aload_3
+	aload_1
 	instanceof	class scala/math/ScalaNumber
-	ifeq	l13 // goto
-	aload_2
+	ifeq	l11 // aload_0
+	aload_0
 	instanceof	class scala/math/ScalaNumber
-	ifne	l13 // goto
+	ifne	l11 // aload_0
 	aload_1
 	aload_0
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ireturn
-l13	goto	l14 // goto
-l2	aload_1
-	instanceof	class java/lang/Character
-	ifeq	l14 // goto
-	aload_2
-	aload_1
-	checkcast	class java/lang/Character
-	invokestatic	Method equalsNumChar:(Ljava/lang/Number;Ljava/lang/Character;)Z
-	ireturn
-l14	goto	l15 // aload_0
-l1	aload_0
-	instanceof	class java/lang/Character
-	ifeq	l15 // aload_0
-	aload_0
-	checkcast	class java/lang/Character
-	astore_2
-	aload_1
-	instanceof	class java/lang/Character
-	ifeq	l16 // aload_1
-	aload_2
-	invokevirtual	Method java/lang/Character.charValue:()C
-	aload_1
-	checkcast	class java/lang/Character
-	invokevirtual	Method java/lang/Character.charValue:()C
-	if_icmpne	l17 // iconst_0
-	iconst_1
-	goto	l18 // ireturn
-l17	iconst_0
-l18	ireturn
-l16	aload_1
-	instanceof	class java/lang/Number
-	ifeq	l15 // aload_0
-	aload_1
-	checkcast	class java/lang/Number
-	aload_2
-	invokestatic	Method equalsNumChar:(Ljava/lang/Number;Ljava/lang/Character;)Z
-	ireturn
-l15	aload_0
+l11	aload_0
 	aload_1
 	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
 	ireturn
   Labels:
-   	l3 = 48 // iload
-   	l4 = 50 // tableswitch
-   	l5 = 95 // iconst_0
-   	l6 = 96 // ireturn
-   	l7 = 113 // iconst_0
-   	l8 = 114 // ireturn
-   	l9 = 131 // iconst_0
-   	l10 = 132 // ireturn
-   	l11 = 149 // iconst_0
-   	l12 = 150 // ireturn
-   	l13 = 171 // goto
-   	l2 = 174 // aload_1
-   	l14 = 190 // goto
-   	l1 = 193 // aload_0
-   	l17 = 230 // iconst_0
-   	l18 = 231 // ireturn
-   	l16 = 232 // aload_1
-   	l15 = 248 // aload_0
+   	l1 = 19 // iload_2
+   	l2 = 20 // tableswitch
+   	l3 = 67 // iconst_0
+   	l4 = 68 // ireturn
+   	l5 = 85 // iconst_0
+   	l6 = 86 // ireturn
+   	l7 = 103 // iconst_0
+   	l8 = 104 // ireturn
+   	l9 = 121 // iconst_0
+   	l10 = 122 // ireturn
+   	l11 = 143 // aload_0
+
+public static boolean equalsCharObject(java.lang.Character, java.lang.Object);
+  Signature: (Ljava/lang/Character;Ljava/lang/Object;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_1
+	instanceof	class java/lang/Character
+	ifeq	l1 // aload_1
+	aload_0
+	invokevirtual	Method java/lang/Character.charValue:()C
+	aload_1
+	checkcast	class java/lang/Character
+	invokevirtual	Method java/lang/Character.charValue:()C
+	if_icmpne	l2 // iconst_0
+	iconst_1
+	goto	l3 // ireturn
+l2	iconst_0
+l3	ireturn
+l1	aload_1
+	instanceof	class java/lang/Number
+	ifeq	l4 // aload_0
+	aload_1
+	checkcast	class java/lang/Number
+	aload_0
+	invokestatic	Method equalsNumChar:(Ljava/lang/Number;Ljava/lang/Character;)Z
+	ireturn
+l4	aload_0
+	aload_1
+	invokevirtual	Method java/lang/Character.equals:(Ljava/lang/Object;)Z
+	ireturn
+  Labels:
+   	l2 = 25 // iconst_0
+   	l3 = 26 // ireturn
+   	l1 = 27 // aload_1
+   	l4 = 43 // aload_0
 
 private static boolean equalsNumChar(java.lang.Number, java.lang.Character);
   Signature: (Ljava/lang/Number;Ljava/lang/Character;)Z

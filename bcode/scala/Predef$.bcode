@@ -1,5 +1,7 @@
 Compiled from "Predef.scala"
 public final class scala.Predef$ extends scala.LowPriorityImplicits
+  InnerClass: 
+   public ofRef=class scala/collection/mutable/ArrayOps$ofRef of class scala/collection/mutable/ArrayOps
   Scala: length = 0x
    
   SourceFile: "Predef.scala"
@@ -14,6 +16,8 @@ class	scala/collection/immutable/List$
 class	scala/collection/immutable/Map$
 class	scala/collection/immutable/Set$
 class	scala/collection/immutable/StringOps
+class	scala/collection/mutable/ArrayOps
+class	scala/collection/mutable/ArrayOps$ofRef
 class	scala/collection/mutable/StringBuilder$
 class	scala/package$
 class	scala/runtime/RichInt
@@ -51,6 +55,7 @@ Asciz	<clinit>;
 Asciz	<init>;
 Asciz	Code;
 Asciz	I;
+Asciz	InnerClasses;
 Asciz	LineNumberTable;
 Asciz	Ljava/lang/String;;
 Asciz	LocalVariableTable;
@@ -70,6 +75,7 @@ Asciz	Z;
 Asciz	augmentString;
 Asciz	intWrapper;
 Asciz	java/lang/IllegalArgumentException;
+Asciz	ofRef;
 Asciz	require;
 Asciz	requirement;
 Asciz	requirement failed;
@@ -79,6 +85,8 @@ Asciz	scala/collection/immutable/List$;
 Asciz	scala/collection/immutable/Map$;
 Asciz	scala/collection/immutable/Set$;
 Asciz	scala/collection/immutable/StringOps;
+Asciz	scala/collection/mutable/ArrayOps;
+Asciz	scala/collection/mutable/ArrayOps$ofRef;
 Asciz	scala/collection/mutable/StringBuilder$;
 Asciz	scala/package$;
 Asciz	scala/runtime/RichInt;
@@ -89,11 +97,11 @@ Asciz	x;
 public static final scala.Predef$ MODULE$;
   Signature: Lscala/Predef$;
 
-private final scala.collection.immutable.Set$ Set;
-  Signature: Lscala/collection/immutable/Set$;
-
 private final scala.collection.immutable.Map$ Map;
   Signature: Lscala/collection/immutable/Map$;
+
+private final scala.collection.immutable.Set$ Set;
+  Signature: Lscala/collection/immutable/Set$;
 
 public static {};
   Signature: ()V
@@ -103,6 +111,58 @@ public static {};
 	invokespecial	Method "<init>":()V
 	return
   Labels:
+
+public void require(boolean);
+  Signature: (Z)V
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	iload_1
+	ifeq	l1 // new
+	return
+l1	new	class java/lang/IllegalArgumentException
+	dup
+	ldc	String requirement failed
+	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+	athrow
+  Labels:
+   	l1 = 5 // new
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      15      0    this       Lscala/Predef$;
+   0      15      1    requirement       Z
+
+
+public scala.runtime.RichInt intWrapper(int);
+  Signature: (I)Lscala/runtime/RichInt;
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	new	class scala/runtime/RichInt
+	dup
+	iload_1
+	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/Predef$;
+   0      9      1    x       I
+
+
+public scala.collection.immutable.StringOps augmentString(java.lang.String);
+  Signature: (Ljava/lang/String;)Lscala/collection/immutable/StringOps;
+  Code:
+   Stack=3, Locals=2, Args_size=2
+	new	class scala/collection/immutable/StringOps
+	dup
+	aload_1
+	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      9      0    this       Lscala/Predef$;
+   0      9      1    x       Ljava/lang/String;
+
 
 private scala.Predef$();
   Signature: ()V
@@ -126,54 +186,6 @@ private scala.Predef$();
 	putfield	Field Set:Lscala/collection/immutable/Set$;
 	return
   Labels:
-
-public scala.collection.immutable.StringOps augmentString(java.lang.String);
-  Signature: (Ljava/lang/String;)Lscala/collection/immutable/StringOps;
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	new	class scala/collection/immutable/StringOps
-	dup
-	aload_1
-	invokespecial	Method scala/collection/immutable/StringOps."<init>":(Ljava/lang/String;)V
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      9      0    this       Lscala/Predef$;
-   0      9      1    x       Ljava/lang/String;
-
-
-public scala.runtime.RichInt intWrapper(int);
-  Signature: (I)Lscala/runtime/RichInt;
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	new	class scala/runtime/RichInt
-	dup
-	iload_1
-	invokespecial	Method scala/runtime/RichInt."<init>":(I)V
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      9      0    this       Lscala/Predef$;
-   0      9      1    x       I
-
-
-public void require(boolean);
-  Signature: (Z)V
-  Code:
-   Stack=3, Locals=2, Args_size=2
-	iload_1
-	ifeq	l1 // new
-	return
-l1	new	class java/lang/IllegalArgumentException
-	dup
-	ldc	String requirement failed
-	invokespecial	Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
-	athrow
-  Labels:
-   	l1 = 5 // new
-
 
 }
 

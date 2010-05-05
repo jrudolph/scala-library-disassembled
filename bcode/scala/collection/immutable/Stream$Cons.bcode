@@ -78,20 +78,20 @@ Asciz	tlVal;
 public static final long serialVersionUID;
   Signature: J
 
-private scala.collection.immutable.Stream tlVal;
-  Signature: Lscala/collection/immutable/Stream;
+private final java.lang.Object hd;
+  Signature: Ljava/lang/Object;
   Signature: length = 0x2
-   00 2D 
+   00 32 
 
 public final scala.Function0 tl;
   Signature: Lscala/Function0;
   Signature: length = 0x2
    00 2A 
 
-private final java.lang.Object hd;
-  Signature: Ljava/lang/Object;
+private scala.collection.immutable.Stream tlVal;
+  Signature: Lscala/collection/immutable/Stream;
   Signature: length = 0x2
-   00 32 
+   00 2D 
 
 public static {};
   Signature: ()V
@@ -100,6 +100,70 @@ public static {};
 	ldc2_w	long -602202424901551803l
 	putstatic	Field serialVersionUID:J
 	return
+  Labels:
+
+public boolean isEmpty();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	iconst_0
+	ireturn
+  Labels:
+
+public java.lang.Object head();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field hd:Ljava/lang/Object;
+	areturn
+  Labels:
+  Signature: length = 0x2
+   00 1A 
+
+public boolean tailDefined();
+  Signature: ()Z
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	getfield	Field tlVal:Lscala/collection/immutable/Stream;
+	ifnull	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 11 // iconst_0
+   	l2 = 12 // ireturn
+
+public scala.collection.immutable.Stream tail();
+  Signature: ()Lscala/collection/immutable/Stream;
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method tailDefined:()Z
+	ifne	l1 // aload_0
+	aload_0
+	aload_0
+	getfield	Field tl:Lscala/Function0;
+	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
+	checkcast	class scala/collection/immutable/Stream
+	putfield	Field tlVal:Lscala/collection/immutable/Stream;
+l1	aload_0
+	getfield	Field tlVal:Lscala/collection/immutable/Stream;
+	areturn
+  Labels:
+   	l1 = 23 // aload_0
+  Signature: length = 0x2
+   00 19 
+
+public java.lang.Object tail();
+  Signature: ()Ljava/lang/Object;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method tail:()Lscala/collection/immutable/Stream;
+	areturn
   Labels:
 
 public scala.collection.immutable.Stream$Cons(java.lang.Object, scala.Function0);
@@ -124,70 +188,6 @@ public scala.collection.immutable.Stream$Cons(java.lang.Object, scala.Function0)
 
   Signature: length = 0x2
    00 1E 
-
-public java.lang.Object tail();
-  Signature: ()Ljava/lang/Object;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method tail:()Lscala/collection/immutable/Stream;
-	areturn
-  Labels:
-
-public scala.collection.immutable.Stream tail();
-  Signature: ()Lscala/collection/immutable/Stream;
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method tailDefined:()Z
-	ifne	l1 // aload_0
-	aload_0
-	aload_0
-	getfield	Field tl:Lscala/Function0;
-	invokeinterface	InterfaceMethod scala/Function0.apply:()Ljava/lang/Object;
-	checkcast	class scala/collection/immutable/Stream
-	putfield	Field tlVal:Lscala/collection/immutable/Stream;
-l1	aload_0
-	getfield	Field tlVal:Lscala/collection/immutable/Stream;
-	areturn
-  Labels:
-   	l1 = 23 // aload_0
-  Signature: length = 0x2
-   00 19 
-
-public boolean tailDefined();
-  Signature: ()Z
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field tlVal:Lscala/collection/immutable/Stream;
-	ifnull	l1 // iconst_0
-	iconst_1
-	goto	l2 // ireturn
-l1	iconst_0
-l2	ireturn
-  Labels:
-   	l1 = 11 // iconst_0
-   	l2 = 12 // ireturn
-
-public java.lang.Object head();
-  Signature: ()Ljava/lang/Object;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	getfield	Field hd:Ljava/lang/Object;
-	areturn
-  Labels:
-  Signature: length = 0x2
-   00 1A 
-
-public boolean isEmpty();
-  Signature: ()Z
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	iconst_0
-	ireturn
-  Labels:
 
 }
 

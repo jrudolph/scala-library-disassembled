@@ -64,6 +64,7 @@ Asciz	getClass;
 Asciz	i;
 Asciz	isArray;
 Asciz	isAssignableFrom;
+Asciz	j;
 Asciz	java/lang/Class;
 Asciz	java/lang/Object;
 Asciz	java/lang/System;
@@ -75,6 +76,7 @@ Asciz	slowcopy;
 Asciz	src;
 Asciz	srcClass;
 Asciz	srcPos;
+Asciz	srcUntil;
 Asciz	this;
 
 {
@@ -90,16 +92,54 @@ public static {};
 	return
   Labels:
 
-private scala.Array$();
-  Signature: ()V
+private void slowcopy(java.lang.Object, int, java.lang.Object, int, int);
+  Signature: (Ljava/lang/Object;ILjava/lang/Object;II)V
   Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokespecial	Method scala/FallbackArrayBuilding."<init>":()V
-	aload_0
-	putstatic	Field MODULE$:Lscala/Array$;
-	return
+   Stack=6, Locals=9, Args_size=6
+	iload_2
+	istore	6
+	iload	4
+	istore	7
+	iload_2
+	iload	5
+	iadd
+	istore	8
+l2	iload	6
+	iload	8
+	if_icmpge	l1 // return
+	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
+	aload_3
+	iload	7
+	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
+	aload_1
+	iload	6
+	invokevirtual	Method scala/runtime/ScalaRunTime$.array_apply:(Ljava/lang/Object;I)Ljava/lang/Object;
+	invokevirtual	Method scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
+	iload	6
+	iconst_1
+	iadd
+	istore	6
+	iload	7
+	iconst_1
+	iadd
+	istore	7
+	goto	l2 // iload
+l1	return
   Labels:
+   	l2 = 13 // iload
+   	l1 = 53 // return
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      54      0    this       Lscala/Array$;
+   0      54      1    src       Ljava/lang/Object;
+   0      54      2    srcPos       I
+   0      54      3    dest       Ljava/lang/Object;
+   0      54      4    destPos       I
+   0      54      5    length       I
+   3      51      6    i       I
+   7      47      7    j       I
+   13      41      8    srcUntil       I
+
 
 public void copy(java.lang.Object, int, java.lang.Object, int, int);
   Signature: (Ljava/lang/Object;ILjava/lang/Object;II)V
@@ -145,42 +185,16 @@ l2	return
    6      45      6    srcClass       Ljava/lang/Class;
 
 
-private void slowcopy(java.lang.Object, int, java.lang.Object, int, int);
-  Signature: (Ljava/lang/Object;ILjava/lang/Object;II)V
+private scala.Array$();
+  Signature: ()V
   Code:
-   Stack=6, Locals=7, Args_size=6
-	iconst_0
-	istore	6
-l2	iload	6
-	iload	5
-	if_icmpge	l1 // return
-	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
-	aload_3
-	iload	6
-	getstatic	Field scala/runtime/ScalaRunTime$.MODULE$:Lscala/runtime/ScalaRunTime$;
-	aload_1
-	iload	6
-	invokevirtual	Method scala/runtime/ScalaRunTime$.array_apply:(Ljava/lang/Object;I)Ljava/lang/Object;
-	invokevirtual	Method scala/runtime/ScalaRunTime$.array_update:(Ljava/lang/Object;ILjava/lang/Object;)V
-	iload	6
-	iconst_1
-	iadd
-	istore	6
-	goto	l2 // iload
-l1	return
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method scala/FallbackArrayBuilding."<init>":()V
+	aload_0
+	putstatic	Field MODULE$:Lscala/Array$;
+	return
   Labels:
-   	l2 = 3 // iload
-   	l1 = 37 // return
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      38      0    this       Lscala/Array$;
-   0      38      1    src       Ljava/lang/Object;
-   0      38      2    srcPos       I
-   0      38      3    dest       Ljava/lang/Object;
-   0      38      4    destPos       I
-   0      38      5    length       I
-   3      35      6    i       I
-
 
 }
 

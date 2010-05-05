@@ -1,8 +1,8 @@
 Compiled from "SetLike.scala"
 public abstract class scala.collection.SetLike$class extends java.lang.Object
   InnerClass: 
-   public final $anonfun$subsetOf$1=class scala/collection/SetLike$$anonfun$subsetOf$1 of class scala/collection/SetLike
    public final $anonfun$hashCode$1=class scala/collection/SetLike$$anonfun$hashCode$1 of class scala/collection/SetLike
+   public final $anonfun$subsetOf$1=class scala/collection/SetLike$$anonfun$subsetOf$1 of class scala/collection/SetLike
   Scala: length = 0x
    
   SourceFile: "SetLike.scala"
@@ -21,6 +21,7 @@ class	scala/collection/SetLike$$anonfun$subsetOf$1
 class	scala/collection/SetLike$class
 class	scala/collection/TraversableLike
 class	scala/collection/TraversableLike$class
+class	scala/collection/TraversableOnce
 class	scala/collection/mutable/AddingBuilder
 class	scala/math/Numeric$IntIsIntegral$
 class	scala/runtime/BoxesRunTime
@@ -39,8 +40,8 @@ InterfaceMethod	scala/collection/SetLike.contains:(Ljava/lang/Object;)Z
 InterfaceMethod	scala/collection/SetLike.empty:()Lscala/collection/Set;
 InterfaceMethod	scala/collection/SetLike.subsetOf:(Lscala/collection/Set;)Z
 InterfaceMethod	scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-InterfaceMethod	scala/collection/TraversableLike.size:()I
-InterfaceMethod	scala/collection/TraversableLike.sum:(Lscala/math/Numeric;)Ljava/lang/Object;
+InterfaceMethod	scala/collection/TraversableOnce.size:()I
+InterfaceMethod	scala/collection/TraversableOnce.sum:(Lscala/math/Numeric;)Ljava/lang/Object;
 NameAndType	"<init>":(Lscala/collection/SetLike;)V
 NameAndType	"<init>":(Lscala/collection/SetLike;Lscala/collection/Set;)V
 NameAndType	"<init>":(Lscala/collection/generic/Addable;)V
@@ -122,6 +123,7 @@ Asciz	scala/collection/SetLike$$anonfun$subsetOf$1;
 Asciz	scala/collection/SetLike$class;
 Asciz	scala/collection/TraversableLike;
 Asciz	scala/collection/TraversableLike$class;
+Asciz	scala/collection/TraversableOnce;
 Asciz	scala/collection/mutable/AddingBuilder;
 Asciz	scala/math/Numeric$IntIsIntegral$;
 Asciz	scala/runtime/BoxesRunTime;
@@ -136,15 +138,166 @@ Asciz	toString;
 Asciz	unboxToInt;
 
 {
-public static void $init$(scala.collection.SetLike);
-  Signature: (Lscala/collection/SetLike;)V
+public static scala.collection.mutable.Builder newBuilder(scala.collection.SetLike);
+  Signature: (Lscala/collection/SetLike;)Lscala/collection/mutable/Builder;
   Code:
-   Stack=0, Locals=1, Args_size=1
-	return
+   Stack=3, Locals=1, Args_size=1
+	new	class scala/collection/mutable/AddingBuilder
+	dup
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/SetLike.empty:()Lscala/collection/Set;
+	invokespecial	Method scala/collection/mutable/AddingBuilder."<init>":(Lscala/collection/generic/Addable;)V
+	areturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      1      0    $this       Lscala/collection/SetLike;
+   0      14      0    $this       Lscala/collection/SetLike;
+
+
+public static boolean isEmpty(scala.collection.SetLike);
+  Signature: (Lscala/collection/SetLike;)Z
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.size:()I
+	iconst_0
+	if_icmpne	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 14 // iconst_0
+   	l2 = 15 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      16      0    $this       Lscala/collection/SetLike;
+
+
+public static boolean apply(scala.collection.SetLike, java.lang.Object);
+  Signature: (Lscala/collection/SetLike;Ljava/lang/Object;)Z
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/SetLike.contains:(Ljava/lang/Object;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    $this       Lscala/collection/SetLike;
+   0      8      1    elem       Ljava/lang/Object;
+
+
+public static boolean subsetOf(scala.collection.SetLike, scala.collection.Set);
+  Signature: (Lscala/collection/SetLike;Lscala/collection/Set;)Z
+  Code:
+   Stack=5, Locals=2, Args_size=2
+	aload_0
+	new	class scala/collection/SetLike$$anonfun$subsetOf$1
+	dup
+	aload_0
+	aload_1
+	invokespecial	Method scala/collection/SetLike$$anonfun$subsetOf$1."<init>":(Lscala/collection/SetLike;Lscala/collection/Set;)V
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.forall:(Lscala/Function1;)Z
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      16      0    $this       Lscala/collection/SetLike;
+   0      16      1    that$1       Lscala/collection/Set;
+
+
+public static java.lang.String stringPrefix(scala.collection.SetLike);
+  Signature: (Lscala/collection/SetLike;)Ljava/lang/String;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	ldc	String Set
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      3      0    $this       Lscala/collection/SetLike;
+
+
+public static java.lang.String toString(scala.collection.SetLike);
+  Signature: (Lscala/collection/SetLike;)Ljava/lang/String;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokestatic	Method scala/collection/TraversableLike$class.toString:(Lscala/collection/TraversableLike;)Ljava/lang/String;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      5      0    $this       Lscala/collection/SetLike;
+
+
+public static int hashCode(scala.collection.SetLike);
+  Signature: (Lscala/collection/SetLike;)I
+  Code:
+   Stack=4, Locals=1, Args_size=1
+	aload_0
+	new	class scala/collection/SetLike$$anonfun$hashCode$1
+	dup
+	aload_0
+	invokespecial	Method scala/collection/SetLike$$anonfun$hashCode$1."<init>":(Lscala/collection/SetLike;)V
+	getstatic	Field scala/collection/Set$.MODULE$:Lscala/collection/Set$;
+	invokevirtual	Method scala/collection/Set$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
+	invokeinterface	InterfaceMethod scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+	checkcast	class scala/collection/TraversableOnce
+	getstatic	Field scala/math/Numeric$IntIsIntegral$.MODULE$:Lscala/math/Numeric$IntIsIntegral$;
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.sum:(Lscala/math/Numeric;)Ljava/lang/Object;
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      35      0    $this       Lscala/collection/SetLike;
+
+
+public static boolean equals(scala.collection.SetLike, java.lang.Object);
+  Signature: (Lscala/collection/SetLike;Ljava/lang/Object;)Z
+  Code:
+   Stack=2, Locals=3, Args_size=2
+	aload_1
+	instanceof	class scala/collection/Set
+	ifeq	l1 // iconst_0
+	aload_1
+	checkcast	class scala/collection/Set
+	astore_2
+	aload_0
+	aload_2
+	if_acmpeq	l2 // iconst_1
+	aload_2
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.canEqual:(Ljava/lang/Object;)Z
+	ifeq	l3 // iconst_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.size:()I
+	aload_2
+	invokeinterface	InterfaceMethod scala/collection/TraversableOnce.size:()I
+	if_icmpne	l3 // iconst_0
+	aload_0
+	aload_2
+	invokestatic	Method liftedTree1$1:(Lscala/collection/SetLike;Lscala/collection/Set;)Z
+	ifeq	l3 // iconst_0
+l2	iconst_1
+	goto	l4 // ireturn
+l3	iconst_0
+	goto	l4 // ireturn
+l1	iconst_0
+l4	ireturn
+  Labels:
+   	l2 = 50 // iconst_1
+   	l3 = 54 // iconst_0
+   	l1 = 58 // iconst_0
+   	l4 = 59 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      60      0    $this       Lscala/collection/SetLike;
+   0      60      1    that       Ljava/lang/Object;
+   12      46      2    temp2       Lscala/collection/Set;
 
 
 private static final boolean liftedTree1$1(scala.collection.SetLike, scala.collection.Set);
@@ -173,166 +326,15 @@ l1	iload_2
    0      15      2    exceptionResult1       Z
 
 
-public static boolean equals(scala.collection.SetLike, java.lang.Object);
-  Signature: (Lscala/collection/SetLike;Ljava/lang/Object;)Z
+public static void $init$(scala.collection.SetLike);
+  Signature: (Lscala/collection/SetLike;)V
   Code:
-   Stack=2, Locals=3, Args_size=2
-	aload_1
-	instanceof	class scala/collection/Set
-	ifeq	l1 // iconst_0
-	aload_1
-	checkcast	class scala/collection/Set
-	astore_2
-	aload_0
-	aload_2
-	if_acmpeq	l2 // iconst_1
-	aload_2
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/IterableLike.canEqual:(Ljava/lang/Object;)Z
-	ifeq	l3 // iconst_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.size:()I
-	aload_2
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.size:()I
-	if_icmpne	l3 // iconst_0
-	aload_0
-	aload_2
-	invokestatic	Method liftedTree1$1:(Lscala/collection/SetLike;Lscala/collection/Set;)Z
-	ifeq	l3 // iconst_0
-l2	iconst_1
-	goto	l4 // ireturn
-l3	iconst_0
-	goto	l4 // ireturn
-l1	iconst_0
-l4	ireturn
-  Labels:
-   	l2 = 50 // iconst_1
-   	l3 = 54 // iconst_0
-   	l1 = 58 // iconst_0
-   	l4 = 59 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      60      0    $this       Lscala/collection/SetLike;
-   0      60      1    that       Ljava/lang/Object;
-   12      46      2    temp2       Lscala/collection/Set;
-
-
-public static int hashCode(scala.collection.SetLike);
-  Signature: (Lscala/collection/SetLike;)I
-  Code:
-   Stack=4, Locals=1, Args_size=1
-	aload_0
-	new	class scala/collection/SetLike$$anonfun$hashCode$1
-	dup
-	aload_0
-	invokespecial	Method scala/collection/SetLike$$anonfun$hashCode$1."<init>":(Lscala/collection/SetLike;)V
-	getstatic	Field scala/collection/Set$.MODULE$:Lscala/collection/Set$;
-	invokevirtual	Method scala/collection/Set$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
-	checkcast	class scala/collection/TraversableLike
-	getstatic	Field scala/math/Numeric$IntIsIntegral$.MODULE$:Lscala/math/Numeric$IntIsIntegral$;
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.sum:(Lscala/math/Numeric;)Ljava/lang/Object;
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-	ireturn
+   Stack=0, Locals=1, Args_size=1
+	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      35      0    $this       Lscala/collection/SetLike;
-
-
-public static java.lang.String toString(scala.collection.SetLike);
-  Signature: (Lscala/collection/SetLike;)Ljava/lang/String;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokestatic	Method scala/collection/TraversableLike$class.toString:(Lscala/collection/TraversableLike;)Ljava/lang/String;
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      5      0    $this       Lscala/collection/SetLike;
-
-
-public static java.lang.String stringPrefix(scala.collection.SetLike);
-  Signature: (Lscala/collection/SetLike;)Ljava/lang/String;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	ldc	String Set
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      3      0    $this       Lscala/collection/SetLike;
-
-
-public static boolean subsetOf(scala.collection.SetLike, scala.collection.Set);
-  Signature: (Lscala/collection/SetLike;Lscala/collection/Set;)Z
-  Code:
-   Stack=5, Locals=2, Args_size=2
-	aload_0
-	new	class scala/collection/SetLike$$anonfun$subsetOf$1
-	dup
-	aload_0
-	aload_1
-	invokespecial	Method scala/collection/SetLike$$anonfun$subsetOf$1."<init>":(Lscala/collection/SetLike;Lscala/collection/Set;)V
-	invokeinterface	InterfaceMethod scala/collection/IterableLike.forall:(Lscala/Function1;)Z
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      16      0    $this       Lscala/collection/SetLike;
-   0      16      1    that$1       Lscala/collection/Set;
-
-
-public static boolean apply(scala.collection.SetLike, java.lang.Object);
-  Signature: (Lscala/collection/SetLike;Ljava/lang/Object;)Z
-  Code:
-   Stack=2, Locals=2, Args_size=2
-	aload_0
-	aload_1
-	invokeinterface	InterfaceMethod scala/collection/SetLike.contains:(Ljava/lang/Object;)Z
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      8      0    $this       Lscala/collection/SetLike;
-   0      8      1    elem       Ljava/lang/Object;
-
-
-public static boolean isEmpty(scala.collection.SetLike);
-  Signature: (Lscala/collection/SetLike;)Z
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/TraversableLike.size:()I
-	iconst_0
-	if_icmpne	l1 // iconst_0
-	iconst_1
-	goto	l2 // ireturn
-l1	iconst_0
-l2	ireturn
-  Labels:
-   	l1 = 14 // iconst_0
-   	l2 = 15 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      16      0    $this       Lscala/collection/SetLike;
-
-
-public static scala.collection.mutable.Builder newBuilder(scala.collection.SetLike);
-  Signature: (Lscala/collection/SetLike;)Lscala/collection/mutable/Builder;
-  Code:
-   Stack=3, Locals=1, Args_size=1
-	new	class scala/collection/mutable/AddingBuilder
-	dup
-	aload_0
-	invokeinterface	InterfaceMethod scala/collection/SetLike.empty:()Lscala/collection/Set;
-	invokespecial	Method scala/collection/mutable/AddingBuilder."<init>":(Lscala/collection/generic/Addable;)V
-	areturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      14      0    $this       Lscala/collection/SetLike;
+   0      1      0    $this       Lscala/collection/SetLike;
 
 
 }

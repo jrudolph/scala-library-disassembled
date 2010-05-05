@@ -28,7 +28,6 @@ Method	java/lang/Number.floatValue:()F
 Method	java/lang/Number.intValue:()I
 Method	java/lang/Number.longValue:()J
 Method	java/lang/Number.shortValue:()S
-Method	java/lang/Object.equals:(Ljava/lang/Object;)Z
 Method	java/lang/Object.hashCode:()I
 Method	scala/math/ScalaNumber.isWhole:()Z
 Method	scala/runtime/BoxesRunTime.boxToLong:(J)Ljava/lang/Long;
@@ -52,7 +51,6 @@ InterfaceMethod	scala/math/ScalaNumericConversions.toShort:()S
 NameAndType	boxToLong:(J)Ljava/lang/Long;
 NameAndType	byteValue:()B
 NameAndType	doubleValue:()D
-NameAndType	equals:(Ljava/lang/Object;)Z
 NameAndType	floatValue:()F
 NameAndType	hashCode:()I
 NameAndType	intValue:()I
@@ -93,7 +91,6 @@ Asciz	(Ljava/lang/Object;)F;
 Asciz	(Ljava/lang/Object;)I;
 Asciz	(Ljava/lang/Object;)J;
 Asciz	(Ljava/lang/Object;)S;
-Asciz	(Ljava/lang/Object;)Z;
 Asciz	(Lscala/math/ScalaNumericConversions;)B;
 Asciz	(Lscala/math/ScalaNumericConversions;)D;
 Asciz	(Lscala/math/ScalaNumericConversions;)F;
@@ -103,26 +100,18 @@ Asciz	(Lscala/math/ScalaNumericConversions;)S;
 Asciz	(Lscala/math/ScalaNumericConversions;)V;
 Asciz	(Lscala/math/ScalaNumericConversions;)Z;
 Asciz	(Lscala/math/ScalaNumericConversions;Ljava/lang/Object;)Z;
-Asciz	B;
-Asciz	C;
 Asciz	Code;
-Asciz	D;
-Asciz	F;
-Asciz	I;
 Asciz	J;
 Asciz	LineNumberTable;
-Asciz	Ljava/lang/Number;;
 Asciz	Ljava/lang/Object;;
 Asciz	LocalVariableTable;
 Asciz	Lscala/math/ScalaNumericConversions;;
-Asciz	S;
 Asciz	Scala;
 Asciz	ScalaNumericConversions.scala;
 Asciz	SourceFile;
 Asciz	boxToLong;
 Asciz	byteValue;
 Asciz	doubleValue;
-Asciz	equals;
 Asciz	floatValue;
 Asciz	hashCode;
 Asciz	intValue;
@@ -147,14 +136,6 @@ Asciz	scala/math/ScalaNumericConversions;
 Asciz	scala/math/ScalaNumericConversions$class;
 Asciz	scala/runtime/BoxesRunTime;
 Asciz	shortValue;
-Asciz	temp2;
-Asciz	temp3;
-Asciz	temp4;
-Asciz	temp5;
-Asciz	temp6;
-Asciz	temp7;
-Asciz	temp8;
-Asciz	temp9;
 Asciz	toByte;
 Asciz	toDouble;
 Asciz	toFloat;
@@ -173,175 +154,193 @@ Asciz	unifiedPrimitiveHashcode;
 Asciz	x;
 
 {
-public static void $init$(scala.math.ScalaNumericConversions);
-  Signature: (Lscala/math/ScalaNumericConversions;)V
+public static byte toByte(scala.math.ScalaNumericConversions);
+  Signature: (Lscala/math/ScalaNumericConversions;)B
   Code:
-   Stack=0, Locals=1, Args_size=1
-	return
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	checkcast	class java/lang/Number
+	invokevirtual	Method java/lang/Number.byteValue:()B
+	ireturn
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      1      0    $this       Lscala/math/ScalaNumericConversions;
+   0      8      0    $this       Lscala/math/ScalaNumericConversions;
 
 
-public static boolean unifiedPrimitiveEquals(scala.math.ScalaNumericConversions, java.lang.Object);
-  Signature: (Lscala/math/ScalaNumericConversions;Ljava/lang/Object;)Z
+public static short toShort(scala.math.ScalaNumericConversions);
+  Signature: (Lscala/math/ScalaNumericConversions;)S
   Code:
-   Stack=4, Locals=12, Args_size=2
-	aload_1
-	instanceof	class java/lang/Character
-	ifeq	l1 // aload_1
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
-	istore_2
+   Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.isValidChar:()Z
-	ifeq	l2 // iconst_0
+	checkcast	class java/lang/Number
+	invokevirtual	Method java/lang/Number.shortValue:()S
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    $this       Lscala/math/ScalaNumericConversions;
+
+
+public static int toInt(scala.math.ScalaNumericConversions);
+  Signature: (Lscala/math/ScalaNumericConversions;)I
+  Code:
+   Stack=1, Locals=1, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toInt:()I
-	iload_2
-	if_icmpne	l2 // iconst_0
-	iconst_1
-	goto	l3 // ireturn
-l2	iconst_0
-	goto	l3 // ireturn
-l1	aload_1
-	instanceof	class java/lang/Byte
-	ifeq	l4 // aload_1
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToByte:(Ljava/lang/Object;)B
-	istore_3
+	checkcast	class java/lang/Number
+	invokevirtual	Method java/lang/Number.intValue:()I
+	ireturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    $this       Lscala/math/ScalaNumericConversions;
+
+
+public static long toLong(scala.math.ScalaNumericConversions);
+  Signature: (Lscala/math/ScalaNumericConversions;)J
+  Code:
+   Stack=2, Locals=1, Args_size=1
 	aload_0
-	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.isValidByte:()Z
-	ifeq	l5 // iconst_0
+	checkcast	class java/lang/Number
+	invokevirtual	Method java/lang/Number.longValue:()J
+	lreturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    $this       Lscala/math/ScalaNumericConversions;
+
+
+public static float toFloat(scala.math.ScalaNumericConversions);
+  Signature: (Lscala/math/ScalaNumericConversions;)F
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	checkcast	class java/lang/Number
+	invokevirtual	Method java/lang/Number.floatValue:()F
+	freturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    $this       Lscala/math/ScalaNumericConversions;
+
+
+public static double toDouble(scala.math.ScalaNumericConversions);
+  Signature: (Lscala/math/ScalaNumericConversions;)D
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	checkcast	class java/lang/Number
+	invokevirtual	Method java/lang/Number.doubleValue:()D
+	dreturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      8      0    $this       Lscala/math/ScalaNumericConversions;
+
+
+public static boolean isValidByte(scala.math.ScalaNumericConversions);
+  Signature: (Lscala/math/ScalaNumericConversions;)Z
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	checkcast	class scala/math/ScalaNumber
+	invokevirtual	Method scala/math/ScalaNumber.isWhole:()Z
+	ifeq	l1 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toByte:()B
-	iload_3
-	if_icmpne	l5 // iconst_0
-	iconst_1
-	goto	l3 // ireturn
-l5	iconst_0
-	goto	l3 // ireturn
-l4	aload_1
-	instanceof	class java/lang/Short
-	ifeq	l6 // aload_1
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToShort:(Ljava/lang/Object;)S
-	istore	4
-	aload_0
-	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.isValidShort:()Z
-	ifeq	l7 // iconst_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toShort:()S
-	iload	4
-	if_icmpne	l7 // iconst_0
-	iconst_1
-	goto	l3 // ireturn
-l7	iconst_0
-	goto	l3 // ireturn
-l6	aload_1
-	instanceof	class java/lang/Integer
-	ifeq	l8 // aload_1
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
-	istore	5
-	aload_0
-	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.isValidInt:()Z
-	ifeq	l9 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toInt:()I
-	iload	5
-	if_icmpne	l9 // iconst_0
+	if_icmpne	l1 // iconst_0
 	iconst_1
-	goto	l3 // ireturn
-l9	iconst_0
-	goto	l3 // ireturn
-l8	aload_1
-	instanceof	class java/lang/Long
-	ifeq	l10 // aload_1
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToLong:(Ljava/lang/Object;)J
-	lstore	6
-	aload_0
-	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toLong:()J
-	lload	6
-	lcmp
-	ifne	l11 // iconst_0
-	iconst_1
-	goto	l3 // ireturn
-l11	iconst_0
-	goto	l3 // ireturn
-l10	aload_1
-	instanceof	class java/lang/Float
-	ifeq	l12 // aload_1
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToFloat:(Ljava/lang/Object;)F
-	fstore	8
-	aload_0
-	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toFloat:()F
-	fload	8
-	fcmpl
-	ifne	l13 // iconst_0
-	iconst_1
-	goto	l3 // ireturn
-l13	iconst_0
-	goto	l3 // ireturn
-l12	aload_1
-	instanceof	class java/lang/Double
-	ifeq	l14 // aload_1
-	aload_1
-	invokestatic	Method scala/runtime/BoxesRunTime.unboxToDouble:(Ljava/lang/Object;)D
-	dstore	9
-	aload_0
-	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toDouble:()D
-	dload	9
-	dcmpl
-	ifne	l15 // iconst_0
-	iconst_1
-	goto	l3 // ireturn
-l15	iconst_0
-	goto	l3 // ireturn
-l14	aload_1
-	instanceof	class java/lang/Number
-	ifeq	l16 // iconst_0
-	aload_1
-	checkcast	class java/lang/Number
-	astore	11
-	aload_0
-	aload	11
-	invokevirtual	Method java/lang/Object.equals:(Ljava/lang/Object;)Z
-	goto	l3 // ireturn
-l16	iconst_0
-l3	ireturn
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
   Labels:
-   	l2 = 35 // iconst_0
-   	l1 = 39 // aload_1
-   	l5 = 74 // iconst_0
-   	l4 = 78 // aload_1
-   	l7 = 115 // iconst_0
-   	l6 = 119 // aload_1
-   	l9 = 156 // iconst_0
-   	l8 = 160 // aload_1
-   	l11 = 189 // iconst_0
-   	l10 = 193 // aload_1
-   	l13 = 222 // iconst_0
-   	l12 = 226 // aload_1
-   	l15 = 255 // iconst_0
-   	l14 = 259 // aload_1
-   	l16 = 281 // iconst_0
-   	l3 = 282 // ireturn
+   	l1 = 29 // iconst_0
+   	l2 = 30 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      283      0    $this       Lscala/math/ScalaNumericConversions;
-   0      283      1    x       Ljava/lang/Object;
-   12      27      2    temp2       C
-   51      27      3    temp3       B
-   91      28      4    temp4       S
-   132      28      5    temp5       I
-   173      20      6    temp6       J
-   206      20      8    temp7       F
-   239      20      9    temp8       D
-   272      6      11    temp9       Ljava/lang/Number;
+   0      31      0    $this       Lscala/math/ScalaNumericConversions;
+
+
+public static boolean isValidShort(scala.math.ScalaNumericConversions);
+  Signature: (Lscala/math/ScalaNumericConversions;)Z
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	checkcast	class scala/math/ScalaNumber
+	invokevirtual	Method scala/math/ScalaNumber.isWhole:()Z
+	ifeq	l1 // iconst_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toShort:()S
+	aload_0
+	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toInt:()I
+	if_icmpne	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 29 // iconst_0
+   	l2 = 30 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      31      0    $this       Lscala/math/ScalaNumericConversions;
+
+
+public static boolean isValidInt(scala.math.ScalaNumericConversions);
+  Signature: (Lscala/math/ScalaNumericConversions;)Z
+  Code:
+   Stack=4, Locals=1, Args_size=1
+	aload_0
+	checkcast	class scala/math/ScalaNumber
+	invokevirtual	Method scala/math/ScalaNumber.isWhole:()Z
+	ifeq	l1 // iconst_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toInt:()I
+	i2l
+	aload_0
+	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toLong:()J
+	lcmp
+	ifne	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 31 // iconst_0
+   	l2 = 32 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      33      0    $this       Lscala/math/ScalaNumericConversions;
+
+
+public static boolean isValidChar(scala.math.ScalaNumericConversions);
+  Signature: (Lscala/math/ScalaNumericConversions;)Z
+  Code:
+   Stack=2, Locals=1, Args_size=1
+	aload_0
+	checkcast	class scala/math/ScalaNumber
+	invokevirtual	Method scala/math/ScalaNumber.isWhole:()Z
+	ifeq	l1 // iconst_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toInt:()I
+	iconst_0
+	if_icmplt	l1 // iconst_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toInt:()I
+	ldc	int 65535
+	if_icmpgt	l1 // iconst_0
+	iconst_1
+	goto	l2 // ireturn
+l1	iconst_0
+l2	ireturn
+  Labels:
+   	l1 = 35 // iconst_0
+   	l2 = 36 // ireturn
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      37      0    $this       Lscala/math/ScalaNumericConversions;
 
 
 public static int unifiedPrimitiveHashcode(scala.math.ScalaNumericConversions);
@@ -375,193 +374,142 @@ l2	ireturn
    7      29      1    lv       J
 
 
-public static boolean isValidChar(scala.math.ScalaNumericConversions);
-  Signature: (Lscala/math/ScalaNumericConversions;)Z
+public static boolean unifiedPrimitiveEquals(scala.math.ScalaNumericConversions, java.lang.Object);
+  Signature: (Lscala/math/ScalaNumericConversions;Ljava/lang/Object;)Z
   Code:
-   Stack=2, Locals=1, Args_size=1
+   Stack=4, Locals=2, Args_size=2
+	aload_1
+	instanceof	class java/lang/Character
+	ifeq	l1 // aload_1
 	aload_0
-	checkcast	class scala/math/ScalaNumber
-	invokevirtual	Method scala/math/ScalaNumber.isWhole:()Z
-	ifeq	l1 // iconst_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toInt:()I
-	iconst_0
-	if_icmplt	l1 // iconst_0
+	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.isValidChar:()Z
+	ifeq	l2 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toInt:()I
-	ldc	int 65535
-	if_icmpgt	l1 // iconst_0
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToChar:(Ljava/lang/Object;)C
+	if_icmpne	l2 // iconst_0
 	iconst_1
-	goto	l2 // ireturn
-l1	iconst_0
-l2	ireturn
-  Labels:
-   	l1 = 35 // iconst_0
-   	l2 = 36 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      37      0    $this       Lscala/math/ScalaNumericConversions;
-
-
-public static boolean isValidInt(scala.math.ScalaNumericConversions);
-  Signature: (Lscala/math/ScalaNumericConversions;)Z
-  Code:
-   Stack=4, Locals=1, Args_size=1
+	goto	l3 // ireturn
+l2	iconst_0
+	goto	l3 // ireturn
+l1	aload_1
+	instanceof	class java/lang/Byte
+	ifeq	l4 // aload_1
 	aload_0
-	checkcast	class scala/math/ScalaNumber
-	invokevirtual	Method scala/math/ScalaNumber.isWhole:()Z
-	ifeq	l1 // iconst_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toInt:()I
-	i2l
-	aload_0
-	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toLong:()J
-	lcmp
-	ifne	l1 // iconst_0
-	iconst_1
-	goto	l2 // ireturn
-l1	iconst_0
-l2	ireturn
-  Labels:
-   	l1 = 31 // iconst_0
-   	l2 = 32 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      33      0    $this       Lscala/math/ScalaNumericConversions;
-
-
-public static boolean isValidShort(scala.math.ScalaNumericConversions);
-  Signature: (Lscala/math/ScalaNumericConversions;)Z
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	checkcast	class scala/math/ScalaNumber
-	invokevirtual	Method scala/math/ScalaNumber.isWhole:()Z
-	ifeq	l1 // iconst_0
-	aload_0
-	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toShort:()S
-	aload_0
-	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toInt:()I
-	if_icmpne	l1 // iconst_0
-	iconst_1
-	goto	l2 // ireturn
-l1	iconst_0
-l2	ireturn
-  Labels:
-   	l1 = 29 // iconst_0
-   	l2 = 30 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      31      0    $this       Lscala/math/ScalaNumericConversions;
-
-
-public static boolean isValidByte(scala.math.ScalaNumericConversions);
-  Signature: (Lscala/math/ScalaNumericConversions;)Z
-  Code:
-   Stack=2, Locals=1, Args_size=1
-	aload_0
-	checkcast	class scala/math/ScalaNumber
-	invokevirtual	Method scala/math/ScalaNumber.isWhole:()Z
-	ifeq	l1 // iconst_0
+	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.isValidByte:()Z
+	ifeq	l5 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toByte:()B
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToByte:(Ljava/lang/Object;)B
+	if_icmpne	l5 // iconst_0
+	iconst_1
+	goto	l3 // ireturn
+l5	iconst_0
+	goto	l3 // ireturn
+l4	aload_1
+	instanceof	class java/lang/Short
+	ifeq	l6 // aload_1
+	aload_0
+	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.isValidShort:()Z
+	ifeq	l7 // iconst_0
+	aload_0
+	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toShort:()S
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToShort:(Ljava/lang/Object;)S
+	if_icmpne	l7 // iconst_0
+	iconst_1
+	goto	l3 // ireturn
+l7	iconst_0
+	goto	l3 // ireturn
+l6	aload_1
+	instanceof	class java/lang/Integer
+	ifeq	l8 // aload_1
+	aload_0
+	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.isValidInt:()Z
+	ifeq	l9 // iconst_0
 	aload_0
 	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toInt:()I
-	if_icmpne	l1 // iconst_0
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
+	if_icmpne	l9 // iconst_0
 	iconst_1
-	goto	l2 // ireturn
-l1	iconst_0
-l2	ireturn
-  Labels:
-   	l1 = 29 // iconst_0
-   	l2 = 30 // ireturn
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      31      0    $this       Lscala/math/ScalaNumericConversions;
-
-
-public static double toDouble(scala.math.ScalaNumericConversions);
-  Signature: (Lscala/math/ScalaNumericConversions;)D
-  Code:
-   Stack=2, Locals=1, Args_size=1
+	goto	l3 // ireturn
+l9	iconst_0
+	goto	l3 // ireturn
+l8	aload_1
+	instanceof	class java/lang/Long
+	ifeq	l10 // aload_1
 	aload_0
-	checkcast	class java/lang/Number
-	invokevirtual	Method java/lang/Number.doubleValue:()D
-	dreturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      8      0    $this       Lscala/math/ScalaNumericConversions;
-
-
-public static float toFloat(scala.math.ScalaNumericConversions);
-  Signature: (Lscala/math/ScalaNumericConversions;)F
-  Code:
-   Stack=1, Locals=1, Args_size=1
+	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toLong:()J
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToLong:(Ljava/lang/Object;)J
+	lcmp
+	ifne	l11 // iconst_0
+	iconst_1
+	goto	l3 // ireturn
+l11	iconst_0
+	goto	l3 // ireturn
+l10	aload_1
+	instanceof	class java/lang/Float
+	ifeq	l12 // aload_1
 	aload_0
-	checkcast	class java/lang/Number
-	invokevirtual	Method java/lang/Number.floatValue:()F
-	freturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      8      0    $this       Lscala/math/ScalaNumericConversions;
-
-
-public static long toLong(scala.math.ScalaNumericConversions);
-  Signature: (Lscala/math/ScalaNumericConversions;)J
-  Code:
-   Stack=2, Locals=1, Args_size=1
+	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toFloat:()F
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToFloat:(Ljava/lang/Object;)F
+	fcmpl
+	ifne	l13 // iconst_0
+	iconst_1
+	goto	l3 // ireturn
+l13	iconst_0
+	goto	l3 // ireturn
+l12	aload_1
+	instanceof	class java/lang/Double
+	ifeq	l14 // iconst_0
 	aload_0
-	checkcast	class java/lang/Number
-	invokevirtual	Method java/lang/Number.longValue:()J
-	lreturn
+	invokeinterface	InterfaceMethod scala/math/ScalaNumericConversions.toDouble:()D
+	aload_1
+	invokestatic	Method scala/runtime/BoxesRunTime.unboxToDouble:(Ljava/lang/Object;)D
+	dcmpl
+	ifne	l15 // iconst_0
+	iconst_1
+	goto	l3 // ireturn
+l15	iconst_0
+	goto	l3 // ireturn
+l14	iconst_0
+l3	ireturn
   Labels:
+   	l2 = 33 // iconst_0
+   	l1 = 37 // aload_1
+   	l5 = 70 // iconst_0
+   	l4 = 74 // aload_1
+   	l7 = 107 // iconst_0
+   	l6 = 111 // aload_1
+   	l9 = 144 // iconst_0
+   	l8 = 148 // aload_1
+   	l11 = 173 // iconst_0
+   	l10 = 177 // aload_1
+   	l13 = 202 // iconst_0
+   	l12 = 206 // aload_1
+   	l15 = 231 // iconst_0
+   	l14 = 235 // iconst_0
+   	l3 = 236 // ireturn
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      8      0    $this       Lscala/math/ScalaNumericConversions;
+   0      237      0    $this       Lscala/math/ScalaNumericConversions;
+   0      237      1    x       Ljava/lang/Object;
 
 
-public static int toInt(scala.math.ScalaNumericConversions);
-  Signature: (Lscala/math/ScalaNumericConversions;)I
+public static void $init$(scala.math.ScalaNumericConversions);
+  Signature: (Lscala/math/ScalaNumericConversions;)V
   Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	checkcast	class java/lang/Number
-	invokevirtual	Method java/lang/Number.intValue:()I
-	ireturn
+   Stack=0, Locals=1, Args_size=1
+	return
   Labels:
   LocalVariableTable: 
    Start  Length  Slot  Name   Signature
-   0      8      0    $this       Lscala/math/ScalaNumericConversions;
-
-
-public static short toShort(scala.math.ScalaNumericConversions);
-  Signature: (Lscala/math/ScalaNumericConversions;)S
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	checkcast	class java/lang/Number
-	invokevirtual	Method java/lang/Number.shortValue:()S
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      8      0    $this       Lscala/math/ScalaNumericConversions;
-
-
-public static byte toByte(scala.math.ScalaNumericConversions);
-  Signature: (Lscala/math/ScalaNumericConversions;)B
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	checkcast	class java/lang/Number
-	invokevirtual	Method java/lang/Number.byteValue:()B
-	ireturn
-  Labels:
-  LocalVariableTable: 
-   Start  Length  Slot  Name   Signature
-   0      8      0    $this       Lscala/math/ScalaNumericConversions;
+   0      1      0    $this       Lscala/math/ScalaNumericConversions;
 
 
 }

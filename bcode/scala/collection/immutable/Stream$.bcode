@@ -4,50 +4,71 @@ public final class scala.collection.immutable.Stream$ extends scala.collection.g
    public final Cons=class scala/collection/immutable/Stream$Cons of class scala/collection/immutable/Stream
    public final $anonfun$1=class scala/collection/immutable/Stream$$anonfun$1 of class scala/collection/immutable/Stream
    public StreamBuilder=class scala/collection/immutable/Stream$StreamBuilder of class scala/collection/immutable/Stream
+   public final $anonfun$zip$1=class scala/collection/immutable/Stream$$anonfun$zip$1 of class scala/collection/immutable/Stream
    public final $anonfun$map$1=class scala/collection/immutable/Stream$$anonfun$map$1 of class scala/collection/immutable/Stream
    public final $anonfun$filter$1=class scala/collection/immutable/Stream$$anonfun$filter$1 of class scala/collection/immutable/Stream
+   public final $anonfun$append$1=class scala/collection/immutable/Stream$$anonfun$append$1 of class scala/collection/immutable/Stream
+   public final $anonfun$flatMap$1=class scala/collection/immutable/Stream$$anonfun$flatMap$1 of class scala/collection/immutable/Stream
+   public StreamCanBuildFrom=class scala/collection/immutable/Stream$StreamCanBuildFrom of class scala/collection/immutable/Stream
   Scala: length = 0x
    
   Signature: length = 0x2
-   00 23 
+   00 34 
   SourceFile: "Stream.scala"
   minor version: 0
   major version: 49
   Constant pool:
+class	scala/collection/IterableLike
 class	scala/collection/generic/SeqFactory
 class	scala/collection/immutable/Stream
 class	scala/collection/immutable/Stream$
 class	scala/collection/immutable/Stream$$anonfun$1
+class	scala/collection/immutable/Stream$$anonfun$append$1
 class	scala/collection/immutable/Stream$$anonfun$filter$1
+class	scala/collection/immutable/Stream$$anonfun$flatMap$1
 class	scala/collection/immutable/Stream$$anonfun$map$1
+class	scala/collection/immutable/Stream$$anonfun$zip$1
 class	scala/collection/immutable/Stream$Cons
 class	scala/collection/immutable/Stream$Empty$
 class	scala/collection/immutable/Stream$StreamBuilder
+class	scala/collection/immutable/Stream$StreamCanBuildFrom
 Field	scala/collection/immutable/Stream$.MODULE$:Lscala/collection/immutable/Stream$;
 Field	scala/collection/immutable/Stream$Empty$.MODULE$:Lscala/collection/immutable/Stream$Empty$;
 Method	scala/collection/generic/SeqFactory."<init>":()V
 Method	scala/collection/immutable/Stream$."<init>":()V
+Method	scala/collection/immutable/Stream$.apply:(Lscala/collection/Seq;)Lscala/collection/immutable/Stream;
 Method	scala/collection/immutable/Stream$.empty:()Lscala/collection/immutable/Stream;
 Method	scala/collection/immutable/Stream$StreamBuilder."<init>":()V
+InterfaceMethod	scala/collection/IterableLike.toStream:()Lscala/collection/immutable/Stream;
 NameAndType	"<init>":()V
 NameAndType	MODULE$:Lscala/collection/immutable/Stream$;
 NameAndType	MODULE$:Lscala/collection/immutable/Stream$Empty$;
+NameAndType	apply:(Lscala/collection/Seq;)Lscala/collection/immutable/Stream;
 NameAndType	empty:()Lscala/collection/immutable/Stream;
+NameAndType	toStream:()Lscala/collection/immutable/Stream;
 Asciz	$anonfun$1;
+Asciz	$anonfun$append$1;
 Asciz	$anonfun$filter$1;
+Asciz	$anonfun$flatMap$1;
 Asciz	$anonfun$map$1;
+Asciz	$anonfun$zip$1;
 Asciz	()Lscala/collection/Traversable;;
 Asciz	()Lscala/collection/immutable/Stream;;
 Asciz	()Lscala/collection/mutable/Builder;;
 Asciz	()V;
+Asciz	(Lscala/collection/Seq;)Lscala/collection/Traversable;;
+Asciz	(Lscala/collection/Seq;)Lscala/collection/immutable/Stream;;
 Asciz	<A:Ljava/lang/Object;>()Lscala/collection/immutable/Stream<TA;>;;
 Asciz	<A:Ljava/lang/Object;>()Lscala/collection/mutable/Builder<TA;Lscala/collection/immutable/Stream<TA;>;>;;
+Asciz	<A:Ljava/lang/Object;>(Lscala/collection/Seq<TA;>;)Lscala/collection/immutable/Stream<TA;>;;
 Asciz	<clinit>;
 Asciz	<init>;
 Asciz	Code;
 Asciz	Cons;
 Asciz	InnerClasses;
 Asciz	LineNumberTable;
+Asciz	LocalVariableTable;
+Asciz	Lscala/collection/Seq;;
 Asciz	Lscala/collection/generic/SeqFactory<Lscala/collection/immutable/Stream;>;;
 Asciz	Lscala/collection/immutable/Stream$;;
 Asciz	Lscala/collection/immutable/Stream$Empty$;;
@@ -57,17 +78,28 @@ Asciz	Signature;
 Asciz	SourceFile;
 Asciz	Stream.scala;
 Asciz	StreamBuilder;
+Asciz	StreamCanBuildFrom;
+Asciz	apply;
+Asciz	elems;
 Asciz	empty;
 Asciz	newBuilder;
+Asciz	scala/collection/IterableLike;
 Asciz	scala/collection/generic/SeqFactory;
 Asciz	scala/collection/immutable/Stream;
 Asciz	scala/collection/immutable/Stream$;
 Asciz	scala/collection/immutable/Stream$$anonfun$1;
+Asciz	scala/collection/immutable/Stream$$anonfun$append$1;
 Asciz	scala/collection/immutable/Stream$$anonfun$filter$1;
+Asciz	scala/collection/immutable/Stream$$anonfun$flatMap$1;
 Asciz	scala/collection/immutable/Stream$$anonfun$map$1;
+Asciz	scala/collection/immutable/Stream$$anonfun$zip$1;
 Asciz	scala/collection/immutable/Stream$Cons;
 Asciz	scala/collection/immutable/Stream$Empty$;
 Asciz	scala/collection/immutable/Stream$StreamBuilder;
+Asciz	scala/collection/immutable/Stream$StreamCanBuildFrom;
+Asciz	this;
+Asciz	toStream;
+Asciz	xs;
 
 {
 public static final scala.collection.immutable.Stream$ MODULE$;
@@ -82,36 +114,6 @@ public static {};
 	return
   Labels:
 
-private scala.collection.immutable.Stream$();
-  Signature: ()V
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokespecial	Method scala/collection/generic/SeqFactory."<init>":()V
-	aload_0
-	putstatic	Field MODULE$:Lscala/collection/immutable/Stream$;
-	return
-  Labels:
-
-public scala.collection.Traversable empty();
-  Signature: ()Lscala/collection/Traversable;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	aload_0
-	invokevirtual	Method empty:()Lscala/collection/immutable/Stream;
-	areturn
-  Labels:
-
-public scala.collection.immutable.Stream empty();
-  Signature: ()Lscala/collection/immutable/Stream;
-  Code:
-   Stack=1, Locals=1, Args_size=1
-	getstatic	Field scala/collection/immutable/Stream$Empty$.MODULE$:Lscala/collection/immutable/Stream$Empty$;
-	areturn
-  Labels:
-  Signature: length = 0x2
-   00 1B 
-
 public scala.collection.mutable.Builder newBuilder();
   Signature: ()Lscala/collection/mutable/Builder;
   Code:
@@ -122,7 +124,68 @@ public scala.collection.mutable.Builder newBuilder();
 	areturn
   Labels:
   Signature: length = 0x2
-   00 1C 
+   00 2A 
+
+public scala.collection.immutable.Stream empty();
+  Signature: ()Lscala/collection/immutable/Stream;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	getstatic	Field scala/collection/immutable/Stream$Empty$.MODULE$:Lscala/collection/immutable/Stream$Empty$;
+	areturn
+  Labels:
+  Signature: length = 0x2
+   00 29 
+
+public scala.collection.immutable.Stream apply(scala.collection.Seq);
+  Signature: (Lscala/collection/Seq;)Lscala/collection/immutable/Stream;
+  Code:
+   Stack=1, Locals=2, Args_size=2
+	aload_1
+	invokeinterface	InterfaceMethod scala/collection/IterableLike.toStream:()Lscala/collection/immutable/Stream;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lscala/collection/immutable/Stream$;
+   0      7      1    xs       Lscala/collection/Seq;
+
+  Signature: length = 0x2
+   00 2B 
+
+public scala.collection.Traversable apply(scala.collection.Seq);
+  Signature: (Lscala/collection/Seq;)Lscala/collection/Traversable;
+  Code:
+   Stack=2, Locals=2, Args_size=2
+	aload_0
+	aload_1
+	invokevirtual	Method apply:(Lscala/collection/Seq;)Lscala/collection/immutable/Stream;
+	areturn
+  Labels:
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      6      0    this       Lscala/collection/immutable/Stream$;
+   0      6      1    elems       Lscala/collection/Seq;
+
+
+public scala.collection.Traversable empty();
+  Signature: ()Lscala/collection/Traversable;
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokevirtual	Method empty:()Lscala/collection/immutable/Stream;
+	areturn
+  Labels:
+
+private scala.collection.immutable.Stream$();
+  Signature: ()V
+  Code:
+   Stack=1, Locals=1, Args_size=1
+	aload_0
+	invokespecial	Method scala/collection/generic/SeqFactory."<init>":()V
+	aload_0
+	putstatic	Field MODULE$:Lscala/collection/immutable/Stream$;
+	return
+  Labels:
 
 }
 
